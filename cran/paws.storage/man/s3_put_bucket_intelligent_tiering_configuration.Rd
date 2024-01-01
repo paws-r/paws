@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_intelligent_tiering_configuration}
 \alias{s3_put_bucket_intelligent_tiering_configuration}
-\title{Puts a S3 Intelligent-Tiering configuration to the specified bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_bucket_intelligent_tiering_configuration(
   Bucket,
@@ -19,7 +19,7 @@ or retrieve.}
 \item{IntelligentTieringConfiguration}{[required] Container for S3 Intelligent-Tiering configuration.}
 }
 \description{
-Puts a S3 Intelligent-Tiering configuration to the specified bucket. You can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_intelligent_tiering_configuration/} for full documentation.
 }

@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_public_access_block}
 \alias{s3control_put_public_access_block}
-\title{Creates or modifies the PublicAccessBlock configuration for an Amazon
-Web Services account}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_put_public_access_block(PublicAccessBlockConfiguration, AccountId)
 }
@@ -15,7 +14,7 @@ specified Amazon Web Services account.}
 \code{PublicAccessBlock} configuration you want to set.}
 }
 \description{
-Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For this operation, users must have the \code{s3:PutAccountPublicAccessBlock} permission. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_public_access_block/} for full documentation.
 }

@@ -9,7 +9,8 @@ sagemaker_update_training_job(
   TrainingJobName,
   ProfilerConfig = NULL,
   ProfilerRuleConfigurations = NULL,
-  ResourceConfig = NULL
+  ResourceConfig = NULL,
+  RemoteDebugConfig = NULL
 )
 }
 \arguments{
@@ -23,6 +24,11 @@ monitoring, framework profiling, and storage paths.}
 profiling system and framework metrics.}
 
 \item{ResourceConfig}{The training job \code{ResourceConfig} to update warm pool retention length.}
+
+\item{RemoteDebugConfig}{Configuration for remote debugging while the training job is running.
+You can update the remote debugging configuration when the
+\code{SecondaryStatus} of the job is \code{Downloading} or \code{Training}.To learn
+more about the remote debugging functionality of SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html}{Access a training container through Amazon Web Services Systems Manager (SSM) for remote debugging}.}
 }
 \description{
 Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length.

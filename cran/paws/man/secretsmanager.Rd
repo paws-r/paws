@@ -129,6 +129,7 @@ about CloudTrail, including enabling it and find your log files, see the
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.security.identity:secretsmanager_batch_get_secret_value]{batch_get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary for up to 20 secrets\cr
 \link[paws.security.identity:secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation\cr
 \link[paws.security.identity:secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
 \link[paws.security.identity:secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr

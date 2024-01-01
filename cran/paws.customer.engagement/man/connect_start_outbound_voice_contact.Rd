@@ -5,6 +5,10 @@
 \title{Places an outbound call to a contact, and then initiates the flow}
 \usage{
 connect_start_outbound_voice_contact(
+  Name = NULL,
+  Description = NULL,
+  References = NULL,
+  RelatedContactId = NULL,
   DestinationPhoneNumber,
   ContactFlowId,
   InstanceId,
@@ -18,14 +22,32 @@ connect_start_outbound_voice_contact(
 )
 }
 \arguments{
+\item{Name}{The name of a voice contact that is shown to an agent in the Contact
+Control Panel (CCP).}
+
+\item{Description}{A description of the voice contact that is shown to an agent in the
+Contact Control Panel (CCP).}
+
+\item{References}{A formatted URL that is shown to an agent in the Contact Control Panel
+(CCP). Contacts can have the following reference types at the time of
+creation: \code{URL} | \code{NUMBER} | \code{STRING} | \code{DATE} | \code{EMAIL}. \code{ATTACHMENT}
+is not a supported reference type during voice contact creation.}
+
+\item{RelatedContactId}{The \code{contactId} that is related to this contact. Linking voice, task, or
+chat by using \code{RelatedContactID} copies over contact attributes from the
+related contact to the new contact. All updates to user-defined
+attributes in the new contact are limited to the individual contact ID.
+There are no limits to the number of contacts that can be linked by
+using \code{RelatedContactId}.}
+
 \item{DestinationPhoneNumber}{[required] The phone number of the customer, in E.164 format.}
 
 \item{ContactFlowId}{[required] The identifier of the flow for the outbound call. To see the
-ContactFlowId in the Amazon Connect console user interface, on the
-navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow.
-On the flow page, under the name of the flow, choose \strong{Show additional
-flow information}. The ContactFlowId is the last part of the ARN, shown
-here in bold:
+ContactFlowId in the Amazon Connect admin website, on the navigation
+menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow. On the flow
+page, under the name of the flow, choose \strong{Show additional flow
+information}. The ContactFlowId is the last part of the ARN, shown here
+in bold:
 
 arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 

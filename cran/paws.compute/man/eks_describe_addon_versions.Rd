@@ -17,12 +17,18 @@ eks_describe_addon_versions(
 \arguments{
 \item{kubernetesVersion}{The Kubernetes versions that you can use the add-on with.}
 
-\item{maxResults}{The maximum number of results to return.}
+\item{maxResults}{The maximum number of results, returned in paginated output. You receive
+\code{maxResults} in a single page, along with a \code{nextToken} response
+element. You can see the remaining results of the initial request by
+sending another request with the returned \code{nextToken} value. This value
+can be between 1 and 100. If you don't use this parameter, 100 results
+and a \code{nextToken} value, if applicable, are returned.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{DescribeAddonVersionsRequest} where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated request, where
+\code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value. This value is null when there are
+no more results to return.
 
 This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
@@ -42,7 +48,7 @@ value for this property.}
 this property.}
 }
 \description{
-Describes the versions for an add-on. Information such as the Kubernetes versions that you can use the add-on with, the \code{owner}, \code{publisher}, and the \code{type} of the add-on are returned.
+Describes the versions for an add-on.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_describe_addon_versions/} for full documentation.
 }

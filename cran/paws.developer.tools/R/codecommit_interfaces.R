@@ -69,7 +69,7 @@ NULL
 
 .codecommit$batch_get_repositories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositories = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoriesNotFound = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(repositories = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoriesNotFound = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), errors = structure(list(structure(list(repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -133,13 +133,13 @@ NULL
 
 .codecommit$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codecommit$create_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -485,7 +485,7 @@ NULL
 
 .codecommit$get_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(repositoryMetadata = structure(list(accountId = structure(logical(0), tags = list(type = "string")), repositoryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), repositoryDescription = structure(logical(0), tags = list(type = "string")), defaultBranch = structure(logical(0), tags = list(type = "string")), lastModifiedDate = structure(logical(0), tags = list(type = "timestamp")), creationDate = structure(logical(0), tags = list(type = "timestamp")), cloneUrlHttp = structure(logical(0), tags = list(type = "string")), cloneUrlSsh = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -905,6 +905,18 @@ NULL
 
 .codecommit$update_repository_description_output <- function(...) {
   list()
+}
+
+.codecommit$update_repository_encryption_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codecommit$update_repository_encryption_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryId = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), originalKmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .codecommit$update_repository_name_input <- function(...) {

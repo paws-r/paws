@@ -183,19 +183,107 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 }
 .prometheusservice$operations$create_rule_groups_namespace <- prometheusservice_create_rule_groups_namespace
 
+#' Create a scraper
+#'
+#' @description
+#' Create a scraper.
+#'
+#' @usage
+#' prometheusservice_create_scraper(alias, scrapeConfiguration, source,
+#'   destination, clientToken, tags)
+#'
+#' @param alias An optional user-assigned alias for this scraper. This alias is for user
+#' reference and does not need to be unique.
+#' @param scrapeConfiguration &#91;required&#93; The configuration used to create the scraper.
+#' @param source &#91;required&#93; The source that the scraper will be discovering and collecting metrics
+#' from.
+#' @param destination &#91;required&#93; The destination that the scraper will be producing metrics to.
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param tags Optional, user-provided tags for this scraper.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scraperId = "string",
+#'   arn = "string",
+#'   status = list(
+#'     statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_scraper(
+#'   alias = "string",
+#'   scrapeConfiguration = list(
+#'     configurationBlob = raw
+#'   ),
+#'   source = list(
+#'     eksConfiguration = list(
+#'       clusterArn = "string",
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       subnetIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   destination = list(
+#'     ampConfiguration = list(
+#'       workspaceArn = "string"
+#'     )
+#'   ),
+#'   clientToken = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_create_scraper
+#'
+#' @aliases prometheusservice_create_scraper
+prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, source, destination, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateScraper",
+    http_method = "POST",
+    http_path = "/scrapers",
+    paginator = list()
+  )
+  input <- .prometheusservice$create_scraper_input(alias = alias, scrapeConfiguration = scrapeConfiguration, source = source, destination = destination, clientToken = clientToken, tags = tags)
+  output <- .prometheusservice$create_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$create_scraper <- prometheusservice_create_scraper
+
 #' Creates a new AMP workspace
 #'
 #' @description
 #' Creates a new AMP workspace.
 #'
 #' @usage
-#' prometheusservice_create_workspace(alias, clientToken, tags)
+#' prometheusservice_create_workspace(alias, clientToken, tags, kmsKeyArn)
 #'
 #' @param alias An optional user-assigned alias for this workspace. This alias is for
 #' user reference and does not need to be unique.
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
 #' @param tags Optional, user-provided tags for this workspace.
+#' @param kmsKeyArn Optional, customer managed KMS key used to encrypt data for this
+#' workspace
 #'
 #' @return
 #' A list with the following syntax:
@@ -208,7 +296,8 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #'   ),
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -219,7 +308,8 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   kmsKeyArn = "string"
 #' )
 #' ```
 #'
@@ -228,14 +318,14 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #' @rdname prometheusservice_create_workspace
 #'
 #' @aliases prometheusservice_create_workspace
-prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL) {
+prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
     http_method = "POST",
     http_path = "/workspaces",
     paginator = list()
   )
-  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, tags = tags)
+  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .prometheusservice$create_workspace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -383,6 +473,59 @@ prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, cl
   return(response)
 }
 .prometheusservice$operations$delete_rule_groups_namespace <- prometheusservice_delete_rule_groups_namespace
+
+#' Deletes a scraper
+#'
+#' @description
+#' Deletes a scraper.
+#'
+#' @usage
+#' prometheusservice_delete_scraper(scraperId, clientToken)
+#'
+#' @param scraperId &#91;required&#93; The ID of the scraper to delete.
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scraperId = "string",
+#'   status = list(
+#'     statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_scraper(
+#'   scraperId = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_scraper
+#'
+#' @aliases prometheusservice_delete_scraper
+prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteScraper",
+    http_method = "DELETE",
+    http_path = "/scrapers/{scraperId}",
+    paginator = list()
+  )
+  input <- .prometheusservice$delete_scraper_input(scraperId = scraperId, clientToken = clientToken)
+  output <- .prometheusservice$delete_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_scraper <- prometheusservice_delete_scraper
 
 #' Deletes an AMP workspace
 #'
@@ -614,6 +757,90 @@ prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) 
 }
 .prometheusservice$operations$describe_rule_groups_namespace <- prometheusservice_describe_rule_groups_namespace
 
+#' Describe an existing scraper
+#'
+#' @description
+#' Describe an existing scraper.
+#'
+#' @usage
+#' prometheusservice_describe_scraper(scraperId)
+#'
+#' @param scraperId &#91;required&#93; The IDs of the scraper to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scraper = list(
+#'     alias = "string",
+#'     scraperId = "string",
+#'     arn = "string",
+#'     roleArn = "string",
+#'     status = list(
+#'       statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastModifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     statusReason = "string",
+#'     scrapeConfiguration = list(
+#'       configurationBlob = raw
+#'     ),
+#'     source = list(
+#'       eksConfiguration = list(
+#'         clusterArn = "string",
+#'         securityGroupIds = list(
+#'           "string"
+#'         ),
+#'         subnetIds = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     destination = list(
+#'       ampConfiguration = list(
+#'         workspaceArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_scraper(
+#'   scraperId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_scraper
+#'
+#' @aliases prometheusservice_describe_scraper
+prometheusservice_describe_scraper <- function(scraperId) {
+  op <- new_operation(
+    name = "DescribeScraper",
+    http_method = "GET",
+    http_path = "/scrapers/{scraperId}",
+    paginator = list()
+  )
+  input <- .prometheusservice$describe_scraper_input(scraperId = scraperId)
+  output <- .prometheusservice$describe_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_scraper <- prometheusservice_describe_scraper
+
 #' Describes an existing AMP workspace
 #'
 #' @description
@@ -641,7 +868,8 @@ prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) 
 #'     ),
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     kmsKeyArn = "string"
 #'   )
 #' )
 #' ```
@@ -674,6 +902,49 @@ prometheusservice_describe_workspace <- function(workspaceId) {
   return(response)
 }
 .prometheusservice$operations$describe_workspace <- prometheusservice_describe_workspace
+
+#' Gets a default configuration
+#'
+#' @description
+#' Gets a default configuration.
+#'
+#' @usage
+#' prometheusservice_get_default_scraper_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = raw
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_default_scraper_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_get_default_scraper_configuration
+#'
+#' @aliases prometheusservice_get_default_scraper_configuration
+prometheusservice_get_default_scraper_configuration <- function() {
+  op <- new_operation(
+    name = "GetDefaultScraperConfiguration",
+    http_method = "GET",
+    http_path = "/scraperconfiguration",
+    paginator = list()
+  )
+  input <- .prometheusservice$get_default_scraper_configuration_input()
+  output <- .prometheusservice$get_default_scraper_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$get_default_scraper_configuration <- prometheusservice_get_default_scraper_configuration
 
 #' Lists rule groups namespaces
 #'
@@ -750,6 +1021,102 @@ prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NU
   return(response)
 }
 .prometheusservice$operations$list_rule_groups_namespaces <- prometheusservice_list_rule_groups_namespaces
+
+#' Lists all scrapers in a customer account, including scrapers being
+#' created or deleted
+#'
+#' @description
+#' Lists all scrapers in a customer account, including scrapers being
+#' created or deleted. You may provide filters to return a more specific
+#' list of results.
+#'
+#' @usage
+#' prometheusservice_list_scrapers(filters, nextToken, maxResults)
+#'
+#' @param filters A list of scraper filters.
+#' @param nextToken Pagination token to request the next page in a paginated list. This
+#' token is obtained from the output of the previous ListScrapers request.
+#' @param maxResults Maximum results to return in response (default=100, maximum=1000).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   scrapers = list(
+#'     list(
+#'       alias = "string",
+#'       scraperId = "string",
+#'       arn = "string",
+#'       roleArn = "string",
+#'       status = list(
+#'         statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       statusReason = "string",
+#'       source = list(
+#'         eksConfiguration = list(
+#'           clusterArn = "string",
+#'           securityGroupIds = list(
+#'             "string"
+#'           ),
+#'           subnetIds = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       destination = list(
+#'         ampConfiguration = list(
+#'           workspaceArn = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_scrapers(
+#'   filters = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_list_scrapers
+#'
+#' @aliases prometheusservice_list_scrapers
+prometheusservice_list_scrapers <- function(filters = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListScrapers",
+    http_method = "GET",
+    http_path = "/scrapers",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers")
+  )
+  input <- .prometheusservice$list_scrapers_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
+  output <- .prometheusservice$list_scrapers_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$list_scrapers <- prometheusservice_list_scrapers
 
 #' Lists the tags you have assigned to the resource
 #'
@@ -832,7 +1199,8 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
 #'       ),
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       kmsKeyArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"

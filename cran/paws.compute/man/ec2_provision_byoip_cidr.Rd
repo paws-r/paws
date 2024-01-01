@@ -13,7 +13,8 @@ ec2_provision_byoip_cidr(
   Description = NULL,
   DryRun = NULL,
   PoolTagSpecifications = NULL,
-  MultiRegion = NULL
+  MultiRegion = NULL,
+  NetworkBorderGroup = NULL
 )
 }
 \arguments{
@@ -40,6 +41,23 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PoolTagSpecifications}{The tags to apply to the address pool.}
 
 \item{MultiRegion}{Reserved.}
+
+\item{NetworkBorderGroup}{If you have \href{https://docs.aws.amazon.com/local-zones/latest/ug/how-local-zones-work.html}{Local Zones}
+enabled, you can choose a network border group for Local Zones when you
+provision and advertise a BYOIPv4 CIDR. Choose the network border group
+carefully as the EIP and the Amazon Web Services resource it is
+associated with must reside in the same network border group.
+
+You can provision BYOIP address ranges to and advertise them in the
+following Local Zone network border groups:
+\itemize{
+\item us-east-1-dfw-2
+\item us-west-2-lax-1
+\item us-west-2-phx-2
+}
+
+You cannot provision or advertise BYOIPv6 address ranges in Local Zones
+at this time.}
 }
 \description{
 Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using \code{\link[=ec2_advertise_byoip_cidr]{advertise_byoip_cidr}}.

@@ -646,6 +646,11 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #'
 #' @description
 #' Copies the specified DB cluster parameter group.
+#' 
+#' You can't copy a default DB cluster parameter group. Instead, create a
+#' new custom DB cluster parameter group, which copies the default
+#' parameters and values for the specified DB cluster parameter group
+#' family.
 #'
 #' @usage
 #' rds_copy_db_cluster_parameter_group(
@@ -985,6 +990,10 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #'
 #' @description
 #' Copies the specified DB parameter group.
+#' 
+#' You can't copy a default DB parameter group. Instead, create a new
+#' custom DB parameter group, which copies the default parameters and
+#' values for the specified DB parameter group family.
 #'
 #' @usage
 #' rds_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
@@ -2237,16 +2246,22 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' cluster in the new global database cluster.
 #' 
 #' Valid for Cluster Type: Aurora DB clusters only
-#' @param EnableHttpEndpoint Specifies whether to enable the HTTP endpoint for an Aurora Serverless
-#' v1 DB cluster. By default, the HTTP endpoint is disabled.
+#' @param EnableHttpEndpoint Specifies whether to enable the HTTP endpoint for the DB cluster. By
+#' default, the HTTP endpoint isn't enabled.
 #' 
 #' When enabled, the HTTP endpoint provides a connectionless web service
-#' API for running SQL queries on the Aurora Serverless v1 DB cluster. You
-#' can also query your database from inside the RDS console with the query
+#' API (RDS Data API) for running SQL queries on the DB cluster. You can
+#' also query your database from inside the RDS console with the RDS query
 #' editor.
 #' 
-#' For more information, see [Using the Data API for Aurora Serverless
-#' v1](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' RDS Data API is supported with the following DB clusters:
+#' 
+#' -   Aurora PostgreSQL Serverless v2 and provisioned
+#' 
+#' -   Aurora PostgreSQL and Aurora MySQL Serverless v1
+#' 
+#' For more information, see [Using RDS Data
+#' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
 #' 
 #' Valid for Cluster Type: Aurora DB clusters only
@@ -2556,6 +2571,14 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -2607,7 +2630,8 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -2655,7 +2679,8 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -2739,7 +2764,8 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #'   ),
 #'   RdsCustomClusterConfiguration = list(
 #'     InterconnectSubnetId = "string",
-#'     TransitGatewayMulticastDomainId = "string"
+#'     TransitGatewayMulticastDomainId = "string",
+#'     ReplicaMode = "open-read-only"|"mounted"
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
 #'   GlobalClusterIdentifier = "string",
@@ -3203,87 +3229,6 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @param DBName The meaning of this parameter differs according to the database engine
 #' you use.
 #' 
-#' **MySQL**
-#' 
-#' The name of the database to create when the DB instance is created. If
-#' this parameter isn't specified, no database is created in the DB
-#' instance.
-#' 
-#' Constraints:
-#' 
-#' -   Must contain 1 to 64 letters or numbers.
-#' 
-#' -   Must begin with a letter. Subsequent characters can be letters,
-#'     underscores, or digits (0-9).
-#' 
-#' -   Can't be a word reserved by the specified database engine
-#' 
-#' **MariaDB**
-#' 
-#' The name of the database to create when the DB instance is created. If
-#' this parameter isn't specified, no database is created in the DB
-#' instance.
-#' 
-#' Constraints:
-#' 
-#' -   Must contain 1 to 64 letters or numbers.
-#' 
-#' -   Must begin with a letter. Subsequent characters can be letters,
-#'     underscores, or digits (0-9).
-#' 
-#' -   Can't be a word reserved by the specified database engine
-#' 
-#' **PostgreSQL**
-#' 
-#' The name of the database to create when the DB instance is created. If
-#' this parameter isn't specified, a database named `postgres` is created
-#' in the DB instance.
-#' 
-#' Constraints:
-#' 
-#' -   Must contain 1 to 63 letters, numbers, or underscores.
-#' 
-#' -   Must begin with a letter. Subsequent characters can be letters,
-#'     underscores, or digits (0-9).
-#' 
-#' -   Can't be a word reserved by the specified database engine
-#' 
-#' **Oracle**
-#' 
-#' The Oracle System ID (SID) of the created DB instance. If you don't
-#' specify a value, the default value is `ORCL`. You can't specify the
-#' string `null`, or any other reserved word, for `DBName`.
-#' 
-#' Default: `ORCL`
-#' 
-#' Constraints:
-#' 
-#' -   Can't be longer than 8 characters
-#' 
-#' **Amazon RDS Custom for Oracle**
-#' 
-#' The Oracle System ID (SID) of the created RDS Custom DB instance. If you
-#' don't specify a value, the default value is `ORCL` for non-CDBs and
-#' `RDSCDB` for CDBs.
-#' 
-#' Default: `ORCL`
-#' 
-#' Constraints:
-#' 
-#' -   It must contain 1 to 8 alphanumeric characters.
-#' 
-#' -   It must contain a letter.
-#' 
-#' -   It can't be a word reserved by the database engine.
-#' 
-#' **Amazon RDS Custom for SQL Server**
-#' 
-#' Not applicable. Must be null.
-#' 
-#' **SQL Server**
-#' 
-#' Not applicable. Must be null.
-#' 
 #' **Amazon Aurora MySQL**
 #' 
 #' The name of the database to create when the primary DB instance of the
@@ -3293,9 +3238,9 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Constraints:
 #' 
-#' -   It must contain 1 to 64 alphanumeric characters.
+#' -   Must contain 1 to 64 alphanumeric characters.
 #' 
-#' -   It can't be a word reserved by the database engine.
+#' -   Can't be a word reserved by the database engine.
 #' 
 #' **Amazon Aurora PostgreSQL**
 #' 
@@ -3308,10 +3253,106 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   It must contain 1 to 63 alphanumeric characters.
 #' 
-#' -   It must begin with a letter. Subsequent characters can be letters,
+#' -   Must begin with a letter. Subsequent characters can be letters,
 #'     underscores, or digits (0 to 9).
 #' 
-#' -   It can't be a word reserved by the database engine.
+#' -   Can't be a word reserved by the database engine.
+#' 
+#' **Amazon RDS Custom for Oracle**
+#' 
+#' The Oracle System ID (SID) of the created RDS Custom DB instance. If you
+#' don't specify a value, the default value is `ORCL` for non-CDBs and
+#' `RDSCDB` for CDBs.
+#' 
+#' Default: `ORCL`
+#' 
+#' Constraints:
+#' 
+#' -   Must contain 1 to 8 alphanumeric characters.
+#' 
+#' -   Must contain a letter.
+#' 
+#' -   Can't be a word reserved by the database engine.
+#' 
+#' **Amazon RDS Custom for SQL Server**
+#' 
+#' Not applicable. Must be null.
+#' 
+#' **RDS for Db2**
+#' 
+#' The name of the database to create when the DB instance is created. If
+#' this parameter isn't specified, no database is created in the DB
+#' instance.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain 1 to 64 letters or numbers.
+#' 
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0-9).
+#' 
+#' -   Can't be a word reserved by the specified database engine.
+#' 
+#' **RDS for MariaDB**
+#' 
+#' The name of the database to create when the DB instance is created. If
+#' this parameter isn't specified, no database is created in the DB
+#' instance.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain 1 to 64 letters or numbers.
+#' 
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0-9).
+#' 
+#' -   Can't be a word reserved by the specified database engine.
+#' 
+#' **RDS for MySQL**
+#' 
+#' The name of the database to create when the DB instance is created. If
+#' this parameter isn't specified, no database is created in the DB
+#' instance.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain 1 to 64 letters or numbers.
+#' 
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0-9).
+#' 
+#' -   Can't be a word reserved by the specified database engine.
+#' 
+#' **RDS for Oracle**
+#' 
+#' The Oracle System ID (SID) of the created DB instance. If you don't
+#' specify a value, the default value is `ORCL`. You can't specify the
+#' string `null`, or any other reserved word, for `DBName`.
+#' 
+#' Default: `ORCL`
+#' 
+#' Constraints:
+#' 
+#' -   Can't be longer than 8 characters.
+#' 
+#' **RDS for PostgreSQL**
+#' 
+#' The name of the database to create when the DB instance is created. If
+#' this parameter isn't specified, a database named `postgres` is created
+#' in the DB instance.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain 1 to 63 letters, numbers, or underscores.
+#' 
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0-9).
+#' 
+#' -   Can't be a word reserved by the specified database engine.
+#' 
+#' **RDS for SQL Server**
+#' 
+#' Not applicable. Must be null.
 #' @param DBInstanceIdentifier &#91;required&#93; The identifier for this DB instance. This parameter is stored as a
 #' lowercase string.
 #' 
@@ -3343,6 +3384,17 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   Provisioned IOPS storage (io1): Must be an integer from 40 to 65536
 #'     for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
+#' 
+#' **RDS for Db2**
+#' 
+#' Constraints to the amount of storage for each storage type are the
+#' following:
+#' 
+#' -   General Purpose (SSD) storage (gp3): Must be an integer from 20 to
+#'     64000.
+#' 
+#' -   Provisioned IOPS storage (io1): Must be an integer from 100 to
+#'     64000.
 #' 
 #' **RDS for MariaDB**
 #' 
@@ -3450,6 +3502,10 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' -   `custom-sqlserver-web` (for RDS Custom for SQL Server DB instances)
 #' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
+#' 
 #' -   `mariadb`
 #' 
 #' -   `mysql`
@@ -3499,6 +3555,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #'     (single quotes) character.
 #' 
 #' Length Constraints:
+#' 
+#' -   RDS for Db2 - Must contain from 8 to 255 characters.
 #' 
 #' -   RDS for MariaDB - Must contain from 8 to 41 characters.
 #' 
@@ -3632,6 +3690,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Default:
 #' 
+#' -   RDS for Db2 - `50000`
+#' 
 #' -   RDS for MariaDB - `3306`
 #' 
 #' -   RDS for Microsoft SQL Server - `1433`
@@ -3686,6 +3746,12 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' requirements](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits-MS.html)
 #' in the *Amazon RDS User Guide*.
 #' 
+#' **RDS for Db2**
+#' 
+#' For information, see [Db2 on Amazon RDS
+#' versions](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Db2.html#Db2.Concepts.VersionMgmt)
+#' in the *Amazon RDS User Guide*.
+#' 
 #' **RDS for MariaDB**
 #' 
 #' For information, see [MariaDB on Amazon RDS
@@ -3727,6 +3793,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Valid Values:
 #' 
+#' -   RDS for Db2 - `bring-your-own-license`
+#' 
 #' -   RDS for MariaDB - `general-public-license`
 #' 
 #' -   RDS for Microsoft SQL Server - `license-included`
@@ -3747,7 +3815,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' Constraints:
 #' 
-#' -   For RDS for MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
+#' -   For RDS for Db2, MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
 #'     multiple between .5 and 50 of the storage amount for the DB
 #'     instance.
 #' 
@@ -3860,8 +3928,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' Custom doesn't use the default key when this parameter is empty. You
 #' must explicitly specify a key.
 #' @param Domain The Active Directory directory ID to create the DB instance in.
-#' Currently, only Microsoft SQL Server, MySQL, Oracle, and PostgreSQL DB
-#' instances can be created in an Active Directory Domain.
+#' Currently, you can create only Db2, MySQL, Microsoft SQL Server, Oracle,
+#' and PostgreSQL DB instances in an Active Directory Domain.
 #' 
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
@@ -4005,9 +4073,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' If you specify a retention period that isn't valid, such as `94`, Amazon
 #' RDS returns an error.
-#' @param EnableCloudwatchLogsExports The list of log types that need to be enabled for exporting to
-#' CloudWatch Logs. For more information, see [Publishing Database Logs to
-#' Amazon CloudWatch
+#' @param EnableCloudwatchLogsExports The list of log types to enable for exporting to CloudWatch Logs. For
+#' more information, see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon RDS User Guide*.
 #' 
@@ -4019,6 +4086,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' -   RDS Custom
 #' 
 #' The following values are valid for each DB engine:
+#' 
+#' -   RDS for Db2 - `diag.log | notify.log`
 #' 
 #' -   RDS for MariaDB - `audit | error | general | slowquery`
 #' 
@@ -4095,7 +4164,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' in the *Amazon RDS User Guide*.
 #' @param BackupTarget The location for storing automated backups and manual snapshots.
 #' 
-#' Valie Values:
+#' Valid Values:
 #' 
 #' -   `outposts` (Amazon Web Services Outposts)
 #' 
@@ -4545,9 +4614,10 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' @description
 #' Creates a new DB instance that acts as a read replica for an existing
 #' source DB instance or Multi-AZ DB cluster. You can create a read replica
-#' for a DB instance running MySQL, MariaDB, Oracle, PostgreSQL, or SQL
-#' Server. You can create a read replica for a Multi-AZ DB cluster running
-#' MySQL or PostgreSQL. For more information, see [Working with read
+#' for a DB instance running Db2, MariaDB, MySQL, Oracle, PostgreSQL, or
+#' SQL Server. You can create a read replica for a Multi-AZ DB cluster
+#' running MySQL or PostgreSQL. For more information, see [Working with
+#' read
 #' replicas](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
 #' and [Migrating from a Multi-AZ DB cluster to a DB instance using a read
 #' replica](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica)
@@ -4590,7 +4660,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' 
 #' Constraints:
 #' 
-#' -   Must be the identifier of an existing MySQL, MariaDB, Oracle,
+#' -   Must be the identifier of an existing Db2, MariaDB, MySQL, Oracle,
 #'     PostgreSQL, or SQL Server DB instance.
 #' 
 #' -   Can't be specified if the `SourceDBClusterIdentifier` parameter is
@@ -5481,7 +5551,9 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #' 
 #' -   `aurora-postgresql`
 #' 
-#' -   `mariadb`
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mysql`
 #' 
@@ -6550,10 +6622,13 @@ rds_create_integration <- function(SourceArn, TargetArn, IntegrationName, KMSKey
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `myoptiongroup`
-#' @param EngineName &#91;required&#93; Specifies the name of the engine that this option group should be
-#' associated with.
+#' @param EngineName &#91;required&#93; The name of the engine to associate this option group with.
 #' 
 #' Valid Values:
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -7151,6 +7226,14 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -7202,7 +7285,8 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -7250,7 +7334,8 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -10198,6 +10283,14 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #'       ReadReplicaIdentifiers = list(
 #'         "string"
 #'       ),
+#'       StatusInfos = list(
+#'         list(
+#'           StatusType = "string",
+#'           Normal = TRUE|FALSE,
+#'           Status = "string",
+#'           Message = "string"
+#'         )
+#'       ),
 #'       DBClusterMembers = list(
 #'         list(
 #'           DBInstanceIdentifier = "string",
@@ -10249,7 +10342,8 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #'       ),
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       DeletionProtection = TRUE|FALSE,
 #'       HttpEndpointEnabled = TRUE|FALSE,
@@ -10297,7 +10391,8 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #'         AllocatedStorage = 123,
 #'         RdsCustomClusterConfiguration = list(
 #'           InterconnectSubnetId = "string",
-#'           TransitGatewayMulticastDomainId = "string"
+#'           TransitGatewayMulticastDomainId = "string",
+#'           ReplicaMode = "open-read-only"|"mounted"
 #'         ),
 #'         Iops = 123,
 #'         StorageType = "string"
@@ -10392,6 +10487,10 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' -   `aurora-postgresql`
 #' 
 #' -   `custom-oracle-ee`
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -11795,6 +11894,300 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 }
 .rds$operations$describe_db_proxy_targets <- rds_describe_db_proxy_targets
 
+#' Describes the recommendations to resolve the issues for your DB
+#' instances, DB clusters, and DB parameter groups
+#'
+#' @description
+#' Describes the recommendations to resolve the issues for your DB
+#' instances, DB clusters, and DB parameter groups.
+#'
+#' @usage
+#' rds_describe_db_recommendations(LastUpdatedAfter, LastUpdatedBefore,
+#'   Locale, Filters, MaxRecords, Marker)
+#'
+#' @param LastUpdatedAfter A filter to include only the recommendations that were updated after
+#' this specified time.
+#' @param LastUpdatedBefore A filter to include only the recommendations that were updated before
+#' this specified time.
+#' @param Locale The language that you choose to return the list of recommendations.
+#' 
+#' Valid values:
+#' 
+#' -   `en`
+#' 
+#' -   `en_UK`
+#' 
+#' -   `de`
+#' 
+#' -   `es`
+#' 
+#' -   `fr`
+#' 
+#' -   `id`
+#' 
+#' -   `it`
+#' 
+#' -   `ja`
+#' 
+#' -   `ko`
+#' 
+#' -   `pt_BR`
+#' 
+#' -   `zh_TW`
+#' 
+#' -   `zh_CN`
+#' @param Filters A filter that specifies one or more recommendations to describe.
+#' 
+#' Supported Filters:
+#' 
+#' -   `recommendation-id` - Accepts a list of recommendation identifiers.
+#'     The results list only includes the recommendations whose identifier
+#'     is one of the specified filter values.
+#' 
+#' -   `status` - Accepts a list of recommendation statuses.
+#' 
+#'     Valid values:
+#' 
+#'     -   `active` - The recommendations which are ready for you to apply.
+#' 
+#'     -   `pending` - The applied or scheduled recommendations which are
+#'         in progress.
+#' 
+#'     -   `resolved` - The recommendations which are completed.
+#' 
+#'     -   `dismissed` - The recommendations that you dismissed.
+#' 
+#'     The results list only includes the recommendations whose status is
+#'     one of the specified filter values.
+#' 
+#' -   `severity` - Accepts a list of recommendation severities. The
+#'     results list only includes the recommendations whose severity is one
+#'     of the specified filter values.
+#' 
+#'     Valid values:
+#' 
+#'     -   `high`
+#' 
+#'     -   `medium`
+#' 
+#'     -   `low`
+#' 
+#'     -   `informational`
+#' 
+#' -   `type-id` - Accepts a list of recommendation type identifiers. The
+#'     results list only includes the recommendations whose type is one of
+#'     the specified filter values.
+#' 
+#' -   `dbi-resource-id` - Accepts a list of database resource identifiers.
+#'     The results list only includes the recommendations that generated
+#'     for the specified databases.
+#' 
+#' -   `cluster-resource-id` - Accepts a list of cluster resource
+#'     identifiers. The results list only includes the recommendations that
+#'     generated for the specified clusters.
+#' 
+#' -   `pg-arn` - Accepts a list of parameter group ARNs. The results list
+#'     only includes the recommendations that generated for the specified
+#'     parameter groups.
+#' 
+#' -   `cluster-pg-arn` - Accepts a list of cluster parameter group ARNs.
+#'     The results list only includes the recommendations that generated
+#'     for the specified cluster parameter groups.
+#' @param MaxRecords The maximum number of recommendations to include in the response. If
+#' more records exist than the specified `MaxRecords` value, a pagination
+#' token called a marker is included in the response so that you can
+#' retrieve the remaining results.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_db_recommendations`][rds_describe_db_recommendations]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by `MaxRecords`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBRecommendations = list(
+#'     list(
+#'       RecommendationId = "string",
+#'       TypeId = "string",
+#'       Severity = "string",
+#'       ResourceArn = "string",
+#'       Status = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Detection = "string",
+#'       Recommendation = "string",
+#'       Description = "string",
+#'       Reason = "string",
+#'       RecommendedActions = list(
+#'         list(
+#'           ActionId = "string",
+#'           Title = "string",
+#'           Description = "string",
+#'           Operation = "string",
+#'           Parameters = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           ApplyModes = list(
+#'             "string"
+#'           ),
+#'           Status = "string",
+#'           IssueDetails = list(
+#'             PerformanceIssueDetails = list(
+#'               StartTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               EndTime = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               Metrics = list(
+#'                 list(
+#'                   Name = "string",
+#'                   References = list(
+#'                     list(
+#'                       Name = "string",
+#'                       ReferenceDetails = list(
+#'                         ScalarReferenceDetails = list(
+#'                           Value = 123.0
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   StatisticsDetails = "string",
+#'                   MetricQuery = list(
+#'                     PerformanceInsightsMetricQuery = list(
+#'                       GroupBy = list(
+#'                         Dimensions = list(
+#'                           "string"
+#'                         ),
+#'                         Group = "string",
+#'                         Limit = 123
+#'                       ),
+#'                       Metric = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               Analysis = "string"
+#'             )
+#'           ),
+#'           ContextAttributes = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Category = "string",
+#'       Source = "string",
+#'       TypeDetection = "string",
+#'       TypeRecommendation = "string",
+#'       Impact = "string",
+#'       AdditionalInfo = "string",
+#'       Links = list(
+#'         list(
+#'           Text = "string",
+#'           Url = "string"
+#'         )
+#'       ),
+#'       IssueDetails = list(
+#'         PerformanceIssueDetails = list(
+#'           StartTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           EndTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Metrics = list(
+#'             list(
+#'               Name = "string",
+#'               References = list(
+#'                 list(
+#'                   Name = "string",
+#'                   ReferenceDetails = list(
+#'                     ScalarReferenceDetails = list(
+#'                       Value = 123.0
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               StatisticsDetails = "string",
+#'               MetricQuery = list(
+#'                 PerformanceInsightsMetricQuery = list(
+#'                   GroupBy = list(
+#'                     Dimensions = list(
+#'                       "string"
+#'                     ),
+#'                     Group = "string",
+#'                     Limit = 123
+#'                   ),
+#'                   Metric = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Analysis = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_db_recommendations(
+#'   LastUpdatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Locale = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_describe_db_recommendations
+#'
+#' @aliases rds_describe_db_recommendations
+rds_describe_db_recommendations <- function(LastUpdatedAfter = NULL, LastUpdatedBefore = NULL, Locale = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeDBRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBRecommendations")
+  )
+  input <- .rds$describe_db_recommendations_input(LastUpdatedAfter = LastUpdatedAfter, LastUpdatedBefore = LastUpdatedBefore, Locale = Locale, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .rds$describe_db_recommendations_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$describe_db_recommendations <- rds_describe_db_recommendations
+
 #' Returns a list of DBSecurityGroup descriptions
 #'
 #' @description
@@ -12578,6 +12971,10 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' -   `aurora-postgresql14`
 #' 
 #' -   `custom-oracle-ee-19`
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb10.2`
 #' 
@@ -13408,19 +13805,22 @@ rds_describe_integrations <- function(IntegrationIdentifier = NULL, Filters = NU
 }
 .rds$operations$describe_integrations <- rds_describe_integrations
 
-#' Describes all available options
+#' Describes all available options for the specified engine
 #'
 #' @description
-#' Describes all available options.
+#' Describes all available options for the specified engine.
 #'
 #' @usage
 #' rds_describe_option_group_options(EngineName, MajorEngineVersion,
 #'   Filters, MaxRecords, Marker)
 #'
-#' @param EngineName &#91;required&#93; A required parameter. Options available for the given engine name are
-#' described.
+#' @param EngineName &#91;required&#93; The name of the engine to describe options for.
 #' 
 #' Valid Values:
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -13575,10 +13975,14 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #' Default: 100
 #' 
 #' Constraints: Minimum 20, maximum 100.
-#' @param EngineName Filters the list of option groups to only include groups associated with
-#' a specific database engine.
+#' @param EngineName A filter to only include option groups associated with this database
+#' engine.
 #' 
 #' Valid Values:
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -13705,19 +14109,17 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 }
 .rds$operations$describe_option_groups <- rds_describe_option_groups
 
-#' Returns a list of orderable DB instance options for the specified DB
-#' engine, DB engine version, and DB instance class
+#' Describes the orderable DB instance options for a specified DB engine
 #'
 #' @description
-#' Returns a list of orderable DB instance options for the specified DB
-#' engine, DB engine version, and DB instance class.
+#' Describes the orderable DB instance options for a specified DB engine.
 #'
 #' @usage
 #' rds_describe_orderable_db_instance_options(Engine, EngineVersion,
 #'   DBInstanceClass, LicenseModel, AvailabilityZoneGroup, Vpc, Filters,
 #'   MaxRecords, Marker)
 #'
-#' @param Engine &#91;required&#93; The name of the engine to retrieve DB instance options for.
+#' @param Engine &#91;required&#93; The name of the engine to describe DB instance options for.
 #' 
 #' Valid Values:
 #' 
@@ -13726,6 +14128,10 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #' -   `aurora-postgresql`
 #' 
 #' -   `custom-oracle-ee`
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -13748,22 +14154,22 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #' -   `sqlserver-ex`
 #' 
 #' -   `sqlserver-web`
-#' @param EngineVersion The engine version filter value. Specify this parameter to show only the
-#' available offerings matching the specified engine version.
-#' @param DBInstanceClass The DB instance class filter value. Specify this parameter to show only
-#' the available offerings matching the specified DB instance class.
-#' @param LicenseModel The license model filter value. Specify this parameter to show only the
-#' available offerings matching the specified license model.
+#' @param EngineVersion A filter to include only the available options for the specified engine
+#' version.
+#' @param DBInstanceClass A filter to include only the available options for the specified DB
+#' instance class.
+#' @param LicenseModel A filter to include only the available options for the specified license
+#' model.
 #' 
 #' RDS Custom supports only the BYOL licensing model.
 #' @param AvailabilityZoneGroup The Availability Zone group associated with a Local Zone. Specify this
-#' parameter to retrieve available offerings for the Local Zones in the
+#' parameter to retrieve available options for the Local Zones in the
 #' group.
 #' 
-#' Omit this parameter to show the available offerings in the specified
+#' Omit this parameter to show the available options in the specified
 #' Amazon Web Services Region.
 #' 
-#' This setting doesn't apply to RDS Custom.
+#' This setting doesn't apply to RDS Custom DB instances.
 #' @param Vpc Specifies whether to show only VPC or non-VPC offerings. RDS Custom
 #' supports only VPC offerings.
 #' 
@@ -14552,6 +14958,65 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 }
 .rds$operations$describe_valid_db_instance_modifications <- rds_describe_valid_db_instance_modifications
 
+#' Disables the HTTP endpoint for the specified DB cluster
+#'
+#' @description
+#' Disables the HTTP endpoint for the specified DB cluster. Disabling this
+#' endpoint disables RDS Data API.
+#' 
+#' For more information, see [Using RDS Data
+#' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' This operation applies only to Aurora PostgreSQL Serverless v2 and
+#' provisioned DB clusters. To disable the HTTP endpoint for Aurora
+#' Serverless v1 DB clusters, use the
+#' [`enable_http_endpoint`][rds_enable_http_endpoint] parameter of the
+#' [`modify_db_cluster`][rds_modify_db_cluster] operation.
+#'
+#' @usage
+#' rds_disable_http_endpoint(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DB cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   HttpEndpointEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_http_endpoint(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_disable_http_endpoint
+#'
+#' @aliases rds_disable_http_endpoint
+rds_disable_http_endpoint <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DisableHttpEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$disable_http_endpoint_input(ResourceArn = ResourceArn)
+  output <- .rds$disable_http_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$disable_http_endpoint <- rds_disable_http_endpoint
+
 #' Downloads all or a portion of the specified log file, up to 1 MB in size
 #'
 #' @description
@@ -14640,6 +15105,70 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
   return(response)
 }
 .rds$operations$download_db_log_file_portion <- rds_download_db_log_file_portion
+
+#' Enables the HTTP endpoint for the DB cluster
+#'
+#' @description
+#' Enables the HTTP endpoint for the DB cluster. By default, the HTTP
+#' endpoint isn't enabled.
+#' 
+#' When enabled, this endpoint provides a connectionless web service API
+#' (RDS Data API) for running SQL queries on the Aurora DB cluster. You can
+#' also query your database from inside the RDS console with the RDS query
+#' editor.
+#' 
+#' For more information, see [Using RDS Data
+#' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' in the *Amazon Aurora User Guide*.
+#' 
+#' This operation applies only to Aurora PostgreSQL Serverless v2 and
+#' provisioned DB clusters. To enable the HTTP endpoint for Aurora
+#' Serverless v1 DB clusters, use the
+#' [`enable_http_endpoint`][rds_enable_http_endpoint] parameter of the
+#' [`modify_db_cluster`][rds_modify_db_cluster] operation.
+#'
+#' @usage
+#' rds_enable_http_endpoint(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DB cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   HttpEndpointEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_http_endpoint(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_enable_http_endpoint
+#'
+#' @aliases rds_enable_http_endpoint
+rds_enable_http_endpoint <- function(ResourceArn) {
+  op <- new_operation(
+    name = "EnableHttpEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$enable_http_endpoint_input(ResourceArn = ResourceArn)
+  output <- .rds$enable_http_endpoint_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$enable_http_endpoint <- rds_enable_http_endpoint
 
 #' Forces a failover for a DB cluster
 #'
@@ -14736,6 +15265,14 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -14787,7 +15324,8 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -14835,7 +15373,8 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -15324,7 +15863,7 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' v1](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/#aurora-serverless.how-it-works.auto-scaling)
 #' in the *Amazon Aurora User Guide*.
 #' 
-#' This action only applies to Aurora Serverless v1 DB clusters.
+#' This operation only applies to Aurora Serverless v1 DB clusters.
 #'
 #' @usage
 #' rds_modify_current_db_cluster_capacity(DBClusterIdentifier, Capacity,
@@ -15854,16 +16393,22 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' 
 #' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EnableHttpEndpoint Specifies whether to enable the HTTP endpoint for an Aurora Serverless
-#' v1 DB cluster. By default, the HTTP endpoint is disabled.
+#' v1 DB cluster. By default, the HTTP endpoint isn't enabled.
 #' 
 #' When enabled, the HTTP endpoint provides a connectionless web service
-#' API for running SQL queries on the Aurora Serverless v1 DB cluster. You
-#' can also query your database from inside the RDS console with the query
-#' editor.
+#' API (RDS Data API) for running SQL queries on the Aurora Serverless v1
+#' DB cluster. You can also query your database from inside the RDS console
+#' with the RDS query editor.
 #' 
-#' For more information, see [Using the Data API for Aurora Serverless
-#' v1](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' For more information, see [Using RDS Data
+#' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
+#' 
+#' This parameter applies only to Aurora Serverless v1 DB clusters. To
+#' enable or disable the HTTP endpoint for an Aurora PostgreSQL Serverless
+#' v2 or provisioned DB cluster, use the
+#' [`enable_http_endpoint`][rds_enable_http_endpoint] and
+#' [`disable_http_endpoint`][rds_disable_http_endpoint] operations.
 #' 
 #' Valid for Cluster Type: Aurora DB clusters only
 #' @param CopyTagsToSnapshot Specifies whether to copy all tags from the DB cluster to snapshots of
@@ -16169,6 +16714,14 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -16220,7 +16773,8 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -16268,7 +16822,8 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -16398,7 +16953,7 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 #' @description
 #' Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 #' 
-#' This action only applies to Aurora DB clusters.
+#' This operation only applies to Aurora DB clusters.
 #'
 #' @usage
 #' rds_modify_db_cluster_endpoint(DBClusterEndpointIdentifier,
@@ -16481,7 +17036,7 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #' After you create a DB cluster parameter group, you should wait at least
 #' 5 minutes before creating your first DB cluster that uses that DB
 #' cluster parameter group as the default parameter group. This allows
-#' Amazon RDS to fully complete the create action before the parameter
+#' Amazon RDS to fully complete the create operation before the parameter
 #' group is used as the default for a new DB cluster. This is especially
 #' important for parameters that are critical when creating the default
 #' database for a DB cluster, such as the character set for the default
@@ -16737,7 +17292,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @param AllocatedStorage The new amount of storage in gibibytes (GiB) to allocate for the DB
 #' instance.
 #' 
-#' For RDS for MariaDB, RDS for MySQL, RDS for Oracle, and RDS for
+#' For RDS for Db2, MariaDB, RDS for MySQL, RDS for Oracle, and RDS for
 #' PostgreSQL, the value supplied must be at least 10% greater than the
 #' current value. Values that are not at least 10% greater than the
 #' existing value are rounded up so that they are 10% greater than the
@@ -16835,7 +17390,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' element exists in the `PendingModifiedValues` element of the operation
 #' response.
 #' 
-#' Amazon RDS API operations never return the password, so this action
+#' Amazon RDS API operations never return the password, so this operation
 #' provides a way to regain access to a primary instance user if the
 #' password is lost. This includes restoring privileges that might have
 #' been accidentally revoked.
@@ -16855,8 +17410,12 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' -   Can't be specified if `ManageMasterUserPassword` is turned on.
 #' 
 #' -   Can include any printable ASCII character except "/", """, or "@@".
+#'     For RDS for Oracle, can't include the "&" (ampersand) or the "'"
+#'     (single quotes) character.
 #' 
 #' Length Constraints:
+#' 
+#' -   RDS for Db2 - Must contain from 8 to 255 characters.
 #' 
 #' -   RDS for MariaDB - Must contain from 8 to 41 characters.
 #' 
@@ -17030,6 +17589,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' 
 #' Valid Values:
 #' 
+#' -   RDS for Db2 - `bring-your-own-license`
+#' 
 #' -   RDS for MariaDB - `general-public-license`
 #' 
 #' -   RDS for Microsoft SQL Server - `license-included`
@@ -17149,9 +17710,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' in the *Amazon Aurora User Guide*.
 #' @param Domain The Active Directory directory ID to move the DB instance to. Specify
 #' `none` to remove the instance from its current domain. You must create
-#' the domain before this operation. Currently, you can create only MySQL,
-#' Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an Active
-#' Directory Domain.
+#' the domain before this operation. Currently, you can create only Db2,
+#' MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an
+#' Active Directory Domain.
 #' 
 #' For more information, see [Kerberos
 #' Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html)
@@ -17224,6 +17785,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' Default:
 #' 
 #' -   Amazon Aurora - `3306`
+#' 
+#' -   RDS for Db2 - `50000`
 #' 
 #' -   RDS for MariaDB - `3306`
 #' 
@@ -17929,14 +18492,14 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 #' After you modify a DB parameter group, you should wait at least 5
 #' minutes before creating your first DB instance that uses that DB
 #' parameter group as the default parameter group. This allows Amazon RDS
-#' to fully complete the modify action before the parameter group is used
-#' as the default for a new DB instance. This is especially important for
-#' parameters that are critical when creating the default database for a DB
-#' instance, such as the character set for the default database defined by
-#' the `character_set_database` parameter. You can use the *Parameter
-#' Groups* option of the Amazon RDS console or the *DescribeDBParameters*
-#' command to verify that your DB parameter group has been created or
-#' modified.
+#' to fully complete the modify operation before the parameter group is
+#' used as the default for a new DB instance. This is especially important
+#' for parameters that are critical when creating the default database for
+#' a DB instance, such as the character set for the default database
+#' defined by the `character_set_database` parameter. You can use the
+#' *Parameter Groups* option of the Amazon RDS console or the
+#' *DescribeDBParameters* command to verify that your DB parameter group
+#' has been created or modified.
 #'
 #' @usage
 #' rds_modify_db_parameter_group(DBParameterGroupName, Parameters)
@@ -18309,6 +18872,204 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 }
 .rds$operations$modify_db_proxy_target_group <- rds_modify_db_proxy_target_group
 
+#' Updates the recommendation status and recommended action status for the
+#' specified recommendation
+#'
+#' @description
+#' Updates the recommendation status and recommended action status for the
+#' specified recommendation.
+#'
+#' @usage
+#' rds_modify_db_recommendation(RecommendationId, Locale, Status,
+#'   RecommendedActionUpdates)
+#'
+#' @param RecommendationId &#91;required&#93; The identifier of the recommendation to update.
+#' @param Locale The language of the modified recommendation.
+#' @param Status The recommendation status to update.
+#' 
+#' Valid values:
+#' 
+#' -   active
+#' 
+#' -   dismissed
+#' @param RecommendedActionUpdates The list of recommended action status to update. You can update multiple
+#' recommended actions at one time.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DBRecommendation = list(
+#'     RecommendationId = "string",
+#'     TypeId = "string",
+#'     Severity = "string",
+#'     ResourceArn = "string",
+#'     Status = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Detection = "string",
+#'     Recommendation = "string",
+#'     Description = "string",
+#'     Reason = "string",
+#'     RecommendedActions = list(
+#'       list(
+#'         ActionId = "string",
+#'         Title = "string",
+#'         Description = "string",
+#'         Operation = "string",
+#'         Parameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         ApplyModes = list(
+#'           "string"
+#'         ),
+#'         Status = "string",
+#'         IssueDetails = list(
+#'           PerformanceIssueDetails = list(
+#'             StartTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             EndTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             Metrics = list(
+#'               list(
+#'                 Name = "string",
+#'                 References = list(
+#'                   list(
+#'                     Name = "string",
+#'                     ReferenceDetails = list(
+#'                       ScalarReferenceDetails = list(
+#'                         Value = 123.0
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 StatisticsDetails = "string",
+#'                 MetricQuery = list(
+#'                   PerformanceInsightsMetricQuery = list(
+#'                     GroupBy = list(
+#'                       Dimensions = list(
+#'                         "string"
+#'                       ),
+#'                       Group = "string",
+#'                       Limit = 123
+#'                     ),
+#'                     Metric = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             Analysis = "string"
+#'           )
+#'         ),
+#'         ContextAttributes = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Category = "string",
+#'     Source = "string",
+#'     TypeDetection = "string",
+#'     TypeRecommendation = "string",
+#'     Impact = "string",
+#'     AdditionalInfo = "string",
+#'     Links = list(
+#'       list(
+#'         Text = "string",
+#'         Url = "string"
+#'       )
+#'     ),
+#'     IssueDetails = list(
+#'       PerformanceIssueDetails = list(
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         EndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Metrics = list(
+#'           list(
+#'             Name = "string",
+#'             References = list(
+#'               list(
+#'                 Name = "string",
+#'                 ReferenceDetails = list(
+#'                   ScalarReferenceDetails = list(
+#'                     Value = 123.0
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             StatisticsDetails = "string",
+#'             MetricQuery = list(
+#'               PerformanceInsightsMetricQuery = list(
+#'                 GroupBy = list(
+#'                   Dimensions = list(
+#'                     "string"
+#'                   ),
+#'                   Group = "string",
+#'                   Limit = 123
+#'                 ),
+#'                 Metric = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Analysis = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_db_recommendation(
+#'   RecommendationId = "string",
+#'   Locale = "string",
+#'   Status = "string",
+#'   RecommendedActionUpdates = list(
+#'     list(
+#'       ActionId = "string",
+#'       Status = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rds_modify_db_recommendation
+#'
+#' @aliases rds_modify_db_recommendation
+rds_modify_db_recommendation <- function(RecommendationId, Locale = NULL, Status = NULL, RecommendedActionUpdates = NULL) {
+  op <- new_operation(
+    name = "ModifyDBRecommendation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$modify_db_recommendation_input(RecommendationId = RecommendationId, Locale = Locale, Status = Status, RecommendedActionUpdates = RecommendedActionUpdates)
+  output <- .rds$modify_db_recommendation_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$modify_db_recommendation <- rds_modify_db_recommendation
+
 #' Updates a manual DB snapshot with a new engine version
 #'
 #' @description
@@ -18316,7 +19077,7 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' be encrypted or unencrypted, but not shared or public.
 #' 
 #' Amazon RDS supports upgrading DB snapshots for MySQL, PostgreSQL, and
-#' Oracle. This command doesn't apply to RDS Custom.
+#' Oracle. This operation doesn't apply to RDS Custom or RDS for Db2.
 #'
 #' @usage
 #' rds_modify_db_snapshot(DBSnapshotIdentifier, EngineVersion,
@@ -18330,7 +19091,10 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' 
 #' **MySQL**
 #' 
-#' -   `5.5.46` (supported for 5.1 DB snapshots)
+#' For the list of engine versions that are available for upgrading a DB
+#' snapshot, see [Upgrading a MySQL DB snapshot engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql-upgrade-snapshot.html)
+#' in the *Amazon RDS User Guide.*
 #' 
 #' **Oracle**
 #' 
@@ -18349,8 +19113,9 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' **PostgreSQL**
 #' 
 #' For the list of engine versions that are available for upgrading a DB
-#' snapshot, see [Upgrading the PostgreSQL DB Engine for Amazon
-#' RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion).
+#' snapshot, see [Upgrading a PostgreSQL DB snapshot engine
+#' version](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBSnapshot.PostgreSQL.html)
+#' in the *Amazon RDS User Guide.*
 #' @param OptionGroupName The option group to identify with the upgraded DB snapshot.
 #' 
 #' You can specify this parameter when you upgrade an Oracle DB snapshot.
@@ -19525,6 +20290,14 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -19576,7 +20349,8 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -19624,7 +20398,8 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -19855,6 +20630,14 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -19906,7 +20689,8 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -19954,7 +20738,8 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -20412,7 +21197,7 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
 #' capability instead of being read-only and receiving data from a primary
 #' cluster in a different Region.
 #' 
-#' This action only applies to Aurora DB clusters.
+#' This operation only applies to Aurora DB clusters.
 #'
 #' @usage
 #' rds_remove_from_global_cluster(GlobalClusterIdentifier,
@@ -20934,20 +21719,20 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' Bucket](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3)
 #' in the *Amazon Aurora User Guide*.
 #' 
-#' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the
-#' [`create_db_instance`][rds_create_db_instance] action to create DB
+#' This operation only restores the DB cluster, not the DB instances for
+#' that DB cluster. You must invoke the
+#' [`create_db_instance`][rds_create_db_instance] operation to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
 #' instances only after the
-#' [`restore_db_cluster_from_s3`][rds_restore_db_cluster_from_s3] action
+#' [`restore_db_cluster_from_s3`][rds_restore_db_cluster_from_s3] operation
 #' has completed and the DB cluster is available.
 #' 
 #' For more information on Amazon Aurora, see [What is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 #' in the *Amazon Aurora User Guide*.
 #' 
-#' This action only applies to Aurora DB clusters. The source DB engine
+#' This operation only applies to Aurora DB clusters. The source DB engine
 #' must be MySQL.
 #'
 #' @usage
@@ -21260,6 +22045,14 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -21311,7 +22104,8 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -21359,7 +22153,8 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -21481,14 +22276,14 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' configuration. If you don't specify a security group, the new DB cluster
 #' is associated with the default security group.
 #' 
-#' This action only restores the DB cluster, not the DB instances for that
-#' DB cluster. You must invoke the
-#' [`create_db_instance`][rds_create_db_instance] action to create DB
+#' This operation only restores the DB cluster, not the DB instances for
+#' that DB cluster. You must invoke the
+#' [`create_db_instance`][rds_create_db_instance] operation to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
 #' instances only after the
 #' [`restore_db_cluster_from_snapshot`][rds_restore_db_cluster_from_snapshot]
-#' action has completed and the DB cluster is available.
+#' operation has completed and the DB cluster is available.
 #' 
 #' For more information on Amazon Aurora DB clusters, see [What is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -21881,6 +22676,14 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -21932,7 +22735,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -21980,7 +22784,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -22069,7 +22874,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #'   NetworkType = "string",
 #'   RdsCustomClusterConfiguration = list(
 #'     InterconnectSubnetId = "string",
-#'     TransitGatewayMulticastDomainId = "string"
+#'     TransitGatewayMulticastDomainId = "string",
+#'     ReplicaMode = "open-read-only"|"mounted"
 #'   )
 #' )
 #' ```
@@ -22106,14 +22912,14 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' cluster, except that the new DB cluster is created with the default DB
 #' security group.
 #' 
-#' For Aurora, this action only restores the DB cluster, not the DB
+#' For Aurora, this operation only restores the DB cluster, not the DB
 #' instances for that DB cluster. You must invoke the
-#' [`create_db_instance`][rds_create_db_instance] action to create DB
+#' [`create_db_instance`][rds_create_db_instance] operation to create DB
 #' instances for the restored DB cluster, specifying the identifier of the
 #' restored DB cluster in `DBClusterIdentifier`. You can create DB
 #' instances only after the
 #' [`restore_db_cluster_to_point_in_time`][rds_restore_db_cluster_to_point_in_time]
-#' action has completed and the DB cluster is available.
+#' operation has completed and the DB cluster is available.
 #' 
 #' For more information on Amazon Aurora DB clusters, see [What is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -22484,6 +23290,14 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -22535,7 +23349,8 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -22583,7 +23398,8 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -22672,7 +23488,8 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #'   SourceDbClusterResourceId = "string",
 #'   RdsCustomClusterConfiguration = list(
 #'     InterconnectSubnetId = "string",
-#'     TransitGatewayMulticastDomainId = "string"
+#'     TransitGatewayMulticastDomainId = "string",
+#'     ReplicaMode = "open-read-only"|"mounted"
 #'   )
 #' )
 #' ```
@@ -22712,12 +23529,14 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' If you want to replace your original DB instance with the new, restored
 #' DB instance, then rename your original DB instance before you call the
-#' RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
-#' instances with the same name. After you have renamed your original DB
-#' instance with a different identifier, then you can pass the original
-#' name of the DB instance as the DBInstanceIdentifier in the call to the
-#' RestoreDBInstanceFromDBSnapshot action. The result is that you replace
-#' the original DB instance with the DB instance created from the snapshot.
+#' [`restore_db_instance_from_db_snapshot`][rds_restore_db_instance_from_db_snapshot]
+#' operation. RDS doesn't allow two DB instances with the same name. After
+#' you have renamed your original DB instance with a different identifier,
+#' then you can pass the original name of the DB instance as the
+#' `DBInstanceIdentifier` in the call to the
+#' [`restore_db_instance_from_db_snapshot`][rds_restore_db_instance_from_db_snapshot]
+#' operation. The result is that you replace the original DB instance with
+#' the DB instance created from the snapshot.
 #' 
 #' If you are restoring from a shared manual DB snapshot, the
 #' `DBSnapshotIdentifier` must be the ARN of the shared DB snapshot.
@@ -22740,23 +23559,23 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #'   NetworkType, StorageThroughput, DBClusterSnapshotIdentifier,
 #'   AllocatedStorage, DedicatedLogVolume)
 #'
-#' @param DBInstanceIdentifier &#91;required&#93; Name of the DB instance to create from the DB snapshot. This parameter
-#' isn't case-sensitive.
+#' @param DBInstanceIdentifier &#91;required&#93; The name of the DB instance to create from the DB snapshot. This
+#' parameter isn't case-sensitive.
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 numbers, letters, or hyphens
+#' -   Must contain from 1 to 63 numbers, letters, or hyphens.
 #' 
-#' -   First character must be a letter
+#' -   First character must be a letter.
 #' 
-#' -   Can't end with a hyphen or contain two consecutive hyphens
+#' -   Can't end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-snapshot-id`
 #' @param DBSnapshotIdentifier The identifier for the DB snapshot to restore from.
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBSnapshot.
+#' -   Must match the identifier of an existing DB snapshot.
 #' 
 #' -   Can't be specified when `DBClusterSnapshotIdentifier` is specified.
 #' 
@@ -22787,10 +23606,11 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' instance is a Multi-AZ deployment.
 #' 
 #' Example: `us-east-1a`
-#' @param DBSubnetGroupName The DB subnet group name to use for the new instance.
+#' @param DBSubnetGroupName The name of the DB subnet group to use for the new instance.
 #' 
-#' Constraints: If supplied, must match the name of an existing
-#' DBSubnetGroup.
+#' Constraints:
+#' 
+#' -   If supplied, must match the name of an existing DB subnet group.
 #' 
 #' Example: `mydbsubnetgroup`
 #' @param MultiAZ Specifies whether the DB instance is a Multi-AZ deployment.
@@ -22827,10 +23647,11 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' Valid Values: `license-included` | `bring-your-own-license` |
 #' `general-public-license`
-#' @param DBName The database name for the restored DB instance.
+#' @param DBName The name of the database for the restored DB instance.
 #' 
-#' This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
-#' engines. It also doesn't apply to RDS Custom DB instances.
+#' This parameter only applies to RDS for Oracle and RDS for SQL Server DB
+#' instances. It doesn't apply to the other engines or to RDS Custom DB
+#' instances.
 #' @param Engine The database engine to use for the new instance.
 #' 
 #' This setting doesn't apply to RDS Custom.
@@ -22842,6 +23663,10 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' snapshot.
 #' 
 #' Valid Values:
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -22905,9 +23730,9 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' Default: The default EC2 VPC security group for the DB subnet group's
 #' VPC.
-#' @param Domain Specify the Active Directory directory ID to restore the DB instance in.
-#' The domain/ must be created prior to this operation. Currently, you can
-#' create only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+#' @param Domain The Active Directory directory ID to restore the DB instance in. The
+#' domain/ must be created prior to this operation. Currently, you can
+#' create only Db2, MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
 #' instances in an Active Directory Domain.
 #' 
 #' For more information, see [Kerberos
@@ -22978,10 +23803,9 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' in the *Amazon RDS User Guide.*
 #' 
 #' This setting doesn't apply to RDS Custom.
-#' @param EnableCloudwatchLogsExports The list of logs that the restored DB instance is to export to
-#' CloudWatch Logs. The values in the list depend on the DB engine being
-#' used. For more information, see [Publishing Database Logs to Amazon
-#' CloudWatch
+#' @param EnableCloudwatchLogsExports The list of logs for the restored DB instance to export to CloudWatch
+#' Logs. The values in the list depend on the DB engine. For more
+#' information, see [Publishing Database Logs to Amazon CloudWatch
 #' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 #' in the *Amazon RDS User Guide*.
 #' 
@@ -23003,7 +23827,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing DBParameterGroup.
+#' -   If supplied, must match the name of an existing DB parameter group.
 #' 
 #' -   Must be 1 to 255 letters, numbers, or hyphens.
 #' 
@@ -23451,7 +24275,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
 #' in the *Amazon RDS User Guide.*
 #' 
-#' This command doesn't apply to RDS Custom.
+#' This operation doesn't apply to RDS Custom.
 #'
 #' @usage
 #' rds_restore_db_instance_from_s3(DBName, DBInstanceIdentifier,
@@ -23513,31 +24337,30 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' -   First character must be a letter.
 #' 
 #' -   Can't be a reserved word for the chosen database engine.
-#' @param MasterUserPassword The password for the master user. The password can include any printable
-#' ASCII character except "/", """, or "@@".
+#' @param MasterUserPassword The password for the master user.
 #' 
-#' Constraints: Can't be specified if `ManageMasterUserPassword` is turned
-#' on.
+#' Constraints:
 #' 
-#' **MariaDB**
+#' -   Can't be specified if `ManageMasterUserPassword` is turned on.
 #' 
-#' Constraints: Must contain from 8 to 41 characters.
+#' -   Can include any printable ASCII character except "/", """, or "@@".
+#'     For RDS for Oracle, can't include the "&" (ampersand) or the "'"
+#'     (single quotes) character.
 #' 
-#' **Microsoft SQL Server**
+#' Length Constraints:
 #' 
-#' Constraints: Must contain from 8 to 128 characters.
+#' -   RDS for Db2 - Must contain from 8 to 128 characters.
 #' 
-#' **MySQL**
+#' -   RDS for MariaDB - Must contain from 8 to 41 characters.
 #' 
-#' Constraints: Must contain from 8 to 41 characters.
+#' -   RDS for Microsoft SQL Server - Must contain from 8 to 128
+#'     characters.
 #' 
-#' **Oracle**
+#' -   RDS for MySQL - Must contain from 8 to 41 characters.
 #' 
-#' Constraints: Must contain from 8 to 30 characters.
+#' -   RDS for Oracle - Must contain from 8 to 30 characters.
 #' 
-#' **PostgreSQL**
-#' 
-#' Constraints: Must contain from 8 to 128 characters.
+#' -   RDS for PostgreSQL - Must contain from 8 to 128 characters.
 #' @param DBSecurityGroups A list of DB security groups to associate with this DB instance.
 #' 
 #' Default: The default DB security group for the database engine.
@@ -24170,7 +24993,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' is associated with mirroring; in this case, the instance becomes a
 #' mirrored deployment and not a single-AZ deployment.
 #' 
-#' This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
+#' This operation doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 #' Aurora, use
 #' [`restore_db_cluster_to_point_in_time`][rds_restore_db_cluster_to_point_in_time].
 #'
@@ -24293,13 +25116,24 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' Default: Same as the source.
 #' @param DBName The database name for the restored DB instance.
 #' 
-#' This parameter isn't supported for the MySQL or MariaDB engines. It also
-#' doesn't apply to RDS Custom.
+#' This parameter doesn't apply to the following DB instances:
+#' 
+#' -   RDS Custom
+#' 
+#' -   RDS for Db2
+#' 
+#' -   RDS for MariaDB
+#' 
+#' -   RDS for MySQL
 #' @param Engine The database engine to use for the new instance.
 #' 
 #' This setting doesn't apply to RDS Custom.
 #' 
 #' Valid Values:
+#' 
+#' -   `db2-ae`
+#' 
+#' -   `db2-se`
 #' 
 #' -   `mariadb`
 #' 
@@ -24517,11 +25351,16 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' in the *Amazon RDS User Guide*.
 #' 
 #' This setting is required for RDS Custom.
-#' @param BackupTarget Specifies where automated backups and manual snapshots are stored for
-#' the restored DB instance.
+#' @param BackupTarget The location for storing automated backups and manual snapshots for the
+#' restored DB instance.
 #' 
-#' Possible values are `outposts` (Amazon Web Services Outposts) and
-#' `region` (Amazon Web Services Region). The default is `region`.
+#' Valid Values:
+#' 
+#' -   `outposts` (Amazon Web Services Outposts)
+#' 
+#' -   `region` (Amazon Web Services Region)
+#' 
+#' Default: `region`
 #' 
 #' For more information, see [Working with Amazon RDS on Amazon Web
 #' Services
@@ -25070,18 +25909,18 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 
 #' Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web
 #' Services console, the stop-db-cluster CLI command, or the StopDBCluster
-#' action
+#' operation
 #'
 #' @description
 #' Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web
-#' Services console, the stop-db-cluster CLI command, or the StopDBCluster
-#' action.
+#' Services console, the stop-db-cluster CLI command, or the
+#' [`stop_db_cluster`][rds_stop_db_cluster] operation.
 #' 
 #' For more information, see [Stopping and Starting an Aurora
 #' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
 #' in the *Amazon Aurora User Guide*.
 #' 
-#' This action only applies to Aurora DB clusters.
+#' This operation only applies to Aurora DB clusters.
 #'
 #' @usage
 #' rds_start_db_cluster(DBClusterIdentifier)
@@ -25137,6 +25976,14 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -25188,7 +26035,8 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -25236,7 +26084,8 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"
@@ -25302,12 +26151,12 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 
 #' Starts an Amazon RDS DB instance that was stopped using the Amazon Web
 #' Services console, the stop-db-instance CLI command, or the
-#' StopDBInstance action
+#' StopDBInstance operation
 #'
 #' @description
 #' Starts an Amazon RDS DB instance that was stopped using the Amazon Web
 #' Services console, the stop-db-instance CLI command, or the
-#' StopDBInstance action.
+#' [`stop_db_instance`][rds_stop_db_instance] operation.
 #' 
 #' For more information, see [Starting an Amazon RDS DB instance That Was
 #' Previously
@@ -25737,7 +26586,7 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #' Starts an export of DB snapshot or DB cluster data to Amazon S3. The
 #' provided IAM role must have access to the S3 bucket.
 #' 
-#' You can't export snapshot data from RDS Custom DB instances.
+#' You can't export snapshot data from Db2 or RDS Custom DB instances.
 #' 
 #' You can't export cluster data from Multi-AZ DB clusters.
 #' 
@@ -25902,12 +26751,12 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
 
 #' Stops a database activity stream that was started using the Amazon Web
 #' Services console, the start-activity-stream CLI command, or the
-#' StartActivityStream action
+#' StartActivityStream operation
 #'
 #' @description
 #' Stops a database activity stream that was started using the Amazon Web
 #' Services console, the `start-activity-stream` CLI command, or the
-#' [`start_activity_stream`][rds_start_activity_stream] action.
+#' [`start_activity_stream`][rds_start_activity_stream] operation.
 #' 
 #' For more information, see [Monitoring Amazon Aurora with Database
 #' Activity
@@ -25978,7 +26827,7 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #' Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html)
 #' in the *Amazon Aurora User Guide*.
 #' 
-#' This action only applies to Aurora DB clusters.
+#' This operation only applies to Aurora DB clusters.
 #'
 #' @usage
 #' rds_stop_db_cluster(DBClusterIdentifier)
@@ -26034,6 +26883,14 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #'     ReadReplicaIdentifiers = list(
 #'       "string"
 #'     ),
+#'     StatusInfos = list(
+#'       list(
+#'         StatusType = "string",
+#'         Normal = TRUE|FALSE,
+#'         Status = "string",
+#'         Message = "string"
+#'       )
+#'     ),
 #'     DBClusterMembers = list(
 #'       list(
 #'         DBInstanceIdentifier = "string",
@@ -26085,7 +26942,8 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #'     ),
 #'     RdsCustomClusterConfiguration = list(
 #'       InterconnectSubnetId = "string",
-#'       TransitGatewayMulticastDomainId = "string"
+#'       TransitGatewayMulticastDomainId = "string",
+#'       ReplicaMode = "open-read-only"|"mounted"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
 #'     HttpEndpointEnabled = TRUE|FALSE,
@@ -26133,7 +26991,8 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #'       AllocatedStorage = 123,
 #'       RdsCustomClusterConfiguration = list(
 #'         InterconnectSubnetId = "string",
-#'         TransitGatewayMulticastDomainId = "string"
+#'         TransitGatewayMulticastDomainId = "string",
+#'         ReplicaMode = "open-read-only"|"mounted"
 #'       ),
 #'       Iops = 123,
 #'       StorageType = "string"

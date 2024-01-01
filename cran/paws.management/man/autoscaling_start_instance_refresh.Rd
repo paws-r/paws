@@ -34,9 +34,9 @@ replacements that are required to apply updates.}
 
 \item{Preferences}{Sets your preferences for the instance refresh so that it performs as
 expected when you start it. Includes the instance warmup time, the
-minimum healthy percentage, and the behaviors that you want Amazon EC2
-Auto Scaling to use if instances that are in \code{Standby} state or
-protected from scale in are found. You can also choose to enable
+minimum and maximum healthy percentages, and the behaviors that you want
+Amazon EC2 Auto Scaling to use if instances that are in \code{Standby} state
+or protected from scale in are found. You can also choose to enable
 additional features, such as the following:
 \itemize{
 \item Auto rollback
@@ -46,7 +46,7 @@ additional features, such as the following:
 }}
 }
 \description{
-Starts an instance refresh. During an instance refresh, Amazon EC2 Auto Scaling performs a rolling update of instances in an Auto Scaling group. Instances are terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
+Starts an instance refresh.
 
 See \url{https://www.paws-r-sdk.com/docs/autoscaling_start_instance_refresh/} for full documentation.
 }

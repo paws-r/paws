@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_access_point_for_object_lambda}
 \alias{s3control_delete_access_point_for_object_lambda}
-\title{Deletes the specified Object Lambda Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_delete_access_point_for_object_lambda(AccountId, Name)
 }
@@ -13,7 +13,7 @@ Access Point.}
 \item{Name}{[required] The name of the access point you want to delete.}
 }
 \description{
-Deletes the specified Object Lambda Access Point.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_delete_access_point_for_object_lambda/} for full documentation.
 }

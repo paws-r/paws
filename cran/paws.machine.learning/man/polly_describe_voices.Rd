@@ -13,8 +13,8 @@ polly_describe_voices(
 )
 }
 \arguments{
-\item{Engine}{Specifies the engine (\code{standard} or \code{neural}) used by Amazon Polly when
-processing input text for speech synthesis.}
+\item{Engine}{Specifies the engine (\code{standard}, \code{neural} or \code{long-form}) used by
+Amazon Polly when processing input text for speech synthesis.}
 
 \item{LanguageCode}{The language identification tag (ISO 639 code for the language name-ISO
 3166 country code) for filtering the list of voices returned. If you

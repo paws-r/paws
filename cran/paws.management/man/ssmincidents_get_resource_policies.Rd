@@ -14,7 +14,8 @@ ssmincidents_get_resource_policies(
 \item{maxResults}{The maximum number of resource policies to display for each page of
 results.}
 
-\item{nextToken}{The pagination token to continue to the next page of results.}
+\item{nextToken}{The pagination token for the next set of items to return. (You received
+this token from a previous call.)}
 
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan with the attached
 resource policy.}

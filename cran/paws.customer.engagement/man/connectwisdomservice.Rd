@@ -103,33 +103,43 @@ files.
 \link[=connectwisdomservice_create_assistant_association]{create_assistant_association} \tab Creates an association between an Amazon Connect Wisdom assistant and another resource\cr
 \link[=connectwisdomservice_create_content]{create_content} \tab Creates Wisdom content\cr
 \link[=connectwisdomservice_create_knowledge_base]{create_knowledge_base} \tab Creates a knowledge base\cr
+\link[=connectwisdomservice_create_quick_response]{create_quick_response} \tab Creates a Wisdom quick response\cr
 \link[=connectwisdomservice_create_session]{create_session} \tab Creates a session\cr
 \link[=connectwisdomservice_delete_assistant]{delete_assistant} \tab Deletes an assistant\cr
 \link[=connectwisdomservice_delete_assistant_association]{delete_assistant_association} \tab Deletes an assistant association\cr
 \link[=connectwisdomservice_delete_content]{delete_content} \tab Deletes the content\cr
+\link[=connectwisdomservice_delete_import_job]{delete_import_job} \tab Deletes the quick response import job\cr
 \link[=connectwisdomservice_delete_knowledge_base]{delete_knowledge_base} \tab Deletes the knowledge base\cr
+\link[=connectwisdomservice_delete_quick_response]{delete_quick_response} \tab Deletes a quick response\cr
 \link[=connectwisdomservice_get_assistant]{get_assistant} \tab Retrieves information about an assistant\cr
 \link[=connectwisdomservice_get_assistant_association]{get_assistant_association} \tab Retrieves information about an assistant association\cr
 \link[=connectwisdomservice_get_content]{get_content} \tab Retrieves content, including a pre-signed URL to download the content\cr
 \link[=connectwisdomservice_get_content_summary]{get_content_summary} \tab Retrieves summary information about the content\cr
+\link[=connectwisdomservice_get_import_job]{get_import_job} \tab Retrieves the started import job\cr
 \link[=connectwisdomservice_get_knowledge_base]{get_knowledge_base} \tab Retrieves information about the knowledge base\cr
+\link[=connectwisdomservice_get_quick_response]{get_quick_response} \tab Retrieves the quick response\cr
 \link[=connectwisdomservice_get_recommendations]{get_recommendations} \tab Retrieves recommendations for the specified session\cr
 \link[=connectwisdomservice_get_session]{get_session} \tab Retrieves information for a specified session\cr
 \link[=connectwisdomservice_list_assistant_associations]{list_assistant_associations} \tab Lists information about assistant associations\cr
 \link[=connectwisdomservice_list_assistants]{list_assistants} \tab Lists information about assistants\cr
 \link[=connectwisdomservice_list_contents]{list_contents} \tab Lists the content\cr
+\link[=connectwisdomservice_list_import_jobs]{list_import_jobs} \tab Lists information about import jobs\cr
 \link[=connectwisdomservice_list_knowledge_bases]{list_knowledge_bases} \tab Lists the knowledge bases\cr
+\link[=connectwisdomservice_list_quick_responses]{list_quick_responses} \tab Lists information about quick response\cr
 \link[=connectwisdomservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 \link[=connectwisdomservice_notify_recommendations_received]{notify_recommendations_received} \tab Removes the specified recommendations from the specified assistant's queue of newly available recommendations\cr
 \link[=connectwisdomservice_query_assistant]{query_assistant} \tab Performs a manual search against the specified assistant\cr
 \link[=connectwisdomservice_remove_knowledge_base_template_uri]{remove_knowledge_base_template_uri} \tab Removes a URI template from a knowledge base\cr
 \link[=connectwisdomservice_search_content]{search_content} \tab Searches for content in a specified knowledge base\cr
+\link[=connectwisdomservice_search_quick_responses]{search_quick_responses} \tab Searches existing Wisdom quick responses in a Wisdom knowledge base\cr
 \link[=connectwisdomservice_search_sessions]{search_sessions} \tab Searches for sessions\cr
 \link[=connectwisdomservice_start_content_upload]{start_content_upload} \tab Get a URL to upload content to a knowledge base\cr
+\link[=connectwisdomservice_start_import_job]{start_import_job} \tab Start an asynchronous job to import Wisdom resources from an uploaded source file\cr
 \link[=connectwisdomservice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=connectwisdomservice_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[=connectwisdomservice_update_content]{update_content} \tab Updates information about the content\cr
-\link[=connectwisdomservice_update_knowledge_base_template_uri]{update_knowledge_base_template_uri} \tab Updates the template URI of a knowledge base
+\link[=connectwisdomservice_update_knowledge_base_template_uri]{update_knowledge_base_template_uri} \tab Updates the template URI of a knowledge base\cr
+\link[=connectwisdomservice_update_quick_response]{update_quick_response} \tab Updates an existing Wisdom quick response
 }
 }
 

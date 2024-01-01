@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_encryption}
 \alias{s3_get_bucket_encryption}
-\title{Returns the default encryption configuration for an Amazon S3 bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_encryption(Bucket, ExpectedBucketOwner = NULL)
 }
@@ -10,12 +10,12 @@ s3_get_bucket_encryption(Bucket, ExpectedBucketOwner = NULL)
 \item{Bucket}{[required] The name of the bucket from which the server-side encryption
 configuration is retrieved.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Bucket Default Encryption} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/} for full documentation.
 }

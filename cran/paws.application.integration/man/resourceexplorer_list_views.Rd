@@ -24,7 +24,7 @@ every operation to ensure that you receive all of the results.}
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
-should continue from.}
+should continue from. The pagination tokens expire after 24 hours.}
 }
 \description{
 Lists the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource names (ARNs)} of the views available in the Amazon Web Services Region in which you call this operation.

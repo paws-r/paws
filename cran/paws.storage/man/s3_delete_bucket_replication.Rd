@@ -2,19 +2,19 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_replication}
 \alias{s3_delete_bucket_replication}
-\title{Deletes the replication configuration from the bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_delete_bucket_replication(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Deletes the replication configuration from the bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_replication/} for full documentation.
 }

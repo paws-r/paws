@@ -100,7 +100,6 @@ the ClientMetadata value as input:
 \item Pre token generation
 \item Create auth challenge
 \item Define auth challenge
-\item Verify auth challenge
 }
 
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}

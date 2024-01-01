@@ -16,12 +16,13 @@ backup_list_copy_jobs(
   ByAccountId = NULL,
   ByCompleteBefore = NULL,
   ByCompleteAfter = NULL,
-  ByParentJobId = NULL
+  ByParentJobId = NULL,
+  ByMessageCategory = NULL
 )
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
-if a request is made to return maxResults number of items, NextToken
+if a request is made to return MaxResults number of items, NextToken
 allows you to return more items in your list starting at the location
 pointed to by the next token.}
 
@@ -39,6 +40,7 @@ Name (ARN).}
 \item{ByResourceType}{Returns only backup jobs for the specified resources:
 \itemize{
 \item \code{Aurora} for Amazon Aurora
+\item \code{CloudFormation} for CloudFormation
 \item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
 \item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
@@ -46,9 +48,12 @@ Name (ARN).}
 \item \code{EFS} for Amazon Elastic File System
 \item \code{FSx} for Amazon FSx
 \item \code{Neptune} for Amazon Neptune
+\item \code{Redshift} for Amazon Redshift
 \item \code{RDS} for Amazon Relational Database Service
+\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases
 \item \verb{Storage Gateway} for Storage Gateway
 \item \code{S3} for Amazon S3
+\item \code{Timestream} for Amazon Timestream
 \item \code{VirtualMachine} for virtual machines
 }}
 
@@ -66,6 +71,21 @@ and Coordinated Universal Time (UTC).}
 and Coordinated Universal Time (UTC).}
 
 \item{ByParentJobId}{This is a filter to list child (nested) jobs based on parent job ID.}
+
+\item{ByMessageCategory}{This is an optional parameter that can be used to filter out jobs with a
+MessageCategory which matches the value you input.
+
+Example strings may include \code{AccessDenied}, \code{SUCCESS}, \code{AGGREGATE_ALL},
+and \code{INVALIDPARAMETERS}.
+
+View
+\href{https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html}{Monitoring}
+for a list of accepted strings.
+
+The the value ANY returns count of all message categories.
+
+\code{AGGREGATE_ALL} aggregates job counts for all message categories and
+returns the sum.}
 }
 \description{
 Returns metadata about your copy jobs.

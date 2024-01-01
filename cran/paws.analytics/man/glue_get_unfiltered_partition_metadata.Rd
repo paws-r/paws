@@ -6,15 +6,20 @@
 unfiltered metadata}
 \usage{
 glue_get_unfiltered_partition_metadata(
+  Region = NULL,
   CatalogId,
   DatabaseName,
   TableName,
   PartitionValues,
   AuditContext = NULL,
-  SupportedPermissionTypes
+  SupportedPermissionTypes,
+  QuerySessionContext = NULL
 )
 }
 \arguments{
+\item{Region}{Specified only if the base tables belong to a different Amazon Web
+Services Region.}
+
 \item{CatalogId}{[required] The catalog ID where the partition resides.}
 
 \item{DatabaseName}{[required] (Required) Specifies the name of a database that contains the partition.}
@@ -26,6 +31,10 @@ glue_get_unfiltered_partition_metadata(
 \item{AuditContext}{A structure containing Lake Formation audit context information.}
 
 \item{SupportedPermissionTypes}{[required] (Required) A list of supported permission types.}
+
+\item{QuerySessionContext}{A structure used as a protocol between query engines and Lake Formation
+or Glue. Contains both a Lake Formation generated authorization
+identifier and information from the request's authorization context.}
 }
 \description{
 Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.

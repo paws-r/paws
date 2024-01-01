@@ -115,6 +115,7 @@ details.
 \link[paws.machine.learning:transcribeservice_delete_call_analytics_category]{delete_call_analytics_category} \tab Deletes a Call Analytics category\cr
 \link[paws.machine.learning:transcribeservice_delete_call_analytics_job]{delete_call_analytics_job} \tab Deletes a Call Analytics job\cr
 \link[paws.machine.learning:transcribeservice_delete_language_model]{delete_language_model} \tab Deletes a custom language model\cr
+\link[paws.machine.learning:transcribeservice_delete_medical_scribe_job]{delete_medical_scribe_job} \tab Deletes a Medical Scribe job\cr
 \link[paws.machine.learning:transcribeservice_delete_medical_transcription_job]{delete_medical_transcription_job} \tab Deletes a medical transcription job\cr
 \link[paws.machine.learning:transcribeservice_delete_medical_vocabulary]{delete_medical_vocabulary} \tab Deletes a custom medical vocabulary\cr
 \link[paws.machine.learning:transcribeservice_delete_transcription_job]{delete_transcription_job} \tab Deletes a transcription job\cr
@@ -123,6 +124,7 @@ details.
 \link[paws.machine.learning:transcribeservice_describe_language_model]{describe_language_model} \tab Provides information about the specified custom language model\cr
 \link[paws.machine.learning:transcribeservice_get_call_analytics_category]{get_call_analytics_category} \tab Provides information about the specified Call Analytics category\cr
 \link[paws.machine.learning:transcribeservice_get_call_analytics_job]{get_call_analytics_job} \tab Provides information about the specified Call Analytics job\cr
+\link[paws.machine.learning:transcribeservice_get_medical_scribe_job]{get_medical_scribe_job} \tab Provides information about the specified Medical Scribe job\cr
 \link[paws.machine.learning:transcribeservice_get_medical_transcription_job]{get_medical_transcription_job} \tab Provides information about the specified medical transcription job\cr
 \link[paws.machine.learning:transcribeservice_get_medical_vocabulary]{get_medical_vocabulary} \tab Provides information about the specified custom medical vocabulary\cr
 \link[paws.machine.learning:transcribeservice_get_transcription_job]{get_transcription_job} \tab Provides information about the specified transcription job\cr
@@ -131,6 +133,7 @@ details.
 \link[paws.machine.learning:transcribeservice_list_call_analytics_categories]{list_call_analytics_categories} \tab Provides a list of Call Analytics categories, including all rules that make up each category\cr
 \link[paws.machine.learning:transcribeservice_list_call_analytics_jobs]{list_call_analytics_jobs} \tab Provides a list of Call Analytics jobs that match the specified criteria\cr
 \link[paws.machine.learning:transcribeservice_list_language_models]{list_language_models} \tab Provides a list of custom language models that match the specified criteria\cr
+\link[paws.machine.learning:transcribeservice_list_medical_scribe_jobs]{list_medical_scribe_jobs} \tab Provides a list of Medical Scribe jobs that match the specified criteria\cr
 \link[paws.machine.learning:transcribeservice_list_medical_transcription_jobs]{list_medical_transcription_jobs} \tab Provides a list of medical transcription jobs that match the specified criteria\cr
 \link[paws.machine.learning:transcribeservice_list_medical_vocabularies]{list_medical_vocabularies} \tab Provides a list of custom medical vocabularies that match the specified criteria\cr
 \link[paws.machine.learning:transcribeservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with the specified transcription job, vocabulary, model, or resource\cr
@@ -138,6 +141,7 @@ details.
 \link[paws.machine.learning:transcribeservice_list_vocabularies]{list_vocabularies} \tab Provides a list of custom vocabularies that match the specified criteria\cr
 \link[paws.machine.learning:transcribeservice_list_vocabulary_filters]{list_vocabulary_filters} \tab Provides a list of custom vocabulary filters that match the specified criteria\cr
 \link[paws.machine.learning:transcribeservice_start_call_analytics_job]{start_call_analytics_job} \tab Transcribes the audio from a customer service call and applies any additional Request Parameters you choose to include in your request\cr
+\link[paws.machine.learning:transcribeservice_start_medical_scribe_job]{start_medical_scribe_job} \tab Transcribes patient-clinician conversations and generates clinical notes\cr
 \link[paws.machine.learning:transcribeservice_start_medical_transcription_job]{start_medical_transcription_job} \tab Transcribes the audio from a medical dictation or conversation and applies any additional Request Parameters you choose to include in your request\cr
 \link[paws.machine.learning:transcribeservice_start_transcription_job]{start_transcription_job} \tab Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request\cr
 \link[paws.machine.learning:transcribeservice_tag_resource]{tag_resource} \tab Adds one or more custom tags, each in the form of a key:value pair, to the specified resource\cr

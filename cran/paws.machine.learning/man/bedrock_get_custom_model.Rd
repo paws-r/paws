@@ -2,8 +2,8 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_get_custom_model}
 \alias{bedrock_get_custom_model}
-\title{Get the properties associated with a Bedrock custom model that you have
-created}
+\title{Get the properties associated with a Amazon Bedrock custom model that
+you have created}
 \usage{
 bedrock_get_custom_model(modelIdentifier)
 }
@@ -11,7 +11,7 @@ bedrock_get_custom_model(modelIdentifier)
 \item{modelIdentifier}{[required] Name or ARN of the custom model.}
 }
 \description{
-Get the properties associated with a Bedrock custom model that you have created.For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Bedrock User Guide.
+Get the properties associated with a Amazon Bedrock custom model that you have created.For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_custom_model/} for full documentation.
 }

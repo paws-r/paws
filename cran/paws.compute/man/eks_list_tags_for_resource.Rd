@@ -7,9 +7,8 @@
 eks_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. Currently, the supported resources are Amazon EKS
-clusters and managed node groups.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource to list tags
+for.}
 }
 \description{
 List the tags for an Amazon EKS resource.

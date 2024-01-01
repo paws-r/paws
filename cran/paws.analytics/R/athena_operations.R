@@ -207,13 +207,6 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
 #'     -   The `GLUE` data catalog type also applies to the default
 #'         `AwsDataCatalog` that already exists in your account, of which
 #'         you can have only one and cannot modify.
-#' 
-#'     -   Queries that specify a Glue Data Catalog other than the default
-#'         `AwsDataCatalog` must be run on Athena engine version 2.
-#' 
-#'     -   In Regions where Athena engine version 2 is not available,
-#'         creating new Glue data catalogs results in an `INVALID_INPUT`
-#'         error.
 #' @param Tags A list of comma separated tags to add to the data catalog that is
 #' created.
 #'
@@ -790,18 +783,20 @@ athena_get_capacity_reservation <- function(Name) {
 #' See [https://www.paws-r-sdk.com/docs/athena_get_data_catalog/](https://www.paws-r-sdk.com/docs/athena_get_data_catalog/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to return.
+#' @param WorkGroup The name of the workgroup. Required if making an IAM Identity Center
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_get_data_catalog
-athena_get_data_catalog <- function(Name) {
+athena_get_data_catalog <- function(Name, WorkGroup = NULL) {
   op <- new_operation(
     name = "GetDataCatalog",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$get_data_catalog_input(Name = Name)
+  input <- .athena$get_data_catalog_input(Name = Name, WorkGroup = WorkGroup)
   output <- .athena$get_data_catalog_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -820,18 +815,20 @@ athena_get_data_catalog <- function(Name) {
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database to return.
 #' @param DatabaseName &#91;required&#93; The name of the database to return.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_get_database
-athena_get_database <- function(CatalogName, DatabaseName) {
+athena_get_database <- function(CatalogName, DatabaseName, WorkGroup = NULL) {
   op <- new_operation(
     name = "GetDatabase",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName)
+  input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName, WorkGroup = WorkGroup)
   output <- .athena$get_database_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1096,18 +1093,20 @@ athena_get_session_status <- function(SessionId) {
 #' metadata to return.
 #' @param DatabaseName &#91;required&#93; The name of the database that contains the table metadata to return.
 #' @param TableName &#91;required&#93; The name of the table for which metadata is returned.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_get_table_metadata
-athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
+athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName, WorkGroup = NULL) {
   op <- new_operation(
     name = "GetTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName)
+  input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName, WorkGroup = WorkGroup)
   output <- .athena$get_table_metadata_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1316,18 +1315,20 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
 #' of pages, pass in the NextToken from the response object of the previous
 #' page call.
 #' @param MaxResults Specifies the maximum number of data catalogs to return.
+#' @param WorkGroup The name of the workgroup. Required if making an IAM Identity Center
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_list_data_catalogs
-athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
+athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListDataCatalogs",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCatalogsSummary")
   )
-  input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_data_catalogs_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1350,18 +1351,20 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' of pages, pass in the `NextToken` from the response object of the
 #' previous page call.
 #' @param MaxResults Specifies the maximum number of results to return.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_list_databases
-athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NULL) {
+athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
   )
-  input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_databases_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1600,7 +1603,7 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
 #' specified workgroup
 #'
 #' @description
-#' Provides a list of available query execution IDs for the queries in the specified workgroup. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
+#' Provides a list of available query execution IDs for the queries in the specified workgroup. Athena keeps a query history for 45 days. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
 #'
 #' See [https://www.paws-r-sdk.com/docs/athena_list_query_executions/](https://www.paws-r-sdk.com/docs/athena_list_query_executions/) for full documentation.
 #'
@@ -1706,18 +1709,20 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
 #' of pages, pass in the NextToken from the response object of the previous
 #' page call.
 #' @param MaxResults Specifies the maximum number of results to return.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_list_table_metadata
-athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL) {
+athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableMetadataList")
   )
-  input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_table_metadata_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1836,7 +1841,8 @@ athena_put_capacity_assignment_configuration <- function(CapacityReservationName
 #' @param SessionId &#91;required&#93; The session ID.
 #' @param Description A description of the calculation.
 #' @param CalculationConfiguration Contains configuration information for the calculation.
-#' @param CodeBlock A string that contains the code of the calculation.
+#' @param CodeBlock A string that contains the code of the calculation. Use this parameter
+#' instead of CalculationConfiguration$CodeBlock, which is deprecated.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
 #' calculation is idempotent (executes only once). If another
 #' `StartCalculationExecutionRequest` is received, the same response is
@@ -1881,8 +1887,12 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
 #' query is idempotent (executes only once). If another
 #' [`start_query_execution`][athena_start_query_execution] request is
 #' received, the same response is returned and another query is not
-#' created. If a parameter has changed, for example, the `QueryString`, an
-#' error is returned.
+#' created. An error is returned if a parameter, such as `QueryString`, has
+#' changed. A call to
+#' [`start_query_execution`][athena_start_query_execution] that uses a
+#' previous client request token returns the same `QueryExecutionId` even
+#' if the requester doesn't have permission on the tables specified in
+#' `QueryString`.
 #' 
 #' This token is listed as not required because Amazon Web Services SDKs
 #' (for example the Amazon Web Services SDK for Java) auto-generate the

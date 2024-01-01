@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_fast_launch_images}
 \alias{ec2_describe_fast_launch_images}
-\title{Describe details for Windows AMIs that are configured for faster
-launching}
+\title{Describe details for Windows AMIs that are configured for Windows fast
+launch}
 \usage{
 ec2_describe_fast_launch_images(
   ImageIds = NULL,
@@ -14,13 +14,11 @@ ec2_describe_fast_launch_images(
 )
 }
 \arguments{
-\item{ImageIds}{Details for one or more Windows AMI image IDs.}
+\item{ImageIds}{Specify one or more Windows AMI image IDs for the request.}
 
 \item{Filters}{Use the following filters to streamline results.
 \itemize{
 \item \code{resource-type} - The resource type for pre-provisioning.
-\item \code{launch-template} - The launch template that is associated with the
-pre-provisioned Windows AMI.
 \item \code{owner-id} - The owner ID for the pre-provisioning resource.
 \item \code{state} - The current state of fast launching for the Windows AMI.
 }}
@@ -39,7 +37,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Describe details for Windows AMIs that are configured for faster launching.
+Describe details for Windows AMIs that are configured for Windows fast launch.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fast_launch_images/} for full documentation.
 }

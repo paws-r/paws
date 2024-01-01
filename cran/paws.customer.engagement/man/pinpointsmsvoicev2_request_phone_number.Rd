@@ -31,7 +31,7 @@ messages, or both.}
 \item{NumberType}{[required] The type of phone number to request.}
 
 \item{OptOutListName}{The name of the OptOutList to associate with the phone number. You can
-use the OutOutListName or OptPutListArn.}
+use the OptOutListName or OptOutListArn.}
 
 \item{PoolId}{The pool to associated with the phone number. You can use the PoolId or
 PoolArn.}

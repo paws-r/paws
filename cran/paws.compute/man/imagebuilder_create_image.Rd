@@ -13,7 +13,9 @@ imagebuilder_create_image(
   enhancedImageMetadataEnabled = NULL,
   tags = NULL,
   clientToken,
-  imageScanningConfiguration = NULL
+  imageScanningConfiguration = NULL,
+  workflows = NULL,
+  executionRole = NULL
 )
 }
 \arguments{
@@ -38,9 +40,16 @@ Enabled by default.}
 
 \item{tags}{The tags of the image.}
 
-\item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
+
+\item{workflows}{Contains an array of workflow configuration objects.}
+
+\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that
+grants Image Builder access to perform workflow actions.}
 }
 \description{
 Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.

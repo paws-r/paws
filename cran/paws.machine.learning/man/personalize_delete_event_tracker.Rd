@@ -10,7 +10,7 @@ personalize_delete_event_tracker(eventTrackerArn)
 \item{eventTrackerArn}{[required] The Amazon Resource Name (ARN) of the event tracker to delete.}
 }
 \description{
-Deletes the event tracker. Does not delete the event-interactions dataset from the associated dataset group. For more information on event trackers, see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
+Deletes the event tracker. Does not delete the dataset from the dataset group. For more information on event trackers, see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_delete_event_tracker/} for full documentation.
 }

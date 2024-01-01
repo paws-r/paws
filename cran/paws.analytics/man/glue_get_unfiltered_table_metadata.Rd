@@ -6,14 +6,21 @@
 metadata}
 \usage{
 glue_get_unfiltered_table_metadata(
+  Region = NULL,
   CatalogId,
   DatabaseName,
   Name,
   AuditContext = NULL,
-  SupportedPermissionTypes
+  SupportedPermissionTypes,
+  SupportedDialect = NULL,
+  Permissions = NULL,
+  QuerySessionContext = NULL
 )
 }
 \arguments{
+\item{Region}{Specified only if the base tables belong to a different Amazon Web
+Services Region.}
+
 \item{CatalogId}{[required] The catalog ID where the table resides.}
 
 \item{DatabaseName}{[required] (Required) Specifies the name of a database that contains the table.}
@@ -24,6 +31,16 @@ metadata.}
 \item{AuditContext}{A structure containing Lake Formation audit context information.}
 
 \item{SupportedPermissionTypes}{[required] (Required) A list of supported permission types.}
+
+\item{SupportedDialect}{A structure specifying the dialect and dialect version used by the query
+engine.}
+
+\item{Permissions}{The Lake Formation data permissions of the caller on the table. Used to
+authorize the call when no view context is found.}
+
+\item{QuerySessionContext}{A structure used as a protocol between query engines and Lake Formation
+or Glue. Contains both a Lake Formation generated authorization
+identifier and information from the request's authorization context.}
 }
 \description{
 Retrieves table metadata from the Data Catalog that contains unfiltered metadata.

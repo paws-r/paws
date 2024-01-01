@@ -3,13 +3,121 @@
 #' @include controltower_service.R
 NULL
 
+#' Creates a new landing zone
+#'
+#' @description
+#' Creates a new landing zone. This API call starts an asynchronous
+#' operation that creates and configures a landing zone, based on the
+#' parameters specified in the manifest JSON file.
+#'
+#' @usage
+#' controltower_create_landing_zone(manifest, tags, version)
+#'
+#' @param manifest &#91;required&#93; The manifest JSON file is a text file that describes your Amazon Web
+#' Services resources. For examples, review [Launch your landing
+#' zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html).
+#' @param tags Tags to be applied to the landing zone.
+#' @param version &#91;required&#93; The landing zone version, for example, 3.0.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_landing_zone(
+#'   manifest = list(),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   version = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_create_landing_zone
+#'
+#' @aliases controltower_create_landing_zone
+controltower_create_landing_zone <- function(manifest, tags = NULL, version) {
+  op <- new_operation(
+    name = "CreateLandingZone",
+    http_method = "POST",
+    http_path = "/create-landingzone",
+    paginator = list()
+  )
+  input <- .controltower$create_landing_zone_input(manifest = manifest, tags = tags, version = version)
+  output <- .controltower$create_landing_zone_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$create_landing_zone <- controltower_create_landing_zone
+
+#' Decommissions a landing zone
+#'
+#' @description
+#' Decommissions a landing zone. This API call starts an asynchronous
+#' operation that deletes Amazon Web Services Control Tower resources
+#' deployed in accounts managed by Amazon Web Services Control Tower.
+#'
+#' @usage
+#' controltower_delete_landing_zone(landingZoneIdentifier)
+#'
+#' @param landingZoneIdentifier &#91;required&#93; The unique identifier of the landing zone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_landing_zone(
+#'   landingZoneIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_delete_landing_zone
+#'
+#' @aliases controltower_delete_landing_zone
+controltower_delete_landing_zone <- function(landingZoneIdentifier) {
+  op <- new_operation(
+    name = "DeleteLandingZone",
+    http_method = "POST",
+    http_path = "/delete-landingzone",
+    paginator = list()
+  )
+  input <- .controltower$delete_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
+  output <- .controltower$delete_landing_zone_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$delete_landing_zone <- controltower_delete_landing_zone
+
 #' This API call turns off a control
 #'
 #' @description
 #' This API call turns off a control. It starts an asynchronous operation
-#' that deletes AWS resources on the specified organizational unit and the
-#' accounts it contains. The resources will vary according to the control
-#' that you specify. For usage examples, see [*the AWS Control Tower User
+#' that deletes Amazon Web Services resources on the specified
+#' organizational unit and the accounts it contains. The resources will
+#' vary according to the control that you specify. For usage examples, see
+#' [*the Amazon Web Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -17,9 +125,9 @@ NULL
 #' controltower_disable_control(controlIdentifier, targetIdentifier)
 #'
 #' @param controlIdentifier &#91;required&#93; The ARN of the control. Only **Strongly recommended** and **Elective**
-#' controls are permitted, with the exception of the **Region deny**
-#' control. For information on how to find the `controlIdentifier`, see
-#' [the overview
+#' controls are permitted, with the exception of the **landing zone Region
+#' deny** control. For information on how to find the `controlIdentifier`,
+#' see [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
 #' @param targetIdentifier &#91;required&#93; The ARN of the organizational unit. For information on how to find the
 #' `targetIdentifier`, see [the overview
@@ -67,21 +175,23 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #'
 #' @description
 #' This API call activates a control. It starts an asynchronous operation
-#' that creates AWS resources on the specified organizational unit and the
-#' accounts it contains. The resources created will vary according to the
-#' control that you specify. For usage examples, see [*the AWS Control
-#' Tower User
+#' that creates Amazon Web Services resources on the specified
+#' organizational unit and the accounts it contains. The resources created
+#' will vary according to the control that you specify. For usage examples,
+#' see [*the Amazon Web Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
 #' @usage
-#' controltower_enable_control(controlIdentifier, tags, targetIdentifier)
+#' controltower_enable_control(controlIdentifier, parameters, tags,
+#'   targetIdentifier)
 #'
 #' @param controlIdentifier &#91;required&#93; The ARN of the control. Only **Strongly recommended** and **Elective**
-#' controls are permitted, with the exception of the **Region deny**
-#' control. For information on how to find the `controlIdentifier`, see
-#' [the overview
+#' controls are permitted, with the exception of the **landing zone Region
+#' deny** control. For information on how to find the `controlIdentifier`,
+#' see [the overview
 #' page](https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html).
+#' @param parameters An array of `EnabledControlParameter` objects
 #' @param tags Tags to be applied to the `EnabledControl` resource.
 #' @param targetIdentifier &#91;required&#93; The ARN of the organizational unit. For information on how to find the
 #' `targetIdentifier`, see [the overview
@@ -100,6 +210,12 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #' ```
 #' svc$enable_control(
 #'   controlIdentifier = "string",
+#'   parameters = list(
+#'     list(
+#'       key = "string",
+#'       value = list()
+#'     )
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -112,14 +228,14 @@ controltower_disable_control <- function(controlIdentifier, targetIdentifier) {
 #' @rdname controltower_enable_control
 #'
 #' @aliases controltower_enable_control
-controltower_enable_control <- function(controlIdentifier, tags = NULL, targetIdentifier) {
+controltower_enable_control <- function(controlIdentifier, parameters = NULL, tags = NULL, targetIdentifier) {
   op <- new_operation(
     name = "EnableControl",
     http_method = "POST",
     http_path = "/enable-control",
     paginator = list()
   )
-  input <- .controltower$enable_control_input(controlIdentifier = controlIdentifier, tags = tags, targetIdentifier = targetIdentifier)
+  input <- .controltower$enable_control_input(controlIdentifier = controlIdentifier, parameters = parameters, tags = tags, targetIdentifier = targetIdentifier)
   output <- .controltower$enable_control_output()
   config <- get_config()
   svc <- .controltower$service(config)
@@ -137,7 +253,8 @@ controltower_enable_control <- function(controlIdentifier, tags = NULL, targetId
 #' [`enable_control`][controltower_enable_control] or
 #' [`disable_control`][controltower_disable_control] operation. Displays a
 #' message in case of error. Details for an operation are available for 90
-#' days. For usage examples, see [*the AWS Control Tower User
+#' days. For usage examples, see [*the Amazon Web Services Control Tower
+#' User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -155,7 +272,7 @@ controltower_enable_control <- function(controlIdentifier, tags = NULL, targetId
 #'     endTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL",
+#'     operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -198,7 +315,7 @@ controltower_get_control_operation <- function(operationIdentifier) {
 #'
 #' @description
 #' Retrieves details about an enabled control. For usage examples, see
-#' [*the AWS Control Tower User
+#' [*the Amazon Web Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -216,6 +333,12 @@ controltower_get_control_operation <- function(operationIdentifier) {
 #'     controlIdentifier = "string",
 #'     driftStatusSummary = list(
 #'       driftStatus = "DRIFTED"|"IN_SYNC"|"NOT_CHECKING"|"UNKNOWN"
+#'     ),
+#'     parameters = list(
+#'       list(
+#'         key = "string",
+#'         value = list()
+#'       )
 #'     ),
 #'     statusSummary = list(
 #'       lastOperationIdentifier = "string",
@@ -260,13 +383,128 @@ controltower_get_enabled_control <- function(enabledControlIdentifier) {
 }
 .controltower$operations$get_enabled_control <- controltower_get_enabled_control
 
-#' Lists the controls enabled by AWS Control Tower on the specified
-#' organizational unit and the accounts it contains
+#' Returns details about the landing zone
 #'
 #' @description
-#' Lists the controls enabled by AWS Control Tower on the specified
-#' organizational unit and the accounts it contains. For usage examples,
-#' see [*the AWS Control Tower User
+#' Returns details about the landing zone. Displays a message in case of
+#' error.
+#'
+#' @usage
+#' controltower_get_landing_zone(landingZoneIdentifier)
+#'
+#' @param landingZoneIdentifier &#91;required&#93; The unique identifier of the landing zone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   landingZone = list(
+#'     arn = "string",
+#'     driftStatus = list(
+#'       status = "DRIFTED"|"IN_SYNC"
+#'     ),
+#'     latestAvailableVersion = "string",
+#'     manifest = list(),
+#'     status = "ACTIVE"|"PROCESSING"|"FAILED",
+#'     version = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_landing_zone(
+#'   landingZoneIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_get_landing_zone
+#'
+#' @aliases controltower_get_landing_zone
+controltower_get_landing_zone <- function(landingZoneIdentifier) {
+  op <- new_operation(
+    name = "GetLandingZone",
+    http_method = "POST",
+    http_path = "/get-landingzone",
+    paginator = list()
+  )
+  input <- .controltower$get_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
+  output <- .controltower$get_landing_zone_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$get_landing_zone <- controltower_get_landing_zone
+
+#' Returns the status of the specified landing zone operation
+#'
+#' @description
+#' Returns the status of the specified landing zone operation. Details for
+#' an operation are available for 60 days.
+#'
+#' @usage
+#' controltower_get_landing_zone_operation(operationIdentifier)
+#'
+#' @param operationIdentifier &#91;required&#93; A unique identifier assigned to a landing zone operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   operationDetails = list(
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     operationType = "DELETE"|"CREATE"|"UPDATE"|"RESET",
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "SUCCEEDED"|"FAILED"|"IN_PROGRESS",
+#'     statusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_landing_zone_operation(
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_get_landing_zone_operation
+#'
+#' @aliases controltower_get_landing_zone_operation
+controltower_get_landing_zone_operation <- function(operationIdentifier) {
+  op <- new_operation(
+    name = "GetLandingZoneOperation",
+    http_method = "POST",
+    http_path = "/get-landingzone-operation",
+    paginator = list()
+  )
+  input <- .controltower$get_landing_zone_operation_input(operationIdentifier = operationIdentifier)
+  output <- .controltower$get_landing_zone_operation_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$get_landing_zone_operation <- controltower_get_landing_zone_operation
+
+#' Lists the controls enabled by Amazon Web Services Control Tower on the
+#' specified organizational unit and the accounts it contains
+#'
+#' @description
+#' Lists the controls enabled by Amazon Web Services Control Tower on the
+#' specified organizational unit and the accounts it contains. For usage
+#' examples, see [*the Amazon Web Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -334,11 +572,71 @@ controltower_list_enabled_controls <- function(maxResults = NULL, nextToken = NU
 }
 .controltower$operations$list_enabled_controls <- controltower_list_enabled_controls
 
+#' Returns the landing zone ARN for the landing zone deployed in your
+#' managed account
+#'
+#' @description
+#' Returns the landing zone ARN for the landing zone deployed in your
+#' managed account. This API also creates an ARN for existing accounts that
+#' do not yet have a landing zone ARN.
+#' 
+#' Returns one landing zone ARN.
+#'
+#' @usage
+#' controltower_list_landing_zones(maxResults, nextToken)
+#'
+#' @param maxResults The maximum number of returned landing zone ARNs, which is one.
+#' @param nextToken The token to continue the list from a previous API call with the same
+#' parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   landingZones = list(
+#'     list(
+#'       arn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_landing_zones(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_list_landing_zones
+#'
+#' @aliases controltower_list_landing_zones
+controltower_list_landing_zones <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListLandingZones",
+    http_method = "POST",
+    http_path = "/list-landingzones",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZones")
+  )
+  input <- .controltower$list_landing_zones_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .controltower$list_landing_zones_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$list_landing_zones <- controltower_list_landing_zones
+
 #' Returns a list of tags associated with the resource
 #'
 #' @description
 #' Returns a list of tags associated with the resource. For usage examples,
-#' see [*the AWS Control Tower User
+#' see [*the Amazon Web Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -386,11 +684,60 @@ controltower_list_tags_for_resource <- function(resourceArn) {
 }
 .controltower$operations$list_tags_for_resource <- controltower_list_tags_for_resource
 
+#' This API call resets a landing zone
+#'
+#' @description
+#' This API call resets a landing zone. It starts an asynchronous operation
+#' that resets the landing zone to the parameters specified in its original
+#' configuration.
+#'
+#' @usage
+#' controltower_reset_landing_zone(landingZoneIdentifier)
+#'
+#' @param landingZoneIdentifier &#91;required&#93; The unique identifier of the landing zone.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reset_landing_zone(
+#'   landingZoneIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_reset_landing_zone
+#'
+#' @aliases controltower_reset_landing_zone
+controltower_reset_landing_zone <- function(landingZoneIdentifier) {
+  op <- new_operation(
+    name = "ResetLandingZone",
+    http_method = "POST",
+    http_path = "/reset-landingzone",
+    paginator = list()
+  )
+  input <- .controltower$reset_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
+  output <- .controltower$reset_landing_zone_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$reset_landing_zone <- controltower_reset_landing_zone
+
 #' Applies tags to a resource
 #'
 #' @description
-#' Applies tags to a resource. For usage examples, see [*the AWS Control
-#' Tower User
+#' Applies tags to a resource. For usage examples, see [*the Amazon Web
+#' Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -438,8 +785,8 @@ controltower_tag_resource <- function(resourceArn, tags) {
 #' Removes tags from a resource
 #'
 #' @description
-#' Removes tags from a resource. For usage examples, see [*the AWS Control
-#' Tower User
+#' Removes tags from a resource. For usage examples, see [*the Amazon Web
+#' Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
 #' .
 #'
@@ -483,3 +830,133 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .controltower$operations$untag_resource <- controltower_untag_resource
+
+#' Updates the configuration of an already enabled control
+#'
+#' @description
+#' Updates the configuration of an already enabled control.
+#' 
+#' If the enabled control shows an `EnablementStatus` of SUCCEEDED, supply
+#' parameters that are different from the currently configured parameters.
+#' Otherwise, Amazon Web Services Control Tower will not accept the
+#' request.
+#' 
+#' If the enabled control shows an `EnablementStatus` of FAILED, Amazon Web
+#' Services Control Tower will update the control to match any valid
+#' parameters that you supply.
+#' 
+#' If the `DriftSummary` status for the control shows as DRIFTED, you
+#' cannot call this API. Instead, you can update the control by calling
+#' [`disable_control`][controltower_disable_control] and again calling
+#' [`enable_control`][controltower_enable_control], or you can run an
+#' extending governance operation. For usage examples, see [*the Amazon Web
+#' Services Control Tower User
+#' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
+#'
+#' @usage
+#' controltower_update_enabled_control(enabledControlIdentifier,
+#'   parameters)
+#'
+#' @param enabledControlIdentifier &#91;required&#93; The ARN of the enabled control that will be updated.
+#' @param parameters &#91;required&#93; A key/value pair, where `Key` is of type `String` and `Value` is of type
+#' `Document`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_enabled_control(
+#'   enabledControlIdentifier = "string",
+#'   parameters = list(
+#'     list(
+#'       key = "string",
+#'       value = list()
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_update_enabled_control
+#'
+#' @aliases controltower_update_enabled_control
+controltower_update_enabled_control <- function(enabledControlIdentifier, parameters) {
+  op <- new_operation(
+    name = "UpdateEnabledControl",
+    http_method = "POST",
+    http_path = "/update-enabled-control",
+    paginator = list()
+  )
+  input <- .controltower$update_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier, parameters = parameters)
+  output <- .controltower$update_enabled_control_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$update_enabled_control <- controltower_update_enabled_control
+
+#' This API call updates the landing zone
+#'
+#' @description
+#' This API call updates the landing zone. It starts an asynchronous
+#' operation that updates the landing zone based on the new landing zone
+#' version, or on the changed parameters specified in the updated manifest
+#' file.
+#'
+#' @usage
+#' controltower_update_landing_zone(landingZoneIdentifier, manifest,
+#'   version)
+#'
+#' @param landingZoneIdentifier &#91;required&#93; The unique identifier of the landing zone.
+#' @param manifest &#91;required&#93; The manifest JSON file is a text file that describes your Amazon Web
+#' Services resources. For examples, review [Launch your landing
+#' zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html).
+#' @param version &#91;required&#93; The landing zone version, for example, 3.2.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_landing_zone(
+#'   landingZoneIdentifier = "string",
+#'   manifest = list(),
+#'   version = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_update_landing_zone
+#'
+#' @aliases controltower_update_landing_zone
+controltower_update_landing_zone <- function(landingZoneIdentifier, manifest, version) {
+  op <- new_operation(
+    name = "UpdateLandingZone",
+    http_method = "POST",
+    http_path = "/update-landingzone",
+    paginator = list()
+  )
+  input <- .controltower$update_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier, manifest = manifest, version = version)
+  output <- .controltower$update_landing_zone_output()
+  config <- get_config()
+  svc <- .controltower$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$update_landing_zone <- controltower_update_landing_zone

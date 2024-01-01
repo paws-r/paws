@@ -104,7 +104,7 @@ and the \href{https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html}{Amazon E
 \link[=efs_delete_file_system]{delete_file_system} \tab Deletes a file system, permanently severing access to its contents\cr
 \link[=efs_delete_file_system_policy]{delete_file_system_policy} \tab Deletes the FileSystemPolicy for the specified file system\cr
 \link[=efs_delete_mount_target]{delete_mount_target} \tab Deletes the specified mount target\cr
-\link[=efs_delete_replication_configuration]{delete_replication_configuration} \tab Deletes an existing replication configuration\cr
+\link[=efs_delete_replication_configuration]{delete_replication_configuration} \tab Deletes a replication configuration\cr
 \link[=efs_delete_tags]{delete_tags} \tab DEPRECATED - DeleteTags is deprecated and not maintained\cr
 \link[=efs_describe_access_points]{describe_access_points} \tab Returns the description of a specific Amazon EFS access point if the AccessPointId is provided\cr
 \link[=efs_describe_account_preferences]{describe_account_preferences} \tab Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region\cr
@@ -121,10 +121,11 @@ and the \href{https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html}{Amazon E
 \link[=efs_put_account_preferences]{put_account_preferences} \tab Use this operation to set the account preference in the current Amazon Web Services Region to use long 17 character (63 bit) or short 8 character (32 bit) resource IDs for new EFS file system and mount target resources\cr
 \link[=efs_put_backup_policy]{put_backup_policy} \tab Updates the file system's backup policy\cr
 \link[=efs_put_file_system_policy]{put_file_system_policy} \tab Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system\cr
-\link[=efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Use this action to manage EFS lifecycle management and EFS Intelligent-Tiering\cr
+\link[=efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Use this action to manage storage for your file system\cr
 \link[=efs_tag_resource]{tag_resource} \tab Creates a tag for an EFS resource\cr
 \link[=efs_untag_resource]{untag_resource} \tab Removes tags from an EFS resource\cr
-\link[=efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system
+\link[=efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system\cr
+\link[=efs_update_file_system_protection]{update_file_system_protection} \tab Updates protection on the file system
 }
 }
 

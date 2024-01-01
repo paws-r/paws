@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_multipart_uploads}
 \alias{s3_list_multipart_uploads}
-\title{This action lists in-progress multipart uploads}
+\title{This operation lists in-progress multipart uploads in a bucket}
 \usage{
 s3_list_multipart_uploads(
   Bucket,
@@ -19,17 +19,33 @@ s3_list_multipart_uploads(
 \arguments{
 \item{Bucket}{[required] The name of the bucket to which the multipart upload was initiated.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -43,20 +59,39 @@ and the first occurrence of the delimiter after the prefix are grouped
 under a single result element, \code{CommonPrefixes}. If you don't specify
 the prefix parameter, then the substring starts at the beginning of the
 key. The keys that are grouped under \code{CommonPrefixes} result element are
-not returned elsewhere in the response.}
+not returned elsewhere in the response.
+
+\strong{Directory buckets} - For directory buckets, \code{/} is the only supported
+delimiter.}
 
 \item{EncodingType}{}
 
-\item{KeyMarker}{Together with \code{upload-id-marker}, this parameter specifies the multipart
-upload after which listing should begin.
+\item{KeyMarker}{Specifies the multipart upload after which listing should begin.
+\itemize{
+\item \strong{General purpose buckets} - For general purpose buckets,
+\code{key-marker} is an object key. Together with \code{upload-id-marker},
+this parameter specifies the multipart upload after which listing
+should begin.
 
-If \code{upload-id-marker} is not specified, only the keys lexicographically
-greater than the specified \code{key-marker} will be included in the list.
+If \code{upload-id-marker} is not specified, only the keys
+lexicographically greater than the specified \code{key-marker} will be
+included in the list.
 
 If \code{upload-id-marker} is specified, any multipart uploads for a key
 equal to the \code{key-marker} might also be included, provided those
 multipart uploads have upload IDs lexicographically greater than the
-specified \code{upload-id-marker}.}
+specified \code{upload-id-marker}.
+\item \strong{Directory buckets} - For directory buckets, \code{key-marker} is
+obfuscated and isn't a real object key. The \code{upload-id-marker}
+parameter isn't supported by directory buckets. To list the
+additional multipart uploads, you only need to set the value of
+\code{key-marker} to the \code{NextKeyMarker} value from the previous
+response.
+
+In the \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
+response, the multipart uploads aren't sorted lexicographically
+based on the object keys.
+}}
 
 \item{MaxUploads}{Sets the maximum number of multipart uploads, from 1 to 1,000, to return
 in the response body. 1,000 is the maximum number of uploads that can be
@@ -65,23 +100,28 @@ returned in a response.}
 \item{Prefix}{Lists in-progress uploads only for those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
 different grouping of keys. (You can think of using \code{prefix} to make
-groups in the same way that you'd use a folder in a file system.)}
+groups in the same way that you'd use a folder in a file system.)
+
+\strong{Directory buckets} - For directory buckets, only prefixes that end in
+a delimiter (\code{/}) are supported.}
 
 \item{UploadIdMarker}{Together with key-marker, specifies the multipart upload after which
 listing should begin. If key-marker is not specified, the
 upload-id-marker parameter is ignored. Otherwise, any multipart uploads
 for a key equal to the key-marker might be included in the list only if
 they have an upload ID lexicographically greater than the specified
-\code{upload-id-marker}.}
+\code{upload-id-marker}.
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+This functionality is not supported for directory buckets.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{RequestPayer}{}
 }
 \description{
-This action lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
+This operation lists in-progress multipart uploads in a bucket. An in-progress multipart upload is a multipart upload that has been initiated by the \code{\link[=s3_create_multipart_upload]{create_multipart_upload}} request, but has not yet been completed or aborted.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/} for full documentation.
 }

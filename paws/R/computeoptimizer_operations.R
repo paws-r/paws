@@ -49,7 +49,7 @@ NULL
 #'     value = "string"
 #'   ),
 #'   recommendationPreferenceNames = list(
-#'     "EnhancedInfrastructureMetrics"|"InferredWorkloadTypes"|"ExternalMetricsPreference"
+#'     "EnhancedInfrastructureMetrics"|"InferredWorkloadTypes"|"ExternalMetricsPreference"|"LookBackPeriodPreference"|"PreferredResources"|"UtilizationPreferences"
 #'   )
 #' )
 #' ```
@@ -287,7 +287,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"AutoScalingGroupArn"|"AutoScalingGroupName"|"Finding"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationInstanceType"|"CurrentConfigurationDesiredCapacity"|"CurrentConfigurationMinSize"|"CurrentConfigurationMaxSize"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsConfigurationInstanceType"|"RecommendationOptionsConfigurationDesiredCapacity"|"RecommendationOptionsConfigurationMinSize"|"RecommendationOptionsConfigurationMaxSize"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"CurrentInstanceGpuInfo"|"RecommendationOptionsInstanceGpuInfo"|"UtilizationMetricsGpuPercentageMaximum"|"UtilizationMetricsGpuMemoryPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuMemoryPercentageMaximum"
+#'     "AccountId"|"AutoScalingGroupArn"|"AutoScalingGroupName"|"Finding"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationInstanceType"|"CurrentConfigurationDesiredCapacity"|"CurrentConfigurationMinSize"|"CurrentConfigurationMaxSize"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsConfigurationInstanceType"|"RecommendationOptionsConfigurationDesiredCapacity"|"RecommendationOptionsConfigurationMinSize"|"RecommendationOptionsConfigurationMaxSize"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"CurrentInstanceGpuInfo"|"RecommendationOptionsInstanceGpuInfo"|"UtilizationMetricsGpuPercentageMaximum"|"UtilizationMetricsGpuMemoryPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuMemoryPercentageMaximum"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesPreferredResources"|"EffectiveRecommendationPreferencesLookBackPeriod"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -416,7 +416,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RootVolume"|"Tags"|"CurrentConfigurationRootVolume"
+#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RootVolume"|"Tags"|"CurrentConfigurationRootVolume"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -552,7 +552,7 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"FindingReasonCodes"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPlatformDifferences"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"EffectiveRecommendationPreferencesExternalMetricsSource"|"InstanceState"|"Tags"|"ExternalMetricStatusCode"|"ExternalMetricStatusReason"|"CurrentInstanceGpuInfo"|"RecommendationOptionsInstanceGpuInfo"|"UtilizationMetricsGpuPercentageMaximum"|"UtilizationMetricsGpuMemoryPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuMemoryPercentageMaximum"|"Idle"
+#'     "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"FindingReasonCodes"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPlatformDifferences"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"EffectiveRecommendationPreferencesExternalMetricsSource"|"InstanceState"|"Tags"|"ExternalMetricStatusCode"|"ExternalMetricStatusReason"|"CurrentInstanceGpuInfo"|"RecommendationOptionsInstanceGpuInfo"|"UtilizationMetricsGpuPercentageMaximum"|"UtilizationMetricsGpuMemoryPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuMemoryPercentageMaximum"|"Idle"|"EffectiveRecommendationPreferencesPreferredResources"|"EffectiveRecommendationPreferencesLookBackPeriod"|"EffectiveRecommendationPreferencesUtilizationPreferences"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -678,7 +678,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"ServiceArn"|"LookbackPeriodInDays"|"LastRefreshTimestamp"|"LaunchType"|"CurrentPerformanceRisk"|"CurrentServiceConfigurationMemory"|"CurrentServiceConfigurationCpu"|"CurrentServiceConfigurationTaskDefinitionArn"|"CurrentServiceConfigurationAutoScalingConfiguration"|"CurrentServiceContainerConfigurations"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"Finding"|"FindingReasonCodes"|"RecommendationOptionsMemory"|"RecommendationOptionsCpu"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RecommendationOptionsContainerRecommendations"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"Tags"
+#'     "AccountId"|"ServiceArn"|"LookbackPeriodInDays"|"LastRefreshTimestamp"|"LaunchType"|"CurrentPerformanceRisk"|"CurrentServiceConfigurationMemory"|"CurrentServiceConfigurationCpu"|"CurrentServiceConfigurationTaskDefinitionArn"|"CurrentServiceConfigurationAutoScalingConfiguration"|"CurrentServiceContainerConfigurations"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"Finding"|"FindingReasonCodes"|"RecommendationOptionsMemory"|"RecommendationOptionsCpu"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RecommendationOptionsContainerRecommendations"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"Tags"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -803,7 +803,7 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"FunctionArn"|"FunctionVersion"|"Finding"|"FindingReasonCodes"|"NumberOfInvocations"|"UtilizationMetricsDurationMaximum"|"UtilizationMetricsDurationAverage"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsMemoryAverage"|"LookbackPeriodInDays"|"CurrentConfigurationMemorySize"|"CurrentConfigurationTimeout"|"CurrentCostTotal"|"CurrentCostAverage"|"RecommendationOptionsConfigurationMemorySize"|"RecommendationOptionsCostLow"|"RecommendationOptionsCostHigh"|"RecommendationOptionsProjectedUtilizationMetricsDurationLowerBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationUpperBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationExpected"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"Tags"
+#'     "AccountId"|"FunctionArn"|"FunctionVersion"|"Finding"|"FindingReasonCodes"|"NumberOfInvocations"|"UtilizationMetricsDurationMaximum"|"UtilizationMetricsDurationAverage"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsMemoryAverage"|"LookbackPeriodInDays"|"CurrentConfigurationMemorySize"|"CurrentConfigurationTimeout"|"CurrentCostTotal"|"CurrentCostAverage"|"RecommendationOptionsConfigurationMemorySize"|"RecommendationOptionsCostLow"|"RecommendationOptionsCostHigh"|"RecommendationOptionsProjectedUtilizationMetricsDurationLowerBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationUpperBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationExpected"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"Tags"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -1052,6 +1052,13 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #'                 gpuMemorySizeInMiB = 123
 #'               )
 #'             )
+#'           ),
+#'           savingsOpportunityAfterDiscounts = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1067,6 +1074,33 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #'         inferredWorkloadTypes = "Active"|"Inactive",
 #'         externalMetricsPreference = list(
 #'           source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'         ),
+#'         lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
+#'         utilizationPreferences = list(
+#'           list(
+#'             metricName = "CpuUtilization",
+#'             metricParameters = list(
+#'               threshold = "P90"|"P95"|"P99_5",
+#'               headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'             )
+#'           )
+#'         ),
+#'         preferredResources = list(
+#'           list(
+#'             name = "Ec2InstanceTypes",
+#'             includeList = list(
+#'               "string"
+#'             ),
+#'             effectiveIncludeList = list(
+#'               "string"
+#'             ),
+#'             excludeList = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         savingsEstimationMode = list(
+#'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
 #'         )
 #'       ),
 #'       inferredWorkloadTypes = list(
@@ -1221,6 +1255,13 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'               currency = "USD"|"CNY",
 #'               value = 123.0
 #'             )
+#'           ),
+#'           savingsOpportunityAfterDiscounts = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1232,6 +1273,11 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'         list(
 #'           key = "string",
 #'           value = "string"
+#'         )
+#'       ),
+#'       effectiveRecommendationPreferences = list(
+#'         savingsEstimationMode = list(
+#'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
 #'         )
 #'       )
 #'     )
@@ -1379,6 +1425,13 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'                 gpuMemorySizeInMiB = 123
 #'               )
 #'             )
+#'           ),
+#'           savingsOpportunityAfterDiscounts = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1400,6 +1453,33 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'         inferredWorkloadTypes = "Active"|"Inactive",
 #'         externalMetricsPreference = list(
 #'           source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'         ),
+#'         lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
+#'         utilizationPreferences = list(
+#'           list(
+#'             metricName = "CpuUtilization",
+#'             metricParameters = list(
+#'               threshold = "P90"|"P95"|"P99_5",
+#'               headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'             )
+#'           )
+#'         ),
+#'         preferredResources = list(
+#'           list(
+#'             name = "Ec2InstanceTypes",
+#'             includeList = list(
+#'               "string"
+#'             ),
+#'             effectiveIncludeList = list(
+#'               "string"
+#'             ),
+#'             excludeList = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         savingsEstimationMode = list(
+#'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
 #'         )
 #'       ),
 #'       inferredWorkloadTypes = list(
@@ -1773,6 +1853,13 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
 #'               ),
 #'               cpu = 123
 #'             )
+#'           ),
+#'           savingsOpportunityAfterDiscounts = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -1781,6 +1868,11 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
 #'         list(
 #'           key = "string",
 #'           value = "string"
+#'         )
+#'       ),
+#'       effectiveRecommendationPreferences = list(
+#'         savingsEstimationMode = list(
+#'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
 #'         )
 #'       )
 #'     )
@@ -1866,6 +1958,30 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
 #'   enhancedInfrastructureMetrics = "Active"|"Inactive",
 #'   externalMetricsPreference = list(
 #'     source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'   ),
+#'   lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
+#'   utilizationPreferences = list(
+#'     list(
+#'       metricName = "CpuUtilization",
+#'       metricParameters = list(
+#'         threshold = "P90"|"P95"|"P99_5",
+#'         headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'       )
+#'     )
+#'   ),
+#'   preferredResources = list(
+#'     list(
+#'       name = "Ec2InstanceTypes",
+#'       includeList = list(
+#'         "string"
+#'       ),
+#'       effectiveIncludeList = list(
+#'         "string"
+#'       ),
+#'       excludeList = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2125,6 +2241,13 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'               currency = "USD"|"CNY",
 #'               value = 123.0
 #'             )
+#'           ),
+#'           savingsOpportunityAfterDiscounts = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -2133,6 +2256,11 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'         list(
 #'           key = "string",
 #'           value = "string"
+#'         )
+#'       ),
+#'       effectiveRecommendationPreferences = list(
+#'         savingsEstimationMode = list(
+#'           source = "PublicPricing"|"CostExplorerRightsizing"|"CostOptimizationHub"
 #'         )
 #'       )
 #'     )
@@ -2393,7 +2521,32 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
 #'       inferredWorkloadTypes = "Active"|"Inactive",
 #'       externalMetricsPreference = list(
 #'         source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
-#'       )
+#'       ),
+#'       lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
+#'       utilizationPreferences = list(
+#'         list(
+#'           metricName = "CpuUtilization",
+#'           metricParameters = list(
+#'             threshold = "P90"|"P95"|"P99_5",
+#'             headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'           )
+#'         )
+#'       ),
+#'       preferredResources = list(
+#'         list(
+#'           name = "Ec2InstanceTypes",
+#'           includeList = list(
+#'             "string"
+#'           ),
+#'           effectiveIncludeList = list(
+#'             "string"
+#'           ),
+#'           excludeList = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       savingsEstimationMode = "AfterDiscounts"|"BeforeDiscounts"
 #'     )
 #'   )
 #' )
@@ -2572,7 +2725,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @usage
 #' computeoptimizer_put_recommendation_preferences(resourceType, scope,
 #'   enhancedInfrastructureMetrics, inferredWorkloadTypes,
-#'   externalMetricsPreference)
+#'   externalMetricsPreference, lookBackPeriod, utilizationPreferences,
+#'   preferredResources, savingsEstimationMode)
 #'
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to create.
 #' 
@@ -2636,6 +2790,42 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' For more information, see [External metrics
 #' ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
 #' in the *Compute Optimizer User Guide*.
+#' @param lookBackPeriod The preference to control the number of days the utilization metrics of
+#' the Amazon Web Services resource are analyzed. When this preference
+#' isn't specified, we use the default value `DAYS_14`.
+#' 
+#' You can only set this preference for the Amazon EC2 instance and Auto
+#' Scaling group resource types.
+#' @param utilizationPreferences The preference to control the resource’s CPU utilization thresholds -
+#' threshold and headroom. When this preference isn't specified, we use the
+#' following default values:
+#' 
+#' -   `P99_5` for threshold
+#' 
+#' -   `PERCENT_17` for headroom
+#' 
+#' You can only set this preference for the Amazon EC2 instance resource
+#' type.
+#' @param preferredResources The preference to control which resource type values are considered when
+#' generating rightsizing recommendations. You can specify this preference
+#' as a combination of include and exclude lists. You must specify either
+#' an `includeList` or `excludeList`. If the preference is an empty set of
+#' resource type values, an error occurs.
+#' 
+#' You can only set this preference for the Amazon EC2 instance and Auto
+#' Scaling group resource types.
+#' @param savingsEstimationMode The status of the savings estimation mode preference to create or
+#' update.
+#' 
+#' Specify the `AfterDiscounts` status to activate the preference, or
+#' specify `BeforeDiscounts` to deactivate the preference.
+#' 
+#' Only the account manager or delegated administrator of your organization
+#' can activate this preference.
+#' 
+#' For more information, see [Savings estimation
+#' mode](https://docs.aws.amazon.com/compute-optimizer/latest/ug/savings-estimation-mode.html)
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @return
 #' An empty list.
@@ -2652,7 +2842,29 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #'   inferredWorkloadTypes = "Active"|"Inactive",
 #'   externalMetricsPreference = list(
 #'     source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
-#'   )
+#'   ),
+#'   lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
+#'   utilizationPreferences = list(
+#'     list(
+#'       metricName = "CpuUtilization",
+#'       metricParameters = list(
+#'         threshold = "P90"|"P95"|"P99_5",
+#'         headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'       )
+#'     )
+#'   ),
+#'   preferredResources = list(
+#'     list(
+#'       name = "Ec2InstanceTypes",
+#'       includeList = list(
+#'         "string"
+#'       ),
+#'       excludeList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   savingsEstimationMode = "AfterDiscounts"|"BeforeDiscounts"
 #' )
 #' ```
 #'
@@ -2661,14 +2873,14 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @rdname computeoptimizer_put_recommendation_preferences
 #'
 #' @aliases computeoptimizer_put_recommendation_preferences
-computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL, externalMetricsPreference = NULL) {
+computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL, externalMetricsPreference = NULL, lookBackPeriod = NULL, utilizationPreferences = NULL, preferredResources = NULL, savingsEstimationMode = NULL) {
   op <- new_operation(
     name = "PutRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference)
+  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference, lookBackPeriod = lookBackPeriod, utilizationPreferences = utilizationPreferences, preferredResources = preferredResources, savingsEstimationMode = savingsEstimationMode)
   output <- .computeoptimizer$put_recommendation_preferences_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)

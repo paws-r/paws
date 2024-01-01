@@ -20,7 +20,7 @@ that have names that start with the prefix you specify.}
 \item{nextToken}{}
 }
 \description{
-This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions.
+This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions. You can retrieve query definitions from the current account or from a source account that is linked to the current account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_query_definitions/} for full documentation.
 }

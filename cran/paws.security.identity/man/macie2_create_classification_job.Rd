@@ -83,9 +83,10 @@ recommended set of managed data identifiers.
 
 If the job is a recurring job and you specify ALL or EXCLUDE, each job
 run automatically uses new managed data identifiers that are released.
-If you specify RECOMMENDED for a recurring job, each job run
-automatically uses all the managed data identifiers that are in the
-recommended set when the run starts.
+If you don't specify a value for this property or you specify
+RECOMMENDED for a recurring job, each job run automatically uses all the
+managed data identifiers that are in the recommended set when the run
+starts.
 
 For information about individual managed data identifiers or to
 determine which ones are in the recommended set, see \href{https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html}{Using managed data identifiers}

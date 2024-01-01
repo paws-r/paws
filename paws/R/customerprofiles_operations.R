@@ -1254,6 +1254,82 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
 }
 .customerprofiles$operations$delete_workflow <- customerprofiles_delete_workflow
 
+#' The process of detecting profile object type mapping by using given
+#' objects
+#'
+#' @description
+#' The process of detecting profile object type mapping by using given
+#' objects.
+#'
+#' @usage
+#' customerprofiles_detect_profile_object_type(Objects, DomainName)
+#'
+#' @param Objects &#91;required&#93; A string that is serialized from a JSON object.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DetectedProfileObjectTypes = list(
+#'     list(
+#'       SourceLastUpdatedTimestampFormat = "string",
+#'       Fields = list(
+#'         list(
+#'           Source = "string",
+#'           Target = "string",
+#'           ContentType = "STRING"|"NUMBER"|"PHONE_NUMBER"|"EMAIL_ADDRESS"|"NAME"
+#'         )
+#'       ),
+#'       Keys = list(
+#'         list(
+#'           list(
+#'             StandardIdentifiers = list(
+#'               "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
+#'             ),
+#'             FieldNames = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detect_profile_object_type(
+#'   Objects = list(
+#'     "string"
+#'   ),
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_detect_profile_object_type
+#'
+#' @aliases customerprofiles_detect_profile_object_type
+customerprofiles_detect_profile_object_type <- function(Objects, DomainName) {
+  op <- new_operation(
+    name = "DetectProfileObjectType",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/detect/object-types",
+    paginator = list()
+  )
+  input <- .customerprofiles$detect_profile_object_type_input(Objects = Objects, DomainName = DomainName)
+  output <- .customerprofiles$detect_profile_object_type_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$detect_profile_object_type <- customerprofiles_detect_profile_object_type
+
 #' Tests the auto-merging settings of your Identity Resolution Job without
 #' merging your data
 #'

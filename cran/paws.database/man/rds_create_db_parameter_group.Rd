@@ -44,7 +44,8 @@ The following are the valid DB engine values:
 \itemize{
 \item \code{aurora-mysql}
 \item \code{aurora-postgresql}
-\item \code{mariadb}
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mysql}
 \item \code{oracle-ee}
 \item \code{oracle-ee-cdb}

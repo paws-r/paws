@@ -26,7 +26,8 @@ autoscaling_update_auto_scaling_group(
   CapacityRebalance = NULL,
   Context = NULL,
   DesiredCapacityType = NULL,
-  DefaultInstanceWarmup = NULL
+  DefaultInstanceWarmup = NULL,
+  InstanceMaintenancePolicy = NULL
 )
 }
 \arguments{
@@ -159,6 +160,9 @@ To remove a value that you previously set, include the property but
 specify \code{-1} for the value. However, we strongly recommend keeping the
 default instance warmup enabled by specifying a value of \code{0} or other
 nominal value.}
+
+\item{InstanceMaintenancePolicy}{An instance maintenance policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html}{Set instance maintenance policy}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 \strong{We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

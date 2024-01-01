@@ -9,7 +9,10 @@ quicksight_start_asset_bundle_import_job(
   AssetBundleImportJobId,
   AssetBundleImportSource,
   OverrideParameters = NULL,
-  FailureAction = NULL
+  FailureAction = NULL,
+  OverridePermissions = NULL,
+  OverrideTags = NULL,
+  OverrideValidationStrategy = NULL
 )
 }
 \arguments{
@@ -21,7 +24,7 @@ job is completed, you can reuse this ID for another job.}
 \item{AssetBundleImportSource}{[required] The source of the asset bundle zip file that contains the data that you
 want to import. The file must be in \code{QUICKSIGHT_JSON} format.}
 
-\item{OverrideParameters}{Optional overrides to be applied to the resource configuration before
+\item{OverrideParameters}{Optional overrides that are applied to the resource configuration before
 import.}
 
 \item{FailureAction}{The failure action for the import job.
@@ -32,6 +35,15 @@ asset changes caused by the failed job.
 If you choose \code{DO_NOTHING}, failed import jobs will not attempt to roll
 back any asset changes caused by the failed job, possibly keeping the
 Amazon QuickSight account in an inconsistent state.}
+
+\item{OverridePermissions}{Optional permission overrides that are applied to the resource
+configuration before import.}
+
+\item{OverrideTags}{Optional tag overrides that are applied to the resource configuration
+before import.}
+
+\item{OverrideValidationStrategy}{An optional validation strategy override for all analyses and dashboards
+that is applied to the resource configuration before import.}
 }
 \description{
 Starts an Asset Bundle import job.

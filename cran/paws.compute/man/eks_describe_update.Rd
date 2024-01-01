@@ -2,8 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_describe_update}
 \alias{eks_describe_update}
-\title{Returns descriptive information about an update against your Amazon EKS
-cluster or associated managed node group or Amazon EKS add-on}
+\title{Describes an update to an Amazon EKS resource}
 \usage{
 eks_describe_update(name, updateId, nodegroupName = NULL, addonName = NULL)
 }
@@ -20,7 +19,7 @@ parameter is required if the update is a node group update.}
 . This parameter is required if the update is an add-on update.}
 }
 \description{
-Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on.
+Describes an update to an Amazon EKS resource.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_describe_update/} for full documentation.
 }

@@ -40,7 +40,8 @@ NULL
 #' @usage
 #' sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
 #'   Accept, CustomAttributes, TargetModel, TargetVariant,
-#'   TargetContainerHostname, InferenceId, EnableExplanations)
+#'   TargetContainerHostname, InferenceId, EnableExplanations,
+#'   InferenceComponentName)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -94,6 +95,8 @@ NULL
 #' the
 #' [EnableExplanations](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-online-explainability-create-endpoint.html#clarify-online-explainability-create-endpoint-enable)
 #' section in the developer guide for more information.
+#' @param InferenceComponentName If the endpoint hosts one or more inference components, this parameter
+#' specifies the name of inference component to invoke.
 #'
 #' @return
 #' A list with the following syntax:
@@ -118,7 +121,8 @@ NULL
 #'   TargetVariant = "string",
 #'   TargetContainerHostname = "string",
 #'   InferenceId = "string",
-#'   EnableExplanations = "string"
+#'   EnableExplanations = "string",
+#'   InferenceComponentName = "string"
 #' )
 #' ```
 #'
@@ -127,14 +131,14 @@ NULL
 #' @rdname sagemakerruntime_invoke_endpoint
 #'
 #' @aliases sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL, InferenceComponentName = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)
@@ -278,6 +282,13 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #'     [Invoke real-time
 #'     endpoints](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-test-endpoints.html).
 #' 
+#' Before you can use this operation, your IAM permissions must allow the
+#' `sagemaker:InvokeEndpoint` action. For more information about Amazon
+#' SageMaker actions for IAM policies, see [Actions, resources, and
+#' condition keys for Amazon
+#' SageMaker](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html)
+#' in the *IAM Service Authorization Reference*.
+#' 
 #' Amazon SageMaker strips all POST headers except those supported by the
 #' API. Amazon SageMaker might add additional headers. You should not rely
 #' on the behavior of headers outside those enumerated in the request
@@ -294,7 +305,7 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' @usage
 #' sagemakerruntime_invoke_endpoint_with_response_stream(EndpointName,
 #'   Body, ContentType, Accept, CustomAttributes, TargetVariant,
-#'   TargetContainerHostname, InferenceId)
+#'   TargetContainerHostname, InferenceId, InferenceComponentName)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -339,6 +350,9 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' direct invocation, this parameter specifies the host name of the
 #' container to invoke.
 #' @param InferenceId An identifier that you assign to your request.
+#' @param InferenceComponentName If the endpoint hosts one or more inference components, this parameter
+#' specifies the name of inference component to invoke for a streaming
+#' response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -372,7 +386,8 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #'   CustomAttributes = "string",
 #'   TargetVariant = "string",
 #'   TargetContainerHostname = "string",
-#'   InferenceId = "string"
+#'   InferenceId = "string",
+#'   InferenceComponentName = "string"
 #' )
 #' ```
 #'
@@ -381,14 +396,14 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' @rdname sagemakerruntime_invoke_endpoint_with_response_stream
 #'
 #' @aliases sagemakerruntime_invoke_endpoint_with_response_stream
-sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL) {
+sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, InferenceComponentName = NULL) {
   op <- new_operation(
     name = "InvokeEndpointWithResponseStream",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations-response-stream",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId)
+  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)

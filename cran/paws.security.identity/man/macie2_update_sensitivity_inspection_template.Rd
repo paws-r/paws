@@ -29,7 +29,7 @@ properties, respectively.}
 applies to.}
 
 \item{includes}{The allow lists, custom data identifiers, and managed data identifiers
-to include (use) when analyzing data.}
+to explicitly include (use) when analyzing data.}
 }
 \description{
 Updates the settings for the sensitivity inspection template for an account.

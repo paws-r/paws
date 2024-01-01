@@ -11,7 +11,7 @@ eks_update_cluster_version(name, version, clientRequestToken = NULL)
 
 \item{version}{[required] The desired Kubernetes version following a successful update.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
 \description{

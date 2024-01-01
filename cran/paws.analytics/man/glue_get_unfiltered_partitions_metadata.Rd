@@ -6,6 +6,7 @@
 unfiltered metadata}
 \usage{
 glue_get_unfiltered_partitions_metadata(
+  Region = NULL,
   CatalogId,
   DatabaseName,
   TableName,
@@ -14,10 +15,14 @@ glue_get_unfiltered_partitions_metadata(
   SupportedPermissionTypes,
   NextToken = NULL,
   Segment = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  QuerySessionContext = NULL
 )
 }
 \arguments{
+\item{Region}{Specified only if the base tables belong to a different Amazon Web
+Services Region.}
+
 \item{CatalogId}{[required] The ID of the Data Catalog where the partitions in question reside. If
 none is provided, the AWS account ID is used by default.}
 
@@ -109,6 +114,10 @@ partitions.}
 \item{Segment}{The segment of the table's partitions to scan in this request.}
 
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
+
+\item{QuerySessionContext}{A structure used as a protocol between query engines and Lake Formation
+or Glue. Contains both a Lake Formation generated authorization
+identifier and information from the request's authorization context.}
 }
 \description{
 Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.

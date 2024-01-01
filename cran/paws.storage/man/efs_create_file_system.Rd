@@ -20,15 +20,16 @@ efs_create_file_system(
 \item{CreationToken}{[required] A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 idempotent creation.}
 
-\item{PerformanceMode}{The performance mode of the file system. We recommend \code{generalPurpose}
-performance mode for most file systems. File systems using the \code{maxIO}
+\item{PerformanceMode}{The Performance mode of the file system. We recommend \code{generalPurpose}
+performance mode for all file systems. File systems using the \code{maxIO}
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
-file system has been created.
+file system has been created. The \code{maxIO} mode is not supported on One
+Zone file systems.
 
-The \code{maxIO} mode is not supported on file systems using One Zone storage
-classes.
+Due to the higher per-operation latencies with Max I/O, we recommend
+using General Purpose performance mode for all file systems.
 
 Default is \code{generalPurpose}.}
 
@@ -64,9 +65,9 @@ with Amazon EFS file systems.}
 \code{bursting}, \code{provisioned}, or \code{elastic}. If you set \code{ThroughputMode} to
 \code{provisioned}, you must also set a value for
 \code{ProvisionedThroughputInMibps}. After you create the file system, you
-can decrease your file system's throughput in Provisioned Throughput
-mode or change between the throughput modes, with certain time
-restrictions. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying throughput with provisioned mode}
+can decrease your file system's Provisioned throughput or change between
+the throughput modes, with certain time restrictions. For more
+information, see \href{https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput}{Specifying throughput with provisioned mode}
 in the \emph{Amazon EFS User Guide}.
 
 Default is \code{bursting}.}
@@ -78,20 +79,19 @@ with the upper limit depending on Region. To increase this limit,
 contact Amazon Web Services Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
 in the \emph{Amazon EFS User Guide}.}
 
-\item{AvailabilityZoneName}{Used to create a file system that uses One Zone storage classes. It
-specifies the Amazon Web Services Availability Zone in which to create
-the file system. Use the format \verb{us-east-1a} to specify the Availability
-Zone. For more information about One Zone storage classes, see \href{https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html}{Using EFS storage classes}
-in the \emph{Amazon EFS User Guide}.
+\item{AvailabilityZoneName}{Used to create a One Zone file system. It specifies the Amazon Web
+Services Availability Zone in which to create the file system. Use the
+format \verb{us-east-1a} to specify the Availability Zone. For more
+information about One Zone file systems, see \href{https://docs.aws.amazon.com/efs/latest/ug/}{Using EFS storage classes} in the \emph{Amazon EFS
+User Guide}.
 
-One Zone storage classes are not available in all Availability Zones in
+One Zone file systems are not available in all Availability Zones in
 Amazon Web Services Regions where Amazon EFS is available.}
 
 \item{Backup}{Specifies whether automatic backups are enabled on the file system that
 you are creating. Set the value to \code{true} to enable automatic backups.
-If you are creating a file system that uses One Zone storage classes,
-automatic backups are enabled by default. For more information, see
-\href{https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups}{Automatic backups}
+If you are creating a One Zone file system, automatic backups are
+enabled by default. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups}{Automatic backups}
 in the \emph{Amazon EFS User Guide}.
 
 Default is \code{false}. However, if you specify an \code{AvailabilityZoneName},

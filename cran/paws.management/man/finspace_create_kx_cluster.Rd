@@ -9,13 +9,14 @@ finspace_create_kx_cluster(
   environmentId,
   clusterName,
   clusterType,
+  tickerplantLogConfiguration = NULL,
   databases = NULL,
   cacheStorageConfigurations = NULL,
   autoScalingConfiguration = NULL,
   clusterDescription = NULL,
-  capacityConfiguration,
+  capacityConfiguration = NULL,
   releaseLabel,
-  vpcConfiguration = NULL,
+  vpcConfiguration,
   initializationScript = NULL,
   commandLineArguments = NULL,
   code = NULL,
@@ -23,7 +24,8 @@ finspace_create_kx_cluster(
   savedownStorageConfiguration = NULL,
   azMode,
   availabilityZoneId = NULL,
-  tags = NULL
+  tags = NULL,
+  scalingGroupConfiguration = NULL
 )
 }
 \arguments{
@@ -50,7 +52,23 @@ parameter.
 processes in kdb systems. It allows you to create your own routing
 logic using the initialization scripts and custom code. This type of
 cluster does not require a writable local storage.
+\item GP – A general purpose cluster allows you to quickly iterate on code
+during development by granting greater access to system commands and
+enabling a fast reload of custom code. This cluster type can
+optionally mount databases including cache and savedown storage. For
+this cluster type, the node count is fixed at 1. It does not support
+autoscaling and supports only \code{SINGLE} AZ mode.
+\item Tickerplant – A tickerplant cluster allows you to subscribe to feed
+handlers based on IAM permissions. It can publish to RDBs, other
+Tickerplants, and real-time subscribers (RTS). Tickerplants can
+persist messages to log, which is readable by any RDB environment.
+It supports only single-node that is only one kdb process.
 }}
+
+\item{tickerplantLogConfiguration}{A configuration to store Tickerplant logs. It consists of a list of
+volumes that will be mounted to your cluster. For the cluster type
+\code{Tickerplant}, the location of the TP volume on the cluster will be
+available by using the global variable \code{.aws.tp_log_path}.}
 
 \item{databases}{A list of databases that will be available for querying.}
 
@@ -63,12 +81,12 @@ nodes in your cluster.}
 
 \item{clusterDescription}{A description of the cluster.}
 
-\item{capacityConfiguration}{[required] A structure for the metadata of a cluster. It includes information like
+\item{capacityConfiguration}{A structure for the metadata of a cluster. It includes information like
 the CPUs needed, memory of instances, and number of instances.}
 
 \item{releaseLabel}{[required] The version of FinSpace managed kdb to run.}
 
-\item{vpcConfiguration}{Configuration details about the network where the Privatelink endpoint
+\item{vpcConfiguration}{[required] Configuration details about the network where the Privatelink endpoint
 of the cluster resides.}
 
 \item{initializationScript}{Specifies a Q program that will be run at launch of a cluster. It is a
@@ -103,6 +121,8 @@ can be one of the following
 
 \item{tags}{A list of key-value pairs to label the cluster. You can add up to 50
 tags to a cluster.}
+
+\item{scalingGroupConfiguration}{The structure that stores the configuration details of a scaling group.}
 }
 \description{
 Creates a new kdb cluster.

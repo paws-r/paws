@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_access_point_policy}
 \alias{s3control_put_access_point_policy}
-\title{Associates an access policy with the specified access point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_put_access_point_policy(AccountId, Name, Policy)
 }
@@ -31,7 +31,7 @@ more information about access point policies, see \href{https://docs.aws.amazon.
 in the \emph{Amazon S3 User Guide}.}
 }
 \description{
-Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API replaces any existing policy associated with the specified access point.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy/} for full documentation.
 }

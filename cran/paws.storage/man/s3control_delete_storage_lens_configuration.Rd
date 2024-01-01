@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_storage_lens_configuration}
 \alias{s3control_delete_storage_lens_configuration}
-\title{Deletes the Amazon S3 Storage Lens configuration}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_delete_storage_lens_configuration(ConfigId, AccountId)
 }
@@ -12,7 +12,7 @@ s3control_delete_storage_lens_configuration(ConfigId, AccountId)
 \item{AccountId}{[required] The account ID of the requester.}
 }
 \description{
-Deletes the Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Assessing your storage activity and usage with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration/} for full documentation.
 }

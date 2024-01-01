@@ -7,11 +7,25 @@
 s3_delete_bucket(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
-\item{Bucket}{[required] Specifies the bucket being deleted.}
+\item{Bucket}{[required] Specifies the bucket being deleted.
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use path-style requests in the format
+\verb{https://s3express-control.region_code.amazonaws.com/bucket-name }.
+Virtual-hosted-style requests aren't supported. Directory bucket names
+must be unique in the chosen Availability Zone. Bucket names must also
+follow the format \code{ bucket_base_name--az_id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).
+
+For directory buckets, this header is not supported in this API
+operation. If you specify this header, the request fails with the HTTP
+status code \verb{501 Not Implemented}.}
 }
 \description{
 Deletes the S3 bucket. All objects (including all object versions and delete markers) in the bucket must be deleted before the bucket itself can be deleted.

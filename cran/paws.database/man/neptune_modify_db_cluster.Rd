@@ -23,7 +23,8 @@ neptune_modify_db_cluster(
   DBInstanceParameterGroupName = NULL,
   DeletionProtection = NULL,
   CopyTagsToSnapshot = NULL,
-  ServerlessV2ScalingConfiguration = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -119,7 +120,7 @@ accounts to database accounts, and otherwise false.
 Default: \code{false}}
 
 \item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
-CloudWatch Logs for a specific DB cluster.}
+CloudWatch Logs for a specific DB cluster. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/cloudwatch-logs.html#cloudwatch-logs-cli}{Using the CLI to publish Neptune audit logs to CloudWatch Logs}.}
 
 \item{EngineVersion}{The version number of the database engine to which you want to upgrade.
 Changing this parameter results in an outage. The change is applied
@@ -165,6 +166,18 @@ is created.}}
 
 For more information, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html}{Using Amazon Neptune Serverless}
 in the \emph{Amazon Neptune User Guide}.}
+
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+Valid Values:
+\itemize{
+\item \code{standard | iopt1}
+}
+
+Default:
+\itemize{
+\item \code{standard}
+}}
 }
 \description{
 Modify a setting for a DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.

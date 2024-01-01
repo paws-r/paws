@@ -41,7 +41,7 @@ in a \code{BadRequestException} error.}
 
 \item{MediaSampleRateHertz}{The sample rate, in hertz, of the audio track in your input media file.
 
-If you don't specify the media sample rate, Amazon Transcribe Medical
+If you do not specify the media sample rate, Amazon Transcribe Medical
 determines it for you. If you specify the sample rate, it must match the
 rate detected by Amazon Transcribe Medical; if there's a mismatch
 between the value that you specify and the value detected, your job
@@ -126,7 +126,7 @@ key in one of two ways:
 \code{arn:aws:kms:region:account-ID:alias/ExampleAlias}.
 }
 
-If you don't specify an encryption key, your output is encrypted with
+If you do not specify an encryption key, your output is encrypted with
 the default Amazon S3 key (SSE-S3).
 
 If you specify a KMS key to encrypt your output, you must also specify

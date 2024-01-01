@@ -19,7 +19,9 @@ you want to update.}
 
 \item{distributions}{[required] The distributions of the distribution configuration.}
 
-\item{clientToken}{[required] The idempotency token of the distribution configuration.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
 Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.

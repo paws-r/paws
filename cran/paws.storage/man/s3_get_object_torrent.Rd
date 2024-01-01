@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_object_torrent}
 \alias{s3_get_object_torrent}
-\title{Returns torrent files from a bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_object_torrent(
   Bucket,
@@ -19,12 +19,12 @@ torrent files.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_object_torrent/} for full documentation.
 }

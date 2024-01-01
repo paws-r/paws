@@ -3,10 +3,200 @@
 #' @include s3control_service.R
 NULL
 
-#' Creates an access point and associates it with the specified bucket
+#' Associate your S3 Access Grants instance with an Amazon Web Services IAM
+#' Identity Center instance
 #'
 #' @description
-#' Creates an access point and associates it with the specified bucket. For more information, see [Managing Data Access with Amazon S3 Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html) in the *Amazon S3 User Guide*.
+#' Associate your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance. Use this action if you want to create access grants for users or groups from your corporate identity directory. First, you must add your corporate identity directory to Amazon Web Services IAM Identity Center. Then, you can associate this IAM Identity Center instance with your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_associate_access_grants_identity_center/](https://www.paws-r-sdk.com/docs/s3control_associate_access_grants_identity_center/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param IdentityCenterArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
+#' Center instance that you are associating with your S3 Access Grants
+#' instance. An IAM Identity Center instance is your corporate identity
+#' directory that you added to the IAM Identity Center. You can use the
+#' [ListInstances](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListInstances.html)
+#' API operation to retrieve a list of your Identity Center instances and
+#' their ARNs.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_associate_access_grants_identity_center
+s3control_associate_access_grants_identity_center <- function(AccountId, IdentityCenterArn) {
+  op <- new_operation(
+    name = "AssociateAccessGrantsIdentityCenter",
+    http_method = "POST",
+    http_path = "/v20180820/accessgrantsinstance/identitycenter",
+    paginator = list()
+  )
+  input <- .s3control$associate_access_grants_identity_center_input(AccountId = AccountId, IdentityCenterArn = IdentityCenterArn)
+  output <- .s3control$associate_access_grants_identity_center_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$associate_access_grants_identity_center <- s3control_associate_access_grants_identity_center
+
+#' Creates an access grant that gives a grantee access to your S3 data
+#'
+#' @description
+#' Creates an access grant that gives a grantee access to your S3 data. The grantee can be an IAM user or role or a directory user, or group. Before you can create a grant, you must have an S3 Access Grants instance in the same Region as the S3 data. You can create an S3 Access Grants instance using the [`create_access_grants_instance`][s3control_create_access_grants_instance]. You must also have registered at least one S3 data location in your S3 Access Grants instance using [`create_access_grants_location`][s3control_create_access_grants_location].
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grant/](https://www.paws-r-sdk.com/docs/s3control_create_access_grant/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location to which you are granting access. S3
+#' Access Grants assigns this ID when you register the location. S3 Access
+#' Grants assigns the ID `default` to the default location `s3://` and
+#' assigns an auto-generated ID to other locations that you register.
+#' 
+#' If you are passing the `default` location, you cannot create an access
+#' grant for the entire default location. You must also specify a bucket or
+#' a bucket and prefix in the `Subprefix` field.
+#' @param AccessGrantsLocationConfiguration The configuration options of the grant location. The grant location is
+#' the S3 path to the data to which you are granting access. It contains
+#' the `S3SubPrefix` field. The grant scope is the result of appending the
+#' subprefix to the location scope of the registered location.
+#' @param Grantee &#91;required&#93; The user, group, or role to which you are granting access. You can grant
+#' access to an IAM user or role. If you have added your corporate
+#' directory to Amazon Web Services IAM Identity Center and associated your
+#' Identity Center instance with your S3 Access Grants instance, the
+#' grantee can also be a corporate directory user or group.
+#' @param Permission &#91;required&#93; The type of access that you are granting to your S3 data, which can be
+#' set to one of the following values:
+#' 
+#' -   `READ` – Grant read-only access to the S3 data.
+#' 
+#' -   `WRITE` – Grant write-only access to the S3 data.
+#' 
+#' -   `READWRITE` – Grant both read and write access to the S3 data.
+#' @param ApplicationArn The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity
+#' Center application associated with your Identity Center instance. If an
+#' application ARN is included in the request to create an access grant,
+#' the grantee can only access the S3 data through this application.
+#' @param S3PrefixType The type of `S3SubPrefix`. The only possible value is `Object`. Pass
+#' this value if the access grant scope is an object. Do not pass this
+#' value if the access grant scope is a bucket or a bucket and a prefix.
+#' @param Tags The Amazon Web Services resource tags that you are adding to the access
+#' grant. Each tag is a label consisting of a user-defined key and value.
+#' Tags can help you manage, identify, organize, search for, and filter
+#' resources.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_create_access_grant
+s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, AccessGrantsLocationConfiguration = NULL, Grantee, Permission, ApplicationArn = NULL, S3PrefixType = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAccessGrant",
+    http_method = "POST",
+    http_path = "/v20180820/accessgrantsinstance/grant",
+    paginator = list()
+  )
+  input <- .s3control$create_access_grant_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId, AccessGrantsLocationConfiguration = AccessGrantsLocationConfiguration, Grantee = Grantee, Permission = Permission, ApplicationArn = ApplicationArn, S3PrefixType = S3PrefixType, Tags = Tags)
+  output <- .s3control$create_access_grant_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$create_access_grant <- s3control_create_access_grant
+
+#' Creates an S3 Access Grants instance, which serves as a logical grouping
+#' for access grants
+#'
+#' @description
+#' Creates an S3 Access Grants instance, which serves as a logical grouping for access grants. You can create one S3 Access Grants instance per Region per account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_create_access_grants_instance/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param IdentityCenterArn If you would like to associate your S3 Access Grants instance with an
+#' Amazon Web Services IAM Identity Center instance, use this field to pass
+#' the Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
+#' Center instance that you are associating with your S3 Access Grants
+#' instance. An IAM Identity Center instance is your corporate identity
+#' directory that you added to the IAM Identity Center. You can use the
+#' [ListInstances](https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_ListInstances.html)
+#' API operation to retrieve a list of your Identity Center instances and
+#' their ARNs.
+#' @param Tags The Amazon Web Services resource tags that you are adding to the S3
+#' Access Grants instance. Each tag is a label consisting of a user-defined
+#' key and value. Tags can help you manage, identify, organize, search for,
+#' and filter resources.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_create_access_grants_instance
+s3control_create_access_grants_instance <- function(AccountId, IdentityCenterArn = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAccessGrantsInstance",
+    http_method = "POST",
+    http_path = "/v20180820/accessgrantsinstance",
+    paginator = list()
+  )
+  input <- .s3control$create_access_grants_instance_input(AccountId = AccountId, IdentityCenterArn = IdentityCenterArn, Tags = Tags)
+  output <- .s3control$create_access_grants_instance_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$create_access_grants_instance <- s3control_create_access_grants_instance
+
+#' The S3 data location that you would like to register in your S3 Access
+#' Grants instance
+#'
+#' @description
+#' The S3 data location that you would like to register in your S3 Access Grants instance. Your S3 data must be in the same Region as your S3 Access Grants instance. The location can be one of the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_create_access_grants_location/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param LocationScope &#91;required&#93; The S3 path to the location that you are registering. The location scope
+#' can be the default S3 location `s3://`, the S3 path to a bucket
+#' `s3://<bucket>`, or the S3 path to a bucket and prefix
+#' `s3://<bucket>/<prefix>`. A prefix in S3 is a string of characters at
+#' the beginning of an object key name used to organize the objects that
+#' you store in your S3 buckets. For example, object key names that start
+#' with the `engineering/` prefix or object key names that start with the
+#' `marketing/campaigns/` prefix.
+#' @param IAMRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role for the registered
+#' location. S3 Access Grants assumes this role to manage access to the
+#' registered location.
+#' @param Tags The Amazon Web Services resource tags that you are adding to the S3
+#' Access Grants location. Each tag is a label consisting of a user-defined
+#' key and value. Tags can help you manage, identify, organize, search for,
+#' and filter resources.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_create_access_grants_location
+s3control_create_access_grants_location <- function(AccountId, LocationScope, IAMRoleArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAccessGrantsLocation",
+    http_method = "POST",
+    http_path = "/v20180820/accessgrantsinstance/location",
+    paginator = list()
+  )
+  input <- .s3control$create_access_grants_location_input(AccountId = AccountId, LocationScope = LocationScope, IAMRoleArn = IAMRoleArn, Tags = Tags)
+  output <- .s3control$create_access_grants_location_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$create_access_grants_location <- s3control_create_access_grants_location
+
+#' This operation is not supported by directory buckets
+#'
+#' @description
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_point/](https://www.paws-r-sdk.com/docs/s3control_create_access_point/) for full documentation.
 #'
@@ -58,10 +248,10 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 }
 .s3control$operations$create_access_point <- s3control_create_access_point
 
-#' Creates an Object Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates an Object Lambda Access Point. For more information, see [Transforming objects with Object Lambda Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_point_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_create_access_point_for_object_lambda/) for full documentation.
 #'
@@ -149,11 +339,10 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 }
 .s3control$operations$create_bucket <- s3control_create_bucket
 
-#' You can use S3 Batch Operations to perform large-scale batch actions on
-#' Amazon S3 objects
+#' This operation creates an S3 Batch Operations job
 #'
 #' @description
-#' You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
+#' This operation creates an S3 Batch Operations job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_job/](https://www.paws-r-sdk.com/docs/s3control_create_job/) for full documentation.
 #'
@@ -203,11 +392,10 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
 }
 .s3control$operations$create_job <- s3control_create_job
 
-#' Creates a Multi-Region Access Point and associates it with the specified
-#' buckets
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates a Multi-Region Access Point and associates it with the specified buckets. For more information about creating Multi-Region Access Points, see [Creating Multi-Region Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_multi_region_access_point/](https://www.paws-r-sdk.com/docs/s3control_create_multi_region_access_point/) for full documentation.
 #'
@@ -239,10 +427,167 @@ s3control_create_multi_region_access_point <- function(AccountId, ClientToken, D
 }
 .s3control$operations$create_multi_region_access_point <- s3control_create_multi_region_access_point
 
-#' Deletes the specified access point
+#' Creates a new S3 Storage Lens group and associates it with the specified
+#' Amazon Web Services account ID
 #'
 #' @description
-#' Deletes the specified access point.
+#' Creates a new S3 Storage Lens group and associates it with the specified Amazon Web Services account ID. An S3 Storage Lens group is a custom grouping of objects based on prefix, suffix, object tags, object size, object age, or a combination of these filters. For each Storage Lens group that you’ve created, you can also optionally add Amazon Web Services resource tags. For more information about S3 Storage Lens groups, see [Working with S3 Storage Lens groups](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups-overview.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_storage_lens_group/](https://www.paws-r-sdk.com/docs/s3control_create_storage_lens_group/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that the Storage Lens group is
+#' created from and associated with.
+#' @param StorageLensGroup &#91;required&#93; The Storage Lens group configuration.
+#' @param Tags The Amazon Web Services resource tags that you're adding to your Storage
+#' Lens group. This parameter is optional.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_create_storage_lens_group
+s3control_create_storage_lens_group <- function(AccountId, StorageLensGroup, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateStorageLensGroup",
+    http_method = "POST",
+    http_path = "/v20180820/storagelensgroup",
+    paginator = list()
+  )
+  input <- .s3control$create_storage_lens_group_input(AccountId = AccountId, StorageLensGroup = StorageLensGroup, Tags = Tags)
+  output <- .s3control$create_storage_lens_group_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$create_storage_lens_group <- s3control_create_storage_lens_group
+
+#' Deletes the access grant from the S3 Access Grants instance
+#'
+#' @description
+#' Deletes the access grant from the S3 Access Grants instance. You cannot undo an access grant deletion and the grantee will no longer have access to the S3 data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grant/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grant/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
+#' you create the access grant.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_grant
+s3control_delete_access_grant <- function(AccountId, AccessGrantId) {
+  op <- new_operation(
+    name = "DeleteAccessGrant",
+    http_method = "DELETE",
+    http_path = "/v20180820/accessgrantsinstance/grant/{id}",
+    paginator = list()
+  )
+  input <- .s3control$delete_access_grant_input(AccountId = AccountId, AccessGrantId = AccessGrantId)
+  output <- .s3control$delete_access_grant_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_grant <- s3control_delete_access_grant
+
+#' Deletes your S3 Access Grants instance
+#'
+#' @description
+#' Deletes your S3 Access Grants instance. You must first delete the access grants and locations before S3 Access Grants can delete the instance. See [`delete_access_grant`][s3control_delete_access_grant] and [`delete_access_grants_location`][s3control_delete_access_grants_location]. If you have associated an IAM Identity Center instance with your S3 Access Grants instance, you must first dissassociate the Identity Center instance from the S3 Access Grants instance before you can delete the S3 Access Grants instance. See [`associate_access_grants_identity_center`][s3control_associate_access_grants_identity_center] and [`dissociate_access_grants_identity_center`][s3control_dissociate_access_grants_identity_center].
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_grants_instance
+s3control_delete_access_grants_instance <- function(AccountId) {
+  op <- new_operation(
+    name = "DeleteAccessGrantsInstance",
+    http_method = "DELETE",
+    http_path = "/v20180820/accessgrantsinstance",
+    paginator = list()
+  )
+  input <- .s3control$delete_access_grants_instance_input(AccountId = AccountId)
+  output <- .s3control$delete_access_grants_instance_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_grants_instance <- s3control_delete_access_grants_instance
+
+#' Deletes the resource policy of the S3 Access Grants instance
+#'
+#' @description
+#' Deletes the resource policy of the S3 Access Grants instance. The resource policy is used to manage cross-account access to your S3 Access Grants instance. By deleting the resource policy, you delete any cross-account permissions to your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance_resource_policy/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_grants_instance_resource_policy
+s3control_delete_access_grants_instance_resource_policy <- function(AccountId) {
+  op <- new_operation(
+    name = "DeleteAccessGrantsInstanceResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
+    paginator = list()
+  )
+  input <- .s3control$delete_access_grants_instance_resource_policy_input(AccountId = AccountId)
+  output <- .s3control$delete_access_grants_instance_resource_policy_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_grants_instance_resource_policy <- s3control_delete_access_grants_instance_resource_policy
+
+#' Deregisters a location from your S3 Access Grants instance
+#'
+#' @description
+#' Deregisters a location from your S3 Access Grants instance. You can only delete a location registration from an S3 Access Grants instance if there are no grants associated with this location. See [Delete a grant](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessGrant.html) for information on how to delete grants. You need to have at least one registered location in your S3 Access Grants instance in order to create access grants.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_location/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are deregistering from your
+#' S3 Access Grants instance. S3 Access Grants assigned this ID when you
+#' registered the location. S3 Access Grants assigns the ID `default` to
+#' the default location `s3://` and assigns an auto-generated ID to other
+#' locations that you register.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_access_grants_location
+s3control_delete_access_grants_location <- function(AccountId, AccessGrantsLocationId) {
+  op <- new_operation(
+    name = "DeleteAccessGrantsLocation",
+    http_method = "DELETE",
+    http_path = "/v20180820/accessgrantsinstance/location/{id}",
+    paginator = list()
+  )
+  input <- .s3control$delete_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId)
+  output <- .s3control$delete_access_grants_location_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_access_grants_location <- s3control_delete_access_grants_location
+
+#' This operation is not supported by directory buckets
+#'
+#' @description
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point/) for full documentation.
 #'
@@ -283,10 +628,10 @@ s3control_delete_access_point <- function(AccountId, Name) {
 }
 .s3control$operations$delete_access_point <- s3control_delete_access_point
 
-#' Deletes the specified Object Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the specified Object Lambda Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point_for_object_lambda/) for full documentation.
 #'
@@ -314,10 +659,10 @@ s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
 }
 .s3control$operations$delete_access_point_for_object_lambda <- s3control_delete_access_point_for_object_lambda
 
-#' Deletes the access point policy for the specified access point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the access point policy for the specified access point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy/) for full documentation.
 #'
@@ -357,10 +702,10 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
 }
 .s3control$operations$delete_access_point_policy <- s3control_delete_access_point_policy
 
-#' Removes the resource policy for an Object Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Removes the resource policy for an Object Lambda Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy_for_object_lambda/) for full documentation.
 #'
@@ -612,7 +957,7 @@ s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
 #' Removes the entire tag set from the specified S3 Batch Operations job
 #'
 #' @description
-#' Removes the entire tag set from the specified S3 Batch Operations job. To use the [`delete_job_tagging`][s3control_delete_job_tagging] operation, you must have permission to perform the `s3:DeleteJobTagging` action. For more information, see [Controlling access and labeling jobs using tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags) in the *Amazon S3 User Guide*.
+#' Removes the entire tag set from the specified S3 Batch Operations job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_job_tagging/](https://www.paws-r-sdk.com/docs/s3control_delete_job_tagging/) for full documentation.
 #'
@@ -640,10 +985,10 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
 }
 .s3control$operations$delete_job_tagging <- s3control_delete_job_tagging
 
-#' Deletes a Multi-Region Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes a Multi-Region Access Point. This action does not delete the buckets associated with the Multi-Region Access Point, only the Multi-Region Access Point itself.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_multi_region_access_point/](https://www.paws-r-sdk.com/docs/s3control_delete_multi_region_access_point/) for full documentation.
 #'
@@ -674,11 +1019,10 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
 }
 .s3control$operations$delete_multi_region_access_point <- s3control_delete_multi_region_access_point
 
-#' Removes the PublicAccessBlock configuration for an Amazon Web Services
-#' account
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Removes the `PublicAccessBlock` configuration for an Amazon Web Services account. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_public_access_block/](https://www.paws-r-sdk.com/docs/s3control_delete_public_access_block/) for full documentation.
 #'
@@ -705,10 +1049,10 @@ s3control_delete_public_access_block <- function(AccountId) {
 }
 .s3control$operations$delete_public_access_block <- s3control_delete_public_access_block
 
-#' Deletes the Amazon S3 Storage Lens configuration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration/](https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration/) for full documentation.
 #'
@@ -735,10 +1079,10 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
 }
 .s3control$operations$delete_storage_lens_configuration <- s3control_delete_storage_lens_configuration
 
-#' Deletes the Amazon S3 Storage Lens configuration tags
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the Amazon S3 Storage Lens configuration tags. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration_tagging/](https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration_tagging/) for full documentation.
 #'
@@ -764,6 +1108,37 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
   return(response)
 }
 .s3control$operations$delete_storage_lens_configuration_tagging <- s3control_delete_storage_lens_configuration_tagging
+
+#' Deletes an existing S3 Storage Lens group
+#'
+#' @description
+#' Deletes an existing S3 Storage Lens group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_group/](https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_group/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Storage Lens group that you're trying to delete.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID used to create the Storage Lens group
+#' that you're trying to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_storage_lens_group
+s3control_delete_storage_lens_group <- function(Name, AccountId) {
+  op <- new_operation(
+    name = "DeleteStorageLensGroup",
+    http_method = "DELETE",
+    http_path = "/v20180820/storagelensgroup/{name}",
+    paginator = list()
+  )
+  input <- .s3control$delete_storage_lens_group_input(Name = Name, AccountId = AccountId)
+  output <- .s3control$delete_storage_lens_group_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_storage_lens_group <- s3control_delete_storage_lens_group
 
 #' Retrieves the configuration parameters and status for a Batch Operations
 #' job
@@ -797,11 +1172,10 @@ s3control_describe_job <- function(AccountId, JobId) {
 }
 .s3control$operations$describe_job <- s3control_describe_job
 
-#' Retrieves the status of an asynchronous request to manage a Multi-Region
-#' Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Retrieves the status of an asynchronous request to manage a Multi-Region Access Point. For more information about managing Multi-Region Access Points and how asynchronous requests work, see [Managing Multi-Region Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_describe_multi_region_access_point_operation/](https://www.paws-r-sdk.com/docs/s3control_describe_multi_region_access_point_operation/) for full documentation.
 #'
@@ -832,10 +1206,193 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
 }
 .s3control$operations$describe_multi_region_access_point_operation <- s3control_describe_multi_region_access_point_operation
 
-#' Returns configuration information about the specified access point
+#' Dissociates the Amazon Web Services IAM Identity Center instance from
+#' the S3 Access Grants instance
 #'
 #' @description
-#' Returns configuration information about the specified access point.
+#' Dissociates the Amazon Web Services IAM Identity Center instance from the S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_dissociate_access_grants_identity_center/](https://www.paws-r-sdk.com/docs/s3control_dissociate_access_grants_identity_center/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_dissociate_access_grants_identity_center
+s3control_dissociate_access_grants_identity_center <- function(AccountId) {
+  op <- new_operation(
+    name = "DissociateAccessGrantsIdentityCenter",
+    http_method = "DELETE",
+    http_path = "/v20180820/accessgrantsinstance/identitycenter",
+    paginator = list()
+  )
+  input <- .s3control$dissociate_access_grants_identity_center_input(AccountId = AccountId)
+  output <- .s3control$dissociate_access_grants_identity_center_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$dissociate_access_grants_identity_center <- s3control_dissociate_access_grants_identity_center
+
+#' Get the details of an access grant from your S3 Access Grants instance
+#'
+#' @description
+#' Get the details of an access grant from your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grant/](https://www.paws-r-sdk.com/docs/s3control_get_access_grant/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
+#' you create the access grant.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_grant
+s3control_get_access_grant <- function(AccountId, AccessGrantId) {
+  op <- new_operation(
+    name = "GetAccessGrant",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/grant/{id}",
+    paginator = list()
+  )
+  input <- .s3control$get_access_grant_input(AccountId = AccountId, AccessGrantId = AccessGrantId)
+  output <- .s3control$get_access_grant_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_grant <- s3control_get_access_grant
+
+#' Retrieves the S3 Access Grants instance for a Region in your account
+#'
+#' @description
+#' Retrieves the S3 Access Grants instance for a Region in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_grants_instance
+s3control_get_access_grants_instance <- function(AccountId) {
+  op <- new_operation(
+    name = "GetAccessGrantsInstance",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance",
+    paginator = list()
+  )
+  input <- .s3control$get_access_grants_instance_input(AccountId = AccountId)
+  output <- .s3control$get_access_grants_instance_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_grants_instance <- s3control_get_access_grants_instance
+
+#' Retrieve the S3 Access Grants instance that contains a particular prefix
+#'
+#' @description
+#' Retrieve the S3 Access Grants instance that contains a particular prefix.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_for_prefix/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_for_prefix/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param S3Prefix &#91;required&#93; The S3 prefix of the access grants that you would like to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_grants_instance_for_prefix
+s3control_get_access_grants_instance_for_prefix <- function(AccountId, S3Prefix) {
+  op <- new_operation(
+    name = "GetAccessGrantsInstanceForPrefix",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/prefix",
+    paginator = list()
+  )
+  input <- .s3control$get_access_grants_instance_for_prefix_input(AccountId = AccountId, S3Prefix = S3Prefix)
+  output <- .s3control$get_access_grants_instance_for_prefix_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_grants_instance_for_prefix <- s3control_get_access_grants_instance_for_prefix
+
+#' Returns the resource policy of the S3 Access Grants instance
+#'
+#' @description
+#' Returns the resource policy of the S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_resource_policy/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_grants_instance_resource_policy
+s3control_get_access_grants_instance_resource_policy <- function(AccountId) {
+  op <- new_operation(
+    name = "GetAccessGrantsInstanceResourcePolicy",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
+    paginator = list()
+  )
+  input <- .s3control$get_access_grants_instance_resource_policy_input(AccountId = AccountId)
+  output <- .s3control$get_access_grants_instance_resource_policy_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_grants_instance_resource_policy <- s3control_get_access_grants_instance_resource_policy
+
+#' Retrieves the details of a particular location registered in your S3
+#' Access Grants instance
+#'
+#' @description
+#' Retrieves the details of a particular location registered in your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_location/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are retrieving. S3 Access
+#' Grants assigns this ID when you register the location. S3 Access Grants
+#' assigns the ID `default` to the default location `s3://` and assigns an
+#' auto-generated ID to other locations that you register.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_access_grants_location
+s3control_get_access_grants_location <- function(AccountId, AccessGrantsLocationId) {
+  op <- new_operation(
+    name = "GetAccessGrantsLocation",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/location/{id}",
+    paginator = list()
+  )
+  input <- .s3control$get_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId)
+  output <- .s3control$get_access_grants_location_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_access_grants_location <- s3control_get_access_grants_location
+
+#' This operation is not supported by directory buckets
+#'
+#' @description
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point/](https://www.paws-r-sdk.com/docs/s3control_get_access_point/) for full documentation.
 #'
@@ -877,10 +1434,10 @@ s3control_get_access_point <- function(AccountId, Name) {
 }
 .s3control$operations$get_access_point <- s3control_get_access_point
 
-#' Returns configuration for an Object Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns configuration for an Object Lambda Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_configuration_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_configuration_for_object_lambda/) for full documentation.
 #'
@@ -909,11 +1466,10 @@ s3control_get_access_point_configuration_for_object_lambda <- function(AccountId
 }
 .s3control$operations$get_access_point_configuration_for_object_lambda <- s3control_get_access_point_configuration_for_object_lambda
 
-#' Returns configuration information about the specified Object Lambda
-#' Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns configuration information about the specified Object Lambda Access Point
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_for_object_lambda/) for full documentation.
 #'
@@ -941,11 +1497,10 @@ s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
 }
 .s3control$operations$get_access_point_for_object_lambda <- s3control_get_access_point_for_object_lambda
 
-#' Returns the access point policy associated with the specified access
-#' point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the access point policy associated with the specified access point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy/) for full documentation.
 #'
@@ -985,10 +1540,10 @@ s3control_get_access_point_policy <- function(AccountId, Name) {
 }
 .s3control$operations$get_access_point_policy <- s3control_get_access_point_policy
 
-#' Returns the resource policy for an Object Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the resource policy for an Object Lambda Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_for_object_lambda/) for full documentation.
 #'
@@ -1016,11 +1571,10 @@ s3control_get_access_point_policy_for_object_lambda <- function(AccountId, Name)
 }
 .s3control$operations$get_access_point_policy_for_object_lambda <- s3control_get_access_point_policy_for_object_lambda
 
-#' Indicates whether the specified access point currently has a policy that
-#' allows public access
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see [Managing Data Access with Amazon S3 access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status/) for full documentation.
 #'
@@ -1047,11 +1601,10 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
 }
 .s3control$operations$get_access_point_policy_status <- s3control_get_access_point_policy_status
 
-#' Returns the status of the resource policy associated with an Object
-#' Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the status of the resource policy associated with an Object Lambda Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status_for_object_lambda/) for full documentation.
 #'
@@ -1327,10 +1880,70 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 }
 .s3control$operations$get_bucket_versioning <- s3control_get_bucket_versioning
 
+#' Returns a temporary access credential from S3 Access Grants to the
+#' grantee or client application
+#'
+#' @description
+#' Returns a temporary access credential from S3 Access Grants to the grantee or client application. The [temporary credential](https://docs.aws.amazon.com/STS/latest/APIReference/API_Credentials.html) is an Amazon Web Services STS token that grants them access to the S3 data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_data_access/](https://www.paws-r-sdk.com/docs/s3control_get_data_access/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param Target &#91;required&#93; The S3 URI path of the data to which you are requesting temporary access
+#' credentials. If the requesting account has an access grant for this
+#' data, S3 Access Grants vends temporary access credentials in the
+#' response.
+#' @param Permission &#91;required&#93; The type of permission granted to your S3 data, which can be set to one
+#' of the following values:
+#' 
+#' -   `READ` – Grant read-only access to the S3 data.
+#' 
+#' -   `WRITE` – Grant write-only access to the S3 data.
+#' 
+#' -   `READWRITE` – Grant both read and write access to the S3 data.
+#' @param DurationSeconds The session duration, in seconds, of the temporary access credential
+#' that S3 Access Grants vends to the grantee or client application. The
+#' default value is 1 hour, but the grantee can specify a range from 900
+#' seconds (15 minutes) up to 43200 seconds (12 hours). If the grantee
+#' requests a value higher than this maximum, the operation fails.
+#' @param Privilege The scope of the temporary access credential that S3 Access Grants vends
+#' to the grantee or client application.
+#' 
+#' -   `Default` – The scope of the returned temporary access token is the
+#'     scope of the grant that is closest to the target scope.
+#' 
+#' -   `Minimal` – The scope of the returned temporary access token is the
+#'     same as the requested target scope as long as the requested scope is
+#'     the same as or a subset of the grant scope.
+#' @param TargetType The type of `Target`. The only possible value is `Object`. Pass this
+#' value if the target data that you would like to access is a path to an
+#' object. Do not pass this value if the target data is a bucket or a
+#' bucket and a prefix.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_data_access
+s3control_get_data_access <- function(AccountId, Target, Permission, DurationSeconds = NULL, Privilege = NULL, TargetType = NULL) {
+  op <- new_operation(
+    name = "GetDataAccess",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/dataaccess",
+    paginator = list()
+  )
+  input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType)
+  output <- .s3control$get_data_access_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_data_access <- s3control_get_data_access
+
 #' Returns the tags on an S3 Batch Operations job
 #'
 #' @description
-#' Returns the tags on an S3 Batch Operations job. To use the [`get_job_tagging`][s3control_get_job_tagging] operation, you must have permission to perform the `s3:GetJobTagging` action. For more information, see [Controlling access and labeling jobs using tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags) in the *Amazon S3 User Guide*.
+#' Returns the tags on an S3 Batch Operations job.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_job_tagging/](https://www.paws-r-sdk.com/docs/s3control_get_job_tagging/) for full documentation.
 #'
@@ -1358,11 +1971,10 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
 }
 .s3control$operations$get_job_tagging <- s3control_get_job_tagging
 
-#' Returns configuration information about the specified Multi-Region
-#' Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns configuration information about the specified Multi-Region Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point/) for full documentation.
 #'
@@ -1396,11 +2008,10 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
 }
 .s3control$operations$get_multi_region_access_point <- s3control_get_multi_region_access_point
 
-#' Returns the access control policy of the specified Multi-Region Access
-#' Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the access control policy of the specified Multi-Region Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy/) for full documentation.
 #'
@@ -1433,11 +2044,10 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
 }
 .s3control$operations$get_multi_region_access_point_policy <- s3control_get_multi_region_access_point_policy
 
-#' Indicates whether the specified Multi-Region Access Point has an access
-#' control policy that allows public access
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Indicates whether the specified Multi-Region Access Point has an access control policy that allows public access.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy_status/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy_status/) for full documentation.
 #'
@@ -1470,11 +2080,10 @@ s3control_get_multi_region_access_point_policy_status <- function(AccountId, Nam
 }
 .s3control$operations$get_multi_region_access_point_policy_status <- s3control_get_multi_region_access_point_policy_status
 
-#' Returns the routing configuration for a Multi-Region Access Point,
-#' indicating which Regions are active or passive
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the routing configuration for a Multi-Region Access Point, indicating which Regions are active or passive.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_routes/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_routes/) for full documentation.
 #'
@@ -1502,11 +2111,10 @@ s3control_get_multi_region_access_point_routes <- function(AccountId, Mrap) {
 }
 .s3control$operations$get_multi_region_access_point_routes <- s3control_get_multi_region_access_point_routes
 
-#' Retrieves the PublicAccessBlock configuration for an Amazon Web Services
-#' account
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Retrieves the `PublicAccessBlock` configuration for an Amazon Web Services account. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_public_access_block/](https://www.paws-r-sdk.com/docs/s3control_get_public_access_block/) for full documentation.
 #'
@@ -1533,10 +2141,10 @@ s3control_get_public_access_block <- function(AccountId) {
 }
 .s3control$operations$get_public_access_block <- s3control_get_public_access_block
 
-#' Gets the Amazon S3 Storage Lens configuration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets the Amazon S3 Storage Lens configuration. For more information, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*. For a complete list of S3 Storage Lens metrics, see [S3 Storage Lens metrics glossary](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration/](https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration/) for full documentation.
 #'
@@ -1563,10 +2171,10 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
 }
 .s3control$operations$get_storage_lens_configuration <- s3control_get_storage_lens_configuration
 
-#' Gets the tags of Amazon S3 Storage Lens configuration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets the tags of Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration_tagging/](https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration_tagging/) for full documentation.
 #'
@@ -1593,11 +2201,193 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 }
 .s3control$operations$get_storage_lens_configuration_tagging <- s3control_get_storage_lens_configuration_tagging
 
-#' Returns a list of the access points that are owned by the current
-#' account that's associated with the specified bucket
+#' Retrieves the Storage Lens group configuration details
 #'
 #' @description
-#' Returns a list of the access points that are owned by the current account that's associated with the specified bucket. You can retrieve up to 1000 access points per call. If the specified bucket has more than 1,000 access points (or the number specified in `maxResults`, whichever is less), the response will include a continuation token that you can use to list the additional access points.
+#' Retrieves the Storage Lens group configuration details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_group/](https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_group/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Storage Lens group that you're trying to retrieve the
+#' configuration details for.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the Storage Lens
+#' group that you're trying to retrieve the details for.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_storage_lens_group
+s3control_get_storage_lens_group <- function(Name, AccountId) {
+  op <- new_operation(
+    name = "GetStorageLensGroup",
+    http_method = "GET",
+    http_path = "/v20180820/storagelensgroup/{name}",
+    paginator = list()
+  )
+  input <- .s3control$get_storage_lens_group_input(Name = Name, AccountId = AccountId)
+  output <- .s3control$get_storage_lens_group_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_storage_lens_group <- s3control_get_storage_lens_group
+
+#' Returns the list of access grants in your S3 Access Grants instance
+#'
+#' @description
+#' Returns the list of access grants in your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param NextToken A pagination token to request the next page of results. Pass this value
+#' into a subsequent `List Access Grants` request in order to retrieve the
+#' next page of results.
+#' @param MaxResults The maximum number of access grants that you would like returned in the
+#' `List Access Grants` response. If the results include the pagination
+#' token `NextToken`, make another call using the `NextToken` to determine
+#' if there are more results.
+#' @param GranteeType The type of the grantee to which access has been granted. It can be one
+#' of the following values:
+#' 
+#' -   `IAM` - An IAM user or role.
+#' 
+#' -   `DIRECTORY_USER` - Your corporate directory user. You can use this
+#'     option if you have added your corporate identity directory to IAM
+#'     Identity Center and associated the IAM Identity Center instance with
+#'     your S3 Access Grants instance.
+#' 
+#' -   `DIRECTORY_GROUP` - Your corporate directory group. You can use this
+#'     option if you have added your corporate identity directory to IAM
+#'     Identity Center and associated the IAM Identity Center instance with
+#'     your S3 Access Grants instance.
+#' @param GranteeIdentifier The unique identifer of the `Grantee`. If the grantee type is `IAM`, the
+#' identifier is the IAM Amazon Resource Name (ARN) of the user or role. If
+#' the grantee type is a directory user or group, the identifier is 128-bit
+#' universally unique identifier (UUID) in the format
+#' `a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`. You can obtain this UUID from
+#' your Amazon Web Services IAM Identity Center instance.
+#' @param Permission The type of permission granted to your S3 data, which can be set to one
+#' of the following values:
+#' 
+#' -   `READ` – Grant read-only access to the S3 data.
+#' 
+#' -   `WRITE` – Grant write-only access to the S3 data.
+#' 
+#' -   `READWRITE` – Grant both read and write access to the S3 data.
+#' @param GrantScope The S3 path of the data to which you are granting access. It is the
+#' result of appending the `Subprefix` to the location scope.
+#' @param ApplicationArn The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity
+#' Center application associated with your Identity Center instance. If the
+#' grant includes an application ARN, the grantee can only access the S3
+#' data through this application.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_access_grants
+s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults = NULL, GranteeType = NULL, GranteeIdentifier = NULL, Permission = NULL, GrantScope = NULL, ApplicationArn = NULL) {
+  op <- new_operation(
+    name = "ListAccessGrants",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/grants",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .s3control$list_access_grants_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, GranteeType = GranteeType, GranteeIdentifier = GranteeIdentifier, Permission = Permission, GrantScope = GrantScope, ApplicationArn = ApplicationArn)
+  output <- .s3control$list_access_grants_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_access_grants <- s3control_list_access_grants
+
+#' Returns a list of S3 Access Grants instances
+#'
+#' @description
+#' Returns a list of S3 Access Grants instances. An S3 Access Grants instance serves as a logical grouping for your individual access grants. You can only have one S3 Access Grants instance per Region per account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants_instances/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants_instances/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param NextToken A pagination token to request the next page of results. Pass this value
+#' into a subsequent `List Access Grants Instances` request in order to
+#' retrieve the next page of results.
+#' @param MaxResults The maximum number of access grants that you would like returned in the
+#' `List Access Grants` response. If the results include the pagination
+#' token `NextToken`, make another call using the `NextToken` to determine
+#' if there are more results.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_access_grants_instances
+s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAccessGrantsInstances",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstances",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .s3control$list_access_grants_instances_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .s3control$list_access_grants_instances_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_access_grants_instances <- s3control_list_access_grants_instances
+
+#' Returns a list of the locations registered in your S3 Access Grants
+#' instance
+#'
+#' @description
+#' Returns a list of the locations registered in your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants_locations/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants_locations/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param NextToken A pagination token to request the next page of results. Pass this value
+#' into a subsequent `List Access Grants Locations` request in order to
+#' retrieve the next page of results.
+#' @param MaxResults The maximum number of access grants that you would like returned in the
+#' `List Access Grants` response. If the results include the pagination
+#' token `NextToken`, make another call using the `NextToken` to determine
+#' if there are more results.
+#' @param LocationScope The S3 path to the location that you are registering. The location scope
+#' can be the default S3 location `s3://`, the S3 path to a bucket
+#' `s3://<bucket>`, or the S3 path to a bucket and prefix
+#' `s3://<bucket>/<prefix>`. A prefix in S3 is a string of characters at
+#' the beginning of an object key name used to organize the objects that
+#' you store in your S3 buckets. For example, object key names that start
+#' with the `engineering/` prefix or object key names that start with the
+#' `marketing/campaigns/` prefix.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_access_grants_locations
+s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, MaxResults = NULL, LocationScope = NULL) {
+  op <- new_operation(
+    name = "ListAccessGrantsLocations",
+    http_method = "GET",
+    http_path = "/v20180820/accessgrantsinstance/locations",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .s3control$list_access_grants_locations_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, LocationScope = LocationScope)
+  output <- .s3control$list_access_grants_locations_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_access_grants_locations <- s3control_list_access_grants_locations
+
+#' This operation is not supported by directory buckets
+#'
+#' @description
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_points/](https://www.paws-r-sdk.com/docs/s3control_list_access_points/) for full documentation.
 #'
@@ -1647,11 +2437,10 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 }
 .s3control$operations$list_access_points <- s3control_list_access_points
 
-#' Returns some or all (up to 1,000) access points associated with the
-#' Object Lambda Access Point per call
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns some or all (up to 1,000) access points associated with the Object Lambda Access Point per call. If there are more access points than what can be returned in one call, the response will include a continuation token that you can use to list the additional access points.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_points_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_list_access_points_for_object_lambda/) for full documentation.
 #'
@@ -1686,11 +2475,12 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
 }
 .s3control$operations$list_access_points_for_object_lambda <- s3control_list_access_points_for_object_lambda
 
-#' Lists current S3 Batch Operations jobs and jobs that have ended within
-#' the last 30 days for the Amazon Web Services account making the request
+#' Lists current S3 Batch Operations jobs as well as the jobs that have
+#' ended within the last 30 days for the Amazon Web Services account making
+#' the request
 #'
 #' @description
-#' Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
+#' Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_jobs/](https://www.paws-r-sdk.com/docs/s3control_list_jobs/) for full documentation.
 #'
@@ -1726,11 +2516,10 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
 }
 .s3control$operations$list_jobs <- s3control_list_jobs
 
-#' Returns a list of the Multi-Region Access Points currently associated
-#' with the specified Amazon Web Services account
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns a list of the Multi-Region Access Points currently associated with the specified Amazon Web Services account. Each call can return up to 100 Multi-Region Access Points, the maximum number of Multi-Region Access Points that can be associated with a single account.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_multi_region_access_points/](https://www.paws-r-sdk.com/docs/s3control_list_multi_region_access_points/) for full documentation.
 #'
@@ -1759,11 +2548,10 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
 }
 .s3control$operations$list_multi_region_access_points <- s3control_list_multi_region_access_points
 
-#' Returns a list of all Outposts buckets in an Outpost that are owned by
-#' the authenticated sender of the request
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_regional_buckets/](https://www.paws-r-sdk.com/docs/s3control_list_regional_buckets/) for full documentation.
 #'
@@ -1794,10 +2582,10 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
 }
 .s3control$operations$list_regional_buckets <- s3control_list_regional_buckets
 
-#' Gets a list of Amazon S3 Storage Lens configurations
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets a list of Amazon S3 Storage Lens configurations. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_storage_lens_configurations/](https://www.paws-r-sdk.com/docs/s3control_list_storage_lens_configurations/) for full documentation.
 #'
@@ -1824,10 +2612,107 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
 }
 .s3control$operations$list_storage_lens_configurations <- s3control_list_storage_lens_configurations
 
-#' Replaces configuration for an Object Lambda Access Point
+#' Lists all the Storage Lens groups in the specified home Region
 #'
 #' @description
-#' Replaces configuration for an Object Lambda Access Point.
+#' Lists all the Storage Lens groups in the specified home Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_storage_lens_groups/](https://www.paws-r-sdk.com/docs/s3control_list_storage_lens_groups/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the Storage Lens groups.
+#' @param NextToken The token for the next set of results, or `null` if there are no more
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_storage_lens_groups
+s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListStorageLensGroups",
+    http_method = "GET",
+    http_path = "/v20180820/storagelensgroup",
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
+  )
+  input <- .s3control$list_storage_lens_groups_input(AccountId = AccountId, NextToken = NextToken)
+  output <- .s3control$list_storage_lens_groups_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_storage_lens_groups <- s3control_list_storage_lens_groups
+
+#' This operation allows you to list all the Amazon Web Services resource
+#' tags for a specified resource
+#'
+#' @description
+#' This operation allows you to list all the Amazon Web Services resource tags for a specified resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/s3control_list_tags_for_resource/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the resource owner.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you want to list
+#' the tags for. The tagged resource can be an S3 Storage Lens group or S3
+#' Access Grants instance, registered location, or grant.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_list_tags_for_resource
+s3control_list_tags_for_resource <- function(AccountId, ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v20180820/tags/{resourceArn+}",
+    paginator = list()
+  )
+  input <- .s3control$list_tags_for_resource_input(AccountId = AccountId, ResourceArn = ResourceArn)
+  output <- .s3control$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$list_tags_for_resource <- s3control_list_tags_for_resource
+
+#' Updates the resource policy of the S3 Access Grants instance
+#'
+#' @description
+#' Updates the resource policy of the S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_put_access_grants_instance_resource_policy/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param Policy &#91;required&#93; The resource policy of the S3 Access Grants instance that you are
+#' updating.
+#' @param Organization The Organization of the resource policy of the S3 Access Grants
+#' instance.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_put_access_grants_instance_resource_policy
+s3control_put_access_grants_instance_resource_policy <- function(AccountId, Policy, Organization = NULL) {
+  op <- new_operation(
+    name = "PutAccessGrantsInstanceResourcePolicy",
+    http_method = "PUT",
+    http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
+    paginator = list()
+  )
+  input <- .s3control$put_access_grants_instance_resource_policy_input(AccountId = AccountId, Policy = Policy, Organization = Organization)
+  output <- .s3control$put_access_grants_instance_resource_policy_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$put_access_grants_instance_resource_policy <- s3control_put_access_grants_instance_resource_policy
+
+#' This operation is not supported by directory buckets
+#'
+#' @description
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_access_point_configuration_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_put_access_point_configuration_for_object_lambda/) for full documentation.
 #'
@@ -1856,10 +2741,10 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 }
 .s3control$operations$put_access_point_configuration_for_object_lambda <- s3control_put_access_point_configuration_for_object_lambda
 
-#' Associates an access policy with the specified access point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API replaces any existing policy associated with the specified access point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy/) for full documentation.
 #'
@@ -1906,10 +2791,10 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
 }
 .s3control$operations$put_access_point_policy <- s3control_put_access_point_policy
 
-#' Creates or replaces resource policy for an Object Lambda Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates or replaces resource policy for an Object Lambda Access Point. For an example policy, see [Creating Object Lambda Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-create.html#olap-create-cli) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy_for_object_lambda/) for full documentation.
 #'
@@ -2172,11 +3057,10 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
 }
 .s3control$operations$put_job_tagging <- s3control_put_job_tagging
 
-#' Associates an access control policy with the specified Multi-Region
-#' Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Associates an access control policy with the specified Multi-Region Access Point. Each Multi-Region Access Point can have only one policy, so a request made to this action replaces any existing policy that is associated with the specified Multi-Region Access Point.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_multi_region_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_put_multi_region_access_point_policy/) for full documentation.
 #'
@@ -2207,11 +3091,10 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
 }
 .s3control$operations$put_multi_region_access_point_policy <- s3control_put_multi_region_access_point_policy
 
-#' Creates or modifies the PublicAccessBlock configuration for an Amazon
-#' Web Services account
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon Web Services account. For this operation, users must have the `s3:PutAccountPublicAccessBlock` permission. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_public_access_block/](https://www.paws-r-sdk.com/docs/s3control_put_public_access_block/) for full documentation.
 #'
@@ -2240,10 +3123,10 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 }
 .s3control$operations$put_public_access_block <- s3control_put_public_access_block
 
-#' Puts an Amazon S3 Storage Lens configuration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Puts an Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Working with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*. For a complete list of S3 Storage Lens metrics, see [S3 Storage Lens metrics glossary](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration/](https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration/) for full documentation.
 #'
@@ -2274,10 +3157,10 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
 }
 .s3control$operations$put_storage_lens_configuration <- s3control_put_storage_lens_configuration
 
-#' Put or replace tags on an existing Amazon S3 Storage Lens configuration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Put or replace tags on an existing Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration_tagging/](https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration_tagging/) for full documentation.
 #'
@@ -2307,10 +3190,10 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 }
 .s3control$operations$put_storage_lens_configuration_tagging <- s3control_put_storage_lens_configuration_tagging
 
-#' Submits an updated route configuration for a Multi-Region Access Point
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Submits an updated route configuration for a Multi-Region Access Point. This API operation updates the routing status for the specified Regions from active to passive, or from passive to active. A value of `0` indicates a passive status, which means that traffic won't be routed to the specified Region. A value of `100` indicates an active status, which means that traffic will be routed to the specified Region. At least one Region must be active at all times.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_submit_multi_region_access_point_routes/](https://www.paws-r-sdk.com/docs/s3control_submit_multi_region_access_point_routes/) for full documentation.
 #'
@@ -2340,6 +3223,123 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
   return(response)
 }
 .s3control$operations$submit_multi_region_access_point_routes <- s3control_submit_multi_region_access_point_routes
+
+#' Creates a new Amazon Web Services resource tag or updates an existing
+#' resource tag
+#'
+#' @description
+#' Creates a new Amazon Web Services resource tag or updates an existing resource tag. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources. You can add up to 50 Amazon Web Services resource tags for each S3 resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_tag_resource/](https://www.paws-r-sdk.com/docs/s3control_tag_resource/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that created the S3 resource that
+#' you're trying to add tags to or the requester's account ID.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're trying to
+#' add tags to. The tagged resource can be an S3 Storage Lens group or S3
+#' Access Grants instance, registered location, or grant.
+#' @param Tags &#91;required&#93; The Amazon Web Services resource tags that you want to add to the
+#' specified S3 resource.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_tag_resource
+s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v20180820/tags/{resourceArn+}",
+    paginator = list()
+  )
+  input <- .s3control$tag_resource_input(AccountId = AccountId, ResourceArn = ResourceArn, Tags = Tags)
+  output <- .s3control$tag_resource_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$tag_resource <- s3control_tag_resource
+
+#' This operation removes the specified Amazon Web Services resource tags
+#' from an S3 resource
+#'
+#' @description
+#' This operation removes the specified Amazon Web Services resource tags from an S3 resource. Each tag is a label consisting of a user-defined key and value. Tags can help you manage, identify, organize, search for, and filter resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_untag_resource/](https://www.paws-r-sdk.com/docs/s3control_untag_resource/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the resource that you're
+#' trying to remove the tags from.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 resource that you're trying to
+#' remove the tags from.
+#' @param TagKeys &#91;required&#93; The array of tag key-value pairs that you're trying to remove from of
+#' the S3 resource.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_untag_resource
+s3control_untag_resource <- function(AccountId, ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v20180820/tags/{resourceArn+}",
+    paginator = list()
+  )
+  input <- .s3control$untag_resource_input(AccountId = AccountId, ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .s3control$untag_resource_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$untag_resource <- s3control_untag_resource
+
+#' Updates the IAM role of a registered location in your S3 Access Grants
+#' instance
+#'
+#' @description
+#' Updates the IAM role of a registered location in your S3 Access Grants instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_update_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_update_access_grants_location/) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
+#' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are updating. S3 Access
+#' Grants assigns this ID when you register the location. S3 Access Grants
+#' assigns the ID `default` to the default location `s3://` and assigns an
+#' auto-generated ID to other locations that you register.
+#' 
+#' The ID of the registered location to which you are granting access. S3
+#' Access Grants assigned this ID when you registered the location. S3
+#' Access Grants assigns the ID `default` to the default location `s3://`
+#' and assigns an auto-generated ID to other locations that you register.
+#' 
+#' If you are passing the `default` location, you cannot create an access
+#' grant for the entire default location. You must also specify a bucket or
+#' a bucket and prefix in the `Subprefix` field.
+#' @param IAMRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role for the registered
+#' location. S3 Access Grants assumes this role to manage access to the
+#' registered location.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_update_access_grants_location
+s3control_update_access_grants_location <- function(AccountId, AccessGrantsLocationId, IAMRoleArn) {
+  op <- new_operation(
+    name = "UpdateAccessGrantsLocation",
+    http_method = "PUT",
+    http_path = "/v20180820/accessgrantsinstance/location/{id}",
+    paginator = list()
+  )
+  input <- .s3control$update_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId, IAMRoleArn = IAMRoleArn)
+  output <- .s3control$update_access_grants_location_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$update_access_grants_location <- s3control_update_access_grants_location
 
 #' Updates an existing S3 Batch Operations job's priority
 #'
@@ -2376,7 +3376,7 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 #' Updates the status for the specified job
 #'
 #' @description
-#' Updates the status for the specified job. Use this action to confirm that you want to run a job or to cancel an existing job. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
+#' Updates the status for the specified job. Use this operation to confirm that you want to run a job or to cancel an existing job. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_update_job_status/](https://www.paws-r-sdk.com/docs/s3control_update_job_status/) for full documentation.
 #'
@@ -2406,3 +3406,34 @@ s3control_update_job_status <- function(AccountId, JobId, RequestedJobStatus, St
   return(response)
 }
 .s3control$operations$update_job_status <- s3control_update_job_status
+
+#' Updates the existing Storage Lens group
+#'
+#' @description
+#' Updates the existing Storage Lens group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3control_update_storage_lens_group/](https://www.paws-r-sdk.com/docs/s3control_update_storage_lens_group/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Storage Lens group that you want to update.
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Storage Lens group owner.
+#' @param StorageLensGroup &#91;required&#93; The JSON file that contains the Storage Lens group configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_update_storage_lens_group
+s3control_update_storage_lens_group <- function(Name, AccountId, StorageLensGroup) {
+  op <- new_operation(
+    name = "UpdateStorageLensGroup",
+    http_method = "PUT",
+    http_path = "/v20180820/storagelensgroup/{name}",
+    paginator = list()
+  )
+  input <- .s3control$update_storage_lens_group_input(Name = Name, AccountId = AccountId, StorageLensGroup = StorageLensGroup)
+  output <- .s3control$update_storage_lens_group_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$update_storage_lens_group <- s3control_update_storage_lens_group

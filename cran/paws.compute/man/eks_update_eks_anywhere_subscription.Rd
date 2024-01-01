@@ -7,7 +7,7 @@
 eks_update_eks_anywhere_subscription(id, autoRenew, clientRequestToken = NULL)
 }
 \arguments{
-\item{id}{[required]}
+\item{id}{[required] The ID of the subscription.}
 
 \item{autoRenew}{[required] A boolean indicating whether or not to automatically renew the
 subscription.}

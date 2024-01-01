@@ -29,6 +29,10 @@ NULL
 #' 
 #' **Related operations**:
 #' [`schedule_key_deletion`][kms_schedule_key_deletion]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_cancel_key_deletion(KeyId)
@@ -200,6 +204,10 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' -   [`disconnect_custom_key_store`][kms_disconnect_custom_key_store]
 #' 
 #' -   [`update_custom_key_store`][kms_update_custom_key_store]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_connect_custom_key_store(CustomKeyStoreId)
@@ -316,6 +324,10 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' -   [`list_aliases`][kms_list_aliases]
 #' 
 #' -   [`update_alias`][kms_update_alias]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_create_alias(AliasName, TargetKeyId)
@@ -497,6 +509,10 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' -   [`disconnect_custom_key_store`][kms_disconnect_custom_key_store]
 #' 
 #' -   [`update_custom_key_store`][kms_update_custom_key_store]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_create_custom_key_store(CustomKeyStoreName, CloudHsmClusterId,
@@ -812,6 +828,10 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' -   [`retire_grant`][kms_retire_grant]
 #' 
 #' -   [`revoke_grant`][kms_revoke_grant]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_create_grant(KeyId, GranteePrincipal, RetiringPrincipal, Operations,
@@ -1218,6 +1238,10 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' -   [`list_keys`][kms_list_keys]
 #' 
 #' -   [`schedule_key_deletion`][kms_schedule_key_deletion]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,
@@ -1739,11 +1763,11 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' or any Amazon Web Services SDK. Use the `Recipient` parameter to provide
 #' the attestation document for the enclave. Instead of the plaintext data,
 #' the response includes the plaintext data encrypted with the public key
-#' from the attestation document (`CiphertextForRecipient`).For information
-#' about the interaction between KMS and Amazon Web Services Nitro
-#' Enclaves, see [How Amazon Web Services Nitro Enclaves uses
+#' from the attestation document (`CiphertextForRecipient`). For
+#' information about the interaction between KMS and Amazon Web Services
+#' Nitro Enclaves, see [How Amazon Web Services Nitro Enclaves uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
-#' in the *Key Management Service Developer Guide*..
+#' in the *Key Management Service Developer Guide*.
 #' 
 #' The KMS key that you use for this operation must be in a compatible key
 #' state. For details, see [Key states of KMS
@@ -1767,6 +1791,10 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' -   [`generate_data_key_pair`][kms_generate_data_key_pair]
 #' 
 #' -   [`re_encrypt`][kms_re_encrypt]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
@@ -1842,7 +1870,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' represents the only supported algorithm that is valid for symmetric
 #' encryption KMS keys.
 #' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
+#' document](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc)
 #' from an Amazon Web Services Nitro enclave and the encryption algorithm
 #' to use with the enclave's public key. The only valid encryption
 #' algorithm is `RSAES_OAEP_SHA_256`.
@@ -2003,6 +2031,10 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 #' -   [`list_aliases`][kms_list_aliases]
 #' 
 #' -   [`update_alias`][kms_update_alias]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_delete_alias(AliasName)
@@ -2116,6 +2148,10 @@ kms_delete_alias <- function(AliasName) {
 #' -   [`disconnect_custom_key_store`][kms_disconnect_custom_key_store]
 #' 
 #' -   [`update_custom_key_store`][kms_update_custom_key_store]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_delete_custom_key_store(CustomKeyStoreId)
@@ -2200,6 +2236,10 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' -   [`get_parameters_for_import`][kms_get_parameters_for_import]
 #' 
 #' -   [`import_key_material`][kms_import_key_material]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_delete_imported_key_material(KeyId)
@@ -2323,6 +2363,10 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' -   [`disconnect_custom_key_store`][kms_disconnect_custom_key_store]
 #' 
 #' -   [`update_custom_key_store`][kms_update_custom_key_store]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_describe_custom_key_stores(CustomKeyStoreId, CustomKeyStoreName,
@@ -2523,6 +2567,10 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' -   [`list_resource_tags`][kms_list_resource_tags]
 #' 
 #' -   [`list_retirable_grants`][kms_list_retirable_grants]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_describe_key(KeyId, GrantTokens)
@@ -2719,6 +2767,10 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' (key policy)
 #' 
 #' **Related operations**: [`enable_key`][kms_enable_key]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_disable_key(KeyId)
@@ -2830,6 +2882,10 @@ kms_disable_key <- function(KeyId) {
 #' -   [`enable_key_rotation`][kms_enable_key_rotation]
 #' 
 #' -   [`get_key_rotation_status`][kms_get_key_rotation_status]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_disable_key_rotation(KeyId)
@@ -2950,6 +3006,10 @@ kms_disable_key_rotation <- function(KeyId) {
 #' -   [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' 
 #' -   [`update_custom_key_store`][kms_update_custom_key_store]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_disconnect_custom_key_store(CustomKeyStoreId)
@@ -3025,6 +3085,10 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #' (key policy)
 #' 
 #' **Related operations**: [`disable_key`][kms_disable_key]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_enable_key(KeyId)
@@ -3091,7 +3155,7 @@ kms_enable_key <- function(KeyId) {
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 #' of the specified symmetric encryption KMS key.
 #' 
-#' When you enable automatic rotation of a[customer managed KMS
+#' When you enable automatic rotation of a [customer managed KMS
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk),
 #' KMS rotates the key material of the KMS key one year (approximately 365
 #' days) from the enable date and every year thereafter. You can monitor
@@ -3150,6 +3214,10 @@ kms_enable_key <- function(KeyId) {
 #' -   [`disable_key_rotation`][kms_disable_key_rotation]
 #' 
 #' -   [`get_key_rotation_status`][kms_get_key_rotation_status]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_enable_key_rotation(KeyId)
@@ -3307,6 +3375,10 @@ kms_enable_key_rotation <- function(KeyId) {
 #' -   [`generate_data_key`][kms_generate_data_key]
 #' 
 #' -   [`generate_data_key_pair`][kms_generate_data_key_pair]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_encrypt(KeyId, Plaintext, EncryptionContext, GrantTokens,
@@ -3567,6 +3639,10 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' -   [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext]
 #' 
 #' -   [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_generate_data_key(KeyId, EncryptionContext, NumberOfBytes, KeySpec,
@@ -3758,8 +3834,8 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' copy of the private key that is encrypted under the symmetric encryption
 #' KMS key you specify. You can use the data key pair to perform asymmetric
 #' cryptography and implement digital signatures outside of KMS. The bytes
-#' in the keys are random; they not related to the caller or to the KMS key
-#' that is used to encrypt the private key.
+#' in the keys are random; they are not related to the caller or to the KMS
+#' key that is used to encrypt the private key.
 #' 
 #' You can use the public key that
 #' [`generate_data_key_pair`][kms_generate_data_key_pair] returns to
@@ -3854,6 +3930,10 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' -   [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext]
 #' 
 #' -   [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_generate_data_key_pair(EncryptionContext, KeyId, KeyPairSpec,
@@ -4104,6 +4184,10 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' -   [`generate_data_key_pair`][kms_generate_data_key_pair]
 #' 
 #' -   [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_generate_data_key_pair_without_plaintext(EncryptionContext, KeyId,
@@ -4315,6 +4399,10 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' -   [`generate_data_key_pair`][kms_generate_data_key_pair]
 #' 
 #' -   [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
@@ -4483,6 +4571,10 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' (key policy)
 #' 
 #' **Related operations**: [`verify_mac`][kms_verify_mac]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_generate_mac(Message, KeyId, MacAlgorithm, GrantTokens, DryRun)
@@ -4616,6 +4708,10 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
 #' **Required permissions**:
 #' [kms:GenerateRandom](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
 #' (IAM policy)
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_generate_random(NumberOfBytes, CustomKeyStoreId, Recipient)
@@ -4733,6 +4829,10 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 #' (key policy)
 #' 
 #' **Related operations**: [`put_key_policy`][kms_put_key_policy]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_get_key_policy(KeyId, PolicyName)
@@ -4879,6 +4979,10 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' -   [`disable_key_rotation`][kms_disable_key_rotation]
 #' 
 #' -   [`enable_key_rotation`][kms_enable_key_rotation]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_get_key_rotation_status(KeyId)
@@ -5031,6 +5135,10 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' -   [`import_key_material`][kms_import_key_material]
 #' 
 #' -   [`delete_imported_key_material`][kms_delete_imported_key_material]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
@@ -5085,8 +5193,8 @@ kms_get_key_rotation_status <- function(KeyId) {
 #'     You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
 #'     RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
 #' 
-#' -   **RSAES_PKCS1_V1_5** (Deprecated) — Supported only for symmetric
-#'     encryption key material (and only in legacy mode).
+#' -   **RSAES_PKCS1_V1_5** (Deprecated) — As of October 10, 2023, KMS does
+#'     not support the RSAES_PKCS1_V1_5 wrapping algorithm.
 #' @param WrappingKeySpec &#91;required&#93; The type of RSA public key to return in the response. You will use this
 #' wrapping key with the specified wrapping algorithm to protect your key
 #' material during import.
@@ -5249,6 +5357,10 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' (key policy)
 #' 
 #' **Related operations**: [`create_key`][kms_create_key]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_get_public_key(KeyId, GrantTokens)
@@ -5482,6 +5594,10 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' -   [`delete_imported_key_material`][kms_delete_imported_key_material]
 #' 
 #' -   [`get_parameters_for_import`][kms_get_parameters_for_import]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
@@ -5657,6 +5773,10 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #' -   [`delete_alias`][kms_delete_alias]
 #' 
 #' -   [`update_alias`][kms_update_alias]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_list_aliases(KeyId, Limit, Marker)
@@ -5788,6 +5908,10 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' -   [`retire_grant`][kms_retire_grant]
 #' 
 #' -   [`revoke_grant`][kms_revoke_grant]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_list_grants(Limit, Marker, KeyId, GrantId, GranteePrincipal)
@@ -5915,6 +6039,10 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
 #' -   [`get_key_policy`][kms_get_key_policy]
 #' 
 #' -   [`put_key_policy`][kms_put_key_policy]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_list_key_policies(KeyId, Limit, Marker)
@@ -6018,6 +6146,10 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' -   [`list_aliases`][kms_list_aliases]
 #' 
 #' -   [`list_resource_tags`][kms_list_resource_tags]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_list_keys(Limit, Marker)
@@ -6111,6 +6243,10 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #' -   [`tag_resource`][kms_tag_resource]
 #' 
 #' -   [`untag_resource`][kms_untag_resource]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_list_resource_tags(KeyId, Limit, Marker)
@@ -6216,14 +6352,26 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' grants](https://docs.aws.amazon.com/kms/latest/developerguide/programming-grants.html).
 #' 
 #' **Cross-account use**: You must specify a principal in your Amazon Web
-#' Services account. However, this operation can return grants in any
-#' Amazon Web Services account. You do not need `kms:ListRetirableGrants`
-#' permission (or any other additional permission) in any Amazon Web
-#' Services account other than your own.
+#' Services account. This operation returns a list of grants where the
+#' retiring principal specified in the
+#' [`list_retirable_grants`][kms_list_retirable_grants] request is the same
+#' retiring principal on the grant. This can include grants on KMS keys
+#' owned by other Amazon Web Services accounts, but you do not need
+#' `kms:ListRetirableGrants` permission (or any other additional
+#' permission) in any Amazon Web Services account other than your own.
 #' 
 #' **Required permissions**:
 #' [kms:ListRetirableGrants](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
 #' (IAM policy) in your Amazon Web Services account.
+#' 
+#' KMS authorizes [`list_retirable_grants`][kms_list_retirable_grants]
+#' requests by evaluating the caller account's kms:ListRetirableGrants
+#' permissions. The authorized resource in
+#' [`list_retirable_grants`][kms_list_retirable_grants] calls is the
+#' retiring principal specified in the request. KMS does not evaluate the
+#' caller's permissions to verify their access to any KMS keys or grants
+#' that might be returned by the
+#' [`list_retirable_grants`][kms_list_retirable_grants] call.
 #' 
 #' **Related operations:**
 #' 
@@ -6234,6 +6382,10 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' -   [`retire_grant`][kms_retire_grant]
 #' 
 #' -   [`revoke_grant`][kms_revoke_grant]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_list_retirable_grants(Limit, Marker, RetiringPrincipal)
@@ -6355,6 +6507,10 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' (key policy)
 #' 
 #' **Related operations**: [`get_key_policy`][kms_get_key_policy]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_put_key_policy(KeyId, PolicyName, Policy,
@@ -6579,6 +6735,10 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' -   [`generate_data_key`][kms_generate_data_key]
 #' 
 #' -   [`generate_data_key_pair`][kms_generate_data_key_pair]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_re_encrypt(CiphertextBlob, SourceEncryptionContext, SourceKeyId,
@@ -6879,6 +7039,10 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' -   [`create_key`][kms_create_key]
 #' 
 #' -   [`update_primary_region`][kms_update_primary_region]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_replicate_key(KeyId, ReplicaRegion, Policy,
@@ -7177,7 +7341,7 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' **Cross-account use**: Yes. You can retire a grant on a KMS key in a
 #' different Amazon Web Services account.
 #' 
-#' **Required permissions:**:Permission to retire a grant is determined
+#' **Required permissions**: Permission to retire a grant is determined
 #' primarily by the grant. For details, see [Retiring and revoking
 #' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete)
 #' in the *Key Management Service Developer Guide*.
@@ -7191,6 +7355,10 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' -   [`list_retirable_grants`][kms_list_retirable_grants]
 #' 
 #' -   [`revoke_grant`][kms_revoke_grant]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_retire_grant(GrantToken, KeyId, GrantId, DryRun)
@@ -7305,6 +7473,10 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' -   [`list_retirable_grants`][kms_list_retirable_grants]
 #' 
 #' -   [`retire_grant`][kms_retire_grant]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_revoke_grant(KeyId, GrantId, DryRun)
@@ -7449,6 +7621,10 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #' -   [`cancel_key_deletion`][kms_cancel_key_deletion]
 #' 
 #' -   [`disable_key`][kms_disable_key]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_schedule_key_deletion(KeyId, PendingWindowInDays)
@@ -7598,6 +7774,10 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' (key policy)
 #' 
 #' **Related operations**: [`verify`][kms_verify]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm,
@@ -7819,6 +7999,10 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' -   [`replicate_key`][kms_replicate_key]
 #' 
 #' -   [`untag_resource`][kms_untag_resource]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_tag_resource(KeyId, Tags)
@@ -7944,6 +8128,10 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' -   [`replicate_key`][kms_replicate_key]
 #' 
 #' -   [`tag_resource`][kms_tag_resource]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_untag_resource(KeyId, TagKeys)
@@ -8072,6 +8260,10 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' -   [`delete_alias`][kms_delete_alias]
 #' 
 #' -   [`list_aliases`][kms_list_aliases]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_update_alias(AliasName, TargetKeyId)
@@ -8255,6 +8447,10 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' -   [`describe_custom_key_stores`][kms_describe_custom_key_stores]
 #' 
 #' -   [`disconnect_custom_key_store`][kms_disconnect_custom_key_store]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_update_custom_key_store(CustomKeyStoreId, NewCustomKeyStoreName,
@@ -8496,6 +8692,10 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #' -   [`create_key`][kms_create_key]
 #' 
 #' -   [`describe_key`][kms_describe_key]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_update_key_description(KeyId, Description)
@@ -8648,6 +8848,10 @@ kms_update_key_description <- function(KeyId, Description) {
 #' -   [`create_key`][kms_create_key]
 #' 
 #' -   [`replicate_key`][kms_replicate_key]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_update_primary_region(KeyId, PrimaryRegion)
@@ -8782,6 +8986,10 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' (key policy)
 #' 
 #' **Related operations**: [`sign`][kms_sign]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_verify(KeyId, Message, MessageType, Signature, SigningAlgorithm,
@@ -8982,6 +9190,10 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' (key policy)
 #' 
 #' **Related operations**: [`generate_mac`][kms_generate_mac]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
 #' kms_verify_mac(Message, KeyId, MacAlgorithm, Mac, GrantTokens, DryRun)

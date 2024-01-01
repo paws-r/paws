@@ -2,12 +2,13 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_domain}
 \alias{sagemaker_create_domain}
-\title{Creates a Domain used by Amazon SageMaker Studio}
+\title{Creates a Domain}
 \usage{
 sagemaker_create_domain(
   DomainName,
   AuthMode,
   DefaultUserSettings,
+  DomainSettings = NULL,
   SubnetIds,
   VpcId,
   Tags = NULL,
@@ -15,7 +16,6 @@ sagemaker_create_domain(
   HomeEfsFileSystemKmsKeyId = NULL,
   KmsKeyId = NULL,
   AppSecurityGroupManagement = NULL,
-  DomainSettings = NULL,
   DefaultSpaceSettings = NULL
 )
 }
@@ -33,10 +33,12 @@ other settings in \code{UserSettings}, the values specified in
 \code{\link[=sagemaker_create_user_profile]{create_user_profile}} take precedence
 over those specified in \code{\link[=sagemaker_create_domain]{create_domain}}.}
 
-\item{SubnetIds}{[required] The VPC subnets that Studio uses for communication.}
+\item{DomainSettings}{A collection of \code{Domain} settings.}
 
-\item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for
-communication.}
+\item{SubnetIds}{[required] The VPC subnets that the domain uses for communication.}
+
+\item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (VPC) that the domain uses
+for communication.}
 
 \item{Tags}{Tags to associated with the Domain. Each tag consists of a key and an
 optional value. Tag keys must be unique per resource. Tags are
@@ -50,8 +52,7 @@ Domain launches.}
 \itemize{
 \item \code{PublicInternetOnly} - Non-EFS traffic is through a VPC managed by
 Amazon SageMaker, which allows direct internet access
-\item \code{VpcOnly} - All Studio traffic is through the specified VPC and
-subnets
+\item \code{VpcOnly} - All traffic is through the specified VPC and subnets
 }}
 
 \item{HomeEfsFileSystemKmsKeyId}{Use \code{KmsKeyId}.}
@@ -67,12 +68,10 @@ inter-app communication in \code{VPCOnly} mode. Required when
 is provided. If setting up the domain for use with RStudio, this value
 must be set to \code{Service}.}
 
-\item{DomainSettings}{A collection of \code{Domain} settings.}
-
 \item{DefaultSpaceSettings}{The default settings used to create a space.}
 }
 \description{
-Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
+Creates a \code{Domain}. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_domain/} for full documentation.
 }

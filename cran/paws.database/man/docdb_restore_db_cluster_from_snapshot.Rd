@@ -17,7 +17,8 @@ docdb_restore_db_cluster_from_snapshot(
   KmsKeyId = NULL,
   EnableCloudwatchLogsExports = NULL,
   DeletionProtection = NULL,
-  DBClusterParameterGroupName = NULL
+  DBClusterParameterGroupName = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -110,6 +111,16 @@ used. If supplied, must match the name of an existing default DB cluster
 parameter group. The string must consist of from 1 to 255 letters,
 numbers or hyphens. Its first character must be a letter, and it cannot
 end with a hyphen or contain two consecutive hyphens.}
+
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+For information on storage types for Amazon DocumentDB clusters, see
+Cluster storage configurations in the \emph{Amazon DocumentDB Developer
+Guide}.
+
+Valid values for storage type - \code{standard | iopt1}
+
+Default value is \code{standard }}
 }
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.

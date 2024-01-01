@@ -131,6 +131,65 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 }
 .fsx$operations$copy_backup <- fsx_copy_backup
 
+#' Updates an existing volume by using a snapshot from another Amazon FSx
+#' for OpenZFS file system
+#'
+#' @description
+#' Updates an existing volume by using a snapshot from another Amazon FSx for OpenZFS file system. For more information, see [on-demand data replication](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/on-demand-replication.html) in the Amazon FSx for OpenZFS User Guide.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_copy_snapshot_and_update_volume/](https://www.paws-r-sdk.com/docs/fsx_copy_snapshot_and_update_volume/) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; Specifies the ID of the volume that you are copying the snapshot to.
+#' @param SourceSnapshotARN &#91;required&#93; 
+#' @param CopyStrategy Specifies the strategy to use when copying data from a snapshot to the
+#' volume.
+#' 
+#' -   `FULL_COPY` - Copies all data from the snapshot to the volume.
+#' 
+#' -   `INCREMENTAL_COPY` - Copies only the snapshot data that's changed
+#'     since the previous replication.
+#' 
+#' `CLONE` isn't a valid copy strategy option for the
+#' [`copy_snapshot_and_update_volume`][fsx_copy_snapshot_and_update_volume]
+#' operation.
+#' @param Options Confirms that you want to delete data on the destination volume that
+#' wasn’t there during the previous snapshot replication.
+#' 
+#' Your replication will fail if you don’t include an option for a specific
+#' type of data and that data is on your destination. For example, if you
+#' don’t include `DELETE_INTERMEDIATE_SNAPSHOTS` and there are intermediate
+#' snapshots on the destination, you can’t copy the snapshot.
+#' 
+#' -   `DELETE_INTERMEDIATE_SNAPSHOTS` - Deletes snapshots on the
+#'     destination volume that aren’t on the source volume.
+#' 
+#' -   `DELETE_CLONED_VOLUMES` - Deletes snapshot clones on the destination
+#'     volume that aren't on the source volume.
+#' 
+#' -   `DELETE_INTERMEDIATE_DATA` - Overwrites snapshots on the destination
+#'     volume that don’t match the source snapshot that you’re copying.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_copy_snapshot_and_update_volume
+fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, VolumeId, SourceSnapshotARN, CopyStrategy = NULL, Options = NULL) {
+  op <- new_operation(
+    name = "CopySnapshotAndUpdateVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$copy_snapshot_and_update_volume_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, SourceSnapshotARN = SourceSnapshotARN, CopyStrategy = CopyStrategy, Options = Options)
+  output <- .fsx$copy_snapshot_and_update_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$copy_snapshot_and_update_volume <- fsx_copy_snapshot_and_update_volume
+
 #' Creates a backup of an existing Amazon FSx for Windows File Server file
 #' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
 #' volume, or Amazon FSx for OpenZFS file system
@@ -432,7 +491,9 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     GiB, and increments of 3600 GiB.
 #' 
 #' **FSx for ONTAP file systems** - The amount of storage capacity that you
-#' can configure is from 1024 GiB up to 196,608 GiB (192 TiB).
+#' can configure depends on the value of the `HAPairs` property. The
+#' minimum value is calculated as 1,024 * `HAPairs` and the maxium is
+#' calculated as 524,288 * `HAPairs`..
 #' 
 #' **FSx for OpenZFS file systems** - The amount of storage capacity that
 #' you can configure is from 64 GiB up to 524,288 GiB (512 TiB).
@@ -591,7 +652,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' 
 #' If used to create a file system other than OpenZFS, you must provide a
 #' value that matches the backup's `StorageCapacity` value. If you provide
-#' any other value, Amazon FSx responds with a 400 Bad Request.
+#' any other value, Amazon FSx responds with with an HTTP status code 400
+#' Bad Request.
 #'
 #' @keywords internal
 #'
@@ -1221,6 +1283,35 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 }
 .fsx$operations$describe_file_systems <- fsx_describe_file_systems
 
+#' Indicates whether participant accounts in your organization can create
+#' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
+#' shared by a virtual private cloud (VPC) owner
+#'
+#' @description
+#' Indicates whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner. For more information, see the [Amazon FSx for NetApp ONTAP User Guide](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/).
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_describe_shared_vpc_configuration/](https://www.paws-r-sdk.com/docs/fsx_describe_shared_vpc_configuration/) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_shared_vpc_configuration
+fsx_describe_shared_vpc_configuration <- function() {
+  op <- new_operation(
+    name = "DescribeSharedVpcConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_shared_vpc_configuration_input()
+  output <- .fsx$describe_shared_vpc_configuration_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_shared_vpc_configuration <- fsx_describe_shared_vpc_configuration
+
 #' Returns the description of specific Amazon FSx for OpenZFS snapshots, if
 #' a SnapshotIds value is provided
 #'
@@ -1236,18 +1327,22 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #' `volume-id`.
 #' @param MaxResults 
 #' @param NextToken 
+#' @param IncludeShared Set to `false` (default) if you want to only see the snapshots in your
+#' Amazon Web Services account. Set to `true` if you want to see the
+#' snapshots in your account and the ones shared with you from another
+#' account.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_describe_snapshots
-fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IncludeShared = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IncludeShared = IncludeShared)
   output <- .fsx$describe_snapshots_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -1328,7 +1423,7 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
 #' system
 #'
 #' @description
-#' Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system. If you attempt to disassociate a DNS alias that is not associated with the file system, Amazon FSx responds with a 400 Bad Request. For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html).
+#' Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system. If you attempt to disassociate a DNS alias that is not associated with the file system, Amazon FSx responds with an HTTP status code 400 (Bad Request). For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_disassociate_file_system_aliases/](https://www.paws-r-sdk.com/docs/fsx_disassociate_file_system_aliases/) for full documentation.
 #'
@@ -1725,6 +1820,40 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
   return(response)
 }
 .fsx$operations$update_file_system <- fsx_update_file_system
+
+#' Configures whether participant accounts in your organization can create
+#' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
+#' shared by a virtual private cloud (VPC) owner
+#'
+#' @description
+#' Configures whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner. For more information, see the [Amazon FSx for NetApp ONTAP User Guide](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/).
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_update_shared_vpc_configuration/](https://www.paws-r-sdk.com/docs/fsx_update_shared_vpc_configuration/) for full documentation.
+#'
+#' @param EnableFsxRouteTableUpdatesFromParticipantAccounts Specifies whether participant accounts can create FSx for ONTAP Multi-AZ
+#' file systems in shared subnets. Set to `true` to enable or `false` to
+#' disable.
+#' @param ClientRequestToken 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_shared_vpc_configuration
+fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromParticipantAccounts = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateSharedVpcConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_shared_vpc_configuration_input(EnableFsxRouteTableUpdatesFromParticipantAccounts = EnableFsxRouteTableUpdatesFromParticipantAccounts, ClientRequestToken = ClientRequestToken)
+  output <- .fsx$update_shared_vpc_configuration_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_shared_vpc_configuration <- fsx_update_shared_vpc_configuration
 
 #' Updates the name of an Amazon FSx for OpenZFS snapshot
 #'

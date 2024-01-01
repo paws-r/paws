@@ -603,11 +603,16 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'     is Esri, the start and destination must be within 40km.
 #'
 #' @usage
-#' locationservice_calculate_route(CalculatorName, CarModeOptions,
-#'   DepartNow, DeparturePosition, DepartureTime, DestinationPosition,
-#'   DistanceUnit, IncludeLegGeometry, Key, TravelMode, TruckModeOptions,
-#'   WaypointPositions)
+#' locationservice_calculate_route(ArrivalTime, CalculatorName,
+#'   CarModeOptions, DepartNow, DeparturePosition, DepartureTime,
+#'   DestinationPosition, DistanceUnit, IncludeLegGeometry, Key, OptimizeFor,
+#'   TravelMode, TruckModeOptions, WaypointPositions)
 #'
+#' @param ArrivalTime Specifies the desired time of arrival. Uses the given time to calculate
+#' the route. Otherwise, the best time of day to travel with the best
+#' traffic conditions is used to calculate the route.
+#' 
+#' ArrivalTime is not supported Esri.
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route.
 #' @param CarModeOptions Specifies route preferences when traveling by `Car`, such as avoiding
@@ -639,9 +644,6 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' calculate the route. Otherwise, the best time of day to travel with the
 #' best traffic conditions is used to calculate the route.
 #' 
-#' Setting a departure time in the past returns a `400 ValidationException`
-#' error.
-#' 
 #' -   In [ISO
 #'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
 #'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
@@ -669,6 +671,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
+#' @param OptimizeFor Specifies the distance to optimize for when calculating a route.
 #' @param TravelMode Specifies the mode of transport when calculating a route. Used in
 #' estimating the speed of travel and road compatibility. You can choose
 #' `Car`, `Truck`, `Walking`, `Bicycle` or `Motorcycle` as options for the
@@ -768,6 +771,9 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @section Request syntax:
 #' ```
 #' svc$calculate_route(
+#'   ArrivalTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   CalculatorName = "string",
 #'   CarModeOptions = list(
 #'     AvoidFerries = TRUE|FALSE,
@@ -786,6 +792,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'   DistanceUnit = "Kilometers"|"Miles",
 #'   IncludeLegGeometry = TRUE|FALSE,
 #'   Key = "string",
+#'   OptimizeFor = "FastestRoute"|"ShortestRoute",
 #'   TravelMode = "Car"|"Truck"|"Walking"|"Bicycle"|"Motorcycle",
 #'   TruckModeOptions = list(
 #'     AvoidFerries = TRUE|FALSE,
@@ -814,14 +821,14 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @rdname locationservice_calculate_route
 #'
 #' @aliases locationservice_calculate_route
-locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePosition, DepartureTime = NULL, DestinationPosition, DistanceUnit = NULL, IncludeLegGeometry = NULL, Key = NULL, TravelMode = NULL, TruckModeOptions = NULL, WaypointPositions = NULL) {
+locationservice_calculate_route <- function(ArrivalTime = NULL, CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePosition, DepartureTime = NULL, DestinationPosition, DistanceUnit = NULL, IncludeLegGeometry = NULL, Key = NULL, OptimizeFor = NULL, TravelMode = NULL, TruckModeOptions = NULL, WaypointPositions = NULL) {
   op <- new_operation(
     name = "CalculateRoute",
     http_method = "POST",
     http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route",
     paginator = list()
   )
-  input <- .locationservice$calculate_route_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePosition = DeparturePosition, DepartureTime = DepartureTime, DestinationPosition = DestinationPosition, DistanceUnit = DistanceUnit, IncludeLegGeometry = IncludeLegGeometry, Key = Key, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions, WaypointPositions = WaypointPositions)
+  input <- .locationservice$calculate_route_input(ArrivalTime = ArrivalTime, CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePosition = DeparturePosition, DepartureTime = DepartureTime, DestinationPosition = DestinationPosition, DistanceUnit = DistanceUnit, IncludeLegGeometry = IncludeLegGeometry, Key = Key, OptimizeFor = OptimizeFor, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions, WaypointPositions = WaypointPositions)
   output <- .locationservice$calculate_route_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1586,7 +1593,8 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' 
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
-#'     coverage in your region of interest, see HERE car routing coverage
+#'     coverage in your region of interest, see [HERE car routing
+#'     coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/car-routing.html)
 #'     and HERE truck routing coverage.
 #' 
 #' For additional information , see [Data
@@ -1870,8 +1878,18 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 #' more than 90 days previously.
 #'
 #' @usage
-#' locationservice_delete_key(KeyName)
+#' locationservice_delete_key(ForceDelete, KeyName)
 #'
+#' @param ForceDelete ForceDelete bypasses an API key's expiry conditions and deletes the key.
+#' Set the parameter `true` to delete the key or to `false` to not
+#' preemptively delete the API key.
+#' 
+#' Valid values: `true`, or `false`.
+#' 
+#' Required: No
+#' 
+#' This action is irreversible. Only use ForceDelete if you are certain the
+#' key is no longer in use.
 #' @param KeyName &#91;required&#93; The name of the API key to delete.
 #'
 #' @return
@@ -1880,6 +1898,7 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_key(
+#'   ForceDelete = TRUE|FALSE,
 #'   KeyName = "string"
 #' )
 #' ```
@@ -1889,14 +1908,14 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 #' @rdname locationservice_delete_key
 #'
 #' @aliases locationservice_delete_key
-locationservice_delete_key <- function(KeyName) {
+locationservice_delete_key <- function(ForceDelete = NULL, KeyName) {
   op <- new_operation(
     name = "DeleteKey",
     http_method = "DELETE",
     http_path = "/metadata/v0/keys/{KeyName}",
     paginator = list()
   )
-  input <- .locationservice$delete_key_input(KeyName = KeyName)
+  input <- .locationservice$delete_key_input(ForceDelete = ForceDelete, KeyName = KeyName)
   output <- .locationservice$delete_key_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -3157,6 +3176,7 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #'     PostalCode = "string",
 #'     Region = "string",
 #'     Street = "string",
+#'     SubMunicipality = "string",
 #'     SubRegion = "string",
 #'     SupplementalCategories = list(
 #'       "string"
@@ -3212,7 +3232,7 @@ locationservice_get_place <- function(IndexName, Key = NULL, Language = NULL, Pl
 #' locationservice_list_device_positions(FilterGeometry, MaxResults,
 #'   NextToken, TrackerName)
 #'
-#' @param FilterGeometry The geomerty used to filter device positions.
+#' @param FilterGeometry The geometry used to filter device positions.
 #' @param MaxResults An optional limit for the number of entries returned in a single call.
 #' 
 #' Default value: `100`
@@ -4076,6 +4096,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, GeofencePro
 #'         PostalCode = "string",
 #'         Region = "string",
 #'         Street = "string",
+#'         SubMunicipality = "string",
 #'         SubRegion = "string",
 #'         SupplementalCategories = list(
 #'           "string"
@@ -4428,6 +4449,7 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'         PostalCode = "string",
 #'         Region = "string",
 #'         Street = "string",
+#'         SubMunicipality = "string",
 #'         SubRegion = "string",
 #'         SupplementalCategories = list(
 #'           "string"

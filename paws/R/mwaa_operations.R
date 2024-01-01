@@ -63,8 +63,8 @@ mwaa_create_cli_token <- function(Name) {
 #'
 #' @usage
 #' mwaa_create_environment(AirflowConfigurationOptions, AirflowVersion,
-#'   DagS3Path, EnvironmentClass, ExecutionRoleArn, KmsKey,
-#'   LoggingConfiguration, MaxWorkers, MinWorkers, Name,
+#'   DagS3Path, EndpointManagement, EnvironmentClass, ExecutionRoleArn,
+#'   KmsKey, LoggingConfiguration, MaxWorkers, MinWorkers, Name,
 #'   NetworkConfiguration, PluginsS3ObjectVersion, PluginsS3Path,
 #'   RequirementsS3ObjectVersion, RequirementsS3Path, Schedulers,
 #'   SourceBucketArn, StartupScriptS3ObjectVersion, StartupScriptS3Path,
@@ -80,10 +80,20 @@ mwaa_create_cli_token <- function(Name) {
 #' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
 #' 
 #' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
-#' `2.7.2`.
+#' `2.7.2`
 #' @param DagS3Path &#91;required&#93; The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
 #' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
+#' @param EndpointManagement Defines whether the VPC endpoints configured for the environment are
+#' created, and managed, by the customer or by Amazon MWAA. If set to
+#' `SERVICE`, Amazon MWAA will create and manage the required VPC endpoints
+#' in your VPC. If set to `CUSTOMER`, you must create, and manage, the VPC
+#' endpoints for your VPC. If you choose to create an environment in a
+#' shared VPC, you must set this value to `CUSTOMER`. In a shared VPC
+#' deployment, the environment will remain in `PENDING` status until you
+#' create the VPC endpoints. If you do not take action to create the
+#' endpoints within 72 hours, the status will change to `CREATE_FAILED`.
+#' You can delete the failed environment and create a new one.
 #' @param EnvironmentClass The environment class type. Valid values: `mw1.small`, `mw1.medium`,
 #' `mw1.large`. For more information, see [Amazon MWAA environment
 #' class](https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
@@ -168,8 +178,8 @@ mwaa_create_cli_token <- function(Name) {
 #' example, `"Environment": "Staging"`. For more information, see [Tagging
 #' Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
-#' @param WebserverAccessMode The Apache Airflow *Web server* access mode. For more information, see
-#' [Apache Airflow access
+#' @param WebserverAccessMode Defines the access mode for the Apache Airflow *web server*. For more
+#' information, see [Apache Airflow access
 #' modes](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
 #' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour
 #' standard time to start weekly maintenance updates of your environment in
@@ -192,6 +202,7 @@ mwaa_create_cli_token <- function(Name) {
 #'   ),
 #'   AirflowVersion = "string",
 #'   DagS3Path = "string",
+#'   EndpointManagement = "CUSTOMER"|"SERVICE",
 #'   EnvironmentClass = "string",
 #'   ExecutionRoleArn = "string",
 #'   KmsKey = "string",
@@ -249,14 +260,14 @@ mwaa_create_cli_token <- function(Name) {
 #' @rdname mwaa_create_environment
 #'
 #' @aliases mwaa_create_environment
-mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, Schedulers = NULL, SourceBucketArn, StartupScriptS3ObjectVersion = NULL, StartupScriptS3Path = NULL, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
+mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EndpointManagement = NULL, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, Schedulers = NULL, SourceBucketArn, StartupScriptS3ObjectVersion = NULL, StartupScriptS3Path = NULL, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "PUT",
     http_path = "/environments/{Name}",
     paginator = list()
   )
-  input <- .mwaa$create_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, KmsKey = KmsKey, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, MinWorkers = MinWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, Schedulers = Schedulers, SourceBucketArn = SourceBucketArn, StartupScriptS3ObjectVersion = StartupScriptS3ObjectVersion, StartupScriptS3Path = StartupScriptS3Path, Tags = Tags, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
+  input <- .mwaa$create_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EndpointManagement = EndpointManagement, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, KmsKey = KmsKey, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, MinWorkers = MinWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, Schedulers = Schedulers, SourceBucketArn = SourceBucketArn, StartupScriptS3ObjectVersion = StartupScriptS3ObjectVersion, StartupScriptS3Path = StartupScriptS3Path, Tags = Tags, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
   output <- .mwaa$create_environment_output()
   config <- get_config()
   svc <- .mwaa$service(config)
@@ -385,10 +396,13 @@ mwaa_delete_environment <- function(Name) {
 #'     ),
 #'     AirflowVersion = "string",
 #'     Arn = "string",
+#'     CeleryExecutorQueue = "string",
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     DagS3Path = "string",
+#'     DatabaseVpcEndpointService = "string",
+#'     EndpointManagement = "CUSTOMER"|"SERVICE",
 #'     EnvironmentClass = "string",
 #'     ExecutionRoleArn = "string",
 #'     KmsKey = "string",
@@ -450,12 +464,13 @@ mwaa_delete_environment <- function(Name) {
 #'     SourceBucketArn = "string",
 #'     StartupScriptS3ObjectVersion = "string",
 #'     StartupScriptS3Path = "string",
-#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED"|"UNAVAILABLE"|"UPDATE_FAILED"|"ROLLING_BACK"|"CREATING_SNAPSHOT",
+#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED"|"UNAVAILABLE"|"UPDATE_FAILED"|"ROLLING_BACK"|"CREATING_SNAPSHOT"|"PENDING",
 #'     Tags = list(
 #'       "string"
 #'     ),
 #'     WebserverAccessMode = "PRIVATE_ONLY"|"PUBLIC_ONLY",
 #'     WebserverUrl = "string",
+#'     WebserverVpcEndpointService = "string",
 #'     WeeklyMaintenanceWindowStart = "string"
 #'   )
 #' )

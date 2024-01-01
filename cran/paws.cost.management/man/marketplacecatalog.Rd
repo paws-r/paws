@@ -101,6 +101,7 @@ of the Catalog API to manage your products on AWS Marketplace.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=marketplacecatalog_batch_describe_entities]{batch_describe_entities} \tab Returns metadata and content for multiple entities\cr
 \link[=marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
 \link[=marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an entity that is identified by its resource ARN\cr
 \link[=marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
@@ -119,7 +120,7 @@ of the Catalog API to manage your products on AWS Marketplace.
 \examples{
 \dontrun{
 svc <- marketplacecatalog()
-svc$cancel_change_set(
+svc$batch_describe_entities(
   Foo = 123
 )
 }

@@ -3,6 +3,45 @@
 #' @include verifiedpermissions_service.R
 NULL
 
+#' Makes a series of decisions about multiple authorization requests for
+#' one principal or resource
+#'
+#' @description
+#' Makes a series of decisions about multiple authorization requests for one principal or resource. Each request contains the equivalent content of an [`is_authorized`][verifiedpermissions_is_authorized] request: principal, action, resource, and context. Either the `principal` or the `resource` parameter must be identical across all requests. For example, Verified Permissions won't evaluate a pair of requests where `bob` views `photo1` and `alice` views `photo2`. Authorization of `bob` to view `photo1` and `photo2`, or `bob` and `alice` to view `photo1`, are valid batches.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_batch_is_authorized/](https://www.paws-r-sdk.com/docs/verifiedpermissions_batch_is_authorized/) for full documentation.
+#'
+#' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
+#' be used to make the authorization decisions for the input.
+#' @param entities Specifies the list of resources and principals and their associated
+#' attributes that Verified Permissions can examine when evaluating the
+#' policies.
+#' 
+#' You can include only principal and resource entities in this parameter;
+#' you can't include actions. You must specify actions in the schema.
+#' @param requests &#91;required&#93; An array of up to 30 requests that you want Verified Permissions to
+#' evaluate.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_batch_is_authorized
+verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NULL, requests) {
+  op <- new_operation(
+    name = "BatchIsAuthorized",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .verifiedpermissions$batch_is_authorized_input(policyStoreId = policyStoreId, entities = entities, requests = requests)
+  output <- .verifiedpermissions$batch_is_authorized_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$batch_is_authorized <- verifiedpermissions_batch_is_authorized
+
 #' Creates a reference to an Amazon Cognito user pool as an external
 #' identity provider (IdP)
 #'
@@ -140,18 +179,20 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' when you have a schema defined, use
 #' [`update_policy_store`][verifiedpermissions_update_policy_store] again
 #' to turn validation back on.
+#' @param description Descriptive text that you can provide to help with identification of the
+#' current policy store.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_create_policy_store
-verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings) {
+verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL) {
   op <- new_operation(
     name = "CreatePolicyStore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings)
+  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description)
   output <- .verifiedpermissions$create_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config)
@@ -913,18 +954,20 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want to update
 #' @param validationSettings &#91;required&#93; A structure that defines the validation settings that want to enable for
 #' the policy store.
+#' @param description Descriptive text that you can provide to help with identification of the
+#' current policy store.
 #'
 #' @keywords internal
 #'
 #' @rdname verifiedpermissions_update_policy_store
-verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings) {
+verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings, description = NULL) {
   op <- new_operation(
     name = "UpdatePolicyStore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings)
+  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, description = description)
   output <- .verifiedpermissions$update_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config)

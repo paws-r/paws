@@ -10,8 +10,10 @@ connectwisdomservice_get_content_summary(contentId, knowledgeBaseId)
 \item{contentId}{[required] The identifier of the content. Can be either the ID or the ARN. URLs
 cannot contain the ARN.}
 
-\item{knowledgeBaseId}{[required] The identifier of the knowledge base. Can be either the ID or the ARN.
-URLs cannot contain the ARN.}
+\item{knowledgeBaseId}{[required] The identifier of the knowledge base. This should not be a
+QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+resource to it. Can be either the ID or the ARN. URLs cannot contain the
+ARN.}
 }
 \description{
 Retrieves summary information about the content.

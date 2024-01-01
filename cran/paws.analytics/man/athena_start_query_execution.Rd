@@ -21,8 +21,12 @@ athena_start_query_execution(
 query is idempotent (executes only once). If another
 \code{\link[=athena_start_query_execution]{start_query_execution}} request is
 received, the same response is returned and another query is not
-created. If a parameter has changed, for example, the \code{QueryString}, an
-error is returned.
+created. An error is returned if a parameter, such as \code{QueryString}, has
+changed. A call to
+\code{\link[=athena_start_query_execution]{start_query_execution}} that uses a
+previous client request token returns the same \code{QueryExecutionId} even
+if the requester doesn't have permission on the tables specified in
+\code{QueryString}.
 
 This token is listed as not required because Amazon Web Services SDKs
 (for example the Amazon Web Services SDK for Java) auto-generate the

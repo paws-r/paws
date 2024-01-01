@@ -4,12 +4,18 @@
 \alias{workspaces_modify_workspace_properties}
 \title{Modifies the specified WorkSpace properties}
 \usage{
-workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
+workspaces_modify_workspace_properties(
+  WorkspaceId,
+  WorkspaceProperties = NULL,
+  DataReplication = NULL
+)
 }
 \arguments{
 \item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 
-\item{WorkspaceProperties}{[required] The properties of the WorkSpace.}
+\item{WorkspaceProperties}{The properties of the WorkSpace.}
+
+\item{DataReplication}{Indicates the data replication status.}
 }
 \description{
 Modifies the specified WorkSpace properties. For important information about how to modify the size of the root and user volumes, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html}{Modify a WorkSpace}.

@@ -1916,19 +1916,20 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' See [https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_properties/) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
-#' @param WorkspaceProperties &#91;required&#93; The properties of the WorkSpace.
+#' @param WorkspaceProperties The properties of the WorkSpace.
+#' @param DataReplication Indicates the data replication status.
 #'
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_workspace_properties
-workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspaceProperties) {
+workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspaceProperties = NULL, DataReplication = NULL) {
   op <- new_operation(
     name = "ModifyWorkspaceProperties",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$modify_workspace_properties_input(WorkspaceId = WorkspaceId, WorkspaceProperties = WorkspaceProperties)
+  input <- .workspaces$modify_workspace_properties_input(WorkspaceId = WorkspaceId, WorkspaceProperties = WorkspaceProperties, DataReplication = DataReplication)
   output <- .workspaces$modify_workspace_properties_output()
   config <- get_config()
   svc <- .workspaces$service(config)

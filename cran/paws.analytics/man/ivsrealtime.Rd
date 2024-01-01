@@ -69,8 +69,15 @@ when they join a stage.
 \item A \emph{participant object} represents participants (people) in the stage
 and contains information about them. When a token is created, it
 includes a participant ID; when a participant uses that token to
-join a stage, the participant is associated with that participant ID
-There is a 1:1 mapping between participant tokens and participants.
+join a stage, the participant is associated with that participant
+ID. There is a 1:1 mapping between participant tokens and
+participants.
+\item Server-side composition: The \emph{composition} process composites
+participants of a stage into a single video and forwards it to a set
+of outputs (e.g., IVS channels). Composition endpoints support this
+process.
+\item Server-side composition: A \emph{composition} controls the look of the
+outputs, including how participants are positioned in the video.
 }
 
 \strong{Resources}
@@ -136,6 +143,50 @@ sessions for a specified stage.
 configuration.
 }
 
+\strong{Composition Endpoints}
+\itemize{
+\item \code{\link[=ivsrealtime_get_composition]{get_composition}} — Gets information
+about the specified Composition resource.
+\item \code{\link[=ivsrealtime_list_compositions]{list_compositions}} — Gets summary
+information about all Compositions in your account, in the AWS
+region where the API request is processed.
+\item \code{\link[=ivsrealtime_start_composition]{start_composition}} — Starts a
+Composition from a stage based on the configuration provided in the
+request.
+\item \code{\link[=ivsrealtime_stop_composition]{stop_composition}} — Stops and
+deletes a Composition resource. Any broadcast from the Composition
+resource is stopped.
+}
+
+\strong{EncoderConfiguration Endpoints}
+\itemize{
+\item \code{\link[=ivsrealtime_create_encoder_configuration]{create_encoder_configuration}}
+— Creates an EncoderConfiguration object.
+\item \code{\link[=ivsrealtime_delete_encoder_configuration]{delete_encoder_configuration}}
+— Deletes an EncoderConfiguration resource. Ensures that no
+Compositions are using this template; otherwise, returns an error.
+\item \code{\link[=ivsrealtime_get_encoder_configuration]{get_encoder_configuration}}
+— Gets information about the specified EncoderConfiguration
+resource.
+\item \code{\link[=ivsrealtime_list_encoder_configurations]{list_encoder_configurations}}
+— Gets summary information about all EncoderConfigurations in your
+account, in the AWS region where the API request is processed.
+}
+
+\strong{StorageConfiguration Endpoints}
+\itemize{
+\item \code{\link[=ivsrealtime_create_storage_configuration]{create_storage_configuration}}
+— Creates a new storage configuration, used to enable recording to
+Amazon S3.
+\item \code{\link[=ivsrealtime_delete_storage_configuration]{delete_storage_configuration}}
+— Deletes the storage configuration for the specified ARN.
+\item \code{\link[=ivsrealtime_get_storage_configuration]{get_storage_configuration}}
+— Gets the storage configuration for the specified ARN.
+\item \code{\link[=ivsrealtime_list_storage_configurations]{list_storage_configurations}}
+— Gets summary information about all storage configurations in your
+account, in the AWS region where the API request is processed.
+}
+
 \strong{Tags Endpoints}
 \itemize{
 \item \code{\link[=ivsrealtime_list_tags_for_resource]{list_tags_for_resource}} —
@@ -185,18 +236,30 @@ the resource with the specified ARN.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=ivsrealtime_create_encoder_configuration]{create_encoder_configuration} \tab Creates an EncoderConfiguration object\cr
 \link[=ivsrealtime_create_participant_token]{create_participant_token} \tab Creates an additional token for a specified stage\cr
 \link[=ivsrealtime_create_stage]{create_stage} \tab Creates a new stage (and optionally participant tokens)\cr
+\link[=ivsrealtime_create_storage_configuration]{create_storage_configuration} \tab Creates a new storage configuration, used to enable recording to Amazon S3\cr
+\link[=ivsrealtime_delete_encoder_configuration]{delete_encoder_configuration} \tab Deletes an EncoderConfiguration resource\cr
 \link[=ivsrealtime_delete_stage]{delete_stage} \tab Shuts down and deletes the specified stage (disconnecting all participants)\cr
+\link[=ivsrealtime_delete_storage_configuration]{delete_storage_configuration} \tab Deletes the storage configuration for the specified ARN\cr
 \link[=ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant and revokes the participant permanently from a specified stage\cr
+\link[=ivsrealtime_get_composition]{get_composition} \tab Get information about the specified Composition resource\cr
+\link[=ivsrealtime_get_encoder_configuration]{get_encoder_configuration} \tab Gets information about the specified EncoderConfiguration resource\cr
 \link[=ivsrealtime_get_participant]{get_participant} \tab Gets information about the specified participant token\cr
 \link[=ivsrealtime_get_stage]{get_stage} \tab Gets information for the specified stage\cr
 \link[=ivsrealtime_get_stage_session]{get_stage_session} \tab Gets information for the specified stage session\cr
+\link[=ivsrealtime_get_storage_configuration]{get_storage_configuration} \tab Gets the storage configuration for the specified ARN\cr
+\link[=ivsrealtime_list_compositions]{list_compositions} \tab Gets summary information about all Compositions in your account, in the AWS region where the API request is processed\cr
+\link[=ivsrealtime_list_encoder_configurations]{list_encoder_configurations} \tab Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed\cr
 \link[=ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
 \link[=ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
 \link[=ivsrealtime_list_stages]{list_stages} \tab Gets summary information about all stages in your account, in the AWS region where the API request is processed\cr
 \link[=ivsrealtime_list_stage_sessions]{list_stage_sessions} \tab Gets all sessions for a specified stage\cr
+\link[=ivsrealtime_list_storage_configurations]{list_storage_configurations} \tab Gets summary information about all storage configurations in your account, in the AWS region where the API request is processed\cr
 \link[=ivsrealtime_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
+\link[=ivsrealtime_start_composition]{start_composition} \tab Starts a Composition from a stage based on the configuration provided in the request\cr
+\link[=ivsrealtime_stop_composition]{stop_composition} \tab Stops and deletes a Composition resource\cr
 \link[=ivsrealtime_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 \link[=ivsrealtime_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
 \link[=ivsrealtime_update_stage]{update_stage} \tab Updates a stage’s configuration
@@ -206,7 +269,7 @@ the resource with the specified ARN.
 \examples{
 \dontrun{
 svc <- ivsrealtime()
-svc$create_participant_token(
+svc$create_encoder_configuration(
   Foo = 123
 )
 }

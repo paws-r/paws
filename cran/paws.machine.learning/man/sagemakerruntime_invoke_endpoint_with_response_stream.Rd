@@ -13,7 +13,8 @@ sagemakerruntime_invoke_endpoint_with_response_stream(
   CustomAttributes = NULL,
   TargetVariant = NULL,
   TargetContainerHostname = NULL,
-  InferenceId = NULL
+  InferenceId = NULL,
+  InferenceComponentName = NULL
 )
 }
 \arguments{
@@ -64,6 +65,10 @@ direct invocation, this parameter specifies the host name of the
 container to invoke.}
 
 \item{InferenceId}{An identifier that you assign to your request.}
+
+\item{InferenceComponentName}{If the endpoint hosts one or more inference components, this parameter
+specifies the name of inference component to invoke for a streaming
+response.}
 }
 \description{
 Invokes a model at the specified endpoint to return the inference response as a stream. The inference stream provides the response payload incrementally as a series of parts. Before you can get an inference stream, you must have access to a model that's deployed using Amazon SageMaker hosting services, and the container for that model must support inference streaming.

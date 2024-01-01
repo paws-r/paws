@@ -3,10 +3,11 @@
 #' @include personalize_service.R
 NULL
 
-#' Creates a batch inference job
+#' Generates batch recommendations based on a list of items or users stored
+#' in Amazon S3 and exports the recommendations to an Amazon S3 bucket
 #'
 #' @description
-#' Creates a batch inference job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see [Creating a batch inference job](https://docs.aws.amazon.com/personalize/latest/dg/creating-batch-inference-job.html).
+#' Generates batch recommendations based on a list of items or users stored in Amazon S3 and exports the recommendations to an Amazon S3 bucket.
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalize_create_batch_inference_job/](https://www.paws-r-sdk.com/docs/personalize_create_batch_inference_job/) for full documentation.
 #'
@@ -27,18 +28,27 @@ NULL
 #' @param tags A list of
 #' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
 #' to apply to the batch inference job.
+#' @param batchInferenceJobMode The mode of the batch inference job. To generate descriptive themes for
+#' groups of similar items, set the job mode to `THEME_GENERATION`. If you
+#' don't want to generate themes, use the default `BATCH_INFERENCE`.
+#' 
+#' When you get batch recommendations with themes, you will incur
+#' additional costs. For more information, see [Amazon Personalize
+#' pricing](https://aws.amazon.com/personalize/pricing/).
+#' @param themeGenerationConfig For theme generation jobs, specify the name of the column in your Items
+#' dataset that contains each item's name.
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_batch_inference_job
-personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, batchInferenceJobConfig = NULL, tags = NULL) {
+personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, batchInferenceJobConfig = NULL, tags = NULL, batchInferenceJobMode = NULL, themeGenerationConfig = NULL) {
   op <- new_operation(
     name = "CreateBatchInferenceJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig, tags = tags)
+  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig, tags = tags, batchInferenceJobMode = batchInferenceJobMode, themeGenerationConfig = themeGenerationConfig)
   output <- .personalize$create_batch_inference_job_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -156,6 +166,10 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' -   Items
 #' 
 #' -   Users
+#' 
+#' -   Actions
+#' 
+#' -   Action_Interactions
 #' @param tags A list of
 #' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
 #' to apply to the dataset.
@@ -575,17 +589,26 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution containing the training
 #' configuration information.
 #' @param trainingMode The scope of training to be performed when creating the solution
-#' version. The `FULL` option trains the solution version based on the
-#' entirety of the input solution's training data, while the `UPDATE`
-#' option processes only the data that has changed in comparison to the
-#' input solution. Choose `UPDATE` when you want to incrementally update
-#' your solution version instead of creating an entirely new one.
+#' version. The default is `FULL`. This creates a completely new model
+#' based on the entirety of the training data from the datasets in your
+#' dataset group.
+#' 
+#' If you use
+#' [User-Personalization](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html),
+#' you can specify a training mode of `UPDATE`. This updates the model to
+#' consider new items for recommendations. It is not a full retraining. You
+#' should still complete a full retraining weekly. If you specify `UPDATE`,
+#' Amazon Personalize will stop automatic updates for the solution version.
+#' To resume updates, create a new solution with training mode set to
+#' `FULL` and deploy it in a campaign. For more information about automatic
+#' updates, see [Automatic
+#' updates](https://docs.aws.amazon.com/personalize/latest/dg/use-case-recipe-features.html#maintaining-with-automatic-updates).
 #' 
 #' The `UPDATE` option can only be used when you already have an active
 #' solution version created from the input solution using the `FULL` option
 #' and the input solution was trained with the
 #' [User-Personalization](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html)
-#' recipe or the
+#' recipe or the legacy
 #' [HRNN-Coldstart](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html)
 #' recipe.
 #' @param tags A list of
@@ -702,7 +725,7 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
 #' Deletes the event tracker
 #'
 #' @description
-#' Deletes the event tracker. Does not delete the event-interactions dataset from the associated dataset group. For more information on event trackers, see [`create_event_tracker`][personalize_create_event_tracker].
+#' Deletes the event tracker. Does not delete the dataset from the dataset group. For more information on event trackers, see [`create_event_tracker`][personalize_create_event_tracker].
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalize_delete_event_tracker/](https://www.paws-r-sdk.com/docs/personalize_delete_event_tracker/) for full documentation.
 #'
@@ -1616,8 +1639,8 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
 #' @param datasetGroupArn The Amazon Resource Name (ARN) of the dataset group that contains the
 #' datasets to list.
 #' @param nextToken A token returned from the previous call to
-#' [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs] for
-#' getting the next set of dataset import jobs (if they exist).
+#' [`list_datasets`][personalize_list_datasets] for getting the next set of
+#' dataset import jobs (if they exist).
 #' @param maxResults The maximum number of datasets to return.
 #'
 #' @keywords internal
@@ -2121,11 +2144,12 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 }
 .personalize$operations$untag_resource <- personalize_untag_resource
 
-#' Updates a campaign by either deploying a new solution or changing the
-#' value of the campaign's minProvisionedTPS parameter
+#' Updates a campaign to deploy a retrained solution version with an
+#' existing campaign, change your campaign's minProvisionedTPS, or modify
+#' your campaign's configuration, such as the exploration configuration
 #'
 #' @description
-#' Updates a campaign by either deploying a new solution or changing the value of the campaign's `minProvisionedTPS` parameter.
+#' Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's `minProvisionedTPS`, or modify your campaign's configuration, such as the exploration configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalize_update_campaign/](https://www.paws-r-sdk.com/docs/personalize_update_campaign/) for full documentation.
 #'

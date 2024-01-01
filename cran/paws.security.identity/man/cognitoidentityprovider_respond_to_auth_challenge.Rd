@@ -2,7 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_respond_to_auth_challenge}
 \alias{cognitoidentityprovider_respond_to_auth_challenge}
-\title{Responds to the authentication challenge}
+\title{Some API operations in a user pool generate a challenge, like a prompt
+for an MFA code, for device authentication that bypasses MFA, or for a
+custom authentication challenge}
 \usage{
 cognitoidentityprovider_respond_to_auth_challenge(
   ClientId,
@@ -32,25 +34,39 @@ passed as it is to the next
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
 API call.}
 
-\item{ChallengeResponses}{The challenge responses. These are inputs corresponding to the value of
-\code{ChallengeName}, for example:
+\item{ChallengeResponses}{The responses to the challenge that you received in the previous
+request. Each challenge has its own required response parameters. The
+following examples are partial JSON request bodies that highlight
+challenge-response parameters.
 
-\code{SECRET_HASH} (if app client is configured with client secret) applies
-to all of the inputs that follow (including \code{SOFTWARE_TOKEN_MFA}).
-\itemize{
-\item \code{SMS_MFA}: \code{SMS_MFA_CODE}, \code{USERNAME}.
-\item \code{PASSWORD_VERIFIER}: \code{PASSWORD_CLAIM_SIGNATURE},
-\code{PASSWORD_CLAIM_SECRET_BLOCK}, \code{TIMESTAMP}, \code{USERNAME}.
+You must provide a SECRET_HASH parameter in all challenge responses to
+an app client that has a client secret.
 
-\code{PASSWORD_VERIFIER} requires \code{DEVICE_KEY} when you sign in with a
-remembered device.
-\item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, \code{USERNAME}, \code{SECRET_HASH}
-(if app client is configured with client secret). To set any
-required attributes that Amazon Cognito returned as
-\code{requiredAttributes} in the
-\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} response,
-add a \code{userAttributes.attributename } parameter. This parameter can
-also set values for writable attributes that aren't required by your
+\strong{SMS_MFA}
+
+\verb{"ChallengeName": "SMS_MFA", "ChallengeResponses": \{"SMS_MFA_CODE": "[SMS_code]", "USERNAME": "[username]"\}}
+
+\strong{PASSWORD_VERIFIER}
+
+\verb{"ChallengeName": "PASSWORD_VERIFIER", "ChallengeResponses": \{"PASSWORD_CLAIM_SIGNATURE": "[claim_signature]", "PASSWORD_CLAIM_SECRET_BLOCK": "[secret_block]", "TIMESTAMP": [timestamp], "USERNAME": "[username]"\}}
+
+Add \code{"DEVICE_KEY"} when you sign in with a remembered device.
+
+\strong{CUSTOM_CHALLENGE}
+
+\verb{"ChallengeName": "CUSTOM_CHALLENGE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[challenge_answer]"\}}
+
+Add \code{"DEVICE_KEY"} when you sign in with a remembered device.
+
+\strong{NEW_PASSWORD_REQUIRED}
+
+\verb{"ChallengeName": "NEW_PASSWORD_REQUIRED", "ChallengeResponses": \{"NEW_PASSWORD": "[new_password]", "USERNAME": "[username]"\}}
+
+To set any required attributes that
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} returned in an
+\code{requiredAttributes} parameter, add
+\code{"userAttributes.[attribute_name]": "[attribute_value]"}. This parameter
+can also set values for writable attributes that aren't required by your
 user pool.
 
 In a \code{NEW_PASSWORD_REQUIRED} challenge response, you can't modify a
@@ -60,17 +76,26 @@ set a value for any keys that Amazon Cognito returned in the
 \code{requiredAttributes} parameter, then use the
 \code{\link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes}}
 API operation to modify the value of any additional attributes.
-\item \code{SOFTWARE_TOKEN_MFA}: \code{USERNAME} and \code{SOFTWARE_TOKEN_MFA_CODE} are
-required attributes.
-\item \code{DEVICE_SRP_AUTH} requires \code{USERNAME}, \code{DEVICE_KEY}, \code{SRP_A} (and
-\code{SECRET_HASH}).
-\item \code{DEVICE_PASSWORD_VERIFIER} requires everything that
-\code{PASSWORD_VERIFIER} requires, plus \code{DEVICE_KEY}.
-\item \code{MFA_SETUP} requires \code{USERNAME}, plus you must use the session value
-returned by
-\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
-in the \code{Session} parameter.
-}
+
+\strong{SOFTWARE_TOKEN_MFA}
+
+\verb{"ChallengeName": "SOFTWARE_TOKEN_MFA", "ChallengeResponses": \{"USERNAME": "[username]", "SOFTWARE_TOKEN_MFA_CODE": [authenticator_code]\}}
+
+\strong{DEVICE_SRP_AUTH}
+
+\verb{"ChallengeName": "DEVICE_SRP_AUTH", "ChallengeResponses": \{"USERNAME": "[username]", "DEVICE_KEY": "[device_key]", "SRP_A": "[srp_a]"\}}
+
+\strong{DEVICE_PASSWORD_VERIFIER}
+
+\verb{"ChallengeName": "DEVICE_PASSWORD_VERIFIER", "ChallengeResponses": \{"DEVICE_KEY": "[device_key]", "PASSWORD_CLAIM_SIGNATURE": "[claim_signature]", "PASSWORD_CLAIM_SECRET_BLOCK": "[secret_block]", "TIMESTAMP": [timestamp], "USERNAME": "[username]"\}}
+
+\strong{MFA_SETUP}
+
+\verb{"ChallengeName": "MFA_SETUP", "ChallengeResponses": \{"USERNAME": "[username]"\}, "SESSION": "[Session ID from VerifySoftwareToken]"}
+
+\strong{SELECT_MFA_TYPE}
+
+\verb{"ChallengeName": "SELECT_MFA_TYPE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[SMS_MFA or SOFTWARE_TOKEN_MFA]"\}}
 
 For more information about \code{SECRET_HASH}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.
 For information about \code{DEVICE_KEY}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.}
@@ -116,7 +141,7 @@ provide sensitive information.
 }}
 }
 \description{
-Responds to the authentication challenge.
+Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge. A \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}} API request provides the answer to that challenge, like a code or a secure remote password (SRP). The parameters of a response to an authentication challenge vary with the type of challenge.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_respond_to_auth_challenge/} for full documentation.
 }

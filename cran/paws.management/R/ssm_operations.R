@@ -647,7 +647,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'     This type of OpsItem is used by Change Manager for reviewing and
 #'     approving or rejecting change requests.
 #' 
-#' -   `/aws/insights`
+#' -   `/aws/insight`
 #' 
 #'     This type of OpsItem is used by OpsCenter for aggregating and
 #'     reporting on duplicate OpsItems.
@@ -2106,6 +2106,11 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' 
 #'     Sample values: `Installed` | `InstalledOther` |
 #'     `InstalledPendingReboot`
+#' 
+#'     For lists of all `State` values, see [Understanding patch compliance
+#'     state
+#'     values](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html)
+#'     in the *Amazon Web Services Systems Manager User Guide*.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
@@ -6533,24 +6538,28 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' @param SettingValue &#91;required&#93; The new value to specify for the service setting. The following list
 #' specifies the available values for each setting.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role: The name of an IAM role`
+#' -   For `/ssm/managed-instance/default-ec2-instance-management-role`,
+#'     enter the name of an IAM role.
 #' 
-#' -   `/ssm/automation/customer-script-log-destination`: `CloudWatch`
+#' -   For `/ssm/automation/customer-script-log-destination`, enter
+#'     `CloudWatch`.
 #' 
-#' -   `/ssm/automation/customer-script-log-group-name`: The name of an
-#'     Amazon CloudWatch Logs log group
+#' -   For `/ssm/automation/customer-script-log-group-name`, enter the name
+#'     of an Amazon CloudWatch Logs log group.
 #' 
-#' -   `/ssm/documents/console/public-sharing-permission`: `Enable` or
-#'     `Disable`
+#' -   For `/ssm/documents/console/public-sharing-permission`, enter
+#'     `Enable` or `Disable`.
 #' 
-#' -   `/ssm/managed-instance/activation-tier`: `standard` or `advanced`
+#' -   For `/ssm/managed-instance/activation-tier`, enter `standard` or
+#'     `advanced`.
 #' 
-#' -   `/ssm/opsinsights/opscenter`: `Enabled` or `Disabled`
+#' -   For `/ssm/opsinsights/opscenter`, enter `Enabled` or `Disabled`.
 #' 
-#' -   `/ssm/parameter-store/default-parameter-tier`: `Standard`,
-#'     `Advanced`, `Intelligent-Tiering`
+#' -   For `/ssm/parameter-store/default-parameter-tier`, enter `Standard`,
+#'     `Advanced`, or `Intelligent-Tiering`
 #' 
-#' -   `/ssm/parameter-store/high-throughput-enabled`: `true` or `false`
+#' -   For `/ssm/parameter-store/high-throughput-enabled`, enter `true` or
+#'     `false`.
 #'
 #' @keywords internal
 #'

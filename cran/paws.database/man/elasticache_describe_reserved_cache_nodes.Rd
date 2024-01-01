@@ -35,13 +35,17 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
+\strong{M7g node types}: \code{cache.m7g.large}, \code{cache.m7g.xlarge},
+\code{cache.m7g.2xlarge}, \code{cache.m7g.4xlarge}, \code{cache.m7g.8xlarge},
+\code{cache.m7g.12xlarge}, \code{cache.m7g.16xlarge}
+
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+
 \strong{M6g node types} (available only for Redis engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
-
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -83,14 +87,17 @@ for these types.)
 \itemize{
 \item Current generation:
 
-\strong{R6g node types} (available only for Redis engine version
-5.0.6 onward and for Memcached engine version 1.5.16 onward).
+\strong{R7g node types}: \code{cache.r7g.large}, \code{cache.r7g.xlarge},
+\code{cache.r7g.2xlarge}, \code{cache.r7g.4xlarge}, \code{cache.r7g.8xlarge},
+\code{cache.r7g.12xlarge}, \code{cache.r7g.16xlarge}
 
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+
+\strong{R6g node types} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.r6g.large}, \code{cache.r6g.xlarge}, \code{cache.r6g.2xlarge},
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
-
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},

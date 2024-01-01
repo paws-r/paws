@@ -64,18 +64,20 @@ NULL
 #' the
 #' [EnableExplanations](https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-online-explainability-create-endpoint.html#clarify-online-explainability-create-endpoint-enable)
 #' section in the developer guide for more information.
+#' @param InferenceComponentName If the endpoint hosts one or more inference components, this parameter
+#' specifies the name of inference component to invoke.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL, InferenceComponentName = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)
@@ -198,18 +200,21 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' direct invocation, this parameter specifies the host name of the
 #' container to invoke.
 #' @param InferenceId An identifier that you assign to your request.
+#' @param InferenceComponentName If the endpoint hosts one or more inference components, this parameter
+#' specifies the name of inference component to invoke for a streaming
+#' response.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint_with_response_stream
-sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL) {
+sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, InferenceComponentName = NULL) {
   op <- new_operation(
     name = "InvokeEndpointWithResponseStream",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations-response-stream",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId)
+  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)

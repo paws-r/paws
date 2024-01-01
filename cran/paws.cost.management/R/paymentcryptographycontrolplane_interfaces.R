@@ -53,13 +53,13 @@ NULL
 
 .paymentcryptographycontrolplane$export_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ExportKeyIdentifier = structure(logical(0), tags = list(type = "string")), KeyMaterial = structure(list(Tr31KeyBlock = structure(list(WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tr34KeyBlock = structure(list(CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), ExportToken = structure(logical(0), tags = list(type = "string")), KeyBlockFormat = structure(logical(0), tags = list(type = "string")), RandomNonce = structure(logical(0), tags = list(type = "string")), WrappingKeyCertificate = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(ExportAttributes = structure(list(ExportDukptInitialKey = structure(list(KeySerialNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExportKeyIdentifier = structure(logical(0), tags = list(type = "string")), KeyMaterial = structure(list(Tr31KeyBlock = structure(list(WrappingKeyIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tr34KeyBlock = structure(list(CertificateAuthorityPublicKeyIdentifier = structure(logical(0), tags = list(type = "string")), ExportToken = structure(logical(0), tags = list(type = "string")), KeyBlockFormat = structure(logical(0), tags = list(type = "string")), RandomNonce = structure(logical(0), tags = list(type = "string")), WrappingKeyCertificate = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .paymentcryptographycontrolplane$export_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WrappedKey = structure(list(KeyMaterial = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WrappedKeyMaterialFormat = structure(logical(0), tags = list(type = "string")), WrappingKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(WrappedKey = structure(list(KeyCheckValue = structure(logical(0), tags = list(type = "string")), KeyCheckValueAlgorithm = structure(logical(0), tags = list(type = "string")), KeyMaterial = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WrappedKeyMaterialFormat = structure(logical(0), tags = list(type = "string")), WrappingKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

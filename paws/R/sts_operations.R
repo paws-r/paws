@@ -339,7 +339,15 @@ NULL
 #' spaces. You can also include underscores or any of the following
 #' characters: =,.@@-. You cannot use a value that begins with the text
 #' `aws:`. This prefix is reserved for Amazon Web Services internal use.
-#' @param ProvidedContexts Reserved for future use.
+#' @param ProvidedContexts A list of previously acquired trusted context assertions in the format
+#' of a JSON array. The trusted context assertion is signed and encrypted
+#' by Amazon Web Services STS.
+#' 
+#' The following is an example of a `ProvidedContext` value that includes a
+#' single trusted context assertion and the ARN of the context provider
+#' from which the trusted context assertion was generated.
+#' 
+#' `[{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]`
 #'
 #' @return
 #' A list with the following syntax:

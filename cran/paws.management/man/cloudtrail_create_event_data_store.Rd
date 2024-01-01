@@ -13,7 +13,8 @@ cloudtrail_create_event_data_store(
   TerminationProtectionEnabled = NULL,
   TagsList = NULL,
   KmsKeyId = NULL,
-  StartIngestion = NULL
+  StartIngestion = NULL,
+  BillingMode = NULL
 )
 }
 \arguments{
@@ -42,8 +43,12 @@ or only from the Region in which the event data store is created.}
 \item{OrganizationEnabled}{Specifies whether an event data store collects events logged for an
 organization in Organizations.}
 
-\item{RetentionPeriod}{The retention period of the event data store, in days. You can set a
-retention period of up to 2557 days, the equivalent of seven years.
+\item{RetentionPeriod}{The retention period of the event data store, in days. If \code{BillingMode}
+is set to \code{EXTENDABLE_RETENTION_PRICING}, you can set a retention period
+of up to 3653 days, the equivalent of 10 years. If \code{BillingMode} is set
+to \code{FIXED_RETENTION_PRICING}, you can set a retention period of up to
+2557 days, the equivalent of seven years.
+
 CloudTrail Lake determines whether to retain an event by checking if the
 \code{eventTime} of the event is within the specified retention period. For
 example, if you set a retention period of 90 days, CloudTrail will
@@ -89,6 +94,26 @@ Examples:
 
 \item{StartIngestion}{Specifies whether the event data store should start ingesting live
 events. The default is true.}
+
+\item{BillingMode}{The billing mode for the event data store determines the cost for
+ingesting events and the default and maximum retention period for the
+event data store.
+
+The following are the possible values:
+\itemize{
+\item \code{EXTENDABLE_RETENTION_PRICING} - This billing mode is generally
+recommended if you want a flexible retention period of up to 3653
+days (about 10 years). The default retention period for this billing
+mode is 366 days.
+\item \code{FIXED_RETENTION_PRICING} - This billing mode is recommended if you
+expect to ingest more than 25 TB of event data per month and need a
+retention period of up to 2557 days (about 7 years). The default
+retention period for this billing mode is 2557 days.
+}
+
+The default value is \code{EXTENDABLE_RETENTION_PRICING}.
+
+For more information about CloudTrail pricing, see \href{https://aws.amazon.com/cloudtrail/pricing/}{CloudTrail Pricing} and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html}{Managing CloudTrail Lake costs}.}
 }
 \description{
 Creates a new event data store.

@@ -127,6 +127,8 @@ NULL
 #'  \link[=cloudtrail_deregister_organization_delegated_admin]{deregister_organization_delegated_admin} \tab Removes CloudTrail delegated administrator permissions from a member account in an organization\cr
 #'  \link[=cloudtrail_describe_query]{describe_query} \tab Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status\cr
 #'  \link[=cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for one or more trails associated with the current Region for your account\cr
+#'  \link[=cloudtrail_disable_federation]{disable_federation} \tab Disables Lake query federation on the specified event data store\cr
+#'  \link[=cloudtrail_enable_federation]{enable_federation} \tab Enables Lake query federation on the specified event data store\cr
 #'  \link[=cloudtrail_get_channel]{get_channel} \tab Returns information about a specific channel\cr
 #'  \link[=cloudtrail_get_event_data_store]{get_event_data_store} \tab Returns information about an event data store specified as either an ARN or the ID portion of the ARN\cr
 #'  \link[=cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail\cr

@@ -29,7 +29,7 @@ NULL
 
 .resourceexplorer$create_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .resourceexplorer$create_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Filters = structure(list(FilterString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), IncludedProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ViewName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Filters = structure(list(FilterString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), IncludedProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Scope = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), ViewName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,6 +83,16 @@ NULL
   list()
 }
 
+.resourceexplorer$get_account_level_service_configuration_input <- function(...) {
+  list()
+}
+
+.resourceexplorer$get_account_level_service_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrgConfiguration = structure(list(AWSServiceAccessStatus = structure(logical(0), tags = list(type = "string")), ServiceLinkedRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .resourceexplorer$get_default_view_input <- function(...) {
   list()
 }
@@ -99,7 +109,7 @@ NULL
 
 .resourceexplorer$get_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ReplicatingFrom = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReplicatingTo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ReplicatingFrom = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ReplicatingTo = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,7 +121,7 @@ NULL
 
 .resourceexplorer$get_view_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), View = structure(list(Filters = structure(list(FilterString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), IncludedProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Owner = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), ViewArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), View = structure(list(Filters = structure(list(FilterString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), IncludedProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Owner = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), ViewArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -124,6 +134,18 @@ NULL
 .resourceexplorer$list_indexes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Indexes = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$list_indexes_for_members_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$list_indexes_for_members_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Indexes = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -147,7 +169,7 @@ NULL
 
 .resourceexplorer$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -177,7 +199,7 @@ NULL
 
 .resourceexplorer$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -189,7 +211,7 @@ NULL
 
 .resourceexplorer$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

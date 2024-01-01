@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_workflow_step_executions}
 \alias{imagebuilder_list_workflow_step_executions}
-\title{Shows runtime data for each step in a runtime instance of the workflow
+\title{Returns runtime data for each step in a runtime instance of the workflow
 that you specify in the request}
 \usage{
 imagebuilder_list_workflow_step_executions(
@@ -14,14 +14,14 @@ imagebuilder_list_workflow_step_executions(
 \arguments{
 \item{maxResults}{The maximum items to return in a request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the NextToken from
+\item{nextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}
 
 \item{workflowExecutionId}{[required] The unique identifier that Image Builder assigned to keep track of
 runtime details when it ran the workflow.}
 }
 \description{
-Shows runtime data for each step in a runtime instance of the workflow that you specify in the request.
+Returns runtime data for each step in a runtime instance of the workflow that you specify in the request.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_step_executions/} for full documentation.
 }

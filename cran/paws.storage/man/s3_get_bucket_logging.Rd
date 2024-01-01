@@ -2,20 +2,19 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_logging}
 \alias{s3_get_bucket_logging}
-\title{Returns the logging status of a bucket and the permissions users have to
-view and modify that status}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_logging(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the logging information.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the logging status of a bucket and the permissions users have to view and modify that status.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_logging/} for full documentation.
 }

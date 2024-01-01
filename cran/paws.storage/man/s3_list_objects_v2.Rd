@@ -20,26 +20,51 @@ s3_list_objects_v2(
 )
 }
 \arguments{
-\item{Bucket}{[required] Bucket name to list.
+\item{Bucket}{[required] \strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
 bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{Delimiter}{A delimiter is a character that you use to group keys.}
+\item{Delimiter}{A delimiter is a character that you use to group keys.
+\itemize{
+\item \strong{Directory buckets} - For directory buckets, \code{/} is the only
+supported delimiter.
+\item \strong{Directory buckets} - When you query
+\code{\link[=s3_list_objects_v2]{list_objects_v2}} with a delimiter during
+in-progress multipart uploads, the \code{CommonPrefixes} response
+parameter contains the prefixes that are associated with the
+in-progress multipart uploads. For more information about multipart
+uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
+in the \emph{Amazon S3 User Guide}.
+}}
 
 \item{EncodingType}{Encoding type used by Amazon S3 to encode object keys in the response.}
 
@@ -47,34 +72,47 @@ in the \emph{Amazon S3 User Guide}.}
 the action returns up to 1,000 key names. The response might contain
 fewer keys but will never contain more.}
 
-\item{Prefix}{Limits the response to keys that begin with the specified prefix.}
+\item{Prefix}{Limits the response to keys that begin with the specified prefix.
+
+\strong{Directory buckets} - For directory buckets, only prefixes that end in
+a delimiter (\code{/}) are supported.}
 
 \item{ContinuationToken}{\code{ContinuationToken} indicates to Amazon S3 that the list is being
 continued on this bucket with a token. \code{ContinuationToken} is obfuscated
-and is not a real key.}
+and is not a real key. You can use this \code{ContinuationToken} for
+pagination of the list results.}
 
 \item{FetchOwner}{The owner field is not present in
 \code{\link[=s3_list_objects_v2]{list_objects_v2}} by default. If you want to
 return the owner field with each key in the result, then set the
-\code{FetchOwner} field to \code{true}.}
+\code{FetchOwner} field to \code{true}.
+
+\strong{Directory buckets} - For directory buckets, the bucket owner is
+returned as the object owner for all objects.}
 
 \item{StartAfter}{StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 starts listing after this specified key. StartAfter can be any key in
-the bucket.}
+the bucket.
+
+This functionality is not supported for directory buckets.}
 
 \item{RequestPayer}{Confirms that the requester knows that she or he will be charged for the
 list objects request in V2 style. Bucket owners need not specify this
-parameter in their requests.}
+parameter in their requests.
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+This functionality is not supported for directory buckets.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{OptionalObjectAttributes}{Specifies the optional fields that you want returned in the response.
-Fields that you do not specify are not returned.}
+Fields that you do not specify are not returned.
+
+This functionality is not supported for directory buckets.}
 }
 \description{
-Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A \verb{200 OK} response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html}{Listing object keys programmatically} in the \emph{Amazon S3 User Guide}.
+Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A \verb{200 OK} response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. For more information about listing objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html}{Listing object keys programmatically} in the \emph{Amazon S3 User Guide}. To get a list of your buckets, see \code{\link[=s3_list_buckets]{list_buckets}}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_objects_v2/} for full documentation.
 }

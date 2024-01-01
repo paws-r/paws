@@ -2,7 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_confirm_sign_up}
 \alias{cognitoidentityprovider_confirm_sign_up}
-\title{Confirms registration of a new user}
+\title{This public API operation provides a code that Amazon Cognito sent to
+your user when they signed up in your user pool via the SignUp API
+operation}
 \usage{
 cognitoidentityprovider_confirm_sign_up(
   ClientId,
@@ -22,7 +24,10 @@ cognitoidentityprovider_confirm_sign_up(
 secret key of a user pool client and username plus the client ID in the
 message.}
 
-\item{Username}{[required] The user name of the user whose registration you want to confirm.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{ConfirmationCode}{[required] The confirmation code sent by a user's request to confirm registration.}
 
@@ -70,7 +75,7 @@ provide sensitive information.
 }}
 }
 \description{
-Confirms registration of a new user.
+This public API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool via the \code{\link[=cognitoidentityprovider_sign_up]{sign_up}} API operation. After your user enters their code, they confirm ownership of the email address or phone number that they provided, and their user account becomes active. Depending on your user pool configuration, your users will receive their confirmation code in an email or SMS message.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_sign_up/} for full documentation.
 }

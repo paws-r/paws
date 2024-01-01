@@ -47,7 +47,9 @@ GiB, and increments of 3600 GiB.
 }
 
 \strong{FSx for ONTAP file systems} - The amount of storage capacity that you
-can configure is from 1024 GiB up to 196,608 GiB (192 TiB).
+can configure depends on the value of the \code{HAPairs} property. The
+minimum value is calculated as 1,024 * \code{HAPairs} and the maxium is
+calculated as 524,288 * \code{HAPairs}..
 
 \strong{FSx for OpenZFS file systems} - The amount of storage capacity that
 you can configure is from 64 GiB up to 524,288 GiB (512 TiB).

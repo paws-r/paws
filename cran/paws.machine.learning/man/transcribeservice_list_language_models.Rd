@@ -15,7 +15,7 @@ transcribeservice_list_language_models(
 \arguments{
 \item{StatusEquals}{Returns only custom language models with the specified status. Language
 models are ordered by creation date, with the newest model first. If you
-don't include \code{StatusEquals}, all custom language models are returned.}
+do not include \code{StatusEquals}, all custom language models are returned.}
 
 \item{NameContains}{Returns only the custom language models that contain the specified
 string. The search is not case sensitive.}
@@ -29,7 +29,7 @@ view all your results.}
 
 \item{MaxResults}{The maximum number of custom language models to return in each page of
 results. If there are fewer results than the value that you specify,
-only the actual results are returned. If you don't specify a value, a
+only the actual results are returned. If you do not specify a value, a
 default of 5 is used.}
 }
 \description{

@@ -15,6 +15,7 @@ redshiftserverless_create_namespace(
   logExports = NULL,
   manageAdminPassword = NULL,
   namespaceName,
+  redshiftIdcApplicationArn = NULL,
   tags = NULL
 )
 }
@@ -51,6 +52,9 @@ set, Amazon Redshift uses \code{adminUserPassword} for the admin user
 account's password.}
 
 \item{namespaceName}{[required] The name of the namespace.}
+
+\item{redshiftIdcApplicationArn}{The ARN for the Redshift application that integrates with IAM Identity
+Center.}
 
 \item{tags}{A list of tag instances.}
 }

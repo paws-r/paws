@@ -1,5 +1,9 @@
 svc <- paws::arczonalshift()
 
+test_that("list_autoshifts", {
+  expect_error(svc$list_autoshifts(), NA)
+})
+
 test_that("list_managed_resources", {
   expect_error(svc$list_managed_resources(), NA)
 })

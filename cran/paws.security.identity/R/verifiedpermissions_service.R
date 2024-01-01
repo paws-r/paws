@@ -148,13 +148,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- verifiedpermissions()
-#' svc$create_identity_source(
+#' svc$batch_is_authorized(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=verifiedpermissions_batch_is_authorized]{batch_is_authorized} \tab Makes a series of decisions about multiple authorization requests for one principal or resource\cr
 #'  \link[=verifiedpermissions_create_identity_source]{create_identity_source} \tab Creates a reference to an Amazon Cognito user pool as an external identity provider (IdP)\cr
 #'  \link[=verifiedpermissions_create_policy]{create_policy} \tab Creates a Cedar policy and saves it in the specified policy store\cr
 #'  \link[=verifiedpermissions_create_policy_store]{create_policy_store} \tab Creates a policy store\cr

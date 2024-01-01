@@ -13,7 +13,8 @@ elbv2_create_listener(
   Certificates = NULL,
   DefaultActions,
   AlpnPolicy = NULL,
-  Tags = NULL
+  Tags = NULL,
+  MutualAuthentication = NULL
 )
 }
 \arguments{
@@ -57,6 +58,8 @@ For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Tags}{The tags to assign to the listener.}
+
+\item{MutualAuthentication}{The mutual authentication configuration information.}
 }
 \description{
 Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.

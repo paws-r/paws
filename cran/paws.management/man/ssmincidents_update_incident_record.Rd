@@ -27,17 +27,13 @@ the specified details.}
 provide an impact for an incident, it overwrites the impact provided by
 the response plan.
 
-\strong{Possible impacts:}
+\strong{Supported impact codes}
 \itemize{
-\item \code{1} - Critical impact, full application failure that impacts many to
-all customers.
-\item \code{2} - High impact, partial application failure with impact to many
-customers.
-\item \code{3} - Medium impact, the application is providing reduced service to
-customers.
-\item \code{4} - Low impact, customer aren't impacted by the problem yet.
-\item \code{5} - No impact, customers aren't currently impacted but urgent
-action is needed to avoid impact.
+\item \code{1} - Critical
+\item \code{2} - High
+\item \code{3} - Medium
+\item \code{4} - Low
+\item \code{5} - No Impact
 }}
 
 \item{notificationTargets}{The Amazon SNS targets that Incident Manager notifies when a client

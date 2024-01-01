@@ -14,7 +14,8 @@ eks_create_cluster(
   clientRequestToken = NULL,
   tags = NULL,
   encryptionConfig = NULL,
-  outpostConfig = NULL
+  outpostConfig = NULL,
+  accessConfig = NULL
 )
 }
 \arguments{
@@ -49,12 +50,12 @@ CloudWatch Logs ingestion, archive storage, and data scanning rates
 apply to exported control plane logs. For more information, see
 \href{https://aws.amazon.com/cloudwatch/pricing/}{CloudWatch Pricing}.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
-\item{tags}{The metadata to apply to the cluster to assist with categorization and
-organization. Each tag consists of a key and an optional value. You
-define both.}
+\item{tags}{Metadata that assists with categorization and organization. Each tag
+consists of a key and an optional value. You define both. Tags don't
+propagate to any other cluster or Amazon Web Services resources.}
 
 \item{encryptionConfig}{The encryption configuration for the cluster.}
 
@@ -63,6 +64,8 @@ cluster on an Amazon Web Services Outpost. Before creating a local
 cluster on an Outpost, review \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-local-cluster-overview.html}{Local clusters for Amazon EKS on Amazon Web Services Outposts}
 in the \emph{Amazon EKS User Guide}. This object isn't available for creating
 Amazon EKS clusters on the Amazon Web Services cloud.}
+
+\item{accessConfig}{The access configuration for the cluster.}
 }
 \description{
 Creates an Amazon EKS control plane.

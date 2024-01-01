@@ -33,6 +33,16 @@ NULL
   list()
 }
 
+.kinesis$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$delete_resource_policy_output <- function(...) {
+  list()
+}
+
 .kinesis$delete_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), EnforceConsumerDeletion = structure(logical(0), tags = list(type = "boolean")), StreamARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -134,6 +144,18 @@ NULL
 .kinesis$get_records_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Records = structure(list(structure(list(SequenceNumber = structure(logical(0), tags = list(type = "string")), ApproximateArrivalTimestamp = structure(logical(0), tags = list(type = "timestamp")), Data = structure(logical(0), tags = list(type = "blob")), PartitionKey = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextShardIterator = structure(logical(0), tags = list(type = "string")), MillisBehindLatest = structure(logical(0), tags = list(type = "long")), ChildShards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(type = "string")), ParentShards = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(type = "string")), EndingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$get_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$get_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -239,6 +261,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FailedRecordCount = structure(logical(0), tags = list(type = "integer")), Records = structure(list(structure(list(SequenceNumber = structure(logical(0), tags = list(type = "string")), ShardId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.kinesis$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$put_resource_policy_output <- function(...) {
+  list()
 }
 
 .kinesis$register_stream_consumer_input <- function(...) {

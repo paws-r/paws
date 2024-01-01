@@ -102,6 +102,8 @@ providing reporting and auditing.
 \link[paws.storage:backup_create_legal_hold]{create_legal_hold} \tab This action creates a legal hold on a recovery point (backup)\cr
 \link[paws.storage:backup_create_logically_air_gapped_backup_vault]{create_logically_air_gapped_backup_vault} \tab This request creates a logical container to where backups may be copied\cr
 \link[paws.storage:backup_create_report_plan]{create_report_plan} \tab Creates a report plan\cr
+\link[paws.storage:backup_create_restore_testing_plan]{create_restore_testing_plan} \tab This is the first of two steps to create a restore testing plan; once this request is successful, finish the procedure with request CreateRestoreTestingSelection\cr
+\link[paws.storage:backup_create_restore_testing_selection]{create_restore_testing_selection} \tab This request can be sent after CreateRestoreTestingPlan request returns successfully\cr
 \link[paws.storage:backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
 \link[paws.storage:backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
 \link[paws.storage:backup_delete_backup_vault]{delete_backup_vault} \tab Deletes the backup vault identified by its name\cr
@@ -111,6 +113,8 @@ providing reporting and auditing.
 \link[paws.storage:backup_delete_framework]{delete_framework} \tab Deletes the framework specified by a framework name\cr
 \link[paws.storage:backup_delete_recovery_point]{delete_recovery_point} \tab Deletes the recovery point specified by a recovery point ID\cr
 \link[paws.storage:backup_delete_report_plan]{delete_report_plan} \tab Deletes the report plan specified by a report plan name\cr
+\link[paws.storage:backup_delete_restore_testing_plan]{delete_restore_testing_plan} \tab This request deletes the specified restore testing plan\cr
+\link[paws.storage:backup_delete_restore_testing_selection]{delete_restore_testing_selection} \tab Input the Restore Testing Plan name and Restore Testing Selection name\cr
 \link[paws.storage:backup_describe_backup_job]{describe_backup_job} \tab Returns backup job details for the specified BackupJobId\cr
 \link[paws.storage:backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name\cr
 \link[paws.storage:backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource\cr
@@ -133,14 +137,20 @@ providing reporting and auditing.
 \link[paws.storage:backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
 \link[paws.storage:backup_get_legal_hold]{get_legal_hold} \tab This action returns details for a specified legal hold\cr
 \link[paws.storage:backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
+\link[paws.storage:backup_get_restore_job_metadata]{get_restore_job_metadata} \tab This request returns the metadata for the specified restore job\cr
+\link[paws.storage:backup_get_restore_testing_inferred_metadata]{get_restore_testing_inferred_metadata} \tab This request returns the minimal required set of metadata needed to start a restore job with secure default settings\cr
+\link[paws.storage:backup_get_restore_testing_plan]{get_restore_testing_plan} \tab Returns RestoreTestingPlan details for the specified RestoreTestingPlanName\cr
+\link[paws.storage:backup_get_restore_testing_selection]{get_restore_testing_selection} \tab Returns RestoreTestingSelection, which displays resources and elements of the restore testing plan\cr
 \link[paws.storage:backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the Amazon Web Services resource types supported by Backup\cr
 \link[paws.storage:backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account for the last 30 days\cr
+\link[paws.storage:backup_list_backup_job_summaries]{list_backup_job_summaries} \tab This is a request for a summary of backup jobs created or running within the most recent 30 days\cr
 \link[paws.storage:backup_list_backup_plans]{list_backup_plans} \tab Returns a list of all active backup plans for an authenticated account\cr
 \link[paws.storage:backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates\cr
 \link[paws.storage:backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs\cr
 \link[paws.storage:backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan\cr
 \link[paws.storage:backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them\cr
 \link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
+\link[paws.storage:backup_list_copy_job_summaries]{list_copy_job_summaries} \tab This request obtains a list of copy jobs created or running within the the most recent 30 days\cr
 \link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
 \link[paws.storage:backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
 \link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
@@ -151,10 +161,15 @@ providing reporting and auditing.
 \link[paws.storage:backup_list_report_jobs]{list_report_jobs} \tab Returns details about your report jobs\cr
 \link[paws.storage:backup_list_report_plans]{list_report_plans} \tab Returns a list of your report plans\cr
 \link[paws.storage:backup_list_restore_jobs]{list_restore_jobs} \tab Returns a list of jobs that Backup initiated to restore a saved resource, including details about the recovery process\cr
+\link[paws.storage:backup_list_restore_jobs_by_protected_resource]{list_restore_jobs_by_protected_resource} \tab This returns restore jobs that contain the specified protected resource\cr
+\link[paws.storage:backup_list_restore_job_summaries]{list_restore_job_summaries} \tab This request obtains a summary of restore jobs created or running within the the most recent 30 days\cr
+\link[paws.storage:backup_list_restore_testing_plans]{list_restore_testing_plans} \tab Returns a list of restore testing plans\cr
+\link[paws.storage:backup_list_restore_testing_selections]{list_restore_testing_selections} \tab Returns a list of restore testing selections\cr
 \link[paws.storage:backup_list_tags]{list_tags} \tab Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault\cr
 \link[paws.storage:backup_put_backup_vault_access_policy]{put_backup_vault_access_policy} \tab Sets a resource-based policy that is used to manage access permissions on the target backup vault\cr
 \link[paws.storage:backup_put_backup_vault_lock_configuration]{put_backup_vault_lock_configuration} \tab Applies Backup Vault Lock to a backup vault, preventing attempts to delete any recovery point stored in or created in a backup vault\cr
 \link[paws.storage:backup_put_backup_vault_notifications]{put_backup_vault_notifications} \tab Turns on notifications on a backup vault for the specified topic and events\cr
+\link[paws.storage:backup_put_restore_validation_result]{put_restore_validation_result} \tab This request allows you to send your independent self-run restore test validation results\cr
 \link[paws.storage:backup_start_backup_job]{start_backup_job} \tab Starts an on-demand backup job for the specified resource\cr
 \link[paws.storage:backup_start_copy_job]{start_copy_job} \tab Starts a job to create a one-time copy of the specified resource\cr
 \link[paws.storage:backup_start_report_job]{start_report_job} \tab Starts an on-demand report job for the specified report plan\cr
@@ -167,7 +182,9 @@ providing reporting and auditing.
 \link[paws.storage:backup_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted in to cross-account backup\cr
 \link[paws.storage:backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
 \link[paws.storage:backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region\cr
-\link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates an existing report plan identified by its ReportPlanName with the input document in JSON format
+\link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates an existing report plan identified by its ReportPlanName with the input document in JSON format\cr
+\link[paws.storage:backup_update_restore_testing_plan]{update_restore_testing_plan} \tab This request will send changes to your specified restore testing plan\cr
+\link[paws.storage:backup_update_restore_testing_selection]{update_restore_testing_selection} \tab Most elements except the RestoreTestingSelectionName can be updated with this request
 }
 }
 

@@ -35,6 +35,9 @@ Sample values: \code{Important} | \code{Medium} | \code{Low}
 
 Sample values: \code{Installed} | \code{InstalledOther} |
 \code{InstalledPendingReboot}
+
+For lists of all \code{State} values, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html}{Understanding patch compliance state values}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
 }}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token

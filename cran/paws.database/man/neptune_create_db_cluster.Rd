@@ -31,7 +31,8 @@ neptune_create_db_cluster(
   EnableCloudwatchLogsExports = NULL,
   DeletionProtection = NULL,
   ServerlessV2ScalingConfiguration = NULL,
-  GlobalClusterIdentifier = NULL
+  GlobalClusterIdentifier = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -112,7 +113,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Region. To see the time blocks available,
-see \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window}{Neptune Maintenance Window}
+see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window}{Neptune Maintenance Window}
 in the \emph{Amazon Neptune User Guide.}
 
 Constraints:
@@ -130,7 +131,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Region, occurring on a random day of the
-week. To see the time blocks available, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window}{Neptune Maintenance Window}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window}{Neptune Maintenance Window}
 in the \emph{Amazon Neptune User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -180,8 +181,9 @@ instance level).
 
 Default: \code{false}.}
 
-\item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
-CloudWatch Logs.}
+\item{EnableCloudwatchLogsExports}{A list of the log types that this DB cluster should export to CloudWatch
+Logs. Valid log types are: \code{audit} (to publish audit logs) and
+\code{slowquery} (to publish slow-query logs). See \href{https://docs.aws.amazon.com/neptune/latest/userguide/cloudwatch-logs.html}{Publishing Neptune logs to Amazon CloudWatch logs}.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
@@ -194,6 +196,22 @@ in the \emph{Amazon Neptune User Guide}.}
 
 \item{GlobalClusterIdentifier}{The ID of the Neptune global database to which this new DB cluster
 should be added.}
+
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+Valid Values:
+\itemize{
+\item \code{standard | iopt1}
+}
+
+Default:
+\itemize{
+\item \code{standard}
+}
+
+When you create a Neptune cluster with the storage type set to \code{iopt1},
+the storage type is returned in the response. The storage type isn't
+returned when you set it to \code{standard}.}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.

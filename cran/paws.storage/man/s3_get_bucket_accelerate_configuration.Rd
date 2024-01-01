@@ -2,9 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_accelerate_configuration}
 \alias{s3_get_bucket_accelerate_configuration}
-\title{This implementation of the GET action uses the accelerate subresource to
-return the Transfer Acceleration state of a bucket, which is either
-Enabled or Suspended}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_accelerate_configuration(
   Bucket,
@@ -16,14 +14,14 @@ s3_get_bucket_accelerate_configuration(
 \item{Bucket}{[required] The name of the bucket for which the accelerate configuration is
 retrieved.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{RequestPayer}{}
 }
 \description{
-This implementation of the GET action uses the \code{accelerate} subresource to return the Transfer Acceleration state of a bucket, which is either \code{Enabled} or \code{Suspended}. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to and from Amazon S3.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/} for full documentation.
 }

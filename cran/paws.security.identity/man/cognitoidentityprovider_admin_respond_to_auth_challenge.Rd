@@ -2,7 +2,9 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_respond_to_auth_challenge}
 \alias{cognitoidentityprovider_admin_respond_to_auth_challenge}
-\title{Responds to an authentication challenge, as an administrator}
+\title{Some API operations in a user pool generate a challenge, like a prompt
+for an MFA code, for device authentication that bypasses MFA, or for a
+custom authentication challenge}
 \usage{
 cognitoidentityprovider_admin_respond_to_auth_challenge(
   UserPoolId,
@@ -23,49 +25,68 @@ cognitoidentityprovider_admin_respond_to_auth_challenge(
 \item{ChallengeName}{[required] The challenge name. For more information, see
 \code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.}
 
-\item{ChallengeResponses}{The challenge responses. These are inputs corresponding to the value of
-\code{ChallengeName}, for example:
-\itemize{
-\item \code{SMS_MFA}: \code{SMS_MFA_CODE}, \code{USERNAME}, \code{SECRET_HASH} (if app client
-is configured with client secret).
-\item \code{PASSWORD_VERIFIER}: \code{PASSWORD_CLAIM_SIGNATURE},
-\code{PASSWORD_CLAIM_SECRET_BLOCK}, \code{TIMESTAMP}, \code{USERNAME},
-\code{SECRET_HASH} (if app client is configured with client secret).
+\item{ChallengeResponses}{The responses to the challenge that you received in the previous
+request. Each challenge has its own required response parameters. The
+following examples are partial JSON request bodies that highlight
+challenge-response parameters.
 
-\code{PASSWORD_VERIFIER} requires \code{DEVICE_KEY} when signing in with a
-remembered device.
-\item \code{ADMIN_NO_SRP_AUTH}: \code{PASSWORD}, \code{USERNAME}, \code{SECRET_HASH} (if app
-client is configured with client secret).
-\item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, \code{USERNAME}, \code{SECRET_HASH}
-(if app client is configured with client secret). To set any
-required attributes that Amazon Cognito returned as
-\code{requiredAttributes} in the
-\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
-response, add a \code{userAttributes.attributename } parameter. This
-parameter can also set values for writable attributes that aren't
-required by your user pool.
+You must provide a SECRET_HASH parameter in all challenge responses to
+an app client that has a client secret.
+
+\strong{SMS_MFA}
+
+\verb{"ChallengeName": "SMS_MFA", "ChallengeResponses": \{"SMS_MFA_CODE": "[SMS_code]", "USERNAME": "[username]"\}}
+
+\strong{PASSWORD_VERIFIER}
+
+\verb{"ChallengeName": "PASSWORD_VERIFIER", "ChallengeResponses": \{"PASSWORD_CLAIM_SIGNATURE": "[claim_signature]", "PASSWORD_CLAIM_SECRET_BLOCK": "[secret_block]", "TIMESTAMP": [timestamp], "USERNAME": "[username]"\}}
+
+Add \code{"DEVICE_KEY"} when you sign in with a remembered device.
+
+\strong{CUSTOM_CHALLENGE}
+
+\verb{"ChallengeName": "CUSTOM_CHALLENGE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[challenge_answer]"\}}
+
+Add \code{"DEVICE_KEY"} when you sign in with a remembered device.
+
+\strong{NEW_PASSWORD_REQUIRED}
+
+\verb{"ChallengeName": "NEW_PASSWORD_REQUIRED", "ChallengeResponses": \{"NEW_PASSWORD": "[new_password]", "USERNAME": "[username]"\}}
+
+To set any required attributes that
+\code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} returned in an
+\code{requiredAttributes} parameter, add
+\code{"userAttributes.[attribute_name]": "[attribute_value]"}. This parameter
+can also set values for writable attributes that aren't required by your
+user pool.
 
 In a \code{NEW_PASSWORD_REQUIRED} challenge response, you can't modify a
 required attribute that already has a value. In
-\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}},
+\code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}},
 set a value for any keys that Amazon Cognito returned in the
 \code{requiredAttributes} parameter, then use the
-\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}
+\code{\link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes}}
 API operation to modify the value of any additional attributes.
-\item \code{MFA_SETUP} requires \code{USERNAME}, plus you must use the session value
-returned by
-\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
-in the \code{Session} parameter.
-}
 
-The value of the \code{USERNAME} attribute must be the user's actual
-username, not an alias (such as an email address or phone number). To
-make this simpler, the
-\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
-response includes the actual username value in the
-\code{USERNAMEUSER_ID_FOR_SRP} attribute. This happens even if you specified
-an alias in your call to
-\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.
+\strong{SOFTWARE_TOKEN_MFA}
+
+\verb{"ChallengeName": "SOFTWARE_TOKEN_MFA", "ChallengeResponses": \{"USERNAME": "[username]", "SOFTWARE_TOKEN_MFA_CODE": [authenticator_code]\}}
+
+\strong{DEVICE_SRP_AUTH}
+
+\verb{"ChallengeName": "DEVICE_SRP_AUTH", "ChallengeResponses": \{"USERNAME": "[username]", "DEVICE_KEY": "[device_key]", "SRP_A": "[srp_a]"\}}
+
+\strong{DEVICE_PASSWORD_VERIFIER}
+
+\verb{"ChallengeName": "DEVICE_PASSWORD_VERIFIER", "ChallengeResponses": \{"DEVICE_KEY": "[device_key]", "PASSWORD_CLAIM_SIGNATURE": "[claim_signature]", "PASSWORD_CLAIM_SECRET_BLOCK": "[secret_block]", "TIMESTAMP": [timestamp], "USERNAME": "[username]"\}}
+
+\strong{MFA_SETUP}
+
+\verb{"ChallengeName": "MFA_SETUP", "ChallengeResponses": \{"USERNAME": "[username]"\}, "SESSION": "[Session ID from VerifySoftwareToken]"}
+
+\strong{SELECT_MFA_TYPE}
+
+\verb{"ChallengeName": "SELECT_MFA_TYPE", "ChallengeResponses": \{"USERNAME": "[username]", "ANSWER": "[SMS_MFA or SOFTWARE_TOKEN_MFA]"\}}
 
 For more information about \code{SECRET_HASH}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.
 For information about \code{DEVICE_KEY}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.}
@@ -130,7 +151,7 @@ provide sensitive information.
 }}
 }
 \description{
-Responds to an authentication challenge, as an administrator.
+Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge. An \code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}} API request provides the answer to that challenge, like a code or a secure remote password (SRP). The parameters of a response to an authentication challenge vary with the type of challenge.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_respond_to_auth_challenge/} for full documentation.
 }

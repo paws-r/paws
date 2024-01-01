@@ -63,27 +63,45 @@ finspace_create_environment <- function(name, description = NULL, kmsKeyId = NUL
 #' @param environmentId &#91;required&#93; A unique identifier of the kdb environment.
 #' @param databaseName &#91;required&#93; The name of the kdb database.
 #' @param changeRequests &#91;required&#93; A list of change request objects that are run in order. A change request
-#' object consists of changeType , s3Path, and a dbPath. A changeType can
-#' has the following values:
+#' object consists of `changeType` , `s3Path`, and `dbPath`. A changeType
+#' can has the following values:
 #' 
 #' -   PUT – Adds or updates files in a database.
 #' 
 #' -   DELETE – Deletes files in a database.
 #' 
-#' All the change requests require a mandatory *dbPath* attribute that
-#' defines the path within the database directory. The *s3Path* attribute
+#' All the change requests require a mandatory `dbPath` attribute that
+#' defines the path within the database directory. All database paths must
+#' start with a leading / and end with a trailing /. The `s3Path` attribute
 #' defines the s3 source file path and is required for a PUT change type.
+#' The `s3path` must end with a trailing / if it is a directory and must
+#' end without a trailing / if it is a file.
 #' 
-#' Here is an example of how you can use the change request object:
+#' Here are few examples of how you can use the change request object:
 #' 
-#' `[ { "changeType": "PUT", "s3Path":"s3://bucket/db/2020.01.02/", "dbPath":"/2020.01.02/"}, { "changeType": "PUT", "s3Path":"s3://bucket/db/sym", "dbPath":"/"}, { "changeType": "DELETE", "dbPath": "/2020.01.01/"} ]`
+#' 1.  This request adds a single sym file at database root location.
 #' 
-#' In this example, the first request with *PUT* change type allows you to
-#' add files in the given s3Path under the *2020.01.02* partition of the
-#' database. The second request with *PUT* change type allows you to add a
-#' single sym file at database root location. The last request with
-#' *DELETE* change type allows you to delete the files under the
-#' *2020.01.01* partition of the database.
+#'     `{ "changeType": "PUT", "s3Path":"s3://bucket/db/sym", "dbPath":"/"}`
+#' 
+#' 2.  This request adds files in the given `s3Path` under the 2020.01.02
+#'     partition of the database.
+#' 
+#'     `{ "changeType": "PUT", "s3Path":"s3://bucket/db/2020.01.02/", "dbPath":"/2020.01.02/"}`
+#' 
+#' 3.  This request adds files in the given `s3Path` under the *taq* table
+#'     partition of the database.
+#' 
+#'     `[ { "changeType": "PUT", "s3Path":"s3://bucket/db/2020.01.02/taq/", "dbPath":"/2020.01.02/taq/"}]`
+#' 
+#' 4.  This request deletes the 2020.01.02 partition of the database.
+#' 
+#'     `[{ "changeType": "DELETE", "dbPath": "/2020.01.02/"} ]`
+#' 
+#' 5.  The *DELETE* request allows you to delete the existing files under
+#'     the 2020.01.02 partition of the database, and the *PUT* request adds
+#'     a new taq table under it.
+#' 
+#'     `[ {"changeType": "DELETE", "dbPath":"/2020.01.02/"}, {"changeType": "PUT", "s3Path":"s3://bucket/db/2020.01.02/taq/", "dbPath":"/2020.01.02/taq/"}]`
 #' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
 #'
 #' @keywords internal
@@ -135,6 +153,23 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #'     processes in kdb systems. It allows you to create your own routing
 #'     logic using the initialization scripts and custom code. This type of
 #'     cluster does not require a writable local storage.
+#' 
+#' -   GP – A general purpose cluster allows you to quickly iterate on code
+#'     during development by granting greater access to system commands and
+#'     enabling a fast reload of custom code. This cluster type can
+#'     optionally mount databases including cache and savedown storage. For
+#'     this cluster type, the node count is fixed at 1. It does not support
+#'     autoscaling and supports only `SINGLE` AZ mode.
+#' 
+#' -   Tickerplant – A tickerplant cluster allows you to subscribe to feed
+#'     handlers based on IAM permissions. It can publish to RDBs, other
+#'     Tickerplants, and real-time subscribers (RTS). Tickerplants can
+#'     persist messages to log, which is readable by any RDB environment.
+#'     It supports only single-node that is only one kdb process.
+#' @param tickerplantLogConfiguration A configuration to store Tickerplant logs. It consists of a list of
+#' volumes that will be mounted to your cluster. For the cluster type
+#' `Tickerplant`, the location of the TP volume on the cluster will be
+#' available by using the global variable `.aws.tp_log_path`.
 #' @param databases A list of databases that will be available for querying.
 #' @param cacheStorageConfigurations The configurations for a read only cache storage associated with a
 #' cluster. This cache will be stored as an FSx Lustre that reads from the
@@ -142,10 +177,10 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #' @param autoScalingConfiguration The configuration based on which FinSpace will scale in or scale out
 #' nodes in your cluster.
 #' @param clusterDescription A description of the cluster.
-#' @param capacityConfiguration &#91;required&#93; A structure for the metadata of a cluster. It includes information like
+#' @param capacityConfiguration A structure for the metadata of a cluster. It includes information like
 #' the CPUs needed, memory of instances, and number of instances.
 #' @param releaseLabel &#91;required&#93; The version of FinSpace managed kdb to run.
-#' @param vpcConfiguration Configuration details about the network where the Privatelink endpoint
+#' @param vpcConfiguration &#91;required&#93; Configuration details about the network where the Privatelink endpoint
 #' of the cluster resides.
 #' @param initializationScript Specifies a Q program that will be run at launch of a cluster. It is a
 #' relative path within *.zip* file that contains the custom code, which
@@ -172,18 +207,19 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #' @param availabilityZoneId The availability zone identifiers for the requested regions.
 #' @param tags A list of key-value pairs to label the cluster. You can add up to 50
 #' tags to a cluster.
+#' @param scalingGroupConfiguration The structure that stores the configuration details of a scaling group.
 #'
 #' @keywords internal
 #'
 #' @rdname finspace_create_kx_cluster
-finspace_create_kx_cluster <- function(clientToken = NULL, environmentId, clusterName, clusterType, databases = NULL, cacheStorageConfigurations = NULL, autoScalingConfiguration = NULL, clusterDescription = NULL, capacityConfiguration, releaseLabel, vpcConfiguration = NULL, initializationScript = NULL, commandLineArguments = NULL, code = NULL, executionRole = NULL, savedownStorageConfiguration = NULL, azMode, availabilityZoneId = NULL, tags = NULL) {
+finspace_create_kx_cluster <- function(clientToken = NULL, environmentId, clusterName, clusterType, tickerplantLogConfiguration = NULL, databases = NULL, cacheStorageConfigurations = NULL, autoScalingConfiguration = NULL, clusterDescription = NULL, capacityConfiguration = NULL, releaseLabel, vpcConfiguration, initializationScript = NULL, commandLineArguments = NULL, code = NULL, executionRole = NULL, savedownStorageConfiguration = NULL, azMode, availabilityZoneId = NULL, tags = NULL, scalingGroupConfiguration = NULL) {
   op <- new_operation(
     name = "CreateKxCluster",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/clusters",
     paginator = list()
   )
-  input <- .finspace$create_kx_cluster_input(clientToken = clientToken, environmentId = environmentId, clusterName = clusterName, clusterType = clusterType, databases = databases, cacheStorageConfigurations = cacheStorageConfigurations, autoScalingConfiguration = autoScalingConfiguration, clusterDescription = clusterDescription, capacityConfiguration = capacityConfiguration, releaseLabel = releaseLabel, vpcConfiguration = vpcConfiguration, initializationScript = initializationScript, commandLineArguments = commandLineArguments, code = code, executionRole = executionRole, savedownStorageConfiguration = savedownStorageConfiguration, azMode = azMode, availabilityZoneId = availabilityZoneId, tags = tags)
+  input <- .finspace$create_kx_cluster_input(clientToken = clientToken, environmentId = environmentId, clusterName = clusterName, clusterType = clusterType, tickerplantLogConfiguration = tickerplantLogConfiguration, databases = databases, cacheStorageConfigurations = cacheStorageConfigurations, autoScalingConfiguration = autoScalingConfiguration, clusterDescription = clusterDescription, capacityConfiguration = capacityConfiguration, releaseLabel = releaseLabel, vpcConfiguration = vpcConfiguration, initializationScript = initializationScript, commandLineArguments = commandLineArguments, code = code, executionRole = executionRole, savedownStorageConfiguration = savedownStorageConfiguration, azMode = azMode, availabilityZoneId = availabilityZoneId, tags = tags, scalingGroupConfiguration = scalingGroupConfiguration)
   output <- .finspace$create_kx_cluster_output()
   config <- get_config()
   svc <- .finspace$service(config)
@@ -227,6 +263,60 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
 }
 .finspace$operations$create_kx_database <- finspace_create_kx_database
 
+#' Creates a snapshot of kdb database with tiered storage capabilities and
+#' a pre-warmed cache, ready for mounting on kdb clusters
+#'
+#' @description
+#' Creates a snapshot of kdb database with tiered storage capabilities and a pre-warmed cache, ready for mounting on kdb clusters. Dataviews are only available for clusters running on a scaling group. They are not supported on dedicated clusters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_create_kx_dataview/](https://www.paws-r-sdk.com/docs/finspace_create_kx_dataview/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, where you want to create
+#' the dataview.
+#' @param databaseName &#91;required&#93; The name of the database where you want to create a dataview.
+#' @param dataviewName &#91;required&#93; A unique identifier for the dataview.
+#' @param azMode &#91;required&#93; The number of availability zones you want to assign per cluster. This
+#' can be one of the following
+#' 
+#' -   `SINGLE` – Assigns one availability zone per cluster.
+#' 
+#' -   `MULTI` – Assigns all the availability zones per cluster.
+#' @param availabilityZoneId The identifier of the availability zones.
+#' @param changesetId A unique identifier of the changeset that you want to use to ingest
+#' data.
+#' @param segmentConfigurations The configuration that contains the database path of the data that you
+#' want to place on each selected volume. Each segment must have a unique
+#' database path for each volume. If you do not explicitly specify any
+#' database path for a volume, they are accessible from the cluster through
+#' the default S3/object store segment.
+#' @param autoUpdate The option to specify whether you want to apply all the future additions
+#' and corrections automatically to the dataview, when you ingest new
+#' changesets. The default value is false.
+#' @param description A description of the dataview.
+#' @param tags A list of key-value pairs to label the dataview. You can add up to 50
+#' tags to a dataview.
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_dataview
+finspace_create_kx_dataview <- function(environmentId, databaseName, dataviewName, azMode, availabilityZoneId = NULL, changesetId = NULL, segmentConfigurations = NULL, autoUpdate = NULL, description = NULL, tags = NULL, clientToken) {
+  op <- new_operation(
+    name = "CreateKxDataview",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, azMode = azMode, availabilityZoneId = availabilityZoneId, changesetId = changesetId, segmentConfigurations = segmentConfigurations, autoUpdate = autoUpdate, description = description, tags = tags, clientToken = clientToken)
+  output <- .finspace$create_kx_dataview_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_dataview <- finspace_create_kx_dataview
+
 #' Creates a managed kdb environment for the account
 #'
 #' @description
@@ -260,6 +350,43 @@ finspace_create_kx_environment <- function(name, description = NULL, kmsKeyId, t
   return(response)
 }
 .finspace$operations$create_kx_environment <- finspace_create_kx_environment
+
+#' Creates a new scaling group
+#'
+#' @description
+#' Creates a new scaling group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_create_kx_scaling_group/](https://www.paws-r-sdk.com/docs/finspace_create_kx_scaling_group/) for full documentation.
+#'
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, where you want to create
+#' the scaling group.
+#' @param scalingGroupName &#91;required&#93; A unique identifier for the kdb scaling group.
+#' @param hostType &#91;required&#93; The memory and CPU capabilities of the scaling group host on which
+#' FinSpace Managed kdb clusters will be placed.
+#' @param availabilityZoneId &#91;required&#93; The identifier of the availability zones.
+#' @param tags A list of key-value pairs to label the scaling group. You can add up to
+#' 50 tags to a scaling group.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_scaling_group
+finspace_create_kx_scaling_group <- function(clientToken, environmentId, scalingGroupName, hostType, availabilityZoneId, tags = NULL) {
+  op <- new_operation(
+    name = "CreateKxScalingGroup",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/scalingGroups",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_scaling_group_input(clientToken = clientToken, environmentId = environmentId, scalingGroupName = scalingGroupName, hostType = hostType, availabilityZoneId = availabilityZoneId, tags = tags)
+  output <- .finspace$create_kx_scaling_group_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_scaling_group <- finspace_create_kx_scaling_group
 
 #' Creates a user in FinSpace kdb environment with an associated IAM role
 #'
@@ -295,6 +422,51 @@ finspace_create_kx_user <- function(environmentId, userName, iamRole, tags = NUL
   return(response)
 }
 .finspace$operations$create_kx_user <- finspace_create_kx_user
+
+#' Creates a new volume with a specific amount of throughput and storage
+#' capacity
+#'
+#' @description
+#' Creates a new volume with a specific amount of throughput and storage capacity.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_create_kx_volume/](https://www.paws-r-sdk.com/docs/finspace_create_kx_volume/) for full documentation.
+#'
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, whose clusters can attach
+#' to the volume.
+#' @param volumeType &#91;required&#93; The type of file system volume. Currently, FinSpace only supports
+#' `NAS_1` volume type. When you select `NAS_1` volume type, you must also
+#' provide `nas1Configuration`.
+#' @param volumeName &#91;required&#93; A unique identifier for the volume.
+#' @param description A description of the volume.
+#' @param nas1Configuration Specifies the configuration for the Network attached storage (NAS_1)
+#' file system volume. This parameter is required when you choose
+#' `volumeType` as *NAS_1*.
+#' @param azMode &#91;required&#93; The number of availability zones you want to assign per cluster.
+#' Currently, FinSpace only support `SINGLE` for volumes.
+#' @param availabilityZoneIds &#91;required&#93; The identifier of the availability zones.
+#' @param tags A list of key-value pairs to label the volume. You can add up to 50 tags
+#' to a volume.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_volume
+finspace_create_kx_volume <- function(clientToken = NULL, environmentId, volumeType, volumeName, description = NULL, nas1Configuration = NULL, azMode, availabilityZoneIds, tags = NULL) {
+  op <- new_operation(
+    name = "CreateKxVolume",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/kxvolumes",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_volume_input(clientToken = clientToken, environmentId = environmentId, volumeType = volumeType, volumeName = volumeName, description = description, nas1Configuration = nas1Configuration, azMode = azMode, availabilityZoneIds = availabilityZoneIds, tags = tags)
+  output <- .finspace$create_kx_volume_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_volume <- finspace_create_kx_volume
 
 #' Delete an FinSpace environment
 #'
@@ -387,6 +559,39 @@ finspace_delete_kx_database <- function(environmentId, databaseName, clientToken
 }
 .finspace$operations$delete_kx_database <- finspace_delete_kx_database
 
+#' Deletes the specified dataview
+#'
+#' @description
+#' Deletes the specified dataview. Before deleting a dataview, make sure that it is not in use by any cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_delete_kx_dataview/](https://www.paws-r-sdk.com/docs/finspace_delete_kx_dataview/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, from where you want to
+#' delete the dataview.
+#' @param databaseName &#91;required&#93; The name of the database whose dataview you want to delete.
+#' @param dataviewName &#91;required&#93; The name of the dataview that you want to delete.
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_dataview
+finspace_delete_kx_dataview <- function(environmentId, databaseName, dataviewName, clientToken) {
+  op <- new_operation(
+    name = "DeleteKxDataview",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, clientToken = clientToken)
+  output <- .finspace$delete_kx_dataview_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_dataview <- finspace_delete_kx_dataview
+
 #' Deletes the kdb environment
 #'
 #' @description
@@ -395,18 +600,19 @@ finspace_delete_kx_database <- function(environmentId, databaseName, clientToken
 #' See [https://www.paws-r-sdk.com/docs/finspace_delete_kx_environment/](https://www.paws-r-sdk.com/docs/finspace_delete_kx_environment/) for full documentation.
 #'
 #' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #'
 #' @keywords internal
 #'
 #' @rdname finspace_delete_kx_environment
-finspace_delete_kx_environment <- function(environmentId) {
+finspace_delete_kx_environment <- function(environmentId, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteKxEnvironment",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}",
     paginator = list()
   )
-  input <- .finspace$delete_kx_environment_input(environmentId = environmentId)
+  input <- .finspace$delete_kx_environment_input(environmentId = environmentId, clientToken = clientToken)
   output <- .finspace$delete_kx_environment_output()
   config <- get_config()
   svc <- .finspace$service(config)
@@ -415,6 +621,38 @@ finspace_delete_kx_environment <- function(environmentId) {
   return(response)
 }
 .finspace$operations$delete_kx_environment <- finspace_delete_kx_environment
+
+#' Deletes the specified scaling group
+#'
+#' @description
+#' Deletes the specified scaling group. This action is irreversible. You cannot delete a scaling group until all the clusters running on it have been deleted.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_delete_kx_scaling_group/](https://www.paws-r-sdk.com/docs/finspace_delete_kx_scaling_group/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, from where you want to
+#' delete the dataview.
+#' @param scalingGroupName &#91;required&#93; A unique identifier for the kdb scaling group.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_scaling_group
+finspace_delete_kx_scaling_group <- function(environmentId, scalingGroupName, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteKxScalingGroup",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_scaling_group_input(environmentId = environmentId, scalingGroupName = scalingGroupName, clientToken = clientToken)
+  output <- .finspace$delete_kx_scaling_group_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_scaling_group <- finspace_delete_kx_scaling_group
 
 #' Deletes a user in the specified kdb environment
 #'
@@ -425,18 +663,19 @@ finspace_delete_kx_environment <- function(environmentId) {
 #'
 #' @param userName &#91;required&#93; A unique identifier for the user that you want to delete.
 #' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #'
 #' @keywords internal
 #'
 #' @rdname finspace_delete_kx_user
-finspace_delete_kx_user <- function(userName, environmentId) {
+finspace_delete_kx_user <- function(userName, environmentId, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteKxUser",
     http_method = "DELETE",
     http_path = "/kx/environments/{environmentId}/users/{userName}",
     paginator = list()
   )
-  input <- .finspace$delete_kx_user_input(userName = userName, environmentId = environmentId)
+  input <- .finspace$delete_kx_user_input(userName = userName, environmentId = environmentId, clientToken = clientToken)
   output <- .finspace$delete_kx_user_output()
   config <- get_config()
   svc <- .finspace$service(config)
@@ -445,6 +684,38 @@ finspace_delete_kx_user <- function(userName, environmentId) {
   return(response)
 }
 .finspace$operations$delete_kx_user <- finspace_delete_kx_user
+
+#' Deletes a volume
+#'
+#' @description
+#' Deletes a volume. You can only delete a volume if it's not attached to a cluster or a dataview. When a volume is deleted, any data on the volume is lost. This action is irreversible.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_delete_kx_volume/](https://www.paws-r-sdk.com/docs/finspace_delete_kx_volume/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, whose clusters can attach
+#' to the volume.
+#' @param volumeName &#91;required&#93; The name of the volume that you want to delete.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_volume
+finspace_delete_kx_volume <- function(environmentId, volumeName, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteKxVolume",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_volume_input(environmentId = environmentId, volumeName = volumeName, clientToken = clientToken)
+  output <- .finspace$delete_kx_volume_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_volume <- finspace_delete_kx_volume
 
 #' Returns the FinSpace environment object
 #'
@@ -601,6 +872,38 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
 }
 .finspace$operations$get_kx_database <- finspace_get_kx_database
 
+#' Retrieves details of the dataview
+#'
+#' @description
+#' Retrieves details of the dataview.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_get_kx_dataview/](https://www.paws-r-sdk.com/docs/finspace_get_kx_dataview/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, from where you want to
+#' retrieve the dataview details.
+#' @param databaseName &#91;required&#93; The name of the database where you created the dataview.
+#' @param dataviewName &#91;required&#93; A unique identifier for the dataview.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_dataview
+finspace_get_kx_dataview <- function(environmentId, databaseName, dataviewName) {
+  op <- new_operation(
+    name = "GetKxDataview",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName)
+  output <- .finspace$get_kx_dataview_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_dataview <- finspace_get_kx_dataview
+
 #' Retrieves all the information for the specified kdb environment
 #'
 #' @description
@@ -629,6 +932,36 @@ finspace_get_kx_environment <- function(environmentId) {
   return(response)
 }
 .finspace$operations$get_kx_environment <- finspace_get_kx_environment
+
+#' Retrieves details of a scaling group
+#'
+#' @description
+#' Retrieves details of a scaling group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_get_kx_scaling_group/](https://www.paws-r-sdk.com/docs/finspace_get_kx_scaling_group/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param scalingGroupName &#91;required&#93; A unique identifier for the kdb scaling group.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_scaling_group
+finspace_get_kx_scaling_group <- function(environmentId, scalingGroupName) {
+  op <- new_operation(
+    name = "GetKxScalingGroup",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_scaling_group_input(environmentId = environmentId, scalingGroupName = scalingGroupName)
+  output <- .finspace$get_kx_scaling_group_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_scaling_group <- finspace_get_kx_scaling_group
 
 #' Retrieves information about the specified kdb user
 #'
@@ -659,6 +992,37 @@ finspace_get_kx_user <- function(userName, environmentId) {
   return(response)
 }
 .finspace$operations$get_kx_user <- finspace_get_kx_user
+
+#' Retrieves the information about the volume
+#'
+#' @description
+#' Retrieves the information about the volume.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_get_kx_volume/](https://www.paws-r-sdk.com/docs/finspace_get_kx_volume/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, whose clusters can attach
+#' to the volume.
+#' @param volumeName &#91;required&#93; A unique identifier for the volume.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_volume
+finspace_get_kx_volume <- function(environmentId, volumeName) {
+  op <- new_operation(
+    name = "GetKxVolume",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_volume_input(environmentId = environmentId, volumeName = volumeName)
+  output <- .finspace$get_kx_volume_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_volume <- finspace_get_kx_volume
 
 #' A list of all of your FinSpace environments
 #'
@@ -784,6 +1148,19 @@ finspace_list_kx_cluster_nodes <- function(environmentId, clusterName, nextToken
 #'     processes in kdb systems. It allows you to create your own routing
 #'     logic using the initialization scripts and custom code. This type of
 #'     cluster does not require a writable local storage.
+#' 
+#' -   GP – A general purpose cluster allows you to quickly iterate on code
+#'     during development by granting greater access to system commands and
+#'     enabling a fast reload of custom code. This cluster type can
+#'     optionally mount databases including cache and savedown storage. For
+#'     this cluster type, the node count is fixed at 1. It does not support
+#'     autoscaling and supports only `SINGLE` AZ mode.
+#' 
+#' -   Tickerplant – A tickerplant cluster allows you to subscribe to feed
+#'     handlers based on IAM permissions. It can publish to RDBs, other
+#'     Tickerplants, and real-time subscribers (RTS). Tickerplants can
+#'     persist messages to log, which is readable by any RDB environment.
+#'     It supports only single-node that is only one kdb process.
 #' @param maxResults The maximum number of results to return in this request.
 #' @param nextToken A token that indicates where a results page should begin.
 #'
@@ -838,6 +1215,39 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
 }
 .finspace$operations$list_kx_databases <- finspace_list_kx_databases
 
+#' Returns a list of all the dataviews in the database
+#'
+#' @description
+#' Returns a list of all the dataviews in the database.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_list_kx_dataviews/](https://www.paws-r-sdk.com/docs/finspace_list_kx_dataviews/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, for which you want to
+#' retrieve a list of dataviews.
+#' @param databaseName &#91;required&#93; The name of the database where the dataviews were created.
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_dataviews
+finspace_list_kx_dataviews <- function(environmentId, databaseName, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListKxDataviews",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .finspace$list_kx_dataviews_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
+  output <- .finspace$list_kx_dataviews_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_dataviews <- finspace_list_kx_dataviews
+
 #' Returns a list of kdb environments created in an account
 #'
 #' @description
@@ -867,6 +1277,38 @@ finspace_list_kx_environments <- function(nextToken = NULL, maxResults = NULL) {
   return(response)
 }
 .finspace$operations$list_kx_environments <- finspace_list_kx_environments
+
+#' Returns a list of scaling groups in a kdb environment
+#'
+#' @description
+#' Returns a list of scaling groups in a kdb environment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_list_kx_scaling_groups/](https://www.paws-r-sdk.com/docs/finspace_list_kx_scaling_groups/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, for which you want to
+#' retrieve a list of scaling groups.
+#' @param maxResults The maximum number of results to return in this request.
+#' @param nextToken A token that indicates where a results page should begin.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_scaling_groups
+finspace_list_kx_scaling_groups <- function(environmentId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListKxScalingGroups",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/scalingGroups",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .finspace$list_kx_scaling_groups_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken)
+  output <- .finspace$list_kx_scaling_groups_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_scaling_groups <- finspace_list_kx_scaling_groups
 
 #' Lists all the users in a kdb environment
 #'
@@ -898,6 +1340,40 @@ finspace_list_kx_users <- function(environmentId, nextToken = NULL, maxResults =
   return(response)
 }
 .finspace$operations$list_kx_users <- finspace_list_kx_users
+
+#' Lists all the volumes in a kdb environment
+#'
+#' @description
+#' Lists all the volumes in a kdb environment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_list_kx_volumes/](https://www.paws-r-sdk.com/docs/finspace_list_kx_volumes/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, whose clusters can attach
+#' to the volume.
+#' @param maxResults The maximum number of results to return in this request.
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param volumeType The type of file system volume. Currently, FinSpace only supports
+#' `NAS_1` volume type.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_volumes
+finspace_list_kx_volumes <- function(environmentId, maxResults = NULL, nextToken = NULL, volumeType = NULL) {
+  op <- new_operation(
+    name = "ListKxVolumes",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/kxvolumes",
+    paginator = list()
+  )
+  input <- .finspace$list_kx_volumes_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken, volumeType = volumeType)
+  output <- .finspace$list_kx_volumes_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_volumes <- finspace_list_kx_volumes
 
 #' A list of all tags for a resource
 #'
@@ -1043,7 +1519,11 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
 #' relative path within *.zip* file that contains the custom code, which
 #' will be loaded on the cluster. It must include the file name itself. For
 #' example, `somedir/init.q`.
+#' 
+#' You cannot update this parameter for a `NO_RESTART` deployment.
 #' @param commandLineArguments Specifies the key-value pairs to make them available inside the cluster.
+#' 
+#' You cannot update this parameter for a `NO_RESTART` deployment.
 #' @param deploymentConfiguration The configuration that allows you to choose how you want to update the
 #' code on a cluster.
 #'
@@ -1133,6 +1613,46 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
   return(response)
 }
 .finspace$operations$update_kx_database <- finspace_update_kx_database
+
+#' Updates the specified dataview
+#'
+#' @description
+#' Updates the specified dataview. The dataviews get automatically updated when any new changesets are ingested. Each update of the dataview creates a new version, including changeset details and cache configurations
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_update_kx_dataview/](https://www.paws-r-sdk.com/docs/finspace_update_kx_dataview/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, where you want to update
+#' the dataview.
+#' @param databaseName &#91;required&#93; The name of the database.
+#' @param dataviewName &#91;required&#93; The name of the dataview that you want to update.
+#' @param description The description for a dataview.
+#' @param changesetId A unique identifier for the changeset.
+#' @param segmentConfigurations The configuration that contains the database path of the data that you
+#' want to place on each selected volume. Each segment must have a unique
+#' database path for each volume. If you do not explicitly specify any
+#' database path for a volume, they are accessible from the cluster through
+#' the default S3/object store segment.
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_dataview
+finspace_update_kx_dataview <- function(environmentId, databaseName, dataviewName, description = NULL, changesetId = NULL, segmentConfigurations = NULL, clientToken) {
+  op <- new_operation(
+    name = "UpdateKxDataview",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, description = description, changesetId = changesetId, segmentConfigurations = segmentConfigurations, clientToken = clientToken)
+  output <- .finspace$update_kx_dataview_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_dataview <- finspace_update_kx_dataview
 
 #' Updates information for the given kdb environment
 #'
@@ -1232,3 +1752,38 @@ finspace_update_kx_user <- function(environmentId, userName, iamRole, clientToke
   return(response)
 }
 .finspace$operations$update_kx_user <- finspace_update_kx_user
+
+#' Updates the throughput or capacity of a volume
+#'
+#' @description
+#' Updates the throughput or capacity of a volume. During the update process, the filesystem might be unavailable for a few minutes. You can retry any operations after the update is complete.
+#'
+#' See [https://www.paws-r-sdk.com/docs/finspace_update_kx_volume/](https://www.paws-r-sdk.com/docs/finspace_update_kx_volume/) for full documentation.
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment where you created the
+#' storage volume.
+#' @param volumeName &#91;required&#93; A unique identifier for the volume.
+#' @param description A description of the volume.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#' @param nas1Configuration Specifies the configuration for the Network attached storage (NAS_1)
+#' file system volume.
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_volume
+finspace_update_kx_volume <- function(environmentId, volumeName, description = NULL, clientToken = NULL, nas1Configuration = NULL) {
+  op <- new_operation(
+    name = "UpdateKxVolume",
+    http_method = "PATCH",
+    http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_volume_input(environmentId = environmentId, volumeName = volumeName, description = description, clientToken = clientToken, nas1Configuration = nas1Configuration)
+  output <- .finspace$update_kx_volume_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_volume <- finspace_update_kx_volume

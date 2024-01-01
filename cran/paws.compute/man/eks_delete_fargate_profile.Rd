@@ -7,8 +7,7 @@
 eks_delete_fargate_profile(clusterName, fargateProfileName)
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster associated with the Fargate profile
-to delete.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{fargateProfileName}{[required] The name of the Fargate profile to delete.}
 }

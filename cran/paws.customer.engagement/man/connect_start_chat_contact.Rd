@@ -14,7 +14,8 @@ connect_start_chat_contact(
   ChatDurationInMinutes = NULL,
   SupportedMessagingContentTypes = NULL,
   PersistentChat = NULL,
-  RelatedContactId = NULL
+  RelatedContactId = NULL,
+  SegmentAttributes = NULL
 )
 }
 \arguments{
@@ -22,11 +23,11 @@ connect_start_chat_contact(
 in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactFlowId}{[required] The identifier of the flow for initiating the chat. To see the
-ContactFlowId in the Amazon Connect console user interface, on the
-navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow.
-On the flow page, under the name of the flow, choose \strong{Show additional
-flow information}. The ContactFlowId is the last part of the ARN, shown
-here in bold:
+ContactFlowId in the Amazon Connect admin website, on the navigation
+menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow. On the flow
+page, under the name of the flow, choose \strong{Show additional flow
+information}. The ContactFlowId is the last part of the ARN, shown here
+in bold:
 
 arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 
@@ -76,6 +77,20 @@ chat, and for example use cases and how to configure for them, see
 related to the chat starting.
 
 You cannot provide data for both RelatedContactId and PersistentChat.}
+
+\item{SegmentAttributes}{A set of system defined key-value pairs stored on individual contact
+segments using an attribute map. The attributes are standard Amazon
+Connect attributes. They can be accessed in flows.
+
+Attribute keys can include only alphanumeric, -, and _.
+
+This field can be used to show channel subtype, such as \code{connect:Guide}.
+
+The types \code{application/vnd.amazonaws.connect.message.interactive} and
+\code{application/vnd.amazonaws.connect.message.interactive.response} must be
+present in the SupportedMessagingContentTypes field of this API in order
+to set \code{SegmentAttributes} as
+\{\verb{ "connect:Subtype": \\\{"valueString" : "connect:Guide" \\\}\\\}}.}
 }
 \description{
 Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.

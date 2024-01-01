@@ -134,6 +134,7 @@ make up your data warehouse.
 \link[paws.database:redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
 \link[paws.database:redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
 \link[paws.database:redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)\cr
+\link[paws.database:redshift_create_redshift_idc_application]{create_redshift_idc_application} \tab Creates an Amazon Redshift application for use with IAM Identity Center\cr
 \link[paws.database:redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 \link[paws.database:redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region\cr
 \link[paws.database:redshift_create_snapshot_schedule]{create_snapshot_schedule} \tab Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule\cr
@@ -152,6 +153,7 @@ make up your data warehouse.
 \link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
 \link[paws.database:redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
 \link[paws.database:redshift_delete_partner]{delete_partner} \tab Deletes a partner integration from a cluster\cr
+\link[paws.database:redshift_delete_redshift_idc_application]{delete_redshift_idc_application} \tab Deletes an Amazon Redshift IAM Identity Center application\cr
 \link[paws.database:redshift_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy for a specified resource\cr
 \link[paws.database:redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
 \link[paws.database:redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant\cr
@@ -186,6 +188,7 @@ make up your data warehouse.
 \link[paws.database:redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
 \link[paws.database:redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
 \link[paws.database:redshift_describe_partners]{describe_partners} \tab Returns information about the partner integrations defined for a cluster\cr
+\link[paws.database:redshift_describe_redshift_idc_applications]{describe_redshift_idc_applications} \tab Lists the Amazon Redshift IAM Identity Center applications\cr
 \link[paws.database:redshift_describe_reserved_node_exchange_status]{describe_reserved_node_exchange_status} \tab Returns exchange status details and associated metadata for a reserved-node exchange\cr
 \link[paws.database:redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
 \link[paws.database:redshift_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns the descriptions of the reserved nodes\cr
@@ -221,6 +224,7 @@ make up your data warehouse.
 \link[paws.database:redshift_modify_custom_domain_association]{modify_custom_domain_association} \tab Contains information for changing a custom domain association\cr
 \link[paws.database:redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
 \link[paws.database:redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
+\link[paws.database:redshift_modify_redshift_idc_application]{modify_redshift_idc_application} \tab Changes an existing Amazon Redshift IAM Identity Center application\cr
 \link[paws.database:redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
 \link[paws.database:redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region\cr
 \link[paws.database:redshift_modify_snapshot_schedule]{modify_snapshot_schedule} \tab Modifies a snapshot schedule\cr

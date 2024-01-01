@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_object_retention}
 \alias{s3_put_object_retention}
-\title{Places an Object Retention configuration on an object}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_object_retention(
   Bucket,
@@ -20,8 +20,11 @@ s3_put_object_retention(
 \item{Bucket}{[required] The bucket name that contains the object you want to apply this Object
 Retention configuration to.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
@@ -48,9 +51,9 @@ For requests made using the Amazon Web Services Command Line Interface
 automatically.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
-using the SDK. This header will not provide any additional functionality
-if not using the SDK. When sending this header, there must be a
-corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+you use the SDK. This header will not provide any additional
+functionality if you don't use the SDK. When you send this header, there
+must be a corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
 \verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
@@ -58,12 +61,12 @@ in the \emph{Amazon S3 User Guide}.
 If you provide an individual checksum, Amazon S3 ignores any provided
 \code{ChecksumAlgorithm} parameter.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Places an Object Retention configuration on an object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}. Users or accounts require the \code{s3:PutObjectRetention} permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the \code{s3:BypassGovernanceRetention} permission.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_object_retention/} for full documentation.
 }

@@ -3,7 +3,7 @@
 \name{arczonalshift_update_zonal_shift}
 \alias{arczonalshift_update_zonal_shift}
 \title{Update an active zonal shift in Amazon Route 53 Application Recovery
-Controller in your AWS account}
+Controller in your Amazon Web Services account}
 \usage{
 arczonalshift_update_zonal_shift(
   comment = NULL,
@@ -39,7 +39,7 @@ means the zonal shift expires in 120 minutes (2 hours).}
 \item{zonalShiftId}{[required] The identifier of a zonal shift.}
 }
 \description{
-Update an active zonal shift in Amazon Route 53 Application Recovery Controller in your AWS account. You can update a zonal shift to set a new expiration, or edit or replace the comment for the zonal shift.
+Update an active zonal shift in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account. You can update a zonal shift to set a new expiration, or edit or replace the comment for the zonal shift.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_update_zonal_shift/} for full documentation.
 }

@@ -18,7 +18,8 @@ docdb_modify_db_cluster(
   CloudwatchLogsExportConfiguration = NULL,
   EngineVersion = NULL,
   AllowMajorVersionUpgrade = NULL,
-  DeletionProtection = NULL
+  DeletionProtection = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -137,6 +138,16 @@ version than the DB cluster's current version.}
 is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
+
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+For information on storage types for Amazon DocumentDB clusters, see
+Cluster storage configurations in the \emph{Amazon DocumentDB Developer
+Guide}.
+
+Valid values for storage type - \code{standard | iopt1}
+
+Default value is \code{standard }}
 }
 \description{
 Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.

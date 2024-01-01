@@ -15,8 +15,8 @@ personalize_list_datasets(
 datasets to list.}
 
 \item{nextToken}{A token returned from the previous call to
-\code{\link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs}} for
-getting the next set of dataset import jobs (if they exist).}
+\code{\link[=personalize_list_datasets]{list_datasets}} for getting the next set of
+dataset import jobs (if they exist).}
 
 \item{maxResults}{The maximum number of datasets to return.}
 }

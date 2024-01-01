@@ -14,7 +14,7 @@ eventbridge_describe_endpoint(Name, HomeRegion = NULL)
 For example \code{"HomeRegion": "us-east-1"}.}
 }
 \description{
-Get the information about an existing global endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the Amazon EventBridge User Guide..
+Get the information about an existing global endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the \emph{Amazon EventBridge User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridge_describe_endpoint/} for full documentation.
 }

@@ -264,6 +264,14 @@ test_that("describe_instance_status", {
   expect_error(svc$describe_instance_status(MaxResults = 20), NA)
 })
 
+test_that("describe_instance_topology", {
+  expect_error(svc$describe_instance_topology(), NA)
+})
+
+test_that("describe_instance_topology", {
+  expect_error(svc$describe_instance_topology(MaxResults = 20), NA)
+})
+
 test_that("describe_instance_type_offerings", {
   expect_error(svc$describe_instance_type_offerings(), NA)
 })
@@ -294,6 +302,14 @@ test_that("describe_internet_gateways", {
 
 test_that("describe_internet_gateways", {
   expect_error(svc$describe_internet_gateways(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_byoasn", {
+  expect_error(svc$describe_ipam_byoasn(), NA)
+})
+
+test_that("describe_ipam_byoasn", {
+  expect_error(svc$describe_ipam_byoasn(MaxResults = 20), NA)
 })
 
 test_that("describe_ipam_pools", {
@@ -402,6 +418,14 @@ test_that("describe_local_gateways", {
 
 test_that("describe_local_gateways", {
   expect_error(svc$describe_local_gateways(MaxResults = 20), NA)
+})
+
+test_that("describe_locked_snapshots", {
+  expect_error(svc$describe_locked_snapshots(), NA)
+})
+
+test_that("describe_locked_snapshots", {
+  expect_error(svc$describe_locked_snapshots(MaxResults = 20), NA)
 })
 
 test_that("describe_managed_prefix_lists", {

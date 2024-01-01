@@ -59,12 +59,12 @@ file must be encoded at a sample rate of 16,000 Hz or higher.}
 
 \item{MediaSampleRateHertz}{The sample rate, in hertz, of the audio track in your input media file.
 
-If you don't specify the media sample rate, Amazon Transcribe determines
-it for you. If you specify the sample rate, it must match the rate
-detected by Amazon Transcribe. If there's a mismatch between the value
-that you specify and the value detected, your job fails. In most cases,
-you can omit \code{MediaSampleRateHertz} and let Amazon Transcribe determine
-the sample rate.}
+If you do not specify the media sample rate, Amazon Transcribe
+determines it for you. If you specify the sample rate, it must match the
+rate detected by Amazon Transcribe. If there's a mismatch between the
+value that you specify and the value detected, your job fails. In most
+cases, you can omit \code{MediaSampleRateHertz} and let Amazon Transcribe
+determine the sample rate.}
 
 \item{MediaFormat}{Specify the format of your input media file.}
 
@@ -89,7 +89,7 @@ Note that Amazon Transcribe must have permission to use the specified
 location. You can change Amazon S3 permissions using the \href{https://console.aws.amazon.com/s3/home}{Amazon Web Services Management Console}.
 See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
-If you don't specify \code{OutputBucketName}, your transcript is placed in a
+If you do not specify \code{OutputBucketName}, your transcript is placed in a
 service-managed Amazon S3 bucket and you are provided with a URI to
 access your transcript.}
 
@@ -147,7 +147,7 @@ key in one of two ways:
 \code{arn:aws:kms:region:account-ID:alias/ExampleAlias}.
 }
 
-If you don't specify an encryption key, your output is encrypted with
+If you do not specify an encryption key, your output is encrypted with
 the default Amazon S3 key (SSE-S3).
 
 If you specify a KMS key to encrypt your output, you must also specify
@@ -193,8 +193,10 @@ include the sub-parameters: \code{AllowDeferredExecution} and
 
 \item{ContentRedaction}{Makes it possible to redact or flag specified personally identifiable
 information (PII) in your transcript. If you use \code{ContentRedaction}, you
-must also include the sub-parameters: \code{PiiEntityTypes},
-\code{RedactionOutput}, and \code{RedactionType}.}
+must also include the sub-parameters: \code{RedactionOutput} and
+\code{RedactionType}. You can optionally include \code{PiiEntityTypes} to choose
+which types of PII you want to redact. If you do not include
+\code{PiiEntityTypes} in your request, all PII is redacted.}
 
 \item{IdentifyLanguage}{Enables automatic language identification in your transcription job
 request. Use this parameter if your media file contains only one

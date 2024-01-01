@@ -35,3 +35,15 @@ test_that("list_images", {
 test_that("list_infrastructure_configurations", {
   expect_error(svc$list_infrastructure_configurations(), NA)
 })
+
+test_that("list_lifecycle_policies", {
+  expect_error(svc$list_lifecycle_policies(), NA)
+})
+
+test_that("list_waiting_workflow_steps", {
+  expect_error(svc$list_waiting_workflow_steps(), NA)
+})
+
+test_that("list_workflows", {
+  expect_error(svc$list_workflows(), NA)
+})

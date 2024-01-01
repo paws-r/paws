@@ -75,6 +75,67 @@ opensearchservice_accept_inbound_connection <- function(ConnectionId) {
 }
 .opensearchservice$operations$accept_inbound_connection <- opensearchservice_accept_inbound_connection
 
+#' Creates a new direct-query data source to the specified domain
+#'
+#' @description
+#' Creates a new direct-query data source to the specified domain. For more
+#' information, see [Creating Amazon OpenSearch Service data source
+#' integrations with Amazon
+#' S3](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html).
+#'
+#' @usage
+#' opensearchservice_add_data_source(DomainName, Name, DataSourceType,
+#'   Description)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain to add the data source to.
+#' @param Name &#91;required&#93; A name for the data source.
+#' @param DataSourceType &#91;required&#93; The type of data source.
+#' @param Description A description of the data source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_data_source(
+#'   DomainName = "string",
+#'   Name = "string",
+#'   DataSourceType = list(
+#'     S3GlueDataCatalog = list(
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_add_data_source
+#'
+#' @aliases opensearchservice_add_data_source
+opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, Description = NULL) {
+  op <- new_operation(
+    name = "AddDataSource",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource",
+    paginator = list()
+  )
+  input <- .opensearchservice$add_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description)
+  output <- .opensearchservice$add_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$add_data_source <- opensearchservice_add_data_source
+
 #' Attaches tags to an existing Amazon OpenSearch Service domain
 #'
 #' @description
@@ -958,6 +1019,57 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
   return(response)
 }
 .opensearchservice$operations$create_vpc_endpoint <- opensearchservice_create_vpc_endpoint
+
+#' Deletes a direct-query data source
+#'
+#' @description
+#' Deletes a direct-query data source. For more information, see [Deleting
+#' an Amazon OpenSearch Service data source with Amazon
+#' S3](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-delete.html).
+#'
+#' @usage
+#' opensearchservice_delete_data_source(DomainName, Name)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Name &#91;required&#93; The name of the data source to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_data_source(
+#'   DomainName = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_delete_data_source
+#'
+#' @aliases opensearchservice_delete_data_source
+opensearchservice_delete_data_source <- function(DomainName, Name) {
+  op <- new_operation(
+    name = "DeleteDataSource",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
+    paginator = list()
+  )
+  input <- .opensearchservice$delete_data_source_input(DomainName = DomainName, Name = Name)
+  output <- .opensearchservice$delete_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$delete_data_source <- opensearchservice_delete_data_source
 
 #' Deletes an Amazon OpenSearch Service domain and all of its data
 #'
@@ -3445,6 +3557,61 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 }
 .opensearchservice$operations$get_compatible_versions <- opensearchservice_get_compatible_versions
 
+#' Retrieves information about a direct query data source
+#'
+#' @description
+#' Retrieves information about a direct query data source.
+#'
+#' @usage
+#' opensearchservice_get_data_source(DomainName, Name)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Name &#91;required&#93; The name of the data source to get information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSourceType = list(
+#'     S3GlueDataCatalog = list(
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   Name = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_data_source(
+#'   DomainName = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_data_source
+#'
+#' @aliases opensearchservice_get_data_source
+opensearchservice_get_data_source <- function(DomainName, Name) {
+  op <- new_operation(
+    name = "GetDataSource",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
+    paginator = list()
+  )
+  input <- .opensearchservice$get_data_source_input(DomainName = DomainName, Name = Name)
+  output <- .opensearchservice$get_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_data_source <- opensearchservice_get_data_source
+
 #' The status of the maintenance action
 #'
 #' @description
@@ -3713,6 +3880,66 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
   return(response)
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
+
+#' Lists direct-query data sources for a specific domain
+#'
+#' @description
+#' Lists direct-query data sources for a specific domain. For more
+#' information, see For more information, see [Working with Amazon
+#' OpenSearch Service direct queries with Amazon
+#' S3](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3.html).
+#'
+#' @usage
+#' opensearchservice_list_data_sources(DomainName)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataSources = list(
+#'     list(
+#'       DataSourceType = list(
+#'         S3GlueDataCatalog = list(
+#'           RoleArn = "string"
+#'         )
+#'       ),
+#'       Name = "string",
+#'       Description = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_sources(
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_data_sources
+#'
+#' @aliases opensearchservice_list_data_sources
+opensearchservice_list_data_sources <- function(DomainName) {
+  op <- new_operation(
+    name = "ListDataSources",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource",
+    paginator = list()
+  )
+  input <- .opensearchservice$list_data_sources_input(DomainName = DomainName)
+  output <- .opensearchservice$list_data_sources_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_data_sources <- opensearchservice_list_data_sources
 
 #' A list of maintenance actions for the domain
 #'
@@ -4823,6 +5050,66 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
   return(response)
 }
 .opensearchservice$operations$start_service_software_update <- opensearchservice_start_service_software_update
+
+#' Updates a direct-query data source
+#'
+#' @description
+#' Updates a direct-query data source. For more information, see [Working
+#' with Amazon OpenSearch Service data source integrations with Amazon
+#' S3](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html).
+#'
+#' @usage
+#' opensearchservice_update_data_source(DomainName, Name, DataSourceType,
+#'   Description)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Name &#91;required&#93; The name of the data source to modify.
+#' @param DataSourceType &#91;required&#93; The type of data source.
+#' @param Description A new description of the data source.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_data_source(
+#'   DomainName = "string",
+#'   Name = "string",
+#'   DataSourceType = list(
+#'     S3GlueDataCatalog = list(
+#'       RoleArn = "string"
+#'     )
+#'   ),
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_data_source
+#'
+#' @aliases opensearchservice_update_data_source
+opensearchservice_update_data_source <- function(DomainName, Name, DataSourceType, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateDataSource",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
+    paginator = list()
+  )
+  input <- .opensearchservice$update_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description)
+  output <- .opensearchservice$update_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_data_source <- opensearchservice_update_data_source
 
 #' Modifies the cluster configuration of the specified Amazon OpenSearch
 #' Service domain

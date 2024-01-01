@@ -26,6 +26,12 @@ NULL
 #' Amazon Web Services. You can access and use Step Functions using the
 #' console, the Amazon Web Services SDKs, or an HTTP API. For more
 #' information about Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
+#' 
+#' If you use the Step Functions API actions using Amazon Web Services SDK
+#' integrations, make sure the API actions are in camel case and parameter
+#' names are in Pascal case. For example, you could use Step Functions API
+#' action `startSyncExecution` and specify its parameter as
+#' `StateMachineArn`.
 #'
 #' @param
 #' config
@@ -133,13 +139,15 @@ NULL
 #'  \link[=sfn_list_state_machine_versions]{list_state_machine_versions} \tab Lists versions for the specified state machine Amazon Resource Name (ARN)\cr
 #'  \link[=sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
 #'  \link[=sfn_publish_state_machine_version]{publish_state_machine_version} \tab Creates a version from the current revision of a state machine\cr
-#'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
-#'  \link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
-#'  \link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
+#'  \link[=sfn_redrive_execution]{redrive_execution} \tab Restarts unsuccessful executions of Standard workflows that didn't complete successfully in the last 14 days\cr
+#'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers, Task states using the callback pattern, and optionally Task states using the job run pattern to report that the task identified by the taskToken failed\cr
+#'  \link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and Task states using the callback pattern, and optionally Task states using the job run pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
+#'  \link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers, Task states using the callback pattern, and optionally Task states using the job run pattern to report that the task identified by the taskToken completed successfully\cr
 #'  \link[=sfn_start_execution]{start_execution} \tab Starts a state machine execution\cr
 #'  \link[=sfn_start_sync_execution]{start_sync_execution} \tab Starts a Synchronous Express state machine execution\cr
 #'  \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
 #'  \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
+#'  \link[=sfn_test_state]{test_state} \tab Accepts the definition of a single state and executes it\cr
 #'  \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 #'  \link[=sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
 #'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr

@@ -231,11 +231,11 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED"
 #'         )
 #'       )
@@ -657,6 +657,13 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' the added member accounts, with the exception of the organization
 #' delegated administrator account. A delegated administrator must enable
 #' GuardDuty prior to being added as a member.
+#' 
+#' When you use CreateMembers as an Organizations delegated administrator,
+#' GuardDuty applies your organization's auto-enable settings to the member
+#' accounts in this request, irrespective of the accounts being new or
+#' existing members. For more information about the existing auto-enable
+#' settings for your organization, see
+#' [`describe_organization_configuration`][guardduty_describe_organization_configuration].
 #' 
 #' If you are adding accounts by invitation, before using
 #' [`invite_members`][guardduty_invite_members], use
@@ -1485,11 +1492,11 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'       AutoEnable = "NEW"|"NONE"|"ALL",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'           AutoEnable = "NEW"|"NONE"|"ALL"
 #'         )
 #'       )
@@ -1931,8 +1938,8 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #' Retrieves aggregated statistics for your account. If you are a GuardDuty
 #' administrator, you can retrieve the statistics for all the resources
 #' associated with the active member accounts in your organization who have
-#' enabled EKS Runtime Monitoring and have the GuardDuty agent running on
-#' their EKS nodes.
+#' enabled Runtime Monitoring and have the GuardDuty security agent running
+#' on their resources.
 #'
 #' @usage
 #' guardduty_get_coverage_statistics(DetectorId, FilterCriteria,
@@ -1965,7 +1972,7 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #'   FilterCriteria = list(
 #'     FilterCriterion = list(
 #'       list(
-#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME",
+#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME"|"ECS_CLUSTER_NAME"|"AGENT_VERSION"|"INSTANCE_ID"|"CLUSTER_ARN",
 #'         FilterCondition = list(
 #'           Equals = list(
 #'             "string"
@@ -2062,14 +2069,14 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'       Status = "ENABLED"|"DISABLED",
 #'       UpdatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED",
 #'           UpdatedAt = as.POSIXct(
 #'             "2015-01-01"
@@ -3393,14 +3400,14 @@ guardduty_get_master_account <- function(DetectorId) {
 #'       ),
 #'       Features = list(
 #'         list(
-#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'           Status = "ENABLED"|"DISABLED",
 #'           UpdatedAt = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
 #'           AdditionalConfiguration = list(
 #'             list(
-#'               Name = "EKS_ADDON_MANAGEMENT",
+#'               Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'               Status = "ENABLED"|"DISABLED",
 #'               UpdatedAt = as.POSIXct(
 #'                 "2015-01-01"
@@ -3524,6 +3531,76 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$get_members <- guardduty_get_members
 
+#' Retrieves how many active member accounts in your Amazon Web Services
+#' organization have each feature enabled within GuardDuty
+#'
+#' @description
+#' Retrieves how many active member accounts in your Amazon Web Services
+#' organization have each feature enabled within GuardDuty. Only a
+#' delegated GuardDuty administrator of an organization can run this API.
+#' 
+#' When you create a new Amazon Web Services organization, it might take up
+#' to 24 hours to generate the statistics for the entire organization.
+#'
+#' @usage
+#' guardduty_get_organization_statistics()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationDetails = list(
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     OrganizationStatistics = list(
+#'       TotalAccountsCount = 123,
+#'       MemberAccountsCount = 123,
+#'       ActiveAccountsCount = 123,
+#'       EnabledAccountsCount = 123,
+#'       CountByFeature = list(
+#'         list(
+#'           Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
+#'           EnabledAccountsCount = 123,
+#'           AdditionalConfiguration = list(
+#'             list(
+#'               Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'               EnabledAccountsCount = 123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_organization_statistics
+#'
+#' @aliases guardduty_get_organization_statistics
+guardduty_get_organization_statistics <- function() {
+  op <- new_operation(
+    name = "GetOrganizationStatistics",
+    http_method = "GET",
+    http_path = "/organization/statistics",
+    paginator = list()
+  )
+  input <- .guardduty$get_organization_statistics_input()
+  output <- .guardduty$get_organization_statistics_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_organization_statistics <- guardduty_get_organization_statistics
+
 #' Provides the number of days left for each data source used in the free
 #' trial period
 #'
@@ -3570,7 +3647,7 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #'       ),
 #'       Features = list(
 #'         list(
-#'           Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'           Name = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING",
 #'           FreeTrialDaysRemaining = 123
 #'         )
 #'       )
@@ -3715,6 +3792,20 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'         )
 #'       )
 #'     ),
+#'     TopAccountsByFeature = list(
+#'       list(
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING",
+#'         Accounts = list(
+#'           list(
+#'             AccountId = "string",
+#'             Total = list(
+#'               Amount = "string",
+#'               Unit = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     SumByDataSource = list(
 #'       list(
 #'         DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"|"KUBERNETES_AUDIT_LOGS"|"EC2_MALWARE_SCAN",
@@ -3744,7 +3835,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'     ),
 #'     SumByFeature = list(
 #'       list(
-#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING",
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING",
 #'         Total = list(
 #'           Amount = "string",
 #'           Unit = "string"
@@ -3760,7 +3851,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' ```
 #' svc$get_usage_statistics(
 #'   DetectorId = "string",
-#'   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES"|"SUM_BY_FEATURES",
+#'   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES"|"SUM_BY_FEATURES"|"TOP_ACCOUNTS_BY_FEATURE",
 #'   UsageCriteria = list(
 #'     AccountIds = list(
 #'       "string"
@@ -3772,7 +3863,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'       "string"
 #'     ),
 #'     Features = list(
-#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"
+#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"
 #'     )
 #'   ),
 #'   Unit = "string",
@@ -3903,8 +3994,8 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' administrator, you can retrieve all resources associated with the active
 #' member accounts in your organization.
 #' 
-#' Make sure the accounts have EKS Runtime Monitoring enabled and GuardDuty
-#' agent running on their EKS nodes.
+#' Make sure the accounts have Runtime Monitoring enabled and GuardDuty
+#' agent running on their resources.
 #'
 #' @usage
 #' guardduty_list_coverage(DetectorId, NextToken, MaxResults,
@@ -3938,9 +4029,31 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #'             AddonVersion = "string",
 #'             AddonStatus = "string"
 #'           ),
-#'           ManagementType = "AUTO_MANAGED"|"MANUAL"
+#'           ManagementType = "AUTO_MANAGED"|"MANUAL"|"DISABLED"
 #'         ),
-#'         ResourceType = "EKS"
+#'         ResourceType = "EKS"|"ECS"|"EC2",
+#'         EcsClusterDetails = list(
+#'           ClusterName = "string",
+#'           FargateDetails = list(
+#'             Issues = list(
+#'               "string"
+#'             ),
+#'             ManagementType = "AUTO_MANAGED"|"MANUAL"|"DISABLED"
+#'           ),
+#'           ContainerInstanceDetails = list(
+#'             CoveredContainerInstances = 123,
+#'             CompatibleContainerInstances = 123
+#'           )
+#'         ),
+#'         Ec2InstanceDetails = list(
+#'           InstanceId = "string",
+#'           InstanceType = "string",
+#'           ClusterArn = "string",
+#'           AgentDetails = list(
+#'             Version = "string"
+#'           ),
+#'           ManagementType = "AUTO_MANAGED"|"MANUAL"|"DISABLED"
+#'         )
 #'       ),
 #'       CoverageStatus = "HEALTHY"|"UNHEALTHY",
 #'       Issue = "string",
@@ -3962,7 +4075,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #'   FilterCriteria = list(
 #'     FilterCriterion = list(
 #'       list(
-#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME",
+#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME"|"ECS_CLUSTER_NAME"|"AGENT_VERSION"|"INSTANCE_ID"|"CLUSTER_ARN",
 #'         FilterCondition = list(
 #'           Equals = list(
 #'             "string"
@@ -3975,7 +4088,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #'     )
 #'   ),
 #'   SortCriteria = list(
-#'     AttributeName = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT"|"EKS_CLUSTER_NAME",
+#'     AttributeName = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT"|"EKS_CLUSTER_NAME"|"ECS_CLUSTER_NAME"|"INSTANCE_ID",
 #'     OrderBy = "ASC"|"DESC"
 #'   )
 #' )
@@ -5125,11 +5238,11 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED"
 #'         )
 #'       )
@@ -5487,11 +5600,11 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED"
 #'         )
 #'       )
@@ -5597,11 +5710,11 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'   ),
 #'   Features = list(
 #'     list(
-#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS",
+#'       Name = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING",
 #'       AutoEnable = "NEW"|"NONE"|"ALL",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
 #'           AutoEnable = "NEW"|"NONE"|"ALL"
 #'         )
 #'       )

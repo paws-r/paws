@@ -16,8 +16,8 @@ ivsrealtime_list_participant_events(
 \arguments{
 \item{maxResults}{Maximum number of results to return. Default: 50.}
 
-\item{nextToken}{The first participant to retrieve. This is used for pagination; see the
-\code{nextToken} response field.}
+\item{nextToken}{The first participant event to retrieve. This is used for pagination;
+see the \code{nextToken} response field.}
 
 \item{participantId}{[required] Unique identifier for this participant. This is assigned by IVS and
 returned by

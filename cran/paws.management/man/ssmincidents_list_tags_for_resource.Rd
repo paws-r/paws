@@ -2,15 +2,16 @@
 % Please edit documentation in R/ssmincidents_operations.R
 \name{ssmincidents_list_tags_for_resource}
 \alias{ssmincidents_list_tags_for_resource}
-\title{Lists the tags that are attached to the specified response plan}
+\title{Lists the tags that are attached to the specified response plan or
+incident}
 \usage{
 ssmincidents_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan or incident.}
 }
 \description{
-Lists the tags that are attached to the specified response plan.
+Lists the tags that are attached to the specified response plan or incident.
 
 See \url{https://www.paws-r-sdk.com/docs/ssmincidents_list_tags_for_resource/} for full documentation.
 }

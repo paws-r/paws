@@ -61,10 +61,6 @@ If you connect to Athena using the JDBC driver, use version 1.1.0 of the
 driver or later with the Amazon Athena API. Earlier version drivers do
 not support the API. For more information and to download the driver,
 see \href{https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html}{Accessing Amazon Athena with JDBC}.
-
-For code samples using the Amazon Web Services SDK for Java, see
-\href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
-in the \emph{Amazon Athena User Guide}.
 }
 \section{Service syntax}{
 

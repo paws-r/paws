@@ -2,8 +2,9 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_send_task_success}
 \alias{sfn_send_task_success}
-\title{Used by activity workers and task states using the callback pattern to
-report that the task identified by the taskToken completed successfully}
+\title{Used by activity workers, Task states using the callback pattern, and
+optionally Task states using the job run pattern to report that the task
+identified by the taskToken completed successfully}
 \usage{
 sfn_send_task_success(taskToken, output)
 }
@@ -17,7 +18,7 @@ GetActivityTaskOutput$taskToken.}
 size, and are expressed as bytes in UTF-8 encoding.}
 }
 \description{
-Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report that the task identified by the \code{taskToken} completed successfully.
+Used by activity workers, Task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern, and optionally Task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync}{job run} pattern to report that the task identified by the \code{taskToken} completed successfully.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_send_task_success/} for full documentation.
 }

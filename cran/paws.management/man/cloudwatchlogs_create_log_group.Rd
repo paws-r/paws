@@ -4,10 +4,15 @@
 \alias{cloudwatchlogs_create_log_group}
 \title{Creates a log group with the specified name}
 \usage{
-cloudwatchlogs_create_log_group(logGroupName, kmsKeyId = NULL, tags = NULL)
+cloudwatchlogs_create_log_group(
+  logGroupName,
+  kmsKeyId = NULL,
+  tags = NULL,
+  logGroupClass = NULL
+)
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group.}
+\item{logGroupName}{[required] A name for the log group.}
 
 \item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
 data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}.}
@@ -21,6 +26,20 @@ group, you must have either the \code{logs:TagResource} or \code{logs:TagLogGrou
 permission. For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.
 For more information about using tags to control access, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
+
+\item{logGroupClass}{Use this parameter to specify the log group class for this log group.
+There are two classes:
+\itemize{
+\item The \code{Standard} log class supports all CloudWatch Logs features.
+\item The \verb{Infrequent Access} log class supports a subset of CloudWatch
+Logs features and incurs lower costs.
+}
+
+If you omit this parameter, the default of \code{STANDARD} is used.
+
+After a log group is created, its class can't be changed.
+
+For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
 }
 \description{
 Creates a log group with the specified name. You can create up to 1,000,000 log groups per Region per account.

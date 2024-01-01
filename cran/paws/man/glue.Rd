@@ -103,6 +103,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names\cr
 \link[paws.analytics:glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names\cr
 \link[paws.analytics:glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request\cr
+\link[paws.analytics:glue_batch_get_table_optimizer]{batch_get_table_optimizer} \tab Returns the configuration for the specified table optimizers\cr
 \link[paws.analytics:glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names\cr
 \link[paws.analytics:glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names\cr
 \link[paws.analytics:glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition\cr
@@ -130,6 +131,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_create_security_configuration]{create_security_configuration} \tab Creates a new security configuration\cr
 \link[paws.analytics:glue_create_session]{create_session} \tab Creates a new session\cr
 \link[paws.analytics:glue_create_table]{create_table} \tab Creates a new table definition in the Data Catalog\cr
+\link[paws.analytics:glue_create_table_optimizer]{create_table_optimizer} \tab Creates a new table optimizer for a specific function\cr
 \link[paws.analytics:glue_create_trigger]{create_trigger} \tab Creates a new trigger\cr
 \link[paws.analytics:glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
 \link[paws.analytics:glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
@@ -154,6 +156,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_delete_security_configuration]{delete_security_configuration} \tab Deletes a specified security configuration\cr
 \link[paws.analytics:glue_delete_session]{delete_session} \tab Deletes the session\cr
 \link[paws.analytics:glue_delete_table]{delete_table} \tab Removes a table definition from the Data Catalog\cr
+\link[paws.analytics:glue_delete_table_optimizer]{delete_table_optimizer} \tab Deletes an optimizer and all associated metadata for a table\cr
 \link[paws.analytics:glue_delete_table_version]{delete_table_version} \tab Deletes a specified version of a table\cr
 \link[paws.analytics:glue_delete_trigger]{delete_trigger} \tab Deletes a specified trigger\cr
 \link[paws.analytics:glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog\cr
@@ -166,6 +169,8 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog\cr
 \link[paws.analytics:glue_get_column_statistics_for_partition]{get_column_statistics_for_partition} \tab Retrieves partition statistics of columns\cr
 \link[paws.analytics:glue_get_column_statistics_for_table]{get_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
+\link[paws.analytics:glue_get_column_statistics_task_run]{get_column_statistics_task_run} \tab Get the associated metadata/information for a task run, given a task run ID\cr
+\link[paws.analytics:glue_get_column_statistics_task_runs]{get_column_statistics_task_runs} \tab Retrieves information about all runs associated with the specified table\cr
 \link[paws.analytics:glue_get_connection]{get_connection} \tab Retrieves a connection definition from the Data Catalog\cr
 \link[paws.analytics:glue_get_connections]{get_connections} \tab Retrieves a list of connection definitions from the Data Catalog\cr
 \link[paws.analytics:glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler\cr
@@ -208,6 +213,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_session]{get_session} \tab Retrieves the session\cr
 \link[paws.analytics:glue_get_statement]{get_statement} \tab Retrieves the statement\cr
 \link[paws.analytics:glue_get_table]{get_table} \tab Retrieves the Table definition in a Data Catalog for a specified table\cr
+\link[paws.analytics:glue_get_table_optimizer]{get_table_optimizer} \tab Returns the configuration of all optimizers associated with a specified table\cr
 \link[paws.analytics:glue_get_tables]{get_tables} \tab Retrieves the definitions of some or all of the tables in a given Database\cr
 \link[paws.analytics:glue_get_table_version]{get_table_version} \tab Retrieves a specified version of a table\cr
 \link[paws.analytics:glue_get_table_versions]{get_table_versions} \tab Retrieves a list of strings that identify available versions of a specified table\cr
@@ -225,6 +231,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow\cr
 \link[paws.analytics:glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to Glue\cr
 \link[paws.analytics:glue_list_blueprints]{list_blueprints} \tab Lists all the blueprint names in an account\cr
+\link[paws.analytics:glue_list_column_statistics_task_runs]{list_column_statistics_task_runs} \tab List all task runs for a particular account\cr
 \link[paws.analytics:glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_crawls]{list_crawls} \tab Returns all the crawls of a specified crawler\cr
 \link[paws.analytics:glue_list_custom_entity_types]{list_custom_entity_types} \tab Lists all the custom patterns that have been created\cr
@@ -240,6 +247,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_list_schema_versions]{list_schema_versions} \tab Returns a list of schema versions that you have created, with minimal information\cr
 \link[paws.analytics:glue_list_sessions]{list_sessions} \tab Retrieve a list of sessions\cr
 \link[paws.analytics:glue_list_statements]{list_statements} \tab Lists statements for the session\cr
+\link[paws.analytics:glue_list_table_optimizer_runs]{list_table_optimizer_runs} \tab Lists the history of previous optimizer runs for a specific table\cr
 \link[paws.analytics:glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
 \link[paws.analytics:glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
@@ -254,6 +262,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_run_statement]{run_statement} \tab Executes the statement\cr
 \link[paws.analytics:glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database\cr
 \link[paws.analytics:glue_start_blueprint_run]{start_blueprint_run} \tab Starts a new run of the specified blueprint\cr
+\link[paws.analytics:glue_start_column_statistics_task_run]{start_column_statistics_task_run} \tab Starts a column statistics task run, for a specified table and columns\cr
 \link[paws.analytics:glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled\cr
 \link[paws.analytics:glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
 \link[paws.analytics:glue_start_data_quality_rule_recommendation_run]{start_data_quality_rule_recommendation_run} \tab Starts a recommendation run that is used to generate rules when you don't know what rules to write\cr
@@ -265,6 +274,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
 \link[paws.analytics:glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
 \link[paws.analytics:glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow\cr
+\link[paws.analytics:glue_stop_column_statistics_task_run]{stop_column_statistics_task_run} \tab Stops a task run for the specified table\cr
 \link[paws.analytics:glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
 \link[paws.analytics:glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
 \link[paws.analytics:glue_stop_session]{stop_session} \tab Stops the session\cr
@@ -290,6 +300,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_update_schema]{update_schema} \tab Updates the description, compatibility setting, or version checkpoint for a schema set\cr
 \link[paws.analytics:glue_update_source_control_from_job]{update_source_control_from_job} \tab Synchronizes a job to the source control repository\cr
 \link[paws.analytics:glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog\cr
+\link[paws.analytics:glue_update_table_optimizer]{update_table_optimizer} \tab Updates the configuration for an existing table optimizer\cr
 \link[paws.analytics:glue_update_trigger]{update_trigger} \tab Updates a trigger definition\cr
 \link[paws.analytics:glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog\cr
 \link[paws.analytics:glue_update_workflow]{update_workflow} \tab Updates an existing workflow

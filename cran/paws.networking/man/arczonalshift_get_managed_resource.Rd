@@ -3,20 +3,20 @@
 \name{arczonalshift_get_managed_resource}
 \alias{arczonalshift_get_managed_resource}
 \title{Get information about a resource that's been registered for zonal shifts
-with Amazon Route 53 Application Recovery Controller in this AWS Region}
+with Amazon Route 53 Application Recovery Controller in this Amazon Web
+Services Region}
 \usage{
 arczonalshift_get_managed_resource(resourceIdentifier)
 }
 \arguments{
-\item{resourceIdentifier}{[required] The identifier for the resource to include in a zonal shift. The
+\item{resourceIdentifier}{[required] The identifier for the resource to shift away traffic for. The
 identifier is the Amazon Resource Name (ARN) for the resource.
 
-At this time, you can only start a zonal shift for Network Load
-Balancers and Application Load Balancers with cross-zone load balancing
-turned off.}
+At this time, supported resources are Network Load Balancers and
+Application Load Balancers with cross-zone load balancing turned off.}
 }
 \description{
-Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this AWS Region. Resources that are registered for zonal shifts are managed resources in Route 53 ARC.
+Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region. Resources that are registered for zonal shifts are managed resources in Route 53 ARC. You can start zonal shifts and configure zonal autoshift for managed resources.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_get_managed_resource/} for full documentation.
 }

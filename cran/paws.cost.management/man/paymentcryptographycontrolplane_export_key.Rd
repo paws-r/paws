@@ -2,12 +2,17 @@
 % Please edit documentation in R/paymentcryptographycontrolplane_operations.R
 \name{paymentcryptographycontrolplane_export_key}
 \alias{paymentcryptographycontrolplane_export_key}
-\title{Exports a key from Amazon Web Services Payment Cryptography using either
-ANSI X9 TR-34 or TR-31 key export standard}
+\title{Exports a key from Amazon Web Services Payment Cryptography}
 \usage{
-paymentcryptographycontrolplane_export_key(ExportKeyIdentifier, KeyMaterial)
+paymentcryptographycontrolplane_export_key(
+  ExportAttributes = NULL,
+  ExportKeyIdentifier,
+  KeyMaterial
+)
 }
 \arguments{
+\item{ExportAttributes}{The attributes for IPEK generation during export.}
+
 \item{ExportKeyIdentifier}{[required] The \code{KeyARN} of the key under export from Amazon Web Services Payment
 Cryptography.}
 
@@ -15,7 +20,7 @@ Cryptography.}
 key material export.}
 }
 \description{
-Exports a key from Amazon Web Services Payment Cryptography using either ANSI X9 TR-34 or TR-31 key export standard.
+Exports a key from Amazon Web Services Payment Cryptography.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_export_key/} for full documentation.
 }

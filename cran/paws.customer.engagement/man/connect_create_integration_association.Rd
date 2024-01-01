@@ -36,7 +36,7 @@ the EVENT integration type.}
 integration type.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates an Amazon Web Services resource association with an Amazon Connect instance.

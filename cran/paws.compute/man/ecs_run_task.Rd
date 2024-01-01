@@ -21,7 +21,8 @@ ecs_run_task(
   referenceId = NULL,
   startedBy = NULL,
   tags = NULL,
-  taskDefinition
+  taskDefinition,
+  clientToken = NULL
 )
 }
 \arguments{
@@ -110,7 +111,7 @@ maximum of 5 strategy rules for each task.}
 
 \item{platformVersion}{The platform version the task uses. A platform version is only specified
 for tasks hosted on Fargate. If one isn't specified, the \code{LATEST}
-platform version is used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{Fargate platform versions}
+platform version is used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition to the
@@ -130,7 +131,7 @@ automatically trigger a task to run a batch process job, you could apply
 a unique identifier for that job to your task with the \code{startedBy}
 parameter. You can then identify which tasks belong to that job by
 filtering the results of a \code{\link[=ecs_list_tasks]{list_tasks}} call with the
-\code{startedBy} value. Up to 36 letters (uppercase and lowercase), numbers,
+\code{startedBy} value. Up to 128 letters (uppercase and lowercase), numbers,
 hyphens (-), and underscores (_) are allowed.
 
 If a task is started by an Amazon ECS service, then the \code{startedBy}
@@ -185,6 +186,11 @@ then set this value to
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-resources}{Policy Resources for Amazon ECS}
 in the Amazon Elastic Container Service developer Guide.}
+
+\item{clientToken}{An identifier that you provide to ensure the idempotency of the request.
+It must be unique and is case sensitive. Up to 64 characters are
+allowed. The valid characters are characters in the range of 33-126,
+inclusive. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html}{Ensuring idempotency}.}
 }
 \description{
 Starts a new task using the specified task definition.

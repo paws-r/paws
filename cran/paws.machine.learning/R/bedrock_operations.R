@@ -12,14 +12,16 @@ NULL
 #'
 #' @param jobName &#91;required&#93; Enter a unique name for the fine-tuning job.
 #' @param customModelName &#91;required&#93; Enter a name for the custom model.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Bedrock can assume to
-#' perform tasks on your behalf. For example, during model training,
-#' Bedrock needs your permission to read input data from an S3 bucket,
-#' write model artifacts to an S3 bucket. To pass this role to Bedrock, the
-#' caller of this API must have the `iam:PassRole` permission.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon Bedrock can
+#' assume to perform tasks on your behalf. For example, during model
+#' training, Amazon Bedrock needs your permission to read input data from
+#' an S3 bucket, write model artifacts to an S3 bucket. To pass this role
+#' to Amazon Bedrock, the caller of this API must have the `iam:PassRole`
+#' permission.
 #' @param clientRequestToken Unique token value that you can provide. The GetModelCustomizationJob
 #' response includes the same token value.
 #' @param baseModelIdentifier &#91;required&#93; Name of the base model.
+#' @param customizationType The customization type.
 #' @param customModelKmsKeyId The custom model is encrypted at rest using this key.
 #' @param jobTags Assign tags to the job.
 #' @param customModelTags Assign tags to the custom model.
@@ -34,14 +36,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname bedrock_create_model_customization_job
-bedrock_create_model_customization_job <- function(jobName, customModelName, roleArn, clientRequestToken = NULL, baseModelIdentifier, customModelKmsKeyId = NULL, jobTags = NULL, customModelTags = NULL, trainingDataConfig, validationDataConfig = NULL, outputDataConfig, hyperParameters, vpcConfig = NULL) {
+bedrock_create_model_customization_job <- function(jobName, customModelName, roleArn, clientRequestToken = NULL, baseModelIdentifier, customizationType = NULL, customModelKmsKeyId = NULL, jobTags = NULL, customModelTags = NULL, trainingDataConfig, validationDataConfig = NULL, outputDataConfig, hyperParameters, vpcConfig = NULL) {
   op <- new_operation(
     name = "CreateModelCustomizationJob",
     http_method = "POST",
     http_path = "/model-customization-jobs",
     paginator = list()
   )
-  input <- .bedrock$create_model_customization_job_input(jobName = jobName, customModelName = customModelName, roleArn = roleArn, clientRequestToken = clientRequestToken, baseModelIdentifier = baseModelIdentifier, customModelKmsKeyId = customModelKmsKeyId, jobTags = jobTags, customModelTags = customModelTags, trainingDataConfig = trainingDataConfig, validationDataConfig = validationDataConfig, outputDataConfig = outputDataConfig, hyperParameters = hyperParameters, vpcConfig = vpcConfig)
+  input <- .bedrock$create_model_customization_job_input(jobName = jobName, customModelName = customModelName, roleArn = roleArn, clientRequestToken = clientRequestToken, baseModelIdentifier = baseModelIdentifier, customizationType = customizationType, customModelKmsKeyId = customModelKmsKeyId, jobTags = jobTags, customModelTags = customModelTags, trainingDataConfig = trainingDataConfig, validationDataConfig = validationDataConfig, outputDataConfig = outputDataConfig, hyperParameters = hyperParameters, vpcConfig = vpcConfig)
   output <- .bedrock$create_model_customization_job_output()
   config <- get_config()
   svc <- .bedrock$service(config)
@@ -60,8 +62,8 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_provisioned_model_throughput/](https://www.paws-r-sdk.com/docs/bedrock_create_provisioned_model_throughput/) for full documentation.
 #'
 #' @param clientRequestToken Unique token value that you can provide. If this token matches a
-#' previous request, Bedrock ignores the request, but does not return an
-#' error.
+#' previous request, Amazon Bedrock ignores the request, but does not
+#' return an error.
 #' @param modelUnits &#91;required&#93; Number of model units to allocate.
 #' @param provisionedModelName &#91;required&#93; Unique name for this provisioned throughput.
 #' @param modelId &#91;required&#93; Name or ARN of the model to associate with this provisioned throughput.
@@ -173,11 +175,11 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
 }
 .bedrock$operations$delete_provisioned_model_throughput <- bedrock_delete_provisioned_model_throughput
 
-#' Get the properties associated with a Bedrock custom model that you have
-#' created
+#' Get the properties associated with a Amazon Bedrock custom model that
+#' you have created
 #'
 #' @description
-#' Get the properties associated with a Bedrock custom model that you have created.For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Bedrock User Guide.
+#' Get the properties associated with a Amazon Bedrock custom model that you have created.For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_custom_model/](https://www.paws-r-sdk.com/docs/bedrock_get_custom_model/) for full documentation.
 #'
@@ -203,10 +205,10 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 }
 .bedrock$operations$get_custom_model <- bedrock_get_custom_model
 
-#' Get details about a Bedrock foundation model
+#' Get details about a Amazon Bedrock foundation model
 #'
 #' @description
-#' Get details about a Bedrock foundation model.
+#' Get details about a Amazon Bedrock foundation model.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_foundation_model/](https://www.paws-r-sdk.com/docs/bedrock_get_foundation_model/) for full documentation.
 #'
@@ -333,8 +335,8 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' @param foundationModelArnEquals Return custom models only if the foundation model ARN matches this
 #' parameter.
 #' @param maxResults Maximum number of results to return in the response.
-#' @param nextToken Continuation token from the previous response, for Bedrock to list the
-#' next set of results.
+#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
+#' list the next set of results.
 #' @param sortBy The field to sort by in the returned list of models.
 #' @param sortOrder The sort order of the results.
 #'
@@ -358,14 +360,14 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 }
 .bedrock$operations$list_custom_models <- bedrock_list_custom_models
 
-#' List of Bedrock foundation models that you can use
+#' List of Amazon Bedrock foundation models that you can use
 #'
 #' @description
-#' List of Bedrock foundation models that you can use. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html) in the Bedrock User Guide.
+#' List of Amazon Bedrock foundation models that you can use. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/](https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/) for full documentation.
 #'
-#' @param byProvider A Bedrock model provider.
+#' @param byProvider A Amazon Bedrock model provider.
 #' @param byCustomizationType List by customization type.
 #' @param byOutputModality List by output modality type.
 #' @param byInferenceType List by inference type.
@@ -403,8 +405,8 @@ bedrock_list_foundation_models <- function(byProvider = NULL, byCustomizationTyp
 #' @param nameContains Return customization jobs only if the job name contains these
 #' characters.
 #' @param maxResults Maximum number of results to return in the response.
-#' @param nextToken Continuation token from the previous response, for Bedrock to list the
-#' next set of results.
+#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
+#' list the next set of results.
 #' @param sortBy The field to sort by in the returned list of jobs.
 #' @param sortOrder The sort order of the results.
 #'
@@ -444,8 +446,8 @@ bedrock_list_model_customization_jobs <- function(creationTimeAfter = NULL, crea
 #' @param nameContains Return the list of provisioned capacities if their name contains these
 #' characters.
 #' @param maxResults THe maximum number of results to return in the response.
-#' @param nextToken Continuation token from the previous response, for Bedrock to list the
-#' next set of results.
+#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
+#' list the next set of results.
 #' @param sortBy The field to sort by in the returned list of provisioned capacities.
 #' @param sortOrder The sort order of the results.
 #'

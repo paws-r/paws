@@ -10,7 +10,11 @@ computeoptimizer_put_recommendation_preferences(
   scope = NULL,
   enhancedInfrastructureMetrics = NULL,
   inferredWorkloadTypes = NULL,
-  externalMetricsPreference = NULL
+  externalMetricsPreference = NULL,
+  lookBackPeriod = NULL,
+  utilizationPreferences = NULL,
+  preferredResources = NULL,
+  savingsEstimationMode = NULL
 )
 }
 \arguments{
@@ -74,6 +78,45 @@ action.
 This preference can only be set for the \code{Ec2Instance} resource type.
 
 For more information, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html}{External metrics ingestion}
+in the \emph{Compute Optimizer User Guide}.}
+
+\item{lookBackPeriod}{The preference to control the number of days the utilization metrics of
+the Amazon Web Services resource are analyzed. When this preference
+isn't specified, we use the default value \code{DAYS_14}.
+
+You can only set this preference for the Amazon EC2 instance and Auto
+Scaling group resource types.}
+
+\item{utilizationPreferences}{The preference to control the resource’s CPU utilization thresholds -
+threshold and headroom. When this preference isn't specified, we use the
+following default values:
+\itemize{
+\item \code{P99_5} for threshold
+\item \code{PERCENT_17} for headroom
+}
+
+You can only set this preference for the Amazon EC2 instance resource
+type.}
+
+\item{preferredResources}{The preference to control which resource type values are considered when
+generating rightsizing recommendations. You can specify this preference
+as a combination of include and exclude lists. You must specify either
+an \code{includeList} or \code{excludeList}. If the preference is an empty set of
+resource type values, an error occurs.
+
+You can only set this preference for the Amazon EC2 instance and Auto
+Scaling group resource types.}
+
+\item{savingsEstimationMode}{The status of the savings estimation mode preference to create or
+update.
+
+Specify the \code{AfterDiscounts} status to activate the preference, or
+specify \code{BeforeDiscounts} to deactivate the preference.
+
+Only the account manager or delegated administrator of your organization
+can activate this preference.
+
+For more information, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/savings-estimation-mode.html}{Savings estimation mode}
 in the \emph{Compute Optimizer User Guide}.}
 }
 \description{

@@ -7,7 +7,8 @@
 prometheusservice_create_workspace(
   alias = NULL,
   clientToken = NULL,
-  tags = NULL
+  tags = NULL,
+  kmsKeyArn = NULL
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ user reference and does not need to be unique.}
 idempotency of the request.}
 
 \item{tags}{Optional, user-provided tags for this workspace.}
+
+\item{kmsKeyArn}{Optional, customer managed KMS key used to encrypt data for this
+workspace}
 }
 \description{
 Creates a new AMP workspace.

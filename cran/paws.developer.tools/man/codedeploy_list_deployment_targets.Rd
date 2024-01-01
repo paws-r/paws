@@ -5,13 +5,13 @@
 \title{Returns an array of target IDs that are associated a deployment}
 \usage{
 codedeploy_list_deployment_targets(
-  deploymentId = NULL,
+  deploymentId,
   nextToken = NULL,
   targetFilters = NULL
 )
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment.}
+\item{deploymentId}{[required] The unique ID of a deployment.}
 
 \item{nextToken}{A token identifier returned from the previous
 \code{\link[=codedeploy_list_deployment_targets]{list_deployment_targets}} call. It

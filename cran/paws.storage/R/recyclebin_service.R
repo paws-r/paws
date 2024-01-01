@@ -22,8 +22,8 @@ NULL
 #' restored, the resource is permanently deleted from the Recycle Bin and
 #' is no longer available for recovery. For more information about Recycle
 #' Bin, see [Recycle
-#' Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/) in the
-#' *Amazon Elastic Compute Cloud User Guide*.
+#' Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @param
 #' config

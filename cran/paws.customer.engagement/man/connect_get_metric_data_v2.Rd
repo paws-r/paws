@@ -87,7 +87,7 @@ single request. Valid filter keys: \code{QUEUE} | \code{ROUTING_PROFILE} |
 \code{AGENT} | \code{CHANNEL} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
 \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
 \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
-\code{FEATURE}
+\code{FEATURE} | \code{contact/segmentAttributes/connect:Subtype}
 \item \strong{Filter values}: A maximum of 100 filter values are supported in a
 single request. VOICE, CHAT, and TASK are valid \code{filterValue} for
 the CHANNEL filter key. They do not count towards limitation of 100
@@ -98,6 +98,10 @@ filter values, along with 3 channel filters.
 \code{contact_lens_conversational_analytics} is a valid filterValue for
 the \code{FEATURE} filter key. It is available only to contacts analyzed
 by Contact Lens conversational analytics.
+
+\code{connect:Chat}, \code{connect:SMS}, \code{connect:Telephony}, and
+\code{connect:WebRTC} are valid \code{filterValue} examples (not exhaustive)
+for the \verb{contact/segmentAttributes/connect:Subtype filter} key.
 }}
 
 \item{Groupings}{The grouping applied to the metrics that are returned. For example, when
@@ -110,7 +114,8 @@ If no grouping is specified, a summary of all metrics is returned.
 Valid grouping keys: \code{QUEUE} | \code{ROUTING_PROFILE} | \code{AGENT} | \code{CHANNEL} |
 \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} |
 \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} |
-\code{AGENT_HIERARCHY_LEVEL_FIVE}}
+\code{AGENT_HIERARCHY_LEVEL_FIVE},
+\code{contact/segmentAttributes/connect:Subtype}}
 
 \item{Metrics}{[required] The metrics to retrieve. Specify the name, groupings, and filters for
 each metric. The following historical metrics are available. For a
@@ -122,13 +127,27 @@ in the \emph{Amazon Connect Administrator's Guide}.
 Unit: Percent
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 \strong{AGENT_ADHERENT_TIME}
 
 This metric is available only in Amazon Web Services Regions where
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/regions.html#optimization_region}{Forecasting, capacity planning, and scheduling}
 is available.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AGENT_ANSWER_RATE}
+
+Unit: Percent
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AGENT_NON_ADHERENT_TIME}
 
 Unit: Seconds
 
@@ -185,14 +204,23 @@ Agent Hierarchy
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
+
+\strong{AVG_ACTIVE_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
 
 \strong{AVG_AFTER_CONTACT_WORK_TIME}
 
 Unit: Seconds
 
+Valid metric filter key: \code{INITIATION_METHOD}
+
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -210,12 +238,19 @@ Agent Hierarchy
 The \code{Negate} key in Metric Level Filters is not applicable for this
 metric.
 
+\strong{AVG_AGENT_PAUSE_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
 \strong{AVG_CONTACT_DURATION}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -224,7 +259,7 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_GREETING_TIME_AGENT}
 
@@ -234,14 +269,14 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_HANDLE_TIME}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -250,7 +285,7 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -259,14 +294,14 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_HOLDS}
 
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -275,13 +310,16 @@ Feature is a valid filter but not a valid grouping.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_INTERACTION_TIME}
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile, Feature
+Valid metric filter key: \code{INITIATION_METHOD}
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
+contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -293,7 +331,7 @@ conversational analytics.
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_INTERRUPTION_TIME_AGENT}
 
@@ -303,7 +341,7 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_NON_TALK_TIME}
 
@@ -313,13 +351,14 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_QUEUE_ANSWER_TIME}
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile, Feature
+Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
+contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -327,7 +366,8 @@ Feature is a valid filter but not a valid grouping.
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile,
+contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_TALK_TIME}
 
@@ -337,7 +377,7 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_TALK_TIME_AGENT}
 
@@ -347,7 +387,7 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{AVG_TALK_TIME_CUSTOMER}
 
@@ -357,14 +397,14 @@ conversational analytics.
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{CONTACTS_ABANDONED}
 
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{CONTACTS_CREATED}
 
@@ -372,7 +412,8 @@ Unit: Count
 
 Valid metric filter key: \code{INITIATION_METHOD}
 
-Valid groupings and filters: Queue, Channel, Routing Profile, Feature
+Valid groupings and filters: Queue, Channel, Routing Profile, Feature,
+contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -383,13 +424,48 @@ Unit: Count
 Valid metric filter key: \code{INITIATION_METHOD}, \code{DISCONNECT_REASON}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
 \strong{CONTACTS_HOLD_ABANDONS}
 
 Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+
+\strong{CONTACTS_ON_HOLD_AGENT_DISCONNECT}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{CONTACTS_ON_HOLD_CUSTOMER_DISCONNECT}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{CONTACTS_PUT_ON_HOLD}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{CONTACTS_TRANSFERRED_OUT_EXTERNAL}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{CONTACTS_TRANSFERRED_OUT_INTERNAL}
+
+Unit: Percent
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
@@ -399,13 +475,14 @@ Agent Hierarchy
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{CONTACTS_RESOLVED_IN_X}
 
 Unit: Count
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile,
+contact/segmentAttributes/connect:Subtype
 
 Threshold: For \code{ThresholdValue} enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
@@ -416,7 +493,7 @@ Threshold: For \code{ThresholdValue} enter any whole number from 1 to 604800
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy, Feature
+Agent Hierarchy, Feature, contact/segmentAttributes/connect:Subtype
 
 Feature is a valid filter but not a valid grouping.
 
@@ -425,21 +502,21 @@ Feature is a valid filter but not a valid grouping.
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{CONTACTS_TRANSFERRED_OUT_FROM_QUEUE}
 
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{MAX_QUEUED_TIME}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{PERCENT_NON_TALK_TIME}
 
@@ -449,7 +526,7 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{PERCENT_TALK_TIME}
 
@@ -459,7 +536,7 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{PERCENT_TALK_TIME_AGENT}
 
@@ -469,7 +546,7 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{PERCENT_TALK_TIME_CUSTOMER}
 
@@ -479,7 +556,7 @@ conversational analytics.
 Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
 
 \strong{SERVICE_LEVEL}
 
@@ -493,11 +570,47 @@ Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
 "Less than").
 
+\strong{SUM_AFTER_CONTACT_WORK_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_CONNECTING_TIME_AGENT}
+
+Unit: Seconds
+
+Valid metric filter key: \code{INITIATION_METHOD}. This metric only supports
+the following filter keys as \code{INITIATION_METHOD}: \code{INBOUND} | \code{OUTBOUND}
+| \code{CALLBACK} | \code{API}
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+The \code{Negate} key in Metric Level Filters is not applicable for this
+metric.
+
+\strong{SUM_CONTACT_FLOW_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_CONTACT_TIME_AGENT}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
 \strong{SUM_CONTACTS_ANSWERED_IN_X}
 
 Unit: Count
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile,
+contact/segmentAttributes/connect:Subtype
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
@@ -507,7 +620,8 @@ Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 
 Unit: Count
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile,
+contact/segmentAttributes/connect:Subtype
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
@@ -519,13 +633,68 @@ Valid metric filter key: \code{DISCONNECT_REASON}
 
 Unit: Count
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, contact/segmentAttributes/connect:Subtype
+
+\strong{SUM_ERROR_STATUS_TIME_AGENT}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_HANDLE_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_HOLD_TIME}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_IDLE_TIME_AGENT}
+
+Unit: Seconds
+
+Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
+
+\strong{SUM_INTERACTION_AND_HOLD_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_INTERACTION_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{SUM_NON_PRODUCTIVE_TIME_AGENT}
+
+Unit: Seconds
+
+Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
+
+\strong{SUM_ONLINE_TIME_AGENT}
+
+Unit: Seconds
+
+Valid groupings and filters: Routing Profile, Agent, Agent Hierarchy
 
 \strong{SUM_RETRY_CALLBACK_ATTEMPTS}
 
 Unit: Count
 
-Valid groupings and filters: Queue, Channel, Routing Profile}
+Valid groupings and filters: Queue, Channel, Routing Profile,
+contact/segmentAttributes/connect:Subtype}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

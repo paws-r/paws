@@ -312,10 +312,10 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 }
 .route53resolver$operations$create_firewall_rule_group <- route53resolver_create_firewall_rule_group
 
-#' Creates an Route 53 Resolver on an Outpost
+#' Creates a Route 53 Resolver on an Outpost
 #'
 #' @description
-#' Creates an Route 53 Resolver on an Outpost.
+#' Creates a Route 53 Resolver on an Outpost.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53resolver_create_outpost_resolver/](https://www.paws-r-sdk.com/docs/route53resolver_create_outpost_resolver/) for full documentation.
 #'
@@ -383,27 +383,56 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' @param IpAddresses &#91;required&#93; The subnets and IP addresses in your VPC that DNS queries originate from
 #' (for outbound endpoints) or that you forward DNS queries to (for inbound
 #' endpoints). The subnet ID uniquely identifies a VPC.
+#' 
+#' Even though the minimum is 1, Route 53 requires that you create at least
+#' two.
+#' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
+#' must also specify a value for the `PreferredInstanceType`.
+#' @param PreferredInstanceType The instance type. If you specify this, you must also specify a value
+#' for the `OutpostArn`.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
 #' @param ResolverEndpointType For the endpoint type you can choose either IPv4, IPv6, or dual-stack. A
 #' dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
 #' This endpoint type is applied to all IP addresses.
-#' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
-#' must also specify a value for the `PreferredInstanceType`.
-#' @param PreferredInstanceType The instance type. If you specify this, you must also specify a value
-#' for the `OutpostArn`.
+#' @param Protocols The protocols you want to use for the endpoint. DoH-FIPS is applicable
+#' for inbound endpoints only.
+#' 
+#' For an inbound endpoint you can apply the protocols as follows:
+#' 
+#' -   Do53 and DoH in combination.
+#' 
+#' -   Do53 and DoH-FIPS in combination.
+#' 
+#' -   Do53 alone.
+#' 
+#' -   DoH alone.
+#' 
+#' -   DoH-FIPS alone.
+#' 
+#' -   None, which is treated as Do53.
+#' 
+#' For an outbound endpoint you can apply the protocols as follows:
+#' 
+#' -   Do53 and DoH in combination.
+#' 
+#' -   Do53 alone.
+#' 
+#' -   DoH alone.
+#' 
+#' -   None, which is treated as Do53.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_endpoint
-route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL, ResolverEndpointType = NULL, OutpostArn = NULL, PreferredInstanceType = NULL) {
+route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, OutpostArn = NULL, PreferredInstanceType = NULL, Tags = NULL, ResolverEndpointType = NULL, Protocols = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags, ResolverEndpointType = ResolverEndpointType, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType)
+  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols)
   output <- .route53resolver$create_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -499,7 +528,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' 
 #' Currently, only Resolver can create rules that have a value of
 #' `RECURSIVE` for `RuleType`.
-#' @param DomainName &#91;required&#93; DNS queries for this domain name are forwarded to the IP addresses that
+#' @param DomainName DNS queries for this domain name are forwarded to the IP addresses that
 #' you specify in `TargetIps`. If a query matches multiple Resolver rules
 #' (example.com and www.example.com), outbound DNS queries are routed using
 #' the Resolver rule that contains the most specific domain name
@@ -518,7 +547,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_rule
-route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, RuleType, DomainName, TargetIps = NULL, ResolverEndpointId = NULL, Tags = NULL) {
+route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, RuleType, DomainName = NULL, TargetIps = NULL, ResolverEndpointId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateResolverRule",
     http_method = "POST",
@@ -2762,11 +2791,11 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 }
 .route53resolver$operations$update_resolver_dnssec_config <- route53resolver_update_resolver_dnssec_config
 
-#' Updates the name, or enpoint type for an inbound or an outbound Resolver
-#' endpoint
+#' Updates the name, or endpoint type for an inbound or an outbound
+#' Resolver endpoint
 #'
 #' @description
-#' Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
+#' Updates the name, or endpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_endpoint/](https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_endpoint/) for full documentation.
 #'
@@ -2779,18 +2808,51 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @param UpdateIpAddresses Specifies the IPv6 address when you update the Resolver endpoint from
 #' IPv4 to dual-stack. If you don't specify an IPv6 address, one will be
 #' automatically chosen from your subnet.
+#' @param Protocols The protocols you want to use for the endpoint. DoH-FIPS is applicable
+#' for inbound endpoints only.
+#' 
+#' For an inbound endpoint you can apply the protocols as follows:
+#' 
+#' -   Do53 and DoH in combination.
+#' 
+#' -   Do53 and DoH-FIPS in combination.
+#' 
+#' -   Do53 alone.
+#' 
+#' -   DoH alone.
+#' 
+#' -   DoH-FIPS alone.
+#' 
+#' -   None, which is treated as Do53.
+#' 
+#' For an outbound endpoint you can apply the protocols as follows:
+#' 
+#' -   Do53 and DoH in combination.
+#' 
+#' -   Do53 alone.
+#' 
+#' -   DoH alone.
+#' 
+#' -   None, which is treated as Do53.
+#' 
+#' You can't change the protocol of an inbound endpoint directly from only
+#' Do53 to only DoH, or DoH-FIPS. This is to prevent a sudden disruption to
+#' incoming traffic that relies on Do53. To change the protocol from Do53
+#' to DoH, or DoH-FIPS, you must first enable both Do53 and DoH, or Do53
+#' and DoH-FIPS, to make sure that all incoming traffic has transferred to
+#' using the DoH protocol, or DoH-FIPS, and then remove the Do53.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_endpoint
-route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL) {
+route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL, Protocols = NULL) {
   op <- new_operation(
     name = "UpdateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses)
+  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols)
   output <- .route53resolver$update_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)

@@ -91,8 +91,8 @@ polly_delete_lexicon <- function(Name) {
 #' polly_describe_voices(Engine, LanguageCode,
 #'   IncludeAdditionalLanguageCodes, NextToken)
 #'
-#' @param Engine Specifies the engine (`standard` or `neural`) used by Amazon Polly when
-#' processing input text for speech synthesis.
+#' @param Engine Specifies the engine (`standard`, `neural` or `long-form`) used by
+#' Amazon Polly when processing input text for speech synthesis.
 #' @param LanguageCode The language identification tag (ISO 639 code for the language name-ISO
 #' 3166 country code) for filtering the list of voices returned. If you
 #' don't specify this optional parameter, all available voices are
@@ -121,7 +121,7 @@ polly_delete_lexicon <- function(Name) {
 #'         "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE"
 #'       ),
 #'       SupportedEngines = list(
-#'         "standard"|"neural"
+#'         "standard"|"neural"|"long-form"
 #'       )
 #'     )
 #'   ),
@@ -132,7 +132,7 @@ polly_delete_lexicon <- function(Name) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_voices(
-#'   Engine = "standard"|"neural",
+#'   Engine = "standard"|"neural"|"long-form",
 #'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE",
 #'   IncludeAdditionalLanguageCodes = TRUE|FALSE,
 #'   NextToken = "string"
@@ -262,7 +262,7 @@ polly_get_lexicon <- function(Name) {
 #' ```
 #' list(
 #'   SynthesisTask = list(
-#'     Engine = "standard"|"neural",
+#'     Engine = "standard"|"neural"|"long-form",
 #'     TaskId = "string",
 #'     TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
 #'     TaskStatusReason = "string",
@@ -412,7 +412,7 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #'   NextToken = "string",
 #'   SynthesisTasks = list(
 #'     list(
-#'       Engine = "standard"|"neural",
+#'       Engine = "standard"|"neural"|"long-form",
 #'       TaskId = "string",
 #'       TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
 #'       TaskStatusReason = "string",
@@ -550,9 +550,10 @@ polly_put_lexicon <- function(Name, Content) {
 #'   OutputFormat, OutputS3BucketName, OutputS3KeyPrefix, SampleRate,
 #'   SnsTopicArn, SpeechMarkTypes, Text, TextType, VoiceId)
 #'
-#' @param Engine Specifies the engine (`standard` or `neural`) for Amazon Polly to use
-#' when processing input text for speech synthesis. Using a voice that is
-#' not supported for the engine selected will result in an error.
+#' @param Engine Specifies the engine (`standard`, `neural` or `long-form`) for Amazon
+#' Polly to use when processing input text for speech synthesis. Using a
+#' voice that is not supported for the engine selected will result in an
+#' error.
 #' @param LanguageCode Optional language code for the Speech Synthesis request. This is only
 #' necessary if using a bilingual voice, such as Aditi, which can be used
 #' for either Indian English (en-IN) or Hindi (hi-IN).
@@ -575,7 +576,8 @@ polly_put_lexicon <- function(Name, Content) {
 #' 
 #' The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 #' and "24000". The default value for standard voices is "22050". The
-#' default value for neural voices is "24000".
+#' default value for neural voices is "24000". The default value for
+#' long-form voices is "24000".
 #' 
 #' Valid values for pcm are "8000" and "16000" The default value is
 #' "16000".
@@ -593,7 +595,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' ```
 #' list(
 #'   SynthesisTask = list(
-#'     Engine = "standard"|"neural",
+#'     Engine = "standard"|"neural"|"long-form",
 #'     TaskId = "string",
 #'     TaskStatus = "scheduled"|"inProgress"|"completed"|"failed",
 #'     TaskStatusReason = "string",
@@ -621,7 +623,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' @section Request syntax:
 #' ```
 #' svc$start_speech_synthesis_task(
-#'   Engine = "standard"|"neural",
+#'   Engine = "standard"|"neural"|"long-form",
 #'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE",
 #'   LexiconNames = list(
 #'     "string"
@@ -676,10 +678,10 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' polly_synthesize_speech(Engine, LanguageCode, LexiconNames,
 #'   OutputFormat, SampleRate, SpeechMarkTypes, Text, TextType, VoiceId)
 #'
-#' @param Engine Specifies the engine (`standard` or `neural`) for Amazon Polly to use
-#' when processing input text for speech synthesis. For information on
-#' Amazon Polly voices and which voices are available in standard-only,
-#' NTTS-only, and both standard and NTTS formats, see [Available
+#' @param Engine Specifies the engine (`standard`, `neural` or `long-form`) for Amazon
+#' Polly to use when processing input text for speech synthesis. For
+#' information on Amazon Polly voices and which voices are available for
+#' each engine, see [Available
 #' Voices](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html).
 #' 
 #' **NTTS-only voices**
@@ -688,9 +690,16 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' required and must be set to `neural`. If the engine is not specified, or
 #' is set to `standard`, this will result in an error.
 #' 
+#' **long-form-only voices**
+#' 
+#' When using long-form-only voices such as Danielle (en-US), this
+#' parameter is required and must be set to `long-form`. If the engine is
+#' not specified, or is set to `standard` or `neural`, this will result in
+#' an error.
+#' 
 #' Type: String
 #' 
-#' Valid Values: `standard` | `neural`
+#' Valid Values: `standard` | `neural` | `long-form`
 #' 
 #' Required: Yes
 #' 
@@ -723,7 +732,8 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' 
 #' The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 #' and "24000". The default value for standard voices is "22050". The
-#' default value for neural voices is "24000".
+#' default value for neural voices is "24000". The default value for
+#' long-form voices is "24000".
 #' 
 #' Valid values for pcm are "8000" and "16000" The default value is
 #' "16000".
@@ -749,7 +759,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' @section Request syntax:
 #' ```
 #' svc$synthesize_speech(
-#'   Engine = "standard"|"neural",
+#'   Engine = "standard"|"neural"|"long-form",
 #'   LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"|"en-NZ"|"en-ZA"|"ca-ES"|"de-AT"|"yue-CN"|"ar-AE"|"fi-FI"|"en-IE"|"nl-BE"|"fr-BE",
 #'   LexiconNames = list(
 #'     "string"

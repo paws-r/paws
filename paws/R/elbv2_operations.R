@@ -79,7 +79,8 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' @description
 #' Adds the specified tags to the specified Elastic Load Balancing
 #' resource. You can tag your Application Load Balancers, Network Load
-#' Balancers, Gateway Load Balancers, target groups, listeners, and rules.
+#' Balancers, Gateway Load Balancers, target groups, trust stores,
+#' listeners, and rules.
 #' 
 #' Each tag consists of a key and an optional value. If a resource already
 #' has a tag with the same key, [`add_tags`][elbv2_add_tags] updates its
@@ -151,6 +152,69 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 }
 .elbv2$operations$add_tags <- elbv2_add_tags
 
+#' Adds the specified revocation file to the specified trust store
+#'
+#' @description
+#' Adds the specified revocation file to the specified trust store.
+#'
+#' @usage
+#' elbv2_add_trust_store_revocations(TrustStoreArn, RevocationContents)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param RevocationContents The revocation file to add.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStoreRevocations = list(
+#'     list(
+#'       TrustStoreArn = "string",
+#'       RevocationId = 123,
+#'       RevocationType = "CRL",
+#'       NumberOfRevokedEntries = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_trust_store_revocations(
+#'   TrustStoreArn = "string",
+#'   RevocationContents = list(
+#'     list(
+#'       S3Bucket = "string",
+#'       S3Key = "string",
+#'       S3ObjectVersion = "string",
+#'       RevocationType = "CRL"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_add_trust_store_revocations
+#'
+#' @aliases elbv2_add_trust_store_revocations
+elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents = NULL) {
+  op <- new_operation(
+    name = "AddTrustStoreRevocations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$add_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationContents = RevocationContents)
+  output <- .elbv2$add_trust_store_revocations_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$add_trust_store_revocations <- elbv2_add_trust_store_revocations
+
 #' Creates a listener for the specified Application Load Balancer, Network
 #' Load Balancer, or Gateway Load Balancer
 #'
@@ -175,7 +239,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'
 #' @usage
 #' elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
-#'   Certificates, DefaultActions, AlpnPolicy, Tags)
+#'   Certificates, DefaultActions, AlpnPolicy, Tags, MutualAuthentication)
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Protocol The protocol for connections from clients to the load balancer. For
@@ -216,6 +280,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Tags The tags to assign to the listener.
+#' @param MutualAuthentication The mutual authentication configuration information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -296,6 +361,11 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'       ),
 #'       AlpnPolicy = list(
 #'         "string"
+#'       ),
+#'       MutualAuthentication = list(
+#'         Mode = "string",
+#'         TrustStoreArn = "string",
+#'         IgnoreClientCertificateExpiry = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -383,6 +453,11 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   MutualAuthentication = list(
+#'     Mode = "string",
+#'     TrustStoreArn = "string",
+#'     IgnoreClientCertificateExpiry = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -434,14 +509,14 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @rdname elbv2_create_listener
 #'
 #' @aliases elbv2_create_listener
-elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions, AlpnPolicy = NULL, Tags = NULL) {
+elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions, AlpnPolicy = NULL, Tags = NULL, MutualAuthentication = NULL) {
   op <- new_operation(
     name = "CreateListener",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy, Tags = Tags)
+  input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy, Tags = Tags, MutualAuthentication = MutualAuthentication)
   output <- .elbv2$create_listener_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -1198,6 +1273,79 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 }
 .elbv2$operations$create_target_group <- elbv2_create_target_group
 
+#' Creates a trust store
+#'
+#' @description
+#' Creates a trust store.
+#'
+#' @usage
+#' elbv2_create_trust_store(Name, CaCertificatesBundleS3Bucket,
+#'   CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the trust store.
+#' 
+#' This name must be unique per region and cannot be changed after
+#' creation.
+#' @param CaCertificatesBundleS3Bucket &#91;required&#93; The Amazon S3 bucket for the ca certificates bundle.
+#' @param CaCertificatesBundleS3Key &#91;required&#93; The Amazon S3 path for the ca certificates bundle.
+#' @param CaCertificatesBundleS3ObjectVersion The Amazon S3 object version for the ca certificates bundle. If
+#' undefined the current version is used.
+#' @param Tags The tags to assign to the trust store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStores = list(
+#'     list(
+#'       Name = "string",
+#'       TrustStoreArn = "string",
+#'       Status = "ACTIVE"|"CREATING",
+#'       NumberOfCaCertificates = 123,
+#'       TotalRevokedEntries = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_trust_store(
+#'   Name = "string",
+#'   CaCertificatesBundleS3Bucket = "string",
+#'   CaCertificatesBundleS3Key = "string",
+#'   CaCertificatesBundleS3ObjectVersion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_create_trust_store
+#'
+#' @aliases elbv2_create_trust_store
+elbv2_create_trust_store <- function(Name, CaCertificatesBundleS3Bucket, CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTrustStore",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$create_trust_store_input(Name = Name, CaCertificatesBundleS3Bucket = CaCertificatesBundleS3Bucket, CaCertificatesBundleS3Key = CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion = CaCertificatesBundleS3ObjectVersion, Tags = Tags)
+  output <- .elbv2$create_trust_store_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$create_trust_store <- elbv2_create_trust_store
+
 #' Deletes the specified listener
 #'
 #' @description
@@ -1420,6 +1568,48 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
   return(response)
 }
 .elbv2$operations$delete_target_group <- elbv2_delete_target_group
+
+#' Deletes a trust store
+#'
+#' @description
+#' Deletes a trust store.
+#'
+#' @usage
+#' elbv2_delete_trust_store(TrustStoreArn)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_trust_store(
+#'   TrustStoreArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_delete_trust_store
+#'
+#' @aliases elbv2_delete_trust_store
+elbv2_delete_trust_store <- function(TrustStoreArn) {
+  op <- new_operation(
+    name = "DeleteTrustStore",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$delete_trust_store_input(TrustStoreArn = TrustStoreArn)
+  output <- .elbv2$delete_trust_store_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$delete_trust_store <- elbv2_delete_trust_store
 
 #' Deregisters the specified targets from the specified target group
 #'
@@ -1749,6 +1939,11 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #'       ),
 #'       AlpnPolicy = list(
 #'         "string"
+#'       ),
+#'       MutualAuthentication = list(
+#'         Mode = "string",
+#'         TrustStoreArn = "string",
+#'         IgnoreClientCertificateExpiry = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -2507,10 +2702,11 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' Describes the health of the specified targets or all of your targets.
 #'
 #' @usage
-#' elbv2_describe_target_health(TargetGroupArn, Targets)
+#' elbv2_describe_target_health(TargetGroupArn, Targets, Include)
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets The targets.
+#' @param Include Used to inclue anomaly detection information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2528,6 +2724,10 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'         State = "initial"|"healthy"|"unhealthy"|"unused"|"draining"|"unavailable",
 #'         Reason = "Elb.RegistrationInProgress"|"Elb.InitialHealthChecking"|"Target.ResponseCodeMismatch"|"Target.Timeout"|"Target.FailedHealthChecks"|"Target.NotRegistered"|"Target.NotInUse"|"Target.DeregistrationInProgress"|"Target.InvalidState"|"Target.IpUnusable"|"Target.HealthCheckDisabled"|"Elb.InternalError",
 #'         Description = "string"
+#'       ),
+#'       AnomalyDetection = list(
+#'         Result = "anomalous"|"normal",
+#'         MitigationInEffect = "yes"|"no"
 #'       )
 #'     )
 #'   )
@@ -2544,6 +2744,9 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'       Port = 123,
 #'       AvailabilityZone = "string"
 #'     )
+#'   ),
+#'   Include = list(
+#'     "AnomalyDetection"|"All"
 #'   )
 #' )
 #' ```
@@ -2575,14 +2778,14 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' @rdname elbv2_describe_target_health
 #'
 #' @aliases elbv2_describe_target_health
-elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
+elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL, Include = NULL) {
   op <- new_operation(
     name = "DescribeTargetHealth",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$describe_target_health_input(TargetGroupArn = TargetGroupArn, Targets = Targets)
+  input <- .elbv2$describe_target_health_input(TargetGroupArn = TargetGroupArn, Targets = Targets, Include = Include)
   output <- .elbv2$describe_target_health_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -2591,6 +2794,299 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
   return(response)
 }
 .elbv2$operations$describe_target_health <- elbv2_describe_target_health
+
+#' Describes all resources associated with the specified trust store
+#'
+#' @description
+#' Describes all resources associated with the specified trust store.
+#'
+#' @usage
+#' elbv2_describe_trust_store_associations(TrustStoreArn, Marker, PageSize)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param Marker The marker for the next set of results. (You received this marker from a
+#' previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStoreAssociations = list(
+#'     list(
+#'       ResourceArn = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_trust_store_associations(
+#'   TrustStoreArn = "string",
+#'   Marker = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_describe_trust_store_associations
+#'
+#' @aliases elbv2_describe_trust_store_associations
+elbv2_describe_trust_store_associations <- function(TrustStoreArn, Marker = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "DescribeTrustStoreAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker")
+  )
+  input <- .elbv2$describe_trust_store_associations_input(TrustStoreArn = TrustStoreArn, Marker = Marker, PageSize = PageSize)
+  output <- .elbv2$describe_trust_store_associations_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$describe_trust_store_associations <- elbv2_describe_trust_store_associations
+
+#' Describes the revocation files in use by the specified trust store arn,
+#' or revocation ID
+#'
+#' @description
+#' Describes the revocation files in use by the specified trust store arn,
+#' or revocation ID.
+#'
+#' @usage
+#' elbv2_describe_trust_store_revocations(TrustStoreArn, RevocationIds,
+#'   Marker, PageSize)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param RevocationIds The revocation IDs of the revocation files you want to describe.
+#' @param Marker The marker for the next set of results. (You received this marker from a
+#' previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStoreRevocations = list(
+#'     list(
+#'       TrustStoreArn = "string",
+#'       RevocationId = 123,
+#'       RevocationType = "CRL",
+#'       NumberOfRevokedEntries = 123
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_trust_store_revocations(
+#'   TrustStoreArn = "string",
+#'   RevocationIds = list(
+#'     123
+#'   ),
+#'   Marker = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_describe_trust_store_revocations
+#'
+#' @aliases elbv2_describe_trust_store_revocations
+elbv2_describe_trust_store_revocations <- function(TrustStoreArn, RevocationIds = NULL, Marker = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "DescribeTrustStoreRevocations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker")
+  )
+  input <- .elbv2$describe_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationIds = RevocationIds, Marker = Marker, PageSize = PageSize)
+  output <- .elbv2$describe_trust_store_revocations_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$describe_trust_store_revocations <- elbv2_describe_trust_store_revocations
+
+#' Describes all trust stores for a given account by trust store arn’s or
+#' name
+#'
+#' @description
+#' Describes all trust stores for a given account by trust store arn’s or
+#' name.
+#'
+#' @usage
+#' elbv2_describe_trust_stores(TrustStoreArns, Names, Marker, PageSize)
+#'
+#' @param TrustStoreArns The Amazon Resource Name (ARN) of the trust store.
+#' @param Names The names of the trust stores.
+#' @param Marker The marker for the next set of results. (You received this marker from a
+#' previous call.)
+#' @param PageSize The maximum number of results to return with this call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStores = list(
+#'     list(
+#'       Name = "string",
+#'       TrustStoreArn = "string",
+#'       Status = "ACTIVE"|"CREATING",
+#'       NumberOfCaCertificates = 123,
+#'       TotalRevokedEntries = 123
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_trust_stores(
+#'   TrustStoreArns = list(
+#'     "string"
+#'   ),
+#'   Names = list(
+#'     "string"
+#'   ),
+#'   Marker = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_describe_trust_stores
+#'
+#' @aliases elbv2_describe_trust_stores
+elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Marker = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "DescribeTrustStores",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker")
+  )
+  input <- .elbv2$describe_trust_stores_input(TrustStoreArns = TrustStoreArns, Names = Names, Marker = Marker, PageSize = PageSize)
+  output <- .elbv2$describe_trust_stores_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$describe_trust_stores <- elbv2_describe_trust_stores
+
+#' Retrieves the ca certificate bundle
+#'
+#' @description
+#' Retrieves the ca certificate bundle.
+#' 
+#' This action returns a pre-signed S3 URI which is active for ten minutes.
+#'
+#' @usage
+#' elbv2_get_trust_store_ca_certificates_bundle(TrustStoreArn)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Location = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_trust_store_ca_certificates_bundle(
+#'   TrustStoreArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_get_trust_store_ca_certificates_bundle
+#'
+#' @aliases elbv2_get_trust_store_ca_certificates_bundle
+elbv2_get_trust_store_ca_certificates_bundle <- function(TrustStoreArn) {
+  op <- new_operation(
+    name = "GetTrustStoreCaCertificatesBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$get_trust_store_ca_certificates_bundle_input(TrustStoreArn = TrustStoreArn)
+  output <- .elbv2$get_trust_store_ca_certificates_bundle_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$get_trust_store_ca_certificates_bundle <- elbv2_get_trust_store_ca_certificates_bundle
+
+#' Retrieves the specified revocation file
+#'
+#' @description
+#' Retrieves the specified revocation file.
+#' 
+#' This action returns a pre-signed S3 URI which is active for ten minutes.
+#'
+#' @usage
+#' elbv2_get_trust_store_revocation_content(TrustStoreArn, RevocationId)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param RevocationId &#91;required&#93; The revocation ID of the revocation file.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Location = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_trust_store_revocation_content(
+#'   TrustStoreArn = "string",
+#'   RevocationId = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_get_trust_store_revocation_content
+#'
+#' @aliases elbv2_get_trust_store_revocation_content
+elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId) {
+  op <- new_operation(
+    name = "GetTrustStoreRevocationContent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$get_trust_store_revocation_content_input(TrustStoreArn = TrustStoreArn, RevocationId = RevocationId)
+  output <- .elbv2$get_trust_store_revocation_content_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$get_trust_store_revocation_content <- elbv2_get_trust_store_revocation_content
 
 #' Replaces the specified properties of the specified listener
 #'
@@ -2609,7 +3105,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'
 #' @usage
 #' elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
-#'   Certificates, DefaultActions, AlpnPolicy)
+#'   Certificates, DefaultActions, AlpnPolicy, MutualAuthentication)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Port The port for connections from clients to the load balancer. You cannot
@@ -2648,6 +3144,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' For more information, see [ALPN
 #' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
+#' @param MutualAuthentication The mutual authentication configuration information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2728,6 +3225,11 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'       ),
 #'       AlpnPolicy = list(
 #'         "string"
+#'       ),
+#'       MutualAuthentication = list(
+#'         Mode = "string",
+#'         TrustStoreArn = "string",
+#'         IgnoreClientCertificateExpiry = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -2809,6 +3311,11 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'   ),
 #'   AlpnPolicy = list(
 #'     "string"
+#'   ),
+#'   MutualAuthentication = list(
+#'     Mode = "string",
+#'     TrustStoreArn = "string",
+#'     IgnoreClientCertificateExpiry = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2843,14 +3350,14 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' @rdname elbv2_modify_listener
 #'
 #' @aliases elbv2_modify_listener
-elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL, AlpnPolicy = NULL) {
+elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL, AlpnPolicy = NULL, MutualAuthentication = NULL) {
   op <- new_operation(
     name = "ModifyListener",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$modify_listener_input(ListenerArn = ListenerArn, Port = Port, Protocol = Protocol, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy)
+  input <- .elbv2$modify_listener_input(ListenerArn = ListenerArn, Port = Port, Protocol = Protocol, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy, MutualAuthentication = MutualAuthentication)
   output <- .elbv2$modify_listener_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -3461,6 +3968,69 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 }
 .elbv2$operations$modify_target_group_attributes <- elbv2_modify_target_group_attributes
 
+#' Update the ca certificate bundle for a given trust store
+#'
+#' @description
+#' Update the ca certificate bundle for a given trust store.
+#'
+#' @usage
+#' elbv2_modify_trust_store(TrustStoreArn, CaCertificatesBundleS3Bucket,
+#'   CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param CaCertificatesBundleS3Bucket &#91;required&#93; The Amazon S3 bucket for the ca certificates bundle.
+#' @param CaCertificatesBundleS3Key &#91;required&#93; The Amazon S3 path for the ca certificates bundle.
+#' @param CaCertificatesBundleS3ObjectVersion The Amazon S3 object version for the ca certificates bundle. If
+#' undefined the current version is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrustStores = list(
+#'     list(
+#'       Name = "string",
+#'       TrustStoreArn = "string",
+#'       Status = "ACTIVE"|"CREATING",
+#'       NumberOfCaCertificates = 123,
+#'       TotalRevokedEntries = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_trust_store(
+#'   TrustStoreArn = "string",
+#'   CaCertificatesBundleS3Bucket = "string",
+#'   CaCertificatesBundleS3Key = "string",
+#'   CaCertificatesBundleS3ObjectVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_modify_trust_store
+#'
+#' @aliases elbv2_modify_trust_store
+elbv2_modify_trust_store <- function(TrustStoreArn, CaCertificatesBundleS3Bucket, CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion = NULL) {
+  op <- new_operation(
+    name = "ModifyTrustStore",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$modify_trust_store_input(TrustStoreArn = TrustStoreArn, CaCertificatesBundleS3Bucket = CaCertificatesBundleS3Bucket, CaCertificatesBundleS3Key = CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion = CaCertificatesBundleS3ObjectVersion)
+  output <- .elbv2$modify_trust_store_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$modify_trust_store <- elbv2_modify_trust_store
+
 #' Registers the specified targets with the specified target group
 #'
 #' @description
@@ -3677,6 +4247,52 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
   return(response)
 }
 .elbv2$operations$remove_tags <- elbv2_remove_tags
+
+#' Removes the specified revocation file from the specified trust store
+#'
+#' @description
+#' Removes the specified revocation file from the specified trust store.
+#'
+#' @usage
+#' elbv2_remove_trust_store_revocations(TrustStoreArn, RevocationIds)
+#'
+#' @param TrustStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the trust store.
+#' @param RevocationIds &#91;required&#93; The revocation IDs of the revocation files you want to remove.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_trust_store_revocations(
+#'   TrustStoreArn = "string",
+#'   RevocationIds = list(
+#'     123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_remove_trust_store_revocations
+#'
+#' @aliases elbv2_remove_trust_store_revocations
+elbv2_remove_trust_store_revocations <- function(TrustStoreArn, RevocationIds) {
+  op <- new_operation(
+    name = "RemoveTrustStoreRevocations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elbv2$remove_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationIds = RevocationIds)
+  output <- .elbv2$remove_trust_store_revocations_output()
+  config <- get_config()
+  svc <- .elbv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$remove_trust_store_revocations <- elbv2_remove_trust_store_revocations
 
 #' Sets the type of IP addresses used by the subnets of the specified load
 #' balancer

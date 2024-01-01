@@ -4,7 +4,7 @@
 \alias{rds_stop_activity_stream}
 \title{Stops a database activity stream that was started using the Amazon Web
 Services console, the start-activity-stream CLI command, or the
-StartActivityStream action}
+StartActivityStream operation}
 \usage{
 rds_stop_activity_stream(ResourceArn, ApplyImmediately = NULL)
 }
@@ -17,7 +17,7 @@ activity stream. For example,
 as possible, regardless of the maintenance window for the database.}
 }
 \description{
-Stops a database activity stream that was started using the Amazon Web Services console, the \code{start-activity-stream} CLI command, or the \code{\link[=rds_start_activity_stream]{start_activity_stream}} action.
+Stops a database activity stream that was started using the Amazon Web Services console, the \code{start-activity-stream} CLI command, or the \code{\link[=rds_start_activity_stream]{start_activity_stream}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_stop_activity_stream/} for full documentation.
 }

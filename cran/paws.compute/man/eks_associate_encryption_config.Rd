@@ -2,7 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_associate_encryption_config}
 \alias{eks_associate_encryption_config}
-\title{Associate encryption configuration to an existing cluster}
+\title{Associates an encryption configuration to an existing cluster}
 \usage{
 eks_associate_encryption_config(
   clusterName,
@@ -11,16 +11,15 @@ eks_associate_encryption_config(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster that you are associating with encryption
-configuration.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{encryptionConfig}{[required] The configuration you are using for encryption.}
 
-\item{clientRequestToken}{The client request token you are using with the encryption
-configuration.}
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request.}
 }
 \description{
-Associate encryption configuration to an existing cluster.
+Associates an encryption configuration to an existing cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_associate_encryption_config/} for full documentation.
 }

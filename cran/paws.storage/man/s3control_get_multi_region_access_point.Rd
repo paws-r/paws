@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_multi_region_access_point}
 \alias{s3control_get_multi_region_access_point}
-\title{Returns configuration information about the specified Multi-Region
-Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_get_multi_region_access_point(AccountId, Name)
 }
@@ -19,7 +18,7 @@ Point, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingM
 in the \emph{Amazon S3 User Guide}.}
 }
 \description{
-Returns configuration information about the specified Multi-Region Access Point.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point/} for full documentation.
 }

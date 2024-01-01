@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_create_bucket}
 \alias{s3_create_bucket}
-\title{Creates a new S3 bucket}
+\title{This action creates an Amazon S3 bucket}
 \usage{
 s3_create_bucket(
   ACL = NULL,
@@ -18,33 +18,61 @@ s3_create_bucket(
 )
 }
 \arguments{
-\item{ACL}{The canned ACL to apply to the bucket.}
+\item{ACL}{The canned ACL to apply to the bucket.
 
-\item{Bucket}{[required] The name of the bucket to create.}
+This functionality is not supported for directory buckets.}
+
+\item{Bucket}{[required] The name of the bucket to create.
+
+\strong{General purpose buckets} - For information about bucket naming
+restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use path-style requests in the format
+\verb{https://s3express-control.region_code.amazonaws.com/bucket-name }.
+Virtual-hosted-style requests aren't supported. Directory bucket names
+must be unique in the chosen Availability Zone. Bucket names must also
+follow the format \code{ bucket_base_name--az_id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}}
 
 \item{CreateBucketConfiguration}{The configuration information for the bucket.}
 
 \item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on
-the bucket.}
+the bucket.
 
-\item{GrantRead}{Allows grantee to list the objects in the bucket.}
+This functionality is not supported for directory buckets.}
 
-\item{GrantReadACP}{Allows grantee to read the bucket ACL.}
+\item{GrantRead}{Allows grantee to list the objects in the bucket.
+
+This functionality is not supported for directory buckets.}
+
+\item{GrantReadACP}{Allows grantee to read the bucket ACL.
+
+This functionality is not supported for directory buckets.}
 
 \item{GrantWrite}{Allows grantee to create new objects in the bucket.
 
 For the bucket and object owners of existing objects, also allows
-deletions and overwrites of those objects.}
+deletions and overwrites of those objects.
 
-\item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
+This functionality is not supported for directory buckets.}
+
+\item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.
+
+This functionality is not supported for directory buckets.}
 
 \item{ObjectLockEnabledForBucket}{Specifies whether you want S3 Object Lock to be enabled for the new
-bucket.}
+bucket.
+
+This functionality is not supported for directory buckets.}
 
 \item{ObjectOwnership}{}
 }
 \description{
-Creates a new S3 bucket. To create a bucket, you must register with Amazon S3 and have a valid Amazon Web Services Access Key ID to authenticate requests. Anonymous requests are never allowed to create buckets. By creating the bucket, you become the bucket owner.
+This action creates an Amazon S3 bucket. To create an Amazon S3 on Outposts bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html}{\code{create_bucket}} .
 
 See \url{https://www.paws-r-sdk.com/docs/s3_create_bucket/} for full documentation.
 }

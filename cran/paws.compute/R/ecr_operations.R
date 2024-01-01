@@ -181,29 +181,47 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' Creates a pull through cache rule
 #'
 #' @description
-#' Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an external public registry in your Amazon ECR private registry.
+#' Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an upstream registry source in your Amazon ECR private registry. For more information, see [Using pull through cache rules](https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_create_pull_through_cache_rule/](https://www.paws-r-sdk.com/docs/ecr_create_pull_through_cache_rule/) for full documentation.
 #'
 #' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix to use when caching images from the source
 #' registry.
 #' @param upstreamRegistryUrl &#91;required&#93; The registry URL of the upstream public registry to use as the source
-#' for the pull through cache rule.
+#' for the pull through cache rule. The following is the syntax to use for
+#' each supported upstream registry.
+#' 
+#' -   Amazon ECR Public (`ecr-public`) - `public.ecr.aws`
+#' 
+#' -   Docker Hub (`docker-hub`) - `registry-1.docker.io`
+#' 
+#' -   Quay (`quay`) - `quay.io`
+#' 
+#' -   Kubernetes (`k8s`) - `registry.k8s.io`
+#' 
+#' -   GitHub Container Registry (`github-container-registry`) - `ghcr.io`
+#' 
+#' -   Microsoft Azure Container Registry (`azure-container-registry`) -
+#'     `<custom>.azurecr.io`
 #' @param registryId The Amazon Web Services account ID associated with the registry to
 #' create the pull through cache rule for. If you do not specify a
 #' registry, the default registry is assumed.
+#' @param upstreamRegistry The name of the upstream registry.
+#' @param credentialArn The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
+#' Manager secret that identifies the credentials to authenticate to the
+#' upstream registry.
 #'
 #' @keywords internal
 #'
 #' @rdname ecr_create_pull_through_cache_rule
-ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegistryUrl, registryId = NULL) {
+ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegistryUrl, registryId = NULL, upstreamRegistry = NULL, credentialArn = NULL) {
   op <- new_operation(
     name = "CreatePullThroughCacheRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecr$create_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, upstreamRegistryUrl = upstreamRegistryUrl, registryId = registryId)
+  input <- .ecr$create_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, upstreamRegistryUrl = upstreamRegistryUrl, registryId = registryId, upstreamRegistry = upstreamRegistry, credentialArn = credentialArn)
   output <- .ecr$create_pull_through_cache_rule_output()
   config <- get_config()
   svc <- .ecr$service(config)
@@ -360,7 +378,7 @@ ecr_delete_registry_policy <- function() {
 #' Deletes a repository
 #'
 #' @description
-#' Deletes a repository. If the repository contains images, you must either delete all images in the repository or use the `force` option to delete the repository.
+#' Deletes a repository. If the repository isn't empty, you must either delete the contents of the repository or use the `force` option to delete the repository and have Amazon ECR delete all of its contents on your behalf.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_delete_repository/](https://www.paws-r-sdk.com/docs/ecr_delete_repository/) for full documentation.
 #'
@@ -368,7 +386,9 @@ ecr_delete_registry_policy <- function() {
 #' contains the repository to delete. If you do not specify a registry, the
 #' default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to delete.
-#' @param force If a repository contains images, forces the deletion.
+#' @param force If true, deleting the repository force deletes the contents of the
+#' repository. If false, the repository must be empty before attempting to
+#' delete it.
 #'
 #' @keywords internal
 #'
@@ -1469,6 +1489,42 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 }
 .ecr$operations$untag_resource <- ecr_untag_resource
 
+#' Updates an existing pull through cache rule
+#'
+#' @description
+#' Updates an existing pull through cache rule.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_update_pull_through_cache_rule/](https://www.paws-r-sdk.com/docs/ecr_update_pull_through_cache_rule/) for full documentation.
+#'
+#' @param registryId The Amazon Web Services account ID associated with the registry
+#' associated with the pull through cache rule. If you do not specify a
+#' registry, the default registry is assumed.
+#' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix to use when caching images from the source
+#' registry.
+#' @param credentialArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
+#' Manager secret that identifies the credentials to authenticate to the
+#' upstream registry.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_update_pull_through_cache_rule
+ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryPrefix, credentialArn) {
+  op <- new_operation(
+    name = "UpdatePullThroughCacheRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$update_pull_through_cache_rule_input(registryId = registryId, ecrRepositoryPrefix = ecrRepositoryPrefix, credentialArn = credentialArn)
+  output <- .ecr$update_pull_through_cache_rule_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$update_pull_through_cache_rule <- ecr_update_pull_through_cache_rule
+
 #' Uploads an image layer part to Amazon ECR
 #'
 #' @description
@@ -1508,3 +1564,35 @@ ecr_upload_layer_part <- function(registryId = NULL, repositoryName, uploadId, p
   return(response)
 }
 .ecr$operations$upload_layer_part <- ecr_upload_layer_part
+
+#' Validates an existing pull through cache rule for an upstream registry
+#' that requires authentication
+#'
+#' @description
+#' Validates an existing pull through cache rule for an upstream registry that requires authentication. This will retrieve the contents of the Amazon Web Services Secrets Manager secret, verify the syntax, and then validate that authentication to the upstream registry is successful.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ecr_validate_pull_through_cache_rule/](https://www.paws-r-sdk.com/docs/ecr_validate_pull_through_cache_rule/) for full documentation.
+#'
+#' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix associated with the pull through cache rule.
+#' @param registryId The registry ID associated with the pull through cache rule. If you do
+#' not specify a registry, the default registry is assumed.
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_validate_pull_through_cache_rule
+ecr_validate_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId = NULL) {
+  op <- new_operation(
+    name = "ValidatePullThroughCacheRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$validate_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, registryId = registryId)
+  output <- .ecr$validate_pull_through_cache_rule_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$validate_pull_through_cache_rule <- ecr_validate_pull_through_cache_rule

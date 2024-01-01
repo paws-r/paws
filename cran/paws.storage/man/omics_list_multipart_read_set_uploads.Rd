@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_multipart_read_set_uploads}
 \alias{omics_list_multipart_read_set_uploads}
-\title{Lists all multipart read set uploads and their statuses}
+\title{Lists multipart read set uploads and for in progress uploads}
 \usage{
 omics_list_multipart_read_set_uploads(
   sequenceStoreId,
@@ -19,7 +19,7 @@ omics_list_multipart_read_set_uploads(
 ListMultipartReadSetUploads call. Used to get the next page of results.}
 }
 \description{
-Lists all multipart read set uploads and their statuses.
+Lists multipart read set uploads and for in progress uploads. Once the upload is completed, a read set is created and the upload will no longer be returned in the respone.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_multipart_read_set_uploads/} for full documentation.
 }

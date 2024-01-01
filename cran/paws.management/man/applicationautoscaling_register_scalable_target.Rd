@@ -75,6 +75,9 @@ identifier is the cluster name. Example: \code{cluster:mycluster}.
 \item SageMaker Serverless endpoint - The resource type is \code{variant} and
 the unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
+\item SageMaker inference component - The resource type is
+\code{inference-component} and the unique identifier is the resource ID.
+Example: \code{inference-component/my-inference-component}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -125,6 +128,8 @@ per node group for an Amazon ElastiCache replication group.
 an Amazon Neptune DB cluster.
 \item \code{sagemaker:variant:DesiredProvisionedConcurrency} - The provisioned
 concurrency for a SageMaker Serverless endpoint.
+\item \code{sagemaker:inference-component:DesiredCopyCount} - The number of
+copies across an endpoint for a SageMaker inference component.
 }}
 
 \item{MinCapacity}{The minimum value that you plan to scale in to. When a scaling policy is

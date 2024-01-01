@@ -4,7 +4,7 @@
 \alias{rds_start_db_cluster}
 \title{Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web
 Services console, the stop-db-cluster CLI command, or the StopDBCluster
-action}
+operation}
 \usage{
 rds_start_db_cluster(DBClusterIdentifier)
 }
@@ -13,7 +13,7 @@ rds_start_db_cluster(DBClusterIdentifier)
 This parameter is stored as a lowercase string.}
 }
 \description{
-Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action.
+Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the \code{\link[=rds_stop_db_cluster]{stop_db_cluster}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_start_db_cluster/} for full documentation.
 }

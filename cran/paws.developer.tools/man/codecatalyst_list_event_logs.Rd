@@ -2,8 +2,8 @@
 % Please edit documentation in R/codecatalyst_operations.R
 \name{codecatalyst_list_event_logs}
 \alias{codecatalyst_list_event_logs}
-\title{Retrieves a list of events that occurred during a specified time period
-in a space}
+\title{Retrieves a list of events that occurred during a specific time in a
+space}
 \usage{
 codecatalyst_list_event_logs(
   spaceName,
@@ -34,7 +34,7 @@ response will include a \code{NextToken} element, which you can use to obtain
 additional results.}
 }
 \description{
-Retrieves a list of events that occurred during a specified time period in a space. You can use these events to audit user and system activity in a space.
+Retrieves a list of events that occurred during a specific time in a space. You can use these events to audit user and system activity in a space. For more information, see \href{https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-monitoring.html}{Monitoring} in the \emph{Amazon CodeCatalyst User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/codecatalyst_list_event_logs/} for full documentation.
 }

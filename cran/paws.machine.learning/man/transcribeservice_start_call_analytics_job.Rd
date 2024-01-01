@@ -40,11 +40,11 @@ has a default value that matches the name you specified for your
 transcription job using the \code{CallAnalyticsJobName} parameter.
 
 You can specify a KMS key to encrypt your output using the
-\code{OutputEncryptionKMSKeyId} parameter. If you don't specify a KMS key,
+\code{OutputEncryptionKMSKeyId} parameter. If you do not specify a KMS key,
 Amazon Transcribe uses the default Amazon S3 key for server-side
 encryption.
 
-If you don't specify \code{OutputLocation}, your transcript is placed in a
+If you do not specify \code{OutputLocation}, your transcript is placed in a
 service-managed Amazon S3 bucket and you are provided with a URI to
 access your transcript.}
 
@@ -72,7 +72,7 @@ key in one of two ways:
 \code{arn:aws:kms:region:account-ID:alias/ExampleAlias}.
 }
 
-If you don't specify an encryption key, your output is encrypted with
+If you do not specify an encryption key, your output is encrypted with
 the default Amazon S3 key (SSE-S3).
 
 If you specify a KMS key to encrypt your output, you must also specify

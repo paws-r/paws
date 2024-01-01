@@ -54,7 +54,8 @@ Operations section.
 }
 \description{
 Amazon Web Services Billing Conductor is a fully managed service that
-you can use to customize a \href{https://docs.aws.amazon.com/billingconductor/latest/userguide/#eb-other-definitions}{pro forma}
+you can use to customize a
+\href{https://docs.aws.amazon.com/billingconductor/latest/userguide/#eb-other-definitions}{proforma}
 version of your billing data each month, to accurately show or
 chargeback your end customers. Amazon Web Services Billing Conductor
 doesn't change the way you're billed by Amazon Web Services each month
@@ -124,6 +125,7 @@ Amazon Web Services Billing Conductor user interface, see the \href{https://docs
 \link[=billingconductor_delete_pricing_rule]{delete_pricing_rule} \tab Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN)\cr
 \link[=billingconductor_disassociate_accounts]{disassociate_accounts} \tab Removes the specified list of account IDs from the given billing group\cr
 \link[=billingconductor_disassociate_pricing_rules]{disassociate_pricing_rules} \tab Disassociates a list of pricing rules from a pricing plan\cr
+\link[=billingconductor_get_billing_group_cost_report]{get_billing_group_cost_report} \tab Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Service for a specific billing group\cr
 \link[=billingconductor_list_account_associations]{list_account_associations} \tab This is a paginated call to list linked accounts that are linked to the payer account for the specified time period\cr
 \link[=billingconductor_list_billing_group_cost_reports]{list_billing_group_cost_reports} \tab A paginated call to retrieve a summary report of actual Amazon Web Services charges and the calculated Amazon Web Services charges based on the associated pricing plan of a billing group\cr
 \link[=billingconductor_list_billing_groups]{list_billing_groups} \tab A paginated call to retrieve a list of billing groups for the given billing period\cr

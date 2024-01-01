@@ -37,9 +37,10 @@ keep existing references, you must specify them in the call. If you
 don't, this action removes any existing references and enters only new
 references.}
 
-\item{eventTime}{The time that the event occurred.}
+\item{eventTime}{The timestamp for when the event occurred.}
 
-\item{eventType}{The type of event. You can update events of type \verb{Custom Event}.}
+\item{eventType}{The type of event. You can update events of type \verb{Custom Event} and
+\code{Note}.}
 
 \item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the
 timeline event.}

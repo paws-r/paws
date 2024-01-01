@@ -16,7 +16,7 @@ securityhub_create_automation_rule(
 )
 }
 \arguments{
-\item{Tags}{User-defined tags that help you label the purpose of a rule.}
+\item{Tags}{User-defined tags associated with an automation rule.}
 
 \item{RuleStatus}{Whether the rule is active after it is created. If this parameter is
 equal to \code{ENABLED}, Security Hub starts applying the rule to findings

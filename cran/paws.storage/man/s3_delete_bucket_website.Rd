@@ -2,19 +2,19 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_website}
 \alias{s3_delete_bucket_website}
-\title{This action removes the website configuration for a bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_delete_bucket_website(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which you want to remove the website configuration.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This action removes the website configuration for a bucket. Amazon S3 returns a \verb{200 OK} response upon successfully deleting a website configuration on the specified bucket. You will get a \verb{200 OK} response if the website configuration you are trying to delete does not exist on the bucket. Amazon S3 returns a \code{404} response if the bucket specified in the request does not exist.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_website/} for full documentation.
 }

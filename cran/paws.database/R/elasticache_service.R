@@ -106,6 +106,7 @@ NULL
 #'  \link[=elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update\cr
 #'  \link[=elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update\cr
 #'  \link[=elasticache_complete_migration]{complete_migration} \tab Complete the migration of data\cr
+#'  \link[=elasticache_copy_serverless_cache_snapshot]{copy_serverless_cache_snapshot} \tab Creates a copy of an existing serverless cache’s snapshot\cr
 #'  \link[=elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot\cr
 #'  \link[=elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster\cr
 #'  \link[=elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group\cr
@@ -113,6 +114,8 @@ NULL
 #'  \link[=elasticache_create_cache_subnet_group]{create_cache_subnet_group} \tab Creates a new cache subnet group\cr
 #'  \link[=elasticache_create_global_replication_group]{create_global_replication_group} \tab Global Datastore for Redis offers fully managed, fast, reliable and secure cross-region replication\cr
 #'  \link[=elasticache_create_replication_group]{create_replication_group} \tab Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group\cr
+#'  \link[=elasticache_create_serverless_cache]{create_serverless_cache} \tab Creates a serverless cache\cr
+#'  \link[=elasticache_create_serverless_cache_snapshot]{create_serverless_cache_snapshot} \tab This API creates a copy of an entire ServerlessCache at a specific moment in time\cr
 #'  \link[=elasticache_create_snapshot]{create_snapshot} \tab Creates a copy of an entire cluster or replication group at a specific moment in time\cr
 #'  \link[=elasticache_create_user]{create_user} \tab For Redis engine version 6\cr
 #'  \link[=elasticache_create_user_group]{create_user_group} \tab For Redis engine version 6\cr
@@ -124,6 +127,8 @@ NULL
 #'  \link[=elasticache_delete_cache_subnet_group]{delete_cache_subnet_group} \tab Deletes a cache subnet group\cr
 #'  \link[=elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global datastore is a two-step process:\cr
 #'  \link[=elasticache_delete_replication_group]{delete_replication_group} \tab Deletes an existing replication group\cr
+#'  \link[=elasticache_delete_serverless_cache]{delete_serverless_cache} \tab Deletes a specified existing serverless cache\cr
+#'  \link[=elasticache_delete_serverless_cache_snapshot]{delete_serverless_cache_snapshot} \tab Deletes an existing serverless cache snapshot\cr
 #'  \link[=elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
 #'  \link[=elasticache_delete_user]{delete_user} \tab For Redis engine version 6\cr
 #'  \link[=elasticache_delete_user_group]{delete_user_group} \tab For Redis engine version 6\cr
@@ -139,12 +144,15 @@ NULL
 #'  \link[=elasticache_describe_replication_groups]{describe_replication_groups} \tab Returns information about a particular replication group\cr
 #'  \link[=elasticache_describe_reserved_cache_nodes]{describe_reserved_cache_nodes} \tab Returns information about reserved cache nodes for this account, or about a specified reserved cache node\cr
 #'  \link[=elasticache_describe_reserved_cache_nodes_offerings]{describe_reserved_cache_nodes_offerings} \tab Lists available reserved cache node offerings\cr
+#'  \link[=elasticache_describe_serverless_caches]{describe_serverless_caches} \tab Returns information about a specific serverless cache\cr
+#'  \link[=elasticache_describe_serverless_cache_snapshots]{describe_serverless_cache_snapshots} \tab Returns information about serverless cache snapshots\cr
 #'  \link[=elasticache_describe_service_updates]{describe_service_updates} \tab Returns details of the service updates\cr
 #'  \link[=elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots\cr
 #'  \link[=elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions\cr
 #'  \link[=elasticache_describe_user_groups]{describe_user_groups} \tab Returns a list of user groups\cr
 #'  \link[=elasticache_describe_users]{describe_users} \tab Returns a list of users\cr
 #'  \link[=elasticache_disassociate_global_replication_group]{disassociate_global_replication_group} \tab Remove a secondary cluster from the Global datastore using the Global datastore name\cr
+#'  \link[=elasticache_export_serverless_cache_snapshot]{export_serverless_cache_snapshot} \tab Provides the functionality to export the serverless cache snapshot data to Amazon S3\cr
 #'  \link[=elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a secondary region\cr
 #'  \link[=elasticache_increase_node_groups_in_global_replication_group]{increase_node_groups_in_global_replication_group} \tab Increase the number of node groups in the Global datastore\cr
 #'  \link[=elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
@@ -156,6 +164,7 @@ NULL
 #'  \link[=elasticache_modify_global_replication_group]{modify_global_replication_group} \tab Modifies the settings for a Global datastore\cr
 #'  \link[=elasticache_modify_replication_group]{modify_replication_group} \tab Modifies the settings for a replication group\cr
 #'  \link[=elasticache_modify_replication_group_shard_configuration]{modify_replication_group_shard_configuration} \tab Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among existing shards\cr
+#'  \link[=elasticache_modify_serverless_cache]{modify_serverless_cache} \tab This API modifies the attributes of a serverless cache\cr
 #'  \link[=elasticache_modify_user]{modify_user} \tab Changes user password(s) and/or access string\cr
 #'  \link[=elasticache_modify_user_group]{modify_user_group} \tab Changes the list of users that belong to the user group\cr
 #'  \link[=elasticache_purchase_reserved_cache_nodes_offering]{purchase_reserved_cache_nodes_offering} \tab Allows you to purchase a reserved cache node offering\cr

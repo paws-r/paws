@@ -3,6 +3,49 @@
 #' @include secretsmanager_service.R
 NULL
 
+#' Retrieves the contents of the encrypted fields SecretString or
+#' SecretBinary for up to 20 secrets
+#'
+#' @description
+#' Retrieves the contents of the encrypted fields `SecretString` or `SecretBinary` for up to 20 secrets. To retrieve a single secret, call [`get_secret_value`][secretsmanager_get_secret_value].
+#'
+#' See [https://www.paws-r-sdk.com/docs/secretsmanager_batch_get_secret_value/](https://www.paws-r-sdk.com/docs/secretsmanager_batch_get_secret_value/) for full documentation.
+#'
+#' @param SecretIdList The ARN or names of the secrets to retrieve. You must include `Filters`
+#' or `SecretIdList`, but not both.
+#' @param Filters The filters to choose which secrets to retrieve. You must include
+#' `Filters` or `SecretIdList`, but not both.
+#' @param MaxResults The number of results to include in the response.
+#' 
+#' If there are more results available, in the response, Secrets Manager
+#' includes `NextToken`. To get the next results, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
+#' with the value from `NextToken`.
+#' @param NextToken A token that indicates where the output should continue from, if a
+#' previous call did not show all results. To get the next results, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
+#' with this value.
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_batch_get_secret_value
+secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "BatchGetSecretValue",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .secretsmanager$batch_get_secret_value_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$batch_get_secret_value <- secretsmanager_batch_get_secret_value
+
 #' Turns off automatic rotation, and if a rotation is currently in
 #' progress, cancels the rotation
 #'

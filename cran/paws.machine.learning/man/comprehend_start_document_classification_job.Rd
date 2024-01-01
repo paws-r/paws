@@ -2,7 +2,8 @@
 % Please edit documentation in R/comprehend_operations.R
 \name{comprehend_start_document_classification_job}
 \alias{comprehend_start_document_classification_job}
-\title{Starts an asynchronous document classification job}
+\title{Starts an asynchronous document classification job using a custom
+classification model}
 \usage{
 comprehend_start_document_classification_job(
   JobName = NULL,
@@ -56,7 +57,7 @@ a resource to indicate its use by the sales department.}
 model to use.}
 }
 \description{
-Starts an asynchronous document classification job. Use the \code{\link[=comprehend_describe_document_classification_job]{describe_document_classification_job}} operation to track the progress of the job.
+Starts an asynchronous document classification job using a custom classification model. Use the \code{\link[=comprehend_describe_document_classification_job]{describe_document_classification_job}} operation to track the progress of the job.
 
 See \url{https://www.paws-r-sdk.com/docs/comprehend_start_document_classification_job/} for full documentation.
 }

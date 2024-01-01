@@ -1117,7 +1117,7 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #' Retrieves aggregated statistics for your account
 #'
 #' @description
-#' Retrieves aggregated statistics for your account. If you are a GuardDuty administrator, you can retrieve the statistics for all the resources associated with the active member accounts in your organization who have enabled EKS Runtime Monitoring and have the GuardDuty agent running on their EKS nodes.
+#' Retrieves aggregated statistics for your account. If you are a GuardDuty administrator, you can retrieve the statistics for all the resources associated with the active member accounts in your organization who have enabled Runtime Monitoring and have the GuardDuty security agent running on their resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_get_coverage_statistics/](https://www.paws-r-sdk.com/docs/guardduty_get_coverage_statistics/) for full documentation.
 #'
@@ -1449,6 +1449,36 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
   return(response)
 }
 .guardduty$operations$get_members <- guardduty_get_members
+
+#' Retrieves how many active member accounts in your Amazon Web Services
+#' organization have each feature enabled within GuardDuty
+#'
+#' @description
+#' Retrieves how many active member accounts in your Amazon Web Services organization have each feature enabled within GuardDuty. Only a delegated GuardDuty administrator of an organization can run this API.
+#'
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_organization_statistics/](https://www.paws-r-sdk.com/docs/guardduty_get_organization_statistics/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_organization_statistics
+guardduty_get_organization_statistics <- function() {
+  op <- new_operation(
+    name = "GetOrganizationStatistics",
+    http_method = "GET",
+    http_path = "/organization/statistics",
+    paginator = list()
+  )
+  input <- .guardduty$get_organization_statistics_input()
+  output <- .guardduty$get_organization_statistics_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_organization_statistics <- guardduty_get_organization_statistics
 
 #' Provides the number of days left for each data source used in the free
 #' trial period

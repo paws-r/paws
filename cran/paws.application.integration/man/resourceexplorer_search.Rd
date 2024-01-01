@@ -29,7 +29,7 @@ every operation to ensure that you receive all of the results.}
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
 of the previous call's \code{NextToken} response to indicate where the output
-should continue from.}
+should continue from. The pagination tokens expire after 24 hours.}
 
 \item{QueryString}{[required] A string that includes keywords and filters that specify the resources
 that you want to include in the results.

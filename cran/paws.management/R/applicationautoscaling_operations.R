@@ -86,6 +86,10 @@ NULL
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -154,6 +158,9 @@ NULL
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #'
 #' @keywords internal
 #'
@@ -258,6 +265,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -326,6 +337,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #'
 #' @keywords internal
 #'
@@ -429,6 +443,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -497,6 +515,9 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #'
 #' @keywords internal
 #'
@@ -599,6 +620,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource
@@ -669,6 +694,9 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -781,6 +809,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -850,6 +882,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -969,6 +1004,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1038,6 +1077,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 10. The default value is 10.
 #' 
@@ -1151,6 +1193,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1220,6 +1266,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param MaxResults The maximum number of scheduled action results. This value can be
 #' between 1 and 50. The default value is 50.
 #' 
@@ -1373,6 +1422,10 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1441,12 +1494,15 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param PolicyType The scaling policy type. This parameter is required if you are creating
 #' a scaling policy.
 #' 
 #' The following policy types are supported:
 #' 
-#' `TargetTrackingScaling`—Not supported for Amazon EMR
+#' `TargetTrackingScaling`—Not supported for Amazon EMR.
 #' 
 #' `StepScaling`—Not supported for DynamoDB, Amazon Comprehend, Lambda,
 #' Amazon Keyspaces, Amazon MSK, Amazon ElastiCache, or Neptune.
@@ -1603,6 +1659,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1671,6 +1731,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param StartTime The date and time for this scheduled action to start, in UTC.
 #' @param EndTime The date and time for the recurring schedule to end, in UTC.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
@@ -1781,6 +1844,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' -   SageMaker Serverless endpoint - The resource type is `variant` and
 #'     the unique identifier is the resource ID. Example:
 #'     `endpoint/my-end-point/variant/KMeansClustering`.
+#' 
+#' -   SageMaker inference component - The resource type is
+#'     `inference-component` and the unique identifier is the resource ID.
+#'     Example: `inference-component/my-inference-component`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -1849,6 +1916,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `sagemaker:variant:DesiredProvisionedConcurrency` - The provisioned
 #'     concurrency for a SageMaker Serverless endpoint.
+#' 
+#' -   `sagemaker:inference-component:DesiredCopyCount` - The number of
+#'     copies across an endpoint for a SageMaker inference component.
 #' @param MinCapacity The minimum value that you plan to scale in to. When a scaling policy is
 #' in effect, Application Auto Scaling can scale in (contract) as needed to
 #' the minimum capacity limit in response to changing demand. This property

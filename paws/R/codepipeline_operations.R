@@ -2851,7 +2851,7 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #'
 #' @usage
 #' codepipeline_start_pipeline_execution(name, variables,
-#'   clientRequestToken)
+#'   clientRequestToken, sourceRevisions)
 #'
 #' @param name &#91;required&#93; The name of the pipeline to start.
 #' @param variables A list that overrides pipeline variables for a pipeline execution that's
@@ -2859,6 +2859,10 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' values can be anything except an empty string.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
 #' request.
+#' @param sourceRevisions A list that allows you to specify, or override, the source revision for
+#' a pipeline execution that's being started. A source revision is the
+#' version with all the changes to your application code, or source
+#' artifact, for the pipeline execution.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2878,7 +2882,14 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #'       value = "string"
 #'     )
 #'   ),
-#'   clientRequestToken = "string"
+#'   clientRequestToken = "string",
+#'   sourceRevisions = list(
+#'     list(
+#'       actionName = "string",
+#'       revisionType = "COMMIT_ID"|"IMAGE_DIGEST"|"S3_OBJECT_VERSION_ID",
+#'       revisionValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2887,14 +2898,14 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' @rdname codepipeline_start_pipeline_execution
 #'
 #' @aliases codepipeline_start_pipeline_execution
-codepipeline_start_pipeline_execution <- function(name, variables = NULL, clientRequestToken = NULL) {
+codepipeline_start_pipeline_execution <- function(name, variables = NULL, clientRequestToken = NULL, sourceRevisions = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken)
+  input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken, sourceRevisions = sourceRevisions)
   output <- .codepipeline$start_pipeline_execution_output()
   config <- get_config()
   svc <- .codepipeline$service(config)

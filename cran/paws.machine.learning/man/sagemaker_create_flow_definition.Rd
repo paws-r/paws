@@ -8,7 +8,7 @@ sagemaker_create_flow_definition(
   FlowDefinitionName,
   HumanLoopRequestSource = NULL,
   HumanLoopActivationConfig = NULL,
-  HumanLoopConfig,
+  HumanLoopConfig = NULL,
   OutputConfig,
   RoleArn,
   Tags = NULL
@@ -24,7 +24,7 @@ integration source.}
 \item{HumanLoopActivationConfig}{An object containing information about the events that trigger a human
 workflow.}
 
-\item{HumanLoopConfig}{[required] An object containing information about the tasks the human reviewers
+\item{HumanLoopConfig}{An object containing information about the tasks the human reviewers
 will perform.}
 
 \item{OutputConfig}{[required] An object containing information about where the human review results

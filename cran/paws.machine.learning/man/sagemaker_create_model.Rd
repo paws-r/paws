@@ -9,7 +9,7 @@ sagemaker_create_model(
   PrimaryContainer = NULL,
   Containers = NULL,
   InferenceExecutionConfig = NULL,
-  ExecutionRoleArn,
+  ExecutionRoleArn = NULL,
   Tags = NULL,
   VpcConfig = NULL,
   EnableNetworkIsolation = NULL
@@ -27,7 +27,7 @@ uses when the model is deployed for predictions.}
 \item{InferenceExecutionConfig}{Specifies details of how containers in a multi-container endpoint are
 called.}
 
-\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
 to access model artifacts and docker image for deployment on ML compute
 instances or for batch transform jobs. Deploying on ML compute instances
 is part of model hosting. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.

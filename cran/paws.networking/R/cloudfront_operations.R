@@ -381,6 +381,39 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 }
 .cloudfront$operations$create_key_group <- cloudfront_create_key_group
 
+#' Specifies the Key Value Store resource to add to your account
+#'
+#' @description
+#' Specifies the Key Value Store resource to add to your account. In your account, the Key Value Store names must be unique. You can also import Key Value Store data in JSON format from an S3 bucket by providing a valid `ImportSource` that you own.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_create_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_create_key_value_store/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store. The maximum length of the name is 32
+#' characters.
+#' @param Comment The comment of the Key Value Store.
+#' @param ImportSource The S3 bucket that provides the source for the import. The source must
+#' be in a valid JSON format.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_key_value_store
+cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource = NULL) {
+  op <- new_operation(
+    name = "CreateKeyValueStore",
+    http_method = "POST",
+    http_path = "/2020-05-31/key-value-store/",
+    paginator = list()
+  )
+  input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource)
+  output <- .cloudfront$create_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_key_value_store <- cloudfront_create_key_value_store
+
 #' Enables additional CloudWatch metrics for the specified CloudFront
 #' distribution
 #'
@@ -888,6 +921,36 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_key_group <- cloudfront_delete_key_group
 
+#' Specifies the Key Value Store to delete
+#'
+#' @description
+#' Specifies the Key Value Store to delete.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_delete_key_value_store/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store.
+#' @param IfMatch &#91;required&#93; The Key Value Store to delete, if a match occurs.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_key_value_store
+cloudfront_delete_key_value_store <- function(Name, IfMatch) {
+  op <- new_operation(
+    name = "DeleteKeyValueStore",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/key-value-store/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$delete_key_value_store_input(Name = Name, IfMatch = IfMatch)
+  output <- .cloudfront$delete_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_key_value_store <- cloudfront_delete_key_value_store
+
 #' Disables additional CloudWatch metrics for the specified CloudFront
 #' distribution
 #'
@@ -1150,6 +1213,35 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
   return(response)
 }
 .cloudfront$operations$describe_function <- cloudfront_describe_function
+
+#' Specifies the Key Value Store and its configuration
+#'
+#' @description
+#' Specifies the Key Value Store and its configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_describe_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_describe_key_value_store/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_describe_key_value_store
+cloudfront_describe_key_value_store <- function(Name) {
+  op <- new_operation(
+    name = "DescribeKeyValueStore",
+    http_method = "GET",
+    http_path = "/2020-05-31/key-value-store/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$describe_key_value_store_input(Name = Name)
+  output <- .cloudfront$describe_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$describe_key_value_store <- cloudfront_describe_key_value_store
 
 #' Gets a cache policy, including the following metadata:
 #'
@@ -2614,6 +2706,37 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 }
 .cloudfront$operations$list_key_groups <- cloudfront_list_key_groups
 
+#' Specifies the Key Value Stores to list
+#'
+#' @description
+#' Specifies the Key Value Stores to list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_key_value_stores/](https://www.paws-r-sdk.com/docs/cloudfront_list_key_value_stores/) for full documentation.
+#'
+#' @param Marker The marker associated with the Key Value Stores list.
+#' @param MaxItems The maximum number of items in the Key Value Stores list.
+#' @param Status The status of the request for the Key Value Stores list.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_key_value_stores
+cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListKeyValueStores",
+    http_method = "GET",
+    http_path = "/2020-05-31/key-value-store",
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "KeyValueStoreList.NextMarker", result_key = "KeyValueStoreList.Items")
+  )
+  input <- .cloudfront$list_key_value_stores_input(Marker = Marker, MaxItems = MaxItems, Status = Status)
+  output <- .cloudfront$list_key_value_stores_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_key_value_stores <- cloudfront_list_key_value_stores
+
 #' Gets the list of CloudFront origin access controls in this Amazon Web
 #' Services account
 #'
@@ -3297,6 +3420,37 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
   return(response)
 }
 .cloudfront$operations$update_key_group <- cloudfront_update_key_group
+
+#' Specifies the Key Value Store to update
+#'
+#' @description
+#' Specifies the Key Value Store to update.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_update_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_update_key_value_store/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store to update.
+#' @param Comment &#91;required&#93; The comment of the Key Value Store to update.
+#' @param IfMatch &#91;required&#93; The Key Value Store to update, if a match occurs.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_key_value_store
+cloudfront_update_key_value_store <- function(Name, Comment, IfMatch) {
+  op <- new_operation(
+    name = "UpdateKeyValueStore",
+    http_method = "PUT",
+    http_path = "/2020-05-31/key-value-store/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$update_key_value_store_input(Name = Name, Comment = Comment, IfMatch = IfMatch)
+  output <- .cloudfront$update_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_key_value_store <- cloudfront_update_key_value_store
 
 #' Updates a CloudFront origin access control
 #'

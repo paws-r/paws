@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_access_point}
 \alias{s3control_delete_access_point}
-\title{Deletes the specified access point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_delete_access_point(AccountId, Name)
 }
@@ -26,7 +26,7 @@ the URL encoding of
 The value must be URL encoded.}
 }
 \description{
-Deletes the specified access point.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_delete_access_point/} for full documentation.
 }

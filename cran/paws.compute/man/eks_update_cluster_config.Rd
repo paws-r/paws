@@ -8,7 +8,8 @@ eks_update_cluster_config(
   name,
   resourcesVpcConfig = NULL,
   logging = NULL,
-  clientRequestToken = NULL
+  clientRequestToken = NULL,
+  accessConfig = NULL
 )
 }
 \arguments{
@@ -25,11 +26,13 @@ CloudWatch Logs ingestion, archive storage, and data scanning rates
 apply to exported control plane logs. For more information, see
 \href{https://aws.amazon.com/cloudwatch/pricing/}{CloudWatch Pricing}.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
+
+\item{accessConfig}{The access configuration for the cluster.}
 }
 \description{
-Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the \code{\link[=eks_describe_update]{describe_update}} API operation.
+Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}"/\>.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_update_cluster_config/} for full documentation.
 }

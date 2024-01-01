@@ -3577,7 +3577,7 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #'     password for a user in the **Amazon Web Services Reserved** OU. For
 #'     more information about the OU structure for an Managed Microsoft AD
 #'     directory, see [What Gets
-#'     Created](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started_what_gets_created.html)
+#'     Created](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/ms_ad_getting_started.html#ms_ad_getting_started_what_gets_created)
 #'     in the *Directory Service Administration Guide*.
 #'
 #' @usage

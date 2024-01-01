@@ -59,7 +59,7 @@ To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/use
 \strong{Related resources}
 \itemize{
 \item For information about each of the capabilities that comprise Systems
-Manager, see \href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/}{Systems Manager capabilities}
+Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities}{Systems Manager capabilities}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 \item For details about predefined runbooks for Automation, a capability
 of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{SystemsManager Automation runbook reference}} .

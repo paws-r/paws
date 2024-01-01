@@ -3,6 +3,38 @@
 #' @include ssmincidents_service.R
 NULL
 
+#' Retrieves details about all specified findings for an incident,
+#' including descriptive details about each finding
+#'
+#' @description
+#' Retrieves details about all specified findings for an incident, including descriptive details about each finding. A finding represents a recent application environment change made by an CodeDeploy deployment or an CloudFormation stack creation or update that can be investigated as a potential cause of the incident.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_batch_get_incident_findings/](https://www.paws-r-sdk.com/docs/ssmincidents_batch_get_incident_findings/) for full documentation.
+#'
+#' @param findingIds &#91;required&#93; A list of IDs of findings for which you want to view details.
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident for which you want to
+#' view finding details.
+#'
+#' @keywords internal
+#'
+#' @rdname ssmincidents_batch_get_incident_findings
+ssmincidents_batch_get_incident_findings <- function(findingIds, incidentRecordArn) {
+  op <- new_operation(
+    name = "BatchGetIncidentFindings",
+    http_method = "POST",
+    http_path = "/batchGetIncidentFindings",
+    paginator = list()
+  )
+  input <- .ssmincidents$batch_get_incident_findings_input(findingIds = findingIds, incidentRecordArn = incidentRecordArn)
+  output <- .ssmincidents$batch_get_incident_findings_output()
+  config <- get_config()
+  svc <- .ssmincidents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmincidents$operations$batch_get_incident_findings <- ssmincidents_batch_get_incident_findings
+
 #' A replication set replicates and encrypts your data to the provided
 #' Regions with the provided KMS key
 #'
@@ -97,9 +129,13 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
 #' specify an Amazon DynamoDB (DynamoDB) table as a resource, use the
 #' table's ARN. You can also specify an Amazon CloudWatch metric associated
 #' with the DynamoDB table as a related item.
-#' @param eventTime &#91;required&#93; The time that the event occurred.
-#' @param eventType &#91;required&#93; The type of event. You can create timeline events of type
-#' `Custom Event`.
+#' @param eventTime &#91;required&#93; The timestamp for when the event occurred.
+#' @param eventType &#91;required&#93; The type of event. You can create timeline events of type `Custom Event`
+#' and `Note`.
+#' 
+#' To make a Note-type event appear on the *Incident notes* panel in the
+#' console, specify `eventType` as `Note`and enter the Amazon Resource Name
+#' (ARN) of the incident as the value for `eventReference`.
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record that the action
 #' adds the incident to.
 #'
@@ -343,7 +379,8 @@ ssmincidents_get_replication_set <- function(arn) {
 #'
 #' @param maxResults The maximum number of resource policies to display for each page of
 #' results.
-#' @param nextToken The pagination token to continue to the next page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan with the attached
 #' resource policy.
 #'
@@ -428,6 +465,40 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 }
 .ssmincidents$operations$get_timeline_event <- ssmincidents_get_timeline_event
 
+#' Retrieves a list of the IDs of findings, plus their last modified times,
+#' that have been identified for a specified incident
+#'
+#' @description
+#' Retrieves a list of the IDs of findings, plus their last modified times, that have been identified for a specified incident. A finding represents a recent application environment change made by an CloudFormation stack creation or update or an CodeDeploy deployment that can be investigated as a potential cause of the incident.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_findings/](https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_findings/) for full documentation.
+#'
+#' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident for which you want to
+#' view associated findings.
+#' @param maxResults The maximum number of findings to retrieve per call.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
+#'
+#' @keywords internal
+#'
+#' @rdname ssmincidents_list_incident_findings
+ssmincidents_list_incident_findings <- function(incidentRecordArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIncidentFindings",
+    http_method = "POST",
+    http_path = "/listIncidentFindings",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+  )
+  input <- .ssmincidents$list_incident_findings_input(incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .ssmincidents$list_incident_findings_output()
+  config <- get_config()
+  svc <- .ssmincidents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssmincidents$operations$list_incident_findings <- ssmincidents_list_incident_findings
+
 #' Lists all incident records in your account
 #'
 #' @description
@@ -457,7 +528,8 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 #' -   If you specify a filter with more than one value, the response
 #'     returns incident records that match any of the values provided.
 #' @param maxResults The maximum number of results per page.
-#' @param nextToken The pagination token to continue to the next page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -489,7 +561,8 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident record containing the
 #' listed related items.
 #' @param maxResults The maximum number of related items per page.
-#' @param nextToken The pagination token to continue to the next page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -519,7 +592,8 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/](https://www.paws-r-sdk.com/docs/ssmincidents_list_replication_sets/) for full documentation.
 #'
 #' @param maxResults The maximum number of results per page.
-#' @param nextToken The pagination token to continue to the next page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -549,7 +623,8 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/](https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/) for full documentation.
 #'
 #' @param maxResults The maximum number of response plans per page.
-#' @param nextToken The pagination token to continue to the next page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
 #'
 #' @keywords internal
 #'
@@ -571,14 +646,15 @@ ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL
 }
 .ssmincidents$operations$list_response_plans <- ssmincidents_list_response_plans
 
-#' Lists the tags that are attached to the specified response plan
+#' Lists the tags that are attached to the specified response plan or
+#' incident
 #'
 #' @description
-#' Lists the tags that are attached to the specified response plan.
+#' Lists the tags that are attached to the specified response plan or incident.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssmincidents_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ssmincidents_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the response plan or incident.
 #'
 #' @keywords internal
 #'
@@ -610,6 +686,8 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' @param filters Filters the timeline events based on the provided conditional values.
 #' You can filter timeline events with the following keys:
 #' 
+#' -   `eventReference`
+#' 
 #' -   `eventTime`
 #' 
 #' -   `eventType`
@@ -627,7 +705,8 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
 #' timeline event.
 #' @param maxResults The maximum number of results per page.
-#' @param nextToken The pagination token to continue to the next page of results.
+#' @param nextToken The pagination token for the next set of items to return. (You received
+#' this token from a previous call.)
 #' @param sortBy Sort timeline events by the specified key value pair.
 #' @param sortOrder Sorts the order of timeline events by the value specified in the
 #' `sortBy` field.
@@ -696,21 +775,17 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
 #' @param impact Defines the impact to the customers. Providing an impact overwrites the
 #' impact provided by a response plan.
 #' 
-#' **Possible impacts:**
+#' **Supported impact codes**
 #' 
-#' -   `1` - Critical impact, this typically relates to full application
-#'     failure that impacts many to all customers.
+#' -   `1` - Critical
 #' 
-#' -   `2` - High impact, partial application failure with impact to many
-#'     customers.
+#' -   `2` - High
 #' 
-#' -   `3` - Medium impact, the application is providing reduced service to
-#'     customers.
+#' -   `3` - Medium
 #' 
-#' -   `4` - Low impact, customer might aren't impacted by the problem yet.
+#' -   `4` - Low
 #' 
-#' -   `5` - No impact, customers aren't currently impacted but urgent
-#'     action is needed to avoid impact.
+#' -   `5` - No Impact
 #' @param relatedItems Add related items to the incident for other responders to use. Related
 #' items are Amazon Web Services resources, external links, or files
 #' uploaded to an Amazon S3 bucket.
@@ -851,21 +926,17 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #' provide an impact for an incident, it overwrites the impact provided by
 #' the response plan.
 #' 
-#' **Possible impacts:**
+#' **Supported impact codes**
 #' 
-#' -   `1` - Critical impact, full application failure that impacts many to
-#'     all customers.
+#' -   `1` - Critical
 #' 
-#' -   `2` - High impact, partial application failure with impact to many
-#'     customers.
+#' -   `2` - High
 #' 
-#' -   `3` - Medium impact, the application is providing reduced service to
-#'     customers.
+#' -   `3` - Medium
 #' 
-#' -   `4` - Low impact, customer aren't impacted by the problem yet.
+#' -   `4` - Low
 #' 
-#' -   `5` - No impact, customers aren't currently impacted but urgent
-#'     action is needed to avoid impact.
+#' -   `5` - No Impact
 #' @param notificationTargets The Amazon SNS targets that Incident Manager notifies when a client
 #' updates an incident.
 #' 
@@ -986,17 +1057,17 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #' @param incidentTemplateImpact Defines the impact to the customers. Providing an impact overwrites the
 #' impact provided by a response plan.
 #' 
-#' **Possible impacts:**
+#' **Supported impact codes**
 #' 
-#' -   `5` - Severe impact
+#' -   `1` - Critical
 #' 
-#' -   `4` - High impact
+#' -   `2` - High
 #' 
-#' -   `3` - Medium impact
+#' -   `3` - Medium
 #' 
-#' -   `2` - Low impact
+#' -   `4` - Low
 #' 
-#' -   `1` - No impact
+#' -   `5` - No Impact
 #' @param incidentTemplateNotificationTargets The Amazon SNS targets that are notified when updates are made to an
 #' incident.
 #' @param incidentTemplateSummary A brief summary of the incident. This typically contains what has
@@ -1056,8 +1127,9 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
 #' keep existing references, you must specify them in the call. If you
 #' don't, this action removes any existing references and enters only new
 #' references.
-#' @param eventTime The time that the event occurred.
-#' @param eventType The type of event. You can update events of type `Custom Event`.
+#' @param eventTime The timestamp for when the event occurred.
+#' @param eventType The type of event. You can update events of type `Custom Event` and
+#' `Note`.
 #' @param incidentRecordArn &#91;required&#93; The Amazon Resource Name (ARN) of the incident that includes the
 #' timeline event.
 #'

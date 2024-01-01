@@ -21,10 +21,11 @@ This value can be between 1 and 100. If you don't use this parameter,
 ListEksAnywhereSubscriptions returns up to 10 results and a nextToken
 value if applicable.}
 
-\item{nextToken}{The nextToken value to include in a future ListEksAnywhereSubscriptions
-request. When the results of a ListEksAnywhereSubscriptions request
-exceed maxResults, you can use this value to retrieve the next page of
-results. This value is null when there are no more results to return.}
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\code{\link[=eks_list_eks_anywhere_subscriptions]{list_eks_anywhere_subscriptions}}
+request where \code{maxResults} was used and the results exceeded the value
+of that parameter. Pagination continues from the end of the previous
+results that returned the \code{nextToken} value.}
 
 \item{includeStatus}{An array of subscription statuses to filter on.}
 }

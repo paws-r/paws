@@ -101,7 +101,7 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_create_bot]{create_bot} \tab Creates an Amazon Lex conversational bot\cr
 \link[paws.machine.learning:lexmodelsv2_create_bot_alias]{create_bot_alias} \tab Creates an alias for the specified version of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_create_bot_locale]{create_bot_locale} \tab Creates a locale in the bot\cr
-\link[paws.machine.learning:lexmodelsv2_create_bot_version]{create_bot_version} \tab Creates a new version of the bot based on the DRAFT version\cr
+\link[paws.machine.learning:lexmodelsv2_create_bot_version]{create_bot_version} \tab Creates an immutable version of the bot\cr
 \link[paws.machine.learning:lexmodelsv2_create_export]{create_export} \tab Creates a zip archive containing the contents of a bot or a bot locale\cr
 \link[paws.machine.learning:lexmodelsv2_create_intent]{create_intent} \tab Creates an intent\cr
 \link[paws.machine.learning:lexmodelsv2_create_resource_policy]{create_resource_policy} \tab Creates a new resource policy with the specified policy statements\cr
@@ -128,6 +128,7 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_describe_bot_alias]{describe_bot_alias} \tab Get information about a specific bot alias\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_locale]{describe_bot_locale} \tab Describes the settings that a bot has for a specific locale\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_recommendation]{describe_bot_recommendation} \tab Provides metadata information about a bot recommendation\cr
+\link[paws.machine.learning:lexmodelsv2_describe_bot_resource_generation]{describe_bot_resource_generation} \tab Returns information about a request to generate a bot through natural language description, made through the StartBotResource API\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_version]{describe_bot_version} \tab Provides metadata about a version of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_describe_custom_vocabulary_metadata]{describe_custom_vocabulary_metadata} \tab Provides metadata information about a custom vocabulary\cr
 \link[paws.machine.learning:lexmodelsv2_describe_export]{describe_export} \tab Gets information about a specific export\cr
@@ -140,11 +141,13 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_describe_test_set]{describe_test_set} \tab Gets metadata information about the test set\cr
 \link[paws.machine.learning:lexmodelsv2_describe_test_set_discrepancy_report]{describe_test_set_discrepancy_report} \tab Gets metadata information about the test set discrepancy report\cr
 \link[paws.machine.learning:lexmodelsv2_describe_test_set_generation]{describe_test_set_generation} \tab Gets metadata information about the test set generation\cr
+\link[paws.machine.learning:lexmodelsv2_generate_bot_element]{generate_bot_element} \tab Generates sample utterances for an intent\cr
 \link[paws.machine.learning:lexmodelsv2_get_test_execution_artifacts_url]{get_test_execution_artifacts_url} \tab The pre-signed Amazon S3 URL to download the test execution result artifacts\cr
 \link[paws.machine.learning:lexmodelsv2_list_aggregated_utterances]{list_aggregated_utterances} \tab Provides a list of utterances that users have sent to the bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_aliases]{list_bot_aliases} \tab Gets a list of aliases for the specified bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_locales]{list_bot_locales} \tab Gets a list of locales for the specified bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_recommendations]{list_bot_recommendations} \tab Get a list of bot recommendations that meet the specified criteria\cr
+\link[paws.machine.learning:lexmodelsv2_list_bot_resource_generations]{list_bot_resource_generations} \tab Lists the generation requests made for a bot locale\cr
 \link[paws.machine.learning:lexmodelsv2_list_bots]{list_bots} \tab Gets a list of available bots\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_versions]{list_bot_versions} \tab Gets information about all of the versions of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_built_in_intents]{list_built_in_intents} \tab Gets a list of built-in intents provided by Amazon Lex that you can use in your bot\cr
@@ -170,6 +173,7 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_list_utterance_metrics]{list_utterance_metrics} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 \link[paws.machine.learning:lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
 \link[paws.machine.learning:lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
+\link[paws.machine.learning:lexmodelsv2_start_bot_resource_generation]{start_bot_resource_generation} \tab Starts a request for the descriptive bot builder to generate a bot locale configuration based on the prompt you provide it\cr
 \link[paws.machine.learning:lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr
 \link[paws.machine.learning:lexmodelsv2_start_test_execution]{start_test_execution} \tab The action to start test set execution\cr
 \link[paws.machine.learning:lexmodelsv2_start_test_set_generation]{start_test_set_generation} \tab The action to start the generation of test set\cr

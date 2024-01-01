@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_access_point_policy_status}
 \alias{s3control_get_access_point_policy_status}
-\title{Indicates whether the specified access point currently has a policy that
-allows public access}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_get_access_point_policy_status(AccountId, Name)
 }
@@ -13,7 +12,7 @@ s3control_get_access_point_policy_status(AccountId, Name)
 \item{Name}{[required] The name of the access point whose policy status you want to retrieve.}
 }
 \description{
-Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 access points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status/} for full documentation.
 }

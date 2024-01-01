@@ -102,6 +102,43 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 }
 .prometheusservice$operations$create_rule_groups_namespace <- prometheusservice_create_rule_groups_namespace
 
+#' Create a scraper
+#'
+#' @description
+#' Create a scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/) for full documentation.
+#'
+#' @param alias An optional user-assigned alias for this scraper. This alias is for user
+#' reference and does not need to be unique.
+#' @param scrapeConfiguration &#91;required&#93; The configuration used to create the scraper.
+#' @param source &#91;required&#93; The source that the scraper will be discovering and collecting metrics
+#' from.
+#' @param destination &#91;required&#93; The destination that the scraper will be producing metrics to.
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#' @param tags Optional, user-provided tags for this scraper.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_create_scraper
+prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, source, destination, clientToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateScraper",
+    http_method = "POST",
+    http_path = "/scrapers",
+    paginator = list()
+  )
+  input <- .prometheusservice$create_scraper_input(alias = alias, scrapeConfiguration = scrapeConfiguration, source = source, destination = destination, clientToken = clientToken, tags = tags)
+  output <- .prometheusservice$create_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$create_scraper <- prometheusservice_create_scraper
+
 #' Creates a new AMP workspace
 #'
 #' @description
@@ -114,18 +151,20 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
 #' @param tags Optional, user-provided tags for this workspace.
+#' @param kmsKeyArn Optional, customer managed KMS key used to encrypt data for this
+#' workspace
 #'
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_workspace
-prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL) {
+prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
     http_method = "POST",
     http_path = "/workspaces",
     paginator = list()
   )
-  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, tags = tags)
+  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .prometheusservice$create_workspace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -228,6 +267,37 @@ prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, cl
   return(response)
 }
 .prometheusservice$operations$delete_rule_groups_namespace <- prometheusservice_delete_rule_groups_namespace
+
+#' Deletes a scraper
+#'
+#' @description
+#' Deletes a scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper/) for full documentation.
+#'
+#' @param scraperId &#91;required&#93; The ID of the scraper to delete.
+#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_delete_scraper
+prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteScraper",
+    http_method = "DELETE",
+    http_path = "/scrapers/{scraperId}",
+    paginator = list()
+  )
+  input <- .prometheusservice$delete_scraper_input(scraperId = scraperId, clientToken = clientToken)
+  output <- .prometheusservice$delete_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$delete_scraper <- prometheusservice_delete_scraper
 
 #' Deletes an AMP workspace
 #'
@@ -348,6 +418,35 @@ prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) 
 }
 .prometheusservice$operations$describe_rule_groups_namespace <- prometheusservice_describe_rule_groups_namespace
 
+#' Describe an existing scraper
+#'
+#' @description
+#' Describe an existing scraper.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_describe_scraper/](https://www.paws-r-sdk.com/docs/prometheusservice_describe_scraper/) for full documentation.
+#'
+#' @param scraperId &#91;required&#93; The IDs of the scraper to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_describe_scraper
+prometheusservice_describe_scraper <- function(scraperId) {
+  op <- new_operation(
+    name = "DescribeScraper",
+    http_method = "GET",
+    http_path = "/scrapers/{scraperId}",
+    paginator = list()
+  )
+  input <- .prometheusservice$describe_scraper_input(scraperId = scraperId)
+  output <- .prometheusservice$describe_scraper_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$describe_scraper <- prometheusservice_describe_scraper
+
 #' Describes an existing AMP workspace
 #'
 #' @description
@@ -376,6 +475,33 @@ prometheusservice_describe_workspace <- function(workspaceId) {
   return(response)
 }
 .prometheusservice$operations$describe_workspace <- prometheusservice_describe_workspace
+
+#' Gets a default configuration
+#'
+#' @description
+#' Gets a default configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_get_default_scraper_configuration/](https://www.paws-r-sdk.com/docs/prometheusservice_get_default_scraper_configuration/) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_get_default_scraper_configuration
+prometheusservice_get_default_scraper_configuration <- function() {
+  op <- new_operation(
+    name = "GetDefaultScraperConfiguration",
+    http_method = "GET",
+    http_path = "/scraperconfiguration",
+    paginator = list()
+  )
+  input <- .prometheusservice$get_default_scraper_configuration_input()
+  output <- .prometheusservice$get_default_scraper_configuration_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$get_default_scraper_configuration <- prometheusservice_get_default_scraper_configuration
 
 #' Lists rule groups namespaces
 #'
@@ -411,6 +537,39 @@ prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NU
   return(response)
 }
 .prometheusservice$operations$list_rule_groups_namespaces <- prometheusservice_list_rule_groups_namespaces
+
+#' Lists all scrapers in a customer account, including scrapers being
+#' created or deleted
+#'
+#' @description
+#' Lists all scrapers in a customer account, including scrapers being created or deleted. You may provide filters to return a more specific list of results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/prometheusservice_list_scrapers/](https://www.paws-r-sdk.com/docs/prometheusservice_list_scrapers/) for full documentation.
+#'
+#' @param filters A list of scraper filters.
+#' @param nextToken Pagination token to request the next page in a paginated list. This
+#' token is obtained from the output of the previous ListScrapers request.
+#' @param maxResults Maximum results to return in response (default=100, maximum=1000).
+#'
+#' @keywords internal
+#'
+#' @rdname prometheusservice_list_scrapers
+prometheusservice_list_scrapers <- function(filters = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListScrapers",
+    http_method = "GET",
+    http_path = "/scrapers",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers")
+  )
+  input <- .prometheusservice$list_scrapers_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
+  output <- .prometheusservice$list_scrapers_output()
+  config <- get_config()
+  svc <- .prometheusservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.prometheusservice$operations$list_scrapers <- prometheusservice_list_scrapers
 
 #' Lists the tags you have assigned to the resource
 #'

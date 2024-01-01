@@ -9,7 +9,8 @@ sfn_list_executions(
   statusFilter = NULL,
   maxResults = NULL,
   nextToken = NULL,
-  mapRunArn = NULL
+  mapRunArn = NULL,
+  redriveFilter = NULL
 )
 }
 \arguments{
@@ -51,9 +52,21 @@ in the \emph{Step Functions Developer Guide}.
 
 You can specify either a \code{mapRunArn} or a \code{stateMachineArn}, but not
 both.}
+
+\item{redriveFilter}{Sets a filter to list executions based on whether or not they have been
+redriven.
+
+For a Distributed Map, \code{redriveFilter} sets a filter to list child
+workflow executions based on whether or not they have been redriven.
+
+If you do not provide a \code{redriveFilter}, Step Functions returns a list
+of both redriven and non-redriven executions.
+
+If you provide a state machine ARN in \code{redriveFilter}, the API returns a
+validation exception.}
 }
 \description{
-Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN.
+Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all \href{https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html}{redriven} executions.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_list_executions/} for full documentation.
 }

@@ -32,9 +32,9 @@ for the EBS volume.
 \item \code{launch.block-device-mapping.volume-size} - The size of the EBS
 volume, in GiB.
 \item \code{launch.block-device-mapping.volume-type} - The type of EBS volume:
-\code{gp2} for General Purpose SSD, \code{io1} or \code{io2} for Provisioned IOPS
-SSD, \code{st1} for Throughput Optimized HDD, \code{sc1}for Cold HDD, or
-\code{standard} for Magnetic.
+\code{gp2} or \code{gp3} for General Purpose SSD, \code{io1} or \code{io2} for
+Provisioned IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for
+Cold HDD, or \code{standard} for Magnetic.
 \item \code{launch.group-id} - The ID of the security group for the instance.
 \item \code{launch.group-name} - The name of the security group for the
 instance.

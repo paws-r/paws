@@ -28,7 +28,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SseSpecification}{Options for server side encryption.}
+\item{SseSpecification}{The options for server side encryption.}
 }
 \description{
 Modifies the specified Amazon Web Services Verified Access group policy.

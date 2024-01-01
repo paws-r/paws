@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_multi_region_access_point_routes}
 \alias{s3control_get_multi_region_access_point_routes}
-\title{Returns the routing configuration for a Multi-Region Access Point,
-indicating which Regions are active or passive}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_get_multi_region_access_point_routes(AccountId, Mrap)
 }
@@ -14,7 +13,7 @@ Access Point.}
 \item{Mrap}{[required] The Multi-Region Access Point ARN.}
 }
 \description{
-Returns the routing configuration for a Multi-Region Access Point, indicating which Regions are active or passive.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_routes/} for full documentation.
 }

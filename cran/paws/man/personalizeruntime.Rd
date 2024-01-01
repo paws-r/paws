@@ -94,6 +94,7 @@ Amazon Personalize Runtime
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.machine.learning:personalizeruntime_get_action_recommendations]{get_action_recommendations} \tab Returns a list of recommended actions in sorted in descending order by prediction score\cr
 \link[paws.machine.learning:personalizeruntime_get_personalized_ranking]{get_personalized_ranking} \tab Re-ranks a list of recommended items for the given user\cr
 \link[paws.machine.learning:personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
 }
@@ -102,7 +103,7 @@ Amazon Personalize Runtime
 \examples{
 \dontrun{
 svc <- personalizeruntime()
-svc$get_personalized_ranking(
+svc$get_action_recommendations(
   Foo = 123
 )
 }

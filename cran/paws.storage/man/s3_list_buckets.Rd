@@ -2,13 +2,12 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_buckets}
 \alias{s3_list_buckets}
-\title{Returns a list of all buckets owned by the authenticated sender of the
-request}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_list_buckets()
 }
 \description{
-Returns a list of all buckets owned by the authenticated sender of the request. To use this operation, you must have the \code{s3:ListAllMyBuckets} permission.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_buckets/} for full documentation.
 }

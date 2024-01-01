@@ -3,6 +3,72 @@
 #' @include marketplacecatalog_service.R
 NULL
 
+#' Returns metadata and content for multiple entities
+#'
+#' @description
+#' Returns metadata and content for multiple entities.
+#'
+#' @usage
+#' marketplacecatalog_batch_describe_entities(EntityRequestList)
+#'
+#' @param EntityRequestList &#91;required&#93; List of entity IDs and the catalogs the entities are present in.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EntityDetails = list(
+#'     list(
+#'       EntityType = "string",
+#'       EntityArn = "string",
+#'       EntityIdentifier = "string",
+#'       LastModifiedDate = "string",
+#'       DetailsDocument = list()
+#'     )
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_describe_entities(
+#'   EntityRequestList = list(
+#'     list(
+#'       Catalog = "string",
+#'       EntityId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_batch_describe_entities
+#'
+#' @aliases marketplacecatalog_batch_describe_entities
+marketplacecatalog_batch_describe_entities <- function(EntityRequestList) {
+  op <- new_operation(
+    name = "BatchDescribeEntities",
+    http_method = "POST",
+    http_path = "/BatchDescribeEntities",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$batch_describe_entities_input(EntityRequestList = EntityRequestList)
+  output <- .marketplacecatalog$batch_describe_entities_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$batch_describe_entities <- marketplacecatalog_batch_describe_entities
+
 #' Used to cancel an open change request
 #'
 #' @description
@@ -383,10 +449,13 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'
 #' @usage
 #' marketplacecatalog_list_entities(Catalog, EntityType, FilterList, Sort,
-#'   NextToken, MaxResults, OwnershipType)
+#'   NextToken, MaxResults, OwnershipType, EntityTypeFilters, EntityTypeSort)
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
-#' @param EntityType &#91;required&#93; The type of entities to retrieve.
+#' @param EntityType &#91;required&#93; The type of entities to retrieve. Valid values are: `AmiProduct`,
+#' `ContainerProduct`, `DataProduct`, `SaaSProduct`, `ProcurementPolicy`,
+#' `Experience`, `Audience`, `BrandingSettings`, `Offer`, `Seller`,
+#' `ResaleAuthorization`.
 #' @param FilterList An array of filter objects. Each filter object contains two attributes,
 #' `filterName` and `filterValues`.
 #' @param Sort An object that contains two attributes, `SortBy` and `SortOrder`.
@@ -400,6 +469,13 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' Marketplace Catalog API
 #' [`put_resource_policy`][marketplacecatalog_put_resource_policy]
 #' operation can't be discovered through the `SHARED` parameter.
+#' @param EntityTypeFilters A Union object containing filter shapes for all `EntityType`s. Each
+#' `EntityTypeFilter` shape will have filters applicable for that
+#' `EntityType` that can be used to search or filter entities.
+#' @param EntityTypeSort A Union object containing `Sort` shapes for all `EntityType`s. Each
+#' `EntityTypeSort` shape will have `SortBy` and `SortOrder` applicable for
+#' fields on that `EntityType`. This can be used to sort the results of the
+#' filter query.
 #'
 #' @return
 #' A list with the following syntax:
@@ -412,7 +488,49 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'       EntityId = "string",
 #'       EntityArn = "string",
 #'       LastModifiedDate = "string",
-#'       Visibility = "string"
+#'       Visibility = "string",
+#'       AmiProductSummary = list(
+#'         ProductTitle = "string",
+#'         Visibility = "Limited"|"Public"|"Restricted"|"Draft"
+#'       ),
+#'       ContainerProductSummary = list(
+#'         ProductTitle = "string",
+#'         Visibility = "Limited"|"Public"|"Restricted"|"Draft"
+#'       ),
+#'       DataProductSummary = list(
+#'         ProductTitle = "string",
+#'         Visibility = "Limited"|"Public"|"Restricted"|"Unavailable"|"Draft"
+#'       ),
+#'       SaaSProductSummary = list(
+#'         ProductTitle = "string",
+#'         Visibility = "Limited"|"Public"|"Restricted"|"Draft"
+#'       ),
+#'       OfferSummary = list(
+#'         Name = "string",
+#'         ProductId = "string",
+#'         ReleaseDate = "string",
+#'         AvailabilityEndDate = "string",
+#'         BuyerAccounts = list(
+#'           "string"
+#'         ),
+#'         State = "Draft"|"Released",
+#'         Targeting = list(
+#'           "BuyerAccounts"|"ParticipatingPrograms"|"CountryCodes"|"None"
+#'         )
+#'       ),
+#'       ResaleAuthorizationSummary = list(
+#'         Name = "string",
+#'         ProductId = "string",
+#'         ProductName = "string",
+#'         ManufacturerAccountId = "string",
+#'         ManufacturerLegalName = "string",
+#'         ResellerAccountID = "string",
+#'         ResellerLegalName = "string",
+#'         Status = "Draft"|"Active"|"Restricted",
+#'         OfferExtendedStatus = "string",
+#'         CreatedDate = "string",
+#'         AvailabilityEndDate = "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -438,7 +556,263 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'   ),
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   OwnershipType = "SELF"|"SHARED"
+#'   OwnershipType = "SELF"|"SHARED",
+#'   EntityTypeFilters = list(
+#'     DataProductFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProductTitle = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       Visibility = list(
+#'         ValueList = list(
+#'           "Limited"|"Public"|"Restricted"|"Unavailable"|"Draft"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       )
+#'     ),
+#'     SaaSProductFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ProductTitle = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       Visibility = list(
+#'         ValueList = list(
+#'           "Limited"|"Public"|"Restricted"|"Draft"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       )
+#'     ),
+#'     AmiProductFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       ),
+#'       ProductTitle = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       Visibility = list(
+#'         ValueList = list(
+#'           "Limited"|"Public"|"Restricted"|"Draft"
+#'         )
+#'       )
+#'     ),
+#'     OfferFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Name = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       ProductId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ReleaseDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       ),
+#'       AvailabilityEndDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       ),
+#'       BuyerAccounts = list(
+#'         WildCardValue = "string"
+#'       ),
+#'       State = list(
+#'         ValueList = list(
+#'           "Draft"|"Released"
+#'         )
+#'       ),
+#'       Targeting = list(
+#'         ValueList = list(
+#'           "BuyerAccounts"|"ParticipatingPrograms"|"CountryCodes"|"None"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       )
+#'     ),
+#'     ContainerProductFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       ),
+#'       ProductTitle = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       Visibility = list(
+#'         ValueList = list(
+#'           "Limited"|"Public"|"Restricted"|"Draft"
+#'         )
+#'       )
+#'     ),
+#'     ResaleAuthorizationFilters = list(
+#'       EntityId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Name = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       ProductId = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       CreatedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         ),
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       AvailabilityEndDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         ),
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ManufacturerAccountId = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       ProductName = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       ManufacturerLegalName = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       ResellerAccountID = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       ResellerLegalName = list(
+#'         ValueList = list(
+#'           "string"
+#'         ),
+#'         WildCardValue = "string"
+#'       ),
+#'       Status = list(
+#'         ValueList = list(
+#'           "Draft"|"Active"|"Restricted"
+#'         )
+#'       ),
+#'       OfferExtendedStatus = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       LastModifiedDate = list(
+#'         DateRange = list(
+#'           AfterValue = "string",
+#'           BeforeValue = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EntityTypeSort = list(
+#'     DataProductSort = list(
+#'       SortBy = "EntityId"|"ProductTitle"|"Visibility"|"LastModifiedDate",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     SaaSProductSort = list(
+#'       SortBy = "EntityId"|"ProductTitle"|"Visibility"|"LastModifiedDate",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     AmiProductSort = list(
+#'       SortBy = "EntityId"|"LastModifiedDate"|"ProductTitle"|"Visibility",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     OfferSort = list(
+#'       SortBy = "EntityId"|"Name"|"ProductId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     ContainerProductSort = list(
+#'       SortBy = "EntityId"|"LastModifiedDate"|"ProductTitle"|"Visibility",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     ),
+#'     ResaleAuthorizationSort = list(
+#'       SortBy = "EntityId"|"Name"|"ProductId"|"ProductName"|"ManufacturerAccountId"|"ManufacturerLegalName"|"ResellerAccountID"|"ResellerLegalName"|"Status"|"OfferExtendedStatus"|"CreatedDate"|"AvailabilityEndDate"|"LastModifiedDate",
+#'       SortOrder = "ASCENDING"|"DESCENDING"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -447,14 +821,14 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @rdname marketplacecatalog_list_entities
 #'
 #' @aliases marketplacecatalog_list_entities
-marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL, OwnershipType = NULL) {
+marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL, OwnershipType = NULL, EntityTypeFilters = NULL, EntityTypeSort = NULL) {
   op <- new_operation(
     name = "ListEntities",
     http_method = "POST",
     http_path = "/ListEntities",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EntitySummaryList")
   )
-  input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType)
+  input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType, EntityTypeFilters = EntityTypeFilters, EntityTypeSort = EntityTypeSort)
   output <- .marketplacecatalog$list_entities_output()
   config <- get_config()
   svc <- .marketplacecatalog$service(config)

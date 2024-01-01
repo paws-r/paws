@@ -799,7 +799,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #'       S3Key = "string"
 #'     ),
 #'     Platforms = list(
-#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'     ),
 #'     InstanceFamilies = list(
 #'       "string"
@@ -825,7 +825,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #'   WorkingDirectory = "string",
 #'   LaunchParameters = "string",
 #'   Platforms = list(
-#'     "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'     "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'   ),
 #'   InstanceFamilies = list(
 #'     "string"
@@ -1295,7 +1295,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     IdleDisconnectTimeoutInSeconds = 123,
 #'     IamRoleArn = "string",
 #'     StreamView = "APP"|"DESKTOP",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     MaxConcurrentSessions = 123,
 #'     UsbDeviceFilterStrings = list(
 #'       "string"
@@ -1344,7 +1344,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   IdleDisconnectTimeoutInSeconds = 123,
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'   MaxConcurrentSessions = 123,
 #'   UsbDeviceFilterStrings = list(
 #'     "string"
@@ -1523,7 +1523,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -1754,7 +1754,8 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'     UserSettings = list(
 #'       list(
 #'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE"|"DOMAIN_PASSWORD_SIGNIN"|"DOMAIN_SMART_CARD_SIGNIN",
-#'         Permission = "ENABLED"|"DISABLED"
+#'         Permission = "ENABLED"|"DISABLED",
+#'         MaximumLength = 123
 #'       )
 #'     ),
 #'     ApplicationSettings = list(
@@ -1798,7 +1799,8 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'   UserSettings = list(
 #'     list(
 #'       Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE"|"DOMAIN_PASSWORD_SIGNIN"|"DOMAIN_SMART_CARD_SIGNIN",
-#'       Permission = "ENABLED"|"DISABLED"
+#'       Permission = "ENABLED"|"DISABLED",
+#'       MaximumLength = 123
 #'     )
 #'   ),
 #'   ApplicationSettings = list(
@@ -1970,7 +1972,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'     ImageBuilderSupported = TRUE|FALSE,
 #'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     Description = "string",
 #'     StateChangeReason = list(
 #'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -1996,7 +1998,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #'           S3Key = "string"
 #'         ),
 #'         Platforms = list(
-#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'         ),
 #'         InstanceFamilies = list(
 #'           "string"
@@ -2458,7 +2460,7 @@ appstream_delete_fleet <- function(Name) {
 #'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'     ImageBuilderSupported = TRUE|FALSE,
 #'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     Description = "string",
 #'     StateChangeReason = list(
 #'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -2484,7 +2486,7 @@ appstream_delete_fleet <- function(Name) {
 #'           S3Key = "string"
 #'         ),
 #'         Platforms = list(
-#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'         ),
 #'         InstanceFamilies = list(
 #'           "string"
@@ -2576,7 +2578,7 @@ appstream_delete_image <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -3175,7 +3177,7 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
 #'         S3Key = "string"
 #'       ),
 #'       Platforms = list(
-#'         "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'         "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'       ),
 #'       InstanceFamilies = list(
 #'         "string"
@@ -3445,7 +3447,7 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #'       IdleDisconnectTimeoutInSeconds = 123,
 #'       IamRoleArn = "string",
 #'       StreamView = "APP"|"DESKTOP",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'       MaxConcurrentSessions = 123,
 #'       UsbDeviceFilterStrings = list(
 #'         "string"
@@ -3529,7 +3531,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #'         )
 #'       ),
 #'       InstanceType = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'       IamRoleArn = "string",
 #'       State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'       StateChangeReason = list(
@@ -3706,7 +3708,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'       Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'       ImageBuilderSupported = TRUE|FALSE,
 #'       ImageBuilderName = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'       Description = "string",
 #'       StateChangeReason = list(
 #'         Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -3732,7 +3734,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'             S3Key = "string"
 #'           ),
 #'           Platforms = list(
-#'             "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'             "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'           ),
 #'           InstanceFamilies = list(
 #'             "string"
@@ -3945,7 +3947,8 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #'       UserSettings = list(
 #'         list(
 #'           Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE"|"DOMAIN_PASSWORD_SIGNIN"|"DOMAIN_SMART_CARD_SIGNIN",
-#'           Permission = "ENABLED"|"DISABLED"
+#'           Permission = "ENABLED"|"DISABLED",
+#'           MaximumLength = 123
 #'         )
 #'       ),
 #'       ApplicationSettings = list(
@@ -4923,7 +4926,7 @@ appstream_start_fleet <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -5153,7 +5156,7 @@ appstream_stop_fleet <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -5454,7 +5457,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Name = "string",
 #'   Description = "string",
 #'   DisplayName = "string",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'   InstanceType = "string",
 #'   VpcConfig = list(
 #'     SubnetIds = list(
@@ -5545,7 +5548,7 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
 #'       S3Key = "string"
 #'     ),
 #'     Platforms = list(
-#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2"
+#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"
 #'     ),
 #'     InstanceFamilies = list(
 #'       "string"
@@ -6020,7 +6023,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     IdleDisconnectTimeoutInSeconds = 123,
 #'     IamRoleArn = "string",
 #'     StreamView = "APP"|"DESKTOP",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'     MaxConcurrentSessions = 123,
 #'     UsbDeviceFilterStrings = list(
 #'       "string"
@@ -6069,7 +6072,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   ),
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"AMAZON_LINUX2",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2",
 #'   MaxConcurrentSessions = 123,
 #'   UsbDeviceFilterStrings = list(
 #'     "string"
@@ -6222,7 +6225,8 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'     UserSettings = list(
 #'       list(
 #'         Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE"|"DOMAIN_PASSWORD_SIGNIN"|"DOMAIN_SMART_CARD_SIGNIN",
-#'         Permission = "ENABLED"|"DISABLED"
+#'         Permission = "ENABLED"|"DISABLED",
+#'         MaximumLength = 123
 #'       )
 #'     ),
 #'     ApplicationSettings = list(
@@ -6270,7 +6274,8 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'   UserSettings = list(
 #'     list(
 #'       Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE"|"DOMAIN_PASSWORD_SIGNIN"|"DOMAIN_SMART_CARD_SIGNIN",
-#'       Permission = "ENABLED"|"DISABLED"
+#'       Permission = "ENABLED"|"DISABLED",
+#'       MaximumLength = 123
 #'     )
 #'   ),
 #'   ApplicationSettings = list(

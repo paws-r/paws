@@ -56,7 +56,7 @@ administration tasks, freeing up developers to focus on what makes their
 applications and businesses unique.
 
 Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
-PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database
+PostgreSQL, Microsoft SQL Server, Oracle, Db2, or Amazon Aurora database
 server. These capabilities mean that the code, applications, and tools
 you already use today with your existing databases work with Amazon RDS
 without modification. Amazon RDS automatically backs up your database
@@ -204,6 +204,7 @@ the user guide.
 \link[=rds_describe_db_proxy_endpoints]{describe_db_proxy_endpoints} \tab Returns information about DB proxy endpoints\cr
 \link[=rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures\cr
 \link[=rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects\cr
+\link[=rds_describe_db_recommendations]{describe_db_recommendations} \tab Describes the recommendations to resolve the issues for your DB instances, DB clusters, and DB parameter groups\cr
 \link[=rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
 \link[=rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
 \link[=rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
@@ -217,16 +218,18 @@ the user guide.
 \link[=rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot or cluster export to Amazon S3\cr
 \link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
 \link[=rds_describe_integrations]{describe_integrations} \tab Describe one or more zero-ETL integrations with Amazon Redshift\cr
-\link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
+\link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options for the specified engine\cr
 \link[=rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
-\link[=rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class\cr
+\link[=rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Describes the orderable DB instance options for a specified DB engine\cr
 \link[=rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
 \link[=rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
 \link[=rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
 \link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
 \link[=rds_describe_tenant_databases]{describe_tenant_databases} \tab Describes the tenant databases in a DB instance that uses the multi-tenant configuration\cr
 \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
+\link[=rds_disable_http_endpoint]{disable_http_endpoint} \tab Disables the HTTP endpoint for the specified DB cluster\cr
 \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
+\link[=rds_enable_http_endpoint]{enable_http_endpoint} \tab Enables the HTTP endpoint for the DB cluster\cr
 \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
 \link[=rds_failover_global_cluster]{failover_global_cluster} \tab Promotes the specified secondary DB cluster to be the primary DB cluster in the global database cluster to fail over or switch over a global database\cr
 \link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource\cr
@@ -243,6 +246,7 @@ the user guide.
 \link[=rds_modify_db_proxy]{modify_db_proxy} \tab Changes the settings for an existing DB proxy\cr
 \link[=rds_modify_db_proxy_endpoint]{modify_db_proxy_endpoint} \tab Changes the settings for an existing DB proxy endpoint\cr
 \link[=rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup\cr
+\link[=rds_modify_db_recommendation]{modify_db_recommendation} \tab Updates the recommendation status and recommended action status for the specified recommendation\cr
 \link[=rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version\cr
 \link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
 \link[=rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
@@ -271,11 +275,11 @@ the user guide.
 \link[=rds_restore_db_instance_to_point_in_time]{restore_db_instance_to_point_in_time} \tab Restores a DB instance to an arbitrary point in time\cr
 \link[=rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC security groups\cr
 \link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database\cr
-\link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action\cr
-\link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action\cr
+\link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster operation\cr
+\link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance operation\cr
 \link[=rds_start_db_instance_automated_backups_replication]{start_db_instance_automated_backups_replication} \tab Enables replication of automated backups to a different Amazon Web Services Region\cr
 \link[=rds_start_export_task]{start_export_task} \tab Starts an export of DB snapshot or DB cluster data to Amazon S3\cr
-\link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream action\cr
+\link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream operation\cr
 \link[=rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
 \link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
 \link[=rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance\cr

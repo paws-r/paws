@@ -9,7 +9,8 @@ athena_list_table_metadata(
   DatabaseName,
   Expression = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  WorkGroup = NULL
 )
 }
 \arguments{
@@ -27,6 +28,9 @@ of pages, pass in the NextToken from the response object of the previous
 page call.}
 
 \item{MaxResults}{Specifies the maximum number of results to return.}
+
+\item{WorkGroup}{The name of the workgroup for which the metadata is being fetched.
+Required if requesting an IAM Identity Center enabled Glue Data Catalog.}
 }
 \description{
 Lists the metadata for the tables in the specified data catalog database.

@@ -15,7 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
 \description{
-Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the \code{active} state. The owner of the requester VPC can delete a VPC peering connection in the \code{pending-acceptance} state. You cannot delete a VPC peering connection that's in the \code{failed} state.
+Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the accepter VPC can delete the VPC peering connection if it's in the \code{active} state. The owner of the requester VPC can delete a VPC peering connection in the \code{pending-acceptance} state. You cannot delete a VPC peering connection that's in the \code{failed} or \code{rejected} state.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_delete_vpc_peering_connection/} for full documentation.
 }

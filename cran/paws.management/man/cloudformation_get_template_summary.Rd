@@ -17,7 +17,7 @@ cloudformation_get_template_summary(
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information about
 templates, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
-in the CloudFormation User Guide.
+in the \emph{CloudFormation User Guide}.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
@@ -26,7 +26,7 @@ Conditional: You must specify only one of the following parameters:
 template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
 or a Systems Manager document. For more information about templates, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
-in the CloudFormation User Guide.
+in the \emph{CloudFormation User Guide}.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}

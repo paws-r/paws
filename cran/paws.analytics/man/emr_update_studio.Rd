@@ -10,7 +10,8 @@ emr_update_studio(
   Name = NULL,
   Description = NULL,
   SubnetIds = NULL,
-  DefaultS3Location = NULL
+  DefaultS3Location = NULL,
+  EncryptionKeyArn = NULL
 )
 }
 \arguments{
@@ -28,6 +29,9 @@ same VPC as the Studio.}
 
 \item{DefaultS3Location}{The Amazon S3 location to back up Workspaces and notebook files for the
 Amazon EMR Studio.}
+
+\item{EncryptionKeyArn}{The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace
+and notebook files when backed up to Amazon S3.}
 }
 \description{
 Updates an Amazon EMR Studio configuration, including attributes such as name, description, and subnets.

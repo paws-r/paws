@@ -71,6 +71,7 @@ capacity
 \item Amazon Neptune clusters
 \item Amazon SageMaker endpoint variants
 \item Amazon SageMaker Serverless endpoint provisioned concurrency
+\item Amazon SageMaker inference components
 \item Spot Fleets (Amazon EC2)
 \item Custom resources provided by your own applications or services
 }

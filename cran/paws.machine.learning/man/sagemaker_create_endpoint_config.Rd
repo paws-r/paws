@@ -13,7 +13,10 @@ sagemaker_create_endpoint_config(
   KmsKeyId = NULL,
   AsyncInferenceConfig = NULL,
   ExplainerConfig = NULL,
-  ShadowProductionVariants = NULL
+  ShadowProductionVariants = NULL,
+  ExecutionRoleArn = NULL,
+  VpcConfig = NULL,
+  EnableNetworkIsolation = NULL
 )
 }
 \arguments{
@@ -77,6 +80,19 @@ want to host at this endpoint in shadow mode with production traffic
 replicated from the model specified on \code{ProductionVariants}. If you use
 this field, you can only specify one variant for \code{ProductionVariants}
 and one variant for \code{ShadowProductionVariants}.}
+
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
+assume to perform actions on your behalf. For more information, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
+
+To be able to pass this role to Amazon SageMaker, the caller of this
+action must have the \code{iam:PassRole} permission.}
+
+\item{VpcConfig}{}
+
+\item{EnableNetworkIsolation}{Sets whether all model containers deployed to the endpoint are isolated.
+If they are, no inbound or outbound network calls can be made to or from
+the model containers.}
 }
 \description{
 Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the \code{\link[=sagemaker_create_model]{create_model}} API, to deploy and the resources that you want SageMaker to provision. Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.

@@ -5,7 +5,11 @@
 \title{From a data producer account, authorizes the sharing of a datashare with
 one or more consumer accounts or managing entities}
 \usage{
-redshift_authorize_data_share(DataShareArn, ConsumerIdentifier)
+redshift_authorize_data_share(
+  DataShareArn,
+  ConsumerIdentifier,
+  AllowWrites = NULL
+)
 }
 \arguments{
 \item{DataShareArn}{[required] The Amazon Resource Name (ARN) of the datashare that producers are to
@@ -14,6 +18,8 @@ authorize sharing for.}
 \item{ConsumerIdentifier}{[required] The identifier of the data consumer that is authorized to access the
 datashare. This identifier is an Amazon Web Services account ID or a
 keyword, such as ADX.}
+
+\item{AllowWrites}{If set to true, allows write operations for a datashare.}
 }
 \description{
 From a data producer account, authorizes the sharing of a datashare with one or more consumer accounts or managing entities. To authorize a datashare for a data consumer, the producer account must have the correct access permissions.

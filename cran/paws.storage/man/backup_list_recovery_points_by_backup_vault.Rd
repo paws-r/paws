@@ -30,7 +30,7 @@ creates the backup.}
 \item{BackupVaultAccountId}{This parameter will sort the list of recovery points by account ID.}
 
 \item{NextToken}{The next item following a partial list of returned items. For example,
-if a request is made to return \code{maxResults} number of items, \code{NextToken}
+if a request is made to return \code{MaxResults} number of items, \code{NextToken}
 allows you to return more items in your list starting at the location
 pointed to by the next token.}
 
@@ -39,7 +39,25 @@ pointed to by the next token.}
 \item{ByResourceArn}{Returns only recovery points that match the specified resource Amazon
 Resource Name (ARN).}
 
-\item{ByResourceType}{Returns only recovery points that match the specified resource type.}
+\item{ByResourceType}{Returns only recovery points that match the specified resource type(s):
+\itemize{
+\item \code{Aurora} for Amazon Aurora
+\item \code{CloudFormation} for CloudFormation
+\item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
+\item \code{DynamoDB} for Amazon DynamoDB
+\item \code{EBS} for Amazon Elastic Block Store
+\item \code{EC2} for Amazon Elastic Compute Cloud
+\item \code{EFS} for Amazon Elastic File System
+\item \code{FSx} for Amazon FSx
+\item \code{Neptune} for Amazon Neptune
+\item \code{Redshift} for Amazon Redshift
+\item \code{RDS} for Amazon Relational Database Service
+\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases
+\item \verb{Storage Gateway} for Storage Gateway
+\item \code{S3} for Amazon S3
+\item \code{Timestream} for Amazon Timestream
+\item \code{VirtualMachine} for virtual machines
+}}
 
 \item{ByBackupPlanId}{Returns only recovery points that match the specified backup plan ID.}
 

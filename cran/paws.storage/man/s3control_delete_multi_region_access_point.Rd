@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_multi_region_access_point}
 \alias{s3control_delete_multi_region_access_point}
-\title{Deletes a Multi-Region Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_delete_multi_region_access_point(AccountId, ClientToken, Details)
 }
@@ -17,7 +17,7 @@ requests are unique.}
 Point.}
 }
 \description{
-Deletes a Multi-Region Access Point. This action does not delete the buckets associated with the Multi-Region Access Point, only the Multi-Region Access Point itself.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_delete_multi_region_access_point/} for full documentation.
 }

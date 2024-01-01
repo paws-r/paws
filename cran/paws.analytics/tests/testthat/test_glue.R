@@ -8,6 +8,14 @@ test_that("list_blueprints", {
   expect_error(svc$list_blueprints(MaxResults = 20), NA)
 })
 
+test_that("list_column_statistics_task_runs", {
+  expect_error(svc$list_column_statistics_task_runs(), NA)
+})
+
+test_that("list_column_statistics_task_runs", {
+  expect_error(svc$list_column_statistics_task_runs(MaxResults = 20), NA)
+})
+
 test_that("list_crawlers", {
   expect_error(svc$list_crawlers(), NA)
 })

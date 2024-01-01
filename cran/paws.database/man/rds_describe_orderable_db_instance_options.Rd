@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_orderable_db_instance_options}
 \alias{rds_describe_orderable_db_instance_options}
-\title{Returns a list of orderable DB instance options for the specified DB
-engine, DB engine version, and DB instance class}
+\title{Describes the orderable DB instance options for a specified DB engine}
 \usage{
 rds_describe_orderable_db_instance_options(
   Engine,
@@ -18,13 +17,15 @@ rds_describe_orderable_db_instance_options(
 )
 }
 \arguments{
-\item{Engine}{[required] The name of the engine to retrieve DB instance options for.
+\item{Engine}{[required] The name of the engine to describe DB instance options for.
 
 Valid Values:
 \itemize{
 \item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{custom-oracle-ee}
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -38,25 +39,25 @@ Valid Values:
 \item \code{sqlserver-web}
 }}
 
-\item{EngineVersion}{The engine version filter value. Specify this parameter to show only the
-available offerings matching the specified engine version.}
+\item{EngineVersion}{A filter to include only the available options for the specified engine
+version.}
 
-\item{DBInstanceClass}{The DB instance class filter value. Specify this parameter to show only
-the available offerings matching the specified DB instance class.}
+\item{DBInstanceClass}{A filter to include only the available options for the specified DB
+instance class.}
 
-\item{LicenseModel}{The license model filter value. Specify this parameter to show only the
-available offerings matching the specified license model.
+\item{LicenseModel}{A filter to include only the available options for the specified license
+model.
 
 RDS Custom supports only the BYOL licensing model.}
 
 \item{AvailabilityZoneGroup}{The Availability Zone group associated with a Local Zone. Specify this
-parameter to retrieve available offerings for the Local Zones in the
+parameter to retrieve available options for the Local Zones in the
 group.
 
-Omit this parameter to show the available offerings in the specified
+Omit this parameter to show the available options in the specified
 Amazon Web Services Region.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{Vpc}{Specifies whether to show only VPC or non-VPC offerings. RDS Custom
 supports only VPC offerings.
@@ -81,7 +82,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class.
+Describes the orderable DB instance options for a specified DB engine.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_describe_orderable_db_instance_options/} for full documentation.
 }

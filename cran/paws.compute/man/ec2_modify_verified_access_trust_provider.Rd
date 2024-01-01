@@ -8,6 +8,7 @@ Access trust provider}
 ec2_modify_verified_access_trust_provider(
   VerifiedAccessTrustProviderId,
   OidcOptions = NULL,
+  DeviceOptions = NULL,
   Description = NULL,
   DryRun = NULL,
   ClientToken = NULL,
@@ -20,6 +21,9 @@ ec2_modify_verified_access_trust_provider(
 \item{OidcOptions}{The options for an OpenID Connect-compatible user-identity trust
 provider.}
 
+\item{DeviceOptions}{The options for a device-based trust provider. This parameter is
+required when the provider type is \code{device}.}
+
 \item{Description}{A description for the Verified Access trust provider.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -30,7 +34,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of
 your modification request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
-\item{SseSpecification}{Options for server side encryption.}
+\item{SseSpecification}{The options for server side encryption.}
 }
 \description{
 Modifies the configuration of the specified Amazon Web Services Verified Access trust provider.

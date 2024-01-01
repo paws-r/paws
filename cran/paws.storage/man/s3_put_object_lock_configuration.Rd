@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_object_lock_configuration}
 \alias{s3_put_object_lock_configuration}
-\title{Places an Object Lock configuration on the specified bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_object_lock_configuration(
   Bucket,
@@ -32,9 +32,9 @@ For requests made using the Amazon Web Services Command Line Interface
 automatically.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
-using the SDK. This header will not provide any additional functionality
-if not using the SDK. When sending this header, there must be a
-corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+you use the SDK. This header will not provide any additional
+functionality if you don't use the SDK. When you send this header, there
+must be a corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
 \verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
@@ -42,12 +42,12 @@ in the \emph{Amazon S3 User Guide}.
 If you provide an individual checksum, Amazon S3 ignores any provided
 \code{ChecksumAlgorithm} parameter.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_object_lock_configuration/} for full documentation.
 }

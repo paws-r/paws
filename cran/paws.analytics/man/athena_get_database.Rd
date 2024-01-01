@@ -4,12 +4,15 @@
 \alias{athena_get_database}
 \title{Returns a database object for the specified database and data catalog}
 \usage{
-athena_get_database(CatalogName, DatabaseName)
+athena_get_database(CatalogName, DatabaseName, WorkGroup = NULL)
 }
 \arguments{
 \item{CatalogName}{[required] The name of the data catalog that contains the database to return.}
 
 \item{DatabaseName}{[required] The name of the database to return.}
+
+\item{WorkGroup}{The name of the workgroup for which the metadata is being fetched.
+Required if requesting an IAM Identity Center enabled Glue Data Catalog.}
 }
 \description{
 Returns a database object for the specified database and data catalog.

@@ -1,5 +1,9 @@
 svc <- paws::lakeformation()
 
+test_that("describe_lake_formation_identity_center_configuration", {
+  expect_error(svc$describe_lake_formation_identity_center_configuration(), NA)
+})
+
 test_that("list_data_cells_filter", {
   expect_error(svc$list_data_cells_filter(), NA)
 })

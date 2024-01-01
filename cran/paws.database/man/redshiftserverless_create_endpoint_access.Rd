@@ -6,6 +6,7 @@
 \usage{
 redshiftserverless_create_endpoint_access(
   endpointName,
+  ownerAccount = NULL,
   subnetIds,
   vpcSecurityGroupIds = NULL,
   workgroupName
@@ -16,6 +17,9 @@ redshiftserverless_create_endpoint_access(
 characters. Valid characters are A-Z, a-z, 0-9, and hyphen(-). The first
 character must be a letter. The name can't contain two consecutive
 hyphens or end with a hyphen.}
+
+\item{ownerAccount}{The owner Amazon Web Services account for the Amazon Redshift Serverless
+workgroup.}
 
 \item{subnetIds}{[required] The unique identifers of subnets from which Amazon Redshift Serverless
 chooses one to deploy a VPC endpoint.}

@@ -9,23 +9,30 @@ accessanalyzer_create_analyzer(
   type,
   archiveRules = NULL,
   tags = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  configuration = NULL
 )
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to create.}
 
-\item{type}{[required] The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
-are supported. You can create only one analyzer per account per Region.
-You can create up to 5 analyzers per organization per Region.}
+\item{type}{[required] The type of analyzer to create. Only \code{ACCOUNT}, \code{ORGANIZATION},
+\code{ACCOUNT_UNUSED_ACCESS}, and \code{ORGANIZTAION_UNUSED_ACCESS} analyzers are
+supported. You can create only one analyzer per account per Region. You
+can create up to 5 analyzers per organization per Region.}
 
 \item{archiveRules}{Specifies the archive rules to add for the analyzer. Archive rules
 automatically archive findings that meet the criteria you define for the
 rule.}
 
-\item{tags}{The tags to apply to the analyzer.}
+\item{tags}{An array of key-value pairs to apply to the analyzer.}
 
 \item{clientToken}{A client token.}
+
+\item{configuration}{Specifies the configuration of the analyzer. If the analyzer is an
+unused access analyzer, the specified scope of unused access is used for
+the configuration. If the analyzer is an external access analyzer, this
+field is not used.}
 }
 \description{
 Creates an analyzer for your account.

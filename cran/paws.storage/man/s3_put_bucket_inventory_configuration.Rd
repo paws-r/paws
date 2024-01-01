@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_inventory_configuration}
 \alias{s3_put_bucket_inventory_configuration}
-\title{This implementation of the PUT action adds an inventory configuration
-(identified by the inventory ID) to the bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_bucket_inventory_configuration(
   Bucket,
@@ -19,12 +18,12 @@ s3_put_bucket_inventory_configuration(
 
 \item{InventoryConfiguration}{[required] Specifies the inventory configuration.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This implementation of the \code{PUT} action adds an inventory configuration (identified by the inventory ID) to the bucket. You can have up to 1,000 inventory configurations per bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_inventory_configuration/} for full documentation.
 }

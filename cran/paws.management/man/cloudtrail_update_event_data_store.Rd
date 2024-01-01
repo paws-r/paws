@@ -12,7 +12,8 @@ cloudtrail_update_event_data_store(
   OrganizationEnabled = NULL,
   RetentionPeriod = NULL,
   TerminationProtectionEnabled = NULL,
-  KmsKeyId = NULL
+  KmsKeyId = NULL,
+  BillingMode = NULL
 )
 }
 \arguments{
@@ -36,8 +37,12 @@ organization event data store to a non-organization event data store, or
 convert a non-organization event data store to an organization event
 data store.}
 
-\item{RetentionPeriod}{The retention period of the event data store, in days. You can set a
-retention period of up to 2557 days, the equivalent of seven years.
+\item{RetentionPeriod}{The retention period of the event data store, in days. If \code{BillingMode}
+is set to \code{EXTENDABLE_RETENTION_PRICING}, you can set a retention period
+of up to 3653 days, the equivalent of 10 years. If \code{BillingMode} is set
+to \code{FIXED_RETENTION_PRICING}, you can set a retention period of up to
+2557 days, the equivalent of seven years.
+
 CloudTrail Lake determines whether to retain an event by checking if the
 \code{eventTime} of the event is within the specified retention period. For
 example, if you set a retention period of 90 days, CloudTrail will
@@ -76,9 +81,34 @@ Examples:
 \item \code{arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012}
 \item \code{12345678-1234-1234-1234-123456789012}
 }}
+
+\item{BillingMode}{You can't change the billing mode from \code{EXTENDABLE_RETENTION_PRICING} to
+\code{FIXED_RETENTION_PRICING}. If \code{BillingMode} is set to
+\code{EXTENDABLE_RETENTION_PRICING} and you want to use
+\code{FIXED_RETENTION_PRICING} instead, you'll need to stop ingestion on the
+event data store and create a new event data store that uses
+\code{FIXED_RETENTION_PRICING}.
+
+The billing mode for the event data store determines the cost for
+ingesting events and the default and maximum retention period for the
+event data store.
+
+The following are the possible values:
+\itemize{
+\item \code{EXTENDABLE_RETENTION_PRICING} - This billing mode is generally
+recommended if you want a flexible retention period of up to 3653
+days (about 10 years). The default retention period for this billing
+mode is 366 days.
+\item \code{FIXED_RETENTION_PRICING} - This billing mode is recommended if you
+expect to ingest more than 25 TB of event data per month and need a
+retention period of up to 2557 days (about 7 years). The default
+retention period for this billing mode is 2557 days.
+}
+
+For more information about CloudTrail pricing, see \href{https://aws.amazon.com/cloudtrail/pricing/}{CloudTrail Pricing} and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-manage-costs.html}{Managing CloudTrail Lake costs}.}
 }
 \description{
-Updates an event data store. The required \code{EventDataStore} value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. \code{RetentionPeriod} is in days, and valid values are integers between 90 and 2557. By default, \code{TerminationProtection} is enabled.
+Updates an event data store. The required \code{EventDataStore} value is an ARN or the ID portion of the ARN. Other parameters are optional, but at least one optional parameter must be specified, or CloudTrail throws an error. \code{RetentionPeriod} is in days, and valid values are integers between 7 and 3653 if the \code{BillingMode} is set to \code{EXTENDABLE_RETENTION_PRICING}, or between 7 and 2557 if \code{BillingMode} is set to \code{FIXED_RETENTION_PRICING}. By default, \code{TerminationProtection} is enabled.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_event_data_store/} for full documentation.
 }

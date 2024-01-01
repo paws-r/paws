@@ -104,31 +104,26 @@ Constraints:
 \item Can't be a reserved word for the chosen database engine.
 }}
 
-\item{MasterUserPassword}{The password for the master user. The password can include any printable
-ASCII character except "/", """, or "@".
+\item{MasterUserPassword}{The password for the master user.
 
-Constraints: Can't be specified if \code{ManageMasterUserPassword} is turned
-on.
+Constraints:
+\itemize{
+\item Can't be specified if \code{ManageMasterUserPassword} is turned on.
+\item Can include any printable ASCII character except "/", """, or "@".
+For RDS for Oracle, can't include the "&" (ampersand) or the "'"
+(single quotes) character.
+}
 
-\strong{MariaDB}
-
-Constraints: Must contain from 8 to 41 characters.
-
-\strong{Microsoft SQL Server}
-
-Constraints: Must contain from 8 to 128 characters.
-
-\strong{MySQL}
-
-Constraints: Must contain from 8 to 41 characters.
-
-\strong{Oracle}
-
-Constraints: Must contain from 8 to 30 characters.
-
-\strong{PostgreSQL}
-
-Constraints: Must contain from 8 to 128 characters.}
+Length Constraints:
+\itemize{
+\item RDS for Db2 - Must contain from 8 to 128 characters.
+\item RDS for MariaDB - Must contain from 8 to 41 characters.
+\item RDS for Microsoft SQL Server - Must contain from 8 to 128
+characters.
+\item RDS for MySQL - Must contain from 8 to 41 characters.
+\item RDS for Oracle - Must contain from 8 to 30 characters.
+\item RDS for PostgreSQL - Must contain from 8 to 128 characters.
+}}
 
 \item{DBSecurityGroups}{A list of DB security groups to associate with this DB instance.
 

@@ -21,9 +21,10 @@ polly_start_speech_synthesis_task(
 )
 }
 \arguments{
-\item{Engine}{Specifies the engine (\code{standard} or \code{neural}) for Amazon Polly to use
-when processing input text for speech synthesis. Using a voice that is
-not supported for the engine selected will result in an error.}
+\item{Engine}{Specifies the engine (\code{standard}, \code{neural} or \code{long-form}) for Amazon
+Polly to use when processing input text for speech synthesis. Using a
+voice that is not supported for the engine selected will result in an
+error.}
 
 \item{LanguageCode}{Optional language code for the Speech Synthesis request. This is only
 necessary if using a bilingual voice, such as Aditi, which can be used
@@ -52,7 +53,8 @@ will be json.}
 
 The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 and "24000". The default value for standard voices is "22050". The
-default value for neural voices is "24000".
+default value for neural voices is "24000". The default value for
+long-form voices is "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
 "16000".}

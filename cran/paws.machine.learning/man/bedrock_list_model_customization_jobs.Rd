@@ -27,8 +27,8 @@ characters.}
 
 \item{maxResults}{Maximum number of results to return in the response.}
 
-\item{nextToken}{Continuation token from the previous response, for Bedrock to list the
-next set of results.}
+\item{nextToken}{Continuation token from the previous response, for Amazon Bedrock to
+list the next set of results.}
 
 \item{sortBy}{The field to sort by in the returned list of jobs.}
 

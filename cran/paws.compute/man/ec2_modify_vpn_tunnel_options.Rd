@@ -25,7 +25,8 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SkipTunnelReplacement}{Choose whether or not to trigger immediate tunnel replacement.
+\item{SkipTunnelReplacement}{Choose whether or not to trigger immediate tunnel replacement. This is
+only applicable when turning on or off \code{EnableTunnelLifecycleControl}.
 
 Valid values: \code{True} | \code{False}}
 }

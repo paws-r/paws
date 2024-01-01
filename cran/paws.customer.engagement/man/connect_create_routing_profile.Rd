@@ -38,7 +38,7 @@ queues per routing profile per instance that is listed in \href{https://docs.aws
 for this routing profile.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 
 \item{AgentAvailabilityTimer}{Whether agents with this routing profile will have their routing order
 calculated based on \emph{longest idle time} or \emph{time since their last

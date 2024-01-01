@@ -17,7 +17,12 @@ of devices you want to view.}
 
 \item{Limit}{The limit of the device request.}
 
-\item{PaginationToken}{The pagination token for the list request.}
+\item{PaginationToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
 Lists the sign-in devices that Amazon Cognito has registered to the current user.

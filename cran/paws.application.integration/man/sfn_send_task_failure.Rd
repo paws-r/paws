@@ -2,8 +2,9 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_send_task_failure}
 \alias{sfn_send_task_failure}
-\title{Used by activity workers and task states using the callback pattern to
-report that the task identified by the taskToken failed}
+\title{Used by activity workers, Task states using the callback pattern, and
+optionally Task states using the job run pattern to report that the task
+identified by the taskToken failed}
 \usage{
 sfn_send_task_failure(taskToken, error = NULL, cause = NULL)
 }
@@ -18,7 +19,7 @@ GetActivityTaskOutput$taskToken.}
 \item{cause}{A more detailed explanation of the cause of the failure.}
 }
 \description{
-Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report that the task identified by the \code{taskToken} failed.
+Used by activity workers, Task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern, and optionally Task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync}{job run} pattern to report that the task identified by the \code{taskToken} failed.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_send_task_failure/} for full documentation.
 }

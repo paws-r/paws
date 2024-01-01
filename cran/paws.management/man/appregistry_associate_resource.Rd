@@ -4,7 +4,12 @@
 \alias{appregistry_associate_resource}
 \title{Associates a resource with an application}
 \usage{
-appregistry_associate_resource(application, resourceType, resource)
+appregistry_associate_resource(
+  application,
+  resourceType,
+  resource,
+  options = NULL
+)
 }
 \arguments{
 \item{application}{[required] The name, ID, or ARN of the application.}
@@ -13,6 +18,8 @@ appregistry_associate_resource(application, resourceType, resource)
 
 \item{resource}{[required] The name or ID of the resource of which the application will be
 associated.}
+
+\item{options}{Determines whether an application tag is applied or skipped.}
 }
 \description{
 Associates a resource with an application. The resource can be specified by its ARN or name. The application can be specified by ARN, ID, or name.

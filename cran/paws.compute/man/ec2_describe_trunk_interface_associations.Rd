@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_trunk_interface_associations}
 \alias{ec2_describe_trunk_interface_associations}
-\title{This API action is currently in limited preview only}
+\title{Describes one or more network interface trunk associations}
 \usage{
 ec2_describe_trunk_interface_associations(
   AssociationIds = NULL,
@@ -34,7 +34,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-This API action is currently in \strong{limited preview only}. If you are interested in using this feature, contact your account manager.
+Describes one or more network interface trunk associations.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_trunk_interface_associations/} for full documentation.
 }

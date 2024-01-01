@@ -2,17 +2,17 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_describe_fargate_profile}
 \alias{eks_describe_fargate_profile}
-\title{Returns descriptive information about an Fargate profile}
+\title{Describes an Fargate profile}
 \usage{
 eks_describe_fargate_profile(clusterName, fargateProfileName)
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster associated with the Fargate profile.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{fargateProfileName}{[required] The name of the Fargate profile to describe.}
 }
 \description{
-Returns descriptive information about an Fargate profile.
+Describes an Fargate profile.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_describe_fargate_profile/} for full documentation.
 }

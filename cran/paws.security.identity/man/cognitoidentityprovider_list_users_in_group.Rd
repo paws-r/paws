@@ -16,7 +16,7 @@ cognitoidentityprovider_list_users_in_group(
 
 \item{GroupName}{[required] The name of the group.}
 
-\item{Limit}{The limit of the request to list users.}
+\item{Limit}{The maximum number of users that you want to retrieve before pagination.}
 
 \item{NextToken}{An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the

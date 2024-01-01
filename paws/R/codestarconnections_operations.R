@@ -41,7 +41,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'   ConnectionName = "string",
 #'   Tags = list(
 #'     list(
@@ -103,7 +103,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' @param VpcConfiguration The VPC configuration to be provisioned for the host. A VPC must be
 #' configured and the infrastructure to be represented by the host must
 #' already be connected to the VPC.
-#' @param Tags 
+#' @param Tags Tags for the host to be created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -123,7 +123,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' ```
 #' svc$create_host(
 #'   Name = "string",
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -165,6 +165,161 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
   return(response)
 }
 .codestarconnections$operations$create_host <- codestarconnections_create_host
+
+#' Creates a link to a specified external Git repository
+#'
+#' @description
+#' Creates a link to a specified external Git repository. A repository link
+#' allows Git sync to monitor and sync changes to files in a specified Git
+#' repository.
+#'
+#' @usage
+#' codestarconnections_create_repository_link(ConnectionArn, OwnerId,
+#'   RepositoryName, EncryptionKeyArn, Tags)
+#'
+#' @param ConnectionArn &#91;required&#93; The Amazon Resource Name (ARN) of the connection to be associated with
+#' the repository link.
+#' @param OwnerId &#91;required&#93; The owner ID for the repository associated with a specific sync
+#' configuration, such as the owner ID in GitHub.
+#' @param RepositoryName &#91;required&#93; The name of the repository to be associated with the repository link.
+#' @param EncryptionKeyArn The Amazon Resource Name (ARN) encryption key for the repository to be
+#' associated with the repository link.
+#' @param Tags The tags for the repository to be associated with the repository link.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryLinkInfo = list(
+#'     ConnectionArn = "string",
+#'     EncryptionKeyArn = "string",
+#'     OwnerId = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     RepositoryLinkArn = "string",
+#'     RepositoryLinkId = "string",
+#'     RepositoryName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_repository_link(
+#'   ConnectionArn = "string",
+#'   OwnerId = "string",
+#'   RepositoryName = "string",
+#'   EncryptionKeyArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_create_repository_link
+#'
+#' @aliases codestarconnections_create_repository_link
+codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, RepositoryName, EncryptionKeyArn = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRepositoryLink",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$create_repository_link_input(ConnectionArn = ConnectionArn, OwnerId = OwnerId, RepositoryName = RepositoryName, EncryptionKeyArn = EncryptionKeyArn, Tags = Tags)
+  output <- .codestarconnections$create_repository_link_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$create_repository_link <- codestarconnections_create_repository_link
+
+#' Creates a sync configuration which allows Amazon Web Services to sync
+#' content from a Git repository to update a specified Amazon Web Services
+#' resource
+#'
+#' @description
+#' Creates a sync configuration which allows Amazon Web Services to sync
+#' content from a Git repository to update a specified Amazon Web Services
+#' resource. Parameters for the sync configuration are determined by the
+#' sync type.
+#'
+#' @usage
+#' codestarconnections_create_sync_configuration(Branch, ConfigFile,
+#'   RepositoryLinkId, ResourceName, RoleArn, SyncType)
+#'
+#' @param Branch &#91;required&#93; The branch in the repository from which changes will be synced.
+#' @param ConfigFile &#91;required&#93; The file name of the configuration file that manages syncing between the
+#' connection and the repository. This configuration file is stored in the
+#' repository.
+#' @param RepositoryLinkId &#91;required&#93; The ID of the repository link created for the connection. A repository
+#' link allows Git sync to monitor and sync changes to files in a specified
+#' Git repository.
+#' @param ResourceName &#91;required&#93; The name of the Amazon Web Services resource (for example, a
+#' CloudFormation stack in the case of CFN_STACK_SYNC) that will be
+#' synchronized from the linked repository.
+#' @param RoleArn &#91;required&#93; The ARN of the IAM role that grants permission for Amazon Web Services
+#' to use Git sync to update a given Amazon Web Services resource on your
+#' behalf.
+#' @param SyncType &#91;required&#93; The type of sync configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SyncConfiguration = list(
+#'     Branch = "string",
+#'     ConfigFile = "string",
+#'     OwnerId = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     RepositoryLinkId = "string",
+#'     RepositoryName = "string",
+#'     ResourceName = "string",
+#'     RoleArn = "string",
+#'     SyncType = "CFN_STACK_SYNC"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_sync_configuration(
+#'   Branch = "string",
+#'   ConfigFile = "string",
+#'   RepositoryLinkId = "string",
+#'   ResourceName = "string",
+#'   RoleArn = "string",
+#'   SyncType = "CFN_STACK_SYNC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_create_sync_configuration
+#'
+#' @aliases codestarconnections_create_sync_configuration
+codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, RepositoryLinkId, ResourceName, RoleArn, SyncType) {
+  op <- new_operation(
+    name = "CreateSyncConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType)
+  output <- .codestarconnections$create_sync_configuration_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$create_sync_configuration <- codestarconnections_create_sync_configuration
 
 #' The connection to be deleted
 #'
@@ -256,6 +411,96 @@ codestarconnections_delete_host <- function(HostArn) {
 }
 .codestarconnections$operations$delete_host <- codestarconnections_delete_host
 
+#' Deletes the association between your connection and a specified external
+#' Git repository
+#'
+#' @description
+#' Deletes the association between your connection and a specified external
+#' Git repository.
+#'
+#' @usage
+#' codestarconnections_delete_repository_link(RepositoryLinkId)
+#'
+#' @param RepositoryLinkId &#91;required&#93; The ID of the repository link to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_repository_link(
+#'   RepositoryLinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_delete_repository_link
+#'
+#' @aliases codestarconnections_delete_repository_link
+codestarconnections_delete_repository_link <- function(RepositoryLinkId) {
+  op <- new_operation(
+    name = "DeleteRepositoryLink",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$delete_repository_link_input(RepositoryLinkId = RepositoryLinkId)
+  output <- .codestarconnections$delete_repository_link_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$delete_repository_link <- codestarconnections_delete_repository_link
+
+#' Deletes the sync configuration for a specified repository and connection
+#'
+#' @description
+#' Deletes the sync configuration for a specified repository and
+#' connection.
+#'
+#' @usage
+#' codestarconnections_delete_sync_configuration(SyncType, ResourceName)
+#'
+#' @param SyncType &#91;required&#93; The type of sync configuration to be deleted.
+#' @param ResourceName &#91;required&#93; The name of the Amazon Web Services resource associated with the sync
+#' configuration to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_sync_configuration(
+#'   SyncType = "CFN_STACK_SYNC",
+#'   ResourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_delete_sync_configuration
+#'
+#' @aliases codestarconnections_delete_sync_configuration
+codestarconnections_delete_sync_configuration <- function(SyncType, ResourceName) {
+  op <- new_operation(
+    name = "DeleteSyncConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$delete_sync_configuration_input(SyncType = SyncType, ResourceName = ResourceName)
+  output <- .codestarconnections$delete_sync_configuration_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$delete_sync_configuration <- codestarconnections_delete_sync_configuration
+
 #' Returns the connection ARN and details such as status, owner, and
 #' provider type
 #'
@@ -275,7 +520,7 @@ codestarconnections_delete_host <- function(HostArn) {
 #'   Connection = list(
 #'     ConnectionName = "string",
 #'     ConnectionArn = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'     OwnerAccountId = "string",
 #'     ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
 #'     HostArn = "string"
@@ -330,7 +575,7 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' list(
 #'   Name = "string",
 #'   Status = "string",
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -374,6 +619,396 @@ codestarconnections_get_host <- function(HostArn) {
 }
 .codestarconnections$operations$get_host <- codestarconnections_get_host
 
+#' Returns details about a repository link
+#'
+#' @description
+#' Returns details about a repository link. A repository link allows Git
+#' sync to monitor and sync changes from files in a specified Git
+#' repository.
+#'
+#' @usage
+#' codestarconnections_get_repository_link(RepositoryLinkId)
+#'
+#' @param RepositoryLinkId &#91;required&#93; The ID of the repository link to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryLinkInfo = list(
+#'     ConnectionArn = "string",
+#'     EncryptionKeyArn = "string",
+#'     OwnerId = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     RepositoryLinkArn = "string",
+#'     RepositoryLinkId = "string",
+#'     RepositoryName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_repository_link(
+#'   RepositoryLinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_get_repository_link
+#'
+#' @aliases codestarconnections_get_repository_link
+codestarconnections_get_repository_link <- function(RepositoryLinkId) {
+  op <- new_operation(
+    name = "GetRepositoryLink",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$get_repository_link_input(RepositoryLinkId = RepositoryLinkId)
+  output <- .codestarconnections$get_repository_link_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$get_repository_link <- codestarconnections_get_repository_link
+
+#' Returns details about the sync status for a repository
+#'
+#' @description
+#' Returns details about the sync status for a repository. A repository
+#' sync uses Git sync to push and pull changes from your remote repository.
+#'
+#' @usage
+#' codestarconnections_get_repository_sync_status(Branch, RepositoryLinkId,
+#'   SyncType)
+#'
+#' @param Branch &#91;required&#93; The branch of the repository link for the requested repository sync
+#' status.
+#' @param RepositoryLinkId &#91;required&#93; The repository link ID for the requested repository sync status.
+#' @param SyncType &#91;required&#93; The sync type of the requested sync status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LatestSync = list(
+#'     StartedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "FAILED"|"INITIATED"|"IN_PROGRESS"|"SUCCEEDED"|"QUEUED",
+#'     Events = list(
+#'       list(
+#'         Event = "string",
+#'         ExternalId = "string",
+#'         Time = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Type = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_repository_sync_status(
+#'   Branch = "string",
+#'   RepositoryLinkId = "string",
+#'   SyncType = "CFN_STACK_SYNC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_get_repository_sync_status
+#'
+#' @aliases codestarconnections_get_repository_sync_status
+codestarconnections_get_repository_sync_status <- function(Branch, RepositoryLinkId, SyncType) {
+  op <- new_operation(
+    name = "GetRepositorySyncStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$get_repository_sync_status_input(Branch = Branch, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
+  output <- .codestarconnections$get_repository_sync_status_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$get_repository_sync_status <- codestarconnections_get_repository_sync_status
+
+#' Returns the status of the sync with the Git repository for a specific
+#' Amazon Web Services resource
+#'
+#' @description
+#' Returns the status of the sync with the Git repository for a specific
+#' Amazon Web Services resource.
+#'
+#' @usage
+#' codestarconnections_get_resource_sync_status(ResourceName, SyncType)
+#'
+#' @param ResourceName &#91;required&#93; The name of the Amazon Web Services resource for the sync status with
+#' the Git repository.
+#' @param SyncType &#91;required&#93; The sync type for the sync status with the Git repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DesiredState = list(
+#'     Branch = "string",
+#'     Directory = "string",
+#'     OwnerId = "string",
+#'     RepositoryName = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     Sha = "string"
+#'   ),
+#'   LatestSuccessfulSync = list(
+#'     Events = list(
+#'       list(
+#'         Event = "string",
+#'         ExternalId = "string",
+#'         Time = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Type = "string"
+#'       )
+#'     ),
+#'     InitialRevision = list(
+#'       Branch = "string",
+#'       Directory = "string",
+#'       OwnerId = "string",
+#'       RepositoryName = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       Sha = "string"
+#'     ),
+#'     StartedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "FAILED"|"INITIATED"|"IN_PROGRESS"|"SUCCEEDED",
+#'     TargetRevision = list(
+#'       Branch = "string",
+#'       Directory = "string",
+#'       OwnerId = "string",
+#'       RepositoryName = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       Sha = "string"
+#'     ),
+#'     Target = "string"
+#'   ),
+#'   LatestSync = list(
+#'     Events = list(
+#'       list(
+#'         Event = "string",
+#'         ExternalId = "string",
+#'         Time = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Type = "string"
+#'       )
+#'     ),
+#'     InitialRevision = list(
+#'       Branch = "string",
+#'       Directory = "string",
+#'       OwnerId = "string",
+#'       RepositoryName = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       Sha = "string"
+#'     ),
+#'     StartedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Status = "FAILED"|"INITIATED"|"IN_PROGRESS"|"SUCCEEDED",
+#'     TargetRevision = list(
+#'       Branch = "string",
+#'       Directory = "string",
+#'       OwnerId = "string",
+#'       RepositoryName = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       Sha = "string"
+#'     ),
+#'     Target = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_sync_status(
+#'   ResourceName = "string",
+#'   SyncType = "CFN_STACK_SYNC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_get_resource_sync_status
+#'
+#' @aliases codestarconnections_get_resource_sync_status
+codestarconnections_get_resource_sync_status <- function(ResourceName, SyncType) {
+  op <- new_operation(
+    name = "GetResourceSyncStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$get_resource_sync_status_input(ResourceName = ResourceName, SyncType = SyncType)
+  output <- .codestarconnections$get_resource_sync_status_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$get_resource_sync_status <- codestarconnections_get_resource_sync_status
+
+#' Returns a list of the most recent sync blockers
+#'
+#' @description
+#' Returns a list of the most recent sync blockers.
+#'
+#' @usage
+#' codestarconnections_get_sync_blocker_summary(SyncType, ResourceName)
+#'
+#' @param SyncType &#91;required&#93; The sync type for the sync blocker summary.
+#' @param ResourceName &#91;required&#93; The name of the Amazon Web Services resource currently blocked from
+#' automatically being synced from a Git repository.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SyncBlockerSummary = list(
+#'     ResourceName = "string",
+#'     ParentResourceName = "string",
+#'     LatestBlockers = list(
+#'       list(
+#'         Id = "string",
+#'         Type = "AUTOMATED",
+#'         Status = "ACTIVE"|"RESOLVED",
+#'         CreatedReason = "string",
+#'         CreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Contexts = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         ResolvedReason = "string",
+#'         ResolvedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sync_blocker_summary(
+#'   SyncType = "CFN_STACK_SYNC",
+#'   ResourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_get_sync_blocker_summary
+#'
+#' @aliases codestarconnections_get_sync_blocker_summary
+codestarconnections_get_sync_blocker_summary <- function(SyncType, ResourceName) {
+  op <- new_operation(
+    name = "GetSyncBlockerSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$get_sync_blocker_summary_input(SyncType = SyncType, ResourceName = ResourceName)
+  output <- .codestarconnections$get_sync_blocker_summary_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$get_sync_blocker_summary <- codestarconnections_get_sync_blocker_summary
+
+#' Returns details about a sync configuration, including the sync type and
+#' resource name
+#'
+#' @description
+#' Returns details about a sync configuration, including the sync type and
+#' resource name. A sync configuration allows the configuration to sync
+#' (push and pull) changes from the remote repository for a specified
+#' branch in a Git repository.
+#'
+#' @usage
+#' codestarconnections_get_sync_configuration(SyncType, ResourceName)
+#'
+#' @param SyncType &#91;required&#93; The sync type for the sync configuration for which you want to retrieve
+#' information.
+#' @param ResourceName &#91;required&#93; The name of the Amazon Web Services resource for the sync configuration
+#' for which you want to retrieve information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SyncConfiguration = list(
+#'     Branch = "string",
+#'     ConfigFile = "string",
+#'     OwnerId = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     RepositoryLinkId = "string",
+#'     RepositoryName = "string",
+#'     ResourceName = "string",
+#'     RoleArn = "string",
+#'     SyncType = "CFN_STACK_SYNC"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sync_configuration(
+#'   SyncType = "CFN_STACK_SYNC",
+#'   ResourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_get_sync_configuration
+#'
+#' @aliases codestarconnections_get_sync_configuration
+codestarconnections_get_sync_configuration <- function(SyncType, ResourceName) {
+  op <- new_operation(
+    name = "GetSyncConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$get_sync_configuration_input(SyncType = SyncType, ResourceName = ResourceName)
+  output <- .codestarconnections$get_sync_configuration_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$get_sync_configuration <- codestarconnections_get_sync_configuration
+
 #' Lists the connections associated with your account
 #'
 #' @description
@@ -402,7 +1037,7 @@ codestarconnections_get_host <- function(HostArn) {
 #'     list(
 #'       ConnectionName = "string",
 #'       ConnectionArn = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'       OwnerAccountId = "string",
 #'       ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
 #'       HostArn = "string"
@@ -415,7 +1050,7 @@ codestarconnections_get_host <- function(HostArn) {
 #' @section Request syntax:
 #' ```
 #' svc$list_connections(
-#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'   HostArnFilter = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -467,7 +1102,7 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 #'     list(
 #'       Name = "string",
 #'       HostArn = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
 #'       ProviderEndpoint = "string",
 #'       VpcConfiguration = list(
 #'         VpcId = "string",
@@ -516,6 +1151,200 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
   return(response)
 }
 .codestarconnections$operations$list_hosts <- codestarconnections_list_hosts
+
+#' Lists the repository links created for connections in your account
+#'
+#' @description
+#' Lists the repository links created for connections in your account.
+#'
+#' @usage
+#' codestarconnections_list_repository_links(MaxResults, NextToken)
+#'
+#' @param MaxResults A non-zero, non-negative integer used to limit the number of returned
+#' results.
+#' @param NextToken An enumeration token that, when provided in a request, returns the next
+#' batch of the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryLinks = list(
+#'     list(
+#'       ConnectionArn = "string",
+#'       EncryptionKeyArn = "string",
+#'       OwnerId = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       RepositoryLinkArn = "string",
+#'       RepositoryLinkId = "string",
+#'       RepositoryName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_repository_links(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_list_repository_links
+#'
+#' @aliases codestarconnections_list_repository_links
+codestarconnections_list_repository_links <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRepositoryLinks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .codestarconnections$list_repository_links_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .codestarconnections$list_repository_links_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$list_repository_links <- codestarconnections_list_repository_links
+
+#' Lists the repository sync definitions for repository links in your
+#' account
+#'
+#' @description
+#' Lists the repository sync definitions for repository links in your
+#' account.
+#'
+#' @usage
+#' codestarconnections_list_repository_sync_definitions(RepositoryLinkId,
+#'   SyncType)
+#'
+#' @param RepositoryLinkId &#91;required&#93; The ID of the repository link for the sync definition for which you want
+#' to retrieve information.
+#' @param SyncType &#91;required&#93; The sync type of the repository link for the the sync definition for
+#' which you want to retrieve information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositorySyncDefinitions = list(
+#'     list(
+#'       Branch = "string",
+#'       Directory = "string",
+#'       Parent = "string",
+#'       Target = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_repository_sync_definitions(
+#'   RepositoryLinkId = "string",
+#'   SyncType = "CFN_STACK_SYNC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_list_repository_sync_definitions
+#'
+#' @aliases codestarconnections_list_repository_sync_definitions
+codestarconnections_list_repository_sync_definitions <- function(RepositoryLinkId, SyncType) {
+  op <- new_operation(
+    name = "ListRepositorySyncDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$list_repository_sync_definitions_input(RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
+  output <- .codestarconnections$list_repository_sync_definitions_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$list_repository_sync_definitions <- codestarconnections_list_repository_sync_definitions
+
+#' Returns a list of sync configurations for a specified repository
+#'
+#' @description
+#' Returns a list of sync configurations for a specified repository.
+#'
+#' @usage
+#' codestarconnections_list_sync_configurations(MaxResults, NextToken,
+#'   RepositoryLinkId, SyncType)
+#'
+#' @param MaxResults A non-zero, non-negative integer used to limit the number of returned
+#' results.
+#' @param NextToken An enumeration token that allows the operation to batch the results of
+#' the operation.
+#' @param RepositoryLinkId &#91;required&#93; The ID of the repository link for the requested list of sync
+#' configurations.
+#' @param SyncType &#91;required&#93; The sync type for the requested list of sync configurations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SyncConfigurations = list(
+#'     list(
+#'       Branch = "string",
+#'       ConfigFile = "string",
+#'       OwnerId = "string",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'       RepositoryLinkId = "string",
+#'       RepositoryName = "string",
+#'       ResourceName = "string",
+#'       RoleArn = "string",
+#'       SyncType = "CFN_STACK_SYNC"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sync_configurations(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   RepositoryLinkId = "string",
+#'   SyncType = "CFN_STACK_SYNC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_list_sync_configurations
+#'
+#' @aliases codestarconnections_list_sync_configurations
+codestarconnections_list_sync_configurations <- function(MaxResults = NULL, NextToken = NULL, RepositoryLinkId, SyncType) {
+  op <- new_operation(
+    name = "ListSyncConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .codestarconnections$list_sync_configurations_input(MaxResults = MaxResults, NextToken = NextToken, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
+  output <- .codestarconnections$list_sync_configurations_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$list_sync_configurations <- codestarconnections_list_sync_configurations
 
 #' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource
@@ -726,3 +1555,217 @@ codestarconnections_update_host <- function(HostArn, ProviderEndpoint = NULL, Vp
   return(response)
 }
 .codestarconnections$operations$update_host <- codestarconnections_update_host
+
+#' Updates the association between your connection and a specified external
+#' Git repository
+#'
+#' @description
+#' Updates the association between your connection and a specified external
+#' Git repository. A repository link allows Git sync to monitor and sync
+#' changes to files in a specified Git repository.
+#'
+#' @usage
+#' codestarconnections_update_repository_link(ConnectionArn,
+#'   EncryptionKeyArn, RepositoryLinkId)
+#'
+#' @param ConnectionArn The Amazon Resource Name (ARN) of the connection for the repository link
+#' to be updated. The updated connection ARN must have the same
+#' providerType (such as GitHub) as the original connection ARN for the
+#' repo link.
+#' @param EncryptionKeyArn The Amazon Resource Name (ARN) of the encryption key for the repository
+#' link to be updated.
+#' @param RepositoryLinkId &#91;required&#93; The ID of the repository link to be updated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RepositoryLinkInfo = list(
+#'     ConnectionArn = "string",
+#'     EncryptionKeyArn = "string",
+#'     OwnerId = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     RepositoryLinkArn = "string",
+#'     RepositoryLinkId = "string",
+#'     RepositoryName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_repository_link(
+#'   ConnectionArn = "string",
+#'   EncryptionKeyArn = "string",
+#'   RepositoryLinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_update_repository_link
+#'
+#' @aliases codestarconnections_update_repository_link
+codestarconnections_update_repository_link <- function(ConnectionArn = NULL, EncryptionKeyArn = NULL, RepositoryLinkId) {
+  op <- new_operation(
+    name = "UpdateRepositoryLink",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$update_repository_link_input(ConnectionArn = ConnectionArn, EncryptionKeyArn = EncryptionKeyArn, RepositoryLinkId = RepositoryLinkId)
+  output <- .codestarconnections$update_repository_link_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$update_repository_link <- codestarconnections_update_repository_link
+
+#' Allows you to update the status of a sync blocker, resolving the blocker
+#' and allowing syncing to continue
+#'
+#' @description
+#' Allows you to update the status of a sync blocker, resolving the blocker
+#' and allowing syncing to continue.
+#'
+#' @usage
+#' codestarconnections_update_sync_blocker(Id, SyncType, ResourceName,
+#'   ResolvedReason)
+#'
+#' @param Id &#91;required&#93; The ID of the sync blocker to be updated.
+#' @param SyncType &#91;required&#93; The sync type of the sync blocker to be updated.
+#' @param ResourceName &#91;required&#93; The name of the resource for the sync blocker to be updated.
+#' @param ResolvedReason &#91;required&#93; The reason for resolving the sync blocker.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceName = "string",
+#'   ParentResourceName = "string",
+#'   SyncBlocker = list(
+#'     Id = "string",
+#'     Type = "AUTOMATED",
+#'     Status = "ACTIVE"|"RESOLVED",
+#'     CreatedReason = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Contexts = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ResolvedReason = "string",
+#'     ResolvedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_sync_blocker(
+#'   Id = "string",
+#'   SyncType = "CFN_STACK_SYNC",
+#'   ResourceName = "string",
+#'   ResolvedReason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_update_sync_blocker
+#'
+#' @aliases codestarconnections_update_sync_blocker
+codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, ResolvedReason) {
+  op <- new_operation(
+    name = "UpdateSyncBlocker",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$update_sync_blocker_input(Id = Id, SyncType = SyncType, ResourceName = ResourceName, ResolvedReason = ResolvedReason)
+  output <- .codestarconnections$update_sync_blocker_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$update_sync_blocker <- codestarconnections_update_sync_blocker
+
+#' Updates the sync configuration for your connection and a specified
+#' external Git repository
+#'
+#' @description
+#' Updates the sync configuration for your connection and a specified
+#' external Git repository.
+#'
+#' @usage
+#' codestarconnections_update_sync_configuration(Branch, ConfigFile,
+#'   RepositoryLinkId, ResourceName, RoleArn, SyncType)
+#'
+#' @param Branch The branch for the sync configuration to be updated.
+#' @param ConfigFile The configuration file for the sync configuration to be updated.
+#' @param RepositoryLinkId The ID of the repository link for the sync configuration to be updated.
+#' @param ResourceName &#91;required&#93; The name of the Amazon Web Services resource for the sync configuration
+#' to be updated.
+#' @param RoleArn The ARN of the IAM role for the sync configuration to be updated.
+#' @param SyncType &#91;required&#93; The sync type for the sync configuration to be updated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SyncConfiguration = list(
+#'     Branch = "string",
+#'     ConfigFile = "string",
+#'     OwnerId = "string",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab"|"GitLabSelfManaged",
+#'     RepositoryLinkId = "string",
+#'     RepositoryName = "string",
+#'     ResourceName = "string",
+#'     RoleArn = "string",
+#'     SyncType = "CFN_STACK_SYNC"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_sync_configuration(
+#'   Branch = "string",
+#'   ConfigFile = "string",
+#'   RepositoryLinkId = "string",
+#'   ResourceName = "string",
+#'   RoleArn = "string",
+#'   SyncType = "CFN_STACK_SYNC"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_update_sync_configuration
+#'
+#' @aliases codestarconnections_update_sync_configuration
+codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigFile = NULL, RepositoryLinkId = NULL, ResourceName, RoleArn = NULL, SyncType) {
+  op <- new_operation(
+    name = "UpdateSyncConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType)
+  output <- .codestarconnections$update_sync_configuration_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$update_sync_configuration <- codestarconnections_update_sync_configuration

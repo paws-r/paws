@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_list_foundation_models}
 \alias{bedrock_list_foundation_models}
-\title{List of Bedrock foundation models that you can use}
+\title{List of Amazon Bedrock foundation models that you can use}
 \usage{
 bedrock_list_foundation_models(
   byProvider = NULL,
@@ -12,7 +12,7 @@ bedrock_list_foundation_models(
 )
 }
 \arguments{
-\item{byProvider}{A Bedrock model provider.}
+\item{byProvider}{A Amazon Bedrock model provider.}
 
 \item{byCustomizationType}{List by customization type.}
 
@@ -21,7 +21,7 @@ bedrock_list_foundation_models(
 \item{byInferenceType}{List by inference type.}
 }
 \description{
-List of Bedrock foundation models that you can use. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html}{Foundation models} in the Bedrock User Guide.
+List of Amazon Bedrock foundation models that you can use. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Foundation models} in the Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/} for full documentation.
 }

@@ -3,6 +3,30 @@
 #' @include controltower_service.R
 NULL
 
+.controltower$create_landing_zone_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(manifest = structure(list(), tags = list(type = "structure", document = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$create_landing_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$delete_landing_zone_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$delete_landing_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .controltower$disable_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(controlIdentifier = structure(logical(0), tags = list(type = "string")), targetIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -17,7 +41,7 @@ NULL
 
 .controltower$enable_control_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(controlIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targetIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(controlIdentifier = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targetIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -47,7 +71,31 @@ NULL
 
 .controltower$get_enabled_control_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(enabledControlDetails = structure(list(arn = structure(logical(0), tags = list(type = "string")), controlIdentifier = structure(logical(0), tags = list(type = "string")), driftStatusSummary = structure(list(driftStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), statusSummary = structure(list(lastOperationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetIdentifier = structure(logical(0), tags = list(type = "string")), targetRegions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(enabledControlDetails = structure(list(arn = structure(logical(0), tags = list(type = "string")), controlIdentifier = structure(logical(0), tags = list(type = "string")), driftStatusSummary = structure(list(driftStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), statusSummary = structure(list(lastOperationIdentifier = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), targetIdentifier = structure(logical(0), tags = list(type = "string")), targetRegions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$get_landing_zone_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$get_landing_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(landingZone = structure(list(arn = structure(logical(0), tags = list(type = "string")), driftStatus = structure(list(status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), latestAvailableVersion = structure(logical(0), tags = list(type = "string")), manifest = structure(list(), tags = list(type = "structure", document = TRUE)), status = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$get_landing_zone_operation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$get_landing_zone_operation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operationDetails = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), operationType = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,6 +111,18 @@ NULL
   return(populate(args, shape))
 }
 
+.controltower$list_landing_zones_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$list_landing_zones_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(landingZones = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .controltower$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
@@ -72,6 +132,18 @@ NULL
 .controltower$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$reset_landing_zone_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$reset_landing_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -96,5 +168,29 @@ NULL
 .controltower$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$update_enabled_control_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(enabledControlIdentifier = structure(logical(0), tags = list(type = "string")), parameters = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$update_enabled_control_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$update_landing_zone_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(landingZoneIdentifier = structure(logical(0), tags = list(type = "string")), manifest = structure(list(), tags = list(type = "structure", document = TRUE)), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.controltower$update_landing_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operationIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

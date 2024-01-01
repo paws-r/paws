@@ -2,7 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_identity_provider_configs}
 \alias{eks_list_identity_provider_configs}
-\title{A list of identity provider configurations}
+\title{Lists the identity provider configurations for your cluster}
 \usage{
 eks_list_identity_provider_configs(
   clusterName,
@@ -11,29 +11,27 @@ eks_list_identity_provider_configs(
 )
 }
 \arguments{
-\item{clusterName}{[required] The cluster name that you want to list identity provider configurations
-for.}
+\item{clusterName}{[required] The name of your cluster.}
 
-\item{maxResults}{The maximum number of identity provider configurations returned by
-\code{\link[=eks_list_identity_provider_configs]{list_identity_provider_configs}}
-in paginated output. When you use this parameter,
-\code{\link[=eks_list_identity_provider_configs]{list_identity_provider_configs}}
-returns only \code{maxResults} results in a single page along with a
-\code{nextToken} response element. You can see the remaining results of the
-initial request by sending another
-\code{\link[=eks_list_identity_provider_configs]{list_identity_provider_configs}}
-request with the returned \code{nextToken} value. This value can be between 1
-and 100. If you don't use this parameter,
-\code{\link[=eks_list_identity_provider_configs]{list_identity_provider_configs}}
-returns up to 100 results and a \code{nextToken} value, if applicable.}
+\item{maxResults}{The maximum number of results, returned in paginated output. You receive
+\code{maxResults} in a single page, along with a \code{nextToken} response
+element. You can see the remaining results of the initial request by
+sending another request with the returned \code{nextToken} value. This value
+can be between 1 and 100. If you don't use this parameter, 100 results
+and a \code{nextToken} value, if applicable, are returned.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{IdentityProviderConfigsRequest} where \code{maxResults} was used and the
-results exceeded the value of that parameter. Pagination continues from
-the end of the previous results that returned the \code{nextToken} value.}
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated request, where
+\code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value. This value is null when there are
+no more results to return.
+
+This token should be treated as an opaque identifier that is used only
+to retrieve the next items in a list and not for other programmatic
+purposes.}
 }
 \description{
-A list of identity provider configurations.
+Lists the identity provider configurations for your cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_list_identity_provider_configs/} for full documentation.
 }

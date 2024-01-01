@@ -4,13 +4,20 @@
 \alias{controltower_enable_control}
 \title{This API call activates a control}
 \usage{
-controltower_enable_control(controlIdentifier, tags = NULL, targetIdentifier)
+controltower_enable_control(
+  controlIdentifier,
+  parameters = NULL,
+  tags = NULL,
+  targetIdentifier
+)
 }
 \arguments{
 \item{controlIdentifier}{[required] The ARN of the control. Only \strong{Strongly recommended} and \strong{Elective}
-controls are permitted, with the exception of the \strong{Region deny}
-control. For information on how to find the \code{controlIdentifier}, see
-\href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
+controls are permitted, with the exception of the \strong{landing zone Region
+deny} control. For information on how to find the \code{controlIdentifier},
+see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
+
+\item{parameters}{An array of \code{EnabledControlParameter} objects}
 
 \item{tags}{Tags to be applied to the \code{EnabledControl} resource.}
 
@@ -18,7 +25,7 @@ control. For information on how to find the \code{controlIdentifier}, see
 \code{targetIdentifier}, see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
 }
 \description{
-This API call activates a control. It starts an asynchronous operation that creates AWS resources on the specified organizational unit and the accounts it contains. The resources created will vary according to the control that you specify. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the AWS Control Tower User Guide}} .
+This API call activates a control. It starts an asynchronous operation that creates Amazon Web Services resources on the specified organizational unit and the accounts it contains. The resources created will vary according to the control that you specify. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_enable_control/} for full documentation.
 }

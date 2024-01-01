@@ -16,9 +16,22 @@ ec2_create_image(
 )
 }
 \arguments{
-\item{BlockDeviceMappings}{The block device mappings. This parameter cannot be used to modify the
-encryption status of existing volumes or snapshots. To create an AMI
-with encrypted snapshots, use the \code{\link[=ec2_copy_image]{copy_image}} action.}
+\item{BlockDeviceMappings}{The block device mappings.
+
+When using the CreateImage action:
+\itemize{
+\item You can't change the volume size using the VolumeSize parameter. If
+you want a different volume size, you must first change the volume
+size of the source instance.
+\item You can't modify the encryption status of existing volumes or
+snapshots. To create an AMI with volumes or snapshots that have a
+different encryption status (for example, where the source volume
+and snapshots are unencrypted, and you want to create an AMI with
+encrypted volumes or snapshots), use the
+\code{\link[=ec2_copy_image]{copy_image}} action.
+\item The only option that can be changed for existing mappings or
+snapshots is \code{DeleteOnTermination}.
+}}
 
 \item{Description}{A description for the new image.}
 

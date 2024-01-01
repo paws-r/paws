@@ -210,7 +210,7 @@ sfn_delete_activity <- function(activityArn) {
 #' Deletes a state machine
 #'
 #' @description
-#' Deletes a state machine. This is an asynchronous operation: It sets the state machine's status to `DELETING` and begins the deletion process.
+#' Deletes a state machine. This is an asynchronous operation. It sets the state machine's status to `DELETING` and begins the deletion process. A state machine is deleted only when all its executions are completed. On the next state transition, the state machine's executions are terminated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_delete_state_machine/](https://www.paws-r-sdk.com/docs/sfn_delete_state_machine/) for full documentation.
 #'
@@ -328,7 +328,7 @@ sfn_describe_activity <- function(activityArn) {
 #' and relevant execution metadata
 #'
 #' @description
-#' Provides information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata. Use this API action to return the Map Run Amazon Resource Name (ARN) if the execution was dispatched by a Map Run.
+#' Provides information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata. If you've [redriven](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html) an execution, you can use this API action to return information about the redrives of that execution. In addition, you can use this API action to return the Map Run Amazon Resource Name (ARN) if the execution was dispatched by a Map Run.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_describe_execution/](https://www.paws-r-sdk.com/docs/sfn_describe_execution/) for full documentation.
 #'
@@ -358,7 +358,7 @@ sfn_describe_execution <- function(executionArn) {
 #' results
 #'
 #' @description
-#' Provides information about a Map Run's configuration, progress, and results. For more information, see [Examining Map Run](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html) in the *Step Functions Developer Guide*.
+#' Provides information about a Map Run's configuration, progress, and results. If you've [redriven](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html) a Map Run, this API action also returns information about the redrives of that Map Run. For more information, see [Examining Map Run](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html) in the *Step Functions Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_describe_map_run/](https://www.paws-r-sdk.com/docs/sfn_describe_map_run/) for full documentation.
 #'
@@ -602,7 +602,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' Lists all executions of a state machine or a Map Run
 #'
 #' @description
-#' Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN.
+#' Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN. Using this API action, you can also list all [redriven](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html) executions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_list_executions/](https://www.paws-r-sdk.com/docs/sfn_list_executions/) for full documentation.
 #'
@@ -641,18 +641,29 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' You can specify either a `mapRunArn` or a `stateMachineArn`, but not
 #' both.
+#' @param redriveFilter Sets a filter to list executions based on whether or not they have been
+#' redriven.
+#' 
+#' For a Distributed Map, `redriveFilter` sets a filter to list child
+#' workflow executions based on whether or not they have been redriven.
+#' 
+#' If you do not provide a `redriveFilter`, Step Functions returns a list
+#' of both redriven and non-redriven executions.
+#' 
+#' If you provide a state machine ARN in `redriveFilter`, the API returns a
+#' validation exception.
 #'
 #' @keywords internal
 #'
 #' @rdname sfn_list_executions
-sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, maxResults = NULL, nextToken = NULL, mapRunArn = NULL) {
+sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, maxResults = NULL, nextToken = NULL, mapRunArn = NULL, redriveFilter = NULL) {
   op <- new_operation(
     name = "ListExecutions",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions")
   )
-  input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn)
+  input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn, redriveFilter = redriveFilter)
   output <- .sfn$list_executions_output()
   config <- get_config()
   svc <- .sfn$service(config)
@@ -904,11 +915,49 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
 }
 .sfn$operations$publish_state_machine_version <- sfn_publish_state_machine_version
 
-#' Used by activity workers and task states using the callback pattern to
-#' report that the task identified by the taskToken failed
+#' Restarts unsuccessful executions of Standard workflows that didn't
+#' complete successfully in the last 14 days
 #'
 #' @description
-#' Used by activity workers and task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern to report that the task identified by the `taskToken` failed.
+#' Restarts unsuccessful executions of Standard workflows that didn't complete successfully in the last 14 days. These include failed, aborted, or timed out executions. When you [redrive](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html) an execution, it continues the failed execution from the unsuccessful step and uses the same input. Step Functions preserves the results and execution history of the successful steps, and doesn't rerun these steps when you redrive an execution. Redriven executions use the same state machine definition and execution ARN as the original execution attempt.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sfn_redrive_execution/](https://www.paws-r-sdk.com/docs/sfn_redrive_execution/) for full documentation.
+#'
+#' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to be redriven.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency. The API will return idempotent
+#' responses for the last 10 client tokens used to successfully redrive the
+#' execution. These client tokens are valid for up to 15 minutes after they
+#' are first used.
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_redrive_execution
+sfn_redrive_execution <- function(executionArn, clientToken = NULL) {
+  op <- new_operation(
+    name = "RedriveExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$redrive_execution_input(executionArn = executionArn, clientToken = clientToken)
+  output <- .sfn$redrive_execution_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$redrive_execution <- sfn_redrive_execution
+
+#' Used by activity workers, Task states using the callback pattern, and
+#' optionally Task states using the job run pattern to report that the task
+#' identified by the taskToken failed
+#'
+#' @description
+#' Used by activity workers, Task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern, and optionally Task states using the [job run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync) pattern to report that the task identified by the `taskToken` failed.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_send_task_failure/](https://www.paws-r-sdk.com/docs/sfn_send_task_failure/) for full documentation.
 #'
@@ -940,12 +989,13 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 }
 .sfn$operations$send_task_failure <- sfn_send_task_failure
 
-#' Used by activity workers and task states using the callback pattern to
-#' report to Step Functions that the task represented by the specified
-#' taskToken is still making progress
+#' Used by activity workers and Task states using the callback pattern, and
+#' optionally Task states using the job run pattern to report to Step
+#' Functions that the task represented by the specified taskToken is still
+#' making progress
 #'
 #' @description
-#' Used by activity workers and task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern to report to Step Functions that the task represented by the specified `taskToken` is still making progress. This action resets the `Heartbeat` clock. The `Heartbeat` threshold is specified in the state machine's Amazon States Language definition (`HeartbeatSeconds`). This action does not in itself create an event in the execution history. However, if the task times out, the execution history contains an `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for for tasks using the [job run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync) or [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern.
+#' Used by activity workers and Task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern, and optionally Task states using the [job run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync) pattern to report to Step Functions that the task represented by the specified `taskToken` is still making progress. This action resets the `Heartbeat` clock. The `Heartbeat` threshold is specified in the state machine's Amazon States Language definition (`HeartbeatSeconds`). This action does not in itself create an event in the execution history. However, if the task times out, the execution history contains an `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for tasks using the [job run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync) or [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_send_task_heartbeat/](https://www.paws-r-sdk.com/docs/sfn_send_task_heartbeat/) for full documentation.
 #'
@@ -975,11 +1025,12 @@ sfn_send_task_heartbeat <- function(taskToken) {
 }
 .sfn$operations$send_task_heartbeat <- sfn_send_task_heartbeat
 
-#' Used by activity workers and task states using the callback pattern to
-#' report that the task identified by the taskToken completed successfully
+#' Used by activity workers, Task states using the callback pattern, and
+#' optionally Task states using the job run pattern to report that the task
+#' identified by the taskToken completed successfully
 #'
 #' @description
-#' Used by activity workers and task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern to report that the task identified by the `taskToken` completed successfully.
+#' Used by activity workers, Task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern, and optionally Task states using the [job run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync) pattern to report that the task identified by the `taskToken` completed successfully.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_send_task_success/](https://www.paws-r-sdk.com/docs/sfn_send_task_success/) for full documentation.
 #'
@@ -1057,6 +1108,10 @@ sfn_send_task_success <- function(taskToken, output) {
 #' information, see [Limits Related to State Machine
 #' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
+#' 
+#' If you don't provide a name for the execution, Step Functions
+#' automatically generates a universally unique identifier (UUID) as the
+#' execution name.
 #' 
 #' A name must *not* contain:
 #' 
@@ -1211,6 +1266,70 @@ sfn_tag_resource <- function(resourceArn, tags) {
   return(response)
 }
 .sfn$operations$tag_resource <- sfn_tag_resource
+
+#' Accepts the definition of a single state and executes it
+#'
+#' @description
+#' Accepts the definition of a single state and executes it. You can test a state without creating a state machine or updating an existing state machine. Using this API, you can test the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/sfn_test_state/](https://www.paws-r-sdk.com/docs/sfn_test_state/) for full documentation.
+#'
+#' @param definition &#91;required&#93; The [Amazon States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' (ASL) definition of the state.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution role with the required
+#' IAM permissions for the state.
+#' @param input A string that contains the JSON input data for the state.
+#' @param inspectionLevel Determines the values to return when a state is tested. You can specify
+#' one of the following types:
+#' 
+#' -   `INFO`: Shows the final state output. By default, Step Functions
+#'     sets `inspectionLevel` to `INFO` if you don't specify a level.
+#' 
+#' -   `DEBUG`: Shows the final state output along with the input and
+#'     output data processing result.
+#' 
+#' -   `TRACE`: Shows the HTTP request and response for an HTTP Task. This
+#'     level also shows the final state output along with the input and
+#'     output data processing result.
+#' 
+#' Each of these levels also provide information about the status of the
+#' state execution and the next state to transition to.
+#' @param revealSecrets Specifies whether or not to include secret information in the test
+#' result. For HTTP Tasks, a secret includes the data that an EventBridge
+#' connection adds to modify the HTTP request headers, query parameters,
+#' and body. Step Functions doesn't omit any information included in the
+#' state definition or the HTTP response.
+#' 
+#' If you set `revealSecrets` to `true`, you must make sure that the IAM
+#' user that calls the [`test_state`][sfn_test_state] API has permission
+#' for the `states:RevealSecrets` action. For an example of IAM policy that
+#' sets the `states:RevealSecrets` permission, see [IAM permissions to test
+#' a
+#' state](https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-permissions).
+#' Without this permission, Step Functions throws an access denied error.
+#' 
+#' By default, `revealSecrets` is set to `false`.
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_test_state
+sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = NULL, revealSecrets = NULL) {
+  op <- new_operation(
+    name = "TestState",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets)
+  output <- .sfn$test_state_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$test_state <- sfn_test_state
 
 #' Remove a tag from a Step Functions resource
 #'

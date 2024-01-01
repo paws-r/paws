@@ -25,6 +25,8 @@ Valid Values:
 \item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{custom-oracle-ee}
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}

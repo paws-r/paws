@@ -572,6 +572,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       LogGroupName = "string",
 #'       LogStreamName = "string"
+#'     ),
+#'     BufferingHints = list(
+#'       IntervalInSeconds = 123,
+#'       SizeInMBs = 123
 #'     )
 #'   ),
 #'   HttpEndpointDestinationConfiguration = list(
@@ -1297,6 +1301,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             LogGroupName = "string",
 #'             LogStreamName = "string"
+#'           ),
+#'           BufferingHints = list(
+#'             IntervalInSeconds = 123,
+#'             SizeInMBs = 123
 #'           )
 #'         ),
 #'         HttpEndpointDestinationDescription = list(
@@ -2609,6 +2617,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       LogGroupName = "string",
 #'       LogStreamName = "string"
+#'     ),
+#'     BufferingHints = list(
+#'       IntervalInSeconds = 123,
+#'       SizeInMBs = 123
 #'     )
 #'   ),
 #'   HttpEndpointDestinationUpdate = list(

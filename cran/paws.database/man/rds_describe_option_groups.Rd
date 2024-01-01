@@ -32,11 +32,13 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 
-\item{EngineName}{Filters the list of option groups to only include groups associated with
-a specific database engine.
+\item{EngineName}{A filter to only include option groups associated with this database
+engine.
 
 Valid Values:
 \itemize{
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}

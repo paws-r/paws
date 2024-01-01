@@ -445,6 +445,36 @@ transcribeservice_delete_language_model <- function(ModelName) {
 }
 .transcribeservice$operations$delete_language_model <- transcribeservice_delete_language_model
 
+#' Deletes a Medical Scribe job
+#'
+#' @description
+#' Deletes a Medical Scribe job. To use this operation, specify the name of the job you want to delete using `MedicalScribeJobName`. Job names are case sensitive.
+#'
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_scribe_job/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_scribe_job/) for full documentation.
+#'
+#' @param MedicalScribeJobName &#91;required&#93; The name of the Medical Scribe job you want to delete. Job names are
+#' case sensitive.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_delete_medical_scribe_job
+transcribeservice_delete_medical_scribe_job <- function(MedicalScribeJobName) {
+  op <- new_operation(
+    name = "DeleteMedicalScribeJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$delete_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName)
+  output <- .transcribeservice$delete_medical_scribe_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$delete_medical_scribe_job <- transcribeservice_delete_medical_scribe_job
+
 #' Deletes a medical transcription job
 #'
 #' @description
@@ -685,6 +715,36 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 }
 .transcribeservice$operations$get_call_analytics_job <- transcribeservice_get_call_analytics_job
 
+#' Provides information about the specified Medical Scribe job
+#'
+#' @description
+#' Provides information about the specified Medical Scribe job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_scribe_job/](https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_scribe_job/) for full documentation.
+#'
+#' @param MedicalScribeJobName &#91;required&#93; The name of the Medical Scribe job you want information about. Job names
+#' are case sensitive.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_get_medical_scribe_job
+transcribeservice_get_medical_scribe_job <- function(MedicalScribeJobName) {
+  op <- new_operation(
+    name = "GetMedicalScribeJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$get_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName)
+  output <- .transcribeservice$get_medical_scribe_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$get_medical_scribe_job <- transcribeservice_get_medical_scribe_job
+
 #' Provides information about the specified medical transcription job
 #'
 #' @description
@@ -852,7 +912,7 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #' view all your results.
 #' @param MaxResults The maximum number of Call Analytics categories to return in each page
 #' of results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #'
 #' @keywords internal
@@ -883,7 +943,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_jobs/) for full documentation.
 #'
 #' @param Status Returns only Call Analytics jobs with the specified status. Jobs are
-#' ordered by creation date, with the newest job first. If you don't
+#' ordered by creation date, with the newest job first. If you do not
 #' include `Status`, all Call Analytics jobs are returned.
 #' @param JobNameContains Returns only the Call Analytics jobs that contain the specified string.
 #' The search is not case sensitive.
@@ -896,7 +956,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #' view all your results.
 #' @param MaxResults The maximum number of Call Analytics jobs to return in each page of
 #' results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #'
 #' @keywords internal
@@ -929,7 +989,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #'
 #' @param StatusEquals Returns only custom language models with the specified status. Language
 #' models are ordered by creation date, with the newest model first. If you
-#' don't include `StatusEquals`, all custom language models are returned.
+#' do not include `StatusEquals`, all custom language models are returned.
 #' @param NameContains Returns only the custom language models that contain the specified
 #' string. The search is not case sensitive.
 #' @param NextToken If your [`list_language_models`][transcribeservice_list_language_models]
@@ -940,7 +1000,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #' view all your results.
 #' @param MaxResults The maximum number of custom language models to return in each page of
 #' results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #'
 #' @keywords internal
@@ -963,6 +1023,50 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 }
 .transcribeservice$operations$list_language_models <- transcribeservice_list_language_models
 
+#' Provides a list of Medical Scribe jobs that match the specified criteria
+#'
+#' @description
+#' Provides a list of Medical Scribe jobs that match the specified criteria. If no criteria are specified, all Medical Scribe jobs are returned.
+#'
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_scribe_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_scribe_jobs/) for full documentation.
+#'
+#' @param Status Returns only Medical Scribe jobs with the specified status. Jobs are
+#' ordered by creation date, with the newest job first. If you do not
+#' include `Status`, all Medical Scribe jobs are returned.
+#' @param JobNameContains Returns only the Medical Scribe jobs that contain the specified string.
+#' The search is not case sensitive.
+#' @param NextToken If your
+#' [`list_medical_scribe_jobs`][transcribeservice_list_medical_scribe_jobs]
+#' request returns more results than can be displayed, `NextToken` is
+#' displayed in the response with an associated string. To get the next
+#' page of results, copy this string and repeat your request, including
+#' `NextToken` with the value of the copied string. Repeat as needed to
+#' view all your results.
+#' @param MaxResults The maximum number of Medical Scribe jobs to return in each page of
+#' results. If there are fewer results than the value that you specify,
+#' only the actual results are returned. If you do not specify a value, a
+#' default of 5 is used.
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_list_medical_scribe_jobs
+transcribeservice_list_medical_scribe_jobs <- function(Status = NULL, JobNameContains = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMedicalScribeJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .transcribeservice$list_medical_scribe_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .transcribeservice$list_medical_scribe_jobs_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$list_medical_scribe_jobs <- transcribeservice_list_medical_scribe_jobs
+
 #' Provides a list of medical transcription jobs that match the specified
 #' criteria
 #'
@@ -972,7 +1076,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_transcription_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_transcription_jobs/) for full documentation.
 #'
 #' @param Status Returns only medical transcription jobs with the specified status. Jobs
-#' are ordered by creation date, with the newest job first. If you don't
+#' are ordered by creation date, with the newest job first. If you do not
 #' include `Status`, all medical transcription jobs are returned.
 #' @param JobNameContains Returns only the medical transcription jobs that contain the specified
 #' string. The search is not case sensitive.
@@ -985,7 +1089,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' view all your results.
 #' @param MaxResults The maximum number of medical transcription jobs to return in each page
 #' of results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #'
 #' @keywords internal
@@ -1025,12 +1129,12 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' view all your results.
 #' @param MaxResults The maximum number of custom medical vocabularies to return in each page
 #' of results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #' @param StateEquals Returns only custom medical vocabularies with the specified state.
 #' Custom vocabularies are ordered by creation date, with the newest
-#' vocabulary first. If you don't include `StateEquals`, all custom medical
-#' vocabularies are returned.
+#' vocabulary first. If you do not include `StateEquals`, all custom
+#' medical vocabularies are returned.
 #' @param NameContains Returns only the custom medical vocabularies that contain the specified
 #' string. The search is not case sensitive.
 #'
@@ -1101,7 +1205,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_transcription_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_transcription_jobs/) for full documentation.
 #'
 #' @param Status Returns only transcription jobs with the specified status. Jobs are
-#' ordered by creation date, with the newest job first. If you don't
+#' ordered by creation date, with the newest job first. If you do not
 #' include `Status`, all transcription jobs are returned.
 #' @param JobNameContains Returns only the transcription jobs that contain the specified string.
 #' The search is not case sensitive.
@@ -1114,7 +1218,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #' view all your results.
 #' @param MaxResults The maximum number of transcription jobs to return in each page of
 #' results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #'
 #' @keywords internal
@@ -1152,11 +1256,11 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' view all your results.
 #' @param MaxResults The maximum number of custom vocabularies to return in each page of
 #' results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #' @param StateEquals Returns only custom vocabularies with the specified state. Vocabularies
 #' are ordered by creation date, with the newest vocabulary first. If you
-#' don't include `StateEquals`, all custom medical vocabularies are
+#' do not include `StateEquals`, all custom medical vocabularies are
 #' returned.
 #' @param NameContains Returns only the custom vocabularies that contain the specified string.
 #' The search is not case sensitive.
@@ -1198,7 +1302,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' view all your results.
 #' @param MaxResults The maximum number of custom vocabulary filters to return in each page
 #' of results. If there are fewer results than the value that you specify,
-#' only the actual results are returned. If you don't specify a value, a
+#' only the actual results are returned. If you do not specify a value, a
 #' default of 5 is used.
 #' @param NameContains Returns only the custom vocabulary filters that contain the specified
 #' string. The search is not case sensitive.
@@ -1254,11 +1358,11 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' transcription job using the `CallAnalyticsJobName` parameter.
 #' 
 #' You can specify a KMS key to encrypt your output using the
-#' `OutputEncryptionKMSKeyId` parameter. If you don't specify a KMS key,
+#' `OutputEncryptionKMSKeyId` parameter. If you do not specify a KMS key,
 #' Amazon Transcribe uses the default Amazon S3 key for server-side
 #' encryption.
 #' 
-#' If you don't specify `OutputLocation`, your transcript is placed in a
+#' If you do not specify `OutputLocation`, your transcript is placed in a
 #' service-managed Amazon S3 bucket and you are provided with a URI to
 #' access your transcript.
 #' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Call Analytics output.
@@ -1287,7 +1391,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' 2.  Use the ARN for the KMS key alias. For example,
 #'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
 #' 
-#' If you don't specify an encryption key, your output is encrypted with
+#' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
@@ -1334,6 +1438,121 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 }
 .transcribeservice$operations$start_call_analytics_job <- transcribeservice_start_call_analytics_job
 
+#' Transcribes patient-clinician conversations and generates clinical notes
+#'
+#' @description
+#' Transcribes patient-clinician conversations and generates clinical notes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_start_medical_scribe_job/](https://www.paws-r-sdk.com/docs/transcribeservice_start_medical_scribe_job/) for full documentation.
+#'
+#' @param MedicalScribeJobName &#91;required&#93; A unique name, chosen by you, for your Medical Scribe job.
+#' 
+#' This name is case sensitive, cannot contain spaces, and must be unique
+#' within an Amazon Web Services account. If you try to create a new job
+#' with the same name as an existing job, you get a `ConflictException`
+#' error.
+#' @param Media &#91;required&#93; 
+#' @param OutputBucketName &#91;required&#93; The name of the Amazon S3 bucket where you want your Medical Scribe
+#' output stored. Do not include the `S3://` prefix of the specified
+#' bucket.
+#' 
+#' Note that the role specified in the `DataAccessRoleArn` request
+#' parameter must have permission to use the specified location. You can
+#' change Amazon S3 permissions using the [Amazon Web Services Management
+#' Console](https://console.aws.amazon.com/s3/home). See also [Permissions
+#' Required for IAM User
+#' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
+#' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Medical Scribe output.
+#' 
+#' If using a key located in the **current** Amazon Web Services account,
+#' you can specify your KMS key in one of four ways:
+#' 
+#' 1.  Use the KMS key ID itself. For example,
+#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 2.  Use an alias for the KMS key ID. For example, `alias/ExampleAlias`.
+#' 
+#' 3.  Use the Amazon Resource Name (ARN) for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 4.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If using a key located in a **different** Amazon Web Services account
+#' than the current Amazon Web Services account, you can specify your KMS
+#' key in one of two ways:
+#' 
+#' 1.  Use the ARN for the KMS key ID. For example,
+#'     `arn:aws:kms:region:account-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' 
+#' 2.  Use the ARN for the KMS key alias. For example,
+#'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
+#' 
+#' If you do not specify an encryption key, your output is encrypted with
+#' the default Amazon S3 key (SSE-S3).
+#' 
+#' Note that the role specified in the `DataAccessRoleArn` request
+#' parameter must have permission to use the specified KMS key.
+#' @param KMSEncryptionContext A map of plain text, non-secret key:value pairs, known as encryption
+#' context pairs, that provide an added layer of security for your data.
+#' For more information, see [KMS encryption
+#' context](https://docs.aws.amazon.com/transcribe/latest/dg/#kms-context)
+#' and [Asymmetric keys in
+#' KMS](https://docs.aws.amazon.com/transcribe/latest/dg/).
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that has permissions to
+#' access the Amazon S3 bucket that contains your input files, write to the
+#' output bucket, and use your KMS key if supplied. If the role that you
+#' specify doesn’t have the appropriate permissions your request fails.
+#' 
+#' IAM role ARNs have the format
+#' `arn:partition:iam::account:role/role-name-with-path`. For example:
+#' `arn:aws:iam::111122223333:role/Admin`.
+#' 
+#' For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+#' @param Settings &#91;required&#93; Makes it possible to control how your Medical Scribe job is processed
+#' using a `MedicalScribeSettings` object. Specify `ChannelIdentification`
+#' if `ChannelDefinitions` are set. Enabled `ShowSpeakerLabels` if
+#' `ChannelIdentification` and `ChannelDefinitions` are not set. One and
+#' only one of `ChannelIdentification` and `ShowSpeakerLabels` must be set.
+#' If `ShowSpeakerLabels` is set, `MaxSpeakerLabels` must also be set. Use
+#' `Settings` to specify a vocabulary or vocabulary filter or both using
+#' `VocabularyName`, `VocabularyFilterName`. `VocabularyFilterMethod` must
+#' be specified if `VocabularyFilterName` is set.
+#' @param ChannelDefinitions Makes it possible to specify which speaker is on which channel. For
+#' example, if the clinician is the first participant to speak, you would
+#' set `ChannelId` of the first `ChannelDefinition` in the list to `0` (to
+#' indicate the first channel) and `ParticipantRole` to `CLINICIAN` (to
+#' indicate that it's the clinician speaking). Then you would set the
+#' `ChannelId` of the second `ChannelDefinition` in the list to `1` (to
+#' indicate the second channel) and `ParticipantRole` to `PATIENT` (to
+#' indicate that it's the patient speaking).
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to
+#' the Medica Scribe job.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_start_medical_scribe_job
+transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Media, OutputBucketName, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, DataAccessRoleArn, Settings, ChannelDefinitions = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "StartMedicalScribeJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$start_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions, Tags = Tags)
+  output <- .transcribeservice$start_medical_scribe_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$start_medical_scribe_job <- transcribeservice_start_medical_scribe_job
+
 #' Transcribes the audio from a medical dictation or conversation and
 #' applies any additional Request Parameters you choose to include in your
 #' request
@@ -1358,7 +1577,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' in a `BadRequestException` error.
 #' @param MediaSampleRateHertz The sample rate, in hertz, of the audio track in your input media file.
 #' 
-#' If you don't specify the media sample rate, Amazon Transcribe Medical
+#' If you do not specify the media sample rate, Amazon Transcribe Medical
 #' determines it for you. If you specify the sample rate, it must match the
 #' rate detected by Amazon Transcribe Medical; if there's a mismatch
 #' between the value that you specify and the value detected, your job
@@ -1444,7 +1663,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' 2.  Use the ARN for the KMS key alias. For example,
 #'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
 #' 
-#' If you don't specify an encryption key, your output is encrypted with
+#' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
@@ -1538,12 +1757,12 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' file must be encoded at a sample rate of 16,000 Hz or higher.
 #' @param MediaSampleRateHertz The sample rate, in hertz, of the audio track in your input media file.
 #' 
-#' If you don't specify the media sample rate, Amazon Transcribe determines
-#' it for you. If you specify the sample rate, it must match the rate
-#' detected by Amazon Transcribe. If there's a mismatch between the value
-#' that you specify and the value detected, your job fails. In most cases,
-#' you can omit `MediaSampleRateHertz` and let Amazon Transcribe determine
-#' the sample rate.
+#' If you do not specify the media sample rate, Amazon Transcribe
+#' determines it for you. If you specify the sample rate, it must match the
+#' rate detected by Amazon Transcribe. If there's a mismatch between the
+#' value that you specify and the value detected, your job fails. In most
+#' cases, you can omit `MediaSampleRateHertz` and let Amazon Transcribe
+#' determine the sample rate.
 #' @param MediaFormat Specify the format of your input media file.
 #' @param Media &#91;required&#93; Describes the Amazon S3 location of the media file you want to use in
 #' your request.
@@ -1567,7 +1786,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
-#' If you don't specify `OutputBucketName`, your transcript is placed in a
+#' If you do not specify `OutputBucketName`, your transcript is placed in a
 #' service-managed Amazon S3 bucket and you are provided with a URI to
 #' access your transcript.
 #' @param OutputKey Use in combination with `OutputBucketName` to specify the output
@@ -1627,7 +1846,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 2.  Use the ARN for the KMS key alias. For example,
 #'     `arn:aws:kms:region:account-ID:alias/ExampleAlias`.
 #' 
-#' If you don't specify an encryption key, your output is encrypted with
+#' If you do not specify an encryption key, your output is encrypted with
 #' the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
@@ -1671,8 +1890,10 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' `DataAccessRoleArn`.
 #' @param ContentRedaction Makes it possible to redact or flag specified personally identifiable
 #' information (PII) in your transcript. If you use `ContentRedaction`, you
-#' must also include the sub-parameters: `PiiEntityTypes`,
-#' `RedactionOutput`, and `RedactionType`.
+#' must also include the sub-parameters: `RedactionOutput` and
+#' `RedactionType`. You can optionally include `PiiEntityTypes` to choose
+#' which types of PII you want to redact. If you do not include
+#' `PiiEntityTypes` in your request, all PII is redacted.
 #' @param IdentifyLanguage Enables automatic language identification in your transcription job
 #' request. Use this parameter if your media file contains only one
 #' language. If your media contains multiple languages, use

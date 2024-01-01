@@ -15,7 +15,10 @@ cognitoidentityprovider_admin_update_user_attributes(
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to update user
 attributes.}
 
-\item{Username}{[required] The user name of the user for whom you want to update user attributes.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{UserAttributes}{[required] An array of name-value pairs representing user attributes.
 

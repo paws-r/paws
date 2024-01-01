@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_public_access_block}
 \alias{s3_delete_public_access_block}
-\title{Removes the PublicAccessBlock configuration for an Amazon S3 bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_delete_public_access_block(Bucket, ExpectedBucketOwner = NULL)
 }
@@ -10,12 +10,12 @@ s3_delete_public_access_block(Bucket, ExpectedBucketOwner = NULL)
 \item{Bucket}{[required] The Amazon S3 bucket whose \code{PublicAccessBlock} configuration you want to
 delete.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Removes the \code{PublicAccessBlock} configuration for an Amazon S3 bucket. To use this operation, you must have the \code{s3:PutBucketPublicAccessBlock} permission. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations} and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_public_access_block/} for full documentation.
 }

@@ -13,7 +13,8 @@ personalizeruntime_get_recommendations(
   filterArn = NULL,
   filterValues = NULL,
   recommenderArn = NULL,
-  promotions = NULL
+  promotions = NULL,
+  metadataColumns = NULL
 )
 }
 \arguments{
@@ -28,7 +29,9 @@ Required for \code{RELATED_ITEMS} recipe type.}
 
 Required for \code{USER_PERSONALIZATION} recipe type.}
 
-\item{numResults}{The number of results to return. The default is 25. The maximum is 500.}
+\item{numResults}{The number of results to return. The default is 25. If you are including
+metadata in recommendations, the maximum is 50. Otherwise, the maximum
+is 500.}
 
 \item{context}{The contextual metadata to use when getting recommendations. Contextual
 metadata includes any interaction information that might be relevant
@@ -61,6 +64,15 @@ dataset group with a recommender for a domain use case.}
 \item{promotions}{The promotions to apply to the recommendation request. A promotion
 defines additional business rules that apply to a configurable subset of
 recommended items.}
+
+\item{metadataColumns}{If you enabled metadata in recommendations when you created or updated
+the campaign or recommender, specify the metadata columns from your
+Items dataset to include in item recommendations. The map key is \code{ITEMS}
+and the value is a list of column names from your Items dataset. The
+maximum number of columns you can provide is 10.
+
+For information about enabling metadata for a campaign, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Enabling metadata in recommendations for a campaign}. For
+information about enabling metadata for a recommender, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Enabling metadata in recommendations for a recommender}.}
 }
 \description{
 Returns a list of recommended items. For campaigns, the campaign's Amazon Resource Name (ARN) is required and the required user and item input depends on the recipe type used to create the solution backing the campaign as follows:

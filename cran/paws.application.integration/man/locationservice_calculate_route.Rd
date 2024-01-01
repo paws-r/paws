@@ -6,6 +6,7 @@
 DeparturePosition and DestinationPosition}
 \usage{
 locationservice_calculate_route(
+  ArrivalTime = NULL,
   CalculatorName,
   CarModeOptions = NULL,
   DepartNow = NULL,
@@ -15,12 +16,19 @@ locationservice_calculate_route(
   DistanceUnit = NULL,
   IncludeLegGeometry = NULL,
   Key = NULL,
+  OptimizeFor = NULL,
   TravelMode = NULL,
   TruckModeOptions = NULL,
   WaypointPositions = NULL
 )
 }
 \arguments{
+\item{ArrivalTime}{Specifies the desired time of arrival. Uses the given time to calculate
+the route. Otherwise, the best time of day to travel with the best
+traffic conditions is used to calculate the route.
+
+ArrivalTime is not supported Esri.}
+
 \item{CalculatorName}{[required] The name of the route calculator resource that you want to use to
 calculate the route.}
 
@@ -54,9 +62,6 @@ Valid Values: \verb{[-180 to 180,-90 to 90]}}
 \item{DepartureTime}{Specifies the desired time of departure. Uses the given time to
 calculate the route. Otherwise, the best time of day to travel with the
 best traffic conditions is used to calculate the route.
-
-Setting a departure time in the past returns a \verb{400 ValidationException}
-error.
 \itemize{
 \item In \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601}
 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example,
@@ -87,6 +92,8 @@ Valid Values: \code{false} | \code{true}}
 
 \item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
+
+\item{OptimizeFor}{Specifies the distance to optimize for when calculating a route.}
 
 \item{TravelMode}{Specifies the mode of transport when calculating a route. Used in
 estimating the speed of travel and road compatibility. You can choose

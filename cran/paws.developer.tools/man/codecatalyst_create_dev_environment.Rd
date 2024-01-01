@@ -15,7 +15,8 @@ codecatalyst_create_dev_environment(
   ides = NULL,
   instanceType,
   inactivityTimeoutMinutes = NULL,
-  persistentStorage
+  persistentStorage,
+  vpcConnectionName = NULL
 )
 }
 \arguments{
@@ -54,6 +55,8 @@ storage when created from the Amazon CodeCatalyst console, but there is
 no default when programmatically creating a Dev Environment. Valid
 values for persistent storage are based on memory sizes in 16GB
 increments. Valid values are 16, 32, and 64.}
+
+\item{vpcConnectionName}{The name of the connection to use connect to a Amazon VPC.}
 }
 \description{
 Creates a Dev Environment in Amazon CodeCatalyst, a cloud-based development environment that you can use to quickly work on the code stored in the source repositories of your project.

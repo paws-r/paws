@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_bucket_intelligent_tiering_configurations}
 \alias{s3_list_bucket_intelligent_tiering_configurations}
-\title{Lists the S3 Intelligent-Tiering configuration from the specified bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_list_bucket_intelligent_tiering_configurations(
   Bucket,
@@ -17,7 +17,7 @@ or retrieve.}
 request should begin.}
 }
 \description{
-Lists the S3 Intelligent-Tiering configuration from the specified bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_bucket_intelligent_tiering_configurations/} for full documentation.
 }

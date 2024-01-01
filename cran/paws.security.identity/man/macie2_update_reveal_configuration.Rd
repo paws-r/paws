@@ -5,11 +5,16 @@
 \title{Updates the status and configuration settings for retrieving occurrences
 of sensitive data reported by findings}
 \usage{
-macie2_update_reveal_configuration(configuration)
+macie2_update_reveal_configuration(
+  configuration,
+  retrievalConfiguration = NULL
+)
 }
 \arguments{
-\item{configuration}{[required] The new configuration settings and the status of the configuration for
-the account.}
+\item{configuration}{[required] The KMS key to use to encrypt the sensitive data, and the status of the
+configuration for the Amazon Macie account.}
+
+\item{retrievalConfiguration}{The access method and settings to use to retrieve the sensitive data.}
 }
 \description{
 Updates the status and configuration settings for retrieving occurrences of sensitive data reported by findings.

@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_access_point_policy_status_for_object_lambda}
 \alias{s3control_get_access_point_policy_status_for_object_lambda}
-\title{Returns the status of the resource policy associated with an Object
-Lambda Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_get_access_point_policy_status_for_object_lambda(AccountId, Name)
 }
@@ -14,7 +13,7 @@ Access Point.}
 \item{Name}{[required] The name of the Object Lambda Access Point.}
 }
 \description{
-Returns the status of the resource policy associated with an Object Lambda Access Point.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status_for_object_lambda/} for full documentation.
 }

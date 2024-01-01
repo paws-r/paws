@@ -433,7 +433,7 @@ eventbridge_delete_connection <- function(Name) {
 #' Delete an existing global endpoint
 #'
 #' @description
-#' Delete an existing global endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide.
+#' Delete an existing global endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the *Amazon EventBridge User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridge_delete_endpoint/](https://www.paws-r-sdk.com/docs/eventbridge_delete_endpoint/) for full documentation.
 #'
@@ -648,7 +648,7 @@ eventbridge_describe_connection <- function(Name) {
 #' Get the information about an existing global endpoint
 #'
 #' @description
-#' Get the information about an existing global endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide..
+#' Get the information about an existing global endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the *Amazon EventBridge User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridge_describe_endpoint/](https://www.paws-r-sdk.com/docs/eventbridge_describe_endpoint/) for full documentation.
 #'
@@ -995,7 +995,7 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
 #' List the global endpoints associated with this account
 #'
 #' @description
-#' List the global endpoints associated with this account. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide..
+#' List the global endpoints associated with this account. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the *Amazon EventBridge User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridge_list_endpoints/](https://www.paws-r-sdk.com/docs/eventbridge_list_endpoints/) for full documentation.
 #'
@@ -1486,7 +1486,37 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' @param EventPattern The event pattern. For more information, see [Amazon EventBridge event
 #' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html)
 #' in the *Amazon EventBridge User Guide*.
-#' @param State Indicates whether the rule is enabled or disabled.
+#' @param State The state of the rule.
+#' 
+#' Valid values include:
+#' 
+#' -   `DISABLED`: The rule is disabled. EventBridge does not match any
+#'     events against the rule.
+#' 
+#' -   `ENABLED`: The rule is enabled. EventBridge matches events against
+#'     the rule, *except* for Amazon Web Services management events
+#'     delivered through CloudTrail.
+#' 
+#' -   `ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS`: The rule is enabled
+#'     for all events, including Amazon Web Services management events
+#'     delivered through CloudTrail.
+#' 
+#'     Management events provide visibility into management operations that
+#'     are performed on resources in your Amazon Web Services account.
+#'     These are also known as control plane operations. For more
+#'     information, see [Logging management
+#'     events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events)
+#'     in the *CloudTrail User Guide*, and [Filtering management events
+#'     from Amazon Web Services
+#'     services](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html#eb-service-event-cloudtrail)
+#'     in the *Amazon EventBridge User Guide*.
+#' 
+#'     This value is only valid for rules on the
+#'     [default](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is-how-it-works-concepts.html#eb-bus-concepts-buses)
+#'     event bus or [custom event
+#'     buses](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-event-bus.html).
+#'     It does not apply to [partner event
+#'     buses](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-saas.html).
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 #' 
@@ -1874,7 +1904,7 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
 #' Update an existing endpoint
 #'
 #' @description
-#' Update an existing endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide..
+#' Update an existing endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the *Amazon EventBridge User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridge_update_endpoint/](https://www.paws-r-sdk.com/docs/eventbridge_update_endpoint/) for full documentation.
 #'

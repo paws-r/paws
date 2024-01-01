@@ -16,7 +16,9 @@ imagebuilder_update_image_pipeline(
   schedule = NULL,
   status = NULL,
   clientToken,
-  imageScanningConfiguration = NULL
+  imageScanningConfiguration = NULL,
+  workflows = NULL,
+  executionRole = NULL
 )
 }
 \arguments{
@@ -48,12 +50,19 @@ Enabled by default.}
 
 \item{status}{The status of the image pipeline.}
 
-\item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
+
+\item{workflows}{Contains the workflows to run for the pipeline.}
+
+\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that
+grants Image Builder access to perform workflow actions.}
 }
 \description{
-Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images.
+Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/} for full documentation.
 }

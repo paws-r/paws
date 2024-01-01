@@ -99,13 +99,16 @@ NULL
 #'  \link[=lakeformation_cancel_transaction]{cancel_transaction} \tab Attempts to cancel the specified transaction\cr
 #'  \link[=lakeformation_commit_transaction]{commit_transaction} \tab Attempts to commit the specified transaction\cr
 #'  \link[=lakeformation_create_data_cells_filter]{create_data_cells_filter} \tab Creates a data cell filter to allow one to grant access to certain columns on certain rows\cr
+#'  \link[=lakeformation_create_lake_formation_identity_center_configuration]{create_lake_formation_identity_center_configuration} \tab Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and groups to access Data Catalog resources\cr
 #'  \link[=lakeformation_create_lake_formation_opt_in]{create_lake_formation_opt_in} \tab Enforce Lake Formation permissions for the given databases, tables, and principals\cr
 #'  \link[=lakeformation_create_lf_tag]{create_lf_tag} \tab Creates an LF-tag with the specified name and values\cr
 #'  \link[=lakeformation_delete_data_cells_filter]{delete_data_cells_filter} \tab Deletes a data cell filter\cr
+#'  \link[=lakeformation_delete_lake_formation_identity_center_configuration]{delete_lake_formation_identity_center_configuration} \tab Deletes an IAM Identity Center connection with Lake Formation\cr
 #'  \link[=lakeformation_delete_lake_formation_opt_in]{delete_lake_formation_opt_in} \tab Remove the Lake Formation permissions enforcement of the given databases, tables, and principals\cr
 #'  \link[=lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag given a key name\cr
 #'  \link[=lakeformation_delete_objects_on_cancel]{delete_objects_on_cancel} \tab For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled\cr
 #'  \link[=lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr
+#'  \link[=lakeformation_describe_lake_formation_identity_center_configuration]{describe_lake_formation_identity_center_configuration} \tab Retrieves the instance ARN and application ARN for the connection\cr
 #'  \link[=lakeformation_describe_resource]{describe_resource} \tab Retrieves the current data access role for the given resource registered in Lake Formation\cr
 #'  \link[=lakeformation_describe_transaction]{describe_transaction} \tab Returns the details of a single transaction\cr
 #'  \link[=lakeformation_extend_transaction]{extend_transaction} \tab Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted\cr
@@ -138,6 +141,7 @@ NULL
 #'  \link[=lakeformation_start_query_planning]{start_query_planning} \tab Submits a request to process a query statement\cr
 #'  \link[=lakeformation_start_transaction]{start_transaction} \tab Starts a new transaction and returns its transaction ID\cr
 #'  \link[=lakeformation_update_data_cells_filter]{update_data_cells_filter} \tab Updates a data cell filter\cr
+#'  \link[=lakeformation_update_lake_formation_identity_center_configuration]{update_lake_formation_identity_center_configuration} \tab Updates the IAM Identity Center connection parameters\cr
 #'  \link[=lakeformation_update_lf_tag]{update_lf_tag} \tab Updates the list of possible values for the specified LF-tag key\cr
 #'  \link[=lakeformation_update_resource]{update_resource} \tab Updates the data access role used for vending access to the given (registered) resource in Lake Formation\cr
 #'  \link[=lakeformation_update_table_objects]{update_table_objects} \tab Updates the manifest of Amazon S3 objects that make up the specified governed table\cr

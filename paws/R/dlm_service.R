@@ -98,7 +98,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=dlm_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates a policy to manage the lifecycle of the specified Amazon Web Services resources\cr
+#'  \link[=dlm_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates an Amazon Data Lifecycle Manager lifecycle policy\cr
 #'  \link[=dlm_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy and halts the automated operations that the policy specified\cr
 #'  \link[=dlm_get_lifecycle_policies]{get_lifecycle_policies} \tab Gets summary information about all or the specified data lifecycle policies\cr
 #'  \link[=dlm_get_lifecycle_policy]{get_lifecycle_policy} \tab Gets detailed information about the specified lifecycle policy\cr

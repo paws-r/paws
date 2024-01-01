@@ -46,18 +46,19 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
 #' @param resource &#91;required&#93; The name or ID of the resource of which the application will be
 #' associated.
+#' @param options Determines whether an application tag is applied or skipped.
 #'
 #' @keywords internal
 #'
 #' @rdname appregistry_associate_resource
-appregistry_associate_resource <- function(application, resourceType, resource) {
+appregistry_associate_resource <- function(application, resourceType, resource, options = NULL) {
   op <- new_operation(
     name = "AssociateResource",
     http_method = "PUT",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     paginator = list()
   )
-  input <- .appregistry$associate_resource_input(application = application, resourceType = resourceType, resource = resource)
+  input <- .appregistry$associate_resource_input(application = application, resourceType = resourceType, resource = resource, options = options)
   output <- .appregistry$associate_resource_output()
   config <- get_config()
   svc <- .appregistry$service(config)
@@ -307,18 +308,24 @@ appregistry_get_application <- function(application) {
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource associated with the application.
 #' @param resource &#91;required&#93; The name or ID of the resource associated with the application.
+#' @param nextToken A unique pagination token for each page of results. Make the call again
+#' with the returned token to retrieve the next page of results.
+#' @param resourceTagStatus States whether an application tag is applied, not applied, in the
+#' process of being applied, or skipped.
+#' @param maxResults The maximum number of results to return. If the parameter is omitted, it
+#' defaults to 25. The value is optional.
 #'
 #' @keywords internal
 #'
 #' @rdname appregistry_get_associated_resource
-appregistry_get_associated_resource <- function(application, resourceType, resource) {
+appregistry_get_associated_resource <- function(application, resourceType, resource, nextToken = NULL, resourceTagStatus = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetAssociatedResource",
     http_method = "GET",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     paginator = list()
   )
-  input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource)
+  input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource, nextToken = nextToken, resourceTagStatus = resourceTagStatus, maxResults = maxResults)
   output <- .appregistry$get_associated_resource_output()
   config <- get_config()
   svc <- .appregistry$service(config)

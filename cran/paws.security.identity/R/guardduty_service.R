@@ -6,17 +6,20 @@ NULL
 #'
 #' @description
 #' Amazon GuardDuty is a continuous security monitoring service that
-#' analyzes and processes the following data sources: VPC flow logs, Amazon
-#' Web Services CloudTrail management event logs, CloudTrail S3 data event
-#' logs, EKS audit logs, DNS logs, and Amazon EBS volume data. It uses
-#' threat intelligence feeds, such as lists of malicious IPs and domains,
-#' and machine learning to identify unexpected, potentially unauthorized,
-#' and malicious activity within your Amazon Web Services environment. This
-#' can include issues like escalations of privileges, uses of exposed
-#' credentials, or communication with malicious IPs, domains, or presence
-#' of malware on your Amazon EC2 instances and container workloads. For
-#' example, GuardDuty can detect compromised EC2 instances and container
-#' workloads serving malware, or mining bitcoin.
+#' analyzes and processes the following foundational data sources - VPC
+#' flow logs, Amazon Web Services CloudTrail management event logs,
+#' CloudTrail S3 data event logs, EKS audit logs, DNS logs, Amazon EBS
+#' volume data, runtime activity belonging to container workloads, such as
+#' Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and
+#' Amazon EC2 instances. It uses threat intelligence feeds, such as lists
+#' of malicious IPs and domains, and machine learning to identify
+#' unexpected, potentially unauthorized, and malicious activity within your
+#' Amazon Web Services environment. This can include issues like
+#' escalations of privileges, uses of exposed credentials, or communication
+#' with malicious IPs, domains, or presence of malware on your Amazon EC2
+#' instances and container workloads. For example, GuardDuty can detect
+#' compromised EC2 instances and container workloads serving malware, or
+#' mining bitcoin.
 #' 
 #' GuardDuty also monitors Amazon Web Services account access behavior for
 #' signs of compromise, such as unauthorized infrastructure deployments
@@ -150,6 +153,7 @@ NULL
 #'  \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[=guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
 #'  \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs\cr
+#'  \link[=guardduty_get_organization_statistics]{get_organization_statistics} \tab Retrieves how many active member accounts in your Amazon Web Services organization have each feature enabled within GuardDuty\cr
 #'  \link[=guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 #'  \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 #'  \link[=guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr

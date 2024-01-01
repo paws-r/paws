@@ -23,7 +23,7 @@ Operations job.}
 status. This field can be any string up to the maximum length.}
 }
 \description{
-Updates the status for the specified job. Use this action to confirm that you want to run a job or to cancel an existing job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
+Updates the status for the specified job. Use this operation to confirm that you want to run a job or to cancel an existing job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_update_job_status/} for full documentation.
 }

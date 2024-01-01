@@ -28,7 +28,7 @@ Region.}
 \item{RoleArn}{The ARN of the role used by event replication for this request.}
 }
 \description{
-Update an existing endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the Amazon EventBridge User Guide..
+Update an existing endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the \emph{Amazon EventBridge User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridge_update_endpoint/} for full documentation.
 }

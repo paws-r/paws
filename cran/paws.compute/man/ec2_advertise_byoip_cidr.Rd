@@ -6,17 +6,41 @@
 with your Amazon Web Services resources through bring your own IP
 addresses (BYOIP)}
 \usage{
-ec2_advertise_byoip_cidr(Cidr, DryRun = NULL)
+ec2_advertise_byoip_cidr(
+  Cidr,
+  Asn = NULL,
+  DryRun = NULL,
+  NetworkBorderGroup = NULL
+)
 }
 \arguments{
 \item{Cidr}{[required] The address range, in CIDR notation. This must be the exact range that
 you provisioned. You can't advertise only a portion of the provisioned
 range.}
 
+\item{Asn}{The public 2-byte or 4-byte ASN that you want to advertise.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NetworkBorderGroup}{If you have \href{https://docs.aws.amazon.com/local-zones/latest/ug/how-local-zones-work.html}{Local Zones}
+enabled, you can choose a network border group for Local Zones when you
+provision and advertise a BYOIPv4 CIDR. Choose the network border group
+carefully as the EIP and the Amazon Web Services resource it is
+associated with must reside in the same network border group.
+
+You can provision BYOIP address ranges to and advertise them in the
+following Local Zone network border groups:
+\itemize{
+\item us-east-1-dfw-2
+\item us-west-2-lax-1
+\item us-west-2-phx-2
+}
+
+You cannot provision or advertise BYOIPv6 address ranges in Local Zones
+at this time.}
 }
 \description{
 Advertises an IPv4 or IPv6 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP).

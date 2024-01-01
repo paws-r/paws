@@ -108,6 +108,35 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
 }
 .kinesis$operations$decrease_stream_retention_period <- kinesis_decrease_stream_retention_period
 
+#' Delete a policy for the specified data stream or consumer
+#'
+#' @description
+#' Delete a policy for the specified data stream or consumer. Request patterns can be one of the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_delete_resource_policy/](https://www.paws-r-sdk.com/docs/kinesis_delete_resource_policy/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the data stream or consumer.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_delete_resource_policy
+kinesis_delete_resource_policy <- function(ResourceARN) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesis$delete_resource_policy_input(ResourceARN = ResourceARN)
+  output <- .kinesis$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$delete_resource_policy <- kinesis_delete_resource_policy
+
 #' Deletes a Kinesis data stream and all its shards and data
 #'
 #' @description
@@ -463,6 +492,35 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL) {
   return(response)
 }
 .kinesis$operations$get_records <- kinesis_get_records
+
+#' Returns a policy attached to the specified data stream or consumer
+#'
+#' @description
+#' Returns a policy attached to the specified data stream or consumer. Request patterns can be one of the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_get_resource_policy/](https://www.paws-r-sdk.com/docs/kinesis_get_resource_policy/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the data stream or consumer.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_get_resource_policy
+kinesis_get_resource_policy <- function(ResourceARN) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesis$get_resource_policy_input(ResourceARN = ResourceARN)
+  output <- .kinesis$get_resource_policy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$get_resource_policy <- kinesis_get_resource_policy
 
 #' Gets an Amazon Kinesis shard iterator
 #'
@@ -921,6 +979,38 @@ kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL) {
   return(response)
 }
 .kinesis$operations$put_records <- kinesis_put_records
+
+#' Attaches a resource-based policy to a data stream or registered consumer
+#'
+#' @description
+#' Attaches a resource-based policy to a data stream or registered consumer. If you are using an identity other than the root user of the Amazon Web Services account that owns the resource, the calling identity must have the [`put_resource_policy`][kinesis_put_resource_policy] permissions on the specified Kinesis Data Streams resource and belong to the owner's account in order to use this operation. If you don't have [`put_resource_policy`][kinesis_put_resource_policy] permissions, Amazon Kinesis Data Streams returns a `403 Access Denied error`. If you receive a `ResourceNotFoundException`, check to see if you passed a valid stream or consumer resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_put_resource_policy/](https://www.paws-r-sdk.com/docs/kinesis_put_resource_policy/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the data stream or consumer.
+#' @param Policy &#91;required&#93; Details of the resource policy. It must include the identity of the
+#' principal and the actions allowed on this resource. This is formatted as
+#' a JSON string.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_put_resource_policy
+kinesis_put_resource_policy <- function(ResourceARN, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesis$put_resource_policy_input(ResourceARN = ResourceARN, Policy = Policy)
+  output <- .kinesis$put_resource_policy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$put_resource_policy <- kinesis_put_resource_policy
 
 #' Registers a consumer with a Kinesis data stream
 #'

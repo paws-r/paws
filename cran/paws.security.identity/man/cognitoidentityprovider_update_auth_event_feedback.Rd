@@ -16,7 +16,10 @@ cognitoidentityprovider_update_auth_event_feedback(
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{[required] The user pool username.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{EventId}{[required] The event ID.}
 

@@ -190,8 +190,9 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' 
 #' Only some Amazon Web Services services support being configured as a
 #' delivery source using this operation. These services are listed as
-#' **Supported \[V2 Permissions\]** in the table at Enabling logging from
-#' Amazon Web Services services.
+#' **Supported \[V2 Permissions\]** in the table at [Enabling logging from
+#' Amazon Web Services
+#' services.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html)
 #' 
 #' A delivery destination can represent a log group in CloudWatch Logs, an
 #' Amazon S3 bucket, or a delivery stream in Kinesis Data Firehose.
@@ -384,6 +385,127 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 }
 .cloudwatchlogs$operations$create_export_task <- cloudwatchlogs_create_export_task
 
+#' Creates an anomaly detector that regularly scans one or more log groups
+#' and look for patterns and anomalies in the logs
+#'
+#' @description
+#' Creates an *anomaly detector* that regularly scans one or more log
+#' groups and look for patterns and anomalies in the logs.
+#' 
+#' An anomaly detector can help surface issues by automatically discovering
+#' anomalies in your log event traffic. An anomaly detector uses machine
+#' learning algorithms to scan log events and find *patterns*. A pattern is
+#' a shared text structure that recurs among your log fields. Patterns
+#' provide a useful tool for analyzing large sets of logs because a large
+#' number of log events can often be compressed into a few patterns.
+#' 
+#' The anomaly detector uses pattern recognition to find `anomalies`, which
+#' are unusual log events. It uses the `evaluationFrequency` to compare
+#' current log events and patterns with trained baselines.
+#' 
+#' Fields within a pattern are called *tokens*. Fields that vary within a
+#' pattern, such as a request ID or timestamp, are referred to as *dynamic
+#' tokens* and represented by `<*>`.
+#' 
+#' The following is an example of a pattern:
+#' 
+#' `[INFO] Request time: <*> ms`
+#' 
+#' This pattern represents log events like `[INFO] Request time: 327 ms`
+#' and other similar log events that differ only by the number, in this
+#' csse 327. When the pattern is displayed, the different numbers are
+#' replaced by `<*>`
+#' 
+#' Any parts of log events that are masked as sensitive data are not
+#' scanned for anomalies. For more information about masking sensitive
+#' data, see [Help protect sensitive log data with
+#' masking](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html).
+#'
+#' @usage
+#' cloudwatchlogs_create_log_anomaly_detector(logGroupArnList,
+#'   detectorName, evaluationFrequency, filterPattern, kmsKeyId,
+#'   anomalyVisibilityTime, tags)
+#'
+#' @param logGroupArnList &#91;required&#93; An array containing the ARN of the log group that this anomaly detector
+#' will watch. You can specify only one log group ARN.
+#' @param detectorName A name for this anomaly detector.
+#' @param evaluationFrequency Specifies how often the anomaly detector is to run and look for
+#' anomalies. Set this value according to the frequency that the log group
+#' receives new logs. For example, if the log group receives new log events
+#' every 10 minutes, then 15 minutes might be a good setting for
+#' `evaluationFrequency` .
+#' @param filterPattern You can use this parameter to limit the anomaly detection model to
+#' examine only log events that match the pattern you specify here. For
+#' more information, see [Filter and Pattern
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+#' @param kmsKeyId Optionally assigns a KMS key to secure this anomaly detector and its
+#' findings. If a key is assigned, the anomalies found and the model used
+#' by this detector are encrypted at rest with the key. If a key is
+#' assigned to an anomaly detector, a user must have permissions for both
+#' this key and for the anomaly detector to retrieve information about the
+#' anomalies that it finds.
+#' 
+#' For more information about using a KMS key and to see the required IAM
+#' policy, see [Use a KMS key with an anomaly
+#' detector](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html).
+#' @param anomalyVisibilityTime The number of days to have visibility on an anomaly. After this time
+#' period has elapsed for an anomaly, it will be automatically baselined
+#' and the anomaly detector will treat new occurrences of a similar anomaly
+#' as normal. Therefore, if you do not correct the cause of an anomaly
+#' during the time period specified in `anomalyVisibilityTime`, it will be
+#' considered normal going forward and will not be detected as an anomaly.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   anomalyDetectorArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_log_anomaly_detector(
+#'   logGroupArnList = list(
+#'     "string"
+#'   ),
+#'   detectorName = "string",
+#'   evaluationFrequency = "ONE_MIN"|"FIVE_MIN"|"TEN_MIN"|"FIFTEEN_MIN"|"THIRTY_MIN"|"ONE_HOUR",
+#'   filterPattern = "string",
+#'   kmsKeyId = "string",
+#'   anomalyVisibilityTime = 123,
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_create_log_anomaly_detector
+#'
+#' @aliases cloudwatchlogs_create_log_anomaly_detector
+cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detectorName = NULL, evaluationFrequency = NULL, filterPattern = NULL, kmsKeyId = NULL, anomalyVisibilityTime = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$create_log_anomaly_detector_input(logGroupArnList = logGroupArnList, detectorName = detectorName, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, kmsKeyId = kmsKeyId, anomalyVisibilityTime = anomalyVisibilityTime, tags = tags)
+  output <- .cloudwatchlogs$create_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$create_log_anomaly_detector <- cloudwatchlogs_create_log_anomaly_detector
+
 #' Creates a log group with the specified name
 #'
 #' @description
@@ -421,9 +543,10 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #'
 #' @usage
-#' cloudwatchlogs_create_log_group(logGroupName, kmsKeyId, tags)
+#' cloudwatchlogs_create_log_group(logGroupName, kmsKeyId, tags,
+#'   logGroupClass)
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group.
+#' @param logGroupName &#91;required&#93; A name for the log group.
 #' @param kmsKeyId The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
 #' data. For more information, see [Amazon Resource
 #' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms).
@@ -439,6 +562,20 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' For more information about using tags to control access, see
 #' [Controlling access to Amazon Web Services resources using
 #' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
+#' @param logGroupClass Use this parameter to specify the log group class for this log group.
+#' There are two classes:
+#' 
+#' -   The `Standard` log class supports all CloudWatch Logs features.
+#' 
+#' -   The `Infrequent Access` log class supports a subset of CloudWatch
+#'     Logs features and incurs lower costs.
+#' 
+#' If you omit this parameter, the default of `STANDARD` is used.
+#' 
+#' After a log group is created, its class can't be changed.
+#' 
+#' For details about the features supported by each class, see [Log
+#' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
 #'
 #' @return
 #' An empty list.
@@ -450,7 +587,8 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #'   kmsKeyId = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"
 #' )
 #' ```
 #'
@@ -459,14 +597,14 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' @rdname cloudwatchlogs_create_log_group
 #'
 #' @aliases cloudwatchlogs_create_log_group
-cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags = NULL) {
+cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags = NULL, logGroupClass = NULL) {
   op <- new_operation(
     name = "CreateLogGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$create_log_group_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, tags = tags)
+  input <- .cloudwatchlogs$create_log_group_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, tags = tags, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$create_log_group_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -869,6 +1007,51 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
   return(response)
 }
 .cloudwatchlogs$operations$delete_destination <- cloudwatchlogs_delete_destination
+
+#' Deletes the specified CloudWatch Logs anomaly detector
+#'
+#' @description
+#' Deletes the specified CloudWatch Logs anomaly detector.
+#'
+#' @usage
+#' cloudwatchlogs_delete_log_anomaly_detector(anomalyDetectorArn)
+#'
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector to delete. You can find the ARNs of log
+#' anomaly detectors in your account by using the
+#' [`list_log_anomaly_detectors`][cloudwatchlogs_list_log_anomaly_detectors]
+#' operation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_log_anomaly_detector(
+#'   anomalyDetectorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_log_anomaly_detector
+#'
+#' @aliases cloudwatchlogs_delete_log_anomaly_detector
+cloudwatchlogs_delete_log_anomaly_detector <- function(anomalyDetectorArn) {
+  op <- new_operation(
+    name = "DeleteLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
+  output <- .cloudwatchlogs$delete_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_log_anomaly_detector <- cloudwatchlogs_delete_log_anomaly_detector
 
 #' Deletes the specified log group and permanently deletes all the archived
 #' log events associated with the log group
@@ -1629,7 +1812,7 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' @usage
 #' cloudwatchlogs_describe_log_groups(accountIdentifiers,
 #'   logGroupNamePrefix, logGroupNamePattern, nextToken, limit,
-#'   includeLinkedAccounts)
+#'   includeLinkedAccounts, logGroupClass)
 #'
 #' @param accountIdentifiers When `includeLinkedAccounts` is set to `True`, use this parameter to
 #' specify the list of accounts to search. You can specify as many as 20
@@ -1661,6 +1844,15 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' null value, the operation returns all log groups in the monitoring
 #' account and all log groups in all source accounts that are linked to the
 #' monitoring account.
+#' @param logGroupClass Specifies the log group class for this log group. There are two classes:
+#' 
+#' -   The `Standard` log class supports all CloudWatch Logs features.
+#' 
+#' -   The `Infrequent Access` log class supports a subset of CloudWatch
+#'     Logs features and incurs lower costs.
+#' 
+#' For details about the features supported by each class, see [Log
+#' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
 #'
 #' @return
 #' A list with the following syntax:
@@ -1678,7 +1870,8 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #'       dataProtectionStatus = "ACTIVATED"|"DELETED"|"ARCHIVED"|"DISABLED",
 #'       inheritedProperties = list(
 #'         "ACCOUNT_DATA_PROTECTION"
-#'       )
+#'       ),
+#'       logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1695,7 +1888,8 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #'   logGroupNamePattern = "string",
 #'   nextToken = "string",
 #'   limit = 123,
-#'   includeLinkedAccounts = TRUE|FALSE
+#'   includeLinkedAccounts = TRUE|FALSE,
+#'   logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"
 #' )
 #' ```
 #'
@@ -1704,14 +1898,14 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' @rdname cloudwatchlogs_describe_log_groups
 #'
 #' @aliases cloudwatchlogs_describe_log_groups
-cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL) {
+cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGroupNamePrefix = NULL, logGroupNamePattern = NULL, nextToken = NULL, limit = NULL, includeLinkedAccounts = NULL, logGroupClass = NULL) {
   op <- new_operation(
     name = "DescribeLogGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups")
   )
-  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts)
+  input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$describe_log_groups_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -1994,7 +2188,9 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #'
 #' @description
 #' This operation returns a paginated list of your saved CloudWatch Logs
-#' Insights query definitions.
+#' Insights query definitions. You can retrieve query definitions from the
+#' current account or from a source account that is linked to the current
+#' account.
 #' 
 #' You can use the `queryDefinitionNamePrefix` parameter to limit the
 #' results to only the query definitions that have names that start with a
@@ -2713,6 +2909,66 @@ cloudwatchlogs_get_delivery_source <- function(name) {
 }
 .cloudwatchlogs$operations$get_delivery_source <- cloudwatchlogs_get_delivery_source
 
+#' Retrieves information about the log anomaly detector that you specify
+#'
+#' @description
+#' Retrieves information about the log anomaly detector that you specify.
+#'
+#' @usage
+#' cloudwatchlogs_get_log_anomaly_detector(anomalyDetectorArn)
+#'
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector to retrieve information about. You can
+#' find the ARNs of log anomaly detectors in your account by using the
+#' [`list_log_anomaly_detectors`][cloudwatchlogs_list_log_anomaly_detectors]
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   detectorName = "string",
+#'   logGroupArnList = list(
+#'     "string"
+#'   ),
+#'   evaluationFrequency = "ONE_MIN"|"FIVE_MIN"|"TEN_MIN"|"FIFTEEN_MIN"|"THIRTY_MIN"|"ONE_HOUR",
+#'   filterPattern = "string",
+#'   anomalyDetectorStatus = "INITIALIZING"|"TRAINING"|"ANALYZING"|"FAILED"|"DELETED"|"PAUSED",
+#'   kmsKeyId = "string",
+#'   creationTimeStamp = 123,
+#'   lastModifiedTimeStamp = 123,
+#'   anomalyVisibilityTime = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_log_anomaly_detector(
+#'   anomalyDetectorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_log_anomaly_detector
+#'
+#' @aliases cloudwatchlogs_get_log_anomaly_detector
+cloudwatchlogs_get_log_anomaly_detector <- function(anomalyDetectorArn) {
+  op <- new_operation(
+    name = "GetLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
+  output <- .cloudwatchlogs$get_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_log_anomaly_detector <- cloudwatchlogs_get_log_anomaly_detector
+
 #' Lists log events from the specified log stream
 #'
 #' @description
@@ -3064,6 +3320,173 @@ cloudwatchlogs_get_query_results <- function(queryId) {
   return(response)
 }
 .cloudwatchlogs$operations$get_query_results <- cloudwatchlogs_get_query_results
+
+#' Returns a list of anomalies that log anomaly detectors have found
+#'
+#' @description
+#' Returns a list of anomalies that log anomaly detectors have found. For
+#' details about the structure format of each anomaly object that is
+#' returned, see the example in this section.
+#'
+#' @usage
+#' cloudwatchlogs_list_anomalies(anomalyDetectorArn, suppressionState,
+#'   limit, nextToken)
+#'
+#' @param anomalyDetectorArn Use this to optionally limit the results to only the anomalies found by
+#' a certain anomaly detector.
+#' @param suppressionState You can specify this parameter if you want to the operation to return
+#' only anomalies that are currently either suppressed or unsuppressed.
+#' @param limit The maximum number of items to return. If you don't specify a value, the
+#' default maximum value of 50 items is used.
+#' @param nextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   anomalies = list(
+#'     list(
+#'       anomalyId = "string",
+#'       patternId = "string",
+#'       anomalyDetectorArn = "string",
+#'       patternString = "string",
+#'       patternRegex = "string",
+#'       priority = "string",
+#'       firstSeen = 123,
+#'       lastSeen = 123,
+#'       description = "string",
+#'       active = TRUE|FALSE,
+#'       state = "Active"|"Suppressed"|"Baseline",
+#'       histogram = list(
+#'         123
+#'       ),
+#'       logSamples = list(
+#'         "string"
+#'       ),
+#'       patternTokens = list(
+#'         list(
+#'           dynamicTokenPosition = 123,
+#'           isDynamic = TRUE|FALSE,
+#'           tokenString = "string",
+#'           enumerations = list(
+#'             123
+#'           )
+#'         )
+#'       ),
+#'       logGroupArnList = list(
+#'         "string"
+#'       ),
+#'       suppressed = TRUE|FALSE,
+#'       suppressedDate = 123,
+#'       suppressedUntil = 123,
+#'       isPatternLevelSuppression = TRUE|FALSE
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_anomalies(
+#'   anomalyDetectorArn = "string",
+#'   suppressionState = "SUPPRESSED"|"UNSUPPRESSED",
+#'   limit = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_anomalies
+#'
+#' @aliases cloudwatchlogs_list_anomalies
+cloudwatchlogs_list_anomalies <- function(anomalyDetectorArn = NULL, suppressionState = NULL, limit = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAnomalies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalies")
+  )
+  input <- .cloudwatchlogs$list_anomalies_input(anomalyDetectorArn = anomalyDetectorArn, suppressionState = suppressionState, limit = limit, nextToken = nextToken)
+  output <- .cloudwatchlogs$list_anomalies_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_anomalies <- cloudwatchlogs_list_anomalies
+
+#' Retrieves a list of the log anomaly detectors in the account
+#'
+#' @description
+#' Retrieves a list of the log anomaly detectors in the account.
+#'
+#' @usage
+#' cloudwatchlogs_list_log_anomaly_detectors(filterLogGroupArn, limit,
+#'   nextToken)
+#'
+#' @param filterLogGroupArn Use this to optionally filter the results to only include anomaly
+#' detectors that are associated with the specified log group.
+#' @param limit The maximum number of items to return. If you don't specify a value, the
+#' default maximum value of 50 items is used.
+#' @param nextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   anomalyDetectors = list(
+#'     list(
+#'       anomalyDetectorArn = "string",
+#'       detectorName = "string",
+#'       logGroupArnList = list(
+#'         "string"
+#'       ),
+#'       evaluationFrequency = "ONE_MIN"|"FIVE_MIN"|"TEN_MIN"|"FIFTEEN_MIN"|"THIRTY_MIN"|"ONE_HOUR",
+#'       filterPattern = "string",
+#'       anomalyDetectorStatus = "INITIALIZING"|"TRAINING"|"ANALYZING"|"FAILED"|"DELETED"|"PAUSED",
+#'       kmsKeyId = "string",
+#'       creationTimeStamp = 123,
+#'       lastModifiedTimeStamp = 123,
+#'       anomalyVisibilityTime = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_log_anomaly_detectors(
+#'   filterLogGroupArn = "string",
+#'   limit = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_log_anomaly_detectors
+#'
+#' @aliases cloudwatchlogs_list_log_anomaly_detectors
+cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, limit = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListLogAnomalyDetectors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalyDetectors")
+  )
+  input <- .cloudwatchlogs$list_log_anomaly_detectors_input(filterLogGroupArn = filterLogGroupArn, limit = limit, nextToken = nextToken)
+  output <- .cloudwatchlogs$list_log_anomaly_detectors_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_log_anomaly_detectors <- cloudwatchlogs_list_log_anomaly_detectors
 
 #' Displays the tags associated with a CloudWatch Logs resource
 #'
@@ -3484,8 +3907,9 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
 #' 
 #' Only some Amazon Web Services services support being configured as a
 #' delivery source. These services are listed as **Supported \[V2
-#' Permissions\]** in the table at Enabling logging from Amazon Web
-#' Services services.
+#' Permissions\]** in the table at [Enabling logging from Amazon Web
+#' Services
+#' services.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html)
 #' 
 #' If you use this operation to update an existing delivery destination,
 #' all the current delivery destination parameters are overwritten with the
@@ -3591,8 +4015,9 @@ cloudwatchlogs_put_delivery_destination <- function(name, outputFormat = NULL, d
 #' 
 #' Only some Amazon Web Services services support being configured as a
 #' delivery source. These services are listed as **Supported \[V2
-#' Permissions\]** in the table at Enabling logging from Amazon Web
-#' Services services.
+#' Permissions\]** in the table at [Enabling logging from Amazon Web
+#' Services
+#' services.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html)
 #' 
 #' The contents of the policy must include two statements. One statement
 #' enables general logs delivery, and the other allows delivery to the
@@ -3685,8 +4110,9 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' 
 #' Only some Amazon Web Services services support being configured as a
 #' delivery source. These services are listed as **Supported \[V2
-#' Permissions\]** in the table at Enabling logging from Amazon Web
-#' Services services.
+#' Permissions\]** in the table at [Enabling logging from Amazon Web
+#' Services
+#' services.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html)
 #' 
 #' If you use this operation to update an existing delivery source, all the
 #' current delivery source parameters are overwritten with the new
@@ -4459,6 +4885,172 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 }
 .cloudwatchlogs$operations$put_subscription_filter <- cloudwatchlogs_put_subscription_filter
 
+#' Starts a Live Tail streaming session for one or more log groups
+#'
+#' @description
+#' Starts a Live Tail streaming session for one or more log groups. A Live
+#' Tail session returns a stream of log events that have been recently
+#' ingested in the log groups. For more information, see [Use Live Tail to
+#' view logs in near real
+#' time](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html).
+#' 
+#' The response to this operation is a response stream, over which the
+#' server sends live log events and the client receives them.
+#' 
+#' The following objects are sent over the stream:
+#' 
+#' -   A single
+#'     [LiveTailSessionStart](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_LiveTailSessionStart.html)
+#'     object is sent at the start of the session.
+#' 
+#' -   Every second, a
+#'     [LiveTailSessionUpdate](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_LiveTailSessionUpdate.html)
+#'     object is sent. Each of these objects contains an array of the
+#'     actual log events.
+#' 
+#'     If no new log events were ingested in the past second, the
+#'     `LiveTailSessionUpdate` object will contain an empty array.
+#' 
+#'     The array of log events contained in a `LiveTailSessionUpdate` can
+#'     include as many as 500 log events. If the number of log events
+#'     matching the request exceeds 500 per second, the log events are
+#'     sampled down to 500 log events to be included in each
+#'     `LiveTailSessionUpdate` object.
+#' 
+#'     If your client consumes the log events slower than the server
+#'     produces them, CloudWatch Logs buffers up to 10
+#'     `LiveTailSessionUpdate` events or 5000 log events, after which it
+#'     starts dropping the oldest events.
+#' 
+#' -   A
+#'     [SessionStreamingException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)
+#'     object is returned if an unknown error occurs on the server side.
+#' 
+#' -   A
+#'     [SessionTimeoutException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)
+#'     object is returned when the session times out, after it has been
+#'     kept open for three hours.
+#' 
+#' You can end a session before it times out by closing the session stream
+#' or by closing the client that is receiving the stream. The session also
+#' ends if the established connection between the client and the server
+#' breaks.
+#'
+#' @usage
+#' cloudwatchlogs_start_live_tail(logGroupIdentifiers, logStreamNames,
+#'   logStreamNamePrefixes, logEventFilterPattern)
+#'
+#' @param logGroupIdentifiers &#91;required&#93; An array where each item in the array is a log group to include in the
+#' Live Tail session.
+#' 
+#' Specify each log group by its ARN.
+#' 
+#' If you specify an ARN, the ARN can't end with an asterisk (*).
+#' 
+#' You can include up to 10 log groups.
+#' @param logStreamNames If you specify this parameter, then only log events in the log streams
+#' that you specify here are included in the Live Tail session.
+#' 
+#' You can specify this parameter only if you specify only one log group in
+#' `logGroupIdentifiers`.
+#' @param logStreamNamePrefixes If you specify this parameter, then only log events in the log streams
+#' that have names that start with the prefixes that you specify here are
+#' included in the Live Tail session.
+#' 
+#' You can specify this parameter only if you specify only one log group in
+#' `logGroupIdentifiers`.
+#' @param logEventFilterPattern An optional pattern to use to filter the results to include only log
+#' events that match the pattern. For example, a filter pattern of
+#' `error 404` causes only log events that include both `error` and `404`
+#' to be included in the Live Tail stream.
+#' 
+#' Regular expression filter patterns are supported.
+#' 
+#' For more information about filter pattern syntax, see [Filter and
+#' Pattern
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   responseStream = list(
+#'     sessionStart = list(
+#'       requestId = "string",
+#'       sessionId = "string",
+#'       logGroupIdentifiers = list(
+#'         "string"
+#'       ),
+#'       logStreamNames = list(
+#'         "string"
+#'       ),
+#'       logStreamNamePrefixes = list(
+#'         "string"
+#'       ),
+#'       logEventFilterPattern = "string"
+#'     ),
+#'     sessionUpdate = list(
+#'       sessionMetadata = list(
+#'         sampled = TRUE|FALSE
+#'       ),
+#'       sessionResults = list(
+#'         list(
+#'           logStreamName = "string",
+#'           logGroupIdentifier = "string",
+#'           message = "string",
+#'           timestamp = 123,
+#'           ingestionTime = 123
+#'         )
+#'       )
+#'     ),
+#'     SessionTimeoutException = list(
+#'       message = "string"
+#'     ),
+#'     SessionStreamingException = list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_live_tail(
+#'   logGroupIdentifiers = list(
+#'     "string"
+#'   ),
+#'   logStreamNames = list(
+#'     "string"
+#'   ),
+#'   logStreamNamePrefixes = list(
+#'     "string"
+#'   ),
+#'   logEventFilterPattern = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_start_live_tail
+#'
+#' @aliases cloudwatchlogs_start_live_tail
+cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames = NULL, logStreamNamePrefixes = NULL, logEventFilterPattern = NULL) {
+  op <- new_operation(
+    name = "StartLiveTail",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$start_live_tail_input(logGroupIdentifiers = logGroupIdentifiers, logStreamNames = logStreamNames, logStreamNamePrefixes = logStreamNamePrefixes, logEventFilterPattern = logEventFilterPattern)
+  output <- .cloudwatchlogs$start_live_tail_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$start_live_tail <- cloudwatchlogs_start_live_tail
+
 #' Schedules a query of a log group using CloudWatch Logs Insights
 #'
 #' @description
@@ -4947,3 +5539,137 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .cloudwatchlogs$operations$untag_resource <- cloudwatchlogs_untag_resource
+
+#' Use this operation to suppress anomaly detection for a specified anomaly
+#' or pattern
+#'
+#' @description
+#' Use this operation to *suppress* anomaly detection for a specified
+#' anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won’t
+#' report new occurrences of that anomaly and won't update that anomaly
+#' with new data. If you suppress a pattern, CloudWatch Logs won’t report
+#' any anomalies related to that pattern.
+#' 
+#' You must specify either `anomalyId` or `patternId`, but you can't
+#' specify both parameters in the same operation.
+#' 
+#' If you have previously used this operation to suppress detection of a
+#' pattern or anomaly, you can use it again to cause CloudWatch Logs to end
+#' the suppression. To do this, use this operation and specify the anomaly
+#' or pattern to stop suppressing, and omit the `suppressionType` and
+#' `suppressionPeriod` parameters.
+#'
+#' @usage
+#' cloudwatchlogs_update_anomaly(anomalyId, patternId, anomalyDetectorArn,
+#'   suppressionType, suppressionPeriod)
+#'
+#' @param anomalyId If you are suppressing or unsuppressing an anomaly, specify its unique
+#' ID here. You can find anomaly IDs by using the
+#' [`list_anomalies`][cloudwatchlogs_list_anomalies] operation.
+#' @param patternId If you are suppressing or unsuppressing an pattern, specify its unique
+#' ID here. You can find pattern IDs by using the
+#' [`list_anomalies`][cloudwatchlogs_list_anomalies] operation.
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector that this operation is to act on.
+#' @param suppressionType Use this to specify whether the suppression to be temporary or infinite.
+#' If you specify `LIMITED`, you must also specify a `suppressionPeriod`.
+#' If you specify `INFINITE`, any value for `suppressionPeriod` is ignored.
+#' @param suppressionPeriod If you are temporarily suppressing an anomaly or pattern, use this
+#' structure to specify how long the suppression is to last.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_anomaly(
+#'   anomalyId = "string",
+#'   patternId = "string",
+#'   anomalyDetectorArn = "string",
+#'   suppressionType = "LIMITED"|"INFINITE",
+#'   suppressionPeriod = list(
+#'     value = 123,
+#'     suppressionUnit = "SECONDS"|"MINUTES"|"HOURS"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_anomaly
+#'
+#' @aliases cloudwatchlogs_update_anomaly
+cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, anomalyDetectorArn, suppressionType = NULL, suppressionPeriod = NULL) {
+  op <- new_operation(
+    name = "UpdateAnomaly",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$update_anomaly_input(anomalyId = anomalyId, patternId = patternId, anomalyDetectorArn = anomalyDetectorArn, suppressionType = suppressionType, suppressionPeriod = suppressionPeriod)
+  output <- .cloudwatchlogs$update_anomaly_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_anomaly <- cloudwatchlogs_update_anomaly
+
+#' Updates an existing log anomaly detector
+#'
+#' @description
+#' Updates an existing log anomaly detector.
+#'
+#' @usage
+#' cloudwatchlogs_update_log_anomaly_detector(anomalyDetectorArn,
+#'   evaluationFrequency, filterPattern, anomalyVisibilityTime, enabled)
+#'
+#' @param anomalyDetectorArn &#91;required&#93; The ARN of the anomaly detector that you want to update.
+#' @param evaluationFrequency Specifies how often the anomaly detector runs and look for anomalies.
+#' Set this value according to the frequency that the log group receives
+#' new logs. For example, if the log group receives new log events every 10
+#' minutes, then setting `evaluationFrequency` to `FIFTEEN_MIN` might be
+#' appropriate.
+#' @param filterPattern 
+#' @param anomalyVisibilityTime The number of days to use as the life cycle of anomalies. After this
+#' time, anomalies are automatically baselined and the anomaly detector
+#' model will treat new occurrences of similar event as normal. Therefore,
+#' if you do not correct the cause of an anomaly during this time, it will
+#' be considered normal going forward and will not be detected.
+#' @param enabled &#91;required&#93; Use this parameter to pause or restart the anomaly detector.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_log_anomaly_detector(
+#'   anomalyDetectorArn = "string",
+#'   evaluationFrequency = "ONE_MIN"|"FIVE_MIN"|"TEN_MIN"|"FIFTEEN_MIN"|"THIRTY_MIN"|"ONE_HOUR",
+#'   filterPattern = "string",
+#'   anomalyVisibilityTime = 123,
+#'   enabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_log_anomaly_detector
+#'
+#' @aliases cloudwatchlogs_update_log_anomaly_detector
+cloudwatchlogs_update_log_anomaly_detector <- function(anomalyDetectorArn, evaluationFrequency = NULL, filterPattern = NULL, anomalyVisibilityTime = NULL, enabled) {
+  op <- new_operation(
+    name = "UpdateLogAnomalyDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$update_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, anomalyVisibilityTime = anomalyVisibilityTime, enabled = enabled)
+  output <- .cloudwatchlogs$update_log_anomaly_detector_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_log_anomaly_detector <- cloudwatchlogs_update_log_anomaly_detector

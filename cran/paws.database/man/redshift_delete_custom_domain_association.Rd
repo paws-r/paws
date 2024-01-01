@@ -5,10 +5,12 @@
 \title{Contains information about deleting a custom domain association for a
 cluster}
 \usage{
-redshift_delete_custom_domain_association(ClusterIdentifier)
+redshift_delete_custom_domain_association(ClusterIdentifier, CustomDomainName)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster to delete a custom domain association for.}
+
+\item{CustomDomainName}{[required] The custom domain name for the custom domain association.}
 }
 \description{
 Contains information about deleting a custom domain association for a cluster.

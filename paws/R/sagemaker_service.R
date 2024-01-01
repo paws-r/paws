@@ -109,12 +109,13 @@ NULL
 #'  \link[=sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
 #'  \link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
 #'  \link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
+#'  \link[=sagemaker_create_cluster]{create_cluster} \tab Creates a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
 #'  \link[=sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
 #'  \link[=sagemaker_create_context]{create_context} \tab Creates a context\cr
 #'  \link[=sagemaker_create_data_quality_job_definition]{create_data_quality_job_definition} \tab Creates a definition for a job that monitors data quality and drift\cr
 #'  \link[=sagemaker_create_device_fleet]{create_device_fleet} \tab Creates a device fleet\cr
-#'  \link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain used by Amazon SageMaker Studio\cr
+#'  \link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain\cr
 #'  \link[=sagemaker_create_edge_deployment_plan]{create_edge_deployment_plan} \tab Creates an edge deployment plan, consisting of multiple stages\cr
 #'  \link[=sagemaker_create_edge_deployment_stage]{create_edge_deployment_stage} \tab Creates a new stage in an existing edge deployment plan\cr
 #'  \link[=sagemaker_create_edge_packaging_job]{create_edge_packaging_job} \tab Starts a SageMaker Edge Manager model packaging job\cr
@@ -128,6 +129,7 @@ NULL
 #'  \link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
 #'  \link[=sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
 #'  \link[=sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker image specified by ImageName\cr
+#'  \link[=sagemaker_create_inference_component]{create_inference_component} \tab Creates an inference component, which is a SageMaker hosting object that you can use to deploy a model to an endpoint\cr
 #'  \link[=sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 #'  \link[=sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
 #'  \link[=sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
@@ -148,7 +150,7 @@ NULL
 #'  \link[=sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
 #'  \link[=sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
 #'  \link[=sagemaker_create_space]{create_space} \tab Creates a space used for real time collaboration in a Domain\cr
-#'  \link[=sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Studio Lifecycle Configuration\cr
+#'  \link[=sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 #'  \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
 #'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an SageMaker trial\cr
@@ -162,7 +164,9 @@ NULL
 #'  \link[=sagemaker_delete_app_image_config]{delete_app_image_config} \tab Deletes an AppImageConfig\cr
 #'  \link[=sagemaker_delete_artifact]{delete_artifact} \tab Deletes an artifact\cr
 #'  \link[=sagemaker_delete_association]{delete_association} \tab Deletes an association\cr
+#'  \link[=sagemaker_delete_cluster]{delete_cluster} \tab Delete a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_delete_code_repository]{delete_code_repository} \tab Deletes the specified Git repository from your account\cr
+#'  \link[=sagemaker_delete_compilation_job]{delete_compilation_job} \tab Deletes the specified compilation job\cr
 #'  \link[=sagemaker_delete_context]{delete_context} \tab Deletes an context\cr
 #'  \link[=sagemaker_delete_data_quality_job_definition]{delete_data_quality_job_definition} \tab Deletes a data quality monitoring job definition\cr
 #'  \link[=sagemaker_delete_device_fleet]{delete_device_fleet} \tab Deletes a fleet\cr
@@ -179,6 +183,7 @@ NULL
 #'  \link[=sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
 #'  \link[=sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
 #'  \link[=sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
+#'  \link[=sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
 #'  \link[=sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
 #'  \link[=sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
 #'  \link[=sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
@@ -194,7 +199,7 @@ NULL
 #'  \link[=sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 #'  \link[=sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 #'  \link[=sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
-#'  \link[=sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Studio Lifecycle Configuration\cr
+#'  \link[=sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[=sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an SageMaker resource\cr
 #'  \link[=sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
 #'  \link[=sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component\cr
@@ -209,6 +214,8 @@ NULL
 #'  \link[=sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
 #'  \link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an AutoML job created by calling CreateAutoMLJob\cr
 #'  \link[=sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
+#'  \link[=sagemaker_describe_cluster]{describe_cluster} \tab Retrieves information of a SageMaker HyperPod cluster\cr
+#'  \link[=sagemaker_describe_cluster_node]{describe_cluster_node} \tab Retrieves information of an instance (also called a node interchangeably) of a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 #'  \link[=sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 #'  \link[=sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -230,6 +237,7 @@ NULL
 #'  \link[=sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Returns a description of a hyperparameter tuning job, depending on the fields selected\cr
 #'  \link[=sagemaker_describe_image]{describe_image} \tab Describes a SageMaker image\cr
 #'  \link[=sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker image\cr
+#'  \link[=sagemaker_describe_inference_component]{describe_inference_component} \tab Returns information about an inference component\cr
 #'  \link[=sagemaker_describe_inference_experiment]{describe_inference_experiment} \tab Returns details about an inference experiment\cr
 #'  \link[=sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
 #'  \link[=sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
@@ -251,7 +259,7 @@ NULL
 #'  \link[=sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
 #'  \link[=sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
 #'  \link[=sagemaker_describe_space]{describe_space} \tab Describes the space\cr
-#'  \link[=sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Studio Lifecycle Configuration\cr
+#'  \link[=sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[=sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
 #'  \link[=sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
 #'  \link[=sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job\cr
@@ -279,6 +287,8 @@ NULL
 #'  \link[=sagemaker_list_associations]{list_associations} \tab Lists the associations in your account and their properties\cr
 #'  \link[=sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs\cr
 #'  \link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the candidates created for the job\cr
+#'  \link[=sagemaker_list_cluster_nodes]{list_cluster_nodes} \tab Retrieves the list of instances (also called nodes interchangeably) in a SageMaker HyperPod cluster\cr
+#'  \link[=sagemaker_list_clusters]{list_clusters} \tab Retrieves the list of SageMaker HyperPod clusters\cr
 #'  \link[=sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account\cr
 #'  \link[=sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters\cr
 #'  \link[=sagemaker_list_contexts]{list_contexts} \tab Lists the contexts in your account and their properties\cr
@@ -300,6 +310,7 @@ NULL
 #'  \link[=sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs} \tab Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account\cr
 #'  \link[=sagemaker_list_images]{list_images} \tab Lists the images in your account and their properties\cr
 #'  \link[=sagemaker_list_image_versions]{list_image_versions} \tab Lists the versions of a specified image and their properties\cr
+#'  \link[=sagemaker_list_inference_components]{list_inference_components} \tab Lists the inference components in your account and their properties\cr
 #'  \link[=sagemaker_list_inference_experiments]{list_inference_experiments} \tab Returns the list of all inference experiments\cr
 #'  \link[=sagemaker_list_inference_recommendations_jobs]{list_inference_recommendations_jobs} \tab Lists recommendation jobs that satisfy various filters\cr
 #'  \link[=sagemaker_list_inference_recommendations_job_steps]{list_inference_recommendations_job_steps} \tab Returns a list of the subtasks for an Inference Recommender job\cr
@@ -331,7 +342,7 @@ NULL
 #'  \link[=sagemaker_list_resource_catalogs]{list_resource_catalogs} \tab Lists Amazon SageMaker Catalogs based on given filters and orders\cr
 #'  \link[=sagemaker_list_spaces]{list_spaces} \tab Lists spaces\cr
 #'  \link[=sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
-#'  \link[=sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Studio Lifecycle Configurations in your Amazon Web Services Account\cr
+#'  \link[=sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Amazon SageMaker Studio Lifecycle Configurations in your Amazon Web Services Account\cr
 #'  \link[=sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace\cr
 #'  \link[=sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified SageMaker resource\cr
 #'  \link[=sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs\cr
@@ -372,6 +383,7 @@ NULL
 #'  \link[=sagemaker_update_action]{update_action} \tab Updates an action\cr
 #'  \link[=sagemaker_update_app_image_config]{update_app_image_config} \tab Updates the properties of an AppImageConfig\cr
 #'  \link[=sagemaker_update_artifact]{update_artifact} \tab Updates an artifact\cr
+#'  \link[=sagemaker_update_cluster]{update_cluster} \tab Update a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values\cr
 #'  \link[=sagemaker_update_context]{update_context} \tab Updates a context\cr
 #'  \link[=sagemaker_update_device_fleet]{update_device_fleet} \tab Updates a fleet of devices\cr
@@ -385,6 +397,8 @@ NULL
 #'  \link[=sagemaker_update_hub]{update_hub} \tab Update a hub\cr
 #'  \link[=sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
 #'  \link[=sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker image version\cr
+#'  \link[=sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr
+#'  \link[=sagemaker_update_inference_component_runtime_config]{update_inference_component_runtime_config} \tab Runtime settings for a model that is deployed with an inference component\cr
 #'  \link[=sagemaker_update_inference_experiment]{update_inference_experiment} \tab Updates an inference experiment that you created\cr
 #'  \link[=sagemaker_update_model_card]{update_model_card} \tab Update an Amazon SageMaker Model Card\cr
 #'  \link[=sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr

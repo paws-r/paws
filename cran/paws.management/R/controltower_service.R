@@ -5,9 +5,10 @@ NULL
 #' AWS Control Tower
 #'
 #' @description
-#' These interfaces allow you to apply the AWS library of pre-defined
-#' *controls* to your organizational units, programmatically. In AWS
-#' Control Tower, the terms "control" and "guardrail" are synonyms.
+#' These interfaces allow you to apply the Amazon Web Services library of
+#' pre-defined *controls* to your organizational units, programmatically.
+#' In Amazon Web Services Control Tower, the terms "control" and
+#' "guardrail" are synonyms.
 #' 
 #' To call these APIs, you'll need to know:
 #' 
@@ -19,26 +20,27 @@ NULL
 #' 
 #' -   the ARN associated with a resource that you wish to tag or untag.
 #' 
-#' **To get the `controlIdentifier` for your AWS Control Tower control:**
+#' **To get the `controlIdentifier` for your Amazon Web Services Control
+#' Tower control:**
 #' 
 #' The `controlIdentifier` is an ARN that is specified for each control.
 #' You can view the `controlIdentifier` in the console on the **Control
 #' details** page, as well as in the documentation.
 #' 
-#' The `controlIdentifier` is unique in each AWS Region for each control.
-#' You can find the `controlIdentifier` for each Region and control in the
-#' [Tables of control
+#' The `controlIdentifier` is unique in each Amazon Web Services Region for
+#' each control. You can find the `controlIdentifier` for each Region and
+#' control in the [Tables of control
 #' metadata](https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html)
-#' in the *AWS Control Tower User Guide.*
+#' in the *Amazon Web Services Control Tower User Guide.*
 #' 
-#' A quick-reference list of control identifers for the AWS Control Tower
-#' legacy *Strongly recommended* and *Elective* controls is given in
-#' [Resource identifiers for APIs and
+#' A quick-reference list of control identifers for the Amazon Web Services
+#' Control Tower legacy *Strongly recommended* and *Elective* controls is
+#' given in [Resource identifiers for APIs and
 #' controls](https://docs.aws.amazon.com/controltower/latest/userguide/) in
 #' the [Controls reference guide
 #' section](https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html)
-#' of the *AWS Control Tower User Guide*. Remember that *Mandatory*
-#' controls cannot be added or removed.
+#' of the *Amazon Web Services Control Tower User Guide*. Remember that
+#' *Mandatory* controls cannot be added or removed.
 #' 
 #' **ARN format:** `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}`
 #' 
@@ -50,8 +52,9 @@ NULL
 #' 
 #' The `targetIdentifier` is the ARN for an OU.
 #' 
-#' In the AWS Organizations console, you can find the ARN for the OU on the
-#' **Organizational unit details** page associated with that OU.
+#' In the Amazon Web Services Organizations console, you can find the ARN
+#' for the OU on the **Organizational unit details** page associated with
+#' that OU.
 #' 
 #' **OU ARN format:**
 #' 
@@ -77,7 +80,8 @@ NULL
 #' -   [Controls library
 #'     groupings](https://docs.aws.amazon.com/controltower/latest/userguide/controls-reference.html)
 #' 
-#' -   [Creating AWS Control Tower resources with AWS
+#' -   [Creating Amazon Web Services Control Tower resources with Amazon
+#'     Web Services
 #'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
 #' 
 #' To view the open source resource repository on GitHub, see
@@ -85,16 +89,18 @@ NULL
 #' 
 #' **Recording API Requests**
 #' 
-#' AWS Control Tower supports AWS CloudTrail, a service that records AWS
-#' API calls for your AWS account and delivers log files to an Amazon S3
+#' Amazon Web Services Control Tower supports Amazon Web Services
+#' CloudTrail, a service that records Amazon Web Services API calls for
+#' your Amazon Web Services account and delivers log files to an Amazon S3
 #' bucket. By using information collected by CloudTrail, you can determine
-#' which requests the AWS Control Tower service received, who made the
-#' request and when, and so on. For more about AWS Control Tower and its
-#' support for CloudTrail, see [Logging AWS Control Tower Actions with AWS
+#' which requests the Amazon Web Services Control Tower service received,
+#' who made the request and when, and so on. For more about Amazon Web
+#' Services Control Tower and its support for CloudTrail, see [Logging
+#' Amazon Web Services Control Tower Actions with Amazon Web Services
 #' CloudTrail](https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html)
-#' in the AWS Control Tower User Guide. To learn more about CloudTrail,
-#' including how to turn it on and find your log files, see the AWS
-#' CloudTrail User Guide.
+#' in the Amazon Web Services Control Tower User Guide. To learn more about
+#' CloudTrail, including how to turn it on and find your log files, see the
+#' Amazon Web Services CloudTrail User Guide.
 #'
 #' @param
 #' config
@@ -172,21 +178,29 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- controltower()
-#' svc$disable_control(
+#' svc$create_landing_zone(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=controltower_create_landing_zone]{create_landing_zone} \tab Creates a new landing zone\cr
+#'  \link[=controltower_delete_landing_zone]{delete_landing_zone} \tab Decommissions a landing zone\cr
 #'  \link[=controltower_disable_control]{disable_control} \tab This API call turns off a control\cr
 #'  \link[=controltower_enable_control]{enable_control} \tab This API call activates a control\cr
 #'  \link[=controltower_get_control_operation]{get_control_operation} \tab Returns the status of a particular EnableControl or DisableControl operation\cr
 #'  \link[=controltower_get_enabled_control]{get_enabled_control} \tab Retrieves details about an enabled control\cr
-#'  \link[=controltower_list_enabled_controls]{list_enabled_controls} \tab Lists the controls enabled by AWS Control Tower on the specified organizational unit and the accounts it contains\cr
+#'  \link[=controltower_get_landing_zone]{get_landing_zone} \tab Returns details about the landing zone\cr
+#'  \link[=controltower_get_landing_zone_operation]{get_landing_zone_operation} \tab Returns the status of the specified landing zone operation\cr
+#'  \link[=controltower_list_enabled_controls]{list_enabled_controls} \tab Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains\cr
+#'  \link[=controltower_list_landing_zones]{list_landing_zones} \tab Returns the landing zone ARN for the landing zone deployed in your managed account\cr
 #'  \link[=controltower_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the resource\cr
+#'  \link[=controltower_reset_landing_zone]{reset_landing_zone} \tab This API call resets a landing zone\cr
 #'  \link[=controltower_tag_resource]{tag_resource} \tab Applies tags to a resource\cr
-#'  \link[=controltower_untag_resource]{untag_resource} \tab Removes tags from a resource
+#'  \link[=controltower_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+#'  \link[=controltower_update_enabled_control]{update_enabled_control} \tab Updates the configuration of an already enabled control\cr
+#'  \link[=controltower_update_landing_zone]{update_landing_zone} \tab This API call updates the landing zone
 #' }
 #'
 #' @return

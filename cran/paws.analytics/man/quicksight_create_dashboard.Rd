@@ -18,7 +18,9 @@ quicksight_create_dashboard(
   ThemeArn = NULL,
   Definition = NULL,
   ValidationStrategy = NULL,
-  FolderArns = NULL
+  FolderArns = NULL,
+  LinkSharingConfiguration = NULL,
+  LinkEntities = NULL
 )
 }
 \arguments{
@@ -96,6 +98,12 @@ errors.}
 
 \item{FolderArns}{When you create the dashboard, Amazon QuickSight adds the dashboard to
 these folders.}
+
+\item{LinkSharingConfiguration}{A structure that contains the permissions of a shareable link to the
+dashboard.}
+
+\item{LinkEntities}{A list of analysis Amazon Resource Names (ARNs) to be linked to the
+dashboard.}
 }
 \description{
 Creates a dashboard from either a template or directly with a \code{DashboardDefinition}. To first create a template, see the \code{\link[=quicksight_create_template]{create_template}} API operation.

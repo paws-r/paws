@@ -11,7 +11,8 @@ elbv2_modify_listener(
   SslPolicy = NULL,
   Certificates = NULL,
   DefaultActions = NULL,
-  AlpnPolicy = NULL
+  AlpnPolicy = NULL,
+  MutualAuthentication = NULL
 )
 }
 \arguments{
@@ -52,6 +53,8 @@ possible values:
 
 For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
+
+\item{MutualAuthentication}{The mutual authentication configuration information.}
 }
 \description{
 Replaces the specified properties of the specified listener. Any properties that you do not specify remain unchanged.

@@ -102,6 +102,13 @@ eventbridge_cancel_replay <- function(ReplayName) {
 #' @description
 #' Creates an API destination, which is an HTTP invocation endpoint
 #' configured as a target for events.
+#' 
+#' API destinations do not support private destinations, such as interface
+#' VPC endpoints.
+#' 
+#' For more information, see [API
+#' destinations](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
+#' in the *EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_create_api_destination(Name, Description, ConnectionArn,
@@ -560,14 +567,23 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NU
 #' 
 #' ` partner_name/event_namespace/event_name `
 #' 
-#' *partner_name* is determined during partner registration and identifies
-#' the partner to Amazon Web Services customers. *event_namespace* is
-#' determined by the partner and is a way for the partner to categorize
-#' their events. *event_name* is determined by the partner, and should
-#' uniquely identify an event-generating resource within the partner
-#' system. The combination of *event_namespace* and *event_name* should
-#' help Amazon Web Services customers decide whether to create an event bus
-#' to receive these events.
+#' -   *partner_name* is determined during partner registration, and
+#'     identifies the partner to Amazon Web Services customers.
+#' 
+#' -   *event_namespace* is determined by the partner, and is a way for the
+#'     partner to categorize their events.
+#' 
+#' -   *event_name* is determined by the partner, and should uniquely
+#'     identify an event-generating resource within the partner system.
+#' 
+#'     The *event_name* must be unique across all Amazon Web Services
+#'     customers. This is because the event source is a shared resource
+#'     between the partner and customer accounts, and each partner event
+#'     source unique in the partner account.
+#' 
+#' The combination of *event_namespace* and *event_name* should help Amazon
+#' Web Services customers decide whether to create an event bus to receive
+#' these events.
 #'
 #' @usage
 #' eventbridge_create_partner_event_source(Name, Account)
@@ -876,7 +892,7 @@ eventbridge_delete_connection <- function(Name) {
 #' endpoints, see [Making applications Regional-fault tolerant with global
 #' endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the Amazon EventBridge User Guide.
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_delete_endpoint(Name)
@@ -1327,7 +1343,7 @@ eventbridge_describe_connection <- function(Name) {
 #' information about global endpoints, see [Making applications
 #' Regional-fault tolerant with global endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the Amazon EventBridge User Guide..
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_describe_endpoint(Name, HomeRegion)
@@ -1685,7 +1701,7 @@ eventbridge_describe_replay <- function(ReplayName) {
 #'   Arn = "string",
 #'   EventPattern = "string",
 #'   ScheduleExpression = "string",
-#'   State = "ENABLED"|"DISABLED",
+#'   State = "ENABLED"|"DISABLED"|"ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS",
 #'   Description = "string",
 #'   RoleArn = "string",
 #'   ManagedBy = "string",
@@ -2052,7 +2068,7 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
 #' information about global endpoints, see [Making applications
 #' Regional-fault tolerant with global endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the Amazon EventBridge User Guide..
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_list_endpoints(NamePrefix, HomeRegion, NextToken,
@@ -2508,6 +2524,8 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
 #' @description
 #' Lists the rules for the specified target. You can see which of the rules
 #' in Amazon EventBridge can invoke a specific target in your account.
+#' 
+#' The maximum number of results per page for requests is 100.
 #'
 #' @usage
 #' eventbridge_list_rule_names_by_target(TargetArn, EventBusName,
@@ -2569,6 +2587,8 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 #' Lists your Amazon EventBridge rules. You can either list all the rules
 #' or you can provide a prefix to match to the rule names.
 #' 
+#' The maximum number of results per page for requests is 100.
+#' 
 #' ListRules does not list the targets of a rule. To see the targets
 #' associated with a rule, use
 #' [`list_targets_by_rule`][eventbridge_list_targets_by_rule].
@@ -2592,7 +2612,7 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 #'       Name = "string",
 #'       Arn = "string",
 #'       EventPattern = "string",
-#'       State = "ENABLED"|"DISABLED",
+#'       State = "ENABLED"|"DISABLED"|"ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS",
 #'       Description = "string",
 #'       ScheduleExpression = "string",
 #'       RoleArn = "string",
@@ -2693,6 +2713,8 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @description
 #' Lists the targets assigned to the specified rule.
+#' 
+#' The maximum number of results per page for requests is 100.
 #'
 #' @usage
 #' eventbridge_list_targets_by_rule(Rule, EventBusName, NextToken, Limit)
@@ -2876,6 +2898,18 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #' Sends custom events to Amazon EventBridge so that they can be matched to
 #' rules.
 #' 
+#' The maximum size for a PutEvents event entry is 256 KB. Entry size is
+#' calculated including the event and any necessary characters and keys of
+#' the JSON representation of the event. To learn more, see [Calculating
+#' PutEvents event entry
+#' size](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html)
+#' in the *Amazon EventBridge User Guide*
+#' 
+#' PutEvents accepts the data in JSON format. For the JSON number (integer)
+#' data type, the constraints are: a minimum value of
+#' -9,223,372,036,854,775,808 and a maximum value of
+#' 9,223,372,036,854,775,807.
+#' 
 #' PutEvents will only process nested JSON up to 1100 levels deep.
 #'
 #' @usage
@@ -2955,6 +2989,11 @@ eventbridge_put_events <- function(Entries, EndpointId = NULL) {
 #' @description
 #' This is used by SaaS partners to write events to a customer's partner
 #' event bus. Amazon Web Services customers do not use this operation.
+#' 
+#' For information on calculating event batch size, see [Calculating
+#' EventBridge PutEvents event entry
+#' size](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevent-size.html)
+#' in the *EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_put_partner_events(Entries)
@@ -3209,7 +3248,37 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' @param EventPattern The event pattern. For more information, see [Amazon EventBridge event
 #' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html)
 #' in the *Amazon EventBridge User Guide*.
-#' @param State Indicates whether the rule is enabled or disabled.
+#' @param State The state of the rule.
+#' 
+#' Valid values include:
+#' 
+#' -   `DISABLED`: The rule is disabled. EventBridge does not match any
+#'     events against the rule.
+#' 
+#' -   `ENABLED`: The rule is enabled. EventBridge matches events against
+#'     the rule, *except* for Amazon Web Services management events
+#'     delivered through CloudTrail.
+#' 
+#' -   `ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS`: The rule is enabled
+#'     for all events, including Amazon Web Services management events
+#'     delivered through CloudTrail.
+#' 
+#'     Management events provide visibility into management operations that
+#'     are performed on resources in your Amazon Web Services account.
+#'     These are also known as control plane operations. For more
+#'     information, see [Logging management
+#'     events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events)
+#'     in the *CloudTrail User Guide*, and [Filtering management events
+#'     from Amazon Web Services
+#'     services](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html#eb-service-event-cloudtrail)
+#'     in the *Amazon EventBridge User Guide*.
+#' 
+#'     This value is only valid for rules on the
+#'     [default](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is-how-it-works-concepts.html#eb-bus-concepts-buses)
+#'     event bus or [custom event
+#'     buses](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-event-bus.html).
+#'     It does not apply to [partner event
+#'     buses](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-saas.html).
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 #' 
@@ -3236,7 +3305,7 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #'   Name = "string",
 #'   ScheduleExpression = "string",
 #'   EventPattern = "string",
-#'   State = "ENABLED"|"DISABLED",
+#'   State = "ENABLED"|"DISABLED"|"ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS",
 #'   Description = "string",
 #'   RoleArn = "string",
 #'   Tags = list(
@@ -3280,78 +3349,26 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' 
 #' Targets are the resources that are invoked when a rule is triggered.
 #' 
+#' The maximum number of entries per request is 10.
+#' 
 #' Each rule can have up to five (5) targets associated with it at one
 #' time.
 #' 
-#' You can configure the following as targets for Events:
-#' 
-#' -   [API
-#'     destination](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
-#' 
-#' -   [API
-#'     Gateway](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-gateway-target.html)
-#' 
-#' -   Batch job queue
-#' 
-#' -   CloudWatch group
-#' 
-#' -   CodeBuild project
-#' 
-#' -   CodePipeline
-#' 
-#' -   EC2 `CreateSnapshot` API call
-#' 
-#' -   EC2 Image Builder
-#' 
-#' -   EC2 `RebootInstances` API call
-#' 
-#' -   EC2 `StopInstances` API call
-#' 
-#' -   EC2 `TerminateInstances` API call
-#' 
-#' -   ECS task
-#' 
-#' -   [Event bus in a different account or
-#'     Region](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
-#' 
-#' -   [Event bus in the same account and
-#'     Region](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-bus-to-bus.html)
-#' 
-#' -   Firehose delivery stream
-#' 
-#' -   Glue workflow
-#' 
-#' -   [Incident Manager response
-#'     plan](https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-creation.html#incident-tracking-auto-eventbridge)
-#' 
-#' -   Inspector assessment template
-#' 
-#' -   Kinesis stream
-#' 
-#' -   Lambda function
-#' 
-#' -   Redshift cluster
-#' 
-#' -   Redshift Serverless workgroup
-#' 
-#' -   SageMaker Pipeline
-#' 
-#' -   SNS topic
-#' 
-#' -   SQS queue
-#' 
-#' -   Step Functions state machine
-#' 
-#' -   Systems Manager Automation
-#' 
-#' -   Systems Manager OpsItem
-#' 
-#' -   Systems Manager Run Command
+#' For a list of services you can configure as targets for events, see
+#' [EventBridge
+#' targets](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html)
+#' in the *Amazon EventBridge User Guide*.
 #' 
 #' Creating rules with built-in targets is supported only in the Amazon Web
-#' Services Management Console. The built-in targets are
-#' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
-#' `EC2 StopInstances API call`, and `EC2 TerminateInstances API call`.
+#' Services Management Console. The built-in targets are:
+#' 
+#' -   `Amazon EBS CreateSnapshot API call`
+#' 
+#' -   `Amazon EC2 RebootInstances API call`
+#' 
+#' -   `Amazon EC2 StopInstances API call`
+#' 
+#' -   `Amazon EC2 TerminateInstances API call`
 #' 
 #' For some target types, [`put_targets`][eventbridge_put_targets] provides
 #' target-specific parameters. If the target is a Kinesis data stream, you
@@ -3360,12 +3377,17 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' instances with one rule, you can use the `RunCommandParameters` field.
 #' 
 #' To be able to make API calls against the resources that you own, Amazon
-#' EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
-#' resources, EventBridge relies on resource-based policies. For EC2
-#' instances, Kinesis Data Streams, Step Functions state machines and API
-#' Gateway APIs, EventBridge relies on IAM roles that you specify in the
-#' `RoleARN` argument in [`put_targets`][eventbridge_put_targets]. For more
-#' information, see [Authentication and Access
+#' EventBridge needs the appropriate permissions:
+#' 
+#' -   For Lambda and Amazon SNS resources, EventBridge relies on
+#'     resource-based policies.
+#' 
+#' -   For EC2 instances, Kinesis Data Streams, Step Functions state
+#'     machines and API Gateway APIs, EventBridge relies on IAM roles that
+#'     you specify in the `RoleARN` argument in
+#'     [`put_targets`][eventbridge_put_targets].
+#' 
+#' For more information, see [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
@@ -3392,6 +3414,10 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' see [Sending and Receiving Events Between Amazon Web Services
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
+#' 
+#' If you have an IAM role on a cross-account event bus target, a
+#' [`put_targets`][eventbridge_put_targets] call without a role on the same
+#' target (same `Id` and `Arn`) will not remove the role.
 #' 
 #' For more information about enabling cross-account events, see
 #' [`put_permission`][eventbridge_put_permission].
@@ -3681,6 +3707,8 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
 #' time. If that happens, `FailedEntryCount` is non-zero in the response
 #' and each entry in `FailedEntries` provides the ID of the failed target
 #' and the error code.
+#' 
+#' The maximum number of entries per request is 10.
 #'
 #' @usage
 #' eventbridge_remove_targets(Rule, EventBusName, Ids, Force)
@@ -4277,7 +4305,7 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
 #' endpoints, see [Making applications Regional-fault tolerant with global
 #' endpoints and event
 #' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
-#' in the Amazon EventBridge User Guide..
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @usage
 #' eventbridge_update_endpoint(Name, Description, RoutingConfig,

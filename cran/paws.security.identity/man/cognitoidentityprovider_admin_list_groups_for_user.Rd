@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_list_groups_for_user}
 \alias{cognitoidentityprovider_admin_list_groups_for_user}
-\title{Lists the groups that the user belongs to}
+\title{Lists the groups that a user belongs to}
 \usage{
 cognitoidentityprovider_admin_list_groups_for_user(
   Username,
@@ -12,7 +12,10 @@ cognitoidentityprovider_admin_list_groups_for_user(
 )
 }
 \arguments{
-\item{Username}{[required] The username for the user.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 
@@ -23,7 +26,7 @@ operation, which can be used to return the next set of items in the
 list.}
 }
 \description{
-Lists the groups that the user belongs to.
+Lists the groups that a user belongs to.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_groups_for_user/} for full documentation.
 }

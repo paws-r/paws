@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_analytics_configuration}
 \alias{s3_get_bucket_analytics_configuration}
-\title{This implementation of the GET action returns an analytics configuration
-(identified by the analytics configuration ID) from the bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_analytics_configuration(Bucket, Id, ExpectedBucketOwner = NULL)
 }
@@ -13,12 +12,12 @@ retrieved.}
 
 \item{Id}{[required] The ID that identifies the analytics configuration.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_analytics_configuration/} for full documentation.
 }

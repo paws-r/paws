@@ -1177,18 +1177,22 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' values can be anything except an empty string.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
 #' request.
+#' @param sourceRevisions A list that allows you to specify, or override, the source revision for
+#' a pipeline execution that's being started. A source revision is the
+#' version with all the changes to your application code, or source
+#' artifact, for the pipeline execution.
 #'
 #' @keywords internal
 #'
 #' @rdname codepipeline_start_pipeline_execution
-codepipeline_start_pipeline_execution <- function(name, variables = NULL, clientRequestToken = NULL) {
+codepipeline_start_pipeline_execution <- function(name, variables = NULL, clientRequestToken = NULL, sourceRevisions = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken)
+  input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken, sourceRevisions = sourceRevisions)
   output <- .codepipeline$start_pipeline_execution_output()
   config <- get_config()
   svc <- .codepipeline$service(config)

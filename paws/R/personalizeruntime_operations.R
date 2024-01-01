@@ -3,6 +3,101 @@
 #' @include personalizeruntime_service.R
 NULL
 
+#' Returns a list of recommended actions in sorted in descending order by
+#' prediction score
+#'
+#' @description
+#' Returns a list of recommended actions in sorted in descending order by
+#' prediction score. Use the
+#' [`get_action_recommendations`][personalizeruntime_get_action_recommendations]
+#' API if you have a custom campaign that deploys a solution version
+#' trained with a PERSONALIZED_ACTIONS recipe.
+#' 
+#' For more information about PERSONALIZED_ACTIONS recipes, see
+#' [PERSONALIZED_ACTIONS
+#' recipes](https://docs.aws.amazon.com/personalize/latest/dg/nexts-best-action-recipes.html).
+#' For more information about getting action recommendations, see [Getting
+#' action
+#' recommendations](https://docs.aws.amazon.com/personalize/latest/dg/get-action-recommendations.html).
+#'
+#' @usage
+#' personalizeruntime_get_action_recommendations(campaignArn, userId,
+#'   numResults, filterArn, filterValues)
+#'
+#' @param campaignArn The Amazon Resource Name (ARN) of the campaign to use for getting action
+#' recommendations. This campaign must deploy a solution version trained
+#' with a PERSONALIZED_ACTIONS recipe.
+#' @param userId The user ID of the user to provide action recommendations for.
+#' @param numResults The number of results to return. The default is 5. The maximum is 100.
+#' @param filterArn The ARN of the filter to apply to the returned recommendations. For more
+#' information, see [Filtering
+#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#' 
+#' When using this parameter, be sure the filter resource is `ACTIVE`.
+#' @param filterValues The values to use when filtering recommendations. For each placeholder
+#' parameter in your filter expression, provide the parameter name (in
+#' matching case) as a key and the filter value(s) as the corresponding
+#' value. Separate multiple values for one parameter with a comma.
+#' 
+#' For filter expressions that use an `INCLUDE` element to include actions,
+#' you must provide values for all parameters that are defined in the
+#' expression. For filters with expressions that use an `EXCLUDE` element
+#' to exclude actions, you can omit the `filter-values`. In this case,
+#' Amazon Personalize doesn't use that portion of the expression to filter
+#' recommendations.
+#' 
+#' For more information, see [Filtering recommendations and user
+#' segments](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionList = list(
+#'     list(
+#'       actionId = "string",
+#'       score = 123.0
+#'     )
+#'   ),
+#'   recommendationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_action_recommendations(
+#'   campaignArn = "string",
+#'   userId = "string",
+#'   numResults = 123,
+#'   filterArn = "string",
+#'   filterValues = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalizeruntime_get_action_recommendations
+#'
+#' @aliases personalizeruntime_get_action_recommendations
+personalizeruntime_get_action_recommendations <- function(campaignArn = NULL, userId = NULL, numResults = NULL, filterArn = NULL, filterValues = NULL) {
+  op <- new_operation(
+    name = "GetActionRecommendations",
+    http_method = "POST",
+    http_path = "/action-recommendations",
+    paginator = list()
+  )
+  input <- .personalizeruntime$get_action_recommendations_input(campaignArn = campaignArn, userId = userId, numResults = numResults, filterArn = filterArn, filterValues = filterValues)
+  output <- .personalizeruntime$get_action_recommendations_output()
+  config <- get_config()
+  svc <- .personalizeruntime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalizeruntime$operations$get_action_recommendations <- personalizeruntime_get_action_recommendations
+
 #' Re-ranks a list of recommended items for the given user
 #'
 #' @description
@@ -15,13 +110,14 @@ NULL
 #'
 #' @usage
 #' personalizeruntime_get_personalized_ranking(campaignArn, inputList,
-#'   userId, context, filterArn, filterValues)
+#'   userId, context, filterArn, filterValues, metadataColumns)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for generating the
 #' personalized ranking.
 #' @param inputList &#91;required&#93; A list of items (by `itemId`) to rank. If an item was not included in
 #' the training dataset, the item is appended to the end of the reranked
-#' list. The maximum is 500.
+#' list. If you are including metadata in recommendations, the maximum is
+#' 50. Otherwise, the maximum is 500.
 #' @param userId &#91;required&#93; The user for which you want the campaign to provide a personalized
 #' ranking.
 #' @param context The contextual metadata to use when getting recommendations. Contextual
@@ -46,6 +142,15 @@ NULL
 #' 
 #' For more information, see [Filtering
 #' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#' @param metadataColumns If you enabled metadata in recommendations when you created or updated
+#' the campaign, specify metadata columns from your Items dataset to
+#' include in the personalized ranking. The map key is `ITEMS` and the
+#' value is a list of column names from your Items dataset. The maximum
+#' number of columns you can provide is 10.
+#' 
+#' For information about enabling metadata for a campaign, see [Enabling
+#' metadata in recommendations for a
+#' campaign](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -55,7 +160,10 @@ NULL
 #'     list(
 #'       itemId = "string",
 #'       score = 123.0,
-#'       promotionName = "string"
+#'       promotionName = "string",
+#'       metadata = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   recommendationId = "string"
@@ -76,6 +184,11 @@ NULL
 #'   filterArn = "string",
 #'   filterValues = list(
 #'     "string"
+#'   ),
+#'   metadataColumns = list(
+#'     list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -85,14 +198,14 @@ NULL
 #' @rdname personalizeruntime_get_personalized_ranking
 #'
 #' @aliases personalizeruntime_get_personalized_ranking
-personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId, context = NULL, filterArn = NULL, filterValues = NULL) {
+personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId, context = NULL, filterArn = NULL, filterValues = NULL, metadataColumns = NULL) {
   op <- new_operation(
     name = "GetPersonalizedRanking",
     http_method = "POST",
     http_path = "/personalize-ranking",
     paginator = list()
   )
-  input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context, filterArn = filterArn, filterValues = filterValues)
+  input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context, filterArn = filterArn, filterValues = filterValues, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_personalized_ranking_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)
@@ -126,7 +239,7 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @usage
 #' personalizeruntime_get_recommendations(campaignArn, itemId, userId,
 #'   numResults, context, filterArn, filterValues, recommenderArn,
-#'   promotions)
+#'   promotions, metadataColumns)
 #'
 #' @param campaignArn The Amazon Resource Name (ARN) of the campaign to use for getting
 #' recommendations.
@@ -136,7 +249,9 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @param userId The user ID to provide recommendations for.
 #' 
 #' Required for `USER_PERSONALIZATION` recipe type.
-#' @param numResults The number of results to return. The default is 25. The maximum is 500.
+#' @param numResults The number of results to return. The default is 25. If you are including
+#' metadata in recommendations, the maximum is 50. Otherwise, the maximum
+#' is 500.
 #' @param context The contextual metadata to use when getting recommendations. Contextual
 #' metadata includes any interaction information that might be relevant
 #' when getting a user's recommendations, such as the user's current
@@ -166,6 +281,18 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @param promotions The promotions to apply to the recommendation request. A promotion
 #' defines additional business rules that apply to a configurable subset of
 #' recommended items.
+#' @param metadataColumns If you enabled metadata in recommendations when you created or updated
+#' the campaign or recommender, specify the metadata columns from your
+#' Items dataset to include in item recommendations. The map key is `ITEMS`
+#' and the value is a list of column names from your Items dataset. The
+#' maximum number of columns you can provide is 10.
+#' 
+#' For information about enabling metadata for a campaign, see [Enabling
+#' metadata in recommendations for a
+#' campaign](https://docs.aws.amazon.com/personalize/latest/dg/). For
+#' information about enabling metadata for a recommender, see [Enabling
+#' metadata in recommendations for a
+#' recommender](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -175,7 +302,10 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'     list(
 #'       itemId = "string",
 #'       score = 123.0,
-#'       promotionName = "string"
+#'       promotionName = "string",
+#'       metadata = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   recommendationId = "string"
@@ -206,6 +336,11 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   metadataColumns = list(
+#'     list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -215,14 +350,14 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @rdname personalizeruntime_get_recommendations
 #'
 #' @aliases personalizeruntime_get_recommendations
-personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL, recommenderArn = NULL, promotions = NULL) {
+personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL, recommenderArn = NULL, promotions = NULL, metadataColumns = NULL) {
   op <- new_operation(
     name = "GetRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn, promotions = promotions)
+  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn, promotions = promotions, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_recommendations_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)

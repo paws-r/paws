@@ -27,9 +27,9 @@ PoolId, or PoolArn.}
 
 \item{MessageBody}{The body of the text message.}
 
-\item{MessageType}{The type of message. Valid values are TRANSACTIONAL for messages that
-are critical or time-sensitive and PROMOTIONAL for messages that aren't
-critical or time-sensitive.}
+\item{MessageType}{The type of message. Valid values are for messages that are critical or
+time-sensitive and PROMOTIONAL for messages that aren't critical or
+time-sensitive.}
 
 \item{Keyword}{When you register a short code in the US, you must specify a program
 name. If you don’t have a US short code, omit this attribute.}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_access_point_policy_for_object_lambda}
 \alias{s3control_put_access_point_policy_for_object_lambda}
-\title{Creates or replaces resource policy for an Object Lambda Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_put_access_point_policy_for_object_lambda(AccountId, Name, Policy)
 }
@@ -15,7 +15,7 @@ Access Point.}
 \item{Policy}{[required] Object Lambda Access Point resource policy document.}
 }
 \description{
-Creates or replaces resource policy for an Object Lambda Access Point. For an example policy, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-create.html#olap-create-cli}{Creating Object Lambda Access Points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy_for_object_lambda/} for full documentation.
 }

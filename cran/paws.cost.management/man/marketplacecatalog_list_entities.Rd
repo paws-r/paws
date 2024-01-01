@@ -11,13 +11,18 @@ marketplacecatalog_list_entities(
   Sort = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  OwnershipType = NULL
+  OwnershipType = NULL,
+  EntityTypeFilters = NULL,
+  EntityTypeSort = NULL
 )
 }
 \arguments{
 \item{Catalog}{[required] The catalog related to the request. Fixed value: \code{AWSMarketplace}}
 
-\item{EntityType}{[required] The type of entities to retrieve.}
+\item{EntityType}{[required] The type of entities to retrieve. Valid values are: \code{AmiProduct},
+\code{ContainerProduct}, \code{DataProduct}, \code{SaaSProduct}, \code{ProcurementPolicy},
+\code{Experience}, \code{Audience}, \code{BrandingSettings}, \code{Offer}, \code{Seller},
+\code{ResaleAuthorization}.}
 
 \item{FilterList}{An array of filter objects. Each filter object contains two attributes,
 \code{filterName} and \code{filterValues}.}
@@ -36,6 +41,15 @@ Manager (AWS RAM), set to \code{SHARED}. Entities shared through the AWS
 Marketplace Catalog API
 \code{\link[=marketplacecatalog_put_resource_policy]{put_resource_policy}}
 operation can't be discovered through the \code{SHARED} parameter.}
+
+\item{EntityTypeFilters}{A Union object containing filter shapes for all \code{EntityType}s. Each
+\code{EntityTypeFilter} shape will have filters applicable for that
+\code{EntityType} that can be used to search or filter entities.}
+
+\item{EntityTypeSort}{A Union object containing \code{Sort} shapes for all \code{EntityType}s. Each
+\code{EntityTypeSort} shape will have \code{SortBy} and \code{SortOrder} applicable for
+fields on that \code{EntityType}. This can be used to sort the results of the
+filter query.}
 }
 \description{
 Provides the list of entities of a given type.

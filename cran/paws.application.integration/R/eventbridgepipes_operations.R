@@ -14,6 +14,7 @@ NULL
 #' @param DesiredState The state the pipe should be in.
 #' @param Enrichment The ARN of the enrichment resource.
 #' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
+#' @param LogConfiguration The logging configuration settings for the pipe.
 #' @param Name &#91;required&#93; The name of the pipe.
 #' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
 #' @param Source &#91;required&#93; The ARN of the source resource.
@@ -21,18 +22,23 @@ NULL
 #' @param Tags The list of key-value pairs to associate with the pipe.
 #' @param Target &#91;required&#93; The ARN of the target resource.
 #' @param TargetParameters The parameters required to set up a target for your pipe.
+#' 
+#' For more information about pipe target parameters, including how to use
+#' dynamic path parameters, see [Target
+#' parameters](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html)
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridgepipes_create_pipe
-eventbridgepipes_create_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, Name, RoleArn, Source, SourceParameters = NULL, Tags = NULL, Target, TargetParameters = NULL) {
+eventbridgepipes_create_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, LogConfiguration = NULL, Name, RoleArn, Source, SourceParameters = NULL, Tags = NULL, Target, TargetParameters = NULL) {
   op <- new_operation(
     name = "CreatePipe",
     http_method = "POST",
     http_path = "/v1/pipes/{Name}",
     paginator = list()
   )
-  input <- .eventbridgepipes$create_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, Name = Name, RoleArn = RoleArn, Source = Source, SourceParameters = SourceParameters, Tags = Tags, Target = Target, TargetParameters = TargetParameters)
+  input <- .eventbridgepipes$create_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, LogConfiguration = LogConfiguration, Name = Name, RoleArn = RoleArn, Source = Source, SourceParameters = SourceParameters, Tags = Tags, Target = Target, TargetParameters = TargetParameters)
   output <- .eventbridgepipes$create_pipe_output()
   config <- get_config()
   svc <- .eventbridgepipes$service(config)
@@ -291,7 +297,7 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #' Update an existing pipe
 #'
 #' @description
-#' Update an existing pipe. When you call [`update_pipe`][eventbridgepipes_update_pipe], only the fields that are included in the request are changed, the rest are unchanged. The exception to this is if you modify any Amazon Web Services-service specific fields in the `SourceParameters`, `EnrichmentParameters`, or `TargetParameters` objects. The fields in these objects are updated atomically as one and override existing values. This is by design and means that if you don't specify an optional field in one of these Parameters objects, that field will be set to its system-default value after the update.
+#' Update an existing pipe. When you call [`update_pipe`][eventbridgepipes_update_pipe], EventBridge only the updates fields you have specified in the request; the rest remain unchanged. The exception to this is if you modify any Amazon Web Services-service specific fields in the `SourceParameters`, `EnrichmentParameters`, or `TargetParameters` objects. For example, `DynamoDBStreamParameters` or `EventBridgeEventBusParameters`. EventBridge updates the fields in these objects atomically as one and overrides existing values. This is by design, and means that if you don't specify an optional field in one of these `Parameters` objects, EventBridge sets that field to its system-default value during the update.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridgepipes_update_pipe/](https://www.paws-r-sdk.com/docs/eventbridgepipes_update_pipe/) for full documentation.
 #'
@@ -299,23 +305,29 @@ eventbridgepipes_untag_resource <- function(resourceArn, tagKeys) {
 #' @param DesiredState The state the pipe should be in.
 #' @param Enrichment The ARN of the enrichment resource.
 #' @param EnrichmentParameters The parameters required to set up enrichment on your pipe.
+#' @param LogConfiguration The logging configuration settings for the pipe.
 #' @param Name &#91;required&#93; The name of the pipe.
 #' @param RoleArn &#91;required&#93; The ARN of the role that allows the pipe to send data to the target.
 #' @param SourceParameters The parameters required to set up a source for your pipe.
 #' @param Target The ARN of the target resource.
 #' @param TargetParameters The parameters required to set up a target for your pipe.
+#' 
+#' For more information about pipe target parameters, including how to use
+#' dynamic path parameters, see [Target
+#' parameters](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html)
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridgepipes_update_pipe
-eventbridgepipes_update_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, Name, RoleArn, SourceParameters = NULL, Target = NULL, TargetParameters = NULL) {
+eventbridgepipes_update_pipe <- function(Description = NULL, DesiredState = NULL, Enrichment = NULL, EnrichmentParameters = NULL, LogConfiguration = NULL, Name, RoleArn, SourceParameters = NULL, Target = NULL, TargetParameters = NULL) {
   op <- new_operation(
     name = "UpdatePipe",
     http_method = "PUT",
     http_path = "/v1/pipes/{Name}",
     paginator = list()
   )
-  input <- .eventbridgepipes$update_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, Name = Name, RoleArn = RoleArn, SourceParameters = SourceParameters, Target = Target, TargetParameters = TargetParameters)
+  input <- .eventbridgepipes$update_pipe_input(Description = Description, DesiredState = DesiredState, Enrichment = Enrichment, EnrichmentParameters = EnrichmentParameters, LogConfiguration = LogConfiguration, Name = Name, RoleArn = RoleArn, SourceParameters = SourceParameters, Target = Target, TargetParameters = TargetParameters)
   output <- .eventbridgepipes$update_pipe_output()
   config <- get_config()
   svc <- .eventbridgepipes$service(config)

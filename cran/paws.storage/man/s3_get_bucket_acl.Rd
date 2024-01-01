@@ -2,29 +2,28 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_acl}
 \alias{s3_get_bucket_acl}
-\title{This implementation of the GET action uses the acl subresource to return
-the access control list (ACL) of a bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_acl(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.
 
-To use this API operation against an access point, provide the alias of
-the access point in place of the bucket name.
+When you use this API operation with an access point, provide the alias
+of the access point in place of the bucket name.
 
-To use this API operation against an Object Lambda access point, provide
-the alias of the Object Lambda access point in place of the bucket name.
-If the Object Lambda access point alias in a request is not valid, the
-error code \code{InvalidAccessPointAliasError} is returned. For more
-information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.}
+When you use this API operation with an Object Lambda access point,
+provide the alias of the Object Lambda access point in place of the
+bucket name. If the Object Lambda access point alias in a request is not
+valid, the error code \code{InvalidAccessPointAliasError} is returned. For
+more information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This implementation of the \code{GET} action uses the \code{acl} subresource to return the access control list (ACL) of a bucket. To use \code{GET} to return the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If \code{READ_ACP} permission is granted to the anonymous user, you can return the ACL of the bucket without using an authorization header.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_acl/} for full documentation.
 }

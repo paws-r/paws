@@ -17,6 +17,7 @@ ssmincidents_list_timeline_events(
 \item{filters}{Filters the timeline events based on the provided conditional values.
 You can filter timeline events with the following keys:
 \itemize{
+\item \code{eventReference}
 \item \code{eventTime}
 \item \code{eventType}
 }
@@ -36,7 +37,8 @@ timeline event.}
 
 \item{maxResults}{The maximum number of results per page.}
 
-\item{nextToken}{The pagination token to continue to the next page of results.}
+\item{nextToken}{The pagination token for the next set of items to return. (You received
+this token from a previous call.)}
 
 \item{sortBy}{Sort timeline events by the specified key value pair.}
 

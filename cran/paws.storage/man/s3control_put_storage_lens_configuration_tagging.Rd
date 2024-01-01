@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_storage_lens_configuration_tagging}
 \alias{s3control_put_storage_lens_configuration_tagging}
-\title{Put or replace tags on an existing Amazon S3 Storage Lens configuration}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_put_storage_lens_configuration_tagging(ConfigId, AccountId, Tags)
 }
@@ -16,7 +16,7 @@ s3control_put_storage_lens_configuration_tagging(ConfigId, AccountId, Tags)
 You can set up to a maximum of 50 tags.}
 }
 \description{
-Put or replace tags on an existing Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Assessing your storage activity and usage with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration_tagging/} for full documentation.
 }

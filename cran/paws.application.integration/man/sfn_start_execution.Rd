@@ -51,6 +51,10 @@ Web Services account, Region, and state machine for 90 days. For more
 information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{Step Functions Developer Guide}.
 
+If you don't provide a name for the execution, Step Functions
+automatically generates a universally unique identifier (UUID) as the
+execution name.
+
 A name must \emph{not} contain:
 \itemize{
 \item white space

@@ -14,7 +14,7 @@ cloudformation_estimate_template_cost(
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the CloudFormation User Guide.)
+in the \emph{CloudFormation User Guide}.)
 
 Conditional: You must pass \code{TemplateBody} or \code{TemplateURL}. If both are
 passed, only \code{TemplateBody} is used.}
@@ -22,7 +22,7 @@ passed, only \code{TemplateBody} is used.}
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template that's located in an Amazon S3 bucket or a Systems Manager
 document. For more information, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the CloudFormation User Guide.
+in the \emph{CloudFormation User Guide}.
 
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}

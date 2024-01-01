@@ -7,11 +7,11 @@
 sagemaker_create_app(
   DomainId,
   UserProfileName = NULL,
+  SpaceName = NULL,
   AppType,
   AppName,
   Tags = NULL,
-  ResourceSpec = NULL,
-  SpaceName = NULL
+  ResourceSpec = NULL
 )
 }
 \arguments{
@@ -19,6 +19,9 @@ sagemaker_create_app(
 
 \item{UserProfileName}{The user profile name. If this value is not set, then \code{SpaceName} must
 be set.}
+
+\item{SpaceName}{The name of the space. If this value is not set, then \code{UserProfileName}
+must be set.}
 
 \item{AppType}{[required] The type of app.}
 
@@ -37,12 +40,9 @@ domain. If \code{InstanceType} is not specified in any of those three
 \code{ResourceSpec} values for a \code{KernelGateway} app, the
 \code{\link[=sagemaker_create_app]{create_app}} call fails with a request
 validation error.}
-
-\item{SpaceName}{The name of the space. If this value is not set, then \code{UserProfileName}
-must be set.}
 }
 \description{
-Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
+Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_app/} for full documentation.
 }

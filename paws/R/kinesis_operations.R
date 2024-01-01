@@ -9,8 +9,9 @@ NULL
 #' Adds or updates tags for the specified Kinesis data stream. You can
 #' assign up to 50 tags to a data stream.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' If tags have already been assigned to the stream,
 #' [`add_tags_to_stream`][kinesis_add_tags_to_stream] overwrites any
@@ -180,8 +181,9 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
 #' length of time data records are accessible after they are added to the
 #' stream. The minimum value of a stream's retention period is 24 hours.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' This operation may result in lost data. For example, if the stream's
 #' retention period is 48 hours and is decreased to 24 hours, any data
@@ -230,6 +232,54 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
 }
 .kinesis$operations$decrease_stream_retention_period <- kinesis_decrease_stream_retention_period
 
+#' Delete a policy for the specified data stream or consumer
+#'
+#' @description
+#' Delete a policy for the specified data stream or consumer. Request
+#' patterns can be one of the following:
+#' 
+#' -   Data stream pattern: `arn:aws.*:kinesis:.*:\\d{12}:.*stream/\\S+`
+#' 
+#' -   Consumer pattern:
+#'     `^(arn):aws.*:kinesis:.*:\\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+`
+#'
+#' @usage
+#' kinesis_delete_resource_policy(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the data stream or consumer.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_delete_resource_policy
+#'
+#' @aliases kinesis_delete_resource_policy
+kinesis_delete_resource_policy <- function(ResourceARN) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesis$delete_resource_policy_input(ResourceARN = ResourceARN)
+  output <- .kinesis$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$delete_resource_policy <- kinesis_delete_resource_policy
+
 #' Deletes a Kinesis data stream and all its shards and data
 #'
 #' @description
@@ -238,8 +288,9 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
 #' the stream. If an application attempts to operate on a deleted stream,
 #' it receives the exception `ResourceNotFoundException`.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' If the stream is in the `ACTIVE` state, you can delete it. After a
 #' [`delete_stream`][kinesis_delete_stream] request, the specified stream
@@ -432,8 +483,9 @@ kinesis_describe_limits <- function() {
 #' [`list_shards`][kinesis_list_shards] API to list the shards in a
 #' specified data stream and obtain information about each shard.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' The information returned includes the stream name, Amazon Resource Name
 #' (ARN), creation time, enhanced metric configuration, and shard map. The
@@ -564,6 +616,10 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
 #' registered with a given data stream.
 #' 
 #' This operation has a limit of 20 transactions per second per stream.
+#' 
+#' When making a cross-account call with
+#' [`describe_stream_consumer`][kinesis_describe_stream_consumer], make
+#' sure to provide the ARN of the consumer.
 #'
 #' @usage
 #' kinesis_describe_stream_consumer(StreamARN, ConsumerName, ConsumerARN)
@@ -630,8 +686,9 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' Provides a summarized description of the specified Kinesis data stream
 #' without the shard list.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' The information returned includes the stream name, Amazon Resource Name
 #' (ARN), status, record retention period, approximate creation time,
@@ -711,8 +768,9 @@ kinesis_describe_stream_summary <- function(StreamName = NULL, StreamARN = NULL)
 #' @description
 #' Disables enhanced monitoring.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #'
 #' @usage
 #' kinesis_disable_enhanced_monitoring(StreamName, ShardLevelMetrics,
@@ -800,8 +858,9 @@ kinesis_disable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMet
 #' @description
 #' Enables enhanced Kinesis data stream monitoring for shard-level metrics.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #'
 #' @usage
 #' kinesis_enable_enhanced_monitoring(StreamName, ShardLevelMetrics,
@@ -888,8 +947,9 @@ kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetr
 #' @description
 #' Gets data records from a Kinesis data stream's shard.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter in addition to the `ShardIterator` parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' Specify a shard iterator using the `ShardIterator` parameter. The shard
 #' iterator specifies the position in the shard from which you want to
@@ -1038,14 +1098,68 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL) {
 }
 .kinesis$operations$get_records <- kinesis_get_records
 
+#' Returns a policy attached to the specified data stream or consumer
+#'
+#' @description
+#' Returns a policy attached to the specified data stream or consumer.
+#' Request patterns can be one of the following:
+#' 
+#' -   Data stream pattern: `arn:aws.*:kinesis:.*:\\d{12}:.*stream/\\S+`
+#' 
+#' -   Consumer pattern:
+#'     `^(arn):aws.*:kinesis:.*:\\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+`
+#'
+#' @usage
+#' kinesis_get_resource_policy(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the data stream or consumer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_get_resource_policy
+#'
+#' @aliases kinesis_get_resource_policy
+kinesis_get_resource_policy <- function(ResourceARN) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesis$get_resource_policy_input(ResourceARN = ResourceARN)
+  output <- .kinesis$get_resource_policy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$get_resource_policy <- kinesis_get_resource_policy
+
 #' Gets an Amazon Kinesis shard iterator
 #'
 #' @description
 #' Gets an Amazon Kinesis shard iterator. A shard iterator expires 5
 #' minutes after it is returned to the requester.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' A shard iterator specifies the shard position from which to start
 #' reading data records sequentially. The position is specified using the
@@ -1191,8 +1305,9 @@ kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIterator
 #' stream. The maximum value of a stream's retention period is 8760 hours
 #' (365 days).
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' If you choose a longer stream retention period, this operation increases
 #' the time period during which records that have not yet expired are
@@ -1252,8 +1367,9 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
 #' This operation has a limit of 1000 transactions per second per data
 #' stream.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' This action does not list expired shards. For information about expired
 #' shards, see [Data Routing, Data Persistence, and Shard State after a
@@ -1614,8 +1730,9 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, 
 #' Lists the tags for the specified Kinesis data stream. This operation has
 #' a limit of five transactions per second per account.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #'
 #' @usage
 #' kinesis_list_tags_for_stream(StreamName, ExclusiveStartTagKey, Limit,
@@ -1694,8 +1811,9 @@ kinesis_list_tags_for_stream <- function(StreamName = NULL, ExclusiveStartTagKey
 #' shard receives data for all hash key values covered by the two parent
 #' shards.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' [`merge_shards`][kinesis_merge_shards] is called when there is a need to
 #' reduce the overall capacity of a stream because of excess capacity that
@@ -1792,8 +1910,9 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
 #' Each shard can support writes up to 1,000 records per second, up to a
 #' maximum data write total of 1 MiB per second.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' You must specify the name of the stream that captures, stores, and
 #' transports the data; a partition key; and the data blob itself.
@@ -1925,8 +2044,9 @@ kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHa
 #' Use this operation to send data into the stream for data ingestion and
 #' processing.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' Each [`put_records`][kinesis_put_records] request can support up to 500
 #' records. Each record in the request can be as large as 1 MiB, up to a
@@ -2064,6 +2184,72 @@ kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL) {
 }
 .kinesis$operations$put_records <- kinesis_put_records
 
+#' Attaches a resource-based policy to a data stream or registered consumer
+#'
+#' @description
+#' Attaches a resource-based policy to a data stream or registered
+#' consumer. If you are using an identity other than the root user of the
+#' Amazon Web Services account that owns the resource, the calling identity
+#' must have the [`put_resource_policy`][kinesis_put_resource_policy]
+#' permissions on the specified Kinesis Data Streams resource and belong to
+#' the owner's account in order to use this operation. If you don't have
+#' [`put_resource_policy`][kinesis_put_resource_policy] permissions, Amazon
+#' Kinesis Data Streams returns a `403 Access Denied error`. If you receive
+#' a `ResourceNotFoundException`, check to see if you passed a valid stream
+#' or consumer resource.
+#' 
+#' Request patterns can be one of the following:
+#' 
+#' -   Data stream pattern: `arn:aws.*:kinesis:.*:\\d{12}:.*stream/\\S+`
+#' 
+#' -   Consumer pattern:
+#'     `^(arn):aws.*:kinesis:.*:\\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+`
+#' 
+#' For more information, see [Controlling Access to Amazon Kinesis Data
+#' Streams Resources Using
+#' IAM](https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html).
+#'
+#' @usage
+#' kinesis_put_resource_policy(ResourceARN, Policy)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the data stream or consumer.
+#' @param Policy &#91;required&#93; Details of the resource policy. It must include the identity of the
+#' principal and the actions allowed on this resource. This is formatted as
+#' a JSON string.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceARN = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_put_resource_policy
+#'
+#' @aliases kinesis_put_resource_policy
+kinesis_put_resource_policy <- function(ResourceARN, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kinesis$put_resource_policy_input(ResourceARN = ResourceARN, Policy = Policy)
+  output <- .kinesis$put_resource_policy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$put_resource_policy <- kinesis_put_resource_policy
+
 #' Registers a consumer with a Kinesis data stream
 #'
 #' @description
@@ -2148,8 +2334,9 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #' deleted and cannot be recovered after this operation successfully
 #' completes.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' If you specify a tag that does not exist, it is ignored.
 #' 
@@ -2210,8 +2397,9 @@ kinesis_remove_tags_from_stream <- function(StreamName = NULL, TagKeys, StreamAR
 #' increase in the volume of data records being ingested. This API is only
 #' supported for the data streams with the provisioned capacity mode.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' You can also use [`split_shard`][kinesis_split_shard] when a shard
 #' appears to be approaching its maximum utilization; for example, the
@@ -2327,6 +2515,10 @@ kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHash
 #' Enables or updates server-side encryption using an Amazon Web Services
 #' KMS key for a specified stream.
 #' 
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
+#' 
 #' Starting encryption is an asynchronous operation. Upon receiving the
 #' request, Kinesis Data Streams returns immediately and sets the status of
 #' the stream to `UPDATING`. After the update is complete, Kinesis Data
@@ -2344,9 +2536,6 @@ kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHash
 #' enable encryption, you can verify that encryption is applied by
 #' inspecting the API response from [`put_record`][kinesis_put_record] or
 #' [`put_records`][kinesis_put_records].
-#' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
 #'
 #' @usage
 #' kinesis_start_stream_encryption(StreamName, EncryptionType, KeyId,
@@ -2414,8 +2603,9 @@ kinesis_start_stream_encryption <- function(StreamName = NULL, EncryptionType, K
 #' @description
 #' Disables server-side encryption for a specified stream.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' Stopping encryption is an asynchronous operation. Upon receiving the
 #' request, Kinesis Data Streams returns immediately and sets the status of
@@ -2506,8 +2696,9 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
 #' of shards. This API is only supported for the data streams with the
 #' provisioned capacity mode.
 #' 
-#' When invoking this API, it is recommended you use the `StreamARN` input
-#' parameter rather than the `StreamName` input parameter.
+#' When invoking this API, you must use either the `StreamARN` or the
+#' `StreamName` parameter, or both. It is recommended that you use the
+#' `StreamARN` input parameter when you invoke this API.
 #' 
 #' Updating the shard count is an asynchronous operation. Upon receiving
 #' the request, Kinesis Data Streams returns immediately and sets the
@@ -2543,6 +2734,9 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
 #'     less than 10000 shards
 #' 
 #' -   Scale up to more than the shard limit for your account
+#' 
+#' -   Make over 10 TPS. TPS over 10 will trigger the
+#'     LimitExceededException
 #' 
 #' For the default limits for an Amazon Web Services account, see [Streams
 #' Limits](https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html)

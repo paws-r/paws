@@ -16,7 +16,8 @@ sagemakerruntime_invoke_endpoint(
   TargetVariant = NULL,
   TargetContainerHostname = NULL,
   InferenceId = NULL,
-  EnableExplanations = NULL
+  EnableExplanations = NULL,
+  InferenceComponentName = NULL
 )
 }
 \arguments{
@@ -77,6 +78,9 @@ data capture on the endpoint. For information about data capture, see
 the
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-online-explainability-create-endpoint.html#clarify-online-explainability-create-endpoint-enable}{EnableExplanations}
 section in the developer guide for more information.}
+
+\item{InferenceComponentName}{If the endpoint hosts one or more inference components, this parameter
+specifies the name of inference component to invoke.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.

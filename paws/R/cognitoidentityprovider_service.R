@@ -5,29 +5,48 @@ NULL
 #' Amazon Cognito Identity Provider
 #'
 #' @description
-#' With the Amazon Cognito user pools API, you can set up user pools and
-#' app clients, and authenticate users. To authenticate users from
-#' third-party identity providers (IdPs) in this API, you can [link IdP
-#' users to native user
+#' With the Amazon Cognito user pools API, you can configure user pools and
+#' authenticate users. To authenticate users from third-party identity
+#' providers (IdPs) in this API, you can [link IdP users to native user
 #' profiles](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html).
 #' Learn more about the authentication and authorization of federated users
-#' in the [Using the Amazon Cognito user pools API and user pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html).
+#' at [Adding user pool sign-in through a third
+#' party](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html)
+#' and in the [User pool federation endpoints and hosted UI
+#' reference](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html).
 #' 
 #' This API reference provides detailed information about API operations
-#' and object types in Amazon Cognito. At the bottom of the page for each
-#' API operation and object, under *See Also*, you can learn how to use it
-#' in an Amazon Web Services SDK in the language of your choice.
+#' and object types in Amazon Cognito.
 #' 
 #' Along with resource management operations, the Amazon Cognito user pools
 #' API includes classes of operations and authorization models for
-#' client-side and server-side user operations. For more information, see
-#' [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' client-side and server-side authentication of users. You can interact
+#' with operations in the Amazon Cognito user pools API as any of the
+#' following subjects.
+#' 
+#' 1.  An administrator who wants to configure user pools, app clients,
+#'     users, groups, or other user pool functions.
+#' 
+#' 2.  A server-side app, like a web application, that wants to use its
+#'     Amazon Web Services privileges to manage, authenticate, or authorize
+#'     a user.
+#' 
+#' 3.  A client-side app, like a mobile app, that wants to make
+#'     unauthenticated requests to manage, authenticate, or authorize a
+#'     user.
+#' 
+#' For more information, see [Using the Amazon Cognito user pools API and
+#' user pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
-#' You can also start reading about the `CognitoIdentityProvider` client in
-#' the following SDK guides.
+#' With your Amazon Web Services SDK, you can build the logic to support
+#' operational flows in every use case for this API. You can also make
+#' direct REST API requests to [Amazon Cognito user pools service
+#' endpoints](https://docs.aws.amazon.com/general/latest/gr/cognito_identity.html#cognito_identity_your_user_pools_region).
+#' The following links can get you started with the
+#' `CognitoIdentityProvider` client in other supported Amazon Web Services
+#' SDKs.
 #' 
 #' -   [Amazon Web Services Command Line
 #'     Interface](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp)
@@ -168,8 +187,8 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=cognitoidentityprovider_add_custom_attributes]{add_custom_attributes} \tab Adds additional user attributes to the user pool schema\cr
-#'  \link[=cognitoidentityprovider_admin_add_user_to_group]{admin_add_user_to_group} \tab Adds the specified user to the specified group\cr
-#'  \link[=cognitoidentityprovider_admin_confirm_sign_up]{admin_confirm_sign_up} \tab Confirms user registration as an admin without using a confirmation code\cr
+#'  \link[=cognitoidentityprovider_admin_add_user_to_group]{admin_add_user_to_group} \tab Adds a user to a group\cr
+#'  \link[=cognitoidentityprovider_admin_confirm_sign_up]{admin_confirm_sign_up} \tab This IAM-authenticated API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool\cr
 #'  \link[=cognitoidentityprovider_admin_create_user]{admin_create_user} \tab Creates a new user in the specified user pool\cr
 #'  \link[=cognitoidentityprovider_admin_delete_user]{admin_delete_user} \tab Deletes a user as an administrator\cr
 #'  \link[=cognitoidentityprovider_admin_delete_user_attributes]{admin_delete_user_attributes} \tab Deletes the user attributes in a user pool as an administrator\cr
@@ -182,23 +201,23 @@ NULL
 #'  \link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth} \tab Initiates the authentication flow, as an administrator\cr
 #'  \link[=cognitoidentityprovider_admin_link_provider_for_user]{admin_link_provider_for_user} \tab Links an existing user account in a user pool (DestinationUser) to an identity from an external IdP (SourceUser) based on a specified attribute name and value from the external IdP\cr
 #'  \link[=cognitoidentityprovider_admin_list_devices]{admin_list_devices} \tab Lists devices, as an administrator\cr
-#'  \link[=cognitoidentityprovider_admin_list_groups_for_user]{admin_list_groups_for_user} \tab Lists the groups that the user belongs to\cr
+#'  \link[=cognitoidentityprovider_admin_list_groups_for_user]{admin_list_groups_for_user} \tab Lists the groups that a user belongs to\cr
 #'  \link[=cognitoidentityprovider_admin_list_user_auth_events]{admin_list_user_auth_events} \tab A history of user activity and any risks detected as part of Amazon Cognito advanced security\cr
 #'  \link[=cognitoidentityprovider_admin_remove_user_from_group]{admin_remove_user_from_group} \tab Removes the specified user from the specified group\cr
 #'  \link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Resets the specified user's password in a user pool as an administrator\cr
-#'  \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator\cr
+#'  \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge\cr
 #'  \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab The user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred\cr
 #'  \link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool as an administrator\cr
 #'  \link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab This action is no longer supported\cr
 #'  \link[=cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event indicating if it was from a valid user\cr
 #'  \link[=cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator\cr
 #'  \link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab This action might generate an SMS text message\cr
-#'  \link[=cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out} \tab Signs out a user from all devices\cr
+#'  \link[=cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out} \tab Invalidates the identity, access, and refresh tokens that Amazon Cognito issued to a user\cr
 #'  \link[=cognitoidentityprovider_associate_software_token]{associate_software_token} \tab Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response\cr
 #'  \link[=cognitoidentityprovider_change_password]{change_password} \tab Changes the password for a specified user in a user pool\cr
 #'  \link[=cognitoidentityprovider_confirm_device]{confirm_device} \tab Confirms tracking of the device\cr
 #'  \link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password} \tab Allows a user to enter a confirmation code to reset a forgotten password\cr
-#'  \link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up} \tab Confirms registration of a new user\cr
+#'  \link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up} \tab This public API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool via the SignUp API operation\cr
 #'  \link[=cognitoidentityprovider_create_group]{create_group} \tab Creates a new group in the specified user pool\cr
 #'  \link[=cognitoidentityprovider_create_identity_provider]{create_identity_provider} \tab Creates an IdP for a user pool\cr
 #'  \link[=cognitoidentityprovider_create_resource_server]{create_resource_server} \tab Creates a new OAuth2\cr
@@ -233,7 +252,7 @@ NULL
 #'  \link[=cognitoidentityprovider_get_user]{get_user} \tab Gets the user attributes and metadata for a user\cr
 #'  \link[=cognitoidentityprovider_get_user_attribute_verification_code]{get_user_attribute_verification_code} \tab Generates a user attribute verification code for the specified attribute name\cr
 #'  \link[=cognitoidentityprovider_get_user_pool_mfa_config]{get_user_pool_mfa_config} \tab Gets the user pool multi-factor authentication (MFA) configuration\cr
-#'  \link[=cognitoidentityprovider_global_sign_out]{global_sign_out} \tab Signs out a user from all devices\cr
+#'  \link[=cognitoidentityprovider_global_sign_out]{global_sign_out} \tab Invalidates the identity, access, and refresh tokens that Amazon Cognito issued to a user\cr
 #'  \link[=cognitoidentityprovider_initiate_auth]{initiate_auth} \tab Initiates sign-in for a user in the Amazon Cognito user directory\cr
 #'  \link[=cognitoidentityprovider_list_devices]{list_devices} \tab Lists the sign-in devices that Amazon Cognito has registered to the current user\cr
 #'  \link[=cognitoidentityprovider_list_groups]{list_groups} \tab Lists the groups associated with a user pool\cr
@@ -246,7 +265,7 @@ NULL
 #'  \link[=cognitoidentityprovider_list_users]{list_users} \tab Lists users and their basic details in a user pool\cr
 #'  \link[=cognitoidentityprovider_list_users_in_group]{list_users_in_group} \tab Lists the users in the specified group\cr
 #'  \link[=cognitoidentityprovider_resend_confirmation_code]{resend_confirmation_code} \tab Resends the confirmation (for confirmation of registration) to a specific user in the user pool\cr
-#'  \link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Responds to the authentication challenge\cr
+#'  \link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge\cr
 #'  \link[=cognitoidentityprovider_revoke_token]{revoke_token} \tab Revokes all of the access tokens generated by, and at the same time as, the specified refresh token\cr
 #'  \link[=cognitoidentityprovider_set_log_delivery_configuration]{set_log_delivery_configuration} \tab Sets up or modifies the detailed activity logging configuration of a user pool\cr
 #'  \link[=cognitoidentityprovider_set_risk_configuration]{set_risk_configuration} \tab Configures actions on detected risks\cr
@@ -264,7 +283,7 @@ NULL
 #'  \link[=cognitoidentityprovider_update_group]{update_group} \tab Updates the specified group with the specified attributes\cr
 #'  \link[=cognitoidentityprovider_update_identity_provider]{update_identity_provider} \tab Updates IdP information for a user pool\cr
 #'  \link[=cognitoidentityprovider_update_resource_server]{update_resource_server} \tab Updates the name and scopes of resource server\cr
-#'  \link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab Allows a user to update a specific attribute (one at a time)\cr
+#'  \link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab With this operation, your users can update one or more of their attributes with their own credentials\cr
 #'  \link[=cognitoidentityprovider_update_user_pool]{update_user_pool} \tab This action might generate an SMS text message\cr
 #'  \link[=cognitoidentityprovider_update_user_pool_client]{update_user_pool_client} \tab Updates the specified user pool app client with the specified attributes\cr
 #'  \link[=cognitoidentityprovider_update_user_pool_domain]{update_user_pool_domain} \tab Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool\cr

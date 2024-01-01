@@ -472,14 +472,18 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Criticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Title = list(
@@ -632,6 +636,24 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
 #'           )
+#'         ),
+#'         ResourceApplicationArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ResourceApplicationName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         AwsAccountName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
 #'         )
 #'       ),
 #'       Actions = list(
@@ -729,6 +751,113 @@ securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
 }
 .securityhub$operations$batch_get_automation_rules <- securityhub_batch_get_automation_rules
 
+#' Returns associations between an Security Hub configuration and a batch
+#' of target accounts, organizational units, or the root
+#'
+#' @description
+#' Returns associations between an Security Hub configuration and a batch
+#' of target accounts, organizational units, or the root. Only the Security
+#' Hub delegated administrator can invoke this operation from the home
+#' Region. A configuration can refer to a configuration policy or to a
+#' self-managed configuration.
+#'
+#' @usage
+#' securityhub_batch_get_configuration_policy_associations(
+#'   ConfigurationPolicyAssociationIdentifiers)
+#'
+#' @param ConfigurationPolicyAssociationIdentifiers &#91;required&#93; Specifies one or more target account IDs, organizational unit (OU) IDs,
+#' or the root ID to retrieve associations for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationPolicyAssociations = list(
+#'     list(
+#'       ConfigurationPolicyId = "string",
+#'       TargetId = "string",
+#'       TargetType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
+#'       AssociationType = "INHERITED"|"APPLIED",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssociationStatus = "PENDING"|"SUCCESS"|"FAILED",
+#'       AssociationStatusMessage = "string"
+#'     )
+#'   ),
+#'   UnprocessedConfigurationPolicyAssociations = list(
+#'     list(
+#'       ConfigurationPolicyAssociationIdentifiers = list(
+#'         Target = list(
+#'           AccountId = "string",
+#'           OrganizationalUnitId = "string",
+#'           RootId = "string"
+#'         )
+#'       ),
+#'       ErrorCode = "string",
+#'       ErrorReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_configuration_policy_associations(
+#'   ConfigurationPolicyAssociationIdentifiers = list(
+#'     list(
+#'       Target = list(
+#'         AccountId = "string",
+#'         OrganizationalUnitId = "string",
+#'         RootId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation provides details about configuration associations for a
+#' # batch of target accounts, organizational units, or the root.
+#' svc$batch_get_configuration_policy_associations(
+#'   ConfigurationPolicyAssociationIdentifiers = list(
+#'     list(
+#'       Target = list(
+#'         AccountId = "111122223333"
+#'       )
+#'     ),
+#'     list(
+#'       Target = list(
+#'         RootId = "r-f6g7h8i9j0example"
+#'       )
+#'     )
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_get_configuration_policy_associations
+#'
+#' @aliases securityhub_batch_get_configuration_policy_associations
+securityhub_batch_get_configuration_policy_associations <- function(ConfigurationPolicyAssociationIdentifiers) {
+  op <- new_operation(
+    name = "BatchGetConfigurationPolicyAssociations",
+    http_method = "POST",
+    http_path = "/configurationPolicyAssociation/batchget",
+    paginator = list()
+  )
+  input <- .securityhub$batch_get_configuration_policy_associations_input(ConfigurationPolicyAssociationIdentifiers = ConfigurationPolicyAssociationIdentifiers)
+  output <- .securityhub$batch_get_configuration_policy_associations_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_get_configuration_policy_associations <- securityhub_batch_get_configuration_policy_associations
+
 #' Provides details about a batch of security controls for the current
 #' Amazon Web Services account and Amazon Web Services Region
 #'
@@ -755,7 +884,30 @@ securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
 #'       Description = "string",
 #'       RemediationUrl = "string",
 #'       SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
-#'       SecurityControlStatus = "ENABLED"|"DISABLED"
+#'       SecurityControlStatus = "ENABLED"|"DISABLED",
+#'       UpdateStatus = "READY"|"UPDATING",
+#'       Parameters = list(
+#'         list(
+#'           ValueType = "DEFAULT"|"CUSTOM",
+#'           Value = list(
+#'             Integer = 123,
+#'             IntegerList = list(
+#'               123
+#'             ),
+#'             Double = 123.0,
+#'             String = "string",
+#'             StringList = list(
+#'               "string"
+#'             ),
+#'             Boolean = TRUE|FALSE,
+#'             Enum = "string",
+#'             EnumList = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LastUpdateReason = "string"
 #'     )
 #'   ),
 #'   UnprocessedIds = list(
@@ -1979,7 +2131,8 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                     Years = 123
 #'                   )
 #'                 )
-#'               )
+#'               ),
+#'               Name = "string"
 #'             ),
 #'             AwsS3AccountPublicAccessBlock = list(
 #'               BlockPublicAcls = TRUE|FALSE,
@@ -2246,7 +2399,8 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'               TableId = "string",
 #'               TableName = "string",
 #'               TableSizeBytes = 123,
-#'               TableStatus = "string"
+#'               TableStatus = "string",
+#'               DeletionProtectionEnabled = TRUE|FALSE
 #'             ),
 #'             AwsApiGatewayStage = list(
 #'               DeploymentId = "string",
@@ -5152,10 +5306,80 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                     ),
 #'                     Enabled = TRUE|FALSE
 #'                   )
+#'                 ),
+#'                 EnhancedMonitoring = "string"
+#'               )
+#'             ),
+#'             AwsS3AccessPoint = list(
+#'               AccessPointArn = "string",
+#'               Alias = "string",
+#'               Bucket = "string",
+#'               BucketAccountId = "string",
+#'               Name = "string",
+#'               NetworkOrigin = "string",
+#'               PublicAccessBlockConfiguration = list(
+#'                 BlockPublicAcls = TRUE|FALSE,
+#'                 BlockPublicPolicy = TRUE|FALSE,
+#'                 IgnorePublicAcls = TRUE|FALSE,
+#'                 RestrictPublicBuckets = TRUE|FALSE
+#'               ),
+#'               VpcConfiguration = list(
+#'                 VpcId = "string"
+#'               )
+#'             ),
+#'             AwsEc2ClientVpnEndpoint = list(
+#'               ClientVpnEndpointId = "string",
+#'               Description = "string",
+#'               ClientCidrBlock = "string",
+#'               DnsServer = list(
+#'                 "string"
+#'               ),
+#'               SplitTunnel = TRUE|FALSE,
+#'               TransportProtocol = "string",
+#'               VpnPort = 123,
+#'               ServerCertificateArn = "string",
+#'               AuthenticationOptions = list(
+#'                 list(
+#'                   Type = "string",
+#'                   ActiveDirectory = list(
+#'                     DirectoryId = "string"
+#'                   ),
+#'                   MutualAuthentication = list(
+#'                     ClientRootCertificateChain = "string"
+#'                   ),
+#'                   FederatedAuthentication = list(
+#'                     SamlProviderArn = "string",
+#'                     SelfServiceSamlProviderArn = "string"
+#'                   )
 #'                 )
+#'               ),
+#'               ConnectionLogOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 CloudwatchLogGroup = "string",
+#'                 CloudwatchLogStream = "string"
+#'               ),
+#'               SecurityGroupIdSet = list(
+#'                 "string"
+#'               ),
+#'               VpcId = "string",
+#'               SelfServicePortalUrl = "string",
+#'               ClientConnectOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 LambdaFunctionArn = "string",
+#'                 Status = list(
+#'                   Code = "string",
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               SessionTimeoutHours = 123,
+#'               ClientLoginBannerOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 BannerText = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ApplicationName = "string",
+#'           ApplicationArn = "string"
 #'         )
 #'       ),
 #'       Compliance = list(
@@ -5173,6 +5397,14 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'         AssociatedStandards = list(
 #'           list(
 #'             StandardsId = "string"
+#'           )
+#'         ),
+#'         SecurityControlParameters = list(
+#'           list(
+#'             Name = "string",
+#'             Value = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -5402,7 +5634,9 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'         Labels = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       ProcessedAt = "string",
+#'       AwsAccountName = "string"
 #'     )
 #'   )
 #' )
@@ -5585,14 +5819,18 @@ securityhub_batch_import_findings <- function(Findings) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Criticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Title = list(
@@ -5744,6 +5982,24 @@ securityhub_batch_import_findings <- function(Findings) {
 #'             Key = "string",
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ResourceApplicationArn = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ResourceApplicationName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         AwsAccountName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
 #'           )
 #'         )
 #'       ),
@@ -6224,7 +6480,7 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #' securityhub_create_automation_rule(Tags, RuleStatus, RuleOrder,
 #'   RuleName, Description, IsTerminal, Criteria, Actions)
 #'
-#' @param Tags User-defined tags that help you label the purpose of a rule.
+#' @param Tags User-defined tags associated with an automation rule.
 #' @param RuleStatus Whether the rule is active after it is created. If this parameter is
 #' equal to `ENABLED`, Security Hub starts applying the rule to findings
 #' and finding updates after the rule is created. To change the value of
@@ -6343,14 +6599,18 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -6503,6 +6763,24 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
 #'       )
+#'     ),
+#'     ResourceApplicationArn = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     AwsAccountName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
 #'     )
 #'   ),
 #'   Actions = list(
@@ -6624,6 +6902,204 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
   return(response)
 }
 .securityhub$operations$create_automation_rule <- securityhub_create_automation_rule
+
+#' Creates a configuration policy with the defined configuration
+#'
+#' @description
+#' Creates a configuration policy with the defined configuration. Only the
+#' Security Hub delegated administrator can invoke this operation from the
+#' home Region.
+#'
+#' @usage
+#' securityhub_create_configuration_policy(Name, Description,
+#'   ConfigurationPolicy, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the configuration policy. Alphanumeric characters and the
+#' following ASCII characters are permitted: `-, ., !, *, /`.
+#' @param Description The description of the configuration policy.
+#' @param ConfigurationPolicy &#91;required&#93; An object that defines how Security Hub is configured. It includes
+#' whether Security Hub is enabled or disabled, a list of enabled security
+#' standards, a list of enabled or disabled security controls, and a list
+#' of custom parameter values for specified controls. If you provide a list
+#' of security controls that are enabled in the configuration policy,
+#' Security Hub disables all other controls (including newly released
+#' controls). If you provide a list of security controls that are disabled
+#' in the configuration policy, Security Hub enables all other controls
+#' (including newly released controls).
+#' @param Tags User-defined tags associated with a configuration policy. For more
+#' information, see [Tagging Security Hub
+#' resources](https://docs.aws.amazon.com/securityhub/latest/userguide/tagging-resources.html)
+#' in the *Security Hub user guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       ServiceEnabled = TRUE|FALSE,
+#'       EnabledStandardIdentifiers = list(
+#'         "string"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         EnabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             SecurityControlId = "string",
+#'             Parameters = list(
+#'               list(
+#'                 ValueType = "DEFAULT"|"CUSTOM",
+#'                 Value = list(
+#'                   Integer = 123,
+#'                   IntegerList = list(
+#'                     123
+#'                   ),
+#'                   Double = 123.0,
+#'                   String = "string",
+#'                   StringList = list(
+#'                     "string"
+#'                   ),
+#'                   Boolean = TRUE|FALSE,
+#'                   Enum = "string",
+#'                   EnumList = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_configuration_policy(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       ServiceEnabled = TRUE|FALSE,
+#'       EnabledStandardIdentifiers = list(
+#'         "string"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         EnabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             SecurityControlId = "string",
+#'             Parameters = list(
+#'               list(
+#'                 ValueType = "DEFAULT"|"CUSTOM",
+#'                 Value = list(
+#'                   Integer = 123,
+#'                   IntegerList = list(
+#'                     123
+#'                   ),
+#'                   Double = 123.0,
+#'                   String = "string",
+#'                   StringList = list(
+#'                     "string"
+#'                   ),
+#'                   Boolean = TRUE|FALSE,
+#'                   Enum = "string",
+#'                   EnumList = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation creates a configuration policy in Security Hub.
+#' svc$create_configuration_policy(
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       EnabledStandardIdentifiers = list(
+#'         "arn:aws:securityhub:us-east-1::standards/aws-foundational-security...",
+#'         "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "CloudWatch.1"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             Parameters = list(
+#'               daysToExpiration = list(
+#'                 Value = list(
+#'                   Integer = 14L
+#'                 ),
+#'                 ValueType = "CUSTOM"
+#'               )
+#'             ),
+#'             SecurityControlId = "ACM.1"
+#'           )
+#'         )
+#'       ),
+#'       ServiceEnabled = TRUE
+#'     )
+#'   ),
+#'   Description = "Configuration policy for testing FSBP and CIS",
+#'   Name = "TestConfigurationPolicy"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_create_configuration_policy
+#'
+#' @aliases securityhub_create_configuration_policy
+securityhub_create_configuration_policy <- function(Name, Description = NULL, ConfigurationPolicy, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateConfigurationPolicy",
+    http_method = "POST",
+    http_path = "/configurationPolicy/create",
+    paginator = list()
+  )
+  input <- .securityhub$create_configuration_policy_input(Name = Name, Description = Description, ConfigurationPolicy = ConfigurationPolicy, Tags = Tags)
+  output <- .securityhub$create_configuration_policy_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
 
 #' Used to enable finding aggregation
 #'
@@ -6844,14 +7320,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -6864,14 +7344,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -6974,7 +7458,9 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -7003,7 +7489,9 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -7028,14 +7516,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -7339,14 +7831,18 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -7391,6 +7887,48 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesExploitAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesFixAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersValue = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     AwsAccountName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
@@ -7710,6 +8248,62 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
   return(response)
 }
 .securityhub$operations$delete_action_target <- securityhub_delete_action_target
+
+#' Deletes a configuration policy
+#'
+#' @description
+#' Deletes a configuration policy. Only the Security Hub delegated
+#' administrator can invoke this operation from the home Region. For the
+#' deletion to succeed, you must first disassociate a configuration policy
+#' from target accounts, organizational units, or the root by invoking the
+#' [`start_configuration_policy_disassociation`][securityhub_start_configuration_policy_disassociation]
+#' operation.
+#'
+#' @usage
+#' securityhub_delete_configuration_policy(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
+#' of the configuration policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_configuration_policy(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation deletes the specified configuration policy.
+#' svc$delete_configuration_policy(
+#'   Identifier = "arn:aws:securityhub:us-east-1:123456789012:configuration-po..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_delete_configuration_policy
+#'
+#' @aliases securityhub_delete_configuration_policy
+securityhub_delete_configuration_policy <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteConfigurationPolicy",
+    http_method = "DELETE",
+    http_path = "/configurationPolicy/{Identifier}",
+    paginator = list()
+  )
+  input <- .securityhub$delete_configuration_policy_input(Identifier = Identifier)
+  output <- .securityhub$delete_configuration_policy_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
 
 #' Deletes a finding aggregator
 #'
@@ -8116,12 +8710,13 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 }
 .securityhub$operations$describe_hub <- securityhub_describe_hub
 
-#' Returns information about the Organizations configuration for Security
-#' Hub
+#' Returns information about the way your organization is configured in
+#' Security Hub
 #'
 #' @description
-#' Returns information about the Organizations configuration for Security
-#' Hub. Can only be called from a Security Hub administrator account.
+#' Returns information about the way your organization is configured in
+#' Security Hub. Only the Security Hub administrator account can invoke
+#' this operation.
 #'
 #' @usage
 #' securityhub_describe_organization_configuration()
@@ -8132,7 +8727,12 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' list(
 #'   AutoEnable = TRUE|FALSE,
 #'   MemberAccountLimitReached = TRUE|FALSE,
-#'   AutoEnableStandards = "NONE"|"DEFAULT"
+#'   AutoEnableStandards = "NONE"|"DEFAULT",
+#'   OrganizationConfiguration = list(
+#'     ConfigurationType = "CENTRAL"|"LOCAL",
+#'     Status = "PENDING"|"ENABLED"|"FAILED",
+#'     StatusMessage = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -8143,10 +8743,9 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example returns details about the way in which AWS
-#' # Organizations is configured for a Security Hub account that belongs to
-#' # an organization. Only a Security Hub administrator account can call this
-#' # operation.
+#' # This operation provides information about the way your organization is
+#' # configured in Security Hub. Only a Security Hub administrator account
+#' # can invoke this operation.
 #' svc$describe_organization_configuration()
 #' }
 #'
@@ -9061,6 +9660,190 @@ securityhub_get_administrator_account <- function() {
   return(response)
 }
 .securityhub$operations$get_administrator_account <- securityhub_get_administrator_account
+
+#' Provides information about a configuration policy
+#'
+#' @description
+#' Provides information about a configuration policy. Only the Security Hub
+#' delegated administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_get_configuration_policy(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
+#' of the configuration policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       ServiceEnabled = TRUE|FALSE,
+#'       EnabledStandardIdentifiers = list(
+#'         "string"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         EnabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             SecurityControlId = "string",
+#'             Parameters = list(
+#'               list(
+#'                 ValueType = "DEFAULT"|"CUSTOM",
+#'                 Value = list(
+#'                   Integer = 123,
+#'                   IntegerList = list(
+#'                     123
+#'                   ),
+#'                   Double = 123.0,
+#'                   String = "string",
+#'                   StringList = list(
+#'                     "string"
+#'                   ),
+#'                   Boolean = TRUE|FALSE,
+#'                   Enum = "string",
+#'                   EnumList = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_configuration_policy(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation provides details about the specified configuration
+#' # policy.
+#' svc$get_configuration_policy(
+#'   Identifier = "arn:aws:securityhub:us-east-1:123456789012:configuration-po..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_configuration_policy
+#'
+#' @aliases securityhub_get_configuration_policy
+securityhub_get_configuration_policy <- function(Identifier) {
+  op <- new_operation(
+    name = "GetConfigurationPolicy",
+    http_method = "GET",
+    http_path = "/configurationPolicy/get/{Identifier}",
+    paginator = list()
+  )
+  input <- .securityhub$get_configuration_policy_input(Identifier = Identifier)
+  output <- .securityhub$get_configuration_policy_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_configuration_policy <- securityhub_get_configuration_policy
+
+#' Returns the association between a configuration and a target account,
+#' organizational unit, or the root
+#'
+#' @description
+#' Returns the association between a configuration and a target account,
+#' organizational unit, or the root. The configuration can be a
+#' configuration policy or self-managed behavior. Only the Security Hub
+#' delegated administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_get_configuration_policy_association(Target)
+#'
+#' @param Target &#91;required&#93; The target account ID, organizational unit ID, or the root ID to
+#' retrieve the association for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationPolicyId = "string",
+#'   TargetId = "string",
+#'   TargetType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
+#'   AssociationType = "INHERITED"|"APPLIED",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AssociationStatus = "PENDING"|"SUCCESS"|"FAILED",
+#'   AssociationStatusMessage = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_configuration_policy_association(
+#'   Target = list(
+#'     AccountId = "string",
+#'     OrganizationalUnitId = "string",
+#'     RootId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation provides details about configuration associations for a
+#' # specific target account, organizational unit, or the root.
+#' svc$get_configuration_policy_association(
+#'   Target = list(
+#'     AccountId = "111122223333"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_configuration_policy_association
+#'
+#' @aliases securityhub_get_configuration_policy_association
+securityhub_get_configuration_policy_association <- function(Target) {
+  op <- new_operation(
+    name = "GetConfigurationPolicyAssociation",
+    http_method = "POST",
+    http_path = "/configurationPolicyAssociation/get",
+    paginator = list()
+  )
+  input <- .securityhub$get_configuration_policy_association_input(Target = Target)
+  output <- .securityhub$get_configuration_policy_association_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_configuration_policy_association <- securityhub_get_configuration_policy_association
 
 #' Returns a list of the standards that are currently enabled
 #'
@@ -10367,7 +11150,8 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                     Years = 123
 #'                   )
 #'                 )
-#'               )
+#'               ),
+#'               Name = "string"
 #'             ),
 #'             AwsS3AccountPublicAccessBlock = list(
 #'               BlockPublicAcls = TRUE|FALSE,
@@ -10634,7 +11418,8 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'               TableId = "string",
 #'               TableName = "string",
 #'               TableSizeBytes = 123,
-#'               TableStatus = "string"
+#'               TableStatus = "string",
+#'               DeletionProtectionEnabled = TRUE|FALSE
 #'             ),
 #'             AwsApiGatewayStage = list(
 #'               DeploymentId = "string",
@@ -13540,10 +14325,80 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                     ),
 #'                     Enabled = TRUE|FALSE
 #'                   )
+#'                 ),
+#'                 EnhancedMonitoring = "string"
+#'               )
+#'             ),
+#'             AwsS3AccessPoint = list(
+#'               AccessPointArn = "string",
+#'               Alias = "string",
+#'               Bucket = "string",
+#'               BucketAccountId = "string",
+#'               Name = "string",
+#'               NetworkOrigin = "string",
+#'               PublicAccessBlockConfiguration = list(
+#'                 BlockPublicAcls = TRUE|FALSE,
+#'                 BlockPublicPolicy = TRUE|FALSE,
+#'                 IgnorePublicAcls = TRUE|FALSE,
+#'                 RestrictPublicBuckets = TRUE|FALSE
+#'               ),
+#'               VpcConfiguration = list(
+#'                 VpcId = "string"
+#'               )
+#'             ),
+#'             AwsEc2ClientVpnEndpoint = list(
+#'               ClientVpnEndpointId = "string",
+#'               Description = "string",
+#'               ClientCidrBlock = "string",
+#'               DnsServer = list(
+#'                 "string"
+#'               ),
+#'               SplitTunnel = TRUE|FALSE,
+#'               TransportProtocol = "string",
+#'               VpnPort = 123,
+#'               ServerCertificateArn = "string",
+#'               AuthenticationOptions = list(
+#'                 list(
+#'                   Type = "string",
+#'                   ActiveDirectory = list(
+#'                     DirectoryId = "string"
+#'                   ),
+#'                   MutualAuthentication = list(
+#'                     ClientRootCertificateChain = "string"
+#'                   ),
+#'                   FederatedAuthentication = list(
+#'                     SamlProviderArn = "string",
+#'                     SelfServiceSamlProviderArn = "string"
+#'                   )
 #'                 )
+#'               ),
+#'               ConnectionLogOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 CloudwatchLogGroup = "string",
+#'                 CloudwatchLogStream = "string"
+#'               ),
+#'               SecurityGroupIdSet = list(
+#'                 "string"
+#'               ),
+#'               VpcId = "string",
+#'               SelfServicePortalUrl = "string",
+#'               ClientConnectOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 LambdaFunctionArn = "string",
+#'                 Status = list(
+#'                   Code = "string",
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               SessionTimeoutHours = 123,
+#'               ClientLoginBannerOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 BannerText = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ApplicationName = "string",
+#'           ApplicationArn = "string"
 #'         )
 #'       ),
 #'       Compliance = list(
@@ -13561,6 +14416,14 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'         AssociatedStandards = list(
 #'           list(
 #'             StandardsId = "string"
+#'           )
+#'         ),
+#'         SecurityControlParameters = list(
+#'           list(
+#'             Name = "string",
+#'             Value = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -13790,7 +14653,9 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'         Labels = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       ProcessedAt = "string",
+#'       AwsAccountName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -13881,14 +14746,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -13901,14 +14770,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -14011,7 +14884,9 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -14040,7 +14915,9 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -14065,14 +14942,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -14376,14 +15257,18 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -14428,6 +15313,48 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesExploitAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesFixAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersValue = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     AwsAccountName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
@@ -14660,14 +15587,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         SeverityNormalized = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         SeverityLabel = list(
@@ -14680,14 +15611,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Criticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         Title = list(
@@ -14790,7 +15725,9 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         NetworkSourceDomain = list(
@@ -14819,7 +15756,9 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         NetworkDestinationDomain = list(
@@ -14844,14 +15783,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         ProcessParentPid = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         ProcessLaunchedAt = list(
@@ -15155,14 +16098,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         FindingProviderFieldsCriticality = list(
 #'           list(
 #'             Gte = 123.0,
 #'             Lte = 123.0,
-#'             Eq = 123.0
+#'             Eq = 123.0,
+#'             Gt = 123.0,
+#'             Lt = 123.0
 #'           )
 #'         ),
 #'         FindingProviderFieldsRelatedFindingsId = list(
@@ -15207,6 +16154,48 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           )
 #'         ),
 #'         ComplianceAssociatedStandardsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         VulnerabilitiesExploitAvailable = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         VulnerabilitiesFixAvailable = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ComplianceSecurityControlParametersName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ComplianceSecurityControlParametersValue = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         AwsAccountName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ResourceApplicationName = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'           )
+#'         ),
+#'         ResourceApplicationArn = list(
 #'           list(
 #'             Value = "string",
 #'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
@@ -15484,6 +16473,131 @@ securityhub_get_members <- function(AccountIds) {
 }
 .securityhub$operations$get_members <- securityhub_get_members
 
+#' Retrieves the definition of a security control
+#'
+#' @description
+#' Retrieves the definition of a security control. The definition includes
+#' the control title, description, Region availability, parameter
+#' definitions, and other details.
+#'
+#' @usage
+#' securityhub_get_security_control_definition(SecurityControlId)
+#'
+#' @param SecurityControlId &#91;required&#93; The ID of the security control to retrieve the definition for. This
+#' field doesn’t accept an Amazon Resource Name (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityControlDefinition = list(
+#'     SecurityControlId = "string",
+#'     Title = "string",
+#'     Description = "string",
+#'     RemediationUrl = "string",
+#'     SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'     CurrentRegionAvailability = "AVAILABLE"|"UNAVAILABLE",
+#'     CustomizableProperties = list(
+#'       "Parameters"
+#'     ),
+#'     ParameterDefinitions = list(
+#'       list(
+#'         Description = "string",
+#'         ConfigurationOptions = list(
+#'           Integer = list(
+#'             DefaultValue = 123,
+#'             Min = 123,
+#'             Max = 123
+#'           ),
+#'           IntegerList = list(
+#'             DefaultValue = list(
+#'               123
+#'             ),
+#'             Min = 123,
+#'             Max = 123,
+#'             MaxItems = 123
+#'           ),
+#'           Double = list(
+#'             DefaultValue = 123.0,
+#'             Min = 123.0,
+#'             Max = 123.0
+#'           ),
+#'           String = list(
+#'             DefaultValue = "string",
+#'             Re2Expression = "string",
+#'             ExpressionDescription = "string"
+#'           ),
+#'           StringList = list(
+#'             DefaultValue = list(
+#'               "string"
+#'             ),
+#'             Re2Expression = "string",
+#'             MaxItems = 123,
+#'             ExpressionDescription = "string"
+#'           ),
+#'           Boolean = list(
+#'             DefaultValue = TRUE|FALSE
+#'           ),
+#'           Enum = list(
+#'             DefaultValue = "string",
+#'             AllowedValues = list(
+#'               "string"
+#'             )
+#'           ),
+#'           EnumList = list(
+#'             DefaultValue = list(
+#'               "string"
+#'             ),
+#'             MaxItems = 123,
+#'             AllowedValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_security_control_definition(
+#'   SecurityControlId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example retrieves definition details for the specified
+#' # security control.
+#' svc$get_security_control_definition(
+#'   SecurityControlId = "EC2.4"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_security_control_definition
+#'
+#' @aliases securityhub_get_security_control_definition
+securityhub_get_security_control_definition <- function(SecurityControlId) {
+  op <- new_operation(
+    name = "GetSecurityControlDefinition",
+    http_method = "GET",
+    http_path = "/securityControl/definition",
+    paginator = list()
+  )
+  input <- .securityhub$get_security_control_definition_input(SecurityControlId = SecurityControlId)
+  output <- .securityhub$get_security_control_definition_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_security_control_definition <- securityhub_get_security_control_definition
+
 #' Invites other Amazon Web Services accounts to become member accounts for
 #' the Security Hub administrator account that the invitation is sent from
 #'
@@ -15645,6 +16759,200 @@ securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NUL
   return(response)
 }
 .securityhub$operations$list_automation_rules <- securityhub_list_automation_rules
+
+#' Lists the configuration policies that the Security Hub delegated
+#' administrator has created for your organization
+#'
+#' @description
+#' Lists the configuration policies that the Security Hub delegated
+#' administrator has created for your organization. Only the delegated
+#' administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_list_configuration_policies(NextToken, MaxResults)
+#'
+#' @param NextToken The NextToken value that's returned from a previous paginated
+#' [`list_configuration_policies`][securityhub_list_configuration_policies]
+#' request where `MaxResults` was used but the results exceeded the value
+#' of that parameter. Pagination continues from the `MaxResults` was used
+#' but the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous response that returned the
+#' `NextToken` value. This value is `null` when there are no more results
+#' to return.
+#' @param MaxResults The maximum number of results that's returned by
+#' [`list_configuration_policies`][securityhub_list_configuration_policies]
+#' in each page of the response. When this parameter is used,
+#' [`list_configuration_policies`][securityhub_list_configuration_policies]
+#' returns the specified number of results in a single page and a
+#' `NextToken` response element. You can see the remaining results of the
+#' initial request by sending another
+#' [`list_configuration_policies`][securityhub_list_configuration_policies]
+#' request with the returned `NextToken` value. A valid range for
+#' `MaxResults` is between 1 and 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationPolicySummaries = list(
+#'     list(
+#'       Arn = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ServiceEnabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_configuration_policies(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation provides a list of your configuration policies, including
+#' # metadata for each policy.
+#' svc$list_configuration_policies(
+#'   MaxResults = 1L,
+#'   NextToken = "U1FsdGVkX19nBV2zoh+Gou9NgnulLJHWpn9xnG4hqSOhvw3o2JqjI86QDxdf"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_configuration_policies
+#'
+#' @aliases securityhub_list_configuration_policies
+securityhub_list_configuration_policies <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationPolicies",
+    http_method = "GET",
+    http_path = "/configurationPolicy/list",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationPolicySummaries")
+  )
+  input <- .securityhub$list_configuration_policies_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_configuration_policies_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_configuration_policies <- securityhub_list_configuration_policies
+
+#' Provides information about the associations for your configuration
+#' policies and self-managed behavior
+#'
+#' @description
+#' Provides information about the associations for your configuration
+#' policies and self-managed behavior. Only the Security Hub delegated
+#' administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_list_configuration_policy_associations(NextToken,
+#'   MaxResults, Filters)
+#'
+#' @param NextToken The `NextToken` value that's returned from a previous paginated
+#' [`list_configuration_policy_associations`][securityhub_list_configuration_policy_associations]
+#' request where `MaxResults` was used but the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' response that returned the `NextToken` value. This value is `null` when
+#' there are no more results to return.
+#' @param MaxResults The maximum number of results that's returned by
+#' [`list_configuration_policies`][securityhub_list_configuration_policies]
+#' in each page of the response. When this parameter is used,
+#' [`list_configuration_policy_associations`][securityhub_list_configuration_policy_associations]
+#' returns the specified number of results in a single page and a
+#' `NextToken` response element. You can see the remaining results of the
+#' initial request by sending another
+#' [`list_configuration_policy_associations`][securityhub_list_configuration_policy_associations]
+#' request with the returned `NextToken` value. A valid range for
+#' `MaxResults` is between 1 and 100.
+#' @param Filters Options for filtering the
+#' [`list_configuration_policy_associations`][securityhub_list_configuration_policy_associations]
+#' response. You can filter by the Amazon Resource Name (ARN) or
+#' universally unique identifier (UUID) of a configuration,
+#' `AssociationType`, or `AssociationStatus`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationPolicyAssociationSummaries = list(
+#'     list(
+#'       ConfigurationPolicyId = "string",
+#'       TargetId = "string",
+#'       TargetType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
+#'       AssociationType = "INHERITED"|"APPLIED",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssociationStatus = "PENDING"|"SUCCESS"|"FAILED",
+#'       AssociationStatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_configuration_policy_associations(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     ConfigurationPolicyId = "string",
+#'     AssociationType = "INHERITED"|"APPLIED",
+#'     AssociationStatus = "PENDING"|"SUCCESS"|"FAILED"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation lists all of the associations between targets and
+#' # configuration policies or self-managed behavior. Targets can include
+#' # accounts, organizational units, or the root.
+#' svc$list_configuration_policy_associations(
+#'   Filters = list(
+#'     AssociationType = "APPLIED"
+#'   ),
+#'   MaxResults = 1L,
+#'   NextToken = "U1FsdGVkX19nBV2zoh+Gou9NgnulLJHWpn9xnG4hqSOhvw3o2JqjI86QDxdf"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_configuration_policy_associations
+#'
+#' @aliases securityhub_list_configuration_policy_associations
+securityhub_list_configuration_policy_associations <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationPolicyAssociations",
+    http_method = "POST",
+    http_path = "/configurationPolicyAssociation/list",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationPolicyAssociationSummaries")
+  )
+  input <- .securityhub$list_configuration_policy_associations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .securityhub$list_configuration_policy_associations_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_configuration_policy_associations <- securityhub_list_configuration_policy_associations
 
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub
@@ -16054,7 +17362,66 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #'       Description = "string",
 #'       RemediationUrl = "string",
 #'       SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
-#'       CurrentRegionAvailability = "AVAILABLE"|"UNAVAILABLE"
+#'       CurrentRegionAvailability = "AVAILABLE"|"UNAVAILABLE",
+#'       CustomizableProperties = list(
+#'         "Parameters"
+#'       ),
+#'       ParameterDefinitions = list(
+#'         list(
+#'           Description = "string",
+#'           ConfigurationOptions = list(
+#'             Integer = list(
+#'               DefaultValue = 123,
+#'               Min = 123,
+#'               Max = 123
+#'             ),
+#'             IntegerList = list(
+#'               DefaultValue = list(
+#'                 123
+#'               ),
+#'               Min = 123,
+#'               Max = 123,
+#'               MaxItems = 123
+#'             ),
+#'             Double = list(
+#'               DefaultValue = 123.0,
+#'               Min = 123.0,
+#'               Max = 123.0
+#'             ),
+#'             String = list(
+#'               DefaultValue = "string",
+#'               Re2Expression = "string",
+#'               ExpressionDescription = "string"
+#'             ),
+#'             StringList = list(
+#'               DefaultValue = list(
+#'                 "string"
+#'               ),
+#'               Re2Expression = "string",
+#'               MaxItems = 123,
+#'               ExpressionDescription = "string"
+#'             ),
+#'             Boolean = list(
+#'               DefaultValue = TRUE|FALSE
+#'             ),
+#'             Enum = list(
+#'               DefaultValue = "string",
+#'               AllowedValues = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             EnumList = list(
+#'               DefaultValue = list(
+#'                 "string"
+#'               ),
+#'               MaxItems = 123,
+#'               AllowedValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -16251,6 +17618,156 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 }
 .securityhub$operations$list_tags_for_resource <- securityhub_list_tags_for_resource
 
+#' Associates a target account, organizational unit, or the root with a
+#' specified configuration
+#'
+#' @description
+#' Associates a target account, organizational unit, or the root with a
+#' specified configuration. The target can be associated with a
+#' configuration policy or self-managed behavior. Only the Security Hub
+#' delegated administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_start_configuration_policy_association(
+#'   ConfigurationPolicyIdentifier, Target)
+#'
+#' @param ConfigurationPolicyIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
+#' of the configuration policy.
+#' @param Target &#91;required&#93; The identifier of the target account, organizational unit, or the root
+#' to associate with the specified configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConfigurationPolicyId = "string",
+#'   TargetId = "string",
+#'   TargetType = "ACCOUNT"|"ORGANIZATIONAL_UNIT",
+#'   AssociationType = "INHERITED"|"APPLIED",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AssociationStatus = "PENDING"|"SUCCESS"|"FAILED",
+#'   AssociationStatusMessage = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_configuration_policy_association(
+#'   ConfigurationPolicyIdentifier = "string",
+#'   Target = list(
+#'     AccountId = "string",
+#'     OrganizationalUnitId = "string",
+#'     RootId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation associates a configuration policy or self-managed
+#' # behavior with the target account, organizational unit, or the root.
+#' svc$start_configuration_policy_association(
+#'   ConfigurationPolicyIdentifier = "arn:aws:securityhub:us-east-1:1234567890...",
+#'   Target = list(
+#'     AccountId = "111122223333"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_start_configuration_policy_association
+#'
+#' @aliases securityhub_start_configuration_policy_association
+securityhub_start_configuration_policy_association <- function(ConfigurationPolicyIdentifier, Target) {
+  op <- new_operation(
+    name = "StartConfigurationPolicyAssociation",
+    http_method = "POST",
+    http_path = "/configurationPolicyAssociation/associate",
+    paginator = list()
+  )
+  input <- .securityhub$start_configuration_policy_association_input(ConfigurationPolicyIdentifier = ConfigurationPolicyIdentifier, Target = Target)
+  output <- .securityhub$start_configuration_policy_association_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$start_configuration_policy_association <- securityhub_start_configuration_policy_association
+
+#' Disassociates a target account, organizational unit, or the root from a
+#' specified configuration
+#'
+#' @description
+#' Disassociates a target account, organizational unit, or the root from a
+#' specified configuration. When you disassociate a configuration from its
+#' target, the target inherits the configuration of the closest parent. If
+#' there’s no configuration to inherit, the target retains its settings but
+#' becomes a self-managed account. A target can be disassociated from a
+#' configuration policy or self-managed behavior. Only the Security Hub
+#' delegated administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_start_configuration_policy_disassociation(Target,
+#'   ConfigurationPolicyIdentifier)
+#'
+#' @param Target The identifier of the target account, organizational unit, or the root
+#' to disassociate from the specified configuration.
+#' @param ConfigurationPolicyIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
+#' of the configuration policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_configuration_policy_disassociation(
+#'   Target = list(
+#'     AccountId = "string",
+#'     OrganizationalUnitId = "string",
+#'     RootId = "string"
+#'   ),
+#'   ConfigurationPolicyIdentifier = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation disassociates a configuration policy or self-managed
+#' # behavior from the target account, organizational unit, or the root.
+#' svc$start_configuration_policy_disassociation(
+#'   ConfigurationPolicyIdentifier = "SELF_MANAGED_SECURITY_HUB",
+#'   Target = list(
+#'     RootId = "r-f6g7h8i9j0example"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_start_configuration_policy_disassociation
+#'
+#' @aliases securityhub_start_configuration_policy_disassociation
+securityhub_start_configuration_policy_disassociation <- function(Target = NULL, ConfigurationPolicyIdentifier) {
+  op <- new_operation(
+    name = "StartConfigurationPolicyDisassociation",
+    http_method = "POST",
+    http_path = "/configurationPolicyAssociation/disassociate",
+    paginator = list()
+  )
+  input <- .securityhub$start_configuration_policy_disassociation_input(Target = Target, ConfigurationPolicyIdentifier = ConfigurationPolicyIdentifier)
+  output <- .securityhub$start_configuration_policy_disassociation_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$start_configuration_policy_disassociation <- securityhub_start_configuration_policy_disassociation
+
 #' Adds one or more tags to a resource
 #'
 #' @description
@@ -16430,6 +17947,209 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
   return(response)
 }
 .securityhub$operations$update_action_target <- securityhub_update_action_target
+
+#' Updates a configuration policy
+#'
+#' @description
+#' Updates a configuration policy. Only the Security Hub delegated
+#' administrator can invoke this operation from the home Region.
+#'
+#' @usage
+#' securityhub_update_configuration_policy(Identifier, Name, Description,
+#'   UpdatedReason, ConfigurationPolicy)
+#'
+#' @param Identifier &#91;required&#93; The Amazon Resource Name (ARN) or universally unique identifier (UUID)
+#' of the configuration policy.
+#' @param Name The name of the configuration policy. Alphanumeric characters and the
+#' following ASCII characters are permitted: `-, ., !, *, /`.
+#' @param Description The description of the configuration policy.
+#' @param UpdatedReason The reason for updating the configuration policy.
+#' @param ConfigurationPolicy An object that defines how Security Hub is configured. It includes
+#' whether Security Hub is enabled or disabled, a list of enabled security
+#' standards, a list of enabled or disabled security controls, and a list
+#' of custom parameter values for specified controls. If you provide a list
+#' of security controls that are enabled in the configuration policy,
+#' Security Hub disables all other controls (including newly released
+#' controls). If you provide a list of security controls that are disabled
+#' in the configuration policy, Security Hub enables all other controls
+#' (including newly released controls).
+#' 
+#' When updating a configuration policy, provide a complete list of
+#' standards that you want to enable and a complete list of controls that
+#' you want to enable or disable. The updated configuration replaces the
+#' current configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Arn = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       ServiceEnabled = TRUE|FALSE,
+#'       EnabledStandardIdentifiers = list(
+#'         "string"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         EnabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             SecurityControlId = "string",
+#'             Parameters = list(
+#'               list(
+#'                 ValueType = "DEFAULT"|"CUSTOM",
+#'                 Value = list(
+#'                   Integer = 123,
+#'                   IntegerList = list(
+#'                     123
+#'                   ),
+#'                   Double = 123.0,
+#'                   String = "string",
+#'                   StringList = list(
+#'                     "string"
+#'                   ),
+#'                   Boolean = TRUE|FALSE,
+#'                   Enum = "string",
+#'                   EnumList = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_configuration_policy(
+#'   Identifier = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   UpdatedReason = "string",
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       ServiceEnabled = TRUE|FALSE,
+#'       EnabledStandardIdentifiers = list(
+#'         "string"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         EnabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "string"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             SecurityControlId = "string",
+#'             Parameters = list(
+#'               list(
+#'                 ValueType = "DEFAULT"|"CUSTOM",
+#'                 Value = list(
+#'                   Integer = 123,
+#'                   IntegerList = list(
+#'                     123
+#'                   ),
+#'                   Double = 123.0,
+#'                   String = "string",
+#'                   StringList = list(
+#'                     "string"
+#'                   ),
+#'                   Boolean = TRUE|FALSE,
+#'                   Enum = "string",
+#'                   EnumList = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation updates the specified configuration policy.
+#' svc$update_configuration_policy(
+#'   ConfigurationPolicy = list(
+#'     SecurityHub = list(
+#'       EnabledStandardIdentifiers = list(
+#'         "arn:aws:securityhub:us-east-1::standards/aws-foundational-security...",
+#'         "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
+#'       ),
+#'       SecurityControlsConfiguration = list(
+#'         DisabledSecurityControlIdentifiers = list(
+#'           "CloudWatch.1",
+#'           "CloudWatch.2"
+#'         ),
+#'         SecurityControlCustomParameters = list(
+#'           list(
+#'             Parameters = list(
+#'               daysToExpiration = list(
+#'                 Value = list(
+#'                   Integer = 21L
+#'                 ),
+#'                 ValueType = "CUSTOM"
+#'               )
+#'             ),
+#'             SecurityControlId = "ACM.1"
+#'           )
+#'         )
+#'       ),
+#'       ServiceEnabled = TRUE
+#'     )
+#'   ),
+#'   Description = "Updated configuration policy for testing FSBP and CIS",
+#'   Identifier = "arn:aws:securityhub:us-east-1:123456789012:configuration-po...",
+#'   Name = "TestConfigurationPolicy",
+#'   UpdatedReason = "Enabling ACM.2"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_configuration_policy
+#'
+#' @aliases securityhub_update_configuration_policy
+securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Description = NULL, UpdatedReason = NULL, ConfigurationPolicy = NULL) {
+  op <- new_operation(
+    name = "UpdateConfigurationPolicy",
+    http_method = "PATCH",
+    http_path = "/configurationPolicy/{Identifier}",
+    paginator = list()
+  )
+  input <- .securityhub$update_configuration_policy_input(Identifier = Identifier, Name = Name, Description = Description, UpdatedReason = UpdatedReason, ConfigurationPolicy = ConfigurationPolicy)
+  output <- .securityhub$update_configuration_policy_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
 
 #' Updates the finding aggregation configuration
 #'
@@ -16649,14 +18369,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -16669,14 +18393,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -16779,7 +18507,9 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -16808,7 +18538,9 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -16833,14 +18565,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -17144,14 +18880,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -17196,6 +18936,48 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesExploitAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesFixAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersValue = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     AwsAccountName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
@@ -17335,14 +19117,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityNormalized = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     SeverityLabel = list(
@@ -17355,14 +19141,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Criticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     Title = list(
@@ -17465,7 +19255,9 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkSourceDomain = list(
@@ -17494,7 +19286,9 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     NetworkDestinationDomain = list(
@@ -17519,14 +19313,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessParentPid = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     ProcessLaunchedAt = list(
@@ -17830,14 +19628,18 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsCriticality = list(
 #'       list(
 #'         Gte = 123.0,
 #'         Lte = 123.0,
-#'         Eq = 123.0
+#'         Eq = 123.0,
+#'         Gt = 123.0,
+#'         Lt = 123.0
 #'       )
 #'     ),
 #'     FindingProviderFieldsRelatedFindingsId = list(
@@ -17882,6 +19684,48 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       )
 #'     ),
 #'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesExploitAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     VulnerabilitiesFixAvailable = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ComplianceSecurityControlParametersValue = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     AwsAccountName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationName = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
+#'       )
+#'     ),
+#'     ResourceApplicationArn = list(
 #'       list(
 #'         Value = "string",
 #'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"|"CONTAINS"|"NOT_CONTAINS"
@@ -17937,33 +19781,44 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 }
 .securityhub$operations$update_insight <- securityhub_update_insight
 
-#' Used to update the configuration related to Organizations
+#' Updates the configuration of your organization in Security Hub
 #'
 #' @description
-#' Used to update the configuration related to Organizations. Can only be
-#' called from a Security Hub administrator account.
+#' Updates the configuration of your organization in Security Hub. Only the
+#' Security Hub administrator account can invoke this operation.
 #'
 #' @usage
 #' securityhub_update_organization_configuration(AutoEnable,
-#'   AutoEnableStandards)
+#'   AutoEnableStandards, OrganizationConfiguration)
 #'
-#' @param AutoEnable &#91;required&#93; Whether to automatically enable Security Hub for new accounts in the
-#' organization.
+#' @param AutoEnable &#91;required&#93; Whether to automatically enable Security Hub in new member accounts when
+#' they join the organization.
 #' 
-#' By default, this is `false`, and new accounts are not added
-#' automatically.
+#' If set to `true`, then Security Hub is automatically enabled in new
+#' accounts. If set to `false`, then Security Hub isn't enabled in new
+#' accounts automatically. The default value is `false`.
 #' 
-#' To automatically enable Security Hub for new accounts, set this to
-#' `true`.
+#' If the `ConfigurationType` of your organization is set to `CENTRAL`,
+#' then this field is set to `false` and can't be changed in the home
+#' Region and linked Regions. However, in that case, the delegated
+#' administrator can create a configuration policy in which Security Hub is
+#' enabled and associate the policy with new organization accounts.
 #' @param AutoEnableStandards Whether to automatically enable Security Hub [default
 #' standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-enable-disable.html)
-#' for new member accounts in the organization.
+#' in new member accounts when they join the organization.
 #' 
-#' By default, this parameter is equal to `DEFAULT`, and new member
-#' accounts are automatically enabled with default Security Hub standards.
+#' The default value of this parameter is equal to `DEFAULT`.
 #' 
-#' To opt out of enabling default standards for new member accounts, set
-#' this parameter equal to `NONE`.
+#' If equal to `DEFAULT`, then Security Hub default standards are
+#' automatically enabled for new member accounts. If equal to `NONE`, then
+#' default standards are not automatically enabled for new member accounts.
+#' 
+#' If the `ConfigurationType` of your organization is set to `CENTRAL`,
+#' then this field is set to `NONE` and can't be changed in the home Region
+#' and linked Regions. However, in that case, the delegated administrator
+#' can create a configuration policy in which specific security standards
+#' are enabled and associate the policy with new organization accounts.
+#' @param OrganizationConfiguration 
 #'
 #' @return
 #' An empty list.
@@ -17972,17 +19827,26 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' ```
 #' svc$update_organization_configuration(
 #'   AutoEnable = TRUE|FALSE,
-#'   AutoEnableStandards = "NONE"|"DEFAULT"
+#'   AutoEnableStandards = "NONE"|"DEFAULT",
+#'   OrganizationConfiguration = list(
+#'     ConfigurationType = "CENTRAL"|"LOCAL",
+#'     Status = "PENDING"|"ENABLED"|"FAILED",
+#'     StatusMessage = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
-#' # The following example updates the configuration for an organization so
-#' # that Security Hub is automatically activated for new member accounts.
-#' # Only the Security Hub administrator account can call this operation.
+#' # This operation updates the way your organization is configured in
+#' # Security Hub. Only a Security Hub administrator account can invoke this
+#' # operation.
 #' svc$update_organization_configuration(
-#'   AutoEnable = TRUE
+#'   AutoEnable = FALSE,
+#'   AutoEnableStandards = "NONE",
+#'   OrganizationConfiguration = list(
+#'     ConfigurationType = "CENTRAL"
+#'   )
 #' )
 #' }
 #'
@@ -17991,14 +19855,14 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' @rdname securityhub_update_organization_configuration
 #'
 #' @aliases securityhub_update_organization_configuration
-securityhub_update_organization_configuration <- function(AutoEnable, AutoEnableStandards = NULL) {
+securityhub_update_organization_configuration <- function(AutoEnable, AutoEnableStandards = NULL, OrganizationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
     http_path = "/organization/configuration",
     paginator = list()
   )
-  input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable, AutoEnableStandards = AutoEnableStandards)
+  input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable, AutoEnableStandards = AutoEnableStandards, OrganizationConfiguration = OrganizationConfiguration)
   output <- .securityhub$update_organization_configuration_output()
   config <- get_config()
   svc <- .securityhub$service(config)
@@ -18007,6 +19871,93 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
   return(response)
 }
 .securityhub$operations$update_organization_configuration <- securityhub_update_organization_configuration
+
+#' Updates the properties of a security control
+#'
+#' @description
+#' Updates the properties of a security control.
+#'
+#' @usage
+#' securityhub_update_security_control(SecurityControlId, Parameters,
+#'   LastUpdateReason)
+#'
+#' @param SecurityControlId &#91;required&#93; The Amazon Resource Name (ARN) or ID of the control to update.
+#' @param Parameters &#91;required&#93; An object that specifies which security control parameters to update.
+#' @param LastUpdateReason The most recent reason for updating the properties of the security
+#' control. This field accepts alphanumeric characters in addition to white
+#' spaces, dashes, and underscores.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_security_control(
+#'   SecurityControlId = "string",
+#'   Parameters = list(
+#'     list(
+#'       ValueType = "DEFAULT"|"CUSTOM",
+#'       Value = list(
+#'         Integer = 123,
+#'         IntegerList = list(
+#'           123
+#'         ),
+#'         Double = 123.0,
+#'         String = "string",
+#'         StringList = list(
+#'           "string"
+#'         ),
+#'         Boolean = TRUE|FALSE,
+#'         Enum = "string",
+#'         EnumList = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   LastUpdateReason = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the specified security control.
+#' # Specifically, this example updates control parameters.
+#' svc$update_security_control(
+#'   LastUpdateReason = "Comply with internal requirements",
+#'   Parameters = list(
+#'     maxCredentialUsageAge = list(
+#'       Value = list(
+#'         Integer = 15L
+#'       ),
+#'       ValueType = "CUSTOM"
+#'     )
+#'   ),
+#'   SecurityControlId = "ACM.1"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_security_control
+#'
+#' @aliases securityhub_update_security_control
+securityhub_update_security_control <- function(SecurityControlId, Parameters, LastUpdateReason = NULL) {
+  op <- new_operation(
+    name = "UpdateSecurityControl",
+    http_method = "PATCH",
+    http_path = "/securityControl/update",
+    paginator = list()
+  )
+  input <- .securityhub$update_security_control_input(SecurityControlId = SecurityControlId, Parameters = Parameters, LastUpdateReason = LastUpdateReason)
+  output <- .securityhub$update_security_control_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_security_control <- securityhub_update_security_control
 
 #' Updates configuration options for Security Hub
 #'

@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_disassociate_trunk_interface}
 \alias{ec2_disassociate_trunk_interface}
-\title{This API action is currently in limited preview only}
+\title{Removes an association between a branch network interface with a trunk
+network interface}
 \usage{
 ec2_disassociate_trunk_interface(
   AssociationId,
@@ -22,7 +23,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-This API action is currently in \strong{limited preview only}. If you are interested in using this feature, contact your account manager.
+Removes an association between a branch network interface with a trunk network interface.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_trunk_interface/} for full documentation.
 }

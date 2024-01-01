@@ -29,17 +29,33 @@ s3_upload_part(
 
 \item{Bucket}{[required] The name of the bucket to which the multipart upload was initiated.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -51,12 +67,14 @@ body cannot be determined automatically.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data. This parameter
 is auto-populated when using the command from the CLI. This parameter is
-required if object lock parameters are specified.}
+required if object lock parameters are specified.
+
+This functionality is not supported for directory buckets.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
-using the SDK. This header will not provide any additional functionality
-if not using the SDK. When sending this header, there must be a
-corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+you use the SDK. This header will not provide any additional
+functionality if you don't use the SDK. When you send this header, there
+must be a corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
 \verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
@@ -99,8 +117,10 @@ and 10,000.}
 
 \item{UploadId}{[required] Upload ID identifying the multipart upload whose part is being uploaded.}
 
-\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
-example, AES256).}
+\item{SSECustomerAlgorithm}{Specifies the algorithm to use when encrypting the object (for example,
+AES256).
+
+This functionality is not supported for directory buckets.}
 
 \item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
@@ -108,17 +128,21 @@ discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
 \verb{x-amz-server-side-encryption-customer-algorithm header}. This must be
 the same encryption key specified in the initiate multipart upload
-request.}
+request.
+
+This functionality is not supported for directory buckets.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
-that the encryption key was transmitted without error.}
+that the encryption key was transmitted without error.
+
+This functionality is not supported for directory buckets.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
 Uploads a part in a multipart upload.

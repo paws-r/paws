@@ -10,6 +10,7 @@ bedrock_create_model_customization_job(
   roleArn,
   clientRequestToken = NULL,
   baseModelIdentifier,
+  customizationType = NULL,
   customModelKmsKeyId = NULL,
   jobTags = NULL,
   customModelTags = NULL,
@@ -25,16 +26,19 @@ bedrock_create_model_customization_job(
 
 \item{customModelName}{[required] Enter a name for the custom model.}
 
-\item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Bedrock can assume to
-perform tasks on your behalf. For example, during model training,
-Bedrock needs your permission to read input data from an S3 bucket,
-write model artifacts to an S3 bucket. To pass this role to Bedrock, the
-caller of this API must have the \code{iam:PassRole} permission.}
+\item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon Bedrock can
+assume to perform tasks on your behalf. For example, during model
+training, Amazon Bedrock needs your permission to read input data from
+an S3 bucket, write model artifacts to an S3 bucket. To pass this role
+to Amazon Bedrock, the caller of this API must have the \code{iam:PassRole}
+permission.}
 
 \item{clientRequestToken}{Unique token value that you can provide. The GetModelCustomizationJob
 response includes the same token value.}
 
 \item{baseModelIdentifier}{[required] Name of the base model.}
+
+\item{customizationType}{The customization type.}
 
 \item{customModelKmsKeyId}{The custom model is encrypted at rest using this key.}
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_associate_identity_provider_config}
 \alias{eks_associate_identity_provider_config}
-\title{Associate an identity provider configuration to a cluster}
+\title{Associates an identity provider configuration to a cluster}
 \usage{
 eks_associate_identity_provider_config(
   clusterName,
@@ -12,20 +12,20 @@ eks_associate_identity_provider_config(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster to associate the configuration to.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{oidc}{[required] An object representing an OpenID Connect (OIDC) identity provider
 configuration.}
 
-\item{tags}{The metadata to apply to the configuration to assist with categorization
-and organization. Each tag consists of a key and an optional value. You
-define both.}
+\item{tags}{Metadata that assists with categorization and organization. Each tag
+consists of a key and an optional value. You define both. Tags don't
+propagate to any other cluster or Amazon Web Services resources.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
 \description{
-Associate an identity provider configuration to a cluster.
+Associates an identity provider configuration to a cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_associate_identity_provider_config/} for full documentation.
 }

@@ -1176,18 +1176,54 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' For more information, see [External metrics
 #' ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
 #' in the *Compute Optimizer User Guide*.
+#' @param lookBackPeriod The preference to control the number of days the utilization metrics of
+#' the Amazon Web Services resource are analyzed. When this preference
+#' isn't specified, we use the default value `DAYS_14`.
+#' 
+#' You can only set this preference for the Amazon EC2 instance and Auto
+#' Scaling group resource types.
+#' @param utilizationPreferences The preference to control the resource’s CPU utilization thresholds -
+#' threshold and headroom. When this preference isn't specified, we use the
+#' following default values:
+#' 
+#' -   `P99_5` for threshold
+#' 
+#' -   `PERCENT_17` for headroom
+#' 
+#' You can only set this preference for the Amazon EC2 instance resource
+#' type.
+#' @param preferredResources The preference to control which resource type values are considered when
+#' generating rightsizing recommendations. You can specify this preference
+#' as a combination of include and exclude lists. You must specify either
+#' an `includeList` or `excludeList`. If the preference is an empty set of
+#' resource type values, an error occurs.
+#' 
+#' You can only set this preference for the Amazon EC2 instance and Auto
+#' Scaling group resource types.
+#' @param savingsEstimationMode The status of the savings estimation mode preference to create or
+#' update.
+#' 
+#' Specify the `AfterDiscounts` status to activate the preference, or
+#' specify `BeforeDiscounts` to deactivate the preference.
+#' 
+#' Only the account manager or delegated administrator of your organization
+#' can activate this preference.
+#' 
+#' For more information, see [Savings estimation
+#' mode](https://docs.aws.amazon.com/compute-optimizer/latest/ug/savings-estimation-mode.html)
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_put_recommendation_preferences
-computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL, externalMetricsPreference = NULL) {
+computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL, externalMetricsPreference = NULL, lookBackPeriod = NULL, utilizationPreferences = NULL, preferredResources = NULL, savingsEstimationMode = NULL) {
   op <- new_operation(
     name = "PutRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference)
+  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference, lookBackPeriod = lookBackPeriod, utilizationPreferences = utilizationPreferences, preferredResources = preferredResources, savingsEstimationMode = savingsEstimationMode)
   output <- .computeoptimizer$put_recommendation_preferences_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_add_user_to_group}
 \alias{cognitoidentityprovider_admin_add_user_to_group}
-\title{Adds the specified user to the specified group}
+\title{Adds a user to a group}
 \usage{
 cognitoidentityprovider_admin_add_user_to_group(
   UserPoolId,
@@ -13,12 +13,15 @@ cognitoidentityprovider_admin_add_user_to_group(
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 
-\item{Username}{[required] The username for the user.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
-\item{GroupName}{[required] The group name.}
+\item{GroupName}{[required] The name of the group that you want to add your user to.}
 }
 \description{
-Adds the specified user to the specified group.
+Adds a user to a group. A user who is in a group can present a preferred-role claim to an identity pool, and populates a \code{cognito:groups} claim to their access and identity tokens.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_add_user_to_group/} for full documentation.
 }

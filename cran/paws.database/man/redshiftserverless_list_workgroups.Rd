@@ -4,7 +4,11 @@
 \alias{redshiftserverless_list_workgroups}
 \title{Returns information about a list of specified workgroups}
 \usage{
-redshiftserverless_list_workgroups(maxResults = NULL, nextToken = NULL)
+redshiftserverless_list_workgroups(
+  maxResults = NULL,
+  nextToken = NULL,
+  ownerAccount = NULL
+)
 }
 \arguments{
 \item{maxResults}{An optional parameter that specifies the maximum number of results to
@@ -13,6 +17,9 @@ return. You can use \code{nextToken} to display the next page of results.}
 \item{nextToken}{If your initial ListWorkgroups operation returns a \code{nextToken}, you can
 include the returned \code{nextToken} in following ListNamespaces operations,
 which returns results in the next page.}
+
+\item{ownerAccount}{The owner Amazon Web Services account for the Amazon Redshift Serverless
+workgroup.}
 }
 \description{
 Returns information about a list of specified workgroups.

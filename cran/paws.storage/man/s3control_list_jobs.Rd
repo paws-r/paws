@@ -2,8 +2,9 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_list_jobs}
 \alias{s3control_list_jobs}
-\title{Lists current S3 Batch Operations jobs and jobs that have ended within
-the last 30 days for the Amazon Web Services account making the request}
+\title{Lists current S3 Batch Operations jobs as well as the jobs that have
+ended within the last 30 days for the Amazon Web Services account making
+the request}
 \usage{
 s3control_list_jobs(
   AccountId,
@@ -29,7 +30,7 @@ response will include a pagination token in the \code{NextToken} field to
 enable you to retrieve the next page of results.}
 }
 \description{
-Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
+Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_list_jobs/} for full documentation.
 }

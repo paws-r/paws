@@ -2,7 +2,7 @@
 % Please edit documentation in R/personalizeevents_operations.R
 \name{personalizeevents_put_events}
 \alias{personalizeevents_put_events}
-\title{Records user interaction event data}
+\title{Records item interaction event data}
 \usage{
 personalizeevents_put_events(trackingId, userId = NULL, sessionId, eventList)
 }
@@ -17,12 +17,12 @@ API.}
 generates the sessionId when a user first visits your website or uses
 your application. Amazon Personalize uses the sessionId to associate
 events with the user before they log in. For more information, see
-\href{https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html}{Recording Events}.}
+\href{https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html}{Recording item interaction events}.}
 
 \item{eventList}{[required] A list of event data from the session.}
 }
 \description{
-Records user interaction event data. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html}{Recording Events}.
+Records item interaction event data. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html}{Recording item interaction events}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalizeevents_put_events/} for full documentation.
 }

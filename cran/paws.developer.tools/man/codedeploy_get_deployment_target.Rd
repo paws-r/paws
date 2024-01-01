@@ -4,12 +4,12 @@
 \alias{codedeploy_get_deployment_target}
 \title{Returns information about a deployment target}
 \usage{
-codedeploy_get_deployment_target(deploymentId = NULL, targetId = NULL)
+codedeploy_get_deployment_target(deploymentId, targetId)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment.}
+\item{deploymentId}{[required] The unique ID of a deployment.}
 
-\item{targetId}{The unique ID of a deployment target.}
+\item{targetId}{[required] The unique ID of a deployment target.}
 }
 \description{
 Returns information about a deployment target.

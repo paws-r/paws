@@ -138,7 +138,7 @@ queries), or both.
 \link[=route53resolver_create_firewall_domain_list]{create_firewall_domain_list} \tab Creates an empty firewall domain list for use in DNS Firewall rules\cr
 \link[=route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group, using the specified domain list\cr
 \link[=route53resolver_create_firewall_rule_group]{create_firewall_rule_group} \tab Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC\cr
-\link[=route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates an Route 53 Resolver on an Outpost\cr
+\link[=route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates a Route 53 Resolver on an Outpost\cr
 \link[=route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a Resolver endpoint\cr
 \link[=route53resolver_create_resolver_query_log_config]{create_resolver_query_log_config} \tab Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs\cr
 \link[=route53resolver_create_resolver_rule]{create_resolver_rule} \tab For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network\cr
@@ -197,7 +197,7 @@ queries), or both.
 \link[=route53resolver_update_outpost_resolver]{update_outpost_resolver} \tab You can use UpdateOutpostResolver to update the instance count, type, or name of a Resolver on an Outpost\cr
 \link[=route53resolver_update_resolver_config]{update_resolver_config} \tab Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 \link[=route53resolver_update_resolver_dnssec_config]{update_resolver_dnssec_config} \tab Updates an existing DNSSEC validation configuration\cr
-\link[=route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint\cr
+\link[=route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or endpoint type for an inbound or an outbound Resolver endpoint\cr
 \link[=route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified Resolver rule
 }
 }

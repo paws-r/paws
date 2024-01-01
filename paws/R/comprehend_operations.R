@@ -508,22 +508,22 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 #' 
 #' -   Custom classifier - a custom model that you have created and
 #'     trained. For input, you can provide plain text, a single-page
-#'     document (PDF, Word, or image), or Textract API output. For more
-#'     information, see [Custom
+#'     document (PDF, Word, or image), or Amazon Textract API output. For
+#'     more information, see [Custom
 #'     classification](https://docs.aws.amazon.com/comprehend/latest/dg/how-document-classification.html)
 #'     in the *Amazon Comprehend Developer Guide*.
 #' 
-#' -   Prompt classifier - Amazon Comprehend provides a model for
-#'     classifying prompts. For input, you provide English plain text
-#'     input. For prompt classification, the response includes only the
-#'     `Classes` field. For more information about prompt classifiers, see
-#'     [Prompt
-#'     classifiers](https://docs.aws.amazon.com/comprehend/latest/dg/) in
-#'     the *Amazon Comprehend Developer Guide*.
+#' -   Prompt safety classifier - Amazon Comprehend provides a pre-trained
+#'     model for classifying input prompts for generative AI applications.
+#'     For input, you provide English plain text input. For prompt safety
+#'     classification, the response includes only the `Classes` field. For
+#'     more information about prompt safety classifiers, see [Prompt safety
+#'     classification](https://docs.aws.amazon.com/comprehend/latest/dg/trust-safety.html#prompt-classification)
+#'     in the *Amazon Comprehend Developer Guide*.
 #' 
 #' If the system detects errors while processing a page in the input
-#' document, the API response includes an entry in `Errors` that describes
-#' the errors.
+#' document, the API response includes an `Errors` field that describes the
+#' errors.
 #' 
 #' If the system detects a document-level error in your input document, the
 #' API returns an `InvalidRequestException` error response. For details
@@ -539,8 +539,11 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 #' parameter, do not use the `Bytes` parameter.
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint.
 #' 
-#' For prompt classification, Amazon Comprehend provides the endpoint ARN:
-#' `zzz`.
+#' For prompt safety classification, Amazon Comprehend provides the
+#' endpoint ARN. For more information about prompt safety classifiers, see
+#' [Prompt safety
+#' classification](https://docs.aws.amazon.com/comprehend/latest/dg/trust-safety.html#prompt-classification)
+#' in the *Amazon Comprehend Developer Guide*
 #' 
 #' For custom classification, you create an endpoint for your custom model.
 #' For more information, see [Using Amazon Comprehend
@@ -551,8 +554,8 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 #' `Bytes` parameter to input an Amazon Textract `DetectDocumentText` or
 #' `AnalyzeDocument` output file.
 #' 
-#' To classify a document using the prompt classifier, use the `Text`
-#' parameter for input.
+#' To classify a document using the prompt safety classifier, use the
+#' `Text` parameter for input.
 #' 
 #' Provide the input document as a sequence of base64-encoded bytes. If
 #' your code uses an Amazon Web Services SDK to classify documents, the SDK
@@ -869,11 +872,12 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
 #' For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 #' @param Mode Indicates the mode in which the classifier will be trained. The
-#' classifier can be trained in multi-class mode, which identifies one and
-#' only one class for each document, or multi-label mode, which identifies
-#' one or more labels for each document. In multi-label mode, multiple
-#' labels for an individual document are separated by a delimiter. The
-#' default delimiter between labels is a pipe (|).
+#' classifier can be trained in multi-class (single-label) mode or
+#' multi-label mode. Multi-class mode identifies a single class label for
+#' each document and multi-label mode identifies one or more class labels
+#' for each document. Multiple labels for an individual document are
+#' separated by a delimiter. The default delimiter between labels is a pipe
+#' (|).
 #' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
 #' models. The ModelKmsKeyId can be either of the following formats:
 #' 
@@ -3594,17 +3598,16 @@ comprehend_detect_targeted_sentiment <- function(Text, LanguageCode) {
 #'
 #' @description
 #' Performs toxicity analysis on the list of text strings that you provide
-#' as input. The analysis uses the order of strings in the list to
-#' determine context when predicting toxicity. The API response contains a
-#' results list that matches the size of the input list. For more
-#' information about toxicity detection, see [Toxicity
-#' detection](https://docs.aws.amazon.com/comprehend/latest/dg/) in the
-#' *Amazon Comprehend Developer Guide*
+#' as input. The API response contains a results list that matches the size
+#' of the input list. For more information about toxicity detection, see
+#' [Toxicity detection](https://docs.aws.amazon.com/comprehend/latest/dg/)
+#' in the *Amazon Comprehend Developer Guide*.
 #'
 #' @usage
 #' comprehend_detect_toxic_content(TextSegments, LanguageCode)
 #'
-#' @param TextSegments &#91;required&#93; A list of up to 10 text strings. The maximum size for the list is 10 KB.
+#' @param TextSegments &#91;required&#93; A list of up to 10 text strings. Each string has a maximum size of 1 KB,
+#' and the maximum size of the list is 10 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input text. Currently, English is the only supported
 #' language.
 #'
@@ -5585,10 +5588,12 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
 }
 .comprehend$operations$put_resource_policy <- comprehend_put_resource_policy
 
-#' Starts an asynchronous document classification job
+#' Starts an asynchronous document classification job using a custom
+#' classification model
 #'
 #' @description
-#' Starts an asynchronous document classification job. Use the
+#' Starts an asynchronous document classification job using a custom
+#' classification model. Use the
 #' [`describe_document_classification_job`][comprehend_describe_document_classification_job]
 #' operation to track the progress of the job.
 #'

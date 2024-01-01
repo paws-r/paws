@@ -5,7 +5,8 @@ NULL
 #' Amazon Bedrock
 #'
 #' @description
-#' Describes the API operations for creating and managing Bedrock models.
+#' Describes the API operations for creating and managing Amazon Bedrock
+#' models.
 #'
 #' @param
 #' config
@@ -95,13 +96,13 @@ NULL
 #'  \link[=bedrock_delete_custom_model]{delete_custom_model} \tab Deletes a custom model that you created earlier\cr
 #'  \link[=bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
 #'  \link[=bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a provisioned throughput\cr
-#'  \link[=bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Bedrock custom model that you have created\cr
-#'  \link[=bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Bedrock foundation model\cr
+#'  \link[=bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Amazon Bedrock custom model that you have created\cr
+#'  \link[=bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Amazon Bedrock foundation model\cr
 #'  \link[=bedrock_get_model_customization_job]{get_model_customization_job} \tab Retrieves the properties associated with a model-customization job, including the status of the job\cr
 #'  \link[=bedrock_get_model_invocation_logging_configuration]{get_model_invocation_logging_configuration} \tab Get the current configuration values for model invocation logging\cr
 #'  \link[=bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Get details for a provisioned throughput\cr
 #'  \link[=bedrock_list_custom_models]{list_custom_models} \tab Returns a list of the custom models that you have created with the CreateModelCustomizationJob operation\cr
-#'  \link[=bedrock_list_foundation_models]{list_foundation_models} \tab List of Bedrock foundation models that you can use\cr
+#'  \link[=bedrock_list_foundation_models]{list_foundation_models} \tab List of Amazon Bedrock foundation models that you can use\cr
 #'  \link[=bedrock_list_model_customization_jobs]{list_model_customization_jobs} \tab Returns a list of model customization jobs that you have submitted\cr
 #'  \link[=bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab List the provisioned capacities\cr
 #'  \link[=bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr

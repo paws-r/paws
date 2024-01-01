@@ -17,13 +17,13 @@ NULL
 
 .appregistry$associate_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(logical(0), tags = list(location = "uri", locationName = "application", type = "string")), resourceType = structure(logical(0), tags = list(location = "uri", locationName = "resourceType", type = "string")), resource = structure(logical(0), tags = list(location = "uri", locationName = "resource", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(application = structure(logical(0), tags = list(location = "uri", locationName = "application", type = "string")), resourceType = structure(logical(0), tags = list(location = "uri", locationName = "resourceType", type = "string")), resource = structure(logical(0), tags = list(location = "uri", locationName = "resource", type = "string")), options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appregistry$associate_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(applicationArn = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(applicationArn = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,7 +35,7 @@ NULL
 
 .appregistry$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(application = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), applicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,19 +107,19 @@ NULL
 
 .appregistry$get_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), associatedResourceCount = structure(logical(0), tags = list(type = "integer")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), integrations = structure(list(resourceGroup = structure(list(state = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), associatedResourceCount = structure(logical(0), tags = list(type = "integer")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), integrations = structure(list(resourceGroup = structure(list(state = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), applicationTagResourceGroup = structure(list(state = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), applicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appregistry$get_associated_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(logical(0), tags = list(location = "uri", locationName = "application", type = "string")), resourceType = structure(logical(0), tags = list(location = "uri", locationName = "resourceType", type = "string")), resource = structure(logical(0), tags = list(location = "uri", locationName = "resource", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(application = structure(logical(0), tags = list(location = "uri", locationName = "application", type = "string")), resourceType = structure(logical(0), tags = list(location = "uri", locationName = "resourceType", type = "string")), resource = structure(logical(0), tags = list(location = "uri", locationName = "resource", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), resourceTagStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "resourceTagStatus", type = "list")), maxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appregistry$get_associated_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resource = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), associationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), integrations = structure(list(resourceGroup = structure(list(state = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(resource = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), associationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), integrations = structure(list(resourceGroup = structure(list(state = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), applicationTagResult = structure(list(applicationTagStatus = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resources = structure(list(structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -177,7 +177,7 @@ NULL
 
 .appregistry$list_associated_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resources = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), resourceDetails = structure(list(tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resources = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), resourceDetails = structure(list(tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), options = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -201,7 +201,7 @@ NULL
 
 .appregistry$list_attribute_groups_for_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributeGroupsDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated. We recommend not using the field when using ListAttributeGroupsForApplication.", type = "string")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(attributeGroupsDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -271,7 +271,7 @@ NULL
 
 .appregistry$update_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(application = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(application = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), applicationTag = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -13,7 +13,11 @@ ec2_create_subnet(
   OutpostArn = NULL,
   VpcId,
   DryRun = NULL,
-  Ipv6Native = NULL
+  Ipv6Native = NULL,
+  Ipv4IpamPoolId = NULL,
+  Ipv4NetmaskLength = NULL,
+  Ipv6IpamPoolId = NULL,
+  Ipv6NetmaskLength = NULL
 )
 }
 \arguments{
@@ -41,10 +45,8 @@ for example, if you specify \verb{100.68.0.18/18}, we modify it to
 
 This parameter is not supported for an IPv6 only subnet.}
 
-\item{Ipv6CidrBlock}{The IPv6 network range for the subnet, in CIDR notation. The subnet size
-must use a /64 prefix length.
-
-This parameter is required for an IPv6 only subnet.}
+\item{Ipv6CidrBlock}{The IPv6 network range for the subnet, in CIDR notation. This parameter
+is required for an IPv6 only subnet.}
 
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost. If you specify an Outpost
 ARN, you must also specify the Availability Zone of the Outpost subnet.}
@@ -57,6 +59,14 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Ipv6Native}{Indicates whether to create an IPv6 only subnet.}
+
+\item{Ipv4IpamPoolId}{An IPv4 IPAM pool ID for the subnet.}
+
+\item{Ipv4NetmaskLength}{An IPv4 netmask length for the subnet.}
+
+\item{Ipv6IpamPoolId}{An IPv6 IPAM pool ID for the subnet.}
+
+\item{Ipv6NetmaskLength}{An IPv6 netmask length for the subnet.}
 }
 \description{
 Creates a subnet in the specified VPC. For an IPv4 only subnet, specify an IPv4 CIDR block. If the VPC has an IPv6 CIDR block, you can create an IPv6 only subnet or a dual stack subnet instead. For an IPv6 only subnet, specify an IPv6 CIDR block. For a dual stack subnet, specify both an IPv4 CIDR block and an IPv6 CIDR block.

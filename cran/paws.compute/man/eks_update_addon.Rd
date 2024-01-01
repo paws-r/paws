@@ -15,7 +15,7 @@ eks_update_addon(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
@@ -52,11 +52,11 @@ non-production cluster before updating the add-on on your production
 cluster.
 }}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
 \item{configurationValues}{The set of configuration values for the add-on that's created. The
-values that you provide are validated against the schema in
+values that you provide are validated against the schema returned by
 \code{\link[=eks_describe_addon_configuration]{describe_addon_configuration}}.}
 }
 \description{
