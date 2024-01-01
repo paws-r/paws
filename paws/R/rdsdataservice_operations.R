@@ -297,7 +297,9 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #' @description
 #' Runs one or more SQL statements.
 #' 
-#' This operation is deprecated. Use the
+#' This operation isn't supported for Aurora PostgreSQL Serverless v2 and
+#' provisioned DB clusters, and for Aurora Serverless v1 DB clusters, the
+#' operation is deprecated. Use the
 #' [`batch_execute_statement`][rdsdataservice_batch_execute_statement] or
 #' [`execute_statement`][rdsdataservice_execute_statement] operation.
 #'

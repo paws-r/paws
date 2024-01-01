@@ -128,6 +128,7 @@ drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
 #' ```
 #' list(
 #'   sourceServer = list(
+#'     agentVersion = "string",
 #'     arn = "string",
 #'     dataReplicationInfo = list(
 #'       dataReplicationError = list(
@@ -1138,6 +1139,7 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
 #' list(
 #'   items = list(
 #'     list(
+#'       agentVersion = "string",
 #'       arn = "string",
 #'       dataReplicationInfo = list(
 #'         dataReplicationError = list(
@@ -1530,6 +1532,7 @@ drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, next
 #' list(
 #'   items = list(
 #'     list(
+#'       agentVersion = "string",
 #'       arn = "string",
 #'       dataReplicationInfo = list(
 #'         dataReplicationError = list(
@@ -1756,6 +1759,7 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   agentVersion = "string",
 #'   arn = "string",
 #'   dataReplicationInfo = list(
 #'     dataReplicationError = list(
@@ -2527,6 +2531,7 @@ drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, c
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   agentVersion = "string",
 #'   arn = "string",
 #'   dataReplicationInfo = list(
 #'     dataReplicationError = list(
@@ -2954,6 +2959,7 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 #' ```
 #' list(
 #'   sourceServer = list(
+#'     agentVersion = "string",
 #'     arn = "string",
 #'     dataReplicationInfo = list(
 #'       dataReplicationError = list(
@@ -3332,6 +3338,7 @@ drs_stop_failback <- function(recoveryInstanceID) {
 #' ```
 #' list(
 #'   sourceServer = list(
+#'     agentVersion = "string",
 #'     arn = "string",
 #'     dataReplicationInfo = list(
 #'       dataReplicationError = list(

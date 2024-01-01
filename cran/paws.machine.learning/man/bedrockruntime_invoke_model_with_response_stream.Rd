@@ -6,22 +6,22 @@
 provided}
 \usage{
 bedrockruntime_invoke_model_with_response_stream(
-  accept = NULL,
   body,
   contentType = NULL,
+  accept = NULL,
   modelId
 )
 }
 \arguments{
-\item{accept}{The desired MIME type of the inference body in the response. The default
-value is \code{application/json}.}
-
 \item{body}{[required] Inference input in the format specified by the content-type. To see the
 format and content of this field for different models, refer to
 \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.}
 
 \item{contentType}{The MIME type of the input data in the request. The default value is
 \code{application/json}.}
+
+\item{accept}{The desired MIME type of the inference body in the response. The default
+value is \code{application/json}.}
 
 \item{modelId}{[required] Id of the model to invoke using the streaming request.}
 }

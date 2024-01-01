@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_write_get_object_response}
 \alias{s3_write_get_object_response}
-\title{Passes transformed objects to a GetObject operation when using Object
-Lambda access points}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_write_get_object_response(
   RequestRoute,
@@ -230,7 +229,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/user
 for server-side encryption with Amazon Web Services KMS (SSE-KMS).}
 }
 \description{
-Passes transformed objects to a \code{\link[=s3_get_object]{get_object}} operation when using Object Lambda access points. For information about Object Lambda access points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html}{Transforming objects with Object Lambda access points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_write_get_object_response/} for full documentation.
 }

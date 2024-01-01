@@ -28,10 +28,11 @@ greater than or equal to the existing size of the volume.
 
 The following are the supported volumes sizes for each volume type:
 \itemize{
-\item \code{gp2} and \code{gp3}: 1-16,384
-\item \code{io1} and \code{io2}: 4-16,384
-\item \code{st1} and \code{sc1}: 125-16,384
-\item \code{standard}: 1-1,024
+\item \code{gp2} and \code{gp3}: 1 - 16,384 GiB
+\item \code{io1}: 4 - 16,384 GiB
+\item \code{io2}: 4 - 65,536 GiB
+\item \code{st1} and \code{sc1}: 125 - 16,384 GiB
+\item \code{standard}: 1 - 1024 GiB
 }
 
 Default: The existing size is retained.}
@@ -47,10 +48,13 @@ Default: The existing type is retained.}
 
 The following are the supported values for each volume type:
 \itemize{
-\item \code{gp3}: 3,000-16,000 IOPS
-\item \code{io1}: 100-64,000 IOPS
-\item \code{io2}: 100-64,000 IOPS
+\item \code{gp3}: 3,000 - 16,000 IOPS
+\item \code{io1}: 100 - 64,000 IOPS
+\item \code{io2}: 100 - 256,000 IOPS
 }
+
+For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{instances built on the Nitro System}.
+On other instances, you can achieve performance up to 32,000 IOPS.
 
 Default: The existing value is retained if you keep the same volume
 type. If you change the volume type to \code{io1}, \code{io2}, or \code{gp3}, the

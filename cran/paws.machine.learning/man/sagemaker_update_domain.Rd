@@ -8,8 +8,10 @@ sagemaker_update_domain(
   DomainId,
   DefaultUserSettings = NULL,
   DomainSettingsForUpdate = NULL,
+  AppSecurityGroupManagement = NULL,
   DefaultSpaceSettings = NULL,
-  AppSecurityGroupManagement = NULL
+  SubnetIds = NULL,
+  AppNetworkAccessType = NULL
 )
 }
 \arguments{
@@ -19,14 +21,35 @@ sagemaker_update_domain(
 
 \item{DomainSettingsForUpdate}{A collection of \code{DomainSettings} configuration values to update.}
 
-\item{DefaultSpaceSettings}{The default settings used to create a space within the Domain.}
-
 \item{AppSecurityGroupManagement}{The entity that creates and manages the required security groups for
 inter-app communication in \code{VPCOnly} mode. Required when
 \code{CreateDomain.AppNetworkAccessType} is \code{VPCOnly} and
 \code{DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn}
 is provided. If setting up the domain for use with RStudio, this value
 must be set to \code{Service}.}
+
+\item{DefaultSpaceSettings}{The default settings used to create a space within the Domain.}
+
+\item{SubnetIds}{The VPC subnets that Studio uses for communication.
+
+If removing subnets, ensure there are no apps in the \code{InService},
+\code{Pending}, or \code{Deleting} state.}
+
+\item{AppNetworkAccessType}{Specifies the VPC used for non-EFS traffic.
+\itemize{
+\item \code{PublicInternetOnly} - Non-EFS traffic is through a VPC managed by
+Amazon SageMaker, which allows direct internet access.
+\item \code{VpcOnly} - All Studio traffic is through the specified VPC and
+subnets.
+}
+
+This configuration can only be modified if there are no apps in the
+\code{InService}, \code{Pending}, or \code{Deleting} state. The configuration cannot be
+updated if
+\code{DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn}
+is already set or
+\code{DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn}
+is provided as part of the same request.}
 }
 \description{
 Updates the default settings for new user profiles in the domain.

@@ -7,7 +7,8 @@
 codepipeline_start_pipeline_execution(
   name,
   variables = NULL,
-  clientRequestToken = NULL
+  clientRequestToken = NULL,
+  sourceRevisions = NULL
 )
 }
 \arguments{
@@ -19,6 +20,11 @@ values can be anything except an empty string.}
 
 \item{clientRequestToken}{The system-generated unique ID used to identify a unique execution
 request.}
+
+\item{sourceRevisions}{A list that allows you to specify, or override, the source revision for
+a pipeline execution that's being started. A source revision is the
+version with all the changes to your application code, or source
+artifact, for the pipeline execution.}
 }
 \description{
 Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.

@@ -4,7 +4,12 @@
 \alias{sagemaker_update_space}
 \title{Updates the settings of a space}
 \usage{
-sagemaker_update_space(DomainId, SpaceName, SpaceSettings = NULL)
+sagemaker_update_space(
+  DomainId,
+  SpaceName,
+  SpaceSettings = NULL,
+  SpaceDisplayName = NULL
+)
 }
 \arguments{
 \item{DomainId}{[required] The ID of the associated Domain.}
@@ -12,6 +17,8 @@ sagemaker_update_space(DomainId, SpaceName, SpaceSettings = NULL)
 \item{SpaceName}{[required] The name of the space.}
 
 \item{SpaceSettings}{A collection of space settings.}
+
+\item{SpaceDisplayName}{The name of the space that appears in the Amazon SageMaker Studio UI.}
 }
 \description{
 Updates the settings of a space.

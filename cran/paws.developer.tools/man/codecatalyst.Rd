@@ -68,7 +68,7 @@ information about the Amazon Web Services account used for billing
 purposes and the billing plan for the space.
 \item \code{\link[=codecatalyst_list_spaces]{list_spaces}}, which retrieves a list of
 spaces.
-\item \code{\link[=codecatalyst_update_space]{update_space}}, which hanges one or
+\item \code{\link[=codecatalyst_update_space]{update_space}}, which changes one or
 more values for a space.
 }
 
@@ -134,6 +134,20 @@ stops a specified Dev Environment and puts it into an stopped state.
 which stops a session for a specified Dev Environment.
 \item \code{\link[=codecatalyst_update_dev_environment]{update_dev_environment}},
 which changes one or more values for a Dev Environment.
+}
+
+Workflows, by calling the following:
+\itemize{
+\item \code{\link[=codecatalyst_get_workflow]{get_workflow}}, which returns
+information about a workflow.
+\item \code{\link[=codecatalyst_get_workflow_run]{get_workflow_run}}, which returns
+information about a specified run of a workflow.
+\item \code{\link[=codecatalyst_list_workflow_runs]{list_workflow_runs}}, which
+retrieves a list of runs of a specified workflow.
+\item \code{\link[=codecatalyst_list_workflows]{list_workflows}}, which retrieves a
+list of workflows in a specified project.
+\item \code{\link[=codecatalyst_start_workflow_run]{start_workflow_run}}, which
+starts a run of a specified workflow.
 }
 
 Security, activity, and resource management in Amazon CodeCatalyst, by
@@ -214,16 +228,21 @@ and the SSO documentation for your SDK.
 \link[=codecatalyst_get_space]{get_space} \tab Returns information about an space\cr
 \link[=codecatalyst_get_subscription]{get_subscription} \tab Returns information about the Amazon Web Services account used for billing purposes and the billing plan for the space\cr
 \link[=codecatalyst_get_user_details]{get_user_details} \tab Returns information about a user\cr
+\link[=codecatalyst_get_workflow]{get_workflow} \tab Returns information about a workflow\cr
+\link[=codecatalyst_get_workflow_run]{get_workflow_run} \tab Returns information about a specified run of a workflow\cr
 \link[=codecatalyst_list_access_tokens]{list_access_tokens} \tab Lists all personal access tokens (PATs) associated with the user who calls the API\cr
 \link[=codecatalyst_list_dev_environments]{list_dev_environments} \tab Retrieves a list of Dev Environments in a project\cr
 \link[=codecatalyst_list_dev_environment_sessions]{list_dev_environment_sessions} \tab Retrieves a list of active sessions for a Dev Environment in a project\cr
-\link[=codecatalyst_list_event_logs]{list_event_logs} \tab Retrieves a list of events that occurred during a specified time period in a space\cr
+\link[=codecatalyst_list_event_logs]{list_event_logs} \tab Retrieves a list of events that occurred during a specific time in a space\cr
 \link[=codecatalyst_list_projects]{list_projects} \tab Retrieves a list of projects\cr
 \link[=codecatalyst_list_source_repositories]{list_source_repositories} \tab Retrieves a list of source repositories in a project\cr
 \link[=codecatalyst_list_source_repository_branches]{list_source_repository_branches} \tab Retrieves a list of branches in a specified source repository\cr
 \link[=codecatalyst_list_spaces]{list_spaces} \tab Retrieves a list of spaces\cr
+\link[=codecatalyst_list_workflow_runs]{list_workflow_runs} \tab Retrieves a list of workflow runs of a specified workflow\cr
+\link[=codecatalyst_list_workflows]{list_workflows} \tab Retrieves a list of workflows in a specified project\cr
 \link[=codecatalyst_start_dev_environment]{start_dev_environment} \tab Starts a specified Dev Environment and puts it into an active state\cr
 \link[=codecatalyst_start_dev_environment_session]{start_dev_environment_session} \tab Starts a session for a specified Dev Environment\cr
+\link[=codecatalyst_start_workflow_run]{start_workflow_run} \tab Begins a run of a specified workflow\cr
 \link[=codecatalyst_stop_dev_environment]{stop_dev_environment} \tab Pauses a specified Dev Environment and places it in a non-running state\cr
 \link[=codecatalyst_stop_dev_environment_session]{stop_dev_environment_session} \tab Stops a session for a specified Dev Environment\cr
 \link[=codecatalyst_update_dev_environment]{update_dev_environment} \tab Changes one or more values for a Dev Environment\cr

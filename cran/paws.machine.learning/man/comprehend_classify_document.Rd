@@ -18,8 +18,10 @@ parameter, do not use the \code{Bytes} parameter.}
 
 \item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint.
 
-For prompt classification, Amazon Comprehend provides the endpoint ARN:
-\code{zzz}.
+For prompt safety classification, Amazon Comprehend provides the
+endpoint ARN. For more information about prompt safety classifiers, see
+\href{https://docs.aws.amazon.com/comprehend/latest/dg/trust-safety.html#prompt-classification}{Prompt safety classification}
+in the \emph{Amazon Comprehend Developer Guide}
 
 For custom classification, you create an endpoint for your custom model.
 For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/using-endpoints.html}{Using Amazon Comprehend endpoints}.}
@@ -30,8 +32,8 @@ When you classify a document using a custom model, you can also use the
 \code{Bytes} parameter to input an Amazon Textract \code{DetectDocumentText} or
 \code{AnalyzeDocument} output file.
 
-To classify a document using the prompt classifier, use the \code{Text}
-parameter for input.
+To classify a document using the prompt safety classifier, use the
+\code{Text} parameter for input.
 
 Provide the input document as a sequence of base64-encoded bytes. If
 your code uses an Amazon Web Services SDK to classify documents, the SDK

@@ -100,7 +100,7 @@ To learn more about how to use this parameter, see \href{https://docs.aws.amazon
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Returns a unique asymmetric data key pair for use outside of KMS. This operation returns a plaintext public key, a plaintext private key, and a copy of the private key that is encrypted under the symmetric encryption KMS key you specify. You can use the data key pair to perform asymmetric cryptography and implement digital signatures outside of KMS. The bytes in the keys are random; they not related to the caller or to the KMS key that is used to encrypt the private key.
+Returns a unique asymmetric data key pair for use outside of KMS. This operation returns a plaintext public key, a plaintext private key, and a copy of the private key that is encrypted under the symmetric encryption KMS key you specify. You can use the data key pair to perform asymmetric cryptography and implement digital signatures outside of KMS. The bytes in the keys are random; they are not related to the caller or to the KMS key that is used to encrypt the private key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair/} for full documentation.
 }

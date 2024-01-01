@@ -10,7 +10,8 @@ redshift_associate_data_share_consumer(
   DataShareArn,
   AssociateEntireAccount = NULL,
   ConsumerArn = NULL,
-  ConsumerRegion = NULL
+  ConsumerRegion = NULL,
+  AllowWrites = NULL
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ the datashare.}
 \item{ConsumerRegion}{From a datashare consumer account, associates a datashare with all
 existing and future namespaces in the specified Amazon Web Services
 Region.}
+
+\item{AllowWrites}{If set to true, allows write operations for a datashare.}
 }
 \description{
 From a datashare consumer account, associates a datashare with the account (AssociateEntireAccount) or the specified namespace (ConsumerArn). If you make this association, the consumer can consume the datashare.

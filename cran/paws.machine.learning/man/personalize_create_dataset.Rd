@@ -28,6 +28,8 @@ One of the following (case insensitive) values:
 \item Interactions
 \item Items
 \item Users
+\item Actions
+\item Action_Interactions
 }}
 
 \item{tags}{A list of

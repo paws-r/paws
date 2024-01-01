@@ -91,7 +91,8 @@ don't use the \code{StorageCapacity} parameter, the default is the backup's
 
 If used to create a file system other than OpenZFS, you must provide a
 value that matches the backup's \code{StorageCapacity} value. If you provide
-any other value, Amazon FSx responds with a 400 Bad Request.}
+any other value, Amazon FSx responds with with an HTTP status code 400
+Bad Request.}
 }
 \description{
 Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.

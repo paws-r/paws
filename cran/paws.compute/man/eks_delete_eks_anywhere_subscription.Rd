@@ -2,7 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_delete_eks_anywhere_subscription}
 \alias{eks_delete_eks_anywhere_subscription}
-\title{Deletes an expired / inactive subscription}
+\title{Deletes an expired or inactive subscription}
 \usage{
 eks_delete_eks_anywhere_subscription(id)
 }
@@ -10,7 +10,7 @@ eks_delete_eks_anywhere_subscription(id)
 \item{id}{[required] The ID of the subscription.}
 }
 \description{
-Deletes an expired / inactive subscription. Deleting inactive subscriptions removes them from the Amazon Web Services Management Console view and from list/describe API responses. Subscriptions can only be cancelled within 7 days of creation, and are cancelled by creating a ticket in the Amazon Web Services Support Center.
+Deletes an expired or inactive subscription. Deleting inactive subscriptions removes them from the Amazon Web Services Management Console view and from list/describe API responses. Subscriptions can only be cancelled within 7 days of creation and are cancelled by creating a ticket in the Amazon Web Services Support Center.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_delete_eks_anywhere_subscription/} for full documentation.
 }

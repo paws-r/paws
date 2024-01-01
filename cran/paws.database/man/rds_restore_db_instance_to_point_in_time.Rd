@@ -169,8 +169,13 @@ Default: Same as the source.}
 
 \item{DBName}{The database name for the restored DB instance.
 
-This parameter isn't supported for the MySQL or MariaDB engines. It also
-doesn't apply to RDS Custom.}
+This parameter doesn't apply to the following DB instances:
+\itemize{
+\item RDS Custom
+\item RDS for Db2
+\item RDS for MariaDB
+\item RDS for MySQL
+}}
 
 \item{Engine}{The database engine to use for the new instance.
 
@@ -178,6 +183,8 @@ This setting doesn't apply to RDS Custom.
 
 Valid Values:
 \itemize{
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -401,11 +408,16 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting is required for RDS Custom.}
 
-\item{BackupTarget}{Specifies where automated backups and manual snapshots are stored for
-the restored DB instance.
+\item{BackupTarget}{The location for storing automated backups and manual snapshots for the
+restored DB instance.
 
-Possible values are \code{outposts} (Amazon Web Services Outposts) and
-\code{region} (Amazon Web Services Region). The default is \code{region}.
+Valid Values:
+\itemize{
+\item \code{outposts} (Amazon Web Services Outposts)
+\item \code{region} (Amazon Web Services Region)
+}
+
+Default: \code{region}
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.}

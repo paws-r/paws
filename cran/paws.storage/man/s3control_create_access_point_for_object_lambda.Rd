@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_access_point_for_object_lambda}
 \alias{s3control_create_access_point_for_object_lambda}
-\title{Creates an Object Lambda Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_create_access_point_for_object_lambda(AccountId, Name, Configuration)
 }
@@ -15,7 +15,7 @@ Lambda Access Point.}
 \item{Configuration}{[required] Object Lambda Access Point configuration as a JSON document.}
 }
 \description{
-Creates an Object Lambda Access Point. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html}{Transforming objects with Object Lambda Access Points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_create_access_point_for_object_lambda/} for full documentation.
 }

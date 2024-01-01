@@ -110,14 +110,18 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \link[paws.database:redshiftserverless_create_custom_domain_association]{create_custom_domain_association} \tab Creates a custom domain association for Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_create_endpoint_access]{create_endpoint_access} \tab Creates an Amazon Redshift Serverless managed VPC endpoint\cr
 \link[paws.database:redshiftserverless_create_namespace]{create_namespace} \tab Creates a namespace in Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 \link[paws.database:redshiftserverless_create_snapshot]{create_snapshot} \tab Creates a snapshot of all databases in a namespace\cr
+\link[paws.database:redshiftserverless_create_snapshot_copy_configuration]{create_snapshot_copy_configuration} \tab Creates a snapshot copy configuration that lets you copy snapshots to another Amazon Web Services Region\cr
 \link[paws.database:redshiftserverless_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift Serverless usage type\cr
 \link[paws.database:redshiftserverless_create_workgroup]{create_workgroup} \tab Creates an workgroup in Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_delete_custom_domain_association]{delete_custom_domain_association} \tab Deletes a custom domain association for Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_delete_endpoint_access]{delete_endpoint_access} \tab Deletes an Amazon Redshift Serverless managed VPC endpoint\cr
 \link[paws.database:redshiftserverless_delete_namespace]{delete_namespace} \tab Deletes a namespace from Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
+\link[paws.database:redshiftserverless_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
 \link[paws.database:redshiftserverless_delete_snapshot]{delete_snapshot} \tab Deletes a snapshot from Amazon Redshift Serverless\cr
+\link[paws.database:redshiftserverless_delete_snapshot_copy_configuration]{delete_snapshot_copy_configuration} \tab Deletes a snapshot copy configuration\cr
 \link[paws.database:redshiftserverless_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_delete_workgroup]{delete_workgroup} \tab Deletes a workgroup\cr
 \link[paws.database:redshiftserverless_get_credentials]{get_credentials} \tab Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless\cr
@@ -126,6 +130,7 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \link[paws.database:redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
 \link[paws.database:redshiftserverless_get_resource_policy]{get_resource_policy} \tab Returns a resource policy\cr
+\link[paws.database:redshiftserverless_get_scheduled_action]{get_scheduled_action} \tab Returns information about a scheduled action\cr
 \link[paws.database:redshiftserverless_get_snapshot]{get_snapshot} \tab Returns information about a specific snapshot\cr
 \link[paws.database:redshiftserverless_get_table_restore_status]{get_table_restore_status} \tab Returns information about a TableRestoreStatus object\cr
 \link[paws.database:redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
@@ -134,6 +139,8 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \link[paws.database:redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
 \link[paws.database:redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 \link[paws.database:redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
+\link[paws.database:redshiftserverless_list_scheduled_actions]{list_scheduled_actions} \tab Returns a list of scheduled actions\cr
+\link[paws.database:redshiftserverless_list_snapshot_copy_configurations]{list_snapshot_copy_configurations} \tab Returns a list of snapshot copy configurations\cr
 \link[paws.database:redshiftserverless_list_snapshots]{list_snapshots} \tab Returns a list of snapshots\cr
 \link[paws.database:redshiftserverless_list_table_restore_status]{list_table_restore_status} \tab Returns information about an array of TableRestoreStatus objects\cr
 \link[paws.database:redshiftserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
@@ -142,13 +149,16 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \link[paws.database:redshiftserverless_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
 \link[paws.database:redshiftserverless_restore_from_recovery_point]{restore_from_recovery_point} \tab Restore the data from a recovery point\cr
 \link[paws.database:redshiftserverless_restore_from_snapshot]{restore_from_snapshot} \tab Restores a namespace from a snapshot\cr
+\link[paws.database:redshiftserverless_restore_table_from_recovery_point]{restore_table_from_recovery_point} \tab Restores a table from a recovery point to your Amazon Redshift Serverless instance\cr
 \link[paws.database:redshiftserverless_restore_table_from_snapshot]{restore_table_from_snapshot} \tab Restores a table from a snapshot to your Amazon Redshift Serverless instance\cr
 \link[paws.database:redshiftserverless_tag_resource]{tag_resource} \tab Assigns one or more tags to a resource\cr
 \link[paws.database:redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
 \link[paws.database:redshiftserverless_update_custom_domain_association]{update_custom_domain_association} \tab Updates an Amazon Redshift Serverless certificate associated with a custom domain\cr
 \link[paws.database:redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr
 \link[paws.database:redshiftserverless_update_namespace]{update_namespace} \tab Updates a namespace with the specified settings\cr
+\link[paws.database:redshiftserverless_update_scheduled_action]{update_scheduled_action} \tab Updates a scheduled action\cr
 \link[paws.database:redshiftserverless_update_snapshot]{update_snapshot} \tab Updates a snapshot\cr
+\link[paws.database:redshiftserverless_update_snapshot_copy_configuration]{update_snapshot_copy_configuration} \tab Updates a snapshot copy configuration\cr
 \link[paws.database:redshiftserverless_update_usage_limit]{update_usage_limit} \tab Update a usage limit in Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_update_workgroup]{update_workgroup} \tab Updates a workgroup with the specified configuration settings
 }

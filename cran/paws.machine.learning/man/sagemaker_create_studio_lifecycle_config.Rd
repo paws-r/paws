@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_studio_lifecycle_config}
 \alias{sagemaker_create_studio_lifecycle_config}
-\title{Creates a new Studio Lifecycle Configuration}
+\title{Creates a new Amazon SageMaker Studio Lifecycle Configuration}
 \usage{
 sagemaker_create_studio_lifecycle_config(
   StudioLifecycleConfigName,
@@ -12,10 +12,11 @@ sagemaker_create_studio_lifecycle_config(
 )
 }
 \arguments{
-\item{StudioLifecycleConfigName}{[required] The name of the Studio Lifecycle Configuration to create.}
+\item{StudioLifecycleConfigName}{[required] The name of the Amazon SageMaker Studio Lifecycle Configuration to
+create.}
 
-\item{StudioLifecycleConfigContent}{[required] The content of your Studio Lifecycle Configuration script. This content
-must be base64 encoded.}
+\item{StudioLifecycleConfigContent}{[required] The content of your Amazon SageMaker Studio Lifecycle Configuration
+script. This content must be base64 encoded.}
 
 \item{StudioLifecycleConfigAppType}{[required] The App type that the Lifecycle Configuration is attached to.}
 
@@ -24,7 +25,7 @@ consists of a key and an optional value. Tag keys must be unique per
 resource. Tags are searchable using the Search API.}
 }
 \description{
-Creates a new Studio Lifecycle Configuration.
+Creates a new Amazon SageMaker Studio Lifecycle Configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_studio_lifecycle_config/} for full documentation.
 }

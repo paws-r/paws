@@ -2,17 +2,17 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_describe_nodegroup}
 \alias{eks_describe_nodegroup}
-\title{Returns descriptive information about an Amazon EKS node group}
+\title{Describes a managed node group}
 \usage{
 eks_describe_nodegroup(clusterName, nodegroupName)
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster associated with the node group.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{nodegroupName}{[required] The name of the node group to describe.}
 }
 \description{
-Returns descriptive information about an Amazon EKS node group.
+Describes a managed node group.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_describe_nodegroup/} for full documentation.
 }

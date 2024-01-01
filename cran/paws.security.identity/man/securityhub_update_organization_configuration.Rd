@@ -2,34 +2,47 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_update_organization_configuration}
 \alias{securityhub_update_organization_configuration}
-\title{Used to update the configuration related to Organizations}
+\title{Updates the configuration of your organization in Security Hub}
 \usage{
 securityhub_update_organization_configuration(
   AutoEnable,
-  AutoEnableStandards = NULL
+  AutoEnableStandards = NULL,
+  OrganizationConfiguration = NULL
 )
 }
 \arguments{
-\item{AutoEnable}{[required] Whether to automatically enable Security Hub for new accounts in the
-organization.
+\item{AutoEnable}{[required] Whether to automatically enable Security Hub in new member accounts when
+they join the organization.
 
-By default, this is \code{false}, and new accounts are not added
-automatically.
+If set to \code{true}, then Security Hub is automatically enabled in new
+accounts. If set to \code{false}, then Security Hub isn't enabled in new
+accounts automatically. The default value is \code{false}.
 
-To automatically enable Security Hub for new accounts, set this to
-\code{true}.}
+If the \code{ConfigurationType} of your organization is set to \code{CENTRAL},
+then this field is set to \code{false} and can't be changed in the home
+Region and linked Regions. However, in that case, the delegated
+administrator can create a configuration policy in which Security Hub is
+enabled and associate the policy with new organization accounts.}
 
 \item{AutoEnableStandards}{Whether to automatically enable Security Hub \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-enable-disable.html}{default standards}
-for new member accounts in the organization.
+in new member accounts when they join the organization.
 
-By default, this parameter is equal to \code{DEFAULT}, and new member
-accounts are automatically enabled with default Security Hub standards.
+The default value of this parameter is equal to \code{DEFAULT}.
 
-To opt out of enabling default standards for new member accounts, set
-this parameter equal to \code{NONE}.}
+If equal to \code{DEFAULT}, then Security Hub default standards are
+automatically enabled for new member accounts. If equal to \code{NONE}, then
+default standards are not automatically enabled for new member accounts.
+
+If the \code{ConfigurationType} of your organization is set to \code{CENTRAL},
+then this field is set to \code{NONE} and can't be changed in the home Region
+and linked Regions. However, in that case, the delegated administrator
+can create a configuration policy in which specific security standards
+are enabled and associate the policy with new organization accounts.}
+
+\item{OrganizationConfiguration}{}
 }
 \description{
-Used to update the configuration related to Organizations. Can only be called from a Security Hub administrator account.
+Updates the configuration of your organization in Security Hub. Only the Security Hub administrator account can invoke this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_update_organization_configuration/} for full documentation.
 }

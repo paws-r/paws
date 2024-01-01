@@ -14,7 +14,7 @@ imagebuilder_list_workflow_executions(
 \arguments{
 \item{maxResults}{The maximum items to return in a request.}
 
-\item{nextToken}{A token to specify where to start paginating. This is the NextToken from
+\item{nextToken}{A token to specify where to start paginating. This is the nextToken from
 a previously truncated response.}
 
 \item{imageBuildVersionArn}{[required] List all workflow runtime instances for the specified image build

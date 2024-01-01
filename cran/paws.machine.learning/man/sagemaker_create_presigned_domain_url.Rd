@@ -9,7 +9,8 @@ sagemaker_create_presigned_domain_url(
   UserProfileName,
   SessionExpirationDurationInSeconds = NULL,
   ExpiresInSeconds = NULL,
-  SpaceName = NULL
+  SpaceName = NULL,
+  LandingUri = NULL
 )
 }
 \arguments{
@@ -24,9 +25,29 @@ sagemaker_create_presigned_domain_url(
 defaults to 300.}
 
 \item{SpaceName}{The name of the space.}
+
+\item{LandingUri}{The landing page that the user is directed to when accessing the
+presigned URL. Using this value, users can access Studio or Studio
+Classic, even if it is not the default experience for the domain. The
+supported values are:
+\itemize{
+\item \code{studio::relative/path}: Directs users to the relative path in
+Studio.
+\item \code{app:JupyterServer:relative/path}: Directs users to the relative
+path in the Studio Classic application.
+\item \code{app:JupyterLab:relative/path}: Directs users to the relative path
+in the JupyterLab application.
+\item \code{app:RStudioServerPro:relative/path}: Directs users to the relative
+path in the RStudio application.
+\item \code{app:CodeEditor:relative/path}: Directs users to the relative path
+in the Code Editor, based on Code-OSS, Visual Studio Code - Open
+Source application.
+\item \code{app:Canvas:relative/path}: Directs users to the relative path in
+the Canvas application.
+}}
 }
 \description{
-Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to Amazon SageMaker Studio, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.
+Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to the domain, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_domain_url/} for full documentation.
 }

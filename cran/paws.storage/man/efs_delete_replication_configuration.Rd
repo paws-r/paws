@@ -2,7 +2,7 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_delete_replication_configuration}
 \alias{efs_delete_replication_configuration}
-\title{Deletes an existing replication configuration}
+\title{Deletes a replication configuration}
 \usage{
 efs_delete_replication_configuration(SourceFileSystemId)
 }
@@ -10,7 +10,7 @@ efs_delete_replication_configuration(SourceFileSystemId)
 \item{SourceFileSystemId}{[required] The ID of the source file system in the replication configuration.}
 }
 \description{
-Deletes an existing replication configuration. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes \code{Writeable}.
+Deletes a replication configuration. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system becomes \code{Writeable} and its replication overwrite protection is re-enabled. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/delete-replications.html}{Delete a replication configuration}.
 
 See \url{https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/} for full documentation.
 }

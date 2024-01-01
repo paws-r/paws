@@ -22,8 +22,10 @@ cognitoidentityprovider_confirm_forgot_password(
 secret key of a user pool client and username plus the client ID in the
 message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
 
-\item{Username}{[required] The user name of the user for whom you want to enter a code to retrieve
-a forgotten password.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{ConfirmationCode}{[required] The confirmation code from your user's request to reset their password.
 For more information, see

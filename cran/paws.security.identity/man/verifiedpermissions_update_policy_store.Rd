@@ -4,13 +4,20 @@
 \alias{verifiedpermissions_update_policy_store}
 \title{Modifies the validation setting for a policy store}
 \usage{
-verifiedpermissions_update_policy_store(policyStoreId, validationSettings)
+verifiedpermissions_update_policy_store(
+  policyStoreId,
+  validationSettings,
+  description = NULL
+)
 }
 \arguments{
 \item{policyStoreId}{[required] Specifies the ID of the policy store that you want to update}
 
 \item{validationSettings}{[required] A structure that defines the validation settings that want to enable for
 the policy store.}
+
+\item{description}{Descriptive text that you can provide to help with identification of the
+current policy store.}
 }
 \description{
 Modifies the validation setting for a policy store.

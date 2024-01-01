@@ -56,7 +56,7 @@ in the \emph{Batch User Guide}.}
 
 \item{serviceRole}{The full Amazon Resource Name (ARN) of the IAM role that allows Batch to
 make calls to other Amazon Web Services services on your behalf. For
-more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html}{Batch service IAM role}
+more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-service-linked-roles.html}{Batch service IAM role}
 in the \emph{Batch User Guide}.
 
 If the compute environment has a service-linked role, it can't be

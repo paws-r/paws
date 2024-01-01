@@ -28,7 +28,7 @@ an expired pagination token will return an HTTP 400 InvalidToken error.}
 \item{MaxResults}{The maximum number of results returned by the call.}
 }
 \description{
-List the global endpoints associated with this account. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the Amazon EventBridge User Guide..
+List the global endpoints associated with this account. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the \emph{Amazon EventBridge User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_endpoints/} for full documentation.
 }

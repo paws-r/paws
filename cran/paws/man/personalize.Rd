@@ -95,7 +95,7 @@ add individualized recommendations to customers.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Creates a batch inference job\cr
+\link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Generates batch recommendations based on a list of items or users stored in Amazon S3 and exports the recommendations to an Amazon S3 bucket\cr
 \link[paws.machine.learning:personalize_create_batch_segment_job]{create_batch_segment_job} \tab Creates a batch segment job\cr
 \link[paws.machine.learning:personalize_create_campaign]{create_campaign} \tab Creates a campaign that deploys a solution version\cr
 \link[paws.machine.learning:personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group\cr
@@ -158,7 +158,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_stop_solution_version_creation]{stop_solution_version_creation} \tab Stops creating a solution version that is in a state of CREATE_PENDING or CREATE IN_PROGRESS\cr
 \link[paws.machine.learning:personalize_tag_resource]{tag_resource} \tab Add a list of tags to a resource\cr
 \link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Remove tags that are attached to a resource\cr
-\link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter\cr
+\link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's minProvisionedTPS, or modify your campaign's configuration, such as the exploration configuration\cr
 \link[paws.machine.learning:personalize_update_dataset]{update_dataset} \tab Update a dataset to replace its schema with a new or existing one\cr
 \link[paws.machine.learning:personalize_update_metric_attribution]{update_metric_attribution} \tab Updates a metric attribution\cr
 \link[paws.machine.learning:personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration

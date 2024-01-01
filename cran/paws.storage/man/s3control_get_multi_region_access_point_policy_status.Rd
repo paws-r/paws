@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_multi_region_access_point_policy_status}
 \alias{s3control_get_multi_region_access_point_policy_status}
-\title{Indicates whether the specified Multi-Region Access Point has an access
-control policy that allows public access}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_get_multi_region_access_point_policy_status(AccountId, Name)
 }
@@ -18,7 +17,7 @@ Point, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingM
 in the \emph{Amazon S3 User Guide}.}
 }
 \description{
-Indicates whether the specified Multi-Region Access Point has an access control policy that allows public access.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy_status/} for full documentation.
 }

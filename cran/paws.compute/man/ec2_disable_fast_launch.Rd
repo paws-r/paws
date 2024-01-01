@@ -2,18 +2,17 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_disable_fast_launch}
 \alias{ec2_disable_fast_launch}
-\title{Discontinue faster launching for a Windows AMI, and clean up existing
+\title{Discontinue Windows fast launch for a Windows AMI, and clean up existing
 pre-provisioned snapshots}
 \usage{
 ec2_disable_fast_launch(ImageId, Force = NULL, DryRun = NULL)
 }
 \arguments{
-\item{ImageId}{[required] The ID of the image for which you’re turning off faster launching, and
-removing pre-provisioned snapshots.}
+\item{ImageId}{[required] Specify the ID of the image for which to disable Windows fast launch.}
 
-\item{Force}{Forces the image settings to turn off faster launching for your Windows
-AMI. This parameter overrides any errors that are encountered while
-cleaning up resources in your account.}
+\item{Force}{Forces the image settings to turn off Windows fast launch for your
+Windows AMI. This parameter overrides any errors that are encountered
+while cleaning up resources in your account.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -21,7 +20,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Discontinue faster launching for a Windows AMI, and clean up existing pre-provisioned snapshots. When you disable faster launching, the AMI uses the standard launch process for each instance. All pre-provisioned snapshots must be removed before you can enable faster launching again.
+Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots. After you disable Windows fast launch, the AMI uses the standard launch process for each new instance. Amazon EC2 must remove all pre-provisioned snapshots before you can enable Windows fast launch again.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_disable_fast_launch/} for full documentation.
 }

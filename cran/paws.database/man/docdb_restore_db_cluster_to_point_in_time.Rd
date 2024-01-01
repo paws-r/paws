@@ -16,7 +16,8 @@ docdb_restore_db_cluster_to_point_in_time(
   Tags = NULL,
   KmsKeyId = NULL,
   EnableCloudwatchLogsExports = NULL,
-  DeletionProtection = NULL
+  DeletionProtection = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -126,6 +127,16 @@ CloudWatch Logs.}
 is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
+
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+For information on storage types for Amazon DocumentDB clusters, see
+Cluster storage configurations in the \emph{Amazon DocumentDB Developer
+Guide}.
+
+Valid values for storage type - \code{standard | iopt1}
+
+Default value is \code{standard }}
 }
 \description{
 Restores a cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target cluster is created from the source cluster with the same configuration as the original cluster, except that the new cluster is created with the default security group.

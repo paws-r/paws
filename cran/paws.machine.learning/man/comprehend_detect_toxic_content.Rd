@@ -8,13 +8,14 @@ as input}
 comprehend_detect_toxic_content(TextSegments, LanguageCode)
 }
 \arguments{
-\item{TextSegments}{[required] A list of up to 10 text strings. The maximum size for the list is 10 KB.}
+\item{TextSegments}{[required] A list of up to 10 text strings. Each string has a maximum size of 1 KB,
+and the maximum size of the list is 10 KB.}
 
 \item{LanguageCode}{[required] The language of the input text. Currently, English is the only supported
 language.}
 }
 \description{
-Performs toxicity analysis on the list of text strings that you provide as input. The analysis uses the order of strings in the list to determine context when predicting toxicity. The API response contains a results list that matches the size of the input list. For more information about toxicity detection, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/}{Toxicity detection} in the \emph{Amazon Comprehend Developer Guide}
+Performs toxicity analysis on the list of text strings that you provide as input. The API response contains a results list that matches the size of the input list. For more information about toxicity detection, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/}{Toxicity detection} in the \emph{Amazon Comprehend Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/comprehend_detect_toxic_content/} for full documentation.
 }

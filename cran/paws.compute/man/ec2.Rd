@@ -130,6 +130,7 @@ To learn more, see the following resources:
 \link[=ec2_associate_enclave_certificate_iam_role]{associate_enclave_certificate_iam_role} \tab Associates an Identity and Access Management (IAM) role with an Certificate Manager (ACM) certificate\cr
 \link[=ec2_associate_iam_instance_profile]{associate_iam_instance_profile} \tab Associates an IAM instance profile with a running or stopped instance\cr
 \link[=ec2_associate_instance_event_window]{associate_instance_event_window} \tab Associates one or more targets with an event window\cr
+\link[=ec2_associate_ipam_byoasn]{associate_ipam_byoasn} \tab Associates your Autonomous System Number (ASN) with a BYOIP CIDR that you own in the same Amazon Web Services Region\cr
 \link[=ec2_associate_ipam_resource_discovery]{associate_ipam_resource_discovery} \tab Associates an IPAM resource discovery with an Amazon VPC IPAM\cr
 \link[=ec2_associate_nat_gateway_address]{associate_nat_gateway_address} \tab Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway\cr
 \link[=ec2_associate_route_table]{associate_route_table} \tab Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC\cr
@@ -137,7 +138,7 @@ To learn more, see the following resources:
 \link[=ec2_associate_transit_gateway_multicast_domain]{associate_transit_gateway_multicast_domain} \tab Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain\cr
 \link[=ec2_associate_transit_gateway_policy_table]{associate_transit_gateway_policy_table} \tab Associates the specified transit gateway attachment with a transit gateway policy table\cr
 \link[=ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table} \tab Associates the specified attachment with the specified transit gateway route table\cr
-\link[=ec2_associate_trunk_interface]{associate_trunk_interface} \tab This API action is currently in limited preview only\cr
+\link[=ec2_associate_trunk_interface]{associate_trunk_interface} \tab Associates a branch network interface with a trunk network interface\cr
 \link[=ec2_associate_vpc_cidr_block]{associate_vpc_cidr_block} \tab Associates a CIDR block with your VPC\cr
 \link[=ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab This action is deprecated\cr
 \link[=ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC\cr
@@ -320,6 +321,7 @@ To learn more, see the following resources:
 \link[=ec2_delete_vpn_connection_route]{delete_vpn_connection_route} \tab Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway\cr
 \link[=ec2_delete_vpn_gateway]{delete_vpn_gateway} \tab Deletes the specified virtual private gateway\cr
 \link[=ec2_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
+\link[=ec2_deprovision_ipam_byoasn]{deprovision_ipam_byoasn} \tab Deprovisions your Autonomous System Number (ASN) from your Amazon Web Services account\cr
 \link[=ec2_deprovision_ipam_pool_cidr]{deprovision_ipam_pool_cidr} \tab Deprovision a CIDR provisioned from an IPAM pool\cr
 \link[=ec2_deprovision_public_ipv_4_pool_cidr]{deprovision_public_ipv_4_pool_cidr} \tab Deprovision a CIDR from a public IPv4 pool\cr
 \link[=ec2_deregister_image]{deregister_image} \tab Deregisters the specified AMI\cr
@@ -353,7 +355,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Describes the Elastic Graphics accelerator associated with your instances\cr
 \link[=ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all of your export image tasks\cr
 \link[=ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all of your export instance tasks\cr
-\link[=ec2_describe_fast_launch_images]{describe_fast_launch_images} \tab Describe details for Windows AMIs that are configured for faster launching\cr
+\link[=ec2_describe_fast_launch_images]{describe_fast_launch_images} \tab Describe details for Windows AMIs that are configured for Windows fast launch\cr
 \link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots\cr
 \link[=ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time\cr
 \link[=ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet\cr
@@ -378,9 +380,11 @@ To learn more, see the following resources:
 \link[=ec2_describe_instance_event_windows]{describe_instance_event_windows} \tab Describes the specified event windows or all event windows\cr
 \link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all instances\cr
 \link[=ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances\cr
+\link[=ec2_describe_instance_topology]{describe_instance_topology} \tab Describes a tree-based hierarchy that represents the physical host placement of your EC2 instances within an Availability Zone or Local Zone\cr
 \link[=ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Returns a list of all instance types offered\cr
 \link[=ec2_describe_instance_types]{describe_instance_types} \tab Describes the details of the instance types that are offered in a location\cr
 \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways\cr
+\link[=ec2_describe_ipam_byoasn]{describe_ipam_byoasn} \tab Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated\cr
 \link[=ec2_describe_ipam_pools]{describe_ipam_pools} \tab Get information about your IPAM pools\cr
 \link[=ec2_describe_ipam_resource_discoveries]{describe_ipam_resource_discoveries} \tab Describes IPAM resource discoveries\cr
 \link[=ec2_describe_ipam_resource_discovery_associations]{describe_ipam_resource_discovery_associations} \tab Describes resource discovery association with an Amazon VPC IPAM\cr
@@ -396,6 +400,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_local_gateways]{describe_local_gateways} \tab Describes one or more local gateways\cr
 \link[=ec2_describe_local_gateway_virtual_interface_groups]{describe_local_gateway_virtual_interface_groups} \tab Describes the specified local gateway virtual interface groups\cr
 \link[=ec2_describe_local_gateway_virtual_interfaces]{describe_local_gateway_virtual_interfaces} \tab Describes the specified local gateway virtual interfaces\cr
+\link[=ec2_describe_locked_snapshots]{describe_locked_snapshots} \tab Describes the lock status for a snapshot\cr
 \link[=ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists} \tab Describes your managed prefix lists and any Amazon Web Services-managed prefix lists\cr
 \link[=ec2_describe_moving_addresses]{describe_moving_addresses} \tab This action is deprecated\cr
 \link[=ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways\cr
@@ -420,7 +425,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_route_tables]{describe_route_tables} \tab Describes one or more of your route tables\cr
 \link[=ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 \link[=ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
-\link[=ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
+\link[=ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection or the VPCs attached to a transit gateway that are referencing the security groups you've specified in this request\cr
 \link[=ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 \link[=ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
 \link[=ec2_describe_snapshot_attribute]{describe_snapshot_attribute} \tab Describes the specified attribute of the specified snapshot\cr
@@ -449,7 +454,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_transit_gateway_route_tables]{describe_transit_gateway_route_tables} \tab Describes one or more transit gateway route tables\cr
 \link[=ec2_describe_transit_gateways]{describe_transit_gateways} \tab Describes one or more transit gateways\cr
 \link[=ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments} \tab Describes one or more VPC attachments\cr
-\link[=ec2_describe_trunk_interface_associations]{describe_trunk_interface_associations} \tab This API action is currently in limited preview only\cr
+\link[=ec2_describe_trunk_interface_associations]{describe_trunk_interface_associations} \tab Describes one or more network interface trunk associations\cr
 \link[=ec2_describe_verified_access_endpoints]{describe_verified_access_endpoints} \tab Describes the specified Amazon Web Services Verified Access endpoints\cr
 \link[=ec2_describe_verified_access_groups]{describe_verified_access_groups} \tab Describes the specified Verified Access groups\cr
 \link[=ec2_describe_verified_access_instance_logging_configurations]{describe_verified_access_instance_logging_configurations} \tab Describes the specified Amazon Web Services Verified Access instances\cr
@@ -481,7 +486,7 @@ To learn more, see the following resources:
 \link[=ec2_disable_address_transfer]{disable_address_transfer} \tab Disables Elastic IP address transfer\cr
 \link[=ec2_disable_aws_network_performance_metric_subscription]{disable_aws_network_performance_metric_subscription} \tab Disables Infrastructure Performance metric subscriptions\cr
 \link[=ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
-\link[=ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue faster launching for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
+\link[=ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
 \link[=ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores} \tab Disables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
 \link[=ec2_disable_image]{disable_image} \tab Sets the AMI state to disabled and removes all launch permissions from the AMI\cr
 \link[=ec2_disable_image_block_public_access]{disable_image_block_public_access} \tab Disables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
@@ -498,6 +503,7 @@ To learn more, see the following resources:
 \link[=ec2_disassociate_enclave_certificate_iam_role]{disassociate_enclave_certificate_iam_role} \tab Disassociates an IAM role from an Certificate Manager (ACM) certificate\cr
 \link[=ec2_disassociate_iam_instance_profile]{disassociate_iam_instance_profile} \tab Disassociates an IAM instance profile from a running or stopped instance\cr
 \link[=ec2_disassociate_instance_event_window]{disassociate_instance_event_window} \tab Disassociates one or more targets from an event window\cr
+\link[=ec2_disassociate_ipam_byoasn]{disassociate_ipam_byoasn} \tab Remove the association between your Autonomous System Number (ASN) and your BYOIP CIDR\cr
 \link[=ec2_disassociate_ipam_resource_discovery]{disassociate_ipam_resource_discovery} \tab Disassociates a resource discovery from an Amazon VPC IPAM\cr
 \link[=ec2_disassociate_nat_gateway_address]{disassociate_nat_gateway_address} \tab Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway\cr
 \link[=ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet or gateway from a route table\cr
@@ -505,12 +511,12 @@ To learn more, see the following resources:
 \link[=ec2_disassociate_transit_gateway_multicast_domain]{disassociate_transit_gateway_multicast_domain} \tab Disassociates the specified subnets from the transit gateway multicast domain\cr
 \link[=ec2_disassociate_transit_gateway_policy_table]{disassociate_transit_gateway_policy_table} \tab Removes the association between an an attachment and a policy table\cr
 \link[=ec2_disassociate_transit_gateway_route_table]{disassociate_transit_gateway_route_table} \tab Disassociates a resource attachment from a transit gateway route table\cr
-\link[=ec2_disassociate_trunk_interface]{disassociate_trunk_interface} \tab This API action is currently in limited preview only\cr
+\link[=ec2_disassociate_trunk_interface]{disassociate_trunk_interface} \tab Removes an association between a branch network interface with a trunk network interface\cr
 \link[=ec2_disassociate_vpc_cidr_block]{disassociate_vpc_cidr_block} \tab Disassociates a CIDR block from a VPC\cr
 \link[=ec2_enable_address_transfer]{enable_address_transfer} \tab Enables Elastic IP address transfer\cr
 \link[=ec2_enable_aws_network_performance_metric_subscription]{enable_aws_network_performance_metric_subscription} \tab Enables Infrastructure Performance subscriptions\cr
 \link[=ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
-\link[=ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable faster launching for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65\% faster\cr
+\link[=ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65\% faster\cr
 \link[=ec2_enable_fast_snapshot_restores]{enable_fast_snapshot_restores} \tab Enables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
 \link[=ec2_enable_image]{enable_image} \tab Re-enables a disabled AMI\cr
 \link[=ec2_enable_image_block_public_access]{enable_image_block_public_access} \tab Enables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
@@ -546,6 +552,7 @@ To learn more, see the following resources:
 \link[=ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 \link[=ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
 \link[=ec2_get_ipam_discovered_accounts]{get_ipam_discovered_accounts} \tab Gets IPAM discovered accounts\cr
+\link[=ec2_get_ipam_discovered_public_addresses]{get_ipam_discovered_public_addresses} \tab Gets the public IP addresses that have been discovered by IPAM\cr
 \link[=ec2_get_ipam_discovered_resource_cidrs]{get_ipam_discovered_resource_cidrs} \tab Returns the resource CIDRs that are monitored as part of a resource discovery\cr
 \link[=ec2_get_ipam_pool_allocations]{get_ipam_pool_allocations} \tab Get a list of all the CIDR allocations in an IPAM pool\cr
 \link[=ec2_get_ipam_pool_cidrs]{get_ipam_pool_cidrs} \tab Get the CIDRs provisioned to an IPAM pool\cr
@@ -582,6 +589,7 @@ To learn more, see the following resources:
 \link[=ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image\cr
 \link[=ec2_list_images_in_recycle_bin]{list_images_in_recycle_bin} \tab Lists one or more AMIs that are currently in the Recycle Bin\cr
 \link[=ec2_list_snapshots_in_recycle_bin]{list_snapshots_in_recycle_bin} \tab Lists one or more snapshots that are currently in the Recycle Bin\cr
+\link[=ec2_lock_snapshot]{lock_snapshot} \tab Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration\cr
 \link[=ec2_modify_address_attribute]{modify_address_attribute} \tab Modifies an attribute of the specified Elastic IP address\cr
 \link[=ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the Local Zone and Wavelength Zone group for your account\cr
 \link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released\cr
@@ -650,6 +658,7 @@ To learn more, see the following resources:
 \link[=ec2_move_address_to_vpc]{move_address_to_vpc} \tab This action is deprecated\cr
 \link[=ec2_move_byoip_cidr_to_ipam]{move_byoip_cidr_to_ipam} \tab Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool\cr
 \link[=ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
+\link[=ec2_provision_ipam_byoasn]{provision_ipam_byoasn} \tab Provisions your Autonomous System Number (ASN) for use in your Amazon Web Services account\cr
 \link[=ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr
 \link[=ec2_provision_public_ipv_4_pool_cidr]{provision_public_ipv_4_pool_cidr} \tab Provision a CIDR to a public IPv4 pool\cr
 \link[=ec2_purchase_capacity_block]{purchase_capacity_block} \tab Purchase the Capacity Block for use with your account\cr
@@ -710,6 +719,7 @@ To learn more, see the following resources:
 \link[=ec2_unassign_ipv_6_addresses]{unassign_ipv_6_addresses} \tab Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface\cr
 \link[=ec2_unassign_private_ip_addresses]{unassign_private_ip_addresses} \tab Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface\cr
 \link[=ec2_unassign_private_nat_gateway_address]{unassign_private_nat_gateway_address} \tab Unassigns secondary private IPv4 addresses from a private NAT gateway\cr
+\link[=ec2_unlock_snapshot]{unlock_snapshot} \tab Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode but still in the cooling-off period\cr
 \link[=ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance\cr
 \link[=ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab Updates the description of an egress (outbound) security group rule\cr
 \link[=ec2_update_security_group_rule_descriptions_ingress]{update_security_group_rule_descriptions_ingress} \tab Updates the description of an ingress (inbound) security group rule\cr

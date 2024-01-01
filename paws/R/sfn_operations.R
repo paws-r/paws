@@ -407,8 +407,11 @@ sfn_delete_activity <- function(activityArn) {
 #' Deletes a state machine
 #'
 #' @description
-#' Deletes a state machine. This is an asynchronous operation: It sets the
-#' state machine's status to `DELETING` and begins the deletion process.
+#' Deletes a state machine. This is an asynchronous operation. It sets the
+#' state machine's status to `DELETING` and begins the deletion process. A
+#' state machine is deleted only when all its executions are completed. On
+#' the next state transition, the state machine's executions are
+#' terminated.
 #' 
 #' A qualified state machine ARN can either refer to a *Distributed Map
 #' state* defined within a state machine, a version ARN, or an alias ARN.
@@ -656,9 +659,12 @@ sfn_describe_activity <- function(activityArn) {
 #' @description
 #' Provides information about a state machine execution, such as the state
 #' machine associated with the execution, the execution input and output,
-#' and relevant execution metadata. Use this API action to return the Map
-#' Run Amazon Resource Name (ARN) if the execution was dispatched by a Map
-#' Run.
+#' and relevant execution metadata. If you've
+#' [redriven](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html)
+#' an execution, you can use this API action to return information about
+#' the redrives of that execution. In addition, you can use this API action
+#' to return the Map Run Amazon Resource Name (ARN) if the execution was
+#' dispatched by a Map Run.
 #' 
 #' If you specify a version or alias ARN when you call the
 #' [`start_execution`][sfn_start_execution] API action,
@@ -667,7 +673,7 @@ sfn_describe_activity <- function(activityArn) {
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' Executions of an `EXPRESS` state machinearen't supported by
+#' Executions of an `EXPRESS` state machine aren't supported by
 #' [`describe_execution`][sfn_describe_execution] unless a Map Run
 #' dispatched them.
 #'
@@ -683,7 +689,7 @@ sfn_describe_activity <- function(activityArn) {
 #'   executionArn = "string",
 #'   stateMachineArn = "string",
 #'   name = "string",
-#'   status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'   status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED"|"PENDING_REDRIVE",
 #'   startDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -703,7 +709,13 @@ sfn_describe_activity <- function(activityArn) {
 #'   error = "string",
 #'   cause = "string",
 #'   stateMachineVersionArn = "string",
-#'   stateMachineAliasArn = "string"
+#'   stateMachineAliasArn = "string",
+#'   redriveCount = 123,
+#'   redriveDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   redriveStatus = "REDRIVABLE"|"NOT_REDRIVABLE"|"REDRIVABLE_BY_MAP_RUN",
+#'   redriveStatusReason = "string"
 #' )
 #' ```
 #'
@@ -741,7 +753,10 @@ sfn_describe_execution <- function(executionArn) {
 #'
 #' @description
 #' Provides information about a Map Run's configuration, progress, and
-#' results. For more information, see [Examining Map
+#' results. If you've
+#' [redriven](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html)
+#' a Map Run, this API action also returns information about the redrives
+#' of that Map Run. For more information, see [Examining Map
 #' Run](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html)
 #' in the *Step Functions Developer Guide*.
 #'
@@ -774,7 +789,9 @@ sfn_describe_execution <- function(executionArn) {
 #'     timedOut = 123,
 #'     aborted = 123,
 #'     total = 123,
-#'     resultsWritten = 123
+#'     resultsWritten = 123,
+#'     failuresNotRedrivable = 123,
+#'     pendingRedrive = 123
 #'   ),
 #'   executionCounts = list(
 #'     pending = 123,
@@ -784,7 +801,13 @@ sfn_describe_execution <- function(executionArn) {
 #'     timedOut = 123,
 #'     aborted = 123,
 #'     total = 123,
-#'     resultsWritten = 123
+#'     resultsWritten = 123,
+#'     failuresNotRedrivable = 123,
+#'     pendingRedrive = 123
+#'   ),
+#'   redriveCount = 123,
+#'   redriveDate = as.POSIXct(
+#'     "2015-01-01"
 #'   )
 #' )
 #' ```
@@ -1207,7 +1230,7 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited"|"MapRunAborted"|"MapRunFailed"|"MapRunStarted"|"MapRunSucceeded",
+#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited"|"MapRunAborted"|"MapRunFailed"|"MapRunStarted"|"MapRunSucceeded"|"ExecutionRedriven"|"MapRunRedriven",
 #'       id = 123,
 #'       previousEventId = 123,
 #'       activityFailedEventDetails = list(
@@ -1322,6 +1345,9 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'         error = "string",
 #'         cause = "string"
 #'       ),
+#'       executionRedrivenEventDetails = list(
+#'         redriveCount = 123
+#'       ),
 #'       mapStateStartedEventDetails = list(
 #'         length = 123
 #'       ),
@@ -1394,6 +1420,10 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'       mapRunFailedEventDetails = list(
 #'         error = "string",
 #'         cause = "string"
+#'       ),
+#'       mapRunRedrivenEventDetails = list(
+#'         mapRunArn = "string",
+#'         redriveCount = 123
 #'       )
 #'     )
 #'   ),
@@ -1518,7 +1548,9 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' Lists all executions of a state machine or a Map Run. You can list all
 #' executions related to a state machine by specifying a state machine
 #' Amazon Resource Name (ARN), or those related to a Map Run by specifying
-#' a Map Run ARN.
+#' a Map Run ARN. Using this API action, you can also list all
+#' [redriven](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html)
+#' executions.
 #' 
 #' You can also provide a state machine
 #' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
@@ -1542,7 +1574,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @usage
 #' sfn_list_executions(stateMachineArn, statusFilter, maxResults,
-#'   nextToken, mapRunArn)
+#'   nextToken, mapRunArn, redriveFilter)
 #'
 #' @param stateMachineArn The Amazon Resource Name (ARN) of the state machine whose executions is
 #' listed.
@@ -1579,6 +1611,17 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' You can specify either a `mapRunArn` or a `stateMachineArn`, but not
 #' both.
+#' @param redriveFilter Sets a filter to list executions based on whether or not they have been
+#' redriven.
+#' 
+#' For a Distributed Map, `redriveFilter` sets a filter to list child
+#' workflow executions based on whether or not they have been redriven.
+#' 
+#' If you do not provide a `redriveFilter`, Step Functions returns a list
+#' of both redriven and non-redriven executions.
+#' 
+#' If you provide a state machine ARN in `redriveFilter`, the API returns a
+#' validation exception.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1589,7 +1632,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'       executionArn = "string",
 #'       stateMachineArn = "string",
 #'       name = "string",
-#'       status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'       status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED"|"PENDING_REDRIVE",
 #'       startDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1599,7 +1642,11 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'       mapRunArn = "string",
 #'       itemCount = 123,
 #'       stateMachineVersionArn = "string",
-#'       stateMachineAliasArn = "string"
+#'       stateMachineAliasArn = "string",
+#'       redriveCount = 123,
+#'       redriveDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1610,10 +1657,11 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' ```
 #' svc$list_executions(
 #'   stateMachineArn = "string",
-#'   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
+#'   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED"|"PENDING_REDRIVE",
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   mapRunArn = "string"
+#'   mapRunArn = "string",
+#'   redriveFilter = "REDRIVEN"|"NOT_REDRIVEN"
 #' )
 #' ```
 #'
@@ -1622,14 +1670,14 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' @rdname sfn_list_executions
 #'
 #' @aliases sfn_list_executions
-sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, maxResults = NULL, nextToken = NULL, mapRunArn = NULL) {
+sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, maxResults = NULL, nextToken = NULL, mapRunArn = NULL, redriveFilter = NULL) {
   op <- new_operation(
     name = "ListExecutions",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions")
   )
-  input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn)
+  input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn, redriveFilter = redriveFilter)
   output <- .sfn$list_executions_output()
   config <- get_config()
   svc <- .sfn$service(config)
@@ -2129,12 +2177,126 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
 }
 .sfn$operations$publish_state_machine_version <- sfn_publish_state_machine_version
 
-#' Used by activity workers and task states using the callback pattern to
-#' report that the task identified by the taskToken failed
+#' Restarts unsuccessful executions of Standard workflows that didn't
+#' complete successfully in the last 14 days
 #'
 #' @description
-#' Used by activity workers and task states using the
+#' Restarts unsuccessful executions of Standard workflows that didn't
+#' complete successfully in the last 14 days. These include failed,
+#' aborted, or timed out executions. When you
+#' [redrive](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html)
+#' an execution, it continues the failed execution from the unsuccessful
+#' step and uses the same input. Step Functions preserves the results and
+#' execution history of the successful steps, and doesn't rerun these steps
+#' when you redrive an execution. Redriven executions use the same state
+#' machine definition and execution ARN as the original execution attempt.
+#' 
+#' For workflows that include an [Inline
+#' Map](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html)
+#' or
+#' [Parallel](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html)
+#' state, [`redrive_execution`][sfn_redrive_execution] API action
+#' reschedules and redrives only the iterations and branches that failed or
+#' aborted.
+#' 
+#' To redrive a workflow that includes a Distributed Map state whose Map
+#' Run failed, you must redrive the [parent
+#' workflow](https://docs.aws.amazon.com/step-functions/latest/dg/use-dist-map-orchestrate-large-scale-parallel-workloads.html#dist-map-orchestrate-parallel-workloads-key-terms).
+#' The parent workflow redrives all the unsuccessful states, including a
+#' failed Map Run. If a Map Run was not started in the original execution
+#' attempt, the redriven parent workflow starts the Map Run.
+#' 
+#' This API action is not supported by `EXPRESS` state machines.
+#' 
+#' However, you can restart the unsuccessful executions of Express child
+#' workflows in a Distributed Map by redriving its Map Run. When you
+#' redrive a Map Run, the Express child workflows are rerun using the
+#' [`start_execution`][sfn_start_execution] API action. For more
+#' information, see [Redriving Map
+#' Runs](https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html).
+#' 
+#' You can redrive executions if your original execution meets the
+#' following conditions:
+#' 
+#' -   The execution status isn't `SUCCEEDED`.
+#' 
+#' -   Your workflow execution has not exceeded the redrivable period of 14
+#'     days. Redrivable period refers to the time during which you can
+#'     redrive a given execution. This period starts from the day a state
+#'     machine completes its execution.
+#' 
+#' -   The workflow execution has not exceeded the maximum open time of one
+#'     year. For more information about state machine quotas, see [Quotas
+#'     related to state machine
+#'     executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions).
+#' 
+#' -   The execution event history count is less than 24,999. Redriven
+#'     executions append their event history to the existing event history.
+#'     Make sure your workflow execution contains less than 24,999 events
+#'     to accommodate the `ExecutionRedriven` history event and at least
+#'     one other history event.
+#'
+#' @usage
+#' sfn_redrive_execution(executionArn, clientToken)
+#'
+#' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to be redriven.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency. The API will return idempotent
+#' responses for the last 10 client tokens used to successfully redrive the
+#' execution. These client tokens are valid for up to 15 minutes after they
+#' are first used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   redriveDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$redrive_execution(
+#'   executionArn = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_redrive_execution
+#'
+#' @aliases sfn_redrive_execution
+sfn_redrive_execution <- function(executionArn, clientToken = NULL) {
+  op <- new_operation(
+    name = "RedriveExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$redrive_execution_input(executionArn = executionArn, clientToken = clientToken)
+  output <- .sfn$redrive_execution_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$redrive_execution <- sfn_redrive_execution
+
+#' Used by activity workers, Task states using the callback pattern, and
+#' optionally Task states using the job run pattern to report that the task
+#' identified by the taskToken failed
+#'
+#' @description
+#' Used by activity workers, Task states using the
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern, and optionally Task states using the [job
+#' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
 #' pattern to report that the task identified by the `taskToken` failed.
 #'
 #' @usage
@@ -2182,13 +2344,16 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 }
 .sfn$operations$send_task_failure <- sfn_send_task_failure
 
-#' Used by activity workers and task states using the callback pattern to
-#' report to Step Functions that the task represented by the specified
-#' taskToken is still making progress
+#' Used by activity workers and Task states using the callback pattern, and
+#' optionally Task states using the job run pattern to report to Step
+#' Functions that the task represented by the specified taskToken is still
+#' making progress
 #'
 #' @description
-#' Used by activity workers and task states using the
+#' Used by activity workers and Task states using the
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern, and optionally Task states using the [job
+#' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
 #' pattern to report to Step Functions that the task represented by the
 #' specified `taskToken` is still making progress. This action resets the
 #' `Heartbeat` clock. The `Heartbeat` threshold is specified in the state
@@ -2196,7 +2361,7 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' action does not in itself create an event in the execution history.
 #' However, if the task times out, the execution history contains an
 #' `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for
-#' for tasks using the [job
+#' tasks using the [job
 #' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
 #' or
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
@@ -2249,12 +2414,15 @@ sfn_send_task_heartbeat <- function(taskToken) {
 }
 .sfn$operations$send_task_heartbeat <- sfn_send_task_heartbeat
 
-#' Used by activity workers and task states using the callback pattern to
-#' report that the task identified by the taskToken completed successfully
+#' Used by activity workers, Task states using the callback pattern, and
+#' optionally Task states using the job run pattern to report that the task
+#' identified by the taskToken completed successfully
 #'
 #' @description
-#' Used by activity workers and task states using the
+#' Used by activity workers, Task states using the
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+#' pattern, and optionally Task states using the [job
+#' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
 #' pattern to report that the task identified by the `taskToken` completed
 #' successfully.
 #'
@@ -2401,6 +2569,10 @@ sfn_send_task_success <- function(taskToken, output) {
 #' information, see [Limits Related to State Machine
 #' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
+#' 
+#' If you don't provide a name for the execution, Step Functions
+#' automatically generates a universally unique identifier (UUID) as the
+#' execution name.
 #' 
 #' A name must *not* contain:
 #' 
@@ -2687,6 +2859,170 @@ sfn_tag_resource <- function(resourceArn, tags) {
   return(response)
 }
 .sfn$operations$tag_resource <- sfn_tag_resource
+
+#' Accepts the definition of a single state and executes it
+#'
+#' @description
+#' Accepts the definition of a single state and executes it. You can test a
+#' state without creating a state machine or updating an existing state
+#' machine. Using this API, you can test the following:
+#' 
+#' -   A state's [input and output
+#'     processing](https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-input-output-dataflow)
+#'     data flow
+#' 
+#' -   An [Amazon Web Services service
+#'     integration](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-services.html)
+#'     request and response
+#' 
+#' -   An [HTTP
+#'     Task](https://docs.aws.amazon.com/step-functions/latest/dg/connect-third-party-apis.html)
+#'     request and response
+#' 
+#' You can call this API on only one state at a time. The states that you
+#' can test include the following:
+#' 
+#' -   [All Task
+#'     types](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-task-state.html#task-types)
+#'     except
+#'     [Activity](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html)
+#' 
+#' -   [Pass](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-pass-state.html)
+#' 
+#' -   [Wait](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-wait-state.html)
+#' 
+#' -   [Choice](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-choice-state.html)
+#' 
+#' -   [Succeed](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-succeed-state.html)
+#' 
+#' -   [Fail](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-fail-state.html)
+#' 
+#' The [`test_state`][sfn_test_state] API assumes an IAM role which must
+#' contain the required IAM permissions for the resources your state is
+#' accessing. For information about the permissions a state might need, see
+#' [IAM permissions to test a
+#' state](https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-permissions).
+#' 
+#' The [`test_state`][sfn_test_state] API can run for up to five minutes.
+#' If the execution of a state exceeds this duration, it fails with the
+#' `States.Timeout` error.
+#' 
+#' [`test_state`][sfn_test_state] doesn't support [Activity
+#' tasks](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html),
+#' `.sync` or `.waitForTaskToken` [service integration
+#' patterns](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html),
+#' [Parallel](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-parallel-state.html),
+#' or
+#' [Map](https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-map-state.html)
+#' states.
+#'
+#' @usage
+#' sfn_test_state(definition, roleArn, input, inspectionLevel,
+#'   revealSecrets)
+#'
+#' @param definition &#91;required&#93; The [Amazon States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' (ASL) definition of the state.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution role with the required
+#' IAM permissions for the state.
+#' @param input A string that contains the JSON input data for the state.
+#' @param inspectionLevel Determines the values to return when a state is tested. You can specify
+#' one of the following types:
+#' 
+#' -   `INFO`: Shows the final state output. By default, Step Functions
+#'     sets `inspectionLevel` to `INFO` if you don't specify a level.
+#' 
+#' -   `DEBUG`: Shows the final state output along with the input and
+#'     output data processing result.
+#' 
+#' -   `TRACE`: Shows the HTTP request and response for an HTTP Task. This
+#'     level also shows the final state output along with the input and
+#'     output data processing result.
+#' 
+#' Each of these levels also provide information about the status of the
+#' state execution and the next state to transition to.
+#' @param revealSecrets Specifies whether or not to include secret information in the test
+#' result. For HTTP Tasks, a secret includes the data that an EventBridge
+#' connection adds to modify the HTTP request headers, query parameters,
+#' and body. Step Functions doesn't omit any information included in the
+#' state definition or the HTTP response.
+#' 
+#' If you set `revealSecrets` to `true`, you must make sure that the IAM
+#' user that calls the [`test_state`][sfn_test_state] API has permission
+#' for the `states:RevealSecrets` action. For an example of IAM policy that
+#' sets the `states:RevealSecrets` permission, see [IAM permissions to test
+#' a
+#' state](https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-permissions).
+#' Without this permission, Step Functions throws an access denied error.
+#' 
+#' By default, `revealSecrets` is set to `false`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   output = "string",
+#'   error = "string",
+#'   cause = "string",
+#'   inspectionData = list(
+#'     input = "string",
+#'     afterInputPath = "string",
+#'     afterParameters = "string",
+#'     result = "string",
+#'     afterResultSelector = "string",
+#'     afterResultPath = "string",
+#'     request = list(
+#'       protocol = "string",
+#'       method = "string",
+#'       url = "string",
+#'       headers = "string",
+#'       body = "string"
+#'     ),
+#'     response = list(
+#'       protocol = "string",
+#'       statusCode = "string",
+#'       statusMessage = "string",
+#'       headers = "string",
+#'       body = "string"
+#'     )
+#'   ),
+#'   nextState = "string",
+#'   status = "SUCCEEDED"|"FAILED"|"RETRIABLE"|"CAUGHT_ERROR"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_state(
+#'   definition = "string",
+#'   roleArn = "string",
+#'   input = "string",
+#'   inspectionLevel = "INFO"|"DEBUG"|"TRACE",
+#'   revealSecrets = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_test_state
+#'
+#' @aliases sfn_test_state
+sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = NULL, revealSecrets = NULL) {
+  op <- new_operation(
+    name = "TestState",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets)
+  output <- .sfn$test_state_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$test_state <- sfn_test_state
 
 #' Remove a tag from a Step Functions resource
 #'

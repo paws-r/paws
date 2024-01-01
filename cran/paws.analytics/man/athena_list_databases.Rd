@@ -4,7 +4,12 @@
 \alias{athena_list_databases}
 \title{Lists the databases in the specified data catalog}
 \usage{
-athena_list_databases(CatalogName, NextToken = NULL, MaxResults = NULL)
+athena_list_databases(
+  CatalogName,
+  NextToken = NULL,
+  MaxResults = NULL,
+  WorkGroup = NULL
+)
 }
 \arguments{
 \item{CatalogName}{[required] The name of the data catalog that contains the databases to return.}
@@ -15,6 +20,9 @@ of pages, pass in the \code{NextToken} from the response object of the
 previous page call.}
 
 \item{MaxResults}{Specifies the maximum number of results to return.}
+
+\item{WorkGroup}{The name of the workgroup for which the metadata is being fetched.
+Required if requesting an IAM Identity Center enabled Glue Data Catalog.}
 }
 \description{
 Lists the databases in the specified data catalog.

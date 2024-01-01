@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_enable_fast_launch}
 \alias{ec2_enable_fast_launch}
-\title{When you enable faster launching for a Windows AMI, images are
+\title{When you enable Windows fast launch for a Windows AMI, images are
 pre-provisioned, using snapshots to launch instances up to 65\% faster}
 \usage{
 ec2_enable_fast_launch(
@@ -15,14 +15,14 @@ ec2_enable_fast_launch(
 )
 }
 \arguments{
-\item{ImageId}{[required] The ID of the image for which you’re enabling faster launching.}
+\item{ImageId}{[required] Specify the ID of the image for which to enable Windows fast launch.}
 
-\item{ResourceType}{The type of resource to use for pre-provisioning the Windows AMI for
-faster launching. Supported values include: \code{snapshot}, which is the
-default value.}
+\item{ResourceType}{The type of resource to use for pre-provisioning the AMI for Windows
+fast launch. Supported values include: \code{snapshot}, which is the default
+value.}
 
 \item{SnapshotConfiguration}{Configuration settings for creating and managing the snapshots that are
-used for pre-provisioning the Windows AMI for faster launching. The
+used for pre-provisioning the AMI for Windows fast launch. The
 associated \code{ResourceType} must be \code{snapshot}.}
 
 \item{LaunchTemplate}{The launch template to use when launching Windows instances from
@@ -30,8 +30,8 @@ pre-provisioned snapshots. Launch template parameters can include either
 the name or ID of the launch template, but not both.}
 
 \item{MaxParallelLaunches}{The maximum number of instances that Amazon EC2 can launch at the same
-time to create pre-provisioned snapshots for Windows faster launching.
-Value must be \code{6} or greater.}
+time to create pre-provisioned snapshots for Windows fast launch. Value
+must be \code{6} or greater.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -39,7 +39,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-When you enable faster launching for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65\% faster. To create the optimized Windows image, Amazon EC2 launches an instance and runs through Sysprep steps, rebooting as required. Then it creates a set of reserved snapshots that are used for subsequent launches. The reserved snapshots are automatically replenished as they are used, depending on your settings for launch frequency.
+When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65\% faster. To create the optimized Windows image, Amazon EC2 launches an instance and runs through Sysprep steps, rebooting as required. Then it creates a set of reserved snapshots that are used for subsequent launches. The reserved snapshots are automatically replenished as they are used, depending on your settings for launch frequency.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_enable_fast_launch/} for full documentation.
 }

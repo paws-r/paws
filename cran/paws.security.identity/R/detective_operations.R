@@ -354,6 +354,37 @@ detective_enable_organization_admin_account <- function(AccountId) {
 }
 .detective$operations$enable_organization_admin_account <- detective_enable_organization_admin_account
 
+#' Returns the investigation results of an investigation for a behavior
+#' graph
+#'
+#' @description
+#' Returns the investigation results of an investigation for a behavior graph.
+#'
+#' See [https://www.paws-r-sdk.com/docs/detective_get_investigation/](https://www.paws-r-sdk.com/docs/detective_get_investigation/) for full documentation.
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
+#'
+#' @keywords internal
+#'
+#' @rdname detective_get_investigation
+detective_get_investigation <- function(GraphArn, InvestigationId) {
+  op <- new_operation(
+    name = "GetInvestigation",
+    http_method = "POST",
+    http_path = "/investigations/getInvestigation",
+    paginator = list()
+  )
+  input <- .detective$get_investigation_input(GraphArn = GraphArn, InvestigationId = InvestigationId)
+  output <- .detective$get_investigation_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$get_investigation <- detective_get_investigation
+
 #' Returns the membership details for specified member accounts for a
 #' behavior graph
 #'
@@ -458,6 +489,85 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .detective$operations$list_graphs <- detective_list_graphs
+
+#' Get the indicators from an investigation
+#'
+#' @description
+#' Get the indicators from an investigation
+#'
+#' See [https://www.paws-r-sdk.com/docs/detective_list_indicators/](https://www.paws-r-sdk.com/docs/detective_list_indicators/) for full documentation.
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
+#' @param IndicatorType See [Detective
+#' investigations.](https://docs.aws.amazon.com/detective/latest/userguide/detective-investigations.html).
+#' @param NextToken List if there are more results available. The value of nextToken is a
+#' unique pagination token for each page. Repeat the call using the
+#' returned token to retrieve the next page. Keep all other arguments
+#' unchanged.
+#' 
+#' Each pagination token expires after 24 hours. Using an expired
+#' pagination token will return a Validation Exception error.
+#' @param MaxResults List the maximum number of indicators in a page.
+#'
+#' @keywords internal
+#'
+#' @rdname detective_list_indicators
+detective_list_indicators <- function(GraphArn, InvestigationId, IndicatorType = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListIndicators",
+    http_method = "POST",
+    http_path = "/investigations/listIndicators",
+    paginator = list()
+  )
+  input <- .detective$list_indicators_input(GraphArn = GraphArn, InvestigationId = InvestigationId, IndicatorType = IndicatorType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .detective$list_indicators_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$list_indicators <- detective_list_indicators
+
+#' List all Investigations
+#'
+#' @description
+#' List all Investigations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/detective_list_investigations/](https://www.paws-r-sdk.com/docs/detective_list_investigations/) for full documentation.
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param NextToken List if there are more results available. The value of nextToken is a
+#' unique pagination token for each page. Repeat the call using the
+#' returned token to retrieve the next page. Keep all other arguments
+#' unchanged.
+#' 
+#' Each pagination token expires after 24 hours. Using an expired
+#' pagination token will return a Validation Exception error.
+#' @param MaxResults List the maximum number of investigations in a page.
+#' @param FilterCriteria Filter the investigation results based on a criteria.
+#' @param SortCriteria Sorts the investigation results based on a criteria.
+#'
+#' @keywords internal
+#'
+#' @rdname detective_list_investigations
+detective_list_investigations <- function(GraphArn, NextToken = NULL, MaxResults = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "ListInvestigations",
+    http_method = "POST",
+    http_path = "/investigations/listInvestigations",
+    paginator = list()
+  )
+  input <- .detective$list_investigations_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
+  output <- .detective$list_investigations_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$list_investigations <- detective_list_investigations
 
 #' Retrieves the list of open and accepted behavior graph invitations for
 #' the member account
@@ -624,6 +734,40 @@ detective_reject_invitation <- function(GraphArn) {
 }
 .detective$operations$reject_invitation <- detective_reject_invitation
 
+#' initiate an investigation on an entity in a graph
+#'
+#' @description
+#' initiate an investigation on an entity in a graph
+#'
+#' See [https://www.paws-r-sdk.com/docs/detective_start_investigation/](https://www.paws-r-sdk.com/docs/detective_start_investigation/) for full documentation.
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param EntityArn &#91;required&#93; The unique Amazon Resource Name (ARN) of the IAM user and IAM role.
+#' @param ScopeStartTime &#91;required&#93; The data and time when the investigation began. The value is an UTC
+#' ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
+#' @param ScopeEndTime &#91;required&#93; The data and time when the investigation began. The value is an UTC
+#' ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
+#'
+#' @keywords internal
+#'
+#' @rdname detective_start_investigation
+detective_start_investigation <- function(GraphArn, EntityArn, ScopeStartTime, ScopeEndTime) {
+  op <- new_operation(
+    name = "StartInvestigation",
+    http_method = "POST",
+    http_path = "/investigations/startInvestigation",
+    paginator = list()
+  )
+  input <- .detective$start_investigation_input(GraphArn = GraphArn, EntityArn = EntityArn, ScopeStartTime = ScopeStartTime, ScopeEndTime = ScopeEndTime)
+  output <- .detective$start_investigation_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$start_investigation <- detective_start_investigation
+
 #' Sends a request to enable data ingest for a member account that has a
 #' status of ACCEPTED_BUT_DISABLED
 #'
@@ -751,6 +895,38 @@ detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
   return(response)
 }
 .detective$operations$update_datasource_packages <- detective_update_datasource_packages
+
+#' Update the state of an investigation
+#'
+#' @description
+#' Update the state of an investigation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/detective_update_investigation_state/](https://www.paws-r-sdk.com/docs/detective_update_investigation_state/) for full documentation.
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
+#' @param State &#91;required&#93; The current state of the investigation. An archived investigation
+#' indicates you have completed reviewing the investigation.
+#'
+#' @keywords internal
+#'
+#' @rdname detective_update_investigation_state
+detective_update_investigation_state <- function(GraphArn, InvestigationId, State) {
+  op <- new_operation(
+    name = "UpdateInvestigationState",
+    http_method = "POST",
+    http_path = "/investigations/updateInvestigationState",
+    paginator = list()
+  )
+  input <- .detective$update_investigation_state_input(GraphArn = GraphArn, InvestigationId = InvestigationId, State = State)
+  output <- .detective$update_investigation_state_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$update_investigation_state <- detective_update_investigation_state
 
 #' Updates the configuration for the Organizations integration in the
 #' current Region

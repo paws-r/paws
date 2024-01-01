@@ -9,7 +9,7 @@ NULL
 #' Adds an instance fleet to a running cluster.
 #' 
 #' The instance fleet configuration is available only in Amazon EMR
-#' releases 4.8.0 and higher, excluding 5.0.x.
+#' releases 4.8.0 and later, excluding 5.0.x.
 #'
 #' @usage
 #' emr_add_instance_fleet(ClusterId, InstanceFleet)
@@ -407,13 +407,13 @@ emr_add_tags <- function(ResourceId, Tags) {
 #'
 #' @description
 #' Cancels a pending step or steps in a running cluster. Available only in
-#' Amazon EMR versions 4.8.0 and higher, excluding version 5.0.0. A maximum
+#' Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
 #' of 256 steps are allowed in each CancelSteps request. CancelSteps is
 #' idempotent but asynchronous; it does not guarantee that a step will be
 #' canceled, even if the request is successfully submitted. When you use
-#' Amazon EMR releases 5.28.0 and higher, you can cancel steps that are in
-#' a `PENDING` or `RUNNING` state. In earlier versions of Amazon EMR, you
-#' can only cancel steps that are in a `PENDING` state.
+#' Amazon EMR releases 5.28.0 and later, you can cancel steps that are in a
+#' `PENDING` or `RUNNING` state. In earlier versions of Amazon EMR, you can
+#' only cancel steps that are in a `PENDING` state.
 #'
 #' @usage
 #' emr_cancel_steps(ClusterId, StepIds, StepCancellationOption)
@@ -538,7 +538,9 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @usage
 #' emr_create_studio(Name, Description, AuthMode, VpcId, SubnetIds,
 #'   ServiceRole, UserRole, WorkspaceSecurityGroupId, EngineSecurityGroupId,
-#'   DefaultS3Location, IdpAuthUrl, IdpRelayStateParameterName, Tags)
+#'   DefaultS3Location, IdpAuthUrl, IdpRelayStateParameterName, Tags,
+#'   TrustedIdentityPropagationEnabled, IdcUserAssignment, IdcInstanceArn,
+#'   EncryptionKeyArn)
 #'
 #' @param Name &#91;required&#93; A descriptive name for the Amazon EMR Studio.
 #' @param Description A detailed description of the Amazon EMR Studio.
@@ -580,6 +582,15 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' user-defined key-value pairs that consist of a required key string with
 #' a maximum of 128 characters, and an optional value string with a maximum
 #' of 256 characters.
+#' @param TrustedIdentityPropagationEnabled A Boolean indicating whether to enable Trusted identity propagation for
+#' the Studio. The default value is `false`.
+#' @param IdcUserAssignment Specifies whether IAM Identity Center user assignment is `REQUIRED` or
+#' `OPTIONAL`. If the value is set to `REQUIRED`, users must be explicitly
+#' assigned to the Studio application to access the Studio.
+#' @param IdcInstanceArn The ARN of the IAM Identity Center instance to create the Studio
+#' application.
+#' @param EncryptionKeyArn The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace
+#' and notebook files when backed up to Amazon S3.
 #'
 #' @return
 #' A list with the following syntax:
@@ -612,7 +623,11 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   TrustedIdentityPropagationEnabled = TRUE|FALSE,
+#'   IdcUserAssignment = "REQUIRED"|"OPTIONAL",
+#'   IdcInstanceArn = "string",
+#'   EncryptionKeyArn = "string"
 #' )
 #' ```
 #'
@@ -621,14 +636,14 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @rdname emr_create_studio
 #'
 #' @aliases emr_create_studio
-emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole = NULL, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location, IdpAuthUrl = NULL, IdpRelayStateParameterName = NULL, Tags = NULL) {
+emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole = NULL, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location, IdpAuthUrl = NULL, IdpRelayStateParameterName = NULL, Tags = NULL, TrustedIdentityPropagationEnabled = NULL, IdcUserAssignment = NULL, IdcInstanceArn = NULL, EncryptionKeyArn = NULL) {
   op <- new_operation(
     name = "CreateStudio",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$create_studio_input(Name = Name, Description = Description, AuthMode = AuthMode, VpcId = VpcId, SubnetIds = SubnetIds, ServiceRole = ServiceRole, UserRole = UserRole, WorkspaceSecurityGroupId = WorkspaceSecurityGroupId, EngineSecurityGroupId = EngineSecurityGroupId, DefaultS3Location = DefaultS3Location, IdpAuthUrl = IdpAuthUrl, IdpRelayStateParameterName = IdpRelayStateParameterName, Tags = Tags)
+  input <- .emr$create_studio_input(Name = Name, Description = Description, AuthMode = AuthMode, VpcId = VpcId, SubnetIds = SubnetIds, ServiceRole = ServiceRole, UserRole = UserRole, WorkspaceSecurityGroupId = WorkspaceSecurityGroupId, EngineSecurityGroupId = EngineSecurityGroupId, DefaultS3Location = DefaultS3Location, IdpAuthUrl = IdpAuthUrl, IdpRelayStateParameterName = IdpRelayStateParameterName, Tags = Tags, TrustedIdentityPropagationEnabled = TrustedIdentityPropagationEnabled, IdcUserAssignment = IdcUserAssignment, IdcInstanceArn = IdcInstanceArn, EncryptionKeyArn = EncryptionKeyArn)
   output <- .emr$create_studio_output()
   config <- get_config()
   svc <- .emr$service(config)
@@ -1573,7 +1588,11 @@ emr_describe_step <- function(ClusterId, StepId) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     IdcInstanceArn = "string",
+#'     TrustedIdentityPropagationEnabled = TRUE|FALSE,
+#'     IdcUserAssignment = "REQUIRED"|"OPTIONAL",
+#'     EncryptionKeyArn = "string"
 #'   )
 #' )
 #' ```
@@ -1733,7 +1752,7 @@ emr_get_block_public_access_configuration <- function() {
 #' emr_get_cluster_session_credentials(ClusterId, ExecutionRoleArn)
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
-#' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the runtime role for interactive
+#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the runtime role for interactive
 #' workload submission on the cluster. The runtime role can be a
 #' cross-account IAM role. The runtime role ARN is a combination of account
 #' ID, role name, and role type using the following format:
@@ -1768,7 +1787,7 @@ emr_get_block_public_access_configuration <- function() {
 #' @rdname emr_get_cluster_session_credentials
 #'
 #' @aliases emr_get_cluster_session_credentials
-emr_get_cluster_session_credentials <- function(ClusterId, ExecutionRoleArn) {
+emr_get_cluster_session_credentials <- function(ClusterId, ExecutionRoleArn = NULL) {
   op <- new_operation(
     name = "GetClusterSessionCredentials",
     http_method = "POST",
@@ -2091,7 +2110,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #' Lists all available details about the instance fleets in a cluster.
 #' 
 #' The instance fleet configuration is available only in Amazon EMR
-#' releases 4.8.0 and higher, excluding 5.0.x versions.
+#' releases 4.8.0 and later, excluding 5.0.x versions.
 #'
 #' @usage
 #' emr_list_instance_fleets(ClusterId, Marker)
@@ -3119,7 +3138,7 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #' specified using ClusterID. The call either succeeds or fails atomically.
 #' 
 #' The instance fleet configuration is available only in Amazon EMR
-#' releases 4.8.0 and higher, excluding 5.0.x versions.
+#' releases 4.8.0 and later, excluding 5.0.x versions.
 #'
 #' @usage
 #' emr_modify_instance_fleet(ClusterId, InstanceFleet)
@@ -3396,7 +3415,7 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #'
 #' @description
 #' Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0
-#' and higher. For more information, see [Using an auto-termination
+#' and later. For more information, see [Using an auto-termination
 #' policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html).
 #' 
 #' Creates or updates an auto-termination policy for an Amazon EMR cluster.
@@ -3793,7 +3812,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' results.
 #' 
 #' The instance fleets configuration is available only in Amazon EMR
-#' releases 4.8.0 and higher, excluding 5.0.x versions. The RunJobFlow
+#' releases 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow
 #' request can contain InstanceFleets parameters or InstanceGroups
 #' parameters, but not both.
 #'
@@ -3813,25 +3832,25 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' value is not provided, logs are not created.
 #' @param LogEncryptionKmsKeyId The KMS key used for encrypting log files. If a value is not provided,
 #' the logs remain encrypted by AES-256. This attribute is only available
-#' with Amazon EMR releases 5.30.0 and higher, excluding Amazon EMR 6.0.0.
+#' with Amazon EMR releases 5.30.0 and later, excluding Amazon EMR 6.0.0.
 #' @param AdditionalInfo A JSON string for selecting additional features.
 #' @param AmiVersion Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
-#' releases 4.0 and higher, `ReleaseLabel` is used. To specify a custom
-#' AMI, use `CustomAmiID`.
+#' releases 4.0 and later, `ReleaseLabel` is used. To specify a custom AMI,
+#' use `CustomAmiID`.
 #' @param ReleaseLabel The Amazon EMR release label, which determines the version of
 #' open-source application packages installed on the cluster. Release
 #' labels are in the form `emr-x.x.x`, where x.x.x is an Amazon EMR release
 #' version such as `emr-5.14.0`. For more information about Amazon EMR
 #' release versions and included application versions and features, see
 #' <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>. The release
-#' label applies only to Amazon EMR releases version 4.0 and higher.
-#' Earlier versions use `AmiVersion`.
+#' label applies only to Amazon EMR releases version 4.0 and later. Earlier
+#' versions use `AmiVersion`.
 #' @param Instances &#91;required&#93; A specification of the number and type of Amazon EC2 instances.
 #' @param Steps A list of steps to run.
 #' @param BootstrapActions A list of bootstrap actions to run before Hadoop starts on the cluster
 #' nodes.
 #' @param SupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-#' higher, use Applications.
+#' later, use Applications.
 #' 
 #' A list of strings that indicates third-party software to use. For more
 #' information, see the [Amazon EMR Developer
@@ -3842,7 +3861,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' -   "mapr-m5" - launch the job flow using MapR M5 Edition.
 #' @param NewSupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-#' higher, use Applications.
+#' later, use Applications.
 #' 
 #' A list of strings that indicates third-party software to use with the
 #' job flow that accepts a user argument list. Amazon EMR accepts and
@@ -3871,12 +3890,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' -   "ganglia" - launch the cluster with the Ganglia Monitoring System
 #'     installed.
-#' @param Applications Applies to Amazon EMR releases 4.0 and higher. A case-insensitive list
-#' of applications for Amazon EMR to install and configure when launching
-#' the cluster. For a list of applications available for each Amazon EMR
+#' @param Applications Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
+#' applications for Amazon EMR to install and configure when launching the
+#' cluster. For a list of applications available for each Amazon EMR
 #' release version, see the [Amazon EMRRelease
 #' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
-#' @param Configurations For Amazon EMR releases 4.0 and higher. The list of configurations
+#' @param Configurations For Amazon EMR releases 4.0 and later. The list of configurations
 #' supplied for the Amazon EMR cluster that you are creating.
 #' @param VisibleToAllUsers The VisibleToAllUsers parameter is no longer supported. By default, the
 #' value is set to `true`. Setting it to `false` now has no effect.
@@ -3916,16 +3935,16 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' `TERMINATE_AT_INSTANCE_HOUR` indicates that Amazon EMR terminates nodes
 #' at the instance-hour boundary, regardless of when the request to
 #' terminate the instance was submitted. This option is only available with
-#' Amazon EMR 5.1.0 and higher and is the default for clusters created
-#' using that version. `TERMINATE_AT_TASK_COMPLETION` indicates that Amazon
-#' EMR adds nodes to a deny list and drains tasks from nodes before
-#' terminating the Amazon EC2 instances, regardless of the instance-hour
-#' boundary. With either behavior, Amazon EMR removes the least active
-#' nodes first and blocks instance termination if it could lead to HDFS
-#' corruption. `TERMINATE_AT_TASK_COMPLETION` available only in Amazon EMR
-#' releases 4.1.0 and higher, and is the default for releases of Amazon EMR
-#' earlier than 5.1.0.
-#' @param CustomAmiId Available only in Amazon EMR releases 5.7.0 and higher. The ID of a
+#' Amazon EMR 5.1.0 and later and is the default for clusters created using
+#' that version. `TERMINATE_AT_TASK_COMPLETION` indicates that Amazon EMR
+#' adds nodes to a deny list and drains tasks from nodes before terminating
+#' the Amazon EC2 instances, regardless of the instance-hour boundary. With
+#' either behavior, Amazon EMR removes the least active nodes first and
+#' blocks instance termination if it could lead to HDFS corruption.
+#' `TERMINATE_AT_TASK_COMPLETION` available only in Amazon EMR releases
+#' 4.1.0 and later, and is the default for releases of Amazon EMR earlier
+#' than 5.1.0.
+#' @param CustomAmiId Available only in Amazon EMR releases 5.7.0 and later. The ID of a
 #' custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
 #' AMI when it launches cluster Amazon EC2 instances. For more information
 #' about custom AMIs in Amazon EMR, see [Using a Custom
@@ -3940,9 +3959,9 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' in the *Amazon Elastic Compute Cloud User Guide for Linux Instances*.
 #' For information about finding an AMI ID, see [Finding a Linux
 #' AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
-#' @param EbsRootVolumeSize The size, in GiB, of the Amazon EBS root device volume for the Linux AMI
-#' that each Amazon EC2 instance uses. Available in Amazon EMR releases 4.x
-#' and higher.
+#' @param EbsRootVolumeSize The size, in GiB, of the Amazon EBS root device volume of the Linux AMI
+#' that is used for each Amazon EC2 instance. Available in Amazon EMR
+#' releases 4.x and later.
 #' @param RepoUpgradeOnBoot Applies only when `CustomAmiID` is used. Specifies which updates from
 #' the Amazon Linux AMI package repositories to apply automatically when
 #' the instance boots using the AMI. If omitted, the default is `SECURITY`,
@@ -3962,12 +3981,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param OSReleaseLabel Specifies a particular Amazon Linux release for all nodes in a cluster
 #' launch RunJobFlow request. If a release is not specified, Amazon EMR
 #' uses the latest validated Amazon Linux release for cluster launch.
-#' @param EbsRootVolumeIops The IOPS for the Amazon EBS root device volume for the Linux AMI that
-#' each Amazon EC2 instance uses. Available in Amazon EMR releases 6.15.0
-#' and higher.
-#' @param EbsRootVolumeThroughput The throughput, in MiB/s, of the Amazon EBS root device volume for the
-#' Linux AMI that each Amazon EC2 instance uses. Available in Amazon EMR
-#' releases 6.15.0 and higher.
+#' @param EbsRootVolumeIops The IOPS, of the Amazon EBS root device volume of the Linux AMI that is
+#' used for each Amazon EC2 instance. Available in Amazon EMR releases
+#' 6.15.0 and later.
+#' @param EbsRootVolumeThroughput The throughput, in MiB/s, of the Amazon EBS root device volume of the
+#' Linux AMI that is used for each Amazon EC2 instance. Available in Amazon
+#' EMR releases 6.15.0 and later.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4281,6 +4300,70 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
   return(response)
 }
 .emr$operations$run_job_flow <- emr_run_job_flow
+
+#' You can use the SetKeepJobFlowAliveWhenNoSteps to configure a cluster
+#' (job flow) to terminate after the step execution, i
+#'
+#' @description
+#' You can use the
+#' [`set_keep_job_flow_alive_when_no_steps`][emr_set_keep_job_flow_alive_when_no_steps]
+#' to configure a cluster (job flow) to terminate after the step execution,
+#' i.e., all your steps are executed. If you want a transient cluster that
+#' shuts down after the last of the current executing steps are completed,
+#' you can configure
+#' [`set_keep_job_flow_alive_when_no_steps`][emr_set_keep_job_flow_alive_when_no_steps]
+#' to false. If you want a long running cluster, configure
+#' [`set_keep_job_flow_alive_when_no_steps`][emr_set_keep_job_flow_alive_when_no_steps]
+#' to true.
+#' 
+#' For more information, see [Managing Cluster
+#' Termination](https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
+#' in the *Amazon EMR Management Guide*.
+#'
+#' @usage
+#' emr_set_keep_job_flow_alive_when_no_steps(JobFlowIds,
+#'   KeepJobFlowAliveWhenNoSteps)
+#'
+#' @param JobFlowIds &#91;required&#93; A list of strings that uniquely identify the clusters to protect. This
+#' identifier is returned by [`run_job_flow`][emr_run_job_flow] and can
+#' also be obtained from [`describe_job_flows`][emr_describe_job_flows].
+#' @param KeepJobFlowAliveWhenNoSteps &#91;required&#93; A Boolean that indicates whether to terminate the cluster after all
+#' steps are executed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$set_keep_job_flow_alive_when_no_steps(
+#'   JobFlowIds = list(
+#'     "string"
+#'   ),
+#'   KeepJobFlowAliveWhenNoSteps = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_set_keep_job_flow_alive_when_no_steps
+#'
+#' @aliases emr_set_keep_job_flow_alive_when_no_steps
+emr_set_keep_job_flow_alive_when_no_steps <- function(JobFlowIds, KeepJobFlowAliveWhenNoSteps) {
+  op <- new_operation(
+    name = "SetKeepJobFlowAliveWhenNoSteps",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$set_keep_job_flow_alive_when_no_steps_input(JobFlowIds = JobFlowIds, KeepJobFlowAliveWhenNoSteps = KeepJobFlowAliveWhenNoSteps)
+  output <- .emr$set_keep_job_flow_alive_when_no_steps_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$set_keep_job_flow_alive_when_no_steps <- emr_set_keep_job_flow_alive_when_no_steps
 
 #' SetTerminationProtection locks a cluster (job flow) so the Amazon EC2
 #' instances in the cluster cannot be terminated by user intervention, an
@@ -4635,7 +4718,7 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #'
 #' @usage
 #' emr_update_studio(StudioId, Name, Description, SubnetIds,
-#'   DefaultS3Location)
+#'   DefaultS3Location, EncryptionKeyArn)
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio to update.
 #' @param Name A descriptive name for the Amazon EMR Studio.
@@ -4647,6 +4730,8 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' same VPC as the Studio.
 #' @param DefaultS3Location The Amazon S3 location to back up Workspaces and notebook files for the
 #' Amazon EMR Studio.
+#' @param EncryptionKeyArn The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace
+#' and notebook files when backed up to Amazon S3.
 #'
 #' @return
 #' An empty list.
@@ -4660,7 +4745,8 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
-#'   DefaultS3Location = "string"
+#'   DefaultS3Location = "string",
+#'   EncryptionKeyArn = "string"
 #' )
 #' ```
 #'
@@ -4669,14 +4755,14 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' @rdname emr_update_studio
 #'
 #' @aliases emr_update_studio
-emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetIds = NULL, DefaultS3Location = NULL) {
+emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetIds = NULL, DefaultS3Location = NULL, EncryptionKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateStudio",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$update_studio_input(StudioId = StudioId, Name = Name, Description = Description, SubnetIds = SubnetIds, DefaultS3Location = DefaultS3Location)
+  input <- .emr$update_studio_input(StudioId = StudioId, Name = Name, Description = Description, SubnetIds = SubnetIds, DefaultS3Location = DefaultS3Location, EncryptionKeyArn = EncryptionKeyArn)
   output <- .emr$update_studio_output()
   config <- get_config()
   svc <- .emr$service(config)

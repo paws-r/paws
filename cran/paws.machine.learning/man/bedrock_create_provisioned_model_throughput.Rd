@@ -16,8 +16,8 @@ bedrock_create_provisioned_model_throughput(
 }
 \arguments{
 \item{clientRequestToken}{Unique token value that you can provide. If this token matches a
-previous request, Bedrock ignores the request, but does not return an
-error.}
+previous request, Amazon Bedrock ignores the request, but does not
+return an error.}
 
 \item{modelUnits}{[required] Number of model units to allocate.}
 

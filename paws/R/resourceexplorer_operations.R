@@ -205,7 +205,7 @@ resourceexplorer_batch_get_view <- function(ViewArns = NULL) {
 #' to prevent the accidental creation of duplicate versions. We recommend
 #' that you generate a [UUID-type
 #' value](https://en.wikipedia.org/wiki/Universally_unique_identifier) to
-#' ensure the uniqueness of your views.
+#' ensure the uniqueness of your index.
 #' @param Tags The specified tags are attached only to the index created in this Amazon
 #' Web Services Region. The tags aren't attached to any of the resources
 #' listed in the index.
@@ -274,7 +274,7 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #'
 #' @usage
 #' resourceexplorer_create_view(ClientToken, Filters, IncludedProperties,
-#'   Tags, ViewName)
+#'   Scope, Tags, ViewName)
 #'
 #' @param ClientToken This value helps ensure idempotency. Resource Explorer uses this value
 #' to prevent the accidental creation of duplicate versions. We recommend
@@ -306,6 +306,8 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' 
 #' The default is an empty list, with no optional fields included in the
 #' results.
+#' @param Scope The root ARN of the account, an organizational unit (OU), or an
+#' organization ARN. If left empty, the default is account.
 #' @param Tags Tag key and value pairs that are attached to the view.
 #' @param ViewName &#91;required&#93; The name of the new view. This name appears in the list of views in
 #' Resource Explorer.
@@ -349,6 +351,7 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #'       Name = "string"
 #'     )
 #'   ),
+#'   Scope = "string",
 #'   Tags = list(
 #'     "string"
 #'   ),
@@ -361,14 +364,14 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' @rdname resourceexplorer_create_view
 #'
 #' @aliases resourceexplorer_create_view
-resourceexplorer_create_view <- function(ClientToken = NULL, Filters = NULL, IncludedProperties = NULL, Tags = NULL, ViewName) {
+resourceexplorer_create_view <- function(ClientToken = NULL, Filters = NULL, IncludedProperties = NULL, Scope = NULL, Tags = NULL, ViewName) {
   op <- new_operation(
     name = "CreateView",
     http_method = "POST",
     http_path = "/CreateView",
     paginator = list()
   )
-  input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, Filters = Filters, IncludedProperties = IncludedProperties, Tags = Tags, ViewName = ViewName)
+  input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, Filters = Filters, IncludedProperties = IncludedProperties, Scope = Scope, Tags = Tags, ViewName = ViewName)
   output <- .resourceexplorer$create_view_output()
   config <- get_config()
   svc <- .resourceexplorer$service(config)
@@ -547,6 +550,56 @@ resourceexplorer_disassociate_default_view <- function() {
   return(response)
 }
 .resourceexplorer$operations$disassociate_default_view <- resourceexplorer_disassociate_default_view
+
+#' Retrieves the status of your account's Amazon Web Services service
+#' access, and validates the service linked role required to access the
+#' multi-account search feature
+#'
+#' @description
+#' Retrieves the status of your account's Amazon Web Services service
+#' access, and validates the service linked role required to access the
+#' multi-account search feature. Only the management account or a delegated
+#' administrator with service access enabled can invoke this API call.
+#'
+#' @usage
+#' resourceexplorer_get_account_level_service_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrgConfiguration = list(
+#'     AWSServiceAccessStatus = "ENABLED"|"DISABLED",
+#'     ServiceLinkedRole = "string"
+#'   )
+#' )
+#' ```
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_get_account_level_service_configuration
+#'
+#' @aliases resourceexplorer_get_account_level_service_configuration
+resourceexplorer_get_account_level_service_configuration <- function() {
+  op <- new_operation(
+    name = "GetAccountLevelServiceConfiguration",
+    http_method = "POST",
+    http_path = "/GetAccountLevelServiceConfiguration",
+    paginator = list()
+  )
+  input <- .resourceexplorer$get_account_level_service_configuration_input()
+  output <- .resourceexplorer$get_account_level_service_configuration_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$get_account_level_service_configuration <- resourceexplorer_get_account_level_service_configuration
 
 #' Retrieves the Amazon Resource Name (ARN) of the view that is the default
 #' for the Amazon Web Services Region in which you call this operation
@@ -749,7 +802,7 @@ resourceexplorer_get_view <- function(ViewArn) {
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
+#' should continue from. The pagination tokens expire after 24 hours.
 #' @param Regions If specified, limits the response to only information about the index in
 #' the specified list of Amazon Web Services Regions.
 #' @param Type If specified, limits the output to only indexes of the specified Type,
@@ -806,6 +859,89 @@ resourceexplorer_list_indexes <- function(MaxResults = NULL, NextToken = NULL, R
 }
 .resourceexplorer$operations$list_indexes <- resourceexplorer_list_indexes
 
+#' Retrieves a list of a member's indexes in all Amazon Web Services
+#' Regions that are currently collecting resource information for Amazon
+#' Web Services Resource Explorer
+#'
+#' @description
+#' Retrieves a list of a member's indexes in all Amazon Web Services
+#' Regions that are currently collecting resource information for Amazon
+#' Web Services Resource Explorer. Only the management account or a
+#' delegated administrator with service access enabled can invoke this API
+#' call.
+#'
+#' @usage
+#' resourceexplorer_list_indexes_for_members(AccountIdList, MaxResults,
+#'   NextToken)
+#'
+#' @param AccountIdList &#91;required&#93; The account IDs will limit the output to only indexes from these
+#' accounts.
+#' @param MaxResults The maximum number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' appropriate to the operation. If additional items exist beyond those
+#' included in the current response, the `NextToken` response element is
+#' present and has a value (is not null). Include that value as the
+#' `NextToken` request parameter in the next call to the operation to get
+#' the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Indexes = list(
+#'     list(
+#'       AccountId = "string",
+#'       Arn = "string",
+#'       Region = "string",
+#'       Type = "LOCAL"|"AGGREGATOR"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_indexes_for_members(
+#'   AccountIdList = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_list_indexes_for_members
+#'
+#' @aliases resourceexplorer_list_indexes_for_members
+resourceexplorer_list_indexes_for_members <- function(AccountIdList, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListIndexesForMembers",
+    http_method = "POST",
+    http_path = "/ListIndexesForMembers",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes")
+  )
+  input <- .resourceexplorer$list_indexes_for_members_input(AccountIdList = AccountIdList, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .resourceexplorer$list_indexes_for_members_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$list_indexes_for_members <- resourceexplorer_list_indexes_for_members
+
 #' Retrieves a list of all resource types currently supported by Amazon Web
 #' Services Resource Explorer
 #'
@@ -831,7 +967,7 @@ resourceexplorer_list_indexes <- function(MaxResults = NULL, NextToken = NULL, R
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
+#' should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @return
 #' A list with the following syntax:
@@ -961,7 +1097,7 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
+#' should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1044,7 +1180,7 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
 #' of the previous call's `NextToken` response to indicate where the output
-#' should continue from.
+#' should continue from. The pagination tokens expire after 24 hours.
 #' @param QueryString &#91;required&#93; A string that includes keywords and filters that specify the resources
 #' that you want to include in the results.
 #' 

@@ -6,7 +6,7 @@
 \usage{
 codecatalyst_list_dev_environments(
   spaceName,
-  projectName,
+  projectName = NULL,
   filters = NULL,
   nextToken = NULL,
   maxResults = NULL
@@ -15,7 +15,7 @@ codecatalyst_list_dev_environments(
 \arguments{
 \item{spaceName}{[required] The name of the space.}
 
-\item{projectName}{[required] The name of the project in the space.}
+\item{projectName}{The name of the project in the space.}
 
 \item{filters}{Information about filters to apply to narrow the results returned in the
 list.}

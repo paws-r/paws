@@ -151,7 +151,7 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #'
 #' @usage
 #' redshift_associate_data_share_consumer(DataShareArn,
-#'   AssociateEntireAccount, ConsumerArn, ConsumerRegion)
+#'   AssociateEntireAccount, ConsumerArn, ConsumerRegion, AllowWrites)
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that the consumer is to
 #' use with the account or the namespace.
@@ -162,6 +162,7 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #' @param ConsumerRegion From a datashare consumer account, associates a datashare with all
 #' existing and future namespaces in the specified Amazon Web Services
 #' Region.
+#' @param AllowWrites If set to true, allows write operations for a datashare.
 #'
 #' @return
 #' A list with the following syntax:
@@ -180,7 +181,9 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #'       ),
 #'       StatusChangeDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ProducerAllowedWrites = TRUE|FALSE,
+#'       ConsumerAcceptedWrites = TRUE|FALSE
 #'     )
 #'   ),
 #'   ManagedBy = "string"
@@ -193,7 +196,8 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #'   DataShareArn = "string",
 #'   AssociateEntireAccount = TRUE|FALSE,
 #'   ConsumerArn = "string",
-#'   ConsumerRegion = "string"
+#'   ConsumerRegion = "string",
+#'   AllowWrites = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -202,14 +206,14 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #' @rdname redshift_associate_data_share_consumer
 #'
 #' @aliases redshift_associate_data_share_consumer
-redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntireAccount = NULL, ConsumerArn = NULL, ConsumerRegion = NULL) {
+redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntireAccount = NULL, ConsumerArn = NULL, ConsumerRegion = NULL, AllowWrites = NULL) {
   op <- new_operation(
     name = "AssociateDataShareConsumer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$associate_data_share_consumer_input(DataShareArn = DataShareArn, AssociateEntireAccount = AssociateEntireAccount, ConsumerArn = ConsumerArn, ConsumerRegion = ConsumerRegion)
+  input <- .redshift$associate_data_share_consumer_input(DataShareArn = DataShareArn, AssociateEntireAccount = AssociateEntireAccount, ConsumerArn = ConsumerArn, ConsumerRegion = ConsumerRegion, AllowWrites = AllowWrites)
   output <- .redshift$associate_data_share_consumer_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -344,13 +348,15 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' correct access permissions.
 #'
 #' @usage
-#' redshift_authorize_data_share(DataShareArn, ConsumerIdentifier)
+#' redshift_authorize_data_share(DataShareArn, ConsumerIdentifier,
+#'   AllowWrites)
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that producers are to
 #' authorize sharing for.
 #' @param ConsumerIdentifier &#91;required&#93; The identifier of the data consumer that is authorized to access the
 #' datashare. This identifier is an Amazon Web Services account ID or a
 #' keyword, such as ADX.
+#' @param AllowWrites If set to true, allows write operations for a datashare.
 #'
 #' @return
 #' A list with the following syntax:
@@ -369,7 +375,9 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #'       ),
 #'       StatusChangeDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ProducerAllowedWrites = TRUE|FALSE,
+#'       ConsumerAcceptedWrites = TRUE|FALSE
 #'     )
 #'   ),
 #'   ManagedBy = "string"
@@ -380,7 +388,8 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' ```
 #' svc$authorize_data_share(
 #'   DataShareArn = "string",
-#'   ConsumerIdentifier = "string"
+#'   ConsumerIdentifier = "string",
+#'   AllowWrites = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -389,14 +398,14 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' @rdname redshift_authorize_data_share
 #'
 #' @aliases redshift_authorize_data_share
-redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
+redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier, AllowWrites = NULL) {
   op <- new_operation(
     name = "AuthorizeDataShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$authorize_data_share_input(DataShareArn = DataShareArn, ConsumerIdentifier = ConsumerIdentifier)
+  input <- .redshift$authorize_data_share_input(DataShareArn = DataShareArn, ConsumerIdentifier = ConsumerIdentifier, AllowWrites = AllowWrites)
   output <- .redshift$authorize_data_share_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -1029,7 +1038,7 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'   MaintenanceTrackName, SnapshotScheduleIdentifier,
 #'   AvailabilityZoneRelocation, AquaConfigurationStatus, DefaultIamRoleArn,
 #'   LoadSampleData, ManageMasterPassword, MasterPasswordSecretKmsKeyId,
-#'   IpAddressType, MultiAZ)
+#'   IpAddressType, MultiAZ, RedshiftIdcApplicationArn)
 #'
 #' @param DBName The name of the first database to be created when the cluster is
 #' created.
@@ -1295,6 +1304,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' `ipv4` and `dualstack`.
 #' @param MultiAZ If true, Amazon Redshift will deploy the cluster in two Availability
 #' Zones (AZ).
+#' @param RedshiftIdcApplicationArn The Amazon resource name (ARN) of the Amazon Redshift IAM Identity
+#' Center application.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1557,7 +1568,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'   ManageMasterPassword = TRUE|FALSE,
 #'   MasterPasswordSecretKmsKeyId = "string",
 #'   IpAddressType = "string",
-#'   MultiAZ = TRUE|FALSE
+#'   MultiAZ = TRUE|FALSE,
+#'   RedshiftIdcApplicationArn = "string"
 #' )
 #' ```
 #'
@@ -1566,14 +1578,14 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' @rdname redshift_create_cluster
 #'
 #' @aliases redshift_create_cluster
-redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL) {
+redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL, RedshiftIdcApplicationArn = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
+  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ, RedshiftIdcApplicationArn = RedshiftIdcApplicationArn)
   output <- .redshift$create_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -2515,6 +2527,120 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 }
 .redshift$operations$create_hsm_configuration <- redshift_create_hsm_configuration
 
+#' Creates an Amazon Redshift application for use with IAM Identity Center
+#'
+#' @description
+#' Creates an Amazon Redshift application for use with IAM Identity Center.
+#'
+#' @usage
+#' redshift_create_redshift_idc_application(IdcInstanceArn,
+#'   RedshiftIdcApplicationName, IdentityNamespace, IdcDisplayName,
+#'   IamRoleArn, AuthorizedTokenIssuerList, ServiceIntegrations)
+#'
+#' @param IdcInstanceArn &#91;required&#93; The Amazon resource name (ARN) of the IAM Identity Center instance where
+#' Amazon Redshift creates a new managed application.
+#' @param RedshiftIdcApplicationName &#91;required&#93; The name of the Redshift application in IAM Identity Center.
+#' @param IdentityNamespace The namespace for the Amazon Redshift IAM Identity Center application
+#' instance. It determines which managed application verifies the
+#' connection token.
+#' @param IdcDisplayName &#91;required&#93; The display name for the Amazon Redshift IAM Identity Center application
+#' instance. It appears in the console.
+#' @param IamRoleArn &#91;required&#93; The IAM role ARN for the Amazon Redshift IAM Identity Center application
+#' instance. It has the required permissions to be assumed and invoke the
+#' IDC Identity Center API.
+#' @param AuthorizedTokenIssuerList The token issuer list for the Amazon Redshift IAM Identity Center
+#' application instance.
+#' @param ServiceIntegrations A collection of service integrations for the Redshift IAM Identity
+#' Center application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RedshiftIdcApplication = list(
+#'     IdcInstanceArn = "string",
+#'     RedshiftIdcApplicationName = "string",
+#'     RedshiftIdcApplicationArn = "string",
+#'     IdentityNamespace = "string",
+#'     IdcDisplayName = "string",
+#'     IamRoleArn = "string",
+#'     IdcManagedApplicationArn = "string",
+#'     IdcOnboardStatus = "string",
+#'     AuthorizedTokenIssuerList = list(
+#'       list(
+#'         TrustedTokenIssuerArn = "string",
+#'         AuthorizedAudiencesList = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ServiceIntegrations = list(
+#'       list(
+#'         LakeFormation = list(
+#'           list(
+#'             LakeFormationQuery = list(
+#'               Authorization = "Enabled"|"Disabled"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_redshift_idc_application(
+#'   IdcInstanceArn = "string",
+#'   RedshiftIdcApplicationName = "string",
+#'   IdentityNamespace = "string",
+#'   IdcDisplayName = "string",
+#'   IamRoleArn = "string",
+#'   AuthorizedTokenIssuerList = list(
+#'     list(
+#'       TrustedTokenIssuerArn = "string",
+#'       AuthorizedAudiencesList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ServiceIntegrations = list(
+#'     list(
+#'       LakeFormation = list(
+#'         list(
+#'           LakeFormationQuery = list(
+#'             Authorization = "Enabled"|"Disabled"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_redshift_idc_application
+#'
+#' @aliases redshift_create_redshift_idc_application
+redshift_create_redshift_idc_application <- function(IdcInstanceArn, RedshiftIdcApplicationName, IdentityNamespace = NULL, IdcDisplayName, IamRoleArn, AuthorizedTokenIssuerList = NULL, ServiceIntegrations = NULL) {
+  op <- new_operation(
+    name = "CreateRedshiftIdcApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$create_redshift_idc_application_input(IdcInstanceArn = IdcInstanceArn, RedshiftIdcApplicationName = RedshiftIdcApplicationName, IdentityNamespace = IdentityNamespace, IdcDisplayName = IdcDisplayName, IamRoleArn = IamRoleArn, AuthorizedTokenIssuerList = AuthorizedTokenIssuerList, ServiceIntegrations = ServiceIntegrations)
+  output <- .redshift$create_redshift_idc_application_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_redshift_idc_application <- redshift_create_redshift_idc_application
+
 #' Creates a scheduled action
 #'
 #' @description
@@ -3010,7 +3136,9 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #'       ),
 #'       StatusChangeDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ProducerAllowedWrites = TRUE|FALSE,
+#'       ConsumerAcceptedWrites = TRUE|FALSE
 #'     )
 #'   ),
 #'   ManagedBy = "string"
@@ -3676,9 +3804,11 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 #' cluster.
 #'
 #' @usage
-#' redshift_delete_custom_domain_association(ClusterIdentifier)
+#' redshift_delete_custom_domain_association(ClusterIdentifier,
+#'   CustomDomainName)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to delete a custom domain association for.
+#' @param CustomDomainName &#91;required&#93; The custom domain name for the custom domain association.
 #'
 #' @return
 #' An empty list.
@@ -3686,7 +3816,8 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_domain_association(
-#'   ClusterIdentifier = "string"
+#'   ClusterIdentifier = "string",
+#'   CustomDomainName = "string"
 #' )
 #' ```
 #'
@@ -3695,14 +3826,14 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 #' @rdname redshift_delete_custom_domain_association
 #'
 #' @aliases redshift_delete_custom_domain_association
-redshift_delete_custom_domain_association <- function(ClusterIdentifier) {
+redshift_delete_custom_domain_association <- function(ClusterIdentifier, CustomDomainName) {
   op <- new_operation(
     name = "DeleteCustomDomainAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$delete_custom_domain_association_input(ClusterIdentifier = ClusterIdentifier)
+  input <- .redshift$delete_custom_domain_association_input(ClusterIdentifier = ClusterIdentifier, CustomDomainName = CustomDomainName)
   output <- .redshift$delete_custom_domain_association_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -3970,6 +4101,48 @@ redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, 
   return(response)
 }
 .redshift$operations$delete_partner <- redshift_delete_partner
+
+#' Deletes an Amazon Redshift IAM Identity Center application
+#'
+#' @description
+#' Deletes an Amazon Redshift IAM Identity Center application.
+#'
+#' @usage
+#' redshift_delete_redshift_idc_application(RedshiftIdcApplicationArn)
+#'
+#' @param RedshiftIdcApplicationArn &#91;required&#93; The ARN for a deleted Amazon Redshift IAM Identity Center application.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_redshift_idc_application(
+#'   RedshiftIdcApplicationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_redshift_idc_application
+#'
+#' @aliases redshift_delete_redshift_idc_application
+redshift_delete_redshift_idc_application <- function(RedshiftIdcApplicationArn) {
+  op <- new_operation(
+    name = "DeleteRedshiftIdcApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_redshift_idc_application_input(RedshiftIdcApplicationArn = RedshiftIdcApplicationArn)
+  output <- .redshift$delete_redshift_idc_application_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_redshift_idc_application <- redshift_delete_redshift_idc_application
 
 #' Deletes the resource policy for a specified resource
 #'
@@ -5741,7 +5914,9 @@ redshift_describe_custom_domain_associations <- function(CustomDomainName = NULL
 #'           ),
 #'           StatusChangeDate = as.POSIXct(
 #'             "2015-01-01"
-#'           )
+#'           ),
+#'           ProducerAllowedWrites = TRUE|FALSE,
+#'           ConsumerAcceptedWrites = TRUE|FALSE
 #'         )
 #'       ),
 #'       ManagedBy = "string"
@@ -5830,7 +6005,9 @@ redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL
 #'           ),
 #'           StatusChangeDate = as.POSIXct(
 #'             "2015-01-01"
-#'           )
+#'           ),
+#'           ProducerAllowedWrites = TRUE|FALSE,
+#'           ConsumerAcceptedWrites = TRUE|FALSE
 #'         )
 #'       ),
 #'       ManagedBy = "string"
@@ -5920,7 +6097,9 @@ redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Statu
 #'           ),
 #'           StatusChangeDate = as.POSIXct(
 #'             "2015-01-01"
-#'           )
+#'           ),
+#'           ProducerAllowedWrites = TRUE|FALSE,
+#'           ConsumerAcceptedWrites = TRUE|FALSE
 #'         )
 #'       ),
 #'       ManagedBy = "string"
@@ -7229,6 +7408,99 @@ redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseNam
   return(response)
 }
 .redshift$operations$describe_partners <- redshift_describe_partners
+
+#' Lists the Amazon Redshift IAM Identity Center applications
+#'
+#' @description
+#' Lists the Amazon Redshift IAM Identity Center applications.
+#'
+#' @usage
+#' redshift_describe_redshift_idc_applications(RedshiftIdcApplicationArn,
+#'   MaxRecords, Marker)
+#'
+#' @param RedshiftIdcApplicationArn The ARN for the Redshift application that integrates with IAM Identity
+#' Center.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified MaxRecords
+#' value, a value is returned in a marker field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker A value that indicates the starting point for the next set of response
+#' records in a subsequent request. If a value is returned in a response,
+#' you can retrieve the next set of records by providing this returned
+#' marker value in the Marker parameter and retrying the command. If the
+#' Marker field is empty, all response records have been retrieved for the
+#' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RedshiftIdcApplications = list(
+#'     list(
+#'       IdcInstanceArn = "string",
+#'       RedshiftIdcApplicationName = "string",
+#'       RedshiftIdcApplicationArn = "string",
+#'       IdentityNamespace = "string",
+#'       IdcDisplayName = "string",
+#'       IamRoleArn = "string",
+#'       IdcManagedApplicationArn = "string",
+#'       IdcOnboardStatus = "string",
+#'       AuthorizedTokenIssuerList = list(
+#'         list(
+#'           TrustedTokenIssuerArn = "string",
+#'           AuthorizedAudiencesList = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ServiceIntegrations = list(
+#'         list(
+#'           LakeFormation = list(
+#'             list(
+#'               LakeFormationQuery = list(
+#'                 Authorization = "Enabled"|"Disabled"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_redshift_idc_applications(
+#'   RedshiftIdcApplicationArn = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_redshift_idc_applications
+#'
+#' @aliases redshift_describe_redshift_idc_applications
+redshift_describe_redshift_idc_applications <- function(RedshiftIdcApplicationArn = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeRedshiftIdcApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "RedshiftIdcApplications")
+  )
+  input <- .redshift$describe_redshift_idc_applications_input(RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_redshift_idc_applications_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_redshift_idc_applications <- redshift_describe_redshift_idc_applications
 
 #' Returns exchange status details and associated metadata for a
 #' reserved-node exchange
@@ -8679,7 +8951,9 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #'       ),
 #'       StatusChangeDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ProducerAllowedWrites = TRUE|FALSE,
+#'       ConsumerAcceptedWrites = TRUE|FALSE
 #'     )
 #'   ),
 #'   ManagedBy = "string"
@@ -11593,8 +11867,8 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' redshift_modify_custom_domain_association(CustomDomainName,
 #'   CustomDomainCertificateArn, ClusterIdentifier)
 #'
-#' @param CustomDomainName The custom domain name for a changed custom domain association.
-#' @param CustomDomainCertificateArn The certificate Amazon Resource Name (ARN) for the changed custom domain
+#' @param CustomDomainName &#91;required&#93; The custom domain name for a changed custom domain association.
+#' @param CustomDomainCertificateArn &#91;required&#93; The certificate Amazon Resource Name (ARN) for the changed custom domain
 #' association.
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to change a custom domain association for.
 #'
@@ -11623,7 +11897,7 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @rdname redshift_modify_custom_domain_association
 #'
 #' @aliases redshift_modify_custom_domain_association
-redshift_modify_custom_domain_association <- function(CustomDomainName = NULL, CustomDomainCertificateArn = NULL, ClusterIdentifier) {
+redshift_modify_custom_domain_association <- function(CustomDomainName, CustomDomainCertificateArn, ClusterIdentifier) {
   op <- new_operation(
     name = "ModifyCustomDomainAssociation",
     http_method = "POST",
@@ -11830,6 +12104,117 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
   return(response)
 }
 .redshift$operations$modify_event_subscription <- redshift_modify_event_subscription
+
+#' Changes an existing Amazon Redshift IAM Identity Center application
+#'
+#' @description
+#' Changes an existing Amazon Redshift IAM Identity Center application.
+#'
+#' @usage
+#' redshift_modify_redshift_idc_application(RedshiftIdcApplicationArn,
+#'   IdentityNamespace, IamRoleArn, IdcDisplayName,
+#'   AuthorizedTokenIssuerList, ServiceIntegrations)
+#'
+#' @param RedshiftIdcApplicationArn &#91;required&#93; The ARN for the Redshift application that integrates with IAM Identity
+#' Center.
+#' @param IdentityNamespace The namespace for the Amazon Redshift IAM Identity Center application to
+#' change. It determines which managed application verifies the connection
+#' token.
+#' @param IamRoleArn The IAM role ARN associated with the Amazon Redshift IAM Identity Center
+#' application to change. It has the required permissions to be assumed and
+#' invoke the IDC Identity Center API.
+#' @param IdcDisplayName The display name for the Amazon Redshift IAM Identity Center application
+#' to change. It appears on the console.
+#' @param AuthorizedTokenIssuerList The authorized token issuer list for the Amazon Redshift IAM Identity
+#' Center application to change.
+#' @param ServiceIntegrations A collection of service integrations associated with the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RedshiftIdcApplication = list(
+#'     IdcInstanceArn = "string",
+#'     RedshiftIdcApplicationName = "string",
+#'     RedshiftIdcApplicationArn = "string",
+#'     IdentityNamespace = "string",
+#'     IdcDisplayName = "string",
+#'     IamRoleArn = "string",
+#'     IdcManagedApplicationArn = "string",
+#'     IdcOnboardStatus = "string",
+#'     AuthorizedTokenIssuerList = list(
+#'       list(
+#'         TrustedTokenIssuerArn = "string",
+#'         AuthorizedAudiencesList = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ServiceIntegrations = list(
+#'       list(
+#'         LakeFormation = list(
+#'           list(
+#'             LakeFormationQuery = list(
+#'               Authorization = "Enabled"|"Disabled"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_redshift_idc_application(
+#'   RedshiftIdcApplicationArn = "string",
+#'   IdentityNamespace = "string",
+#'   IamRoleArn = "string",
+#'   IdcDisplayName = "string",
+#'   AuthorizedTokenIssuerList = list(
+#'     list(
+#'       TrustedTokenIssuerArn = "string",
+#'       AuthorizedAudiencesList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ServiceIntegrations = list(
+#'     list(
+#'       LakeFormation = list(
+#'         list(
+#'           LakeFormationQuery = list(
+#'             Authorization = "Enabled"|"Disabled"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_redshift_idc_application
+#'
+#' @aliases redshift_modify_redshift_idc_application
+redshift_modify_redshift_idc_application <- function(RedshiftIdcApplicationArn, IdentityNamespace = NULL, IamRoleArn = NULL, IdcDisplayName = NULL, AuthorizedTokenIssuerList = NULL, ServiceIntegrations = NULL) {
+  op <- new_operation(
+    name = "ModifyRedshiftIdcApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_redshift_idc_application_input(RedshiftIdcApplicationArn = RedshiftIdcApplicationArn, IdentityNamespace = IdentityNamespace, IamRoleArn = IamRoleArn, IdcDisplayName = IdcDisplayName, AuthorizedTokenIssuerList = AuthorizedTokenIssuerList, ServiceIntegrations = ServiceIntegrations)
+  output <- .redshift$modify_redshift_idc_application_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_redshift_idc_application <- redshift_modify_redshift_idc_application
 
 #' Modifies a scheduled action
 #'
@@ -13058,7 +13443,9 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
 #'       ),
 #'       StatusChangeDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ProducerAllowedWrites = TRUE|FALSE,
+#'       ConsumerAcceptedWrites = TRUE|FALSE
 #'     )
 #'   ),
 #'   ManagedBy = "string"

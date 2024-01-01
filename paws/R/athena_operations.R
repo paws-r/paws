@@ -223,6 +223,7 @@ athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGrou
 #'         DataManifestLocation = "string",
 #'         TotalExecutionTimeInMillis = 123,
 #'         QueryQueueTimeInMillis = 123,
+#'         ServicePreProcessingTimeInMillis = 123,
 #'         QueryPlanningTimeInMillis = 123,
 #'         ServiceProcessingTimeInMillis = 123,
 #'         ResultReuseInformation = list(
@@ -237,7 +238,12 @@ athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGrou
 #'       ExecutionParameters = list(
 #'         "string"
 #'       ),
-#'       SubstatementType = "string"
+#'       SubstatementType = "string",
+#'       QueryResultsS3AccessGrantsConfiguration = list(
+#'         EnableS3AccessGrants = TRUE|FALSE,
+#'         CreateUserLevelPrefix = TRUE|FALSE,
+#'         AuthenticationType = "DIRECTORY_IDENTITY"
+#'       )
 #'     )
 #'   ),
 #'   UnprocessedQueryExecutionIds = list(
@@ -433,13 +439,6 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
 #'     -   The `GLUE` data catalog type also applies to the default
 #'         `AwsDataCatalog` that already exists in your account, of which
 #'         you can have only one and cannot modify.
-#' 
-#'     -   Queries that specify a Glue Data Catalog other than the default
-#'         `AwsDataCatalog` must be run on Athena engine version 2.
-#' 
-#'     -   In Regions where Athena engine version 2 is not available,
-#'         creating new Glue data catalogs results in an `INVALID_INPUT`
-#'         error.
 #' @param Tags A list of comma separated tags to add to the data catalog that is
 #' created.
 #'
@@ -491,11 +490,6 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' @description
 #' Creates a named query in the specified workgroup. Requires that you have
 #' access to the workgroup.
-#' 
-#' For code samples using the Amazon Web Services SDK for Java, see
-#' [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
 #'
 #' @usage
 #' athena_create_named_query(Name, Description, Database, QueryString,
@@ -783,7 +777,16 @@ athena_create_presigned_notebook_url <- function(SessionId) {
 #'     CustomerContentEncryptionConfiguration = list(
 #'       KmsKey = "string"
 #'     ),
-#'     EnableMinimumEncryptionConfiguration = TRUE|FALSE
+#'     EnableMinimumEncryptionConfiguration = TRUE|FALSE,
+#'     IdentityCenterConfiguration = list(
+#'       EnableIdentityCenter = TRUE|FALSE,
+#'       IdentityCenterInstanceArn = "string"
+#'     ),
+#'     QueryResultsS3AccessGrantsConfiguration = list(
+#'       EnableS3AccessGrants = TRUE|FALSE,
+#'       CreateUserLevelPrefix = TRUE|FALSE,
+#'       AuthenticationType = "DIRECTORY_IDENTITY"
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Tags = list(
@@ -913,11 +916,6 @@ athena_delete_data_catalog <- function(Name) {
 #' @description
 #' Deletes the named query if you have access to the workgroup in which the
 #' query was saved.
-#' 
-#' For code samples using the Amazon Web Services SDK for Java, see
-#' [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
 #'
 #' @usage
 #' athena_delete_named_query(NamedQueryId)
@@ -1461,9 +1459,11 @@ athena_get_capacity_reservation <- function(Name) {
 #' Returns the specified data catalog.
 #'
 #' @usage
-#' athena_get_data_catalog(Name)
+#' athena_get_data_catalog(Name, WorkGroup)
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to return.
+#' @param WorkGroup The name of the workgroup. Required if making an IAM Identity Center
+#' request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1483,7 +1483,8 @@ athena_get_capacity_reservation <- function(Name) {
 #' @section Request syntax:
 #' ```
 #' svc$get_data_catalog(
-#'   Name = "string"
+#'   Name = "string",
+#'   WorkGroup = "string"
 #' )
 #' ```
 #'
@@ -1492,14 +1493,14 @@ athena_get_capacity_reservation <- function(Name) {
 #' @rdname athena_get_data_catalog
 #'
 #' @aliases athena_get_data_catalog
-athena_get_data_catalog <- function(Name) {
+athena_get_data_catalog <- function(Name, WorkGroup = NULL) {
   op <- new_operation(
     name = "GetDataCatalog",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$get_data_catalog_input(Name = Name)
+  input <- .athena$get_data_catalog_input(Name = Name, WorkGroup = WorkGroup)
   output <- .athena$get_data_catalog_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1515,10 +1516,12 @@ athena_get_data_catalog <- function(Name) {
 #' Returns a database object for the specified database and data catalog.
 #'
 #' @usage
-#' athena_get_database(CatalogName, DatabaseName)
+#' athena_get_database(CatalogName, DatabaseName, WorkGroup)
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database to return.
 #' @param DatabaseName &#91;required&#93; The name of the database to return.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1538,7 +1541,8 @@ athena_get_data_catalog <- function(Name) {
 #' ```
 #' svc$get_database(
 #'   CatalogName = "string",
-#'   DatabaseName = "string"
+#'   DatabaseName = "string",
+#'   WorkGroup = "string"
 #' )
 #' ```
 #'
@@ -1547,14 +1551,14 @@ athena_get_data_catalog <- function(Name) {
 #' @rdname athena_get_database
 #'
 #' @aliases athena_get_database
-athena_get_database <- function(CatalogName, DatabaseName) {
+athena_get_database <- function(CatalogName, DatabaseName, WorkGroup = NULL) {
   op <- new_operation(
     name = "GetDatabase",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName)
+  input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName, WorkGroup = WorkGroup)
   output <- .athena$get_database_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -1802,6 +1806,7 @@ athena_get_prepared_statement <- function(StatementName, WorkGroup) {
 #'       DataManifestLocation = "string",
 #'       TotalExecutionTimeInMillis = 123,
 #'       QueryQueueTimeInMillis = 123,
+#'       ServicePreProcessingTimeInMillis = 123,
 #'       QueryPlanningTimeInMillis = 123,
 #'       ServiceProcessingTimeInMillis = 123,
 #'       ResultReuseInformation = list(
@@ -1816,7 +1821,12 @@ athena_get_prepared_statement <- function(StatementName, WorkGroup) {
 #'     ExecutionParameters = list(
 #'       "string"
 #'     ),
-#'     SubstatementType = "string"
+#'     SubstatementType = "string",
+#'     QueryResultsS3AccessGrantsConfiguration = list(
+#'       EnableS3AccessGrants = TRUE|FALSE,
+#'       CreateUserLevelPrefix = TRUE|FALSE,
+#'       AuthenticationType = "DIRECTORY_IDENTITY"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1975,6 +1985,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #'   QueryRuntimeStatistics = list(
 #'     Timeline = list(
 #'       QueryQueueTimeInMillis = 123,
+#'       ServicePreProcessingTimeInMillis = 123,
 #'       QueryPlanningTimeInMillis = 123,
 #'       EngineExecutionTimeInMillis = 123,
 #'       ServiceProcessingTimeInMillis = 123,
@@ -2202,12 +2213,15 @@ athena_get_session_status <- function(SessionId) {
 #' Returns table metadata for the specified catalog, database, and table.
 #'
 #' @usage
-#' athena_get_table_metadata(CatalogName, DatabaseName, TableName)
+#' athena_get_table_metadata(CatalogName, DatabaseName, TableName,
+#'   WorkGroup)
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database and table
 #' metadata to return.
 #' @param DatabaseName &#91;required&#93; The name of the database that contains the table metadata to return.
 #' @param TableName &#91;required&#93; The name of the table for which metadata is returned.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2248,7 +2262,8 @@ athena_get_session_status <- function(SessionId) {
 #' svc$get_table_metadata(
 #'   CatalogName = "string",
 #'   DatabaseName = "string",
-#'   TableName = "string"
+#'   TableName = "string",
+#'   WorkGroup = "string"
 #' )
 #' ```
 #'
@@ -2257,14 +2272,14 @@ athena_get_session_status <- function(SessionId) {
 #' @rdname athena_get_table_metadata
 #'
 #' @aliases athena_get_table_metadata
-athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
+athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName, WorkGroup = NULL) {
   op <- new_operation(
     name = "GetTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName)
+  input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName, WorkGroup = WorkGroup)
   output <- .athena$get_table_metadata_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -2316,12 +2331,22 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
 #'       CustomerContentEncryptionConfiguration = list(
 #'         KmsKey = "string"
 #'       ),
-#'       EnableMinimumEncryptionConfiguration = TRUE|FALSE
+#'       EnableMinimumEncryptionConfiguration = TRUE|FALSE,
+#'       IdentityCenterConfiguration = list(
+#'         EnableIdentityCenter = TRUE|FALSE,
+#'         IdentityCenterInstanceArn = "string"
+#'       ),
+#'       QueryResultsS3AccessGrantsConfiguration = list(
+#'         EnableS3AccessGrants = TRUE|FALSE,
+#'         CreateUserLevelPrefix = TRUE|FALSE,
+#'         AuthenticationType = "DIRECTORY_IDENTITY"
+#'       )
 #'     ),
 #'     Description = "string",
 #'     CreationTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     IdentityCenterApplicationArn = "string"
 #'   )
 #' )
 #' ```
@@ -2658,13 +2683,15 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
 #' **Data sources** page under the **Data source name** column.
 #'
 #' @usage
-#' athena_list_data_catalogs(NextToken, MaxResults)
+#' athena_list_data_catalogs(NextToken, MaxResults, WorkGroup)
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
 #' of pages, pass in the NextToken from the response object of the previous
 #' page call.
 #' @param MaxResults Specifies the maximum number of data catalogs to return.
+#' @param WorkGroup The name of the workgroup. Required if making an IAM Identity Center
+#' request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2684,7 +2711,8 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
 #' ```
 #' svc$list_data_catalogs(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   WorkGroup = "string"
 #' )
 #' ```
 #'
@@ -2693,14 +2721,14 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
 #' @rdname athena_list_data_catalogs
 #'
 #' @aliases athena_list_data_catalogs
-athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
+athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListDataCatalogs",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCatalogsSummary")
   )
-  input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_data_catalogs_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -2716,7 +2744,7 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' Lists the databases in the specified data catalog.
 #'
 #' @usage
-#' athena_list_databases(CatalogName, NextToken, MaxResults)
+#' athena_list_databases(CatalogName, NextToken, MaxResults, WorkGroup)
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the databases to return.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -2724,6 +2752,8 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' of pages, pass in the `NextToken` from the response object of the
 #' previous page call.
 #' @param MaxResults Specifies the maximum number of results to return.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2747,7 +2777,8 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' svc$list_databases(
 #'   CatalogName = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   WorkGroup = "string"
 #' )
 #' ```
 #'
@@ -2756,14 +2787,14 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @rdname athena_list_databases
 #'
 #' @aliases athena_list_databases
-athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NULL) {
+athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
   )
-  input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_databases_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -2925,11 +2956,6 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
 #' specified workgroup. Requires that you have access to the specified
 #' workgroup. If a workgroup is not specified, lists the saved queries for
 #' the primary workgroup.
-#' 
-#' For code samples using the Amazon Web Services SDK for Java, see
-#' [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
 #'
 #' @usage
 #' athena_list_named_queries(NextToken, MaxResults, WorkGroup)
@@ -3192,14 +3218,10 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
 #'
 #' @description
 #' Provides a list of available query execution IDs for the queries in the
-#' specified workgroup. If a workgroup is not specified, returns a list of
-#' query execution IDs for the primary workgroup. Requires you to have
-#' access to the workgroup in which the queries ran.
-#' 
-#' For code samples using the Amazon Web Services SDK for Java, see
-#' [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
+#' specified workgroup. Athena keeps a query history for 45 days. If a
+#' workgroup is not specified, returns a list of query execution IDs for
+#' the primary workgroup. Requires you to have access to the workgroup in
+#' which the queries ran.
 #'
 #' @usage
 #' athena_list_query_executions(NextToken, MaxResults, WorkGroup)
@@ -3369,7 +3391,7 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
 #'
 #' @usage
 #' athena_list_table_metadata(CatalogName, DatabaseName, Expression,
-#'   NextToken, MaxResults)
+#'   NextToken, MaxResults, WorkGroup)
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog for which table metadata should be
 #' returned.
@@ -3381,6 +3403,8 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
 #' of pages, pass in the NextToken from the response object of the previous
 #' page call.
 #' @param MaxResults Specifies the maximum number of results to return.
+#' @param WorkGroup The name of the workgroup for which the metadata is being fetched.
+#' Required if requesting an IAM Identity Center enabled Glue Data Catalog.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3426,7 +3450,8 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
 #'   DatabaseName = "string",
 #'   Expression = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   WorkGroup = "string"
 #' )
 #' ```
 #'
@@ -3435,14 +3460,14 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
 #' @rdname athena_list_table_metadata
 #'
 #' @aliases athena_list_table_metadata
-athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL) {
+athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableMetadataList")
   )
-  input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_table_metadata_output()
   config <- get_config()
   svc <- .athena$service(config)
@@ -3541,7 +3566,8 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #'       EngineVersion = list(
 #'         SelectedEngineVersion = "string",
 #'         EffectiveEngineVersion = "string"
-#'       )
+#'       ),
+#'       IdentityCenterApplicationArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3639,6 +3665,12 @@ athena_put_capacity_assignment_configuration <- function(CapacityReservationName
 #' @description
 #' Submits calculations for execution within a session. You can supply the
 #' code to run as an inline code block within the request.
+#' 
+#' The request syntax requires the
+#' StartCalculationExecutionRequest$CodeBlock parameter or the
+#' CalculationConfiguration$CodeBlock parameter, but not both. Because
+#' CalculationConfiguration$CodeBlock is deprecated, use the
+#' StartCalculationExecutionRequest$CodeBlock parameter instead.
 #'
 #' @usage
 #' athena_start_calculation_execution(SessionId, Description,
@@ -3647,7 +3679,8 @@ athena_put_capacity_assignment_configuration <- function(CapacityReservationName
 #' @param SessionId &#91;required&#93; The session ID.
 #' @param Description A description of the calculation.
 #' @param CalculationConfiguration Contains configuration information for the calculation.
-#' @param CodeBlock A string that contains the code of the calculation.
+#' @param CodeBlock A string that contains the code of the calculation. Use this parameter
+#' instead of CalculationConfiguration$CodeBlock, which is deprecated.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
 #' calculation is idempotent (executes only once). If another
 #' `StartCalculationExecutionRequest` is received, the same response is
@@ -3726,8 +3759,12 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
 #' query is idempotent (executes only once). If another
 #' [`start_query_execution`][athena_start_query_execution] request is
 #' received, the same response is returned and another query is not
-#' created. If a parameter has changed, for example, the `QueryString`, an
-#' error is returned.
+#' created. An error is returned if a parameter, such as `QueryString`, has
+#' changed. A call to
+#' [`start_query_execution`][athena_start_query_execution] that uses a
+#' previous client request token returns the same `QueryExecutionId` even
+#' if the requester doesn't have permission on the tables specified in
+#' `QueryString`.
 #' 
 #' This token is listed as not required because Amazon Web Services SDKs
 #' (for example the Amazon Web Services SDK for Java) auto-generate the
@@ -3958,11 +3995,6 @@ athena_stop_calculation_execution <- function(CalculationExecutionId) {
 #' @description
 #' Stops a query execution. Requires you to have access to the workgroup in
 #' which the query ran.
-#' 
-#' For code samples using the Amazon Web Services SDK for Java, see
-#' [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
 #'
 #' @usage
 #' athena_stop_query_execution(QueryExecutionId)
@@ -4551,7 +4583,12 @@ athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 #'     CustomerContentEncryptionConfiguration = list(
 #'       KmsKey = "string"
 #'     ),
-#'     EnableMinimumEncryptionConfiguration = TRUE|FALSE
+#'     EnableMinimumEncryptionConfiguration = TRUE|FALSE,
+#'     QueryResultsS3AccessGrantsConfiguration = list(
+#'       EnableS3AccessGrants = TRUE|FALSE,
+#'       CreateUserLevelPrefix = TRUE|FALSE,
+#'       AuthenticationType = "DIRECTORY_IDENTITY"
+#'     )
 #'   ),
 #'   State = "ENABLED"|"DISABLED"
 #' )

@@ -485,7 +485,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'   UsePreviousTemplate, Parameters, Capabilities, ResourceTypes, RoleARN,
 #'   RollbackConfiguration, NotificationARNs, Tags, ChangeSetName,
 #'   ClientToken, Description, ChangeSetType, ResourcesToImport,
-#'   IncludeNestedStacks, OnStackFailure)
+#'   IncludeNestedStacks, OnStackFailure, ImportExistingResources)
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a
 #' change set. CloudFormation generates the change set by comparing this
@@ -597,7 +597,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' CloudFormation. For more information, see [Controlling access with
 #' Identity and Access
 #' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -679,6 +679,17 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' `DELETE` for the change set for the parent stack, any failure in a child
 #' stack will cause the parent stack creation to fail and all stacks to be
 #' deleted.
+#' @param ImportExistingResources Indicates if the change set imports resources that already exist.
+#' 
+#' This parameter can only import resources that have custom names in
+#' templates. For more information, see [name
+#' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html)
+#' in the *CloudFormation User Guide*. To import resources that do not
+#' accept custom names, such as EC2 instances, use the resource import
+#' feature instead. For more information, see [Bringing existing resources
+#' into CloudFormation
+#' management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html)
+#' in the *CloudFormation User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -743,7 +754,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'     )
 #'   ),
 #'   IncludeNestedStacks = TRUE|FALSE,
-#'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE"
+#'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
+#'   ImportExistingResources = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -752,14 +764,14 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @rdname cloudformation_create_change_set
 #'
 #' @aliases cloudformation_create_change_set
-cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL, OnStackFailure = NULL) {
+cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL, OnStackFailure = NULL, ImportExistingResources = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure)
+  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure, ImportExistingResources = ImportExistingResources)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -794,7 +806,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' and a maximum length of 51,200 bytes. For more information, go to
 #' [Template
 #' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
@@ -802,7 +814,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
 #' or a Systems Manager document. For more information, go to the [Template
 #' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
@@ -2062,7 +2074,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' CloudFormation will make if you execute the change set. For more
 #' information, see [Updating Stacks Using Change
 #' Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #'
 #' @usage
 #' cloudformation_describe_change_set(ChangeSetName, StackName, NextToken)
@@ -2157,7 +2169,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'   IncludeNestedStacks = TRUE|FALSE,
 #'   ParentChangeSetId = "string",
 #'   RootChangeSetId = "string",
-#'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE"
+#'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE",
+#'   ImportExistingResources = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2494,7 +2507,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' chronological order. For more information about a stack's event history,
 #' go to
 #' [Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' You can list events for stacks that have failed to create or have been
 #' deleted by specifying the unique stack identifier (stack ID).
@@ -3907,7 +3920,7 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' and a maximum length of 51,200 bytes. (For more information, go to
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.)
+#' in the *CloudFormation User Guide*.)
 #' 
 #' Conditional: You must pass `TemplateBody` or `TemplateURL`. If both are
 #' passed, only `TemplateBody` is used.
@@ -3915,7 +3928,7 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' template that's located in an Amazon S3 bucket or a Systems Manager
 #' document. For more information, go to [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.
@@ -4217,7 +4230,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' and a maximum length of 51,200 bytes. For more information about
 #' templates, see [Template
 #' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `StackName`, `StackSetName`, `TemplateBody`, or `TemplateURL`.
@@ -4226,7 +4239,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' or a Systems Manager document. For more information about templates, see
 #' [Template
 #' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `StackName`, `StackSetName`, `TemplateBody`, or `TemplateURL`.
@@ -4478,7 +4491,8 @@ cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = N
 #'       Description = "string",
 #'       IncludeNestedStacks = TRUE|FALSE,
 #'       ParentChangeSetId = "string",
-#'       RootChangeSetId = "string"
+#'       RootChangeSetId = "string",
+#'       ImportExistingResources = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6174,7 +6188,7 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
 #' @param StackPolicyBody Structure containing the stack policy body. For more information, go to
 #' [Prevent updates to stack
 #' resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
-#' in the CloudFormation User Guide. You can specify either the
+#' in the *CloudFormation User Guide*. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
 #' policy (maximum size: 16 KB) located in an Amazon S3 bucket in the same
@@ -6650,7 +6664,7 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' and a maximum length of 51,200 bytes. (For more information, go to
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.)
+#' in the *CloudFormation User Guide*.)
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody`, `TemplateURL`, or set the `UsePreviousTemplate` to
@@ -6659,7 +6673,7 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' template that's located in an Amazon S3 bucket or a Systems Manager
 #' document. For more information, go to [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody`, `TemplateURL`, or set the `UsePreviousTemplate` to
@@ -7565,7 +7579,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' and a maximum length of 51,200 bytes. For more information, go to
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.
@@ -7574,7 +7588,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' bucket or a Systems Manager document. For more information, go to
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.

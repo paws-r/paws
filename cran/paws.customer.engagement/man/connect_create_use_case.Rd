@@ -21,7 +21,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 integration association can have only one of each use case type.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a use case for an integration association.

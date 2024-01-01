@@ -64,21 +64,53 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' Associates a resource with an application. The resource can be specified
 #' by its ARN or name. The application can be specified by ARN, ID, or
 #' name.
+#' 
+#' **Minimum permissions**
+#' 
+#' You must have the following permissions to associate a resource using
+#' the `OPTIONS` parameter set to `APPLY_APPLICATION_TAG`.
+#' 
+#' -   `tag:GetResources`
+#' 
+#' -   `tag:TagResources`
+#' 
+#' You must also have these additional permissions if you don't use the
+#' `AWSServiceCatalogAppRegistryFullAccess` policy. For more information,
+#' see
+#' [AWSServiceCatalogAppRegistryFullAccess](https://docs.aws.amazon.com/servicecatalog/latest/arguide/)
+#' in the AppRegistry Administrator Guide.
+#' 
+#' -   `resource-groups:AssociateResource`
+#' 
+#' -   `cloudformation:UpdateStack`
+#' 
+#' -   `cloudformation:DescribeStacks`
+#' 
+#' In addition, you must have the tagging permission defined by the Amazon
+#' Web Services service that creates the resource. For more information,
+#' see
+#' [TagResources](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_TagResources.html)
+#' in the *Resource Groups Tagging API Reference*.
 #'
 #' @usage
-#' appregistry_associate_resource(application, resourceType, resource)
+#' appregistry_associate_resource(application, resourceType, resource,
+#'   options)
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
 #' @param resource &#91;required&#93; The name or ID of the resource of which the application will be
 #' associated.
+#' @param options Determines whether an application tag is applied or skipped.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   applicationArn = "string",
-#'   resourceArn = "string"
+#'   resourceArn = "string",
+#'   options = list(
+#'     "APPLY_APPLICATION_TAG"|"SKIP_APPLICATION_TAG"
+#'   )
 #' )
 #' ```
 #'
@@ -87,7 +119,10 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' svc$associate_resource(
 #'   application = "string",
 #'   resourceType = "CFN_STACK"|"RESOURCE_TAG_VALUE",
-#'   resource = "string"
+#'   resource = "string",
+#'   options = list(
+#'     "APPLY_APPLICATION_TAG"|"SKIP_APPLICATION_TAG"
+#'   )
 #' )
 #' ```
 #'
@@ -96,14 +131,14 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' @rdname appregistry_associate_resource
 #'
 #' @aliases appregistry_associate_resource
-appregistry_associate_resource <- function(application, resourceType, resource) {
+appregistry_associate_resource <- function(application, resourceType, resource, options = NULL) {
   op <- new_operation(
     name = "AssociateResource",
     http_method = "PUT",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     paginator = list()
   )
-  input <- .appregistry$associate_resource_input(application = application, resourceType = resourceType, resource = resource)
+  input <- .appregistry$associate_resource_input(application = application, resourceType = resourceType, resource = resource, options = options)
   output <- .appregistry$associate_resource_output()
   config <- get_config()
   svc <- .appregistry$service(config)
@@ -149,6 +184,9 @@ appregistry_associate_resource <- function(application, resourceType, resource) 
 #'       "2015-01-01"
 #'     ),
 #'     tags = list(
+#'       "string"
+#'     ),
+#'     applicationTag = list(
 #'       "string"
 #'     )
 #'   )
@@ -453,6 +491,34 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
 #' @description
 #' Disassociates a resource from application. Both the resource and the
 #' application can be specified either by ID or name.
+#' 
+#' **Minimum permissions**
+#' 
+#' You must have the following permissions to remove a resource that's been
+#' associated with an application using the `APPLY_APPLICATION_TAG` option
+#' for [`associate_resource`][appregistry_associate_resource].
+#' 
+#' -   `tag:GetResources`
+#' 
+#' -   `tag:UntagResources`
+#' 
+#' You must also have the following permissions if you don't use the
+#' `AWSServiceCatalogAppRegistryFullAccess` policy. For more information,
+#' see
+#' [AWSServiceCatalogAppRegistryFullAccess](https://docs.aws.amazon.com/servicecatalog/latest/arguide/)
+#' in the AppRegistry Administrator Guide.
+#' 
+#' -   `resource-groups:DisassociateResource`
+#' 
+#' -   `cloudformation:UpdateStack`
+#' 
+#' -   `cloudformation:DescribeStacks`
+#' 
+#' In addition, you must have the tagging permission defined by the Amazon
+#' Web Services service that creates the resource. For more information,
+#' see
+#' [UntagResources](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/)
+#' in the *Resource Groups Tagging API Reference*.
 #'
 #' @usage
 #' appregistry_disassociate_resource(application, resourceType, resource)
@@ -539,7 +605,15 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
 #'       state = "CREATING"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'       arn = "string",
 #'       errorMessage = "string"
+#'     ),
+#'     applicationTagResourceGroup = list(
+#'       state = "CREATING"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'       arn = "string",
+#'       errorMessage = "string"
 #'     )
+#'   ),
+#'   applicationTag = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -579,11 +653,18 @@ appregistry_get_application <- function(application) {
 #' Gets the resource associated with the application.
 #'
 #' @usage
-#' appregistry_get_associated_resource(application, resourceType, resource)
+#' appregistry_get_associated_resource(application, resourceType, resource,
+#'   nextToken, resourceTagStatus, maxResults)
 #'
 #' @param application &#91;required&#93; The name, ID, or ARN of the application.
 #' @param resourceType &#91;required&#93; The type of resource associated with the application.
 #' @param resource &#91;required&#93; The name or ID of the resource associated with the application.
+#' @param nextToken A unique pagination token for each page of results. Make the call again
+#' with the returned token to retrieve the next page of results.
+#' @param resourceTagStatus States whether an application tag is applied, not applied, in the
+#' process of being applied, or skipped.
+#' @param maxResults The maximum number of results to return. If the parameter is omitted, it
+#' defaults to 25. The value is optional.
 #'
 #' @return
 #' A list with the following syntax:
@@ -602,6 +683,22 @@ appregistry_get_application <- function(application) {
 #'         errorMessage = "string"
 #'       )
 #'     )
+#'   ),
+#'   options = list(
+#'     "APPLY_APPLICATION_TAG"|"SKIP_APPLICATION_TAG"
+#'   ),
+#'   applicationTagResult = list(
+#'     applicationTagStatus = "IN_PROGRESS"|"SUCCESS"|"FAILURE",
+#'     errorMessage = "string",
+#'     resources = list(
+#'       list(
+#'         resourceArn = "string",
+#'         errorMessage = "string",
+#'         status = "string",
+#'         resourceType = "string"
+#'       )
+#'     ),
+#'     nextToken = "string"
 #'   )
 #' )
 #' ```
@@ -611,7 +708,12 @@ appregistry_get_application <- function(application) {
 #' svc$get_associated_resource(
 #'   application = "string",
 #'   resourceType = "CFN_STACK"|"RESOURCE_TAG_VALUE",
-#'   resource = "string"
+#'   resource = "string",
+#'   nextToken = "string",
+#'   resourceTagStatus = list(
+#'     "SUCCESS"|"FAILED"|"IN_PROGRESS"|"SKIPPED"
+#'   ),
+#'   maxResults = 123
 #' )
 #' ```
 #'
@@ -620,14 +722,14 @@ appregistry_get_application <- function(application) {
 #' @rdname appregistry_get_associated_resource
 #'
 #' @aliases appregistry_get_associated_resource
-appregistry_get_associated_resource <- function(application, resourceType, resource) {
+appregistry_get_associated_resource <- function(application, resourceType, resource, nextToken = NULL, resourceTagStatus = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetAssociatedResource",
     http_method = "GET",
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     paginator = list()
   )
-  input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource)
+  input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource, nextToken = nextToken, resourceTagStatus = resourceTagStatus, maxResults = maxResults)
   output <- .appregistry$get_associated_resource_output()
   config <- get_config()
   svc <- .appregistry$service(config)
@@ -903,6 +1005,9 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
 #'       resourceType = "CFN_STACK"|"RESOURCE_TAG_VALUE",
 #'       resourceDetails = list(
 #'         tagValue = "string"
+#'       ),
+#'       options = list(
+#'         "APPLY_APPLICATION_TAG"|"SKIP_APPLICATION_TAG"
 #'       )
 #'     )
 #'   ),
@@ -1355,6 +1460,9 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 #'       "2015-01-01"
 #'     ),
 #'     tags = list(
+#'       "string"
+#'     ),
+#'     applicationTag = list(
 #'       "string"
 #'     )
 #'   )

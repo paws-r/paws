@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_storage_lens_configuration}
 \alias{s3control_put_storage_lens_configuration}
-\title{Puts an Amazon S3 Storage Lens configuration}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_put_storage_lens_configuration(
   ConfigId,
@@ -23,7 +23,7 @@ s3control_put_storage_lens_configuration(
 You can set up to a maximum of 50 tags.}
 }
 \description{
-Puts an Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Working with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}. For a complete list of S3 Storage Lens metrics, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html}{S3 Storage Lens metrics glossary} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration/} for full documentation.
 }

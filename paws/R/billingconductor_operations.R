@@ -351,7 +351,7 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #'
 #' @usage
 #' billingconductor_create_custom_line_item(ClientToken, Name, Description,
-#'   BillingGroupArn, BillingPeriodRange, Tags, ChargeDetails)
+#'   BillingGroupArn, BillingPeriodRange, Tags, ChargeDetails, AccountId)
 #'
 #' @param ClientToken The token that is needed to support idempotency. Idempotency isn't
 #' currently supported, but will be implemented in a future update.
@@ -365,6 +365,8 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #' custom line item.
 #' @param ChargeDetails &#91;required&#93; A `CustomLineItemChargeDetails` that describes the charge details for a
 #' custom line item.
+#' @param AccountId The Amazon Web Services account in which this custom line item will be
+#' applied to.
 #'
 #' @return
 #' A list with the following syntax:
@@ -408,7 +410,8 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -417,14 +420,14 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #' @rdname billingconductor_create_custom_line_item
 #'
 #' @aliases billingconductor_create_custom_line_item
-billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, Description, BillingGroupArn, BillingPeriodRange = NULL, Tags = NULL, ChargeDetails) {
+billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, Description, BillingGroupArn, BillingPeriodRange = NULL, Tags = NULL, ChargeDetails, AccountId = NULL) {
   op <- new_operation(
     name = "CreateCustomLineItem",
     http_method = "POST",
     http_path = "/create-custom-line-item",
     paginator = list()
   )
-  input <- .billingconductor$create_custom_line_item_input(ClientToken = ClientToken, Name = Name, Description = Description, BillingGroupArn = BillingGroupArn, BillingPeriodRange = BillingPeriodRange, Tags = Tags, ChargeDetails = ChargeDetails)
+  input <- .billingconductor$create_custom_line_item_input(ClientToken = ClientToken, Name = Name, Description = Description, BillingGroupArn = BillingGroupArn, BillingPeriodRange = BillingPeriodRange, Tags = Tags, ChargeDetails = ChargeDetails, AccountId = AccountId)
   output <- .billingconductor$create_custom_line_item_output()
   config <- get_config()
   svc <- .billingconductor$service(config)
@@ -905,6 +908,92 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 }
 .billingconductor$operations$disassociate_pricing_rules <- billingconductor_disassociate_pricing_rules
 
+#' Retrieves the margin summary report, which includes the Amazon Web
+#' Services cost and charged amount (pro forma cost) by Amazon Web Service
+#' for a specific billing group
+#'
+#' @description
+#' Retrieves the margin summary report, which includes the Amazon Web
+#' Services cost and charged amount (pro forma cost) by Amazon Web Service
+#' for a specific billing group.
+#'
+#' @usage
+#' billingconductor_get_billing_group_cost_report(Arn, BillingPeriodRange,
+#'   GroupBy, MaxResults, NextToken)
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Number (ARN) that uniquely identifies the billing
+#' group.
+#' @param BillingPeriodRange A time range for which the margin summary is effective. You can specify
+#' up to 12 months.
+#' @param GroupBy A list of strings that specify the attributes that are used to break
+#' down costs in the margin summary reports for the billing group. For
+#' example, you can view your costs by the Amazon Web Service name or the
+#' billing period.
+#' @param MaxResults The maximum number of margin summary reports to retrieve.
+#' @param NextToken The pagination token used on subsequent calls to get reports.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BillingGroupCostReportResults = list(
+#'     list(
+#'       Arn = "string",
+#'       AWSCost = "string",
+#'       ProformaCost = "string",
+#'       Margin = "string",
+#'       MarginPercentage = "string",
+#'       Currency = "string",
+#'       Attributes = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_billing_group_cost_report(
+#'   Arn = "string",
+#'   BillingPeriodRange = list(
+#'     InclusiveStartBillingPeriod = "string",
+#'     ExclusiveEndBillingPeriod = "string"
+#'   ),
+#'   GroupBy = list(
+#'     "PRODUCT_NAME"|"BILLING_PERIOD"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname billingconductor_get_billing_group_cost_report
+#'
+#' @aliases billingconductor_get_billing_group_cost_report
+billingconductor_get_billing_group_cost_report <- function(Arn, BillingPeriodRange = NULL, GroupBy = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetBillingGroupCostReport",
+    http_method = "POST",
+    http_path = "/get-billing-group-cost-report",
+    paginator = list()
+  )
+  input <- .billingconductor$get_billing_group_cost_report_input(Arn = Arn, BillingPeriodRange = BillingPeriodRange, GroupBy = GroupBy, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .billingconductor$get_billing_group_cost_report_output()
+  config <- get_config()
+  svc <- .billingconductor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billingconductor$operations$get_billing_group_cost_report <- billingconductor_get_billing_group_cost_report
+
 #' This is a paginated call to list linked accounts that are linked to the
 #' payer account for the specified time period
 #'
@@ -1196,7 +1285,8 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
 #'       StartBillingPeriod = "string",
 #'       EndBillingPeriod = "string",
 #'       Arn = "string",
-#'       StartTime = 123
+#'       StartTime = 123,
+#'       AccountId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1292,7 +1382,8 @@ billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NU
 #'       BillingGroupArn = "string",
 #'       CreationTime = 123,
 #'       LastModifiedTime = 123,
-#'       AssociationSize = 123
+#'       AssociationSize = 123,
+#'       AccountId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1313,6 +1404,9 @@ billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NU
 #'       "string"
 #'     ),
 #'     Arns = list(
+#'       "string"
+#'     ),
+#'     AccountIds = list(
 #'       "string"
 #'     )
 #'   )

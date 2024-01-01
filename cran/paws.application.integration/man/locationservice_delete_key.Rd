@@ -4,9 +4,20 @@
 \alias{locationservice_delete_key}
 \title{Deletes the specified API key}
 \usage{
-locationservice_delete_key(KeyName)
+locationservice_delete_key(ForceDelete = NULL, KeyName)
 }
 \arguments{
+\item{ForceDelete}{ForceDelete bypasses an API key's expiry conditions and deletes the key.
+Set the parameter \code{true} to delete the key or to \code{false} to not
+preemptively delete the API key.
+
+Valid values: \code{true}, or \code{false}.
+
+Required: No
+
+This action is irreversible. Only use ForceDelete if you are certain the
+key is no longer in use.}
+
 \item{KeyName}{[required] The name of the API key to delete.}
 }
 \description{

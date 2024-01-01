@@ -3,6 +3,127 @@
 #' @include secretsmanager_service.R
 NULL
 
+#' Retrieves the contents of the encrypted fields SecretString or
+#' SecretBinary for up to 20 secrets
+#'
+#' @description
+#' Retrieves the contents of the encrypted fields `SecretString` or
+#' `SecretBinary` for up to 20 secrets. To retrieve a single secret, call
+#' [`get_secret_value`][secretsmanager_get_secret_value].
+#' 
+#' To choose which secrets to retrieve, you can specify a list of secrets
+#' by name or ARN, or you can use filters. If Secrets Manager encounters
+#' errors such as `AccessDeniedException` while attempting to retrieve any
+#' of the secrets, you can see the errors in `Errors` in the response.
+#' 
+#' Secrets Manager generates CloudTrail
+#' [`get_secret_value`][secretsmanager_get_secret_value] log entries for
+#' each secret you request when you call this action. Do not include
+#' sensitive information in request parameters because it might be logged.
+#' For more information, see [Logging Secrets Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
+#' **Required permissions:** `secretsmanager:BatchGetSecretValue`, and you
+#' must have `secretsmanager:GetSecretValue` for each secret. If you use
+#' filters, you must also have `secretsmanager:ListSecrets`. If the secrets
+#' are encrypted using customer-managed keys instead of the Amazon Web
+#' Services managed key `aws/secretsmanager`, then you also need
+#' `kms:Decrypt` permissions for the keys. For more information, see [IAM
+#' policy actions for Secrets
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
+#' and [Authentication and access control in Secrets
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
+#'
+#' @usage
+#' secretsmanager_batch_get_secret_value(SecretIdList, Filters, MaxResults,
+#'   NextToken)
+#'
+#' @param SecretIdList The ARN or names of the secrets to retrieve. You must include `Filters`
+#' or `SecretIdList`, but not both.
+#' @param Filters The filters to choose which secrets to retrieve. You must include
+#' `Filters` or `SecretIdList`, but not both.
+#' @param MaxResults The number of results to include in the response.
+#' 
+#' If there are more results available, in the response, Secrets Manager
+#' includes `NextToken`. To get the next results, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
+#' with the value from `NextToken`.
+#' @param NextToken A token that indicates where the output should continue from, if a
+#' previous call did not show all results. To get the next results, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
+#' with this value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecretValues = list(
+#'     list(
+#'       ARN = "string",
+#'       Name = "string",
+#'       VersionId = "string",
+#'       SecretBinary = raw,
+#'       SecretString = "string",
+#'       VersionStages = list(
+#'         "string"
+#'       ),
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Errors = list(
+#'     list(
+#'       SecretId = "string",
+#'       ErrorCode = "string",
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_secret_value(
+#'   SecretIdList = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Key = "description"|"name"|"tag-key"|"tag-value"|"primary-region"|"owning-service"|"all",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_batch_get_secret_value
+#'
+#' @aliases secretsmanager_batch_get_secret_value
+secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "BatchGetSecretValue",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .secretsmanager$batch_get_secret_value_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$batch_get_secret_value <- secretsmanager_batch_get_secret_value
+
 #' Turns off automatic rotation, and if a rotation is currently in
 #' progress, cancels the rotation
 #'
@@ -884,6 +1005,9 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' `SecretBinary` from the specified version of a secret, whichever
 #' contains content.
 #' 
+#' To retrieve the values for a group of secrets, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value].
+#' 
 #' We recommend that you cache your secret values by using client-side
 #' caching. Caching secrets improves speed and reduces your costs. For more
 #' information, see [Cache secrets for your
@@ -1122,7 +1246,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' To list the versions of a secret, use
 #' [`list_secret_version_ids`][secretsmanager_list_secret_version_ids].
 #' 
-#' To get the secret value from `SecretString` or `SecretBinary`, call
+#' To retrieve the values for the secrets, call
+#' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] or
 #' [`get_secret_value`][secretsmanager_get_secret_value].
 #' 
 #' For information about finding secrets in the console, see [Find secrets

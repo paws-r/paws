@@ -42,13 +42,13 @@ I/O credits for bursting.
 
 The following are the supported values for each volume type:
 \itemize{
-\item \code{gp3}: 3,000-16,000 IOPS
-\item \code{io1}: 100-64,000 IOPS
-\item \code{io2}: 100-64,000 IOPS
+\item \code{gp3}: 3,000 - 16,000 IOPS
+\item \code{io1}: 100 - 64,000 IOPS
+\item \code{io2}: 100 - 256,000 IOPS
 }
 
-\code{io1} and \code{io2} volumes support up to 64,000 IOPS only on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}.
-Other instance families support performance up to 32,000 IOPS.
+For \code{io2} volumes, you can achieve up to 256,000 IOPS on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{instances built on the Nitro System}.
+On other instances, you can achieve performance up to 32,000 IOPS.
 
 This parameter is required for \code{io1} and \code{io2} volumes. The default for
 \code{gp3} volumes is 3,000 IOPS. This parameter is not supported for \code{gp2},
@@ -82,10 +82,11 @@ snapshot size.
 
 The following are the supported volumes sizes for each volume type:
 \itemize{
-\item \code{gp2} and \code{gp3}: 1-16,384
-\item \code{io1} and \code{io2}: 4-16,384
-\item \code{st1} and \code{sc1}: 125-16,384
-\item \code{standard}: 1-1,024
+\item \code{gp2} and \code{gp3}: 1 - 16,384 GiB
+\item \code{io1}: 4 - 16,384 GiB
+\item \code{io2}: 4 - 65,536 GiB
+\item \code{st1} and \code{sc1}: 125 - 16,384 GiB
+\item \code{standard}: 1 - 1024 GiB
 }}
 
 \item{SnapshotId}{The snapshot from which to create the volume. You must specify either a

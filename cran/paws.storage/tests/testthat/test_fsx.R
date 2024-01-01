@@ -40,6 +40,10 @@ test_that("describe_file_systems", {
   expect_error(svc$describe_file_systems(MaxResults = 20), NA)
 })
 
+test_that("describe_shared_vpc_configuration", {
+  expect_error(svc$describe_shared_vpc_configuration(), NA)
+})
+
 test_that("describe_snapshots", {
   expect_error(svc$describe_snapshots(), NA)
 })

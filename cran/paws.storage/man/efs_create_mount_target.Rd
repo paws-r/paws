@@ -14,9 +14,9 @@ efs_create_mount_target(
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system for which to create the mount target.}
 
-\item{SubnetId}{[required] The ID of the subnet to add the mount target in. For file systems that
-use One Zone storage classes, use the subnet that is associated with the
-file system's Availability Zone.}
+\item{SubnetId}{[required] The ID of the subnet to add the mount target in. For One Zone file
+systems, use the subnet that is associated with the file system's
+Availability Zone.}
 
 \item{IpAddress}{Valid IPv4 address within the address range of the specified subnet.}
 

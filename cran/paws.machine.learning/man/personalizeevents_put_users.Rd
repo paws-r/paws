@@ -13,7 +13,7 @@ user or users to.}
 \item{users}{[required] A list of user data.}
 }
 \description{
-Adds one or more users to a Users dataset. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html}{Importing Users Incrementally}.
+Adds one or more users to a Users dataset. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html}{Importing users individually}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalizeevents_put_users/} for full documentation.
 }

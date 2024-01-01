@@ -10,7 +10,10 @@ cognitoidentityprovider_admin_get_user(UserPoolId, Username)
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to get information
 about the user.}
 
-\item{Username}{[required] The user name of the user you want to retrieve.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 }
 \description{
 Gets the specified user by user name in a user pool as an administrator. Works on any user.

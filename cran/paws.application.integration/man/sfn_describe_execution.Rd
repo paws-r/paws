@@ -12,7 +12,7 @@ sfn_describe_execution(executionArn)
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to describe.}
 }
 \description{
-Provides information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata. Use this API action to return the Map Run Amazon Resource Name (ARN) if the execution was dispatched by a Map Run.
+Provides information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata. If you've \href{https://docs.aws.amazon.com/step-functions/latest/dg/redrive-executions.html}{redriven} an execution, you can use this API action to return information about the redrives of that execution. In addition, you can use this API action to return the Map Run Amazon Resource Name (ARN) if the execution was dispatched by a Map Run.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_describe_execution/} for full documentation.
 }

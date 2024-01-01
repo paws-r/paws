@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_intelligent_tiering_configuration}
 \alias{s3_delete_bucket_intelligent_tiering_configuration}
-\title{Deletes the S3 Intelligent-Tiering configuration from the specified
-bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_delete_bucket_intelligent_tiering_configuration(Bucket, Id)
 }
@@ -14,7 +13,7 @@ or retrieve.}
 \item{Id}{[required] The ID used to identify the S3 Intelligent-Tiering configuration.}
 }
 \description{
-Deletes the S3 Intelligent-Tiering configuration from the specified bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_intelligent_tiering_configuration/} for full documentation.
 }

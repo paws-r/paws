@@ -3,6 +3,26 @@
 #' @include personalizeevents_service.R
 NULL
 
+.personalizeevents$put_action_interactions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(trackingId = structure(logical(0), tags = list(type = "string")), actionInteractions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), userId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sessionId = structure(logical(0), tags = list(type = "string")), timestamp = structure(logical(0), tags = list(type = "timestamp")), eventType = structure(logical(0), tags = list(type = "string")), eventId = structure(logical(0), tags = list(type = "string")), recommendationId = structure(logical(0), tags = list(type = "string")), impression = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalizeevents$put_action_interactions_output <- function(...) {
+  list()
+}
+
+.personalizeevents$put_actions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), actions = structure(list(structure(list(actionId = structure(logical(0), tags = list(type = "string")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalizeevents$put_actions_output <- function(...) {
+  list()
+}
+
 .personalizeevents$put_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(trackingId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sessionId = structure(logical(0), tags = list(type = "string")), eventList = structure(list(structure(list(eventId = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), eventValue = structure(logical(0), tags = list(type = "float")), itemId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string", sensitive = TRUE)), sentAt = structure(logical(0), tags = list(type = "timestamp")), recommendationId = structure(logical(0), tags = list(type = "string")), impression = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), metricAttribution = structure(list(eventAttributionSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))

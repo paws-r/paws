@@ -9,7 +9,8 @@ ec2_modify_ipam(
   IpamId,
   Description = NULL,
   AddOperatingRegions = NULL,
-  RemoveOperatingRegions = NULL
+  RemoveOperatingRegions = NULL,
+  Tier = NULL
 )
 }
 \arguments{
@@ -31,6 +32,10 @@ For more information about operating Regions, see \href{https://docs.aws.amazon.
 the \emph{Amazon VPC IPAM User Guide}.}
 
 \item{RemoveOperatingRegions}{The operating Regions to remove.}
+
+\item{Tier}{IPAM is offered in a Free Tier and an Advanced Tier. For more
+information about the features available in each tier and the costs
+associated with the tiers, see \href{https://aws.amazon.com/vpc/pricing/}{Amazon VPC pricing \> IPAM tab}.}
 }
 \description{
 Modify the configurations of an IPAM.

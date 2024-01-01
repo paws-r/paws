@@ -155,7 +155,7 @@ NULL
 #'  \link[=comprehend_list_targeted_sentiment_detection_jobs]{list_targeted_sentiment_detection_jobs} \tab Gets a list of targeted sentiment detection jobs that you have submitted\cr
 #'  \link[=comprehend_list_topics_detection_jobs]{list_topics_detection_jobs} \tab Gets a list of the topic detection jobs that you have submitted\cr
 #'  \link[=comprehend_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a custom model\cr
-#'  \link[=comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job\cr
+#'  \link[=comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job using a custom classification model\cr
 #'  \link[=comprehend_start_dominant_language_detection_job]{start_dominant_language_detection_job} \tab Starts an asynchronous dominant language detection job for a collection of documents\cr
 #'  \link[=comprehend_start_entities_detection_job]{start_entities_detection_job} \tab Starts an asynchronous entity detection job for a collection of documents\cr
 #'  \link[=comprehend_start_events_detection_job]{start_events_detection_job} \tab Starts an asynchronous event detection job for a collection of documents\cr

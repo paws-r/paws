@@ -2,17 +2,21 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_user_global_sign_out}
 \alias{cognitoidentityprovider_admin_user_global_sign_out}
-\title{Signs out a user from all devices}
+\title{Invalidates the identity, access, and refresh tokens that Amazon Cognito
+issued to a user}
 \usage{
 cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{[required] The user name.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 }
 \description{
-Signs out a user from all devices. \code{\link[=cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out}} invalidates all identity, access and refresh tokens that Amazon Cognito has issued to a user. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the 1-hour cookie validity period.
+Invalidates the identity, access, and refresh tokens that Amazon Cognito issued to a user. Call this operation with your administrative credentials when your user signs out of your app. This results in the following behavior.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_user_global_sign_out/} for full documentation.
 }

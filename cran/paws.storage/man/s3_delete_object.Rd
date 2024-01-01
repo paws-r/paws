@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_object}
 \alias{s3_delete_object}
-\title{Removes the null version (if there is one) of an object and inserts a
-delete marker, which becomes the latest version of the object}
+\title{Removes an object from a bucket}
 \usage{
 s3_delete_object(
   Bucket,
@@ -18,17 +17,33 @@ s3_delete_object(
 \arguments{
 \item{Bucket}{[required] The bucket name of the bucket containing the object.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -40,22 +55,29 @@ in the \emph{Amazon S3 User Guide}.}
 \item{MFA}{The concatenation of the authentication device's serial number, a space,
 and the value that is displayed on your authentication device. Required
 to permanently delete a versioned object if versioning is configured
-with MFA delete enabled.}
+with MFA delete enabled.
 
-\item{VersionId}{VersionId used to reference a specific version of the object.}
+This functionality is not supported for directory buckets.}
+
+\item{VersionId}{Version ID used to reference a specific version of the object.
+
+For directory buckets in this API operation, only the \code{null} value of
+the version ID is supported.}
 
 \item{RequestPayer}{}
 
 \item{BypassGovernanceRetention}{Indicates whether S3 Object Lock should bypass Governance-mode
 restrictions to process this operation. To use this header, you must
-have the \code{s3:BypassGovernanceRetention} permission.}
+have the \code{s3:BypassGovernanceRetention} permission.
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+This functionality is not supported for directory buckets.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects but will still respond that the command was successful.
+Removes an object from a bucket. The behavior depends on the bucket's versioning state:
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_object/} for full documentation.
 }

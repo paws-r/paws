@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_object_acl}
 \alias{s3_get_object_acl}
-\title{Returns the access control list (ACL) of an object}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_object_acl(
   Bucket,
@@ -16,8 +16,11 @@ s3_get_object_acl(
 \item{Bucket}{[required] The bucket name that contains the object for which to get the ACL
 information.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
@@ -26,16 +29,18 @@ in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key of the object for which to get the ACL information.}
 
-\item{VersionId}{VersionId used to reference a specific version of the object.}
+\item{VersionId}{Version ID used to reference a specific version of the object.
+
+This functionality is not supported for directory buckets.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the access control list (ACL) of an object. To use this operation, you must have \code{s3:GetObjectAcl} permissions or \code{READ_ACP} access to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping}{Mapping of ACL permissions and access policy permissions} in the \emph{Amazon S3 User Guide}
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_object_acl/} for full documentation.
 }

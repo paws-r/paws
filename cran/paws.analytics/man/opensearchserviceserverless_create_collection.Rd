@@ -8,6 +8,7 @@ opensearchserviceserverless_create_collection(
   clientToken = NULL,
   description = NULL,
   name,
+  standbyReplicas = NULL,
   tags = NULL,
   type = NULL
 )
@@ -18,6 +19,8 @@ opensearchserviceserverless_create_collection(
 \item{description}{Description of the collection.}
 
 \item{name}{[required] Name of the collection.}
+
+\item{standbyReplicas}{Indicates whether standby replicas should be used for a collection.}
 
 \item{tags}{An arbitrary set of tags (key–value pairs) to associate with the
 OpenSearch Serverless collection.}

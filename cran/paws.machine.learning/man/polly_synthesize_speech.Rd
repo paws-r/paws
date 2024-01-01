@@ -17,10 +17,10 @@ polly_synthesize_speech(
 )
 }
 \arguments{
-\item{Engine}{Specifies the engine (\code{standard} or \code{neural}) for Amazon Polly to use
-when processing input text for speech synthesis. For information on
-Amazon Polly voices and which voices are available in standard-only,
-NTTS-only, and both standard and NTTS formats, see \href{https://docs.aws.amazon.com/polly/latest/dg/voicelist.html}{Available Voices}.
+\item{Engine}{Specifies the engine (\code{standard}, \code{neural} or \code{long-form}) for Amazon
+Polly to use when processing input text for speech synthesis. For
+information on Amazon Polly voices and which voices are available for
+each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/voicelist.html}{Available Voices}.
 
 \strong{NTTS-only voices}
 
@@ -28,9 +28,16 @@ When using NTTS-only voices such as Kevin (en-US), this parameter is
 required and must be set to \code{neural}. If the engine is not specified, or
 is set to \code{standard}, this will result in an error.
 
+\strong{long-form-only voices}
+
+When using long-form-only voices such as Danielle (en-US), this
+parameter is required and must be set to \code{long-form}. If the engine is
+not specified, or is set to \code{standard} or \code{neural}, this will result in
+an error.
+
 Type: String
 
-Valid Values: \code{standard} | \code{neural}
+Valid Values: \code{standard} | \code{neural} | \code{long-form}
 
 Required: Yes
 
@@ -67,7 +74,8 @@ When pcm is used, the content returned is audio/pcm in a signed 16-bit,
 
 The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
 and "24000". The default value for standard voices is "22050". The
-default value for neural voices is "24000".
+default value for neural voices is "24000". The default value for
+long-form voices is "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
 "16000".}

@@ -115,6 +115,7 @@ manage Amazon QuickSight.
 \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion for a dataset\cr
 \link[=quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight\cr
 \link[=quicksight_create_refresh_schedule]{create_refresh_schedule} \tab Creates a refresh schedule for a dataset\cr
+\link[=quicksight_create_role_membership]{create_role_membership} \tab Use CreateRoleMembership to add an existing Amazon QuickSight group to an existing role\cr
 \link[=quicksight_create_template]{create_template} \tab Creates a template either from a TemplateDefinition or from an existing Amazon QuickSight analysis or template\cr
 \link[=quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template\cr
 \link[=quicksight_create_theme]{create_theme} \tab Creates a theme\cr
@@ -134,8 +135,11 @@ manage Amazon QuickSight.
 \link[=quicksight_delete_group]{delete_group} \tab Removes a user group from Amazon QuickSight\cr
 \link[=quicksight_delete_group_membership]{delete_group_membership} \tab Removes a user from a group so that the user is no longer a member of the group\cr
 \link[=quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment\cr
+\link[=quicksight_delete_identity_propagation_config]{delete_identity_propagation_config} \tab Deletes all access scopes and authorized targets that are associated with a service from the Amazon QuickSight IAM Identity Center application\cr
 \link[=quicksight_delete_namespace]{delete_namespace} \tab Deletes a namespace and the users and groups that are associated with the namespace\cr
 \link[=quicksight_delete_refresh_schedule]{delete_refresh_schedule} \tab Deletes a refresh schedule from a dataset\cr
+\link[=quicksight_delete_role_custom_permission]{delete_role_custom_permission} \tab Removes custom permissions from the role\cr
+\link[=quicksight_delete_role_membership]{delete_role_membership} \tab Removes a group from a role\cr
 \link[=quicksight_delete_template]{delete_template} \tab Deletes a template\cr
 \link[=quicksight_delete_template_alias]{delete_template_alias} \tab Deletes the item that the specified template alias points to\cr
 \link[=quicksight_delete_theme]{delete_theme} \tab Deletes a theme\cr
@@ -173,6 +177,7 @@ manage Amazon QuickSight.
 \link[=quicksight_describe_ip_restriction]{describe_ip_restriction} \tab Provides a summary and status of IP rules\cr
 \link[=quicksight_describe_namespace]{describe_namespace} \tab Describes the current namespace\cr
 \link[=quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
+\link[=quicksight_describe_role_custom_permission]{describe_role_custom_permission} \tab Describes all custom permissions that are mapped to a role\cr
 \link[=quicksight_describe_template]{describe_template} \tab Describes a template's metadata\cr
 \link[=quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template alias for a template\cr
 \link[=quicksight_describe_template_definition]{describe_template_definition} \tab Provides a detailed description of the definition of a template\cr
@@ -203,9 +208,11 @@ manage Amazon QuickSight.
 \link[=quicksight_list_groups]{list_groups} \tab Lists all user groups in Amazon QuickSight\cr
 \link[=quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists the IAM policy assignments in the current Amazon QuickSight account\cr
 \link[=quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to\cr
+\link[=quicksight_list_identity_propagation_configs]{list_identity_propagation_configs} \tab Lists all services and authorized targets that the Amazon QuickSight IAM Identity Center application can access\cr
 \link[=quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset\cr
 \link[=quicksight_list_namespaces]{list_namespaces} \tab Lists the namespaces for the specified Amazon Web Services account\cr
 \link[=quicksight_list_refresh_schedules]{list_refresh_schedules} \tab Lists the refresh schedules of a dataset\cr
+\link[=quicksight_list_role_memberships]{list_role_memberships} \tab Lists all groups that are associated with a role\cr
 \link[=quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
 \link[=quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template\cr
 \link[=quicksight_list_templates]{list_templates} \tab Lists all the templates in the current Amazon QuickSight account\cr
@@ -237,6 +244,7 @@ manage Amazon QuickSight.
 \link[=quicksight_update_analysis]{update_analysis} \tab Updates an analysis in Amazon QuickSight\cr
 \link[=quicksight_update_analysis_permissions]{update_analysis_permissions} \tab Updates the read and write permissions for an analysis\cr
 \link[=quicksight_update_dashboard]{update_dashboard} \tab Updates a dashboard in an Amazon Web Services account\cr
+\link[=quicksight_update_dashboard_links]{update_dashboard_links} \tab Updates the linked analyses on a dashboard\cr
 \link[=quicksight_update_dashboard_permissions]{update_dashboard_permissions} \tab Updates read and write permissions on a dashboard\cr
 \link[=quicksight_update_dashboard_published_version]{update_dashboard_published_version} \tab Updates the published version of a dashboard\cr
 \link[=quicksight_update_data_set]{update_data_set} \tab Updates a dataset\cr
@@ -247,9 +255,11 @@ manage Amazon QuickSight.
 \link[=quicksight_update_folder_permissions]{update_folder_permissions} \tab Updates permissions of a folder\cr
 \link[=quicksight_update_group]{update_group} \tab Changes a group description\cr
 \link[=quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing IAM policy assignment\cr
+\link[=quicksight_update_identity_propagation_config]{update_identity_propagation_config} \tab Adds or updates services and authorized targets to configure what the Amazon QuickSight IAM Identity Center application can access\cr
 \link[=quicksight_update_ip_restriction]{update_ip_restriction} \tab Updates the content and status of IP rules\cr
 \link[=quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab Use the UpdatePublicSharingSettings operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard\cr
 \link[=quicksight_update_refresh_schedule]{update_refresh_schedule} \tab Updates a refresh schedule for a dataset\cr
+\link[=quicksight_update_role_custom_permission]{update_role_custom_permission} \tab Updates the custom permissions that are associated with a role\cr
 \link[=quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon QuickSight analysis or another template\cr
 \link[=quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template\cr
 \link[=quicksight_update_template_permissions]{update_template_permissions} \tab Updates the resource permissions for a template\cr

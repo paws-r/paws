@@ -15,7 +15,10 @@ cognitoidentityprovider_admin_list_user_auth_events(
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{[required] The user pool username or an alias.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{MaxResults}{The maximum number of authentication events to return. Returns 60 events
 if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults}

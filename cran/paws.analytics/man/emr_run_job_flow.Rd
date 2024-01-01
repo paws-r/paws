@@ -46,13 +46,13 @@ value is not provided, logs are not created.}
 
 \item{LogEncryptionKmsKeyId}{The KMS key used for encrypting log files. If a value is not provided,
 the logs remain encrypted by AES-256. This attribute is only available
-with Amazon EMR releases 5.30.0 and higher, excluding Amazon EMR 6.0.0.}
+with Amazon EMR releases 5.30.0 and later, excluding Amazon EMR 6.0.0.}
 
 \item{AdditionalInfo}{A JSON string for selecting additional features.}
 
 \item{AmiVersion}{Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
-releases 4.0 and higher, \code{ReleaseLabel} is used. To specify a custom
-AMI, use \code{CustomAmiID}.}
+releases 4.0 and later, \code{ReleaseLabel} is used. To specify a custom AMI,
+use \code{CustomAmiID}.}
 
 \item{ReleaseLabel}{The Amazon EMR release label, which determines the version of
 open-source application packages installed on the cluster. Release
@@ -60,8 +60,8 @@ labels are in the form \code{emr-x.x.x}, where x.x.x is an Amazon EMR release
 version such as \verb{emr-5.14.0}. For more information about Amazon EMR
 release versions and included application versions and features, see
 \url{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}. The release
-label applies only to Amazon EMR releases version 4.0 and higher.
-Earlier versions use \code{AmiVersion}.}
+label applies only to Amazon EMR releases version 4.0 and later. Earlier
+versions use \code{AmiVersion}.}
 
 \item{Instances}{[required] A specification of the number and type of Amazon EC2 instances.}
 
@@ -71,7 +71,7 @@ Earlier versions use \code{AmiVersion}.}
 nodes.}
 
 \item{SupportedProducts}{For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-higher, use Applications.
+later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
 information, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-3x.html}{Amazon EMR Developer Guide}.
@@ -82,7 +82,7 @@ Currently supported values are:
 }}
 
 \item{NewSupportedProducts}{For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-higher, use Applications.
+later, use Applications.
 
 A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. Amazon EMR accepts and
@@ -105,12 +105,12 @@ Platform.
 installed.
 }}
 
-\item{Applications}{Applies to Amazon EMR releases 4.0 and higher. A case-insensitive list
-of applications for Amazon EMR to install and configure when launching
-the cluster. For a list of applications available for each Amazon EMR
+\item{Applications}{Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
+applications for Amazon EMR to install and configure when launching the
+cluster. For a list of applications available for each Amazon EMR
 release version, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}{Amazon EMRRelease Guide}.}
 
-\item{Configurations}{For Amazon EMR releases 4.0 and higher. The list of configurations
+\item{Configurations}{For Amazon EMR releases 4.0 and later. The list of configurations
 supplied for the Amazon EMR cluster that you are creating.}
 
 \item{VisibleToAllUsers}{The VisibleToAllUsers parameter is no longer supported. By default, the
@@ -155,17 +155,17 @@ automatic scale-in activity occurs or an instance group is resized.
 \code{TERMINATE_AT_INSTANCE_HOUR} indicates that Amazon EMR terminates nodes
 at the instance-hour boundary, regardless of when the request to
 terminate the instance was submitted. This option is only available with
-Amazon EMR 5.1.0 and higher and is the default for clusters created
-using that version. \code{TERMINATE_AT_TASK_COMPLETION} indicates that Amazon
-EMR adds nodes to a deny list and drains tasks from nodes before
-terminating the Amazon EC2 instances, regardless of the instance-hour
-boundary. With either behavior, Amazon EMR removes the least active
-nodes first and blocks instance termination if it could lead to HDFS
-corruption. \code{TERMINATE_AT_TASK_COMPLETION} available only in Amazon EMR
-releases 4.1.0 and higher, and is the default for releases of Amazon EMR
-earlier than 5.1.0.}
+Amazon EMR 5.1.0 and later and is the default for clusters created using
+that version. \code{TERMINATE_AT_TASK_COMPLETION} indicates that Amazon EMR
+adds nodes to a deny list and drains tasks from nodes before terminating
+the Amazon EC2 instances, regardless of the instance-hour boundary. With
+either behavior, Amazon EMR removes the least active nodes first and
+blocks instance termination if it could lead to HDFS corruption.
+\code{TERMINATE_AT_TASK_COMPLETION} available only in Amazon EMR releases
+4.1.0 and later, and is the default for releases of Amazon EMR earlier
+than 5.1.0.}
 
-\item{CustomAmiId}{Available only in Amazon EMR releases 5.7.0 and higher. The ID of a
+\item{CustomAmiId}{Available only in Amazon EMR releases 5.7.0 and later. The ID of a
 custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
 AMI when it launches cluster Amazon EC2 instances. For more information
 about custom AMIs in Amazon EMR, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html}{Using a Custom AMI}
@@ -177,9 +177,9 @@ For information about creating a custom AMI, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Elastic Compute Cloud User Guide for Linux Instances}.
 For information about finding an AMI ID, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding a Linux AMI}.}
 
-\item{EbsRootVolumeSize}{The size, in GiB, of the Amazon EBS root device volume for the Linux AMI
-that each Amazon EC2 instance uses. Available in Amazon EMR releases 4.x
-and higher.}
+\item{EbsRootVolumeSize}{The size, in GiB, of the Amazon EBS root device volume of the Linux AMI
+that is used for each Amazon EC2 instance. Available in Amazon EMR
+releases 4.x and later.}
 
 \item{RepoUpgradeOnBoot}{Applies only when \code{CustomAmiID} is used. Specifies which updates from
 the Amazon Linux AMI package repositories to apply automatically when
@@ -205,13 +205,13 @@ default value is \code{1}. The maximum value is \code{256}.}
 launch RunJobFlow request. If a release is not specified, Amazon EMR
 uses the latest validated Amazon Linux release for cluster launch.}
 
-\item{EbsRootVolumeIops}{The IOPS for the Amazon EBS root device volume for the Linux AMI that
-each Amazon EC2 instance uses. Available in Amazon EMR releases 6.15.0
-and higher.}
+\item{EbsRootVolumeIops}{The IOPS, of the Amazon EBS root device volume of the Linux AMI that is
+used for each Amazon EC2 instance. Available in Amazon EMR releases
+6.15.0 and later.}
 
-\item{EbsRootVolumeThroughput}{The throughput, in MiB/s, of the Amazon EBS root device volume for the
-Linux AMI that each Amazon EC2 instance uses. Available in Amazon EMR
-releases 6.15.0 and higher.}
+\item{EbsRootVolumeThroughput}{The throughput, in MiB/s, of the Amazon EBS root device volume of the
+Linux AMI that is used for each Amazon EC2 instance. Available in Amazon
+EMR releases 6.15.0 and later.}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig \code{KeepJobFlowAliveWhenNoSteps} parameter is set to \code{TRUE}, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.

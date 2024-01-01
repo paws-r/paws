@@ -9,6 +9,7 @@ mwaa_create_environment(
   AirflowConfigurationOptions = NULL,
   AirflowVersion = NULL,
   DagS3Path,
+  EndpointManagement = NULL,
   EnvironmentClass = NULL,
   ExecutionRoleArn,
   KmsKey = NULL,
@@ -40,10 +41,21 @@ specified, it defaults to the latest version. For more information, see
 \href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (MWAA)}.
 
 Valid values: \verb{1.10.12}, \verb{2.0.2}, \verb{2.2.2}, \verb{2.4.3}, \verb{2.5.1}, \verb{2.6.3},
-\verb{2.7.2}.}
+\verb{2.7.2}}
 
 \item{DagS3Path}{[required] The relative path to the DAGs folder on your Amazon S3 bucket. For
 example, \code{dags}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}
+
+\item{EndpointManagement}{Defines whether the VPC endpoints configured for the environment are
+created, and managed, by the customer or by Amazon MWAA. If set to
+\code{SERVICE}, Amazon MWAA will create and manage the required VPC endpoints
+in your VPC. If set to \code{CUSTOMER}, you must create, and manage, the VPC
+endpoints for your VPC. If you choose to create an environment in a
+shared VPC, you must set this value to \code{CUSTOMER}. In a shared VPC
+deployment, the environment will remain in \code{PENDING} status until you
+create the VPC endpoints. If you do not take action to create the
+endpoints within 72 hours, the status will change to \code{CREATE_FAILED}.
+You can delete the failed environment and create a new one.}
 
 \item{EnvironmentClass}{The environment class type. Valid values: \code{mw1.small}, \code{mw1.medium},
 \code{mw1.large}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
@@ -131,8 +143,8 @@ environment variables. For more information, see \href{https://docs.aws.amazon.c
 \item{Tags}{The key-value tag pairs you want to associate to your environment. For
 example, \code{"Environment": "Staging"}. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 
-\item{WebserverAccessMode}{The Apache Airflow \emph{Web server} access mode. For more information, see
-\href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
+\item{WebserverAccessMode}{Defines the access mode for the Apache Airflow \emph{web server}. For more
+information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
 
 \item{WeeklyMaintenanceWindowStart}{The day and time of the week in Coordinated Universal Time (UTC) 24-hour
 standard time to start weekly maintenance updates of your environment in

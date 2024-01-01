@@ -4,7 +4,15 @@
 \alias{sagemaker_create_space}
 \title{Creates a space used for real time collaboration in a Domain}
 \usage{
-sagemaker_create_space(DomainId, SpaceName, Tags = NULL, SpaceSettings = NULL)
+sagemaker_create_space(
+  DomainId,
+  SpaceName,
+  Tags = NULL,
+  SpaceSettings = NULL,
+  OwnershipSettings = NULL,
+  SpaceSharingSettings = NULL,
+  SpaceDisplayName = NULL
+)
 }
 \arguments{
 \item{DomainId}{[required] The ID of the associated Domain.}
@@ -16,6 +24,12 @@ optional value. Tag keys must be unique for each resource. Tags are
 searchable using the \code{\link[=sagemaker_search]{search}} API.}
 
 \item{SpaceSettings}{A collection of space settings.}
+
+\item{OwnershipSettings}{A collection of ownership settings.}
+
+\item{SpaceSharingSettings}{A collection of space sharing settings.}
+
+\item{SpaceDisplayName}{The name of the space that appears in the SageMaker Studio UI.}
 }
 \description{
 Creates a space used for real time collaboration in a Domain.

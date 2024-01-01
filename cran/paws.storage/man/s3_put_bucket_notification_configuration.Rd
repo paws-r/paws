@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_notification_configuration}
 \alias{s3_put_bucket_notification_configuration}
-\title{Enables notifications of specified events for a bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_bucket_notification_configuration(
   Bucket,
@@ -16,15 +16,15 @@ s3_put_bucket_notification_configuration(
 
 \item{NotificationConfiguration}{[required]}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{SkipDestinationValidation}{Skips validation of Amazon SQS, Amazon SNS, and Lambda destinations.
 True or false value.}
 }
 \description{
-Enables notifications of specified events for a bucket. For more information about event notifications, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html}{Configuring Event Notifications}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_notification_configuration/} for full documentation.
 }

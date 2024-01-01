@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_list_access_points_for_object_lambda}
 \alias{s3control_list_access_points_for_object_lambda}
-\title{Returns some or all (up to 1,000) access points associated with the
-Object Lambda Access Point per call}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_list_access_points_for_object_lambda(
   AccountId,
@@ -26,7 +25,7 @@ the response will include a continuation token in the \code{NextToken} field
 that you can use to retrieve the next page of access points.}
 }
 \description{
-Returns some or all (up to 1,000) access points associated with the Object Lambda Access Point per call. If there are more access points than what can be returned in one call, the response will include a continuation token that you can use to list the additional access points.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_list_access_points_for_object_lambda/} for full documentation.
 }

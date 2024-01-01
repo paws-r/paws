@@ -2,9 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_encryption}
 \alias{s3_delete_bucket_encryption}
-\title{This implementation of the DELETE action resets the default encryption
-for the bucket as server-side encryption with Amazon S3 managed keys
-(SSE-S3)}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner = NULL)
 }
@@ -12,12 +10,12 @@ s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner = NULL)
 \item{Bucket}{[required] The name of the bucket containing the server-side encryption
 configuration to delete.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Bucket Default Encryption} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_encryption/} for full documentation.
 }

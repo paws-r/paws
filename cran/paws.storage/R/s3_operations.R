@@ -3,17 +3,31 @@
 #' @include s3_service.R
 NULL
 
-#' This action aborts a multipart upload
+#' This operation aborts a multipart upload
 #'
 #' @description
-#' This action aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts.
+#' This operation aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_abort_multipart_upload/](https://www.paws-r-sdk.com/docs/s3_abort_multipart_upload/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name to which the upload was taking place.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -21,9 +35,12 @@ NULL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -34,9 +51,9 @@ NULL
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
 #' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -67,8 +84,22 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'
 #' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -76,9 +107,12 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -114,25 +148,31 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
-#' This parameter is needed only when the object was created using a
-#' checksum algorithm. For more information, see [Protecting data using
-#' SSE-C
-#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' This parameter is required only when the object was created using a
+#' checksum algorithm or if your bucket policy requires the use of SSE-C.
+#' For more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html#ssec-require-condition-key)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey The server-side encryption (SSE) customer managed key. This parameter is
 #' needed only when the object was created using a checksum algorithm. For
 #' more information, see [Protecting data using SSE-C
 #' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKeyMD5 The MD5 server-side encryption (SSE) customer managed key. This
 #' parameter is needed only when the object was created using a checksum
 #' algorithm. For more information, see [Protecting data using SSE-C
 #' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #'
 #' @keywords internal
 #'
@@ -161,13 +201,50 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_copy_object/](https://www.paws-r-sdk.com/docs/s3_copy_object/) for full documentation.
 #'
-#' @param ACL The canned ACL to apply to the object.
+#' @param ACL The canned access control list (ACL) to apply to the object.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' When you copy an object, the ACL metadata is not preserved and is set to
+#' `private` by default. Only the owner has full access control. To
+#' override the default ACL setting, specify a new ACL when you generate a
+#' copy request. For more information, see [Using
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
+#' 
+#' If the destination bucket that you're copying objects to uses the bucket
+#' owner enforced setting for S3 Object Ownership, ACLs are disabled and no
+#' longer affect permissions. Buckets that use this setting only accept
+#' `PUT` requests that don't specify an ACL or `PUT` requests that specify
+#' bucket owner full control ACLs, such as the `bucket-owner-full-control`
+#' canned ACL or an equivalent form of this ACL expressed in the XML
+#' format. For more information, see [Controlling ownership of objects and
+#' disabling
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' -   If your destination bucket uses the bucket owner enforced setting
+#'     for Object Ownership, all objects written to the bucket by any
+#'     account will be owned by the bucket owner.
+#' 
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param Bucket &#91;required&#93; The name of the destination bucket.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -175,9 +252,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -185,28 +265,54 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param CacheControl Specifies caching behavior along the request/reply chain.
-#' @param ChecksumAlgorithm Indicates the algorithm you want Amazon S3 to use to create the checksum
-#' for the object. For more information, see [Checking object
+#' @param CacheControl Specifies the caching behavior along the request/reply chain.
+#' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
+#' checksum for the object. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
-#' @param ContentDisposition Specifies presentational information for the object.
+#' 
+#' When you copy an object, if the source object has a checksum, that
+#' checksum value will be copied to the new object by default. If the
+#' [`copy_object`][s3_copy_object] request does not include this
+#' `x-amz-checksum-algorithm` header, the checksum algorithm will be copied
+#' from the source object to the destination object (if it's present on the
+#' source object). You can optionally specify a different checksum
+#' algorithm to use with the `x-amz-checksum-algorithm` header.
+#' Unrecognized or unsupported values will respond with the HTTP status
+#' code `400 Bad Request`.
+#' 
+#' For directory buckets, when you use Amazon Web Services SDKs, `CRC32` is
+#' the default checksum algorithm that's used for performance.
+#' @param ContentDisposition Specifies presentational information for the object. Indicates whether
+#' an object should be displayed in a web browser or downloaded as a file.
+#' It allows specifying the desired filename for the downloaded file.
 #' @param ContentEncoding Specifies what content encodings have been applied to the object and
 #' thus what decoding mechanisms must be applied to obtain the media-type
 #' referenced by the Content-Type header field.
+#' 
+#' For directory buckets, only the `aws-chunked` value is supported in this
+#' header field.
 #' @param ContentLanguage The language the content is in.
-#' @param ContentType A standard MIME type describing the format of the object data.
-#' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
-#' value in one of two formats, depending on whether you want to access the
-#' source object through an [access
+#' @param ContentType A standard MIME type that describes the format of the object data.
+#' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. The source object
+#' can be up to 5 GB. If the source object is an object that was uploaded
+#' by using a multipart upload, the object copy will be a single part
+#' object after the source object is copied to the destination bucket.
+#' 
+#' You specify the value of the copy source in one of two formats,
+#' depending on whether you want to access the source object through an
+#' [access
 #' point](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html):
 #' 
 #' -   For objects not accessed through an access point, specify the name
 #'     of the source bucket and the key of the source object, separated by
 #'     a slash (/). For example, to copy the object `reports/january.pdf`
-#'     from the bucket `awsexamplebucket`, use
+#'     from the general purpose bucket `awsexamplebucket`, use
 #'     `awsexamplebucket/reports/january.pdf`. The value must be
-#'     URL-encoded.
+#'     URL-encoded. To copy the object `reports/january.pdf` from the
+#'     directory bucket `awsexamplebucket--use1-az5--x-s3`, use
+#'     `awsexamplebucket--use1-az5--x-s3/reports/january.pdf`. The value
+#'     must be URL-encoded.
 #' 
 #' -   For objects accessed through access points, specify the Amazon
 #'     Resource Name (ARN) of the object as accessed through the access
@@ -218,9 +324,11 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     `arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf`.
 #'     The value must be URL encoded.
 #' 
-#'     Amazon S3 supports copy operations using access points only when the
-#'     source and destination buckets are in the same Amazon Web Services
-#'     Region.
+#'     -   Amazon S3 supports copy operations using Access points only when
+#'         the source and destination buckets are in the same Amazon Web
+#'         Services Region.
+#' 
+#'     -   Access points are not supported by directory buckets.
 #' 
 #'     Alternatively, for objects accessed through Amazon S3 on Outposts,
 #'     specify the ARN of the object as accessed in the format
@@ -231,62 +339,259 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'     `arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf`.
 #'     The value must be URL-encoded.
 #' 
-#' To copy a specific version of an object, append
-#' `?versionId=<version-id>` to the value (for example,
+#' If your source bucket versioning is enabled, the `x-amz-copy-source`
+#' header by default identifies the current version of an object to copy.
+#' If the current version is a delete marker, Amazon S3 behaves as if the
+#' object was deleted. To copy a different version, use the `versionId`
+#' query parameter. Specifically, append `?versionId=<version-id>` to the
+#' value (for example,
 #' `awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893`).
 #' If you don't specify a version ID, Amazon S3 copies the latest version
 #' of the source object.
+#' 
+#' If you enable versioning on the destination bucket, Amazon S3 generates
+#' a unique version ID for the copied object. This version ID is different
+#' from the version ID of the source object. Amazon S3 returns the version
+#' ID of the copied object in the `x-amz-version-id` response header in the
+#' response.
+#' 
+#' If you do not enable versioning or suspend it on the destination bucket,
+#' the version ID that Amazon S3 generates in the `x-amz-version-id`
+#' response header is always null.
+#' 
+#' **Directory buckets** - S3 Versioning isn't enabled and supported for
+#' directory buckets.
 #' @param CopySourceIfMatch Copies the object if its entity tag (ETag) matches the specified tag.
+#' 
+#' If both the `x-amz-copy-source-if-match` and
+#' `x-amz-copy-source-if-unmodified-since` headers are present in the
+#' request and evaluate as follows, Amazon S3 returns `200 OK` and copies
+#' the data:
+#' 
+#' -   `x-amz-copy-source-if-match` condition evaluates to true
+#' 
+#' -   `x-amz-copy-source-if-unmodified-since` condition evaluates to false
 #' @param CopySourceIfModifiedSince Copies the object if it has been modified since the specified time.
+#' 
+#' If both the `x-amz-copy-source-if-none-match` and
+#' `x-amz-copy-source-if-modified-since` headers are present in the request
+#' and evaluate as follows, Amazon S3 returns the `412 Precondition Failed`
+#' response code:
+#' 
+#' -   `x-amz-copy-source-if-none-match` condition evaluates to false
+#' 
+#' -   `x-amz-copy-source-if-modified-since` condition evaluates to true
 #' @param CopySourceIfNoneMatch Copies the object if its entity tag (ETag) is different than the
 #' specified ETag.
+#' 
+#' If both the `x-amz-copy-source-if-none-match` and
+#' `x-amz-copy-source-if-modified-since` headers are present in the request
+#' and evaluate as follows, Amazon S3 returns the `412 Precondition Failed`
+#' response code:
+#' 
+#' -   `x-amz-copy-source-if-none-match` condition evaluates to false
+#' 
+#' -   `x-amz-copy-source-if-modified-since` condition evaluates to true
 #' @param CopySourceIfUnmodifiedSince Copies the object if it hasn't been modified since the specified time.
+#' 
+#' If both the `x-amz-copy-source-if-match` and
+#' `x-amz-copy-source-if-unmodified-since` headers are present in the
+#' request and evaluate as follows, Amazon S3 returns `200 OK` and copies
+#' the data:
+#' 
+#' -   `x-amz-copy-source-if-match` condition evaluates to true
+#' 
+#' -   `x-amz-copy-source-if-unmodified-since` condition evaluates to false
 #' @param Expires The date and time at which the object is no longer cacheable.
 #' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 #' object.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantRead Allows grantee to read the object data and its metadata.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantReadACP Allows grantee to read the object ACL.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable object.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param Key &#91;required&#93; The key of the destination object.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param MetadataDirective Specifies whether the metadata is copied from the source object or
-#' replaced with metadata provided in the request.
-#' @param TaggingDirective Specifies whether the object tag-set are copied from the source object
-#' or replaced with tag-set provided in the request.
+#' replaced with metadata that's provided in the request. When copying an
+#' object, you can preserve all metadata (the default) or specify new
+#' metadata. If this header isn’t specified, `COPY` is the default
+#' behavior.
+#' 
+#' **General purpose bucket** - For general purpose buckets, when you grant
+#' permissions, you can use the `s3:x-amz-metadata-directive` condition key
+#' to enforce certain metadata behavior when objects are uploaded. For more
+#' information, see [Amazon S3 condition key
+#' examples](https://docs.aws.amazon.com/AmazonS3/latest/userguide/amazon-s3-policy-keys.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' `x-amz-website-redirect-location` is unique to each object and is not
+#' copied when using the `x-amz-metadata-directive` header. To copy the
+#' value, you must specify `x-amz-website-redirect-location` in the request
+#' header.
+#' @param TaggingDirective Specifies whether the object tag-set is copied from the source object or
+#' replaced with the tag-set that's provided in the request.
+#' 
+#' The default value is `COPY`.
+#' 
+#' **Directory buckets** - For directory buckets in a
+#' [`copy_object`][s3_copy_object] operation, only the empty tag-set is
+#' supported. Any requests that attempt to write non-empty tags into
+#' directory buckets will receive a `501 Not Implemented` status code. When
+#' the destination bucket is a directory bucket, you will receive a
+#' `501 Not Implemented` response in any of the following situations:
+#' 
+#' -   When you attempt to `COPY` the tag-set from an S3 source object that
+#'     has non-empty tags.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a source object and set
+#'     a non-empty value to `x-amz-tagging`.
+#' 
+#' -   When you don't set the `x-amz-tagging-directive` header and the
+#'     source object has non-empty tags. This is because the default value
+#'     of `x-amz-tagging-directive` is `COPY`.
+#' 
+#' Because only the empty tag-set is supported for directory buckets in a
+#' [`copy_object`][s3_copy_object] operation, the following situations are
+#' allowed:
+#' 
+#' -   When you attempt to `COPY` the tag-set from a directory bucket
+#'     source object that has no tags to a general purpose bucket. It
+#'     copies an empty tag-set to the destination object.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a directory bucket
+#'     source object and set the `x-amz-tagging` value of the directory
+#'     bucket destination object to empty.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a general purpose
+#'     bucket source object that has non-empty tags and set the
+#'     `x-amz-tagging` value of the directory bucket destination object to
+#'     empty.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a directory bucket
+#'     source object and don't set the `x-amz-tagging` value of the
+#'     directory bucket destination object. This is because the default
+#'     value of `x-amz-tagging` is the empty value.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
 #' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
+#' Unrecognized or unsupported values won’t write a destination object and
+#' will receive a `400 Bad Request` response.
+#' 
+#' Amazon S3 automatically encrypts all new objects that are copied to an
+#' S3 bucket. When copying an object, if you don't specify encryption
+#' information in your copy request, the encryption setting of the target
+#' object is set to the default encryption configuration of the destination
+#' bucket. By default, all buckets have a base level of encryption
+#' configuration that uses server-side encryption with Amazon S3 managed
+#' keys (SSE-S3). If the destination bucket has a default encryption
+#' configuration that uses server-side encryption with Key Management
+#' Service (KMS) keys (SSE-KMS), dual-layer server-side encryption with
+#' Amazon Web Services KMS keys (DSSE-KMS), or server-side encryption with
+#' customer-provided encryption keys (SSE-C), Amazon S3 uses the
+#' corresponding KMS key, or a customer-provided key to encrypt the target
+#' object copy.
+#' 
+#' When you perform a [`copy_object`][s3_copy_object] operation, if you
+#' want to use a different type of encryption setting for the target
+#' object, you can specify appropriate encryption-related headers to
+#' encrypt the target object with an Amazon S3 managed key, a KMS key, or a
+#' customer-provided key. If the encryption setting in your request is
+#' different from the default encryption configuration of the destination
+#' bucket, the encryption setting in your request takes precedence.
+#' 
+#' With server-side encryption, Amazon S3 encrypts your data as it writes
+#' your data to disks in its data centers and decrypts the data when you
+#' access it. For more information about server-side encryption, see [Using
+#' Server-Side
+#' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' For directory buckets, only server-side encryption with Amazon S3
+#' managed keys (SSE-S3) (`AES256`) is supported.
 #' @param StorageClass If the `x-amz-storage-class` header is not used, the copied object will
-#' be stored in the STANDARD Storage Class by default. The STANDARD storage
-#' class provides high durability and high availability. Depending on
-#' performance needs, you can specify a different Storage Class. Amazon S3
-#' on Outposts only uses the OUTPOSTS Storage Class. For more information,
-#' see [Storage
+#' be stored in the `STANDARD` Storage Class by default. The `STANDARD`
+#' storage class provides high durability and high availability. Depending
+#' on performance needs, you can specify a different Storage Class.
+#' 
+#' -   **Directory buckets** - For directory buckets, only the S3 Express
+#'     One Zone storage class is supported to store newly created objects.
+#'     Unsupported storage class values won't write a destination object
+#'     and will respond with the HTTP status code `400 Bad Request`.
+#' 
+#' -   **Amazon S3 on Outposts** - S3 on Outposts only uses the `OUTPOSTS`
+#'     Storage Class.
+#' 
+#' You can use the [`copy_object`][s3_copy_object] action to change the
+#' storage class of an object that is already stored in Amazon S3 by using
+#' the `x-amz-storage-class` header. For more information, see [Storage
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' in the *Amazon S3 User Guide*.
-#' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
-#' object to another object in the same bucket or to an external URL.
-#' Amazon S3 stores the value of this header in the object metadata. This
-#' value is unique to each object and is not copied when using the
-#' `x-amz-metadata-directive` header. Instead, you may opt to provide this
-#' header in combination with the directive.
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
-#' example, AES256).
+#' 
+#' Before using an object as a source object for the copy operation, you
+#' must restore a copy of it if it meets any of the following conditions:
+#' 
+#' -   The storage class of the source object is `GLACIER` or
+#'     `DEEP_ARCHIVE`.
+#' 
+#' -   The storage class of the source object is `INTELLIGENT_TIERING` and
+#'     it's [S3 Intelligent-Tiering access
+#'     tier](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html#intel-tiering-tier-definition)
+#'     is `Archive Access` or `Deep Archive Access`.
+#' 
+#' For more information, see [`restore_object`][s3_restore_object] and
+#' [Copying
+#' Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/copy-object.html)
+#' in the *Amazon S3 User Guide*.
+#' @param WebsiteRedirectLocation If the destination bucket is configured as a website, redirects requests
+#' for this object copy to another object in the same bucket or to an
+#' external URL. Amazon S3 stores the value of this header in the object
+#' metadata. This value is unique to each object and is not copied when
+#' using the `x-amz-metadata-directive` header. Instead, you may opt to
+#' provide this header in combination with the `x-amz-metadata-directive`
+#' header.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
+#' `AES256`).
+#' 
+#' When you perform a [`copy_object`][s3_copy_object] operation, if you
+#' want to use a different type of encryption setting for the target
+#' object, you can specify appropriate encryption-related headers to
+#' encrypt the target object with an Amazon S3 managed key, a KMS key, or a
+#' customer-provided key. If the encryption setting in your request is
+#' different from the default encryption configuration of the destination
+#' bucket, the encryption setting in your request takes precedence.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
-#' discarded; Amazon S3 does not store the encryption key. The key must be
+#' discarded. Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
 #' `x-amz-server-side-encryption-customer-algorithm` header.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param SSEKMSKeyId Specifies the KMS ID (Key ID, Key ARN, or Key Alias) to use for object
 #' encryption. All GET and PUT requests for an object protected by KMS will
 #' fail if they're not made via SSL or using SigV4. For information about
@@ -295,38 +600,128 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
-#' string holding JSON with the encryption context key-value pairs.
+#' string holding JSON with the encryption context key-value pairs. This
+#' value must be explicitly added to specify encryption context for
+#' [`copy_object`][s3_copy_object] requests.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
 #' encryption with server-side encryption using Key Management Service
-#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
-#' use an S3 Bucket Key for object encryption with SSE-KMS.
+#' (KMS) keys (SSE-KMS). If a target object uses SSE-KMS, you can enable an
+#' S3 Bucket Key for the object.
 #' 
-#' Specifying this header with a COPY action doesn’t affect bucket-level
-#' settings for S3 Bucket Key.
+#' Setting this header to `true` causes Amazon S3 to use an S3 Bucket Key
+#' for object encryption with SSE-KMS. Specifying this header with a COPY
+#' action doesn’t affect bucket-level settings for S3 Bucket Key.
+#' 
+#' For more information, see [Amazon S3 Bucket
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param CopySourceSSECustomerAlgorithm Specifies the algorithm to use when decrypting the source object (for
-#' example, AES256).
+#' example, `AES256`).
+#' 
+#' If the source object for the copy is stored in Amazon S3 using SSE-C,
+#' you must provide the necessary encryption information in your request so
+#' that Amazon S3 can decrypt the object for copying.
+#' 
+#' This functionality is not supported when the source object is in a
+#' directory bucket.
 #' @param CopySourceSSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use to
 #' decrypt the source object. The encryption key provided in this header
-#' must be one that was used when the source object was created.
+#' must be the same one that was used when the source object was created.
+#' 
+#' If the source object for the copy is stored in Amazon S3 using SSE-C,
+#' you must provide the necessary encryption information in your request so
+#' that Amazon S3 can decrypt the object for copying.
+#' 
+#' This functionality is not supported when the source object is in a
+#' directory bucket.
 #' @param CopySourceSSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' If the source object for the copy is stored in Amazon S3 using SSE-C,
+#' you must provide the necessary encryption information in your request so
+#' that Amazon S3 can decrypt the object for copying.
+#' 
+#' This functionality is not supported when the source object is in a
+#' directory bucket.
 #' @param RequestPayer 
-#' @param Tagging The tag-set for the object destination object this value must be used in
-#' conjunction with the `TaggingDirective`. The tag-set must be encoded as
-#' URL Query parameters.
-#' @param ObjectLockMode The Object Lock mode that you want to apply to the copied object.
-#' @param ObjectLockRetainUntilDate The date and time when you want the copied object's Object Lock to
+#' @param Tagging The tag-set for the object copy in the destination bucket. This value
+#' must be used in conjunction with the `x-amz-tagging-directive` if you
+#' choose `REPLACE` for the `x-amz-tagging-directive`. If you choose `COPY`
+#' for the `x-amz-tagging-directive`, you don't need to set the
+#' `x-amz-tagging` header, because the tag-set will be copied from the
+#' source object directly. The tag-set must be encoded as URL Query
+#' parameters.
+#' 
+#' The default value is the empty value.
+#' 
+#' **Directory buckets** - For directory buckets in a
+#' [`copy_object`][s3_copy_object] operation, only the empty tag-set is
+#' supported. Any requests that attempt to write non-empty tags into
+#' directory buckets will receive a `501 Not Implemented` status code. When
+#' the destination bucket is a directory bucket, you will receive a
+#' `501 Not Implemented` response in any of the following situations:
+#' 
+#' -   When you attempt to `COPY` the tag-set from an S3 source object that
+#'     has non-empty tags.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a source object and set
+#'     a non-empty value to `x-amz-tagging`.
+#' 
+#' -   When you don't set the `x-amz-tagging-directive` header and the
+#'     source object has non-empty tags. This is because the default value
+#'     of `x-amz-tagging-directive` is `COPY`.
+#' 
+#' Because only the empty tag-set is supported for directory buckets in a
+#' [`copy_object`][s3_copy_object] operation, the following situations are
+#' allowed:
+#' 
+#' -   When you attempt to `COPY` the tag-set from a directory bucket
+#'     source object that has no tags to a general purpose bucket. It
+#'     copies an empty tag-set to the destination object.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a directory bucket
+#'     source object and set the `x-amz-tagging` value of the directory
+#'     bucket destination object to empty.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a general purpose
+#'     bucket source object that has non-empty tags and set the
+#'     `x-amz-tagging` value of the directory bucket destination object to
+#'     empty.
+#' 
+#' -   When you attempt to `REPLACE` the tag-set of a directory bucket
+#'     source object and don't set the `x-amz-tagging` value of the
+#'     directory bucket destination object. This is because the default
+#'     value of `x-amz-tagging` is the empty value.
+#' @param ObjectLockMode The Object Lock mode that you want to apply to the object copy.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ObjectLockRetainUntilDate The date and time when you want the Object Lock of the object copy to
 #' expire.
-#' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a legal hold to the copied object.
-#' @param ExpectedBucketOwner The account ID of the expected destination bucket owner. If the
-#' destination bucket is owned by a different account, the request fails
-#' with the HTTP status code `403 Forbidden` (access denied).
-#' @param ExpectedSourceBucketOwner The account ID of the expected source bucket owner. If the source bucket
-#' is owned by a different account, the request fails with the HTTP status
-#' code `403 Forbidden` (access denied).
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a legal hold to the object copy.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected destination bucket owner. If the account
+#' ID that you provide does not match the actual owner of the destination
+#' bucket, the request fails with the HTTP status code `403 Forbidden`
+#' (access denied).
+#' @param ExpectedSourceBucketOwner The account ID of the expected source bucket owner. If the account ID
+#' that you provide does not match the actual owner of the source bucket,
+#' the request fails with the HTTP status code `403 Forbidden` (access
+#' denied).
 #'
 #' @keywords internal
 #'
@@ -348,27 +743,57 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 }
 .s3$operations$copy_object <- s3_copy_object
 
-#' Creates a new S3 bucket
+#' This action creates an Amazon S3 bucket
 #'
 #' @description
-#' Creates a new S3 bucket. To create a bucket, you must register with Amazon S3 and have a valid Amazon Web Services Access Key ID to authenticate requests. Anonymous requests are never allowed to create buckets. By creating the bucket, you become the bucket owner.
+#' This action creates an Amazon S3 bucket. To create an Amazon S3 on Outposts bucket, see [`create_bucket`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_create_bucket/](https://www.paws-r-sdk.com/docs/s3_create_bucket/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the bucket.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param Bucket &#91;required&#93; The name of the bucket to create.
+#' 
+#' **General purpose buckets** - For information about bucket naming
+#' restrictions, see [Bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Availability Zone. Bucket names must also
+#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param CreateBucketConfiguration The configuration information for the bucket.
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
 #' the bucket.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param GrantRead Allows grantee to list the objects in the bucket.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param GrantReadACP Allows grantee to read the bucket ACL.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param GrantWrite Allows grantee to create new objects in the bucket.
 #' 
 #' For the bucket and object owners of existing objects, also allows
 #' deletions and overwrites of those objects.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable bucket.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockEnabledForBucket Specifies whether you want S3 Object Lock to be enabled for the new
 #' bucket.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectOwnership 
 #'
 #' @keywords internal
@@ -394,17 +819,48 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' This action initiates a multipart upload and returns an upload ID
 #'
 #' @description
-#' This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see [`upload_part`][s3_upload_part]). You also include this upload ID in the final request to either complete or abort the multipart upload request.
+#' This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see [`upload_part`][s3_upload_part]). You also include this upload ID in the final request to either complete or abort the multipart upload request. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/](https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/) for full documentation.
 #'
-#' @param ACL The canned ACL to apply to the object.
+#' @param ACL The canned ACL to apply to the object. Amazon S3 supports a set of
+#' predefined ACLs, known as *canned ACLs*. Each canned ACL has a
+#' predefined set of grantees and permissions. For more information, see
+#' [Canned
+#' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL)
+#' in the *Amazon S3 User Guide*.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
-#' @param Bucket &#91;required&#93; The name of the bucket to which to initiate the upload
+#' By default, all objects are private. Only the owner has full access
+#' control. When uploading an object, you can grant access permissions to
+#' individual Amazon Web Services accounts or to predefined groups defined
+#' by Amazon S3. These permissions are then added to the access control
+#' list (ACL) on the new object. For more information, see [Using
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
+#' One way to grant the permissions using the request headers is to specify
+#' a canned ACL with the `x-amz-acl` request header.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
+#' @param Bucket &#91;required&#93; The name of the bucket where the multipart upload is initiated and where
+#' the object is uploaded.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -412,9 +868,12 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -427,57 +886,281 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param ContentEncoding Specifies what content encodings have been applied to the object and
 #' thus what decoding mechanisms must be applied to obtain the media-type
 #' referenced by the Content-Type header field.
-#' @param ContentLanguage The language the content is in.
+#' 
+#' For directory buckets, only the `aws-chunked` value is supported in this
+#' header field.
+#' @param ContentLanguage The language that the content is in.
 #' @param ContentType A standard MIME type describing the format of the object data.
 #' @param Expires The date and time at which the object is no longer cacheable.
-#' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
-#' object.
+#' @param GrantFullControl Specify access permissions explicitly to give the grantee READ,
+#' READ_ACP, and WRITE_ACP permissions on the object.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
-#' @param GrantRead Allows grantee to read the object data and its metadata.
+#' By default, all objects are private. Only the owner has full access
+#' control. When uploading an object, you can use this header to explicitly
+#' grant access permissions to specific Amazon Web Services accounts or
+#' groups. This header maps to specific permissions that Amazon S3 supports
+#' in an ACL. For more information, see [Access Control List (ACL)
+#' Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
+#' in the *Amazon S3 User Guide*.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
-#' @param GrantReadACP Allows grantee to read the object ACL.
+#' You specify each grantee as a type=value pair, where the type is one of
+#' the following:
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
-#' @param GrantWriteACP Allows grantee to write the ACL for the applicable object.
+#' -   `id` – if the value specified is the canonical user ID of an Amazon
+#'     Web Services account
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   `uri` – if you are granting permissions to a predefined group
+#' 
+#' -   `emailAddress` – if the value specified is the email address of an
+#'     Amazon Web Services account
+#' 
+#'     Using email addresses to specify a grantee is only supported in the
+#'     following Amazon Web Services Regions:
+#' 
+#'     -   US East (N. Virginia)
+#' 
+#'     -   US West (N. California)
+#' 
+#'     -   US West (Oregon)
+#' 
+#'     -   Asia Pacific (Singapore)
+#' 
+#'     -   Asia Pacific (Sydney)
+#' 
+#'     -   Asia Pacific (Tokyo)
+#' 
+#'     -   Europe (Ireland)
+#' 
+#'     -   South America (São Paulo)
+#' 
+#'     For a list of all the Amazon S3 supported Regions and endpoints, see
+#'     [Regions and
+#'     Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
+#'     in the Amazon Web Services General Reference.
+#' 
+#' For example, the following `x-amz-grant-read` header grants the Amazon
+#' Web Services accounts identified by account IDs permissions to read
+#' object data and its metadata:
+#' 
+#' `x-amz-grant-read: id="11112222333", id="444455556666" `
+#' 
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
+#' @param GrantRead Specify access permissions explicitly to allow grantee to read the
+#' object data and its metadata.
+#' 
+#' By default, all objects are private. Only the owner has full access
+#' control. When uploading an object, you can use this header to explicitly
+#' grant access permissions to specific Amazon Web Services accounts or
+#' groups. This header maps to specific permissions that Amazon S3 supports
+#' in an ACL. For more information, see [Access Control List (ACL)
+#' Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' You specify each grantee as a type=value pair, where the type is one of
+#' the following:
+#' 
+#' -   `id` – if the value specified is the canonical user ID of an Amazon
+#'     Web Services account
+#' 
+#' -   `uri` – if you are granting permissions to a predefined group
+#' 
+#' -   `emailAddress` – if the value specified is the email address of an
+#'     Amazon Web Services account
+#' 
+#'     Using email addresses to specify a grantee is only supported in the
+#'     following Amazon Web Services Regions:
+#' 
+#'     -   US East (N. Virginia)
+#' 
+#'     -   US West (N. California)
+#' 
+#'     -   US West (Oregon)
+#' 
+#'     -   Asia Pacific (Singapore)
+#' 
+#'     -   Asia Pacific (Sydney)
+#' 
+#'     -   Asia Pacific (Tokyo)
+#' 
+#'     -   Europe (Ireland)
+#' 
+#'     -   South America (São Paulo)
+#' 
+#'     For a list of all the Amazon S3 supported Regions and endpoints, see
+#'     [Regions and
+#'     Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
+#'     in the Amazon Web Services General Reference.
+#' 
+#' For example, the following `x-amz-grant-read` header grants the Amazon
+#' Web Services accounts identified by account IDs permissions to read
+#' object data and its metadata:
+#' 
+#' `x-amz-grant-read: id="11112222333", id="444455556666" `
+#' 
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
+#' @param GrantReadACP Specify access permissions explicitly to allows grantee to read the
+#' object ACL.
+#' 
+#' By default, all objects are private. Only the owner has full access
+#' control. When uploading an object, you can use this header to explicitly
+#' grant access permissions to specific Amazon Web Services accounts or
+#' groups. This header maps to specific permissions that Amazon S3 supports
+#' in an ACL. For more information, see [Access Control List (ACL)
+#' Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' You specify each grantee as a type=value pair, where the type is one of
+#' the following:
+#' 
+#' -   `id` – if the value specified is the canonical user ID of an Amazon
+#'     Web Services account
+#' 
+#' -   `uri` – if you are granting permissions to a predefined group
+#' 
+#' -   `emailAddress` – if the value specified is the email address of an
+#'     Amazon Web Services account
+#' 
+#'     Using email addresses to specify a grantee is only supported in the
+#'     following Amazon Web Services Regions:
+#' 
+#'     -   US East (N. Virginia)
+#' 
+#'     -   US West (N. California)
+#' 
+#'     -   US West (Oregon)
+#' 
+#'     -   Asia Pacific (Singapore)
+#' 
+#'     -   Asia Pacific (Sydney)
+#' 
+#'     -   Asia Pacific (Tokyo)
+#' 
+#'     -   Europe (Ireland)
+#' 
+#'     -   South America (São Paulo)
+#' 
+#'     For a list of all the Amazon S3 supported Regions and endpoints, see
+#'     [Regions and
+#'     Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
+#'     in the Amazon Web Services General Reference.
+#' 
+#' For example, the following `x-amz-grant-read` header grants the Amazon
+#' Web Services accounts identified by account IDs permissions to read
+#' object data and its metadata:
+#' 
+#' `x-amz-grant-read: id="11112222333", id="444455556666" `
+#' 
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
+#' @param GrantWriteACP Specify access permissions explicitly to allows grantee to allow grantee
+#' to write the ACL for the applicable object.
+#' 
+#' By default, all objects are private. Only the owner has full access
+#' control. When uploading an object, you can use this header to explicitly
+#' grant access permissions to specific Amazon Web Services accounts or
+#' groups. This header maps to specific permissions that Amazon S3 supports
+#' in an ACL. For more information, see [Access Control List (ACL)
+#' Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' You specify each grantee as a type=value pair, where the type is one of
+#' the following:
+#' 
+#' -   `id` – if the value specified is the canonical user ID of an Amazon
+#'     Web Services account
+#' 
+#' -   `uri` – if you are granting permissions to a predefined group
+#' 
+#' -   `emailAddress` – if the value specified is the email address of an
+#'     Amazon Web Services account
+#' 
+#'     Using email addresses to specify a grantee is only supported in the
+#'     following Amazon Web Services Regions:
+#' 
+#'     -   US East (N. Virginia)
+#' 
+#'     -   US West (N. California)
+#' 
+#'     -   US West (Oregon)
+#' 
+#'     -   Asia Pacific (Singapore)
+#' 
+#'     -   Asia Pacific (Sydney)
+#' 
+#'     -   Asia Pacific (Tokyo)
+#' 
+#'     -   Europe (Ireland)
+#' 
+#'     -   South America (São Paulo)
+#' 
+#'     For a list of all the Amazon S3 supported Regions and endpoints, see
+#'     [Regions and
+#'     Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
+#'     in the Amazon Web Services General Reference.
+#' 
+#' For example, the following `x-amz-grant-read` header grants the Amazon
+#' Web Services accounts identified by account IDs permissions to read
+#' object data and its metadata:
+#' 
+#' `x-amz-grant-read: id="11112222333", id="444455556666" `
+#' 
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param Key &#91;required&#93; Object key for which the multipart upload is to be initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
-#' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
+#' @param ServerSideEncryption The server-side encryption algorithm used when you store this object in
 #' Amazon S3 (for example, `AES256`, `aws:kms`).
+#' 
+#' For directory buckets, only server-side encryption with Amazon S3
+#' managed keys (SSE-S3) (`AES256`) is supported.
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
-#' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see [Storage
+#' different Storage Class. For more information, see [Storage
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' -   For directory buckets, only the S3 Express One Zone storage class is
+#'     supported to store newly created objects.
+#' 
+#' -   Amazon S3 on Outposts only uses the OUTPOSTS Storage Class.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata.
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
-#' example, AES256).
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
+#' AES256).
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
 #' `x-amz-server-side-encryption-customer-algorithm` header.
-#' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
-#' 1321. Amazon S3 uses this header for a message integrity check to ensure
-#' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the customer-provided encryption key
+#' according to RFC 1321. Amazon S3 uses this header for a message
+#' integrity check to ensure that the encryption key was transmitted
+#' without error.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSEKMSKeyId Specifies the ID (Key ID, Key ARN, or Key Alias) of the symmetric
-#' encryption customer managed key to use for object encryption. All GET
-#' and PUT requests for an object protected by KMS will fail if they're not
-#' made via SSL or using SigV4. For information about configuring any of
-#' the officially supported Amazon Web Services SDKs and Amazon Web
-#' Services CLI, see [Specifying the Signature Version in Request
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
-#' in the *Amazon S3 User Guide*.
+#' encryption customer managed key to use for object encryption.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
 #' encryption with server-side encryption using Key Management Service
 #' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
@@ -485,18 +1168,28 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #' Specifying this header with an object action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
 #' parameters.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockMode Specifies the Object Lock mode that you want to apply to the uploaded
 #' object.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockRetainUntilDate Specifies the date and time when you want the Object Lock to expire.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a legal hold to the uploaded object.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
-#' @param ChecksumAlgorithm Indicates the algorithm you want Amazon S3 to use to create the checksum
-#' for the object. For more information, see [Checking object
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
+#' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
+#' checksum for the object. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #'
@@ -520,6 +1213,47 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 }
 .s3$operations$create_multipart_upload <- s3_create_multipart_upload
 
+#' Creates a session that establishes temporary security credentials to
+#' support fast authentication and authorization for the Zonal endpoint
+#' APIs on directory buckets
+#'
+#' @description
+#' Creates a session that establishes temporary security credentials to support fast authentication and authorization for the Zonal endpoint APIs on directory buckets. For more information about Zonal endpoint APIs that include the Availability Zone in the request endpoint, see [S3 Express One Zone APIs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-APIs.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_create_session/](https://www.paws-r-sdk.com/docs/s3_create_session/) for full documentation.
+#'
+#' @param SessionMode Specifies the mode of the session that will be created, either
+#' `ReadWrite` or `ReadOnly`. By default, a `ReadWrite` session is created.
+#' A `ReadWrite` session is capable of executing all the Zonal endpoint
+#' APIs on a directory bucket. A `ReadOnly` session is constrained to
+#' execute the following Zonal endpoint APIs:
+#' [`get_object`][s3_get_object], [`head_object`][s3_head_object],
+#' [`list_objects_v2`][s3_list_objects_v2],
+#' [`get_object_attributes`][s3_get_object_attributes],
+#' [`list_parts`][s3_list_parts], and
+#' [`list_multipart_uploads`][s3_list_multipart_uploads].
+#' @param Bucket &#91;required&#93; The name of the bucket that you create a session for.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_create_session
+s3_create_session <- function(SessionMode = NULL, Bucket) {
+  op <- new_operation(
+    name = "CreateSession",
+    http_method = "GET",
+    http_path = "/{Bucket}?session",
+    paginator = list()
+  )
+  input <- .s3$create_session_input(SessionMode = SessionMode, Bucket = Bucket)
+  output <- .s3$create_session_output()
+  config <- get_config()
+  svc <- .s3$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$create_session <- s3_create_session
+
 #' Deletes the S3 bucket
 #'
 #' @description
@@ -528,9 +1262,24 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket/](https://www.paws-r-sdk.com/docs/s3_delete_bucket/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket being deleted.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Availability Zone. Bucket names must also
+#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @keywords internal
 #'
@@ -552,19 +1301,18 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket <- s3_delete_bucket
 
-#' Deletes an analytics configuration for the bucket (specified by the
-#' analytics configuration ID)
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_analytics_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_analytics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which an analytics configuration is deleted.
 #' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -586,17 +1334,17 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 }
 .s3$operations$delete_bucket_analytics_configuration <- s3_delete_bucket_analytics_configuration
 
-#' Deletes the cors configuration information set for the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the `cors` configuration information set for the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_cors/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_cors/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket whose `cors` configuration is being deleted.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -618,20 +1366,18 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_cors <- s3_delete_bucket_cors
 
-#' This implementation of the DELETE action resets the default encryption
-#' for the bucket as server-side encryption with Amazon S3 managed keys
-#' (SSE-S3)
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_encryption/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the server-side encryption
 #' configuration to delete.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -653,11 +1399,10 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_encryption <- s3_delete_bucket_encryption
 
-#' Deletes the S3 Intelligent-Tiering configuration from the specified
-#' bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the S3 Intelligent-Tiering configuration from the specified bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_intelligent_tiering_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_intelligent_tiering_configuration/) for full documentation.
 #'
@@ -685,19 +1430,18 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 }
 .s3$operations$delete_bucket_intelligent_tiering_configuration <- s3_delete_bucket_intelligent_tiering_configuration
 
-#' Deletes an inventory configuration (identified by the inventory ID) from
-#' the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes an inventory configuration (identified by the inventory ID) from the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_inventory_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_inventory_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configuration to delete.
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -719,17 +1463,17 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 }
 .s3$operations$delete_bucket_inventory_configuration <- s3_delete_bucket_inventory_configuration
 
-#' Deletes the lifecycle configuration from the specified bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the lifecycle configuration from the specified bucket. Amazon S3 removes all the lifecycle configuration rules in the lifecycle subresource associated with the bucket. Your objects never expire, and Amazon S3 no longer automatically deletes any objects on the basis of rules contained in the deleted lifecycle configuration.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_lifecycle/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name of the lifecycle to delete.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -751,11 +1495,10 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_lifecycle <- s3_delete_bucket_lifecycle
 
-#' Deletes a metrics configuration for the Amazon CloudWatch request
-#' metrics (specified by the metrics configuration ID) from the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_metrics_configuration/) for full documentation.
 #'
@@ -763,9 +1506,9 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
 #' character limit and can only contain letters, numbers, periods, dashes,
 #' and underscores.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -787,17 +1530,17 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 }
 .s3$operations$delete_bucket_metrics_configuration <- s3_delete_bucket_metrics_configuration
 
-#' Removes OwnershipControls for an Amazon S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Removes `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_ownership_controls/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_ownership_controls/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The Amazon S3 bucket whose `OwnershipControls` you want to delete.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -819,18 +1562,32 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 }
 .s3$operations$delete_bucket_ownership_controls <- s3_delete_bucket_ownership_controls
 
-#' This implementation of the DELETE action uses the policy subresource to
-#' delete the policy of a specified bucket
+#' Deletes the policy of a specified bucket
 #'
 #' @description
-#' This implementation of the DELETE action uses the policy subresource to delete the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the [`delete_bucket_policy`][s3_delete_bucket_policy] permissions on the specified bucket and belong to the bucket owner's account to use this operation.
+#' Deletes the policy of a specified bucket.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_policy/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_policy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Availability Zone. Bucket names must also
+#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @keywords internal
 #'
@@ -852,17 +1609,17 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_policy <- s3_delete_bucket_policy
 
-#' Deletes the replication configuration from the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the replication configuration from the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_replication/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -884,17 +1641,17 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_replication <- s3_delete_bucket_replication
 
-#' Deletes the tags from the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Deletes the tags from the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket that has the tag set to be removed.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -916,17 +1673,17 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_tagging <- s3_delete_bucket_tagging
 
-#' This action removes the website configuration for a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This action removes the website configuration for a bucket. Amazon S3 returns a `200 OK` response upon successfully deleting a website configuration on the specified bucket. You will get a `200 OK` response if the website configuration you are trying to delete does not exist on the bucket. Amazon S3 returns a `404` response if the bucket specified in the request does not exist.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_website/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_website/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which you want to remove the website configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -948,18 +1705,31 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_website <- s3_delete_bucket_website
 
-#' Removes the null version (if there is one) of an object and inserts a
-#' delete marker, which becomes the latest version of the object
+#' Removes an object from a bucket
 #'
 #' @description
-#' Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects but will still respond that the command was successful.
+#' Removes an object from a bucket. The behavior depends on the bucket's versioning state:
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_object/](https://www.paws-r-sdk.com/docs/s3_delete_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name of the bucket containing the object.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -967,9 +1737,12 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -982,14 +1755,21 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' and the value that is displayed on your authentication device. Required
 #' to permanently delete a versioned object if versioning is configured
 #' with MFA delete enabled.
-#' @param VersionId VersionId used to reference a specific version of the object.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param VersionId Version ID used to reference a specific version of the object.
+#' 
+#' For directory buckets in this API operation, only the `null` value of
+#' the version ID is supported.
 #' @param RequestPayer 
 #' @param BypassGovernanceRetention Indicates whether S3 Object Lock should bypass Governance-mode
 #' restrictions to process this operation. To use this header, you must
 #' have the `s3:BypassGovernanceRetention` permission.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1011,17 +1791,20 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 }
 .s3$operations$delete_object <- s3_delete_object
 
-#' Removes the entire tag set from the specified object
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Removes the entire tag set from the specified object. For more information about managing object tags, see [Object Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_object_tagging/](https://www.paws-r-sdk.com/docs/s3_delete_object_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the objects from which to remove the tags.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -1029,9 +1812,9 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -1042,9 +1825,9 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
 #' all tags.
 #' @param VersionId The versionId of the object that the tag-set will be removed from.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1066,18 +1849,32 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 }
 .s3$operations$delete_object_tagging <- s3_delete_object_tagging
 
-#' This action enables you to delete multiple objects from a bucket using a
-#' single HTTP request
+#' This operation enables you to delete multiple objects from a bucket
+#' using a single HTTP request
 #'
 #' @description
-#' This action enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this action provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
+#' This operation enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this operation provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_objects/](https://www.paws-r-sdk.com/docs/s3_delete_objects/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the objects to delete.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -1085,9 +1882,12 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -1100,28 +1900,58 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' and the value that is displayed on your authentication device. Required
 #' to permanently delete a versioned object if versioning is configured
 #' with MFA delete enabled.
+#' 
+#' When performing the [`delete_objects`][s3_delete_objects] operation on
+#' an MFA delete enabled bucket, which attempts to delete the specified
+#' versioned objects, you must include an MFA token. If you don't provide
+#' an MFA token, the entire request will fail, even if there are
+#' non-versioned objects that you are trying to delete. If you provide an
+#' invalid token, whether there are versioned object keys in the request or
+#' not, the entire Multi-Object Delete request will fail. For information
+#' about MFA Delete, see [MFA
+#' Delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html#MultiFactorAuthenticationDelete)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
 #' @param BypassGovernanceRetention Specifies whether you want to delete this object even if it has a
 #' Governance-type Object Lock in place. To use this header, you must have
 #' the `s3:BypassGovernanceRetention` permission.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
-#' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see [Checking object
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum-algorithm ` or `x-amz-trailer`
+#' header sent. Otherwise, Amazon S3 fails the request with the HTTP status
+#' code `400 Bad Request`.
+#' 
+#' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
+#' the supported algorithm from the following list:
+#' 
+#' -   CRC32
+#' 
+#' -   CRC32C
+#' 
+#' -   SHA1
+#' 
+#' -   SHA256
+#' 
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
+#' If the individual checksum value you provide through
+#' `x-amz-checksum-algorithm ` doesn't match the checksum algorithm you set
+#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 ignores any provided
+#' `ChecksumAlgorithm` parameter and uses the checksum algorithm that
+#' matches the provided value in `x-amz-checksum-algorithm `.
+#' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' 
-#' This checksum algorithm must be the same for all parts and it match the
-#' checksum value supplied in the
-#' [`create_multipart_upload`][s3_create_multipart_upload] request.
 #'
 #' @keywords internal
 #'
@@ -1143,18 +1973,18 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 }
 .s3$operations$delete_objects <- s3_delete_objects
 
-#' Removes the PublicAccessBlock configuration for an Amazon S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about permissions, see [Permissions Related to Bucket Subresource Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources) and [Managing Access Permissions to Your Amazon S3 Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_delete_public_access_block/](https://www.paws-r-sdk.com/docs/s3_delete_public_access_block/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The Amazon S3 bucket whose `PublicAccessBlock` configuration you want to
 #' delete.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1176,20 +2006,18 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_public_access_block <- s3_delete_public_access_block
 
-#' This implementation of the GET action uses the accelerate subresource to
-#' return the Transfer Acceleration state of a bucket, which is either
-#' Enabled or Suspended
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This implementation of the GET action uses the `accelerate` subresource to return the Transfer Acceleration state of a bucket, which is either `Enabled` or `Suspended`. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to and from Amazon S3.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the accelerate configuration is
 #' retrieved.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param RequestPayer 
 #'
 #' @keywords internal
@@ -1212,28 +2040,28 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 }
 .s3$operations$get_bucket_accelerate_configuration <- s3_get_bucket_accelerate_configuration
 
-#' This implementation of the GET action uses the acl subresource to return
-#' the access control list (ACL) of a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This implementation of the `GET` action uses the `acl` subresource to return the access control list (ACL) of a bucket. To use `GET` to return the ACL of the bucket, you must have `READ_ACP` access to the bucket. If `READ_ACP` permission is granted to the anonymous user, you can return the ACL of the bucket without using an authorization header.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_acl/](https://www.paws-r-sdk.com/docs/s3_get_bucket_acl/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the S3 bucket whose ACL is being requested.
 #' 
-#' To use this API operation against an access point, provide the alias of
-#' the access point in place of the bucket name.
+#' When you use this API operation with an access point, provide the alias
+#' of the access point in place of the bucket name.
 #' 
-#' To use this API operation against an Object Lambda access point, provide
-#' the alias of the Object Lambda access point in place of the bucket name.
-#' If the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' When you use this API operation with an Object Lambda access point,
+#' provide the alias of the Object Lambda access point in place of the
+#' bucket name. If the Object Lambda access point alias in a request is not
+#' valid, the error code `InvalidAccessPointAliasError` is returned. For
+#' more information about `InvalidAccessPointAliasError`, see [List of
+#' Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1255,20 +2083,19 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_acl <- s3_get_bucket_acl
 
-#' This implementation of the GET action returns an analytics configuration
-#' (identified by the analytics configuration ID) from the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_analytics_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_analytics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which an analytics configuration is
 #' retrieved.
 #' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1290,28 +2117,28 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 }
 .s3$operations$get_bucket_analytics_configuration <- s3_get_bucket_analytics_configuration
 
-#' Returns the Cross-Origin Resource Sharing (CORS) configuration
-#' information set for the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the Cross-Origin Resource Sharing (CORS) configuration information set for the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_cors/](https://www.paws-r-sdk.com/docs/s3_get_bucket_cors/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the cors configuration.
 #' 
-#' To use this API operation against an access point, provide the alias of
-#' the access point in place of the bucket name.
+#' When you use this API operation with an access point, provide the alias
+#' of the access point in place of the bucket name.
 #' 
-#' To use this API operation against an Object Lambda access point, provide
-#' the alias of the Object Lambda access point in place of the bucket name.
-#' If the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' When you use this API operation with an Object Lambda access point,
+#' provide the alias of the Object Lambda access point in place of the
+#' bucket name. If the Object Lambda access point alias in a request is not
+#' valid, the error code `InvalidAccessPointAliasError` is returned. For
+#' more information about `InvalidAccessPointAliasError`, see [List of
+#' Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1333,18 +2160,18 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_cors <- s3_get_bucket_cors
 
-#' Returns the default encryption configuration for an Amazon S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which the server-side encryption
 #' configuration is retrieved.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1366,10 +2193,10 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_encryption <- s3_get_bucket_encryption
 
-#' Gets the S3 Intelligent-Tiering configuration from the specified bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets the S3 Intelligent-Tiering configuration from the specified bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_intelligent_tiering_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_intelligent_tiering_configuration/) for full documentation.
 #'
@@ -1397,20 +2224,19 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 }
 .s3$operations$get_bucket_intelligent_tiering_configuration <- s3_get_bucket_intelligent_tiering_configuration
 
-#' Returns an inventory configuration (identified by the inventory
-#' configuration ID) from the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns an inventory configuration (identified by the inventory configuration ID) from the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_inventory_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_inventory_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configuration to
 #' retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1440,9 +2266,9 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the lifecycle information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1464,19 +2290,17 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_lifecycle <- s3_get_bucket_lifecycle
 
-#' Bucket lifecycle configuration now supports specifying a lifecycle rule
-#' using an object key name prefix, one or more object tags, or a
-#' combination of both
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both. Accordingly, this section describes the latest API. The response describes the new filter element that you can use to specify a filter to select a subset of objects to which the rule applies. If you are using a previous version of the lifecycle configuration, it still works. For the earlier action, see [`get_bucket_lifecycle`][s3_get_bucket_lifecycle].
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the lifecycle information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1498,27 +2322,28 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 }
 .s3$operations$get_bucket_lifecycle_configuration <- s3_get_bucket_lifecycle_configuration
 
-#' Returns the Region the bucket resides in
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the Region the bucket resides in. You set the bucket's Region using the `LocationConstraint` request parameter in a [`create_bucket`][s3_create_bucket] request. For more information, see [`create_bucket`][s3_create_bucket].
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_location/](https://www.paws-r-sdk.com/docs/s3_get_bucket_location/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the location.
 #' 
-#' To use this API operation against an access point, provide the alias of
-#' the access point in place of the bucket name.
+#' When you use this API operation with an access point, provide the alias
+#' of the access point in place of the bucket name.
 #' 
-#' To use this API operation against an Object Lambda access point, provide
-#' the alias of the Object Lambda access point in place of the bucket name.
-#' If the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' When you use this API operation with an Object Lambda access point,
+#' provide the alias of the Object Lambda access point in place of the
+#' bucket name. If the Object Lambda access point alias in a request is not
+#' valid, the error code `InvalidAccessPointAliasError` is returned. For
+#' more information about `InvalidAccessPointAliasError`, see [List of
+#' Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1540,18 +2365,17 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_location <- s3_get_bucket_location
 
-#' Returns the logging status of a bucket and the permissions users have to
-#' view and modify that status
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the logging status of a bucket and the permissions users have to view and modify that status.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_logging/](https://www.paws-r-sdk.com/docs/s3_get_bucket_logging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the logging information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1573,11 +2397,10 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_logging <- s3_get_bucket_logging
 
-#' Gets a metrics configuration (specified by the metrics configuration ID)
-#' from the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets a metrics configuration (specified by the metrics configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_metrics_configuration/) for full documentation.
 #'
@@ -1585,9 +2408,9 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
 #' character limit and can only contain letters, numbers, periods, dashes,
 #' and underscores.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1609,27 +2432,28 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 }
 .s3$operations$get_bucket_metrics_configuration <- s3_get_bucket_metrics_configuration
 
-#' No longer used, see GetBucketNotificationConfiguration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' No longer used, see [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration].
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_notification/](https://www.paws-r-sdk.com/docs/s3_get_bucket_notification/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the notification configuration.
 #' 
-#' To use this API operation against an access point, provide the alias of
-#' the access point in place of the bucket name.
+#' When you use this API operation with an access point, provide the alias
+#' of the access point in place of the bucket name.
 #' 
-#' To use this API operation against an Object Lambda access point, provide
-#' the alias of the Object Lambda access point in place of the bucket name.
-#' If the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' When you use this API operation with an Object Lambda access point,
+#' provide the alias of the Object Lambda access point in place of the
+#' bucket name. If the Object Lambda access point alias in a request is not
+#' valid, the error code `InvalidAccessPointAliasError` is returned. For
+#' more information about `InvalidAccessPointAliasError`, see [List of
+#' Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1651,27 +2475,28 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_notification <- s3_get_bucket_notification
 
-#' Returns the notification configuration of a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the notification configuration of a bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_notification_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_notification_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the notification configuration.
 #' 
-#' To use this API operation against an access point, provide the alias of
-#' the access point in place of the bucket name.
+#' When you use this API operation with an access point, provide the alias
+#' of the access point in place of the bucket name.
 #' 
-#' To use this API operation against an Object Lambda access point, provide
-#' the alias of the Object Lambda access point in place of the bucket name.
-#' If the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' When you use this API operation with an Object Lambda access point,
+#' provide the alias of the Object Lambda access point in place of the
+#' bucket name. If the Object Lambda access point alias in a request is not
+#' valid, the error code `InvalidAccessPointAliasError` is returned. For
+#' more information about `InvalidAccessPointAliasError`, see [List of
+#' Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1693,18 +2518,18 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 }
 .s3$operations$get_bucket_notification_configuration <- s3_get_bucket_notification_configuration
 
-#' Retrieves OwnershipControls for an Amazon S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Retrieves `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_ownership_controls/](https://www.paws-r-sdk.com/docs/s3_get_bucket_ownership_controls/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `OwnershipControls` you want to
 #' retrieve.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1729,24 +2554,44 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' Returns the policy of a specified bucket
 #'
 #' @description
-#' Returns the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the [`get_bucket_policy`][s3_get_bucket_policy] permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
+#' Returns the policy of a specified bucket.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_policy/](https://www.paws-r-sdk.com/docs/s3_get_bucket_policy/) for full documentation.
 #'
-#' @param Bucket &#91;required&#93; The bucket name for which to get the bucket policy.
+#' @param Bucket &#91;required&#93; The bucket name to get the bucket policy for.
 #' 
-#' To use this API operation against an access point, provide the alias of
-#' the access point in place of the bucket name.
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Availability Zone. Bucket names must also
+#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' 
-#' To use this API operation against an Object Lambda access point, provide
-#' the alias of the Object Lambda access point in place of the bucket name.
-#' If the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' **Access points** - When you use this API operation with an access
+#' point, provide the alias of the access point in place of the bucket
+#' name.
+#' 
+#' **Object Lambda access points** - When you use this API operation with
+#' an Object Lambda access point, provide the alias of the Object Lambda
+#' access point in place of the bucket name. If the Object Lambda access
+#' point alias in a request is not valid, the error code
+#' `InvalidAccessPointAliasError` is returned. For more information about
+#' `InvalidAccessPointAliasError`, see [List of Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @keywords internal
 #'
@@ -1768,19 +2613,18 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_policy <- s3_get_bucket_policy
 
-#' Retrieves the policy status for an Amazon S3 bucket, indicating whether
-#' the bucket is public
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the `s3:GetBucketPolicyStatus` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_policy_status/](https://www.paws-r-sdk.com/docs/s3_get_bucket_policy_status/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose policy status you want to
 #' retrieve.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1802,17 +2646,17 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_policy_status <- s3_get_bucket_policy_status
 
-#' Returns the replication configuration of a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the replication configuration of a bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_get_bucket_replication/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the replication information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1834,18 +2678,18 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_replication <- s3_get_bucket_replication
 
-#' Returns the request payment configuration of a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_request_payment/](https://www.paws-r-sdk.com/docs/s3_get_bucket_request_payment/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the payment request
 #' configuration
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1867,17 +2711,17 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_request_payment <- s3_get_bucket_request_payment
 
-#' Returns the tag set associated with the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the tag set associated with the bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_get_bucket_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the tagging information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1899,17 +2743,17 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_tagging <- s3_get_bucket_tagging
 
-#' Returns the versioning state of a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the versioning state of a bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3_get_bucket_versioning/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the versioning information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1931,17 +2775,17 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_versioning <- s3_get_bucket_versioning
 
-#' Returns the website configuration for a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_website/](https://www.paws-r-sdk.com/docs/s3_get_bucket_website/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the website configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -1963,17 +2807,31 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_website <- s3_get_bucket_website
 
-#' Retrieves objects from Amazon S3
+#' Retrieves an object from Amazon S3
 #'
 #' @description
-#' Retrieves objects from Amazon S3. To use `GET`, you must have `READ` access to the object. If you grant `READ` access to the anonymous user, you can return the object without using an authorization header.
+#' Retrieves an object from Amazon S3.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object/](https://www.paws-r-sdk.com/docs/s3_get_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -1981,12 +2839,18 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When using an Object Lambda access point the hostname takes the form
+#' **Object Lambda access points** - When you use this action with an
+#' Object Lambda access point, you must direct requests to the Object
+#' Lambda access point hostname. The Object Lambda access point hostname
+#' takes the form
 #' *AccessPointName*-*AccountId*.s3-object-lambda.*Region*.amazonaws.com.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -1995,44 +2859,156 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
-#' specified; otherwise, return a 412 (precondition failed) error.
+#' specified in this header; otherwise, return a `412 Precondition Failed`
+#' error.
+#' 
+#' If both of the `If-Match` and `If-Unmodified-Since` headers are present
+#' in the request as follows: `If-Match` condition evaluates to `true`,
+#' and; `If-Unmodified-Since` condition evaluates to `false`; then, S3
+#' returns `200 OK` and the data requested.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param IfModifiedSince Return the object only if it has been modified since the specified time;
-#' otherwise, return a 304 (not modified) error.
+#' otherwise, return a `304 Not Modified` error.
+#' 
+#' If both of the `If-None-Match` and `If-Modified-Since` headers are
+#' present in the request as follows:` If-None-Match` condition evaluates
+#' to `false`, and; `If-Modified-Since` condition evaluates to `true`;
+#' then, S3 returns `304 Not Modified` status code.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param IfNoneMatch Return the object only if its entity tag (ETag) is different from the
-#' one specified; otherwise, return a 304 (not modified) error.
+#' one specified in this header; otherwise, return a `304 Not Modified`
+#' error.
+#' 
+#' If both of the `If-None-Match` and `If-Modified-Since` headers are
+#' present in the request as follows:` If-None-Match` condition evaluates
+#' to `false`, and; `If-Modified-Since` condition evaluates to `true`;
+#' then, S3 returns `304 Not Modified` HTTP status code.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param IfUnmodifiedSince Return the object only if it has not been modified since the specified
-#' time; otherwise, return a 412 (precondition failed) error.
+#' time; otherwise, return a `412 Precondition Failed` error.
+#' 
+#' If both of the `If-Match` and `If-Unmodified-Since` headers are present
+#' in the request as follows: `If-Match` condition evaluates to `true`,
+#' and; `If-Unmodified-Since` condition evaluates to `false`; then, S3
+#' returns `200 OK` and the data requested.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param Key &#91;required&#93; Key of the object to get.
-#' @param Range Downloads the specified range bytes of an object. For more information
+#' @param Range Downloads the specified byte range of an object. For more information
 #' about the HTTP Range header, see
 #' <https://www.rfc-editor.org/rfc/rfc9110.html#name-range>.
 #' 
 #' Amazon S3 doesn't support retrieving multiple ranges of data per `GET`
 #' request.
 #' @param ResponseCacheControl Sets the `Cache-Control` header of the response.
-#' @param ResponseContentDisposition Sets the `Content-Disposition` header of the response
+#' @param ResponseContentDisposition Sets the `Content-Disposition` header of the response.
 #' @param ResponseContentEncoding Sets the `Content-Encoding` header of the response.
 #' @param ResponseContentLanguage Sets the `Content-Language` header of the response.
 #' @param ResponseContentType Sets the `Content-Type` header of the response.
 #' @param ResponseExpires Sets the `Expires` header of the response.
-#' @param VersionId VersionId used to reference a specific version of the object.
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when decrypting the object (for
-#' example, AES256).
-#' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 used to
-#' encrypt the data. This value is used to decrypt the object when
-#' recovering it and must match the one used when storing the data. The key
-#' must be appropriate for use with the algorithm specified in the
+#' @param VersionId Version ID used to reference a specific version of the object.
+#' 
+#' By default, the [`get_object`][s3_get_object] operation returns the
+#' current version of an object. To return a different version, use the
+#' `versionId` subresource.
+#' 
+#' -   If you include a `versionId` in your request header, you must have
+#'     the `s3:GetObjectVersion` permission to access a specific version of
+#'     an object. The `s3:GetObject` permission is not required in this
+#'     scenario.
+#' 
+#' -   If you request the current version of an object without a specific
+#'     `versionId` in the request header, only the `s3:GetObject`
+#'     permission is required. The `s3:GetObjectVersion` permission is not
+#'     required in this scenario.
+#' 
+#' -   **Directory buckets** - S3 Versioning isn't enabled and supported
+#'     for directory buckets. For this API operation, only the `null` value
+#'     of the version ID is supported by directory buckets. You can only
+#'     specify `null` to the `versionId` query parameter in the request.
+#' 
+#' For more information about versioning, see
+#' [`put_bucket_versioning`][s3_put_bucket_versioning].
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when decrypting the object (for example,
+#' `AES256`).
+#' 
+#' If you encrypt an object by using server-side encryption with
+#' customer-provided encryption keys (SSE-C) when you store the object in
+#' Amazon S3, then when you GET the object, you must use the following
+#' headers:
+#' 
+#' -   `x-amz-server-side-encryption-customer-algorithm`
+#' 
+#' -   `x-amz-server-side-encryption-customer-key`
+#' 
+#' -   `x-amz-server-side-encryption-customer-key-MD5`
+#' 
+#' For more information about SSE-C, see [Server-Side Encryption (Using
+#' Customer-Provided Encryption
+#' Keys)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param SSECustomerKey Specifies the customer-provided encryption key that you originally
+#' provided for Amazon S3 to encrypt the data before storing it. This value
+#' is used to decrypt the object when recovering it and must match the one
+#' used when storing the data. The key must be appropriate for use with the
+#' algorithm specified in the
 #' `x-amz-server-side-encryption-customer-algorithm` header.
-#' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
-#' 1321. Amazon S3 uses this header for a message integrity check to ensure
-#' that the encryption key was transmitted without error.
+#' 
+#' If you encrypt an object by using server-side encryption with
+#' customer-provided encryption keys (SSE-C) when you store the object in
+#' Amazon S3, then when you GET the object, you must use the following
+#' headers:
+#' 
+#' -   `x-amz-server-side-encryption-customer-algorithm`
+#' 
+#' -   `x-amz-server-side-encryption-customer-key`
+#' 
+#' -   `x-amz-server-side-encryption-customer-key-MD5`
+#' 
+#' For more information about SSE-C, see [Server-Side Encryption (Using
+#' Customer-Provided Encryption
+#' Keys)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the customer-provided encryption key
+#' according to RFC 1321. Amazon S3 uses this header for a message
+#' integrity check to ensure that the encryption key was transmitted
+#' without error.
+#' 
+#' If you encrypt an object by using server-side encryption with
+#' customer-provided encryption keys (SSE-C) when you store the object in
+#' Amazon S3, then when you GET the object, you must use the following
+#' headers:
+#' 
+#' -   `x-amz-server-side-encryption-customer-algorithm`
+#' 
+#' -   `x-amz-server-side-encryption-customer-key`
+#' 
+#' -   `x-amz-server-side-encryption-customer-key-MD5`
+#' 
+#' For more information about SSE-C, see [Server-Side Encryption (Using
+#' Customer-Provided Encryption
+#' Keys)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
 #' @param PartNumber Part number of the object being read. This is a positive integer between
 #' 1 and 10,000. Effectively performs a 'ranged' GET request for the part
 #' specified. Useful for downloading just a part of an object.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this mode must be enabled.
 #'
 #' @keywords internal
@@ -2055,18 +3031,21 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 }
 .s3$operations$get_object <- s3_get_object
 
-#' Returns the access control list (ACL) of an object
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the access control list (ACL) of an object. To use this operation, you must have `s3:GetObjectAcl` permissions or `READ_ACP` access to the object. For more information, see [Mapping of ACL permissions and access policy permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping) in the *Amazon S3 User Guide*
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_acl/](https://www.paws-r-sdk.com/docs/s3_get_object_acl/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name that contains the object for which to get the ACL
 #' information.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2074,11 +3053,13 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key of the object for which to get the ACL information.
-#' @param VersionId VersionId used to reference a specific version of the object.
+#' @param VersionId Version ID used to reference a specific version of the object.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2104,14 +3085,28 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' itself
 #'
 #' @description
-#' Retrieves all the metadata from an object without returning the object itself. This action is useful if you're interested only in an object's metadata. To use [`get_object_attributes`][s3_get_object_attributes], you must have READ access to the object.
+#' Retrieves all the metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_attributes/](https://www.paws-r-sdk.com/docs/s3_get_object_attributes/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2119,9 +3114,12 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2131,23 +3129,34 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
 #' @param VersionId The version ID used to reference a specific version of the object.
+#' 
+#' S3 Versioning isn't enabled and supported for directory buckets. For
+#' this API operation, only the `null` value of the version ID is supported
+#' by directory buckets. You can only specify `null` to the `versionId`
+#' query parameter in the request.
 #' @param MaxParts Sets the maximum number of parts to return.
 #' @param PartNumberMarker Specifies the part after which listing should begin. Only parts with
 #' higher part numbers will be listed.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
 #' AES256).
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
 #' `x-amz-server-side-encryption-customer-algorithm` header.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ObjectAttributes &#91;required&#93; Specifies the fields at the root level that you want returned in the
 #' response. Fields that you do not specify are not returned.
 #'
@@ -2171,18 +3180,21 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 }
 .s3$operations$get_object_attributes <- s3_get_object_attributes
 
-#' Gets an object's current legal hold status
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets an object's current legal hold status. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_legal_hold/](https://www.paws-r-sdk.com/docs/s3_get_object_legal_hold/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object whose legal hold status you want
 #' to retrieve.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2194,9 +3206,9 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 #' @param VersionId The version ID of the object whose legal hold status you want to
 #' retrieve.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2218,26 +3230,29 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 }
 .s3$operations$get_object_legal_hold <- s3_get_object_legal_hold
 
-#' Gets the Object Lock configuration for a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_lock_configuration/](https://www.paws-r-sdk.com/docs/s3_get_object_lock_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to retrieve.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
 #' name. For more information about access point ARNs, see [Using access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2259,18 +3274,21 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 }
 .s3$operations$get_object_lock_configuration <- s3_get_object_lock_configuration
 
-#' Retrieves an object's retention settings
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Retrieves an object's retention settings. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_retention/](https://www.paws-r-sdk.com/docs/s3_get_object_retention/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object whose retention settings you want
 #' to retrieve.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2282,9 +3300,9 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 #' @param VersionId The version ID for the object whose retention settings you want to
 #' retrieve.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2306,18 +3324,21 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 }
 .s3$operations$get_object_retention <- s3_get_object_retention
 
-#' Returns the tag-set of an object
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns the tag-set of an object. You send the GET request against the tagging subresource associated with the object.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_tagging/](https://www.paws-r-sdk.com/docs/s3_get_object_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object for which to get the tagging
 #' information.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2325,9 +3346,9 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2337,9 +3358,9 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
 #' @param VersionId The versionId of the object for which to get the tagging information.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param RequestPayer 
 #'
 #' @keywords internal
@@ -2362,10 +3383,10 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 }
 .s3$operations$get_object_tagging <- s3_get_object_tagging
 
-#' Returns torrent files from a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_object_torrent/](https://www.paws-r-sdk.com/docs/s3_get_object_torrent/) for full documentation.
 #'
@@ -2373,9 +3394,9 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' torrent files.
 #' @param Key &#91;required&#93; The object key for which to get the information.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2397,18 +3418,18 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 }
 .s3$operations$get_object_torrent <- s3_get_object_torrent
 
-#' Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_get_public_access_block/](https://www.paws-r-sdk.com/docs/s3_get_public_access_block/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `PublicAccessBlock` configuration
 #' you want to retrieve.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2430,18 +3451,32 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_public_access_block <- s3_get_public_access_block
 
-#' This action is useful to determine if a bucket exists and you have
-#' permission to access it
+#' You can use this operation to determine if a bucket exists and if you
+#' have permission to access it
 #'
 #' @description
-#' This action is useful to determine if a bucket exists and you have permission to access it. The action returns a `200 OK` if the bucket exists and you have permission to access it.
+#' You can use this operation to determine if a bucket exists and if you have permission to access it. The action returns a `200 OK` if the bucket exists and you have permission to access it.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_head_bucket/](https://www.paws-r-sdk.com/docs/s3_head_bucket/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2449,16 +3484,20 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with an Object Lambda access point, provide the
-#' alias of the Object Lambda access point in place of the bucket name. If
-#' the Object Lambda access point alias in a request is not valid, the
-#' error code `InvalidAccessPointAliasError` is returned. For more
-#' information about `InvalidAccessPointAliasError`, see [List of Error
+#' **Object Lambda access points** - When you use this API operation with
+#' an Object Lambda access point, provide the alias of the Object Lambda
+#' access point in place of the bucket name. If the Object Lambda access
+#' point alias in a request is not valid, the error code
+#' `InvalidAccessPointAliasError` is returned. For more information about
+#' `InvalidAccessPointAliasError`, see [List of Error
 #' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList).
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2466,9 +3505,9 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2490,18 +3529,32 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$head_bucket <- s3_head_bucket
 
-#' The HEAD action retrieves metadata from an object without returning the
-#' object itself
+#' The HEAD operation retrieves metadata from an object without returning
+#' the object itself
 #'
 #' @description
-#' The `HEAD` action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use `HEAD`, you must have READ access to the object.
+#' The `HEAD` operation retrieves metadata from an object without returning the object itself. This operation is useful if you're interested only in an object's metadata.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_head_object/](https://www.paws-r-sdk.com/docs/s3_head_object/) for full documentation.
 #'
-#' @param Bucket &#91;required&#93; The name of the bucket containing the object.
+#' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2509,9 +3562,12 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2521,36 +3577,93 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
+#' 
+#' If both of the `If-Match` and `If-Unmodified-Since` headers are present
+#' in the request as follows:
+#' 
+#' -   `If-Match` condition evaluates to `true`, and;
+#' 
+#' -   `If-Unmodified-Since` condition evaluates to `false`;
+#' 
+#' Then Amazon S3 returns `200 OK` and the data requested.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param IfModifiedSince Return the object only if it has been modified since the specified time;
 #' otherwise, return a 304 (not modified) error.
+#' 
+#' If both of the `If-None-Match` and `If-Modified-Since` headers are
+#' present in the request as follows:
+#' 
+#' -   `If-None-Match` condition evaluates to `false`, and;
+#' 
+#' -   `If-Modified-Since` condition evaluates to `true`;
+#' 
+#' Then Amazon S3 returns the `304 Not Modified` response code.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param IfNoneMatch Return the object only if its entity tag (ETag) is different from the
 #' one specified; otherwise, return a 304 (not modified) error.
+#' 
+#' If both of the `If-None-Match` and `If-Modified-Since` headers are
+#' present in the request as follows:
+#' 
+#' -   `If-None-Match` condition evaluates to `false`, and;
+#' 
+#' -   `If-Modified-Since` condition evaluates to `true`;
+#' 
+#' Then Amazon S3 returns the `304 Not Modified` response code.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param IfUnmodifiedSince Return the object only if it has not been modified since the specified
 #' time; otherwise, return a 412 (precondition failed) error.
+#' 
+#' If both of the `If-Match` and `If-Unmodified-Since` headers are present
+#' in the request as follows:
+#' 
+#' -   `If-Match` condition evaluates to `true`, and;
+#' 
+#' -   `If-Unmodified-Since` condition evaluates to `false`;
+#' 
+#' Then Amazon S3 returns `200 OK` and the data requested.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' @param Key &#91;required&#93; The object key.
 #' @param Range HeadObject returns only the metadata for an object. If the Range is
 #' satisfiable, only the `ContentLength` is affected in the response. If
 #' the Range is not satisfiable, S3 returns a
 #' `416 - Requested Range Not Satisfiable` error.
-#' @param VersionId VersionId used to reference a specific version of the object.
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
-#' example, AES256).
+#' @param VersionId Version ID used to reference a specific version of the object.
+#' 
+#' For directory buckets in this API operation, only the `null` value of
+#' the version ID is supported.
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
+#' AES256).
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
 #' `x-amz-server-side-encryption-customer-algorithm` header.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
 #' @param PartNumber Part number of the object being read. This is a positive integer between
 #' 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part
 #' specified. Useful querying about the size of the part and the number of
 #' parts in this object.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this parameter must be enabled.
 #' 
 #' In addition, if you enable `ChecksumMode` and the object is encrypted
@@ -2578,10 +3691,10 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 }
 .s3$operations$head_object <- s3_head_object
 
-#' Lists the analytics configurations for the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Lists the analytics configurations for the bucket. You can have up to 1,000 analytics configurations per bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_analytics_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_analytics_configurations/) for full documentation.
 #'
@@ -2589,9 +3702,9 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' retrieved.
 #' @param ContinuationToken The `ContinuationToken` that represents a placeholder from where this
 #' request should begin.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2613,10 +3726,10 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 }
 .s3$operations$list_bucket_analytics_configurations <- s3_list_bucket_analytics_configurations
 
-#' Lists the S3 Intelligent-Tiering configuration from the specified bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Lists the S3 Intelligent-Tiering configuration from the specified bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_intelligent_tiering_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_intelligent_tiering_configurations/) for full documentation.
 #'
@@ -2645,10 +3758,10 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 }
 .s3$operations$list_bucket_intelligent_tiering_configurations <- s3_list_bucket_intelligent_tiering_configurations
 
-#' Returns a list of inventory configurations for the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns a list of inventory configurations for the bucket. You can have up to 1,000 analytics configurations per bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_inventory_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_inventory_configurations/) for full documentation.
 #'
@@ -2658,9 +3771,9 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
 #' is an opaque value that Amazon S3 understands.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2682,10 +3795,10 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 }
 .s3$operations$list_bucket_inventory_configurations <- s3_list_bucket_inventory_configurations
 
-#' Lists the metrics configurations for the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Lists the metrics configurations for the bucket. The metrics configurations are only for the request metrics of the bucket and do not provide information on daily storage metrics. You can have up to 1,000 configurations per bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_metrics_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_metrics_configurations/) for full documentation.
 #'
@@ -2695,9 +3808,9 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' has been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
 #' is an opaque value that Amazon S3 understands.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -2719,11 +3832,10 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 }
 .s3$operations$list_bucket_metrics_configurations <- s3_list_bucket_metrics_configurations
 
-#' Returns a list of all buckets owned by the authenticated sender of the
-#' request
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns a list of all buckets owned by the authenticated sender of the request. To use this operation, you must have the `s3:ListAllMyBuckets` permission.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_buckets/](https://www.paws-r-sdk.com/docs/s3_list_buckets/) for full documentation.
 #'
@@ -2749,17 +3861,67 @@ s3_list_buckets <- function() {
 }
 .s3$operations$list_buckets <- s3_list_buckets
 
-#' This action lists in-progress multipart uploads
+#' Returns a list of all Amazon S3 directory buckets owned by the
+#' authenticated sender of the request
 #'
 #' @description
-#' This action lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
+#' Returns a list of all Amazon S3 directory buckets owned by the authenticated sender of the request. For more information about directory buckets, see [Directory buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-overview.html) in the *Amazon S3 User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3_list_directory_buckets/](https://www.paws-r-sdk.com/docs/s3_list_directory_buckets/) for full documentation.
+#'
+#' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
+#' continued on this bucket with a token. `ContinuationToken` is obfuscated
+#' and is not a real key. You can use this `ContinuationToken` for
+#' pagination of the list results.
+#' @param MaxDirectoryBuckets Maximum number of buckets to be returned in response. When the number is
+#' more than the count of buckets that are owned by an Amazon Web Services
+#' account, return all the buckets in response.
+#'
+#' @keywords internal
+#'
+#' @rdname s3_list_directory_buckets
+s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuckets = NULL) {
+  op <- new_operation(
+    name = "ListDirectoryBuckets",
+    http_method = "GET",
+    http_path = "/",
+    paginator = list(input_token = "ContinuationToken", limit_key = "MaxDirectoryBuckets", output_token = "ContinuationToken", result_key = "Buckets")
+  )
+  input <- .s3$list_directory_buckets_input(ContinuationToken = ContinuationToken, MaxDirectoryBuckets = MaxDirectoryBuckets)
+  output <- .s3$list_directory_buckets_output()
+  config <- get_config()
+  svc <- .s3$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$list_directory_buckets <- s3_list_directory_buckets
+
+#' This operation lists in-progress multipart uploads in a bucket
+#'
+#' @description
+#' This operation lists in-progress multipart uploads in a bucket. An in-progress multipart upload is a multipart upload that has been initiated by the [`create_multipart_upload`][s3_create_multipart_upload] request, but has not yet been completed or aborted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/](https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which the multipart upload was initiated.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2767,9 +3929,12 @@ s3_list_buckets <- function() {
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2785,17 +3950,36 @@ s3_list_buckets <- function() {
 #' the prefix parameter, then the substring starts at the beginning of the
 #' key. The keys that are grouped under `CommonPrefixes` result element are
 #' not returned elsewhere in the response.
+#' 
+#' **Directory buckets** - For directory buckets, `/` is the only supported
+#' delimiter.
 #' @param EncodingType 
-#' @param KeyMarker Together with `upload-id-marker`, this parameter specifies the multipart
-#' upload after which listing should begin.
+#' @param KeyMarker Specifies the multipart upload after which listing should begin.
 #' 
-#' If `upload-id-marker` is not specified, only the keys lexicographically
-#' greater than the specified `key-marker` will be included in the list.
+#' -   **General purpose buckets** - For general purpose buckets,
+#'     `key-marker` is an object key. Together with `upload-id-marker`,
+#'     this parameter specifies the multipart upload after which listing
+#'     should begin.
 #' 
-#' If `upload-id-marker` is specified, any multipart uploads for a key
-#' equal to the `key-marker` might also be included, provided those
-#' multipart uploads have upload IDs lexicographically greater than the
-#' specified `upload-id-marker`.
+#'     If `upload-id-marker` is not specified, only the keys
+#'     lexicographically greater than the specified `key-marker` will be
+#'     included in the list.
+#' 
+#'     If `upload-id-marker` is specified, any multipart uploads for a key
+#'     equal to the `key-marker` might also be included, provided those
+#'     multipart uploads have upload IDs lexicographically greater than the
+#'     specified `upload-id-marker`.
+#' 
+#' -   **Directory buckets** - For directory buckets, `key-marker` is
+#'     obfuscated and isn't a real object key. The `upload-id-marker`
+#'     parameter isn't supported by directory buckets. To list the
+#'     additional multipart uploads, you only need to set the value of
+#'     `key-marker` to the `NextKeyMarker` value from the previous
+#'     response.
+#' 
+#'     In the [`list_multipart_uploads`][s3_list_multipart_uploads]
+#'     response, the multipart uploads aren't sorted lexicographically
+#'     based on the object keys.
 #' @param MaxUploads Sets the maximum number of multipart uploads, from 1 to 1,000, to return
 #' in the response body. 1,000 is the maximum number of uploads that can be
 #' returned in a response.
@@ -2803,15 +3987,20 @@ s3_list_buckets <- function() {
 #' specified prefix. You can use prefixes to separate a bucket into
 #' different grouping of keys. (You can think of using `prefix` to make
 #' groups in the same way that you'd use a folder in a file system.)
+#' 
+#' **Directory buckets** - For directory buckets, only prefixes that end in
+#' a delimiter (`/`) are supported.
 #' @param UploadIdMarker Together with key-marker, specifies the multipart upload after which
 #' listing should begin. If key-marker is not specified, the
 #' upload-id-marker parameter is ignored. Otherwise, any multipart uploads
 #' for a key equal to the key-marker might be included in the list only if
 #' they have an upload ID lexicographically greater than the specified
 #' `upload-id-marker`.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param RequestPayer 
 #'
 #' @keywords internal
@@ -2834,10 +4023,10 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 }
 .s3$operations$list_multipart_uploads <- s3_list_multipart_uploads
 
-#' Returns metadata about all versions of the objects in a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns metadata about all versions of the objects in a bucket. You can also use request parameters as selection criteria to return metadata about a subset of all the object versions.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_object_versions/](https://www.paws-r-sdk.com/docs/s3_list_object_versions/) for full documentation.
 #'
@@ -2863,9 +4052,9 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' can use `prefix` with `delimiter` to roll up numerous objects into a
 #' single result under `CommonPrefixes`.
 #' @param VersionIdMarker Specifies the object version you want to start listing from.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param RequestPayer 
 #' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
 #' Fields that you do not specify are not returned.
@@ -2890,17 +4079,31 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 }
 .s3$operations$list_object_versions <- s3_list_object_versions
 
-#' Returns some or all (up to 1,000) of the objects in a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain valid or invalid XML. Be sure to design your application to parse the contents of the response and handle it appropriately.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_objects/](https://www.paws-r-sdk.com/docs/s3_list_objects/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the objects.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2908,9 +4111,12 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2930,9 +4136,9 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' @param RequestPayer Confirms that the requester knows that she or he will be charged for the
 #' list objects request. Bucket owners need not specify this parameter in
 #' their requests.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
 #' Fields that you do not specify are not returned.
 #'
@@ -2960,14 +4166,26 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' request
 #'
 #' @description
-#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html) in the *Amazon S3 User Guide*.
+#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html) in the *Amazon S3 User Guide*. To get a list of your buckets, see [`list_buckets`][s3_list_buckets].
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_objects_v2/](https://www.paws-r-sdk.com/docs/s3_list_objects_v2/) for full documentation.
 #'
-#' @param Bucket &#91;required&#93; Bucket name to list.
+#' @param Bucket &#91;required&#93; **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -2975,9 +4193,12 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -2986,29 +4207,54 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
+#' 
+#' -   **Directory buckets** - For directory buckets, `/` is the only
+#'     supported delimiter.
+#' 
+#' -   **Directory buckets** - When you query
+#'     [`list_objects_v2`][s3_list_objects_v2] with a delimiter during
+#'     in-progress multipart uploads, the `CommonPrefixes` response
+#'     parameter contains the prefixes that are associated with the
+#'     in-progress multipart uploads. For more information about multipart
+#'     uploads, see [Multipart Upload
+#'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
+#'     in the *Amazon S3 User Guide*.
 #' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
 #' the action returns up to 1,000 key names. The response might contain
 #' fewer keys but will never contain more.
 #' @param Prefix Limits the response to keys that begin with the specified prefix.
+#' 
+#' **Directory buckets** - For directory buckets, only prefixes that end in
+#' a delimiter (`/`) are supported.
 #' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
 #' continued on this bucket with a token. `ContinuationToken` is obfuscated
-#' and is not a real key.
+#' and is not a real key. You can use this `ContinuationToken` for
+#' pagination of the list results.
 #' @param FetchOwner The owner field is not present in
 #' [`list_objects_v2`][s3_list_objects_v2] by default. If you want to
 #' return the owner field with each key in the result, then set the
 #' `FetchOwner` field to `true`.
+#' 
+#' **Directory buckets** - For directory buckets, the bucket owner is
+#' returned as the object owner for all objects.
 #' @param StartAfter StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. StartAfter can be any key in
 #' the bucket.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer Confirms that the requester knows that she or he will be charged for the
 #' list objects request in V2 style. Bucket owners need not specify this
 #' parameter in their requests.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
 #' Fields that you do not specify are not returned.
+#' 
+#' This functionality is not supported for directory buckets.
 #'
 #' @keywords internal
 #'
@@ -3033,14 +4279,28 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Lists the parts that have been uploaded for a specific multipart upload
 #'
 #' @description
-#' Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see [`create_multipart_upload`][s3_create_multipart_upload]). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the `max-parts` request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an `IsTruncated` field with the value of true, and a `NextPartNumberMarker` element. In subsequent [`list_parts`][s3_list_parts] requests you can include the part-number-marker query string parameter and set its value to the `NextPartNumberMarker` field value from the previous response.
+#' Lists the parts that have been uploaded for a specific multipart upload.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_parts/](https://www.paws-r-sdk.com/docs/s3_list_parts/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which the parts are being uploaded.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -3048,9 +4308,12 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -3064,25 +4327,31 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' higher part numbers will be listed.
 #' @param UploadId &#91;required&#93; Upload ID identifying the multipart upload whose parts are being listed.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
 #' This parameter is needed only when the object was created using a
 #' checksum algorithm. For more information, see [Protecting data using
 #' SSE-C
 #' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey The server-side encryption (SSE) customer managed key. This parameter is
 #' needed only when the object was created using a checksum algorithm. For
 #' more information, see [Protecting data using SSE-C
 #' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKeyMD5 The MD5 server-side encryption (SSE) customer managed key. This
 #' parameter is needed only when the object was created using a checksum
 #' algorithm. For more information, see [Protecting data using SSE-C
 #' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #'
 #' @keywords internal
 #'
@@ -3104,22 +4373,22 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 }
 .s3$operations$list_parts <- s3_list_parts
 
-#' Sets the accelerate configuration of an existing bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the accelerate configuration of an existing bucket. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to Amazon S3.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_accelerate_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_accelerate_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the accelerate configuration is set.
 #' @param AccelerateConfiguration &#91;required&#93; Container for setting the transfer acceleration state.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3148,11 +4417,10 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 }
 .s3$operations$put_bucket_accelerate_configuration <- s3_put_bucket_accelerate_configuration
 
-#' Sets the permissions on an existing bucket using access control lists
-#' (ACL)
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the permissions on an existing bucket using access control lists (ACL). For more information, see [Using ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html). To set the ACL of a bucket, you must have `WRITE_ACP` permission.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/](https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/) for full documentation.
 #'
@@ -3169,9 +4437,9 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3188,9 +4456,9 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' For the bucket and object owners of existing objects, also allows
 #' deletions and overwrites of those objects.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable bucket.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3212,20 +4480,19 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 }
 .s3$operations$put_bucket_acl <- s3_put_bucket_acl
 
-#' Sets an analytics configuration for the bucket (specified by the
-#' analytics configuration ID)
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets an analytics configuration for the bucket (specified by the analytics configuration ID). You can have up to 1,000 analytics configurations per bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_analytics_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_analytics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which an analytics configuration is stored.
 #' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
 #' @param AnalyticsConfiguration &#91;required&#93; The configuration and any analyses for the analytics filter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3247,10 +4514,10 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 }
 .s3$operations$put_bucket_analytics_configuration <- s3_put_bucket_analytics_configuration
 
-#' Sets the cors configuration for your bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the `cors` configuration for your bucket. If the configuration exists, Amazon S3 replaces it.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_cors/](https://www.paws-r-sdk.com/docs/s3_put_bucket_cors/) for full documentation.
 #'
@@ -3268,9 +4535,9 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3278,9 +4545,9 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3302,11 +4569,10 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 }
 .s3$operations$put_bucket_cors <- s3_put_bucket_cors
 
-#' This action uses the encryption subresource to configure default
-#' encryption and Amazon S3 Bucket Keys for an existing bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This action uses the `encryption` subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/) for full documentation.
 #'
@@ -3327,9 +4593,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3338,9 +4604,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param ServerSideEncryptionConfiguration &#91;required&#93; 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3362,10 +4628,10 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 }
 .s3$operations$put_bucket_encryption <- s3_put_bucket_encryption
 
-#' Puts a S3 Intelligent-Tiering configuration to the specified bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Puts a S3 Intelligent-Tiering configuration to the specified bucket. You can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_intelligent_tiering_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_intelligent_tiering_configuration/) for full documentation.
 #'
@@ -3394,20 +4660,19 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 }
 .s3$operations$put_bucket_intelligent_tiering_configuration <- s3_put_bucket_intelligent_tiering_configuration
 
-#' This implementation of the PUT action adds an inventory configuration
-#' (identified by the inventory ID) to the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This implementation of the `PUT` action adds an inventory configuration (identified by the inventory ID) to the bucket. You can have up to 1,000 inventory configurations per bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_inventory_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_inventory_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket where the inventory configuration will be stored.
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
 #' @param InventoryConfiguration &#91;required&#93; Specifies the inventory configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3429,10 +4694,10 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 }
 .s3$operations$put_bucket_inventory_configuration <- s3_put_bucket_inventory_configuration
 
-#' For an updated version of this API, see PutBucketLifecycleConfiguration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' For an updated version of this API, see [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]. This version has been deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use the updated API.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/) for full documentation.
 #'
@@ -3441,9 +4706,9 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3452,9 +4717,9 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param LifecycleConfiguration 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3476,19 +4741,18 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 }
 .s3$operations$put_bucket_lifecycle <- s3_put_bucket_lifecycle
 
-#' Creates a new lifecycle configuration for the bucket or replaces an
-#' existing lifecycle configuration
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see [Managing your storage lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to set the configuration.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3497,9 +4761,9 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param LifecycleConfiguration Container for lifecycle rules. You can add as many as 1,000 rules.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3521,11 +4785,10 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 }
 .s3$operations$put_bucket_lifecycle_configuration <- s3_put_bucket_lifecycle_configuration
 
-#' Set the logging parameters for a bucket and to specify permissions for
-#' who can view and modify the logging parameters
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. All logs are saved to buckets in the same Amazon Web Services Region as the source bucket. To set the logging status of a bucket, you must be the bucket owner.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/](https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/) for full documentation.
 #'
@@ -3538,9 +4801,9 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3548,9 +4811,9 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3572,11 +4835,10 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 }
 .s3$operations$put_bucket_logging <- s3_put_bucket_logging
 
-#' Sets a metrics configuration (specified by the metrics configuration ID)
-#' for the bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets a metrics configuration (specified by the metrics configuration ID) for the bucket. You can have up to 1,000 metrics configurations per bucket. If you're updating an existing metrics configuration, note that this is a full replacement of the existing metrics configuration. If you don't include the elements you want to keep, they are erased.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_metrics_configuration/) for full documentation.
 #'
@@ -3585,9 +4847,9 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' character limit and can only contain letters, numbers, periods, dashes,
 #' and underscores.
 #' @param MetricsConfiguration &#91;required&#93; Specifies the metrics configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3609,10 +4871,10 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 }
 .s3$operations$put_bucket_metrics_configuration <- s3_put_bucket_metrics_configuration
 
-#' No longer used, see the PutBucketNotificationConfiguration operation
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' No longer used, see the [`put_bucket_notification_configuration`][s3_put_bucket_notification_configuration] operation.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_notification/](https://www.paws-r-sdk.com/docs/s3_put_bucket_notification/) for full documentation.
 #'
@@ -3624,9 +4886,9 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3635,9 +4897,9 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param NotificationConfiguration &#91;required&#93; The container for the configuration.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3659,18 +4921,18 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 }
 .s3$operations$put_bucket_notification <- s3_put_bucket_notification
 
-#' Enables notifications of specified events for a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_notification_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_notification_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket.
 #' @param NotificationConfiguration &#91;required&#93; 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param SkipDestinationValidation Skips validation of Amazon SQS, Amazon SNS, and Lambda destinations.
 #' True or false value.
 #'
@@ -3694,10 +4956,10 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 }
 .s3$operations$put_bucket_notification_configuration <- s3_put_bucket_notification_configuration
 
-#' Creates or modifies OwnershipControls for an Amazon S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates or modifies `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide//using-with-s3-actions.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_ownership_controls/](https://www.paws-r-sdk.com/docs/s3_put_bucket_ownership_controls/) for full documentation.
 #'
@@ -3708,9 +4970,9 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param OwnershipControls &#91;required&#93; The `OwnershipControls` (BucketOwnerEnforced, BucketOwnerPreferred, or
 #' ObjectWriter) that you want to apply to this Amazon S3 bucket.
 #'
@@ -3737,33 +4999,74 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' Applies an Amazon S3 bucket policy to an Amazon S3 bucket
 #'
 #' @description
-#' Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the [`put_bucket_policy`][s3_put_bucket_policy] permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
+#' Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_policy/](https://www.paws-r-sdk.com/docs/s3_put_bucket_policy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket.
+#' 
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use path-style requests in the format
+#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. Directory bucket names
+#' must be unique in the chosen Availability Zone. Bucket names must also
+#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*
 #' @param ContentMD5 The MD5 hash of the request body.
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
-#' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see [Checking object
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum-algorithm ` or `x-amz-trailer`
+#' header sent. Otherwise, Amazon S3 fails the request with the HTTP status
+#' code `400 Bad Request`.
+#' 
+#' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
+#' the supported algorithm from the following list:
+#' 
+#' -   CRC32
+#' 
+#' -   CRC32C
+#' 
+#' -   SHA1
+#' 
+#' -   SHA256
+#' 
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' If you provide an individual checksum, Amazon S3 ignores any provided
-#' `ChecksumAlgorithm` parameter.
+#' If the individual checksum value you provide through
+#' `x-amz-checksum-algorithm ` doesn't match the checksum algorithm you set
+#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 ignores any provided
+#' `ChecksumAlgorithm` parameter and uses the checksum algorithm that
+#' matches the provided value in `x-amz-checksum-algorithm `.
+#' 
+#' For directory buckets, when you use Amazon Web Services SDKs, `CRC32` is
+#' the default checksum algorithm that's used for performance.
 #' @param ConfirmRemoveSelfBucketAccess Set this parameter to true to confirm that you want to remove your
 #' permissions to change this bucket policy in the future.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param Policy &#91;required&#93; The bucket policy as a JSON document.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, the only IAM action supported in the bucket
+#' policy is `s3express:CreateSession`.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' For directory buckets, this header is not supported in this API
+#' operation. If you specify this header, the request fails with the HTTP
+#' status code `501 Not Implemented`.
 #'
 #' @keywords internal
 #'
@@ -3785,10 +5088,10 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 }
 .s3$operations$put_bucket_policy <- s3_put_bucket_policy
 
-#' Creates a replication configuration or replaces an existing one
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates a replication configuration or replaces an existing one. For more information, see [Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/) for full documentation.
 #'
@@ -3802,9 +5105,9 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3814,9 +5117,9 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' `ChecksumAlgorithm` parameter.
 #' @param ReplicationConfiguration &#91;required&#93; 
 #' @param Token A token to allow Object Lock to be enabled for an existing bucket.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3838,10 +5141,10 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 }
 .s3$operations$put_bucket_replication <- s3_put_bucket_replication
 
-#' Sets the request payment configuration for a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/](https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/) for full documentation.
 #'
@@ -3855,9 +5158,9 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3866,9 +5169,9 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param RequestPaymentConfiguration &#91;required&#93; Container for Payer.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3890,10 +5193,10 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 }
 .s3$operations$put_bucket_request_payment <- s3_put_bucket_request_payment
 
-#' Sets the tags for a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the tags for a bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_put_bucket_tagging/) for full documentation.
 #'
@@ -3907,9 +5210,9 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3918,9 +5221,9 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param Tagging &#91;required&#93; Container for the `TagSet` and `Tag` elements.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3942,10 +5245,10 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 }
 .s3$operations$put_bucket_tagging <- s3_put_bucket_tagging
 
-#' Sets the versioning state of an existing bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the versioning state of an existing bucket.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/) for full documentation.
 #'
@@ -3959,9 +5262,9 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3972,9 +5275,9 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param MFA The concatenation of the authentication device's serial number, a space,
 #' and the value that is displayed on your authentication device.
 #' @param VersioningConfiguration &#91;required&#93; Container for setting the versioning state.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -3996,11 +5299,10 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 }
 .s3$operations$put_bucket_versioning <- s3_put_bucket_versioning
 
-#' Sets the configuration of the website that is specified in the website
-#' subresource
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the configuration of the website that is specified in the `website` subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_website/](https://www.paws-r-sdk.com/docs/s3_put_bucket_website/) for full documentation.
 #'
@@ -4014,9 +5316,9 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4025,9 +5327,9 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param WebsiteConfiguration &#91;required&#93; Container for the request.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4052,19 +5354,60 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Adds an object to a bucket
 #'
 #' @description
-#' Adds an object to a bucket. You must have WRITE permissions on a bucket to add an object to it.
+#' Adds an object to a bucket.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object/](https://www.paws-r-sdk.com/docs/s3_put_object/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the object. For more information, see [Canned
-#' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL).
+#' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL)
+#' in the *Amazon S3 User Guide*.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' When adding a new object, you can use headers to grant ACL-based
+#' permissions to individual Amazon Web Services accounts or to predefined
+#' groups defined by Amazon S3. These permissions are then added to the ACL
+#' on the object. By default, all objects are private. Only the owner has
+#' full access control. For more information, see [Access Control List
+#' (ACL)
+#' Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html)
+#' and [Managing ACLs Using the REST
+#' API](https://docs.aws.amazon.com/AmazonS3/latest/userguide/managing-acls.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If the bucket that you're uploading objects to uses the bucket owner
+#' enforced setting for S3 Object Ownership, ACLs are disabled and no
+#' longer affect permissions. Buckets that use this setting only accept PUT
+#' requests that don't specify an ACL or PUT requests that specify bucket
+#' owner full control ACLs, such as the `bucket-owner-full-control` canned
+#' ACL or an equivalent form of this ACL expressed in the XML format. PUT
+#' requests that contain other ACLs (for example, custom grants to certain
+#' Amazon Web Services accounts) fail and return a `400` error with the
+#' error code `AccessControlListNotSupported`. For more information, see
+#' [Controlling ownership of objects and disabling
+#' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param Body Object data.
 #' @param Bucket &#91;required&#93; The bucket name to which the PUT action was initiated.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4072,9 +5415,12 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -4102,20 +5448,47 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Content-MD5 mechanism as an end-to-end integrity check. For more
 #' information about REST request authentication, see [REST
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
+#' 
+#' The `Content-MD5` header is required for any request to upload an object
+#' with a retention period configured using Amazon S3 Object Lock. For more
+#' information about Amazon S3 Object Lock, see [Amazon S3 Object Lock
+#' Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html#object-lock-overview)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ContentType A standard MIME type describing the format of the contents. For more
 #' information, see
 #' <https://www.rfc-editor.org/rfc/rfc9110.html#name-content-type>.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
-#' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see [Checking object
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum-algorithm ` or `x-amz-trailer`
+#' header sent. Otherwise, Amazon S3 fails the request with the HTTP status
+#' code `400 Bad Request`.
+#' 
+#' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
+#' the supported algorithm from the following list:
+#' 
+#' -   CRC32
+#' 
+#' -   CRC32C
+#' 
+#' -   SHA1
+#' 
+#' -   SHA256
+#' 
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' If you provide an individual checksum, Amazon S3 ignores any provided
-#' `ChecksumAlgorithm` parameter.
+#' If the individual checksum value you provide through
+#' `x-amz-checksum-algorithm ` doesn't match the checksum algorithm you set
+#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 ignores any provided
+#' `ChecksumAlgorithm` parameter and uses the checksum algorithm that
+#' matches the provided value in `x-amz-checksum-algorithm `.
+#' 
+#' For directory buckets, when you use Amazon Web Services SDKs, `CRC32` is
+#' the default checksum algorithm that's used for performance.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
@@ -4145,32 +5518,61 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 #' object.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantRead Allows grantee to read the object data and its metadata.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantReadACP Allows grantee to read the object ACL.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable object.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' -   This functionality is not supported for directory buckets.
+#' 
+#' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param Key &#91;required&#93; Object key for which the PUT action was initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
-#' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
+#' @param ServerSideEncryption The server-side encryption algorithm that was used when you store this
+#' object in Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
+#' 
+#' **General purpose buckets** - You have four mutually exclusive options
+#' to protect data using server-side encryption in Amazon S3, depending on
+#' how you choose to manage the encryption keys. Specifically, the
+#' encryption key options are Amazon S3 managed keys (SSE-S3), Amazon Web
+#' Services KMS keys (SSE-KMS or DSSE-KMS), and customer-provided keys
+#' (SSE-C). Amazon S3 encrypts data with server-side encryption by using
+#' Amazon S3 managed keys (SSE-S3) by default. You can optionally tell
+#' Amazon S3 to encrypt data at rest by using server-side encryption with
+#' other key options. For more information, see [Using Server-Side
+#' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingServerSideEncryption.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Directory buckets** - For directory buckets, only the server-side
+#' encryption with Amazon S3 managed keys (SSE-S3) (`AES256`) value is
+#' supported.
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
-#' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see [Storage
+#' different Storage Class. For more information, see [Storage
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' -   For directory buckets, only the S3 Express One Zone storage class is
+#'     supported to store newly created objects.
+#' 
+#' -   Amazon S3 on Outposts only uses the OUTPOSTS Storage Class.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata. For
 #' information about object metadata, see [Object Key and
-#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html).
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' In the following example, the request header sets the redirect to an
 #' object (anotherPage.html) in the same bucket:
@@ -4186,17 +5588,26 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Websites on Amazon
 #' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
 #' and [How to Configure Website Page
-#' Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html).
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
-#' example, AES256).
+#' Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
+#' `AES256`).
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
 #' `x-amz-server-side-encryption-customer-algorithm` header.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms` or
 #' `aws:kms:dsse`, this header specifies the ID (Key ID, Key ARN, or Key
 #' Alias) of the Key Management Service (KMS) symmetric encryption customer
@@ -4207,12 +5618,18 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' the Amazon Web Services managed key (`aws/s3`) to protect the data. If
 #' the KMS key does not exist in the same account that's issuing the
 #' command, you must use the full ARN and not just the ID.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs. This
 #' value is stored as object metadata and automatically gets passed on to
 #' Amazon Web Services KMS for future [`get_object`][s3_get_object] or
-#' [`copy_object`][s3_copy_object] operations on this object.
+#' [`copy_object`][s3_copy_object] operations on this object. This value
+#' must be explicitly added during [`copy_object`][s3_copy_object]
+#' operations.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
 #' encryption with server-side encryption using Key Management Service
 #' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
@@ -4220,18 +5637,29 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' Specifying this header with a PUT action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
 #' parameters. (For example, "Key1=Value1")
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockMode The Object Lock mode that you want to apply to this object.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockRetainUntilDate The date and time when you want this object's Object Lock to expire.
 #' Must be formatted as a timestamp parameter.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ObjectLockLegalHoldStatus Specifies whether a legal hold will be applied to this object. For more
 #' information about S3 Object Lock, see [Object
-#' Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4253,11 +5681,10 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 }
 .s3$operations$put_object <- s3_put_object
 
-#' Uses the acl subresource to set the access control list (ACL)
-#' permissions for a new or existing object in an S3 bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Uses the `acl` subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have `WRITE_ACP` permission to set the ACL of an object. For more information, see [What permissions can I grant?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_acl/](https://www.paws-r-sdk.com/docs/s3_put_object_acl/) for full documentation.
 #'
@@ -4268,13 +5695,27 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' @param Bucket &#91;required&#93; The bucket name that contains the object to which you want to attach the
 #' ACL.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
 #' name. For more information about access point ARNs, see [Using access
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
+#' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
+#' When you use this action with S3 on Outposts through the Amazon Web
+#' Services SDKs, you provide the Outposts access point ARN in place of the
+#' bucket name. For more information about S3 on Outposts ARNs, see [What
+#' is S3 on
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
@@ -4285,9 +5726,9 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4298,46 +5739,28 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
 #' the bucket.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantRead Allows grantee to list the objects in the bucket.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantReadACP Allows grantee to read the bucket ACL.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' This functionality is not supported for Amazon S3 on Outposts.
 #' @param GrantWrite Allows grantee to create new objects in the bucket.
 #' 
 #' For the bucket and object owners of existing objects, also allows
 #' deletions and overwrites of those objects.
 #' @param GrantWriteACP Allows grantee to write the ACL for the applicable bucket.
 #' 
-#' This action is not supported by Amazon S3 on Outposts.
+#' This functionality is not supported for Amazon S3 on Outposts.
 #' @param Key &#91;required&#93; Key for which the PUT action was initiated.
-#' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
-#' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
-#' When using this action with an access point through the Amazon Web
-#' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see [Using access
-#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
-#' in the *Amazon S3 User Guide*.
-#' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
-#' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
-#' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
-#' @param VersionId VersionId used to reference a specific version of the object.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param VersionId Version ID used to reference a specific version of the object.
+#' 
+#' This functionality is not supported for directory buckets.
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4359,18 +5782,21 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 }
 .s3$operations$put_object_acl <- s3_put_object_acl
 
-#' Applies a legal hold configuration to the specified object
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Applies a legal hold configuration to the specified object. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_legal_hold/](https://www.paws-r-sdk.com/docs/s3_put_object_legal_hold/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object that you want to place a legal
 #' hold on.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4388,9 +5814,9 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4398,9 +5824,9 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4422,10 +5848,10 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 }
 .s3$operations$put_object_legal_hold <- s3_put_object_legal_hold
 
-#' Places an Object Lock configuration on the specified bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_lock_configuration/](https://www.paws-r-sdk.com/docs/s3_put_object_lock_configuration/) for full documentation.
 #'
@@ -4441,9 +5867,9 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4451,9 +5877,9 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4475,18 +5901,21 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 }
 .s3$operations$put_object_lock_configuration <- s3_put_object_lock_configuration
 
-#' Places an Object Retention configuration on an object
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Places an Object Retention configuration on an object. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html). Users or accounts require the `s3:PutObjectRetention` permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the `s3:BypassGovernanceRetention` permission.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_retention/](https://www.paws-r-sdk.com/docs/s3_put_object_retention/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name that contains the object you want to apply this Object
 #' Retention configuration to.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4507,9 +5936,9 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4517,9 +5946,9 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4541,17 +5970,20 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 }
 .s3$operations$put_object_retention <- s3_put_object_retention
 
-#' Sets the supplied tag-set to an object that already exists in a bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Sets the supplied tag-set to an object that already exists in a bucket. A tag is a key-value pair. For more information, see [Object Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_tagging/](https://www.paws-r-sdk.com/docs/s3_put_object_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4559,9 +5991,9 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -4577,9 +6009,9 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4588,9 +6020,9 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
 #' @param Tagging &#91;required&#93; Container for the `TagSet` and `Tag` elements
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #' @param RequestPayer 
 #'
 #' @keywords internal
@@ -4613,11 +6045,10 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 }
 .s3$operations$put_object_tagging <- s3_put_object_tagging
 
-#' Creates or modifies the PublicAccessBlock configuration for an Amazon S3
-#' bucket
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_public_access_block/](https://www.paws-r-sdk.com/docs/s3_put_public_access_block/) for full documentation.
 #'
@@ -4630,9 +6061,9 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4646,9 +6077,9 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' bucket or object public, see [The Meaning of
 #' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status)
 #' in the *Amazon S3 User Guide*.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4670,17 +6101,20 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 }
 .s3$operations$put_public_access_block <- s3_put_public_access_block
 
-#' Restores an archived copy of an object back into Amazon S3
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Restores an archived copy of an object back into Amazon S3
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_restore_object/](https://www.paws-r-sdk.com/docs/s3_restore_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object to restore.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4688,9 +6122,9 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -4703,9 +6137,9 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @param RestoreRequest 
 #' @param RequestPayer 
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4713,9 +6147,9 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4737,11 +6171,10 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 }
 .s3$operations$restore_object <- s3_restore_object
 
-#' This action filters the contents of an Amazon S3 object based on a
-#' simple structured query language (SQL) statement
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' This action filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement. In the request, along with the SQL expression, you must also specify a data serialization format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this format to parse object data into records, and returns only records that match the specified SQL expression. You must also specify the data serialization format for the response.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_select_object_content/](https://www.paws-r-sdk.com/docs/s3_select_object_content/) for full documentation.
 #'
@@ -4786,9 +6219,9 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' -   `<scanrange><end>50</end></scanrange>` - process only the records
 #'     within the last 50 bytes of the file.
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4820,8 +6253,22 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @param Body Object data.
 #' @param Bucket &#91;required&#93; The name of the bucket to which the multipart upload was initiated.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4829,9 +6276,12 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -4844,10 +6294,12 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data. This parameter
 #' is auto-populated when using the command from the CLI. This parameter is
 #' required if object lock parameters are specified.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
-#' using the SDK. This header will not provide any additional functionality
-#' if not using the SDK. When sending this header, there must be a
-#' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
+#' you use the SDK. This header will not provide any additional
+#' functionality if you don't use the SDK. When you send this header, there
+#' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
 #' `400 Bad Request`. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -4887,8 +6339,10 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @param PartNumber &#91;required&#93; Part number of part being uploaded. This is a positive integer between 1
 #' and 10,000.
 #' @param UploadId &#91;required&#93; Upload ID identifying the multipart upload whose part is being uploaded.
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
-#' example, AES256).
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
+#' AES256).
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
@@ -4896,13 +6350,17 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' `x-amz-server-side-encryption-customer-algorithm header`. This must be
 #' the same encryption key specified in the initiate multipart upload
 #' request.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported for directory buckets.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
-#' different account, the request fails with the HTTP status code
-#' `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
+#' provide does not match the actual owner of the bucket, the request fails
+#' with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal
 #'
@@ -4927,14 +6385,28 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' Uploads a part by copying data from an existing object as data source
 #'
 #' @description
-#' Uploads a part by copying data from an existing object as data source. You specify the data source by adding the request header `x-amz-copy-source` in your request and a byte range by adding the request header `x-amz-copy-source-range` in your request.
+#' Uploads a part by copying data from an existing object as data source. To specify the data source, you add the request header `x-amz-copy-source` in your request. To specify a byte range, you add the request header `x-amz-copy-source-range` in your request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_upload_part_copy/](https://www.paws-r-sdk.com/docs/s3_upload_part_copy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' 
-#' When using this action with an access point, you must direct requests to
-#' the access point hostname. The access point hostname takes the form
+#' **Directory buckets** - When you use this operation with a directory
+#' bucket, you must use virtual-hosted-style requests in the format
+#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
+#' are not supported. Directory bucket names must be unique in the chosen
+#' Availability Zone. Bucket names must follow the format
+#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' naming restrictions, see [Directory bucket naming
+#' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' **Access points** - When you use this action with an access point, you
+#' must provide the alias of the access point in place of the bucket name
+#' or specify the access point ARN. When using the access point ARN, you
+#' must direct requests to the access point hostname. The access point
+#' hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
@@ -4942,9 +6414,12 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' When you use this action with Amazon S3 on Outposts, you must direct
-#' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-#' takes the form
+#' Access points and Object Lambda access points are not supported by
+#' directory buckets.
+#' 
+#' **S3 on Outposts** - When you use this action with Amazon S3 on
+#' Outposts, you must direct requests to the S3 on Outposts hostname. The
+#' S3 on Outposts hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When you use this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts access point ARN in place of the
@@ -4974,9 +6449,11 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     `arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf`.
 #'     The value must be URL encoded.
 #' 
-#'     Amazon S3 supports copy operations using access points only when the
-#'     source and destination buckets are in the same Amazon Web Services
-#'     Region.
+#'     -   Amazon S3 supports copy operations using Access points only when
+#'         the source and destination buckets are in the same Amazon Web
+#'         Services Region.
+#' 
+#'     -   Access points are not supported by directory buckets.
 #' 
 #'     Alternatively, for objects accessed through Amazon S3 on Outposts,
 #'     specify the ARN of the object as accessed in the format
@@ -4987,16 +6464,68 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     `arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf`.
 #'     The value must be URL-encoded.
 #' 
-#' To copy a specific version of an object, append
-#' `?versionId=<version-id>` to the value (for example,
-#' `awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893`).
-#' If you don't specify a version ID, Amazon S3 copies the latest version
-#' of the source object.
+#' If your bucket has versioning enabled, you could have multiple versions
+#' of the same object. By default, `x-amz-copy-source` identifies the
+#' current version of the source object to copy. To copy a specific version
+#' of the source object to copy, append `?versionId=<version-id>` to the
+#' `x-amz-copy-source` request header (for example,
+#' `x-amz-copy-source: /awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893`).
+#' 
+#' If the current version is a delete marker and you don't specify a
+#' versionId in the `x-amz-copy-source` request header, Amazon S3 returns a
+#' `404 Not Found` error, because the object does not exist. If you specify
+#' versionId in the `x-amz-copy-source` and the versionId is a delete
+#' marker, Amazon S3 returns an HTTP `400 Bad Request` error, because you
+#' are not allowed to specify a delete marker as a version for the
+#' `x-amz-copy-source`.
+#' 
+#' **Directory buckets** - S3 Versioning isn't enabled and supported for
+#' directory buckets.
 #' @param CopySourceIfMatch Copies the object if its entity tag (ETag) matches the specified tag.
+#' 
+#' If both of the `x-amz-copy-source-if-match` and
+#' `x-amz-copy-source-if-unmodified-since` headers are present in the
+#' request as follows:
+#' 
+#' `x-amz-copy-source-if-match` condition evaluates to `true`, and;
+#' 
+#' `x-amz-copy-source-if-unmodified-since` condition evaluates to `false`;
+#' 
+#' Amazon S3 returns `200 OK` and copies the data.
 #' @param CopySourceIfModifiedSince Copies the object if it has been modified since the specified time.
+#' 
+#' If both of the `x-amz-copy-source-if-none-match` and
+#' `x-amz-copy-source-if-modified-since` headers are present in the request
+#' as follows:
+#' 
+#' `x-amz-copy-source-if-none-match` condition evaluates to `false`, and;
+#' 
+#' `x-amz-copy-source-if-modified-since` condition evaluates to `true`;
+#' 
+#' Amazon S3 returns `412 Precondition Failed` response code.
 #' @param CopySourceIfNoneMatch Copies the object if its entity tag (ETag) is different than the
 #' specified ETag.
+#' 
+#' If both of the `x-amz-copy-source-if-none-match` and
+#' `x-amz-copy-source-if-modified-since` headers are present in the request
+#' as follows:
+#' 
+#' `x-amz-copy-source-if-none-match` condition evaluates to `false`, and;
+#' 
+#' `x-amz-copy-source-if-modified-since` condition evaluates to `true`;
+#' 
+#' Amazon S3 returns `412 Precondition Failed` response code.
 #' @param CopySourceIfUnmodifiedSince Copies the object if it hasn't been modified since the specified time.
+#' 
+#' If both of the `x-amz-copy-source-if-match` and
+#' `x-amz-copy-source-if-unmodified-since` headers are present in the
+#' request as follows:
+#' 
+#' `x-amz-copy-source-if-match` condition evaluates to `true`, and;
+#' 
+#' `x-amz-copy-source-if-unmodified-since` condition evaluates to `false`;
+#' 
+#' Amazon S3 returns `200 OK` and copies the data.
 #' @param CopySourceRange The range of bytes to copy from the source object. The range value must
 #' use the form bytes=first-last, where the first and last are the
 #' zero-based byte offsets to copy. For example, bytes=0-9 indicates that
@@ -5006,8 +6535,11 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' @param PartNumber &#91;required&#93; Part number of part being copied. This is a positive integer between 1
 #' and 10,000.
 #' @param UploadId &#91;required&#93; Upload ID identifying the multipart upload whose part is being copied.
-#' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
-#' example, AES256).
+#' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example,
+#' AES256).
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
@@ -5015,24 +6547,41 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' `x-amz-server-side-encryption-customer-algorithm` header. This must be
 #' the same encryption key specified in the initiate multipart upload
 #' request.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported when the destination bucket is a
+#' directory bucket.
 #' @param CopySourceSSECustomerAlgorithm Specifies the algorithm to use when decrypting the source object (for
-#' example, AES256).
+#' example, `AES256`).
+#' 
+#' This functionality is not supported when the source object is in a
+#' directory bucket.
 #' @param CopySourceSSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use to
 #' decrypt the source object. The encryption key provided in this header
 #' must be one that was used when the source object was created.
+#' 
+#' This functionality is not supported when the source object is in a
+#' directory bucket.
 #' @param CopySourceSSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
+#' 
+#' This functionality is not supported when the source object is in a
+#' directory bucket.
 #' @param RequestPayer 
-#' @param ExpectedBucketOwner The account ID of the expected destination bucket owner. If the
-#' destination bucket is owned by a different account, the request fails
-#' with the HTTP status code `403 Forbidden` (access denied).
-#' @param ExpectedSourceBucketOwner The account ID of the expected source bucket owner. If the source bucket
-#' is owned by a different account, the request fails with the HTTP status
-#' code `403 Forbidden` (access denied).
+#' @param ExpectedBucketOwner The account ID of the expected destination bucket owner. If the account
+#' ID that you provide does not match the actual owner of the destination
+#' bucket, the request fails with the HTTP status code `403 Forbidden`
+#' (access denied).
+#' @param ExpectedSourceBucketOwner The account ID of the expected source bucket owner. If the account ID
+#' that you provide does not match the actual owner of the source bucket,
+#' the request fails with the HTTP status code `403 Forbidden` (access
+#' denied).
 #'
 #' @keywords internal
 #'
@@ -5054,11 +6603,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 }
 .s3$operations$upload_part_copy <- s3_upload_part_copy
 
-#' Passes transformed objects to a GetObject operation when using Object
-#' Lambda access points
+#' This operation is not supported by directory buckets
 #'
 #' @description
-#' Passes transformed objects to a [`get_object`][s3_get_object] operation when using Object Lambda access points. For information about Object Lambda access points, see [Transforming objects with Object Lambda access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html) in the *Amazon S3 User Guide*.
+#' This operation is not supported by directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_write_get_object_response/](https://www.paws-r-sdk.com/docs/s3_write_get_object_response/) for full documentation.
 #'

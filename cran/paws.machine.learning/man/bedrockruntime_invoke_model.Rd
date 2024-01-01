@@ -5,18 +5,18 @@
 \title{Invokes the specified Bedrock model to run inference using the input
 provided in the request body}
 \usage{
-bedrockruntime_invoke_model(accept = NULL, body, contentType = NULL, modelId)
+bedrockruntime_invoke_model(body, contentType = NULL, accept = NULL, modelId)
 }
 \arguments{
-\item{accept}{The desired MIME type of the inference body in the response. The default
-value is \code{application/json}.}
-
 \item{body}{[required] Input data in the format specified in the content-type request header.
 To see the format and content of this field for different models, refer
 to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.}
 
 \item{contentType}{The MIME type of the input data in the request. The default value is
 \code{application/json}.}
+
+\item{accept}{The desired MIME type of the inference body in the response. The default
+value is \code{application/json}.}
 
 \item{modelId}{[required] Identifier of the model.}
 }

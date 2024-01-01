@@ -22,7 +22,8 @@ neptune_restore_db_cluster_from_snapshot(
   DBClusterParameterGroupName = NULL,
   DeletionProtection = NULL,
   CopyTagsToSnapshot = NULL,
-  ServerlessV2ScalingConfiguration = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -129,6 +130,12 @@ cluster that is created.}}
 
 For more information, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html}{Using Amazon Neptune Serverless}
 in the \emph{Amazon Neptune User Guide}.}
+
+\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
+
+Valid values: \code{standard}, \code{iopt1}
+
+Default: \code{standard}}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

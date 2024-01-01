@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_get_foundation_model}
 \alias{bedrock_get_foundation_model}
-\title{Get details about a Bedrock foundation model}
+\title{Get details about a Amazon Bedrock foundation model}
 \usage{
 bedrock_get_foundation_model(modelIdentifier)
 }
@@ -10,7 +10,7 @@ bedrock_get_foundation_model(modelIdentifier)
 \item{modelIdentifier}{[required] The model identifier.}
 }
 \description{
-Get details about a Bedrock foundation model.
+Get details about a Amazon Bedrock foundation model.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_foundation_model/} for full documentation.
 }

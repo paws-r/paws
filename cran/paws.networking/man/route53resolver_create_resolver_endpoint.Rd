@@ -10,10 +10,11 @@ route53resolver_create_resolver_endpoint(
   SecurityGroupIds,
   Direction,
   IpAddresses,
+  OutpostArn = NULL,
+  PreferredInstanceType = NULL,
   Tags = NULL,
   ResolverEndpointType = NULL,
-  OutpostArn = NULL,
-  PreferredInstanceType = NULL
+  Protocols = NULL
 )
 }
 \arguments{
@@ -42,7 +43,16 @@ VPC to your network
 
 \item{IpAddresses}{[required] The subnets and IP addresses in your VPC that DNS queries originate from
 (for outbound endpoints) or that you forward DNS queries to (for inbound
-endpoints). The subnet ID uniquely identifies a VPC.}
+endpoints). The subnet ID uniquely identifies a VPC.
+
+Even though the minimum is 1, Route 53 requires that you create at least
+two.}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
+must also specify a value for the \code{PreferredInstanceType}.}
+
+\item{PreferredInstanceType}{The instance type. If you specify this, you must also specify a value
+for the \code{OutpostArn}.}
 
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
@@ -51,11 +61,26 @@ endpoint.}
 dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
 This endpoint type is applied to all IP addresses.}
 
-\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
-must also specify a value for the \code{PreferredInstanceType}.}
+\item{Protocols}{The protocols you want to use for the endpoint. DoH-FIPS is applicable
+for inbound endpoints only.
 
-\item{PreferredInstanceType}{The instance type. If you specify this, you must also specify a value
-for the \code{OutpostArn}.}
+For an inbound endpoint you can apply the protocols as follows:
+\itemize{
+\item Do53 and DoH in combination.
+\item Do53 and DoH-FIPS in combination.
+\item Do53 alone.
+\item DoH alone.
+\item DoH-FIPS alone.
+\item None, which is treated as Do53.
+}
+
+For an outbound endpoint you can apply the protocols as follows:
+\itemize{
+\item Do53 and DoH in combination.
+\item Do53 alone.
+\item DoH alone.
+\item None, which is treated as Do53.
+}}
 }
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:

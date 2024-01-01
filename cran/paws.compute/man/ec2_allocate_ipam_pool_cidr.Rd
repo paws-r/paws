@@ -12,6 +12,7 @@ ec2_allocate_ipam_pool_cidr(
   ClientToken = NULL,
   Description = NULL,
   PreviewNextCidr = NULL,
+  AllowedCidrs = NULL,
   DisallowedCidrs = NULL
 )
 }
@@ -54,6 +55,9 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{Description}{A description for the allocation.}
 
 \item{PreviewNextCidr}{A preview of the next available CIDR in a pool.}
+
+\item{AllowedCidrs}{Include a particular CIDR range that can be returned by the pool.
+Allowed CIDRs are only allowed if using netmask length for allocation.}
 
 \item{DisallowedCidrs}{Exclude a particular CIDR range from being returned by the pool.
 Disallowed CIDRs are only allowed if using netmask length for

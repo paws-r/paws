@@ -27,6 +27,30 @@ NULL
   return(populate(args, shape))
 }
 
+.codestarconnections$create_repository_link_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$create_repository_link_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinkInfo = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkArn = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$create_sync_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Branch = structure(logical(0), tags = list(type = "string")), ConfigFile = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$create_sync_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncConfiguration = structure(list(Branch = structure(logical(0), tags = list(type = "string")), ConfigFile = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codestarconnections$delete_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -46,6 +70,30 @@ NULL
 }
 
 .codestarconnections$delete_host_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$delete_repository_link_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$delete_repository_link_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$delete_sync_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncType = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$delete_sync_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -75,6 +123,66 @@ NULL
   return(populate(args, shape))
 }
 
+.codestarconnections$get_repository_link_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_repository_link_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinkInfo = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkArn = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_repository_sync_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Branch = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_repository_sync_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LatestSync = structure(list(StartedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Event = structure(logical(0), tags = list(type = "string")), ExternalId = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_resource_sync_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceName = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_resource_sync_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DesiredState = structure(list(Branch = structure(logical(0), tags = list(type = "string")), Directory = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LatestSuccessfulSync = structure(list(Events = structure(list(structure(list(Event = structure(logical(0), tags = list(type = "string")), ExternalId = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InitialRevision = structure(list(Branch = structure(logical(0), tags = list(type = "string")), Directory = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), TargetRevision = structure(list(Branch = structure(logical(0), tags = list(type = "string")), Directory = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LatestSync = structure(list(Events = structure(list(structure(list(Event = structure(logical(0), tags = list(type = "string")), ExternalId = structure(logical(0), tags = list(type = "string")), Time = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InitialRevision = structure(list(Branch = structure(logical(0), tags = list(type = "string")), Directory = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), TargetRevision = structure(list(Branch = structure(logical(0), tags = list(type = "string")), Directory = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), Sha = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_sync_blocker_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncType = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_sync_blocker_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncBlockerSummary = structure(list(ResourceName = structure(logical(0), tags = list(type = "string")), ParentResourceName = structure(logical(0), tags = list(type = "string")), LatestBlockers = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedReason = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Contexts = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolvedReason = structure(logical(0), tags = list(type = "string")), ResolvedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_sync_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncType = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$get_sync_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncConfiguration = structure(list(Branch = structure(logical(0), tags = list(type = "string")), ConfigFile = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codestarconnections$list_connections_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ProviderTypeFilter = structure(logical(0), tags = list(type = "string")), HostArnFilter = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -96,6 +204,42 @@ NULL
 .codestarconnections$list_hosts_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Hosts = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), HostArn = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), ProviderEndpoint = structure(logical(0), tags = list(type = "string")), VpcConfiguration = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TlsCertificate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$list_repository_links_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$list_repository_links_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinks = structure(list(structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkArn = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$list_repository_sync_definitions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinkId = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$list_repository_sync_definitions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositorySyncDefinitions = structure(list(structure(list(Branch = structure(logical(0), tags = list(type = "string")), Directory = structure(logical(0), tags = list(type = "string")), Parent = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$list_sync_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$list_sync_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncConfigurations = structure(list(structure(list(Branch = structure(logical(0), tags = list(type = "string")), ConfigFile = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -144,5 +288,41 @@ NULL
 .codestarconnections$update_host_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$update_repository_link_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$update_repository_link_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RepositoryLinkInfo = structure(list(ConnectionArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkArn = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$update_sync_blocker_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), ResolvedReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$update_sync_blocker_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceName = structure(logical(0), tags = list(type = "string")), ParentResourceName = structure(logical(0), tags = list(type = "string")), SyncBlocker = structure(list(Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedReason = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Contexts = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolvedReason = structure(logical(0), tags = list(type = "string")), ResolvedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$update_sync_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Branch = structure(logical(0), tags = list(type = "string")), ConfigFile = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codestarconnections$update_sync_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SyncConfiguration = structure(list(Branch = structure(logical(0), tags = list(type = "string")), ConfigFile = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), RepositoryLinkId = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), SyncType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

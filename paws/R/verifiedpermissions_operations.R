@@ -3,6 +3,204 @@
 #' @include verifiedpermissions_service.R
 NULL
 
+#' Makes a series of decisions about multiple authorization requests for
+#' one principal or resource
+#'
+#' @description
+#' Makes a series of decisions about multiple authorization requests for
+#' one principal or resource. Each request contains the equivalent content
+#' of an [`is_authorized`][verifiedpermissions_is_authorized] request:
+#' principal, action, resource, and context. Either the `principal` or the
+#' `resource` parameter must be identical across all requests. For example,
+#' Verified Permissions won't evaluate a pair of requests where `bob` views
+#' `photo1` and `alice` views `photo2`. Authorization of `bob` to view
+#' `photo1` and `photo2`, or `bob` and `alice` to view `photo1`, are valid
+#' batches.
+#' 
+#' The request is evaluated against all policies in the specified policy
+#' store that match the entities that you declare. The result of the
+#' decisions is a series of `Allow` or `Deny` responses, along with the IDs
+#' of the policies that produced each decision.
+#' 
+#' The `entities` of a
+#' [`batch_is_authorized`][verifiedpermissions_batch_is_authorized] API
+#' request can contain up to 100 principals and up to 100 resources. The
+#' `requests` of a
+#' [`batch_is_authorized`][verifiedpermissions_batch_is_authorized] API
+#' request can contain up to 30 requests.
+#' 
+#' The [`batch_is_authorized`][verifiedpermissions_batch_is_authorized]
+#' operation doesn't have its own IAM permission. To authorize this
+#' operation for Amazon Web Services principals, include the permission
+#' `verifiedpermissions:IsAuthorized` in their IAM policies.
+#'
+#' @usage
+#' verifiedpermissions_batch_is_authorized(policyStoreId, entities,
+#'   requests)
+#'
+#' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
+#' be used to make the authorization decisions for the input.
+#' @param entities Specifies the list of resources and principals and their associated
+#' attributes that Verified Permissions can examine when evaluating the
+#' policies.
+#' 
+#' You can include only principal and resource entities in this parameter;
+#' you can't include actions. You must specify actions in the schema.
+#' @param requests &#91;required&#93; An array of up to 30 requests that you want Verified Permissions to
+#' evaluate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   results = list(
+#'     list(
+#'       request = list(
+#'         principal = list(
+#'           entityType = "string",
+#'           entityId = "string"
+#'         ),
+#'         action = list(
+#'           actionType = "string",
+#'           actionId = "string"
+#'         ),
+#'         resource = list(
+#'           entityType = "string",
+#'           entityId = "string"
+#'         ),
+#'         context = list(
+#'           contextMap = list(
+#'             list(
+#'               boolean = TRUE|FALSE,
+#'               entityIdentifier = list(
+#'                 entityType = "string",
+#'                 entityId = "string"
+#'               ),
+#'               long = 123,
+#'               string = "string",
+#'               set = list(
+#'                 list()
+#'               ),
+#'               record = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       decision = "ALLOW"|"DENY",
+#'       determiningPolicies = list(
+#'         list(
+#'           policyId = "string"
+#'         )
+#'       ),
+#'       errors = list(
+#'         list(
+#'           errorDescription = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_is_authorized(
+#'   policyStoreId = "string",
+#'   entities = list(
+#'     entityList = list(
+#'       list(
+#'         identifier = list(
+#'           entityType = "string",
+#'           entityId = "string"
+#'         ),
+#'         attributes = list(
+#'           list(
+#'             boolean = TRUE|FALSE,
+#'             entityIdentifier = list(
+#'               entityType = "string",
+#'               entityId = "string"
+#'             ),
+#'             long = 123,
+#'             string = "string",
+#'             set = list(
+#'               list()
+#'             ),
+#'             record = list(
+#'               list()
+#'             )
+#'           )
+#'         ),
+#'         parents = list(
+#'           list(
+#'             entityType = "string",
+#'             entityId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   requests = list(
+#'     list(
+#'       principal = list(
+#'         entityType = "string",
+#'         entityId = "string"
+#'       ),
+#'       action = list(
+#'         actionType = "string",
+#'         actionId = "string"
+#'       ),
+#'       resource = list(
+#'         entityType = "string",
+#'         entityId = "string"
+#'       ),
+#'       context = list(
+#'         contextMap = list(
+#'           list(
+#'             boolean = TRUE|FALSE,
+#'             entityIdentifier = list(
+#'               entityType = "string",
+#'               entityId = "string"
+#'             ),
+#'             long = 123,
+#'             string = "string",
+#'             set = list(
+#'               list()
+#'             ),
+#'             record = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_batch_is_authorized
+#'
+#' @aliases verifiedpermissions_batch_is_authorized
+verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NULL, requests) {
+  op <- new_operation(
+    name = "BatchIsAuthorized",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .verifiedpermissions$batch_is_authorized_input(policyStoreId = policyStoreId, entities = entities, requests = requests)
+  output <- .verifiedpermissions$batch_is_authorized_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$batch_is_authorized <- verifiedpermissions_batch_is_authorized
+
 #' Creates a reference to an Amazon Cognito user pool as an external
 #' identity provider (IdP)
 #'
@@ -267,7 +465,8 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' results of other Verified Permissions operations.
 #'
 #' @usage
-#' verifiedpermissions_create_policy_store(clientToken, validationSettings)
+#' verifiedpermissions_create_policy_store(clientToken, validationSettings,
+#'   description)
 #'
 #' @param clientToken Specifies a unique, case-sensitive ID that you provide to ensure the
 #' idempotency of the request. This lets you safely retry the request
@@ -295,6 +494,8 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' when you have a schema defined, use
 #' [`update_policy_store`][verifiedpermissions_update_policy_store] again
 #' to turn validation back on.
+#' @param description Descriptive text that you can provide to help with identification of the
+#' current policy store.
 #'
 #' @return
 #' A list with the following syntax:
@@ -317,7 +518,8 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #'   clientToken = "string",
 #'   validationSettings = list(
 #'     mode = "OFF"|"STRICT"
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -326,14 +528,14 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' @rdname verifiedpermissions_create_policy_store
 #'
 #' @aliases verifiedpermissions_create_policy_store
-verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings) {
+verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL) {
   op <- new_operation(
     name = "CreatePolicyStore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings)
+  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description)
   output <- .verifiedpermissions$create_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config)
@@ -799,7 +1001,8 @@ verifiedpermissions_get_policy <- function(policyStoreId, policyId) {
 #'   ),
 #'   lastUpdatedDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -916,6 +1119,9 @@ verifiedpermissions_get_policy_template <- function(policyStoreId, policyTemplat
 #'   ),
 #'   lastUpdatedDate = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   namespaces = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1531,7 +1737,11 @@ verifiedpermissions_list_policies <- function(policyStoreId, nextToken = NULL, m
 #'       arn = "string",
 #'       createdDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string"
 #'     )
 #'   )
 #' )
@@ -1943,11 +2153,13 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #'
 #' @usage
 #' verifiedpermissions_update_policy_store(policyStoreId,
-#'   validationSettings)
+#'   validationSettings, description)
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want to update
 #' @param validationSettings &#91;required&#93; A structure that defines the validation settings that want to enable for
 #' the policy store.
+#' @param description Descriptive text that you can provide to help with identification of the
+#' current policy store.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1970,7 +2182,8 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #'   policyStoreId = "string",
 #'   validationSettings = list(
 #'     mode = "OFF"|"STRICT"
-#'   )
+#'   ),
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -1979,14 +2192,14 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' @rdname verifiedpermissions_update_policy_store
 #'
 #' @aliases verifiedpermissions_update_policy_store
-verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings) {
+verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings, description = NULL) {
   op <- new_operation(
     name = "UpdatePolicyStore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings)
+  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, description = description)
   output <- .verifiedpermissions$update_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config)

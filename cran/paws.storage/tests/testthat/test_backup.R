@@ -8,6 +8,14 @@ test_that("describe_region_settings", {
   expect_error(svc$describe_region_settings(), NA)
 })
 
+test_that("list_backup_job_summaries", {
+  expect_error(svc$list_backup_job_summaries(), NA)
+})
+
+test_that("list_backup_job_summaries", {
+  expect_error(svc$list_backup_job_summaries(MaxResults = 20), NA)
+})
+
 test_that("list_backup_jobs", {
   expect_error(svc$list_backup_jobs(), NA)
 })
@@ -38,6 +46,14 @@ test_that("list_backup_vaults", {
 
 test_that("list_backup_vaults", {
   expect_error(svc$list_backup_vaults(MaxResults = 20), NA)
+})
+
+test_that("list_copy_job_summaries", {
+  expect_error(svc$list_copy_job_summaries(), NA)
+})
+
+test_that("list_copy_job_summaries", {
+  expect_error(svc$list_copy_job_summaries(MaxResults = 20), NA)
 })
 
 test_that("list_copy_jobs", {
@@ -88,10 +104,26 @@ test_that("list_report_plans", {
   expect_error(svc$list_report_plans(MaxResults = 20), NA)
 })
 
+test_that("list_restore_job_summaries", {
+  expect_error(svc$list_restore_job_summaries(), NA)
+})
+
+test_that("list_restore_job_summaries", {
+  expect_error(svc$list_restore_job_summaries(MaxResults = 20), NA)
+})
+
 test_that("list_restore_jobs", {
   expect_error(svc$list_restore_jobs(), NA)
 })
 
 test_that("list_restore_jobs", {
   expect_error(svc$list_restore_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_restore_testing_plans", {
+  expect_error(svc$list_restore_testing_plans(), NA)
+})
+
+test_that("list_restore_testing_plans", {
+  expect_error(svc$list_restore_testing_plans(MaxResults = 20), NA)
 })

@@ -2,12 +2,12 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_delete_addon}
 \alias{eks_delete_addon}
-\title{Delete an Amazon EKS add-on}
+\title{Deletes an Amazon EKS add-on}
 \usage{
 eks_delete_addon(clusterName, addonName, preserve = NULL)
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster to delete the add-on from.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}
@@ -18,7 +18,7 @@ Amazon EKS stops managing any settings for the add-on. If an IAM account
 is associated with the add-on, it isn't removed.}
 }
 \description{
-Delete an Amazon EKS add-on.
+Deletes an Amazon EKS add-on.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_delete_addon/} for full documentation.
 }

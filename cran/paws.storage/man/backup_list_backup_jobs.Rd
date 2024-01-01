@@ -17,12 +17,13 @@ backup_list_backup_jobs(
   ByAccountId = NULL,
   ByCompleteAfter = NULL,
   ByCompleteBefore = NULL,
-  ByParentJobId = NULL
+  ByParentJobId = NULL,
+  ByMessageCategory = NULL
 )
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
-if a request is made to return \code{maxResults} number of items, \code{NextToken}
+if a request is made to return \code{MaxResults} number of items, \code{NextToken}
 allows you to return more items in your list starting at the location
 pointed to by the next token.}
 
@@ -46,6 +47,7 @@ hyphens.}
 \item{ByResourceType}{Returns only backup jobs for the specified resources:
 \itemize{
 \item \code{Aurora} for Amazon Aurora
+\item \code{CloudFormation} for CloudFormation
 \item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
 \item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
@@ -53,9 +55,12 @@ hyphens.}
 \item \code{EFS} for Amazon Elastic File System
 \item \code{FSx} for Amazon FSx
 \item \code{Neptune} for Amazon Neptune
+\item \code{Redshift} for Amazon Redshift
 \item \code{RDS} for Amazon Relational Database Service
+\item \verb{SAP HANA on Amazon EC2} for SAP HANA databases
 \item \verb{Storage Gateway} for Storage Gateway
 \item \code{S3} for Amazon S3
+\item \code{Timestream} for Amazon Timestream
 \item \code{VirtualMachine} for virtual machines
 }}
 
@@ -72,6 +77,20 @@ and Coordinated Universal Time (UTC).}
 format and Coordinated Universal Time (UTC).}
 
 \item{ByParentJobId}{This is a filter to list child (nested) jobs based on parent job ID.}
+
+\item{ByMessageCategory}{This is an optional parameter that can be used to filter out jobs with a
+MessageCategory which matches the value you input.
+
+Example strings may include \code{AccessDenied}, \code{SUCCESS}, \code{AGGREGATE_ALL},
+and \code{InvalidParameters}.
+
+View
+\href{https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html}{Monitoring}
+
+The wildcard () returns count of all message categories.
+
+\code{AGGREGATE_ALL} aggregates job counts for all message categories and
+returns the sum.}
 }
 \description{
 Returns a list of existing backup jobs for an authenticated account for the last 30 days. For a longer period of time, consider using these \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html}{monitoring tools}.

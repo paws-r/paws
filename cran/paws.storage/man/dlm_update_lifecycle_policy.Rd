@@ -9,7 +9,13 @@ dlm_update_lifecycle_policy(
   ExecutionRoleArn = NULL,
   State = NULL,
   Description = NULL,
-  PolicyDetails = NULL
+  PolicyDetails = NULL,
+  CreateInterval = NULL,
+  RetainInterval = NULL,
+  CopyTags = NULL,
+  ExtendDeletion = NULL,
+  CrossRegionCopyTargets = NULL,
+  Exclusions = NULL
 )
 }
 \arguments{
@@ -24,6 +30,51 @@ operations specified by the lifecycle policy.}
 
 \item{PolicyDetails}{The configuration of the lifecycle policy. You cannot update the policy
 type or the resource type.}
+
+\item{CreateInterval}{\strong{[Default policies only]} Specifies how often the policy should run
+and create snapshots or AMIs. The creation frequency can range from 1 to
+7 days.}
+
+\item{RetainInterval}{\strong{[Default policies only]} Specifies how long the policy should
+retain snapshots or AMIs before deleting them. The retention period can
+range from 2 to 14 days, but it must be greater than the creation
+frequency to ensure that the policy retains at least 1 snapshot or AMI
+at any given time.}
+
+\item{CopyTags}{\strong{[Default policies only]} Indicates whether the policy should copy
+tags from the source resource to the snapshot or AMI.}
+
+\item{ExtendDeletion}{\strong{[Default policies only]} Defines the snapshot or AMI retention
+behavior for the policy if the source volume or instance is deleted, or
+if the policy enters the error, disabled, or deleted state.
+
+By default (\strong{ExtendDeletion=false}):
+\itemize{
+\item If a source resource is deleted, Amazon Data Lifecycle Manager will
+continue to delete previously created snapshots or AMIs, up to but
+not including the last one, based on the specified retention period.
+If you want Amazon Data Lifecycle Manager to delete all snapshots or
+AMIs, including the last one, specify \code{true}.
+\item If a policy enters the error, disabled, or deleted state, Amazon
+Data Lifecycle Manager stops deleting snapshots and AMIs. If you
+want Amazon Data Lifecycle Manager to continue deleting snapshots or
+AMIs, including the last one, if the policy enters one of these
+states, specify \code{true}.
+}
+
+If you enable extended deletion (\strong{ExtendDeletion=true}), you override
+both default behaviors simultaneously.
+
+Default: false}
+
+\item{CrossRegionCopyTargets}{\strong{[Default policies only]} Specifies destination Regions for snapshot
+or AMI copies. You can specify up to 3 destination Regions. If you do
+not want to create cross-Region copies, omit this parameter.}
+
+\item{Exclusions}{\strong{[Default policies only]} Specifies exclusion parameters for volumes
+or instances for which you do not want to create snapshots or AMIs. The
+policy will not create snapshots or AMIs for target resources that match
+any of the specified exclusion parameters.}
 }
 \description{
 Updates the specified lifecycle policy.

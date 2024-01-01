@@ -111,13 +111,13 @@ NULL
 
 .cloudfront$create_function_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionCode = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure", locationName = "CreateFunctionRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionCode = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure", locationName = "CreateFunctionRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
   return(populate(args, shape))
 }
 
 .cloudfront$create_function_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "FunctionSummary"))
+  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "FunctionSummary"))
   return(populate(args, shape))
 }
 
@@ -142,6 +142,18 @@ NULL
 .cloudfront$create_key_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(KeyGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), KeyGroupConfig = structure(list(Name = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(logical(0), tags = list(locationName = "PublicKey", type = "string"))), tags = list(locationNameList = "PublicKey", type = "list")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "KeyGroup"))
+  return(populate(args, shape))
+}
+
+.cloudfront$create_key_value_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string")), ImportSource = structure(list(SourceType = structure(logical(0), tags = list(type = "string")), SourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", locationName = "CreateKeyValueStoreRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
+  return(populate(args, shape))
+}
+
+.cloudfront$create_key_value_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyValueStore = structure(list(Name = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string")), Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string"))), tags = list(type = "structure", payload = "KeyValueStore"))
   return(populate(args, shape))
 }
 
@@ -321,6 +333,16 @@ NULL
   list()
 }
 
+.cloudfront$delete_key_value_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudfront$delete_key_value_store_output <- function(...) {
+  list()
+}
+
 .cloudfront$delete_monitoring_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DistributionId = structure(logical(0), tags = list(location = "uri", locationName = "DistributionId", type = "string"))), tags = list(type = "structure"))
@@ -401,7 +423,19 @@ NULL
 
 .cloudfront$describe_function_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "FunctionSummary"))
+  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "FunctionSummary"))
+  return(populate(args, shape))
+}
+
+.cloudfront$describe_key_value_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudfront$describe_key_value_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyValueStore = structure(list(Name = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "KeyValueStore"))
   return(populate(args, shape))
 }
 
@@ -905,7 +939,7 @@ NULL
 
 .cloudfront$list_functions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FunctionList = structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer")), Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(locationName = "FunctionSummary", type = "structure"))), tags = list(locationNameList = "FunctionSummary", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "FunctionList"))
+  shape <- structure(list(FunctionList = structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer")), Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(locationName = "FunctionSummary", type = "structure"))), tags = list(locationNameList = "FunctionSummary", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "FunctionList"))
   return(populate(args, shape))
 }
 
@@ -930,6 +964,18 @@ NULL
 .cloudfront$list_key_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(KeyGroupList = structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer")), Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), KeyGroupConfig = structure(list(Name = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(logical(0), tags = list(locationName = "PublicKey", type = "string"))), tags = list(locationNameList = "PublicKey", type = "list")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(locationName = "KeyGroupSummary", type = "structure"))), tags = list(locationNameList = "KeyGroupSummary", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "KeyGroupList"))
+  return(populate(args, shape))
+}
+
+.cloudfront$list_key_value_stores_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(location = "querystring", locationName = "Marker", type = "string")), MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "MaxItems", type = "string")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "Status", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudfront$list_key_value_stores_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyValueStoreList = structure(list(NextMarker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer")), Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(locationName = "KeyValueStore", type = "structure"))), tags = list(locationNameList = "KeyValueStore", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "KeyValueStoreList"))
   return(populate(args, shape))
 }
 
@@ -1025,7 +1071,7 @@ NULL
 
 .cloudfront$publish_function_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "FunctionSummary"))
+  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "FunctionSummary"))
   return(populate(args, shape))
 }
 
@@ -1047,7 +1093,7 @@ NULL
 
 .cloudfront$test_function_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TestResult = structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ComputeUtilization = structure(logical(0), tags = list(type = "string")), FunctionExecutionLogs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE)), FunctionErrorMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FunctionOutput = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "TestResult"))
+  shape <- structure(list(TestResult = structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ComputeUtilization = structure(logical(0), tags = list(type = "string")), FunctionExecutionLogs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list", sensitive = TRUE)), FunctionErrorMessage = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FunctionOutput = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "TestResult"))
   return(populate(args, shape))
 }
 
@@ -1147,13 +1193,13 @@ NULL
 
 .cloudfront$update_function_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionCode = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure", locationName = "UpdateFunctionRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionCode = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure", locationName = "UpdateFunctionRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
   return(populate(args, shape))
 }
 
 .cloudfront$update_function_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETtag", type = "string"))), tags = list(type = "structure", payload = "FunctionSummary"))
+  shape <- structure(list(FunctionSummary = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), FunctionConfig = structure(list(Comment = structure(logical(0), tags = list(type = "string")), Runtime = structure(logical(0), tags = list(type = "string")), KeyValueStoreAssociations = structure(list(Quantity = structure(logical(0), tags = list(type = "integer")), Items = structure(list(structure(list(KeyValueStoreARN = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "KeyValueStoreAssociation", type = "structure"))), tags = list(locationNameList = "KeyValueStoreAssociation", type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), FunctionMetadata = structure(list(FunctionARN = structure(logical(0), tags = list(type = "string")), Stage = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETtag", type = "string"))), tags = list(type = "structure", payload = "FunctionSummary"))
   return(populate(args, shape))
 }
 
@@ -1166,6 +1212,18 @@ NULL
 .cloudfront$update_key_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(KeyGroup = structure(list(Id = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), KeyGroupConfig = structure(list(Name = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(logical(0), tags = list(locationName = "PublicKey", type = "string"))), tags = list(locationNameList = "PublicKey", type = "list")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "KeyGroup"))
+  return(populate(args, shape))
+}
+
+.cloudfront$update_key_value_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), Comment = structure(logical(0), tags = list(type = "string")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string"))), tags = list(type = "structure", locationName = "UpdateKeyValueStoreRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
+  return(populate(args, shape))
+}
+
+.cloudfront$update_key_value_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyValueStore = structure(list(Name = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Comment = structure(logical(0), tags = list(type = "string")), ARN = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ETag = structure(logical(0), tags = list(location = "header", locationName = "ETag", type = "string"))), tags = list(type = "structure", payload = "KeyValueStore"))
   return(populate(args, shape))
 }
 

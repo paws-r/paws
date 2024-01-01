@@ -88,9 +88,44 @@ your ID tokens are valid for one hour.}
 refresh tokens. The default unit for RefreshToken is days, and the
 default for ID and access tokens is hours.}
 
-\item{ReadAttributes}{The read-only attributes of the user pool.}
+\item{ReadAttributes}{The list of user attributes that you want your app client to have
+read-only access to. After your user authenticates in your app, their
+access token authorizes them to read their own attribute value for any
+attribute in this list. An example of this kind of activity is when your
+user selects a link to view their profile information. Your app makes a
+\code{\link[=cognitoidentityprovider_get_user]{get_user}} API request to retrieve
+and display your user's profile data.
 
-\item{WriteAttributes}{The writeable attributes of the user pool.}
+When you don't specify the \code{ReadAttributes} for your app client, your
+app can read the values of \code{email_verified}, \code{phone_number_verified},
+and the Standard attributes of your user pool. When your user pool has
+read access to these default attributes, \code{ReadAttributes} doesn't return
+any information. Amazon Cognito only populates \code{ReadAttributes} in the
+API response if you have specified your own custom set of read
+attributes.}
+
+\item{WriteAttributes}{The list of user attributes that you want your app client to have write
+access to. After your user authenticates in your app, their access token
+authorizes them to set or modify their own attribute value for any
+attribute in this list. An example of this kind of activity is when you
+present your user with a form to update their profile information and
+they change their last name. Your app then makes an
+\code{\link[=cognitoidentityprovider_update_user_attributes]{update_user_attributes}}
+API request and sets \code{family_name} to the new value.
+
+When you don't specify the \code{WriteAttributes} for your app client, your
+app can write the values of the Standard attributes of your user pool.
+When your user pool has write access to these default attributes,
+\code{WriteAttributes} doesn't return any information. Amazon Cognito only
+populates \code{WriteAttributes} in the API response if you have specified
+your own custom set of write attributes.
+
+If your app client allows users to sign in through an IdP, this array
+must include all attributes that you have mapped to IdP attributes.
+Amazon Cognito updates mapped attributes when users sign in to your
+application through an IdP. If your app client does not have write
+access to a mapped attribute, Amazon Cognito throws an error when it
+tries to update the attribute. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html}{Specifying IdP Attribute Mappings for Your user pool}.}
 
 \item{ExplicitAuthFlows}{The authentication flows that you want your user pool client to support.
 For each app client in your user pool, you can sign in your users with

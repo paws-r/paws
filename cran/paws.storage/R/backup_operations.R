@@ -248,6 +248,9 @@ backup_create_legal_hold <- function(Title, Description, IdempotencyToken = NULL
 #' @param BackupVaultName &#91;required&#93; This is the name of the vault that is being created.
 #' @param BackupVaultTags These are the tags that will be included in the newly-created vault.
 #' @param CreatorRequestId This is the ID of the creation request.
+#' 
+#' This parameter is optional. If used, this parameter must contain 1 to 50
+#' alphanumeric or '-_.' characters.
 #' @param MinRetentionDays &#91;required&#93; This setting specifies the minimum retention period that the vault
 #' retains its recovery points. If this parameter is not specified, no
 #' minimum retention period is enforced.
@@ -338,6 +341,100 @@ backup_create_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
   return(response)
 }
 .backup$operations$create_report_plan <- backup_create_report_plan
+
+#' This is the first of two steps to create a restore testing plan; once
+#' this request is successful, finish the procedure with request
+#' CreateRestoreTestingSelection
+#'
+#' @description
+#' This is the first of two steps to create a restore testing plan; once this request is successful, finish the procedure with request CreateRestoreTestingSelection.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_create_restore_testing_plan/](https://www.paws-r-sdk.com/docs/backup_create_restore_testing_plan/) for full documentation.
+#'
+#' @param CreatorRequestId This is a unique string that identifies the request and allows failed
+#' requests to be retriedwithout the risk of running the operation twice.
+#' This parameter is optional. If used, this parameter must contain 1 to 50
+#' alphanumeric or '-_.' characters.
+#' @param RestoreTestingPlan &#91;required&#93; A restore testing plan must contain a unique `RestoreTestingPlanName`
+#' string you create and must contain a `ScheduleExpression` cron. You may
+#' optionally include a `StartWindowHours` integer and a `CreatorRequestId`
+#' string.
+#' 
+#' The `RestoreTestingPlanName` is a unique string that is the name of the
+#' restore testing plan. This cannot be changed after creation, and it must
+#' consist of only alphanumeric characters and underscores.
+#' @param Tags Optional tags to include. A tag is a key-value pair you can use to
+#' manage, filter, and search for your resources. Allowed characters
+#' include UTF-8 letters,numbers, spaces, and the following characters: + -
+#' = . _ : /.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_create_restore_testing_plan
+backup_create_restore_testing_plan <- function(CreatorRequestId = NULL, RestoreTestingPlan, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRestoreTestingPlan",
+    http_method = "PUT",
+    http_path = "/restore-testing/plans",
+    paginator = list()
+  )
+  input <- .backup$create_restore_testing_plan_input(CreatorRequestId = CreatorRequestId, RestoreTestingPlan = RestoreTestingPlan, Tags = Tags)
+  output <- .backup$create_restore_testing_plan_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$create_restore_testing_plan <- backup_create_restore_testing_plan
+
+#' This request can be sent after CreateRestoreTestingPlan request returns
+#' successfully
+#'
+#' @description
+#' This request can be sent after CreateRestoreTestingPlan request returns successfully. This is the second part of creating a resource testing plan, and it must be completed sequentially.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_create_restore_testing_selection/](https://www.paws-r-sdk.com/docs/backup_create_restore_testing_selection/) for full documentation.
+#'
+#' @param CreatorRequestId This is an optional unique string that identifies the request and allows
+#' failed requests to be retried without the risk of running the operation
+#' twice. If used, this parameter must contain 1 to 50 alphanumeric or
+#' '-_.' characters.
+#' @param RestoreTestingPlanName &#91;required&#93; Input the restore testing plan name that was returned from the related
+#' CreateRestoreTestingPlan request.
+#' @param RestoreTestingSelection &#91;required&#93; This consists of `RestoreTestingSelectionName`, `ProtectedResourceType`,
+#' and one of the following:
+#' 
+#' -   `ProtectedResourceArns`
+#' 
+#' -   `ProtectedResourceConditions`
+#' 
+#' Each protected resource type can have one single value.
+#' 
+#' A restore testing selection can include a wildcard value ("*") for
+#' `ProtectedResourceArns` along with `ProtectedResourceConditions`.
+#' Alternatively, you can include up to 30 specific protected resource ARNs
+#' in `ProtectedResourceArns`.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_create_restore_testing_selection
+backup_create_restore_testing_selection <- function(CreatorRequestId = NULL, RestoreTestingPlanName, RestoreTestingSelection) {
+  op <- new_operation(
+    name = "CreateRestoreTestingSelection",
+    http_method = "PUT",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections",
+    paginator = list()
+  )
+  input <- .backup$create_restore_testing_selection_input(CreatorRequestId = CreatorRequestId, RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelection = RestoreTestingSelection)
+  output <- .backup$create_restore_testing_selection_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$create_restore_testing_selection <- backup_create_restore_testing_selection
 
 #' Deletes a backup plan
 #'
@@ -618,6 +715,67 @@ backup_delete_report_plan <- function(ReportPlanName) {
   return(response)
 }
 .backup$operations$delete_report_plan <- backup_delete_report_plan
+
+#' This request deletes the specified restore testing plan
+#'
+#' @description
+#' This request deletes the specified restore testing plan.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_delete_restore_testing_plan/](https://www.paws-r-sdk.com/docs/backup_delete_restore_testing_plan/) for full documentation.
+#'
+#' @param RestoreTestingPlanName &#91;required&#93; Required unique name of the restore testing plan you wish to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_delete_restore_testing_plan
+backup_delete_restore_testing_plan <- function(RestoreTestingPlanName) {
+  op <- new_operation(
+    name = "DeleteRestoreTestingPlan",
+    http_method = "DELETE",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
+    paginator = list()
+  )
+  input <- .backup$delete_restore_testing_plan_input(RestoreTestingPlanName = RestoreTestingPlanName)
+  output <- .backup$delete_restore_testing_plan_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$delete_restore_testing_plan <- backup_delete_restore_testing_plan
+
+#' Input the Restore Testing Plan name and Restore Testing Selection name
+#'
+#' @description
+#' Input the Restore Testing Plan name and Restore Testing Selection name.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_delete_restore_testing_selection/](https://www.paws-r-sdk.com/docs/backup_delete_restore_testing_selection/) for full documentation.
+#'
+#' @param RestoreTestingPlanName &#91;required&#93; Required unique name of the restore testing plan that contains the
+#' restore testing selection you wish to delete.
+#' @param RestoreTestingSelectionName &#91;required&#93; Required unique name of the restore testing selection you wish to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_delete_restore_testing_selection
+backup_delete_restore_testing_selection <- function(RestoreTestingPlanName, RestoreTestingSelectionName) {
+  op <- new_operation(
+    name = "DeleteRestoreTestingSelection",
+    http_method = "DELETE",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+    paginator = list()
+  )
+  input <- .backup$delete_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelectionName = RestoreTestingSelectionName)
+  output <- .backup$delete_restore_testing_selection_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$delete_restore_testing_selection <- backup_delete_restore_testing_selection
 
 #' Returns backup job details for the specified BackupJobId
 #'
@@ -1310,6 +1468,133 @@ backup_get_recovery_point_restore_metadata <- function(BackupVaultName, Recovery
 }
 .backup$operations$get_recovery_point_restore_metadata <- backup_get_recovery_point_restore_metadata
 
+#' This request returns the metadata for the specified restore job
+#'
+#' @description
+#' This request returns the metadata for the specified restore job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_get_restore_job_metadata/](https://www.paws-r-sdk.com/docs/backup_get_restore_job_metadata/) for full documentation.
+#'
+#' @param RestoreJobId &#91;required&#93; This is a unique identifier of a restore job within Backup.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_get_restore_job_metadata
+backup_get_restore_job_metadata <- function(RestoreJobId) {
+  op <- new_operation(
+    name = "GetRestoreJobMetadata",
+    http_method = "GET",
+    http_path = "/restore-jobs/{restoreJobId}/metadata",
+    paginator = list()
+  )
+  input <- .backup$get_restore_job_metadata_input(RestoreJobId = RestoreJobId)
+  output <- .backup$get_restore_job_metadata_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$get_restore_job_metadata <- backup_get_restore_job_metadata
+
+#' This request returns the minimal required set of metadata needed to
+#' start a restore job with secure default settings
+#'
+#' @description
+#' This request returns the minimal required set of metadata needed to start a restore job with secure default settings. `BackupVaultName` and `RecoveryPointArn` are required parameters. `BackupVaultAccountId` is an optional parameter.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_get_restore_testing_inferred_metadata/](https://www.paws-r-sdk.com/docs/backup_get_restore_testing_inferred_metadata/) for full documentation.
+#'
+#' @param BackupVaultAccountId This is the account ID of the specified backup vault.
+#' @param BackupVaultName &#91;required&#93; The name of a logical container where backups are stored. Backup vaults
+#' are identified by names that are unique to the account used to create
+#' them and the Amazon Web ServicesRegion where they are created. They
+#' consist of letters, numbers, and hyphens.
+#' @param RecoveryPointArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
+#' for example,
+#' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_get_restore_testing_inferred_metadata
+backup_get_restore_testing_inferred_metadata <- function(BackupVaultAccountId = NULL, BackupVaultName, RecoveryPointArn) {
+  op <- new_operation(
+    name = "GetRestoreTestingInferredMetadata",
+    http_method = "GET",
+    http_path = "/restore-testing/inferred-metadata",
+    paginator = list()
+  )
+  input <- .backup$get_restore_testing_inferred_metadata_input(BackupVaultAccountId = BackupVaultAccountId, BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
+  output <- .backup$get_restore_testing_inferred_metadata_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$get_restore_testing_inferred_metadata <- backup_get_restore_testing_inferred_metadata
+
+#' Returns RestoreTestingPlan details for the specified
+#' RestoreTestingPlanName
+#'
+#' @description
+#' Returns `RestoreTestingPlan` details for the specified `RestoreTestingPlanName`. The details are the body of a restore testing plan in JSON format, in addition to plan metadata.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_get_restore_testing_plan/](https://www.paws-r-sdk.com/docs/backup_get_restore_testing_plan/) for full documentation.
+#'
+#' @param RestoreTestingPlanName &#91;required&#93; Required unique name of the restore testing plan.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_get_restore_testing_plan
+backup_get_restore_testing_plan <- function(RestoreTestingPlanName) {
+  op <- new_operation(
+    name = "GetRestoreTestingPlan",
+    http_method = "GET",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
+    paginator = list()
+  )
+  input <- .backup$get_restore_testing_plan_input(RestoreTestingPlanName = RestoreTestingPlanName)
+  output <- .backup$get_restore_testing_plan_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$get_restore_testing_plan <- backup_get_restore_testing_plan
+
+#' Returns RestoreTestingSelection, which displays resources and elements
+#' of the restore testing plan
+#'
+#' @description
+#' Returns RestoreTestingSelection, which displays resources and elements of the restore testing plan.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_get_restore_testing_selection/](https://www.paws-r-sdk.com/docs/backup_get_restore_testing_selection/) for full documentation.
+#'
+#' @param RestoreTestingPlanName &#91;required&#93; Required unique name of the restore testing plan.
+#' @param RestoreTestingSelectionName &#91;required&#93; Required unique name of the restore testing selection.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_get_restore_testing_selection
+backup_get_restore_testing_selection <- function(RestoreTestingPlanName, RestoreTestingSelectionName) {
+  op <- new_operation(
+    name = "GetRestoreTestingSelection",
+    http_method = "GET",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+    paginator = list()
+  )
+  input <- .backup$get_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelectionName = RestoreTestingSelectionName)
+  output <- .backup$get_restore_testing_selection_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$get_restore_testing_selection <- backup_get_restore_testing_selection
+
 #' Returns the Amazon Web Services resource types supported by Backup
 #'
 #' @description
@@ -1339,6 +1624,91 @@ backup_get_supported_resource_types <- function() {
 }
 .backup$operations$get_supported_resource_types <- backup_get_supported_resource_types
 
+#' This is a request for a summary of backup jobs created or running within
+#' the most recent 30 days
+#'
+#' @description
+#' This is a request for a summary of backup jobs created or running within the most recent 30 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_backup_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_backup_job_summaries/) for full documentation.
+#'
+#' @param AccountId Returns the job count for the specified account.
+#' 
+#' If the request is sent from a member account or an account not part of
+#' Amazon Web Services Organizations, jobs within requestor's account will
+#' be returned.
+#' 
+#' Root, admin, and delegated administrator accounts can use the value ANY
+#' to return job counts from every account in the organization.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts from all accounts within the
+#' authenticated organization, then returns the sum.
+#' @param State This parameter returns the job count for jobs with the specified state.
+#' 
+#' The the value ANY returns count of all states.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all states and returns the
+#' sum.
+#' @param ResourceType Returns the job count for the specified resource type. Use request
+#' [`get_supported_resource_types`][backup_get_supported_resource_types] to
+#' obtain strings for supported resource types.
+#' 
+#' The the value ANY returns count of all resource types.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all resource types and returns
+#' the sum.
+#' 
+#' The type of Amazon Web Services resource to be backed up; for example,
+#' an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon
+#' Relational Database Service (Amazon RDS) database.
+#' @param MessageCategory This parameter returns the job count for the specified message category.
+#' 
+#' Example accepted strings include `AccessDenied`, `Success`, and
+#' `InvalidParameters`. See
+#' [Monitoring](https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html)
+#' for a list of accepted MessageCategory strings.
+#' 
+#' The the value ANY returns count of all message categories.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all message categories and
+#' returns the sum.
+#' @param AggregationPeriod This is the period that sets the boundaries for returned results.
+#' 
+#' Acceptable values include
+#' 
+#' -   `ONE_DAY` for daily job count for the prior 14 days.
+#' 
+#' -   `SEVEN_DAYS` for the aggregated job count for the prior 7 days.
+#' 
+#' -   `FOURTEEN_DAYS` for aggregated job count for prior 14 days.
+#' @param MaxResults This parameter sets the maximum number of items to be returned.
+#' 
+#' The value is an integer. Range of accepted values is from 1 to 500.
+#' @param NextToken The next item following a partial list of returned resources. For
+#' example, if a request is made to return `MaxResults` number of
+#' resources, `NextToken` allows you to return more items in your list
+#' starting at the location pointed to by the next token.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_backup_job_summaries
+backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, ResourceType = NULL, MessageCategory = NULL, AggregationPeriod = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListBackupJobSummaries",
+    http_method = "GET",
+    http_path = "/audit/backup-job-summaries",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .backup$list_backup_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .backup$list_backup_job_summaries_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_backup_job_summaries <- backup_list_backup_job_summaries
+
 #' Returns a list of existing backup jobs for an authenticated account for
 #' the last 30 days
 #'
@@ -1348,7 +1718,7 @@ backup_get_supported_resource_types <- function() {
 #' See [https://www.paws-r-sdk.com/docs/backup_list_backup_jobs/](https://www.paws-r-sdk.com/docs/backup_list_backup_jobs/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1366,6 +1736,8 @@ backup_get_supported_resource_types <- function() {
 #' 
 #' -   `Aurora` for Amazon Aurora
 #' 
+#' -   `CloudFormation` for CloudFormation
+#' 
 #' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
 #' 
 #' -   `DynamoDB` for Amazon DynamoDB
@@ -1380,11 +1752,17 @@ backup_get_supported_resource_types <- function() {
 #' 
 #' -   `Neptune` for Amazon Neptune
 #' 
+#' -   `Redshift` for Amazon Redshift
+#' 
 #' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases
 #' 
 #' -   `Storage Gateway` for Storage Gateway
 #' 
 #' -   `S3` for Amazon S3
+#' 
+#' -   `Timestream` for Amazon Timestream
 #' 
 #' -   `VirtualMachine` for virtual machines
 #' @param ByAccountId The account ID to list the jobs from. Returns only backup jobs
@@ -1397,18 +1775,31 @@ backup_get_supported_resource_types <- function() {
 #' @param ByCompleteBefore Returns only backup jobs completed before a date expressed in Unix
 #' format and Coordinated Universal Time (UTC).
 #' @param ByParentJobId This is a filter to list child (nested) jobs based on parent job ID.
+#' @param ByMessageCategory This is an optional parameter that can be used to filter out jobs with a
+#' MessageCategory which matches the value you input.
+#' 
+#' Example strings may include `AccessDenied`, `SUCCESS`, `AGGREGATE_ALL`,
+#' and `InvalidParameters`.
+#' 
+#' View
+#' [Monitoring](https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html)
+#' 
+#' The wildcard () returns count of all message categories.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all message categories and
+#' returns the sum.
 #'
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_jobs
-backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByAccountId = NULL, ByCompleteAfter = NULL, ByCompleteBefore = NULL, ByParentJobId = NULL) {
+backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByAccountId = NULL, ByCompleteAfter = NULL, ByCompleteBefore = NULL, ByParentJobId = NULL, ByMessageCategory = NULL) {
   op <- new_operation(
     name = "ListBackupJobs",
     http_method = "GET",
     http_path = "/backup-jobs/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupJobs")
   )
-  input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore, ByParentJobId = ByParentJobId)
+  input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore, ByParentJobId = ByParentJobId, ByMessageCategory = ByMessageCategory)
   output <- .backup$list_backup_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1427,7 +1818,7 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
 #' See [https://www.paws-r-sdk.com/docs/backup_list_backup_plan_templates/](https://www.paws-r-sdk.com/docs/backup_list_backup_plan_templates/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1463,7 +1854,7 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
 #'
 #' @param BackupPlanId &#91;required&#93; Uniquely identifies a backup plan.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1496,7 +1887,7 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
 #' See [https://www.paws-r-sdk.com/docs/backup_list_backup_plans/](https://www.paws-r-sdk.com/docs/backup_list_backup_plans/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1533,7 +1924,7 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
 #'
 #' @param BackupPlanId &#91;required&#93; Uniquely identifies a backup plan.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1569,7 +1960,7 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
 #' @param ByVaultType This parameter will sort the list of vaults by vault type.
 #' @param ByShared This parameter will sort the list of vaults by shared vaults.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1594,6 +1985,89 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 }
 .backup$operations$list_backup_vaults <- backup_list_backup_vaults
 
+#' This request obtains a list of copy jobs created or running within the
+#' the most recent 30 days
+#'
+#' @description
+#' This request obtains a list of copy jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, MessageCategory, AggregationPeriod, MaxResults, or NextToken to filter results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_copy_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_copy_job_summaries/) for full documentation.
+#'
+#' @param AccountId Returns the job count for the specified account.
+#' 
+#' If the request is sent from a member account or an account not part of
+#' Amazon Web Services Organizations, jobs within requestor's account will
+#' be returned.
+#' 
+#' Root, admin, and delegated administrator accounts can use the value ANY
+#' to return job counts from every account in the organization.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts from all accounts within the
+#' authenticated organization, then returns the sum.
+#' @param State This parameter returns the job count for jobs with the specified state.
+#' 
+#' The the value ANY returns count of all states.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all states and returns the
+#' sum.
+#' @param ResourceType Returns the job count for the specified resource type. Use request
+#' [`get_supported_resource_types`][backup_get_supported_resource_types] to
+#' obtain strings for supported resource types.
+#' 
+#' The the value ANY returns count of all resource types.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all resource types and returns
+#' the sum.
+#' 
+#' The type of Amazon Web Services resource to be backed up; for example,
+#' an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon
+#' Relational Database Service (Amazon RDS) database.
+#' @param MessageCategory This parameter returns the job count for the specified message category.
+#' 
+#' Example accepted strings include `AccessDenied`, `Success`, and
+#' `InvalidParameters`. See
+#' [Monitoring](https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html)
+#' for a list of accepted MessageCategory strings.
+#' 
+#' The the value ANY returns count of all message categories.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all message categories and
+#' returns the sum.
+#' @param AggregationPeriod This is the period that sets the boundaries for returned results.
+#' 
+#' -   `ONE_DAY` for daily job count for the prior 14 days.
+#' 
+#' -   `SEVEN_DAYS` for the aggregated job count for the prior 7 days.
+#' 
+#' -   `FOURTEEN_DAYS` for aggregated job count for prior 14 days.
+#' @param MaxResults This parameter sets the maximum number of items to be returned.
+#' 
+#' The value is an integer. Range of accepted values is from 1 to 500.
+#' @param NextToken The next item following a partial list of returned resources. For
+#' example, if a request is made to return `MaxResults` number of
+#' resources, `NextToken` allows you to return more items in your list
+#' starting at the location pointed to by the next token.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_copy_job_summaries
+backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, ResourceType = NULL, MessageCategory = NULL, AggregationPeriod = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCopyJobSummaries",
+    http_method = "GET",
+    http_path = "/audit/copy-job-summaries",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .backup$list_copy_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .backup$list_copy_job_summaries_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_copy_job_summaries <- backup_list_copy_job_summaries
+
 #' Returns metadata about your copy jobs
 #'
 #' @description
@@ -1602,7 +2076,7 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 #' See [https://www.paws-r-sdk.com/docs/backup_list_copy_jobs/](https://www.paws-r-sdk.com/docs/backup_list_copy_jobs/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return maxResults number of items, NextToken
+#' if a request is made to return MaxResults number of items, NextToken
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1614,6 +2088,8 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 #' @param ByResourceType Returns only backup jobs for the specified resources:
 #' 
 #' -   `Aurora` for Amazon Aurora
+#' 
+#' -   `CloudFormation` for CloudFormation
 #' 
 #' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
 #' 
@@ -1629,11 +2105,17 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 #' 
 #' -   `Neptune` for Amazon Neptune
 #' 
+#' -   `Redshift` for Amazon Redshift
+#' 
 #' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases
 #' 
 #' -   `Storage Gateway` for Storage Gateway
 #' 
 #' -   `S3` for Amazon S3
+#' 
+#' -   `Timestream` for Amazon Timestream
 #' 
 #' -   `VirtualMachine` for virtual machines
 #' @param ByDestinationVaultArn An Amazon Resource Name (ARN) that uniquely identifies a source backup
@@ -1646,18 +2128,32 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 #' @param ByCompleteAfter Returns only copy jobs completed after a date expressed in Unix format
 #' and Coordinated Universal Time (UTC).
 #' @param ByParentJobId This is a filter to list child (nested) jobs based on parent job ID.
+#' @param ByMessageCategory This is an optional parameter that can be used to filter out jobs with a
+#' MessageCategory which matches the value you input.
+#' 
+#' Example strings may include `AccessDenied`, `SUCCESS`, `AGGREGATE_ALL`,
+#' and `INVALIDPARAMETERS`.
+#' 
+#' View
+#' [Monitoring](https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html)
+#' for a list of accepted strings.
+#' 
+#' The the value ANY returns count of all message categories.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all message categories and
+#' returns the sum.
 #'
 #' @keywords internal
 #'
 #' @rdname backup_list_copy_jobs
-backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByDestinationVaultArn = NULL, ByAccountId = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL, ByParentJobId = NULL) {
+backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByDestinationVaultArn = NULL, ByAccountId = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL, ByParentJobId = NULL, ByMessageCategory = NULL) {
   op <- new_operation(
     name = "ListCopyJobs",
     http_method = "GET",
     http_path = "/copy-jobs/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CopyJobs")
   )
-  input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByParentJobId = ByParentJobId)
+  input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByParentJobId = ByParentJobId, ByMessageCategory = ByMessageCategory)
   output <- .backup$list_copy_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1709,7 +2205,7 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/backup_list_legal_holds/](https://www.paws-r-sdk.com/docs/backup_list_legal_holds/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned resources. For
-#' example, if a request is made to return `maxResults` number of
+#' example, if a request is made to return `MaxResults` number of
 #' resources, `NextToken` allows you to return more items in your list
 #' starting at the location pointed to by the next token.
 #' @param MaxResults The maximum number of resource list items to be returned.
@@ -1744,7 +2240,7 @@ backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/backup_list_protected_resources/](https://www.paws-r-sdk.com/docs/backup_list_protected_resources/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1782,7 +2278,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' @param BackupVaultAccountId This is the list of protected resources by backup vault within the
 #' vault(s) you specify by account ID.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -1824,13 +2320,45 @@ backup_list_protected_resources_by_backup_vault <- function(BackupVaultName, Bac
 #' creates the backup.
 #' @param BackupVaultAccountId This parameter will sort the list of recovery points by account ID.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
 #' @param ByResourceArn Returns only recovery points that match the specified resource Amazon
 #' Resource Name (ARN).
-#' @param ByResourceType Returns only recovery points that match the specified resource type.
+#' @param ByResourceType Returns only recovery points that match the specified resource type(s):
+#' 
+#' -   `Aurora` for Amazon Aurora
+#' 
+#' -   `CloudFormation` for CloudFormation
+#' 
+#' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' 
+#' -   `DynamoDB` for Amazon DynamoDB
+#' 
+#' -   `EBS` for Amazon Elastic Block Store
+#' 
+#' -   `EC2` for Amazon Elastic Compute Cloud
+#' 
+#' -   `EFS` for Amazon Elastic File System
+#' 
+#' -   `FSx` for Amazon FSx
+#' 
+#' -   `Neptune` for Amazon Neptune
+#' 
+#' -   `Redshift` for Amazon Redshift
+#' 
+#' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases
+#' 
+#' -   `Storage Gateway` for Storage Gateway
+#' 
+#' -   `S3` for Amazon S3
+#' 
+#' -   `Timestream` for Amazon Timestream
+#' 
+#' -   `VirtualMachine` for virtual machines
 #' @param ByBackupPlanId Returns only recovery points that match the specified backup plan ID.
 #' @param ByCreatedBefore Returns only recovery points that were created before the specified
 #' timestamp.
@@ -1869,7 +2397,7 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, BackupV
 #'
 #' @param LegalHoldId &#91;required&#93; This is the ID of the legal hold.
 #' @param NextToken This is the next item following a partial list of returned resources.
-#' For example, if a request is made to return `maxResults` number of
+#' For example, if a request is made to return `MaxResults` number of
 #' resources, `NextToken` allows you to return more items in your list
 #' starting at the location pointed to by the next token.
 #' @param MaxResults This is the maximum number of resource list items to be returned.
@@ -1905,7 +2433,7 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
 #' @param ResourceArn &#91;required&#93; An ARN that uniquely identifies a resource. The format of the ARN
 #' depends on the resource type.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -2011,6 +2539,80 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .backup$operations$list_report_plans <- backup_list_report_plans
 
+#' This request obtains a summary of restore jobs created or running within
+#' the the most recent 30 days
+#'
+#' @description
+#' This request obtains a summary of restore jobs created or running within the the most recent 30 days. You can include parameters AccountID, State, ResourceType, AggregationPeriod, MaxResults, or NextToken to filter results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_restore_job_summaries/](https://www.paws-r-sdk.com/docs/backup_list_restore_job_summaries/) for full documentation.
+#'
+#' @param AccountId Returns the job count for the specified account.
+#' 
+#' If the request is sent from a member account or an account not part of
+#' Amazon Web Services Organizations, jobs within requestor's account will
+#' be returned.
+#' 
+#' Root, admin, and delegated administrator accounts can use the value ANY
+#' to return job counts from every account in the organization.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts from all accounts within the
+#' authenticated organization, then returns the sum.
+#' @param State This parameter returns the job count for jobs with the specified state.
+#' 
+#' The the value ANY returns count of all states.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all states and returns the
+#' sum.
+#' @param ResourceType Returns the job count for the specified resource type. Use request
+#' [`get_supported_resource_types`][backup_get_supported_resource_types] to
+#' obtain strings for supported resource types.
+#' 
+#' The the value ANY returns count of all resource types.
+#' 
+#' `AGGREGATE_ALL` aggregates job counts for all resource types and returns
+#' the sum.
+#' 
+#' The type of Amazon Web Services resource to be backed up; for example,
+#' an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon
+#' Relational Database Service (Amazon RDS) database.
+#' @param AggregationPeriod This is the period that sets the boundaries for returned results.
+#' 
+#' Acceptable values include
+#' 
+#' -   `ONE_DAY` for daily job count for the prior 14 days.
+#' 
+#' -   `SEVEN_DAYS` for the aggregated job count for the prior 7 days.
+#' 
+#' -   `FOURTEEN_DAYS` for aggregated job count for prior 14 days.
+#' @param MaxResults This parameter sets the maximum number of items to be returned.
+#' 
+#' The value is an integer. Range of accepted values is from 1 to 500.
+#' @param NextToken The next item following a partial list of returned resources. For
+#' example, if a request is made to return `MaxResults` number of
+#' resources, `NextToken` allows you to return more items in your list
+#' starting at the location pointed to by the next token.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_restore_job_summaries
+backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, ResourceType = NULL, AggregationPeriod = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRestoreJobSummaries",
+    http_method = "GET",
+    http_path = "/audit/restore-job-summaries",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .backup$list_restore_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .backup$list_restore_job_summaries_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_restore_job_summaries <- backup_list_restore_job_summaries
+
 #' Returns a list of jobs that Backup initiated to restore a saved
 #' resource, including details about the recovery process
 #'
@@ -2020,12 +2622,46 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/backup_list_restore_jobs/](https://www.paws-r-sdk.com/docs/backup_list_restore_jobs/) for full documentation.
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
 #' @param ByAccountId The account ID to list the jobs from. Returns only restore jobs
 #' associated with the specified account ID.
+#' @param ByResourceType Include this parameter to return only restore jobs for the specified
+#' resources:
+#' 
+#' -   `Aurora` for Amazon Aurora
+#' 
+#' -   `CloudFormation` for CloudFormation
+#' 
+#' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' 
+#' -   `DynamoDB` for Amazon DynamoDB
+#' 
+#' -   `EBS` for Amazon Elastic Block Store
+#' 
+#' -   `EC2` for Amazon Elastic Compute Cloud
+#' 
+#' -   `EFS` for Amazon Elastic File System
+#' 
+#' -   `FSx` for Amazon FSx
+#' 
+#' -   `Neptune` for Amazon Neptune
+#' 
+#' -   `Redshift` for Amazon Redshift
+#' 
+#' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases
+#' 
+#' -   `Storage Gateway` for Storage Gateway
+#' 
+#' -   `S3` for Amazon S3
+#' 
+#' -   `Timestream` for Amazon Timestream
+#' 
+#' -   `VirtualMachine` for virtual machines
 #' @param ByCreatedBefore Returns only restore jobs that were created before the specified date.
 #' @param ByCreatedAfter Returns only restore jobs that were created after the specified date.
 #' @param ByStatus Returns only restore jobs associated with the specified job status.
@@ -2033,18 +2669,20 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
 #' and Coordinated Universal Time (UTC).
 #' @param ByCompleteAfter Returns only copy jobs completed after a date expressed in Unix format
 #' and Coordinated Universal Time (UTC).
+#' @param ByRestoreTestingPlanArn This returns only restore testing jobs that match the specified resource
+#' Amazon Resource Name (ARN).
 #'
 #' @keywords internal
 #'
 #' @rdname backup_list_restore_jobs
-backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAccountId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByStatus = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL) {
+backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAccountId = NULL, ByResourceType = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByStatus = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL, ByRestoreTestingPlanArn = NULL) {
   op <- new_operation(
     name = "ListRestoreJobs",
     http_method = "GET",
     http_path = "/restore-jobs/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
   )
-  input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByAccountId = ByAccountId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByStatus = ByStatus, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter)
+  input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByAccountId = ByAccountId, ByResourceType = ByResourceType, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByStatus = ByStatus, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByRestoreTestingPlanArn = ByRestoreTestingPlanArn)
   output <- .backup$list_restore_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -2053,6 +2691,114 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
   return(response)
 }
 .backup$operations$list_restore_jobs <- backup_list_restore_jobs
+
+#' This returns restore jobs that contain the specified protected resource
+#'
+#' @description
+#' This returns restore jobs that contain the specified protected resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_restore_jobs_by_protected_resource/](https://www.paws-r-sdk.com/docs/backup_list_restore_jobs_by_protected_resource/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; Returns only restore jobs that match the specified resource Amazon
+#' Resource Name (ARN).
+#' @param ByStatus Returns only restore jobs associated with the specified job status.
+#' @param ByRecoveryPointCreationDateAfter Returns only restore jobs of recovery points that were created after the
+#' specified date.
+#' @param ByRecoveryPointCreationDateBefore Returns only restore jobs of recovery points that were created before
+#' the specified date.
+#' @param NextToken The next item following a partial list of returned items. For example,
+#' if a request ismade to return `MaxResults` number of items, `NextToken`
+#' allows you to return more items in your list starting at the location
+#' pointed to by the next token.
+#' @param MaxResults The maximum number of items to be returned.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_restore_jobs_by_protected_resource
+backup_list_restore_jobs_by_protected_resource <- function(ResourceArn, ByStatus = NULL, ByRecoveryPointCreationDateAfter = NULL, ByRecoveryPointCreationDateBefore = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRestoreJobsByProtectedResource",
+    http_method = "GET",
+    http_path = "/resources/{resourceArn}/restore-jobs/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
+  )
+  input <- .backup$list_restore_jobs_by_protected_resource_input(ResourceArn = ResourceArn, ByStatus = ByStatus, ByRecoveryPointCreationDateAfter = ByRecoveryPointCreationDateAfter, ByRecoveryPointCreationDateBefore = ByRecoveryPointCreationDateBefore, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .backup$list_restore_jobs_by_protected_resource_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_restore_jobs_by_protected_resource <- backup_list_restore_jobs_by_protected_resource
+
+#' Returns a list of restore testing plans
+#'
+#' @description
+#' Returns a list of restore testing plans.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_restore_testing_plans/](https://www.paws-r-sdk.com/docs/backup_list_restore_testing_plans/) for full documentation.
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example,
+#' if a request is made to return `MaxResults` number of items, `NextToken`
+#' allows you to return more items in your list starting at the location
+#' pointed to by the nexttoken.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_restore_testing_plans
+backup_list_restore_testing_plans <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRestoreTestingPlans",
+    http_method = "GET",
+    http_path = "/restore-testing/plans",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingPlans")
+  )
+  input <- .backup$list_restore_testing_plans_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .backup$list_restore_testing_plans_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_restore_testing_plans <- backup_list_restore_testing_plans
+
+#' Returns a list of restore testing selections
+#'
+#' @description
+#' Returns a list of restore testing selections. Can be filtered by `MaxResults` and `RestoreTestingPlanName`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_restore_testing_selections/](https://www.paws-r-sdk.com/docs/backup_list_restore_testing_selections/) for full documentation.
+#'
+#' @param MaxResults The maximum number of items to be returned.
+#' @param NextToken The next item following a partial list of returned items. For example,
+#' if a request is made to return `MaxResults` number of items, `NextToken`
+#' allows you to return more items in your list starting at the location
+#' pointed to by the nexttoken.
+#' @param RestoreTestingPlanName &#91;required&#93; Returns restore testing selections by the specified restore testing plan
+#' name.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_restore_testing_selections
+backup_list_restore_testing_selections <- function(MaxResults = NULL, NextToken = NULL, RestoreTestingPlanName) {
+  op <- new_operation(
+    name = "ListRestoreTestingSelections",
+    http_method = "GET",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingSelections")
+  )
+  input <- .backup$list_restore_testing_selections_input(MaxResults = MaxResults, NextToken = NextToken, RestoreTestingPlanName = RestoreTestingPlanName)
+  output <- .backup$list_restore_testing_selections_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_restore_testing_selections <- backup_list_restore_testing_selections
 
 #' Returns a list of key-value pairs assigned to a target recovery point,
 #' backup plan, or backup vault
@@ -2067,7 +2813,7 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
 #' [`list_tags`][backup_list_tags] are recovery points, backup plans, and
 #' backup vaults.
 #' @param NextToken The next item following a partial list of returned items. For example,
-#' if a request is made to return `maxResults` number of items, `NextToken`
+#' if a request is made to return `MaxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
@@ -2269,6 +3015,39 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
   return(response)
 }
 .backup$operations$put_backup_vault_notifications <- backup_put_backup_vault_notifications
+
+#' This request allows you to send your independent self-run restore test
+#' validation results
+#'
+#' @description
+#' This request allows you to send your independent self-run restore test validation results. `RestoreJobId` and `ValidationStatus` are required. Optionally, you can input a `ValidationStatusMessage`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_put_restore_validation_result/](https://www.paws-r-sdk.com/docs/backup_put_restore_validation_result/) for full documentation.
+#'
+#' @param RestoreJobId &#91;required&#93; This is a unique identifier of a restore job within Backup.
+#' @param ValidationStatus &#91;required&#93; This is the status of your restore validation.
+#' @param ValidationStatusMessage This is an optional message string you can input to describe the
+#' validation status for the restore test validation.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_put_restore_validation_result
+backup_put_restore_validation_result <- function(RestoreJobId, ValidationStatus, ValidationStatusMessage = NULL) {
+  op <- new_operation(
+    name = "PutRestoreValidationResult",
+    http_method = "PUT",
+    http_path = "/restore-jobs/{restoreJobId}/validations",
+    paginator = list()
+  )
+  input <- .backup$put_restore_validation_result_input(RestoreJobId = RestoreJobId, ValidationStatus = ValidationStatus, ValidationStatusMessage = ValidationStatusMessage)
+  output <- .backup$put_restore_validation_result_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$put_restore_validation_result <- backup_put_restore_validation_result
 
 #' Starts an on-demand backup job for the specified resource
 #'
@@ -2797,12 +3576,21 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
 #' Updates the current service opt-in settings for the Region
 #'
 #' @description
-#' Updates the current service opt-in settings for the Region. If service-opt-in is enabled for a service, Backup tries to protect that service's resources in this Region, when the resource is included in an on-demand backup or scheduled backup plan. Otherwise, Backup does not try to protect that service's resources in this Region. Use the [`describe_region_settings`][backup_describe_region_settings] API to determine the resource types that are supported.
+#' Updates the current service opt-in settings for the Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_update_region_settings/](https://www.paws-r-sdk.com/docs/backup_update_region_settings/) for full documentation.
 #'
 #' @param ResourceTypeOptInPreference Updates the list of services along with the opt-in preferences for the
 #' Region.
+#' 
+#' If resource assignments are only based on tags, then service opt-in
+#' settings are applied. If a resource type is explicitly assigned to a
+#' backup plan, such as Amazon S3, Amazon EC2, or Amazon RDS, it will be
+#' included in the backup even if the opt-in is not enabled for that
+#' particular service. If both a resource type and tags are specified in a
+#' resource assignment, the resource type specified in the backup plan
+#' takes priority over the tag condition. Service opt-in settings are
+#' disregarded in this situation.
 #' @param ResourceTypeManagementPreference Enables or disables full Backup management of backups for a resource
 #' type. To enable full Backup management for DynamoDB along with [Backup's
 #' advanced DynamoDB backup
@@ -2878,3 +3666,70 @@ backup_update_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
   return(response)
 }
 .backup$operations$update_report_plan <- backup_update_report_plan
+
+#' This request will send changes to your specified restore testing plan
+#'
+#' @description
+#' This request will send changes to your specified restore testing plan. `RestoreTestingPlanName` cannot be updated after it is created.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_update_restore_testing_plan/](https://www.paws-r-sdk.com/docs/backup_update_restore_testing_plan/) for full documentation.
+#'
+#' @param RestoreTestingPlan &#91;required&#93; Specifies the body of a restore testing plan.
+#' @param RestoreTestingPlanName &#91;required&#93; This is the restore testing plan name you wish to update.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_update_restore_testing_plan
+backup_update_restore_testing_plan <- function(RestoreTestingPlan, RestoreTestingPlanName) {
+  op <- new_operation(
+    name = "UpdateRestoreTestingPlan",
+    http_method = "PUT",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
+    paginator = list()
+  )
+  input <- .backup$update_restore_testing_plan_input(RestoreTestingPlan = RestoreTestingPlan, RestoreTestingPlanName = RestoreTestingPlanName)
+  output <- .backup$update_restore_testing_plan_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$update_restore_testing_plan <- backup_update_restore_testing_plan
+
+#' Most elements except the RestoreTestingSelectionName can be updated with
+#' this request
+#'
+#' @description
+#' Most elements except the `RestoreTestingSelectionName` can be updated with this request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_update_restore_testing_selection/](https://www.paws-r-sdk.com/docs/backup_update_restore_testing_selection/) for full documentation.
+#'
+#' @param RestoreTestingPlanName &#91;required&#93; The restore testing plan name is required to update the indicated
+#' testing plan.
+#' @param RestoreTestingSelection &#91;required&#93; To update your restore testing selection, you can use either protected
+#' resource ARNs or conditions, but not both. That is, if your selection
+#' has `ProtectedResourceArns`, requesting an update with the parameter
+#' `ProtectedResourceConditions` will be unsuccessful.
+#' @param RestoreTestingSelectionName &#91;required&#93; This is the required restore testing selection name of the restore
+#' testing selection you wish to update.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_update_restore_testing_selection
+backup_update_restore_testing_selection <- function(RestoreTestingPlanName, RestoreTestingSelection, RestoreTestingSelectionName) {
+  op <- new_operation(
+    name = "UpdateRestoreTestingSelection",
+    http_method = "PUT",
+    http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+    paginator = list()
+  )
+  input <- .backup$update_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelection = RestoreTestingSelection, RestoreTestingSelectionName = RestoreTestingSelectionName)
+  output <- .backup$update_restore_testing_selection_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$update_restore_testing_selection <- backup_update_restore_testing_selection

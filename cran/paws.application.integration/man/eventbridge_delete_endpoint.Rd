@@ -11,7 +11,7 @@ eventbridge_delete_endpoint(Name)
 \code{"Name":"us-east-2-custom_bus_A-endpoint"}..}
 }
 \description{
-Delete an existing global endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the Amazon EventBridge User Guide.
+Delete an existing global endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the \emph{Amazon EventBridge User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridge_delete_endpoint/} for full documentation.
 }

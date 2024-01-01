@@ -758,6 +758,72 @@ detective_enable_organization_admin_account <- function(AccountId) {
 }
 .detective$operations$enable_organization_admin_account <- detective_enable_organization_admin_account
 
+#' Returns the investigation results of an investigation for a behavior
+#' graph
+#'
+#' @description
+#' Returns the investigation results of an investigation for a behavior
+#' graph.
+#'
+#' @usage
+#' detective_get_investigation(GraphArn, InvestigationId)
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GraphArn = "string",
+#'   InvestigationId = "string",
+#'   EntityArn = "string",
+#'   EntityType = "IAM_ROLE"|"IAM_USER",
+#'   CreatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ScopeStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ScopeEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "RUNNING"|"FAILED"|"SUCCESSFUL",
+#'   Severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'   State = "ACTIVE"|"ARCHIVED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_investigation(
+#'   GraphArn = "string",
+#'   InvestigationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_get_investigation
+#'
+#' @aliases detective_get_investigation
+detective_get_investigation <- function(GraphArn, InvestigationId) {
+  op <- new_operation(
+    name = "GetInvestigation",
+    http_method = "POST",
+    http_path = "/investigations/getInvestigation",
+    paginator = list()
+  )
+  input <- .detective$get_investigation_input(GraphArn = GraphArn, InvestigationId = InvestigationId)
+  output <- .detective$get_investigation_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$get_investigation <- detective_get_investigation
+
 #' Returns the membership details for specified member accounts for a
 #' behavior graph
 #'
@@ -991,6 +1057,218 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .detective$operations$list_graphs <- detective_list_graphs
+
+#' Get the indicators from an investigation
+#'
+#' @description
+#' Get the indicators from an investigation
+#'
+#' @usage
+#' detective_list_indicators(GraphArn, InvestigationId, IndicatorType,
+#'   NextToken, MaxResults)
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
+#' @param IndicatorType See [Detective
+#' investigations.](https://docs.aws.amazon.com/detective/latest/userguide/detective-investigations.html).
+#' @param NextToken List if there are more results available. The value of nextToken is a
+#' unique pagination token for each page. Repeat the call using the
+#' returned token to retrieve the next page. Keep all other arguments
+#' unchanged.
+#' 
+#' Each pagination token expires after 24 hours. Using an expired
+#' pagination token will return a Validation Exception error.
+#' @param MaxResults List the maximum number of indicators in a page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GraphArn = "string",
+#'   InvestigationId = "string",
+#'   NextToken = "string",
+#'   Indicators = list(
+#'     list(
+#'       IndicatorType = "TTP_OBSERVED"|"IMPOSSIBLE_TRAVEL"|"FLAGGED_IP_ADDRESS"|"NEW_GEOLOCATION"|"NEW_ASO"|"NEW_USER_AGENT"|"RELATED_FINDING"|"RELATED_FINDING_GROUP",
+#'       IndicatorDetail = list(
+#'         TTPsObservedDetail = list(
+#'           Tactic = "string",
+#'           Technique = "string",
+#'           Procedure = "string",
+#'           IpAddress = "string",
+#'           APIName = "string",
+#'           APISuccessCount = 123,
+#'           APIFailureCount = 123
+#'         ),
+#'         ImpossibleTravelDetail = list(
+#'           StartingIpAddress = "string",
+#'           EndingIpAddress = "string",
+#'           StartingLocation = "string",
+#'           EndingLocation = "string",
+#'           HourlyTimeDelta = 123
+#'         ),
+#'         FlaggedIpAddressDetail = list(
+#'           IpAddress = "string",
+#'           Reason = "AWS_THREAT_INTELLIGENCE"
+#'         ),
+#'         NewGeolocationDetail = list(
+#'           Location = "string",
+#'           IpAddress = "string",
+#'           IsNewForEntireAccount = TRUE|FALSE
+#'         ),
+#'         NewAsoDetail = list(
+#'           Aso = "string",
+#'           IsNewForEntireAccount = TRUE|FALSE
+#'         ),
+#'         NewUserAgentDetail = list(
+#'           UserAgent = "string",
+#'           IsNewForEntireAccount = TRUE|FALSE
+#'         ),
+#'         RelatedFindingDetail = list(
+#'           Arn = "string",
+#'           Type = "string",
+#'           IpAddress = "string"
+#'         ),
+#'         RelatedFindingGroupDetail = list(
+#'           Id = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_indicators(
+#'   GraphArn = "string",
+#'   InvestigationId = "string",
+#'   IndicatorType = "TTP_OBSERVED"|"IMPOSSIBLE_TRAVEL"|"FLAGGED_IP_ADDRESS"|"NEW_GEOLOCATION"|"NEW_ASO"|"NEW_USER_AGENT"|"RELATED_FINDING"|"RELATED_FINDING_GROUP",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_list_indicators
+#'
+#' @aliases detective_list_indicators
+detective_list_indicators <- function(GraphArn, InvestigationId, IndicatorType = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListIndicators",
+    http_method = "POST",
+    http_path = "/investigations/listIndicators",
+    paginator = list()
+  )
+  input <- .detective$list_indicators_input(GraphArn = GraphArn, InvestigationId = InvestigationId, IndicatorType = IndicatorType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .detective$list_indicators_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$list_indicators <- detective_list_indicators
+
+#' List all Investigations
+#'
+#' @description
+#' List all Investigations.
+#'
+#' @usage
+#' detective_list_investigations(GraphArn, NextToken, MaxResults,
+#'   FilterCriteria, SortCriteria)
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param NextToken List if there are more results available. The value of nextToken is a
+#' unique pagination token for each page. Repeat the call using the
+#' returned token to retrieve the next page. Keep all other arguments
+#' unchanged.
+#' 
+#' Each pagination token expires after 24 hours. Using an expired
+#' pagination token will return a Validation Exception error.
+#' @param MaxResults List the maximum number of investigations in a page.
+#' @param FilterCriteria Filter the investigation results based on a criteria.
+#' @param SortCriteria Sorts the investigation results based on a criteria.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvestigationDetails = list(
+#'     list(
+#'       InvestigationId = "string",
+#'       Severity = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'       Status = "RUNNING"|"FAILED"|"SUCCESSFUL",
+#'       State = "ACTIVE"|"ARCHIVED",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EntityArn = "string",
+#'       EntityType = "IAM_ROLE"|"IAM_USER"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_investigations(
+#'   GraphArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   FilterCriteria = list(
+#'     Severity = list(
+#'       Value = "string"
+#'     ),
+#'     Status = list(
+#'       Value = "string"
+#'     ),
+#'     State = list(
+#'       Value = "string"
+#'     ),
+#'     EntityArn = list(
+#'       Value = "string"
+#'     ),
+#'     CreatedTime = list(
+#'       StartInclusive = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndInclusive = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   SortCriteria = list(
+#'     Field = "SEVERITY"|"STATUS"|"CREATED_TIME",
+#'     SortOrder = "ASC"|"DESC"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_list_investigations
+#'
+#' @aliases detective_list_investigations
+detective_list_investigations <- function(GraphArn, NextToken = NULL, MaxResults = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "ListInvestigations",
+    http_method = "POST",
+    http_path = "/investigations/listInvestigations",
+    paginator = list()
+  )
+  input <- .detective$list_investigations_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
+  output <- .detective$list_investigations_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$list_investigations <- detective_list_investigations
 
 #' Retrieves the list of open and accepted behavior graph invitations for
 #' the member account
@@ -1355,6 +1633,66 @@ detective_reject_invitation <- function(GraphArn) {
 }
 .detective$operations$reject_invitation <- detective_reject_invitation
 
+#' initiate an investigation on an entity in a graph
+#'
+#' @description
+#' initiate an investigation on an entity in a graph
+#'
+#' @usage
+#' detective_start_investigation(GraphArn, EntityArn, ScopeStartTime,
+#'   ScopeEndTime)
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param EntityArn &#91;required&#93; The unique Amazon Resource Name (ARN) of the IAM user and IAM role.
+#' @param ScopeStartTime &#91;required&#93; The data and time when the investigation began. The value is an UTC
+#' ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
+#' @param ScopeEndTime &#91;required&#93; The data and time when the investigation began. The value is an UTC
+#' ISO8601 formatted string. For example, `2021-08-18T16:35:56.284Z`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvestigationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_investigation(
+#'   GraphArn = "string",
+#'   EntityArn = "string",
+#'   ScopeStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ScopeEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_start_investigation
+#'
+#' @aliases detective_start_investigation
+detective_start_investigation <- function(GraphArn, EntityArn, ScopeStartTime, ScopeEndTime) {
+  op <- new_operation(
+    name = "StartInvestigation",
+    http_method = "POST",
+    http_path = "/investigations/startInvestigation",
+    paginator = list()
+  )
+  input <- .detective$start_investigation_input(GraphArn = GraphArn, EntityArn = EntityArn, ScopeStartTime = ScopeStartTime, ScopeEndTime = ScopeEndTime)
+  output <- .detective$start_investigation_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$start_investigation <- detective_start_investigation
+
 #' Sends a request to enable data ingest for a member account that has a
 #' status of ACCEPTED_BUT_DISABLED
 #'
@@ -1553,6 +1891,53 @@ detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
   return(response)
 }
 .detective$operations$update_datasource_packages <- detective_update_datasource_packages
+
+#' Update the state of an investigation
+#'
+#' @description
+#' Update the state of an investigation.
+#'
+#' @usage
+#' detective_update_investigation_state(GraphArn, InvestigationId, State)
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param InvestigationId &#91;required&#93; The investigation ID of the investigation report.
+#' @param State &#91;required&#93; The current state of the investigation. An archived investigation
+#' indicates you have completed reviewing the investigation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_investigation_state(
+#'   GraphArn = "string",
+#'   InvestigationId = "string",
+#'   State = "ACTIVE"|"ARCHIVED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_update_investigation_state
+#'
+#' @aliases detective_update_investigation_state
+detective_update_investigation_state <- function(GraphArn, InvestigationId, State) {
+  op <- new_operation(
+    name = "UpdateInvestigationState",
+    http_method = "POST",
+    http_path = "/investigations/updateInvestigationState",
+    paginator = list()
+  )
+  input <- .detective$update_investigation_state_input(GraphArn = GraphArn, InvestigationId = InvestigationId, State = State)
+  output <- .detective$update_investigation_state_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$update_investigation_state <- detective_update_investigation_state
 
 #' Updates the configuration for the Organizations integration in the
 #' current Region

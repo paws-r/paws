@@ -2,43 +2,60 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_head_bucket}
 \alias{s3_head_bucket}
-\title{This action is useful to determine if a bucket exists and you have
-permission to access it}
+\title{You can use this operation to determine if a bucket exists and if you
+have permission to access it}
 \usage{
 s3_head_bucket(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with an Object Lambda access point, provide the
-alias of the Object Lambda access point in place of the bucket name. If
-the Object Lambda access point alias in a request is not valid, the
-error code \code{InvalidAccessPointAliasError} is returned. For more
-information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.
+\strong{Object Lambda access points} - When you use this API operation with
+an Object Lambda access point, provide the alias of the Object Lambda
+access point in place of the bucket name. If the Object Lambda access
+point alias in a request is not valid, the error code
+\code{InvalidAccessPointAliasError} is returned. For more information about
+\code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
 bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This action is useful to determine if a bucket exists and you have permission to access it. The action returns a \verb{200 OK} if the bucket exists and you have permission to access it.
+You can use this operation to determine if a bucket exists and if you have permission to access it. The action returns a \verb{200 OK} if the bucket exists and you have permission to access it.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_head_bucket/} for full documentation.
 }

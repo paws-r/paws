@@ -22,7 +22,9 @@ values for this can be the ConfigurationSetName or ConfigurationSetArn.}
 
 \item{Enabled}{When set to true logging is enabled.}
 
-\item{MatchingEventTypes}{An array of event types that determine which events to log.}
+\item{MatchingEventTypes}{An array of event types that determine which events to log.
+
+The \code{TEXT_SENT} event type is not supported.}
 
 \item{CloudWatchLogsDestination}{An object that contains information about an event destination that
 sends data to CloudWatch Logs.}

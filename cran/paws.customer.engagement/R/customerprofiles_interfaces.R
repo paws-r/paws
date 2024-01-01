@@ -183,6 +183,18 @@ NULL
   return(populate(args, shape))
 }
 
+.customerprofiles$detect_profile_object_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Objects = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.customerprofiles$detect_profile_object_type_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DetectedProfileObjectTypes = structure(list(structure(list(SourceLastUpdatedTimestampFormat = structure(logical(0), tags = list(type = "string")), Fields = structure(list(structure(list(Source = structure(logical(0), tags = list(type = "string")), Target = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE)), Keys = structure(list(structure(list(structure(list(StandardIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FieldNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .customerprofiles$get_auto_merging_preview_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Consolidation = structure(list(MatchingAttributesList = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), ConflictResolution = structure(list(ConflictResolvingModel = structure(logical(0), tags = list(type = "string")), SourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MinAllowedConfidenceScoreForMerging = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))

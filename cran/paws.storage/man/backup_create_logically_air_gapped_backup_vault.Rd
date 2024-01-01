@@ -17,7 +17,10 @@ backup_create_logically_air_gapped_backup_vault(
 
 \item{BackupVaultTags}{These are the tags that will be included in the newly-created vault.}
 
-\item{CreatorRequestId}{This is the ID of the creation request.}
+\item{CreatorRequestId}{This is the ID of the creation request.
+
+This parameter is optional. If used, this parameter must contain 1 to 50
+alphanumeric or '-_.' characters.}
 
 \item{MinRetentionDays}{[required] This setting specifies the minimum retention period that the vault
 retains its recovery points. If this parameter is not specified, no

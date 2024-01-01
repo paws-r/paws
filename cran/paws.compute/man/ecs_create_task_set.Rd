@@ -90,9 +90,9 @@ one isn't specified, the \code{LATEST} platform version is used.}
 \item{scale}{A floating-point percentage of the desired number of tasks to place and
 keep running in the task set.}
 
-\item{clientToken}{The identifier that you provide to ensure the idempotency of the
-request. It's case sensitive and must be unique. It can be up to 32
-ASCII characters are allowed.}
+\item{clientToken}{An identifier that you provide to ensure the idempotency of the request.
+It must be unique and is case sensitive. Up to 36 ASCII characters in
+the range of 33-126 (inclusive) are allowed.}
 
 \item{tags}{The metadata that you apply to the task set to help you categorize and
 organize them. Each tag consists of a key and an optional value. You

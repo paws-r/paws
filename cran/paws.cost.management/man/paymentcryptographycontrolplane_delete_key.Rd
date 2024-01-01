@@ -2,7 +2,7 @@
 % Please edit documentation in R/paymentcryptographycontrolplane_operations.R
 \name{paymentcryptographycontrolplane_delete_key}
 \alias{paymentcryptographycontrolplane_delete_key}
-\title{Deletes the key material and all metadata associated with Amazon Web
+\title{Deletes the key material and metadata associated with Amazon Web
 Services Payment Cryptography key}
 \usage{
 paymentcryptographycontrolplane_delete_key(
@@ -16,7 +16,7 @@ paymentcryptographycontrolplane_delete_key(
 \item{KeyIdentifier}{[required] The \code{KeyARN} of the key that is scheduled for deletion.}
 }
 \description{
-Deletes the key material and all metadata associated with Amazon Web Services Payment Cryptography key.
+Deletes the key material and metadata associated with Amazon Web Services Payment Cryptography key.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_delete_key/} for full documentation.
 }

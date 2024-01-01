@@ -27,7 +27,8 @@ lambda_create_function(
   CodeSigningConfigArn = NULL,
   Architectures = NULL,
   EphemeralStorage = NULL,
-  SnapStart = NULL
+  SnapStart = NULL,
+  LoggingConfig = NULL
 )
 }
 \arguments{
@@ -127,12 +128,13 @@ string array with one of the valid values (arm64 or x86_64). The default
 value is \code{x86_64}.}
 
 \item{EphemeralStorage}{The size of the function's \verb{/tmp} directory in MB. The default value is
-512, but can be any whole number between 512 and 10,240 MB. For more
-information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-ephemeral-storage}{Configuring ephemeral storage (console)}.}
+512, but can be any whole number between 512 and 10,240 MB.}
 
 \item{SnapStart}{The function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html}{SnapStart}
 setting.}
+
+\item{LoggingConfig}{The function's Amazon CloudWatch Logs configuration settings.}
 }
 \description{
 Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.

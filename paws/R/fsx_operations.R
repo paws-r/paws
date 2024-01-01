@@ -344,7 +344,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -400,7 +400,15 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'                 ),
 #'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'                 VolumeAppendModeEnabled = TRUE|FALSE
-#'               )
+#'               ),
+#'               VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'               AggregateConfiguration = list(
+#'                 Aggregates = list(
+#'                   "string"
+#'                 ),
+#'                 TotalConstituents = 123
+#'               ),
+#'               SizeInBytes = 123
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -425,7 +433,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               CopyTagsToSnapshots = TRUE|FALSE,
 #'               OriginSnapshot = list(
 #'                 SnapshotARN = "string",
-#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'               ),
 #'               ReadOnly = TRUE|FALSE,
 #'               NfsExports = list(
@@ -449,7 +457,11 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               ),
 #'               RestoreToSnapshot = "string",
 #'               DeleteIntermediateSnaphots = TRUE|FALSE,
-#'               DeleteClonedVolumes = TRUE|FALSE
+#'               DeleteClonedVolumes = TRUE|FALSE,
+#'               DeleteIntermediateData = TRUE|FALSE,
+#'               SourceSnapshotARN = "string",
+#'               DestinationSnapshot = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             )
 #'           ),
 #'           TargetSnapshotValues = list(
@@ -471,13 +483,15 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               )
 #'             ),
 #'             AdministrativeActions = list()
-#'           )
+#'           ),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       ),
 #'       OntapConfiguration = list(
 #'         AutomaticBackupRetentionDays = 123,
 #'         DailyAutomaticBackupStartTime = "string",
-#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'         EndpointIpAddressRange = "string",
 #'         Endpoints = list(
 #'           Intercluster = list(
@@ -503,7 +517,9 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         ),
 #'         ThroughputCapacity = 123,
 #'         WeeklyMaintenanceStartTime = "string",
-#'         FsxAdminPassword = "string"
+#'         FsxAdminPassword = "string",
+#'         HAPairs = 123,
+#'         ThroughputCapacityPerHAPair = 123
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -582,7 +598,15 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           ),
 #'           SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'           VolumeAppendModeEnabled = TRUE|FALSE
-#'         )
+#'         ),
+#'         VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'         AggregateConfiguration = list(
+#'           Aggregates = list(
+#'             "string"
+#'           ),
+#'           TotalConstituents = 123
+#'         ),
+#'         SizeInBytes = 123
 #'       ),
 #'       ResourceARN = "string",
 #'       Tags = list(
@@ -598,7 +622,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -707,7 +731,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'             OntapConfiguration = list(
 #'               AutomaticBackupRetentionDays = 123,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               EndpointIpAddressRange = "string",
 #'               Endpoints = list(
 #'                 Intercluster = list(
@@ -733,7 +757,9 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               ),
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
-#'               FsxAdminPassword = "string"
+#'               FsxAdminPassword = "string",
+#'               HAPairs = 123,
+#'               ThroughputCapacityPerHAPair = 123
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -780,7 +806,9 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               )
 #'             ),
 #'             AdministrativeActions = list()
-#'           )
+#'           ),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       ),
 #'       OpenZFSConfiguration = list(
@@ -793,7 +821,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         CopyTagsToSnapshots = TRUE|FALSE,
 #'         OriginSnapshot = list(
 #'           SnapshotARN = "string",
-#'           CopyStrategy = "CLONE"|"FULL_COPY"
+#'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'         ),
 #'         ReadOnly = TRUE|FALSE,
 #'         NfsExports = list(
@@ -817,7 +845,11 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         ),
 #'         RestoreToSnapshot = "string",
 #'         DeleteIntermediateSnaphots = TRUE|FALSE,
-#'         DeleteClonedVolumes = TRUE|FALSE
+#'         DeleteClonedVolumes = TRUE|FALSE,
+#'         DeleteIntermediateData = TRUE|FALSE,
+#'         SourceSnapshotARN = "string",
+#'         DestinationSnapshot = "string",
+#'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       )
 #'     )
 #'   )
@@ -871,6 +903,394 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
   return(response)
 }
 .fsx$operations$copy_backup <- fsx_copy_backup
+
+#' Updates an existing volume by using a snapshot from another Amazon FSx
+#' for OpenZFS file system
+#'
+#' @description
+#' Updates an existing volume by using a snapshot from another Amazon FSx
+#' for OpenZFS file system. For more information, see [on-demand data
+#' replication](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/on-demand-replication.html)
+#' in the Amazon FSx for OpenZFS User Guide.
+#'
+#' @usage
+#' fsx_copy_snapshot_and_update_volume(ClientRequestToken, VolumeId,
+#'   SourceSnapshotARN, CopyStrategy, Options)
+#'
+#' @param ClientRequestToken 
+#' @param VolumeId &#91;required&#93; Specifies the ID of the volume that you are copying the snapshot to.
+#' @param SourceSnapshotARN &#91;required&#93; 
+#' @param CopyStrategy Specifies the strategy to use when copying data from a snapshot to the
+#' volume.
+#' 
+#' -   `FULL_COPY` - Copies all data from the snapshot to the volume.
+#' 
+#' -   `INCREMENTAL_COPY` - Copies only the snapshot data that's changed
+#'     since the previous replication.
+#' 
+#' `CLONE` isn't a valid copy strategy option for the
+#' [`copy_snapshot_and_update_volume`][fsx_copy_snapshot_and_update_volume]
+#' operation.
+#' @param Options Confirms that you want to delete data on the destination volume that
+#' wasn’t there during the previous snapshot replication.
+#' 
+#' Your replication will fail if you don’t include an option for a specific
+#' type of data and that data is on your destination. For example, if you
+#' don’t include `DELETE_INTERMEDIATE_SNAPSHOTS` and there are intermediate
+#' snapshots on the destination, you can’t copy the snapshot.
+#' 
+#' -   `DELETE_INTERMEDIATE_SNAPSHOTS` - Deletes snapshots on the
+#'     destination volume that aren’t on the source volume.
+#' 
+#' -   `DELETE_CLONED_VOLUMES` - Deletes snapshot clones on the destination
+#'     volume that aren't on the source volume.
+#' 
+#' -   `DELETE_INTERMEDIATE_DATA` - Overwrites snapshots on the destination
+#'     volume that don’t match the source snapshot that you’re copying.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VolumeId = "string",
+#'   Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'   AdministrativeActions = list(
+#'     list(
+#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
+#'       ProgressPercent = 123,
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'       TargetFileSystemValues = list(
+#'         OwnerId = "string",
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         FileSystemId = "string",
+#'         FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'         Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         StorageCapacity = 123,
+#'         StorageType = "SSD"|"HDD",
+#'         VpcId = "string",
+#'         SubnetIds = list(
+#'           "string"
+#'         ),
+#'         NetworkInterfaceIds = list(
+#'           "string"
+#'         ),
+#'         DNSName = "string",
+#'         KmsKeyId = "string",
+#'         ResourceARN = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         WindowsConfiguration = list(
+#'           ActiveDirectoryId = "string",
+#'           SelfManagedActiveDirectoryConfiguration = list(
+#'             DomainName = "string",
+#'             OrganizationalUnitDistinguishedName = "string",
+#'             FileSystemAdministratorsGroup = "string",
+#'             UserName = "string",
+#'             DnsIps = list(
+#'               "string"
+#'             )
+#'           ),
+#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'           RemoteAdministrationEndpoint = "string",
+#'           PreferredSubnetId = "string",
+#'           PreferredFileServerIp = "string",
+#'           ThroughputCapacity = 123,
+#'           MaintenanceOperationsInProgress = list(
+#'             "PATCHING"|"BACKING_UP"
+#'           ),
+#'           WeeklyMaintenanceStartTime = "string",
+#'           DailyAutomaticBackupStartTime = "string",
+#'           AutomaticBackupRetentionDays = 123,
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           Aliases = list(
+#'             list(
+#'               Name = "string",
+#'               Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'             )
+#'           ),
+#'           AuditLogConfiguration = list(
+#'             FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'             FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'             AuditLogDestination = "string"
+#'           ),
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
+#'           )
+#'         ),
+#'         LustreConfiguration = list(
+#'           WeeklyMaintenanceStartTime = "string",
+#'           DataRepositoryConfiguration = list(
+#'             Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'             ImportPath = "string",
+#'             ExportPath = "string",
+#'             ImportedFileChunkSize = 123,
+#'             AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'             FailureDetails = list(
+#'               Message = "string"
+#'             )
+#'           ),
+#'           DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'           PerUnitStorageThroughput = 123,
+#'           MountName = "string",
+#'           DailyAutomaticBackupStartTime = "string",
+#'           AutomaticBackupRetentionDays = 123,
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           DriveCacheType = "NONE"|"READ",
+#'           DataCompressionType = "NONE"|"LZ4",
+#'           LogConfiguration = list(
+#'             Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'             Destination = "string"
+#'           ),
+#'           RootSquashConfiguration = list(
+#'             RootSquash = "string",
+#'             NoSquashNids = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         AdministrativeActions = list(),
+#'         OntapConfiguration = list(
+#'           AutomaticBackupRetentionDays = 123,
+#'           DailyAutomaticBackupStartTime = "string",
+#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'           EndpointIpAddressRange = "string",
+#'           Endpoints = list(
+#'             Intercluster = list(
+#'               DNSName = "string",
+#'               IpAddresses = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Management = list(
+#'               DNSName = "string",
+#'               IpAddresses = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
+#'           ),
+#'           PreferredSubnetId = "string",
+#'           RouteTableIds = list(
+#'             "string"
+#'           ),
+#'           ThroughputCapacity = 123,
+#'           WeeklyMaintenanceStartTime = "string",
+#'           FsxAdminPassword = "string",
+#'           HAPairs = 123,
+#'           ThroughputCapacityPerHAPair = 123
+#'         ),
+#'         FileSystemTypeVersion = "string",
+#'         OpenZFSConfiguration = list(
+#'           AutomaticBackupRetentionDays = 123,
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           CopyTagsToVolumes = TRUE|FALSE,
+#'           DailyAutomaticBackupStartTime = "string",
+#'           DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
+#'           ThroughputCapacity = 123,
+#'           WeeklyMaintenanceStartTime = "string",
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
+#'           ),
+#'           RootVolumeId = "string",
+#'           PreferredSubnetId = "string",
+#'           EndpointIpAddressRange = "string",
+#'           RouteTableIds = list(
+#'             "string"
+#'           ),
+#'           EndpointIpAddress = "string"
+#'         )
+#'       ),
+#'       FailureDetails = list(
+#'         Message = "string"
+#'       ),
+#'       TargetVolumeValues = list(
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         FileSystemId = "string",
+#'         Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'         Name = "string",
+#'         OntapConfiguration = list(
+#'           FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'           JunctionPath = "string",
+#'           SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'           SizeInMegabytes = 123,
+#'           StorageEfficiencyEnabled = TRUE|FALSE,
+#'           StorageVirtualMachineId = "string",
+#'           StorageVirtualMachineRoot = TRUE|FALSE,
+#'           TieringPolicy = list(
+#'             CoolingPeriod = 123,
+#'             Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'           ),
+#'           UUID = "string",
+#'           OntapVolumeType = "RW"|"DP"|"LS",
+#'           SnapshotPolicy = "string",
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           SnaplockConfiguration = list(
+#'             AuditLogVolume = TRUE|FALSE,
+#'             AutocommitPeriod = list(
+#'               Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'               Value = 123
+#'             ),
+#'             PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'             RetentionPeriod = list(
+#'               DefaultRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               ),
+#'               MinimumRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               ),
+#'               MaximumRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               )
+#'             ),
+#'             SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'             VolumeAppendModeEnabled = TRUE|FALSE
+#'           ),
+#'           VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'           AggregateConfiguration = list(
+#'             Aggregates = list(
+#'               "string"
+#'             ),
+#'             TotalConstituents = 123
+#'           ),
+#'           SizeInBytes = 123
+#'         ),
+#'         ResourceARN = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         VolumeId = "string",
+#'         VolumeType = "ONTAP"|"OPENZFS",
+#'         LifecycleTransitionReason = list(
+#'           Message = "string"
+#'         ),
+#'         AdministrativeActions = list(),
+#'         OpenZFSConfiguration = list(
+#'           ParentVolumeId = "string",
+#'           VolumePath = "string",
+#'           StorageCapacityReservationGiB = 123,
+#'           StorageCapacityQuotaGiB = 123,
+#'           RecordSizeKiB = 123,
+#'           DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'           CopyTagsToSnapshots = TRUE|FALSE,
+#'           OriginSnapshot = list(
+#'             SnapshotARN = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
+#'           ),
+#'           ReadOnly = TRUE|FALSE,
+#'           NfsExports = list(
+#'             list(
+#'               ClientConfigurations = list(
+#'                 list(
+#'                   Clients = "string",
+#'                   Options = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           UserAndGroupQuotas = list(
+#'             list(
+#'               Type = "USER"|"GROUP",
+#'               Id = 123,
+#'               StorageCapacityQuotaGiB = 123
+#'             )
+#'           ),
+#'           RestoreToSnapshot = "string",
+#'           DeleteIntermediateSnaphots = TRUE|FALSE,
+#'           DeleteClonedVolumes = TRUE|FALSE,
+#'           DeleteIntermediateData = TRUE|FALSE,
+#'           SourceSnapshotARN = "string",
+#'           DestinationSnapshot = "string",
+#'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
+#'         )
+#'       ),
+#'       TargetSnapshotValues = list(
+#'         ResourceARN = "string",
+#'         SnapshotId = "string",
+#'         Name = "string",
+#'         VolumeId = "string",
+#'         CreationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'         LifecycleTransitionReason = list(
+#'           Message = "string"
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AdministrativeActions = list()
+#'       ),
+#'       TotalTransferBytes = 123,
+#'       RemainingTransferBytes = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$copy_snapshot_and_update_volume(
+#'   ClientRequestToken = "string",
+#'   VolumeId = "string",
+#'   SourceSnapshotARN = "string",
+#'   CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY",
+#'   Options = list(
+#'     "DELETE_INTERMEDIATE_SNAPSHOTS"|"DELETE_CLONED_VOLUMES"|"DELETE_INTERMEDIATE_DATA"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_copy_snapshot_and_update_volume
+#'
+#' @aliases fsx_copy_snapshot_and_update_volume
+fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, VolumeId, SourceSnapshotARN, CopyStrategy = NULL, Options = NULL) {
+  op <- new_operation(
+    name = "CopySnapshotAndUpdateVolume",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$copy_snapshot_and_update_volume_input(ClientRequestToken = ClientRequestToken, VolumeId = VolumeId, SourceSnapshotARN = SourceSnapshotARN, CopyStrategy = CopyStrategy, Options = Options)
+  output <- .fsx$copy_snapshot_and_update_volume_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$copy_snapshot_and_update_volume <- fsx_copy_snapshot_and_update_volume
 
 #' Creates a backup of an existing Amazon FSx for Windows File Server file
 #' system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP
@@ -1071,7 +1491,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1127,7 +1547,15 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'                 ),
 #'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'                 VolumeAppendModeEnabled = TRUE|FALSE
-#'               )
+#'               ),
+#'               VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'               AggregateConfiguration = list(
+#'                 Aggregates = list(
+#'                   "string"
+#'                 ),
+#'                 TotalConstituents = 123
+#'               ),
+#'               SizeInBytes = 123
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -1152,7 +1580,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               CopyTagsToSnapshots = TRUE|FALSE,
 #'               OriginSnapshot = list(
 #'                 SnapshotARN = "string",
-#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'               ),
 #'               ReadOnly = TRUE|FALSE,
 #'               NfsExports = list(
@@ -1176,7 +1604,11 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               ),
 #'               RestoreToSnapshot = "string",
 #'               DeleteIntermediateSnaphots = TRUE|FALSE,
-#'               DeleteClonedVolumes = TRUE|FALSE
+#'               DeleteClonedVolumes = TRUE|FALSE,
+#'               DeleteIntermediateData = TRUE|FALSE,
+#'               SourceSnapshotARN = "string",
+#'               DestinationSnapshot = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             )
 #'           ),
 #'           TargetSnapshotValues = list(
@@ -1198,13 +1630,15 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               )
 #'             ),
 #'             AdministrativeActions = list()
-#'           )
+#'           ),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       ),
 #'       OntapConfiguration = list(
 #'         AutomaticBackupRetentionDays = 123,
 #'         DailyAutomaticBackupStartTime = "string",
-#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'         EndpointIpAddressRange = "string",
 #'         Endpoints = list(
 #'           Intercluster = list(
@@ -1230,7 +1664,9 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'         ),
 #'         ThroughputCapacity = 123,
 #'         WeeklyMaintenanceStartTime = "string",
-#'         FsxAdminPassword = "string"
+#'         FsxAdminPassword = "string",
+#'         HAPairs = 123,
+#'         ThroughputCapacityPerHAPair = 123
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -1309,7 +1745,15 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           ),
 #'           SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'           VolumeAppendModeEnabled = TRUE|FALSE
-#'         )
+#'         ),
+#'         VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'         AggregateConfiguration = list(
+#'           Aggregates = list(
+#'             "string"
+#'           ),
+#'           TotalConstituents = 123
+#'         ),
+#'         SizeInBytes = 123
 #'       ),
 #'       ResourceARN = "string",
 #'       Tags = list(
@@ -1325,7 +1769,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1434,7 +1878,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'             OntapConfiguration = list(
 #'               AutomaticBackupRetentionDays = 123,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               EndpointIpAddressRange = "string",
 #'               Endpoints = list(
 #'                 Intercluster = list(
@@ -1460,7 +1904,9 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               ),
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
-#'               FsxAdminPassword = "string"
+#'               FsxAdminPassword = "string",
+#'               HAPairs = 123,
+#'               ThroughputCapacityPerHAPair = 123
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -1507,7 +1953,9 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               )
 #'             ),
 #'             AdministrativeActions = list()
-#'           )
+#'           ),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       ),
 #'       OpenZFSConfiguration = list(
@@ -1520,7 +1968,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'         CopyTagsToSnapshots = TRUE|FALSE,
 #'         OriginSnapshot = list(
 #'           SnapshotARN = "string",
-#'           CopyStrategy = "CLONE"|"FULL_COPY"
+#'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'         ),
 #'         ReadOnly = TRUE|FALSE,
 #'         NfsExports = list(
@@ -1544,7 +1992,11 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'         ),
 #'         RestoreToSnapshot = "string",
 #'         DeleteIntermediateSnaphots = TRUE|FALSE,
-#'         DeleteClonedVolumes = TRUE|FALSE
+#'         DeleteClonedVolumes = TRUE|FALSE,
+#'         DeleteIntermediateData = TRUE|FALSE,
+#'         SourceSnapshotARN = "string",
+#'         DestinationSnapshot = "string",
+#'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       )
 #'     )
 #'   )
@@ -2260,7 +2712,9 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     GiB, and increments of 3600 GiB.
 #' 
 #' **FSx for ONTAP file systems** - The amount of storage capacity that you
-#' can configure is from 1024 GiB up to 196,608 GiB (192 TiB).
+#' can configure depends on the value of the `HAPairs` property. The
+#' minimum value is calculated as 1,024 * `HAPairs` and the maxium is
+#' calculated as 524,288 * `HAPairs`..
 #' 
 #' **FSx for OpenZFS file systems** - The amount of storage capacity that
 #' you can configure is from 64 GiB up to 524,288 GiB (512 TiB).
@@ -2437,7 +2891,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -2493,7 +2947,15 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -2518,7 +2980,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -2542,7 +3004,11 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
 #'         TargetSnapshotValues = list(
@@ -2564,13 +3030,15 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
 #'       AutomaticBackupRetentionDays = 123,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       EndpointIpAddressRange = "string",
 #'       Endpoints = list(
 #'         Intercluster = list(
@@ -2596,7 +3064,9 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       ),
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
-#'       FsxAdminPassword = "string"
+#'       FsxAdminPassword = "string",
+#'       HAPairs = 123,
+#'       ThroughputCapacityPerHAPair = 123
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -2702,7 +3172,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'   OntapConfiguration = list(
 #'     AutomaticBackupRetentionDays = 123,
 #'     DailyAutomaticBackupStartTime = "string",
-#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'     DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'     EndpointIpAddressRange = "string",
 #'     FsxAdminPassword = "string",
 #'     DiskIopsConfiguration = list(
@@ -2714,7 +3184,9 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       "string"
 #'     ),
 #'     ThroughputCapacity = 123,
-#'     WeeklyMaintenanceStartTime = "string"
+#'     WeeklyMaintenanceStartTime = "string",
+#'     HAPairs = 123,
+#'     ThroughputCapacityPerHAPair = 123
 #'   ),
 #'   FileSystemTypeVersion = "string",
 #'   OpenZFSConfiguration = list(
@@ -2928,7 +3400,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' 
 #' If used to create a file system other than OpenZFS, you must provide a
 #' value that matches the backup's `StorageCapacity` value. If you provide
-#' any other value, Amazon FSx responds with a 400 Bad Request.
+#' any other value, Amazon FSx responds with with an HTTP status code 400
+#' Bad Request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3035,7 +3508,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3091,7 +3564,15 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -3116,7 +3597,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -3140,7 +3621,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
 #'         TargetSnapshotValues = list(
@@ -3162,13 +3647,15 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
 #'       AutomaticBackupRetentionDays = 123,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       EndpointIpAddressRange = "string",
 #'       Endpoints = list(
 #'         Intercluster = list(
@@ -3194,7 +3681,9 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       ),
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
-#'       FsxAdminPassword = "string"
+#'       FsxAdminPassword = "string",
+#'       HAPairs = 123,
+#'       ThroughputCapacityPerHAPair = 123
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -3456,7 +3945,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3565,7 +4054,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'           OntapConfiguration = list(
 #'             AutomaticBackupRetentionDays = 123,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             EndpointIpAddressRange = "string",
 #'             Endpoints = list(
 #'               Intercluster = list(
@@ -3591,7 +4080,9 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             ),
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
-#'             FsxAdminPassword = "string"
+#'             FsxAdminPassword = "string",
+#'             HAPairs = 123,
+#'             ThroughputCapacityPerHAPair = 123
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -3664,7 +4155,15 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -3689,7 +4188,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -3713,10 +4212,16 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
-#'         TargetSnapshotValues = list()
+#'         TargetSnapshotValues = list(),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     )
 #'   )
@@ -3983,7 +4488,15 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'         ),
 #'         SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'         VolumeAppendModeEnabled = TRUE|FALSE
-#'       )
+#'       ),
+#'       VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'       AggregateConfiguration = list(
+#'         Aggregates = list(
+#'           "string"
+#'         ),
+#'         TotalConstituents = 123
+#'       ),
+#'       SizeInBytes = 123
 #'     ),
 #'     ResourceARN = "string",
 #'     Tags = list(
@@ -3999,7 +4512,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -4108,7 +4621,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'           OntapConfiguration = list(
 #'             AutomaticBackupRetentionDays = 123,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             EndpointIpAddressRange = "string",
 #'             Endpoints = list(
 #'               Intercluster = list(
@@ -4134,7 +4647,9 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             ),
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
-#'             FsxAdminPassword = "string"
+#'             FsxAdminPassword = "string",
+#'             HAPairs = 123,
+#'             ThroughputCapacityPerHAPair = 123
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -4181,7 +4696,9 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OpenZFSConfiguration = list(
@@ -4194,7 +4711,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       CopyTagsToSnapshots = TRUE|FALSE,
 #'       OriginSnapshot = list(
 #'         SnapshotARN = "string",
-#'         CopyStrategy = "CLONE"|"FULL_COPY"
+#'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       ),
 #'       ReadOnly = TRUE|FALSE,
 #'       NfsExports = list(
@@ -4218,7 +4735,11 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       ),
 #'       RestoreToSnapshot = "string",
 #'       DeleteIntermediateSnaphots = TRUE|FALSE,
-#'       DeleteClonedVolumes = TRUE|FALSE
+#'       DeleteClonedVolumes = TRUE|FALSE,
+#'       DeleteIntermediateData = TRUE|FALSE,
+#'       SourceSnapshotARN = "string",
+#'       DestinationSnapshot = "string",
+#'       CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'     )
 #'   )
 #' )
@@ -4266,7 +4787,15 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       ),
 #'       SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'       VolumeAppendModeEnabled = TRUE|FALSE
-#'     )
+#'     ),
+#'     VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'     AggregateConfiguration = list(
+#'       Aggregates = list(
+#'         "string"
+#'       ),
+#'       ConstituentsPerAggregate = 123
+#'     ),
+#'     SizeInBytes = 123
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -4283,7 +4812,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     CopyTagsToSnapshots = TRUE|FALSE,
 #'     OriginSnapshot = list(
 #'       SnapshotARN = "string",
-#'       CopyStrategy = "CLONE"|"FULL_COPY"
+#'       CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'     ),
 #'     ReadOnly = TRUE|FALSE,
 #'     NfsExports = list(
@@ -4398,7 +4927,15 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'         ),
 #'         SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'         VolumeAppendModeEnabled = TRUE|FALSE
-#'       )
+#'       ),
+#'       VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'       AggregateConfiguration = list(
+#'         Aggregates = list(
+#'           "string"
+#'         ),
+#'         TotalConstituents = 123
+#'       ),
+#'       SizeInBytes = 123
 #'     ),
 #'     ResourceARN = "string",
 #'     Tags = list(
@@ -4414,7 +4951,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -4523,7 +5060,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'           OntapConfiguration = list(
 #'             AutomaticBackupRetentionDays = 123,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             EndpointIpAddressRange = "string",
 #'             Endpoints = list(
 #'               Intercluster = list(
@@ -4549,7 +5086,9 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             ),
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
-#'             FsxAdminPassword = "string"
+#'             FsxAdminPassword = "string",
+#'             HAPairs = 123,
+#'             ThroughputCapacityPerHAPair = 123
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -4596,7 +5135,9 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OpenZFSConfiguration = list(
@@ -4609,7 +5150,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'       CopyTagsToSnapshots = TRUE|FALSE,
 #'       OriginSnapshot = list(
 #'         SnapshotARN = "string",
-#'         CopyStrategy = "CLONE"|"FULL_COPY"
+#'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       ),
 #'       ReadOnly = TRUE|FALSE,
 #'       NfsExports = list(
@@ -4633,7 +5174,11 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'       ),
 #'       RestoreToSnapshot = "string",
 #'       DeleteIntermediateSnaphots = TRUE|FALSE,
-#'       DeleteClonedVolumes = TRUE|FALSE
+#'       DeleteClonedVolumes = TRUE|FALSE,
+#'       DeleteIntermediateData = TRUE|FALSE,
+#'       SourceSnapshotARN = "string",
+#'       DestinationSnapshot = "string",
+#'       CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'     )
 #'   )
 #' )
@@ -4681,7 +5226,15 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'       ),
 #'       SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'       VolumeAppendModeEnabled = TRUE|FALSE
-#'     )
+#'     ),
+#'     VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'     AggregateConfiguration = list(
+#'       Aggregates = list(
+#'         "string"
+#'       ),
+#'       ConstituentsPerAggregate = 123
+#'     ),
+#'     SizeInBytes = 123
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -5437,7 +5990,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -5493,7 +6046,15 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                   ),
 #'                   SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'                   VolumeAppendModeEnabled = TRUE|FALSE
-#'                 )
+#'                 ),
+#'                 VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'                 AggregateConfiguration = list(
+#'                   Aggregates = list(
+#'                     "string"
+#'                   ),
+#'                   TotalConstituents = 123
+#'                 ),
+#'                 SizeInBytes = 123
 #'               ),
 #'               ResourceARN = "string",
 #'               Tags = list(
@@ -5518,7 +6079,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 CopyTagsToSnapshots = TRUE|FALSE,
 #'                 OriginSnapshot = list(
 #'                   SnapshotARN = "string",
-#'                   CopyStrategy = "CLONE"|"FULL_COPY"
+#'                   CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'                 ),
 #'                 ReadOnly = TRUE|FALSE,
 #'                 NfsExports = list(
@@ -5542,7 +6103,11 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 ),
 #'                 RestoreToSnapshot = "string",
 #'                 DeleteIntermediateSnaphots = TRUE|FALSE,
-#'                 DeleteClonedVolumes = TRUE|FALSE
+#'                 DeleteClonedVolumes = TRUE|FALSE,
+#'                 DeleteIntermediateData = TRUE|FALSE,
+#'                 SourceSnapshotARN = "string",
+#'                 DestinationSnapshot = "string",
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'               )
 #'             ),
 #'             TargetSnapshotValues = list(
@@ -5564,13 +6129,15 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 )
 #'               ),
 #'               AdministrativeActions = list()
-#'             )
+#'             ),
+#'             TotalTransferBytes = 123,
+#'             RemainingTransferBytes = 123
 #'           )
 #'         ),
 #'         OntapConfiguration = list(
 #'           AutomaticBackupRetentionDays = 123,
 #'           DailyAutomaticBackupStartTime = "string",
-#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'           EndpointIpAddressRange = "string",
 #'           Endpoints = list(
 #'             Intercluster = list(
@@ -5596,7 +6163,9 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           ),
 #'           ThroughputCapacity = 123,
 #'           WeeklyMaintenanceStartTime = "string",
-#'           FsxAdminPassword = "string"
+#'           FsxAdminPassword = "string",
+#'           HAPairs = 123,
+#'           ThroughputCapacityPerHAPair = 123
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -5675,7 +6244,15 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             ),
 #'             SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'             VolumeAppendModeEnabled = TRUE|FALSE
-#'           )
+#'           ),
+#'           VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'           AggregateConfiguration = list(
+#'             Aggregates = list(
+#'               "string"
+#'             ),
+#'             TotalConstituents = 123
+#'           ),
+#'           SizeInBytes = 123
 #'         ),
 #'         ResourceARN = "string",
 #'         Tags = list(
@@ -5691,7 +6268,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -5800,7 +6377,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'               OntapConfiguration = list(
 #'                 AutomaticBackupRetentionDays = 123,
 #'                 DailyAutomaticBackupStartTime = "string",
-#'                 DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'                 DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'                 EndpointIpAddressRange = "string",
 #'                 Endpoints = list(
 #'                   Intercluster = list(
@@ -5826,7 +6403,9 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 ),
 #'                 ThroughputCapacity = 123,
 #'                 WeeklyMaintenanceStartTime = "string",
-#'                 FsxAdminPassword = "string"
+#'                 FsxAdminPassword = "string",
+#'                 HAPairs = 123,
+#'                 ThroughputCapacityPerHAPair = 123
 #'               ),
 #'               FileSystemTypeVersion = "string",
 #'               OpenZFSConfiguration = list(
@@ -5873,7 +6452,9 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 )
 #'               ),
 #'               AdministrativeActions = list()
-#'             )
+#'             ),
+#'             TotalTransferBytes = 123,
+#'             RemainingTransferBytes = 123
 #'           )
 #'         ),
 #'         OpenZFSConfiguration = list(
@@ -5886,7 +6467,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           CopyTagsToSnapshots = TRUE|FALSE,
 #'           OriginSnapshot = list(
 #'             SnapshotARN = "string",
-#'             CopyStrategy = "CLONE"|"FULL_COPY"
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           ),
 #'           ReadOnly = TRUE|FALSE,
 #'           NfsExports = list(
@@ -5910,7 +6491,11 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           ),
 #'           RestoreToSnapshot = "string",
 #'           DeleteIntermediateSnaphots = TRUE|FALSE,
-#'           DeleteClonedVolumes = TRUE|FALSE
+#'           DeleteClonedVolumes = TRUE|FALSE,
+#'           DeleteIntermediateData = TRUE|FALSE,
+#'           SourceSnapshotARN = "string",
+#'           DestinationSnapshot = "string",
+#'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'         )
 #'       )
 #'     )
@@ -6593,7 +7178,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -6649,7 +7234,15 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'                 ),
 #'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'                 VolumeAppendModeEnabled = TRUE|FALSE
-#'               )
+#'               ),
+#'               VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'               AggregateConfiguration = list(
+#'                 Aggregates = list(
+#'                   "string"
+#'                 ),
+#'                 TotalConstituents = 123
+#'               ),
+#'               SizeInBytes = 123
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -6674,7 +7267,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'               CopyTagsToSnapshots = TRUE|FALSE,
 #'               OriginSnapshot = list(
 #'                 SnapshotARN = "string",
-#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'               ),
 #'               ReadOnly = TRUE|FALSE,
 #'               NfsExports = list(
@@ -6698,7 +7291,11 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'               ),
 #'               RestoreToSnapshot = "string",
 #'               DeleteIntermediateSnaphots = TRUE|FALSE,
-#'               DeleteClonedVolumes = TRUE|FALSE
+#'               DeleteClonedVolumes = TRUE|FALSE,
+#'               DeleteIntermediateData = TRUE|FALSE,
+#'               SourceSnapshotARN = "string",
+#'               DestinationSnapshot = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             )
 #'           ),
 #'           TargetSnapshotValues = list(
@@ -6720,13 +7317,15 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'               )
 #'             ),
 #'             AdministrativeActions = list()
-#'           )
+#'           ),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       ),
 #'       OntapConfiguration = list(
 #'         AutomaticBackupRetentionDays = 123,
 #'         DailyAutomaticBackupStartTime = "string",
-#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'         DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'         EndpointIpAddressRange = "string",
 #'         Endpoints = list(
 #'           Intercluster = list(
@@ -6752,7 +7351,9 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         ),
 #'         ThroughputCapacity = 123,
 #'         WeeklyMaintenanceStartTime = "string",
-#'         FsxAdminPassword = "string"
+#'         FsxAdminPassword = "string",
+#'         HAPairs = 123,
+#'         ThroughputCapacityPerHAPair = 123
 #'       ),
 #'       FileSystemTypeVersion = "string",
 #'       OpenZFSConfiguration = list(
@@ -6821,6 +7422,55 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 }
 .fsx$operations$describe_file_systems <- fsx_describe_file_systems
 
+#' Indicates whether participant accounts in your organization can create
+#' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
+#' shared by a virtual private cloud (VPC) owner
+#'
+#' @description
+#' Indicates whether participant accounts in your organization can create
+#' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
+#' shared by a virtual private cloud (VPC) owner. For more information, see
+#' the [Amazon FSx for NetApp ONTAP User
+#' Guide](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/).
+#'
+#' @usage
+#' fsx_describe_shared_vpc_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnableFsxRouteTableUpdatesFromParticipantAccounts = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_shared_vpc_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_describe_shared_vpc_configuration
+#'
+#' @aliases fsx_describe_shared_vpc_configuration
+fsx_describe_shared_vpc_configuration <- function() {
+  op <- new_operation(
+    name = "DescribeSharedVpcConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$describe_shared_vpc_configuration_input()
+  output <- .fsx$describe_shared_vpc_configuration_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$describe_shared_vpc_configuration <- fsx_describe_shared_vpc_configuration
+
 #' Returns the description of specific Amazon FSx for OpenZFS snapshots, if
 #' a SnapshotIds value is provided
 #'
@@ -6854,7 +7504,8 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'     unspecified.
 #'
 #' @usage
-#' fsx_describe_snapshots(SnapshotIds, Filters, MaxResults, NextToken)
+#' fsx_describe_snapshots(SnapshotIds, Filters, MaxResults, NextToken,
+#'   IncludeShared)
 #'
 #' @param SnapshotIds The IDs of the snapshots that you want to retrieve. This parameter value
 #' overrides any filters. If any IDs aren't found, a `SnapshotNotFound`
@@ -6863,6 +7514,10 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #' `volume-id`.
 #' @param MaxResults 
 #' @param NextToken 
+#' @param IncludeShared Set to `false` (default) if you want to only see the snapshots in your
+#' Amazon Web Services account. Set to `true` if you want to see the
+#' snapshots in your account and the ones shared with you from another
+#' account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6889,7 +7544,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -6998,7 +7653,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'             OntapConfiguration = list(
 #'               AutomaticBackupRetentionDays = 123,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               EndpointIpAddressRange = "string",
 #'               Endpoints = list(
 #'                 Intercluster = list(
@@ -7024,7 +7679,9 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'               ),
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
-#'               FsxAdminPassword = "string"
+#'               FsxAdminPassword = "string",
+#'               HAPairs = 123,
+#'               ThroughputCapacityPerHAPair = 123
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -7097,7 +7754,15 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'                 ),
 #'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'                 VolumeAppendModeEnabled = TRUE|FALSE
-#'               )
+#'               ),
+#'               VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'               AggregateConfiguration = list(
+#'                 Aggregates = list(
+#'                   "string"
+#'                 ),
+#'                 TotalConstituents = 123
+#'               ),
+#'               SizeInBytes = 123
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -7122,7 +7787,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'               CopyTagsToSnapshots = TRUE|FALSE,
 #'               OriginSnapshot = list(
 #'                 SnapshotARN = "string",
-#'                 CopyStrategy = "CLONE"|"FULL_COPY"
+#'                 CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'               ),
 #'               ReadOnly = TRUE|FALSE,
 #'               NfsExports = list(
@@ -7146,10 +7811,16 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'               ),
 #'               RestoreToSnapshot = "string",
 #'               DeleteIntermediateSnaphots = TRUE|FALSE,
-#'               DeleteClonedVolumes = TRUE|FALSE
+#'               DeleteClonedVolumes = TRUE|FALSE,
+#'               DeleteIntermediateData = TRUE|FALSE,
+#'               SourceSnapshotARN = "string",
+#'               DestinationSnapshot = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             )
 #'           ),
-#'           TargetSnapshotValues = list()
+#'           TargetSnapshotValues = list(),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       )
 #'     )
@@ -7173,7 +7844,8 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'     )
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   IncludeShared = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7182,14 +7854,14 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #' @rdname fsx_describe_snapshots
 #'
 #' @aliases fsx_describe_snapshots
-fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IncludeShared = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IncludeShared = IncludeShared)
   output <- .fsx$describe_snapshots_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -7392,7 +8064,15 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'           ),
 #'           SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'           VolumeAppendModeEnabled = TRUE|FALSE
-#'         )
+#'         ),
+#'         VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'         AggregateConfiguration = list(
+#'           Aggregates = list(
+#'             "string"
+#'           ),
+#'           TotalConstituents = 123
+#'         ),
+#'         SizeInBytes = 123
 #'       ),
 #'       ResourceARN = "string",
 #'       Tags = list(
@@ -7408,7 +8088,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -7517,7 +8197,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'             OntapConfiguration = list(
 #'               AutomaticBackupRetentionDays = 123,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'               DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'               EndpointIpAddressRange = "string",
 #'               Endpoints = list(
 #'                 Intercluster = list(
@@ -7543,7 +8223,9 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               ),
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
-#'               FsxAdminPassword = "string"
+#'               FsxAdminPassword = "string",
+#'               HAPairs = 123,
+#'               ThroughputCapacityPerHAPair = 123
 #'             ),
 #'             FileSystemTypeVersion = "string",
 #'             OpenZFSConfiguration = list(
@@ -7590,7 +8272,9 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               )
 #'             ),
 #'             AdministrativeActions = list()
-#'           )
+#'           ),
+#'           TotalTransferBytes = 123,
+#'           RemainingTransferBytes = 123
 #'         )
 #'       ),
 #'       OpenZFSConfiguration = list(
@@ -7603,7 +8287,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'         CopyTagsToSnapshots = TRUE|FALSE,
 #'         OriginSnapshot = list(
 #'           SnapshotARN = "string",
-#'           CopyStrategy = "CLONE"|"FULL_COPY"
+#'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'         ),
 #'         ReadOnly = TRUE|FALSE,
 #'         NfsExports = list(
@@ -7627,7 +8311,11 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'         ),
 #'         RestoreToSnapshot = "string",
 #'         DeleteIntermediateSnaphots = TRUE|FALSE,
-#'         DeleteClonedVolumes = TRUE|FALSE
+#'         DeleteClonedVolumes = TRUE|FALSE,
+#'         DeleteIntermediateData = TRUE|FALSE,
+#'         SourceSnapshotARN = "string",
+#'         DestinationSnapshot = "string",
+#'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       )
 #'     )
 #'   ),
@@ -7684,8 +8372,8 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
 #' Use this action to disassociate, or remove, one or more Domain Name
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
 #' system. If you attempt to disassociate a DNS alias that is not
-#' associated with the file system, Amazon FSx responds with a 400 Bad
-#' Request. For more information, see [Working with DNS
+#' associated with the file system, Amazon FSx responds with an HTTP status
+#' code 400 (Bad Request). For more information, see [Working with DNS
 #' Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html).
 #' 
 #' The system generated response showing the DNS aliases that Amazon FSx is
@@ -7958,7 +8646,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -8014,7 +8702,15 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -8039,7 +8735,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -8063,7 +8759,11 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
 #'         TargetSnapshotValues = list(
@@ -8085,13 +8785,15 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
 #'       AutomaticBackupRetentionDays = 123,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       EndpointIpAddressRange = "string",
 #'       Endpoints = list(
 #'         Intercluster = list(
@@ -8117,7 +8819,9 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       ),
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
-#'       FsxAdminPassword = "string"
+#'       FsxAdminPassword = "string",
+#'       HAPairs = 123,
+#'       ThroughputCapacityPerHAPair = 123
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -8211,7 +8915,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'   Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
 #'   AdministrativeActions = list(
 #'     list(
-#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'       ProgressPercent = 123,
 #'       RequestTime = as.POSIXct(
 #'         "2015-01-01"
@@ -8320,7 +9024,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'         OntapConfiguration = list(
 #'           AutomaticBackupRetentionDays = 123,
 #'           DailyAutomaticBackupStartTime = "string",
-#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'           DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'           EndpointIpAddressRange = "string",
 #'           Endpoints = list(
 #'             Intercluster = list(
@@ -8346,7 +9050,9 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           ),
 #'           ThroughputCapacity = 123,
 #'           WeeklyMaintenanceStartTime = "string",
-#'           FsxAdminPassword = "string"
+#'           FsxAdminPassword = "string",
+#'           HAPairs = 123,
+#'           ThroughputCapacityPerHAPair = 123
 #'         ),
 #'         FileSystemTypeVersion = "string",
 #'         OpenZFSConfiguration = list(
@@ -8419,7 +9125,15 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'             ),
 #'             SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'             VolumeAppendModeEnabled = TRUE|FALSE
-#'           )
+#'           ),
+#'           VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'           AggregateConfiguration = list(
+#'             Aggregates = list(
+#'               "string"
+#'             ),
+#'             TotalConstituents = 123
+#'           ),
+#'           SizeInBytes = 123
 #'         ),
 #'         ResourceARN = "string",
 #'         Tags = list(
@@ -8444,7 +9158,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           CopyTagsToSnapshots = TRUE|FALSE,
 #'           OriginSnapshot = list(
 #'             SnapshotARN = "string",
-#'             CopyStrategy = "CLONE"|"FULL_COPY"
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           ),
 #'           ReadOnly = TRUE|FALSE,
 #'           NfsExports = list(
@@ -8468,7 +9182,11 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           ),
 #'           RestoreToSnapshot = "string",
 #'           DeleteIntermediateSnaphots = TRUE|FALSE,
-#'           DeleteClonedVolumes = TRUE|FALSE
+#'           DeleteClonedVolumes = TRUE|FALSE,
+#'           DeleteIntermediateData = TRUE|FALSE,
+#'           SourceSnapshotARN = "string",
+#'           DestinationSnapshot = "string",
+#'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'         )
 #'       ),
 #'       TargetSnapshotValues = list(
@@ -8490,7 +9208,9 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           )
 #'         ),
 #'         AdministrativeActions = list()
-#'       )
+#'       ),
+#'       TotalTransferBytes = 123,
+#'       RemainingTransferBytes = 123
 #'     )
 #'   )
 #' )
@@ -8650,7 +9370,7 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -8706,7 +9426,15 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -8731,7 +9459,7 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -8755,7 +9483,11 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
 #'         TargetSnapshotValues = list(
@@ -8777,13 +9509,15 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
 #'       AutomaticBackupRetentionDays = 123,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       EndpointIpAddressRange = "string",
 #'       Endpoints = list(
 #'         Intercluster = list(
@@ -8809,7 +9543,9 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       ),
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
-#'       FsxAdminPassword = "string"
+#'       FsxAdminPassword = "string",
+#'       HAPairs = 123,
+#'       ThroughputCapacityPerHAPair = 123
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -9256,6 +9992,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `LustreRootSquashConfiguration`
 #' 
+#' -   `PerUnitStorageThroughput`
+#' 
 #' -   `StorageCapacity`
 #' 
 #' -   `WeeklyMaintenanceStartTime`
@@ -9272,11 +10010,15 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `FsxAdminPassword`
 #' 
+#' -   `HAPairs`
+#' 
 #' -   `RemoveRouteTableIds`
 #' 
 #' -   `StorageCapacity`
 #' 
 #' -   `ThroughputCapacity`
+#' 
+#' -   `ThroughputCapacityPerHAPair`
 #' 
 #' -   `WeeklyMaintenanceStartTime`
 #' 
@@ -9470,7 +10212,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9526,7 +10268,15 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -9551,7 +10301,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -9575,7 +10325,11 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
 #'         TargetSnapshotValues = list(
@@ -9597,13 +10351,15 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OntapConfiguration = list(
 #'       AutomaticBackupRetentionDays = 123,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'       EndpointIpAddressRange = "string",
 #'       Endpoints = list(
 #'         Intercluster = list(
@@ -9629,7 +10385,9 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       ),
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
-#'       FsxAdminPassword = "string"
+#'       FsxAdminPassword = "string",
+#'       HAPairs = 123,
+#'       ThroughputCapacityPerHAPair = 123
 #'     ),
 #'     FileSystemTypeVersion = "string",
 #'     OpenZFSConfiguration = list(
@@ -9702,7 +10460,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       NoSquashNids = list(
 #'         "string"
 #'       )
-#'     )
+#'     ),
+#'     PerUnitStorageThroughput = 123
 #'   ),
 #'   OntapConfiguration = list(
 #'     AutomaticBackupRetentionDays = 123,
@@ -9719,7 +10478,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     ),
 #'     RemoveRouteTableIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     ThroughputCapacityPerHAPair = 123
 #'   ),
 #'   OpenZFSConfiguration = list(
 #'     AutomaticBackupRetentionDays = 123,
@@ -9778,6 +10538,72 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 }
 .fsx$operations$update_file_system <- fsx_update_file_system
 
+#' Configures whether participant accounts in your organization can create
+#' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
+#' shared by a virtual private cloud (VPC) owner
+#'
+#' @description
+#' Configures whether participant accounts in your organization can create
+#' Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are
+#' shared by a virtual private cloud (VPC) owner. For more information, see
+#' the [Amazon FSx for NetApp ONTAP User
+#' Guide](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/).
+#' 
+#' We strongly recommend that participant-created Multi-AZ file systems in
+#' the shared VPC are deleted before you disable this feature. Once the
+#' feature is disabled, these file systems will enter a `MISCONFIGURED`
+#' state and behave like Single-AZ file systems. For more information, see
+#' [Important considerations before disabling shared VPC support for
+#' Multi-AZ file
+#' systems](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/#disabling-maz-vpc-sharing).
+#'
+#' @usage
+#' fsx_update_shared_vpc_configuration(
+#'   EnableFsxRouteTableUpdatesFromParticipantAccounts, ClientRequestToken)
+#'
+#' @param EnableFsxRouteTableUpdatesFromParticipantAccounts Specifies whether participant accounts can create FSx for ONTAP Multi-AZ
+#' file systems in shared subnets. Set to `true` to enable or `false` to
+#' disable.
+#' @param ClientRequestToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EnableFsxRouteTableUpdatesFromParticipantAccounts = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_shared_vpc_configuration(
+#'   EnableFsxRouteTableUpdatesFromParticipantAccounts = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_update_shared_vpc_configuration
+#'
+#' @aliases fsx_update_shared_vpc_configuration
+fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromParticipantAccounts = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateSharedVpcConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$update_shared_vpc_configuration_input(EnableFsxRouteTableUpdatesFromParticipantAccounts = EnableFsxRouteTableUpdatesFromParticipantAccounts, ClientRequestToken = ClientRequestToken)
+  output <- .fsx$update_shared_vpc_configuration_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$update_shared_vpc_configuration <- fsx_update_shared_vpc_configuration
+
 #' Updates the name of an Amazon FSx for OpenZFS snapshot
 #'
 #' @description
@@ -9815,7 +10641,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9924,7 +10750,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'           OntapConfiguration = list(
 #'             AutomaticBackupRetentionDays = 123,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             EndpointIpAddressRange = "string",
 #'             Endpoints = list(
 #'               Intercluster = list(
@@ -9950,7 +10776,9 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'             ),
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
-#'             FsxAdminPassword = "string"
+#'             FsxAdminPassword = "string",
+#'             HAPairs = 123,
+#'             ThroughputCapacityPerHAPair = 123
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -10023,7 +10851,15 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'               ),
 #'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'               VolumeAppendModeEnabled = TRUE|FALSE
-#'             )
+#'             ),
+#'             VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'             AggregateConfiguration = list(
+#'               Aggregates = list(
+#'                 "string"
+#'               ),
+#'               TotalConstituents = 123
+#'             ),
+#'             SizeInBytes = 123
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -10048,7 +10884,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'             CopyTagsToSnapshots = TRUE|FALSE,
 #'             OriginSnapshot = list(
 #'               SnapshotARN = "string",
-#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'               CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'             ),
 #'             ReadOnly = TRUE|FALSE,
 #'             NfsExports = list(
@@ -10072,10 +10908,16 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'             ),
 #'             RestoreToSnapshot = "string",
 #'             DeleteIntermediateSnaphots = TRUE|FALSE,
-#'             DeleteClonedVolumes = TRUE|FALSE
+#'             DeleteClonedVolumes = TRUE|FALSE,
+#'             DeleteIntermediateData = TRUE|FALSE,
+#'             SourceSnapshotARN = "string",
+#'             DestinationSnapshot = "string",
+#'             CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'           )
 #'         ),
-#'         TargetSnapshotValues = list()
+#'         TargetSnapshotValues = list(),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     )
 #'   )
@@ -10311,7 +11153,15 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'         ),
 #'         SnaplockType = "COMPLIANCE"|"ENTERPRISE",
 #'         VolumeAppendModeEnabled = TRUE|FALSE
-#'       )
+#'       ),
+#'       VolumeStyle = "FLEXVOL"|"FLEXGROUP",
+#'       AggregateConfiguration = list(
+#'         Aggregates = list(
+#'           "string"
+#'         ),
+#'         TotalConstituents = 123
+#'       ),
+#'       SizeInBytes = 123
 #'     ),
 #'     ResourceARN = "string",
 #'     Tags = list(
@@ -10327,7 +11177,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY"|"VOLUME_UPDATE_WITH_SNAPSHOT"|"VOLUME_INITIALIZE_WITH_SNAPSHOT",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -10436,7 +11286,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'           OntapConfiguration = list(
 #'             AutomaticBackupRetentionDays = 123,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'             DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
 #'             EndpointIpAddressRange = "string",
 #'             Endpoints = list(
 #'               Intercluster = list(
@@ -10462,7 +11312,9 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             ),
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
-#'             FsxAdminPassword = "string"
+#'             FsxAdminPassword = "string",
+#'             HAPairs = 123,
+#'             ThroughputCapacityPerHAPair = 123
 #'           ),
 #'           FileSystemTypeVersion = "string",
 #'           OpenZFSConfiguration = list(
@@ -10509,7 +11361,9 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             )
 #'           ),
 #'           AdministrativeActions = list()
-#'         )
+#'         ),
+#'         TotalTransferBytes = 123,
+#'         RemainingTransferBytes = 123
 #'       )
 #'     ),
 #'     OpenZFSConfiguration = list(
@@ -10522,7 +11376,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       CopyTagsToSnapshots = TRUE|FALSE,
 #'       OriginSnapshot = list(
 #'         SnapshotARN = "string",
-#'         CopyStrategy = "CLONE"|"FULL_COPY"
+#'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       ),
 #'       ReadOnly = TRUE|FALSE,
 #'       NfsExports = list(
@@ -10546,7 +11400,11 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       ),
 #'       RestoreToSnapshot = "string",
 #'       DeleteIntermediateSnaphots = TRUE|FALSE,
-#'       DeleteClonedVolumes = TRUE|FALSE
+#'       DeleteClonedVolumes = TRUE|FALSE,
+#'       DeleteIntermediateData = TRUE|FALSE,
+#'       SourceSnapshotARN = "string",
+#'       DestinationSnapshot = "string",
+#'       CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'     )
 #'   )
 #' )
@@ -10590,7 +11448,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'         )
 #'       ),
 #'       VolumeAppendModeEnabled = TRUE|FALSE
-#'     )
+#'     ),
+#'     SizeInBytes = 123
 #'   ),
 #'   Name = "string",
 #'   OpenZFSConfiguration = list(

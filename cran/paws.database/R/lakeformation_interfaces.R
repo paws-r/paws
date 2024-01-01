@@ -99,6 +99,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lakeformation$create_lake_formation_identity_center_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$create_lake_formation_identity_center_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lakeformation$create_lake_formation_opt_in_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Principal = structure(list(DataLakePrincipalIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Resource = structure(list(Catalog = structure(list(), tags = list(type = "structure")), Database = structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Table = structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TableWildcard = structure(list(), tags = list(type = "structure"))), tags = list(type = "structure")), TableWithColumns = structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ColumnNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ColumnWildcard = structure(list(ExcludedColumnNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataLocation = structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataCellsFilter = structure(list(TableCatalogId = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LFTag = structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), LFTagPolicy = structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Expression = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -130,6 +142,18 @@ NULL
 }
 
 .lakeformation$delete_lf_tag_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$delete_lake_formation_identity_center_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$delete_lake_formation_identity_center_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -168,6 +192,18 @@ NULL
 .lakeformation$deregister_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$describe_lake_formation_identity_center_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$describe_lake_formation_identity_center_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -317,13 +353,13 @@ NULL
 
 .lakeformation$get_temporary_glue_table_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TableArn = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DurationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), AuditContext = structure(list(AdditionalAuditContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedPermissionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TableArn = structure(logical(0), tags = list(type = "string")), Permissions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DurationSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), AuditContext = structure(list(AdditionalAuditContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SupportedPermissionTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), S3Path = structure(logical(0), tags = list(type = "string")), QuerySessionContext = structure(list(QueryId = structure(logical(0), tags = list(type = "string")), QueryStartTime = structure(logical(0), tags = list(type = "timestamp")), ClusterId = structure(logical(0), tags = list(type = "string", box = TRUE)), QueryAuthorizationId = structure(logical(0), tags = list(type = "string")), AdditionalContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .lakeformation$get_temporary_glue_table_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp")), VendedS3Path = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -562,6 +598,18 @@ NULL
 }
 
 .lakeformation$update_lf_tag_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$update_lake_formation_identity_center_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), ApplicationStatus = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lakeformation$update_lake_formation_identity_center_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

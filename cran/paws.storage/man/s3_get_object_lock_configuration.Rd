@@ -2,27 +2,30 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_object_lock_configuration}
 \alias{s3_get_object_lock_configuration}
-\title{Gets the Object Lock configuration for a bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_object_lock_configuration(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket whose Object Lock configuration you want to retrieve.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_object_lock_configuration/} for full documentation.
 }

@@ -92,21 +92,29 @@ workloads. For more information, see the \href{https://docs.aws.amazon.com/fis/l
 
 \tabular{ll}{
 \link[=fis_create_experiment_template]{create_experiment_template} \tab Creates an experiment template\cr
+\link[=fis_create_target_account_configuration]{create_target_account_configuration} \tab Creates a target account configuration for the experiment template\cr
 \link[=fis_delete_experiment_template]{delete_experiment_template} \tab Deletes the specified experiment template\cr
+\link[=fis_delete_target_account_configuration]{delete_target_account_configuration} \tab Deletes the specified target account configuration of the experiment template\cr
 \link[=fis_get_action]{get_action} \tab Gets information about the specified FIS action\cr
 \link[=fis_get_experiment]{get_experiment} \tab Gets information about the specified experiment\cr
+\link[=fis_get_experiment_target_account_configuration]{get_experiment_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment\cr
 \link[=fis_get_experiment_template]{get_experiment_template} \tab Gets information about the specified experiment template\cr
+\link[=fis_get_target_account_configuration]{get_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment template\cr
 \link[=fis_get_target_resource_type]{get_target_resource_type} \tab Gets information about the specified resource type\cr
 \link[=fis_list_actions]{list_actions} \tab Lists the available FIS actions\cr
+\link[=fis_list_experiment_resolved_targets]{list_experiment_resolved_targets} \tab Lists the resolved targets information of the specified experiment\cr
 \link[=fis_list_experiments]{list_experiments} \tab Lists your experiments\cr
+\link[=fis_list_experiment_target_account_configurations]{list_experiment_target_account_configurations} \tab Lists the target account configurations of the specified experiment\cr
 \link[=fis_list_experiment_templates]{list_experiment_templates} \tab Lists your experiment templates\cr
 \link[=fis_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[=fis_list_target_account_configurations]{list_target_account_configurations} \tab Lists the target account configurations of the specified experiment template\cr
 \link[=fis_list_target_resource_types]{list_target_resource_types} \tab Lists the target resource types\cr
 \link[=fis_start_experiment]{start_experiment} \tab Starts running an experiment from the specified experiment template\cr
 \link[=fis_stop_experiment]{stop_experiment} \tab Stops the specified experiment\cr
 \link[=fis_tag_resource]{tag_resource} \tab Applies the specified tags to the specified resource\cr
 \link[=fis_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
-\link[=fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template
+\link[=fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template\cr
+\link[=fis_update_target_account_configuration]{update_target_account_configuration} \tab Updates the target account configuration for the specified experiment template
 }
 }
 

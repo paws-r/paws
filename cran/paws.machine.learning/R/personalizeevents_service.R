@@ -7,8 +7,9 @@ NULL
 #' @description
 #' Amazon Personalize can consume real-time user event data, such as
 #' *stream* or *click* data, and use it for model training either alone or
-#' combined with historical data. For more information see [Recording
-#' Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
+#' combined with historical data. For more information see [Recording item
+#' interaction
+#' events](https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html).
 #'
 #' @param
 #' config
@@ -86,14 +87,16 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- personalizeevents()
-#' svc$put_events(
+#' svc$put_action_interactions(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=personalizeevents_put_events]{put_events} \tab Records user interaction event data\cr
+#'  \link[=personalizeevents_put_action_interactions]{put_action_interactions} \tab Records action interaction event data\cr
+#'  \link[=personalizeevents_put_actions]{put_actions} \tab Adds one or more actions to an Actions dataset\cr
+#'  \link[=personalizeevents_put_events]{put_events} \tab Records item interaction event data\cr
 #'  \link[=personalizeevents_put_items]{put_items} \tab Adds one or more items to an Items dataset\cr
 #'  \link[=personalizeevents_put_users]{put_users} \tab Adds one or more users to a Users dataset
 #' }

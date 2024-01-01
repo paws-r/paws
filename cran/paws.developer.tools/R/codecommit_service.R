@@ -35,6 +35,10 @@ NULL
 #' -   [`update_repository_description`][codecommit_update_repository_description],
 #'     which sets or updates the description of the repository.
 #' 
+#' -   [`update_repository_encryption_key`][codecommit_update_repository_encryption_key],
+#'     which updates the Key Management Service encryption key used to
+#'     encrypt and decrypt a repository.
+#' 
 #' -   [`update_repository_name`][codecommit_update_repository_name], which
 #'     changes the name of the repository. If you change the name of a
 #'     repository, no other users of that repository can access it until
@@ -480,6 +484,7 @@ NULL
 #'  \link[=codecommit_update_pull_request_status]{update_pull_request_status} \tab Updates the status of a pull request\cr
 #'  \link[=codecommit_update_pull_request_title]{update_pull_request_title} \tab Replaces the title of a pull request\cr
 #'  \link[=codecommit_update_repository_description]{update_repository_description} \tab Sets or changes the comment or description for a repository\cr
+#'  \link[=codecommit_update_repository_encryption_key]{update_repository_encryption_key} \tab Updates the Key Management Service encryption key used to encrypt and decrypt a CodeCommit repository\cr
 #'  \link[=codecommit_update_repository_name]{update_repository_name} \tab Renames a repository
 #' }
 #'

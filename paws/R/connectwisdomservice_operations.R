@@ -23,15 +23,15 @@ NULL
 #' encryption.
 #' 
 #' The customer managed key must have a policy that allows
-#' `kms:CreateGrant` and ` kms:DescribeKey` permissions to the IAM identity
-#' using the key to invoke Wisdom. To use Wisdom with chat, the key policy
-#' must also allow `kms:Decrypt`, `kms:GenerateDataKey*`, and
-#' `kms:DescribeKey` permissions to the `connect.amazonaws.com` service
-#' principal.
+#' `kms:CreateGrant`, ` kms:DescribeKey`, and
+#' `kms:Decrypt/kms:GenerateDataKey` permissions to the IAM identity using
+#' the key to invoke Wisdom. To use Wisdom with chat, the key policy must
+#' also allow `kms:Decrypt`, `kms:GenerateDataKey*`, and `kms:DescribeKey`
+#' permissions to the `connect.amazonaws.com` service principal.
 #' 
 #' For more information about setting up a customer managed key for Wisdom,
 #' see [Enable Amazon Connect Wisdom for your
-#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html).
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html).
 #' @param tags The tags used to organize, track, or control access for this resource.
 #' @param type &#91;required&#93; The type of assistant.
 #'
@@ -196,8 +196,10 @@ connectwisdomservice_create_assistant_association <- function(assistantId, assoc
 #' populates this field. For more information about idempotency, see
 #' [Making retries safe with idempotent
 #' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #' @param metadata A key/value map to store attributes without affecting tagging or
 #' recommendations. For example, when synchronizing data between an
 #' external system and Wisdom, you can store an external version identifier
@@ -328,13 +330,13 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' @param serverSideEncryptionConfiguration The configuration information for the customer managed key used for
 #' encryption.
 #' 
-#' This KMS key must have a policy that allows `kms:CreateGrant` and
-#' `kms:DescribeKey` permissions to the IAM identity using the key to
-#' invoke Wisdom.
+#' This KMS key must have a policy that allows `kms:CreateGrant`,
+#' `kms:DescribeKey`, and `kms:Decrypt/kms:GenerateDataKey` permissions to
+#' the IAM identity using the key to invoke Wisdom.
 #' 
 #' For more information about setting up a customer managed key for Wisdom,
 #' see [Enable Amazon Connect Wisdom for your
-#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html).
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html).
 #' @param sourceConfiguration The source of the knowledge base content. Only set this argument for
 #' EXTERNAL knowledge bases.
 #' @param tags The tags used to organize, track, or control access for this resource.
@@ -347,7 +349,7 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #'     description = "string",
 #'     knowledgeBaseArn = "string",
 #'     knowledgeBaseId = "string",
-#'     knowledgeBaseType = "EXTERNAL"|"CUSTOM",
+#'     knowledgeBaseType = "EXTERNAL"|"CUSTOM"|"QUICK_RESPONSES",
 #'     lastContentModificationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -379,7 +381,7 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' svc$create_knowledge_base(
 #'   clientToken = "string",
 #'   description = "string",
-#'   knowledgeBaseType = "EXTERNAL"|"CUSTOM",
+#'   knowledgeBaseType = "EXTERNAL"|"CUSTOM"|"QUICK_RESPONSES",
 #'   name = "string",
 #'   renderingConfiguration = list(
 #'     templateUri = "string"
@@ -422,6 +424,144 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
   return(response)
 }
 .connectwisdomservice$operations$create_knowledge_base <- connectwisdomservice_create_knowledge_base
+
+#' Creates a Wisdom quick response
+#'
+#' @description
+#' Creates a Wisdom quick response.
+#'
+#' @usage
+#' connectwisdomservice_create_quick_response(channels, clientToken,
+#'   content, contentType, description, groupingConfiguration, isActive,
+#'   knowledgeBaseId, language, name, shortcutKey, tags)
+#'
+#' @param channels The Amazon Connect channels this quick response applies to.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' @param content &#91;required&#93; The content of the quick response.
+#' @param contentType The media type of the quick response content.
+#' 
+#' -   Use `application/x.quickresponse;format=plain` for a quick response
+#'     written in plain text.
+#' 
+#' -   Use `application/x.quickresponse;format=markdown` for a quick
+#'     response written in richtext.
+#' @param description The description of the quick response.
+#' @param groupingConfiguration The configuration information of the user groups that the quick response
+#' is accessible to.
+#' @param isActive Whether the quick response is active.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
+#' @param language The language code value for the language in which the quick response is
+#' written. The supported language codes include `de_DE`, `en_US`, `es_ES`,
+#' `fr_FR`, `id_ID`, `it_IT`, `ja_JP`, `ko_KR`, `pt_BR`, `zh_CN`, `zh_TW`
+#' @param name &#91;required&#93; The name of the quick response.
+#' @param shortcutKey The shortcut key of the quick response. The value should be unique
+#' across the knowledge base.
+#' @param tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   quickResponse = list(
+#'     channels = list(
+#'       "string"
+#'     ),
+#'     contentType = "string",
+#'     contents = list(
+#'       markdown = list(
+#'         content = "string"
+#'       ),
+#'       plainText = list(
+#'         content = "string"
+#'       )
+#'     ),
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     description = "string",
+#'     groupingConfiguration = list(
+#'       criteria = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     isActive = TRUE|FALSE,
+#'     knowledgeBaseArn = "string",
+#'     knowledgeBaseId = "string",
+#'     language = "string",
+#'     lastModifiedBy = "string",
+#'     lastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     quickResponseArn = "string",
+#'     quickResponseId = "string",
+#'     shortcutKey = "string",
+#'     status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_quick_response(
+#'   channels = list(
+#'     "string"
+#'   ),
+#'   clientToken = "string",
+#'   content = list(
+#'     content = "string"
+#'   ),
+#'   contentType = "string",
+#'   description = "string",
+#'   groupingConfiguration = list(
+#'     criteria = "string",
+#'     values = list(
+#'       "string"
+#'     )
+#'   ),
+#'   isActive = TRUE|FALSE,
+#'   knowledgeBaseId = "string",
+#'   language = "string",
+#'   name = "string",
+#'   shortcutKey = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_create_quick_response
+#'
+#' @aliases connectwisdomservice_create_quick_response
+connectwisdomservice_create_quick_response <- function(channels = NULL, clientToken = NULL, content, contentType = NULL, description = NULL, groupingConfiguration = NULL, isActive = NULL, knowledgeBaseId, language = NULL, name, shortcutKey = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateQuickResponse",
+    http_method = "POST",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$create_quick_response_input(channels = channels, clientToken = clientToken, content = content, contentType = contentType, description = description, groupingConfiguration = groupingConfiguration, isActive = isActive, knowledgeBaseId = knowledgeBaseId, language = language, name = name, shortcutKey = shortcutKey, tags = tags)
+  output <- .connectwisdomservice$create_quick_response_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$create_quick_response <- connectwisdomservice_create_quick_response
 
 #' Creates a session
 #'
@@ -599,8 +739,10 @@ connectwisdomservice_delete_assistant_association <- function(assistantAssociati
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #'
 #' @return
 #' An empty list.
@@ -634,6 +776,52 @@ connectwisdomservice_delete_content <- function(contentId, knowledgeBaseId) {
   return(response)
 }
 .connectwisdomservice$operations$delete_content <- connectwisdomservice_delete_content
+
+#' Deletes the quick response import job
+#'
+#' @description
+#' Deletes the quick response import job.
+#'
+#' @usage
+#' connectwisdomservice_delete_import_job(importJobId, knowledgeBaseId)
+#'
+#' @param importJobId &#91;required&#93; The identifier of the import job to be deleted.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_import_job(
+#'   importJobId = "string",
+#'   knowledgeBaseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_delete_import_job
+#'
+#' @aliases connectwisdomservice_delete_import_job
+connectwisdomservice_delete_import_job <- function(importJobId, knowledgeBaseId) {
+  op <- new_operation(
+    name = "DeleteImportJob",
+    http_method = "DELETE",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs/{importJobId}",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$delete_import_job_input(importJobId = importJobId, knowledgeBaseId = knowledgeBaseId)
+  output <- .connectwisdomservice$delete_import_job_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$delete_import_job <- connectwisdomservice_delete_import_job
 
 #' Deletes the knowledge base
 #'
@@ -688,6 +876,53 @@ connectwisdomservice_delete_knowledge_base <- function(knowledgeBaseId) {
   return(response)
 }
 .connectwisdomservice$operations$delete_knowledge_base <- connectwisdomservice_delete_knowledge_base
+
+#' Deletes a quick response
+#'
+#' @description
+#' Deletes a quick response.
+#'
+#' @usage
+#' connectwisdomservice_delete_quick_response(knowledgeBaseId,
+#'   quickResponseId)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The knowledge base from which the quick response is deleted. The
+#' identifier of the knowledge base. This should not be a QUICK_RESPONSES
+#' type knowledge base if you're storing Wisdom Content resource to it.
+#' @param quickResponseId &#91;required&#93; The identifier of the quick response to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_quick_response(
+#'   knowledgeBaseId = "string",
+#'   quickResponseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_delete_quick_response
+#'
+#' @aliases connectwisdomservice_delete_quick_response
+connectwisdomservice_delete_quick_response <- function(knowledgeBaseId, quickResponseId) {
+  op <- new_operation(
+    name = "DeleteQuickResponse",
+    http_method = "DELETE",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$delete_quick_response_input(knowledgeBaseId = knowledgeBaseId, quickResponseId = quickResponseId)
+  output <- .connectwisdomservice$delete_quick_response_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$delete_quick_response <- connectwisdomservice_delete_quick_response
 
 #' Retrieves information about an assistant
 #'
@@ -830,8 +1065,10 @@ connectwisdomservice_get_assistant_association <- function(assistantAssociationI
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #'
 #' @return
 #' A list with the following syntax:
@@ -902,8 +1139,10 @@ connectwisdomservice_get_content <- function(contentId, knowledgeBaseId) {
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #'
 #' @return
 #' A list with the following syntax:
@@ -959,6 +1198,84 @@ connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId)
 }
 .connectwisdomservice$operations$get_content_summary <- connectwisdomservice_get_content_summary
 
+#' Retrieves the started import job
+#'
+#' @description
+#' Retrieves the started import job.
+#'
+#' @usage
+#' connectwisdomservice_get_import_job(importJobId, knowledgeBaseId)
+#'
+#' @param importJobId &#91;required&#93; The identifier of the import job to retrieve.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base that the import job belongs to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   importJob = list(
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     externalSourceConfiguration = list(
+#'       configuration = list(
+#'         connectConfiguration = list(
+#'           instanceId = "string"
+#'         )
+#'       ),
+#'       source = "AMAZON_CONNECT"
+#'     ),
+#'     failedRecordReport = "string",
+#'     importJobId = "string",
+#'     importJobType = "QUICK_RESPONSES",
+#'     knowledgeBaseArn = "string",
+#'     knowledgeBaseId = "string",
+#'     lastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     metadata = list(
+#'       "string"
+#'     ),
+#'     status = "START_IN_PROGRESS"|"FAILED"|"COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED",
+#'     uploadId = "string",
+#'     url = "string",
+#'     urlExpiry = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_import_job(
+#'   importJobId = "string",
+#'   knowledgeBaseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_get_import_job
+#'
+#' @aliases connectwisdomservice_get_import_job
+connectwisdomservice_get_import_job <- function(importJobId, knowledgeBaseId) {
+  op <- new_operation(
+    name = "GetImportJob",
+    http_method = "GET",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs/{importJobId}",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$get_import_job_input(importJobId = importJobId, knowledgeBaseId = knowledgeBaseId)
+  output <- .connectwisdomservice$get_import_job_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$get_import_job <- connectwisdomservice_get_import_job
+
 #' Retrieves information about the knowledge base
 #'
 #' @description
@@ -967,8 +1284,10 @@ connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId)
 #' @usage
 #' connectwisdomservice_get_knowledge_base(knowledgeBaseId)
 #'
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #'
 #' @return
 #' A list with the following syntax:
@@ -978,7 +1297,7 @@ connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId)
 #'     description = "string",
 #'     knowledgeBaseArn = "string",
 #'     knowledgeBaseId = "string",
-#'     knowledgeBaseType = "EXTERNAL"|"CUSTOM",
+#'     knowledgeBaseType = "EXTERNAL"|"CUSTOM"|"QUICK_RESPONSES",
 #'     lastContentModificationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1033,6 +1352,96 @@ connectwisdomservice_get_knowledge_base <- function(knowledgeBaseId) {
   return(response)
 }
 .connectwisdomservice$operations$get_knowledge_base <- connectwisdomservice_get_knowledge_base
+
+#' Retrieves the quick response
+#'
+#' @description
+#' Retrieves the quick response.
+#'
+#' @usage
+#' connectwisdomservice_get_quick_response(knowledgeBaseId,
+#'   quickResponseId)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should be a QUICK_RESPONSES
+#' type knowledge base.
+#' @param quickResponseId &#91;required&#93; The identifier of the quick response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   quickResponse = list(
+#'     channels = list(
+#'       "string"
+#'     ),
+#'     contentType = "string",
+#'     contents = list(
+#'       markdown = list(
+#'         content = "string"
+#'       ),
+#'       plainText = list(
+#'         content = "string"
+#'       )
+#'     ),
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     description = "string",
+#'     groupingConfiguration = list(
+#'       criteria = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     isActive = TRUE|FALSE,
+#'     knowledgeBaseArn = "string",
+#'     knowledgeBaseId = "string",
+#'     language = "string",
+#'     lastModifiedBy = "string",
+#'     lastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     quickResponseArn = "string",
+#'     quickResponseId = "string",
+#'     shortcutKey = "string",
+#'     status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_quick_response(
+#'   knowledgeBaseId = "string",
+#'   quickResponseId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_get_quick_response
+#'
+#' @aliases connectwisdomservice_get_quick_response
+connectwisdomservice_get_quick_response <- function(knowledgeBaseId, quickResponseId) {
+  op <- new_operation(
+    name = "GetQuickResponse",
+    http_method = "GET",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$get_quick_response_input(knowledgeBaseId = knowledgeBaseId, quickResponseId = quickResponseId)
+  output <- .connectwisdomservice$get_quick_response_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$get_quick_response <- connectwisdomservice_get_quick_response
 
 #' Retrieves recommendations for the specified session
 #'
@@ -1363,8 +1772,10 @@ connectwisdomservice_list_assistants <- function(maxResults = NULL, nextToken = 
 #' connectwisdomservice_list_contents(knowledgeBaseId, maxResults,
 #'   nextToken)
 #'
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -1428,6 +1839,90 @@ connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NUL
 }
 .connectwisdomservice$operations$list_contents <- connectwisdomservice_list_contents
 
+#' Lists information about import jobs
+#'
+#' @description
+#' Lists information about import jobs.
+#'
+#' @usage
+#' connectwisdomservice_list_import_jobs(knowledgeBaseId, maxResults,
+#'   nextToken)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   importJobSummaries = list(
+#'     list(
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       externalSourceConfiguration = list(
+#'         configuration = list(
+#'           connectConfiguration = list(
+#'             instanceId = "string"
+#'           )
+#'         ),
+#'         source = "AMAZON_CONNECT"
+#'       ),
+#'       importJobId = "string",
+#'       importJobType = "QUICK_RESPONSES",
+#'       knowledgeBaseArn = "string",
+#'       knowledgeBaseId = "string",
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       metadata = list(
+#'         "string"
+#'       ),
+#'       status = "START_IN_PROGRESS"|"FAILED"|"COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED",
+#'       uploadId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_import_jobs(
+#'   knowledgeBaseId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_list_import_jobs
+#'
+#' @aliases connectwisdomservice_list_import_jobs
+connectwisdomservice_list_import_jobs <- function(knowledgeBaseId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListImportJobs",
+    http_method = "GET",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "importJobSummaries")
+  )
+  input <- .connectwisdomservice$list_import_jobs_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
+  output <- .connectwisdomservice$list_import_jobs_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$list_import_jobs <- connectwisdomservice_list_import_jobs
+
 #' Lists the knowledge bases
 #'
 #' @description
@@ -1450,7 +1945,7 @@ connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NUL
 #'       description = "string",
 #'       knowledgeBaseArn = "string",
 #'       knowledgeBaseId = "string",
-#'       knowledgeBaseType = "EXTERNAL"|"CUSTOM",
+#'       knowledgeBaseType = "EXTERNAL"|"CUSTOM"|"QUICK_RESPONSES",
 #'       name = "string",
 #'       renderingConfiguration = list(
 #'         templateUri = "string"
@@ -1505,6 +2000,89 @@ connectwisdomservice_list_knowledge_bases <- function(maxResults = NULL, nextTok
   return(response)
 }
 .connectwisdomservice$operations$list_knowledge_bases <- connectwisdomservice_list_knowledge_bases
+
+#' Lists information about quick response
+#'
+#' @description
+#' Lists information about quick response.
+#'
+#' @usage
+#' connectwisdomservice_list_quick_responses(knowledgeBaseId, maxResults,
+#'   nextToken)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   quickResponseSummaries = list(
+#'     list(
+#'       channels = list(
+#'         "string"
+#'       ),
+#'       contentType = "string",
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       isActive = TRUE|FALSE,
+#'       knowledgeBaseArn = "string",
+#'       knowledgeBaseId = "string",
+#'       lastModifiedBy = "string",
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       quickResponseArn = "string",
+#'       quickResponseId = "string",
+#'       status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_quick_responses(
+#'   knowledgeBaseId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_list_quick_responses
+#'
+#' @aliases connectwisdomservice_list_quick_responses
+connectwisdomservice_list_quick_responses <- function(knowledgeBaseId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListQuickResponses",
+    http_method = "GET",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quickResponseSummaries")
+  )
+  input <- .connectwisdomservice$list_quick_responses_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
+  output <- .connectwisdomservice$list_quick_responses_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$list_quick_responses <- connectwisdomservice_list_quick_responses
 
 #' Lists the tags for the specified resource
 #'
@@ -1724,8 +2302,10 @@ connectwisdomservice_query_assistant <- function(assistantId, maxResults = NULL,
 #' @usage
 #' connectwisdomservice_remove_knowledge_base_template_uri(knowledgeBaseId)
 #'
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #'
 #' @return
 #' An empty list.
@@ -1769,8 +2349,10 @@ connectwisdomservice_remove_knowledge_base_template_uri <- function(knowledgeBas
 #' connectwisdomservice_search_content(knowledgeBaseId, maxResults,
 #'   nextToken, searchExpression)
 #'
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -1843,6 +2425,144 @@ connectwisdomservice_search_content <- function(knowledgeBaseId, maxResults = NU
   return(response)
 }
 .connectwisdomservice$operations$search_content <- connectwisdomservice_search_content
+
+#' Searches existing Wisdom quick responses in a Wisdom knowledge base
+#'
+#' @description
+#' Searches existing Wisdom quick responses in a Wisdom knowledge base.
+#'
+#' @usage
+#' connectwisdomservice_search_quick_responses(attributes, knowledgeBaseId,
+#'   maxResults, nextToken, searchExpression)
+#'
+#' @param attributes The [user-defined Amazon Connect contact
+#' attributes](https://docs.aws.amazon.com/connect/latest/adminguide/connect-attrib-list.html#user-defined-attributes)
+#' to be resolved when search results are returned.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should be a QUICK_RESPONSES
+#' type knowledge base. Can be either the ID or the ARN. URLs cannot
+#' contain the ARN.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param searchExpression &#91;required&#93; The search expression for querying the quick response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   results = list(
+#'     list(
+#'       attributesInterpolated = list(
+#'         "string"
+#'       ),
+#'       attributesNotInterpolated = list(
+#'         "string"
+#'       ),
+#'       channels = list(
+#'         "string"
+#'       ),
+#'       contentType = "string",
+#'       contents = list(
+#'         markdown = list(
+#'           content = "string"
+#'         ),
+#'         plainText = list(
+#'           content = "string"
+#'         )
+#'       ),
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       groupingConfiguration = list(
+#'         criteria = "string",
+#'         values = list(
+#'           "string"
+#'         )
+#'       ),
+#'       isActive = TRUE|FALSE,
+#'       knowledgeBaseArn = "string",
+#'       knowledgeBaseId = "string",
+#'       language = "string",
+#'       lastModifiedBy = "string",
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       quickResponseArn = "string",
+#'       quickResponseId = "string",
+#'       shortcutKey = "string",
+#'       status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_quick_responses(
+#'   attributes = list(
+#'     "string"
+#'   ),
+#'   knowledgeBaseId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   searchExpression = list(
+#'     filters = list(
+#'       list(
+#'         includeNoExistence = TRUE|FALSE,
+#'         name = "string",
+#'         operator = "EQUALS"|"PREFIX",
+#'         values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     orderOnField = list(
+#'       name = "string",
+#'       order = "ASC"|"DESC"
+#'     ),
+#'     queries = list(
+#'       list(
+#'         allowFuzziness = TRUE|FALSE,
+#'         name = "string",
+#'         operator = "CONTAINS"|"CONTAINS_AND_PREFIX",
+#'         priority = "HIGH"|"MEDIUM"|"LOW",
+#'         values = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_search_quick_responses
+#'
+#' @aliases connectwisdomservice_search_quick_responses
+connectwisdomservice_search_quick_responses <- function(attributes = NULL, knowledgeBaseId, maxResults = NULL, nextToken = NULL, searchExpression) {
+  op <- new_operation(
+    name = "SearchQuickResponses",
+    http_method = "POST",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/search/quickResponses",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "results")
+  )
+  input <- .connectwisdomservice$search_quick_responses_input(attributes = attributes, knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken, searchExpression = searchExpression)
+  output <- .connectwisdomservice$search_quick_responses_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$search_quick_responses <- connectwisdomservice_search_quick_responses
 
 #' Searches for sessions
 #'
@@ -1930,11 +2650,16 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
 #' type CUSTOM.
 #'
 #' @usage
-#' connectwisdomservice_start_content_upload(contentType, knowledgeBaseId)
+#' connectwisdomservice_start_content_upload(contentType, knowledgeBaseId,
+#'   presignedUrlTimeToLive)
 #'
 #' @param contentType &#91;required&#93; The type of content to upload.
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
+#' @param presignedUrlTimeToLive The expected expiration time of the generated presigned URL, specified
+#' in minutes.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1955,7 +2680,8 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
 #' ```
 #' svc$start_content_upload(
 #'   contentType = "string",
-#'   knowledgeBaseId = "string"
+#'   knowledgeBaseId = "string",
+#'   presignedUrlTimeToLive = 123
 #' )
 #' ```
 #'
@@ -1964,14 +2690,14 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
 #' @rdname connectwisdomservice_start_content_upload
 #'
 #' @aliases connectwisdomservice_start_content_upload
-connectwisdomservice_start_content_upload <- function(contentType, knowledgeBaseId) {
+connectwisdomservice_start_content_upload <- function(contentType, knowledgeBaseId, presignedUrlTimeToLive = NULL) {
   op <- new_operation(
     name = "StartContentUpload",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/upload",
     paginator = list()
   )
-  input <- .connectwisdomservice$start_content_upload_input(contentType = contentType, knowledgeBaseId = knowledgeBaseId)
+  input <- .connectwisdomservice$start_content_upload_input(contentType = contentType, knowledgeBaseId = knowledgeBaseId, presignedUrlTimeToLive = presignedUrlTimeToLive)
   output <- .connectwisdomservice$start_content_upload_output()
   config <- get_config()
   svc <- .connectwisdomservice$service(config)
@@ -1980,6 +2706,123 @@ connectwisdomservice_start_content_upload <- function(contentType, knowledgeBase
   return(response)
 }
 .connectwisdomservice$operations$start_content_upload <- connectwisdomservice_start_content_upload
+
+#' Start an asynchronous job to import Wisdom resources from an uploaded
+#' source file
+#'
+#' @description
+#' Start an asynchronous job to import Wisdom resources from an uploaded
+#' source file. Before calling this API, use
+#' [`start_content_upload`][connectwisdomservice_start_content_upload] to
+#' upload an asset that contains the resource data.
+#' 
+#' -   For importing Wisdom quick responses, you need to upload a csv file
+#'     including the quick responses. For information about how to format
+#'     the csv file for importing quick responses, see [Import quick
+#'     responses](https://docs.aws.amazon.com/connect/latest/adminguide/quick-responses.html).
+#'
+#' @usage
+#' connectwisdomservice_start_import_job(clientToken,
+#'   externalSourceConfiguration, importJobType, knowledgeBaseId, metadata,
+#'   uploadId)
+#'
+#' @param clientToken The tags used to organize, track, or control access for this resource.
+#' @param externalSourceConfiguration The configuration information of the external source that the resource
+#' data are imported from.
+#' @param importJobType &#91;required&#93; The type of the import job.
+#' 
+#' -   For importing quick response resource, set the value to
+#'     `QUICK_RESPONSES`.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
+#' 
+#' -   For importing Wisdom quick responses, this should be a
+#'     `QUICK_RESPONSES` type knowledge base.
+#' @param metadata The metadata fields of the imported Wisdom resources.
+#' @param uploadId &#91;required&#93; A pointer to the uploaded asset. This value is returned by
+#' [`start_content_upload`][connectwisdomservice_start_content_upload].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   importJob = list(
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     externalSourceConfiguration = list(
+#'       configuration = list(
+#'         connectConfiguration = list(
+#'           instanceId = "string"
+#'         )
+#'       ),
+#'       source = "AMAZON_CONNECT"
+#'     ),
+#'     failedRecordReport = "string",
+#'     importJobId = "string",
+#'     importJobType = "QUICK_RESPONSES",
+#'     knowledgeBaseArn = "string",
+#'     knowledgeBaseId = "string",
+#'     lastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     metadata = list(
+#'       "string"
+#'     ),
+#'     status = "START_IN_PROGRESS"|"FAILED"|"COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED",
+#'     uploadId = "string",
+#'     url = "string",
+#'     urlExpiry = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_import_job(
+#'   clientToken = "string",
+#'   externalSourceConfiguration = list(
+#'     configuration = list(
+#'       connectConfiguration = list(
+#'         instanceId = "string"
+#'       )
+#'     ),
+#'     source = "AMAZON_CONNECT"
+#'   ),
+#'   importJobType = "QUICK_RESPONSES",
+#'   knowledgeBaseId = "string",
+#'   metadata = list(
+#'     "string"
+#'   ),
+#'   uploadId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_start_import_job
+#'
+#' @aliases connectwisdomservice_start_import_job
+connectwisdomservice_start_import_job <- function(clientToken = NULL, externalSourceConfiguration = NULL, importJobType, knowledgeBaseId, metadata = NULL, uploadId) {
+  op <- new_operation(
+    name = "StartImportJob",
+    http_method = "POST",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/importJobs",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$start_import_job_input(clientToken = clientToken, externalSourceConfiguration = externalSourceConfiguration, importJobType = importJobType, knowledgeBaseId = knowledgeBaseId, metadata = metadata, uploadId = uploadId)
+  output <- .connectwisdomservice$start_import_job_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$start_import_job <- connectwisdomservice_start_import_job
 
 #' Adds the specified tags to the specified resource
 #'
@@ -2085,7 +2928,9 @@ connectwisdomservice_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param contentId &#91;required&#93; The identifier of the content. Can be either the ID or the ARN. URLs
 #' cannot contain the ARN.
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN
 #' @param metadata A key/value map to store attributes without affecting tagging or
 #' recommendations. For example, when synchronizing data between an
 #' external system and Wisdom, you can store an external version identifier
@@ -2188,8 +3033,10 @@ connectwisdomservice_update_content <- function(contentId, knowledgeBaseId, meta
 #' connectwisdomservice_update_knowledge_base_template_uri(knowledgeBaseId,
 #'   templateUri)
 #'
-#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
-#' URLs cannot contain the ARN.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
 #' @param templateUri &#91;required&#93; The template URI to update.
 #'
 #' @return
@@ -2200,7 +3047,7 @@ connectwisdomservice_update_content <- function(contentId, knowledgeBaseId, meta
 #'     description = "string",
 #'     knowledgeBaseArn = "string",
 #'     knowledgeBaseId = "string",
-#'     knowledgeBaseType = "EXTERNAL"|"CUSTOM",
+#'     knowledgeBaseType = "EXTERNAL"|"CUSTOM"|"QUICK_RESPONSES",
 #'     lastContentModificationTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -2256,3 +3103,140 @@ connectwisdomservice_update_knowledge_base_template_uri <- function(knowledgeBas
   return(response)
 }
 .connectwisdomservice$operations$update_knowledge_base_template_uri <- connectwisdomservice_update_knowledge_base_template_uri
+
+#' Updates an existing Wisdom quick response
+#'
+#' @description
+#' Updates an existing Wisdom quick response.
+#'
+#' @usage
+#' connectwisdomservice_update_quick_response(channels, content,
+#'   contentType, description, groupingConfiguration, isActive,
+#'   knowledgeBaseId, language, name, quickResponseId, removeDescription,
+#'   removeGroupingConfiguration, removeShortcutKey, shortcutKey)
+#'
+#' @param channels The Amazon Connect contact channels this quick response applies to. The
+#' supported contact channel types include `Chat`.
+#' @param content The updated content of the quick response.
+#' @param contentType The media type of the quick response content.
+#' 
+#' -   Use `application/x.quickresponse;format=plain` for quick response
+#'     written in plain text.
+#' 
+#' -   Use `application/x.quickresponse;format=markdown` for quick response
+#'     written in richtext.
+#' @param description The updated description of the quick response.
+#' @param groupingConfiguration The updated grouping configuration of the quick response.
+#' @param isActive Whether the quick response is active.
+#' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. This should not be a
+#' QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+#' resource to it. Can be either the ID or the ARN. URLs cannot contain the
+#' ARN.
+#' @param language The language code value for the language in which the quick response is
+#' written. The supported language codes include `de_DE`, `en_US`, `es_ES`,
+#' `fr_FR`, `id_ID`, `it_IT`, `ja_JP`, `ko_KR`, `pt_BR`, `zh_CN`, `zh_TW`
+#' @param name The name of the quick response.
+#' @param quickResponseId &#91;required&#93; The identifier of the quick response.
+#' @param removeDescription Whether to remove the description from the quick response.
+#' @param removeGroupingConfiguration Whether to remove the grouping configuration of the quick response.
+#' @param removeShortcutKey Whether to remove the shortcut key of the quick response.
+#' @param shortcutKey The shortcut key of the quick response. The value should be unique
+#' across the knowledge base.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   quickResponse = list(
+#'     channels = list(
+#'       "string"
+#'     ),
+#'     contentType = "string",
+#'     contents = list(
+#'       markdown = list(
+#'         content = "string"
+#'       ),
+#'       plainText = list(
+#'         content = "string"
+#'       )
+#'     ),
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     description = "string",
+#'     groupingConfiguration = list(
+#'       criteria = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     ),
+#'     isActive = TRUE|FALSE,
+#'     knowledgeBaseArn = "string",
+#'     knowledgeBaseId = "string",
+#'     language = "string",
+#'     lastModifiedBy = "string",
+#'     lastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     name = "string",
+#'     quickResponseArn = "string",
+#'     quickResponseId = "string",
+#'     shortcutKey = "string",
+#'     status = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_quick_response(
+#'   channels = list(
+#'     "string"
+#'   ),
+#'   content = list(
+#'     content = "string"
+#'   ),
+#'   contentType = "string",
+#'   description = "string",
+#'   groupingConfiguration = list(
+#'     criteria = "string",
+#'     values = list(
+#'       "string"
+#'     )
+#'   ),
+#'   isActive = TRUE|FALSE,
+#'   knowledgeBaseId = "string",
+#'   language = "string",
+#'   name = "string",
+#'   quickResponseId = "string",
+#'   removeDescription = TRUE|FALSE,
+#'   removeGroupingConfiguration = TRUE|FALSE,
+#'   removeShortcutKey = TRUE|FALSE,
+#'   shortcutKey = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectwisdomservice_update_quick_response
+#'
+#' @aliases connectwisdomservice_update_quick_response
+connectwisdomservice_update_quick_response <- function(channels = NULL, content = NULL, contentType = NULL, description = NULL, groupingConfiguration = NULL, isActive = NULL, knowledgeBaseId, language = NULL, name = NULL, quickResponseId, removeDescription = NULL, removeGroupingConfiguration = NULL, removeShortcutKey = NULL, shortcutKey = NULL) {
+  op <- new_operation(
+    name = "UpdateQuickResponse",
+    http_method = "POST",
+    http_path = "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+    paginator = list()
+  )
+  input <- .connectwisdomservice$update_quick_response_input(channels = channels, content = content, contentType = contentType, description = description, groupingConfiguration = groupingConfiguration, isActive = isActive, knowledgeBaseId = knowledgeBaseId, language = language, name = name, quickResponseId = quickResponseId, removeDescription = removeDescription, removeGroupingConfiguration = removeGroupingConfiguration, removeShortcutKey = removeShortcutKey, shortcutKey = shortcutKey)
+  output <- .connectwisdomservice$update_quick_response_output()
+  config <- get_config()
+  svc <- .connectwisdomservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectwisdomservice$operations$update_quick_response <- connectwisdomservice_update_quick_response

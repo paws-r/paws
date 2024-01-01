@@ -14,7 +14,7 @@ transcribeservice_list_medical_transcription_jobs(
 }
 \arguments{
 \item{Status}{Returns only medical transcription jobs with the specified status. Jobs
-are ordered by creation date, with the newest job first. If you don't
+are ordered by creation date, with the newest job first. If you do not
 include \code{Status}, all medical transcription jobs are returned.}
 
 \item{JobNameContains}{Returns only the medical transcription jobs that contain the specified
@@ -30,7 +30,7 @@ view all your results.}
 
 \item{MaxResults}{The maximum number of medical transcription jobs to return in each page
 of results. If there are fewer results than the value that you specify,
-only the actual results are returned. If you don't specify a value, a
+only the actual results are returned. If you do not specify a value, a
 default of 5 is used.}
 }
 \description{

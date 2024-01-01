@@ -15,3 +15,7 @@ test_that("describe_ssl_policies", {
 test_that("describe_target_groups", {
   expect_error(svc$describe_target_groups(), NA)
 })
+
+test_that("describe_trust_stores", {
+  expect_error(svc$describe_trust_stores(), NA)
+})

@@ -42,7 +42,8 @@ redshift_create_cluster(
   ManageMasterPassword = NULL,
   MasterPasswordSecretKmsKeyId = NULL,
   IpAddressType = NULL,
-  MultiAZ = NULL
+  MultiAZ = NULL,
+  RedshiftIdcApplicationArn = NULL
 )
 }
 \arguments{
@@ -325,6 +326,9 @@ if \code{ManageMasterPassword} is true.}
 
 \item{MultiAZ}{If true, Amazon Redshift will deploy the cluster in two Availability
 Zones (AZ).}
+
+\item{RedshiftIdcApplicationArn}{The Amazon resource name (ARN) of the Amazon Redshift IAM Identity
+Center application.}
 }
 \description{
 Creates a new cluster with the specified parameters.

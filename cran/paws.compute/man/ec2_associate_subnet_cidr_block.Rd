@@ -4,16 +4,24 @@
 \alias{ec2_associate_subnet_cidr_block}
 \title{Associates a CIDR block with your subnet}
 \usage{
-ec2_associate_subnet_cidr_block(Ipv6CidrBlock, SubnetId)
+ec2_associate_subnet_cidr_block(
+  Ipv6CidrBlock = NULL,
+  SubnetId,
+  Ipv6IpamPoolId = NULL,
+  Ipv6NetmaskLength = NULL
+)
 }
 \arguments{
-\item{Ipv6CidrBlock}{[required] The IPv6 CIDR block for your subnet. The subnet must have a /64 prefix
-length.}
+\item{Ipv6CidrBlock}{The IPv6 CIDR block for your subnet.}
 
 \item{SubnetId}{[required] The ID of your subnet.}
+
+\item{Ipv6IpamPoolId}{An IPv6 IPAM pool ID.}
+
+\item{Ipv6NetmaskLength}{An IPv6 netmask length.}
 }
 \description{
-Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a prefix length of /64.
+Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_associate_subnet_cidr_block/} for full documentation.
 }

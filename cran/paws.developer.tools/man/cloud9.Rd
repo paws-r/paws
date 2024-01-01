@@ -150,6 +150,7 @@ svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
   description = "This is my demonstration environment.",
+  imageId = "amazonlinux-2023-x86_64",
   instanceType = "t2.micro",
   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
   subnetId = "subnet-6300cd1b"

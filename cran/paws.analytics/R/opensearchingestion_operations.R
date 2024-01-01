@@ -23,19 +23,22 @@ NULL
 #' @param VpcOptions Container for the values required to configure VPC access for the
 #' pipeline. If you don't specify these values, OpenSearch Ingestion
 #' creates the pipeline with a public endpoint.
+#' @param BufferOptions Key-value pairs to configure persistent buffering for the pipeline.
+#' @param EncryptionAtRestOptions Key-value pairs to configure encryption for data that is written to a
+#' persistent buffer.
 #' @param Tags List of tags to add to the pipeline upon creation.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchingestion_create_pipeline
-opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits, PipelineConfigurationBody, LogPublishingOptions = NULL, VpcOptions = NULL, Tags = NULL) {
+opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits, PipelineConfigurationBody, LogPublishingOptions = NULL, VpcOptions = NULL, BufferOptions = NULL, EncryptionAtRestOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePipeline",
     http_method = "POST",
     http_path = "/2022-01-01/osis/createPipeline",
     paginator = list()
   )
-  input <- .opensearchingestion$create_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, VpcOptions = VpcOptions, Tags = Tags)
+  input <- .opensearchingestion$create_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, VpcOptions = VpcOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, Tags = Tags)
   output <- .opensearchingestion$create_pipeline_output()
   config <- get_config()
   svc <- .opensearchingestion$service(config)
@@ -388,18 +391,21 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
 #' provide the configuration as a string, each new line must be escaped
 #' with `\\n`.
 #' @param LogPublishingOptions Key-value pairs to configure log publishing.
+#' @param BufferOptions Key-value pairs to configure persistent buffering for the pipeline.
+#' @param EncryptionAtRestOptions Key-value pairs to configure encryption for data that is written to a
+#' persistent buffer.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchingestion_update_pipeline
-opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, MaxUnits = NULL, PipelineConfigurationBody = NULL, LogPublishingOptions = NULL) {
+opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, MaxUnits = NULL, PipelineConfigurationBody = NULL, LogPublishingOptions = NULL, BufferOptions = NULL, EncryptionAtRestOptions = NULL) {
   op <- new_operation(
     name = "UpdatePipeline",
     http_method = "PUT",
     http_path = "/2022-01-01/osis/updatePipeline/{PipelineName}",
     paginator = list()
   )
-  input <- .opensearchingestion$update_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions)
+  input <- .opensearchingestion$update_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions)
   output <- .opensearchingestion$update_pipeline_output()
   config <- get_config()
   svc <- .opensearchingestion$service(config)

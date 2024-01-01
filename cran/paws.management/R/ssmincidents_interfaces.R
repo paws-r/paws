@@ -3,6 +3,18 @@
 #' @include ssmincidents_service.R
 NULL
 
+.ssmincidents$batch_get_incident_findings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findingIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmincidents$batch_get_incident_findings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(errors = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), findingId = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), findings = structure(list(structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp")), details = structure(list(cloudFormationStackUpdate = structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), stackArn = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), codeDeployDeployment = structure(list(deploymentGroupArn = structure(logical(0), tags = list(type = "string")), deploymentId = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "timestamp")), startTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssmincidents$create_replication_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), regions = structure(list(structure(list(sseKmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -156,6 +168,18 @@ NULL
 .ssmincidents$get_timeline_event_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(event = structure(list(eventData = structure(logical(0), tags = list(type = "string")), eventId = structure(logical(0), tags = list(type = "string")), eventReferences = structure(list(structure(list(relatedItemId = structure(logical(0), tags = list(type = "string")), resource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), eventTime = structure(logical(0), tags = list(type = "timestamp")), eventType = structure(logical(0), tags = list(type = "string")), eventUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), incidentRecordArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmincidents$list_incident_findings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(incidentRecordArn = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssmincidents$list_incident_findings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findings = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

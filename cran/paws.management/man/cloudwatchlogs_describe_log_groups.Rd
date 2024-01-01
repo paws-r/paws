@@ -10,7 +10,8 @@ cloudwatchlogs_describe_log_groups(
   logGroupNamePattern = NULL,
   nextToken = NULL,
   limit = NULL,
-  includeLinkedAccounts = NULL
+  includeLinkedAccounts = NULL,
+  logGroupClass = NULL
 )
 }
 \arguments{
@@ -49,6 +50,15 @@ If this parameter is set to \code{true} and \code{accountIdentifiers} contains a
 null value, the operation returns all log groups in the monitoring
 account and all log groups in all source accounts that are linked to the
 monitoring account.}
+
+\item{logGroupClass}{Specifies the log group class for this log group. There are two classes:
+\itemize{
+\item The \code{Standard} log class supports all CloudWatch Logs features.
+\item The \verb{Infrequent Access} log class supports a subset of CloudWatch
+Logs features and incurs lower costs.
+}
+
+For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
 }
 \description{
 Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.

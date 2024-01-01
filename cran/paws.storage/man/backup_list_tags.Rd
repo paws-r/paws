@@ -14,7 +14,7 @@ format of the ARN depends on the type of resource. Valid targets for
 backup vaults.}
 
 \item{NextToken}{The next item following a partial list of returned items. For example,
-if a request is made to return \code{maxResults} number of items, \code{NextToken}
+if a request is made to return \code{MaxResults} number of items, \code{NextToken}
 allows you to return more items in your list starting at the location
 pointed to by the next token.}
 

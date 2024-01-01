@@ -22,7 +22,7 @@ redshiftserverless_convert_recovery_point_to_snapshot(
 to associate with the created snapshot.}
 }
 \description{
-Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html}{Working with snapshots and recovery points}.
+Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Working with snapshots and recovery points}.
 
 See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/} for full documentation.
 }

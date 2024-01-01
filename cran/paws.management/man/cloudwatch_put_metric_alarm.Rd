@@ -143,9 +143,9 @@ as an Amazon Resource Name (ARN). Valid values:
 specify either \code{MetricName} or a \code{Metrics} array.
 
 If you are creating an alarm based on a math expression, you cannot
-specify this parameter, or any of the \code{Dimensions}, \code{Period},
-\code{Namespace}, \code{Statistic}, or \code{ExtendedStatistic} parameters. Instead,
-you specify all this information in the \code{Metrics} array.}
+specify this parameter, or any of the \code{Namespace}, \code{Dimensions},
+\code{Period}, \code{Unit}, \code{Statistic}, or \code{ExtendedStatistic} parameters.
+Instead, you specify all this information in the \code{Metrics} array.}
 
 \item{Namespace}{The namespace for the metric associated specified in \code{MetricName}.}
 
@@ -207,7 +207,10 @@ Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the
 number of bytes that an instance receives on all network interfaces. You
 can also specify a unit when you create a custom metric. Units help
 provide conceptual meaning to your data. Metric data points that specify
-a unit of measure, such as Percent, are aggregated separately.
+a unit of measure, such as Percent, are aggregated separately. If you
+are creating an alarm based on a metric math expression, you can specify
+the unit for each metric (if needed) within the objects in the \code{Metrics}
+array.
 
 If you don't specify \code{Unit}, CloudWatch retrieves all unit types that
 have been published for the metric and attempts to evaluate the alarm.
@@ -283,11 +286,12 @@ watches. You designate this expression by setting \code{ReturnData} to true
 for this object in the array. For more information, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html}{MetricDataQuery}.
 
-If you use the \code{Metrics} parameter, you cannot include the \code{MetricName},
-\code{Dimensions}, \code{Period}, \code{Namespace}, \code{Statistic}, or \code{ExtendedStatistic}
-parameters of \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} in the
-same operation. Instead, you retrieve the metrics you are using in your
-math expression as part of the \code{Metrics} array.}
+If you use the \code{Metrics} parameter, you cannot include the \code{Namespace},
+\code{MetricName}, \code{Dimensions}, \code{Period}, \code{Unit}, \code{Statistic}, or
+\code{ExtendedStatistic} parameters of
+\code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} in the same operation.
+Instead, you retrieve the metrics you are using in your math expression
+as part of the \code{Metrics} array.}
 
 \item{Tags}{A list of key-value pairs to associate with the alarm. You can associate
 as many as 50 tags with an alarm. To be able to associate tags with the

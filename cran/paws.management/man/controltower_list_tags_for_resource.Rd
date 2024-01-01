@@ -10,7 +10,7 @@ controltower_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The ARN of the resource.}
 }
 \description{
-Returns a list of tags associated with the resource. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the AWS Control Tower User Guide}} .
+Returns a list of tags associated with the resource. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_list_tags_for_resource/} for full documentation.
 }

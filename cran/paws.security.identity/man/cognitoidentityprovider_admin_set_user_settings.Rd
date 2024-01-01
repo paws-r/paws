@@ -14,7 +14,10 @@ cognitoidentityprovider_admin_set_user_settings(
 \item{UserPoolId}{[required] The ID of the user pool that contains the user whose options you're
 setting.}
 
-\item{Username}{[required] The user name of the user whose options you're setting.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
 SMS for delivery.}

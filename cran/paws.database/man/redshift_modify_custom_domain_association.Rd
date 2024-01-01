@@ -5,15 +5,15 @@
 \title{Contains information for changing a custom domain association}
 \usage{
 redshift_modify_custom_domain_association(
-  CustomDomainName = NULL,
-  CustomDomainCertificateArn = NULL,
+  CustomDomainName,
+  CustomDomainCertificateArn,
   ClusterIdentifier
 )
 }
 \arguments{
-\item{CustomDomainName}{The custom domain name for a changed custom domain association.}
+\item{CustomDomainName}{[required] The custom domain name for a changed custom domain association.}
 
-\item{CustomDomainCertificateArn}{The certificate Amazon Resource Name (ARN) for the changed custom domain
+\item{CustomDomainCertificateArn}{[required] The certificate Amazon Resource Name (ARN) for the changed custom domain
 association.}
 
 \item{ClusterIdentifier}{[required] The identifier of the cluster to change a custom domain association for.}

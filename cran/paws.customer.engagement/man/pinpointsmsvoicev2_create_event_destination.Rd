@@ -24,7 +24,9 @@ action.}
 \item{EventDestinationName}{[required] The name that identifies the event destination.}
 
 \item{MatchingEventTypes}{[required] An array of event types that determine which events to log. If "ALL" is
-used, then Amazon Pinpoint logs every event type.}
+used, then Amazon Pinpoint logs every event type.
+
+The \code{TEXT_SENT} event type is not supported.}
 
 \item{CloudWatchLogsDestination}{An object that contains information about an event destination for
 logging to Amazon CloudWatch logs.}

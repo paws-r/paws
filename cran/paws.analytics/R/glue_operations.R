@@ -388,6 +388,36 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 }
 .glue$operations$batch_get_partition <- glue_batch_get_partition
 
+#' Returns the configuration for the specified table optimizers
+#'
+#' @description
+#' Returns the configuration for the specified table optimizers.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_batch_get_table_optimizer/](https://www.paws-r-sdk.com/docs/glue_batch_get_table_optimizer/) for full documentation.
+#'
+#' @param Entries &#91;required&#93; A list of `BatchGetTableOptimizerEntry` objects specifying the table
+#' optimizers to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_get_table_optimizer
+glue_batch_get_table_optimizer <- function(Entries) {
+  op <- new_operation(
+    name = "BatchGetTableOptimizer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_get_table_optimizer_input(Entries = Entries)
+  output <- .glue$batch_get_table_optimizer_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_get_table_optimizer <- glue_batch_get_table_optimizer
+
 #' Returns a list of resource metadata for a given list of trigger names
 #'
 #' @description
@@ -1722,6 +1752,41 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 }
 .glue$operations$create_table <- glue_create_table
 
+#' Creates a new table optimizer for a specific function
+#'
+#' @description
+#' Creates a new table optimizer for a specific function. `compaction` is the only currently supported optimizer type.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_create_table_optimizer/](https://www.paws-r-sdk.com/docs/glue_create_table_optimizer/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The Catalog ID of the table.
+#' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#' @param Type &#91;required&#93; The type of table optimizer. Currently, the only valid value is
+#' `compaction`.
+#' @param TableOptimizerConfiguration &#91;required&#93; A `TableOptimizerConfiguration` object representing the configuration of
+#' a table optimizer.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_table_optimizer
+glue_create_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type, TableOptimizerConfiguration) {
+  op <- new_operation(
+    name = "CreateTableOptimizer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, TableOptimizerConfiguration = TableOptimizerConfiguration)
+  output <- .glue$create_table_optimizer_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_table_optimizer <- glue_create_table_optimizer
+
 #' Creates a new trigger
 #'
 #' @description
@@ -2496,6 +2561,38 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionI
 }
 .glue$operations$delete_table <- glue_delete_table
 
+#' Deletes an optimizer and all associated metadata for a table
+#'
+#' @description
+#' Deletes an optimizer and all associated metadata for a table. The optimization will no longer be performed on the table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_delete_table_optimizer/](https://www.paws-r-sdk.com/docs/glue_delete_table_optimizer/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The Catalog ID of the table.
+#' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#' @param Type &#91;required&#93; The type of table optimizer.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_table_optimizer
+glue_delete_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
+  op <- new_operation(
+    name = "DeleteTableOptimizer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type)
+  output <- .glue$delete_table_optimizer_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_table_optimizer <- glue_delete_table_optimizer
+
 #' Deletes a specified version of a table
 #'
 #' @description
@@ -2870,6 +2967,68 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
   return(response)
 }
 .glue$operations$get_column_statistics_for_table <- glue_get_column_statistics_for_table
+
+#' Get the associated metadata/information for a task run, given a task run
+#' ID
+#'
+#' @description
+#' Get the associated metadata/information for a task run, given a task run ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_column_statistics_task_run/](https://www.paws-r-sdk.com/docs/glue_get_column_statistics_task_run/) for full documentation.
+#'
+#' @param ColumnStatisticsTaskRunId &#91;required&#93; The identifier for the particular column statistics task run.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_column_statistics_task_run
+glue_get_column_statistics_task_run <- function(ColumnStatisticsTaskRunId) {
+  op <- new_operation(
+    name = "GetColumnStatisticsTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_column_statistics_task_run_input(ColumnStatisticsTaskRunId = ColumnStatisticsTaskRunId)
+  output <- .glue$get_column_statistics_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_column_statistics_task_run <- glue_get_column_statistics_task_run
+
+#' Retrieves information about all runs associated with the specified table
+#'
+#' @description
+#' Retrieves information about all runs associated with the specified table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_column_statistics_task_runs/](https://www.paws-r-sdk.com/docs/glue_get_column_statistics_task_runs/) for full documentation.
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#' @param MaxResults The maximum size of the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_column_statistics_task_runs
+glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetColumnStatisticsTaskRuns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .glue$get_column_statistics_task_runs_input(DatabaseName = DatabaseName, TableName = TableName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$get_column_statistics_task_runs_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_column_statistics_task_runs <- glue_get_column_statistics_task_runs
 
 #' Retrieves a connection definition from the Data Catalog
 #'
@@ -4337,6 +4496,39 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 }
 .glue$operations$get_table <- glue_get_table
 
+#' Returns the configuration of all optimizers associated with a specified
+#' table
+#'
+#' @description
+#' Returns the configuration of all optimizers associated with a specified table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_get_table_optimizer/](https://www.paws-r-sdk.com/docs/glue_get_table_optimizer/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The Catalog ID of the table.
+#' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#' @param Type &#91;required&#93; The type of table optimizer.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_table_optimizer
+glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
+  op <- new_operation(
+    name = "GetTableOptimizer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type)
+  output <- .glue$get_table_optimizer_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_table_optimizer <- glue_get_table_optimizer
+
 #' Retrieves a specified version of a table
 #'
 #' @description
@@ -4551,24 +4743,29 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partition_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partition_metadata/) for full documentation.
 #'
+#' @param Region Specified only if the base tables belong to a different Amazon Web
+#' Services Region.
 #' @param CatalogId &#91;required&#93; The catalog ID where the partition resides.
 #' @param DatabaseName &#91;required&#93; (Required) Specifies the name of a database that contains the partition.
 #' @param TableName &#91;required&#93; (Required) Specifies the name of a table that contains the partition.
 #' @param PartitionValues &#91;required&#93; (Required) A list of partition key values.
 #' @param AuditContext A structure containing Lake Formation audit context information.
 #' @param SupportedPermissionTypes &#91;required&#93; (Required) A list of supported permission types.
+#' @param QuerySessionContext A structure used as a protocol between query engines and Lake Formation
+#' or Glue. Contains both a Lake Formation generated authorization
+#' identifier and information from the request's authorization context.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_partition_metadata
-glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, TableName, PartitionValues, AuditContext = NULL, SupportedPermissionTypes) {
+glue_get_unfiltered_partition_metadata <- function(Region = NULL, CatalogId, DatabaseName, TableName, PartitionValues, AuditContext = NULL, SupportedPermissionTypes, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "GetUnfilteredPartitionMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_unfiltered_partition_metadata_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
+  input <- .glue$get_unfiltered_partition_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_partition_metadata_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -4586,6 +4783,8 @@ glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, Tabl
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partitions_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partitions_metadata/) for full documentation.
 #'
+#' @param Region Specified only if the base tables belong to a different Amazon Web
+#' Services Region.
 #' @param CatalogId &#91;required&#93; The ID of the Data Catalog where the partitions in question reside. If
 #' none is provided, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
@@ -4676,18 +4875,21 @@ glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, Tabl
 #' partitions.
 #' @param Segment The segment of the table's partitions to scan in this request.
 #' @param MaxResults The maximum number of partitions to return in a single response.
+#' @param QuerySessionContext A structure used as a protocol between query engines and Lake Formation
+#' or Glue. Contains both a Lake Formation generated authorization
+#' identifier and information from the request's authorization context.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_partitions_metadata
-glue_get_unfiltered_partitions_metadata <- function(CatalogId, DatabaseName, TableName, Expression = NULL, AuditContext = NULL, SupportedPermissionTypes, NextToken = NULL, Segment = NULL, MaxResults = NULL) {
+glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, DatabaseName, TableName, Expression = NULL, AuditContext = NULL, SupportedPermissionTypes, NextToken = NULL, Segment = NULL, MaxResults = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "GetUnfilteredPartitionsMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
-  input <- .glue$get_unfiltered_partitions_metadata_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults)
+  input <- .glue$get_unfiltered_partitions_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_partitions_metadata_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -4705,24 +4907,33 @@ glue_get_unfiltered_partitions_metadata <- function(CatalogId, DatabaseName, Tab
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/) for full documentation.
 #'
+#' @param Region Specified only if the base tables belong to a different Amazon Web
+#' Services Region.
 #' @param CatalogId &#91;required&#93; The catalog ID where the table resides.
 #' @param DatabaseName &#91;required&#93; (Required) Specifies the name of a database that contains the table.
 #' @param Name &#91;required&#93; (Required) Specifies the name of a table for which you are requesting
 #' metadata.
 #' @param AuditContext A structure containing Lake Formation audit context information.
 #' @param SupportedPermissionTypes &#91;required&#93; (Required) A list of supported permission types.
+#' @param SupportedDialect A structure specifying the dialect and dialect version used by the query
+#' engine.
+#' @param Permissions The Lake Formation data permissions of the caller on the table. Used to
+#' authorize the call when no view context is found.
+#' @param QuerySessionContext A structure used as a protocol between query engines and Lake Formation
+#' or Glue. Contains both a Lake Formation generated authorization
+#' identifier and information from the request's authorization context.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_table_metadata
-glue_get_unfiltered_table_metadata <- function(CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes) {
+glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes, SupportedDialect = NULL, Permissions = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "GetUnfilteredTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_unfiltered_table_metadata_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
+  input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_table_metadata_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -4987,6 +5198,36 @@ glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NUL
   return(response)
 }
 .glue$operations$list_blueprints <- glue_list_blueprints
+
+#' List all task runs for a particular account
+#'
+#' @description
+#' List all task runs for a particular account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_column_statistics_task_runs/](https://www.paws-r-sdk.com/docs/glue_list_column_statistics_task_runs/) for full documentation.
+#'
+#' @param MaxResults The maximum size of the response.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_column_statistics_task_runs
+glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListColumnStatisticsTaskRuns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .glue$list_column_statistics_task_runs_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_column_statistics_task_runs_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_column_statistics_task_runs <- glue_list_column_statistics_task_runs
 
 #' Retrieves the names of all crawler resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -5481,6 +5722,41 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
   return(response)
 }
 .glue$operations$list_statements <- glue_list_statements
+
+#' Lists the history of previous optimizer runs for a specific table
+#'
+#' @description
+#' Lists the history of previous optimizer runs for a specific table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_list_table_optimizer_runs/](https://www.paws-r-sdk.com/docs/glue_list_table_optimizer_runs/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The Catalog ID of the table.
+#' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#' @param Type &#91;required&#93; The type of table optimizer. Currently, the only valid value is
+#' `compaction`.
+#' @param MaxResults The maximum number of optimizer runs to return on each call.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_table_optimizer_runs
+glue_list_table_optimizer_runs <- function(CatalogId, DatabaseName, TableName, Type, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTableOptimizerRuns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .glue$list_table_optimizer_runs_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_table_optimizer_runs_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_table_optimizer_runs <- glue_list_table_optimizer_runs
 
 #' Retrieves the names of all trigger resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -5984,6 +6260,45 @@ glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) 
 }
 .glue$operations$start_blueprint_run <- glue_start_blueprint_run
 
+#' Starts a column statistics task run, for a specified table and columns
+#'
+#' @description
+#' Starts a column statistics task run, for a specified table and columns.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_start_column_statistics_task_run/](https://www.paws-r-sdk.com/docs/glue_start_column_statistics_task_run/) for full documentation.
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table to generate statistics.
+#' @param ColumnNameList A list of the column names to generate statistics. If none is supplied,
+#' all column names for the table will be used by default.
+#' @param Role &#91;required&#93; The IAM role that the service assumes to generate statistics.
+#' @param SampleSize The percentage of rows used to generate statistics. If none is supplied,
+#' the entire table will be used to generate stats.
+#' @param CatalogID The ID of the Data Catalog where the table reside. If none is supplied,
+#' the Amazon Web Services account ID is used by default.
+#' @param SecurityConfiguration Name of the security configuration that is used to encrypt CloudWatch
+#' logs for the column stats task run.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_start_column_statistics_task_run
+glue_start_column_statistics_task_run <- function(DatabaseName, TableName, ColumnNameList = NULL, Role, SampleSize = NULL, CatalogID = NULL, SecurityConfiguration = NULL) {
+  op <- new_operation(
+    name = "StartColumnStatisticsTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$start_column_statistics_task_run_input(DatabaseName = DatabaseName, TableName = TableName, ColumnNameList = ColumnNameList, Role = Role, SampleSize = SampleSize, CatalogID = CatalogID, SecurityConfiguration = SecurityConfiguration)
+  output <- .glue$start_column_statistics_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$start_column_statistics_task_run <- glue_start_column_statistics_task_run
+
 #' Starts a crawl using the specified crawler, regardless of what is
 #' scheduled
 #'
@@ -6462,6 +6777,36 @@ glue_start_workflow_run <- function(Name, RunProperties = NULL) {
   return(response)
 }
 .glue$operations$start_workflow_run <- glue_start_workflow_run
+
+#' Stops a task run for the specified table
+#'
+#' @description
+#' Stops a task run for the specified table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_stop_column_statistics_task_run/](https://www.paws-r-sdk.com/docs/glue_stop_column_statistics_task_run/) for full documentation.
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_stop_column_statistics_task_run
+glue_stop_column_statistics_task_run <- function(DatabaseName, TableName) {
+  op <- new_operation(
+    name = "StopColumnStatisticsTaskRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$stop_column_statistics_task_run_input(DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$stop_column_statistics_task_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$stop_column_statistics_task_run <- glue_stop_column_statistics_task_run
 
 #' If the specified crawler is running, stops the crawl
 #'
@@ -7376,6 +7721,41 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
   return(response)
 }
 .glue$operations$update_table <- glue_update_table
+
+#' Updates the configuration for an existing table optimizer
+#'
+#' @description
+#' Updates the configuration for an existing table optimizer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/glue_update_table_optimizer/](https://www.paws-r-sdk.com/docs/glue_update_table_optimizer/) for full documentation.
+#'
+#' @param CatalogId &#91;required&#93; The Catalog ID of the table.
+#' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
+#' @param TableName &#91;required&#93; The name of the table.
+#' @param Type &#91;required&#93; The type of table optimizer. Currently, the only valid value is
+#' `compaction`.
+#' @param TableOptimizerConfiguration &#91;required&#93; A `TableOptimizerConfiguration` object representing the configuration of
+#' a table optimizer.
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_table_optimizer
+glue_update_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type, TableOptimizerConfiguration) {
+  op <- new_operation(
+    name = "UpdateTableOptimizer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$update_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, TableOptimizerConfiguration = TableOptimizerConfiguration)
+  output <- .glue$update_table_optimizer_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_table_optimizer <- glue_update_table_optimizer
 
 #' Updates a trigger definition
 #'

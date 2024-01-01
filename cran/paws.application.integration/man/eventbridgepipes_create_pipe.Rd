@@ -9,6 +9,7 @@ eventbridgepipes_create_pipe(
   DesiredState = NULL,
   Enrichment = NULL,
   EnrichmentParameters = NULL,
+  LogConfiguration = NULL,
   Name,
   RoleArn,
   Source,
@@ -27,6 +28,8 @@ eventbridgepipes_create_pipe(
 
 \item{EnrichmentParameters}{The parameters required to set up enrichment on your pipe.}
 
+\item{LogConfiguration}{The logging configuration settings for the pipe.}
+
 \item{Name}{[required] The name of the pipe.}
 
 \item{RoleArn}{[required] The ARN of the role that allows the pipe to send data to the target.}
@@ -39,7 +42,11 @@ eventbridgepipes_create_pipe(
 
 \item{Target}{[required] The ARN of the target resource.}
 
-\item{TargetParameters}{The parameters required to set up a target for your pipe.}
+\item{TargetParameters}{The parameters required to set up a target for your pipe.
+
+For more information about pipe target parameters, including how to use
+dynamic path parameters, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html}{Target parameters}
+in the \emph{Amazon EventBridge User Guide}.}
 }
 \description{
 Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces the need for specialized knowledge and integration code.

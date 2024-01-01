@@ -37,6 +37,7 @@ NULL
 #'       kmsKeyArn = "string",
 #'       lastModifiedDate = 123,
 #'       name = "string",
+#'       standbyReplicas = "ENABLED"|"DISABLED",
 #'       status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED",
 #'       type = "SEARCH"|"TIMESERIES"|"VECTORSEARCH"
 #'     )
@@ -384,11 +385,12 @@ opensearchserviceserverless_create_access_policy <- function(clientToken = NULL,
 #'
 #' @usage
 #' opensearchserviceserverless_create_collection(clientToken, description,
-#'   name, tags, type)
+#'   name, standbyReplicas, tags, type)
 #'
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param description Description of the collection.
 #' @param name &#91;required&#93; Name of the collection.
+#' @param standbyReplicas Indicates whether standby replicas should be used for a collection.
 #' @param tags An arbitrary set of tags (key–value pairs) to associate with the
 #' OpenSearch Serverless collection.
 #' @param type The type of collection.
@@ -405,6 +407,7 @@ opensearchserviceserverless_create_access_policy <- function(clientToken = NULL,
 #'     kmsKeyArn = "string",
 #'     lastModifiedDate = 123,
 #'     name = "string",
+#'     standbyReplicas = "ENABLED"|"DISABLED",
 #'     status = "CREATING"|"DELETING"|"ACTIVE"|"FAILED",
 #'     type = "SEARCH"|"TIMESERIES"|"VECTORSEARCH"
 #'   )
@@ -417,6 +420,7 @@ opensearchserviceserverless_create_access_policy <- function(clientToken = NULL,
 #'   clientToken = "string",
 #'   description = "string",
 #'   name = "string",
+#'   standbyReplicas = "ENABLED"|"DISABLED",
 #'   tags = list(
 #'     list(
 #'       key = "string",
@@ -432,14 +436,14 @@ opensearchserviceserverless_create_access_policy <- function(clientToken = NULL,
 #' @rdname opensearchserviceserverless_create_collection
 #'
 #' @aliases opensearchserviceserverless_create_collection
-opensearchserviceserverless_create_collection <- function(clientToken = NULL, description = NULL, name, tags = NULL, type = NULL) {
+opensearchserviceserverless_create_collection <- function(clientToken = NULL, description = NULL, name, standbyReplicas = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .opensearchserviceserverless$create_collection_input(clientToken = clientToken, description = description, name = name, tags = tags, type = type)
+  input <- .opensearchserviceserverless$create_collection_input(clientToken = clientToken, description = description, name = name, standbyReplicas = standbyReplicas, tags = tags, type = type)
   output <- .opensearchserviceserverless$create_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config)

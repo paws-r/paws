@@ -4,10 +4,12 @@
 \alias{finspace_delete_kx_environment}
 \title{Deletes the kdb environment}
 \usage{
-finspace_delete_kx_environment(environmentId)
+finspace_delete_kx_environment(environmentId, clientToken = NULL)
 }
 \arguments{
 \item{environmentId}{[required] A unique identifier for the kdb environment.}
+
+\item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }
 \description{
 Deletes the kdb environment. This action is irreversible. Deleting a kdb environment will remove all the associated data and any services running in it.

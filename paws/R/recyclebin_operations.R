@@ -71,7 +71,8 @@ NULL
 #'       UnlockDelayUnit = "DAYS"
 #'     )
 #'   ),
-#'   LockState = "locked"|"pending_unlock"|"unlocked"
+#'   LockState = "locked"|"pending_unlock"|"unlocked",
+#'   RuleArn = "string"
 #' )
 #' ```
 #'
@@ -209,7 +210,8 @@ recyclebin_delete_rule <- function(Identifier) {
 #'   LockState = "locked"|"pending_unlock"|"unlocked",
 #'   LockEndTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   RuleArn = "string"
 #' )
 #' ```
 #'
@@ -277,7 +279,8 @@ recyclebin_get_rule <- function(Identifier) {
 #'         RetentionPeriodValue = 123,
 #'         RetentionPeriodUnit = "DAYS"
 #'       ),
-#'       LockState = "locked"|"pending_unlock"|"unlocked"
+#'       LockState = "locked"|"pending_unlock"|"unlocked",
+#'       RuleArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -410,7 +413,8 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 #'       UnlockDelayUnit = "DAYS"
 #'     )
 #'   ),
-#'   LockState = "locked"|"pending_unlock"|"unlocked"
+#'   LockState = "locked"|"pending_unlock"|"unlocked",
+#'   RuleArn = "string"
 #' )
 #' ```
 #'
@@ -536,7 +540,8 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
 #'   LockState = "locked"|"pending_unlock"|"unlocked",
 #'   LockEndTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   RuleArn = "string"
 #' )
 #' ```
 #'
@@ -674,7 +679,8 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'   LockState = "locked"|"pending_unlock"|"unlocked",
 #'   LockEndTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   RuleArn = "string"
 #' )
 #' ```
 #'

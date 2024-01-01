@@ -9,7 +9,8 @@ ssmincidents_list_response_plans(maxResults = NULL, nextToken = NULL)
 \arguments{
 \item{maxResults}{The maximum number of response plans per page.}
 
-\item{nextToken}{The pagination token to continue to the next page of results.}
+\item{nextToken}{The pagination token for the next set of items to return. (You received
+this token from a previous call.)}
 }
 \description{
 Lists all response plans in your account.

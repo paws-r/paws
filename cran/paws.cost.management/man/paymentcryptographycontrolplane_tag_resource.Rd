@@ -16,15 +16,17 @@ key. If you specify an existing tag key with a different tag value,
 Amazon Web Services Payment Cryptography replaces the current tag value
 with the new one.
 
-Don't include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.
+Don't include personal, confidential or sensitive information in this
+field. This field may be displayed in plaintext in CloudTrail logs and
+other output.
 
 To use this parameter, you must have
 \code{\link[=paymentcryptographycontrolplane_tag_resource]{tag_resource}}
 permission in an IAM policy.
 
-Don't include confidential or sensitive information in this field. This
-field may be displayed in plaintext in CloudTrail logs and other output.}
+Don't include personal, confidential or sensitive information in this
+field. This field may be displayed in plaintext in CloudTrail logs and
+other output.}
 }
 \description{
 Adds or edits tags on an Amazon Web Services Payment Cryptography key.

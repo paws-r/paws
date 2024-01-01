@@ -9,11 +9,11 @@ NULL
 #' Associates the specified origination identity with a pool.
 #' 
 #' If the origination identity is a phone number and is already associated
-#' with another pool, an Error is returned. A sender ID can be associated
+#' with another pool, an error is returned. A sender ID can be associated
 #' with multiple pools.
 #' 
 #' If the origination identity configuration doesn't match the pool's
-#' configuration, an Error is returned.
+#' configuration, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_associate_origination_identity(PoolId,
@@ -183,6 +183,8 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' @param EventDestinationName &#91;required&#93; The name that identifies the event destination.
 #' @param MatchingEventTypes &#91;required&#93; An array of event types that determine which events to log. If "ALL" is
 #' used, then Amazon Pinpoint logs every event type.
+#' 
+#' The `TEXT_SENT` event type is not supported.
 #' @param CloudWatchLogsDestination An object that contains information about an event destination for
 #' logging to Amazon CloudWatch logs.
 #' @param KinesisFirehoseDestination An object that contains information about an event destination for
@@ -270,7 +272,7 @@ pinpointsmsvoicev2_create_event_destination <- function(ConfigurationSetName, Ev
 #' @description
 #' Creates a new opt-out list.
 #' 
-#' If the opt-out list name already exists, an Error is returned.
+#' If the opt-out list name already exists, an error is returned.
 #' 
 #' An opt-out list is a list of phone numbers that are opted out, meaning
 #' you can't send SMS or voice messages to them. If end user replies with
@@ -361,7 +363,7 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' false.
 #' 
 #' If the origination identity is a phone number and is already associated
-#' with another pool, an Error is returned. A sender ID can be associated
+#' with another pool, an error is returned. A sender ID can be associated
 #' with multiple pools.
 #'
 #' @usage
@@ -397,6 +399,7 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   SharedRoutesEnabled = TRUE|FALSE,
@@ -451,6 +454,377 @@ pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, 
   return(response)
 }
 .pinpointsmsvoicev2$operations$create_pool <- pinpointsmsvoicev2_create_pool
+
+#' Creates a new registration based on the RegistrationType field
+#'
+#' @description
+#' Creates a new registration based on the **RegistrationType** field.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_registration(RegistrationType, Tags,
+#'   ClientToken)
+#'
+#' @param RegistrationType &#91;required&#93; The type of registration form to create. The list of
+#' **RegistrationTypes** can be found using the
+#' [`describe_registration_type_definitions`][pinpointsmsvoicev2_describe_registration_type_definitions]
+#' action.
+#' @param Tags An array of tags (key and value pairs) to associate with the
+#' registration.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   RegistrationType = "string",
+#'   RegistrationStatus = "CREATED"|"SUBMITTED"|"REVIEWING"|"PROVISIONING"|"COMPLETE"|"REQUIRES_UPDATES"|"CLOSED"|"DELETED",
+#'   CurrentVersionNumber = 123,
+#'   AdditionalAttributes = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_registration(
+#'   RegistrationType = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_registration
+#'
+#' @aliases pinpointsmsvoicev2_create_registration
+pinpointsmsvoicev2_create_registration <- function(RegistrationType, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateRegistration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$create_registration_input(RegistrationType = RegistrationType, Tags = Tags, ClientToken = ClientToken)
+  output <- .pinpointsmsvoicev2$create_registration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_registration <- pinpointsmsvoicev2_create_registration
+
+#' Associate the registration with an origination identity such as a phone
+#' number or sender ID
+#'
+#' @description
+#' Associate the registration with an origination identity such as a phone
+#' number or sender ID.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_registration_association(RegistrationId,
+#'   ResourceId)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param ResourceId &#91;required&#93; The unique identifier for the origination identity. For example this
+#' could be a **PhoneNumberId** or **SenderId**.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   RegistrationType = "string",
+#'   ResourceArn = "string",
+#'   ResourceId = "string",
+#'   ResourceType = "string",
+#'   IsoCountryCode = "string",
+#'   PhoneNumber = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_registration_association(
+#'   RegistrationId = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_registration_association
+#'
+#' @aliases pinpointsmsvoicev2_create_registration_association
+pinpointsmsvoicev2_create_registration_association <- function(RegistrationId, ResourceId) {
+  op <- new_operation(
+    name = "CreateRegistrationAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$create_registration_association_input(RegistrationId = RegistrationId, ResourceId = ResourceId)
+  output <- .pinpointsmsvoicev2$create_registration_association_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_registration_association <- pinpointsmsvoicev2_create_registration_association
+
+#' Create a new registration attachment to use for uploading a file or a
+#' URL to a file
+#'
+#' @description
+#' Create a new registration attachment to use for uploading a file or a
+#' URL to a file. The maximum file size is 1MiB and valid file extensions
+#' are PDF, JPEG and PNG. For example, many sender ID registrations require
+#' a signed “letter of authorization” (LOA) to be submitted.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_registration_attachment(AttachmentBody,
+#'   AttachmentUrl, Tags, ClientToken)
+#'
+#' @param AttachmentBody The registration file to upload. The maximum file size is 1MiB and valid
+#' file extensions are PDF, JPEG and PNG.
+#' @param AttachmentUrl A URL to the required registration file. For example, you can provide
+#' the S3 object URL.
+#' @param Tags An array of tags (key and value pairs) to associate with the
+#' registration attachment.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationAttachmentArn = "string",
+#'   RegistrationAttachmentId = "string",
+#'   AttachmentStatus = "UPLOAD_IN_PROGRESS"|"UPLOAD_COMPLETE"|"UPLOAD_FAILED"|"DELETED",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_registration_attachment(
+#'   AttachmentBody = raw,
+#'   AttachmentUrl = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_registration_attachment
+#'
+#' @aliases pinpointsmsvoicev2_create_registration_attachment
+pinpointsmsvoicev2_create_registration_attachment <- function(AttachmentBody = NULL, AttachmentUrl = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateRegistrationAttachment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$create_registration_attachment_input(AttachmentBody = AttachmentBody, AttachmentUrl = AttachmentUrl, Tags = Tags, ClientToken = ClientToken)
+  output <- .pinpointsmsvoicev2$create_registration_attachment_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_registration_attachment <- pinpointsmsvoicev2_create_registration_attachment
+
+#' Create a new version of the registration and increase the VersionNumber
+#'
+#' @description
+#' Create a new version of the registration and increase the
+#' **VersionNumber**. The previous version of the registration becomes
+#' read-only.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_registration_version(RegistrationId)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"REVIEWING"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'   RegistrationVersionStatusHistory = list(
+#'     DraftTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmittedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReviewingTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ApprovedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DiscardedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeniedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RevokedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ArchivedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_registration_version(
+#'   RegistrationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_registration_version
+#'
+#' @aliases pinpointsmsvoicev2_create_registration_version
+pinpointsmsvoicev2_create_registration_version <- function(RegistrationId) {
+  op <- new_operation(
+    name = "CreateRegistrationVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$create_registration_version_input(RegistrationId = RegistrationId)
+  output <- .pinpointsmsvoicev2$create_registration_version_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_registration_version <- pinpointsmsvoicev2_create_registration_version
+
+#' You can only send messages to verified destination numbers when your
+#' account is in the sandbox
+#'
+#' @description
+#' You can only send messages to verified destination numbers when your
+#' account is in the sandbox. You can add up to 10 verified destination
+#' numbers.
+#'
+#' @usage
+#' pinpointsmsvoicev2_create_verified_destination_number(
+#'   DestinationPhoneNumber, Tags, ClientToken)
+#'
+#' @param DestinationPhoneNumber &#91;required&#93; The verified destination phone number, in E.164 format.
+#' @param Tags An array of tags (key and value pairs) to associate with the destination
+#' number.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerifiedDestinationNumberArn = "string",
+#'   VerifiedDestinationNumberId = "string",
+#'   DestinationPhoneNumber = "string",
+#'   Status = "PENDING"|"VERIFIED",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_verified_destination_number(
+#'   DestinationPhoneNumber = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_verified_destination_number
+#'
+#' @aliases pinpointsmsvoicev2_create_verified_destination_number
+pinpointsmsvoicev2_create_verified_destination_number <- function(DestinationPhoneNumber, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateVerifiedDestinationNumber",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$create_verified_destination_number_input(DestinationPhoneNumber = DestinationPhoneNumber, Tags = Tags, ClientToken = ClientToken)
+  output <- .pinpointsmsvoicev2$create_verified_destination_number_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_verified_destination_number <- pinpointsmsvoicev2_create_verified_destination_number
 
 #' Deletes an existing configuration set
 #'
@@ -803,7 +1177,7 @@ pinpointsmsvoicev2_delete_keyword <- function(OriginationIdentity, Keyword) {
 #' opt-out list are deleted.
 #' 
 #' If the specified opt-out list name doesn't exist or is in-use by an
-#' origination phone number or pool, an Error is returned.
+#' origination phone number or pool, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_delete_opt_out_list(OptOutListName)
@@ -864,7 +1238,7 @@ pinpointsmsvoicev2_delete_opt_out_list <- function(OptOutListName) {
 #' Each destination phone number can only be deleted once every 30 days.
 #' 
 #' If the specified destination phone number doesn't exist or if the
-#' opt-out list doesn't exist, an Error is returned.
+#' opt-out list doesn't exist, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_delete_opted_out_number(OptOutListName,
@@ -924,7 +1298,7 @@ pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutN
 #' identities from that pool.
 #' 
 #' If the pool status isn't active or if deletion protection is enabled, an
-#' Error is returned.
+#' error is returned.
 #' 
 #' A pool is a collection of phone numbers and SenderIds. A pool can
 #' include one or more phone numbers and SenderIds that are associated with
@@ -947,6 +1321,7 @@ pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutN
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   SharedRoutesEnabled = TRUE|FALSE,
@@ -984,6 +1359,179 @@ pinpointsmsvoicev2_delete_pool <- function(PoolId) {
   return(response)
 }
 .pinpointsmsvoicev2$operations$delete_pool <- pinpointsmsvoicev2_delete_pool
+
+#' Permanently delete an existing registration from your account
+#'
+#' @description
+#' Permanently delete an existing registration from your account.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_registration(RegistrationId)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   RegistrationType = "string",
+#'   RegistrationStatus = "CREATED"|"SUBMITTED"|"REVIEWING"|"PROVISIONING"|"COMPLETE"|"REQUIRES_UPDATES"|"CLOSED"|"DELETED",
+#'   CurrentVersionNumber = 123,
+#'   ApprovedVersionNumber = 123,
+#'   LatestDeniedVersionNumber = 123,
+#'   AdditionalAttributes = list(
+#'     "string"
+#'   ),
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_registration(
+#'   RegistrationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_registration
+#'
+#' @aliases pinpointsmsvoicev2_delete_registration
+pinpointsmsvoicev2_delete_registration <- function(RegistrationId) {
+  op <- new_operation(
+    name = "DeleteRegistration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_registration_input(RegistrationId = RegistrationId)
+  output <- .pinpointsmsvoicev2$delete_registration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_registration <- pinpointsmsvoicev2_delete_registration
+
+#' Permanently delete the specified registration attachment
+#'
+#' @description
+#' Permanently delete the specified registration attachment.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_registration_attachment(
+#'   RegistrationAttachmentId)
+#'
+#' @param RegistrationAttachmentId &#91;required&#93; The unique identifier for the registration attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationAttachmentArn = "string",
+#'   RegistrationAttachmentId = "string",
+#'   AttachmentStatus = "UPLOAD_IN_PROGRESS"|"UPLOAD_COMPLETE"|"UPLOAD_FAILED"|"DELETED",
+#'   AttachmentUploadErrorReason = "INTERNAL_ERROR",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_registration_attachment(
+#'   RegistrationAttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_registration_attachment
+#'
+#' @aliases pinpointsmsvoicev2_delete_registration_attachment
+pinpointsmsvoicev2_delete_registration_attachment <- function(RegistrationAttachmentId) {
+  op <- new_operation(
+    name = "DeleteRegistrationAttachment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_registration_attachment_input(RegistrationAttachmentId = RegistrationAttachmentId)
+  output <- .pinpointsmsvoicev2$delete_registration_attachment_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_registration_attachment <- pinpointsmsvoicev2_delete_registration_attachment
+
+#' Delete the value in a registration form field
+#'
+#' @description
+#' Delete the value in a registration form field.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_registration_field_value(RegistrationId,
+#'   FieldPath)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param FieldPath &#91;required&#93; The path to the registration form field. You can use
+#' [`describe_registration_field_definitions`][pinpointsmsvoicev2_describe_registration_field_definitions]
+#' for a list of **FieldPaths**.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   FieldPath = "string",
+#'   SelectChoices = list(
+#'     "string"
+#'   ),
+#'   TextValue = "string",
+#'   RegistrationAttachmentId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_registration_field_value(
+#'   RegistrationId = "string",
+#'   FieldPath = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_registration_field_value
+#'
+#' @aliases pinpointsmsvoicev2_delete_registration_field_value
+pinpointsmsvoicev2_delete_registration_field_value <- function(RegistrationId, FieldPath) {
+  op <- new_operation(
+    name = "DeleteRegistrationFieldValue",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_registration_field_value_input(RegistrationId = RegistrationId, FieldPath = FieldPath)
+  output <- .pinpointsmsvoicev2$delete_registration_field_value_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_registration_field_value <- pinpointsmsvoicev2_delete_registration_field_value
 
 #' Deletes an account-level monthly spending limit override for sending
 #' text messages
@@ -1034,6 +1582,59 @@ pinpointsmsvoicev2_delete_text_message_spend_limit_override <- function() {
   return(response)
 }
 .pinpointsmsvoicev2$operations$delete_text_message_spend_limit_override <- pinpointsmsvoicev2_delete_text_message_spend_limit_override
+
+#' Delete a verified destination phone number
+#'
+#' @description
+#' Delete a verified destination phone number.
+#'
+#' @usage
+#' pinpointsmsvoicev2_delete_verified_destination_number(
+#'   VerifiedDestinationNumberId)
+#'
+#' @param VerifiedDestinationNumberId &#91;required&#93; The unique identifier for the verified destination phone number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerifiedDestinationNumberArn = "string",
+#'   VerifiedDestinationNumberId = "string",
+#'   DestinationPhoneNumber = "string",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_verified_destination_number(
+#'   VerifiedDestinationNumberId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_verified_destination_number
+#'
+#' @aliases pinpointsmsvoicev2_delete_verified_destination_number
+pinpointsmsvoicev2_delete_verified_destination_number <- function(VerifiedDestinationNumberId) {
+  op <- new_operation(
+    name = "DeleteVerifiedDestinationNumber",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_verified_destination_number_input(VerifiedDestinationNumberId = VerifiedDestinationNumberId)
+  output <- .pinpointsmsvoicev2$delete_verified_destination_number_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_verified_destination_number <- pinpointsmsvoicev2_delete_verified_destination_number
 
 #' Deletes an account level monthly spend limit override for sending voice
 #' messages
@@ -1176,7 +1777,7 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
 #' list(
 #'   AccountLimits = list(
 #'     list(
-#'       Name = "PHONE_NUMBERS"|"POOLS"|"CONFIGURATION_SETS"|"OPT_OUT_LISTS",
+#'       Name = "PHONE_NUMBERS"|"POOLS"|"CONFIGURATION_SETS"|"OPT_OUT_LISTS"|"SENDER_IDS"|"REGISTRATIONS"|"REGISTRATION_ATTACHMENTS"|"VERIFIED_DESTINATION_NUMBERS",
 #'       Used = 123,
 #'       Max = 123
 #'     )
@@ -1333,7 +1934,7 @@ pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames
 #' a special offer. When your number receives a message that begins with a
 #' keyword, Amazon Pinpoint responds with a customizable message.
 #' 
-#' If you specify a keyword that isn't valid, an Error is returned.
+#' If you specify a keyword that isn't valid, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_describe_keywords(OriginationIdentity, Keywords,
@@ -1422,7 +2023,7 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
 #' meet the filter criteria. If you don't specify opt-out list names or
 #' filters, the output includes information for all opt-out lists.
 #' 
-#' If you specify an opt-out list name that isn't valid, an Error is
+#' If you specify an opt-out list name that isn't valid, an error is
 #' returned.
 #'
 #' @usage
@@ -1499,7 +2100,7 @@ pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, Ne
 #' output includes information for all opted out destination numbers in
 #' your opt-out list.
 #' 
-#' If you specify an opted out number that isn't valid, an Error is
+#' If you specify an opted out number that isn't valid, an error is
 #' returned.
 #'
 #' @usage
@@ -1589,7 +2190,7 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #' criteria. If you don't specify phone number IDs or filters, the output
 #' includes information for all phone numbers.
 #' 
-#' If you specify a phone number ID that isn't valid, an Error is returned.
+#' If you specify a phone number ID that isn't valid, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_describe_phone_numbers(PhoneNumberIds, Filters,
@@ -1618,14 +2219,16 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #'       NumberCapabilities = list(
 #'         "SMS"|"VOICE"
 #'       ),
-#'       NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC",
+#'       NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'       MonthlyLeasingPrice = "string",
 #'       TwoWayEnabled = TRUE|FALSE,
 #'       TwoWayChannelArn = "string",
+#'       TwoWayChannelRole = "string",
 #'       SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'       OptOutListName = "string",
 #'       DeletionProtectionEnabled = TRUE|FALSE,
 #'       PoolId = "string",
+#'       RegistrationId = "string",
 #'       CreatedTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1643,7 +2246,7 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #'   ),
 #'   Filters = list(
 #'     list(
-#'       Name = "status"|"iso-country-code"|"message-type"|"number-capability"|"number-type"|"two-way-enabled"|"self-managed-opt-outs-enabled"|"opt-out-list-name"|"deletion-protection-enabled",
+#'       Name = "status"|"iso-country-code"|"message-type"|"number-capability"|"number-type"|"two-way-enabled"|"self-managed-opt-outs-enabled"|"opt-out-list-name"|"deletion-protection-enabled"|"two-way-channel-arn",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1688,7 +2291,7 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
 #' for only those pools that meet the filter criteria. If you don't specify
 #' pool IDs or filters, the output includes information for all pools.
 #' 
-#' If you specify a pool ID that isn't valid, an Error is returned.
+#' If you specify a pool ID that isn't valid, an error is returned.
 #' 
 #' A pool is a collection of phone numbers and SenderIds. A pool can
 #' include one or more phone numbers and SenderIds that are associated with
@@ -1717,6 +2320,7 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
 #'       MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'       TwoWayEnabled = TRUE|FALSE,
 #'       TwoWayChannelArn = "string",
+#'       TwoWayChannelRole = "string",
 #'       SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'       OptOutListName = "string",
 #'       SharedRoutesEnabled = TRUE|FALSE,
@@ -1738,7 +2342,7 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
 #'   ),
 #'   Filters = list(
 #'     list(
-#'       Name = "status"|"message-type"|"two-way-enabled"|"self-managed-opt-outs-enabled"|"opt-out-list-name"|"shared-routes-enabled"|"deletion-protection-enabled",
+#'       Name = "status"|"message-type"|"two-way-enabled"|"self-managed-opt-outs-enabled"|"opt-out-list-name"|"shared-routes-enabled"|"deletion-protection-enabled"|"two-way-channel-arn",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1771,6 +2375,614 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
 }
 .pinpointsmsvoicev2$operations$describe_pools <- pinpointsmsvoicev2_describe_pools
 
+#' Retrieves the specified registration attachments or all registration
+#' attachments associated with your Amazon Web Services account
+#'
+#' @description
+#' Retrieves the specified registration attachments or all registration
+#' attachments associated with your Amazon Web Services account.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registration_attachments(
+#'   RegistrationAttachmentIds, Filters, NextToken, MaxResults)
+#'
+#' @param RegistrationAttachmentIds The unique identifier of registration attachments to find. This is an
+#' array of **RegistrationAttachmentId**.
+#' @param Filters An array of RegistrationAttachmentFilter objects to filter the results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationAttachments = list(
+#'     list(
+#'       RegistrationAttachmentArn = "string",
+#'       RegistrationAttachmentId = "string",
+#'       AttachmentStatus = "UPLOAD_IN_PROGRESS"|"UPLOAD_COMPLETE"|"UPLOAD_FAILED"|"DELETED",
+#'       AttachmentUploadErrorReason = "INTERNAL_ERROR",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registration_attachments(
+#'   RegistrationAttachmentIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "attachment-status",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registration_attachments
+#'
+#' @aliases pinpointsmsvoicev2_describe_registration_attachments
+pinpointsmsvoicev2_describe_registration_attachments <- function(RegistrationAttachmentIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrationAttachments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationAttachments")
+  )
+  input <- .pinpointsmsvoicev2$describe_registration_attachments_input(RegistrationAttachmentIds = RegistrationAttachmentIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registration_attachments_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registration_attachments <- pinpointsmsvoicev2_describe_registration_attachments
+
+#' Retrieves the specified registration type field definitions
+#'
+#' @description
+#' Retrieves the specified registration type field definitions. You can use
+#' DescribeRegistrationFieldDefinitions to view the requirements for
+#' creating, filling out, and submitting each registration type.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registration_field_definitions(
+#'   RegistrationType, SectionPath, FieldPaths, NextToken, MaxResults)
+#'
+#' @param RegistrationType &#91;required&#93; The type of registration form. The list of **RegistrationTypes** can be
+#' found using the
+#' [`describe_registration_type_definitions`][pinpointsmsvoicev2_describe_registration_type_definitions]
+#' action.
+#' @param SectionPath The path to the section of the registration.
+#' @param FieldPaths An array of paths to the registration form field.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationType = "string",
+#'   RegistrationFieldDefinitions = list(
+#'     list(
+#'       SectionPath = "string",
+#'       FieldPath = "string",
+#'       FieldType = "SELECT"|"TEXT"|"ATTACHMENT",
+#'       FieldRequirement = "REQUIRED"|"CONDITIONAL"|"OPTIONAL",
+#'       SelectValidation = list(
+#'         MinChoices = 123,
+#'         MaxChoices = 123,
+#'         Options = list(
+#'           "string"
+#'         )
+#'       ),
+#'       TextValidation = list(
+#'         MinLength = 123,
+#'         MaxLength = 123,
+#'         Pattern = "string"
+#'       ),
+#'       DisplayHints = list(
+#'         Title = "string",
+#'         ShortDescription = "string",
+#'         LongDescription = "string",
+#'         DocumentationTitle = "string",
+#'         DocumentationLink = "string",
+#'         SelectOptionDescriptions = list(
+#'           list(
+#'             Option = "string",
+#'             Title = "string",
+#'             Description = "string"
+#'           )
+#'         ),
+#'         TextValidationDescription = "string",
+#'         ExampleTextValue = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registration_field_definitions(
+#'   RegistrationType = "string",
+#'   SectionPath = "string",
+#'   FieldPaths = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registration_field_definitions
+#'
+#' @aliases pinpointsmsvoicev2_describe_registration_field_definitions
+pinpointsmsvoicev2_describe_registration_field_definitions <- function(RegistrationType, SectionPath = NULL, FieldPaths = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrationFieldDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationFieldDefinitions")
+  )
+  input <- .pinpointsmsvoicev2$describe_registration_field_definitions_input(RegistrationType = RegistrationType, SectionPath = SectionPath, FieldPaths = FieldPaths, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registration_field_definitions_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registration_field_definitions <- pinpointsmsvoicev2_describe_registration_field_definitions
+
+#' Retrieves the specified registration field values
+#'
+#' @description
+#' Retrieves the specified registration field values.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registration_field_values(RegistrationId,
+#'   VersionNumber, SectionPath, FieldPaths, NextToken, MaxResults)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param VersionNumber The version number of the registration.
+#' @param SectionPath The path to the section of the registration.
+#' @param FieldPaths An array of paths to the registration form field.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   RegistrationFieldValues = list(
+#'     list(
+#'       FieldPath = "string",
+#'       SelectChoices = list(
+#'         "string"
+#'       ),
+#'       TextValue = "string",
+#'       RegistrationAttachmentId = "string",
+#'       DeniedReason = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registration_field_values(
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   SectionPath = "string",
+#'   FieldPaths = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registration_field_values
+#'
+#' @aliases pinpointsmsvoicev2_describe_registration_field_values
+pinpointsmsvoicev2_describe_registration_field_values <- function(RegistrationId, VersionNumber = NULL, SectionPath = NULL, FieldPaths = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrationFieldValues",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationFieldValues")
+  )
+  input <- .pinpointsmsvoicev2$describe_registration_field_values_input(RegistrationId = RegistrationId, VersionNumber = VersionNumber, SectionPath = SectionPath, FieldPaths = FieldPaths, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registration_field_values_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registration_field_values <- pinpointsmsvoicev2_describe_registration_field_values
+
+#' Retrieves the specified registration section definitions
+#'
+#' @description
+#' Retrieves the specified registration section definitions. You can use
+#' DescribeRegistrationSectionDefinitions to view the requirements for
+#' creating, filling out, and submitting each registration type.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registration_section_definitions(
+#'   RegistrationType, SectionPaths, NextToken, MaxResults)
+#'
+#' @param RegistrationType &#91;required&#93; The type of registration form. The list of **RegistrationTypes** can be
+#' found using the
+#' [`describe_registration_type_definitions`][pinpointsmsvoicev2_describe_registration_type_definitions]
+#' action.
+#' @param SectionPaths An array of paths for the registration form section.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationType = "string",
+#'   RegistrationSectionDefinitions = list(
+#'     list(
+#'       SectionPath = "string",
+#'       DisplayHints = list(
+#'         Title = "string",
+#'         ShortDescription = "string",
+#'         LongDescription = "string",
+#'         DocumentationTitle = "string",
+#'         DocumentationLink = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registration_section_definitions(
+#'   RegistrationType = "string",
+#'   SectionPaths = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registration_section_definitions
+#'
+#' @aliases pinpointsmsvoicev2_describe_registration_section_definitions
+pinpointsmsvoicev2_describe_registration_section_definitions <- function(RegistrationType, SectionPaths = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrationSectionDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationSectionDefinitions")
+  )
+  input <- .pinpointsmsvoicev2$describe_registration_section_definitions_input(RegistrationType = RegistrationType, SectionPaths = SectionPaths, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registration_section_definitions_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registration_section_definitions <- pinpointsmsvoicev2_describe_registration_section_definitions
+
+#' Retrieves the specified registration type definitions
+#'
+#' @description
+#' Retrieves the specified registration type definitions. You can use
+#' DescribeRegistrationTypeDefinitions to view the requirements for
+#' creating, filling out, and submitting each registration type.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registration_type_definitions(
+#'   RegistrationTypes, Filters, NextToken, MaxResults)
+#'
+#' @param RegistrationTypes The type of registration form. The list of **RegistrationTypes** can be
+#' found using the
+#' [`describe_registration_type_definitions`][pinpointsmsvoicev2_describe_registration_type_definitions]
+#' action.
+#' @param Filters An array of RegistrationFilter objects to filter the results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationTypeDefinitions = list(
+#'     list(
+#'       RegistrationType = "string",
+#'       SupportedAssociations = list(
+#'         list(
+#'           ResourceType = "string",
+#'           IsoCountryCode = "string",
+#'           AssociationBehavior = "ASSOCIATE_BEFORE_SUBMIT"|"ASSOCIATE_ON_APPROVAL"|"ASSOCIATE_AFTER_COMPLETE",
+#'           DisassociationBehavior = "DISASSOCIATE_ALL_CLOSES_REGISTRATION"|"DISASSOCIATE_ALL_ALLOWS_DELETE_REGISTRATION"|"DELETE_REGISTRATION_DISASSOCIATES"
+#'         )
+#'       ),
+#'       DisplayHints = list(
+#'         Title = "string",
+#'         ShortDescription = "string",
+#'         LongDescription = "string",
+#'         DocumentationTitle = "string",
+#'         DocumentationLink = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registration_type_definitions(
+#'   RegistrationTypes = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "supported-association-resource-type"|"supported-association-iso-country-code",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registration_type_definitions
+#'
+#' @aliases pinpointsmsvoicev2_describe_registration_type_definitions
+pinpointsmsvoicev2_describe_registration_type_definitions <- function(RegistrationTypes = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrationTypeDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationTypeDefinitions")
+  )
+  input <- .pinpointsmsvoicev2$describe_registration_type_definitions_input(RegistrationTypes = RegistrationTypes, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registration_type_definitions_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registration_type_definitions <- pinpointsmsvoicev2_describe_registration_type_definitions
+
+#' Retrieves the specified registration version
+#'
+#' @description
+#' Retrieves the specified registration version.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registration_versions(RegistrationId,
+#'   VersionNumbers, Filters, NextToken, MaxResults)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param VersionNumbers An array of registration version numbers.
+#' @param Filters An array of RegistrationVersionFilter objects to filter the results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   RegistrationVersions = list(
+#'     list(
+#'       VersionNumber = 123,
+#'       RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"REVIEWING"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'       RegistrationVersionStatusHistory = list(
+#'         DraftTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         SubmittedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ReviewingTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ApprovedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DiscardedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DeniedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         RevokedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ArchivedTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       DeniedReasons = list(
+#'         list(
+#'           Reason = "string",
+#'           ShortDescription = "string",
+#'           LongDescription = "string",
+#'           DocumentationTitle = "string",
+#'           DocumentationLink = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registration_versions(
+#'   RegistrationId = "string",
+#'   VersionNumbers = list(
+#'     123
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "registration-version-status",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registration_versions
+#'
+#' @aliases pinpointsmsvoicev2_describe_registration_versions
+pinpointsmsvoicev2_describe_registration_versions <- function(RegistrationId, VersionNumbers = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrationVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationVersions")
+  )
+  input <- .pinpointsmsvoicev2$describe_registration_versions_input(RegistrationId = RegistrationId, VersionNumbers = VersionNumbers, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registration_versions_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registration_versions <- pinpointsmsvoicev2_describe_registration_versions
+
+#' Retrieves the specified registrations
+#'
+#' @description
+#' Retrieves the specified registrations.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_registrations(RegistrationIds, Filters,
+#'   NextToken, MaxResults)
+#'
+#' @param RegistrationIds An array of unique identifiers for each registration.
+#' @param Filters An array of RegistrationFilter objects to filter the results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Registrations = list(
+#'     list(
+#'       RegistrationArn = "string",
+#'       RegistrationId = "string",
+#'       RegistrationType = "string",
+#'       RegistrationStatus = "CREATED"|"SUBMITTED"|"REVIEWING"|"PROVISIONING"|"COMPLETE"|"REQUIRES_UPDATES"|"CLOSED"|"DELETED",
+#'       CurrentVersionNumber = 123,
+#'       ApprovedVersionNumber = 123,
+#'       LatestDeniedVersionNumber = 123,
+#'       AdditionalAttributes = list(
+#'         "string"
+#'       ),
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registrations(
+#'   RegistrationIds = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "registration-type"|"registration-status",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_registrations
+#'
+#' @aliases pinpointsmsvoicev2_describe_registrations
+pinpointsmsvoicev2_describe_registrations <- function(RegistrationIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeRegistrations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Registrations")
+  )
+  input <- .pinpointsmsvoicev2$describe_registrations_input(RegistrationIds = RegistrationIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_registrations_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_registrations <- pinpointsmsvoicev2_describe_registrations
+
 #' Describes the specified SenderIds or all SenderIds associated with your
 #' Amazon Web Services account
 #'
@@ -1784,7 +2996,7 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
 #' you don't specify SenderIds or filters, the output includes information
 #' for all SenderIds.
 #' 
-#' f you specify a sender ID that isn't valid, an Error is returned.
+#' f you specify a sender ID that isn't valid, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_describe_sender_ids(SenderIds, Filters, NextToken,
@@ -1808,7 +3020,10 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
 #'       MessageTypes = list(
 #'         "TRANSACTIONAL"|"PROMOTIONAL"
 #'       ),
-#'       MonthlyLeasingPrice = "string"
+#'       MonthlyLeasingPrice = "string",
+#'       DeletionProtectionEnabled = TRUE|FALSE,
+#'       Registered = TRUE|FALSE,
+#'       RegistrationId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1826,7 +3041,7 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
 #'   ),
 #'   Filters = list(
 #'     list(
-#'       Name = "sender-id"|"iso-country-code"|"message-type",
+#'       Name = "sender-id"|"iso-country-code"|"message-type"|"deletion-protection-enabled"|"registered",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1926,13 +3141,94 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
 }
 .pinpointsmsvoicev2$operations$describe_spend_limits <- pinpointsmsvoicev2_describe_spend_limits
 
+#' Retrieves the specified verified destiona numbers
+#'
+#' @description
+#' Retrieves the specified verified destiona numbers.
+#'
+#' @usage
+#' pinpointsmsvoicev2_describe_verified_destination_numbers(
+#'   VerifiedDestinationNumberIds, DestinationPhoneNumbers, Filters,
+#'   NextToken, MaxResults)
+#'
+#' @param VerifiedDestinationNumberIds An array of VerifiedDestinationNumberid to retreive.
+#' @param DestinationPhoneNumbers An array of verified destination phone number, in E.164 format.
+#' @param Filters An array of VerifiedDestinationNumberFilter objects to filter the
+#' results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerifiedDestinationNumbers = list(
+#'     list(
+#'       VerifiedDestinationNumberArn = "string",
+#'       VerifiedDestinationNumberId = "string",
+#'       DestinationPhoneNumber = "string",
+#'       Status = "PENDING"|"VERIFIED",
+#'       CreatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_verified_destination_numbers(
+#'   VerifiedDestinationNumberIds = list(
+#'     "string"
+#'   ),
+#'   DestinationPhoneNumbers = list(
+#'     "string"
+#'   ),
+#'   Filters = list(
+#'     list(
+#'       Name = "status",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_verified_destination_numbers
+#'
+#' @aliases pinpointsmsvoicev2_describe_verified_destination_numbers
+pinpointsmsvoicev2_describe_verified_destination_numbers <- function(VerifiedDestinationNumberIds = NULL, DestinationPhoneNumbers = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeVerifiedDestinationNumbers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VerifiedDestinationNumbers")
+  )
+  input <- .pinpointsmsvoicev2$describe_verified_destination_numbers_input(VerifiedDestinationNumberIds = VerifiedDestinationNumberIds, DestinationPhoneNumbers = DestinationPhoneNumbers, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_verified_destination_numbers_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_verified_destination_numbers <- pinpointsmsvoicev2_describe_verified_destination_numbers
+
 #' Removes the specified origination identity from an existing pool
 #'
 #' @description
 #' Removes the specified origination identity from an existing pool.
 #' 
 #' If the origination identity isn't associated with the specified pool, an
-#' Error is returned.
+#' error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_disassociate_origination_identity(PoolId,
@@ -1996,6 +3292,82 @@ pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, Origina
 }
 .pinpointsmsvoicev2$operations$disassociate_origination_identity <- pinpointsmsvoicev2_disassociate_origination_identity
 
+#' Discard the current version of the registration
+#'
+#' @description
+#' Discard the current version of the registration.
+#'
+#' @usage
+#' pinpointsmsvoicev2_discard_registration_version(RegistrationId)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"REVIEWING"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'   RegistrationVersionStatusHistory = list(
+#'     DraftTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmittedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReviewingTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ApprovedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DiscardedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeniedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RevokedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ArchivedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$discard_registration_version(
+#'   RegistrationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_discard_registration_version
+#'
+#' @aliases pinpointsmsvoicev2_discard_registration_version
+pinpointsmsvoicev2_discard_registration_version <- function(RegistrationId) {
+  op <- new_operation(
+    name = "DiscardRegistrationVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$discard_registration_version_input(RegistrationId = RegistrationId)
+  output <- .pinpointsmsvoicev2$discard_registration_version_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$discard_registration_version <- pinpointsmsvoicev2_discard_registration_version
+
 #' Lists all associated origination identities in your pool
 #'
 #' @description
@@ -2029,7 +3401,8 @@ pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, Origina
 #'       IsoCountryCode = "string",
 #'       NumberCapabilities = list(
 #'         "SMS"|"VOICE"
-#'       )
+#'       ),
+#'       PhoneNumber = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2074,6 +3447,83 @@ pinpointsmsvoicev2_list_pool_origination_identities <- function(PoolId, Filters 
   return(response)
 }
 .pinpointsmsvoicev2$operations$list_pool_origination_identities <- pinpointsmsvoicev2_list_pool_origination_identities
+
+#' Retreive all of the origination identies that are associated with a
+#' registration
+#'
+#' @description
+#' Retreive all of the origination identies that are associated with a
+#' registration.
+#'
+#' @usage
+#' pinpointsmsvoicev2_list_registration_associations(RegistrationId,
+#'   Filters, NextToken, MaxResults)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param Filters An array of RegistrationAssociationFilter to apply to the results that
+#' are returned.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   RegistrationType = "string",
+#'   RegistrationAssociations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       ResourceId = "string",
+#'       ResourceType = "string",
+#'       IsoCountryCode = "string",
+#'       PhoneNumber = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_registration_associations(
+#'   RegistrationId = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "resource-type"|"iso-country-code",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_list_registration_associations
+#'
+#' @aliases pinpointsmsvoicev2_list_registration_associations
+pinpointsmsvoicev2_list_registration_associations <- function(RegistrationId, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRegistrationAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationAssociations")
+  )
+  input <- .pinpointsmsvoicev2$list_registration_associations_input(RegistrationId = RegistrationId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$list_registration_associations_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$list_registration_associations <- pinpointsmsvoicev2_list_registration_associations
 
 #' List all tags associated with a resource
 #'
@@ -2141,7 +3591,7 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
 #' a special offer. When your number receives a message that begins with a
 #' keyword, Amazon Pinpoint responds with a customizable message.
 #' 
-#' If you specify a keyword that isn't valid, an Error is returned.
+#' If you specify a keyword that isn't valid, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_put_keyword(OriginationIdentity, Keyword,
@@ -2155,13 +3605,13 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
 #' used to get the values for SenderId and SenderIdArn.
 #' @param Keyword &#91;required&#93; The new keyword to add.
 #' @param KeywordMessage &#91;required&#93; The message associated with the keyword.
+#' @param KeywordAction The action to perform for the new keyword when it is received.
 #' 
 #' -   AUTOMATIC_RESPONSE: A message is sent to the recipient.
 #' 
 #' -   OPT_OUT: Keeps the recipient from receiving future messages.
 #' 
 #' -   OPT_IN: The recipient wants to receive future messages.
-#' @param KeywordAction The action to perform for the new keyword when it is received.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2213,7 +3663,7 @@ pinpointsmsvoicev2_put_keyword <- function(OriginationIdentity, Keyword, Keyword
 #' Creates an opted out destination phone number in the opt-out list.
 #' 
 #' If the destination phone number isn't valid or if the specified opt-out
-#' list doesn't exist, an Error is returned.
+#' list doesn't exist, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_put_opted_out_number(OptOutListName, OptedOutNumber)
@@ -2265,6 +3715,74 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
 }
 .pinpointsmsvoicev2$operations$put_opted_out_number <- pinpointsmsvoicev2_put_opted_out_number
 
+#' Creates or updates a field value for a registration
+#'
+#' @description
+#' Creates or updates a field value for a registration.
+#'
+#' @usage
+#' pinpointsmsvoicev2_put_registration_field_value(RegistrationId,
+#'   FieldPath, SelectChoices, TextValue, RegistrationAttachmentId)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#' @param FieldPath &#91;required&#93; The path to the registration form field. You can use
+#' [`describe_registration_field_definitions`][pinpointsmsvoicev2_describe_registration_field_definitions]
+#' for a list of **FieldPaths**.
+#' @param SelectChoices An array of values for the form field.
+#' @param TextValue The text data for a free form field.
+#' @param RegistrationAttachmentId The unique identifier for the registration attachment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   FieldPath = "string",
+#'   SelectChoices = list(
+#'     "string"
+#'   ),
+#'   TextValue = "string",
+#'   RegistrationAttachmentId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_registration_field_value(
+#'   RegistrationId = "string",
+#'   FieldPath = "string",
+#'   SelectChoices = list(
+#'     "string"
+#'   ),
+#'   TextValue = "string",
+#'   RegistrationAttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_put_registration_field_value
+#'
+#' @aliases pinpointsmsvoicev2_put_registration_field_value
+pinpointsmsvoicev2_put_registration_field_value <- function(RegistrationId, FieldPath, SelectChoices = NULL, TextValue = NULL, RegistrationAttachmentId = NULL) {
+  op <- new_operation(
+    name = "PutRegistrationFieldValue",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$put_registration_field_value_input(RegistrationId = RegistrationId, FieldPath = FieldPath, SelectChoices = SelectChoices, TextValue = TextValue, RegistrationAttachmentId = RegistrationAttachmentId)
+  output <- .pinpointsmsvoicev2$put_registration_field_value_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$put_registration_field_value <- pinpointsmsvoicev2_put_registration_field_value
+
 #' Releases an existing origination phone number in your account
 #'
 #' @description
@@ -2272,7 +3790,7 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
 #' released, a phone number is no longer available for sending messages.
 #' 
 #' If the origination phone number has deletion protection enabled or is
-#' associated with a pool, an Error is returned.
+#' associated with a pool, an error is returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_release_phone_number(PhoneNumberId)
@@ -2295,12 +3813,14 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
 #'   NumberCapabilities = list(
 #'     "SMS"|"VOICE"
 #'   ),
-#'   NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC",
+#'   NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   MonthlyLeasingPrice = "string",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
+#'   RegistrationId = "string",
 #'   CreatedTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -2336,6 +3856,64 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
 }
 .pinpointsmsvoicev2$operations$release_phone_number <- pinpointsmsvoicev2_release_phone_number
 
+#' Releases an existing sender ID in your account
+#'
+#' @description
+#' Releases an existing sender ID in your account.
+#'
+#' @usage
+#' pinpointsmsvoicev2_release_sender_id(SenderId, IsoCountryCode)
+#'
+#' @param SenderId &#91;required&#93; The sender ID to release.
+#' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
+#' region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SenderIdArn = "string",
+#'   SenderId = "string",
+#'   IsoCountryCode = "string",
+#'   MessageTypes = list(
+#'     "TRANSACTIONAL"|"PROMOTIONAL"
+#'   ),
+#'   MonthlyLeasingPrice = "string",
+#'   Registered = TRUE|FALSE,
+#'   RegistrationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$release_sender_id(
+#'   SenderId = "string",
+#'   IsoCountryCode = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_release_sender_id
+#'
+#' @aliases pinpointsmsvoicev2_release_sender_id
+pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
+  op <- new_operation(
+    name = "ReleaseSenderId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$release_sender_id_input(SenderId = SenderId, IsoCountryCode = IsoCountryCode)
+  output <- .pinpointsmsvoicev2$release_sender_id_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$release_sender_id <- pinpointsmsvoicev2_release_sender_id
+
 #' Request an origination phone number for use in your account
 #'
 #' @description
@@ -2358,7 +3936,7 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
 #' messages, or both.
 #' @param NumberType &#91;required&#93; The type of phone number to request.
 #' @param OptOutListName The name of the OptOutList to associate with the phone number. You can
-#' use the OutOutListName or OptPutListArn.
+#' use the OptOutListName or OptOutListArn.
 #' @param PoolId The pool to associated with the phone number. You can use the PoolId or
 #' PoolArn.
 #' @param RegistrationId Use this field to attach your phone number for an external registration
@@ -2384,14 +3962,16 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
 #'   NumberCapabilities = list(
 #'     "SMS"|"VOICE"
 #'   ),
-#'   NumberType = "LONG_CODE"|"TOLL_FREE"|"TEN_DLC",
+#'   NumberType = "LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   MonthlyLeasingPrice = "string",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   DeletionProtectionEnabled = TRUE|FALSE,
 #'   PoolId = "string",
+#'   RegistrationId = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -2412,7 +3992,7 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
 #'   NumberCapabilities = list(
 #'     "SMS"|"VOICE"
 #'   ),
-#'   NumberType = "LONG_CODE"|"TOLL_FREE"|"TEN_DLC",
+#'   NumberType = "LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   OptOutListName = "string",
 #'   PoolId = "string",
 #'   RegistrationId = "string",
@@ -2449,6 +4029,171 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
 }
 .pinpointsmsvoicev2$operations$request_phone_number <- pinpointsmsvoicev2_request_phone_number
 
+#' Request a new sender ID that doesn't require registration
+#'
+#' @description
+#' Request a new sender ID that doesn't require registration.
+#'
+#' @usage
+#' pinpointsmsvoicev2_request_sender_id(SenderId, IsoCountryCode,
+#'   MessageTypes, DeletionProtectionEnabled, Tags, ClientToken)
+#'
+#' @param SenderId &#91;required&#93; The sender ID string to request.
+#' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
+#' region.
+#' @param MessageTypes The type of message. Valid values are TRANSACTIONAL for messages that
+#' are critical or time-sensitive and PROMOTIONAL for messages that aren't
+#' critical or time-sensitive.
+#' @param DeletionProtectionEnabled By default this is set to false. When set to true the sender ID can't be
+#' deleted.
+#' @param Tags An array of tags (key and value pairs) to associate with the sender ID.
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SenderIdArn = "string",
+#'   SenderId = "string",
+#'   IsoCountryCode = "string",
+#'   MessageTypes = list(
+#'     "TRANSACTIONAL"|"PROMOTIONAL"
+#'   ),
+#'   MonthlyLeasingPrice = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   Registered = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$request_sender_id(
+#'   SenderId = "string",
+#'   IsoCountryCode = "string",
+#'   MessageTypes = list(
+#'     "TRANSACTIONAL"|"PROMOTIONAL"
+#'   ),
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_request_sender_id
+#'
+#' @aliases pinpointsmsvoicev2_request_sender_id
+pinpointsmsvoicev2_request_sender_id <- function(SenderId, IsoCountryCode, MessageTypes = NULL, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "RequestSenderId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$request_sender_id_input(SenderId = SenderId, IsoCountryCode = IsoCountryCode, MessageTypes = MessageTypes, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags, ClientToken = ClientToken)
+  output <- .pinpointsmsvoicev2$request_sender_id_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$request_sender_id <- pinpointsmsvoicev2_request_sender_id
+
+#' Before you can send test messages to a verified destination phone number
+#' you need to opt-in the verified destination phone number
+#'
+#' @description
+#' Before you can send test messages to a verified destination phone number
+#' you need to opt-in the verified destination phone number. Creates a new
+#' text message with a verification code and send it to a verified
+#' destination phone number. Once you have the verification code use
+#' [`verify_destination_number`][pinpointsmsvoicev2_verify_destination_number]
+#' to opt-in the verified destination phone number to receive messages.
+#'
+#' @usage
+#' pinpointsmsvoicev2_send_destination_number_verification_code(
+#'   VerifiedDestinationNumberId, VerificationChannel, LanguageCode,
+#'   OriginationIdentity, ConfigurationSetName, Context,
+#'   DestinationCountryParameters)
+#'
+#' @param VerifiedDestinationNumberId &#91;required&#93; The unique identifier for the verified destination phone number.
+#' @param VerificationChannel &#91;required&#93; Choose to send the verification code as an SMS or voice message.
+#' @param LanguageCode Choose the language to use for the message.
+#' @param OriginationIdentity The origination identity of the message. This can be either the
+#' PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
+#' PoolId, or PoolArn.
+#' @param ConfigurationSetName The name of the configuration set to use. This can be either the
+#' ConfigurationSetName or ConfigurationSetArn.
+#' @param Context You can specify custom data in this field. If you do, that data is
+#' logged to the event destination.
+#' @param DestinationCountryParameters This field is used for any country-specific registration requirements.
+#' Currently, this setting is only used when you send messages to
+#' recipients in India using a sender ID. For more information see [Special
+#' requirements for sending SMS messages to recipients in
+#' India](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_destination_number_verification_code(
+#'   VerifiedDestinationNumberId = "string",
+#'   VerificationChannel = "TEXT"|"VOICE",
+#'   LanguageCode = "DE_DE"|"EN_GB"|"EN_US"|"ES_419"|"ES_ES"|"FR_CA"|"FR_FR"|"IT_IT"|"JA_JP"|"KO_KR"|"PT_BR"|"ZH_CN"|"ZH_TW",
+#'   OriginationIdentity = "string",
+#'   ConfigurationSetName = "string",
+#'   Context = list(
+#'     "string"
+#'   ),
+#'   DestinationCountryParameters = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_send_destination_number_verification_code
+#'
+#' @aliases pinpointsmsvoicev2_send_destination_number_verification_code
+pinpointsmsvoicev2_send_destination_number_verification_code <- function(VerifiedDestinationNumberId, VerificationChannel, LanguageCode = NULL, OriginationIdentity = NULL, ConfigurationSetName = NULL, Context = NULL, DestinationCountryParameters = NULL) {
+  op <- new_operation(
+    name = "SendDestinationNumberVerificationCode",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$send_destination_number_verification_code_input(VerifiedDestinationNumberId = VerifiedDestinationNumberId, VerificationChannel = VerificationChannel, LanguageCode = LanguageCode, OriginationIdentity = OriginationIdentity, ConfigurationSetName = ConfigurationSetName, Context = Context, DestinationCountryParameters = DestinationCountryParameters)
+  output <- .pinpointsmsvoicev2$send_destination_number_verification_code_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$send_destination_number_verification_code <- pinpointsmsvoicev2_send_destination_number_verification_code
+
 #' Creates a new text message and sends it to a recipient's phone number
 #'
 #' @description
@@ -2473,9 +4218,9 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
 #' PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
 #' PoolId, or PoolArn.
 #' @param MessageBody The body of the text message.
-#' @param MessageType The type of message. Valid values are TRANSACTIONAL for messages that
-#' are critical or time-sensitive and PROMOTIONAL for messages that aren't
-#' critical or time-sensitive.
+#' @param MessageType The type of message. Valid values are for messages that are critical or
+#' time-sensitive and PROMOTIONAL for messages that aren't critical or
+#' time-sensitive.
 #' @param Keyword When you register a short code in the US, you must specify a program
 #' name. If you don’t have a US short code, omit this attribute.
 #' @param ConfigurationSetName The name of the configuration set to use. This can be either the
@@ -2544,11 +4289,11 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 }
 .pinpointsmsvoicev2$operations$send_text_message <- pinpointsmsvoicev2_send_text_message
 
-#' Allows you to send a request that sends a text message through Amazon
+#' Allows you to send a request that sends a voice message through Amazon
 #' Pinpoint
 #'
 #' @description
-#' Allows you to send a request that sends a text message through Amazon
+#' Allows you to send a request that sends a voice message through Amazon
 #' Pinpoint. This operation uses [Amazon
 #' Polly](https://aws.amazon.com/polly/) to convert a text script into a
 #' voice message.
@@ -2856,6 +4601,82 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLim
 }
 .pinpointsmsvoicev2$operations$set_voice_message_spend_limit_override <- pinpointsmsvoicev2_set_voice_message_spend_limit_override
 
+#' Submit the specified registration for review and approval
+#'
+#' @description
+#' Submit the specified registration for review and approval.
+#'
+#' @usage
+#' pinpointsmsvoicev2_submit_registration_version(RegistrationId)
+#'
+#' @param RegistrationId &#91;required&#93; The unique identifier for the registration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RegistrationArn = "string",
+#'   RegistrationId = "string",
+#'   VersionNumber = 123,
+#'   RegistrationVersionStatus = "DRAFT"|"SUBMITTED"|"REVIEWING"|"APPROVED"|"DISCARDED"|"DENIED"|"REVOKED"|"ARCHIVED",
+#'   RegistrationVersionStatusHistory = list(
+#'     DraftTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmittedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReviewingTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ApprovedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DiscardedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DeniedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     RevokedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ArchivedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$submit_registration_version(
+#'   RegistrationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_submit_registration_version
+#'
+#' @aliases pinpointsmsvoicev2_submit_registration_version
+pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
+  op <- new_operation(
+    name = "SubmitRegistrationVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$submit_registration_version_input(RegistrationId = RegistrationId)
+  output <- .pinpointsmsvoicev2$submit_registration_version_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$submit_registration_version <- pinpointsmsvoicev2_submit_registration_version
+
 #' Adds or overwrites only the specified tags for the specified Amazon
 #' Pinpoint SMS Voice, version 2 resource
 #'
@@ -2987,6 +4808,8 @@ pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param EventDestinationName &#91;required&#93; The name to use for the event destination.
 #' @param Enabled When set to true logging is enabled.
 #' @param MatchingEventTypes An array of event types that determine which events to log.
+#' 
+#' The `TEXT_SENT` event type is not supported.
 #' @param CloudWatchLogsDestination An object that contains information about an event destination that
 #' sends data to CloudWatch Logs.
 #' @param KinesisFirehoseDestination An object that contains information about an event destination for
@@ -3074,19 +4897,21 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' the TwoWayChannelArn, enable or disable self-managed opt-outs, and
 #' enable or disable deletion protection.
 #' 
-#' If the origination phone number is associated with a pool, an Error is
+#' If the origination phone number is associated with a pool, an error is
 #' returned.
 #'
 #' @usage
 #' pinpointsmsvoicev2_update_phone_number(PhoneNumberId, TwoWayEnabled,
-#'   TwoWayChannelArn, SelfManagedOptOutsEnabled, OptOutListName,
-#'   DeletionProtectionEnabled)
+#'   TwoWayChannelArn, TwoWayChannelRole, SelfManagedOptOutsEnabled,
+#'   OptOutListName, DeletionProtectionEnabled)
 #'
 #' @param PhoneNumberId &#91;required&#93; The unique identifier of the phone number. Valid values for this field
 #' can be either the PhoneNumberId or PhoneNumberArn.
 #' @param TwoWayEnabled By default this is set to false. When set to true you can receive
 #' incoming text messages from your end recipients.
 #' @param TwoWayChannelArn The Amazon Resource Name (ARN) of the two way channel.
+#' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
+#' inbound SMS messages.
 #' @param SelfManagedOptOutsEnabled By default this is set to false. When an end recipient sends a message
 #' that begins with HELP or STOP to one of your dedicated numbers, Amazon
 #' Pinpoint automatically replies with a customizable message and adds the
@@ -3111,13 +4936,15 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #'   NumberCapabilities = list(
 #'     "SMS"|"VOICE"
 #'   ),
-#'   NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC",
+#'   NumberType = "SHORT_CODE"|"LONG_CODE"|"TOLL_FREE"|"TEN_DLC"|"SIMULATOR",
 #'   MonthlyLeasingPrice = "string",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   RegistrationId = "string",
 #'   CreatedTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -3130,6 +4957,7 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #'   PhoneNumberId = "string",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   DeletionProtectionEnabled = TRUE|FALSE
@@ -3141,14 +4969,14 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' @rdname pinpointsmsvoicev2_update_phone_number
 #'
 #' @aliases pinpointsmsvoicev2_update_phone_number
-pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, DeletionProtectionEnabled = NULL) {
+pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdatePhoneNumber",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .pinpointsmsvoicev2$update_phone_number_input(PhoneNumberId = PhoneNumberId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  input <- .pinpointsmsvoicev2$update_phone_number_input(PhoneNumberId = PhoneNumberId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_phone_number_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config)
@@ -3168,14 +4996,16 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #'
 #' @usage
 #' pinpointsmsvoicev2_update_pool(PoolId, TwoWayEnabled, TwoWayChannelArn,
-#'   SelfManagedOptOutsEnabled, OptOutListName, SharedRoutesEnabled,
-#'   DeletionProtectionEnabled)
+#'   TwoWayChannelRole, SelfManagedOptOutsEnabled, OptOutListName,
+#'   SharedRoutesEnabled, DeletionProtectionEnabled)
 #'
 #' @param PoolId &#91;required&#93; The unique identifier of the pool to update. Valid values are either the
 #' PoolId or PoolArn.
 #' @param TwoWayEnabled By default this is set to false. When set to true you can receive
 #' incoming text messages from your end recipients.
 #' @param TwoWayChannelArn The Amazon Resource Name (ARN) of the two way channel.
+#' @param TwoWayChannelRole An optional IAM Role Arn for a service to assume, to be able to post
+#' inbound SMS messages.
 #' @param SelfManagedOptOutsEnabled By default this is set to false. When an end recipient sends a message
 #' that begins with HELP or STOP to one of your dedicated numbers, Amazon
 #' Pinpoint automatically replies with a customizable message and adds the
@@ -3197,6 +5027,7 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #'   MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   SharedRoutesEnabled = TRUE|FALSE,
@@ -3213,6 +5044,7 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #'   PoolId = "string",
 #'   TwoWayEnabled = TRUE|FALSE,
 #'   TwoWayChannelArn = "string",
+#'   TwoWayChannelRole = "string",
 #'   SelfManagedOptOutsEnabled = TRUE|FALSE,
 #'   OptOutListName = "string",
 #'   SharedRoutesEnabled = TRUE|FALSE,
@@ -3225,14 +5057,14 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #' @rdname pinpointsmsvoicev2_update_pool
 #'
 #' @aliases pinpointsmsvoicev2_update_pool
-pinpointsmsvoicev2_update_pool <- function(PoolId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, SharedRoutesEnabled = NULL, DeletionProtectionEnabled = NULL) {
+pinpointsmsvoicev2_update_pool <- function(PoolId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, TwoWayChannelRole = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, SharedRoutesEnabled = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdatePool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .pinpointsmsvoicev2$update_pool_input(PoolId = PoolId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, SharedRoutesEnabled = SharedRoutesEnabled, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  input <- .pinpointsmsvoicev2$update_pool_input(PoolId = PoolId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, SharedRoutesEnabled = SharedRoutesEnabled, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_pool_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config)
@@ -3241,3 +5073,127 @@ pinpointsmsvoicev2_update_pool <- function(PoolId, TwoWayEnabled = NULL, TwoWayC
   return(response)
 }
 .pinpointsmsvoicev2$operations$update_pool <- pinpointsmsvoicev2_update_pool
+
+#' Updates the configuration of an existing sender ID
+#'
+#' @description
+#' Updates the configuration of an existing sender ID.
+#'
+#' @usage
+#' pinpointsmsvoicev2_update_sender_id(SenderId, IsoCountryCode,
+#'   DeletionProtectionEnabled)
+#'
+#' @param SenderId &#91;required&#93; The sender ID to update.
+#' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
+#' region.
+#' @param DeletionProtectionEnabled By default this is set to false. When set to true the sender ID can't be
+#' deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SenderIdArn = "string",
+#'   SenderId = "string",
+#'   IsoCountryCode = "string",
+#'   MessageTypes = list(
+#'     "TRANSACTIONAL"|"PROMOTIONAL"
+#'   ),
+#'   MonthlyLeasingPrice = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   Registered = TRUE|FALSE,
+#'   RegistrationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_sender_id(
+#'   SenderId = "string",
+#'   IsoCountryCode = "string",
+#'   DeletionProtectionEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_update_sender_id
+#'
+#' @aliases pinpointsmsvoicev2_update_sender_id
+pinpointsmsvoicev2_update_sender_id <- function(SenderId, IsoCountryCode, DeletionProtectionEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateSenderId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$update_sender_id_input(SenderId = SenderId, IsoCountryCode = IsoCountryCode, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  output <- .pinpointsmsvoicev2$update_sender_id_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$update_sender_id <- pinpointsmsvoicev2_update_sender_id
+
+#' Use the verification code that was received by the verified destination
+#' phone number to opt-in the verified destination phone number to receive
+#' more messages
+#'
+#' @description
+#' Use the verification code that was received by the verified destination
+#' phone number to opt-in the verified destination phone number to receive
+#' more messages.
+#'
+#' @usage
+#' pinpointsmsvoicev2_verify_destination_number(
+#'   VerifiedDestinationNumberId, VerificationCode)
+#'
+#' @param VerifiedDestinationNumberId &#91;required&#93; The unique identifier for the verififed destination phone number.
+#' @param VerificationCode &#91;required&#93; The verification code that was received by the verified destination
+#' phone number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerifiedDestinationNumberArn = "string",
+#'   VerifiedDestinationNumberId = "string",
+#'   DestinationPhoneNumber = "string",
+#'   Status = "PENDING"|"VERIFIED",
+#'   CreatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$verify_destination_number(
+#'   VerifiedDestinationNumberId = "string",
+#'   VerificationCode = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_verify_destination_number
+#'
+#' @aliases pinpointsmsvoicev2_verify_destination_number
+pinpointsmsvoicev2_verify_destination_number <- function(VerifiedDestinationNumberId, VerificationCode) {
+  op <- new_operation(
+    name = "VerifyDestinationNumber",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$verify_destination_number_input(VerifiedDestinationNumberId = VerifiedDestinationNumberId, VerificationCode = VerificationCode)
+  output <- .pinpointsmsvoicev2$verify_destination_number_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$verify_destination_number <- pinpointsmsvoicev2_verify_destination_number

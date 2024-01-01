@@ -57,7 +57,9 @@ encrypted using keys from other accounts. The key that is used to
 encrypt the SNS topic must reside in the account that the Image Builder
 service runs under.}
 
-\item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 
 \item{resourceTags}{The tags attached to the resource created by Image Builder.}
 

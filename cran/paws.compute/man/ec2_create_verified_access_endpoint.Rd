@@ -41,7 +41,7 @@ your application.}
 for the endpoint.}
 
 \item{SecurityGroupIds}{The IDs of the security groups to associate with the Verified Access
-endpoint.}
+endpoint. Required if \code{AttachmentType} is set to \code{vpc}.}
 
 \item{LoadBalancerOptions}{The load balancer details. This parameter is required if the endpoint
 type is \code{load-balancer}.}
@@ -63,7 +63,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SseSpecification}{Options for server side encryption.}
+\item{SseSpecification}{The options for server side encryption.}
 }
 \description{
 An Amazon Web Services Verified Access endpoint is where you define your application along with an optional endpoint-level access policy.

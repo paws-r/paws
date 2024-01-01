@@ -57,11 +57,6 @@ to which the Glue Data Catalog belongs.
 \item The \code{GLUE} data catalog type also applies to the default
 \code{AwsDataCatalog} that already exists in your account, of which
 you can have only one and cannot modify.
-\item Queries that specify a Glue Data Catalog other than the default
-\code{AwsDataCatalog} must be run on Athena engine version 2.
-\item In Regions where Athena engine version 2 is not available,
-creating new Glue data catalogs results in an \code{INVALID_INPUT}
-error.
 }
 }}
 

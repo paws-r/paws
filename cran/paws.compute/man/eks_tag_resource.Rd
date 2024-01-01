@@ -2,20 +2,20 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_tag_resource}
 \alias{eks_tag_resource}
-\title{Associates the specified tags to a resource with the specified
-resourceArn}
+\title{Associates the specified tags to an Amazon EKS resource with the
+specified resourceArn}
 \usage{
 eks_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which to add tags.
-Currently, the supported resources are Amazon EKS clusters and managed
-node groups.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to add tags to.}
 
-\item{tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.}
+\item{tags}{[required] Metadata that assists with categorization and organization. Each tag
+consists of a key and an optional value. You define both. Tags don't
+propagate to any other cluster or Amazon Web Services resources.}
 }
 \description{
-Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag does not automatically propagate to the subnets and nodes associated with the cluster.
+Associates the specified tags to an Amazon EKS resource with the specified \code{resourceArn}. If existing tags on a resource are not specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted. Tags that you create for Amazon EKS resources don't propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag doesn't automatically propagate to the subnets and nodes associated with the cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_tag_resource/} for full documentation.
 }

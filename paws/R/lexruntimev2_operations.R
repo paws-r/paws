@@ -150,7 +150,8 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #'         ),
 #'         state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
 #'         confirmationState = "Confirmed"|"Denied"|"None"
-#'       )
+#'       ),
+#'       interpretationSource = "Bedrock"|"Lex"
 #'     )
 #'   ),
 #'   sessionState = list(
@@ -575,7 +576,8 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'         ),
 #'         state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
 #'         confirmationState = "Confirmed"|"Denied"|"None"
-#'       )
+#'       ),
+#'       interpretationSource = "Bedrock"|"Lex"
 #'     )
 #'   ),
 #'   requestAttributes = list(

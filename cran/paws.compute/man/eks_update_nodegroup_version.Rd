@@ -16,8 +16,7 @@ eks_update_nodegroup_version(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster that is associated with the managed
-node group to update.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{nodegroupName}{[required] The name of the managed node group to update.}
 
@@ -50,12 +49,13 @@ in the \emph{Amazon EKS User Guide}.}
 can only update a node group using a launch template if the node group
 was originally deployed with a launch template.}
 
-\item{force}{Force the update if the existing node group's pods are unable to be
-drained due to a pod disruption budget issue. If an update fails because
-pods could not be drained, you can force the update after it fails to
-terminate the old node whether or not any pods are running on the node.}
+\item{force}{Force the update if any \code{Pod} on the existing node group can't be
+drained due to a \code{Pod} disruption budget issue. If an update fails
+because all Pods can't be drained, you can force the update after it
+fails to terminate the old node whether or not any \code{Pod} is running on
+the node.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
 \description{

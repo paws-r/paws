@@ -41,7 +41,7 @@ OpsCenter.
 
 This type of OpsItem is used by Change Manager for reviewing and
 approving or rejecting change requests.
-\item \verb{/aws/insights}
+\item \verb{/aws/insight}
 
 This type of OpsItem is used by OpsCenter for aggregating and
 reporting on duplicate OpsItems.

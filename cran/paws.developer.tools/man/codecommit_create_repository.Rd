@@ -7,7 +7,8 @@
 codecommit_create_repository(
   repositoryName,
   repositoryDescription = NULL,
-  tags = NULL
+  tags = NULL,
+  kmsKeyId = NULL
 )
 }
 \arguments{
@@ -30,6 +31,15 @@ any application that uses this API to display the repository description
 on a webpage.}
 
 \item{tags}{One or more tag key-value pairs to use when tagging this repository.}
+
+\item{kmsKeyId}{The ID of the encryption key. You can view the ID of an encryption key
+in the KMS console, or use the KMS APIs to programmatically retrieve a
+key ID. For more information about acceptable values for kmsKeyID, see
+KeyId in the Decrypt API description in the \emph{Key Management Service API
+Reference}.
+
+If no key is specified, the default \code{aws/codecommit} Amazon Web Services
+managed key is used.}
 }
 \description{
 Creates a new, empty repository.

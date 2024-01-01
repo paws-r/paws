@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_access_point}
 \alias{s3control_create_access_point}
-\title{Creates an access point and associates it with the specified bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_create_access_point(
   AccountId,
@@ -48,7 +48,7 @@ access point.}
 associated with this access point.}
 }
 \description{
-Creates an access point and associates it with the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_create_access_point/} for full documentation.
 }

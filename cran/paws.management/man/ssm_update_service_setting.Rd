@@ -32,17 +32,21 @@ Management Configuration.}
 \item{SettingValue}{[required] The new value to specify for the service setting. The following list
 specifies the available values for each setting.
 \itemize{
-\item \verb{/ssm/managed-instance/default-ec2-instance-management-role: The name of an IAM role}
-\item \verb{/ssm/automation/customer-script-log-destination}: \code{CloudWatch}
-\item \verb{/ssm/automation/customer-script-log-group-name}: The name of an
-Amazon CloudWatch Logs log group
-\item \verb{/ssm/documents/console/public-sharing-permission}: \code{Enable} or
-\code{Disable}
-\item \verb{/ssm/managed-instance/activation-tier}: \code{standard} or \code{advanced}
-\item \verb{/ssm/opsinsights/opscenter}: \code{Enabled} or \code{Disabled}
-\item \verb{/ssm/parameter-store/default-parameter-tier}: \code{Standard},
-\code{Advanced}, \code{Intelligent-Tiering}
-\item \verb{/ssm/parameter-store/high-throughput-enabled}: \code{true} or \code{false}
+\item For \verb{/ssm/managed-instance/default-ec2-instance-management-role},
+enter the name of an IAM role.
+\item For \verb{/ssm/automation/customer-script-log-destination}, enter
+\code{CloudWatch}.
+\item For \verb{/ssm/automation/customer-script-log-group-name}, enter the name
+of an Amazon CloudWatch Logs log group.
+\item For \verb{/ssm/documents/console/public-sharing-permission}, enter
+\code{Enable} or \code{Disable}.
+\item For \verb{/ssm/managed-instance/activation-tier}, enter \code{standard} or
+\code{advanced}.
+\item For \verb{/ssm/opsinsights/opscenter}, enter \code{Enabled} or \code{Disabled}.
+\item For \verb{/ssm/parameter-store/default-parameter-tier}, enter \code{Standard},
+\code{Advanced}, or \code{Intelligent-Tiering}
+\item For \verb{/ssm/parameter-store/high-throughput-enabled}, enter \code{true} or
+\code{false}.
 }}
 }
 \description{

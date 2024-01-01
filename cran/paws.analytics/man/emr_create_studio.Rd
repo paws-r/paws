@@ -17,7 +17,11 @@ emr_create_studio(
   DefaultS3Location,
   IdpAuthUrl = NULL,
   IdpRelayStateParameterName = NULL,
-  Tags = NULL
+  Tags = NULL,
+  TrustedIdentityPropagationEnabled = NULL,
+  IdcUserAssignment = NULL,
+  IdcInstanceArn = NULL,
+  EncryptionKeyArn = NULL
 )
 }
 \arguments{
@@ -73,6 +77,19 @@ differs by IdP.}
 user-defined key-value pairs that consist of a required key string with
 a maximum of 128 characters, and an optional value string with a maximum
 of 256 characters.}
+
+\item{TrustedIdentityPropagationEnabled}{A Boolean indicating whether to enable Trusted identity propagation for
+the Studio. The default value is \code{false}.}
+
+\item{IdcUserAssignment}{Specifies whether IAM Identity Center user assignment is \code{REQUIRED} or
+\code{OPTIONAL}. If the value is set to \code{REQUIRED}, users must be explicitly
+assigned to the Studio application to access the Studio.}
+
+\item{IdcInstanceArn}{The ARN of the IAM Identity Center instance to create the Studio
+application.}
+
+\item{EncryptionKeyArn}{The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace
+and notebook files when backed up to Amazon S3.}
 }
 \description{
 Creates a new Amazon EMR Studio.

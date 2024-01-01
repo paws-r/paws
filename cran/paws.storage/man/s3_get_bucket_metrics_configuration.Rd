@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_metrics_configuration}
 \alias{s3_get_bucket_metrics_configuration}
-\title{Gets a metrics configuration (specified by the metrics configuration ID)
-from the bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner = NULL)
 }
@@ -14,12 +13,12 @@ s3_get_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner = NULL)
 character limit and can only contain letters, numbers, periods, dashes,
 and underscores.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Gets a metrics configuration (specified by the metrics configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_metrics_configuration/} for full documentation.
 }

@@ -3,10 +3,75 @@
 #' @include personalizeevents_service.R
 NULL
 
-#' Records user interaction event data
+#' Records action interaction event data
 #'
 #' @description
-#' Records user interaction event data. For more information see [Recording Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
+#' Records action interaction event data. An *action interaction* event is an interaction between a user and an *action*. For example, a user taking an action, such a enrolling in a membership program or downloading your app.
+#'
+#' See [https://www.paws-r-sdk.com/docs/personalizeevents_put_action_interactions/](https://www.paws-r-sdk.com/docs/personalizeevents_put_action_interactions/) for full documentation.
+#'
+#' @param trackingId &#91;required&#93; The ID of your action interaction event tracker. When you create an
+#' Action interactions dataset, Amazon Personalize creates an action
+#' interaction event tracker for you. For more information, see [Action
+#' interaction event tracker
+#' ID](https://docs.aws.amazon.com/personalize/latest/dg/action-interaction-tracker-id.html).
+#' @param actionInteractions &#91;required&#93; A list of action interaction events from the session.
+#'
+#' @keywords internal
+#'
+#' @rdname personalizeevents_put_action_interactions
+personalizeevents_put_action_interactions <- function(trackingId, actionInteractions) {
+  op <- new_operation(
+    name = "PutActionInteractions",
+    http_method = "POST",
+    http_path = "/action-interactions",
+    paginator = list()
+  )
+  input <- .personalizeevents$put_action_interactions_input(trackingId = trackingId, actionInteractions = actionInteractions)
+  output <- .personalizeevents$put_action_interactions_output()
+  config <- get_config()
+  svc <- .personalizeevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalizeevents$operations$put_action_interactions <- personalizeevents_put_action_interactions
+
+#' Adds one or more actions to an Actions dataset
+#'
+#' @description
+#' Adds one or more actions to an Actions dataset. For more information see [Importing actions individually](https://docs.aws.amazon.com/personalize/latest/dg/importing-actions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/personalizeevents_put_actions/](https://www.paws-r-sdk.com/docs/personalizeevents_put_actions/) for full documentation.
+#'
+#' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the Actions dataset you are adding the
+#' action or actions to.
+#' @param actions &#91;required&#93; A list of action data.
+#'
+#' @keywords internal
+#'
+#' @rdname personalizeevents_put_actions
+personalizeevents_put_actions <- function(datasetArn, actions) {
+  op <- new_operation(
+    name = "PutActions",
+    http_method = "POST",
+    http_path = "/actions",
+    paginator = list()
+  )
+  input <- .personalizeevents$put_actions_input(datasetArn = datasetArn, actions = actions)
+  output <- .personalizeevents$put_actions_output()
+  config <- get_config()
+  svc <- .personalizeevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalizeevents$operations$put_actions <- personalizeevents_put_actions
+
+#' Records item interaction event data
+#'
+#' @description
+#' Records item interaction event data. For more information see [Recording item interaction events](https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalizeevents_put_events/](https://www.paws-r-sdk.com/docs/personalizeevents_put_events/) for full documentation.
 #'
@@ -18,8 +83,8 @@ NULL
 #' generates the sessionId when a user first visits your website or uses
 #' your application. Amazon Personalize uses the sessionId to associate
 #' events with the user before they log in. For more information, see
-#' [Recording
-#' Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
+#' [Recording item interaction
+#' events](https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html).
 #' @param eventList &#91;required&#93; A list of event data from the session.
 #'
 #' @keywords internal
@@ -45,7 +110,7 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
 #' Adds one or more items to an Items dataset
 #'
 #' @description
-#' Adds one or more items to an Items dataset. For more information see [Importing Items Incrementally](https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html).
+#' Adds one or more items to an Items dataset. For more information see [Importing items individually](https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalizeevents_put_items/](https://www.paws-r-sdk.com/docs/personalizeevents_put_items/) for full documentation.
 #'
@@ -76,7 +141,7 @@ personalizeevents_put_items <- function(datasetArn, items) {
 #' Adds one or more users to a Users dataset
 #'
 #' @description
-#' Adds one or more users to a Users dataset. For more information see [Importing Users Incrementally](https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html).
+#' Adds one or more users to a Users dataset. For more information see [Importing users individually](https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalizeevents_put_users/](https://www.paws-r-sdk.com/docs/personalizeevents_put_users/) for full documentation.
 #'

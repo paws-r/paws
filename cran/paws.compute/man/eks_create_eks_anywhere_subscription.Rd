@@ -28,7 +28,7 @@ indicating a 12 month or 36 month subscription. This value cannot be
 changed after creating the subscription.}
 
 \item{licenseQuantity}{The number of licenses to purchase with the subscription. Valid values
-are between 1 and 1000. This value cannot be changed after creating the
+are between 1 and 100. This value can't be changed after creating the
 subscription.}
 
 \item{licenseType}{The license type for all licenses in the subscription. Valid value is
@@ -38,13 +38,13 @@ a single EKS Anywhere cluster.}
 \item{autoRenew}{A boolean indicating whether the subscription auto renews at the end of
 the term.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
 \item{tags}{The metadata for a subscription to assist with categorization and
 organization. Each tag consists of a key and an optional value.
-Subscription tags do not propagate to any other resources associated
-with the subscription.}
+Subscription tags don't propagate to any other resources associated with
+the subscription.}
 }
 \description{
 Creates an EKS Anywhere subscription. When a subscription is created, it is a contract agreement for the length of the term specified in the request. Licenses that are used to validate support are provisioned in Amazon Web Services License Manager and the caller account is granted access to EKS Anywhere Curated Packages.

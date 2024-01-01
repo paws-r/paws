@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.4.0.9000
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -85,9 +85,6 @@ Collate:
     'macie2_service.R'
     'macie2_interfaces.R'
     'macie2_operations.R'
-    'macie_service.R'
-    'macie_interfaces.R'
-    'macie_operations.R'
     'pcaconnectorad_service.R'
     'pcaconnectorad_interfaces.R'
     'pcaconnectorad_operations.R'

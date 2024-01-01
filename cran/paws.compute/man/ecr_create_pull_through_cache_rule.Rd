@@ -7,7 +7,9 @@
 ecr_create_pull_through_cache_rule(
   ecrRepositoryPrefix,
   upstreamRegistryUrl,
-  registryId = NULL
+  registryId = NULL,
+  upstreamRegistry = NULL,
+  credentialArn = NULL
 )
 }
 \arguments{
@@ -15,14 +17,30 @@ ecr_create_pull_through_cache_rule(
 registry.}
 
 \item{upstreamRegistryUrl}{[required] The registry URL of the upstream public registry to use as the source
-for the pull through cache rule.}
+for the pull through cache rule. The following is the syntax to use for
+each supported upstream registry.
+\itemize{
+\item Amazon ECR Public (\code{ecr-public}) - \code{public.ecr.aws}
+\item Docker Hub (\code{docker-hub}) - \verb{registry-1.docker.io}
+\item Quay (\code{quay}) - \code{quay.io}
+\item Kubernetes (\code{k8s}) - \code{registry.k8s.io}
+\item GitHub Container Registry (\code{github-container-registry}) - \code{ghcr.io}
+\item Microsoft Azure Container Registry (\code{azure-container-registry}) -
+\verb{<custom>.azurecr.io}
+}}
 
 \item{registryId}{The Amazon Web Services account ID associated with the registry to
 create the pull through cache rule for. If you do not specify a
 registry, the default registry is assumed.}
+
+\item{upstreamRegistry}{The name of the upstream registry.}
+
+\item{credentialArn}{The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
+Manager secret that identifies the credentials to authenticate to the
+upstream registry.}
 }
 \description{
-Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an external public registry in your Amazon ECR private registry.
+Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an upstream registry source in your Amazon ECR private registry. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache.html}{Using pull through cache rules} in the \emph{Amazon Elastic Container Registry User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecr_create_pull_through_cache_rule/} for full documentation.
 }

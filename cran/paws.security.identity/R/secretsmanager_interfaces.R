@@ -3,6 +3,18 @@
 #' @include secretsmanager_service.R
 NULL
 
+.secretsmanager$batch_get_secret_value_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecretIdList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.secretsmanager$batch_get_secret_value_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SecretValues = structure(list(structure(list(ARN = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), SecretBinary = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), SecretString = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), VersionStages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedDate = structure(logical(0), tags = list(box = TRUE, type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Errors = structure(list(structure(list(SecretId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .secretsmanager$cancel_rotate_secret_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SecretId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

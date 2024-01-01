@@ -9,7 +9,8 @@ ec2_create_ipam(
   Description = NULL,
   OperatingRegions = NULL,
   TagSpecifications = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  Tier = NULL
 )
 }
 \arguments{
@@ -36,6 +37,10 @@ for the filter value.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+
+\item{Tier}{IPAM is offered in a Free Tier and an Advanced Tier. For more
+information about the features available in each tier and the costs
+associated with the tiers, see \href{https://aws.amazon.com/vpc/pricing/}{Amazon VPC pricing \> IPAM tab}.}
 }
 \description{
 Create an IPAM. Amazon VPC IP Address Manager (IPAM) is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across Amazon Web Services Regions and accounts throughout your Amazon Web Services Organization.

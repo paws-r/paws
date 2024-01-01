@@ -2,15 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_studio_lifecycle_config}
 \alias{sagemaker_delete_studio_lifecycle_config}
-\title{Deletes the Studio Lifecycle Configuration}
+\title{Deletes the Amazon SageMaker Studio Lifecycle Configuration}
 \usage{
 sagemaker_delete_studio_lifecycle_config(StudioLifecycleConfigName)
 }
 \arguments{
-\item{StudioLifecycleConfigName}{[required] The name of the Studio Lifecycle Configuration to delete.}
+\item{StudioLifecycleConfigName}{[required] The name of the Amazon SageMaker Studio Lifecycle Configuration to
+delete.}
 }
 \description{
-Deletes the Studio Lifecycle Configuration. In order to delete the Lifecycle Configuration, there must be no running apps using the Lifecycle Configuration. You must also remove the Lifecycle Configuration from UserSettings in all Domains and UserProfiles.
+Deletes the Amazon SageMaker Studio Lifecycle Configuration. In order to delete the Lifecycle Configuration, there must be no running apps using the Lifecycle Configuration. You must also remove the Lifecycle Configuration from UserSettings in all Domains and UserProfiles.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_studio_lifecycle_config/} for full documentation.
 }

@@ -843,7 +843,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' represents the only supported algorithm that is valid for symmetric
 #' encryption KMS keys.
 #' @param Recipient A signed [attestation
-#' document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc)
+#' document](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-concepts.html#term-attestdoc)
 #' from an Amazon Web Services Nitro enclave and the encryption algorithm
 #' to use with the enclave's public key. The only valid encryption
 #' algorithm is `RSAES_OAEP_SHA_256`.
@@ -1552,7 +1552,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' Returns a unique asymmetric data key pair for use outside of KMS
 #'
 #' @description
-#' Returns a unique asymmetric data key pair for use outside of KMS. This operation returns a plaintext public key, a plaintext private key, and a copy of the private key that is encrypted under the symmetric encryption KMS key you specify. You can use the data key pair to perform asymmetric cryptography and implement digital signatures outside of KMS. The bytes in the keys are random; they not related to the caller or to the KMS key that is used to encrypt the private key.
+#' Returns a unique asymmetric data key pair for use outside of KMS. This operation returns a plaintext public key, a plaintext private key, and a copy of the private key that is encrypted under the symmetric encryption KMS key you specify. You can use the data key pair to perform asymmetric cryptography and implement digital signatures outside of KMS. The bytes in the keys are random; they are not related to the caller or to the KMS key that is used to encrypt the private key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair/](https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair/) for full documentation.
 #'
@@ -2117,8 +2117,8 @@ kms_get_key_rotation_status <- function(KeyId) {
 #'     You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
 #'     RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
 #' 
-#' -   **RSAES_PKCS1_V1_5** (Deprecated) — Supported only for symmetric
-#'     encryption key material (and only in legacy mode).
+#' -   **RSAES_PKCS1_V1_5** (Deprecated) — As of October 10, 2023, KMS does
+#'     not support the RSAES_PKCS1_V1_5 wrapping algorithm.
 #' @param WrappingKeySpec &#91;required&#93; The type of RSA public key to return in the response. You will use this
 #' wrapping key with the specified wrapping algorithm to protect your key
 #' material during import.

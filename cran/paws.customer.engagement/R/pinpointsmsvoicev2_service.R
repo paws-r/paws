@@ -25,6 +25,30 @@ NULL
 #' mobile apps and other types of applications. The guide also provides key
 #' information, such as Amazon Pinpoint integration with other Amazon Web
 #' Services services, and the quotas that apply to use of the service.
+#' 
+#' **Regional availability**
+#' 
+#' The *Amazon Pinpoint SMS and Voice, version 2 API Reference* is
+#' available in several Amazon Web Services Regions and it provides an
+#' endpoint for each of these Regions. For a list of all the Regions and
+#' endpoints where the API is currently available, see [Amazon Web Services
+#' Service
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region)
+#' and [Amazon Pinpoint endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/pinpoint.html) in
+#' the Amazon Web Services General Reference. To learn more about Amazon
+#' Web Services Regions, see [Managing Amazon Web Services
+#' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
+#' in the Amazon Web Services General Reference.
+#' 
+#' In each Region, Amazon Web Services maintains multiple Availability
+#' Zones. These Availability Zones are physically isolated from each other,
+#' but are united by private, low-latency, high-throughput, and highly
+#' redundant network connections. These Availability Zones enable us to
+#' provide very high levels of availability and redundancy, while also
+#' minimizing latency. To learn more about the number of Availability Zones
+#' that are available in each Region, see [Amazon Web Services Global
+#' Infrastructure.](https://aws.amazon.com/about-aws/global-infrastructure/)
 #'
 #' @param
 #' config
@@ -114,6 +138,11 @@ NULL
 #'  \link[=pinpointsmsvoicev2_create_event_destination]{create_event_destination} \tab Creates a new event destination in a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_create_opt_out_list]{create_opt_out_list} \tab Creates a new opt-out list\cr
 #'  \link[=pinpointsmsvoicev2_create_pool]{create_pool} \tab Creates a new pool and associates the specified origination identity to the pool\cr
+#'  \link[=pinpointsmsvoicev2_create_registration]{create_registration} \tab Creates a new registration based on the RegistrationType field\cr
+#'  \link[=pinpointsmsvoicev2_create_registration_association]{create_registration_association} \tab Associate the registration with an origination identity such as a phone number or sender ID\cr
+#'  \link[=pinpointsmsvoicev2_create_registration_attachment]{create_registration_attachment} \tab Create a new registration attachment to use for uploading a file or a URL to a file\cr
+#'  \link[=pinpointsmsvoicev2_create_registration_version]{create_registration_version} \tab Create a new version of the registration and increase the VersionNumber\cr
+#'  \link[=pinpointsmsvoicev2_create_verified_destination_number]{create_verified_destination_number} \tab You can only send messages to verified destination numbers when your account is in the sandbox\cr
 #'  \link[=pinpointsmsvoicev2_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
 #'  \link[=pinpointsmsvoicev2_delete_default_message_type]{delete_default_message_type} \tab Deletes an existing default message type on a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_delete_default_sender_id]{delete_default_sender_id} \tab Deletes an existing default sender ID on a configuration set\cr
@@ -122,7 +151,11 @@ NULL
 #'  \link[=pinpointsmsvoicev2_delete_opted_out_number]{delete_opted_out_number} \tab Deletes an existing opted out destination phone number from the specified opt-out list\cr
 #'  \link[=pinpointsmsvoicev2_delete_opt_out_list]{delete_opt_out_list} \tab Deletes an existing opt-out list\cr
 #'  \link[=pinpointsmsvoicev2_delete_pool]{delete_pool} \tab Deletes an existing pool\cr
+#'  \link[=pinpointsmsvoicev2_delete_registration]{delete_registration} \tab Permanently delete an existing registration from your account\cr
+#'  \link[=pinpointsmsvoicev2_delete_registration_attachment]{delete_registration_attachment} \tab Permanently delete the specified registration attachment\cr
+#'  \link[=pinpointsmsvoicev2_delete_registration_field_value]{delete_registration_field_value} \tab Delete the value in a registration form field\cr
 #'  \link[=pinpointsmsvoicev2_delete_text_message_spend_limit_override]{delete_text_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending text messages\cr
+#'  \link[=pinpointsmsvoicev2_delete_verified_destination_number]{delete_verified_destination_number} \tab Delete a verified destination phone number\cr
 #'  \link[=pinpointsmsvoicev2_delete_voice_message_spend_limit_override]{delete_voice_message_spend_limit_override} \tab Deletes an account level monthly spend limit override for sending voice messages\cr
 #'  \link[=pinpointsmsvoicev2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your Amazon Web Services account\cr
 #'  \link[=pinpointsmsvoicev2_describe_account_limits]{describe_account_limits} \tab Describes the current Amazon Pinpoint SMS Voice V2 resource quotas for your account\cr
@@ -132,26 +165,43 @@ NULL
 #'  \link[=pinpointsmsvoicev2_describe_opt_out_lists]{describe_opt_out_lists} \tab Describes the specified opt-out list or all opt-out lists in your account\cr
 #'  \link[=pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers} \tab Describes the specified origination phone number, or all the phone numbers in your account\cr
 #'  \link[=pinpointsmsvoicev2_describe_pools]{describe_pools} \tab Retrieves the specified pools or all pools associated with your Amazon Web Services account\cr
+#'  \link[=pinpointsmsvoicev2_describe_registration_attachments]{describe_registration_attachments} \tab Retrieves the specified registration attachments or all registration attachments associated with your Amazon Web Services account\cr
+#'  \link[=pinpointsmsvoicev2_describe_registration_field_definitions]{describe_registration_field_definitions} \tab Retrieves the specified registration type field definitions\cr
+#'  \link[=pinpointsmsvoicev2_describe_registration_field_values]{describe_registration_field_values} \tab Retrieves the specified registration field values\cr
+#'  \link[=pinpointsmsvoicev2_describe_registrations]{describe_registrations} \tab Retrieves the specified registrations\cr
+#'  \link[=pinpointsmsvoicev2_describe_registration_section_definitions]{describe_registration_section_definitions} \tab Retrieves the specified registration section definitions\cr
+#'  \link[=pinpointsmsvoicev2_describe_registration_type_definitions]{describe_registration_type_definitions} \tab Retrieves the specified registration type definitions\cr
+#'  \link[=pinpointsmsvoicev2_describe_registration_versions]{describe_registration_versions} \tab Retrieves the specified registration version\cr
 #'  \link[=pinpointsmsvoicev2_describe_sender_ids]{describe_sender_ids} \tab Describes the specified SenderIds or all SenderIds associated with your Amazon Web Services account\cr
 #'  \link[=pinpointsmsvoicev2_describe_spend_limits]{describe_spend_limits} \tab Describes the current Amazon Pinpoint monthly spend limits for sending voice and text messages\cr
+#'  \link[=pinpointsmsvoicev2_describe_verified_destination_numbers]{describe_verified_destination_numbers} \tab Retrieves the specified verified destiona numbers\cr
 #'  \link[=pinpointsmsvoicev2_disassociate_origination_identity]{disassociate_origination_identity} \tab Removes the specified origination identity from an existing pool\cr
+#'  \link[=pinpointsmsvoicev2_discard_registration_version]{discard_registration_version} \tab Discard the current version of the registration\cr
 #'  \link[=pinpointsmsvoicev2_list_pool_origination_identities]{list_pool_origination_identities} \tab Lists all associated origination identities in your pool\cr
+#'  \link[=pinpointsmsvoicev2_list_registration_associations]{list_registration_associations} \tab Retreive all of the origination identies that are associated with a registration\cr
 #'  \link[=pinpointsmsvoicev2_list_tags_for_resource]{list_tags_for_resource} \tab List all tags associated with a resource\cr
 #'  \link[=pinpointsmsvoicev2_put_keyword]{put_keyword} \tab Creates or updates a keyword configuration on an origination phone number or pool\cr
 #'  \link[=pinpointsmsvoicev2_put_opted_out_number]{put_opted_out_number} \tab Creates an opted out destination phone number in the opt-out list\cr
+#'  \link[=pinpointsmsvoicev2_put_registration_field_value]{put_registration_field_value} \tab Creates or updates a field value for a registration\cr
 #'  \link[=pinpointsmsvoicev2_release_phone_number]{release_phone_number} \tab Releases an existing origination phone number in your account\cr
+#'  \link[=pinpointsmsvoicev2_release_sender_id]{release_sender_id} \tab Releases an existing sender ID in your account\cr
 #'  \link[=pinpointsmsvoicev2_request_phone_number]{request_phone_number} \tab Request an origination phone number for use in your account\cr
+#'  \link[=pinpointsmsvoicev2_request_sender_id]{request_sender_id} \tab Request a new sender ID that doesn't require registration\cr
+#'  \link[=pinpointsmsvoicev2_send_destination_number_verification_code]{send_destination_number_verification_code} \tab Before you can send test messages to a verified destination phone number you need to opt-in the verified destination phone number\cr
 #'  \link[=pinpointsmsvoicev2_send_text_message]{send_text_message} \tab Creates a new text message and sends it to a recipient's phone number\cr
-#'  \link[=pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a text message through Amazon Pinpoint\cr
+#'  \link[=pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a voice message through Amazon Pinpoint\cr
 #'  \link[=pinpointsmsvoicev2_set_default_message_type]{set_default_message_type} \tab Sets the default message type on a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_set_default_sender_id]{set_default_sender_id} \tab Sets default sender ID on a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_set_text_message_spend_limit_override]{set_text_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending text messages\cr
 #'  \link[=pinpointsmsvoicev2_set_voice_message_spend_limit_override]{set_voice_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending voice messages\cr
+#'  \link[=pinpointsmsvoicev2_submit_registration_version]{submit_registration_version} \tab Submit the specified registration for review and approval\cr
 #'  \link[=pinpointsmsvoicev2_tag_resource]{tag_resource} \tab Adds or overwrites only the specified tags for the specified Amazon Pinpoint SMS Voice, version 2 resource\cr
 #'  \link[=pinpointsmsvoicev2_untag_resource]{untag_resource} \tab Removes the association of the specified tags from an Amazon Pinpoint SMS Voice V2 resource\cr
 #'  \link[=pinpointsmsvoicev2_update_event_destination]{update_event_destination} \tab Updates an existing event destination in a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_update_phone_number]{update_phone_number} \tab Updates the configuration of an existing origination phone number\cr
-#'  \link[=pinpointsmsvoicev2_update_pool]{update_pool} \tab Updates the configuration of an existing pool
+#'  \link[=pinpointsmsvoicev2_update_pool]{update_pool} \tab Updates the configuration of an existing pool\cr
+#'  \link[=pinpointsmsvoicev2_update_sender_id]{update_sender_id} \tab Updates the configuration of an existing sender ID\cr
+#'  \link[=pinpointsmsvoicev2_verify_destination_number]{verify_destination_number} \tab Use the verification code that was received by the verified destination phone number to opt-in the verified destination phone number to receive more messages
 #' }
 #'
 #' @return

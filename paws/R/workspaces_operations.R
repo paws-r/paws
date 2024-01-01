@@ -528,7 +528,8 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #'             Key = "string",
 #'             Value = "string"
 #'           )
-#'         )
+#'         ),
+#'         DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE"
 #'       ),
 #'       ErrorCode = "string",
 #'       ErrorMessage = "string"
@@ -559,7 +560,8 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #'           Key = "string",
 #'           Value = "string"
 #'         )
-#'       )
+#'       ),
+#'       DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE"
 #'     )
 #'   )
 #' )
@@ -904,6 +906,12 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' 
 #' -   You don't need to specify the `PCOIP` protocol for Linux bundles
 #'     because `WSP` is the default protocol for those bundles.
+#' 
+#' -   Ensure you review your running mode to ensure you are using a
+#'     running mode that is optimal for your needs and budget. For more
+#'     information on switching running modes, see [Can I switch between
+#'     hourly and monthly
+#'     billing?](https://aws.amazon.com/workspaces/faqs/#:~:text=Q%3A%20Can%20I%20switch%20between%20hourly%20and%20monthly%20billing?)
 #'
 #' @usage
 #' workspaces_create_workspaces(Workspaces)
@@ -983,6 +991,21 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           Region = "string",
 #'           State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
 #'           Type = "PRIMARY"|"STANDBY"
+#'         )
+#'       ),
+#'       DataReplicationSettings = list(
+#'         DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE",
+#'         RecoverySnapshotTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       StandbyWorkspacesProperties = list(
+#'         list(
+#'           StandbyWorkspaceId = "string",
+#'           DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE",
+#'           RecoverySnapshotTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2979,6 +3002,21 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'           State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
 #'           Type = "PRIMARY"|"STANDBY"
 #'         )
+#'       ),
+#'       DataReplicationSettings = list(
+#'         DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE",
+#'         RecoverySnapshotTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       StandbyWorkspacesProperties = list(
+#'         list(
+#'           StandbyWorkspaceId = "string",
+#'           DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE",
+#'           RecoverySnapshotTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4063,10 +4101,12 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' Core](https://aws.amazon.com/workspaces/core/).
 #'
 #' @usage
-#' workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
+#' workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties,
+#'   DataReplication)
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
-#' @param WorkspaceProperties &#91;required&#93; The properties of the WorkSpace.
+#' @param WorkspaceProperties The properties of the WorkSpace.
+#' @param DataReplication Indicates the data replication status.
 #'
 #' @return
 #' An empty list.
@@ -4085,7 +4125,8 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'       "PCOIP"|"WSP"
 #'     ),
 #'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
-#'   )
+#'   ),
+#'   DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE"
 #' )
 #' ```
 #'
@@ -4094,14 +4135,14 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' @rdname workspaces_modify_workspace_properties
 #'
 #' @aliases workspaces_modify_workspace_properties
-workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspaceProperties) {
+workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspaceProperties = NULL, DataReplication = NULL) {
   op <- new_operation(
     name = "ModifyWorkspaceProperties",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$modify_workspace_properties_input(WorkspaceId = WorkspaceId, WorkspaceProperties = WorkspaceProperties)
+  input <- .workspaces$modify_workspace_properties_input(WorkspaceId = WorkspaceId, WorkspaceProperties = WorkspaceProperties, DataReplication = DataReplication)
   output <- .workspaces$modify_workspace_properties_output()
   config <- get_config()
   svc <- .workspaces$service(config)

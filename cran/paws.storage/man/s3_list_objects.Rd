@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_objects}
 \alias{s3_list_objects}
-\title{Returns some or all (up to 1,000) of the objects in a bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_list_objects(
   Bucket,
@@ -19,17 +19,33 @@ s3_list_objects(
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the objects.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -54,15 +70,15 @@ fewer keys but will never contain more.}
 list objects request. Bucket owners need not specify this parameter in
 their requests.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{OptionalObjectAttributes}{Specifies the optional fields that you want returned in the response.
 Fields that you do not specify are not returned.}
 }
 \description{
-Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain valid or invalid XML. Be sure to design your application to parse the contents of the response and handle it appropriately.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_objects/} for full documentation.
 }

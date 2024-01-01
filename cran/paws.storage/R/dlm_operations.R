@@ -3,11 +3,10 @@
 #' @include dlm_service.R
 NULL
 
-#' Creates a policy to manage the lifecycle of the specified Amazon Web
-#' Services resources
+#' Creates an Amazon Data Lifecycle Manager lifecycle policy
 #'
 #' @description
-#' Creates a policy to manage the lifecycle of the specified Amazon Web Services resources. You can create up to 100 lifecycle policies.
+#' Creates an Amazon Data Lifecycle Manager lifecycle policy. Amazon Data Lifecycle Manager supports the following policy types:
 #'
 #' See [https://www.paws-r-sdk.com/docs/dlm_create_lifecycle_policy/](https://www.paws-r-sdk.com/docs/dlm_create_lifecycle_policy/) for full documentation.
 #'
@@ -15,21 +14,83 @@ NULL
 #' operations specified by the lifecycle policy.
 #' @param Description &#91;required&#93; A description of the lifecycle policy. The characters ^\[0-9A-Za-z
 #' _-\]+$ are supported.
-#' @param State &#91;required&#93; The desired activation state of the lifecycle policy after creation.
-#' @param PolicyDetails &#91;required&#93; The configuration details of the lifecycle policy.
+#' @param State &#91;required&#93; The activation state of the lifecycle policy after creation.
+#' @param PolicyDetails The configuration details of the lifecycle policy.
+#' 
+#' If you create a default policy, you can specify the request parameters
+#' either in the request body, or in the PolicyDetails request structure,
+#' but not both.
 #' @param Tags The tags to apply to the lifecycle policy during creation.
+#' @param DefaultPolicy **\[Default policies only\]** Specify the type of default policy to
+#' create.
+#' 
+#' -   To create a default policy for EBS snapshots, that creates snapshots
+#'     of all volumes in the Region that do not have recent backups,
+#'     specify `VOLUME`.
+#' 
+#' -   To create a default policy for EBS-backed AMIs, that creates
+#'     EBS-backed AMIs from all instances in the Region that do not have
+#'     recent backups, specify `INSTANCE`.
+#' @param CreateInterval **\[Default policies only\]** Specifies how often the policy should run
+#' and create snapshots or AMIs. The creation frequency can range from 1 to
+#' 7 days. If you do not specify a value, the default is 1.
+#' 
+#' Default: 1
+#' @param RetainInterval **\[Default policies only\]** Specifies how long the policy should
+#' retain snapshots or AMIs before deleting them. The retention period can
+#' range from 2 to 14 days, but it must be greater than the creation
+#' frequency to ensure that the policy retains at least 1 snapshot or AMI
+#' at any given time. If you do not specify a value, the default is 7.
+#' 
+#' Default: 7
+#' @param CopyTags **\[Default policies only\]** Indicates whether the policy should copy
+#' tags from the source resource to the snapshot or AMI. If you do not
+#' specify a value, the default is `false`.
+#' 
+#' Default: false
+#' @param ExtendDeletion **\[Default policies only\]** Defines the snapshot or AMI retention
+#' behavior for the policy if the source volume or instance is deleted, or
+#' if the policy enters the error, disabled, or deleted state.
+#' 
+#' By default (**ExtendDeletion=false**):
+#' 
+#' -   If a source resource is deleted, Amazon Data Lifecycle Manager will
+#'     continue to delete previously created snapshots or AMIs, up to but
+#'     not including the last one, based on the specified retention period.
+#'     If you want Amazon Data Lifecycle Manager to delete all snapshots or
+#'     AMIs, including the last one, specify `true`.
+#' 
+#' -   If a policy enters the error, disabled, or deleted state, Amazon
+#'     Data Lifecycle Manager stops deleting snapshots and AMIs. If you
+#'     want Amazon Data Lifecycle Manager to continue deleting snapshots or
+#'     AMIs, including the last one, if the policy enters one of these
+#'     states, specify `true`.
+#' 
+#' If you enable extended deletion (**ExtendDeletion=true**), you override
+#' both default behaviors simultaneously.
+#' 
+#' If you do not specify a value, the default is `false`.
+#' 
+#' Default: false
+#' @param CrossRegionCopyTargets **\[Default policies only\]** Specifies destination Regions for snapshot
+#' or AMI copies. You can specify up to 3 destination Regions. If you do
+#' not want to create cross-Region copies, omit this parameter.
+#' @param Exclusions **\[Default policies only\]** Specifies exclusion parameters for volumes
+#' or instances for which you do not want to create snapshots or AMIs. The
+#' policy will not create snapshots or AMIs for target resources that match
+#' any of the specified exclusion parameters.
 #'
 #' @keywords internal
 #'
 #' @rdname dlm_create_lifecycle_policy
-dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, PolicyDetails, Tags = NULL) {
+dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, PolicyDetails = NULL, Tags = NULL, DefaultPolicy = NULL, CreateInterval = NULL, RetainInterval = NULL, CopyTags = NULL, ExtendDeletion = NULL, CrossRegionCopyTargets = NULL, Exclusions = NULL) {
   op <- new_operation(
     name = "CreateLifecyclePolicy",
     http_method = "POST",
     http_path = "/policies",
     paginator = list()
   )
-  input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags)
+  input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags, DefaultPolicy = DefaultPolicy, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$create_lifecycle_policy_output()
   config <- get_config()
   svc <- .dlm$service(config)
@@ -56,7 +117,7 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
   op <- new_operation(
     name = "DeleteLifecyclePolicy",
     http_method = "DELETE",
-    http_path = "/policies/{policyId}/",
+    http_path = "/policies/{policyId}",
     paginator = list()
   )
   input <- .dlm$delete_lifecycle_policy_input(PolicyId = PolicyId)
@@ -89,18 +150,26 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' 
 #' These user-defined tags are added in addition to the Amazon Web
 #' Services-added lifecycle tags.
+#' @param DefaultPolicyType **\[Default policies only\]** Specifies the type of default policy to
+#' get. Specify one of the following:
+#' 
+#' -   `VOLUME` - To get only the default policy for EBS snapshots
+#' 
+#' -   `INSTANCE` - To get only the default policy for EBS-backed AMIs
+#' 
+#' -   `ALL` - To get all default policies
 #'
 #' @keywords internal
 #'
 #' @rdname dlm_get_lifecycle_policies
-dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceTypes = NULL, TargetTags = NULL, TagsToAdd = NULL) {
+dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceTypes = NULL, TargetTags = NULL, TagsToAdd = NULL, DefaultPolicyType = NULL) {
   op <- new_operation(
     name = "GetLifecyclePolicies",
     http_method = "GET",
     http_path = "/policies",
     paginator = list()
   )
-  input <- .dlm$get_lifecycle_policies_input(PolicyIds = PolicyIds, State = State, ResourceTypes = ResourceTypes, TargetTags = TargetTags, TagsToAdd = TagsToAdd)
+  input <- .dlm$get_lifecycle_policies_input(PolicyIds = PolicyIds, State = State, ResourceTypes = ResourceTypes, TargetTags = TargetTags, TagsToAdd = TagsToAdd, DefaultPolicyType = DefaultPolicyType)
   output <- .dlm$get_lifecycle_policies_output()
   config <- get_config()
   svc <- .dlm$service(config)
@@ -126,7 +195,7 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
   op <- new_operation(
     name = "GetLifecyclePolicy",
     http_method = "GET",
-    http_path = "/policies/{policyId}/",
+    http_path = "/policies/{policyId}",
     paginator = list()
   )
   input <- .dlm$get_lifecycle_policy_input(PolicyId = PolicyId)
@@ -242,18 +311,57 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description A description of the lifecycle policy.
 #' @param PolicyDetails The configuration of the lifecycle policy. You cannot update the policy
 #' type or the resource type.
+#' @param CreateInterval **\[Default policies only\]** Specifies how often the policy should run
+#' and create snapshots or AMIs. The creation frequency can range from 1 to
+#' 7 days.
+#' @param RetainInterval **\[Default policies only\]** Specifies how long the policy should
+#' retain snapshots or AMIs before deleting them. The retention period can
+#' range from 2 to 14 days, but it must be greater than the creation
+#' frequency to ensure that the policy retains at least 1 snapshot or AMI
+#' at any given time.
+#' @param CopyTags **\[Default policies only\]** Indicates whether the policy should copy
+#' tags from the source resource to the snapshot or AMI.
+#' @param ExtendDeletion **\[Default policies only\]** Defines the snapshot or AMI retention
+#' behavior for the policy if the source volume or instance is deleted, or
+#' if the policy enters the error, disabled, or deleted state.
+#' 
+#' By default (**ExtendDeletion=false**):
+#' 
+#' -   If a source resource is deleted, Amazon Data Lifecycle Manager will
+#'     continue to delete previously created snapshots or AMIs, up to but
+#'     not including the last one, based on the specified retention period.
+#'     If you want Amazon Data Lifecycle Manager to delete all snapshots or
+#'     AMIs, including the last one, specify `true`.
+#' 
+#' -   If a policy enters the error, disabled, or deleted state, Amazon
+#'     Data Lifecycle Manager stops deleting snapshots and AMIs. If you
+#'     want Amazon Data Lifecycle Manager to continue deleting snapshots or
+#'     AMIs, including the last one, if the policy enters one of these
+#'     states, specify `true`.
+#' 
+#' If you enable extended deletion (**ExtendDeletion=true**), you override
+#' both default behaviors simultaneously.
+#' 
+#' Default: false
+#' @param CrossRegionCopyTargets **\[Default policies only\]** Specifies destination Regions for snapshot
+#' or AMI copies. You can specify up to 3 destination Regions. If you do
+#' not want to create cross-Region copies, omit this parameter.
+#' @param Exclusions **\[Default policies only\]** Specifies exclusion parameters for volumes
+#' or instances for which you do not want to create snapshots or AMIs. The
+#' policy will not create snapshots or AMIs for target resources that match
+#' any of the specified exclusion parameters.
 #'
 #' @keywords internal
 #'
 #' @rdname dlm_update_lifecycle_policy
-dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State = NULL, Description = NULL, PolicyDetails = NULL) {
+dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State = NULL, Description = NULL, PolicyDetails = NULL, CreateInterval = NULL, RetainInterval = NULL, CopyTags = NULL, ExtendDeletion = NULL, CrossRegionCopyTargets = NULL, Exclusions = NULL) {
   op <- new_operation(
     name = "UpdateLifecyclePolicy",
     http_method = "PATCH",
     http_path = "/policies/{policyId}",
     paginator = list()
   )
-  input <- .dlm$update_lifecycle_policy_input(PolicyId = PolicyId, ExecutionRoleArn = ExecutionRoleArn, State = State, Description = Description, PolicyDetails = PolicyDetails)
+  input <- .dlm$update_lifecycle_policy_input(PolicyId = PolicyId, ExecutionRoleArn = ExecutionRoleArn, State = State, Description = Description, PolicyDetails = PolicyDetails, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$update_lifecycle_policy_output()
   config <- get_config()
   svc <- .dlm$service(config)

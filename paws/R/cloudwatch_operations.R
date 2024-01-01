@@ -1986,7 +1986,7 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #'   LastUpdateDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   OutputFormat = "json"|"opentelemetry0.7",
+#'   OutputFormat = "json"|"opentelemetry0.7"|"opentelemetry1.0",
 #'   StatisticsConfigurations = list(
 #'     list(
 #'       IncludeMetrics = list(
@@ -2309,7 +2309,7 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
 #'       Name = "string",
 #'       FirehoseArn = "string",
 #'       State = "string",
-#'       OutputFormat = "json"|"opentelemetry0.7"
+#'       OutputFormat = "json"|"opentelemetry0.7"|"opentelemetry1.0"
 #'     )
 #'   )
 #' )
@@ -3323,9 +3323,9 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' specify either `MetricName` or a `Metrics` array.
 #' 
 #' If you are creating an alarm based on a math expression, you cannot
-#' specify this parameter, or any of the `Dimensions`, `Period`,
-#' `Namespace`, `Statistic`, or `ExtendedStatistic` parameters. Instead,
-#' you specify all this information in the `Metrics` array.
+#' specify this parameter, or any of the `Namespace`, `Dimensions`,
+#' `Period`, `Unit`, `Statistic`, or `ExtendedStatistic` parameters.
+#' Instead, you specify all this information in the `Metrics` array.
 #' @param Namespace The namespace for the metric associated specified in `MetricName`.
 #' @param Statistic The statistic for the metric specified in `MetricName`, other than
 #' percentile. For percentile statistics, use `ExtendedStatistic`. When you
@@ -3393,7 +3393,10 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' number of bytes that an instance receives on all network interfaces. You
 #' can also specify a unit when you create a custom metric. Units help
 #' provide conceptual meaning to your data. Metric data points that specify
-#' a unit of measure, such as Percent, are aggregated separately.
+#' a unit of measure, such as Percent, are aggregated separately. If you
+#' are creating an alarm based on a metric math expression, you can specify
+#' the unit for each metric (if needed) within the objects in the `Metrics`
+#' array.
 #' 
 #' If you don't specify `Unit`, CloudWatch retrieves all unit types that
 #' have been published for the metric and attempts to evaluate the alarm.
@@ -3466,11 +3469,12 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' for this object in the array. For more information, see
 #' [MetricDataQuery](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html).
 #' 
-#' If you use the `Metrics` parameter, you cannot include the `MetricName`,
-#' `Dimensions`, `Period`, `Namespace`, `Statistic`, or `ExtendedStatistic`
-#' parameters of [`put_metric_alarm`][cloudwatch_put_metric_alarm] in the
-#' same operation. Instead, you retrieve the metrics you are using in your
-#' math expression as part of the `Metrics` array.
+#' If you use the `Metrics` parameter, you cannot include the `Namespace`,
+#' `MetricName`, `Dimensions`, `Period`, `Unit`, `Statistic`, or
+#' `ExtendedStatistic` parameters of
+#' [`put_metric_alarm`][cloudwatch_put_metric_alarm] in the same operation.
+#' Instead, you retrieve the metrics you are using in your math expression
+#' as part of the `Metrics` array.
 #' @param Tags A list of key-value pairs to associate with the alarm. You can associate
 #' as many as 50 tags with an alarm. To be able to associate tags with the
 #' alarm when you create the alarm, you must have the
@@ -3791,9 +3795,9 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' -   firehose:PutRecord
 #' 
 #' -   firehose:PutRecordBatch
-#' @param OutputFormat &#91;required&#93; The output format for the stream. Valid values are `json` and
-#' `opentelemetry0.7`. For more information about metric stream output
-#' formats, see [Metric streams output
+#' @param OutputFormat &#91;required&#93; The output format for the stream. Valid values are `json`,
+#' `opentelemetry1.0`, and `opentelemetry0.7`. For more information about
+#' metric stream output formats, see [Metric streams output
 #' formats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html).
 #' @param Tags A list of key-value pairs to associate with the metric stream. You can
 #' associate as many as 50 tags with a metric stream.
@@ -3820,8 +3824,8 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' additional statistic that is supported by CloudWatch, listed in
 #' [CloudWatch statistics
 #' definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/).
-#' If the `OutputFormat` is `opentelemetry0.7`, you can stream percentile
-#' statistics such as p95, p99.9, and so on.
+#' If the `OutputFormat` is `opentelemetry1.0` or `opentelemetry0.7`, you
+#' can stream percentile statistics such as p95, p99.9, and so on.
 #' @param IncludeLinkedAccountsMetrics If you are creating a metric stream in a monitoring account, specify
 #' `true` to include metrics from source accounts in the metric stream.
 #'
@@ -3855,7 +3859,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #'   ),
 #'   FirehoseArn = "string",
 #'   RoleArn = "string",
-#'   OutputFormat = "json"|"opentelemetry0.7",
+#'   OutputFormat = "json"|"opentelemetry0.7"|"opentelemetry1.0",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",

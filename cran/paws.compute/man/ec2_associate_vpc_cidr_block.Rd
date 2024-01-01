@@ -19,7 +19,7 @@ ec2_associate_vpc_cidr_block(
 }
 \arguments{
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
-the VPC. You cannot specify the range of IPv6 addresses, or the size of
+the VPC. You cannot specify the range of IPv6 addresses or the size of
 the CIDR block.}
 
 \item{CidrBlock}{An IPv4 CIDR block to associate with the VPC.}
@@ -61,7 +61,7 @@ IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?}
 in the \emph{Amazon VPC IPAM User Guide}.}
 }
 \description{
-Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you provisioned through bring your own IP addresses (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}). The IPv6 CIDR block size is fixed at /56.
+Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you provisioned through bring your own IP addresses (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_associate_vpc_cidr_block/} for full documentation.
 }

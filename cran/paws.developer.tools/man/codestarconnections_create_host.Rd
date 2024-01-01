@@ -28,7 +28,7 @@ it is created.}
 configured and the infrastructure to be represented by the host must
 already be connected to the VPC.}
 
-\item{Tags}{}
+\item{Tags}{Tags for the host to be created.}
 }
 \description{
 Creates a resource that represents the infrastructure where a third-party provider is installed. The host is used when you create connections to an installed third-party provider type, such as GitHub Enterprise Server. You create one host for all connections to that provider.

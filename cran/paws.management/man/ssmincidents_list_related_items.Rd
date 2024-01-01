@@ -16,7 +16,8 @@ listed related items.}
 
 \item{maxResults}{The maximum number of related items per page.}
 
-\item{nextToken}{The pagination token to continue to the next page of results.}
+\item{nextToken}{The pagination token for the next set of items to return. (You received
+this token from a previous call.)}
 }
 \description{
 List all related items for an incident record.

@@ -4,7 +4,7 @@
 \alias{rds_start_db_instance}
 \title{Starts an Amazon RDS DB instance that was stopped using the Amazon Web
 Services console, the stop-db-instance CLI command, or the
-StopDBInstance action}
+StopDBInstance operation}
 \usage{
 rds_start_db_instance(DBInstanceIdentifier)
 }
@@ -12,7 +12,7 @@ rds_start_db_instance(DBInstanceIdentifier)
 \item{DBInstanceIdentifier}{[required] The user-supplied instance identifier.}
 }
 \description{
-Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action.
+Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the \code{\link[=rds_stop_db_instance]{stop_db_instance}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_start_db_instance/} for full documentation.
 }

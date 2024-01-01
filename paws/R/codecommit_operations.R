@@ -464,11 +464,20 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
 #'       ),
 #'       cloneUrlHttp = "string",
 #'       cloneUrlSsh = "string",
-#'       Arn = "string"
+#'       Arn = "string",
+#'       kmsKeyId = "string"
 #'     )
 #'   ),
 #'   repositoriesNotFound = list(
 #'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       repositoryId = "string",
+#'       repositoryName = "string",
+#'       errorCode = "EncryptionIntegrityChecksFailedException"|"EncryptionKeyAccessDeniedException"|"EncryptionKeyDisabledException"|"EncryptionKeyNotFoundException"|"EncryptionKeyUnavailableException"|"RepositoryDoesNotExistException",
+#'       errorMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1007,7 +1016,7 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #'
 #' @usage
 #' codecommit_create_repository(repositoryName, repositoryDescription,
-#'   tags)
+#'   tags, kmsKeyId)
 #'
 #' @param repositoryName &#91;required&#93; The name of the new repository to be created.
 #' 
@@ -1026,6 +1035,14 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' any application that uses this API to display the repository description
 #' on a webpage.
 #' @param tags One or more tag key-value pairs to use when tagging this repository.
+#' @param kmsKeyId The ID of the encryption key. You can view the ID of an encryption key
+#' in the KMS console, or use the KMS APIs to programmatically retrieve a
+#' key ID. For more information about acceptable values for kmsKeyID, see
+#' KeyId in the Decrypt API description in the *Key Management Service API
+#' Reference*.
+#' 
+#' If no key is specified, the default `aws/codecommit` Amazon Web Services
+#' managed key is used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1045,7 +1062,8 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #'     ),
 #'     cloneUrlHttp = "string",
 #'     cloneUrlSsh = "string",
-#'     Arn = "string"
+#'     Arn = "string",
+#'     kmsKeyId = "string"
 #'   )
 #' )
 #' ```
@@ -1057,7 +1075,8 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #'   repositoryDescription = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   kmsKeyId = "string"
 #' )
 #' ```
 #'
@@ -1066,14 +1085,14 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' @rdname codecommit_create_repository
 #'
 #' @aliases codecommit_create_repository
-codecommit_create_repository <- function(repositoryName, repositoryDescription = NULL, tags = NULL) {
+codecommit_create_repository <- function(repositoryName, repositoryDescription = NULL, tags = NULL, kmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codecommit$create_repository_input(repositoryName = repositoryName, repositoryDescription = repositoryDescription, tags = tags)
+  input <- .codecommit$create_repository_input(repositoryName = repositoryName, repositoryDescription = repositoryDescription, tags = tags, kmsKeyId = kmsKeyId)
   output <- .codecommit$create_repository_output()
   config <- get_config()
   svc <- .codecommit$service(config)
@@ -3270,7 +3289,8 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
 #'     ),
 #'     cloneUrlHttp = "string",
 #'     cloneUrlSsh = "string",
-#'     Arn = "string"
+#'     Arn = "string",
+#'     kmsKeyId = "string"
 #'   )
 #' )
 #' ```
@@ -6096,6 +6116,64 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
   return(response)
 }
 .codecommit$operations$update_repository_description <- codecommit_update_repository_description
+
+#' Updates the Key Management Service encryption key used to encrypt and
+#' decrypt a CodeCommit repository
+#'
+#' @description
+#' Updates the Key Management Service encryption key used to encrypt and
+#' decrypt a CodeCommit repository.
+#'
+#' @usage
+#' codecommit_update_repository_encryption_key(repositoryName, kmsKeyId)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository for which you want to update the KMS
+#' encryption key used to encrypt and decrypt the repository.
+#' @param kmsKeyId &#91;required&#93; The ID of the encryption key. You can view the ID of an encryption key
+#' in the KMS console, or use the KMS APIs to programmatically retrieve a
+#' key ID. For more information about acceptable values for keyID, see
+#' KeyId in the Decrypt API description in the *Key Management Service API
+#' Reference*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   repositoryId = "string",
+#'   kmsKeyId = "string",
+#'   originalKmsKeyId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_repository_encryption_key(
+#'   repositoryName = "string",
+#'   kmsKeyId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_update_repository_encryption_key
+#'
+#' @aliases codecommit_update_repository_encryption_key
+codecommit_update_repository_encryption_key <- function(repositoryName, kmsKeyId) {
+  op <- new_operation(
+    name = "UpdateRepositoryEncryptionKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$update_repository_encryption_key_input(repositoryName = repositoryName, kmsKeyId = kmsKeyId)
+  output <- .codecommit$update_repository_encryption_key_output()
+  config <- get_config()
+  svc <- .codecommit$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$update_repository_encryption_key <- codecommit_update_repository_encryption_key
 
 #' Renames a repository
 #'

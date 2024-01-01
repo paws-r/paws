@@ -26,7 +26,7 @@ eks_create_nodegroup(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster to create the node group in.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{nodegroupName}{[required] The unique name to give your node group.}
 
@@ -42,10 +42,9 @@ in the \emph{Amazon EKS User Guide}.}
 
 \item{subnets}{[required] The subnets to use for the Auto Scaling group that is created for your
 node group. If you specify \code{launchTemplate}, then don't specify
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html}{\code{SubnetId}}
-in your launch template, or the node group deployment will fail. For
-more information about using launch templates with Amazon EKS, see
-\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+\code{SubnetId} in your launch template, or the node group deployment will
+fail. For more information about using launch templates with Amazon EKS,
+see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{instanceTypes}{Specify the instance types for a node group. If you specify a GPU
@@ -85,26 +84,22 @@ Before you can launch nodes and register them into a cluster, you must
 create an IAM role for those nodes to use when they are launched. For
 more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html}{Amazon EKS node IAM role}
 in the \emph{Amazon EKS User Guide} . If you specify \code{launchTemplate}, then
-don't specify
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html}{\code{IamInstanceProfile}}
-in your launch template, or the node group deployment will fail. For
-more information about using launch templates with Amazon EKS, see
-\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+don't specify \code{IamInstanceProfile} in your launch template, or the
+node group deployment will fail. For more information about using launch
+templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{labels}{The Kubernetes labels to be applied to the nodes in the node group when
+\item{labels}{The Kubernetes \code{labels} to apply to the nodes in the node group when
 they are created.}
 
 \item{taints}{The Kubernetes taints to be applied to the nodes in the node group. For
 more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/node-taints-managed-node-groups.html}{Node taints on managed node groups}.}
 
-\item{tags}{The metadata to apply to the node group to assist with categorization
-and organization. Each tag consists of a key and an optional value. You
-define both. Node group tags do not propagate to any other resources
-associated with the node group, such as the Amazon EC2 instances or
-subnets.}
+\item{tags}{Metadata that assists with categorization and organization. Each tag
+consists of a key and an optional value. You define both. Tags don't
+propagate to any other cluster or Amazon Web Services resources.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
 \item{launchTemplate}{An object representing a node group's launch template specification. If
@@ -140,7 +135,7 @@ EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates
 in the \emph{Amazon EKS User Guide}.}
 }
 \description{
-Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster.
+Creates a managed node group for an Amazon EKS cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_create_nodegroup/} for full documentation.
 }

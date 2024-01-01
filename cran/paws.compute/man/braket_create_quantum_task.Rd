@@ -6,6 +6,7 @@
 \usage{
 braket_create_quantum_task(
   action,
+  associations = NULL,
   clientToken,
   deviceArn,
   deviceParameters = NULL,
@@ -18,6 +19,8 @@ braket_create_quantum_task(
 }
 \arguments{
 \item{action}{[required] The action associated with the task.}
+
+\item{associations}{The list of Amazon Braket resources associated with the quantum task.}
 
 \item{clientToken}{[required] The client token associated with the request.}
 

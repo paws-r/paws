@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_access_point_configuration_for_object_lambda}
 \alias{s3control_put_access_point_configuration_for_object_lambda}
-\title{Replaces configuration for an Object Lambda Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_put_access_point_configuration_for_object_lambda(
   AccountId,
@@ -19,7 +19,7 @@ Access Point.}
 \item{Configuration}{[required] Object Lambda Access Point configuration document.}
 }
 \description{
-Replaces configuration for an Object Lambda Access Point.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_put_access_point_configuration_for_object_lambda/} for full documentation.
 }

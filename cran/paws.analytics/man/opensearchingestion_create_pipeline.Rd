@@ -11,6 +11,8 @@ opensearchingestion_create_pipeline(
   PipelineConfigurationBody,
   LogPublishingOptions = NULL,
   VpcOptions = NULL,
+  BufferOptions = NULL,
+  EncryptionAtRestOptions = NULL,
   Tags = NULL
 )
 }
@@ -33,6 +35,11 @@ with \verb{\\\\n}.}
 \item{VpcOptions}{Container for the values required to configure VPC access for the
 pipeline. If you don't specify these values, OpenSearch Ingestion
 creates the pipeline with a public endpoint.}
+
+\item{BufferOptions}{Key-value pairs to configure persistent buffering for the pipeline.}
+
+\item{EncryptionAtRestOptions}{Key-value pairs to configure encryption for data that is written to a
+persistent buffer.}
 
 \item{Tags}{List of tags to add to the pipeline upon creation.}
 }

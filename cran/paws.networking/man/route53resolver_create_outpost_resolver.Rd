@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_create_outpost_resolver}
 \alias{route53resolver_create_outpost_resolver}
-\title{Creates an Route 53 Resolver on an Outpost}
+\title{Creates a Route 53 Resolver on an Outpost}
 \usage{
 route53resolver_create_outpost_resolver(
   CreatorRequestId,
@@ -35,7 +35,7 @@ must also specify a value for the \code{PreferredInstanceType}.}
 \item{Tags}{A string that helps identify the Route 53 Resolvers on Outpost.}
 }
 \description{
-Creates an Route 53 Resolver on an Outpost.
+Creates a Route 53 Resolver on an Outpost.
 
 See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_outpost_resolver/} for full documentation.
 }

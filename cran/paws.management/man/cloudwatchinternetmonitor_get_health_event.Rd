@@ -10,7 +10,7 @@ cloudwatchinternetmonitor_get_health_event(MonitorName, EventId)
 \arguments{
 \item{MonitorName}{[required] The name of the monitor.}
 
-\item{EventId}{[required] The internally generated identifier of a health event. Because \code{EventID}
+\item{EventId}{[required] The internally-generated identifier of a health event. Because \code{EventID}
 contains the forward slash (“/”) character, you must URL-encode the
 \code{EventID} field in the request URL.}
 }

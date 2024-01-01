@@ -3,9 +3,10 @@
 \name{arczonalshift_start_zonal_shift}
 \alias{arczonalshift_start_zonal_shift}
 \title{You start a zonal shift to temporarily move load balancer traffic away
-from an Availability Zone in a AWS Region, to help your application
-recover immediately, for example, from a developer's bad code deployment
-or from an AWS infrastructure failure in a single Availability Zone}
+from an Availability Zone in an Amazon Web Services Region, to help your
+application recover immediately, for example, from a developer's bad
+code deployment or from an Amazon Web Services infrastructure failure in
+a single Availability Zone}
 \usage{
 arczonalshift_start_zonal_shift(
   awayFrom,
@@ -18,7 +19,7 @@ arczonalshift_start_zonal_shift(
 \item{awayFrom}{[required] The Availability Zone that traffic is moved away from for a resource
 when you start a zonal shift. Until the zonal shift expires or you
 cancel it, traffic for the resource is instead moved to other
-Availability Zones in the AWS Region.}
+Availability Zones in the Amazon Web Services Region.}
 
 \item{comment}{[required] A comment that you enter about the zonal shift. Only the latest comment
 is retained; no comment history is maintained. A new comment overwrites
@@ -36,19 +37,22 @@ restore traffic to the Availability Zone.
 
 To set a length of time for a zonal shift to be active, specify a whole
 number, and then one of the following, with no space:
+\itemize{
+\item \strong{A lowercase letter m:} To specify that the value is in minutes.
+\item \strong{A lowercase letter h:} To specify that the value is in hours.
+}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <ul> <li> <p> <b>A lowercase letter m:</b> To specify that the value is in minutes.</p> </li> <li> <p> <b>A lowercase letter h:</b> To specify that the value is in hours.</p> </li> </ul> <p>For example: <code>20h</code> means the zonal shift expires in 20 hours. <code>120m</code> means the zonal shift expires in 120 minutes (2 hours).</p>
-}\if{html}{\out{</div>}}}
+For example: \verb{20h} means the zonal shift expires in 20 hours. \verb{120m}
+means the zonal shift expires in 120 minutes (2 hours).}
 
-\item{resourceIdentifier}{[required] The identifier for the resource to include in a zonal shift. The
+\item{resourceIdentifier}{[required] The identifier for the resource to shift away traffic for. The
 identifier is the Amazon Resource Name (ARN) for the resource.
 
-At this time, you can only start a zonal shift for Network Load
-Balancers and Application Load Balancers with cross-zone load balancing
-turned off.}
+At this time, supported resources are Network Load Balancers and
+Application Load Balancers with cross-zone load balancing turned off.}
 }
 \description{
-You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in a AWS Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an AWS infrastructure failure in a single Availability Zone. You can start a zonal shift in Route 53 ARC only for managed resources in your account in an AWS Region. Resources are automatically registered with Route 53 ARC by AWS services.
+You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone. You can start a zonal shift in Route 53 ARC only for managed resources in your Amazon Web Services account in an Amazon Web Services Region. Resources are automatically registered with Route 53 ARC by Amazon Web Services services.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_start_zonal_shift/} for full documentation.
 }

@@ -3,37 +3,36 @@
 \name{eks_list_clusters}
 \alias{eks_list_clusters}
 \title{Lists the Amazon EKS clusters in your Amazon Web Services account in the
-specified Region}
+specified Amazon Web Services Region}
 \usage{
 eks_list_clusters(maxResults = NULL, nextToken = NULL, include = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of cluster results returned by
-\code{\link[=eks_list_clusters]{list_clusters}} in paginated output. When you use
-this parameter, \code{\link[=eks_list_clusters]{list_clusters}} returns only
-\code{maxResults} results in a single page along with a \code{nextToken} response
+\item{maxResults}{The maximum number of results, returned in paginated output. You receive
+\code{maxResults} in a single page, along with a \code{nextToken} response
 element. You can see the remaining results of the initial request by
-sending another \code{\link[=eks_list_clusters]{list_clusters}} request with the
-returned \code{nextToken} value. This value can be between 1 and 100. If you
-don't use this parameter, \code{\link[=eks_list_clusters]{list_clusters}} returns
-up to 100 results and a \code{nextToken} value if applicable.}
+sending another request with the returned \code{nextToken} value. This value
+can be between 1 and 100. If you don't use this parameter, 100 results
+and a \code{nextToken} value, if applicable, are returned.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{\link[=eks_list_clusters]{list_clusters}} request where \code{maxResults} was used
-and the results exceeded the value of that parameter. Pagination
-continues from the end of the previous results that returned the
-\code{nextToken} value.
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated request, where
+\code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value. This value is null when there are
+no more results to return.
 
 This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
 \item{include}{Indicates whether external clusters are included in the returned list.
-Use '\code{all}' to return connected clusters, or blank to return only Amazon
-EKS clusters. '\code{all}' must be in lowercase otherwise an error occurs.}
+Use '\code{all}' to return
+\url{https://docs.aws.amazon.com/eks/latest/userguide/eks-connector.html}connected
+clusters, or blank to return only Amazon EKS clusters. '\code{all}' must be
+in lowercase otherwise an error occurs.}
 }
 \description{
-Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region.
+Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_list_clusters/} for full documentation.
 }

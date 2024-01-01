@@ -2,19 +2,19 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_lifecycle}
 \alias{s3_delete_bucket_lifecycle}
-\title{Deletes the lifecycle configuration from the specified bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_delete_bucket_lifecycle(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name of the lifecycle to delete.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Deletes the lifecycle configuration from the specified bucket. Amazon S3 removes all the lifecycle configuration rules in the lifecycle subresource associated with the bucket. Your objects never expire, and Amazon S3 no longer automatically deletes any objects on the basis of rules contained in the deleted lifecycle configuration.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_lifecycle/} for full documentation.
 }

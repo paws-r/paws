@@ -15,12 +15,11 @@ eks_update_nodegroup_config(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster that the managed node group resides
-in.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{nodegroupName}{[required] The name of the managed node group to update.}
 
-\item{labels}{The Kubernetes labels to be applied to the nodes in the node group after
+\item{labels}{The Kubernetes \code{labels} to apply to the nodes in the node group after
 the update.}
 
 \item{taints}{The Kubernetes taints to be applied to the nodes in the node group after
@@ -31,7 +30,7 @@ update.}
 
 \item{updateConfig}{The node group update configuration.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
 \description{

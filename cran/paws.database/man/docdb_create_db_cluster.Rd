@@ -24,7 +24,8 @@ docdb_create_db_cluster(
   PreSignedUrl = NULL,
   EnableCloudwatchLogsExports = NULL,
   DeletionProtection = NULL,
-  GlobalClusterIdentifier = NULL
+  GlobalClusterIdentifier = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -153,6 +154,20 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 
 \item{GlobalClusterIdentifier}{The cluster identifier of the new global cluster.}
+
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+For information on storage types for Amazon DocumentDB clusters, see
+Cluster storage configurations in the \emph{Amazon DocumentDB Developer
+Guide}.
+
+Valid values for storage type - \code{standard | iopt1}
+
+Default value is \code{standard }
+
+When you create a DocumentDB DB cluster with the storage type set to
+\code{iopt1}, the storage type is returned in the response. The storage type
+isn't returned when you set it to \code{standard}.}
 }
 \description{
 Creates a new Amazon DocumentDB cluster.

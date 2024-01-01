@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_public_access_block}
 \alias{s3control_get_public_access_block}
-\title{Retrieves the PublicAccessBlock configuration for an Amazon Web Services
-account}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_get_public_access_block(AccountId)
 }
@@ -12,7 +11,7 @@ s3control_get_public_access_block(AccountId)
 \code{PublicAccessBlock} configuration you want to retrieve.}
 }
 \description{
-Retrieves the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_public_access_block/} for full documentation.
 }

@@ -2432,7 +2432,15 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -2456,11 +2464,40 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'   Name = "string",
 #'   FunctionConfig = list(
 #'     Comment = "string",
-#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'     KeyValueStoreAssociations = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "string"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   FunctionCode = raw
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Use the following command to create a function.
+#' svc$create_function(
+#'   FunctionCode = "function-code.js",
+#'   FunctionConfig = list(
+#'     Comment = "my-function-comment",
+#'     KeyValueStoreAssociations = list(
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "arn:aws:cloudfront::123456789012:key-value-st..."
+#'         )
+#'       ),
+#'       Quantity = 1L
+#'     ),
+#'     Runtime = "cloudfront-js-2.0"
+#'   ),
+#'   Name = "my-function-name"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2638,6 +2675,89 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
   return(response)
 }
 .cloudfront$operations$create_key_group <- cloudfront_create_key_group
+
+#' Specifies the Key Value Store resource to add to your account
+#'
+#' @description
+#' Specifies the Key Value Store resource to add to your account. In your
+#' account, the Key Value Store names must be unique. You can also import
+#' Key Value Store data in JSON format from an S3 bucket by providing a
+#' valid `ImportSource` that you own.
+#'
+#' @usage
+#' cloudfront_create_key_value_store(Name, Comment, ImportSource)
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store. The maximum length of the name is 32
+#' characters.
+#' @param Comment The comment of the Key Value Store.
+#' @param ImportSource The S3 bucket that provides the source for the import. The source must
+#' be in a valid JSON format.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyValueStore = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Comment = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string",
+#'   Location = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_key_value_store(
+#'   Name = "string",
+#'   Comment = "string",
+#'   ImportSource = list(
+#'     SourceType = "S3",
+#'     SourceARN = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Use the following command to create a KeyValueStore.
+#' svc$create_key_value_store(
+#'   Comment = "my-key-valuestore-comment",
+#'   ImportSource = list(
+#'     SourceARN = "arn:aws:s3:::my-bucket/validJSON.json",
+#'     SourceType = "S3"
+#'   ),
+#'   Name = "my-keyvaluestore-name"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_key_value_store
+#'
+#' @aliases cloudfront_create_key_value_store
+cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource = NULL) {
+  op <- new_operation(
+    name = "CreateKeyValueStore",
+    http_method = "POST",
+    http_path = "/2020-05-31/key-value-store/",
+    paginator = list()
+  )
+  input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource)
+  output <- .cloudfront$create_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_key_value_store <- cloudfront_create_key_value_store
 
 #' Enables additional CloudWatch metrics for the specified CloudFront
 #' distribution
@@ -3997,6 +4117,59 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_key_group <- cloudfront_delete_key_group
 
+#' Specifies the Key Value Store to delete
+#'
+#' @description
+#' Specifies the Key Value Store to delete.
+#'
+#' @usage
+#' cloudfront_delete_key_value_store(Name, IfMatch)
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store.
+#' @param IfMatch &#91;required&#93; The Key Value Store to delete, if a match occurs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_key_value_store(
+#'   Name = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Use the following command to delete a KeyValueStore.
+#' svc$delete_key_value_store(
+#'   IfMatch = "ETVPDKIKX0DER",
+#'   Name = "my-keyvaluestore-name"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_key_value_store
+#'
+#' @aliases cloudfront_delete_key_value_store
+cloudfront_delete_key_value_store <- function(Name, IfMatch) {
+  op <- new_operation(
+    name = "DeleteKeyValueStore",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/key-value-store/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$delete_key_value_store_input(Name = Name, IfMatch = IfMatch)
+  output <- .cloudfront$delete_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_key_value_store <- cloudfront_delete_key_value_store
+
 #' Disables additional CloudWatch metrics for the specified CloudFront
 #' distribution
 #'
@@ -4427,7 +4600,15 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -4473,6 +4654,71 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
   return(response)
 }
 .cloudfront$operations$describe_function <- cloudfront_describe_function
+
+#' Specifies the Key Value Store and its configuration
+#'
+#' @description
+#' Specifies the Key Value Store and its configuration.
+#'
+#' @usage
+#' cloudfront_describe_key_value_store(Name)
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyValueStore = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Comment = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_key_value_store(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Use the following command to describe a KeyValueStore.
+#' svc$describe_key_value_store(
+#'   Name = "my-keyvaluestore-name"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_describe_key_value_store
+#'
+#' @aliases cloudfront_describe_key_value_store
+cloudfront_describe_key_value_store <- function(Name) {
+  op <- new_operation(
+    name = "DescribeKeyValueStore",
+    http_method = "GET",
+    http_path = "/2020-05-31/key-value-store/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$describe_key_value_store_input(Name = Name)
+  output <- .cloudfront$describe_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$describe_key_value_store <- cloudfront_describe_key_value_store
 
 #' Gets a cache policy, including the following metadata:
 #'
@@ -9253,7 +9499,15 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #'         Status = "string",
 #'         FunctionConfig = list(
 #'           Comment = "string",
-#'           Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'           Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'           KeyValueStoreAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 KeyValueStoreARN = "string"
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         FunctionMetadata = list(
 #'           FunctionARN = "string",
@@ -9455,6 +9709,84 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
   return(response)
 }
 .cloudfront$operations$list_key_groups <- cloudfront_list_key_groups
+
+#' Specifies the Key Value Stores to list
+#'
+#' @description
+#' Specifies the Key Value Stores to list.
+#'
+#' @usage
+#' cloudfront_list_key_value_stores(Marker, MaxItems, Status)
+#'
+#' @param Marker The marker associated with the Key Value Stores list.
+#' @param MaxItems The maximum number of items in the Key Value Stores list.
+#' @param Status The status of the request for the Key Value Stores list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyValueStoreList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Name = "string",
+#'         Id = "string",
+#'         Comment = "string",
+#'         ARN = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_key_value_stores(
+#'   Marker = "string",
+#'   MaxItems = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following command retrieves a list of KeyValueStores with READY
+#' # status.
+#' svc$list_key_value_stores(
+#'   Marker = "",
+#'   MaxItems = "100",
+#'   Status = "READY"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_key_value_stores
+#'
+#' @aliases cloudfront_list_key_value_stores
+cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListKeyValueStores",
+    http_method = "GET",
+    http_path = "/2020-05-31/key-value-store",
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "KeyValueStoreList.NextMarker", result_key = "KeyValueStoreList.Items")
+  )
+  input <- .cloudfront$list_key_value_stores_input(Marker = Marker, MaxItems = MaxItems, Status = Status)
+  output <- .cloudfront$list_key_value_stores_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_key_value_stores <- cloudfront_list_key_value_stores
 
 #' Gets the list of CloudFront origin access controls in this Amazon Web
 #' Services account
@@ -10157,7 +10489,15 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -10298,7 +10638,15 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #'       Status = "string",
 #'       FunctionConfig = list(
 #'         Comment = "string",
-#'         Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'         Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'         KeyValueStoreAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               KeyValueStoreARN = "string"
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       FunctionMetadata = list(
 #'         FunctionARN = "string",
@@ -12113,7 +12461,15 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'       KeyValueStoreAssociations = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             KeyValueStoreARN = "string"
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -12137,11 +12493,41 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'   IfMatch = "string",
 #'   FunctionConfig = list(
 #'     Comment = "string",
-#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
+#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0",
+#'     KeyValueStoreAssociations = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "string"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   FunctionCode = raw
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Use the following command to update a function.
+#' svc$update_function(
+#'   FunctionCode = "function-code-changed.js",
+#'   FunctionConfig = list(
+#'     Comment = "my-changed-comment",
+#'     KeyValueStoreAssociations = list(
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "arn:aws:cloudfront::123456789012:key-value-st..."
+#'         )
+#'       ),
+#'       Quantity = 1L
+#'     ),
+#'     Runtime = "cloudfront-js-2.0"
+#'   ),
+#'   IfMatch = "ETVPDKIKX0DER",
+#'   Name = "my-function-name"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12250,6 +12636,77 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
   return(response)
 }
 .cloudfront$operations$update_key_group <- cloudfront_update_key_group
+
+#' Specifies the Key Value Store to update
+#'
+#' @description
+#' Specifies the Key Value Store to update.
+#'
+#' @usage
+#' cloudfront_update_key_value_store(Name, Comment, IfMatch)
+#'
+#' @param Name &#91;required&#93; The name of the Key Value Store to update.
+#' @param Comment &#91;required&#93; The comment of the Key Value Store to update.
+#' @param IfMatch &#91;required&#93; The Key Value Store to update, if a match occurs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyValueStore = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     Comment = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_key_value_store(
+#'   Name = "string",
+#'   Comment = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Use the following command to update a KeyValueStore.
+#' svc$update_key_value_store(
+#'   Comment = "my-changed-comment",
+#'   IfMatch = "ETVPDKIKX0DER",
+#'   Name = "my-keyvaluestore-name"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_key_value_store
+#'
+#' @aliases cloudfront_update_key_value_store
+cloudfront_update_key_value_store <- function(Name, Comment, IfMatch) {
+  op <- new_operation(
+    name = "UpdateKeyValueStore",
+    http_method = "PUT",
+    http_path = "/2020-05-31/key-value-store/{Name}",
+    paginator = list()
+  )
+  input <- .cloudfront$update_key_value_store_input(Name = Name, Comment = Comment, IfMatch = IfMatch)
+  output <- .cloudfront$update_key_value_store_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_key_value_store <- cloudfront_update_key_value_store
 
 #' Updates a CloudFront origin access control
 #'

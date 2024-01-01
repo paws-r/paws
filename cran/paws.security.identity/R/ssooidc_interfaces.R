@@ -5,13 +5,25 @@ NULL
 
 .ssooidc$create_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string")), grantType = structure(logical(0), tags = list(type = "string")), deviceCode = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string")), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), grantType = structure(logical(0), tags = list(type = "string")), deviceCode = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ssooidc$create_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessToken = structure(logical(0), tags = list(type = "string")), tokenType = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "integer")), refreshToken = structure(logical(0), tags = list(type = "string")), idToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(accessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tokenType = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "integer")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), idToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssooidc$create_token_with_iam_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), grantType = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), assertion = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), redirectUri = structure(logical(0), tags = list(type = "string")), subjectToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), subjectTokenType = structure(logical(0), tags = list(type = "string")), requestedTokenType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssooidc$create_token_with_iam_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tokenType = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "integer")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), idToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), issuedTokenType = structure(logical(0), tags = list(type = "string")), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,13 +35,13 @@ NULL
 
 .ssooidc$register_client_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string")), clientIdIssuedAt = structure(logical(0), tags = list(type = "long")), clientSecretExpiresAt = structure(logical(0), tags = list(type = "long")), authorizationEndpoint = structure(logical(0), tags = list(type = "string")), tokenEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientIdIssuedAt = structure(logical(0), tags = list(type = "long")), clientSecretExpiresAt = structure(logical(0), tags = list(type = "long")), authorizationEndpoint = structure(logical(0), tags = list(type = "string")), tokenEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ssooidc$start_device_authorization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string")), startUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(clientId = structure(logical(0), tags = list(type = "string")), clientSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), startUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

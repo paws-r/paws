@@ -4,10 +4,10 @@
 \alias{ssoadmin_tag_resource}
 \title{Associates a set of tags with a specified resource}
 \usage{
-ssoadmin_tag_resource(InstanceArn, ResourceArn, Tags)
+ssoadmin_tag_resource(InstanceArn = NULL, ResourceArn, Tags)
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+\item{InstanceArn}{The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
 Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
 Web Services General Reference}.}

@@ -7,7 +7,7 @@
 eks_describe_addon(clusterName, addonName)
 }
 \arguments{
-\item{clusterName}{[required] The name of the cluster.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{addonName}{[required] The name of the add-on. The name must match one of the names returned by
 \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{list_addons}}

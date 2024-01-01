@@ -503,7 +503,7 @@ NULL
 
 .macie2$get_reveal_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(kmsKeyId = structure(logical(0), tags = list(locationName = "kmsKeyId", type = "string")), status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(list(kmsKeyId = structure(logical(0), tags = list(locationName = "kmsKeyId", type = "string")), status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(locationName = "configuration", type = "structure")), retrievalConfiguration = structure(list(externalId = structure(logical(0), tags = list(locationName = "externalId", type = "string")), retrievalMode = structure(logical(0), tags = list(locationName = "retrievalMode", type = "string")), roleName = structure(logical(0), tags = list(locationName = "roleName", type = "string"))), tags = list(locationName = "retrievalConfiguration", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -929,13 +929,13 @@ NULL
 
 .macie2$update_reveal_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(kmsKeyId = structure(logical(0), tags = list(locationName = "kmsKeyId", type = "string")), status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(list(kmsKeyId = structure(logical(0), tags = list(locationName = "kmsKeyId", type = "string")), status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(locationName = "configuration", type = "structure")), retrievalConfiguration = structure(list(retrievalMode = structure(logical(0), tags = list(locationName = "retrievalMode", type = "string")), roleName = structure(logical(0), tags = list(locationName = "roleName", type = "string"))), tags = list(locationName = "retrievalConfiguration", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .macie2$update_reveal_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(kmsKeyId = structure(logical(0), tags = list(locationName = "kmsKeyId", type = "string")), status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(locationName = "configuration", type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(list(kmsKeyId = structure(logical(0), tags = list(locationName = "kmsKeyId", type = "string")), status = structure(logical(0), tags = list(locationName = "status", type = "string"))), tags = list(locationName = "configuration", type = "structure")), retrievalConfiguration = structure(list(externalId = structure(logical(0), tags = list(locationName = "externalId", type = "string")), retrievalMode = structure(logical(0), tags = list(locationName = "retrievalMode", type = "string")), roleName = structure(logical(0), tags = list(locationName = "roleName", type = "string"))), tags = list(locationName = "retrievalConfiguration", type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

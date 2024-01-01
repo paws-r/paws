@@ -4,12 +4,12 @@
 \alias{codedeploy_batch_get_deployment_targets}
 \title{Returns an array of one or more targets associated with a deployment}
 \usage{
-codedeploy_batch_get_deployment_targets(deploymentId = NULL, targetIds = NULL)
+codedeploy_batch_get_deployment_targets(deploymentId, targetIds)
 }
 \arguments{
-\item{deploymentId}{The unique ID of a deployment.}
+\item{deploymentId}{[required] The unique ID of a deployment.}
 
-\item{targetIds}{The unique IDs of the deployment targets. The compute platform of the
+\item{targetIds}{[required] The unique IDs of the deployment targets. The compute platform of the
 deployment determines the type of the targets and their formats. The
 maximum number of deployment target IDs you can specify is 25.
 \itemize{

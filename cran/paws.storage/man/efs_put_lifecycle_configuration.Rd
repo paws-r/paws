@@ -2,8 +2,7 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_put_lifecycle_configuration}
 \alias{efs_put_lifecycle_configuration}
-\title{Use this action to manage EFS lifecycle management and EFS
-Intelligent-Tiering}
+\title{Use this action to manage storage for your file system}
 \usage{
 efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 }
@@ -13,12 +12,25 @@ efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 
 \item{LifecyclePolicies}{[required] An array of \code{LifecyclePolicy} objects that define the file system's
 \code{LifecycleConfiguration} object. A \code{LifecycleConfiguration} object
-informs EFS lifecycle management and EFS Intelligent-Tiering of the
-following:
+informs EFS Lifecycle management of the following:
 \itemize{
-\item When to move files in the file system from primary storage to the IA
-storage class.
-\item When to move files that are in IA storage to primary storage.
+\item \strong{\code{TransitionToIA}} – When to move files in the file system from
+primary storage (Standard storage class) into the Infrequent Access
+(IA) storage.
+\item \strong{\code{TransitionToArchive}} – When to move files in the file system
+from their current storage class (either IA or Standard storage)
+into the Archive storage.
+
+File systems cannot transition into Archive storage before
+transitioning into IA storage. Therefore, TransitionToArchive must
+either not be set or must be later than TransitionToIA.
+
+The Archive storage class is available only for file systems that
+use the Elastic Throughput mode and the General Purpose Performance
+mode.
+\item \strong{\code{TransitionToPrimaryStorageClass}} – Whether to move files in the
+file system back to primary storage (Standard storage class) after
+they are accessed in IA or Archive storage.
 }
 
 When using the \code{put-lifecycle-configuration} CLI command or the
@@ -26,12 +38,11 @@ When using the \code{put-lifecycle-configuration} CLI command or the
 action, Amazon EFS requires that each \code{LifecyclePolicy} object have only
 a single transition. This means that in a request body,
 \code{LifecyclePolicies} must be structured as an array of \code{LifecyclePolicy}
-objects, one object for each transition, \code{TransitionToIA},
-\code{TransitionToPrimaryStorageClass}. See the example requests in the
-following section for more information.}
+objects, one object for each storage transition. See the example
+requests in the following section for more information.}
 }
 \description{
-Use this action to manage EFS lifecycle management and EFS Intelligent-Tiering. A \code{LifecycleConfiguration} consists of one or more \code{LifecyclePolicy} objects that define the following:
+Use this action to manage storage for your file system. A \code{LifecycleConfiguration} consists of one or more \code{LifecyclePolicy} objects that define the following:
 
 See \url{https://www.paws-r-sdk.com/docs/efs_put_lifecycle_configuration/} for full documentation.
 }

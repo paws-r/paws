@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_describe_multi_region_access_point_operation}
 \alias{s3control_describe_multi_region_access_point_operation}
-\title{Retrieves the status of an asynchronous request to manage a Multi-Region
-Access Point}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_describe_multi_region_access_point_operation(
   AccountId,
@@ -20,7 +19,7 @@ asynchronous request. You provide this token to query about the status
 of the asynchronous action.}
 }
 \description{
-Retrieves the status of an asynchronous request to manage a Multi-Region Access Point. For more information about managing Multi-Region Access Points and how asynchronous requests work, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Managing Multi-Region Access Points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_describe_multi_region_access_point_operation/} for full documentation.
 }

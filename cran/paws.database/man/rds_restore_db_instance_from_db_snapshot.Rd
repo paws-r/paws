@@ -48,14 +48,14 @@ rds_restore_db_instance_from_db_snapshot(
 )
 }
 \arguments{
-\item{DBInstanceIdentifier}{[required] Name of the DB instance to create from the DB snapshot. This parameter
-isn't case-sensitive.
+\item{DBInstanceIdentifier}{[required] The name of the DB instance to create from the DB snapshot. This
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 63 numbers, letters, or hyphens
-\item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Must contain from 1 to 63 numbers, letters, or hyphens.
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-snapshot-id}}
@@ -64,7 +64,7 @@ Example: \code{my-snapshot-id}}
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing DBSnapshot.
+\item Must match the identifier of an existing DB snapshot.
 \item Can't be specified when \code{DBClusterSnapshotIdentifier} is specified.
 \item Must be specified when \code{DBClusterSnapshotIdentifier} isn't
 specified.
@@ -95,10 +95,12 @@ instance is a Multi-AZ deployment.
 
 Example: \verb{us-east-1a}}
 
-\item{DBSubnetGroupName}{The DB subnet group name to use for the new instance.
+\item{DBSubnetGroupName}{The name of the DB subnet group to use for the new instance.
 
-Constraints: If supplied, must match the name of an existing
-DBSubnetGroup.
+Constraints:
+\itemize{
+\item If supplied, must match the name of an existing DB subnet group.
+}
 
 Example: \code{mydbsubnetgroup}}
 
@@ -140,10 +142,11 @@ Default: Same as source.
 Valid Values: \code{license-included} | \code{bring-your-own-license} |
 \code{general-public-license}}
 
-\item{DBName}{The database name for the restored DB instance.
+\item{DBName}{The name of the database for the restored DB instance.
 
-This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
-engines. It also doesn't apply to RDS Custom DB instances.}
+This parameter only applies to RDS for Oracle and RDS for SQL Server DB
+instances. It doesn't apply to the other engines or to RDS Custom DB
+instances.}
 
 \item{Engine}{The database engine to use for the new instance.
 
@@ -157,6 +160,8 @@ snapshot.
 
 Valid Values:
 \itemize{
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -217,9 +222,9 @@ This setting doesn't apply to RDS Custom.}
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
-\item{Domain}{Specify the Active Directory directory ID to restore the DB instance in.
-The domain/ must be created prior to this operation. Currently, you can
-create only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+\item{Domain}{The Active Directory directory ID to restore the DB instance in. The
+domain/ must be created prior to this operation. Currently, you can
+create only Db2, MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
 instances in an Active Directory Domain.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
@@ -297,9 +302,9 @@ in the \emph{Amazon RDS User Guide.}
 
 This setting doesn't apply to RDS Custom.}
 
-\item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
-CloudWatch Logs. The values in the list depend on the DB engine being
-used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+\item{EnableCloudwatchLogsExports}{The list of logs for the restored DB instance to export to CloudWatch
+Logs. The values in the list depend on the DB engine. For more
+information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to RDS Custom.}
@@ -323,7 +328,7 @@ This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
-\item If supplied, must match the name of an existing DBParameterGroup.
+\item If supplied, must match the name of an existing DB parameter group.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
 \item Can't end with a hyphen or contain two consecutive hyphens.

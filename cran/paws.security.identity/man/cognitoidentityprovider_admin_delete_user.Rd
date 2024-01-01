@@ -9,7 +9,10 @@ cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete the user.}
 
-\item{Username}{[required] The user name of the user you want to delete.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 }
 \description{
 Deletes a user as an administrator. Works on any user.

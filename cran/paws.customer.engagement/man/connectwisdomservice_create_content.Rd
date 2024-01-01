@@ -21,8 +21,10 @@ idempotency of the request. If not provided, the Amazon Web Services SDK
 populates this field. For more information about idempotency, see
 \href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
-\item{knowledgeBaseId}{[required] The identifier of the knowledge base. Can be either the ID or the ARN.
-URLs cannot contain the ARN.}
+\item{knowledgeBaseId}{[required] The identifier of the knowledge base. This should not be a
+QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+resource to it. Can be either the ID or the ARN. URLs cannot contain the
+ARN.}
 
 \item{metadata}{A key/value map to store attributes without affecting tagging or
 recommendations. For example, when synchronizing data between an

@@ -30,7 +30,7 @@ see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-
 Length Constraints: Minimum length of 1. Maximum length of 256000.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a flow for the specified Amazon Connect instance.

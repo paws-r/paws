@@ -6,7 +6,7 @@ NULL
 #' Converts a recovery point to a snapshot
 #'
 #' @description
-#' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html).
+#' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/) for full documentation.
 #'
@@ -79,6 +79,8 @@ redshiftserverless_create_custom_domain_association <- function(customDomainCert
 #' characters. Valid characters are A-Z, a-z, 0-9, and hyphen(-). The first
 #' character must be a letter. The name can't contain two consecutive
 #' hyphens or end with a hyphen.
+#' @param ownerAccount The owner Amazon Web Services account for the Amazon Redshift Serverless
+#' workgroup.
 #' @param subnetIds &#91;required&#93; The unique identifers of subnets from which Amazon Redshift Serverless
 #' chooses one to deploy a VPC endpoint.
 #' @param vpcSecurityGroupIds The unique identifiers of the security group that defines the ports,
@@ -89,14 +91,14 @@ redshiftserverless_create_custom_domain_association <- function(customDomainCert
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_endpoint_access
-redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, vpcSecurityGroupIds = NULL, workgroupName) {
+redshiftserverless_create_endpoint_access <- function(endpointName, ownerAccount = NULL, subnetIds, vpcSecurityGroupIds = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateEndpointAccess",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$create_endpoint_access_input(endpointName = endpointName, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_endpoint_access_input(endpointName = endpointName, ownerAccount = ownerAccount, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds, workgroupName = workgroupName)
   output <- .redshiftserverless$create_endpoint_access_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -136,19 +138,21 @@ redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, v
 #' set, Amazon Redshift uses `adminUserPassword` for the admin user
 #' account's password.
 #' @param namespaceName &#91;required&#93; The name of the namespace.
+#' @param redshiftIdcApplicationArn The ARN for the Redshift application that integrates with IAM Identity
+#' Center.
 #' @param tags A list of tag instances.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_namespace
-redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NULL, adminUserPassword = NULL, adminUsername = NULL, dbName = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, manageAdminPassword = NULL, namespaceName, tags = NULL) {
+redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NULL, adminUserPassword = NULL, adminUsername = NULL, dbName = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, manageAdminPassword = NULL, namespaceName, redshiftIdcApplicationArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateNamespace",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$create_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, dbName = dbName, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, tags = tags)
+  input <- .redshiftserverless$create_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, dbName = dbName, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, redshiftIdcApplicationArn = redshiftIdcApplicationArn, tags = tags)
   output <- .redshiftserverless$create_namespace_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -158,10 +162,71 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
 }
 .redshiftserverless$operations$create_namespace <- redshiftserverless_create_namespace
 
+#' Creates a scheduled action
+#'
+#' @description
+#' Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For example, you can create a schedule of when to run the [`create_snapshot`][redshiftserverless_create_snapshot] API operation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_scheduled_action/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_scheduled_action/) for full documentation.
+#'
+#' @param enabled Indicates whether the schedule is enabled. If false, the scheduled
+#' action does not trigger. For more information about `state` of the
+#' scheduled action, see
+#' [ScheduledAction](https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/).
+#' @param endTime The end time in UTC when the schedule is no longer active. After this
+#' time, the scheduled action does not trigger.
+#' @param namespaceName &#91;required&#93; The name of the namespace for which to create a scheduled action.
+#' @param roleArn &#91;required&#93; The ARN of the IAM role to assume to run the scheduled action. This IAM
+#' role must have permission to run the Amazon Redshift Serverless API
+#' operation in the scheduled action. This IAM role must allow the Amazon
+#' Redshift scheduler to schedule creating snapshots. (Principal
+#' scheduler.redshift.amazonaws.com) to assume permissions on your behalf.
+#' For more information about the IAM role to use with the Amazon Redshift
+#' scheduler, see [Using Identity-Based Policies for Amazon
+#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
+#' in the Amazon Redshift Cluster Management Guide
+#' @param schedule &#91;required&#93; The schedule for a one-time (at format) or recurring (cron format)
+#' scheduled action. Schedule invocations must be separated by at least one
+#' hour.
+#' 
+#' Format of at expressions is "`at(yyyy-mm-ddThh:mm:ss)`". For example,
+#' "`at(2016-03-04T17:27:00)`".
+#' 
+#' Format of cron expressions is
+#' "`cron(Minutes Hours Day-of-month Month Day-of-week Year)`". For
+#' example, "`cron(0 10 ? * MON *)`". For more information, see [Cron
+#' Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
+#' in the *Amazon CloudWatch Events User Guide*.
+#' @param scheduledActionDescription The description of the scheduled action.
+#' @param scheduledActionName &#91;required&#93; The name of the scheduled action.
+#' @param startTime The start time in UTC when the schedule is active. Before this time, the
+#' scheduled action does not trigger.
+#' @param targetAction &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_create_scheduled_action
+redshiftserverless_create_scheduled_action <- function(enabled = NULL, endTime = NULL, namespaceName, roleArn, schedule, scheduledActionDescription = NULL, scheduledActionName, startTime = NULL, targetAction) {
+  op <- new_operation(
+    name = "CreateScheduledAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$create_scheduled_action_input(enabled = enabled, endTime = endTime, namespaceName = namespaceName, roleArn = roleArn, schedule = schedule, scheduledActionDescription = scheduledActionDescription, scheduledActionName = scheduledActionName, startTime = startTime, targetAction = targetAction)
+  output <- .redshiftserverless$create_scheduled_action_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$create_scheduled_action <- redshiftserverless_create_scheduled_action
+
 #' Creates a snapshot of all databases in a namespace
 #'
 #' @description
-#' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html).
+#' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/) for full documentation.
 #'
@@ -191,6 +256,42 @@ redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = 
   return(response)
 }
 .redshiftserverless$operations$create_snapshot <- redshiftserverless_create_snapshot
+
+#' Creates a snapshot copy configuration that lets you copy snapshots to
+#' another Amazon Web Services Region
+#'
+#' @description
+#' Creates a snapshot copy configuration that lets you copy snapshots to another Amazon Web Services Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot_copy_configuration/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot_copy_configuration/) for full documentation.
+#'
+#' @param destinationKmsKeyId The KMS key to use to encrypt your snapshots in the destination Amazon
+#' Web Services Region.
+#' @param destinationRegion &#91;required&#93; The destination Amazon Web Services Region that you want to copy
+#' snapshots to.
+#' @param namespaceName &#91;required&#93; The name of the namespace to copy snapshots from.
+#' @param snapshotRetentionPeriod The retention period of the snapshots that you copy to the destination
+#' Amazon Web Services Region.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_create_snapshot_copy_configuration
+redshiftserverless_create_snapshot_copy_configuration <- function(destinationKmsKeyId = NULL, destinationRegion, namespaceName, snapshotRetentionPeriod = NULL) {
+  op <- new_operation(
+    name = "CreateSnapshotCopyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$create_snapshot_copy_configuration_input(destinationKmsKeyId = destinationKmsKeyId, destinationRegion = destinationRegion, namespaceName = namespaceName, snapshotRetentionPeriod = snapshotRetentionPeriod)
+  output <- .redshiftserverless$create_snapshot_copy_configuration_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$create_snapshot_copy_configuration <- redshiftserverless_create_snapshot_copy_configuration
 
 #' Creates a usage limit for a specified Amazon Redshift Serverless usage
 #' type
@@ -243,12 +344,11 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param baseCapacity The base data warehouse capacity of the workgroup in Redshift Processing
 #' Units (RPUs).
 #' @param configParameters An array of parameters to set for advanced control over a database. The
-#' options are `auto_mv`, `datestyle`,
-#' `enable_case_sensitivity_identifier`, `enable_user_activity_logging`,
-#' `query_group`, `search_path`, and query monitoring metrics that let you
-#' define performance boundaries. For more information about query
-#' monitoring rules and available metrics, see [Query monitoring metrics
-#' for Amazon Redshift
+#' options are `auto_mv`, `datestyle`, `enable_case_sensitive_identifier`,
+#' `enable_user_activity_logging`, `query_group`, `search_path`, and query
+#' monitoring metrics that let you define performance boundaries. For more
+#' information about query monitoring rules and available metrics, see
+#' [Query monitoring metrics for Amazon Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
@@ -404,6 +504,35 @@ redshiftserverless_delete_resource_policy <- function(resourceArn) {
 }
 .redshiftserverless$operations$delete_resource_policy <- redshiftserverless_delete_resource_policy
 
+#' Deletes a scheduled action
+#'
+#' @description
+#' Deletes a scheduled action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_scheduled_action/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_scheduled_action/) for full documentation.
+#'
+#' @param scheduledActionName &#91;required&#93; The name of the scheduled action to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_delete_scheduled_action
+redshiftserverless_delete_scheduled_action <- function(scheduledActionName) {
+  op <- new_operation(
+    name = "DeleteScheduledAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$delete_scheduled_action_input(scheduledActionName = scheduledActionName)
+  output <- .redshiftserverless$delete_scheduled_action_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$delete_scheduled_action <- redshiftserverless_delete_scheduled_action
+
 #' Deletes a snapshot from Amazon Redshift Serverless
 #'
 #' @description
@@ -432,6 +561,35 @@ redshiftserverless_delete_snapshot <- function(snapshotName) {
   return(response)
 }
 .redshiftserverless$operations$delete_snapshot <- redshiftserverless_delete_snapshot
+
+#' Deletes a snapshot copy configuration
+#'
+#' @description
+#' Deletes a snapshot copy configuration
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_snapshot_copy_configuration/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_snapshot_copy_configuration/) for full documentation.
+#'
+#' @param snapshotCopyConfigurationId &#91;required&#93; The ID of the snapshot copy configuration to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_delete_snapshot_copy_configuration
+redshiftserverless_delete_snapshot_copy_configuration <- function(snapshotCopyConfigurationId) {
+  op <- new_operation(
+    name = "DeleteSnapshotCopyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$delete_snapshot_copy_configuration_input(snapshotCopyConfigurationId = snapshotCopyConfigurationId)
+  output <- .redshiftserverless$delete_snapshot_copy_configuration_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$delete_snapshot_copy_configuration <- redshiftserverless_delete_snapshot_copy_configuration
 
 #' Deletes a usage limit from Amazon Redshift Serverless
 #'
@@ -688,6 +846,35 @@ redshiftserverless_get_resource_policy <- function(resourceArn) {
 }
 .redshiftserverless$operations$get_resource_policy <- redshiftserverless_get_resource_policy
 
+#' Returns information about a scheduled action
+#'
+#' @description
+#' Returns information about a scheduled action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_scheduled_action/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_scheduled_action/) for full documentation.
+#'
+#' @param scheduledActionName &#91;required&#93; The name of the scheduled action.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_scheduled_action
+redshiftserverless_get_scheduled_action <- function(scheduledActionName) {
+  op <- new_operation(
+    name = "GetScheduledAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$get_scheduled_action_input(scheduledActionName = scheduledActionName)
+  output <- .redshiftserverless$get_scheduled_action_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_scheduled_action <- redshiftserverless_get_scheduled_action
+
 #' Returns information about a specific snapshot
 #'
 #' @description
@@ -859,6 +1046,8 @@ redshiftserverless_list_custom_domain_associations <- function(customDomainCerti
 #' `nextToken` in following
 #' [`list_endpoint_access`][redshiftserverless_list_endpoint_access]
 #' operations, which returns results in the next page.
+#' @param ownerAccount The owner Amazon Web Services account for the Amazon Redshift Serverless
+#' workgroup.
 #' @param vpcId The unique identifier of the virtual private cloud with access to Amazon
 #' Redshift Serverless.
 #' @param workgroupName The name of the workgroup associated with the VPC endpoint to return.
@@ -866,14 +1055,14 @@ redshiftserverless_list_custom_domain_associations <- function(customDomainCerti
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_endpoint_access
-redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken = NULL, vpcId = NULL, workgroupName = NULL) {
+redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken = NULL, ownerAccount = NULL, vpcId = NULL, workgroupName = NULL) {
   op <- new_operation(
     name = "ListEndpointAccess",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
-  input <- .redshiftserverless$list_endpoint_access_input(maxResults = maxResults, nextToken = nextToken, vpcId = vpcId, workgroupName = workgroupName)
+  input <- .redshiftserverless$list_endpoint_access_input(maxResults = maxResults, nextToken = nextToken, ownerAccount = ownerAccount, vpcId = vpcId, workgroupName = workgroupName)
   output <- .redshiftserverless$list_endpoint_access_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -958,6 +1147,74 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
   return(response)
 }
 .redshiftserverless$operations$list_recovery_points <- redshiftserverless_list_recovery_points
+
+#' Returns a list of scheduled actions
+#'
+#' @description
+#' Returns a list of scheduled actions. You can use the flags to filter the list of returned scheduled actions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_scheduled_actions/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_scheduled_actions/) for full documentation.
+#'
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. Use `nextToken` to display the next page of results.
+#' @param namespaceName The name of namespace associated with the scheduled action to retrieve.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_scheduled_actions
+redshiftserverless_list_scheduled_actions <- function(maxResults = NULL, namespaceName = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListScheduledActions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scheduledActions")
+  )
+  input <- .redshiftserverless$list_scheduled_actions_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken)
+  output <- .redshiftserverless$list_scheduled_actions_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_scheduled_actions <- redshiftserverless_list_scheduled_actions
+
+#' Returns a list of snapshot copy configurations
+#'
+#' @description
+#' Returns a list of snapshot copy configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_snapshot_copy_configurations/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_snapshot_copy_configurations/) for full documentation.
+#'
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to display the next page of results.
+#' @param namespaceName The namespace from which to list all snapshot copy configurations.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_snapshot_copy_configurations
+redshiftserverless_list_snapshot_copy_configurations <- function(maxResults = NULL, namespaceName = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSnapshotCopyConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshotCopyConfigurations")
+  )
+  input <- .redshiftserverless$list_snapshot_copy_configurations_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken)
+  output <- .redshiftserverless$list_snapshot_copy_configurations_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_snapshot_copy_configurations <- redshiftserverless_list_snapshot_copy_configurations
 
 #' Returns a list of snapshots
 #'
@@ -1120,18 +1377,20 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #' @param nextToken If your initial ListWorkgroups operation returns a `nextToken`, you can
 #' include the returned `nextToken` in following ListNamespaces operations,
 #' which returns results in the next page.
+#' @param ownerAccount The owner Amazon Web Services account for the Amazon Redshift Serverless
+#' workgroup.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_workgroups
-redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NULL) {
+redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NULL, ownerAccount = NULL) {
   op <- new_operation(
     name = "ListWorkgroups",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workgroups")
   )
-  input <- .redshiftserverless$list_workgroups_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .redshiftserverless$list_workgroups_input(maxResults = maxResults, nextToken = nextToken, ownerAccount = ownerAccount)
   output <- .redshiftserverless$list_workgroups_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -1250,6 +1509,47 @@ redshiftserverless_restore_from_snapshot <- function(adminPasswordSecretKmsKeyId
   return(response)
 }
 .redshiftserverless$operations$restore_from_snapshot <- redshiftserverless_restore_from_snapshot
+
+#' Restores a table from a recovery point to your Amazon Redshift
+#' Serverless instance
+#'
+#' @description
+#' Restores a table from a recovery point to your Amazon Redshift Serverless instance. You can't use this operation to restore tables with interleaved sort keys.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_restore_table_from_recovery_point/](https://www.paws-r-sdk.com/docs/redshiftserverless_restore_table_from_recovery_point/) for full documentation.
+#'
+#' @param activateCaseSensitiveIdentifier Indicates whether name identifiers for database, schema, and table are
+#' case sensitive. If true, the names are case sensitive. If false, the
+#' names are not case sensitive. The default is false.
+#' @param namespaceName &#91;required&#93; Namespace of the recovery point to restore from.
+#' @param newTableName &#91;required&#93; The name of the table to create from the restore operation.
+#' @param recoveryPointId &#91;required&#93; The ID of the recovery point to restore the table from.
+#' @param sourceDatabaseName &#91;required&#93; The name of the source database that contains the table being restored.
+#' @param sourceSchemaName The name of the source schema that contains the table being restored.
+#' @param sourceTableName &#91;required&#93; The name of the source table being restored.
+#' @param targetDatabaseName The name of the database to restore the table to.
+#' @param targetSchemaName The name of the schema to restore the table to.
+#' @param workgroupName &#91;required&#93; The workgroup to restore the table to.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_restore_table_from_recovery_point
+redshiftserverless_restore_table_from_recovery_point <- function(activateCaseSensitiveIdentifier = NULL, namespaceName, newTableName, recoveryPointId, sourceDatabaseName, sourceSchemaName = NULL, sourceTableName, targetDatabaseName = NULL, targetSchemaName = NULL, workgroupName) {
+  op <- new_operation(
+    name = "RestoreTableFromRecoveryPoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$restore_table_from_recovery_point_input(activateCaseSensitiveIdentifier = activateCaseSensitiveIdentifier, namespaceName = namespaceName, newTableName = newTableName, recoveryPointId = recoveryPointId, sourceDatabaseName = sourceDatabaseName, sourceSchemaName = sourceSchemaName, sourceTableName = sourceTableName, targetDatabaseName = targetDatabaseName, targetSchemaName = targetSchemaName, workgroupName = workgroupName)
+  output <- .redshiftserverless$restore_table_from_recovery_point_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$restore_table_from_recovery_point <- redshiftserverless_restore_table_from_recovery_point
 
 #' Restores a table from a snapshot to your Amazon Redshift Serverless
 #' instance
@@ -1469,6 +1769,61 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
 }
 .redshiftserverless$operations$update_namespace <- redshiftserverless_update_namespace
 
+#' Updates a scheduled action
+#'
+#' @description
+#' Updates a scheduled action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_scheduled_action/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_scheduled_action/) for full documentation.
+#'
+#' @param enabled Specifies whether to enable the scheduled action.
+#' @param endTime The end time in UTC of the scheduled action to update.
+#' @param roleArn The ARN of the IAM role to assume to run the scheduled action. This IAM
+#' role must have permission to run the Amazon Redshift Serverless API
+#' operation in the scheduled action. This IAM role must allow the Amazon
+#' Redshift scheduler to schedule creating snapshots (Principal
+#' scheduler.redshift.amazonaws.com) to assume permissions on your behalf.
+#' For more information about the IAM role to use with the Amazon Redshift
+#' scheduler, see [Using Identity-Based Policies for Amazon
+#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
+#' in the Amazon Redshift Cluster Management Guide
+#' @param schedule The schedule for a one-time (at format) or recurring (cron format)
+#' scheduled action. Schedule invocations must be separated by at least one
+#' hour.
+#' 
+#' Format of at expressions is "`at(yyyy-mm-ddThh:mm:ss)`". For example,
+#' "`at(2016-03-04T17:27:00)`".
+#' 
+#' Format of cron expressions is
+#' "`cron(Minutes Hours Day-of-month Month Day-of-week Year)`". For
+#' example, "`cron(0 10 ? * MON *)`". For more information, see [Cron
+#' Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
+#' in the *Amazon CloudWatch Events User Guide*.
+#' @param scheduledActionDescription The descripion of the scheduled action to update to.
+#' @param scheduledActionName &#91;required&#93; The name of the scheduled action to update to.
+#' @param startTime The start time in UTC of the scheduled action to update to.
+#' @param targetAction 
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_update_scheduled_action
+redshiftserverless_update_scheduled_action <- function(enabled = NULL, endTime = NULL, roleArn = NULL, schedule = NULL, scheduledActionDescription = NULL, scheduledActionName, startTime = NULL, targetAction = NULL) {
+  op <- new_operation(
+    name = "UpdateScheduledAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$update_scheduled_action_input(enabled = enabled, endTime = endTime, roleArn = roleArn, schedule = schedule, scheduledActionDescription = scheduledActionDescription, scheduledActionName = scheduledActionName, startTime = startTime, targetAction = targetAction)
+  output <- .redshiftserverless$update_scheduled_action_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$update_scheduled_action <- redshiftserverless_update_scheduled_action
+
 #' Updates a snapshot
 #'
 #' @description
@@ -1498,6 +1853,37 @@ redshiftserverless_update_snapshot <- function(retentionPeriod = NULL, snapshotN
   return(response)
 }
 .redshiftserverless$operations$update_snapshot <- redshiftserverless_update_snapshot
+
+#' Updates a snapshot copy configuration
+#'
+#' @description
+#' Updates a snapshot copy configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_snapshot_copy_configuration/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_snapshot_copy_configuration/) for full documentation.
+#'
+#' @param snapshotCopyConfigurationId &#91;required&#93; The ID of the snapshot copy configuration to update.
+#' @param snapshotRetentionPeriod The new retention period of how long to keep a snapshot in the
+#' destination Amazon Web Services Region.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_update_snapshot_copy_configuration
+redshiftserverless_update_snapshot_copy_configuration <- function(snapshotCopyConfigurationId, snapshotRetentionPeriod = NULL) {
+  op <- new_operation(
+    name = "UpdateSnapshotCopyConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$update_snapshot_copy_configuration_input(snapshotCopyConfigurationId = snapshotCopyConfigurationId, snapshotRetentionPeriod = snapshotRetentionPeriod)
+  output <- .redshiftserverless$update_snapshot_copy_configuration_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$update_snapshot_copy_configuration <- redshiftserverless_update_snapshot_copy_configuration
 
 #' Update a usage limit in Amazon Redshift Serverless
 #'
@@ -1544,12 +1930,11 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @param baseCapacity The new base data warehouse capacity in Redshift Processing Units
 #' (RPUs).
 #' @param configParameters An array of parameters to set for advanced control over a database. The
-#' options are `auto_mv`, `datestyle`,
-#' `enable_case_sensitivity_identifier`, `enable_user_activity_logging`,
-#' `query_group`, `search_path`, and query monitoring metrics that let you
-#' define performance boundaries. For more information about query
-#' monitoring rules and available metrics, see [Query monitoring metrics
-#' for Amazon Redshift
+#' options are `auto_mv`, `datestyle`, `enable_case_sensitive_identifier`,
+#' `enable_user_activity_logging`, `query_group`, `search_path`, and query
+#' monitoring metrics that let you define performance boundaries. For more
+#' information about query monitoring rules and available metrics, see
+#' [Query monitoring metrics for Amazon Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route

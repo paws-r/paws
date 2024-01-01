@@ -268,6 +268,45 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 }
 .lakeformation$operations$create_lf_tag <- lakeformation_create_lf_tag
 
+#' Creates an IAM Identity Center connection with Lake Formation to allow
+#' IAM Identity Center users and groups to access Data Catalog resources
+#'
+#' @description
+#' Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and groups to access Data Catalog resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_create_lake_formation_identity_center_configuration/](https://www.paws-r-sdk.com/docs/lakeformation_create_lake_formation_identity_center_configuration/) for full documentation.
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, view definitions, and other control
+#' information to manage your Lake Formation environment.
+#' @param InstanceArn The ARN of the IAM Identity Center instance for which the operation will
+#' be executed. For more information about ARNs, see Amazon Resource Names
+#' (ARNs) and Amazon Web Services Service Namespaces in the Amazon Web
+#' Services General Reference.
+#' @param ExternalFiltering A list of the account IDs of Amazon Web Services accounts of third-party
+#' applications that are allowed to access data managed by Lake Formation.
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_create_lake_format_identi_center_config
+lakeformation_create_lake_formation_identity_center_configuration <- function(CatalogId = NULL, InstanceArn = NULL, ExternalFiltering = NULL) {
+  op <- new_operation(
+    name = "CreateLakeFormationIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/CreateLakeFormationIdentityCenterConfiguration",
+    paginator = list()
+  )
+  input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering)
+  output <- .lakeformation$create_lake_formation_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$create_lake_formation_identity_center_configuration <- lakeformation_create_lake_formation_identity_center_configuration
+
 #' Enforce Lake Formation permissions for the given databases, tables, and
 #' principals
 #'
@@ -363,6 +402,38 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
   return(response)
 }
 .lakeformation$operations$delete_lf_tag <- lakeformation_delete_lf_tag
+
+#' Deletes an IAM Identity Center connection with Lake Formation
+#'
+#' @description
+#' Deletes an IAM Identity Center connection with Lake Formation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_delete_lake_formation_identity_center_configuration/](https://www.paws-r-sdk.com/docs/lakeformation_delete_lake_formation_identity_center_configuration/) for full documentation.
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, view definition, and other control
+#' information to manage your Lake Formation environment.
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_delete_lake_format_identi_center_config
+lakeformation_delete_lake_formation_identity_center_configuration <- function(CatalogId = NULL) {
+  op <- new_operation(
+    name = "DeleteLakeFormationIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteLakeFormationIdentityCenterConfiguration",
+    paginator = list()
+  )
+  input <- .lakeformation$delete_lake_formation_identity_center_configuration_input(CatalogId = CatalogId)
+  output <- .lakeformation$delete_lake_formation_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$delete_lake_formation_identity_center_configuration <- lakeformation_delete_lake_formation_identity_center_configuration
 
 #' Remove the Lake Formation permissions enforcement of the given
 #' databases, tables, and principals
@@ -461,6 +532,38 @@ lakeformation_deregister_resource <- function(ResourceArn) {
   return(response)
 }
 .lakeformation$operations$deregister_resource <- lakeformation_deregister_resource
+
+#' Retrieves the instance ARN and application ARN for the connection
+#'
+#' @description
+#' Retrieves the instance ARN and application ARN for the connection.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_describe_lake_formation_identity_center_configuration/](https://www.paws-r-sdk.com/docs/lakeformation_describe_lake_formation_identity_center_configuration/) for full documentation.
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your Lake Formation environment.
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_descri_lake_format_identi_center_config
+lakeformation_describe_lake_formation_identity_center_configuration <- function(CatalogId = NULL) {
+  op <- new_operation(
+    name = "DescribeLakeFormationIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/DescribeLakeFormationIdentityCenterConfiguration",
+    paginator = list()
+  )
+  input <- .lakeformation$describe_lake_formation_identity_center_configuration_input(CatalogId = CatalogId)
+  output <- .lakeformation$describe_lake_formation_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$describe_lake_formation_identity_center_configuration <- lakeformation_describe_lake_formation_identity_center_configuration
 
 #' Retrieves the current data access role for the given resource registered
 #' in Lake Formation
@@ -890,18 +993,22 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' query ID, etc).
 #' @param SupportedPermissionTypes A list of supported permission types for the table. Valid values are
 #' `COLUMN_PERMISSION` and `CELL_FILTER_PERMISSION`.
+#' @param S3Path The Amazon S3 path for the table.
+#' @param QuerySessionContext A structure used as a protocol between query engines and Lake Formation
+#' or Glue. Contains both a Lake Formation generated authorization
+#' identifier and information from the request's authorization context.
 #'
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_temporary_glue_table_credentials
-lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes = NULL) {
+lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes = NULL, S3Path = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "GetTemporaryGlueTableCredentials",
     http_method = "POST",
     http_path = "/GetTemporaryGlueTableCredentials",
     paginator = list()
   )
-  input <- .lakeformation$get_temporary_glue_table_credentials_input(TableArn = TableArn, Permissions = Permissions, DurationSeconds = DurationSeconds, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
+  input <- .lakeformation$get_temporary_glue_table_credentials_input(TableArn = TableArn, Permissions = Permissions, DurationSeconds = DurationSeconds, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, S3Path = S3Path, QuerySessionContext = QuerySessionContext)
   output <- .lakeformation$get_temporary_glue_table_credentials_output()
   config <- get_config()
   svc <- .lakeformation$service(config)
@@ -1635,6 +1742,41 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
   return(response)
 }
 .lakeformation$operations$update_lf_tag <- lakeformation_update_lf_tag
+
+#' Updates the IAM Identity Center connection parameters
+#'
+#' @description
+#' Updates the IAM Identity Center connection parameters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_update_lake_formation_identity_center_configuration/](https://www.paws-r-sdk.com/docs/lakeformation_update_lake_formation_identity_center_configuration/) for full documentation.
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, view definitions, and other control
+#' information to manage your Lake Formation environment.
+#' @param ApplicationStatus Allows to enable or disable the IAM Identity Center connection.
+#' @param ExternalFiltering A list of the account IDs of Amazon Web Services accounts of third-party
+#' applications that are allowed to access data managed by Lake Formation.
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_update_lake_format_identi_center_config
+lakeformation_update_lake_formation_identity_center_configuration <- function(CatalogId = NULL, ApplicationStatus = NULL, ExternalFiltering = NULL) {
+  op <- new_operation(
+    name = "UpdateLakeFormationIdentityCenterConfiguration",
+    http_method = "POST",
+    http_path = "/UpdateLakeFormationIdentityCenterConfiguration",
+    paginator = list()
+  )
+  input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
+  output <- .lakeformation$update_lake_formation_identity_center_configuration_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$update_lake_formation_identity_center_configuration <- lakeformation_update_lake_formation_identity_center_configuration
 
 #' Updates the data access role used for vending access to the given
 #' (registered) resource in Lake Formation

@@ -123,6 +123,18 @@ NULL
   list()
 }
 
+.detective$get_investigation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), InvestigationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$get_investigation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), InvestigationId = structure(logical(0), tags = list(type = "string")), EntityArn = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ScopeStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ScopeEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Status = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .detective$get_members_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -156,6 +168,30 @@ NULL
 .detective$list_graphs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GraphList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$list_indicators_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), InvestigationId = structure(logical(0), tags = list(type = "string")), IndicatorType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$list_indicators_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), InvestigationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Indicators = structure(list(structure(list(IndicatorType = structure(logical(0), tags = list(type = "string")), IndicatorDetail = structure(list(TTPsObservedDetail = structure(list(Tactic = structure(logical(0), tags = list(type = "string")), Technique = structure(logical(0), tags = list(type = "string")), Procedure = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), APIName = structure(logical(0), tags = list(type = "string")), APISuccessCount = structure(logical(0), tags = list(type = "long")), APIFailureCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ImpossibleTravelDetail = structure(list(StartingIpAddress = structure(logical(0), tags = list(type = "string")), EndingIpAddress = structure(logical(0), tags = list(type = "string")), StartingLocation = structure(logical(0), tags = list(type = "string")), EndingLocation = structure(logical(0), tags = list(type = "string")), HourlyTimeDelta = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), FlaggedIpAddressDetail = structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), Reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NewGeolocationDetail = structure(list(Location = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), IsNewForEntireAccount = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NewAsoDetail = structure(list(Aso = structure(logical(0), tags = list(type = "string")), IsNewForEntireAccount = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), NewUserAgentDetail = structure(list(UserAgent = structure(logical(0), tags = list(type = "string")), IsNewForEntireAccount = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RelatedFindingDetail = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RelatedFindingGroupDetail = structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$list_investigations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), FilterCriteria = structure(list(Severity = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EntityArn = structure(list(Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(list(StartInclusive = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndInclusive = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), SortCriteria = structure(list(Field = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$list_investigations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InvestigationDetails = structure(list(structure(list(InvestigationId = structure(logical(0), tags = list(type = "string")), Severity = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EntityArn = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -217,6 +253,18 @@ NULL
   list()
 }
 
+.detective$start_investigation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), EntityArn = structure(logical(0), tags = list(type = "string")), ScopeStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ScopeEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$start_investigation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InvestigationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .detective$start_monitoring_member_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -258,6 +306,16 @@ NULL
 }
 
 .detective$update_datasource_packages_output <- function(...) {
+  list()
+}
+
+.detective$update_investigation_state_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GraphArn = structure(logical(0), tags = list(type = "string")), InvestigationId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.detective$update_investigation_state_output <- function(...) {
   list()
 }
 

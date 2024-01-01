@@ -82,13 +82,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- personalizeruntime()
-#' svc$get_personalized_ranking(
+#' svc$get_action_recommendations(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=personalizeruntime_get_action_recommendations]{get_action_recommendations} \tab Returns a list of recommended actions in sorted in descending order by prediction score\cr
 #'  \link[=personalizeruntime_get_personalized_ranking]{get_personalized_ranking} \tab Re-ranks a list of recommended items for the given user\cr
 #'  \link[=personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
 #' }

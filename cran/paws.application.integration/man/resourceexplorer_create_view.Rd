@@ -8,6 +8,7 @@ resourceexplorer_create_view(
   ClientToken = NULL,
   Filters = NULL,
   IncludedProperties = NULL,
+  Scope = NULL,
   Tags = NULL,
   ViewName
 )
@@ -41,6 +42,9 @@ include.
 
 The default is an empty list, with no optional fields included in the
 results.}
+
+\item{Scope}{The root ARN of the account, an organizational unit (OU), or an
+organization ARN. If left empty, the default is account.}
 
 \item{Tags}{Tag key and value pairs that are attached to the view.}
 

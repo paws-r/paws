@@ -19,7 +19,8 @@ athena_start_calculation_execution(
 
 \item{CalculationConfiguration}{Contains configuration information for the calculation.}
 
-\item{CodeBlock}{A string that contains the code of the calculation.}
+\item{CodeBlock}{A string that contains the code of the calculation. Use this parameter
+instead of CalculationConfiguration$CodeBlock, which is deprecated.}
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to create the
 calculation is idempotent (executes only once). If another

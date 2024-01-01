@@ -2,13 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_organization_configuration}
 \alias{securityhub_describe_organization_configuration}
-\title{Returns information about the Organizations configuration for Security
-Hub}
+\title{Returns information about the way your organization is configured in
+Security Hub}
 \usage{
 securityhub_describe_organization_configuration()
 }
 \description{
-Returns information about the Organizations configuration for Security Hub. Can only be called from a Security Hub administrator account.
+Returns information about the way your organization is configured in Security Hub. Only the Security Hub administrator account can invoke this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/} for full documentation.
 }

@@ -445,7 +445,8 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #'     StorageEncrypted = TRUE|FALSE,
 #'     KmsKeyId = "string",
 #'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string"
+#'     SourceDBClusterSnapshotArn = "string",
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -501,7 +502,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
 #'   Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
 #'   EnableCloudwatchLogsExports, DeletionProtection,
-#'   GlobalClusterIdentifier)
+#'   GlobalClusterIdentifier, StorageType)
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -613,6 +614,19 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
 #' @param GlobalClusterIdentifier The cluster identifier of the new global cluster.
+#' @param StorageType The storage type to associate with the DB cluster.
+#' 
+#' For information on storage types for Amazon DocumentDB clusters, see
+#' Cluster storage configurations in the *Amazon DocumentDB Developer
+#' Guide*.
+#' 
+#' Valid values for storage type - `standard | iopt1`
+#' 
+#' Default value is `standard `
+#' 
+#' When you create a DocumentDB DB cluster with the storage type set to
+#' `iopt1`, the storage type is returned in the response. The storage type
+#' isn't returned when you set it to `standard`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -679,7 +693,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -717,7 +732,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'     "string"
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
-#'   GlobalClusterIdentifier = "string"
+#'   GlobalClusterIdentifier = "string",
+#'   StorageType = "string"
 #' )
 #' ```
 #'
@@ -726,14 +742,14 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @rdname docdb_create_db_cluster
 #'
 #' @aliases docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -890,7 +906,8 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #'     StorageEncrypted = TRUE|FALSE,
 #'     KmsKeyId = "string",
 #'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string"
+#'     SourceDBClusterSnapshotArn = "string",
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -1585,7 +1602,8 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -1715,7 +1733,8 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 #'     StorageEncrypted = TRUE|FALSE,
 #'     KmsKeyId = "string",
 #'     DBClusterSnapshotArn = "string",
-#'     SourceDBClusterSnapshotArn = "string"
+#'     SourceDBClusterSnapshotArn = "string",
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -2530,7 +2549,8 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #'       StorageEncrypted = TRUE|FALSE,
 #'       KmsKeyId = "string",
 #'       DBClusterSnapshotArn = "string",
-#'       SourceDBClusterSnapshotArn = "string"
+#'       SourceDBClusterSnapshotArn = "string",
+#'       StorageType = "string"
 #'     )
 #'   )
 #' )
@@ -2686,7 +2706,8 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'       EnabledCloudwatchLogsExports = list(
 #'         "string"
 #'       ),
-#'       DeletionProtection = TRUE|FALSE
+#'       DeletionProtection = TRUE|FALSE,
+#'       StorageType = "string"
 #'     )
 #'   )
 #' )
@@ -3656,7 +3677,8 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
 #'           Name = "string"
 #'         )
 #'       ),
-#'       Vpc = TRUE|FALSE
+#'       Vpc = TRUE|FALSE,
+#'       StorageType = "string"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -3904,7 +3926,8 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -4013,7 +4036,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
 #'   VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
 #'   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
-#'   EngineVersion, AllowMajorVersionUpgrade, DeletionProtection)
+#'   EngineVersion, AllowMajorVersionUpgrade, DeletionProtection,
+#'   StorageType)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
@@ -4118,6 +4142,15 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
+#' @param StorageType The storage type to associate with the DB cluster.
+#' 
+#' For information on storage types for Amazon DocumentDB clusters, see
+#' Cluster storage configurations in the *Amazon DocumentDB Developer
+#' Guide*.
+#' 
+#' Valid values for storage type - `standard | iopt1`
+#' 
+#' Default value is `standard `
 #'
 #' @return
 #' A list with the following syntax:
@@ -4184,7 +4217,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -4214,7 +4248,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   ),
 #'   EngineVersion = "string",
 #'   AllowMajorVersionUpgrade = TRUE|FALSE,
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   StorageType = "string"
 #' )
 #' ```
 #'
@@ -4223,14 +4258,14 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @rdname docdb_modify_db_cluster
 #'
 #' @aliases docdb_modify_db_cluster
-docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL) {
+docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection)
+  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType)
   output <- .docdb$modify_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -5368,7 +5403,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
 #'   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
 #'   EnableCloudwatchLogsExports, DeletionProtection,
-#'   DBClusterParameterGroupName)
+#'   DBClusterParameterGroupName, StorageType)
 #'
 #' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -5447,6 +5482,15 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' parameter group. The string must consist of from 1 to 255 letters,
 #' numbers or hyphens. Its first character must be a letter, and it cannot
 #' end with a hyphen or contain two consecutive hyphens.
+#' @param StorageType The storage type to associate with the DB cluster.
+#' 
+#' For information on storage types for Amazon DocumentDB clusters, see
+#' Cluster storage configurations in the *Amazon DocumentDB Developer
+#' Guide*.
+#' 
+#' Valid values for storage type - `standard | iopt1`
+#' 
+#' Default value is `standard `
 #'
 #' @return
 #' A list with the following syntax:
@@ -5513,7 +5557,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -5544,7 +5589,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'     "string"
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
-#'   DBClusterParameterGroupName = "string"
+#'   DBClusterParameterGroupName = "string",
+#'   StorageType = "string"
 #' )
 #' ```
 #'
@@ -5553,14 +5599,14 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @rdname docdb_restore_db_cluster_from_snapshot
 #'
 #' @aliases docdb_restore_db_cluster_from_snapshot
-docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL) {
+docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName)
+  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, StorageType = StorageType)
   output <- .docdb$restore_db_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -5583,7 +5629,8 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' docdb_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
 #'   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
 #'   UseLatestRestorableTime, Port, DBSubnetGroupName, VpcSecurityGroupIds,
-#'   Tags, KmsKeyId, EnableCloudwatchLogsExports, DeletionProtection)
+#'   Tags, KmsKeyId, EnableCloudwatchLogsExports, DeletionProtection,
+#'   StorageType)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new cluster to be created.
 #' 
@@ -5682,6 +5729,15 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
+#' @param StorageType The storage type to associate with the DB cluster.
+#' 
+#' For information on storage types for Amazon DocumentDB clusters, see
+#' Cluster storage configurations in the *Amazon DocumentDB Developer
+#' Guide*.
+#' 
+#' Valid values for storage type - `standard | iopt1`
+#' 
+#' Default value is `standard `
 #'
 #' @return
 #' A list with the following syntax:
@@ -5748,7 +5804,8 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -5778,7 +5835,8 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'   EnableCloudwatchLogsExports = list(
 #'     "string"
 #'   ),
-#'   DeletionProtection = TRUE|FALSE
+#'   DeletionProtection = TRUE|FALSE,
+#'   StorageType = "string"
 #' )
 #' ```
 #'
@@ -5787,14 +5845,14 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' @rdname docdb_restore_db_cluster_to_point_in_time
 #'
 #' @aliases docdb_restore_db_cluster_to_point_in_time
-docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, StorageType = StorageType)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -5882,7 +5940,8 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```
@@ -5995,7 +6054,8 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
 #'     ),
-#'     DeletionProtection = TRUE|FALSE
+#'     DeletionProtection = TRUE|FALSE,
+#'     StorageType = "string"
 #'   )
 #' )
 #' ```

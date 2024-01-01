@@ -8,6 +8,7 @@ pinpointsmsvoicev2_update_pool(
   PoolId,
   TwoWayEnabled = NULL,
   TwoWayChannelArn = NULL,
+  TwoWayChannelRole = NULL,
   SelfManagedOptOutsEnabled = NULL,
   OptOutListName = NULL,
   SharedRoutesEnabled = NULL,
@@ -22,6 +23,9 @@ PoolId or PoolArn.}
 incoming text messages from your end recipients.}
 
 \item{TwoWayChannelArn}{The Amazon Resource Name (ARN) of the two way channel.}
+
+\item{TwoWayChannelRole}{An optional IAM Role Arn for a service to assume, to be able to post
+inbound SMS messages.}
 
 \item{SelfManagedOptOutsEnabled}{By default this is set to false. When an end recipient sends a message
 that begins with HELP or STOP to one of your dedicated numbers, Amazon

@@ -56,6 +56,14 @@ test_that("list_auto_ml_jobs", {
   expect_error(svc$list_auto_ml_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_clusters", {
+  expect_error(svc$list_clusters(), NA)
+})
+
+test_that("list_clusters", {
+  expect_error(svc$list_clusters(MaxResults = 20), NA)
+})
+
 test_that("list_code_repositories", {
   expect_error(svc$list_code_repositories(), NA)
 })
@@ -198,6 +206,14 @@ test_that("list_images", {
 
 test_that("list_images", {
   expect_error(svc$list_images(MaxResults = 20), NA)
+})
+
+test_that("list_inference_components", {
+  expect_error(svc$list_inference_components(), NA)
+})
+
+test_that("list_inference_components", {
+  expect_error(svc$list_inference_components(MaxResults = 20), NA)
 })
 
 test_that("list_inference_experiments", {

@@ -2,18 +2,17 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_describe_identity_provider_config}
 \alias{eks_describe_identity_provider_config}
-\title{Returns descriptive information about an identity provider configuration}
+\title{Describes an identity provider configuration}
 \usage{
 eks_describe_identity_provider_config(clusterName, identityProviderConfig)
 }
 \arguments{
-\item{clusterName}{[required] The cluster name that the identity provider configuration is associated
-to.}
+\item{clusterName}{[required] The name of your cluster.}
 
 \item{identityProviderConfig}{[required] An object representing an identity provider configuration.}
 }
 \description{
-Returns descriptive information about an identity provider configuration.
+Describes an identity provider configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_describe_identity_provider_config/} for full documentation.
 }

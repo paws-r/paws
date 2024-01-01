@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexmodelsv2_operations.R
 \name{lexmodelsv2_create_bot_version}
 \alias{lexmodelsv2_create_bot_version}
-\title{Creates a new version of the bot based on the DRAFT version}
+\title{Creates an immutable version of the bot}
 \usage{
 lexmodelsv2_create_bot_version(
   botId,
@@ -22,7 +22,7 @@ each locale. When you specify a source version, the locale data is
 copied from the source version to the new version.}
 }
 \description{
-Creates a new version of the bot based on the \code{DRAFT} version. If the \code{DRAFT} version of this resource hasn't changed since you created the last version, Amazon Lex doesn't create a new version, it returns the last created version.
+Creates an immutable version of the bot. When you create the first version of a bot, Amazon Lex sets the version number to 1. Subsequent bot versions increase in an increment of 1. The version number will always represent the total number of versions created of the bot, not the current number of versions. If a bot version is deleted, that bot version number will not be reused.
 
 See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_bot_version/} for full documentation.
 }

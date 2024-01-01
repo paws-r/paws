@@ -29,7 +29,7 @@ continues from the end of the items returned by the previous request.}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
-Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in the same VPC or in a peer VPC, or if they reference a security group in a peer VPC for which the VPC peering connection has been deleted.
+Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in the same VPC, peered VPC, or in separate VPCs attached to a transit gateway (with \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw}{security group referencing support} enabled). Rules can also be stale if they reference a security group in a peer VPC for which the VPC peering connection has been deleted or if they reference a security group in a VPC that has been detached from a transit gateway.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_stale_security_groups/} for full documentation.
 }

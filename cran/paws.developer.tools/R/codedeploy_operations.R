@@ -168,8 +168,8 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #'
 #' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_targets/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_targets/) for full documentation.
 #'
-#' @param deploymentId The unique ID of a deployment.
-#' @param targetIds The unique IDs of the deployment targets. The compute platform of the
+#' @param deploymentId &#91;required&#93; The unique ID of a deployment.
+#' @param targetIds &#91;required&#93; The unique IDs of the deployment targets. The compute platform of the
 #' deployment determines the type of the targets and their formats. The
 #' maximum number of deployment target IDs you can specify is 25.
 #' 
@@ -193,7 +193,7 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_deployment_targets
-codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetIds = NULL) {
+codedeploy_batch_get_deployment_targets <- function(deploymentId, targetIds) {
   op <- new_operation(
     name = "BatchGetDeploymentTargets",
     http_method = "POST",
@@ -475,18 +475,26 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' @param trafficRoutingConfig The configuration that specifies how the deployment traffic is routed.
 #' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or
 #' `ECS`).
+#' @param zonalConfig Configure the `ZonalConfig` object if you want CodeDeploy to deploy your
+#' application to one [Availability
+#' Zone](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones)
+#' at a time, within an Amazon Web Services Region.
+#' 
+#' For more information about the zonal configuration feature, see [zonal
+#' configuration](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations-create.html#zonal-config)
+#' in the *CodeDeploy User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_config
-codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHealthyHosts = NULL, trafficRoutingConfig = NULL, computePlatform = NULL) {
+codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHealthyHosts = NULL, trafficRoutingConfig = NULL, computePlatform = NULL, zonalConfig = NULL) {
   op <- new_operation(
     name = "CreateDeploymentConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$create_deployment_config_input(deploymentConfigName = deploymentConfigName, minimumHealthyHosts = minimumHealthyHosts, trafficRoutingConfig = trafficRoutingConfig, computePlatform = computePlatform)
+  input <- .codedeploy$create_deployment_config_input(deploymentConfigName = deploymentConfigName, minimumHealthyHosts = minimumHealthyHosts, trafficRoutingConfig = trafficRoutingConfig, computePlatform = computePlatform, zonalConfig = zonalConfig)
   output <- .codedeploy$create_deployment_config_output()
   config <- get_config()
   svc <- .codedeploy$service(config)
@@ -565,18 +573,37 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @param tags The metadata that you apply to CodeDeploy deployment groups to help you
 #' organize and categorize them. Each tag consists of a key and an optional
 #' value, both of which you define.
+#' @param terminationHookEnabled This parameter only applies if you are using CodeDeploy with Amazon EC2
+#' Auto Scaling. For more information, see [Integrating CodeDeploy with
+#' Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html)
+#' in the *CodeDeploy User Guide*.
+#' 
+#' Set `terminationHookEnabled` to `true` to have CodeDeploy install a
+#' termination hook into your Auto Scaling group when you create a
+#' deployment group. When this hook is installed, CodeDeploy will perform
+#' termination deployments.
+#' 
+#' For information about termination deployments, see [Enabling termination
+#' deployments during Auto Scaling scale-in
+#' events](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html#integrations-aws-auto-scaling-behaviors-hook-enable)
+#' in the *CodeDeploy User Guide*.
+#' 
+#' For more information about Auto Scaling scale-in events, see the [Scale
+#' in](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-lifecycle.html#as-lifecycle-scale-in)
+#' topic in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_group
-codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
+codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL, terminationHookEnabled = NULL) {
   op <- new_operation(
     name = "CreateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags)
+  input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$create_deployment_group_output()
   config <- get_config()
   svc <- .codedeploy$service(config)
@@ -954,13 +981,13 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_target/](https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_target/) for full documentation.
 #'
-#' @param deploymentId The unique ID of a deployment.
-#' @param targetId The unique ID of a deployment target.
+#' @param deploymentId &#91;required&#93; The unique ID of a deployment.
+#' @param targetId &#91;required&#93; The unique ID of a deployment target.
 #'
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_deployment_target
-codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NULL) {
+codedeploy_get_deployment_target <- function(deploymentId, targetId) {
   op <- new_operation(
     name = "GetDeploymentTarget",
     http_method = "POST",
@@ -1231,7 +1258,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_targets/](https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_targets/) for full documentation.
 #'
-#' @param deploymentId The unique ID of a deployment.
+#' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param nextToken A token identifier returned from the previous
 #' [`list_deployment_targets`][codedeploy_list_deployment_targets] call. It
 #' can be used to return the next set of deployment targets in the list.
@@ -1247,7 +1274,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployment_targets
-codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = NULL, targetFilters = NULL) {
+codedeploy_list_deployment_targets <- function(deploymentId, nextToken = NULL, targetFilters = NULL) {
   op <- new_operation(
     name = "ListDeploymentTargets",
     http_method = "POST",
@@ -1785,18 +1812,37 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' service name pair using the format `<clustername>:<servicename>`.
 #' @param onPremisesTagSet Information about an on-premises instance tag set. The deployment group
 #' includes only on-premises instances identified by all the tag groups.
+#' @param terminationHookEnabled This parameter only applies if you are using CodeDeploy with Amazon EC2
+#' Auto Scaling. For more information, see [Integrating CodeDeploy with
+#' Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html)
+#' in the *CodeDeploy User Guide*.
+#' 
+#' Set `terminationHookEnabled` to `true` to have CodeDeploy install a
+#' termination hook into your Auto Scaling group when you update a
+#' deployment group. When this hook is installed, CodeDeploy will perform
+#' termination deployments.
+#' 
+#' For information about termination deployments, see [Enabling termination
+#' deployments during Auto Scaling scale-in
+#' events](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html#integrations-aws-auto-scaling-behaviors-hook-enable)
+#' in the *CodeDeploy User Guide*.
+#' 
+#' For more information about Auto Scaling scale-in events, see the [Scale
+#' in](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-lifecycle.html#as-lifecycle-scale-in)
+#' topic in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname codedeploy_update_deployment_group
-codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
+codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, terminationHookEnabled = NULL) {
   op <- new_operation(
     name = "UpdateDeploymentGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet)
+  input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$update_deployment_group_output()
   config <- get_config()
   svc <- .codedeploy$service(config)

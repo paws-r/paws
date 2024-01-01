@@ -14,7 +14,8 @@ elasticache_create_user_group(UserGroupId, Engine, UserIds = NULL, Tags = NULL)
 \item{UserIds}{The list of user IDs that belong to the user group.}
 
 \item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
-A tag key must be accompanied by a tag value, although null is accepted.}
+A tag key must be accompanied by a tag value, although null is accepted.
+Available for Redis only.}
 }
 \description{
 For Redis engine version 6.0 onwards: Creates a Redis user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}

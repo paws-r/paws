@@ -2,14 +2,15 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_update_resolver_endpoint}
 \alias{route53resolver_update_resolver_endpoint}
-\title{Updates the name, or enpoint type for an inbound or an outbound Resolver
-endpoint}
+\title{Updates the name, or endpoint type for an inbound or an outbound
+Resolver endpoint}
 \usage{
 route53resolver_update_resolver_endpoint(
   ResolverEndpointId,
   Name = NULL,
   ResolverEndpointType = NULL,
-  UpdateIpAddresses = NULL
+  UpdateIpAddresses = NULL,
+  Protocols = NULL
 )
 }
 \arguments{
@@ -25,9 +26,37 @@ Updating to \code{IPV6} type isn't currently supported.}
 \item{UpdateIpAddresses}{Specifies the IPv6 address when you update the Resolver endpoint from
 IPv4 to dual-stack. If you don't specify an IPv6 address, one will be
 automatically chosen from your subnet.}
+
+\item{Protocols}{The protocols you want to use for the endpoint. DoH-FIPS is applicable
+for inbound endpoints only.
+
+For an inbound endpoint you can apply the protocols as follows:
+\itemize{
+\item Do53 and DoH in combination.
+\item Do53 and DoH-FIPS in combination.
+\item Do53 alone.
+\item DoH alone.
+\item DoH-FIPS alone.
+\item None, which is treated as Do53.
+}
+
+For an outbound endpoint you can apply the protocols as follows:
+\itemize{
+\item Do53 and DoH in combination.
+\item Do53 alone.
+\item DoH alone.
+\item None, which is treated as Do53.
+}
+
+You can't change the protocol of an inbound endpoint directly from only
+Do53 to only DoH, or DoH-FIPS. This is to prevent a sudden disruption to
+incoming traffic that relies on Do53. To change the protocol from Do53
+to DoH, or DoH-FIPS, you must first enable both Do53 and DoH, or Do53
+and DoH-FIPS, to make sure that all incoming traffic has transferred to
+using the DoH protocol, or DoH-FIPS, and then remove the Do53.}
 }
 \description{
-Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
+Updates the name, or endpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
 
 See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_endpoint/} for full documentation.
 }

@@ -13,10 +13,12 @@ default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to delete.}
 
-\item{force}{If a repository contains images, forces the deletion.}
+\item{force}{If true, deleting the repository force deletes the contents of the
+repository. If false, the repository must be empty before attempting to
+delete it.}
 }
 \description{
-Deletes a repository. If the repository contains images, you must either delete all images in the repository or use the \code{force} option to delete the repository.
+Deletes a repository. If the repository isn't empty, you must either delete the contents of the repository or use the \code{force} option to delete the repository and have Amazon ECR delete all of its contents on your behalf.
 
 See \url{https://www.paws-r-sdk.com/docs/ecr_delete_repository/} for full documentation.
 }

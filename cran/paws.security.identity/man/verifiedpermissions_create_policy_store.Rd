@@ -4,7 +4,11 @@
 \alias{verifiedpermissions_create_policy_store}
 \title{Creates a policy store}
 \usage{
-verifiedpermissions_create_policy_store(clientToken = NULL, validationSettings)
+verifiedpermissions_create_policy_store(
+  clientToken = NULL,
+  validationSettings,
+  description = NULL
+)
 }
 \arguments{
 \item{clientToken}{Specifies a unique, case-sensitive ID that you provide to ensure the
@@ -33,6 +37,9 @@ turn off validation by using the
 when you have a schema defined, use
 \code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}} again
 to turn validation back on.}
+
+\item{description}{Descriptive text that you can provide to help with identification of the
+current policy store.}
 }
 \description{
 Creates a policy store. A policy store is a container for policy resources.

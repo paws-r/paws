@@ -2,7 +2,8 @@
 % Please edit documentation in R/ssooidc_operations.R
 \name{ssooidc_create_token}
 \alias{ssooidc_create_token}
-\title{Creates and returns an access token for the authorized client}
+\title{Creates and returns access and refresh tokens for clients that are
+authenticated using client secrets}
 \usage{
 ssooidc_create_token(
   clientId,
@@ -16,49 +17,56 @@ ssooidc_create_token(
 )
 }
 \arguments{
-\item{clientId}{[required] The unique identifier string for each client. This value should come
-from the persisted result of the
+\item{clientId}{[required] The unique identifier string for the client or application. This value
+comes from the result of the
 \code{\link[=ssooidc_register_client]{register_client}} API.}
 
 \item{clientSecret}{[required] A secret string generated for the client. This value should come from
 the persisted result of the \code{\link[=ssooidc_register_client]{register_client}}
 API.}
 
-\item{grantType}{[required] Supports grant types for the authorization code, refresh token, and
-device code request. For device code requests, specify the following
-value:
-
-\code{urn:ietf:params:oauth:grant-type:device_code }
+\item{grantType}{[required] Supports the following OAuth grant types: Device Code and Refresh Token.
+Specify either of the following values, depending on the grant type that
+you want:
+\itemize{
+\item Device Code - \code{urn:ietf:params:oauth:grant-type:device_code}
+\item Refresh Token - \code{refresh_token}
+}
 
 For information about how to obtain the device code, see the
 \code{\link[=ssooidc_start_device_authorization]{start_device_authorization}}
 topic.}
 
-\item{deviceCode}{Used only when calling this API for the device code grant type. This
-short-term code is used to identify this authentication attempt. This
-should come from an in-memory reference to the result of the
+\item{deviceCode}{Used only when calling this API for the Device Code grant type. This
+short-term code is used to identify this authorization request. This
+comes from the result of the
 \code{\link[=ssooidc_start_device_authorization]{start_device_authorization}} API.}
 
-\item{code}{The authorization code received from the authorization service. This
-parameter is required to perform an authorization grant request to get
-access to a token.}
+\item{code}{Used only when calling this API for the Authorization Code grant type.
+The short-term code is used to identify this authorization request. This
+grant type is currently unsupported for the
+\code{\link[=ssooidc_create_token]{create_token}} API.}
 
-\item{refreshToken}{Currently, \code{refreshToken} is not yet implemented and is not supported.
+\item{refreshToken}{Used only when calling this API for the Refresh Token grant type. This
+token is used to refresh short-term tokens, such as the access token,
+that might expire.
+
 For more information about the features and limitations of the current
 IAM Identity Center OIDC implementation, see \emph{Considerations for Using
-this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{IAM Identity Center OIDC API Reference}.
+this Guide} in the \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/Welcome.html}{IAM Identity Center OIDC API Reference}.}
 
-The token used to obtain an access token in the event that the access
-token is invalid or expired.}
+\item{scope}{The list of scopes for which authorization is requested. The access
+token that is issued is limited to the scopes that are granted. If this
+value is not specified, IAM Identity Center authorizes all scopes that
+are configured for the client during the call to
+\code{\link[=ssooidc_register_client]{register_client}}.}
 
-\item{scope}{The list of scopes that is defined by the client. Upon authorization,
-this list is used to restrict permissions when granting an access token.}
-
-\item{redirectUri}{The location of the application that will receive the authorization
-code. Users authorize the service to send the request to this location.}
+\item{redirectUri}{Used only when calling this API for the Authorization Code grant type.
+This value specifies the location of the client or application that has
+registered to receive the authorization code.}
 }
 \description{
-Creates and returns an access token for the authorized client. The access token issued will be used to fetch short-term credentials for the assigned roles in the AWS account.
+Creates and returns access and refresh tokens for clients that are authenticated using client secrets. The access token can be used to fetch short-term credentials for the assigned AWS accounts or to access application APIs using \code{bearer} authentication.
 
 See \url{https://www.paws-r-sdk.com/docs/ssooidc_create_token/} for full documentation.
 }

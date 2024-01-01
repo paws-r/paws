@@ -2,7 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_delete_cluster}
 \alias{eks_delete_cluster}
-\title{Deletes the Amazon EKS cluster control plane}
+\title{Deletes an Amazon EKS cluster control plane}
 \usage{
 eks_delete_cluster(name)
 }
@@ -10,7 +10,7 @@ eks_delete_cluster(name)
 \item{name}{[required] The name of the cluster to delete.}
 }
 \description{
-Deletes the Amazon EKS cluster control plane.
+Deletes an Amazon EKS cluster control plane.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_delete_cluster/} for full documentation.
 }

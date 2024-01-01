@@ -4,12 +4,14 @@
 \alias{elbv2_describe_target_health}
 \title{Describes the health of the specified targets or all of your targets}
 \usage{
-elbv2_describe_target_health(TargetGroupArn, Targets = NULL)
+elbv2_describe_target_health(TargetGroupArn, Targets = NULL, Include = NULL)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
 \item{Targets}{The targets.}
+
+\item{Include}{Used to inclue anomaly detection information.}
 }
 \description{
 Describes the health of the specified targets or all of your targets.

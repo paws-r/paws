@@ -11,7 +11,8 @@ sagemaker_search(
   SortOrder = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  CrossAccountFilterOption = NULL
+  CrossAccountFilterOption = NULL,
+  VisibilityConditions = NULL
 )
 }
 \arguments{
@@ -44,6 +45,9 @@ results will only include resources from your account. Default is
 discoverable to your account, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-cross-account-discoverability-use.html}{Search discoverable resources}
 in the SageMaker Developer Guide. The maximum number of
 \code{ResourceCatalog}s viewable is 1000.}
+
+\item{VisibilityConditions}{Limits the results of your search request to the resources that you can
+access.}
 }
 \description{
 Finds SageMaker resources that match a search query. Matching resources are returned as a list of \code{SearchRecord} objects in the response. You can sort the search results by any resource property in a ascending or descending order.

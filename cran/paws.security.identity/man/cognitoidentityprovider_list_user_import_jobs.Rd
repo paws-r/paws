@@ -16,9 +16,12 @@ into.}
 
 \item{MaxResults}{[required] The maximum number of import jobs you want the request to return.}
 
-\item{PaginationToken}{An identifier that was returned from the previous call to
-\code{\link[=cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs}},
-which can be used to return the next set of import jobs in the list.}
+\item{PaginationToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
 Lists user import jobs for a user pool.

@@ -3,18 +3,52 @@
 #' @include eks_service.R
 NULL
 
-#' Associate encryption configuration to an existing cluster
+#' Associates an access policy and its scope to an access entry
 #'
 #' @description
-#' Associate encryption configuration to an existing cluster.
+#' Associates an access policy and its scope to an access entry. For more information about associating access policies, see [Associating and disassociating access policies to and from access entries](https://docs.aws.amazon.com/eks/latest/userguide/access-policies.html) in the *Amazon EKS User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_associate_access_policy/](https://www.paws-r-sdk.com/docs/eks_associate_access_policy/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM user or role for the
+#' `AccessEntry` that you're associating the access policy to.
+#' @param policyArn &#91;required&#93; The ARN of the `AccessPolicy` that you're associating. For a list of
+#' ARNs, use [`list_access_policies`][eks_list_access_policies].
+#' @param accessScope &#91;required&#93; The scope for the `AccessPolicy`. You can scope access policies to an
+#' entire cluster or to specific Kubernetes namespaces.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_associate_access_policy
+eks_associate_access_policy <- function(clusterName, principalArn, policyArn, accessScope) {
+  op <- new_operation(
+    name = "AssociateAccessPolicy",
+    http_method = "POST",
+    http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
+    paginator = list()
+  )
+  input <- .eks$associate_access_policy_input(clusterName = clusterName, principalArn = principalArn, policyArn = policyArn, accessScope = accessScope)
+  output <- .eks$associate_access_policy_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$associate_access_policy <- eks_associate_access_policy
+
+#' Associates an encryption configuration to an existing cluster
+#'
+#' @description
+#' Associates an encryption configuration to an existing cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_associate_encryption_config/](https://www.paws-r-sdk.com/docs/eks_associate_encryption_config/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster that you are associating with encryption
-#' configuration.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param encryptionConfig &#91;required&#93; The configuration you are using for encryption.
-#' @param clientRequestToken The client request token you are using with the encryption
-#' configuration.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
 #'
 #' @keywords internal
 #'
@@ -36,20 +70,20 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 }
 .eks$operations$associate_encryption_config <- eks_associate_encryption_config
 
-#' Associate an identity provider configuration to a cluster
+#' Associates an identity provider configuration to a cluster
 #'
 #' @description
-#' Associate an identity provider configuration to a cluster.
+#' Associates an identity provider configuration to a cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_associate_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_associate_identity_provider_config/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster to associate the configuration to.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param oidc &#91;required&#93; An object representing an OpenID Connect (OIDC) identity provider
 #' configuration.
-#' @param tags The metadata to apply to the configuration to assist with categorization
-#' and organization. Each tag consists of a key and an optional value. You
-#' define both.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
 #' @keywords internal
@@ -72,6 +106,99 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 }
 .eks$operations$associate_identity_provider_config <- eks_associate_identity_provider_config
 
+#' Creates an access entry
+#'
+#' @description
+#' Creates an access entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_create_access_entry/](https://www.paws-r-sdk.com/docs/eks_create_access_entry/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal for the `AccessEntry`. You can specify one
+#' ARN for each access entry. You can't specify the same ARN in more than
+#' one access entry. This value can't be changed after access entry
+#' creation.
+#' 
+#' The valid principals differ depending on the type of the access entry in
+#' the `type` field. The only valid ARN is IAM roles for the types of
+#' access entries for nodes: `` ``. You can use every IAM principal type
+#' for `STANDARD` access entries. You can't use the STS session principal
+#' type with access entries because this is a temporary principal for each
+#' session and not a permanent identity that can be assigned permissions.
+#' 
+#' [IAM best
+#' practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp)
+#' recommend using IAM roles with temporary credentials, rather than IAM
+#' users with long-term credentials.
+#' @param kubernetesGroups The value for `name` that you've specified for `kind: Group` as a
+#' `subject` in a Kubernetes `RoleBinding` or `ClusterRoleBinding` object.
+#' Amazon EKS doesn't confirm that the value for `name` exists in any
+#' bindings on your cluster. You can specify one or more names.
+#' 
+#' Kubernetes authorizes the `principalArn` of the access entry to access
+#' any cluster objects that you've specified in a Kubernetes `Role` or
+#' `ClusterRole` object that is also specified in a binding's `roleRef`.
+#' For more information about creating Kubernetes `RoleBinding`,
+#' `ClusterRoleBinding`, `Role`, or `ClusterRole` objects, see [Using RBAC
+#' Authorization in the Kubernetes
+#' documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+#' 
+#' If you want Amazon EKS to authorize the `principalArn` (instead of, or
+#' in addition to Kubernetes authorizing the `principalArn`), you can
+#' associate one or more access policies to the access entry using
+#' [`associate_access_policy`][eks_associate_access_policy]. If you
+#' associate any access policies, the `principalARN` has all permissions
+#' assigned in the associated access policies and all permissions in any
+#' Kubernetes `Role` or `ClusterRole` objects that the group names are
+#' bound to.
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param username The username to authenticate to Kubernetes with. We recommend not
+#' specifying a username and letting Amazon EKS specify it for you. For
+#' more information about the value Amazon EKS specifies for you, or
+#' constraints before specifying your own username, see [Creating access
+#' entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html#creating-access-entries)
+#' in the *Amazon EKS User Guide*.
+#' @param type The type of the new access entry. Valid values are `Standard`,
+#' `FARGATE_LINUX`, `EC2_LINUX`, and `EC2_WINDOWS`.
+#' 
+#' If the `principalArn` is for an IAM role that's used for self-managed
+#' Amazon EC2 nodes, specify `EC2_LINUX` or `EC2_WINDOWS`. Amazon EKS
+#' grants the necessary permissions to the node for you. If the
+#' `principalArn` is for any other purpose, specify `STANDARD`. If you
+#' don't specify a value, Amazon EKS sets the value to `STANDARD`. It's
+#' unnecessary to create access entries for IAM roles used with Fargate
+#' profiles or managed Amazon EC2 nodes, because Amazon EKS creates entries
+#' in the `aws-auth` `ConfigMap` for the roles. You can't change this value
+#' once you've created the access entry.
+#' 
+#' If you set the value to `EC2_LINUX` or `EC2_WINDOWS`, you can't specify
+#' values for `kubernetesGroups`, or associate an `AccessPolicy` to the
+#' access entry.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_access_entry
+eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups = NULL, tags = NULL, clientRequestToken = NULL, username = NULL, type = NULL) {
+  op <- new_operation(
+    name = "CreateAccessEntry",
+    http_method = "POST",
+    http_path = "/clusters/{name}/access-entries",
+    paginator = list()
+  )
+  input <- .eks$create_access_entry_input(clusterName = clusterName, principalArn = principalArn, kubernetesGroups = kubernetesGroups, tags = tags, clientRequestToken = clientRequestToken, username = username, type = type)
+  output <- .eks$create_access_entry_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_access_entry <- eks_create_access_entry
+
 #' Creates an Amazon EKS add-on
 #'
 #' @description
@@ -79,10 +206,9 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_create_addon/](https://www.paws-r-sdk.com/docs/eks_create_addon/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster to create the add-on for.
-#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names that
-#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
-#' returns.
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
+#' [`describe_addon_versions`][eks_describe_addon_versions].
 #' @param addonVersion The version of the add-on. The version must match one of the versions
 #' returned by
 #' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
@@ -125,13 +251,12 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' specify.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param tags The metadata to apply to the cluster to assist with categorization and
-#' organization. Each tag consists of a key and an optional value. You
-#' define both.
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
 #' @param configurationValues The set of configuration values for the add-on that's created. The
-#' values that you provide are validated against the schema in
-#' [`describe_addon_configuration`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonConfiguration.html)
-#' .
+#' values that you provide are validated against the schema returned by
+#' [`describe_addon_configuration`][eks_describe_addon_configuration].
 #'
 #' @keywords internal
 #'
@@ -191,11 +316,11 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param tags The metadata to apply to the cluster to assist with categorization and
-#' organization. Each tag consists of a key and an optional value. You
-#' define both.
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
 #' @param encryptionConfig The encryption configuration for the cluster.
 #' @param outpostConfig An object representing the configuration of your local Amazon EKS
 #' cluster on an Amazon Web Services Outpost. Before creating a local
@@ -204,18 +329,19 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Outposts](https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-local-cluster-overview.html)
 #' in the *Amazon EKS User Guide*. This object isn't available for creating
 #' Amazon EKS clusters on the Amazon Web Services cloud.
+#' @param accessConfig The access configuration for the cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/clusters",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -243,19 +369,19 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' indicating a 12 month or 36 month subscription. This value cannot be
 #' changed after creating the subscription.
 #' @param licenseQuantity The number of licenses to purchase with the subscription. Valid values
-#' are between 1 and 1000. This value cannot be changed after creating the
+#' are between 1 and 100. This value can't be changed after creating the
 #' subscription.
 #' @param licenseType The license type for all licenses in the subscription. Valid value is
 #' CLUSTER. With the CLUSTER license type, each license covers support for
 #' a single EKS Anywhere cluster.
 #' @param autoRenew A boolean indicating whether the subscription auto renews at the end of
 #' the term.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param tags The metadata for a subscription to assist with categorization and
 #' organization. Each tag consists of a key and an optional value.
-#' Subscription tags do not propagate to any other resources associated
-#' with the subscription.
+#' Subscription tags don't propagate to any other resources associated with
+#' the subscription.
 #'
 #' @keywords internal
 #'
@@ -285,29 +411,26 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
 #' See [https://www.paws-r-sdk.com/docs/eks_create_fargate_profile/](https://www.paws-r-sdk.com/docs/eks_create_fargate_profile/) for full documentation.
 #'
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile.
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster to apply the Fargate profile to.
-#' @param podExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the pod execution role to use for pods
-#' that match the selectors in the Fargate profile. The pod execution role
-#' allows Fargate infrastructure to register with your cluster as a node,
-#' and it provides read access to Amazon ECR image repositories. For more
-#' information, see [Pod Execution
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param podExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the `Pod` execution role to use for a
+#' `Pod` that matches the selectors in the Fargate profile. The `Pod`
+#' execution role allows Fargate infrastructure to register with your
+#' cluster as a node, and it provides read access to Amazon ECR image
+#' repositories. For more information, see [`Pod` execution
+#' role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
 #' in the *Amazon EKS User Guide*.
-#' @param subnets The IDs of subnets to launch your pods into. At this time, pods running
-#' on Fargate are not assigned public IP addresses, so only private subnets
-#' (with no direct route to an Internet Gateway) are accepted for this
-#' parameter.
-#' @param selectors The selectors to match for pods to use this Fargate profile. Each
-#' selector must have an associated namespace. Optionally, you can also
-#' specify labels for a namespace. You may specify up to five selectors in
-#' a Fargate profile.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param subnets The IDs of subnets to launch a `Pod` into. A `Pod` running on Fargate
+#' isn't assigned a public IP address, so only private subnets (with no
+#' direct route to an Internet Gateway) are accepted for this parameter.
+#' @param selectors The selectors to match for a `Pod` to use this Fargate profile. Each
+#' selector must have an associated Kubernetes `namespace`. Optionally, you
+#' can also specify `labels` for a `namespace`. You may specify up to five
+#' selectors in a Fargate profile.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param tags The metadata to apply to the Fargate profile to assist with
-#' categorization and organization. Each tag consists of a key and an
-#' optional value. You define both. Fargate profile tags do not propagate
-#' to any other resources associated with the Fargate profile, such as the
-#' pods that are scheduled with it.
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
 #'
 #' @keywords internal
 #'
@@ -332,11 +455,11 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' Creates a managed node group for an Amazon EKS cluster
 #'
 #' @description
-#' Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster.
+#' Creates a managed node group for an Amazon EKS cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_create_nodegroup/](https://www.paws-r-sdk.com/docs/eks_create_nodegroup/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster to create the node group in.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The unique name to give your node group.
 #' @param scalingConfig The scaling configuration details for the Auto Scaling group that is
 #' created for your node group.
@@ -350,10 +473,9 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' in the *Amazon EKS User Guide*.
 #' @param subnets &#91;required&#93; The subnets to use for the Auto Scaling group that is created for your
 #' node group. If you specify `launchTemplate`, then don't specify
-#' [`SubnetId`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html)
-#' in your launch template, or the node group deployment will fail. For
-#' more information about using launch templates with Amazon EKS, see
-#' [Launch template
+#' ` SubnetId ` in your launch template, or the node group deployment will
+#' fail. For more information about using launch templates with Amazon EKS,
+#' see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param instanceTypes Specify the instance types for a node group. If you specify a GPU
@@ -395,24 +517,20 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' more information, see [Amazon EKS node IAM
 #' role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
 #' in the *Amazon EKS User Guide* . If you specify `launchTemplate`, then
-#' don't specify
-#' [`IamInstanceProfile`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html)
-#' in your launch template, or the node group deployment will fail. For
-#' more information about using launch templates with Amazon EKS, see
-#' [Launch template
+#' don't specify ` IamInstanceProfile ` in your launch template, or the
+#' node group deployment will fail. For more information about using launch
+#' templates with Amazon EKS, see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
-#' @param labels The Kubernetes labels to be applied to the nodes in the node group when
+#' @param labels The Kubernetes `labels` to apply to the nodes in the node group when
 #' they are created.
 #' @param taints The Kubernetes taints to be applied to the nodes in the node group. For
 #' more information, see [Node taints on managed node
 #' groups](https://docs.aws.amazon.com/eks/latest/userguide/node-taints-managed-node-groups.html).
-#' @param tags The metadata to apply to the node group to assist with categorization
-#' and organization. Each tag consists of a key and an optional value. You
-#' define both. Node group tags do not propagate to any other resources
-#' associated with the node group, such as the Amazon EC2 instances or
-#' subnets.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param launchTemplate An object representing a node group's launch template specification. If
 #' specified, then do not specify `instanceTypes`, `diskSize`, or
@@ -467,14 +585,113 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 }
 .eks$operations$create_nodegroup <- eks_create_nodegroup
 
-#' Delete an Amazon EKS add-on
+#' Creates an EKS Pod Identity association between a service account in an
+#' Amazon EKS cluster and an IAM role with EKS Pod Identity
 #'
 #' @description
-#' Delete an Amazon EKS add-on.
+#' Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with *EKS Pod Identity*. Use EKS Pod Identity to give temporary IAM credentials to pods and the credentials are rotated automatically.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_create_pod_identity_association/](https://www.paws-r-sdk.com/docs/eks_create_pod_identity_association/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to create the association in.
+#' @param namespace &#91;required&#93; The name of the Kubernetes namespace inside the cluster to create the
+#' association in. The service account and the pods that use the service
+#' account must be in this namespace.
+#' @param serviceAccount &#91;required&#93; The name of the Kubernetes service account inside the cluster to
+#' associate the IAM credentials with.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with the
+#' service account. The EKS Pod Identity agent manages credentials to
+#' assume this role for applications in the containers in the pods that use
+#' this service account.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource – 50
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length – 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length – 256 Unicode characters in UTF-8
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Tag keys and values are case-sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for either keys or values as it is reserved for
+#'     Amazon Web Services use. You cannot edit or delete tag keys or
+#'     values with this prefix. Tags with this prefix do not count against
+#'     your tags per resource limit.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_pod_identity_association
+eks_create_pod_identity_association <- function(clusterName, namespace, serviceAccount, roleArn, clientRequestToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreatePodIdentityAssociation",
+    http_method = "POST",
+    http_path = "/clusters/{name}/pod-identity-associations",
+    paginator = list()
+  )
+  input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags)
+  output <- .eks$create_pod_identity_association_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_pod_identity_association <- eks_create_pod_identity_association
+
+#' Deletes an access entry
+#'
+#' @description
+#' Deletes an access entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_access_entry/](https://www.paws-r-sdk.com/docs/eks_delete_access_entry/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal for the `AccessEntry`.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_access_entry
+eks_delete_access_entry <- function(clusterName, principalArn) {
+  op <- new_operation(
+    name = "DeleteAccessEntry",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/access-entries/{principalArn}",
+    paginator = list()
+  )
+  input <- .eks$delete_access_entry_input(clusterName = clusterName, principalArn = principalArn)
+  output <- .eks$delete_access_entry_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_access_entry <- eks_delete_access_entry
+
+#' Deletes an Amazon EKS add-on
+#'
+#' @description
+#' Deletes an Amazon EKS add-on.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_delete_addon/](https://www.paws-r-sdk.com/docs/eks_delete_addon/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster to delete the add-on from.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
@@ -502,10 +719,10 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
 }
 .eks$operations$delete_addon <- eks_delete_addon
 
-#' Deletes the Amazon EKS cluster control plane
+#' Deletes an Amazon EKS cluster control plane
 #'
 #' @description
-#' Deletes the Amazon EKS cluster control plane.
+#' Deletes an Amazon EKS cluster control plane.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_delete_cluster/](https://www.paws-r-sdk.com/docs/eks_delete_cluster/) for full documentation.
 #'
@@ -531,10 +748,10 @@ eks_delete_cluster <- function(name) {
 }
 .eks$operations$delete_cluster <- eks_delete_cluster
 
-#' Deletes an expired / inactive subscription
+#' Deletes an expired or inactive subscription
 #'
 #' @description
-#' Deletes an expired / inactive subscription. Deleting inactive subscriptions removes them from the Amazon Web Services Management Console view and from list/describe API responses. Subscriptions can only be cancelled within 7 days of creation, and are cancelled by creating a ticket in the Amazon Web Services Support Center.
+#' Deletes an expired or inactive subscription. Deleting inactive subscriptions removes them from the Amazon Web Services Management Console view and from list/describe API responses. Subscriptions can only be cancelled within 7 days of creation and are cancelled by creating a ticket in the Amazon Web Services Support Center.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_delete_eks_anywhere_subscription/](https://www.paws-r-sdk.com/docs/eks_delete_eks_anywhere_subscription/) for full documentation.
 #'
@@ -567,8 +784,7 @@ eks_delete_eks_anywhere_subscription <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_delete_fargate_profile/](https://www.paws-r-sdk.com/docs/eks_delete_fargate_profile/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile
-#' to delete.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to delete.
 #'
 #' @keywords internal
@@ -591,15 +807,14 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 }
 .eks$operations$delete_fargate_profile <- eks_delete_fargate_profile
 
-#' Deletes an Amazon EKS node group for a cluster
+#' Deletes a managed node group
 #'
 #' @description
-#' Deletes an Amazon EKS node group for a cluster.
+#' Deletes a managed node group.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_delete_nodegroup/](https://www.paws-r-sdk.com/docs/eks_delete_nodegroup/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with your node
-#' group.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The name of the node group to delete.
 #'
 #' @keywords internal
@@ -621,6 +836,36 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
   return(response)
 }
 .eks$operations$delete_nodegroup <- eks_delete_nodegroup
+
+#' Deletes a EKS Pod Identity association
+#'
+#' @description
+#' Deletes a EKS Pod Identity association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_pod_identity_association/](https://www.paws-r-sdk.com/docs/eks_delete_pod_identity_association/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The cluster name that
+#' @param associationId &#91;required&#93; The ID of the association to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_pod_identity_association
+eks_delete_pod_identity_association <- function(clusterName, associationId) {
+  op <- new_operation(
+    name = "DeletePodIdentityAssociation",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
+    paginator = list()
+  )
+  input <- .eks$delete_pod_identity_association_input(clusterName = clusterName, associationId = associationId)
+  output <- .eks$delete_pod_identity_association_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_pod_identity_association <- eks_delete_pod_identity_association
 
 #' Deregisters a connected cluster to remove it from the Amazon EKS control
 #' plane
@@ -652,6 +897,36 @@ eks_deregister_cluster <- function(name) {
 }
 .eks$operations$deregister_cluster <- eks_deregister_cluster
 
+#' Describes an access entry
+#'
+#' @description
+#' Describes an access entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_access_entry/](https://www.paws-r-sdk.com/docs/eks_describe_access_entry/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal for the `AccessEntry`.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_access_entry
+eks_describe_access_entry <- function(clusterName, principalArn) {
+  op <- new_operation(
+    name = "DescribeAccessEntry",
+    http_method = "GET",
+    http_path = "/clusters/{name}/access-entries/{principalArn}",
+    paginator = list()
+  )
+  input <- .eks$describe_access_entry_input(clusterName = clusterName, principalArn = principalArn)
+  output <- .eks$describe_access_entry_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_access_entry <- eks_describe_access_entry
+
 #' Describes an Amazon EKS add-on
 #'
 #' @description
@@ -659,7 +934,7 @@ eks_deregister_cluster <- function(name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_addon/](https://www.paws-r-sdk.com/docs/eks_describe_addon/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
@@ -691,9 +966,8 @@ eks_describe_addon <- function(clusterName, addonName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_addon_configuration/](https://www.paws-r-sdk.com/docs/eks_describe_addon_configuration/) for full documentation.
 #'
-#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names that
-#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
-#' returns.
+#' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
+#' [`describe_addon_versions`][eks_describe_addon_versions].
 #' @param addonVersion &#91;required&#93; The version of the add-on. The version must match one of the versions
 #' returned by
 #' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
@@ -722,16 +996,22 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
 #' Describes the versions for an add-on
 #'
 #' @description
-#' Describes the versions for an add-on. Information such as the Kubernetes versions that you can use the add-on with, the `owner`, `publisher`, and the `type` of the add-on are returned.
+#' Describes the versions for an add-on.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_addon_versions/](https://www.paws-r-sdk.com/docs/eks_describe_addon_versions/) for full documentation.
 #'
 #' @param kubernetesVersion The Kubernetes versions that you can use the add-on with.
-#' @param maxResults The maximum number of results to return.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `DescribeAddonVersionsRequest` where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
@@ -766,14 +1046,14 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 }
 .eks$operations$describe_addon_versions <- eks_describe_addon_versions
 
-#' Returns descriptive information about an Amazon EKS cluster
+#' Describes an Amazon EKS cluster
 #'
 #' @description
-#' Returns descriptive information about an Amazon EKS cluster.
+#' Describes an Amazon EKS cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_cluster/](https://www.paws-r-sdk.com/docs/eks_describe_cluster/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the cluster to describe.
+#' @param name &#91;required&#93; The name of your cluster.
 #'
 #' @keywords internal
 #'
@@ -824,14 +1104,14 @@ eks_describe_eks_anywhere_subscription <- function(id) {
 }
 .eks$operations$describe_eks_anywhere_subscription <- eks_describe_eks_anywhere_subscription
 
-#' Returns descriptive information about an Fargate profile
+#' Describes an Fargate profile
 #'
 #' @description
-#' Returns descriptive information about an Fargate profile.
+#' Describes an Fargate profile.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_fargate_profile/](https://www.paws-r-sdk.com/docs/eks_describe_fargate_profile/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to describe.
 #'
 #' @keywords internal
@@ -854,15 +1134,14 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 }
 .eks$operations$describe_fargate_profile <- eks_describe_fargate_profile
 
-#' Returns descriptive information about an identity provider configuration
+#' Describes an identity provider configuration
 #'
 #' @description
-#' Returns descriptive information about an identity provider configuration.
+#' Describes an identity provider configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_describe_identity_provider_config/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The cluster name that the identity provider configuration is associated
-#' to.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param identityProviderConfig &#91;required&#93; An object representing an identity provider configuration.
 #'
 #' @keywords internal
@@ -885,14 +1164,44 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
 }
 .eks$operations$describe_identity_provider_config <- eks_describe_identity_provider_config
 
-#' Returns descriptive information about an Amazon EKS node group
+#' Returns details about an insight that you specify using its ID
 #'
 #' @description
-#' Returns descriptive information about an Amazon EKS node group.
+#' Returns details about an insight that you specify using its ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_insight/](https://www.paws-r-sdk.com/docs/eks_describe_insight/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to describe the insight for.
+#' @param id &#91;required&#93; The identity of the insight to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_insight
+eks_describe_insight <- function(clusterName, id) {
+  op <- new_operation(
+    name = "DescribeInsight",
+    http_method = "GET",
+    http_path = "/clusters/{name}/insights/{id}",
+    paginator = list()
+  )
+  input <- .eks$describe_insight_input(clusterName = clusterName, id = id)
+  output <- .eks$describe_insight_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_insight <- eks_describe_insight
+
+#' Describes a managed node group
+#'
+#' @description
+#' Describes a managed node group.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_nodegroup/](https://www.paws-r-sdk.com/docs/eks_describe_nodegroup/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the node group.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The name of the node group to describe.
 #'
 #' @keywords internal
@@ -915,11 +1224,40 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 }
 .eks$operations$describe_nodegroup <- eks_describe_nodegroup
 
-#' Returns descriptive information about an update against your Amazon EKS
-#' cluster or associated managed node group or Amazon EKS add-on
+#' Returns descriptive information about an EKS Pod Identity association
 #'
 #' @description
-#' Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on.
+#' Returns descriptive information about an EKS Pod Identity association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_pod_identity_association/](https://www.paws-r-sdk.com/docs/eks_describe_pod_identity_association/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster that the association is in.
+#' @param associationId &#91;required&#93; The ID of the association that you want the description of.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_pod_identity_association
+eks_describe_pod_identity_association <- function(clusterName, associationId) {
+  op <- new_operation(
+    name = "DescribePodIdentityAssociation",
+    http_method = "GET",
+    http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
+    paginator = list()
+  )
+  input <- .eks$describe_pod_identity_association_input(clusterName = clusterName, associationId = associationId)
+  output <- .eks$describe_pod_identity_association_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_pod_identity_association <- eks_describe_pod_identity_association
+
+#' Describes an update to an Amazon EKS resource
+#'
+#' @description
+#' Describes an update to an Amazon EKS resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_describe_update/](https://www.paws-r-sdk.com/docs/eks_describe_update/) for full documentation.
 #'
@@ -951,14 +1289,47 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 }
 .eks$operations$describe_update <- eks_describe_update
 
+#' Disassociates an access policy from an access entry
+#'
+#' @description
+#' Disassociates an access policy from an access entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_disassociate_access_policy/](https://www.paws-r-sdk.com/docs/eks_disassociate_access_policy/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal for the `AccessEntry`.
+#' @param policyArn &#91;required&#93; The ARN of the policy to disassociate from the access entry. For a list
+#' of associated policies ARNs, use
+#' [`list_associated_access_policies`][eks_list_associated_access_policies].
+#'
+#' @keywords internal
+#'
+#' @rdname eks_disassociate_access_policy
+eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn) {
+  op <- new_operation(
+    name = "DisassociateAccessPolicy",
+    http_method = "DELETE",
+    http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies/{policyArn}",
+    paginator = list()
+  )
+  input <- .eks$disassociate_access_policy_input(clusterName = clusterName, principalArn = principalArn, policyArn = policyArn)
+  output <- .eks$disassociate_access_policy_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$disassociate_access_policy <- eks_disassociate_access_policy
+
 #' Disassociates an identity provider configuration from a cluster
 #'
 #' @description
-#' Disassociates an identity provider configuration from a cluster. If you disassociate an identity provider from your cluster, users included in the provider can no longer access the cluster. However, you can still access the cluster with [IAM principals](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html).
+#' Disassociates an identity provider configuration from a cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster to disassociate an identity provider from.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param identityProviderConfig &#91;required&#93; An object representing an identity provider configuration.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -983,6 +1354,97 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 }
 .eks$operations$disassociate_identity_provider_config <- eks_disassociate_identity_provider_config
 
+#' Lists the access entries for your cluster
+#'
+#' @description
+#' Lists the access entries for your cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_access_entries/](https://www.paws-r-sdk.com/docs/eks_list_access_entries/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param associatedPolicyArn The ARN of an `AccessPolicy`. When you specify an access policy ARN,
+#' only the access entries associated to that access policy are returned.
+#' For a list of available policy ARNs, use
+#' [`list_access_policies`][eks_list_access_policies].
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_access_entries
+eks_list_access_entries <- function(clusterName, associatedPolicyArn = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAccessEntries",
+    http_method = "GET",
+    http_path = "/clusters/{name}/access-entries",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessEntries")
+  )
+  input <- .eks$list_access_entries_input(clusterName = clusterName, associatedPolicyArn = associatedPolicyArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_access_entries_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_access_entries <- eks_list_access_entries
+
+#' Lists the available access policies
+#'
+#' @description
+#' Lists the available access policies.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_access_policies/](https://www.paws-r-sdk.com/docs/eks_list_access_policies/) for full documentation.
+#'
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_access_policies
+eks_list_access_policies <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAccessPolicies",
+    http_method = "GET",
+    http_path = "/access-policies",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessPolicies")
+  )
+  input <- .eks$list_access_policies_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_access_policies_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_access_policies <- eks_list_access_policies
+
 #' Lists the installed add-ons
 #'
 #' @description
@@ -990,19 +1452,18 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_addons/](https://www.paws-r-sdk.com/docs/eks_list_addons/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster.
-#' @param maxResults The maximum number of add-on results returned by `ListAddonsRequest` in
-#' paginated output. When you use this parameter, `ListAddonsRequest`
-#' returns only `maxResults` results in a single page along with a
-#' `nextToken` response element. You can see the remaining results of the
-#' initial request by sending another `ListAddonsRequest` request with the
-#' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don't use this parameter, `ListAddonsRequest` returns up to 100 results
-#' and a `nextToken` value, if applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListAddonsRequest` where `maxResults` was used and the results exceeded
-#' the value of that parameter. Pagination continues from the end of the
-#' previous results that returned the `nextToken` value.
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
@@ -1028,35 +1489,79 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 }
 .eks$operations$list_addons <- eks_list_addons
 
-#' Lists the Amazon EKS clusters in your Amazon Web Services account in the
-#' specified Region
+#' Lists the access policies associated with an access entry
 #'
 #' @description
-#' Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region.
+#' Lists the access policies associated with an access entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_associated_access_policies/](https://www.paws-r-sdk.com/docs/eks_list_associated_access_policies/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal for the `AccessEntry`.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_associated_access_policies
+eks_list_associated_access_policies <- function(clusterName, principalArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAssociatedAccessPolicies",
+    http_method = "GET",
+    http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "clusterName", "principalArn"), output_token = "nextToken", result_key = "associatedAccessPolicies")
+  )
+  input <- .eks$list_associated_access_policies_input(clusterName = clusterName, principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_associated_access_policies_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_associated_access_policies <- eks_list_associated_access_policies
+
+#' Lists the Amazon EKS clusters in your Amazon Web Services account in the
+#' specified Amazon Web Services Region
+#'
+#' @description
+#' Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_clusters/](https://www.paws-r-sdk.com/docs/eks_list_clusters/) for full documentation.
 #'
-#' @param maxResults The maximum number of cluster results returned by
-#' [`list_clusters`][eks_list_clusters] in paginated output. When you use
-#' this parameter, [`list_clusters`][eks_list_clusters] returns only
-#' `maxResults` results in a single page along with a `nextToken` response
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
 #' element. You can see the remaining results of the initial request by
-#' sending another [`list_clusters`][eks_list_clusters] request with the
-#' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don't use this parameter, [`list_clusters`][eks_list_clusters] returns
-#' up to 100 results and a `nextToken` value if applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' [`list_clusters`][eks_list_clusters] request where `maxResults` was used
-#' and the results exceeded the value of that parameter. Pagination
-#' continues from the end of the previous results that returned the
-#' `nextToken` value.
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
 #' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
 #' @param include Indicates whether external clusters are included in the returned list.
-#' Use '`all`' to return connected clusters, or blank to return only Amazon
-#' EKS clusters. '`all`' must be in lowercase otherwise an error occurs.
+#' Use '`all`' to return
+#' <https://docs.aws.amazon.com/eks/latest/userguide/eks-connector.html>connected
+#' clusters, or blank to return only Amazon EKS clusters. '`all`' must be
+#' in lowercase otherwise an error occurs.
 #'
 #' @keywords internal
 #'
@@ -1094,10 +1599,11 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
 #' This value can be between 1 and 100. If you don't use this parameter,
 #' ListEksAnywhereSubscriptions returns up to 10 results and a nextToken
 #' value if applicable.
-#' @param nextToken The nextToken value to include in a future ListEksAnywhereSubscriptions
-#' request. When the results of a ListEksAnywhereSubscriptions request
-#' exceed maxResults, you can use this value to retrieve the next page of
-#' results. This value is null when there are no more results to return.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_eks_anywhere_subscriptions`][eks_list_eks_anywhere_subscriptions]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value.
 #' @param includeStatus An array of subscription statuses to filter on.
 #'
 #' @keywords internal
@@ -1108,7 +1614,7 @@ eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = N
     name = "ListEksAnywhereSubscriptions",
     http_method = "GET",
     http_path = "/eks-anywhere-subscriptions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "subscriptions")
   )
   input <- .eks$list_eks_anywhere_subscriptions_input(maxResults = maxResults, nextToken = nextToken, includeStatus = includeStatus)
   output <- .eks$list_eks_anywhere_subscriptions_output()
@@ -1121,31 +1627,29 @@ eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = N
 .eks$operations$list_eks_anywhere_subscriptions <- eks_list_eks_anywhere_subscriptions
 
 #' Lists the Fargate profiles associated with the specified cluster in your
-#' Amazon Web Services account in the specified Region
+#' Amazon Web Services account in the specified Amazon Web Services Region
 #'
 #' @description
-#' Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region.
+#' Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_fargate_profiles/](https://www.paws-r-sdk.com/docs/eks_list_fargate_profiles/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list Fargate
-#' profiles in.
-#' @param maxResults The maximum number of Fargate profile results returned by
-#' [`list_fargate_profiles`][eks_list_fargate_profiles] in paginated
-#' output. When you use this parameter,
-#' [`list_fargate_profiles`][eks_list_fargate_profiles] returns only
-#' `maxResults` results in a single page along with a `nextToken` response
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
 #' element. You can see the remaining results of the initial request by
-#' sending another [`list_fargate_profiles`][eks_list_fargate_profiles]
-#' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If you don't use this parameter,
-#' [`list_fargate_profiles`][eks_list_fargate_profiles] returns up to 100
-#' results and a `nextToken` value if applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' [`list_fargate_profiles`][eks_list_fargate_profiles] request where
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
 #' `maxResults` was used and the results exceeded the value of that
 #' parameter. Pagination continues from the end of the previous results
-#' that returned the `nextToken` value.
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
 #'
 #' @keywords internal
 #'
@@ -1167,31 +1671,29 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 }
 .eks$operations$list_fargate_profiles <- eks_list_fargate_profiles
 
-#' A list of identity provider configurations
+#' Lists the identity provider configurations for your cluster
 #'
 #' @description
-#' A list of identity provider configurations.
+#' Lists the identity provider configurations for your cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_identity_provider_configs/](https://www.paws-r-sdk.com/docs/eks_list_identity_provider_configs/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The cluster name that you want to list identity provider configurations
-#' for.
-#' @param maxResults The maximum number of identity provider configurations returned by
-#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
-#' in paginated output. When you use this parameter,
-#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
-#' returns only `maxResults` results in a single page along with a
-#' `nextToken` response element. You can see the remaining results of the
-#' initial request by sending another
-#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
-#' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If you don't use this parameter,
-#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
-#' returns up to 100 results and a `nextToken` value, if applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `IdentityProviderConfigsRequest` where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
 #'
 #' @keywords internal
 #'
@@ -1213,31 +1715,77 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
 }
 .eks$operations$list_identity_provider_configs <- eks_list_identity_provider_configs
 
-#' Lists the Amazon EKS managed node groups associated with the specified
-#' cluster in your Amazon Web Services account in the specified Region
+#' Returns a list of all insights checked for against the specified cluster
 #'
 #' @description
-#' Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region. Self-managed node groups are not listed.
+#' Returns a list of all insights checked for against the specified cluster. You can filter which insights are returned by category, associated Kubernetes version, and status.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_insights/](https://www.paws-r-sdk.com/docs/eks_list_insights/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the insights.
+#' @param filter The criteria to filter your list of insights for your cluster. You can
+#' filter which insights are returned by category, associated Kubernetes
+#' version, and status.
+#' @param maxResults The maximum number of identity provider configurations returned by
+#' [`list_insights`][eks_list_insights] in paginated output. When you use
+#' this parameter, [`list_insights`][eks_list_insights] returns only
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another [`list_insights`][eks_list_insights] request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don't use this parameter, [`list_insights`][eks_list_insights] returns
+#' up to 100 results and a `nextToken` value, if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_insights`][eks_list_insights] request. When the results of a
+#' [`list_insights`][eks_list_insights] request exceed `maxResults`, you
+#' can use this value to retrieve the next page of results. This value is
+#' `null` when there are no more results to return.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_insights
+eks_list_insights <- function(clusterName, filter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListInsights",
+    http_method = "POST",
+    http_path = "/clusters/{name}/insights",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "insights")
+  )
+  input <- .eks$list_insights_input(clusterName = clusterName, filter = filter, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_insights_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_insights <- eks_list_insights
+
+#' Lists the managed node groups associated with the specified cluster in
+#' your Amazon Web Services account in the specified Amazon Web Services
+#' Region
+#'
+#' @description
+#' Lists the managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Amazon Web Services Region. Self-managed node groups aren't listed.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_nodegroups/](https://www.paws-r-sdk.com/docs/eks_list_nodegroups/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list node
-#' groups in.
-#' @param maxResults The maximum number of node group results returned by
-#' [`list_nodegroups`][eks_list_nodegroups] in paginated output. When you
-#' use this parameter, [`list_nodegroups`][eks_list_nodegroups] returns
-#' only `maxResults` results in a single page along with a `nextToken`
-#' response element. You can see the remaining results of the initial
-#' request by sending another [`list_nodegroups`][eks_list_nodegroups]
-#' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If you don't use this parameter,
-#' [`list_nodegroups`][eks_list_nodegroups] returns up to 100 results and a
-#' `nextToken` value if applicable.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' [`list_nodegroups`][eks_list_nodegroups] request where `maxResults` was
-#' used and the results exceeded the value of that parameter. Pagination
-#' continues from the end of the previous results that returned the
-#' `nextToken` value.
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
 #'
 #' @keywords internal
 #'
@@ -1259,6 +1807,59 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 }
 .eks$operations$list_nodegroups <- eks_list_nodegroups
 
+#' List the EKS Pod Identity associations in a cluster
+#'
+#' @description
+#' List the EKS Pod Identity associations in a cluster. You can filter the list by the namespace that the association is in or the service account that the association uses.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_pod_identity_associations/](https://www.paws-r-sdk.com/docs/eks_list_pod_identity_associations/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster that the associations are in.
+#' @param namespace The name of the Kubernetes namespace inside the cluster that the
+#' associations are in.
+#' @param serviceAccount The name of the Kubernetes service account that the associations use.
+#' @param maxResults The maximum number of EKS Pod Identity association results returned by
+#' [`list_pod_identity_associations`][eks_list_pod_identity_associations]
+#' in paginated output. When you use this parameter,
+#' [`list_pod_identity_associations`][eks_list_pod_identity_associations]
+#' returns only `maxResults` results in a single page along with a
+#' `nextToken` response element. You can see the remaining results of the
+#' initial request by sending another
+#' [`list_pod_identity_associations`][eks_list_pod_identity_associations]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If you don't use this parameter,
+#' [`list_pod_identity_associations`][eks_list_pod_identity_associations]
+#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_updates`][eks_list_updates] request where `maxResults` was used
+#' and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_pod_identity_associations
+eks_list_pod_identity_associations <- function(clusterName, namespace = NULL, serviceAccount = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListPodIdentityAssociations",
+    http_method = "GET",
+    http_path = "/clusters/{name}/pod-identity-associations",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "associations")
+  )
+  input <- .eks$list_pod_identity_associations_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_pod_identity_associations_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_pod_identity_associations <- eks_list_pod_identity_associations
+
 #' List the tags for an Amazon EKS resource
 #'
 #' @description
@@ -1266,9 +1867,8 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/eks_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are Amazon EKS
-#' clusters and managed node groups.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list tags
+#' for.
 #'
 #' @keywords internal
 #'
@@ -1290,31 +1890,32 @@ eks_list_tags_for_resource <- function(resourceArn) {
 }
 .eks$operations$list_tags_for_resource <- eks_list_tags_for_resource
 
-#' Lists the updates associated with an Amazon EKS cluster or managed node
-#' group in your Amazon Web Services account, in the specified Region
+#' Lists the updates associated with an Amazon EKS resource in your Amazon
+#' Web Services account, in the specified Amazon Web Services Region
 #'
 #' @description
-#' Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region.
+#' Lists the updates associated with an Amazon EKS resource in your Amazon Web Services account, in the specified Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_updates/](https://www.paws-r-sdk.com/docs/eks_list_updates/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
 #' @param nodegroupName The name of the Amazon EKS managed node group to list updates for.
 #' @param addonName The names of the installed add-ons that have available updates.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' [`list_updates`][eks_list_updates] request where `maxResults` was used
-#' and the results exceeded the value of that parameter. Pagination
-#' continues from the end of the previous results that returned the
-#' `nextToken` value.
-#' @param maxResults The maximum number of update results returned by
-#' [`list_updates`][eks_list_updates] in paginated output. When you use
-#' this parameter, [`list_updates`][eks_list_updates] returns only
-#' `maxResults` results in a single page along with a `nextToken` response
+#' @param nextToken The `nextToken` value returned from a previous paginated request, where
+#' `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is null when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that is used only
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#' @param maxResults The maximum number of results, returned in paginated output. You receive
+#' `maxResults` in a single page, along with a `nextToken` response
 #' element. You can see the remaining results of the initial request by
-#' sending another [`list_updates`][eks_list_updates] request with the
-#' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don't use this parameter, [`list_updates`][eks_list_updates] returns up
-#' to 100 results and a `nextToken` value if applicable.
+#' sending another request with the returned `nextToken` value. This value
+#' can be between 1 and 100. If you don't use this parameter, 100 results
+#' and a `nextToken` value, if applicable, are returned.
 #'
 #' @keywords internal
 #'
@@ -1343,15 +1944,14 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_register_cluster/](https://www.paws-r-sdk.com/docs/eks_register_cluster/) for full documentation.
 #'
-#' @param name &#91;required&#93; Define a unique name for this cluster for your Region.
+#' @param name &#91;required&#93; A unique name for this cluster in your Amazon Web Services Region.
 #' @param connectorConfig &#91;required&#93; The configuration settings required to connect the Kubernetes cluster to
 #' the Amazon EKS control plane.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param tags The metadata that you apply to the cluster to assist with categorization
-#' and organization. Each tag consists of a key and an optional value, both
-#' of which you define. Cluster tags do not propagate to any other
-#' resources associated with the cluster.
+#' @param tags Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
 #'
 #' @keywords internal
 #'
@@ -1373,18 +1973,18 @@ eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NUL
 }
 .eks$operations$register_cluster <- eks_register_cluster
 
-#' Associates the specified tags to a resource with the specified
-#' resourceArn
+#' Associates the specified tags to an Amazon EKS resource with the
+#' specified resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag does not automatically propagate to the subnets and nodes associated with the cluster.
+#' Associates the specified tags to an Amazon EKS resource with the specified `resourceArn`. If existing tags on a resource are not specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted. Tags that you create for Amazon EKS resources don't propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag doesn't automatically propagate to the subnets and nodes associated with the cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_tag_resource/](https://www.paws-r-sdk.com/docs/eks_tag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
-#' Currently, the supported resources are Amazon EKS clusters and managed
-#' node groups.
-#' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
+#' @param tags &#91;required&#93; Metadata that assists with categorization and organization. Each tag
+#' consists of a key and an optional value. You define both. Tags don't
+#' propagate to any other cluster or Amazon Web Services resources.
 #'
 #' @keywords internal
 #'
@@ -1406,17 +2006,15 @@ eks_tag_resource <- function(resourceArn, tags) {
 }
 .eks$operations$tag_resource <- eks_tag_resource
 
-#' Deletes specified tags from a resource
+#' Deletes specified tags from an Amazon EKS resource
 #'
 #' @description
-#' Deletes specified tags from a resource.
+#' Deletes specified tags from an Amazon EKS resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_untag_resource/](https://www.paws-r-sdk.com/docs/eks_untag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
-#' tags. Currently, the supported resources are Amazon EKS clusters and
-#' managed node groups.
-#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
+#' @param tagKeys &#91;required&#93; The keys of the tags to remove.
 #'
 #' @keywords internal
 #'
@@ -1438,6 +2036,65 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 }
 .eks$operations$untag_resource <- eks_untag_resource
 
+#' Updates an access entry
+#'
+#' @description
+#' Updates an access entry.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_update_access_entry/](https://www.paws-r-sdk.com/docs/eks_update_access_entry/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of your cluster.
+#' @param principalArn &#91;required&#93; The ARN of the IAM principal for the `AccessEntry`.
+#' @param kubernetesGroups The value for `name` that you've specified for `kind: Group` as a
+#' `subject` in a Kubernetes `RoleBinding` or `ClusterRoleBinding` object.
+#' Amazon EKS doesn't confirm that the value for `name` exists in any
+#' bindings on your cluster. You can specify one or more names.
+#' 
+#' Kubernetes authorizes the `principalArn` of the access entry to access
+#' any cluster objects that you've specified in a Kubernetes `Role` or
+#' `ClusterRole` object that is also specified in a binding's `roleRef`.
+#' For more information about creating Kubernetes `RoleBinding`,
+#' `ClusterRoleBinding`, `Role`, or `ClusterRole` objects, see [Using RBAC
+#' Authorization in the Kubernetes
+#' documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+#' 
+#' If you want Amazon EKS to authorize the `principalArn` (instead of, or
+#' in addition to Kubernetes authorizing the `principalArn`), you can
+#' associate one or more access policies to the access entry using
+#' [`associate_access_policy`][eks_associate_access_policy]. If you
+#' associate any access policies, the `principalARN` has all permissions
+#' assigned in the associated access policies and all permissions in any
+#' Kubernetes `Role` or `ClusterRole` objects that the group names are
+#' bound to.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param username The username to authenticate to Kubernetes with. We recommend not
+#' specifying a username and letting Amazon EKS specify it for you. For
+#' more information about the value Amazon EKS specifies for you, or
+#' constraints before specifying your own username, see [Creating access
+#' entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html#creating-access-entries)
+#' in the *Amazon EKS User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_access_entry
+eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups = NULL, clientRequestToken = NULL, username = NULL) {
+  op <- new_operation(
+    name = "UpdateAccessEntry",
+    http_method = "POST",
+    http_path = "/clusters/{name}/access-entries/{principalArn}",
+    paginator = list()
+  )
+  input <- .eks$update_access_entry_input(clusterName = clusterName, principalArn = principalArn, kubernetesGroups = kubernetesGroups, clientRequestToken = clientRequestToken, username = username)
+  output <- .eks$update_access_entry_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_access_entry <- eks_update_access_entry
+
 #' Updates an Amazon EKS add-on
 #'
 #' @description
@@ -1445,7 +2102,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_addon/](https://www.paws-r-sdk.com/docs/eks_update_addon/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the cluster.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
@@ -1480,10 +2137,10 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #'     option, we recommend that you test any field and value changes on a
 #'     non-production cluster before updating the add-on on your production
 #'     cluster.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param configurationValues The set of configuration values for the add-on that's created. The
-#' values that you provide are validated against the schema in
+#' values that you provide are validated against the schema returned by
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
 #'
 #' @keywords internal
@@ -1509,7 +2166,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Updates an Amazon EKS cluster configuration
 #'
 #' @description
-#' Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`][eks_describe_update] API operation.
+#' Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with [`describe_update`][eks_describe_update]"/\>.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_config/](https://www.paws-r-sdk.com/docs/eks_update_cluster_config/) for full documentation.
 #'
@@ -1525,20 +2182,21 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param accessConfig The access configuration for the cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/update-config",
     paginator = list()
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -1557,7 +2215,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
 #' @keywords internal
@@ -1587,7 +2245,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_eks_anywhere_subscription/](https://www.paws-r-sdk.com/docs/eks_update_eks_anywhere_subscription/) for full documentation.
 #'
-#' @param id &#91;required&#93; 
+#' @param id &#91;required&#93; The ID of the subscription.
 #' @param autoRenew &#91;required&#93; A boolean indicating whether or not to automatically renew the
 #' subscription.
 #' @param clientRequestToken Unique, case-sensitive identifier to ensure the idempotency of the
@@ -1620,10 +2278,9 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/](https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that the managed node group resides
-#' in.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
-#' @param labels The Kubernetes labels to be applied to the nodes in the node group after
+#' @param labels The Kubernetes `labels` to apply to the nodes in the node group after
 #' the update.
 #' @param taints The Kubernetes taints to be applied to the nodes in the node group after
 #' the update. For more information, see [Node taints on managed node
@@ -1631,7 +2288,7 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #' @param scalingConfig The scaling configuration details for the Auto Scaling group after the
 #' update.
 #' @param updateConfig The node group update configuration.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
 #' @keywords internal
@@ -1662,8 +2319,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_nodegroup_version/](https://www.paws-r-sdk.com/docs/eks_update_nodegroup_version/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with the managed
-#' node group to update.
+#' @param clusterName &#91;required&#93; The name of your cluster.
 #' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
 #' @param version The Kubernetes version to update to. If no version is specified, then
 #' the Kubernetes version of the node group does not change. You can
@@ -1696,11 +2352,12 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' @param launchTemplate An object representing a node group's launch template specification. You
 #' can only update a node group using a launch template if the node group
 #' was originally deployed with a launch template.
-#' @param force Force the update if the existing node group's pods are unable to be
-#' drained due to a pod disruption budget issue. If an update fails because
-#' pods could not be drained, you can force the update after it fails to
-#' terminate the old node whether or not any pods are running on the node.
-#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param force Force the update if any `Pod` on the existing node group can't be
+#' drained due to a `Pod` disruption budget issue. If an update fails
+#' because all Pods can't be drained, you can force the update after it
+#' fails to terminate the old node whether or not any `Pod` is running on
+#' the node.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
 #' @keywords internal
@@ -1722,3 +2379,36 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
   return(response)
 }
 .eks$operations$update_nodegroup_version <- eks_update_nodegroup_version
+
+#' Updates a EKS Pod Identity association
+#'
+#' @description
+#' Updates a EKS Pod Identity association. Only the IAM role can be changed; an association can't be moved between clusters, namespaces, or service accounts. If you need to edit the namespace or service account, you need to delete the association and then create a new association with your desired settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_update_pod_identity_association/](https://www.paws-r-sdk.com/docs/eks_update_pod_identity_association/) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster that you want to update the association in.
+#' @param associationId &#91;required&#93; The ID of the association to be updated.
+#' @param roleArn The new IAM role to change the
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_pod_identity_association
+eks_update_pod_identity_association <- function(clusterName, associationId, roleArn = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdatePodIdentityAssociation",
+    http_method = "POST",
+    http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
+    paginator = list()
+  )
+  input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken)
+  output <- .eks$update_pod_identity_association_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_pod_identity_association <- eks_update_pod_identity_association

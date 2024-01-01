@@ -12,22 +12,22 @@ NULL
 #' text models, image models, and embedding models.
 #' 
 #' For more information, see [Run
-#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html)
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
 #' 
 #' For example requests, see Examples (after the Errors section).
 #'
 #' @usage
-#' bedrockruntime_invoke_model(accept, body, contentType, modelId)
+#' bedrockruntime_invoke_model(body, contentType, accept, modelId)
 #'
-#' @param accept The desired MIME type of the inference body in the response. The default
-#' value is `application/json`.
 #' @param body &#91;required&#93; Input data in the format specified in the content-type request header.
 #' To see the format and content of this field for different models, refer
 #' to [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' @param contentType The MIME type of the input data in the request. The default value is
 #' `application/json`.
+#' @param accept The desired MIME type of the inference body in the response. The default
+#' value is `application/json`.
 #' @param modelId &#91;required&#93; Identifier of the model.
 #'
 #' @return
@@ -42,9 +42,9 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$invoke_model(
-#'   accept = "string",
 #'   body = raw,
 #'   contentType = "string",
+#'   accept = "string",
 #'   modelId = "string"
 #' )
 #' ```
@@ -54,14 +54,14 @@ NULL
 #' @rdname bedrockruntime_invoke_model
 #'
 #' @aliases bedrockruntime_invoke_model
-bedrockruntime_invoke_model <- function(accept = NULL, body, contentType = NULL, modelId) {
+bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL, modelId) {
   op <- new_operation(
     name = "InvokeModel",
     http_method = "POST",
     http_path = "/model/{modelId}/invoke",
     paginator = list()
   )
-  input <- .bedrockruntime$invoke_model_input(accept = accept, body = body, contentType = contentType, modelId = modelId)
+  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId)
   output <- .bedrockruntime$invoke_model_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config)
@@ -79,24 +79,24 @@ bedrockruntime_invoke_model <- function(accept = NULL, body, contentType = NULL,
 #' provided. Return the response in a stream.
 #' 
 #' For more information, see [Run
-#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html)
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
 #' 
 #' For an example request and response, see Examples (after the Errors
 #' section).
 #'
 #' @usage
-#' bedrockruntime_invoke_model_with_response_stream(accept, body,
-#'   contentType, modelId)
+#' bedrockruntime_invoke_model_with_response_stream(body, contentType,
+#'   accept, modelId)
 #'
-#' @param accept The desired MIME type of the inference body in the response. The default
-#' value is `application/json`.
 #' @param body &#91;required&#93; Inference input in the format specified by the content-type. To see the
 #' format and content of this field for different models, refer to
 #' [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' @param contentType The MIME type of the input data in the request. The default value is
 #' `application/json`.
+#' @param accept The desired MIME type of the inference body in the response. The default
+#' value is `application/json`.
 #' @param modelId &#91;required&#93; Id of the model to invoke using the streaming request.
 #'
 #' @return
@@ -112,16 +112,16 @@ bedrockruntime_invoke_model <- function(accept = NULL, body, contentType = NULL,
 #'     ),
 #'     modelStreamErrorException = list(
 #'       message = "string",
-#'       originalMessage = "string",
-#'       originalStatusCode = 123
+#'       originalStatusCode = 123,
+#'       originalMessage = "string"
 #'     ),
-#'     modelTimeoutException = list(
+#'     validationException = list(
 #'       message = "string"
 #'     ),
 #'     throttlingException = list(
 #'       message = "string"
 #'     ),
-#'     validationException = list(
+#'     modelTimeoutException = list(
 #'       message = "string"
 #'     )
 #'   ),
@@ -132,9 +132,9 @@ bedrockruntime_invoke_model <- function(accept = NULL, body, contentType = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$invoke_model_with_response_stream(
-#'   accept = "string",
 #'   body = raw,
 #'   contentType = "string",
+#'   accept = "string",
 #'   modelId = "string"
 #' )
 #' ```
@@ -144,14 +144,14 @@ bedrockruntime_invoke_model <- function(accept = NULL, body, contentType = NULL,
 #' @rdname bedrockruntime_invoke_model_with_response_stream
 #'
 #' @aliases bedrockruntime_invoke_model_with_response_stream
-bedrockruntime_invoke_model_with_response_stream <- function(accept = NULL, body, contentType = NULL, modelId) {
+bedrockruntime_invoke_model_with_response_stream <- function(body, contentType = NULL, accept = NULL, modelId) {
   op <- new_operation(
     name = "InvokeModelWithResponseStream",
     http_method = "POST",
     http_path = "/model/{modelId}/invoke-with-response-stream",
     paginator = list()
   )
-  input <- .bedrockruntime$invoke_model_with_response_stream_input(accept = accept, body = body, contentType = contentType, modelId = modelId)
+  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config)

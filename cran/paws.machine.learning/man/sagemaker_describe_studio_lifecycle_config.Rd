@@ -2,15 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_studio_lifecycle_config}
 \alias{sagemaker_describe_studio_lifecycle_config}
-\title{Describes the Studio Lifecycle Configuration}
+\title{Describes the Amazon SageMaker Studio Lifecycle Configuration}
 \usage{
 sagemaker_describe_studio_lifecycle_config(StudioLifecycleConfigName)
 }
 \arguments{
-\item{StudioLifecycleConfigName}{[required] The name of the Studio Lifecycle Configuration to describe.}
+\item{StudioLifecycleConfigName}{[required] The name of the Amazon SageMaker Studio Lifecycle Configuration to
+describe.}
 }
 \description{
-Describes the Studio Lifecycle Configuration.
+Describes the Amazon SageMaker Studio Lifecycle Configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_studio_lifecycle_config/} for full documentation.
 }

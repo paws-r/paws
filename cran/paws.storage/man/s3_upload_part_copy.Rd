@@ -29,17 +29,33 @@ s3_upload_part_copy(
 \arguments{
 \item{Bucket}{[required] The bucket name.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -65,10 +81,12 @@ point \code{my-access-point} owned by account \code{123456789012} in Region
 \code{us-west-2}, use the URL encoding of
 \code{arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf}.
 The value must be URL encoded.
-
-Amazon S3 supports copy operations using access points only when the
-source and destination buckets are in the same Amazon Web Services
-Region.
+\itemize{
+\item Amazon S3 supports copy operations using Access points only when
+the source and destination buckets are in the same Amazon Web
+Services Region.
+\item Access points are not supported by directory buckets.
+}
 
 Alternatively, for objects accessed through Amazon S3 on Outposts,
 specify the ARN of the object as accessed in the format
@@ -80,20 +98,72 @@ outpost \code{my-outpost} owned by account \code{123456789012} in Region
 The value must be URL-encoded.
 }
 
-To copy a specific version of an object, append
-\verb{?versionId=<version-id>} to the value (for example,
-\code{awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893}).
-If you don't specify a version ID, Amazon S3 copies the latest version
-of the source object.}
+If your bucket has versioning enabled, you could have multiple versions
+of the same object. By default, \code{x-amz-copy-source} identifies the
+current version of the source object to copy. To copy a specific version
+of the source object to copy, append \verb{?versionId=<version-id>} to the
+\code{x-amz-copy-source} request header (for example,
+\verb{x-amz-copy-source: /awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893}).
 
-\item{CopySourceIfMatch}{Copies the object if its entity tag (ETag) matches the specified tag.}
+If the current version is a delete marker and you don't specify a
+versionId in the \code{x-amz-copy-source} request header, Amazon S3 returns a
+\verb{404 Not Found} error, because the object does not exist. If you specify
+versionId in the \code{x-amz-copy-source} and the versionId is a delete
+marker, Amazon S3 returns an HTTP \verb{400 Bad Request} error, because you
+are not allowed to specify a delete marker as a version for the
+\code{x-amz-copy-source}.
 
-\item{CopySourceIfModifiedSince}{Copies the object if it has been modified since the specified time.}
+\strong{Directory buckets} - S3 Versioning isn't enabled and supported for
+directory buckets.}
+
+\item{CopySourceIfMatch}{Copies the object if its entity tag (ETag) matches the specified tag.
+
+If both of the \verb{x-amz-copy-source-if-match} and
+\verb{x-amz-copy-source-if-unmodified-since} headers are present in the
+request as follows:
+
+\verb{x-amz-copy-source-if-match} condition evaluates to \code{true}, and;
+
+\verb{x-amz-copy-source-if-unmodified-since} condition evaluates to \code{false};
+
+Amazon S3 returns \verb{200 OK} and copies the data.}
+
+\item{CopySourceIfModifiedSince}{Copies the object if it has been modified since the specified time.
+
+If both of the \verb{x-amz-copy-source-if-none-match} and
+\verb{x-amz-copy-source-if-modified-since} headers are present in the request
+as follows:
+
+\verb{x-amz-copy-source-if-none-match} condition evaluates to \code{false}, and;
+
+\verb{x-amz-copy-source-if-modified-since} condition evaluates to \code{true};
+
+Amazon S3 returns \verb{412 Precondition Failed} response code.}
 
 \item{CopySourceIfNoneMatch}{Copies the object if its entity tag (ETag) is different than the
-specified ETag.}
+specified ETag.
 
-\item{CopySourceIfUnmodifiedSince}{Copies the object if it hasn't been modified since the specified time.}
+If both of the \verb{x-amz-copy-source-if-none-match} and
+\verb{x-amz-copy-source-if-modified-since} headers are present in the request
+as follows:
+
+\verb{x-amz-copy-source-if-none-match} condition evaluates to \code{false}, and;
+
+\verb{x-amz-copy-source-if-modified-since} condition evaluates to \code{true};
+
+Amazon S3 returns \verb{412 Precondition Failed} response code.}
+
+\item{CopySourceIfUnmodifiedSince}{Copies the object if it hasn't been modified since the specified time.
+
+If both of the \verb{x-amz-copy-source-if-match} and
+\verb{x-amz-copy-source-if-unmodified-since} headers are present in the
+request as follows:
+
+\verb{x-amz-copy-source-if-match} condition evaluates to \code{true}, and;
+
+\verb{x-amz-copy-source-if-unmodified-since} condition evaluates to \code{false};
+
+Amazon S3 returns \verb{200 OK} and copies the data.}
 
 \item{CopySourceRange}{The range of bytes to copy from the source object. The range value must
 use the form bytes=first-last, where the first and last are the
@@ -108,8 +178,11 @@ and 10,000.}
 
 \item{UploadId}{[required] Upload ID identifying the multipart upload whose part is being copied.}
 
-\item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
-example, AES256).}
+\item{SSECustomerAlgorithm}{Specifies the algorithm to use when encrypting the object (for example,
+AES256).
+
+This functionality is not supported when the destination bucket is a
+directory bucket.}
 
 \item{SSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
@@ -117,35 +190,52 @@ discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
 \code{x-amz-server-side-encryption-customer-algorithm} header. This must be
 the same encryption key specified in the initiate multipart upload
-request.}
+request.
+
+This functionality is not supported when the destination bucket is a
+directory bucket.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
-that the encryption key was transmitted without error.}
+that the encryption key was transmitted without error.
+
+This functionality is not supported when the destination bucket is a
+directory bucket.}
 
 \item{CopySourceSSECustomerAlgorithm}{Specifies the algorithm to use when decrypting the source object (for
-example, AES256).}
+example, \code{AES256}).
+
+This functionality is not supported when the source object is in a
+directory bucket.}
 
 \item{CopySourceSSECustomerKey}{Specifies the customer-provided encryption key for Amazon S3 to use to
 decrypt the source object. The encryption key provided in this header
-must be one that was used when the source object was created.}
+must be one that was used when the source object was created.
+
+This functionality is not supported when the source object is in a
+directory bucket.}
 
 \item{CopySourceSSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
-that the encryption key was transmitted without error.}
+that the encryption key was transmitted without error.
+
+This functionality is not supported when the source object is in a
+directory bucket.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account ID of the expected destination bucket owner. If the
-destination bucket is owned by a different account, the request fails
-with the HTTP status code \verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected destination bucket owner. If the account
+ID that you provide does not match the actual owner of the destination
+bucket, the request fails with the HTTP status code \verb{403 Forbidden}
+(access denied).}
 
-\item{ExpectedSourceBucketOwner}{The account ID of the expected source bucket owner. If the source bucket
-is owned by a different account, the request fails with the HTTP status
-code \verb{403 Forbidden} (access denied).}
+\item{ExpectedSourceBucketOwner}{The account ID of the expected source bucket owner. If the account ID
+that you provide does not match the actual owner of the source bucket,
+the request fails with the HTTP status code \verb{403 Forbidden} (access
+denied).}
 }
 \description{
-Uploads a part by copying data from an existing object as data source. You specify the data source by adding the request header \code{x-amz-copy-source} in your request and a byte range by adding the request header \code{x-amz-copy-source-range} in your request.
+Uploads a part by copying data from an existing object as data source. To specify the data source, you add the request header \code{x-amz-copy-source} in your request. To specify a byte range, you add the request header \code{x-amz-copy-source-range} in your request.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_upload_part_copy/} for full documentation.
 }

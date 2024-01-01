@@ -40,6 +40,22 @@ test_that("list_automation_rules", {
   expect_error(svc$list_automation_rules(MaxResults = 20), NA)
 })
 
+test_that("list_configuration_policies", {
+  expect_error(svc$list_configuration_policies(), NA)
+})
+
+test_that("list_configuration_policies", {
+  expect_error(svc$list_configuration_policies(MaxResults = 20), NA)
+})
+
+test_that("list_configuration_policy_associations", {
+  expect_error(svc$list_configuration_policy_associations(), NA)
+})
+
+test_that("list_configuration_policy_associations", {
+  expect_error(svc$list_configuration_policy_associations(MaxResults = 20), NA)
+})
+
 test_that("list_enabled_products_for_import", {
   expect_error(svc$list_enabled_products_for_import(), NA)
 })

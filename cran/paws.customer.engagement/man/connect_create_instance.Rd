@@ -11,7 +11,8 @@ connect_create_instance(
   InstanceAlias = NULL,
   DirectoryId = NULL,
   InboundCallsEnabled,
-  OutboundCallsEnabled
+  OutboundCallsEnabled,
+  Tags = NULL
 )
 }
 \arguments{
@@ -26,6 +27,9 @@ connect_create_instance(
 \item{InboundCallsEnabled}{[required] Your contact center handles incoming contacts.}
 
 \item{OutboundCallsEnabled}{[required] Your contact center allows outbound calls.}
+
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \verb{\{ "tags": \{"key1":"value1", "key2":"value2"\} \}}.}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

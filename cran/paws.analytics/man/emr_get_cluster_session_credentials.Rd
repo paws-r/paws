@@ -6,12 +6,12 @@
 given runtime IAM role and used by a cluster with fine-grained access
 control activated}
 \usage{
-emr_get_cluster_session_credentials(ClusterId, ExecutionRoleArn)
+emr_get_cluster_session_credentials(ClusterId, ExecutionRoleArn = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The unique identifier of the cluster.}
 
-\item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the runtime role for interactive
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the runtime role for interactive
 workload submission on the cluster. The runtime role can be a
 cross-account IAM role. The runtime role ARN is a combination of account
 ID, role name, and role type using the following format:

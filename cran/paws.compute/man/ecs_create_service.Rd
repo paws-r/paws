@@ -112,8 +112,8 @@ This is required if \code{schedulingStrategy} is \code{REPLICA} or isn't
 specified. If \code{schedulingStrategy} is \code{DAEMON} then this isn't required.}
 
 \item{clientToken}{An identifier that you provide to ensure the idempotency of the request.
-It must be unique and is case sensitive. Up to 32 ASCII characters are
-allowed.}
+It must be unique and is case sensitive. Up to 36 ASCII characters in
+the range of 33-126 (inclusive) are allowed.}
 
 \item{launchType}{The infrastructure that you run your service on. For more information,
 see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html}{Amazon ECS launch types}
@@ -149,7 +149,7 @@ providers.}
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the \code{LATEST} platform version is used. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{Fargate platform versions}
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{role}{The name or full Amazon Resource Name (ARN) of the IAM role that allows

@@ -107,13 +107,15 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' Creates an Amazon Braket job.
 #'
 #' @usage
-#' braket_create_job(algorithmSpecification, checkpointConfig, clientToken,
-#'   deviceConfig, hyperParameters, inputDataConfig, instanceConfig, jobName,
-#'   outputDataConfig, roleArn, stoppingCondition, tags)
+#' braket_create_job(algorithmSpecification, associations,
+#'   checkpointConfig, clientToken, deviceConfig, hyperParameters,
+#'   inputDataConfig, instanceConfig, jobName, outputDataConfig, roleArn,
+#'   stoppingCondition, tags)
 #'
 #' @param algorithmSpecification &#91;required&#93; Definition of the Amazon Braket job to be created. Specifies the
 #' container image the job uses and information about the Python scripts
 #' used for entry and training.
+#' @param associations The list of Amazon Braket resources associated with the hybrid job.
 #' @param checkpointConfig Information about the output locations for job checkpoint data.
 #' @param clientToken &#91;required&#93; A unique token that guarantees that the call to this API is idempotent.
 #' @param deviceConfig &#91;required&#93; The quantum processing unit (QPU) or simulator used to create an Amazon
@@ -156,6 +158,12 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #'       compressionType = "NONE"|"GZIP",
 #'       entryPoint = "string",
 #'       s3Uri = "string"
+#'     )
+#'   ),
+#'   associations = list(
+#'     list(
+#'       arn = "string",
+#'       type = "RESERVATION_TIME_WINDOW_ARN"
 #'     )
 #'   ),
 #'   checkpointConfig = list(
@@ -205,14 +213,14 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' @rdname braket_create_job
 #'
 #' @aliases braket_create_job
-braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, clientToken, deviceConfig, hyperParameters = NULL, inputDataConfig = NULL, instanceConfig, jobName, outputDataConfig, roleArn, stoppingCondition = NULL, tags = NULL) {
+braket_create_job <- function(algorithmSpecification, associations = NULL, checkpointConfig = NULL, clientToken, deviceConfig, hyperParameters = NULL, inputDataConfig = NULL, instanceConfig, jobName, outputDataConfig, roleArn, stoppingCondition = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/job",
     paginator = list()
   )
-  input <- .braket$create_job_input(algorithmSpecification = algorithmSpecification, checkpointConfig = checkpointConfig, clientToken = clientToken, deviceConfig = deviceConfig, hyperParameters = hyperParameters, inputDataConfig = inputDataConfig, instanceConfig = instanceConfig, jobName = jobName, outputDataConfig = outputDataConfig, roleArn = roleArn, stoppingCondition = stoppingCondition, tags = tags)
+  input <- .braket$create_job_input(algorithmSpecification = algorithmSpecification, associations = associations, checkpointConfig = checkpointConfig, clientToken = clientToken, deviceConfig = deviceConfig, hyperParameters = hyperParameters, inputDataConfig = inputDataConfig, instanceConfig = instanceConfig, jobName = jobName, outputDataConfig = outputDataConfig, roleArn = roleArn, stoppingCondition = stoppingCondition, tags = tags)
   output <- .braket$create_job_output()
   config <- get_config()
   svc <- .braket$service(config)
@@ -228,11 +236,12 @@ braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, c
 #' Creates a quantum task.
 #'
 #' @usage
-#' braket_create_quantum_task(action, clientToken, deviceArn,
+#' braket_create_quantum_task(action, associations, clientToken, deviceArn,
 #'   deviceParameters, jobToken, outputS3Bucket, outputS3KeyPrefix, shots,
 #'   tags)
 #'
 #' @param action &#91;required&#93; The action associated with the task.
+#' @param associations The list of Amazon Braket resources associated with the quantum task.
 #' @param clientToken &#91;required&#93; The client token associated with the request.
 #' @param deviceArn &#91;required&#93; The ARN of the device to run the task on.
 #' @param deviceParameters The parameters for the device to run the task on.
@@ -256,6 +265,12 @@ braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, c
 #' ```
 #' svc$create_quantum_task(
 #'   action = "string",
+#'   associations = list(
+#'     list(
+#'       arn = "string",
+#'       type = "RESERVATION_TIME_WINDOW_ARN"
+#'     )
+#'   ),
 #'   clientToken = "string",
 #'   deviceArn = "string",
 #'   deviceParameters = "string",
@@ -274,14 +289,14 @@ braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, c
 #' @rdname braket_create_quantum_task
 #'
 #' @aliases braket_create_quantum_task
-braket_create_quantum_task <- function(action, clientToken, deviceArn, deviceParameters = NULL, jobToken = NULL, outputS3Bucket, outputS3KeyPrefix, shots, tags = NULL) {
+braket_create_quantum_task <- function(action, associations = NULL, clientToken, deviceArn, deviceParameters = NULL, jobToken = NULL, outputS3Bucket, outputS3KeyPrefix, shots, tags = NULL) {
   op <- new_operation(
     name = "CreateQuantumTask",
     http_method = "POST",
     http_path = "/quantum-task",
     paginator = list()
   )
-  input <- .braket$create_quantum_task_input(action = action, clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, jobToken = jobToken, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, shots = shots, tags = tags)
+  input <- .braket$create_quantum_task_input(action = action, associations = associations, clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, jobToken = jobToken, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, shots = shots, tags = tags)
   output <- .braket$create_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config)
@@ -383,6 +398,12 @@ braket_get_device <- function(deviceArn) {
 #'       compressionType = "NONE"|"GZIP",
 #'       entryPoint = "string",
 #'       s3Uri = "string"
+#'     )
+#'   ),
+#'   associations = list(
+#'     list(
+#'       arn = "string",
+#'       type = "RESERVATION_TIME_WINDOW_ARN"
 #'     )
 #'   ),
 #'   billableDuration = 123,
@@ -494,12 +515,18 @@ braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
 #' braket_get_quantum_task(additionalAttributeNames, quantumTaskArn)
 #'
 #' @param additionalAttributeNames A list of attributes to return information for.
-#' @param quantumTaskArn &#91;required&#93; the ARN of the task to retrieve.
+#' @param quantumTaskArn &#91;required&#93; The ARN of the task to retrieve.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   associations = list(
+#'     list(
+#'       arn = "string",
+#'       type = "RESERVATION_TIME_WINDOW_ARN"
+#'     )
+#'   ),
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),

@@ -17,7 +17,9 @@ imagebuilder_create_image_pipeline(
   status = NULL,
   tags = NULL,
   clientToken,
-  imageScanningConfiguration = NULL
+  imageScanningConfiguration = NULL,
+  workflows = NULL,
+  executionRole = NULL
 )
 }
 \arguments{
@@ -51,9 +53,16 @@ Enabled by default.}
 
 \item{tags}{The tags of the image pipeline.}
 
-\item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 
 \item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
+
+\item{workflows}{Contains an array of workflow configuration objects.}
+
+\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that
+grants Image Builder access to perform workflow actions.}
 }
 \description{
 Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.

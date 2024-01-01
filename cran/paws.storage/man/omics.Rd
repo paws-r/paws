@@ -140,7 +140,7 @@ HealthOmics User Guide}.
 \link[=omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Retrieves a list of annotation import jobs\cr
 \link[=omics_list_annotation_stores]{list_annotation_stores} \tab Retrieves a list of annotation stores\cr
 \link[=omics_list_annotation_store_versions]{list_annotation_store_versions} \tab Lists the versions of an annotation store\cr
-\link[=omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists all multipart read set uploads and their statuses\cr
+\link[=omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists multipart read set uploads and for in progress uploads\cr
 \link[=omics_list_read_set_activation_jobs]{list_read_set_activation_jobs} \tab Retrieves a list of read set activation jobs\cr
 \link[=omics_list_read_set_export_jobs]{list_read_set_export_jobs} \tab Retrieves a list of read set export jobs\cr
 \link[=omics_list_read_set_import_jobs]{list_read_set_import_jobs} \tab Retrieves a list of read set import jobs\cr

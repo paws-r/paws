@@ -9,6 +9,7 @@ eventbridgepipes_update_pipe(
   DesiredState = NULL,
   Enrichment = NULL,
   EnrichmentParameters = NULL,
+  LogConfiguration = NULL,
   Name,
   RoleArn,
   SourceParameters = NULL,
@@ -25,6 +26,8 @@ eventbridgepipes_update_pipe(
 
 \item{EnrichmentParameters}{The parameters required to set up enrichment on your pipe.}
 
+\item{LogConfiguration}{The logging configuration settings for the pipe.}
+
 \item{Name}{[required] The name of the pipe.}
 
 \item{RoleArn}{[required] The ARN of the role that allows the pipe to send data to the target.}
@@ -33,10 +36,14 @@ eventbridgepipes_update_pipe(
 
 \item{Target}{The ARN of the target resource.}
 
-\item{TargetParameters}{The parameters required to set up a target for your pipe.}
+\item{TargetParameters}{The parameters required to set up a target for your pipe.
+
+For more information about pipe target parameters, including how to use
+dynamic path parameters, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-target.html}{Target parameters}
+in the \emph{Amazon EventBridge User Guide}.}
 }
 \description{
-Update an existing pipe. When you call \code{\link[=eventbridgepipes_update_pipe]{update_pipe}}, only the fields that are included in the request are changed, the rest are unchanged. The exception to this is if you modify any Amazon Web Services-service specific fields in the \code{SourceParameters}, \code{EnrichmentParameters}, or \code{TargetParameters} objects. The fields in these objects are updated atomically as one and override existing values. This is by design and means that if you don't specify an optional field in one of these Parameters objects, that field will be set to its system-default value after the update.
+Update an existing pipe. When you call \code{\link[=eventbridgepipes_update_pipe]{update_pipe}}, EventBridge only the updates fields you have specified in the request; the rest remain unchanged. The exception to this is if you modify any Amazon Web Services-service specific fields in the \code{SourceParameters}, \code{EnrichmentParameters}, or \code{TargetParameters} objects. For example, \code{DynamoDBStreamParameters} or \code{EventBridgeEventBusParameters}. EventBridge updates the fields in these objects atomically as one and overrides existing values. This is by design, and means that if you don't specify an optional field in one of these \code{Parameters} objects, EventBridge sets that field to its system-default value during the update.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridgepipes_update_pipe/} for full documentation.
 }

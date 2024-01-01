@@ -26,7 +26,9 @@ sagemaker_create_training_job(
   ProfilerConfig = NULL,
   ProfilerRuleConfigurations = NULL,
   Environment = NULL,
-  RetryStrategy = NULL
+  RetryStrategy = NULL,
+  RemoteDebugConfig = NULL,
+  InfraCheckConfig = NULL
 )
 }
 \arguments{
@@ -166,6 +168,12 @@ profiling system and framework metrics.}
 
 \item{RetryStrategy}{The number of times to retry the job when the job fails due to an
 \code{InternalServerError}.}
+
+\item{RemoteDebugConfig}{Configuration for remote debugging. To learn more about the remote
+debugging functionality of SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html}{Access a training container through Amazon Web Services Systems Manager (SSM) for remote debugging}.}
+
+\item{InfraCheckConfig}{Contains information about the infrastructure health check configuration
+for the training job.}
 }
 \description{
 Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.

@@ -2,34 +2,34 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_nodegroups}
 \alias{eks_list_nodegroups}
-\title{Lists the Amazon EKS managed node groups associated with the specified
-cluster in your Amazon Web Services account in the specified Region}
+\title{Lists the managed node groups associated with the specified cluster in
+your Amazon Web Services account in the specified Amazon Web Services
+Region}
 \usage{
 eks_list_nodegroups(clusterName, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{clusterName}{[required] The name of the Amazon EKS cluster that you would like to list node
-groups in.}
+\item{clusterName}{[required] The name of your cluster.}
 
-\item{maxResults}{The maximum number of node group results returned by
-\code{\link[=eks_list_nodegroups]{list_nodegroups}} in paginated output. When you
-use this parameter, \code{\link[=eks_list_nodegroups]{list_nodegroups}} returns
-only \code{maxResults} results in a single page along with a \code{nextToken}
-response element. You can see the remaining results of the initial
-request by sending another \code{\link[=eks_list_nodegroups]{list_nodegroups}}
-request with the returned \code{nextToken} value. This value can be between 1
-and 100. If you don't use this parameter,
-\code{\link[=eks_list_nodegroups]{list_nodegroups}} returns up to 100 results and a
-\code{nextToken} value if applicable.}
+\item{maxResults}{The maximum number of results, returned in paginated output. You receive
+\code{maxResults} in a single page, along with a \code{nextToken} response
+element. You can see the remaining results of the initial request by
+sending another request with the returned \code{nextToken} value. This value
+can be between 1 and 100. If you don't use this parameter, 100 results
+and a \code{nextToken} value, if applicable, are returned.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{\link[=eks_list_nodegroups]{list_nodegroups}} request where \code{maxResults} was
-used and the results exceeded the value of that parameter. Pagination
-continues from the end of the previous results that returned the
-\code{nextToken} value.}
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated request, where
+\code{maxResults} was used and the results exceeded the value of that
+parameter. Pagination continues from the end of the previous results
+that returned the \code{nextToken} value. This value is null when there are
+no more results to return.
+
+This token should be treated as an opaque identifier that is used only
+to retrieve the next items in a list and not for other programmatic
+purposes.}
 }
 \description{
-Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region. Self-managed node groups are not listed.
+Lists the managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Amazon Web Services Region. Self-managed node groups aren't listed.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_list_nodegroups/} for full documentation.
 }

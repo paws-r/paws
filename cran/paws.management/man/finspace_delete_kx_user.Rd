@@ -4,12 +4,14 @@
 \alias{finspace_delete_kx_user}
 \title{Deletes a user in the specified kdb environment}
 \usage{
-finspace_delete_kx_user(userName, environmentId)
+finspace_delete_kx_user(userName, environmentId, clientToken = NULL)
 }
 \arguments{
 \item{userName}{[required] A unique identifier for the user that you want to delete.}
 
 \item{environmentId}{[required] A unique identifier for the kdb environment.}
+
+\item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }
 \description{
 Deletes a user in the specified kdb environment.

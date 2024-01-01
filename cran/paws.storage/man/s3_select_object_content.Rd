@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_select_object_content}
 \alias{s3_select_object_content}
-\title{This action filters the contents of an Amazon S3 object based on a
-simple structured query language (SQL) statement}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_select_object_content(
   Bucket,
@@ -68,12 +67,12 @@ records starting after the byte 50
 within the last 50 bytes of the file.
 }}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This action filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement. In the request, along with the SQL expression, you must also specify a data serialization format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this format to parse object data into records, and returns only records that match the specified SQL expression. You must also specify the data serialization format for the response.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_select_object_content/} for full documentation.
 }

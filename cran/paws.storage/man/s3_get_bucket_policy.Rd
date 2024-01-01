@@ -7,23 +7,42 @@
 s3_get_bucket_policy(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
-\item{Bucket}{[required] The bucket name for which to get the bucket policy.
+\item{Bucket}{[required] The bucket name to get the bucket policy for.
 
-To use this API operation against an access point, provide the alias of
-the access point in place of the bucket name.
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use path-style requests in the format
+\verb{https://s3express-control.region_code.amazonaws.com/bucket-name }.
+Virtual-hosted-style requests aren't supported. Directory bucket names
+must be unique in the chosen Availability Zone. Bucket names must also
+follow the format \code{ bucket_base_name--az_id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}
 
-To use this API operation against an Object Lambda access point, provide
-the alias of the Object Lambda access point in place of the bucket name.
-If the Object Lambda access point alias in a request is not valid, the
-error code \code{InvalidAccessPointAliasError} is returned. For more
-information about \code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.}
+\strong{Access points} - When you use this API operation with an access
+point, provide the alias of the access point in place of the bucket
+name.
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\strong{Object Lambda access points} - When you use this API operation with
+an Object Lambda access point, provide the alias of the Object Lambda
+access point in place of the bucket name. If the Object Lambda access
+point alias in a request is not valid, the error code
+\code{InvalidAccessPointAliasError} is returned. For more information about
+\code{InvalidAccessPointAliasError}, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList}{List of Error Codes}.
+
+Access points and Object Lambda access points are not supported by
+directory buckets.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).
+
+For directory buckets, this header is not supported in this API
+operation. If you specify this header, the request fails with the HTTP
+status code \verb{501 Not Implemented}.}
 }
 \description{
-Returns the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the \code{\link[=s3_get_bucket_policy]{get_bucket_policy}} permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
+Returns the policy of a specified bucket.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_policy/} for full documentation.
 }

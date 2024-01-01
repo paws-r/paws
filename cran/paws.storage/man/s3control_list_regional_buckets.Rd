@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_list_regional_buckets}
 \alias{s3control_list_regional_buckets}
-\title{Returns a list of all Outposts buckets in an Outpost that are owned by
-the authenticated sender of the request}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_list_regional_buckets(
   AccountId,
@@ -24,7 +23,7 @@ s3control_list_regional_buckets(
 This ID is required by Amazon S3 on Outposts buckets.}
 }
 \description{
-Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_list_regional_buckets/} for full documentation.
 }

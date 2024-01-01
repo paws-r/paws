@@ -2,15 +2,15 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_describe_cluster}
 \alias{eks_describe_cluster}
-\title{Returns descriptive information about an Amazon EKS cluster}
+\title{Describes an Amazon EKS cluster}
 \usage{
 eks_describe_cluster(name)
 }
 \arguments{
-\item{name}{[required] The name of the cluster to describe.}
+\item{name}{[required] The name of your cluster.}
 }
 \description{
-Returns descriptive information about an Amazon EKS cluster.
+Describes an Amazon EKS cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_describe_cluster/} for full documentation.
 }

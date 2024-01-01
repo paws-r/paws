@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_user_attributes}
 \alias{cognitoidentityprovider_update_user_attributes}
-\title{Allows a user to update a specific attribute (one at a time)}
+\title{With this operation, your users can update one or more of their
+attributes with their own credentials}
 \usage{
 cognitoidentityprovider_update_user_attributes(
   UserAttributes,
@@ -55,7 +56,7 @@ provide sensitive information.
 }}
 }
 \description{
-Allows a user to update a specific attribute (one at a time).
+With this operation, your users can update one or more of their attributes with their own credentials. You authorize this API request with the user's access token. To delete an attribute from your user, submit the attribute in your API request with a blank value. Custom attribute values in this request must include the \verb{custom:} prefix.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_attributes/} for full documentation.
 }

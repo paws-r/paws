@@ -99,6 +99,158 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 }
 .accessanalyzer$operations$cancel_policy_generation <- accessanalyzer_cancel_policy_generation
 
+#' Checks whether the specified access isn't allowed by a policy
+#'
+#' @description
+#' Checks whether the specified access isn't allowed by a policy.
+#'
+#' @usage
+#' accessanalyzer_check_access_not_granted(policyDocument, access,
+#'   policyType)
+#'
+#' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
+#' @param access &#91;required&#93; An access object containing the permissions that shouldn't be granted by
+#' the specified policy.
+#' @param policyType &#91;required&#93; The type of policy. Identity policies grant permissions to IAM
+#' principals. Identity policies include managed and inline policies for
+#' IAM roles, users, and groups.
+#' 
+#' Resource policies grant permissions on Amazon Web Services resources.
+#' Resource policies include trust policies for IAM roles and bucket
+#' policies for Amazon S3 buckets. You can provide a generic input such as
+#' identity policy or resource policy or a specific input such as managed
+#' policy or Amazon S3 bucket policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = "PASS"|"FAIL",
+#'   message = "string",
+#'   reasons = list(
+#'     list(
+#'       description = "string",
+#'       statementIndex = 123,
+#'       statementId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$check_access_not_granted(
+#'   policyDocument = "string",
+#'   access = list(
+#'     list(
+#'       actions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_check_access_not_granted
+#'
+#' @aliases accessanalyzer_check_access_not_granted
+accessanalyzer_check_access_not_granted <- function(policyDocument, access, policyType) {
+  op <- new_operation(
+    name = "CheckAccessNotGranted",
+    http_method = "POST",
+    http_path = "/policy/check-access-not-granted",
+    paginator = list()
+  )
+  input <- .accessanalyzer$check_access_not_granted_input(policyDocument = policyDocument, access = access, policyType = policyType)
+  output <- .accessanalyzer$check_access_not_granted_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$check_access_not_granted <- accessanalyzer_check_access_not_granted
+
+#' Checks whether new access is allowed for an updated policy when compared
+#' to the existing policy
+#'
+#' @description
+#' Checks whether new access is allowed for an updated policy when compared
+#' to the existing policy.
+#' 
+#' You can find examples for reference policies and learn how to set up and
+#' run a custom policy check for new access in the [IAM Access Analyzer
+#' custom policy checks
+#' samples](https://github.com/aws-samples/iam-access-analyzer-custom-policy-check-samples)
+#' repository on GitHub. The reference policies in this repository are
+#' meant to be passed to the `existingPolicyDocument` request parameter.
+#'
+#' @usage
+#' accessanalyzer_check_no_new_access(newPolicyDocument,
+#'   existingPolicyDocument, policyType)
+#'
+#' @param newPolicyDocument &#91;required&#93; The JSON policy document to use as the content for the updated policy.
+#' @param existingPolicyDocument &#91;required&#93; The JSON policy document to use as the content for the existing policy.
+#' @param policyType &#91;required&#93; The type of policy to compare. Identity policies grant permissions to
+#' IAM principals. Identity policies include managed and inline policies
+#' for IAM roles, users, and groups.
+#' 
+#' Resource policies grant permissions on Amazon Web Services resources.
+#' Resource policies include trust policies for IAM roles and bucket
+#' policies for Amazon S3 buckets. You can provide a generic input such as
+#' identity policy or resource policy or a specific input such as managed
+#' policy or Amazon S3 bucket policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = "PASS"|"FAIL",
+#'   message = "string",
+#'   reasons = list(
+#'     list(
+#'       description = "string",
+#'       statementIndex = 123,
+#'       statementId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$check_no_new_access(
+#'   newPolicyDocument = "string",
+#'   existingPolicyDocument = "string",
+#'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_check_no_new_access
+#'
+#' @aliases accessanalyzer_check_no_new_access
+accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicyDocument, policyType) {
+  op <- new_operation(
+    name = "CheckNoNewAccess",
+    http_method = "POST",
+    http_path = "/policy/check-no-new-access",
+    paginator = list()
+  )
+  input <- .accessanalyzer$check_no_new_access_input(newPolicyDocument = newPolicyDocument, existingPolicyDocument = existingPolicyDocument, policyType = policyType)
+  output <- .accessanalyzer$check_no_new_access_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$check_no_new_access <- accessanalyzer_check_no_new_access
+
 #' Creates an access preview that allows you to preview IAM Access Analyzer
 #' findings for your resource before deploying resource permissions
 #'
@@ -235,6 +387,9 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #'       ),
 #'       sqsQueue = list(
 #'         queuePolicy = "string"
+#'       ),
+#'       s3ExpressDirectoryBucket = list(
+#'         bucketPolicy = "string"
 #'       )
 #'     )
 #'   ),
@@ -271,17 +426,22 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #'
 #' @usage
 #' accessanalyzer_create_analyzer(analyzerName, type, archiveRules, tags,
-#'   clientToken)
+#'   clientToken, configuration)
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
-#' @param type &#91;required&#93; The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
-#' are supported. You can create only one analyzer per account per Region.
-#' You can create up to 5 analyzers per organization per Region.
+#' @param type &#91;required&#93; The type of analyzer to create. Only `ACCOUNT`, `ORGANIZATION`,
+#' `ACCOUNT_UNUSED_ACCESS`, and `ORGANIZTAION_UNUSED_ACCESS` analyzers are
+#' supported. You can create only one analyzer per account per Region. You
+#' can create up to 5 analyzers per organization per Region.
 #' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
 #' automatically archive findings that meet the criteria you define for the
 #' rule.
-#' @param tags The tags to apply to the analyzer.
+#' @param tags An array of key-value pairs to apply to the analyzer.
 #' @param clientToken A client token.
+#' @param configuration Specifies the configuration of the analyzer. If the analyzer is an
+#' unused access analyzer, the specified scope of unused access is used for
+#' the configuration. If the analyzer is an external access analyzer, this
+#' field is not used.
 #'
 #' @return
 #' A list with the following syntax:
@@ -295,7 +455,7 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' ```
 #' svc$create_analyzer(
 #'   analyzerName = "string",
-#'   type = "ACCOUNT"|"ORGANIZATION",
+#'   type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS",
 #'   archiveRules = list(
 #'     list(
 #'       ruleName = "string",
@@ -318,7 +478,12 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   configuration = list(
+#'     unusedAccess = list(
+#'       unusedAccessAge = 123
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -327,14 +492,14 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' @rdname accessanalyzer_create_analyzer
 #'
 #' @aliases accessanalyzer_create_analyzer
-accessanalyzer_create_analyzer <- function(analyzerName, type, archiveRules = NULL, tags = NULL, clientToken = NULL) {
+accessanalyzer_create_analyzer <- function(analyzerName, type, archiveRules = NULL, tags = NULL, clientToken = NULL, configuration = NULL) {
   op <- new_operation(
     name = "CreateAnalyzer",
     http_method = "PUT",
     http_path = "/analyzer",
     paginator = list()
   )
-  input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, type = type, archiveRules = archiveRules, tags = tags, clientToken = clientToken)
+  input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, type = type, archiveRules = archiveRules, tags = tags, clientToken = clientToken, configuration = configuration)
   output <- .accessanalyzer$create_analyzer_output()
   config <- get_config()
   svc <- .accessanalyzer$service(config)
@@ -631,6 +796,9 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
 #'         ),
 #'         sqsQueue = list(
 #'           queuePolicy = "string"
+#'         ),
+#'         s3ExpressDirectoryBucket = list(
+#'           bucketPolicy = "string"
 #'         )
 #'       )
 #'     ),
@@ -694,7 +862,7 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #' list(
 #'   resource = list(
 #'     resourceArn = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -765,7 +933,7 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #'   analyzer = list(
 #'     arn = "string",
 #'     name = "string",
-#'     type = "ACCOUNT"|"ORGANIZATION",
+#'     type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -779,6 +947,11 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #'     status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
 #'     statusReason = list(
 #'       code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
+#'     ),
+#'     configuration = list(
+#'       unusedAccess = list(
+#'         unusedAccessAge = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -916,7 +1089,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'     ),
 #'     resource = "string",
 #'     isPublic = TRUE|FALSE,
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
 #'     condition = list(
 #'       "string"
 #'     ),
@@ -974,6 +1147,132 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
   return(response)
 }
 .accessanalyzer$operations$get_finding <- accessanalyzer_get_finding
+
+#' Retrieves information about the specified finding
+#'
+#' @description
+#' Retrieves information about the specified finding.
+#'
+#' @usage
+#' accessanalyzer_get_finding_v2(analyzerArn, id, maxResults, nextToken)
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' that generated the finding.
+#' @param id &#91;required&#93; The ID of the finding to retrieve.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   analyzedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   error = "string",
+#'   id = "string",
+#'   nextToken = "string",
+#'   resource = "string",
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'   resourceOwnerAccount = "string",
+#'   status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   findingDetails = list(
+#'     list(
+#'       externalAccessDetails = list(
+#'         action = list(
+#'           "string"
+#'         ),
+#'         condition = list(
+#'           "string"
+#'         ),
+#'         isPublic = TRUE|FALSE,
+#'         principal = list(
+#'           "string"
+#'         ),
+#'         sources = list(
+#'           list(
+#'             type = "POLICY"|"BUCKET_ACL"|"S3_ACCESS_POINT"|"S3_ACCESS_POINT_ACCOUNT",
+#'             detail = list(
+#'               accessPointArn = "string",
+#'               accessPointAccount = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       unusedPermissionDetails = list(
+#'         actions = list(
+#'           list(
+#'             action = "string",
+#'             lastAccessed = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         serviceNamespace = "string",
+#'         lastAccessed = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       unusedIamUserAccessKeyDetails = list(
+#'         accessKeyId = "string",
+#'         lastAccessed = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       unusedIamRoleDetails = list(
+#'         lastAccessed = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       unusedIamUserPasswordDetails = list(
+#'         lastAccessed = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   findingType = "ExternalAccess"|"UnusedIAMRole"|"UnusedIAMUserAccessKey"|"UnusedIAMUserPassword"|"UnusedPermission"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_finding_v2(
+#'   analyzerArn = "string",
+#'   id = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_get_finding_v2
+#'
+#' @aliases accessanalyzer_get_finding_v2
+accessanalyzer_get_finding_v2 <- function(analyzerArn, id, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetFindingV2",
+    http_method = "GET",
+    http_path = "/findingv2/{id}",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingDetails")
+  )
+  input <- .accessanalyzer$get_finding_v2_input(analyzerArn = analyzerArn, id = id, maxResults = maxResults, nextToken = nextToken)
+  output <- .accessanalyzer$get_finding_v2_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$get_finding_v2 <- accessanalyzer_get_finding_v2
 
 #' Retrieves the policy that was generated using StartPolicyGeneration
 #'
@@ -1124,7 +1423,7 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
 #'       ),
 #'       resource = "string",
 #'       isPublic = TRUE|FALSE,
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1285,7 +1584,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #'     list(
 #'       resourceArn = "string",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1296,7 +1595,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #' ```
 #' svc$list_analyzed_resources(
 #'   analyzerArn = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1344,7 +1643,7 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #'     list(
 #'       arn = "string",
 #'       name = "string",
-#'       type = "ACCOUNT"|"ORGANIZATION",
+#'       type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1358,6 +1657,11 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #'       status = "ACTIVE"|"CREATING"|"DISABLED"|"FAILED",
 #'       statusReason = list(
 #'         code = "AWS_SERVICE_ACCESS_DISABLED"|"DELEGATED_ADMINISTRATOR_DEREGISTERED"|"ORGANIZATION_DELETED"|"SERVICE_LINKED_ROLE_CREATION_FAILED"
+#'       ),
+#'       configuration = list(
+#'         unusedAccess = list(
+#'           unusedAccessAge = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1370,7 +1674,7 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #' svc$list_analyzers(
 #'   nextToken = "string",
 #'   maxResults = 123,
-#'   type = "ACCOUNT"|"ORGANIZATION"
+#'   type = "ACCOUNT"|"ORGANIZATION"|"ACCOUNT_UNUSED_ACCESS"|"ORGANIZATION_UNUSED_ACCESS"
 #' )
 #' ```
 #'
@@ -1509,7 +1813,7 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'       ),
 #'       resource = "string",
 #'       isPublic = TRUE|FALSE,
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
 #'       condition = list(
 #'         "string"
 #'       ),
@@ -1588,6 +1892,105 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
   return(response)
 }
 .accessanalyzer$operations$list_findings <- accessanalyzer_list_findings
+
+#' Retrieves a list of findings generated by the specified analyzer
+#'
+#' @description
+#' Retrieves a list of findings generated by the specified analyzer.
+#' 
+#' To learn about filter keys that you can use to retrieve a list of
+#' findings, see [IAM Access Analyzer filter
+#' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
+#' in the **IAM User Guide**.
+#'
+#' @usage
+#' accessanalyzer_list_findings_v2(analyzerArn, filter, maxResults,
+#'   nextToken, sort)
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' to retrieve findings from.
+#' @param filter A filter to match for the findings to return.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken A token used for pagination of results returned.
+#' @param sort 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   findings = list(
+#'     list(
+#'       analyzedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       error = "string",
+#'       id = "string",
+#'       resource = "string",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'       resourceOwnerAccount = "string",
+#'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       findingType = "ExternalAccess"|"UnusedIAMRole"|"UnusedIAMUserAccessKey"|"UnusedIAMUserPassword"|"UnusedPermission"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_findings_v2(
+#'   analyzerArn = "string",
+#'   filter = list(
+#'     list(
+#'       eq = list(
+#'         "string"
+#'       ),
+#'       neq = list(
+#'         "string"
+#'       ),
+#'       contains = list(
+#'         "string"
+#'       ),
+#'       exists = TRUE|FALSE
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sort = list(
+#'     attributeName = "string",
+#'     orderBy = "ASC"|"DESC"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_list_findings_v2
+#'
+#' @aliases accessanalyzer_list_findings_v2
+accessanalyzer_list_findings_v2 <- function(analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL, sort = NULL) {
+  op <- new_operation(
+    name = "ListFindingsV2",
+    http_method = "POST",
+    http_path = "/findingv2",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+  )
+  input <- .accessanalyzer$list_findings_v2_input(analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken, sort = sort)
+  output <- .accessanalyzer$list_findings_v2_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$list_findings_v2 <- accessanalyzer_list_findings_v2
 
 #' Lists all of the policy generations requested in the last seven days
 #'
@@ -2069,15 +2472,17 @@ accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, reso
 #' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
 #' @param policyType &#91;required&#93; The type of policy to validate. Identity policies grant permissions to
 #' IAM principals. Identity policies include managed and inline policies
-#' for IAM roles, users, and groups. They also include service-control
-#' policies (SCPs) that are attached to an Amazon Web Services
-#' organization, organizational unit (OU), or an account.
+#' for IAM roles, users, and groups.
 #' 
 #' Resource policies grant permissions on Amazon Web Services resources.
 #' Resource policies include trust policies for IAM roles and bucket
 #' policies for Amazon S3 buckets. You can provide a generic input such as
 #' identity policy or resource policy or a specific input such as managed
 #' policy or Amazon S3 bucket policy.
+#' 
+#' Service control policies (SCPs) are a type of organization policy
+#' attached to an Amazon Web Services organization, organizational unit
+#' (OU), or an account.
 #' @param validatePolicyResourceType The type of resource to attach to your resource policy. Specify a value
 #' for the policy validation resource type only if the policy type is
 #' `RESOURCE_POLICY`. For example, to validate a resource policy to attach

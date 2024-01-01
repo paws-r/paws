@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_send_voice_message}
 \alias{pinpointsmsvoicev2_send_voice_message}
-\title{Allows you to send a request that sends a text message through Amazon
+\title{Allows you to send a request that sends a voice message through Amazon
 Pinpoint}
 \usage{
 pinpointsmsvoicev2_send_voice_message(
@@ -51,7 +51,7 @@ logged to the event destination.}
 to the end recipient.}
 }
 \description{
-Allows you to send a request that sends a text message through Amazon Pinpoint. This operation uses \href{https://aws.amazon.com/polly/}{Amazon Polly} to convert a text script into a voice message.
+Allows you to send a request that sends a voice message through Amazon Pinpoint. This operation uses \href{https://aws.amazon.com/polly/}{Amazon Polly} to convert a text script into a voice message.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_voice_message/} for full documentation.
 }

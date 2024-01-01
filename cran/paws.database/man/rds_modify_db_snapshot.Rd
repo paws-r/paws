@@ -19,9 +19,10 @@ The following are the database engines and engine versions that are
 available when you upgrade a DB snapshot.
 
 \strong{MySQL}
-\itemize{
-\item \verb{5.5.46} (supported for 5.1 DB snapshots)
-}
+
+For the list of engine versions that are available for upgrading a DB
+snapshot, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql-upgrade-snapshot.html}{Upgrading a MySQL DB snapshot engine version}
+in the \emph{Amazon RDS User Guide.}
 
 \strong{Oracle}
 \itemize{
@@ -37,7 +38,8 @@ snapshots)
 \strong{PostgreSQL}
 
 For the list of engine versions that are available for upgrading a DB
-snapshot, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion}{Upgrading the PostgreSQL DB Engine for Amazon RDS}.}
+snapshot, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBSnapshot.PostgreSQL.html}{Upgrading a PostgreSQL DB snapshot engine version}
+in the \emph{Amazon RDS User Guide.}}
 
 \item{OptionGroupName}{The option group to identify with the upgraded DB snapshot.
 

@@ -14,11 +14,19 @@ cognitoidentityprovider_admin_list_devices(
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{Username}{[required] The user name.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{Limit}{The limit of the devices request.}
 
-\item{PaginationToken}{The pagination token.}
+\item{PaginationToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
 Lists devices, as an administrator.

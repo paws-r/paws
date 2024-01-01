@@ -20,17 +20,33 @@ s3_list_parts(
 \arguments{
 \item{Bucket}{[required] The name of the bucket to which the parts are being uploaded.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -48,27 +64,33 @@ higher part numbers will be listed.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{SSECustomerAlgorithm}{The server-side encryption (SSE) algorithm used to encrypt the object.
 This parameter is needed only when the object was created using a
 checksum algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
-in the \emph{Amazon S3 User Guide}.}
+in the \emph{Amazon S3 User Guide}.
+
+This functionality is not supported for directory buckets.}
 
 \item{SSECustomerKey}{The server-side encryption (SSE) customer managed key. This parameter is
 needed only when the object was created using a checksum algorithm. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
-in the \emph{Amazon S3 User Guide}.}
+in the \emph{Amazon S3 User Guide}.
+
+This functionality is not supported for directory buckets.}
 
 \item{SSECustomerKeyMD5}{The MD5 server-side encryption (SSE) customer managed key. This
 parameter is needed only when the object was created using a checksum
 algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
-in the \emph{Amazon S3 User Guide}.}
+in the \emph{Amazon S3 User Guide}.
+
+This functionality is not supported for directory buckets.}
 }
 \description{
-Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the \code{max-parts} request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an \code{IsTruncated} field with the value of true, and a \code{NextPartNumberMarker} element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can include the part-number-marker query string parameter and set its value to the \code{NextPartNumberMarker} field value from the previous response.
+Lists the parts that have been uploaded for a specific multipart upload.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_parts/} for full documentation.
 }

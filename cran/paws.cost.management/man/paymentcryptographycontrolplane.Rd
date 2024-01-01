@@ -53,30 +53,31 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-You use the Amazon Web Services Payment Cryptography Control Plane to
-manage the encryption keys you use for payment-related cryptographic
-operations. You can create, import, export, share, manage, and delete
-keys. You can also manage Identity and Access Management (IAM) policies
-for keys. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security-iam.html}{Identity and access management}
+Amazon Web Services Payment Cryptography Control Plane APIs manage
+encryption keys for use during payment-related cryptographic operations.
+You can create, import, export, share, manage, and delete keys. You can
+also manage Identity and Access Management (IAM) policies for keys. For
+more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security-iam.html}{Identity and access management}
 in the \emph{Amazon Web Services Payment Cryptography User Guide.}
 
 To use encryption keys for payment-related transaction processing and
 associated cryptographic operations, you use the \href{https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/Welcome.html}{Amazon Web Services Payment Cryptography Data Plane}.
-You can encrypt, decrypt, generate, verify, and translate
-payment-related cryptographic operations.
+You can perform actions like encrypt, decrypt, generate, and verify
+payment-related data.
 
 All Amazon Web Services Payment Cryptography API calls must be signed
 and transmitted using Transport Layer Security (TLS). We recommend you
 always use the latest supported TLS version for logging API requests.
 
-Amazon Web Services Payment Cryptography supports CloudTrail, a service
-that logs Amazon Web Services API calls and related events for your
-Amazon Web Services account and delivers them to an Amazon S3 bucket
-that you specify. By using the information collected by CloudTrail, you
-can determine what requests were made to Amazon Web Services Payment
-Cryptography, who made the request, when it was made, and so on. If you
-don't conﬁgure a trail, you can still view the most recent events in the
-CloudTrail console. For more information, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{CloudTrail User Guide}.
+Amazon Web Services Payment Cryptography supports CloudTrail for control
+plane operations, a service that logs Amazon Web Services API calls and
+related events for your Amazon Web Services account and delivers them to
+an Amazon S3 bucket you specify. By using the information collected by
+CloudTrail, you can determine what requests were made to Amazon Web
+Services Payment Cryptography, who made the request, when it was made,
+and so on. If you don't conﬁgure a trail, you can still view the most
+recent events in the CloudTrail console. For more information, see the
+\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{CloudTrail User Guide}.
 }
 \section{Service syntax}{
 
@@ -120,14 +121,14 @@ CloudTrail console. For more information, see the \href{https://docs.aws.amazon.
 \link[=paymentcryptographycontrolplane_create_alias]{create_alias} \tab Creates an alias, or a friendly name, for an Amazon Web Services Payment Cryptography key\cr
 \link[=paymentcryptographycontrolplane_create_key]{create_key} \tab Creates an Amazon Web Services Payment Cryptography key, a logical representation of a cryptographic key, that is unique in your account and Amazon Web Services Region\cr
 \link[=paymentcryptographycontrolplane_delete_alias]{delete_alias} \tab Deletes the alias, but doesn't affect the underlying key\cr
-\link[=paymentcryptographycontrolplane_delete_key]{delete_key} \tab Deletes the key material and all metadata associated with Amazon Web Services Payment Cryptography key\cr
-\link[=paymentcryptographycontrolplane_export_key]{export_key} \tab Exports a key from Amazon Web Services Payment Cryptography using either ANSI X9 TR-34 or TR-31 key export standard\cr
+\link[=paymentcryptographycontrolplane_delete_key]{delete_key} \tab Deletes the key material and metadata associated with Amazon Web Services Payment Cryptography key\cr
+\link[=paymentcryptographycontrolplane_export_key]{export_key} \tab Exports a key from Amazon Web Services Payment Cryptography\cr
 \link[=paymentcryptographycontrolplane_get_alias]{get_alias} \tab Gets the Amazon Web Services Payment Cryptography key associated with the alias\cr
 \link[=paymentcryptographycontrolplane_get_key]{get_key} \tab Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created\cr
 \link[=paymentcryptographycontrolplane_get_parameters_for_export]{get_parameters_for_export} \tab Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography\cr
-\link[=paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate to initiate a TR-34 key import into Amazon Web Services Payment Cryptography\cr
+\link[=paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock\cr
 \link[=paymentcryptographycontrolplane_get_public_key_certificate]{get_public_key_certificate} \tab Gets the public key certificate of the asymmetric key pair that exists within Amazon Web Services Payment Cryptography\cr
-\link[=paymentcryptographycontrolplane_import_key]{import_key} \tab Imports keys and public key certificates into Amazon Web Services Payment Cryptography\cr
+\link[=paymentcryptographycontrolplane_import_key]{import_key} \tab Imports symmetric keys and public key certificates in PEM format (base64 encoded) into Amazon Web Services Payment Cryptography\cr
 \link[=paymentcryptographycontrolplane_list_aliases]{list_aliases} \tab Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
 \link[=paymentcryptographycontrolplane_list_keys]{list_keys} \tab Lists the keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
 \link[=paymentcryptographycontrolplane_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Web Services resource\cr

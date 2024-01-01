@@ -10,7 +10,10 @@ quicksight_start_asset_bundle_export_job(
   ResourceArns,
   IncludeAllDependencies = NULL,
   ExportFormat,
-  CloudFormationOverridePropertyConfiguration = NULL
+  CloudFormationOverridePropertyConfiguration = NULL,
+  IncludePermissions = NULL,
+  IncludeTags = NULL,
+  ValidationStrategy = NULL
 )
 }
 \arguments{
@@ -49,6 +52,20 @@ resource is exported to a new CloudFormation template.
 Use this field if the \code{ExportFormat} field of a
 \code{StartAssetBundleExportJobRequest} API call is set to
 \code{CLOUDFORMATION_JSON}.}
+
+\item{IncludePermissions}{A Boolean that determines whether all permissions for each resource ARN
+are exported with the job. If you set \code{IncludePermissions} to \code{TRUE},
+any permissions associated with each resource are exported.}
+
+\item{IncludeTags}{A Boolean that determines whether all tags for each resource ARN are
+exported with the job. If you set \code{IncludeTags} to \code{TRUE}, any tags
+associated with each resource are exported.}
+
+\item{ValidationStrategy}{An optional parameter that determines which validation strategy to use
+for the export job. If \code{StrictModeForAllResources} is set to \code{TRUE},
+strict validation for every error is enforced. If it is set to \code{FALSE},
+validation is skipped for specific UI errors that are shown as warnings.
+The default value for \code{StrictModeForAllResources} is \code{FALSE}.}
 }
 \description{
 Starts an Asset Bundle export job.

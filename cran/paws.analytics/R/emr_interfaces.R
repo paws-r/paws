@@ -77,7 +77,7 @@ NULL
 
 .emr$create_studio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), WorkspaceSecurityGroupId = structure(logical(0), tags = list(type = "string")), EngineSecurityGroupId = structure(logical(0), tags = list(type = "string")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), IdpAuthUrl = structure(logical(0), tags = list(type = "string")), IdpRelayStateParameterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), WorkspaceSecurityGroupId = structure(logical(0), tags = list(type = "string")), EngineSecurityGroupId = structure(logical(0), tags = list(type = "string")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), IdpAuthUrl = structure(logical(0), tags = list(type = "string")), IdpRelayStateParameterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TrustedIdentityPropagationEnabled = structure(logical(0), tags = list(type = "boolean")), IdcUserAssignment = structure(logical(0), tags = list(type = "string")), IdcInstanceArn = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -209,7 +209,7 @@ NULL
 
 .emr$describe_studio_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Studio = structure(list(StudioId = structure(logical(0), tags = list(type = "string")), StudioArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), WorkspaceSecurityGroupId = structure(logical(0), tags = list(type = "string")), EngineSecurityGroupId = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), IdpAuthUrl = structure(logical(0), tags = list(type = "string")), IdpRelayStateParameterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Studio = structure(list(StudioId = structure(logical(0), tags = list(type = "string")), StudioArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AuthMode = structure(logical(0), tags = list(type = "string")), VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceRole = structure(logical(0), tags = list(type = "string")), UserRole = structure(logical(0), tags = list(type = "string")), WorkspaceSecurityGroupId = structure(logical(0), tags = list(type = "string")), EngineSecurityGroupId = structure(logical(0), tags = list(type = "string")), Url = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), IdpAuthUrl = structure(logical(0), tags = list(type = "string")), IdpRelayStateParameterName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IdcInstanceArn = structure(logical(0), tags = list(type = "string")), TrustedIdentityPropagationEnabled = structure(logical(0), tags = list(type = "boolean")), IdcUserAssignment = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -557,6 +557,16 @@ NULL
   return(populate(args, shape))
 }
 
+.emr$set_keep_job_flow_alive_when_no_steps_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeepJobFlowAliveWhenNoSteps = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.emr$set_keep_job_flow_alive_when_no_steps_output <- function(...) {
+  list()
+}
+
 .emr$set_termination_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobFlowIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminationProtected = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -611,7 +621,7 @@ NULL
 
 .emr$update_studio_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DefaultS3Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StudioId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DefaultS3Location = structure(logical(0), tags = list(type = "string")), EncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

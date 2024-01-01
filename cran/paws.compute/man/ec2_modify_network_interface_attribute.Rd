@@ -12,7 +12,8 @@ ec2_modify_network_interface_attribute(
   NetworkInterfaceId,
   SourceDestCheck = NULL,
   EnaSrdSpecification = NULL,
-  EnablePrimaryIpv6 = NULL
+  EnablePrimaryIpv6 = NULL,
+  ConnectionTrackingSpecification = NULL
 )
 }
 \arguments{
@@ -59,6 +60,8 @@ detached. If you have multiple IPv6 addresses associated with an ENI
 attached to your instance and you enable a primary IPv6 address, the
 first IPv6 GUA address associated with the ENI becomes the primary IPv6
 address.}
+
+\item{ConnectionTrackingSpecification}{A connection tracking specification.}
 }
 \description{
 Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.

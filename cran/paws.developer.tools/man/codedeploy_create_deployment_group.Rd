@@ -22,7 +22,8 @@ codedeploy_create_deployment_group(
   ec2TagSet = NULL,
   ecsServices = NULL,
   onPremisesTagSet = NULL,
-  tags = NULL
+  tags = NULL,
+  terminationHookEnabled = NULL
 )
 }
 \arguments{
@@ -103,6 +104,21 @@ of the tag groups. Cannot be used in the same call as
 \item{tags}{The metadata that you apply to CodeDeploy deployment groups to help you
 organize and categorize them. Each tag consists of a key and an optional
 value, both of which you define.}
+
+\item{terminationHookEnabled}{This parameter only applies if you are using CodeDeploy with Amazon EC2
+Auto Scaling. For more information, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html}{Integrating CodeDeploy with Amazon EC2 Auto Scaling}
+in the \emph{CodeDeploy User Guide}.
+
+Set \code{terminationHookEnabled} to \code{true} to have CodeDeploy install a
+termination hook into your Auto Scaling group when you create a
+deployment group. When this hook is installed, CodeDeploy will perform
+termination deployments.
+
+For information about termination deployments, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html#integrations-aws-auto-scaling-behaviors-hook-enable}{Enabling termination deployments during Auto Scaling scale-in events}
+in the \emph{CodeDeploy User Guide}.
+
+For more information about Auto Scaling scale-in events, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-lifecycle.html#as-lifecycle-scale-in}{Scale in}
+topic in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Creates a deployment group to which application revisions are deployed.

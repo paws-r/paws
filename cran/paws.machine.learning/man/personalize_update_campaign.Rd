@@ -2,8 +2,9 @@
 % Please edit documentation in R/personalize_operations.R
 \name{personalize_update_campaign}
 \alias{personalize_update_campaign}
-\title{Updates a campaign by either deploying a new solution or changing the
-value of the campaign's minProvisionedTPS parameter}
+\title{Updates a campaign to deploy a retrained solution version with an
+existing campaign, change your campaign's minProvisionedTPS, or modify
+your campaign's configuration, such as the exploration configuration}
 \usage{
 personalize_update_campaign(
   campaignArn,
@@ -27,7 +28,7 @@ necessary.}
 \item{campaignConfig}{The configuration details of a campaign.}
 }
 \description{
-Updates a campaign by either deploying a new solution or changing the value of the campaign's \code{minProvisionedTPS} parameter.
+Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's \code{minProvisionedTPS}, or modify your campaign's configuration, such as the exploration configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_update_campaign/} for full documentation.
 }

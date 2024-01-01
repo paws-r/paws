@@ -266,8 +266,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' This is required if `schedulingStrategy` is `REPLICA` or isn't
 #' specified. If `schedulingStrategy` is `DAEMON` then this isn't required.
 #' @param clientToken An identifier that you provide to ensure the idempotency of the request.
-#' It must be unique and is case sensitive. Up to 32 ASCII characters are
-#' allowed.
+#' It must be unique and is case sensitive. Up to 36 ASCII characters in
+#' the range of 33-126 (inclusive) are allowed.
 #' @param launchType The infrastructure that you run your service on. For more information,
 #' see [Amazon ECS launch
 #' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
@@ -303,7 +303,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' platform version is specified only for tasks using the Fargate launch
 #' type. If one isn't specified, the `LATEST` platform version is used. For
 #' more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param role The name or full Amazon Resource Name (ARN) of the IAM role that allows
 #' Amazon ECS to make calls to your load balancer on your behalf. This
@@ -534,9 +534,9 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' one isn't specified, the `LATEST` platform version is used.
 #' @param scale A floating-point percentage of the desired number of tasks to place and
 #' keep running in the task set.
-#' @param clientToken The identifier that you provide to ensure the idempotency of the
-#' request. It's case sensitive and must be unique. It can be up to 32
-#' ASCII characters are allowed.
+#' @param clientToken An identifier that you provide to ensure the idempotency of the request.
+#' It must be unique and is case sensitive. Up to 36 ASCII characters in
+#' the range of 33-126 (inclusive) are allowed.
 #' @param tags The metadata that you apply to the task set to help you categorize and
 #' organize them. Each tag consists of a key and an optional value. You
 #' define both. When a service is deleted, the tags are deleted.
@@ -1902,6 +1902,14 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' in the *Amazon ECS Developer Guide*. If you specify
 #' `fargateTaskRetirementWaitPeriod`, the wait time to retire a Fargate
 #' task is affected.
+#' 
+#' The `guardDutyActivate` parameter is read-only in Amazon ECS and
+#' indicates whether Amazon ECS Runtime Monitoring is enabled or disabled
+#' by your security administrator in your Amazon ECS account. Amazon
+#' GuardDuty controls this account setting on your behalf. For more
+#' information, see [Protecting Amazon ECS workloads with Amazon ECS
+#' Runtime
+#' Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
 #' 
@@ -1989,6 +1997,14 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' maintenance, see [Amazon Web Services Fargate task
 #' maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
 #' in the *Amazon ECS Developer Guide*.
+#' 
+#' The `guardDutyActivate` parameter is read-only in Amazon ECS and
+#' indicates whether Amazon ECS Runtime Monitoring is enabled or disabled
+#' by your security administrator in your Amazon ECS account. Amazon
+#' GuardDuty controls this account setting on your behalf. For more
+#' information, see [Protecting Amazon ECS workloads with Amazon ECS
+#' Runtime
+#' Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
 #' 
@@ -2589,7 +2605,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param platformVersion The platform version the task uses. A platform version is only specified
 #' for tasks hosted on Fargate. If one isn't specified, the `LATEST`
 #' platform version is used. For more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
@@ -2606,7 +2622,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' a unique identifier for that job to your task with the `startedBy`
 #' parameter. You can then identify which tasks belong to that job by
 #' filtering the results of a [`list_tasks`][ecs_list_tasks] call with the
-#' `startedBy` value. Up to 36 letters (uppercase and lowercase), numbers,
+#' `startedBy` value. Up to 128 letters (uppercase and lowercase), numbers,
 #' hyphens (-), and underscores (_) are allowed.
 #' 
 #' If a task is started by an Amazon ECS service, then the `startedBy`
@@ -2665,18 +2681,23 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' For more information, see [Policy Resources for Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-resources)
 #' in the Amazon Elastic Container Service developer Guide.
+#' @param clientToken An identifier that you provide to ensure the idempotency of the request.
+#' It must be unique and is case sensitive. Up to 64 characters are
+#' allowed. The valid characters are characters in the range of 33-126,
+#' inclusive. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html).
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_run_task
-ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
+ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition, clientToken = NULL) {
   op <- new_operation(
     name = "RunTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition)
+  input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, clientToken = clientToken)
   output <- .ecs$run_task_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -3291,7 +3312,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' version is only specified for tasks using the Fargate launch type. If a
 #' platform version is not specified, the `LATEST` platform version is
 #' used. For more information, see [Fargate Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param forceNewDeployment Determines whether to force a new deployment of the service. By default,
 #' deployments aren't forced. You can use this option to start a new

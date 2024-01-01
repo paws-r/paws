@@ -46,13 +46,13 @@ being created by the same incident in the same account.}
 \item{incidentTemplateImpact}{Defines the impact to the customers. Providing an impact overwrites the
 impact provided by a response plan.
 
-\strong{Possible impacts:}
+\strong{Supported impact codes}
 \itemize{
-\item \code{5} - Severe impact
-\item \code{4} - High impact
-\item \code{3} - Medium impact
-\item \code{2} - Low impact
-\item \code{1} - No impact
+\item \code{1} - Critical
+\item \code{2} - High
+\item \code{3} - Medium
+\item \code{4} - Low
+\item \code{5} - No Impact
 }}
 
 \item{incidentTemplateNotificationTargets}{The Amazon SNS targets that are notified when updates are made to an

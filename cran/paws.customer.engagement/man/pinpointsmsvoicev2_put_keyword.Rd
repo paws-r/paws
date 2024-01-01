@@ -22,14 +22,14 @@ used to get the values for SenderId and SenderIdArn.}
 
 \item{Keyword}{[required] The new keyword to add.}
 
-\item{KeywordMessage}{[required] The message associated with the keyword.
+\item{KeywordMessage}{[required] The message associated with the keyword.}
+
+\item{KeywordAction}{The action to perform for the new keyword when it is received.
 \itemize{
 \item AUTOMATIC_RESPONSE: A message is sent to the recipient.
 \item OPT_OUT: Keeps the recipient from receiving future messages.
 \item OPT_IN: The recipient wants to receive future messages.
 }}
-
-\item{KeywordAction}{The action to perform for the new keyword when it is received.}
 }
 \description{
 Creates or updates a keyword configuration on an origination phone number or pool.

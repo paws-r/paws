@@ -43,7 +43,7 @@ such as 2021.01.01.}
 
 \item{changeDescription}{The change description of the component. Describes what change has been
 made in this version, or what makes this version different from other
-versions of this component.}
+versions of the component.}
 
 \item{platform}{[required] The operating system platform of the component.}
 
@@ -67,7 +67,9 @@ component \code{data} property. You cannot specify both properties.}
 
 \item{tags}{The tags that apply to the component.}
 
-\item{clientToken}{[required] The idempotency token of the component.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
 Creates a new component that can be used to build, validate, test, and assess your image. The component is based on a YAML document that you specify using exactly one of the following methods:

@@ -86,7 +86,7 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #' @usage
 #' codecatalyst_create_dev_environment(spaceName, projectName,
 #'   repositories, clientToken, alias, ides, instanceType,
-#'   inactivityTimeoutMinutes, persistentStorage)
+#'   inactivityTimeoutMinutes, persistentStorage, vpcConnectionName)
 #'
 #' @param spaceName &#91;required&#93; The name of the space.
 #' @param projectName &#91;required&#93; The name of the project in the space.
@@ -115,6 +115,7 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #' no default when programmatically creating a Dev Environment. Valid
 #' values for persistent storage are based on memory sizes in 16GB
 #' increments. Valid values are 16, 32, and 64.
+#' @param vpcConnectionName The name of the connection to use connect to a Amazon VPC.
 #'
 #' @return
 #' A list with the following syntax:
@@ -122,7 +123,8 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #' list(
 #'   spaceName = "string",
 #'   projectName = "string",
-#'   id = "string"
+#'   id = "string",
+#'   vpcConnectionName = "string"
 #' )
 #' ```
 #'
@@ -149,7 +151,8 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #'   inactivityTimeoutMinutes = 123,
 #'   persistentStorage = list(
 #'     sizeInGiB = 123
-#'   )
+#'   ),
+#'   vpcConnectionName = "string"
 #' )
 #' ```
 #'
@@ -158,14 +161,14 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #' @rdname codecatalyst_create_dev_environment
 #'
 #' @aliases codecatalyst_create_dev_environment
-codecatalyst_create_dev_environment <- function(spaceName, projectName, repositories = NULL, clientToken = NULL, alias = NULL, ides = NULL, instanceType, inactivityTimeoutMinutes = NULL, persistentStorage) {
+codecatalyst_create_dev_environment <- function(spaceName, projectName, repositories = NULL, clientToken = NULL, alias = NULL, ides = NULL, instanceType, inactivityTimeoutMinutes = NULL, persistentStorage, vpcConnectionName = NULL) {
   op <- new_operation(
     name = "CreateDevEnvironment",
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments",
     paginator = list()
   )
-  input <- .codecatalyst$create_dev_environment_input(spaceName = spaceName, projectName = projectName, repositories = repositories, clientToken = clientToken, alias = alias, ides = ides, instanceType = instanceType, inactivityTimeoutMinutes = inactivityTimeoutMinutes, persistentStorage = persistentStorage)
+  input <- .codecatalyst$create_dev_environment_input(spaceName = spaceName, projectName = projectName, repositories = repositories, clientToken = clientToken, alias = alias, ides = ides, instanceType = instanceType, inactivityTimeoutMinutes = inactivityTimeoutMinutes, persistentStorage = persistentStorage, vpcConnectionName = vpcConnectionName)
   output <- .codecatalyst$create_dev_environment_output()
   config <- get_config()
   svc <- .codecatalyst$service(config)
@@ -665,7 +668,8 @@ codecatalyst_delete_space <- function(name) {
 #'   inactivityTimeoutMinutes = 123,
 #'   persistentStorage = list(
 #'     sizeInGiB = 123
-#'   )
+#'   ),
+#'   vpcConnectionName = "string"
 #' )
 #' ```
 #'
@@ -1022,6 +1026,142 @@ codecatalyst_get_user_details <- function(id = NULL, userName = NULL) {
 }
 .codecatalyst$operations$get_user_details <- codecatalyst_get_user_details
 
+#' Returns information about a workflow
+#'
+#' @description
+#' Returns information about a workflow.
+#'
+#' @usage
+#' codecatalyst_get_workflow(spaceName, id, projectName)
+#'
+#' @param spaceName &#91;required&#93; The name of the space.
+#' @param id &#91;required&#93; The ID of the workflow. To rerieve a list of workflow IDs, use
+#' [`list_workflows`][codecatalyst_list_workflows].
+#' @param projectName &#91;required&#93; The name of the project in the space.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   spaceName = "string",
+#'   projectName = "string",
+#'   id = "string",
+#'   name = "string",
+#'   sourceRepositoryName = "string",
+#'   sourceBranchName = "string",
+#'   definition = list(
+#'     path = "string"
+#'   ),
+#'   createdTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   runMode = "QUEUED"|"PARALLEL"|"SUPERSEDED",
+#'   status = "INVALID"|"ACTIVE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow(
+#'   spaceName = "string",
+#'   id = "string",
+#'   projectName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecatalyst_get_workflow
+#'
+#' @aliases codecatalyst_get_workflow
+codecatalyst_get_workflow <- function(spaceName, id, projectName) {
+  op <- new_operation(
+    name = "GetWorkflow",
+    http_method = "GET",
+    http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflows/{id}",
+    paginator = list()
+  )
+  input <- .codecatalyst$get_workflow_input(spaceName = spaceName, id = id, projectName = projectName)
+  output <- .codecatalyst$get_workflow_output()
+  config <- get_config()
+  svc <- .codecatalyst$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecatalyst$operations$get_workflow <- codecatalyst_get_workflow
+
+#' Returns information about a specified run of a workflow
+#'
+#' @description
+#' Returns information about a specified run of a workflow.
+#'
+#' @usage
+#' codecatalyst_get_workflow_run(spaceName, id, projectName)
+#'
+#' @param spaceName &#91;required&#93; The name of the space.
+#' @param id &#91;required&#93; The ID of the workflow run. To retrieve a list of workflow run IDs, use
+#' [`list_workflow_runs`][codecatalyst_list_workflow_runs].
+#' @param projectName &#91;required&#93; The name of the project in the space.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   spaceName = "string",
+#'   projectName = "string",
+#'   id = "string",
+#'   workflowId = "string",
+#'   status = "SUCCEEDED"|"FAILED"|"STOPPED"|"SUPERSEDED"|"CANCELLED"|"NOT_RUN"|"VALIDATING"|"PROVISIONING"|"IN_PROGRESS"|"STOPPING"|"ABANDONED",
+#'   statusReasons = list(
+#'     list()
+#'   ),
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow_run(
+#'   spaceName = "string",
+#'   id = "string",
+#'   projectName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecatalyst_get_workflow_run
+#'
+#' @aliases codecatalyst_get_workflow_run
+codecatalyst_get_workflow_run <- function(spaceName, id, projectName) {
+  op <- new_operation(
+    name = "GetWorkflowRun",
+    http_method = "GET",
+    http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflowRuns/{id}",
+    paginator = list()
+  )
+  input <- .codecatalyst$get_workflow_run_input(spaceName = spaceName, id = id, projectName = projectName)
+  output <- .codecatalyst$get_workflow_run_output()
+  config <- get_config()
+  svc <- .codecatalyst$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecatalyst$operations$get_workflow_run <- codecatalyst_get_workflow_run
+
 #' Lists all personal access tokens (PATs) associated with the user who
 #' calls the API
 #'
@@ -1168,7 +1308,7 @@ codecatalyst_list_dev_environment_sessions <- function(spaceName, projectName, d
 #'   nextToken, maxResults)
 #'
 #' @param spaceName &#91;required&#93; The name of the space.
-#' @param projectName &#91;required&#93; The name of the project in the space.
+#' @param projectName The name of the project in the space.
 #' @param filters Information about filters to apply to narrow the results returned in the
 #' list.
 #' @param nextToken A token returned from a call to this API to indicate the next batch of
@@ -1210,7 +1350,8 @@ codecatalyst_list_dev_environment_sessions <- function(spaceName, projectName, d
 #'       inactivityTimeoutMinutes = 123,
 #'       persistentStorage = list(
 #'         sizeInGiB = 123
-#'       )
+#'       ),
+#'       vpcConnectionName = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1241,11 +1382,11 @@ codecatalyst_list_dev_environment_sessions <- function(spaceName, projectName, d
 #' @rdname codecatalyst_list_dev_environments
 #'
 #' @aliases codecatalyst_list_dev_environments
-codecatalyst_list_dev_environments <- function(spaceName, projectName, filters = NULL, nextToken = NULL, maxResults = NULL) {
+codecatalyst_list_dev_environments <- function(spaceName, projectName = NULL, filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDevEnvironments",
     http_method = "POST",
-    http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments",
+    http_path = "/v1/spaces/{spaceName}/devEnvironments",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_dev_environments_input(spaceName = spaceName, projectName = projectName, filters = filters, nextToken = nextToken, maxResults = maxResults)
@@ -1258,13 +1399,25 @@ codecatalyst_list_dev_environments <- function(spaceName, projectName, filters =
 }
 .codecatalyst$operations$list_dev_environments <- codecatalyst_list_dev_environments
 
-#' Retrieves a list of events that occurred during a specified time period
-#' in a space
+#' Retrieves a list of events that occurred during a specific time in a
+#' space
 #'
 #' @description
-#' Retrieves a list of events that occurred during a specified time period
-#' in a space. You can use these events to audit user and system activity
-#' in a space.
+#' Retrieves a list of events that occurred during a specific time in a
+#' space. You can use these events to audit user and system activity in a
+#' space. For more information, see
+#' [Monitoring](https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-monitoring.html)
+#' in the *Amazon CodeCatalyst User Guide*.
+#' 
+#' ListEventLogs guarantees events for the last 30 days in a given space.
+#' You can also view and retrieve a list of management events over the last
+#' 90 days for Amazon CodeCatalyst in the CloudTrail console by viewing
+#' Event history, or by creating a trail to create and maintain a record of
+#' events that extends past 90 days. For more information, see [Working
+#' with CloudTrail Event
+#' History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)
+#' and [Working with CloudTrail
+#' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-getting-started.html).
 #'
 #' @usage
 #' codecatalyst_list_event_logs(spaceName, startTime, endTime, eventName,
@@ -1407,11 +1560,11 @@ codecatalyst_list_event_logs <- function(spaceName, startTime, endTime, eventNam
 #'   maxResults = 123,
 #'   filters = list(
 #'     list(
-#'       key = "hasAccessTo",
+#'       key = "hasAccessTo"|"name",
 #'       values = list(
 #'         "string"
 #'       ),
-#'       comparisonOperator = "EQ"|"GT"|"GE"|"LT"|"LE"
+#'       comparisonOperator = "EQ"|"GT"|"GE"|"LT"|"LE"|"BEGINS_WITH"
 #'     )
 #'   )
 #' )
@@ -1636,6 +1789,172 @@ codecatalyst_list_spaces <- function(nextToken = NULL) {
 }
 .codecatalyst$operations$list_spaces <- codecatalyst_list_spaces
 
+#' Retrieves a list of workflow runs of a specified workflow
+#'
+#' @description
+#' Retrieves a list of workflow runs of a specified workflow.
+#'
+#' @usage
+#' codecatalyst_list_workflow_runs(spaceName, workflowId, projectName,
+#'   nextToken, maxResults, sortBy)
+#'
+#' @param spaceName &#91;required&#93; The name of the space.
+#' @param workflowId The ID of the workflow. To retrieve a list of workflow IDs, use
+#' [`list_workflows`][codecatalyst_list_workflows].
+#' @param projectName &#91;required&#93; The name of the project in the space.
+#' @param nextToken A token returned from a call to this API to indicate the next batch of
+#' results to return, if any.
+#' @param maxResults The maximum number of results to show in a single call to this API. If
+#' the number of results is larger than the number you specified, the
+#' response will include a `NextToken` element, which you can use to obtain
+#' additional results.
+#' @param sortBy Information used to sort the items in the returned list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       workflowId = "string",
+#'       workflowName = "string",
+#'       status = "SUCCEEDED"|"FAILED"|"STOPPED"|"SUPERSEDED"|"CANCELLED"|"NOT_RUN"|"VALIDATING"|"PROVISIONING"|"IN_PROGRESS"|"STOPPING"|"ABANDONED",
+#'       statusReasons = list(
+#'         list()
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workflow_runs(
+#'   spaceName = "string",
+#'   workflowId = "string",
+#'   projectName = "string",
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   sortBy = list(
+#'     list()
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecatalyst_list_workflow_runs
+#'
+#' @aliases codecatalyst_list_workflow_runs
+codecatalyst_list_workflow_runs <- function(spaceName, workflowId = NULL, projectName, nextToken = NULL, maxResults = NULL, sortBy = NULL) {
+  op <- new_operation(
+    name = "ListWorkflowRuns",
+    http_method = "POST",
+    http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflowRuns",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .codecatalyst$list_workflow_runs_input(spaceName = spaceName, workflowId = workflowId, projectName = projectName, nextToken = nextToken, maxResults = maxResults, sortBy = sortBy)
+  output <- .codecatalyst$list_workflow_runs_output()
+  config <- get_config()
+  svc <- .codecatalyst$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecatalyst$operations$list_workflow_runs <- codecatalyst_list_workflow_runs
+
+#' Retrieves a list of workflows in a specified project
+#'
+#' @description
+#' Retrieves a list of workflows in a specified project.
+#'
+#' @usage
+#' codecatalyst_list_workflows(spaceName, projectName, nextToken,
+#'   maxResults, sortBy)
+#'
+#' @param spaceName &#91;required&#93; The name of the space.
+#' @param projectName &#91;required&#93; The name of the project in the space.
+#' @param nextToken A token returned from a call to this API to indicate the next batch of
+#' results to return, if any.
+#' @param maxResults The maximum number of results to show in a single call to this API. If
+#' the number of results is larger than the number you specified, the
+#' response will include a `NextToken` element, which you can use to obtain
+#' additional results.
+#' @param sortBy Information used to sort the items in the returned list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   items = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       sourceRepositoryName = "string",
+#'       sourceBranchName = "string",
+#'       definition = list(
+#'         path = "string"
+#'       ),
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       runMode = "QUEUED"|"PARALLEL"|"SUPERSEDED",
+#'       status = "INVALID"|"ACTIVE"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workflows(
+#'   spaceName = "string",
+#'   projectName = "string",
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   sortBy = list(
+#'     list()
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecatalyst_list_workflows
+#'
+#' @aliases codecatalyst_list_workflows
+codecatalyst_list_workflows <- function(spaceName, projectName, nextToken = NULL, maxResults = NULL, sortBy = NULL) {
+  op <- new_operation(
+    name = "ListWorkflows",
+    http_method = "POST",
+    http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflows",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .codecatalyst$list_workflows_input(spaceName = spaceName, projectName = projectName, nextToken = nextToken, maxResults = maxResults, sortBy = sortBy)
+  output <- .codecatalyst$list_workflows_output()
+  config <- get_config()
+  svc <- .codecatalyst$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecatalyst$operations$list_workflows <- codecatalyst_list_workflows
+
 #' Starts a specified Dev Environment and puts it into an active state
 #'
 #' @description
@@ -1773,6 +2092,67 @@ codecatalyst_start_dev_environment_session <- function(spaceName, projectName, i
   return(response)
 }
 .codecatalyst$operations$start_dev_environment_session <- codecatalyst_start_dev_environment_session
+
+#' Begins a run of a specified workflow
+#'
+#' @description
+#' Begins a run of a specified workflow.
+#'
+#' @usage
+#' codecatalyst_start_workflow_run(spaceName, projectName, workflowId,
+#'   clientToken)
+#'
+#' @param spaceName &#91;required&#93; The name of the space.
+#' @param projectName &#91;required&#93; The name of the project in the space.
+#' @param workflowId &#91;required&#93; The system-generated unique ID of the workflow. To retrieve a list of
+#' workflow IDs, use [`list_workflows`][codecatalyst_list_workflows].
+#' @param clientToken A user-specified idempotency token. Idempotency ensures that an API
+#' request completes only once. With an idempotent request, if the original
+#' request completes successfully, the subsequent retries return the result
+#' from the original successful request and have no additional effect.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   spaceName = "string",
+#'   projectName = "string",
+#'   id = "string",
+#'   workflowId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_workflow_run(
+#'   spaceName = "string",
+#'   projectName = "string",
+#'   workflowId = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecatalyst_start_workflow_run
+#'
+#' @aliases codecatalyst_start_workflow_run
+codecatalyst_start_workflow_run <- function(spaceName, projectName, workflowId, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartWorkflowRun",
+    http_method = "PUT",
+    http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflowRuns",
+    paginator = list()
+  )
+  input <- .codecatalyst$start_workflow_run_input(spaceName = spaceName, projectName = projectName, workflowId = workflowId, clientToken = clientToken)
+  output <- .codecatalyst$start_workflow_run_output()
+  config <- get_config()
+  svc <- .codecatalyst$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecatalyst$operations$start_workflow_run <- codecatalyst_start_workflow_run
 
 #' Pauses a specified Dev Environment and places it in a non-running state
 #'

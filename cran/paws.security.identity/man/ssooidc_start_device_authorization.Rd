@@ -16,7 +16,8 @@ Identity Center. This value should come from the persisted result of the
 from the persisted result of the
 \code{\link[=ssooidc_register_client]{register_client}} API operation.}
 
-\item{startUrl}{[required] The URL for the AWS access portal. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html}{Using the AWS access portal}
+\item{startUrl}{[required] The URL for the Amazon Web Services access portal. For more information,
+see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html}{Using the Amazon Web Services access portal}
 in the \emph{IAM Identity Center User Guide}.}
 }
 \description{

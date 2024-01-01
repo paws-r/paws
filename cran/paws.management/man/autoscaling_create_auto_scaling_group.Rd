@@ -33,7 +33,8 @@ autoscaling_create_auto_scaling_group(
   Context = NULL,
   DesiredCapacityType = NULL,
   DefaultInstanceWarmup = NULL,
-  TrafficSources = NULL
+  TrafficSources = NULL,
+  InstanceMaintenancePolicy = NULL
 )
 }
 \arguments{
@@ -238,6 +239,9 @@ Default: None}
 can use any of the following as traffic sources for an Auto Scaling
 group: Classic Load Balancer, Application Load Balancer, Gateway Load
 Balancer, Network Load Balancer, and VPC Lattice.}
+
+\item{InstanceMaintenancePolicy}{An instance maintenance policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html}{Set instance maintenance policy}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 \strong{We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

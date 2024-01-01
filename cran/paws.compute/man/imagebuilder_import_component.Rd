@@ -40,7 +40,7 @@ component.}
 
 \item{changeDescription}{The change description of the component. This description indicates the
 change that has been made in this version, or what makes this version
-different from other versions of this component.}
+different from other versions of the component.}
 
 \item{type}{[required] The type of the component denotes whether the component is used to build
 the image, or only to test it.}
@@ -61,7 +61,9 @@ S3, you can specify component content up to your service quota. Either
 
 \item{tags}{The tags of the component.}
 
-\item{clientToken}{[required] The idempotency token of the component.}
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
 Imports a component and transforms its data into a component document.

@@ -20,7 +20,8 @@ ec2_create_ipam_pool(
   TagSpecifications = NULL,
   ClientToken = NULL,
   AwsService = NULL,
-  PublicIpSource = NULL
+  PublicIpSource = NULL,
+  SourceResource = NULL
 )
 }
 \arguments{
@@ -108,6 +109,8 @@ Amazon-provided IPv6 CIDR block to a top-level IPv6 pool if
 PublicIpSource is \code{amazon}. For information on increasing the default
 limit, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html}{Quotas for your IPAM} in
 the \emph{Amazon VPC IPAM User Guide}.}
+
+\item{SourceResource}{The resource used to provision CIDRs to a resource planning pool.}
 }
 \description{
 Create an IP address pool for Amazon VPC IP Address Manager (IPAM). In IPAM, a pool is a collection of contiguous IP addresses CIDRs. Pools enable you to organize your IP addresses according to your routing and security needs. For example, if you have separate routing and security needs for development and production applications, you can create a pool for each.

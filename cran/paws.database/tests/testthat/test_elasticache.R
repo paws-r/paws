@@ -36,6 +36,22 @@ test_that("describe_reserved_cache_nodes_offerings", {
   expect_error(svc$describe_reserved_cache_nodes_offerings(), NA)
 })
 
+test_that("describe_serverless_cache_snapshots", {
+  expect_error(svc$describe_serverless_cache_snapshots(), NA)
+})
+
+test_that("describe_serverless_cache_snapshots", {
+  expect_error(svc$describe_serverless_cache_snapshots(MaxResults = 20), NA)
+})
+
+test_that("describe_serverless_caches", {
+  expect_error(svc$describe_serverless_caches(), NA)
+})
+
+test_that("describe_serverless_caches", {
+  expect_error(svc$describe_serverless_caches(MaxResults = 20), NA)
+})
+
 test_that("describe_service_updates", {
   expect_error(svc$describe_service_updates(), NA)
 })

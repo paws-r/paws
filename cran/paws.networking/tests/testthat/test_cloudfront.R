@@ -36,6 +36,10 @@ test_that("list_key_groups", {
   expect_error(svc$list_key_groups(), NA)
 })
 
+test_that("list_key_value_stores", {
+  expect_error(svc$list_key_value_stores(), NA)
+})
+
 test_that("list_origin_access_controls", {
   expect_error(svc$list_origin_access_controls(), NA)
 })

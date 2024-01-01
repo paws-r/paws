@@ -3,6 +3,35 @@
 #' @include marketplacecatalog_service.R
 NULL
 
+#' Returns metadata and content for multiple entities
+#'
+#' @description
+#' Returns metadata and content for multiple entities.
+#'
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_batch_describe_entities/](https://www.paws-r-sdk.com/docs/marketplacecatalog_batch_describe_entities/) for full documentation.
+#'
+#' @param EntityRequestList &#91;required&#93; List of entity IDs and the catalogs the entities are present in.
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_batch_describe_entities
+marketplacecatalog_batch_describe_entities <- function(EntityRequestList) {
+  op <- new_operation(
+    name = "BatchDescribeEntities",
+    http_method = "POST",
+    http_path = "/BatchDescribeEntities",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$batch_describe_entities_input(EntityRequestList = EntityRequestList)
+  output <- .marketplacecatalog$batch_describe_entities_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$batch_describe_entities <- marketplacecatalog_batch_describe_entities
+
 #' Used to cancel an open change request
 #'
 #' @description
@@ -207,7 +236,10 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_list_entities/](https://www.paws-r-sdk.com/docs/marketplacecatalog_list_entities/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
-#' @param EntityType &#91;required&#93; The type of entities to retrieve.
+#' @param EntityType &#91;required&#93; The type of entities to retrieve. Valid values are: `AmiProduct`,
+#' `ContainerProduct`, `DataProduct`, `SaaSProduct`, `ProcurementPolicy`,
+#' `Experience`, `Audience`, `BrandingSettings`, `Offer`, `Seller`,
+#' `ResaleAuthorization`.
 #' @param FilterList An array of filter objects. Each filter object contains two attributes,
 #' `filterName` and `filterValues`.
 #' @param Sort An object that contains two attributes, `SortBy` and `SortOrder`.
@@ -221,18 +253,25 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' Marketplace Catalog API
 #' [`put_resource_policy`][marketplacecatalog_put_resource_policy]
 #' operation can't be discovered through the `SHARED` parameter.
+#' @param EntityTypeFilters A Union object containing filter shapes for all `EntityType`s. Each
+#' `EntityTypeFilter` shape will have filters applicable for that
+#' `EntityType` that can be used to search or filter entities.
+#' @param EntityTypeSort A Union object containing `Sort` shapes for all `EntityType`s. Each
+#' `EntityTypeSort` shape will have `SortBy` and `SortOrder` applicable for
+#' fields on that `EntityType`. This can be used to sort the results of the
+#' filter query.
 #'
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_list_entities
-marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL, OwnershipType = NULL) {
+marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL, OwnershipType = NULL, EntityTypeFilters = NULL, EntityTypeSort = NULL) {
   op <- new_operation(
     name = "ListEntities",
     http_method = "POST",
     http_path = "/ListEntities",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EntitySummaryList")
   )
-  input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType)
+  input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType, EntityTypeFilters = EntityTypeFilters, EntityTypeSort = EntityTypeSort)
   output <- .marketplacecatalog$list_entities_output()
   config <- get_config()
   svc <- .marketplacecatalog$service(config)

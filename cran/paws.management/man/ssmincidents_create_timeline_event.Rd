@@ -28,10 +28,14 @@ specify an Amazon DynamoDB (DynamoDB) table as a resource, use the
 table's ARN. You can also specify an Amazon CloudWatch metric associated
 with the DynamoDB table as a related item.}
 
-\item{eventTime}{[required] The time that the event occurred.}
+\item{eventTime}{[required] The timestamp for when the event occurred.}
 
-\item{eventType}{[required] The type of event. You can create timeline events of type
-\verb{Custom Event}.}
+\item{eventType}{[required] The type of event. You can create timeline events of type \verb{Custom Event}
+and \code{Note}.
+
+To make a Note-type event appear on the \emph{Incident notes} panel in the
+console, specify \code{eventType} as \code{Note}and enter the Amazon Resource Name
+(ARN) of the incident as the value for \code{eventReference}.}
 
 \item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record that the action
 adds the incident to.}

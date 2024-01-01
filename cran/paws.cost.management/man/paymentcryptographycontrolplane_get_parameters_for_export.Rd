@@ -18,7 +18,7 @@ export.}
 
 \item{SigningKeyAlgorithm}{[required] The signing key algorithm to generate a signing key certificate. This
 certificate signs the wrapped key under export within the TR-34 key
-block cryptogram. \code{RSA_2048} is the only signing key algorithm allowed.}
+block. \code{RSA_2048} is the only signing key algorithm allowed.}
 }
 \description{
 Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography.

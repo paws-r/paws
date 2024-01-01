@@ -508,7 +508,7 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #' @param definitionUri The URI of a definition for the workflow.
 #' @param main The path of the main definition file for the workflow.
 #' @param parameterTemplate A parameter template for the workflow.
-#' @param storageCapacity A storage capacity for the workflow in gigabytes.
+#' @param storageCapacity A storage capacity for the workflow in gibibytes.
 #' @param tags Tags for the workflow.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
@@ -1530,10 +1530,10 @@ omics_list_annotation_stores <- function(ids = NULL, maxResults = NULL, nextToke
 }
 .omics$operations$list_annotation_stores <- omics_list_annotation_stores
 
-#' Lists all multipart read set uploads and their statuses
+#' Lists multipart read set uploads and for in progress uploads
 #'
 #' @description
-#' Lists all multipart read set uploads and their statuses.
+#' Lists multipart read set uploads and for in progress uploads. Once the upload is completed, a read set is created and the upload will no longer be returned in the respone.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_list_multipart_read_set_uploads/](https://www.paws-r-sdk.com/docs/omics_list_multipart_read_set_uploads/) for full documentation.
 #'

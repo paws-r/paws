@@ -16,7 +16,7 @@ backup_list_backup_plan_versions(
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
 
 \item{NextToken}{The next item following a partial list of returned items. For example,
-if a request is made to return \code{maxResults} number of items, \code{NextToken}
+if a request is made to return \code{MaxResults} number of items, \code{NextToken}
 allows you to return more items in your list starting at the location
 pointed to by the next token.}
 

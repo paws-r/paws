@@ -3,6 +3,43 @@
 #' @include ivsrealtime_service.R
 NULL
 
+#' Creates an EncoderConfiguration object
+#'
+#' @description
+#' Creates an EncoderConfiguration object.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_create_encoder_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_create_encoder_configuration/) for full documentation.
+#'
+#' @param name Optional name to identify the resource.
+#' @param tags Tags attached to the resource. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS has no constraints on tags beyond
+#' what is documented there.
+#' @param video Video configuration. Default: video resolution 1280x720, bitrate 2500
+#' kbps, 30 fps.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_create_encoder_configuration
+ivsrealtime_create_encoder_configuration <- function(name = NULL, tags = NULL, video = NULL) {
+  op <- new_operation(
+    name = "CreateEncoderConfiguration",
+    http_method = "POST",
+    http_path = "/CreateEncoderConfiguration",
+    paginator = list()
+  )
+  input <- .ivsrealtime$create_encoder_configuration_input(name = name, tags = tags, video = video)
+  output <- .ivsrealtime$create_encoder_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$create_encoder_configuration <- ivsrealtime_create_encoder_configuration
+
 #' Creates an additional token for a specified stage
 #'
 #' @description
@@ -82,6 +119,73 @@ ivsrealtime_create_stage <- function(name = NULL, participantTokenConfigurations
 }
 .ivsrealtime$operations$create_stage <- ivsrealtime_create_stage
 
+#' Creates a new storage configuration, used to enable recording to Amazon
+#' S3
+#'
+#' @description
+#' Creates a new storage configuration, used to enable recording to Amazon S3. When a StorageConfiguration is created, IVS will modify the S3 bucketPolicy of the provided bucket. This will ensure that IVS has sufficient permissions to write content to the provided bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_create_storage_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_create_storage_configuration/) for full documentation.
+#'
+#' @param name Storage configuration name. The value does not need to be unique.
+#' @param s3 &#91;required&#93; A complex type that contains a storage configuration for where recorded
+#' video will be stored.
+#' @param tags Tags attached to the resource. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS has no constraints on tags beyond
+#' what is documented there.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_create_storage_configuration
+ivsrealtime_create_storage_configuration <- function(name = NULL, s3, tags = NULL) {
+  op <- new_operation(
+    name = "CreateStorageConfiguration",
+    http_method = "POST",
+    http_path = "/CreateStorageConfiguration",
+    paginator = list()
+  )
+  input <- .ivsrealtime$create_storage_configuration_input(name = name, s3 = s3, tags = tags)
+  output <- .ivsrealtime$create_storage_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$create_storage_configuration <- ivsrealtime_create_storage_configuration
+
+#' Deletes an EncoderConfiguration resource
+#'
+#' @description
+#' Deletes an EncoderConfiguration resource. Ensures that no Compositions are using this template; otherwise, returns an error.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_delete_encoder_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_delete_encoder_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the EncoderConfiguration.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_delete_encoder_configuration
+ivsrealtime_delete_encoder_configuration <- function(arn) {
+  op <- new_operation(
+    name = "DeleteEncoderConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteEncoderConfiguration",
+    paginator = list()
+  )
+  input <- .ivsrealtime$delete_encoder_configuration_input(arn = arn)
+  output <- .ivsrealtime$delete_encoder_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$delete_encoder_configuration <- ivsrealtime_delete_encoder_configuration
+
 #' Shuts down and deletes the specified stage (disconnecting all
 #' participants)
 #'
@@ -111,6 +215,35 @@ ivsrealtime_delete_stage <- function(arn) {
   return(response)
 }
 .ivsrealtime$operations$delete_stage <- ivsrealtime_delete_stage
+
+#' Deletes the storage configuration for the specified ARN
+#'
+#' @description
+#' Deletes the storage configuration for the specified ARN.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_delete_storage_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_delete_storage_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the storage configuration to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_delete_storage_configuration
+ivsrealtime_delete_storage_configuration <- function(arn) {
+  op <- new_operation(
+    name = "DeleteStorageConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteStorageConfiguration",
+    paginator = list()
+  )
+  input <- .ivsrealtime$delete_storage_configuration_input(arn = arn)
+  output <- .ivsrealtime$delete_storage_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$delete_storage_configuration <- ivsrealtime_delete_storage_configuration
 
 #' Disconnects a specified participant and revokes the participant
 #' permanently from a specified stage
@@ -145,6 +278,64 @@ ivsrealtime_disconnect_participant <- function(participantId, reason = NULL, sta
   return(response)
 }
 .ivsrealtime$operations$disconnect_participant <- ivsrealtime_disconnect_participant
+
+#' Get information about the specified Composition resource
+#'
+#' @description
+#' Get information about the specified Composition resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_get_composition/](https://www.paws-r-sdk.com/docs/ivsrealtime_get_composition/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the Composition resource.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_get_composition
+ivsrealtime_get_composition <- function(arn) {
+  op <- new_operation(
+    name = "GetComposition",
+    http_method = "POST",
+    http_path = "/GetComposition",
+    paginator = list()
+  )
+  input <- .ivsrealtime$get_composition_input(arn = arn)
+  output <- .ivsrealtime$get_composition_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$get_composition <- ivsrealtime_get_composition
+
+#' Gets information about the specified EncoderConfiguration resource
+#'
+#' @description
+#' Gets information about the specified EncoderConfiguration resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_get_encoder_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_get_encoder_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the EncoderConfiguration resource.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_get_encoder_configuration
+ivsrealtime_get_encoder_configuration <- function(arn) {
+  op <- new_operation(
+    name = "GetEncoderConfiguration",
+    http_method = "POST",
+    http_path = "/GetEncoderConfiguration",
+    paginator = list()
+  )
+  input <- .ivsrealtime$get_encoder_configuration_input(arn = arn)
+  output <- .ivsrealtime$get_encoder_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$get_encoder_configuration <- ivsrealtime_get_encoder_configuration
 
 #' Gets information about the specified participant token
 #'
@@ -238,6 +429,102 @@ ivsrealtime_get_stage_session <- function(sessionId, stageArn) {
 }
 .ivsrealtime$operations$get_stage_session <- ivsrealtime_get_stage_session
 
+#' Gets the storage configuration for the specified ARN
+#'
+#' @description
+#' Gets the storage configuration for the specified ARN.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_get_storage_configuration/](https://www.paws-r-sdk.com/docs/ivsrealtime_get_storage_configuration/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the storage configuration to be retrieved.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_get_storage_configuration
+ivsrealtime_get_storage_configuration <- function(arn) {
+  op <- new_operation(
+    name = "GetStorageConfiguration",
+    http_method = "POST",
+    http_path = "/GetStorageConfiguration",
+    paginator = list()
+  )
+  input <- .ivsrealtime$get_storage_configuration_input(arn = arn)
+  output <- .ivsrealtime$get_storage_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$get_storage_configuration <- ivsrealtime_get_storage_configuration
+
+#' Gets summary information about all Compositions in your account, in the
+#' AWS region where the API request is processed
+#'
+#' @description
+#' Gets summary information about all Compositions in your account, in the AWS region where the API request is processed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_compositions/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_compositions/) for full documentation.
+#'
+#' @param filterByEncoderConfigurationArn Filters the Composition list to match the specified EncoderConfiguration
+#' attached to at least one of its output.
+#' @param filterByStageArn Filters the Composition list to match the specified Stage ARN.
+#' @param maxResults Maximum number of results to return. Default: 100.
+#' @param nextToken The first Composition to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_compositions
+ivsrealtime_list_compositions <- function(filterByEncoderConfigurationArn = NULL, filterByStageArn = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCompositions",
+    http_method = "POST",
+    http_path = "/ListCompositions",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .ivsrealtime$list_compositions_input(filterByEncoderConfigurationArn = filterByEncoderConfigurationArn, filterByStageArn = filterByStageArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .ivsrealtime$list_compositions_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_compositions <- ivsrealtime_list_compositions
+
+#' Gets summary information about all EncoderConfigurations in your
+#' account, in the AWS region where the API request is processed
+#'
+#' @description
+#' Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_encoder_configurations/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_encoder_configurations/) for full documentation.
+#'
+#' @param maxResults Maximum number of results to return. Default: 100.
+#' @param nextToken The first encoder configuration to retrieve. This is used for
+#' pagination; see the `nextToken` response field.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_encoder_configurations
+ivsrealtime_list_encoder_configurations <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListEncoderConfigurations",
+    http_method = "POST",
+    http_path = "/ListEncoderConfigurations",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .ivsrealtime$list_encoder_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .ivsrealtime$list_encoder_configurations_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_encoder_configurations <- ivsrealtime_list_encoder_configurations
+
 #' Lists events for a specified participant that occurred during a
 #' specified stage session
 #'
@@ -247,8 +534,8 @@ ivsrealtime_get_stage_session <- function(sessionId, stageArn) {
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_participant_events/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_participant_events/) for full documentation.
 #'
 #' @param maxResults Maximum number of results to return. Default: 50.
-#' @param nextToken The first participant to retrieve. This is used for pagination; see the
-#' `nextToken` response field.
+#' @param nextToken The first participant event to retrieve. This is used for pagination;
+#' see the `nextToken` response field.
 #' @param participantId &#91;required&#93; Unique identifier for this participant. This is assigned by IVS and
 #' returned by
 #' [`create_participant_token`][ivsrealtime_create_participant_token].
@@ -327,8 +614,8 @@ ivsrealtime_list_participants <- function(filterByPublished = NULL, filterByStat
 #' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_stage_sessions/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_stage_sessions/) for full documentation.
 #'
 #' @param maxResults Maximum number of results to return. Default: 50.
-#' @param nextToken The first stage to retrieve. This is used for pagination; see the
-#' `nextToken` response field.
+#' @param nextToken The first stage session to retrieve. This is used for pagination; see
+#' the `nextToken` response field.
 #' @param stageArn &#91;required&#93; Stage ARN.
 #'
 #' @keywords internal
@@ -383,6 +670,39 @@ ivsrealtime_list_stages <- function(maxResults = NULL, nextToken = NULL) {
 }
 .ivsrealtime$operations$list_stages <- ivsrealtime_list_stages
 
+#' Gets summary information about all storage configurations in your
+#' account, in the AWS region where the API request is processed
+#'
+#' @description
+#' Gets summary information about all storage configurations in your account, in the AWS region where the API request is processed.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_list_storage_configurations/](https://www.paws-r-sdk.com/docs/ivsrealtime_list_storage_configurations/) for full documentation.
+#'
+#' @param maxResults Maximum number of storage configurations to return. Default: your
+#' service quota or 100, whichever is smaller.
+#' @param nextToken The first storage configuration to retrieve. This is used for
+#' pagination; see the `nextToken` response field.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_storage_configurations
+ivsrealtime_list_storage_configurations <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListStorageConfigurations",
+    http_method = "POST",
+    http_path = "/ListStorageConfigurations",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .ivsrealtime$list_storage_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .ivsrealtime$list_storage_configurations_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_storage_configurations <- ivsrealtime_list_storage_configurations
+
 #' Gets information about AWS tags for the specified ARN
 #'
 #' @description
@@ -411,6 +731,74 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .ivsrealtime$operations$list_tags_for_resource <- ivsrealtime_list_tags_for_resource
+
+#' Starts a Composition from a stage based on the configuration provided in
+#' the request
+#'
+#' @description
+#' Starts a Composition from a stage based on the configuration provided in the request.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_start_composition/](https://www.paws-r-sdk.com/docs/ivsrealtime_start_composition/) for full documentation.
+#'
+#' @param destinations &#91;required&#93; Array of destination configuration.
+#' @param idempotencyToken Idempotency token.
+#' @param layout Layout object to configure composition parameters.
+#' @param stageArn &#91;required&#93; ARN of the stage to be used for compositing.
+#' @param tags Tags attached to the resource. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS has no constraints on tags beyond
+#' what is documented there.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_start_composition
+ivsrealtime_start_composition <- function(destinations, idempotencyToken = NULL, layout = NULL, stageArn, tags = NULL) {
+  op <- new_operation(
+    name = "StartComposition",
+    http_method = "POST",
+    http_path = "/StartComposition",
+    paginator = list()
+  )
+  input <- .ivsrealtime$start_composition_input(destinations = destinations, idempotencyToken = idempotencyToken, layout = layout, stageArn = stageArn, tags = tags)
+  output <- .ivsrealtime$start_composition_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$start_composition <- ivsrealtime_start_composition
+
+#' Stops and deletes a Composition resource
+#'
+#' @description
+#' Stops and deletes a Composition resource. Any broadcast from the Composition resource is stopped.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivsrealtime_stop_composition/](https://www.paws-r-sdk.com/docs/ivsrealtime_stop_composition/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the Composition.
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_stop_composition
+ivsrealtime_stop_composition <- function(arn) {
+  op <- new_operation(
+    name = "StopComposition",
+    http_method = "POST",
+    http_path = "/StopComposition",
+    paginator = list()
+  )
+  input <- .ivsrealtime$stop_composition_input(arn = arn)
+  output <- .ivsrealtime$stop_composition_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$stop_composition <- ivsrealtime_stop_composition
 
 #' Adds or updates tags for the AWS resource with the specified ARN
 #'

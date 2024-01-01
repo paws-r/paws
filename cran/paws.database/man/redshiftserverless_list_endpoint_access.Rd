@@ -7,6 +7,7 @@
 redshiftserverless_list_endpoint_access(
   maxResults = NULL,
   nextToken = NULL,
+  ownerAccount = NULL,
   vpcId = NULL,
   workgroupName = NULL
 )
@@ -21,6 +22,9 @@ operation returns a \code{nextToken}, you can include the returned
 \code{nextToken} in following
 \code{\link[=redshiftserverless_list_endpoint_access]{list_endpoint_access}}
 operations, which returns results in the next page.}
+
+\item{ownerAccount}{The owner Amazon Web Services account for the Amazon Redshift Serverless
+workgroup.}
 
 \item{vpcId}{The unique identifier of the virtual private cloud with access to Amazon
 Redshift Serverless.}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/controltower_operations.R
 \name{controltower_list_enabled_controls}
 \alias{controltower_list_enabled_controls}
-\title{Lists the controls enabled by AWS Control Tower on the specified
-organizational unit and the accounts it contains}
+\title{Lists the controls enabled by Amazon Web Services Control Tower on the
+specified organizational unit and the accounts it contains}
 \usage{
 controltower_list_enabled_controls(
   maxResults = NULL,
@@ -21,7 +21,7 @@ parameters.}
 \code{targetIdentifier}, see \href{https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html}{the overview page}.}
 }
 \description{
-Lists the controls enabled by AWS Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the AWS Control Tower User Guide}} .
+Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_list_enabled_controls/} for full documentation.
 }

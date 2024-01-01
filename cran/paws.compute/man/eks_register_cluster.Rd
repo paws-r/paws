@@ -12,18 +12,17 @@ eks_register_cluster(
 )
 }
 \arguments{
-\item{name}{[required] Define a unique name for this cluster for your Region.}
+\item{name}{[required] A unique name for this cluster in your Amazon Web Services Region.}
 
 \item{connectorConfig}{[required] The configuration settings required to connect the Kubernetes cluster to
 the Amazon EKS control plane.}
 
-\item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
-\item{tags}{The metadata that you apply to the cluster to assist with categorization
-and organization. Each tag consists of a key and an optional value, both
-of which you define. Cluster tags do not propagate to any other
-resources associated with the cluster.}
+\item{tags}{Metadata that assists with categorization and organization. Each tag
+consists of a key and an optional value. You define both. Tags don't
+propagate to any other cluster or Amazon Web Services resources.}
 }
 \description{
 Connects a Kubernetes cluster to the Amazon EKS control plane.

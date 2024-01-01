@@ -468,18 +468,22 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' can use any of the following as traffic sources for an Auto Scaling
 #' group: Classic Load Balancer, Application Load Balancer, Gateway Load
 #' Balancer, Network Load Balancer, and VPC Lattice.
+#' @param InstanceMaintenancePolicy An instance maintenance policy. For more information, see [Set instance
+#' maintenance
+#' policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname autoscaling_create_auto_scaling_group
-autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL) {
+autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL, InstanceMaintenancePolicy = NULL) {
   op <- new_operation(
     name = "CreateAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources)
+  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
   output <- .autoscaling$create_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config)
@@ -2694,7 +2698,7 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' Starts an instance refresh
 #'
 #' @description
-#' Starts an instance refresh. During an instance refresh, Amazon EC2 Auto Scaling performs a rolling update of instances in an Auto Scaling group. Instances are terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
+#' Starts an instance refresh.
 #'
 #' See [https://www.paws-r-sdk.com/docs/autoscaling_start_instance_refresh/](https://www.paws-r-sdk.com/docs/autoscaling_start_instance_refresh/) for full documentation.
 #'
@@ -2717,9 +2721,9 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' replacements that are required to apply updates.
 #' @param Preferences Sets your preferences for the instance refresh so that it performs as
 #' expected when you start it. Includes the instance warmup time, the
-#' minimum healthy percentage, and the behaviors that you want Amazon EC2
-#' Auto Scaling to use if instances that are in `Standby` state or
-#' protected from scale in are found. You can also choose to enable
+#' minimum and maximum healthy percentages, and the behaviors that you want
+#' Amazon EC2 Auto Scaling to use if instances that are in `Standby` state
+#' or protected from scale in are found. You can also choose to enable
 #' additional features, such as the following:
 #' 
 #' -   Auto rollback
@@ -2965,18 +2969,22 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' specify `-1` for the value. However, we strongly recommend keeping the
 #' default instance warmup enabled by specifying a value of `0` or other
 #' nominal value.
+#' @param InstanceMaintenancePolicy An instance maintenance policy. For more information, see [Set instance
+#' maintenance
+#' policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname autoscaling_update_auto_scaling_group
-autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, CapacityRebalance = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL) {
+autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, CapacityRebalance = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, InstanceMaintenancePolicy = NULL) {
   op <- new_operation(
     name = "UpdateAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .autoscaling$update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, CapacityRebalance = CapacityRebalance, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup)
+  input <- .autoscaling$update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, CapacityRebalance = CapacityRebalance, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
   output <- .autoscaling$update_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config)

@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_objects}
 \alias{s3_delete_objects}
-\title{This action enables you to delete multiple objects from a bucket using a
-single HTTP request}
+\title{This operation enables you to delete multiple objects from a bucket
+using a single HTTP request}
 \usage{
 s3_delete_objects(
   Bucket,
@@ -18,17 +18,33 @@ s3_delete_objects(
 \arguments{
 \item{Bucket}{[required] The bucket name containing the objects to delete.
 
-When using this action with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+\strong{Directory buckets} - When you use this operation with a directory
+bucket, you must use virtual-hosted-style requests in the format
+\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
+are not supported. Directory bucket names must be unique in the chosen
+Availability Zone. Bucket names must follow the format
+\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
+in the \emph{Amazon S3 User Guide}.
+
+\strong{Access points} - When you use this action with an access point, you
+must provide the alias of the access point in place of the bucket name
+or specify the access point ARN. When using the access point ARN, you
+must direct requests to the access point hostname. The access point
+hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-When you use this action with Amazon S3 on Outposts, you must direct
-requests to the S3 on Outposts hostname. The S3 on Outposts hostname
-takes the form
+Access points and Object Lambda access points are not supported by
+directory buckets.
+
+\strong{S3 on Outposts} - When you use this action with Amazon S3 on
+Outposts, you must direct requests to the S3 on Outposts hostname. The
+S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
@@ -40,35 +56,62 @@ in the \emph{Amazon S3 User Guide}.}
 \item{MFA}{The concatenation of the authentication device's serial number, a space,
 and the value that is displayed on your authentication device. Required
 to permanently delete a versioned object if versioning is configured
-with MFA delete enabled.}
+with MFA delete enabled.
+
+When performing the \code{\link[=s3_delete_objects]{delete_objects}} operation on
+an MFA delete enabled bucket, which attempts to delete the specified
+versioned objects, you must include an MFA token. If you don't provide
+an MFA token, the entire request will fail, even if there are
+non-versioned objects that you are trying to delete. If you provide an
+invalid token, whether there are versioned object keys in the request or
+not, the entire Multi-Object Delete request will fail. For information
+about MFA Delete, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html#MultiFactorAuthenticationDelete}{MFA Delete}
+in the \emph{Amazon S3 User Guide}.
+
+This functionality is not supported for directory buckets.}
 
 \item{RequestPayer}{}
 
 \item{BypassGovernanceRetention}{Specifies whether you want to delete this object even if it has a
 Governance-type Object Lock in place. To use this header, you must have
-the \code{s3:BypassGovernanceRetention} permission.}
+the \code{s3:BypassGovernanceRetention} permission.
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+This functionality is not supported for directory buckets.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
-using the SDK. This header will not provide any additional functionality
-if not using the SDK. When sending this header, there must be a
-corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
-Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+you use the SDK. This header will not provide any additional
+functionality if you don't use the SDK. When you send this header, there
+must be a corresponding \code{x-amz-checksum-algorithm } or \code{x-amz-trailer}
+header sent. Otherwise, Amazon S3 fails the request with the HTTP status
+code \verb{400 Bad Request}.
+
+For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
+the supported algorithm from the following list:
+\itemize{
+\item CRC32
+\item CRC32C
+\item SHA1
+\item SHA256
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
-If you provide an individual checksum, Amazon S3 ignores any provided
-\code{ChecksumAlgorithm} parameter.
+If the individual checksum value you provide through
+\code{x-amz-checksum-algorithm } doesn't match the checksum algorithm you set
+through \code{x-amz-sdk-checksum-algorithm}, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter and uses the checksum algorithm that
+matches the provided value in \code{x-amz-checksum-algorithm }.
 
-This checksum algorithm must be the same for all parts and it match the
-checksum value supplied in the
-\code{\link[=s3_create_multipart_upload]{create_multipart_upload}} request.}
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 }
 \description{
-This action enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this action provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
+This operation enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this operation provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_objects/} for full documentation.
 }

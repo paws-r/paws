@@ -2,21 +2,19 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_lifecycle_configuration}
 \alias{s3_get_bucket_lifecycle_configuration}
-\title{Bucket lifecycle configuration now supports specifying a lifecycle rule
-using an object key name prefix, one or more object tags, or a
-combination of both}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both. Accordingly, this section describes the latest API. The response describes the new filter element that you can use to specify a filter to select a subset of objects to which the rule applies. If you are using a previous version of the lifecycle configuration, it still works. For the earlier action, see \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/} for full documentation.
 }

@@ -6,13 +6,16 @@
 \usage{
 sagemaker_update_app_image_config(
   AppImageConfigName,
-  KernelGatewayImageConfig = NULL
+  KernelGatewayImageConfig = NULL,
+  JupyterLabAppImageConfig = NULL
 )
 }
 \arguments{
 \item{AppImageConfigName}{[required] The name of the AppImageConfig to update.}
 
 \item{KernelGatewayImageConfig}{The new KernelGateway app to run on the image.}
+
+\item{JupyterLabAppImageConfig}{The JupyterLab app running on the image.}
 }
 \description{
 Updates the properties of an AppImageConfig.

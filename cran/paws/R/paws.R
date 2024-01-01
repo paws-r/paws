@@ -721,6 +721,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_associate_enclave_certificate_iam_role]{associate_enclave_certificate_iam_role} \tab Associates an Identity and Access Management (IAM) role with an Certificate Manager (ACM) certificate\cr
 #'  \link[paws.compute:ec2_associate_iam_instance_profile]{associate_iam_instance_profile} \tab Associates an IAM instance profile with a running or stopped instance\cr
 #'  \link[paws.compute:ec2_associate_instance_event_window]{associate_instance_event_window} \tab Associates one or more targets with an event window\cr
+#'  \link[paws.compute:ec2_associate_ipam_byoasn]{associate_ipam_byoasn} \tab Associates your Autonomous System Number (ASN) with a BYOIP CIDR that you own in the same Amazon Web Services Region\cr
 #'  \link[paws.compute:ec2_associate_ipam_resource_discovery]{associate_ipam_resource_discovery} \tab Associates an IPAM resource discovery with an Amazon VPC IPAM\cr
 #'  \link[paws.compute:ec2_associate_nat_gateway_address]{associate_nat_gateway_address} \tab Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway\cr
 #'  \link[paws.compute:ec2_associate_route_table]{associate_route_table} \tab Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC\cr
@@ -728,7 +729,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_associate_transit_gateway_multicast_domain]{associate_transit_gateway_multicast_domain} \tab Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain\cr
 #'  \link[paws.compute:ec2_associate_transit_gateway_policy_table]{associate_transit_gateway_policy_table} \tab Associates the specified transit gateway attachment with a transit gateway policy table\cr
 #'  \link[paws.compute:ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table} \tab Associates the specified attachment with the specified transit gateway route table\cr
-#'  \link[paws.compute:ec2_associate_trunk_interface]{associate_trunk_interface} \tab This API action is currently in limited preview only\cr
+#'  \link[paws.compute:ec2_associate_trunk_interface]{associate_trunk_interface} \tab Associates a branch network interface with a trunk network interface\cr
 #'  \link[paws.compute:ec2_associate_vpc_cidr_block]{associate_vpc_cidr_block} \tab Associates a CIDR block with your VPC\cr
 #'  \link[paws.compute:ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC\cr
@@ -911,6 +912,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_delete_vpn_connection_route]{delete_vpn_connection_route} \tab Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway\cr
 #'  \link[paws.compute:ec2_delete_vpn_gateway]{delete_vpn_gateway} \tab Deletes the specified virtual private gateway\cr
 #'  \link[paws.compute:ec2_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
+#'  \link[paws.compute:ec2_deprovision_ipam_byoasn]{deprovision_ipam_byoasn} \tab Deprovisions your Autonomous System Number (ASN) from your Amazon Web Services account\cr
 #'  \link[paws.compute:ec2_deprovision_ipam_pool_cidr]{deprovision_ipam_pool_cidr} \tab Deprovision a CIDR provisioned from an IPAM pool\cr
 #'  \link[paws.compute:ec2_deprovision_public_ipv_4_pool_cidr]{deprovision_public_ipv_4_pool_cidr} \tab Deprovision a CIDR from a public IPv4 pool\cr
 #'  \link[paws.compute:ec2_deregister_image]{deregister_image} \tab Deregisters the specified AMI\cr
@@ -944,7 +946,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Describes the Elastic Graphics accelerator associated with your instances\cr
 #'  \link[paws.compute:ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all of your export image tasks\cr
 #'  \link[paws.compute:ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all of your export instance tasks\cr
-#'  \link[paws.compute:ec2_describe_fast_launch_images]{describe_fast_launch_images} \tab Describe details for Windows AMIs that are configured for faster launching\cr
+#'  \link[paws.compute:ec2_describe_fast_launch_images]{describe_fast_launch_images} \tab Describe details for Windows AMIs that are configured for Windows fast launch\cr
 #'  \link[paws.compute:ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots\cr
 #'  \link[paws.compute:ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time\cr
 #'  \link[paws.compute:ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet\cr
@@ -969,9 +971,11 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_describe_instance_event_windows]{describe_instance_event_windows} \tab Describes the specified event windows or all event windows\cr
 #'  \link[paws.compute:ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all instances\cr
 #'  \link[paws.compute:ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances\cr
+#'  \link[paws.compute:ec2_describe_instance_topology]{describe_instance_topology} \tab Describes a tree-based hierarchy that represents the physical host placement of your EC2 instances within an Availability Zone or Local Zone\cr
 #'  \link[paws.compute:ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Returns a list of all instance types offered\cr
 #'  \link[paws.compute:ec2_describe_instance_types]{describe_instance_types} \tab Describes the details of the instance types that are offered in a location\cr
 #'  \link[paws.compute:ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways\cr
+#'  \link[paws.compute:ec2_describe_ipam_byoasn]{describe_ipam_byoasn} \tab Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated\cr
 #'  \link[paws.compute:ec2_describe_ipam_pools]{describe_ipam_pools} \tab Get information about your IPAM pools\cr
 #'  \link[paws.compute:ec2_describe_ipam_resource_discoveries]{describe_ipam_resource_discoveries} \tab Describes IPAM resource discoveries\cr
 #'  \link[paws.compute:ec2_describe_ipam_resource_discovery_associations]{describe_ipam_resource_discovery_associations} \tab Describes resource discovery association with an Amazon VPC IPAM\cr
@@ -987,6 +991,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_describe_local_gateways]{describe_local_gateways} \tab Describes one or more local gateways\cr
 #'  \link[paws.compute:ec2_describe_local_gateway_virtual_interface_groups]{describe_local_gateway_virtual_interface_groups} \tab Describes the specified local gateway virtual interface groups\cr
 #'  \link[paws.compute:ec2_describe_local_gateway_virtual_interfaces]{describe_local_gateway_virtual_interfaces} \tab Describes the specified local gateway virtual interfaces\cr
+#'  \link[paws.compute:ec2_describe_locked_snapshots]{describe_locked_snapshots} \tab Describes the lock status for a snapshot\cr
 #'  \link[paws.compute:ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists} \tab Describes your managed prefix lists and any Amazon Web Services-managed prefix lists\cr
 #'  \link[paws.compute:ec2_describe_moving_addresses]{describe_moving_addresses} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways\cr
@@ -1011,7 +1016,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_describe_route_tables]{describe_route_tables} \tab Describes one or more of your route tables\cr
 #'  \link[paws.compute:ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 #'  \link[paws.compute:ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
-#'  \link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
+#'  \link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection or the VPCs attached to a transit gateway that are referencing the security groups you've specified in this request\cr
 #'  \link[paws.compute:ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 #'  \link[paws.compute:ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
 #'  \link[paws.compute:ec2_describe_snapshot_attribute]{describe_snapshot_attribute} \tab Describes the specified attribute of the specified snapshot\cr
@@ -1040,7 +1045,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_describe_transit_gateway_route_tables]{describe_transit_gateway_route_tables} \tab Describes one or more transit gateway route tables\cr
 #'  \link[paws.compute:ec2_describe_transit_gateways]{describe_transit_gateways} \tab Describes one or more transit gateways\cr
 #'  \link[paws.compute:ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments} \tab Describes one or more VPC attachments\cr
-#'  \link[paws.compute:ec2_describe_trunk_interface_associations]{describe_trunk_interface_associations} \tab This API action is currently in limited preview only\cr
+#'  \link[paws.compute:ec2_describe_trunk_interface_associations]{describe_trunk_interface_associations} \tab Describes one or more network interface trunk associations\cr
 #'  \link[paws.compute:ec2_describe_verified_access_endpoints]{describe_verified_access_endpoints} \tab Describes the specified Amazon Web Services Verified Access endpoints\cr
 #'  \link[paws.compute:ec2_describe_verified_access_groups]{describe_verified_access_groups} \tab Describes the specified Verified Access groups\cr
 #'  \link[paws.compute:ec2_describe_verified_access_instance_logging_configurations]{describe_verified_access_instance_logging_configurations} \tab Describes the specified Amazon Web Services Verified Access instances\cr
@@ -1072,7 +1077,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_disable_address_transfer]{disable_address_transfer} \tab Disables Elastic IP address transfer\cr
 #'  \link[paws.compute:ec2_disable_aws_network_performance_metric_subscription]{disable_aws_network_performance_metric_subscription} \tab Disables Infrastructure Performance metric subscriptions\cr
 #'  \link[paws.compute:ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
-#'  \link[paws.compute:ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue faster launching for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
+#'  \link[paws.compute:ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
 #'  \link[paws.compute:ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores} \tab Disables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
 #'  \link[paws.compute:ec2_disable_image]{disable_image} \tab Sets the AMI state to disabled and removes all launch permissions from the AMI\cr
 #'  \link[paws.compute:ec2_disable_image_block_public_access]{disable_image_block_public_access} \tab Disables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
@@ -1089,6 +1094,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_disassociate_enclave_certificate_iam_role]{disassociate_enclave_certificate_iam_role} \tab Disassociates an IAM role from an Certificate Manager (ACM) certificate\cr
 #'  \link[paws.compute:ec2_disassociate_iam_instance_profile]{disassociate_iam_instance_profile} \tab Disassociates an IAM instance profile from a running or stopped instance\cr
 #'  \link[paws.compute:ec2_disassociate_instance_event_window]{disassociate_instance_event_window} \tab Disassociates one or more targets from an event window\cr
+#'  \link[paws.compute:ec2_disassociate_ipam_byoasn]{disassociate_ipam_byoasn} \tab Remove the association between your Autonomous System Number (ASN) and your BYOIP CIDR\cr
 #'  \link[paws.compute:ec2_disassociate_ipam_resource_discovery]{disassociate_ipam_resource_discovery} \tab Disassociates a resource discovery from an Amazon VPC IPAM\cr
 #'  \link[paws.compute:ec2_disassociate_nat_gateway_address]{disassociate_nat_gateway_address} \tab Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway\cr
 #'  \link[paws.compute:ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet or gateway from a route table\cr
@@ -1096,12 +1102,12 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_disassociate_transit_gateway_multicast_domain]{disassociate_transit_gateway_multicast_domain} \tab Disassociates the specified subnets from the transit gateway multicast domain\cr
 #'  \link[paws.compute:ec2_disassociate_transit_gateway_policy_table]{disassociate_transit_gateway_policy_table} \tab Removes the association between an an attachment and a policy table\cr
 #'  \link[paws.compute:ec2_disassociate_transit_gateway_route_table]{disassociate_transit_gateway_route_table} \tab Disassociates a resource attachment from a transit gateway route table\cr
-#'  \link[paws.compute:ec2_disassociate_trunk_interface]{disassociate_trunk_interface} \tab This API action is currently in limited preview only\cr
+#'  \link[paws.compute:ec2_disassociate_trunk_interface]{disassociate_trunk_interface} \tab Removes an association between a branch network interface with a trunk network interface\cr
 #'  \link[paws.compute:ec2_disassociate_vpc_cidr_block]{disassociate_vpc_cidr_block} \tab Disassociates a CIDR block from a VPC\cr
 #'  \link[paws.compute:ec2_enable_address_transfer]{enable_address_transfer} \tab Enables Elastic IP address transfer\cr
 #'  \link[paws.compute:ec2_enable_aws_network_performance_metric_subscription]{enable_aws_network_performance_metric_subscription} \tab Enables Infrastructure Performance subscriptions\cr
 #'  \link[paws.compute:ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
-#'  \link[paws.compute:ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable faster launching for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65% faster\cr
+#'  \link[paws.compute:ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65% faster\cr
 #'  \link[paws.compute:ec2_enable_fast_snapshot_restores]{enable_fast_snapshot_restores} \tab Enables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
 #'  \link[paws.compute:ec2_enable_image]{enable_image} \tab Re-enables a disabled AMI\cr
 #'  \link[paws.compute:ec2_enable_image_block_public_access]{enable_image_block_public_access} \tab Enables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
@@ -1137,6 +1143,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 #'  \link[paws.compute:ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
 #'  \link[paws.compute:ec2_get_ipam_discovered_accounts]{get_ipam_discovered_accounts} \tab Gets IPAM discovered accounts\cr
+#'  \link[paws.compute:ec2_get_ipam_discovered_public_addresses]{get_ipam_discovered_public_addresses} \tab Gets the public IP addresses that have been discovered by IPAM\cr
 #'  \link[paws.compute:ec2_get_ipam_discovered_resource_cidrs]{get_ipam_discovered_resource_cidrs} \tab Returns the resource CIDRs that are monitored as part of a resource discovery\cr
 #'  \link[paws.compute:ec2_get_ipam_pool_allocations]{get_ipam_pool_allocations} \tab Get a list of all the CIDR allocations in an IPAM pool\cr
 #'  \link[paws.compute:ec2_get_ipam_pool_cidrs]{get_ipam_pool_cidrs} \tab Get the CIDRs provisioned to an IPAM pool\cr
@@ -1173,6 +1180,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image\cr
 #'  \link[paws.compute:ec2_list_images_in_recycle_bin]{list_images_in_recycle_bin} \tab Lists one or more AMIs that are currently in the Recycle Bin\cr
 #'  \link[paws.compute:ec2_list_snapshots_in_recycle_bin]{list_snapshots_in_recycle_bin} \tab Lists one or more snapshots that are currently in the Recycle Bin\cr
+#'  \link[paws.compute:ec2_lock_snapshot]{lock_snapshot} \tab Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration\cr
 #'  \link[paws.compute:ec2_modify_address_attribute]{modify_address_attribute} \tab Modifies an attribute of the specified Elastic IP address\cr
 #'  \link[paws.compute:ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Changes the opt-in status of the Local Zone and Wavelength Zone group for your account\cr
 #'  \link[paws.compute:ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released\cr
@@ -1241,6 +1249,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_move_address_to_vpc]{move_address_to_vpc} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_move_byoip_cidr_to_ipam]{move_byoip_cidr_to_ipam} \tab Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool\cr
 #'  \link[paws.compute:ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
+#'  \link[paws.compute:ec2_provision_ipam_byoasn]{provision_ipam_byoasn} \tab Provisions your Autonomous System Number (ASN) for use in your Amazon Web Services account\cr
 #'  \link[paws.compute:ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr
 #'  \link[paws.compute:ec2_provision_public_ipv_4_pool_cidr]{provision_public_ipv_4_pool_cidr} \tab Provision a CIDR to a public IPv4 pool\cr
 #'  \link[paws.compute:ec2_purchase_capacity_block]{purchase_capacity_block} \tab Purchase the Capacity Block for use with your account\cr
@@ -1301,6 +1310,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_unassign_ipv_6_addresses]{unassign_ipv_6_addresses} \tab Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface\cr
 #'  \link[paws.compute:ec2_unassign_private_ip_addresses]{unassign_private_ip_addresses} \tab Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface\cr
 #'  \link[paws.compute:ec2_unassign_private_nat_gateway_address]{unassign_private_nat_gateway_address} \tab Unassigns secondary private IPv4 addresses from a private NAT gateway\cr
+#'  \link[paws.compute:ec2_unlock_snapshot]{unlock_snapshot} \tab Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode but still in the cooling-off period\cr
 #'  \link[paws.compute:ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance\cr
 #'  \link[paws.compute:ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab Updates the description of an egress (outbound) security group rule\cr
 #'  \link[paws.compute:ec2_update_security_group_rule_descriptions_ingress]{update_security_group_rule_descriptions_ingress} \tab Updates the description of an ingress (inbound) security group rule\cr
@@ -1588,7 +1598,9 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #'  \link[paws.compute:ecr_start_lifecycle_policy_preview]{start_lifecycle_policy_preview} \tab Starts a preview of a lifecycle policy for the specified repository\cr
 #'  \link[paws.compute:ecr_tag_resource]{tag_resource} \tab Adds specified tags to a resource with the specified ARN\cr
 #'  \link[paws.compute:ecr_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
-#'  \link[paws.compute:ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR
+#'  \link[paws.compute:ecr_update_pull_through_cache_rule]{update_pull_through_cache_rule} \tab Updates an existing pull through cache rule\cr
+#'  \link[paws.compute:ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR\cr
+#'  \link[paws.compute:ecr_validate_pull_through_cache_rule]{validate_pull_through_cache_rule} \tab Validates an existing pull through cache rule for an upstream registry that requires authentication
 #' }
 #'
 #' @return
@@ -1935,7 +1947,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' @description
 #' Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that
 #' makes it easy for you to run Kubernetes on Amazon Web Services without
-#' needing to stand up or maintain your own Kubernetes control plane.
+#' needing to setup or maintain your own Kubernetes control plane.
 #' Kubernetes is an open-source system for automating the deployment,
 #' scaling, and management of containerized applications.
 #' 
@@ -2043,46 +2055,62 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.compute:eks_associate_encryption_config]{associate_encryption_config} \tab Associate encryption configuration to an existing cluster\cr
-#'  \link[paws.compute:eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associate an identity provider configuration to a cluster\cr
+#'  \link[paws.compute:eks_associate_access_policy]{associate_access_policy} \tab Associates an access policy and its scope to an access entry\cr
+#'  \link[paws.compute:eks_associate_encryption_config]{associate_encryption_config} \tab Associates an encryption configuration to an existing cluster\cr
+#'  \link[paws.compute:eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associates an identity provider configuration to a cluster\cr
+#'  \link[paws.compute:eks_create_access_entry]{create_access_entry} \tab Creates an access entry\cr
 #'  \link[paws.compute:eks_create_addon]{create_addon} \tab Creates an Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane\cr
 #'  \link[paws.compute:eks_create_eks_anywhere_subscription]{create_eks_anywhere_subscription} \tab Creates an EKS Anywhere subscription\cr
 #'  \link[paws.compute:eks_create_fargate_profile]{create_fargate_profile} \tab Creates an Fargate profile for your Amazon EKS cluster\cr
 #'  \link[paws.compute:eks_create_nodegroup]{create_nodegroup} \tab Creates a managed node group for an Amazon EKS cluster\cr
-#'  \link[paws.compute:eks_delete_addon]{delete_addon} \tab Delete an Amazon EKS add-on\cr
-#'  \link[paws.compute:eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane\cr
-#'  \link[paws.compute:eks_delete_eks_anywhere_subscription]{delete_eks_anywhere_subscription} \tab Deletes an expired / inactive subscription\cr
+#'  \link[paws.compute:eks_create_pod_identity_association]{create_pod_identity_association} \tab Creates an EKS Pod Identity association between a service account in an Amazon EKS cluster and an IAM role with EKS Pod Identity\cr
+#'  \link[paws.compute:eks_delete_access_entry]{delete_access_entry} \tab Deletes an access entry\cr
+#'  \link[paws.compute:eks_delete_addon]{delete_addon} \tab Deletes an Amazon EKS add-on\cr
+#'  \link[paws.compute:eks_delete_cluster]{delete_cluster} \tab Deletes an Amazon EKS cluster control plane\cr
+#'  \link[paws.compute:eks_delete_eks_anywhere_subscription]{delete_eks_anywhere_subscription} \tab Deletes an expired or inactive subscription\cr
 #'  \link[paws.compute:eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an Fargate profile\cr
-#'  \link[paws.compute:eks_delete_nodegroup]{delete_nodegroup} \tab Deletes an Amazon EKS node group for a cluster\cr
+#'  \link[paws.compute:eks_delete_nodegroup]{delete_nodegroup} \tab Deletes a managed node group\cr
+#'  \link[paws.compute:eks_delete_pod_identity_association]{delete_pod_identity_association} \tab Deletes a EKS Pod Identity association\cr
 #'  \link[paws.compute:eks_deregister_cluster]{deregister_cluster} \tab Deregisters a connected cluster to remove it from the Amazon EKS control plane\cr
+#'  \link[paws.compute:eks_describe_access_entry]{describe_access_entry} \tab Describes an access entry\cr
 #'  \link[paws.compute:eks_describe_addon]{describe_addon} \tab Describes an Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_describe_addon_configuration]{describe_addon_configuration} \tab Returns configuration options\cr
 #'  \link[paws.compute:eks_describe_addon_versions]{describe_addon_versions} \tab Describes the versions for an add-on\cr
-#'  \link[paws.compute:eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster\cr
+#'  \link[paws.compute:eks_describe_cluster]{describe_cluster} \tab Describes an Amazon EKS cluster\cr
 #'  \link[paws.compute:eks_describe_eks_anywhere_subscription]{describe_eks_anywhere_subscription} \tab Returns descriptive information about a subscription\cr
-#'  \link[paws.compute:eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an Fargate profile\cr
-#'  \link[paws.compute:eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Returns descriptive information about an identity provider configuration\cr
-#'  \link[paws.compute:eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group\cr
-#'  \link[paws.compute:eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on\cr
+#'  \link[paws.compute:eks_describe_fargate_profile]{describe_fargate_profile} \tab Describes an Fargate profile\cr
+#'  \link[paws.compute:eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Describes an identity provider configuration\cr
+#'  \link[paws.compute:eks_describe_insight]{describe_insight} \tab Returns details about an insight that you specify using its ID\cr
+#'  \link[paws.compute:eks_describe_nodegroup]{describe_nodegroup} \tab Describes a managed node group\cr
+#'  \link[paws.compute:eks_describe_pod_identity_association]{describe_pod_identity_association} \tab Returns descriptive information about an EKS Pod Identity association\cr
+#'  \link[paws.compute:eks_describe_update]{describe_update} \tab Describes an update to an Amazon EKS resource\cr
+#'  \link[paws.compute:eks_disassociate_access_policy]{disassociate_access_policy} \tab Disassociates an access policy from an access entry\cr
 #'  \link[paws.compute:eks_disassociate_identity_provider_config]{disassociate_identity_provider_config} \tab Disassociates an identity provider configuration from a cluster\cr
+#'  \link[paws.compute:eks_list_access_entries]{list_access_entries} \tab Lists the access entries for your cluster\cr
+#'  \link[paws.compute:eks_list_access_policies]{list_access_policies} \tab Lists the available access policies\cr
 #'  \link[paws.compute:eks_list_addons]{list_addons} \tab Lists the installed add-ons\cr
-#'  \link[paws.compute:eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region\cr
+#'  \link[paws.compute:eks_list_associated_access_policies]{list_associated_access_policies} \tab Lists the access policies associated with an access entry\cr
+#'  \link[paws.compute:eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:eks_list_eks_anywhere_subscriptions]{list_eks_anywhere_subscriptions} \tab Displays the full description of the subscription\cr
-#'  \link[paws.compute:eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
-#'  \link[paws.compute:eks_list_identity_provider_configs]{list_identity_provider_configs} \tab A list of identity provider configurations\cr
-#'  \link[paws.compute:eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
+#'  \link[paws.compute:eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Amazon Web Services Region\cr
+#'  \link[paws.compute:eks_list_identity_provider_configs]{list_identity_provider_configs} \tab Lists the identity provider configurations for your cluster\cr
+#'  \link[paws.compute:eks_list_insights]{list_insights} \tab Returns a list of all insights checked for against the specified cluster\cr
+#'  \link[paws.compute:eks_list_nodegroups]{list_nodegroups} \tab Lists the managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Amazon Web Services Region\cr
+#'  \link[paws.compute:eks_list_pod_identity_associations]{list_pod_identity_associations} \tab List the EKS Pod Identity associations in a cluster\cr
 #'  \link[paws.compute:eks_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon EKS resource\cr
-#'  \link[paws.compute:eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region\cr
+#'  \link[paws.compute:eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS resource in your Amazon Web Services account, in the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:eks_register_cluster]{register_cluster} \tab Connects a Kubernetes cluster to the Amazon EKS control plane\cr
-#'  \link[paws.compute:eks_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
-#'  \link[paws.compute:eks_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
+#'  \link[paws.compute:eks_tag_resource]{tag_resource} \tab Associates the specified tags to an Amazon EKS resource with the specified resourceArn\cr
+#'  \link[paws.compute:eks_untag_resource]{untag_resource} \tab Deletes specified tags from an Amazon EKS resource\cr
+#'  \link[paws.compute:eks_update_access_entry]{update_access_entry} \tab Updates an access entry\cr
 #'  \link[paws.compute:eks_update_addon]{update_addon} \tab Updates an Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_update_cluster_config]{update_cluster_config} \tab Updates an Amazon EKS cluster configuration\cr
 #'  \link[paws.compute:eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version\cr
 #'  \link[paws.compute:eks_update_eks_anywhere_subscription]{update_eks_anywhere_subscription} \tab Update an EKS Anywhere Subscription\cr
 #'  \link[paws.compute:eks_update_nodegroup_config]{update_nodegroup_config} \tab Updates an Amazon EKS managed node group configuration\cr
-#'  \link[paws.compute:eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group
+#'  \link[paws.compute:eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group\cr
+#'  \link[paws.compute:eks_update_pod_identity_association]{update_pod_identity_association} \tab Updates a EKS Pod Identity association
 #' }
 #'
 #' @return
@@ -2660,6 +2688,7 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.compute:imagebuilder_cancel_image_creation]{cancel_image_creation} \tab CancelImageCreation cancels the creation of Image\cr
+#'  \link[paws.compute:imagebuilder_cancel_lifecycle_execution]{cancel_lifecycle_execution} \tab Cancel a specific image lifecycle policy runtime instance\cr
 #'  \link[paws.compute:imagebuilder_create_component]{create_component} \tab Creates a new component that can be used to build, validate, test, and assess your image\cr
 #'  \link[paws.compute:imagebuilder_create_container_recipe]{create_container_recipe} \tab Creates a new container recipe\cr
 #'  \link[paws.compute:imagebuilder_create_distribution_configuration]{create_distribution_configuration} \tab Creates a new distribution configuration\cr
@@ -2667,6 +2696,8 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.compute:imagebuilder_create_image_pipeline]{create_image_pipeline} \tab Creates a new image pipeline\cr
 #'  \link[paws.compute:imagebuilder_create_image_recipe]{create_image_recipe} \tab Creates a new image recipe\cr
 #'  \link[paws.compute:imagebuilder_create_infrastructure_configuration]{create_infrastructure_configuration} \tab Creates a new infrastructure configuration\cr
+#'  \link[paws.compute:imagebuilder_create_lifecycle_policy]{create_lifecycle_policy} \tab Create a lifecycle policy resource\cr
+#'  \link[paws.compute:imagebuilder_create_workflow]{create_workflow} \tab Create a new workflow or a new version of an existing workflow\cr
 #'  \link[paws.compute:imagebuilder_delete_component]{delete_component} \tab Deletes a component build version\cr
 #'  \link[paws.compute:imagebuilder_delete_container_recipe]{delete_container_recipe} \tab Deletes a container recipe\cr
 #'  \link[paws.compute:imagebuilder_delete_distribution_configuration]{delete_distribution_configuration} \tab Deletes a distribution configuration\cr
@@ -2674,6 +2705,8 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.compute:imagebuilder_delete_image_pipeline]{delete_image_pipeline} \tab Deletes an image pipeline\cr
 #'  \link[paws.compute:imagebuilder_delete_image_recipe]{delete_image_recipe} \tab Deletes an image recipe\cr
 #'  \link[paws.compute:imagebuilder_delete_infrastructure_configuration]{delete_infrastructure_configuration} \tab Deletes an infrastructure configuration\cr
+#'  \link[paws.compute:imagebuilder_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Delete the specified lifecycle policy resource\cr
+#'  \link[paws.compute:imagebuilder_delete_workflow]{delete_workflow} \tab Deletes a specific workflow resource\cr
 #'  \link[paws.compute:imagebuilder_get_component]{get_component} \tab Gets a component object\cr
 #'  \link[paws.compute:imagebuilder_get_component_policy]{get_component_policy} \tab Gets a component policy\cr
 #'  \link[paws.compute:imagebuilder_get_container_recipe]{get_container_recipe} \tab Retrieves a container recipe\cr
@@ -2685,6 +2718,9 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.compute:imagebuilder_get_image_recipe]{get_image_recipe} \tab Gets an image recipe\cr
 #'  \link[paws.compute:imagebuilder_get_image_recipe_policy]{get_image_recipe_policy} \tab Gets an image recipe policy\cr
 #'  \link[paws.compute:imagebuilder_get_infrastructure_configuration]{get_infrastructure_configuration} \tab Gets an infrastructure configuration\cr
+#'  \link[paws.compute:imagebuilder_get_lifecycle_execution]{get_lifecycle_execution} \tab Get the runtime information that was logged for a specific runtime instance of the lifecycle policy\cr
+#'  \link[paws.compute:imagebuilder_get_lifecycle_policy]{get_lifecycle_policy} \tab Get details for the specified image lifecycle policy\cr
+#'  \link[paws.compute:imagebuilder_get_workflow]{get_workflow} \tab Get a workflow resource object\cr
 #'  \link[paws.compute:imagebuilder_get_workflow_execution]{get_workflow_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow\cr
 #'  \link[paws.compute:imagebuilder_get_workflow_step_execution]{get_workflow_step_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow step\cr
 #'  \link[paws.compute:imagebuilder_import_component]{import_component} \tab Imports a component and transforms its data into a component document\cr
@@ -2702,19 +2738,28 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.compute:imagebuilder_list_image_scan_finding_aggregations]{list_image_scan_finding_aggregations} \tab Returns a list of image scan aggregations for your account\cr
 #'  \link[paws.compute:imagebuilder_list_image_scan_findings]{list_image_scan_findings} \tab Returns a list of image scan findings for your account\cr
 #'  \link[paws.compute:imagebuilder_list_infrastructure_configurations]{list_infrastructure_configurations} \tab Returns a list of infrastructure configurations\cr
+#'  \link[paws.compute:imagebuilder_list_lifecycle_execution_resources]{list_lifecycle_execution_resources} \tab List resources that the runtime instance of the image lifecycle identified for lifecycle actions\cr
+#'  \link[paws.compute:imagebuilder_list_lifecycle_executions]{list_lifecycle_executions} \tab Get the lifecycle runtime history for the specified resource\cr
+#'  \link[paws.compute:imagebuilder_list_lifecycle_policies]{list_lifecycle_policies} \tab Get a list of lifecycle policies in your Amazon Web Services account\cr
 #'  \link[paws.compute:imagebuilder_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags for the specified resource\cr
+#'  \link[paws.compute:imagebuilder_list_waiting_workflow_steps]{list_waiting_workflow_steps} \tab Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account\cr
+#'  \link[paws.compute:imagebuilder_list_workflow_build_versions]{list_workflow_build_versions} \tab Returns a list of build versions for a specific workflow resource\cr
 #'  \link[paws.compute:imagebuilder_list_workflow_executions]{list_workflow_executions} \tab Returns a list of workflow runtime instance metadata objects for a specific image build version\cr
-#'  \link[paws.compute:imagebuilder_list_workflow_step_executions]{list_workflow_step_executions} \tab Shows runtime data for each step in a runtime instance of the workflow that you specify in the request\cr
+#'  \link[paws.compute:imagebuilder_list_workflows]{list_workflows} \tab Lists workflow build versions based on filtering parameters\cr
+#'  \link[paws.compute:imagebuilder_list_workflow_step_executions]{list_workflow_step_executions} \tab Returns runtime data for each step in a runtime instance of the workflow that you specify in the request\cr
 #'  \link[paws.compute:imagebuilder_put_component_policy]{put_component_policy} \tab Applies a policy to a component\cr
 #'  \link[paws.compute:imagebuilder_put_container_recipe_policy]{put_container_recipe_policy} \tab Applies a policy to a container image\cr
 #'  \link[paws.compute:imagebuilder_put_image_policy]{put_image_policy} \tab Applies a policy to an image\cr
 #'  \link[paws.compute:imagebuilder_put_image_recipe_policy]{put_image_recipe_policy} \tab Applies a policy to an image recipe\cr
+#'  \link[paws.compute:imagebuilder_send_workflow_step_action]{send_workflow_step_action} \tab Pauses or resumes image creation when the associated workflow runs a WaitForAction step\cr
 #'  \link[paws.compute:imagebuilder_start_image_pipeline_execution]{start_image_pipeline_execution} \tab Manually triggers a pipeline to create an image\cr
+#'  \link[paws.compute:imagebuilder_start_resource_state_update]{start_resource_state_update} \tab Begin asynchronous resource state update for lifecycle changes to the specified image resources\cr
 #'  \link[paws.compute:imagebuilder_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
 #'  \link[paws.compute:imagebuilder_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
 #'  \link[paws.compute:imagebuilder_update_distribution_configuration]{update_distribution_configuration} \tab Updates a new distribution configuration\cr
 #'  \link[paws.compute:imagebuilder_update_image_pipeline]{update_image_pipeline} \tab Updates an image pipeline\cr
-#'  \link[paws.compute:imagebuilder_update_infrastructure_configuration]{update_infrastructure_configuration} \tab Updates a new infrastructure configuration
+#'  \link[paws.compute:imagebuilder_update_infrastructure_configuration]{update_infrastructure_configuration} \tab Updates a new infrastructure configuration\cr
+#'  \link[paws.compute:imagebuilder_update_lifecycle_policy]{update_lifecycle_policy} \tab Update the specified lifecycle policy
 #' }
 #'
 #' @return
@@ -3872,6 +3917,8 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_create_legal_hold]{create_legal_hold} \tab This action creates a legal hold on a recovery point (backup)\cr
 #'  \link[paws.storage:backup_create_logically_air_gapped_backup_vault]{create_logically_air_gapped_backup_vault} \tab This request creates a logical container to where backups may be copied\cr
 #'  \link[paws.storage:backup_create_report_plan]{create_report_plan} \tab Creates a report plan\cr
+#'  \link[paws.storage:backup_create_restore_testing_plan]{create_restore_testing_plan} \tab This is the first of two steps to create a restore testing plan; once this request is successful, finish the procedure with request CreateRestoreTestingSelection\cr
+#'  \link[paws.storage:backup_create_restore_testing_selection]{create_restore_testing_selection} \tab This request can be sent after CreateRestoreTestingPlan request returns successfully\cr
 #'  \link[paws.storage:backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
 #'  \link[paws.storage:backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
 #'  \link[paws.storage:backup_delete_backup_vault]{delete_backup_vault} \tab Deletes the backup vault identified by its name\cr
@@ -3881,6 +3928,8 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_delete_framework]{delete_framework} \tab Deletes the framework specified by a framework name\cr
 #'  \link[paws.storage:backup_delete_recovery_point]{delete_recovery_point} \tab Deletes the recovery point specified by a recovery point ID\cr
 #'  \link[paws.storage:backup_delete_report_plan]{delete_report_plan} \tab Deletes the report plan specified by a report plan name\cr
+#'  \link[paws.storage:backup_delete_restore_testing_plan]{delete_restore_testing_plan} \tab This request deletes the specified restore testing plan\cr
+#'  \link[paws.storage:backup_delete_restore_testing_selection]{delete_restore_testing_selection} \tab Input the Restore Testing Plan name and Restore Testing Selection name\cr
 #'  \link[paws.storage:backup_describe_backup_job]{describe_backup_job} \tab Returns backup job details for the specified BackupJobId\cr
 #'  \link[paws.storage:backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name\cr
 #'  \link[paws.storage:backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource\cr
@@ -3903,14 +3952,20 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
 #'  \link[paws.storage:backup_get_legal_hold]{get_legal_hold} \tab This action returns details for a specified legal hold\cr
 #'  \link[paws.storage:backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
+#'  \link[paws.storage:backup_get_restore_job_metadata]{get_restore_job_metadata} \tab This request returns the metadata for the specified restore job\cr
+#'  \link[paws.storage:backup_get_restore_testing_inferred_metadata]{get_restore_testing_inferred_metadata} \tab This request returns the minimal required set of metadata needed to start a restore job with secure default settings\cr
+#'  \link[paws.storage:backup_get_restore_testing_plan]{get_restore_testing_plan} \tab Returns RestoreTestingPlan details for the specified RestoreTestingPlanName\cr
+#'  \link[paws.storage:backup_get_restore_testing_selection]{get_restore_testing_selection} \tab Returns RestoreTestingSelection, which displays resources and elements of the restore testing plan\cr
 #'  \link[paws.storage:backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the Amazon Web Services resource types supported by Backup\cr
 #'  \link[paws.storage:backup_list_backup_jobs]{list_backup_jobs} \tab Returns a list of existing backup jobs for an authenticated account for the last 30 days\cr
+#'  \link[paws.storage:backup_list_backup_job_summaries]{list_backup_job_summaries} \tab This is a request for a summary of backup jobs created or running within the most recent 30 days\cr
 #'  \link[paws.storage:backup_list_backup_plans]{list_backup_plans} \tab Returns a list of all active backup plans for an authenticated account\cr
 #'  \link[paws.storage:backup_list_backup_plan_templates]{list_backup_plan_templates} \tab Returns metadata of your saved backup plan templates, including the template ID, name, and the creation and deletion dates\cr
 #'  \link[paws.storage:backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs\cr
 #'  \link[paws.storage:backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan\cr
 #'  \link[paws.storage:backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them\cr
 #'  \link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
+#'  \link[paws.storage:backup_list_copy_job_summaries]{list_copy_job_summaries} \tab This request obtains a list of copy jobs created or running within the the most recent 30 days\cr
 #'  \link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
 #'  \link[paws.storage:backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
 #'  \link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
@@ -3921,10 +3976,15 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_list_report_jobs]{list_report_jobs} \tab Returns details about your report jobs\cr
 #'  \link[paws.storage:backup_list_report_plans]{list_report_plans} \tab Returns a list of your report plans\cr
 #'  \link[paws.storage:backup_list_restore_jobs]{list_restore_jobs} \tab Returns a list of jobs that Backup initiated to restore a saved resource, including details about the recovery process\cr
+#'  \link[paws.storage:backup_list_restore_jobs_by_protected_resource]{list_restore_jobs_by_protected_resource} \tab This returns restore jobs that contain the specified protected resource\cr
+#'  \link[paws.storage:backup_list_restore_job_summaries]{list_restore_job_summaries} \tab This request obtains a summary of restore jobs created or running within the the most recent 30 days\cr
+#'  \link[paws.storage:backup_list_restore_testing_plans]{list_restore_testing_plans} \tab Returns a list of restore testing plans\cr
+#'  \link[paws.storage:backup_list_restore_testing_selections]{list_restore_testing_selections} \tab Returns a list of restore testing selections\cr
 #'  \link[paws.storage:backup_list_tags]{list_tags} \tab Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault\cr
 #'  \link[paws.storage:backup_put_backup_vault_access_policy]{put_backup_vault_access_policy} \tab Sets a resource-based policy that is used to manage access permissions on the target backup vault\cr
 #'  \link[paws.storage:backup_put_backup_vault_lock_configuration]{put_backup_vault_lock_configuration} \tab Applies Backup Vault Lock to a backup vault, preventing attempts to delete any recovery point stored in or created in a backup vault\cr
 #'  \link[paws.storage:backup_put_backup_vault_notifications]{put_backup_vault_notifications} \tab Turns on notifications on a backup vault for the specified topic and events\cr
+#'  \link[paws.storage:backup_put_restore_validation_result]{put_restore_validation_result} \tab This request allows you to send your independent self-run restore test validation results\cr
 #'  \link[paws.storage:backup_start_backup_job]{start_backup_job} \tab Starts an on-demand backup job for the specified resource\cr
 #'  \link[paws.storage:backup_start_copy_job]{start_copy_job} \tab Starts a job to create a one-time copy of the specified resource\cr
 #'  \link[paws.storage:backup_start_report_job]{start_report_job} \tab Starts an on-demand report job for the specified report plan\cr
@@ -3937,7 +3997,9 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted in to cross-account backup\cr
 #'  \link[paws.storage:backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
 #'  \link[paws.storage:backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region\cr
-#'  \link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates an existing report plan identified by its ReportPlanName with the input document in JSON format
+#'  \link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates an existing report plan identified by its ReportPlanName with the input document in JSON format\cr
+#'  \link[paws.storage:backup_update_restore_testing_plan]{update_restore_testing_plan} \tab This request will send changes to your specified restore testing plan\cr
+#'  \link[paws.storage:backup_update_restore_testing_selection]{update_restore_testing_selection} \tab Most elements except the RestoreTestingSelectionName can be updated with this request
 #' }
 #'
 #' @return
@@ -4169,7 +4231,7 @@ backupstorage <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.storage:dlm_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates a policy to manage the lifecycle of the specified Amazon Web Services resources\cr
+#'  \link[paws.storage:dlm_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates an Amazon Data Lifecycle Manager lifecycle policy\cr
 #'  \link[paws.storage:dlm_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the specified lifecycle policy and halts the automated operations that the policy specified\cr
 #'  \link[paws.storage:dlm_get_lifecycle_policies]{get_lifecycle_policies} \tab Gets summary information about all or the specified data lifecycle policies\cr
 #'  \link[paws.storage:dlm_get_lifecycle_policy]{get_lifecycle_policy} \tab Gets detailed information about the specified lifecycle policy\cr
@@ -4454,7 +4516,7 @@ ebs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.storage:efs_delete_file_system]{delete_file_system} \tab Deletes a file system, permanently severing access to its contents\cr
 #'  \link[paws.storage:efs_delete_file_system_policy]{delete_file_system_policy} \tab Deletes the FileSystemPolicy for the specified file system\cr
 #'  \link[paws.storage:efs_delete_mount_target]{delete_mount_target} \tab Deletes the specified mount target\cr
-#'  \link[paws.storage:efs_delete_replication_configuration]{delete_replication_configuration} \tab Deletes an existing replication configuration\cr
+#'  \link[paws.storage:efs_delete_replication_configuration]{delete_replication_configuration} \tab Deletes a replication configuration\cr
 #'  \link[paws.storage:efs_delete_tags]{delete_tags} \tab DEPRECATED - DeleteTags is deprecated and not maintained\cr
 #'  \link[paws.storage:efs_describe_access_points]{describe_access_points} \tab Returns the description of a specific Amazon EFS access point if the AccessPointId is provided\cr
 #'  \link[paws.storage:efs_describe_account_preferences]{describe_account_preferences} \tab Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region\cr
@@ -4471,10 +4533,11 @@ ebs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.storage:efs_put_account_preferences]{put_account_preferences} \tab Use this operation to set the account preference in the current Amazon Web Services Region to use long 17 character (63 bit) or short 8 character (32 bit) resource IDs for new EFS file system and mount target resources\cr
 #'  \link[paws.storage:efs_put_backup_policy]{put_backup_policy} \tab Updates the file system's backup policy\cr
 #'  \link[paws.storage:efs_put_file_system_policy]{put_file_system_policy} \tab Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system\cr
-#'  \link[paws.storage:efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Use this action to manage EFS lifecycle management and EFS Intelligent-Tiering\cr
+#'  \link[paws.storage:efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Use this action to manage storage for your file system\cr
 #'  \link[paws.storage:efs_tag_resource]{tag_resource} \tab Creates a tag for an EFS resource\cr
 #'  \link[paws.storage:efs_untag_resource]{untag_resource} \tab Removes tags from an EFS resource\cr
-#'  \link[paws.storage:efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system
+#'  \link[paws.storage:efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system\cr
+#'  \link[paws.storage:efs_update_file_system_protection]{update_file_system_protection} \tab Updates protection on the file system
 #' }
 #'
 #' @return
@@ -4726,6 +4789,7 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.storage:fsx_associate_file_system_aliases]{associate_file_system_aliases} \tab Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system\cr
 #'  \link[paws.storage:fsx_cancel_data_repository_task]{cancel_data_repository_task} \tab Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state\cr
 #'  \link[paws.storage:fsx_copy_backup]{copy_backup} \tab Copies an existing backup within the same Amazon Web Services account to another Amazon Web Services Region (cross-Region copy) or within the same Amazon Web Services Region (in-Region copy)\cr
+#'  \link[paws.storage:fsx_copy_snapshot_and_update_volume]{copy_snapshot_and_update_volume} \tab Updates an existing volume by using a snapshot from another Amazon FSx for OpenZFS file system\cr
 #'  \link[paws.storage:fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx for Windows File Server file system, Amazon FSx for Lustre file system, Amazon FSx for NetApp ONTAP volume, or Amazon FSx for OpenZFS file system\cr
 #'  \link[paws.storage:fsx_create_data_repository_association]{create_data_repository_association} \tab Creates an Amazon FSx for Lustre data repository association (DRA)\cr
 #'  \link[paws.storage:fsx_create_data_repository_task]{create_data_repository_task} \tab Creates an Amazon FSx for Lustre data repository task\cr
@@ -4749,6 +4813,7 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.storage:fsx_describe_file_caches]{describe_file_caches} \tab Returns the description of a specific Amazon File Cache resource, if a FileCacheIds value is provided for that cache\cr
 #'  \link[paws.storage:fsx_describe_file_system_aliases]{describe_file_system_aliases} \tab Returns the DNS aliases that are associated with the specified Amazon FSx for Windows File Server file system\cr
 #'  \link[paws.storage:fsx_describe_file_systems]{describe_file_systems} \tab Returns the description of specific Amazon FSx file systems, if a FileSystemIds value is provided for that file system\cr
+#'  \link[paws.storage:fsx_describe_shared_vpc_configuration]{describe_shared_vpc_configuration} \tab Indicates whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner\cr
 #'  \link[paws.storage:fsx_describe_snapshots]{describe_snapshots} \tab Returns the description of specific Amazon FSx for OpenZFS snapshots, if a SnapshotIds value is provided\cr
 #'  \link[paws.storage:fsx_describe_storage_virtual_machines]{describe_storage_virtual_machines} \tab Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs)\cr
 #'  \link[paws.storage:fsx_describe_volumes]{describe_volumes} \tab Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volumes\cr
@@ -4762,6 +4827,7 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.storage:fsx_update_data_repository_association]{update_data_repository_association} \tab Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system\cr
 #'  \link[paws.storage:fsx_update_file_cache]{update_file_cache} \tab Updates the configuration of an existing Amazon File Cache resource\cr
 #'  \link[paws.storage:fsx_update_file_system]{update_file_system} \tab Use this operation to update the configuration of an existing Amazon FSx file system\cr
+#'  \link[paws.storage:fsx_update_shared_vpc_configuration]{update_shared_vpc_configuration} \tab Configures whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner\cr
 #'  \link[paws.storage:fsx_update_snapshot]{update_snapshot} \tab Updates the name of an Amazon FSx for OpenZFS snapshot\cr
 #'  \link[paws.storage:fsx_update_storage_virtual_machine]{update_storage_virtual_machine} \tab Updates an FSx for ONTAP storage virtual machine (SVM)\cr
 #'  \link[paws.storage:fsx_update_volume]{update_volume} \tab Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume
@@ -5102,7 +5168,7 @@ glacier <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'  \link[paws.storage:omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Retrieves a list of annotation import jobs\cr
 #'  \link[paws.storage:omics_list_annotation_stores]{list_annotation_stores} \tab Retrieves a list of annotation stores\cr
 #'  \link[paws.storage:omics_list_annotation_store_versions]{list_annotation_store_versions} \tab Lists the versions of an annotation store\cr
-#'  \link[paws.storage:omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists all multipart read set uploads and their statuses\cr
+#'  \link[paws.storage:omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists multipart read set uploads and for in progress uploads\cr
 #'  \link[paws.storage:omics_list_read_set_activation_jobs]{list_read_set_activation_jobs} \tab Retrieves a list of read set activation jobs\cr
 #'  \link[paws.storage:omics_list_read_set_export_jobs]{list_read_set_export_jobs} \tab Retrieves a list of read set export jobs\cr
 #'  \link[paws.storage:omics_list_read_set_import_jobs]{list_read_set_import_jobs} \tab Retrieves a list of read set import jobs\cr
@@ -5174,8 +5240,8 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' restored, the resource is permanently deleted from the Recycle Bin and
 #' is no longer available for recovery. For more information about Recycle
 #' Bin, see [Recycle
-#' Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/) in the
-#' *Amazon Elastic Compute Cloud User Guide*.
+#' Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @param
 #' config
@@ -5379,105 +5445,107 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.storage:s3_abort_multipart_upload]{abort_multipart_upload} \tab This action aborts a multipart upload\cr
+#'  \link[paws.storage:s3_abort_multipart_upload]{abort_multipart_upload} \tab This operation aborts a multipart upload\cr
 #'  \link[paws.storage:s3_complete_multipart_upload]{complete_multipart_upload} \tab Completes a multipart upload by assembling previously uploaded parts\cr
 #'  \link[paws.storage:s3_copy_object]{copy_object} \tab Creates a copy of an object that is already stored in Amazon S3\cr
-#'  \link[paws.storage:s3_create_bucket]{create_bucket} \tab Creates a new S3 bucket\cr
+#'  \link[paws.storage:s3_create_bucket]{create_bucket} \tab This action creates an Amazon S3 bucket\cr
 #'  \link[paws.storage:s3_create_multipart_upload]{create_multipart_upload} \tab This action initiates a multipart upload and returns an upload ID\cr
+#'  \link[paws.storage:s3_create_session]{create_session} \tab Creates a session that establishes temporary security credentials to support fast authentication and authorization for the Zonal endpoint APIs on directory buckets\cr
 #'  \link[paws.storage:s3_delete_bucket]{delete_bucket} \tab Deletes the S3 bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab Deletes an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
-#'  \link[paws.storage:s3_delete_bucket_cors]{delete_bucket_cors} \tab Deletes the cors configuration information set for the bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3)\cr
-#'  \link[paws.storage:s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab Deletes the S3 Intelligent-Tiering configuration from the specified bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab Deletes an inventory configuration (identified by the inventory ID) from the bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the specified bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls} \tab Removes OwnershipControls for an Amazon S3 bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_policy]{delete_bucket_policy} \tab This implementation of the DELETE action uses the policy subresource to delete the policy of a specified bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_replication]{delete_bucket_replication} \tab Deletes the replication configuration from the bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_tagging]{delete_bucket_tagging} \tab Deletes the tags from the bucket\cr
-#'  \link[paws.storage:s3_delete_bucket_website]{delete_bucket_website} \tab This action removes the website configuration for a bucket\cr
-#'  \link[paws.storage:s3_delete_object]{delete_object} \tab Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object\cr
-#'  \link[paws.storage:s3_delete_objects]{delete_objects} \tab This action enables you to delete multiple objects from a bucket using a single HTTP request\cr
-#'  \link[paws.storage:s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
-#'  \link[paws.storage:s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
+#'  \link[paws.storage:s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_cors]{delete_bucket_cors} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_metrics_configuration]{delete_bucket_metrics_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_ownership_controls]{delete_bucket_ownership_controls} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_policy]{delete_bucket_policy} \tab Deletes the policy of a specified bucket\cr
+#'  \link[paws.storage:s3_delete_bucket_replication]{delete_bucket_replication} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_tagging]{delete_bucket_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_website]{delete_bucket_website} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_object]{delete_object} \tab Removes an object from a bucket\cr
+#'  \link[paws.storage:s3_delete_objects]{delete_objects} \tab This operation enables you to delete multiple objects from a bucket using a single HTTP request\cr
+#'  \link[paws.storage:s3_delete_object_tagging]{delete_object_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_public_access_block]{delete_public_access_block} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
 #'  \link[paws.storage:s3_generate_presigned_url]{generate_presigned_url} \tab @title Generate a presigned url given a client, its method, and arguments\cr
-#'  \link[paws.storage:s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET action uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
-#'  \link[paws.storage:s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET action uses the acl subresource to return the access control list (ACL) of a bucket\cr
-#'  \link[paws.storage:s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr
-#'  \link[paws.storage:s3_get_bucket_cors]{get_bucket_cors} \tab Returns the Cross-Origin Resource Sharing (CORS) configuration information set for the bucket\cr
-#'  \link[paws.storage:s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket\cr
-#'  \link[paws.storage:s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab Gets the S3 Intelligent-Tiering configuration from the specified bucket\cr
-#'  \link[paws.storage:s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab Returns an inventory configuration (identified by the inventory configuration ID) from the bucket\cr
+#'  \link[paws.storage:s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_acl]{get_bucket_acl} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_cors]{get_bucket_cors} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_encryption]{get_bucket_encryption} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration\cr
-#'  \link[paws.storage:s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both\cr
-#'  \link[paws.storage:s3_get_bucket_location]{get_bucket_location} \tab Returns the Region the bucket resides in\cr
-#'  \link[paws.storage:s3_get_bucket_logging]{get_bucket_logging} \tab Returns the logging status of a bucket and the permissions users have to view and modify that status\cr
-#'  \link[paws.storage:s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab Gets a metrics configuration (specified by the metrics configuration ID) from the bucket\cr
-#'  \link[paws.storage:s3_get_bucket_notification]{get_bucket_notification} \tab No longer used, see GetBucketNotificationConfiguration\cr
-#'  \link[paws.storage:s3_get_bucket_notification_configuration]{get_bucket_notification_configuration} \tab Returns the notification configuration of a bucket\cr
-#'  \link[paws.storage:s3_get_bucket_ownership_controls]{get_bucket_ownership_controls} \tab Retrieves OwnershipControls for an Amazon S3 bucket\cr
+#'  \link[paws.storage:s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_location]{get_bucket_location} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_logging]{get_bucket_logging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_metrics_configuration]{get_bucket_metrics_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_notification]{get_bucket_notification} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_notification_configuration]{get_bucket_notification_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_ownership_controls]{get_bucket_ownership_controls} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_bucket_policy]{get_bucket_policy} \tab Returns the policy of a specified bucket\cr
-#'  \link[paws.storage:s3_get_bucket_policy_status]{get_bucket_policy_status} \tab Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public\cr
-#'  \link[paws.storage:s3_get_bucket_replication]{get_bucket_replication} \tab Returns the replication configuration of a bucket\cr
-#'  \link[paws.storage:s3_get_bucket_request_payment]{get_bucket_request_payment} \tab Returns the request payment configuration of a bucket\cr
-#'  \link[paws.storage:s3_get_bucket_tagging]{get_bucket_tagging} \tab Returns the tag set associated with the bucket\cr
-#'  \link[paws.storage:s3_get_bucket_versioning]{get_bucket_versioning} \tab Returns the versioning state of a bucket\cr
-#'  \link[paws.storage:s3_get_bucket_website]{get_bucket_website} \tab Returns the website configuration for a bucket\cr
-#'  \link[paws.storage:s3_get_object]{get_object} \tab Retrieves objects from Amazon S3\cr
-#'  \link[paws.storage:s3_get_object_acl]{get_object_acl} \tab Returns the access control list (ACL) of an object\cr
+#'  \link[paws.storage:s3_get_bucket_policy_status]{get_bucket_policy_status} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_replication]{get_bucket_replication} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_request_payment]{get_bucket_request_payment} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_tagging]{get_bucket_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_versioning]{get_bucket_versioning} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_website]{get_bucket_website} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_object]{get_object} \tab Retrieves an object from Amazon S3\cr
+#'  \link[paws.storage:s3_get_object_acl]{get_object_acl} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_object_attributes]{get_object_attributes} \tab Retrieves all the metadata from an object without returning the object itself\cr
-#'  \link[paws.storage:s3_get_object_legal_hold]{get_object_legal_hold} \tab Gets an object's current legal hold status\cr
-#'  \link[paws.storage:s3_get_object_lock_configuration]{get_object_lock_configuration} \tab Gets the Object Lock configuration for a bucket\cr
-#'  \link[paws.storage:s3_get_object_retention]{get_object_retention} \tab Retrieves an object's retention settings\cr
-#'  \link[paws.storage:s3_get_object_tagging]{get_object_tagging} \tab Returns the tag-set of an object\cr
-#'  \link[paws.storage:s3_get_object_torrent]{get_object_torrent} \tab Returns torrent files from a bucket\cr
-#'  \link[paws.storage:s3_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-#'  \link[paws.storage:s3_head_bucket]{head_bucket} \tab This action is useful to determine if a bucket exists and you have permission to access it\cr
-#'  \link[paws.storage:s3_head_object]{head_object} \tab The HEAD action retrieves metadata from an object without returning the object itself\cr
-#'  \link[paws.storage:s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations} \tab Lists the analytics configurations for the bucket\cr
-#'  \link[paws.storage:s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations} \tab Lists the S3 Intelligent-Tiering configuration from the specified bucket\cr
-#'  \link[paws.storage:s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations} \tab Returns a list of inventory configurations for the bucket\cr
-#'  \link[paws.storage:s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab Lists the metrics configurations for the bucket\cr
-#'  \link[paws.storage:s3_list_buckets]{list_buckets} \tab Returns a list of all buckets owned by the authenticated sender of the request\cr
-#'  \link[paws.storage:s3_list_multipart_uploads]{list_multipart_uploads} \tab This action lists in-progress multipart uploads\cr
-#'  \link[paws.storage:s3_list_objects]{list_objects} \tab Returns some or all (up to 1,000) of the objects in a bucket\cr
+#'  \link[paws.storage:s3_get_object_legal_hold]{get_object_legal_hold} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_object_lock_configuration]{get_object_lock_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_object_retention]{get_object_retention} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_object_tagging]{get_object_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_object_torrent]{get_object_torrent} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_public_access_block]{get_public_access_block} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_head_bucket]{head_bucket} \tab You can use this operation to determine if a bucket exists and if you have permission to access it\cr
+#'  \link[paws.storage:s3_head_object]{head_object} \tab The HEAD operation retrieves metadata from an object without returning the object itself\cr
+#'  \link[paws.storage:s3_list_bucket_analytics_configurations]{list_bucket_analytics_configurations} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_list_bucket_intelligent_tiering_configurations]{list_bucket_intelligent_tiering_configurations} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_list_bucket_inventory_configurations]{list_bucket_inventory_configurations} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_list_bucket_metrics_configurations]{list_bucket_metrics_configurations} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_list_buckets]{list_buckets} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_list_directory_buckets]{list_directory_buckets} \tab Returns a list of all Amazon S3 directory buckets owned by the authenticated sender of the request\cr
+#'  \link[paws.storage:s3_list_multipart_uploads]{list_multipart_uploads} \tab This operation lists in-progress multipart uploads in a bucket\cr
+#'  \link[paws.storage:s3_list_objects]{list_objects} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_list_objects_v2]{list_objects_v2} \tab Returns some or all (up to 1,000) of the objects in a bucket with each request\cr
-#'  \link[paws.storage:s3_list_object_versions]{list_object_versions} \tab Returns metadata about all versions of the objects in a bucket\cr
+#'  \link[paws.storage:s3_list_object_versions]{list_object_versions} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_list_parts]{list_parts} \tab Lists the parts that have been uploaded for a specific multipart upload\cr
-#'  \link[paws.storage:s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration} \tab Sets the accelerate configuration of an existing bucket\cr
-#'  \link[paws.storage:s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on an existing bucket using access control lists (ACL)\cr
-#'  \link[paws.storage:s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab Sets an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
-#'  \link[paws.storage:s3_put_bucket_cors]{put_bucket_cors} \tab Sets the cors configuration for your bucket\cr
-#'  \link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This action uses the encryption subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket\cr
-#'  \link[paws.storage:s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab Puts a S3 Intelligent-Tiering configuration to the specified bucket\cr
-#'  \link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This implementation of the PUT action adds an inventory configuration (identified by the inventory ID) to the bucket\cr
-#'  \link[paws.storage:s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab For an updated version of this API, see PutBucketLifecycleConfiguration\cr
-#'  \link[paws.storage:s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration\cr
-#'  \link[paws.storage:s3_put_bucket_logging]{put_bucket_logging} \tab Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters\cr
-#'  \link[paws.storage:s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab Sets a metrics configuration (specified by the metrics configuration ID) for the bucket\cr
-#'  \link[paws.storage:s3_put_bucket_notification]{put_bucket_notification} \tab No longer used, see the PutBucketNotificationConfiguration operation\cr
-#'  \link[paws.storage:s3_put_bucket_notification_configuration]{put_bucket_notification_configuration} \tab Enables notifications of specified events for a bucket\cr
-#'  \link[paws.storage:s3_put_bucket_ownership_controls]{put_bucket_ownership_controls} \tab Creates or modifies OwnershipControls for an Amazon S3 bucket\cr
+#'  \link[paws.storage:s3_put_bucket_accelerate_configuration]{put_bucket_accelerate_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_acl]{put_bucket_acl} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_cors]{put_bucket_cors} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_logging]{put_bucket_logging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_notification]{put_bucket_notification} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_notification_configuration]{put_bucket_notification_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_ownership_controls]{put_bucket_ownership_controls} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_put_bucket_policy]{put_bucket_policy} \tab Applies an Amazon S3 bucket policy to an Amazon S3 bucket\cr
-#'  \link[paws.storage:s3_put_bucket_replication]{put_bucket_replication} \tab Creates a replication configuration or replaces an existing one\cr
-#'  \link[paws.storage:s3_put_bucket_request_payment]{put_bucket_request_payment} \tab Sets the request payment configuration for a bucket\cr
-#'  \link[paws.storage:s3_put_bucket_tagging]{put_bucket_tagging} \tab Sets the tags for a bucket\cr
-#'  \link[paws.storage:s3_put_bucket_versioning]{put_bucket_versioning} \tab Sets the versioning state of an existing bucket\cr
-#'  \link[paws.storage:s3_put_bucket_website]{put_bucket_website} \tab Sets the configuration of the website that is specified in the website subresource\cr
+#'  \link[paws.storage:s3_put_bucket_replication]{put_bucket_replication} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_request_payment]{put_bucket_request_payment} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_tagging]{put_bucket_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_versioning]{put_bucket_versioning} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_website]{put_bucket_website} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_put_object]{put_object} \tab Adds an object to a bucket\cr
-#'  \link[paws.storage:s3_put_object_acl]{put_object_acl} \tab Uses the acl subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket\cr
-#'  \link[paws.storage:s3_put_object_legal_hold]{put_object_legal_hold} \tab Applies a legal hold configuration to the specified object\cr
-#'  \link[paws.storage:s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an Object Lock configuration on the specified bucket\cr
-#'  \link[paws.storage:s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object\cr
-#'  \link[paws.storage:s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket\cr
-#'  \link[paws.storage:s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket\cr
-#'  \link[paws.storage:s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3\cr
-#'  \link[paws.storage:s3_select_object_content]{select_object_content} \tab This action filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement\cr
+#'  \link[paws.storage:s3_put_object_acl]{put_object_acl} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_object_legal_hold]{put_object_legal_hold} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_object_lock_configuration]{put_object_lock_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_object_retention]{put_object_retention} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_object_tagging]{put_object_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_public_access_block]{put_public_access_block} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_restore_object]{restore_object} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_select_object_content]{select_object_content} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload\cr
 #'  \link[paws.storage:s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source\cr
-#'  \link[paws.storage:s3_write_get_object_response]{write_get_object_response} \tab Passes transformed objects to a GetObject operation when using Object Lambda access points
+#'  \link[paws.storage:s3_write_get_object_response]{write_get_object_response} \tab This operation is not supported by directory buckets
 #' }
 #'
 #' @return
@@ -5579,77 +5647,105 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #' @examples
 #' \dontrun{
 #' svc <- s3control()
-#' svc$create_access_point(
+#' svc$associate_access_grants_identity_center(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.storage:s3control_create_access_point]{create_access_point} \tab Creates an access point and associates it with the specified bucket\cr
-#'  \link[paws.storage:s3control_create_access_point_for_object_lambda]{create_access_point_for_object_lambda} \tab Creates an Object Lambda Access Point\cr
+#'  \link[paws.storage:s3control_associate_access_grants_identity_center]{associate_access_grants_identity_center} \tab Associate your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance\cr
+#'  \link[paws.storage:s3control_create_access_grant]{create_access_grant} \tab Creates an access grant that gives a grantee access to your S3 data\cr
+#'  \link[paws.storage:s3control_create_access_grants_instance]{create_access_grants_instance} \tab Creates an S3 Access Grants instance, which serves as a logical grouping for access grants\cr
+#'  \link[paws.storage:s3control_create_access_grants_location]{create_access_grants_location} \tab The S3 data location that you would like to register in your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_create_access_point]{create_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_create_access_point_for_object_lambda]{create_access_point_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_create_bucket]{create_bucket} \tab This action creates an Amazon S3 on Outposts bucket\cr
-#'  \link[paws.storage:s3control_create_job]{create_job} \tab You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects\cr
-#'  \link[paws.storage:s3control_create_multi_region_access_point]{create_multi_region_access_point} \tab Creates a Multi-Region Access Point and associates it with the specified buckets\cr
-#'  \link[paws.storage:s3control_delete_access_point]{delete_access_point} \tab Deletes the specified access point\cr
-#'  \link[paws.storage:s3control_delete_access_point_for_object_lambda]{delete_access_point_for_object_lambda} \tab Deletes the specified Object Lambda Access Point\cr
-#'  \link[paws.storage:s3control_delete_access_point_policy]{delete_access_point_policy} \tab Deletes the access point policy for the specified access point\cr
-#'  \link[paws.storage:s3control_delete_access_point_policy_for_object_lambda]{delete_access_point_policy_for_object_lambda} \tab Removes the resource policy for an Object Lambda Access Point\cr
+#'  \link[paws.storage:s3control_create_job]{create_job} \tab This operation creates an S3 Batch Operations job\cr
+#'  \link[paws.storage:s3control_create_multi_region_access_point]{create_multi_region_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_create_storage_lens_group]{create_storage_lens_group} \tab Creates a new S3 Storage Lens group and associates it with the specified Amazon Web Services account ID\cr
+#'  \link[paws.storage:s3control_delete_access_grant]{delete_access_grant} \tab Deletes the access grant from the S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_delete_access_grants_instance]{delete_access_grants_instance} \tab Deletes your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_delete_access_grants_instance_resource_policy]{delete_access_grants_instance_resource_policy} \tab Deletes the resource policy of the S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_delete_access_grants_location]{delete_access_grants_location} \tab Deregisters a location from your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_delete_access_point]{delete_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_access_point_for_object_lambda]{delete_access_point_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_access_point_policy]{delete_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_access_point_policy_for_object_lambda]{delete_access_point_policy_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_delete_bucket]{delete_bucket} \tab This action deletes an Amazon S3 on Outposts bucket\cr
 #'  \link[paws.storage:s3control_delete_bucket_lifecycle_configuration]{delete_bucket_lifecycle_configuration} \tab This action deletes an Amazon S3 on Outposts bucket's lifecycle configuration\cr
 #'  \link[paws.storage:s3control_delete_bucket_policy]{delete_bucket_policy} \tab This action deletes an Amazon S3 on Outposts bucket policy\cr
 #'  \link[paws.storage:s3control_delete_bucket_replication]{delete_bucket_replication} \tab This operation deletes an Amazon S3 on Outposts bucket's replication configuration\cr
 #'  \link[paws.storage:s3control_delete_bucket_tagging]{delete_bucket_tagging} \tab This action deletes an Amazon S3 on Outposts bucket's tags\cr
 #'  \link[paws.storage:s3control_delete_job_tagging]{delete_job_tagging} \tab Removes the entire tag set from the specified S3 Batch Operations job\cr
-#'  \link[paws.storage:s3control_delete_multi_region_access_point]{delete_multi_region_access_point} \tab Deletes a Multi-Region Access Point\cr
-#'  \link[paws.storage:s3control_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon Web Services account\cr
-#'  \link[paws.storage:s3control_delete_storage_lens_configuration]{delete_storage_lens_configuration} \tab Deletes the Amazon S3 Storage Lens configuration\cr
-#'  \link[paws.storage:s3control_delete_storage_lens_configuration_tagging]{delete_storage_lens_configuration_tagging} \tab Deletes the Amazon S3 Storage Lens configuration tags\cr
+#'  \link[paws.storage:s3control_delete_multi_region_access_point]{delete_multi_region_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_public_access_block]{delete_public_access_block} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_storage_lens_configuration]{delete_storage_lens_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_storage_lens_configuration_tagging]{delete_storage_lens_configuration_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_delete_storage_lens_group]{delete_storage_lens_group} \tab Deletes an existing S3 Storage Lens group\cr
 #'  \link[paws.storage:s3control_describe_job]{describe_job} \tab Retrieves the configuration parameters and status for a Batch Operations job\cr
-#'  \link[paws.storage:s3control_describe_multi_region_access_point_operation]{describe_multi_region_access_point_operation} \tab Retrieves the status of an asynchronous request to manage a Multi-Region Access Point\cr
-#'  \link[paws.storage:s3control_get_access_point]{get_access_point} \tab Returns configuration information about the specified access point\cr
-#'  \link[paws.storage:s3control_get_access_point_configuration_for_object_lambda]{get_access_point_configuration_for_object_lambda} \tab Returns configuration for an Object Lambda Access Point\cr
-#'  \link[paws.storage:s3control_get_access_point_for_object_lambda]{get_access_point_for_object_lambda} \tab Returns configuration information about the specified Object Lambda Access Point\cr
-#'  \link[paws.storage:s3control_get_access_point_policy]{get_access_point_policy} \tab Returns the access point policy associated with the specified access point\cr
-#'  \link[paws.storage:s3control_get_access_point_policy_for_object_lambda]{get_access_point_policy_for_object_lambda} \tab Returns the resource policy for an Object Lambda Access Point\cr
-#'  \link[paws.storage:s3control_get_access_point_policy_status]{get_access_point_policy_status} \tab Indicates whether the specified access point currently has a policy that allows public access\cr
-#'  \link[paws.storage:s3control_get_access_point_policy_status_for_object_lambda]{get_access_point_policy_status_for_object_lambda} \tab Returns the status of the resource policy associated with an Object Lambda Access Point\cr
+#'  \link[paws.storage:s3control_describe_multi_region_access_point_operation]{describe_multi_region_access_point_operation} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_dissociate_access_grants_identity_center]{dissociate_access_grants_identity_center} \tab Dissociates the Amazon Web Services IAM Identity Center instance from the S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_get_access_grant]{get_access_grant} \tab Get the details of an access grant from your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_get_access_grants_instance]{get_access_grants_instance} \tab Retrieves the S3 Access Grants instance for a Region in your account\cr
+#'  \link[paws.storage:s3control_get_access_grants_instance_for_prefix]{get_access_grants_instance_for_prefix} \tab Retrieve the S3 Access Grants instance that contains a particular prefix\cr
+#'  \link[paws.storage:s3control_get_access_grants_instance_resource_policy]{get_access_grants_instance_resource_policy} \tab Returns the resource policy of the S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_get_access_grants_location]{get_access_grants_location} \tab Retrieves the details of a particular location registered in your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_get_access_point]{get_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_access_point_configuration_for_object_lambda]{get_access_point_configuration_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_access_point_for_object_lambda]{get_access_point_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_access_point_policy]{get_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_access_point_policy_for_object_lambda]{get_access_point_policy_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_access_point_policy_status]{get_access_point_policy_status} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_access_point_policy_status_for_object_lambda]{get_access_point_policy_status_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_get_bucket]{get_bucket} \tab Gets an Amazon S3 on Outposts bucket\cr
 #'  \link[paws.storage:s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab This action gets an Amazon S3 on Outposts bucket's lifecycle configuration\cr
 #'  \link[paws.storage:s3control_get_bucket_policy]{get_bucket_policy} \tab This action gets a bucket policy for an Amazon S3 on Outposts bucket\cr
 #'  \link[paws.storage:s3control_get_bucket_replication]{get_bucket_replication} \tab This operation gets an Amazon S3 on Outposts bucket's replication configuration\cr
 #'  \link[paws.storage:s3control_get_bucket_tagging]{get_bucket_tagging} \tab This action gets an Amazon S3 on Outposts bucket's tags\cr
 #'  \link[paws.storage:s3control_get_bucket_versioning]{get_bucket_versioning} \tab This operation returns the versioning state for S3 on Outposts buckets only\cr
+#'  \link[paws.storage:s3control_get_data_access]{get_data_access} \tab Returns a temporary access credential from S3 Access Grants to the grantee or client application\cr
 #'  \link[paws.storage:s3control_get_job_tagging]{get_job_tagging} \tab Returns the tags on an S3 Batch Operations job\cr
-#'  \link[paws.storage:s3control_get_multi_region_access_point]{get_multi_region_access_point} \tab Returns configuration information about the specified Multi-Region Access Point\cr
-#'  \link[paws.storage:s3control_get_multi_region_access_point_policy]{get_multi_region_access_point_policy} \tab Returns the access control policy of the specified Multi-Region Access Point\cr
-#'  \link[paws.storage:s3control_get_multi_region_access_point_policy_status]{get_multi_region_access_point_policy_status} \tab Indicates whether the specified Multi-Region Access Point has an access control policy that allows public access\cr
-#'  \link[paws.storage:s3control_get_multi_region_access_point_routes]{get_multi_region_access_point_routes} \tab Returns the routing configuration for a Multi-Region Access Point, indicating which Regions are active or passive\cr
-#'  \link[paws.storage:s3control_get_public_access_block]{get_public_access_block} \tab Retrieves the PublicAccessBlock configuration for an Amazon Web Services account\cr
-#'  \link[paws.storage:s3control_get_storage_lens_configuration]{get_storage_lens_configuration} \tab Gets the Amazon S3 Storage Lens configuration\cr
-#'  \link[paws.storage:s3control_get_storage_lens_configuration_tagging]{get_storage_lens_configuration_tagging} \tab Gets the tags of Amazon S3 Storage Lens configuration\cr
-#'  \link[paws.storage:s3control_list_access_points]{list_access_points} \tab Returns a list of the access points that are owned by the current account that's associated with the specified bucket\cr
-#'  \link[paws.storage:s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab Returns some or all (up to 1,000) access points associated with the Object Lambda Access Point per call\cr
-#'  \link[paws.storage:s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the Amazon Web Services account making the request\cr
-#'  \link[paws.storage:s3control_list_multi_region_access_points]{list_multi_region_access_points} \tab Returns a list of the Multi-Region Access Points currently associated with the specified Amazon Web Services account\cr
-#'  \link[paws.storage:s3control_list_regional_buckets]{list_regional_buckets} \tab Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request\cr
-#'  \link[paws.storage:s3control_list_storage_lens_configurations]{list_storage_lens_configurations} \tab Gets a list of Amazon S3 Storage Lens configurations\cr
-#'  \link[paws.storage:s3control_put_access_point_configuration_for_object_lambda]{put_access_point_configuration_for_object_lambda} \tab Replaces configuration for an Object Lambda Access Point\cr
-#'  \link[paws.storage:s3control_put_access_point_policy]{put_access_point_policy} \tab Associates an access policy with the specified access point\cr
-#'  \link[paws.storage:s3control_put_access_point_policy_for_object_lambda]{put_access_point_policy_for_object_lambda} \tab Creates or replaces resource policy for an Object Lambda Access Point\cr
+#'  \link[paws.storage:s3control_get_multi_region_access_point]{get_multi_region_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_multi_region_access_point_policy]{get_multi_region_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_multi_region_access_point_policy_status]{get_multi_region_access_point_policy_status} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_multi_region_access_point_routes]{get_multi_region_access_point_routes} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_public_access_block]{get_public_access_block} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_storage_lens_configuration]{get_storage_lens_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_storage_lens_configuration_tagging]{get_storage_lens_configuration_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_get_storage_lens_group]{get_storage_lens_group} \tab Retrieves the Storage Lens group configuration details\cr
+#'  \link[paws.storage:s3control_list_access_grants]{list_access_grants} \tab Returns the list of access grants in your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_list_access_grants_instances]{list_access_grants_instances} \tab Returns a list of S3 Access Grants instances\cr
+#'  \link[paws.storage:s3control_list_access_grants_locations]{list_access_grants_locations} \tab Returns a list of the locations registered in your S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_list_access_points]{list_access_points} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 30 days for the Amazon Web Services account making the request\cr
+#'  \link[paws.storage:s3control_list_multi_region_access_points]{list_multi_region_access_points} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_regional_buckets]{list_regional_buckets} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_storage_lens_configurations]{list_storage_lens_configurations} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_storage_lens_groups]{list_storage_lens_groups} \tab Lists all the Storage Lens groups in the specified home Region\cr
+#'  \link[paws.storage:s3control_list_tags_for_resource]{list_tags_for_resource} \tab This operation allows you to list all the Amazon Web Services resource tags for a specified resource\cr
+#'  \link[paws.storage:s3control_put_access_grants_instance_resource_policy]{put_access_grants_instance_resource_policy} \tab Updates the resource policy of the S3 Access Grants instance\cr
+#'  \link[paws.storage:s3control_put_access_point_configuration_for_object_lambda]{put_access_point_configuration_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_put_access_point_policy]{put_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_put_access_point_policy_for_object_lambda]{put_access_point_policy_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab This action puts a lifecycle configuration to an Amazon S3 on Outposts bucket\cr
 #'  \link[paws.storage:s3control_put_bucket_policy]{put_bucket_policy} \tab This action puts a bucket policy to an Amazon S3 on Outposts bucket\cr
 #'  \link[paws.storage:s3control_put_bucket_replication]{put_bucket_replication} \tab This action creates an Amazon S3 on Outposts bucket's replication configuration\cr
 #'  \link[paws.storage:s3control_put_bucket_tagging]{put_bucket_tagging} \tab This action puts tags on an Amazon S3 on Outposts bucket\cr
 #'  \link[paws.storage:s3control_put_bucket_versioning]{put_bucket_versioning} \tab This operation sets the versioning state for S3 on Outposts buckets only\cr
 #'  \link[paws.storage:s3control_put_job_tagging]{put_job_tagging} \tab Sets the supplied tag-set on an S3 Batch Operations job\cr
-#'  \link[paws.storage:s3control_put_multi_region_access_point_policy]{put_multi_region_access_point_policy} \tab Associates an access control policy with the specified Multi-Region Access Point\cr
-#'  \link[paws.storage:s3control_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon Web Services account\cr
-#'  \link[paws.storage:s3control_put_storage_lens_configuration]{put_storage_lens_configuration} \tab Puts an Amazon S3 Storage Lens configuration\cr
-#'  \link[paws.storage:s3control_put_storage_lens_configuration_tagging]{put_storage_lens_configuration_tagging} \tab Put or replace tags on an existing Amazon S3 Storage Lens configuration\cr
-#'  \link[paws.storage:s3control_submit_multi_region_access_point_routes]{submit_multi_region_access_point_routes} \tab Submits an updated route configuration for a Multi-Region Access Point\cr
+#'  \link[paws.storage:s3control_put_multi_region_access_point_policy]{put_multi_region_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_put_public_access_block]{put_public_access_block} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_put_storage_lens_configuration]{put_storage_lens_configuration} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_put_storage_lens_configuration_tagging]{put_storage_lens_configuration_tagging} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_submit_multi_region_access_point_routes]{submit_multi_region_access_point_routes} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_tag_resource]{tag_resource} \tab Creates a new Amazon Web Services resource tag or updates an existing resource tag\cr
+#'  \link[paws.storage:s3control_untag_resource]{untag_resource} \tab This operation removes the specified Amazon Web Services resource tags from an S3 resource\cr
+#'  \link[paws.storage:s3control_update_access_grants_location]{update_access_grants_location} \tab Updates the IAM role of a registered location in your S3 Access Grants instance\cr
 #'  \link[paws.storage:s3control_update_job_priority]{update_job_priority} \tab Updates an existing S3 Batch Operations job's priority\cr
-#'  \link[paws.storage:s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job
+#'  \link[paws.storage:s3control_update_job_status]{update_job_status} \tab Updates the status for the specified job\cr
+#'  \link[paws.storage:s3control_update_storage_lens_group]{update_storage_lens_group} \tab Updates the existing Storage Lens group
 #' }
 #'
 #' @return
@@ -6898,6 +6994,7 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.database:elasticache_batch_apply_update_action]{batch_apply_update_action} \tab Apply the service update\cr
 #'  \link[paws.database:elasticache_batch_stop_update_action]{batch_stop_update_action} \tab Stop the service update\cr
 #'  \link[paws.database:elasticache_complete_migration]{complete_migration} \tab Complete the migration of data\cr
+#'  \link[paws.database:elasticache_copy_serverless_cache_snapshot]{copy_serverless_cache_snapshot} \tab Creates a copy of an existing serverless cache’s snapshot\cr
 #'  \link[paws.database:elasticache_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot\cr
 #'  \link[paws.database:elasticache_create_cache_cluster]{create_cache_cluster} \tab Creates a cluster\cr
 #'  \link[paws.database:elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group\cr
@@ -6905,6 +7002,8 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.database:elasticache_create_cache_subnet_group]{create_cache_subnet_group} \tab Creates a new cache subnet group\cr
 #'  \link[paws.database:elasticache_create_global_replication_group]{create_global_replication_group} \tab Global Datastore for Redis offers fully managed, fast, reliable and secure cross-region replication\cr
 #'  \link[paws.database:elasticache_create_replication_group]{create_replication_group} \tab Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group\cr
+#'  \link[paws.database:elasticache_create_serverless_cache]{create_serverless_cache} \tab Creates a serverless cache\cr
+#'  \link[paws.database:elasticache_create_serverless_cache_snapshot]{create_serverless_cache_snapshot} \tab This API creates a copy of an entire ServerlessCache at a specific moment in time\cr
 #'  \link[paws.database:elasticache_create_snapshot]{create_snapshot} \tab Creates a copy of an entire cluster or replication group at a specific moment in time\cr
 #'  \link[paws.database:elasticache_create_user]{create_user} \tab For Redis engine version 6\cr
 #'  \link[paws.database:elasticache_create_user_group]{create_user_group} \tab For Redis engine version 6\cr
@@ -6916,6 +7015,8 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.database:elasticache_delete_cache_subnet_group]{delete_cache_subnet_group} \tab Deletes a cache subnet group\cr
 #'  \link[paws.database:elasticache_delete_global_replication_group]{delete_global_replication_group} \tab Deleting a Global datastore is a two-step process:\cr
 #'  \link[paws.database:elasticache_delete_replication_group]{delete_replication_group} \tab Deletes an existing replication group\cr
+#'  \link[paws.database:elasticache_delete_serverless_cache]{delete_serverless_cache} \tab Deletes a specified existing serverless cache\cr
+#'  \link[paws.database:elasticache_delete_serverless_cache_snapshot]{delete_serverless_cache_snapshot} \tab Deletes an existing serverless cache snapshot\cr
 #'  \link[paws.database:elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
 #'  \link[paws.database:elasticache_delete_user]{delete_user} \tab For Redis engine version 6\cr
 #'  \link[paws.database:elasticache_delete_user_group]{delete_user_group} \tab For Redis engine version 6\cr
@@ -6931,12 +7032,15 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.database:elasticache_describe_replication_groups]{describe_replication_groups} \tab Returns information about a particular replication group\cr
 #'  \link[paws.database:elasticache_describe_reserved_cache_nodes]{describe_reserved_cache_nodes} \tab Returns information about reserved cache nodes for this account, or about a specified reserved cache node\cr
 #'  \link[paws.database:elasticache_describe_reserved_cache_nodes_offerings]{describe_reserved_cache_nodes_offerings} \tab Lists available reserved cache node offerings\cr
+#'  \link[paws.database:elasticache_describe_serverless_caches]{describe_serverless_caches} \tab Returns information about a specific serverless cache\cr
+#'  \link[paws.database:elasticache_describe_serverless_cache_snapshots]{describe_serverless_cache_snapshots} \tab Returns information about serverless cache snapshots\cr
 #'  \link[paws.database:elasticache_describe_service_updates]{describe_service_updates} \tab Returns details of the service updates\cr
 #'  \link[paws.database:elasticache_describe_snapshots]{describe_snapshots} \tab Returns information about cluster or replication group snapshots\cr
 #'  \link[paws.database:elasticache_describe_update_actions]{describe_update_actions} \tab Returns details of the update actions\cr
 #'  \link[paws.database:elasticache_describe_user_groups]{describe_user_groups} \tab Returns a list of user groups\cr
 #'  \link[paws.database:elasticache_describe_users]{describe_users} \tab Returns a list of users\cr
 #'  \link[paws.database:elasticache_disassociate_global_replication_group]{disassociate_global_replication_group} \tab Remove a secondary cluster from the Global datastore using the Global datastore name\cr
+#'  \link[paws.database:elasticache_export_serverless_cache_snapshot]{export_serverless_cache_snapshot} \tab Provides the functionality to export the serverless cache snapshot data to Amazon S3\cr
 #'  \link[paws.database:elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a secondary region\cr
 #'  \link[paws.database:elasticache_increase_node_groups_in_global_replication_group]{increase_node_groups_in_global_replication_group} \tab Increase the number of node groups in the Global datastore\cr
 #'  \link[paws.database:elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
@@ -6948,6 +7052,7 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.database:elasticache_modify_global_replication_group]{modify_global_replication_group} \tab Modifies the settings for a Global datastore\cr
 #'  \link[paws.database:elasticache_modify_replication_group]{modify_replication_group} \tab Modifies the settings for a replication group\cr
 #'  \link[paws.database:elasticache_modify_replication_group_shard_configuration]{modify_replication_group_shard_configuration} \tab Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among existing shards\cr
+#'  \link[paws.database:elasticache_modify_serverless_cache]{modify_serverless_cache} \tab This API modifies the attributes of a serverless cache\cr
 #'  \link[paws.database:elasticache_modify_user]{modify_user} \tab Changes user password(s) and/or access string\cr
 #'  \link[paws.database:elasticache_modify_user_group]{modify_user_group} \tab Changes the list of users that belong to the user group\cr
 #'  \link[paws.database:elasticache_purchase_reserved_cache_nodes_offering]{purchase_reserved_cache_nodes_offering} \tab Allows you to purchase a reserved cache node offering\cr
@@ -7224,13 +7329,16 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'  \link[paws.database:lakeformation_cancel_transaction]{cancel_transaction} \tab Attempts to cancel the specified transaction\cr
 #'  \link[paws.database:lakeformation_commit_transaction]{commit_transaction} \tab Attempts to commit the specified transaction\cr
 #'  \link[paws.database:lakeformation_create_data_cells_filter]{create_data_cells_filter} \tab Creates a data cell filter to allow one to grant access to certain columns on certain rows\cr
+#'  \link[paws.database:lakeformation_create_lake_formation_identity_center_configuration]{create_lake_formation_identity_center_configuration} \tab Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and groups to access Data Catalog resources\cr
 #'  \link[paws.database:lakeformation_create_lake_formation_opt_in]{create_lake_formation_opt_in} \tab Enforce Lake Formation permissions for the given databases, tables, and principals\cr
 #'  \link[paws.database:lakeformation_create_lf_tag]{create_lf_tag} \tab Creates an LF-tag with the specified name and values\cr
 #'  \link[paws.database:lakeformation_delete_data_cells_filter]{delete_data_cells_filter} \tab Deletes a data cell filter\cr
+#'  \link[paws.database:lakeformation_delete_lake_formation_identity_center_configuration]{delete_lake_formation_identity_center_configuration} \tab Deletes an IAM Identity Center connection with Lake Formation\cr
 #'  \link[paws.database:lakeformation_delete_lake_formation_opt_in]{delete_lake_formation_opt_in} \tab Remove the Lake Formation permissions enforcement of the given databases, tables, and principals\cr
 #'  \link[paws.database:lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag given a key name\cr
 #'  \link[paws.database:lakeformation_delete_objects_on_cancel]{delete_objects_on_cancel} \tab For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled\cr
 #'  \link[paws.database:lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr
+#'  \link[paws.database:lakeformation_describe_lake_formation_identity_center_configuration]{describe_lake_formation_identity_center_configuration} \tab Retrieves the instance ARN and application ARN for the connection\cr
 #'  \link[paws.database:lakeformation_describe_resource]{describe_resource} \tab Retrieves the current data access role for the given resource registered in Lake Formation\cr
 #'  \link[paws.database:lakeformation_describe_transaction]{describe_transaction} \tab Returns the details of a single transaction\cr
 #'  \link[paws.database:lakeformation_extend_transaction]{extend_transaction} \tab Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted\cr
@@ -7263,6 +7371,7 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'  \link[paws.database:lakeformation_start_query_planning]{start_query_planning} \tab Submits a request to process a query statement\cr
 #'  \link[paws.database:lakeformation_start_transaction]{start_transaction} \tab Starts a new transaction and returns its transaction ID\cr
 #'  \link[paws.database:lakeformation_update_data_cells_filter]{update_data_cells_filter} \tab Updates a data cell filter\cr
+#'  \link[paws.database:lakeformation_update_lake_formation_identity_center_configuration]{update_lake_formation_identity_center_configuration} \tab Updates the IAM Identity Center connection parameters\cr
 #'  \link[paws.database:lakeformation_update_lf_tag]{update_lf_tag} \tab Updates the list of possible values for the specified LF-tag key\cr
 #'  \link[paws.database:lakeformation_update_resource]{update_resource} \tab Updates the data access role used for vending access to the given (registered) resource in Lake Formation\cr
 #'  \link[paws.database:lakeformation_update_table_objects]{update_table_objects} \tab Updates the manifest of Amazon S3 objects that make up the specified governed table\cr
@@ -8053,7 +8162,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' applications and businesses unique.
 #' 
 #' Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
-#' PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database
+#' PostgreSQL, Microsoft SQL Server, Oracle, Db2, or Amazon Aurora database
 #' server. These capabilities mean that the code, applications, and tools
 #' you already use today with your existing databases work with Amazon RDS
 #' without modification. Amazon RDS automatically backs up your database
@@ -8254,6 +8363,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_describe_db_proxy_endpoints]{describe_db_proxy_endpoints} \tab Returns information about DB proxy endpoints\cr
 #'  \link[paws.database:rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures\cr
 #'  \link[paws.database:rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects\cr
+#'  \link[paws.database:rds_describe_db_recommendations]{describe_db_recommendations} \tab Describes the recommendations to resolve the issues for your DB instances, DB clusters, and DB parameter groups\cr
 #'  \link[paws.database:rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
 #'  \link[paws.database:rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
 #'  \link[paws.database:rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
@@ -8267,16 +8377,18 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot or cluster export to Amazon S3\cr
 #'  \link[paws.database:rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
 #'  \link[paws.database:rds_describe_integrations]{describe_integrations} \tab Describe one or more zero-ETL integrations with Amazon Redshift\cr
-#'  \link[paws.database:rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
+#'  \link[paws.database:rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options for the specified engine\cr
 #'  \link[paws.database:rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
-#'  \link[paws.database:rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class\cr
+#'  \link[paws.database:rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Describes the orderable DB instance options for a specified DB engine\cr
 #'  \link[paws.database:rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
 #'  \link[paws.database:rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
 #'  \link[paws.database:rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
 #'  \link[paws.database:rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
 #'  \link[paws.database:rds_describe_tenant_databases]{describe_tenant_databases} \tab Describes the tenant databases in a DB instance that uses the multi-tenant configuration\cr
 #'  \link[paws.database:rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
+#'  \link[paws.database:rds_disable_http_endpoint]{disable_http_endpoint} \tab Disables the HTTP endpoint for the specified DB cluster\cr
 #'  \link[paws.database:rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
+#'  \link[paws.database:rds_enable_http_endpoint]{enable_http_endpoint} \tab Enables the HTTP endpoint for the DB cluster\cr
 #'  \link[paws.database:rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
 #'  \link[paws.database:rds_failover_global_cluster]{failover_global_cluster} \tab Promotes the specified secondary DB cluster to be the primary DB cluster in the global database cluster to fail over or switch over a global database\cr
 #'  \link[paws.database:rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource\cr
@@ -8293,6 +8405,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_modify_db_proxy]{modify_db_proxy} \tab Changes the settings for an existing DB proxy\cr
 #'  \link[paws.database:rds_modify_db_proxy_endpoint]{modify_db_proxy_endpoint} \tab Changes the settings for an existing DB proxy endpoint\cr
 #'  \link[paws.database:rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup\cr
+#'  \link[paws.database:rds_modify_db_recommendation]{modify_db_recommendation} \tab Updates the recommendation status and recommended action status for the specified recommendation\cr
 #'  \link[paws.database:rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version\cr
 #'  \link[paws.database:rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
 #'  \link[paws.database:rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
@@ -8321,11 +8434,11 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_restore_db_instance_to_point_in_time]{restore_db_instance_to_point_in_time} \tab Restores a DB instance to an arbitrary point in time\cr
 #'  \link[paws.database:rds_revoke_db_security_group_ingress]{revoke_db_security_group_ingress} \tab Revokes ingress from a DBSecurityGroup for previously authorized IP ranges or EC2 or VPC security groups\cr
 #'  \link[paws.database:rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database\cr
-#'  \link[paws.database:rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster action\cr
-#'  \link[paws.database:rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action\cr
+#'  \link[paws.database:rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the Amazon Web Services console, the stop-db-cluster CLI command, or the StopDBCluster operation\cr
+#'  \link[paws.database:rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance operation\cr
 #'  \link[paws.database:rds_start_db_instance_automated_backups_replication]{start_db_instance_automated_backups_replication} \tab Enables replication of automated backups to a different Amazon Web Services Region\cr
 #'  \link[paws.database:rds_start_export_task]{start_export_task} \tab Starts an export of DB snapshot or DB cluster data to Amazon S3\cr
-#'  \link[paws.database:rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream action\cr
+#'  \link[paws.database:rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream operation\cr
 #'  \link[paws.database:rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
 #'  \link[paws.database:rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
 #'  \link[paws.database:rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance\cr
@@ -8354,16 +8467,19 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' AWS RDS DataService
 #'
 #' @description
-#' Amazon RDS Data Service
+#' RDS Data API
 #' 
 #' Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
-#' Aurora Serverless v1 DB cluster. To run these statements, you work with
-#' the Data Service API.
+#' Aurora DB cluster. To run these statements, you use the RDS Data API
+#' (Data API).
 #' 
-#' The Data Service API isn't supported on Amazon Aurora Serverless v2 DB
-#' clusters.
+#' Data API is available with the following types of Aurora databases:
 #' 
-#' For more information about the Data Service API, see [Using the Data
+#' -   Aurora PostgreSQL - Serverless v2, Serverless v1, and provisioned
+#' 
+#' -   Aurora MySQL - Serverless v1 only
+#' 
+#' For more information about the Data API, see [Using RDS Data
 #' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
 #'
@@ -8612,6 +8728,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
 #'  \link[paws.database:redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
 #'  \link[paws.database:redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)\cr
+#'  \link[paws.database:redshift_create_redshift_idc_application]{create_redshift_idc_application} \tab Creates an Amazon Redshift application for use with IAM Identity Center\cr
 #'  \link[paws.database:redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 #'  \link[paws.database:redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region\cr
 #'  \link[paws.database:redshift_create_snapshot_schedule]{create_snapshot_schedule} \tab Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule\cr
@@ -8630,6 +8747,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
 #'  \link[paws.database:redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
 #'  \link[paws.database:redshift_delete_partner]{delete_partner} \tab Deletes a partner integration from a cluster\cr
+#'  \link[paws.database:redshift_delete_redshift_idc_application]{delete_redshift_idc_application} \tab Deletes an Amazon Redshift IAM Identity Center application\cr
 #'  \link[paws.database:redshift_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy for a specified resource\cr
 #'  \link[paws.database:redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
 #'  \link[paws.database:redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant\cr
@@ -8664,6 +8782,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
 #'  \link[paws.database:redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
 #'  \link[paws.database:redshift_describe_partners]{describe_partners} \tab Returns information about the partner integrations defined for a cluster\cr
+#'  \link[paws.database:redshift_describe_redshift_idc_applications]{describe_redshift_idc_applications} \tab Lists the Amazon Redshift IAM Identity Center applications\cr
 #'  \link[paws.database:redshift_describe_reserved_node_exchange_status]{describe_reserved_node_exchange_status} \tab Returns exchange status details and associated metadata for a reserved-node exchange\cr
 #'  \link[paws.database:redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings} \tab Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you\cr
 #'  \link[paws.database:redshift_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns the descriptions of the reserved nodes\cr
@@ -8699,6 +8818,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_modify_custom_domain_association]{modify_custom_domain_association} \tab Contains information for changing a custom domain association\cr
 #'  \link[paws.database:redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
 #'  \link[paws.database:redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
+#'  \link[paws.database:redshift_modify_redshift_idc_application]{modify_redshift_idc_application} \tab Changes an existing Amazon Redshift IAM Identity Center application\cr
 #'  \link[paws.database:redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
 #'  \link[paws.database:redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region\cr
 #'  \link[paws.database:redshift_modify_snapshot_schedule]{modify_snapshot_schedule} \tab Modifies a snapshot schedule\cr
@@ -8967,14 +9087,18 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_create_custom_domain_association]{create_custom_domain_association} \tab Creates a custom domain association for Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_create_endpoint_access]{create_endpoint_access} \tab Creates an Amazon Redshift Serverless managed VPC endpoint\cr
 #'  \link[paws.database:redshiftserverless_create_namespace]{create_namespace} \tab Creates a namespace in Amazon Redshift Serverless\cr
+#'  \link[paws.database:redshiftserverless_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 #'  \link[paws.database:redshiftserverless_create_snapshot]{create_snapshot} \tab Creates a snapshot of all databases in a namespace\cr
+#'  \link[paws.database:redshiftserverless_create_snapshot_copy_configuration]{create_snapshot_copy_configuration} \tab Creates a snapshot copy configuration that lets you copy snapshots to another Amazon Web Services Region\cr
 #'  \link[paws.database:redshiftserverless_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift Serverless usage type\cr
 #'  \link[paws.database:redshiftserverless_create_workgroup]{create_workgroup} \tab Creates an workgroup in Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_custom_domain_association]{delete_custom_domain_association} \tab Deletes a custom domain association for Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_endpoint_access]{delete_endpoint_access} \tab Deletes an Amazon Redshift Serverless managed VPC endpoint\cr
 #'  \link[paws.database:redshiftserverless_delete_namespace]{delete_namespace} \tab Deletes a namespace from Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
+#'  \link[paws.database:redshiftserverless_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
 #'  \link[paws.database:redshiftserverless_delete_snapshot]{delete_snapshot} \tab Deletes a snapshot from Amazon Redshift Serverless\cr
+#'  \link[paws.database:redshiftserverless_delete_snapshot_copy_configuration]{delete_snapshot_copy_configuration} \tab Deletes a snapshot copy configuration\cr
 #'  \link[paws.database:redshiftserverless_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_workgroup]{delete_workgroup} \tab Deletes a workgroup\cr
 #'  \link[paws.database:redshiftserverless_get_credentials]{get_credentials} \tab Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless\cr
@@ -8983,6 +9107,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
 #'  \link[paws.database:redshiftserverless_get_resource_policy]{get_resource_policy} \tab Returns a resource policy\cr
+#'  \link[paws.database:redshiftserverless_get_scheduled_action]{get_scheduled_action} \tab Returns information about a scheduled action\cr
 #'  \link[paws.database:redshiftserverless_get_snapshot]{get_snapshot} \tab Returns information about a specific snapshot\cr
 #'  \link[paws.database:redshiftserverless_get_table_restore_status]{get_table_restore_status} \tab Returns information about a TableRestoreStatus object\cr
 #'  \link[paws.database:redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
@@ -8991,6 +9116,8 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
 #'  \link[paws.database:redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 #'  \link[paws.database:redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
+#'  \link[paws.database:redshiftserverless_list_scheduled_actions]{list_scheduled_actions} \tab Returns a list of scheduled actions\cr
+#'  \link[paws.database:redshiftserverless_list_snapshot_copy_configurations]{list_snapshot_copy_configurations} \tab Returns a list of snapshot copy configurations\cr
 #'  \link[paws.database:redshiftserverless_list_snapshots]{list_snapshots} \tab Returns a list of snapshots\cr
 #'  \link[paws.database:redshiftserverless_list_table_restore_status]{list_table_restore_status} \tab Returns information about an array of TableRestoreStatus objects\cr
 #'  \link[paws.database:redshiftserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
@@ -8999,13 +9126,16 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
 #'  \link[paws.database:redshiftserverless_restore_from_recovery_point]{restore_from_recovery_point} \tab Restore the data from a recovery point\cr
 #'  \link[paws.database:redshiftserverless_restore_from_snapshot]{restore_from_snapshot} \tab Restores a namespace from a snapshot\cr
+#'  \link[paws.database:redshiftserverless_restore_table_from_recovery_point]{restore_table_from_recovery_point} \tab Restores a table from a recovery point to your Amazon Redshift Serverless instance\cr
 #'  \link[paws.database:redshiftserverless_restore_table_from_snapshot]{restore_table_from_snapshot} \tab Restores a table from a snapshot to your Amazon Redshift Serverless instance\cr
 #'  \link[paws.database:redshiftserverless_tag_resource]{tag_resource} \tab Assigns one or more tags to a resource\cr
 #'  \link[paws.database:redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
 #'  \link[paws.database:redshiftserverless_update_custom_domain_association]{update_custom_domain_association} \tab Updates an Amazon Redshift Serverless certificate associated with a custom domain\cr
 #'  \link[paws.database:redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr
 #'  \link[paws.database:redshiftserverless_update_namespace]{update_namespace} \tab Updates a namespace with the specified settings\cr
+#'  \link[paws.database:redshiftserverless_update_scheduled_action]{update_scheduled_action} \tab Updates a scheduled action\cr
 #'  \link[paws.database:redshiftserverless_update_snapshot]{update_snapshot} \tab Updates a snapshot\cr
+#'  \link[paws.database:redshiftserverless_update_snapshot_copy_configuration]{update_snapshot_copy_configuration} \tab Updates a snapshot copy configuration\cr
 #'  \link[paws.database:redshiftserverless_update_usage_limit]{update_usage_limit} \tab Update a usage limit in Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_update_workgroup]{update_workgroup} \tab Updates a workgroup with the specified configuration settings
 #' }
@@ -10260,37 +10390,41 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' AWS ARC - Zonal Shift
 #'
 #' @description
-#' This is the API Reference Guide for the zonal shift feature of Amazon
-#' Route 53 Application Recovery Controller. This guide is for developers
-#' who need detailed information about zonal shift API actions, data types,
-#' and errors.
+#' Welcome to the Zonal Shift API Reference Guide for Amazon Route 53
+#' Application Recovery Controller (Route 53 ARC).
 #' 
-#' Zonal shift is in preview release for Amazon Route 53 Application
-#' Recovery Controller and is subject to change.
+#' You can start a zonal shift to move traffic for a load balancer resource
+#' away from an Availability Zone to help your application recover quickly
+#' from an impairment in an Availability Zone. For example, you can recover
+#' your application from a developer's bad code deployment or from an
+#' Amazon Web Services infrastructure failure in a single Availability
+#' Zone.
 #' 
-#' Zonal shift in Route 53 ARC enables you to move traffic for a load
-#' balancer resource away from an Availability Zone. Starting a zonal shift
-#' helps your application recover immediately, for example, from a
-#' developer's bad code deployment or from an AWS infrastructure failure in
-#' a single Availability Zone, reducing the impact and time lost from an
-#' issue in one zone.
+#' You can also configure zonal autoshift for a load balancer resource.
+#' Zonal autoshift is a capability in Route 53 ARC where Amazon Web
+#' Services shifts away application resource traffic from an Availability
+#' Zone, on your behalf, to help reduce your time to recovery during
+#' events. Amazon Web Services shifts away traffic for resources that are
+#' enabled for zonal autoshift whenever Amazon Web Services determines that
+#' there's an issue in the Availability Zone that could potentially affect
+#' customers.
 #' 
-#' Supported AWS resources are automatically registered with Route 53 ARC.
-#' Resources that are registered for zonal shifts in Route 53 ARC are
-#' managed resources in Route 53 ARC. You can start a zonal shift for any
-#' managed resource in your account in a Region. At this time, you can only
-#' start a zonal shift for Network Load Balancers and Application Load
-#' Balancers with cross-zone load balancing turned off.
+#' To ensure that zonal autoshift is safe for your application, you must
+#' also configure practice runs when you enable zonal autoshift for a
+#' resource. Practice runs start weekly zonal shifts for a resource, to
+#' shift traffic for the resource out of an Availability Zone. Practice
+#' runs make sure, on a regular basis, that you have enough capacity in all
+#' the Availability Zones in an Amazon Web Services Region for your
+#' application to continue to operate normally when traffic for a resource
+#' is shifted away from one Availability Zone.
 #' 
-#' Zonal shifts are temporary. You must specify an expiration when you
-#' start a zonal shift, of up to three days initially. If you want to still
-#' keep traffic away from an Availability Zone, you can update the zonal
-#' shift and set a new expiration. You can also cancel a zonal shift,
-#' before it expires, for example, if you're ready to restore traffic to
-#' the Availability Zone.
+#' You must prescale resource capacity in all Availability Zones in the
+#' Region where your application is deployed, before you configure practice
+#' runs or enable zonal autoshift for a resource. You should not rely on
+#' scaling on demand when an autoshift or practice run starts.
 #' 
-#' For more information about using zonal shift, see the [Amazon Route 53
-#' Application Recovery Controller Developer
+#' For more information about using zonal shift and zonal autoshift, see
+#' the [Amazon Route 53 Application Recovery Controller Developer
 #' Guide](https://docs.aws.amazon.com/r53recovery/latest/dg/what-is-route53-recovery.html).
 #'
 #' @param
@@ -10376,12 +10510,17 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.networking:arczonalshift_cancel_zonal_shift]{cancel_zonal_shift} \tab Cancel a zonal shift in Amazon Route 53 Application Recovery Controller that you've started for a resource in your AWS account in an AWS Region\cr
-#'  \link[paws.networking:arczonalshift_get_managed_resource]{get_managed_resource} \tab Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this AWS Region\cr
-#'  \link[paws.networking:arczonalshift_list_managed_resources]{list_managed_resources} \tab Lists all the resources in your AWS account in this AWS Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them\cr
-#'  \link[paws.networking:arczonalshift_list_zonal_shifts]{list_zonal_shifts} \tab Lists all the active zonal shifts in Amazon Route 53 Application Recovery Controller in your AWS account in this AWS Region\cr
-#'  \link[paws.networking:arczonalshift_start_zonal_shift]{start_zonal_shift} \tab You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in a AWS Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an AWS infrastructure failure in a single Availability Zone\cr
-#'  \link[paws.networking:arczonalshift_update_zonal_shift]{update_zonal_shift} \tab Update an active zonal shift in Amazon Route 53 Application Recovery Controller in your AWS account
+#'  \link[paws.networking:arczonalshift_cancel_zonal_shift]{cancel_zonal_shift} \tab Cancel a zonal shift in Amazon Route 53 Application Recovery Controller\cr
+#'  \link[paws.networking:arczonalshift_create_practice_run_configuration]{create_practice_run_configuration} \tab A practice run configuration for zonal autoshift is required when you enable zonal autoshift\cr
+#'  \link[paws.networking:arczonalshift_delete_practice_run_configuration]{delete_practice_run_configuration} \tab Deletes the practice run configuration for a resource\cr
+#'  \link[paws.networking:arczonalshift_get_managed_resource]{get_managed_resource} \tab Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region\cr
+#'  \link[paws.networking:arczonalshift_list_autoshifts]{list_autoshifts} \tab Returns the active autoshifts for a specified resource\cr
+#'  \link[paws.networking:arczonalshift_list_managed_resources]{list_managed_resources} \tab Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them\cr
+#'  \link[paws.networking:arczonalshift_list_zonal_shifts]{list_zonal_shifts} \tab Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region\cr
+#'  \link[paws.networking:arczonalshift_start_zonal_shift]{start_zonal_shift} \tab You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone\cr
+#'  \link[paws.networking:arczonalshift_update_practice_run_configuration]{update_practice_run_configuration} \tab Update a practice run configuration to change one or more of the following: add, change, or remove the blocking alarm; change the outcome alarm; or add, change, or remove blocking dates or time windows\cr
+#'  \link[paws.networking:arczonalshift_update_zonal_autoshift_configuration]{update_zonal_autoshift_configuration} \tab You can update the zonal autoshift status for a resource, to enable or disable zonal autoshift\cr
+#'  \link[paws.networking:arczonalshift_update_zonal_shift]{update_zonal_shift} \tab Update an active zonal shift in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account
 #' }
 #'
 #' @return
@@ -10632,8 +10771,22 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #' @examples
 #' \dontrun{
 #' svc <- cloudfront()
-#' svc$associate_alias(
-#'   Foo = 123
+#' # Use the following command to create a function.
+#' svc$create_function(
+#'   FunctionCode = "function-code.js",
+#'   FunctionConfig = list(
+#'     Comment = "my-function-comment",
+#'     KeyValueStoreAssociations = list(
+#'       Items = list(
+#'         list(
+#'           KeyValueStoreARN = "arn:aws:cloudfront::123456789012:key-value-st..."
+#'         )
+#'       ),
+#'       Quantity = 1L
+#'     ),
+#'     Runtime = "cloudfront-js-2.0"
+#'   ),
+#'   Name = "my-function-name"
 #' )
 #' }
 #'
@@ -10651,6 +10804,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.networking:cloudfront_create_function]{create_function} \tab Creates a CloudFront function\cr
 #'  \link[paws.networking:cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation\cr
 #'  \link[paws.networking:cloudfront_create_key_group]{create_key_group} \tab Creates a key group that you can use with CloudFront signed URLs and signed cookies\cr
+#'  \link[paws.networking:cloudfront_create_key_value_store]{create_key_value_store} \tab Specifies the Key Value Store resource to add to your account\cr
 #'  \link[paws.networking:cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables additional CloudWatch metrics for the specified CloudFront distribution\cr
 #'  \link[paws.networking:cloudfront_create_origin_access_control]{create_origin_access_control} \tab Creates a new origin access control in CloudFront\cr
 #'  \link[paws.networking:cloudfront_create_origin_request_policy]{create_origin_request_policy} \tab Creates an origin request policy\cr
@@ -10667,6 +10821,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.networking:cloudfront_delete_field_level_encryption_profile]{delete_field_level_encryption_profile} \tab Remove a field-level encryption profile\cr
 #'  \link[paws.networking:cloudfront_delete_function]{delete_function} \tab Deletes a CloudFront function\cr
 #'  \link[paws.networking:cloudfront_delete_key_group]{delete_key_group} \tab Deletes a key group\cr
+#'  \link[paws.networking:cloudfront_delete_key_value_store]{delete_key_value_store} \tab Specifies the Key Value Store to delete\cr
 #'  \link[paws.networking:cloudfront_delete_monitoring_subscription]{delete_monitoring_subscription} \tab Disables additional CloudWatch metrics for the specified CloudFront distribution\cr
 #'  \link[paws.networking:cloudfront_delete_origin_access_control]{delete_origin_access_control} \tab Deletes a CloudFront origin access control\cr
 #'  \link[paws.networking:cloudfront_delete_origin_request_policy]{delete_origin_request_policy} \tab Deletes an origin request policy\cr
@@ -10675,6 +10830,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.networking:cloudfront_delete_response_headers_policy]{delete_response_headers_policy} \tab Deletes a response headers policy\cr
 #'  \link[paws.networking:cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
 #'  \link[paws.networking:cloudfront_describe_function]{describe_function} \tab Gets configuration information and metadata about a CloudFront function, but not the function's code\cr
+#'  \link[paws.networking:cloudfront_describe_key_value_store]{describe_key_value_store} \tab Specifies the Key Value Store and its configuration\cr
 #'  \link[paws.networking:cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 #'  \link[paws.networking:cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 #'  \link[paws.networking:cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
@@ -10719,6 +10875,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.networking:cloudfront_list_functions]{list_functions} \tab Gets a list of all CloudFront functions in your Amazon Web Services account\cr
 #'  \link[paws.networking:cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
 #'  \link[paws.networking:cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
+#'  \link[paws.networking:cloudfront_list_key_value_stores]{list_key_value_stores} \tab Specifies the Key Value Stores to list\cr
 #'  \link[paws.networking:cloudfront_list_origin_access_controls]{list_origin_access_controls} \tab Gets the list of CloudFront origin access controls in this Amazon Web Services account\cr
 #'  \link[paws.networking:cloudfront_list_origin_request_policies]{list_origin_request_policies} \tab Gets a list of origin request policies\cr
 #'  \link[paws.networking:cloudfront_list_public_keys]{list_public_keys} \tab List all public keys that have been added to CloudFront for this account\cr
@@ -10739,6 +10896,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.networking:cloudfront_update_field_level_encryption_profile]{update_field_level_encryption_profile} \tab Update a field-level encryption profile\cr
 #'  \link[paws.networking:cloudfront_update_function]{update_function} \tab Updates a CloudFront function\cr
 #'  \link[paws.networking:cloudfront_update_key_group]{update_key_group} \tab Updates a key group\cr
+#'  \link[paws.networking:cloudfront_update_key_value_store]{update_key_value_store} \tab Specifies the Key Value Store to update\cr
 #'  \link[paws.networking:cloudfront_update_origin_access_control]{update_origin_access_control} \tab Updates a CloudFront origin access control\cr
 #'  \link[paws.networking:cloudfront_update_origin_request_policy]{update_origin_request_policy} \tab Updates an origin request policy configuration\cr
 #'  \link[paws.networking:cloudfront_update_public_key]{update_public_key} \tab Update public key information\cr
@@ -11250,14 +11408,17 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' \tabular{ll}{
 #'  \link[paws.networking:elbv2_add_listener_certificates]{add_listener_certificates} \tab Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener\cr
 #'  \link[paws.networking:elbv2_add_tags]{add_tags} \tab Adds the specified tags to the specified Elastic Load Balancing resource\cr
+#'  \link[paws.networking:elbv2_add_trust_store_revocations]{add_trust_store_revocations} \tab Adds the specified revocation file to the specified trust store\cr
 #'  \link[paws.networking:elbv2_create_listener]{create_listener} \tab Creates a listener for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_create_load_balancer]{create_load_balancer} \tab Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_create_rule]{create_rule} \tab Creates a rule for the specified listener\cr
 #'  \link[paws.networking:elbv2_create_target_group]{create_target_group} \tab Creates a target group\cr
+#'  \link[paws.networking:elbv2_create_trust_store]{create_trust_store} \tab Creates a trust store\cr
 #'  \link[paws.networking:elbv2_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
 #'  \link[paws.networking:elbv2_delete_load_balancer]{delete_load_balancer} \tab Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_delete_rule]{delete_rule} \tab Deletes the specified rule\cr
 #'  \link[paws.networking:elbv2_delete_target_group]{delete_target_group} \tab Deletes the specified target group\cr
+#'  \link[paws.networking:elbv2_delete_trust_store]{delete_trust_store} \tab Deletes a trust store\cr
 #'  \link[paws.networking:elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 #'  \link[paws.networking:elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account\cr
 #'  \link[paws.networking:elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
@@ -11270,14 +11431,21 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.networking:elbv2_describe_target_group_attributes]{describe_target_group_attributes} \tab Describes the attributes for the specified target group\cr
 #'  \link[paws.networking:elbv2_describe_target_groups]{describe_target_groups} \tab Describes the specified target groups or all of your target groups\cr
 #'  \link[paws.networking:elbv2_describe_target_health]{describe_target_health} \tab Describes the health of the specified targets or all of your targets\cr
+#'  \link[paws.networking:elbv2_describe_trust_store_associations]{describe_trust_store_associations} \tab Describes all resources associated with the specified trust store\cr
+#'  \link[paws.networking:elbv2_describe_trust_store_revocations]{describe_trust_store_revocations} \tab Describes the revocation files in use by the specified trust store arn, or revocation ID\cr
+#'  \link[paws.networking:elbv2_describe_trust_stores]{describe_trust_stores} \tab Describes all trust stores for a given account by trust store arn’s or name\cr
+#'  \link[paws.networking:elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
+#'  \link[paws.networking:elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
 #'  \link[paws.networking:elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
 #'  \link[paws.networking:elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
 #'  \link[paws.networking:elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr
 #'  \link[paws.networking:elbv2_modify_target_group_attributes]{modify_target_group_attributes} \tab Modifies the specified attributes of the specified target group\cr
+#'  \link[paws.networking:elbv2_modify_trust_store]{modify_trust_store} \tab Update the ca certificate bundle for a given trust store\cr
 #'  \link[paws.networking:elbv2_register_targets]{register_targets} \tab Registers the specified targets with the specified target group\cr
 #'  \link[paws.networking:elbv2_remove_listener_certificates]{remove_listener_certificates} \tab Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener\cr
 #'  \link[paws.networking:elbv2_remove_tags]{remove_tags} \tab Removes the specified tags from the specified Elastic Load Balancing resources\cr
+#'  \link[paws.networking:elbv2_remove_trust_store_revocations]{remove_trust_store_revocations} \tab Removes the specified revocation file from the specified trust store\cr
 #'  \link[paws.networking:elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified load balancer\cr
 #'  \link[paws.networking:elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules\cr
 #'  \link[paws.networking:elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer or Network Load Balancer\cr
@@ -12861,7 +13029,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #'  \link[paws.networking:route53resolver_create_firewall_domain_list]{create_firewall_domain_list} \tab Creates an empty firewall domain list for use in DNS Firewall rules\cr
 #'  \link[paws.networking:route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group, using the specified domain list\cr
 #'  \link[paws.networking:route53resolver_create_firewall_rule_group]{create_firewall_rule_group} \tab Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC\cr
-#'  \link[paws.networking:route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates an Route 53 Resolver on an Outpost\cr
+#'  \link[paws.networking:route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates a Route 53 Resolver on an Outpost\cr
 #'  \link[paws.networking:route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a Resolver endpoint\cr
 #'  \link[paws.networking:route53resolver_create_resolver_query_log_config]{create_resolver_query_log_config} \tab Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs\cr
 #'  \link[paws.networking:route53resolver_create_resolver_rule]{create_resolver_rule} \tab For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network\cr
@@ -12920,7 +13088,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #'  \link[paws.networking:route53resolver_update_outpost_resolver]{update_outpost_resolver} \tab You can use UpdateOutpostResolver to update the instance count, type, or name of a Resolver on an Outpost\cr
 #'  \link[paws.networking:route53resolver_update_resolver_config]{update_resolver_config} \tab Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 #'  \link[paws.networking:route53resolver_update_resolver_dnssec_config]{update_resolver_dnssec_config} \tab Updates an existing DNSSEC validation configuration\cr
-#'  \link[paws.networking:route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint\cr
+#'  \link[paws.networking:route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or endpoint type for an inbound or an outbound Resolver endpoint\cr
 #'  \link[paws.networking:route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified Resolver rule
 #' }
 #'
@@ -13530,6 +13698,7 @@ vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
 #'   description = "This is my demonstration environment.",
+#'   imageId = "amazonlinux-2023-x86_64",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
 #'   subnetId = "subnet-6300cd1b"
@@ -14244,6 +14413,10 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 #' -   `update_repository_description`,
 #'     which sets or updates the description of the repository.
 #' 
+#' -   `update_repository_encryption_key`,
+#'     which updates the Key Management Service encryption key used to
+#'     encrypt and decrypt a repository.
+#' 
 #' -   `update_repository_name`, which
 #'     changes the name of the repository. If you change the name of a
 #'     repository, no other users of that repository can access it until
@@ -14689,6 +14862,7 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.developer.tools:codecommit_update_pull_request_status]{update_pull_request_status} \tab Updates the status of a pull request\cr
 #'  \link[paws.developer.tools:codecommit_update_pull_request_title]{update_pull_request_title} \tab Replaces the title of a pull request\cr
 #'  \link[paws.developer.tools:codecommit_update_repository_description]{update_repository_description} \tab Sets or changes the comment or description for a repository\cr
+#'  \link[paws.developer.tools:codecommit_update_repository_encryption_key]{update_repository_encryption_key} \tab Updates the Key Management Service encryption key used to encrypt and decrypt a CodeCommit repository\cr
 #'  \link[paws.developer.tools:codecommit_update_repository_name]{update_repository_name} \tab Renames a repository
 #' }
 #'
@@ -14731,7 +14905,7 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' -   `list_spaces`, which retrieves a list of
 #'     spaces.
 #' 
-#' -   `update_space`, which hanges one or
+#' -   `update_space`, which changes one or
 #'     more values for a space.
 #' 
 #' Projects, by calling the following:
@@ -14810,6 +14984,23 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' 
 #' -   `update_dev_environment`,
 #'     which changes one or more values for a Dev Environment.
+#' 
+#' Workflows, by calling the following:
+#' 
+#' -   `get_workflow`, which returns
+#'     information about a workflow.
+#' 
+#' -   `get_workflow_run`, which returns
+#'     information about a specified run of a workflow.
+#' 
+#' -   `list_workflow_runs`, which
+#'     retrieves a list of runs of a specified workflow.
+#' 
+#' -   `list_workflows`, which retrieves a
+#'     list of workflows in a specified project.
+#' 
+#' -   `start_workflow_run`, which
+#'     starts a run of a specified workflow.
 #' 
 #' Security, activity, and resource management in Amazon CodeCatalyst, by
 #' calling the following:
@@ -14938,16 +15129,21 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.developer.tools:codecatalyst_get_space]{get_space} \tab Returns information about an space\cr
 #'  \link[paws.developer.tools:codecatalyst_get_subscription]{get_subscription} \tab Returns information about the Amazon Web Services account used for billing purposes and the billing plan for the space\cr
 #'  \link[paws.developer.tools:codecatalyst_get_user_details]{get_user_details} \tab Returns information about a user\cr
+#'  \link[paws.developer.tools:codecatalyst_get_workflow]{get_workflow} \tab Returns information about a workflow\cr
+#'  \link[paws.developer.tools:codecatalyst_get_workflow_run]{get_workflow_run} \tab Returns information about a specified run of a workflow\cr
 #'  \link[paws.developer.tools:codecatalyst_list_access_tokens]{list_access_tokens} \tab Lists all personal access tokens (PATs) associated with the user who calls the API\cr
 #'  \link[paws.developer.tools:codecatalyst_list_dev_environments]{list_dev_environments} \tab Retrieves a list of Dev Environments in a project\cr
 #'  \link[paws.developer.tools:codecatalyst_list_dev_environment_sessions]{list_dev_environment_sessions} \tab Retrieves a list of active sessions for a Dev Environment in a project\cr
-#'  \link[paws.developer.tools:codecatalyst_list_event_logs]{list_event_logs} \tab Retrieves a list of events that occurred during a specified time period in a space\cr
+#'  \link[paws.developer.tools:codecatalyst_list_event_logs]{list_event_logs} \tab Retrieves a list of events that occurred during a specific time in a space\cr
 #'  \link[paws.developer.tools:codecatalyst_list_projects]{list_projects} \tab Retrieves a list of projects\cr
 #'  \link[paws.developer.tools:codecatalyst_list_source_repositories]{list_source_repositories} \tab Retrieves a list of source repositories in a project\cr
 #'  \link[paws.developer.tools:codecatalyst_list_source_repository_branches]{list_source_repository_branches} \tab Retrieves a list of branches in a specified source repository\cr
 #'  \link[paws.developer.tools:codecatalyst_list_spaces]{list_spaces} \tab Retrieves a list of spaces\cr
+#'  \link[paws.developer.tools:codecatalyst_list_workflow_runs]{list_workflow_runs} \tab Retrieves a list of workflow runs of a specified workflow\cr
+#'  \link[paws.developer.tools:codecatalyst_list_workflows]{list_workflows} \tab Retrieves a list of workflows in a specified project\cr
 #'  \link[paws.developer.tools:codecatalyst_start_dev_environment]{start_dev_environment} \tab Starts a specified Dev Environment and puts it into an active state\cr
 #'  \link[paws.developer.tools:codecatalyst_start_dev_environment_session]{start_dev_environment_session} \tab Starts a session for a specified Dev Environment\cr
+#'  \link[paws.developer.tools:codecatalyst_start_workflow_run]{start_workflow_run} \tab Begins a run of a specified workflow\cr
 #'  \link[paws.developer.tools:codecatalyst_stop_dev_environment]{stop_dev_environment} \tab Pauses a specified Dev Environment and places it in a non-running state\cr
 #'  \link[paws.developer.tools:codecatalyst_stop_dev_environment_session]{stop_dev_environment_session} \tab Stops a session for a specified Dev Environment\cr
 #'  \link[paws.developer.tools:codecatalyst_update_dev_environment]{update_dev_environment} \tab Changes one or more values for a Dev Environment\cr
@@ -16276,16 +16472,31 @@ codestar <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' \tabular{ll}{
 #'  \link[paws.developer.tools:codestarconnections_create_connection]{create_connection} \tab Creates a connection that can then be given to other Amazon Web Services services like CodePipeline so that it can access third-party code repositories\cr
 #'  \link[paws.developer.tools:codestarconnections_create_host]{create_host} \tab Creates a resource that represents the infrastructure where a third-party provider is installed\cr
+#'  \link[paws.developer.tools:codestarconnections_create_repository_link]{create_repository_link} \tab Creates a link to a specified external Git repository\cr
+#'  \link[paws.developer.tools:codestarconnections_create_sync_configuration]{create_sync_configuration} \tab Creates a sync configuration which allows Amazon Web Services to sync content from a Git repository to update a specified Amazon Web Services resource\cr
 #'  \link[paws.developer.tools:codestarconnections_delete_connection]{delete_connection} \tab The connection to be deleted\cr
 #'  \link[paws.developer.tools:codestarconnections_delete_host]{delete_host} \tab The host to be deleted\cr
+#'  \link[paws.developer.tools:codestarconnections_delete_repository_link]{delete_repository_link} \tab Deletes the association between your connection and a specified external Git repository\cr
+#'  \link[paws.developer.tools:codestarconnections_delete_sync_configuration]{delete_sync_configuration} \tab Deletes the sync configuration for a specified repository and connection\cr
 #'  \link[paws.developer.tools:codestarconnections_get_connection]{get_connection} \tab Returns the connection ARN and details such as status, owner, and provider type\cr
 #'  \link[paws.developer.tools:codestarconnections_get_host]{get_host} \tab Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration\cr
+#'  \link[paws.developer.tools:codestarconnections_get_repository_link]{get_repository_link} \tab Returns details about a repository link\cr
+#'  \link[paws.developer.tools:codestarconnections_get_repository_sync_status]{get_repository_sync_status} \tab Returns details about the sync status for a repository\cr
+#'  \link[paws.developer.tools:codestarconnections_get_resource_sync_status]{get_resource_sync_status} \tab Returns the status of the sync with the Git repository for a specific Amazon Web Services resource\cr
+#'  \link[paws.developer.tools:codestarconnections_get_sync_blocker_summary]{get_sync_blocker_summary} \tab Returns a list of the most recent sync blockers\cr
+#'  \link[paws.developer.tools:codestarconnections_get_sync_configuration]{get_sync_configuration} \tab Returns details about a sync configuration, including the sync type and resource name\cr
 #'  \link[paws.developer.tools:codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account\cr
 #'  \link[paws.developer.tools:codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account\cr
+#'  \link[paws.developer.tools:codestarconnections_list_repository_links]{list_repository_links} \tab Lists the repository links created for connections in your account\cr
+#'  \link[paws.developer.tools:codestarconnections_list_repository_sync_definitions]{list_repository_sync_definitions} \tab Lists the repository sync definitions for repository links in your account\cr
+#'  \link[paws.developer.tools:codestarconnections_list_sync_configurations]{list_sync_configurations} \tab Returns a list of sync configurations for a specified repository\cr
 #'  \link[paws.developer.tools:codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
 #'  \link[paws.developer.tools:codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
 #'  \link[paws.developer.tools:codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an Amazon Web Services resource\cr
-#'  \link[paws.developer.tools:codestarconnections_update_host]{update_host} \tab Updates a specified host with the provided configurations
+#'  \link[paws.developer.tools:codestarconnections_update_host]{update_host} \tab Updates a specified host with the provided configurations\cr
+#'  \link[paws.developer.tools:codestarconnections_update_repository_link]{update_repository_link} \tab Updates the association between your connection and a specified external Git repository\cr
+#'  \link[paws.developer.tools:codestarconnections_update_sync_blocker]{update_sync_blocker} \tab Allows you to update the status of a sync blocker, resolving the blocker and allowing syncing to continue\cr
+#'  \link[paws.developer.tools:codestarconnections_update_sync_configuration]{update_sync_configuration} \tab Updates the sync configuration for your connection and a specified external Git repository
 #' }
 #'
 #' @return
@@ -16889,21 +17100,29 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.developer.tools:fis_create_experiment_template]{create_experiment_template} \tab Creates an experiment template\cr
+#'  \link[paws.developer.tools:fis_create_target_account_configuration]{create_target_account_configuration} \tab Creates a target account configuration for the experiment template\cr
 #'  \link[paws.developer.tools:fis_delete_experiment_template]{delete_experiment_template} \tab Deletes the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_delete_target_account_configuration]{delete_target_account_configuration} \tab Deletes the specified target account configuration of the experiment template\cr
 #'  \link[paws.developer.tools:fis_get_action]{get_action} \tab Gets information about the specified FIS action\cr
 #'  \link[paws.developer.tools:fis_get_experiment]{get_experiment} \tab Gets information about the specified experiment\cr
+#'  \link[paws.developer.tools:fis_get_experiment_target_account_configuration]{get_experiment_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment\cr
 #'  \link[paws.developer.tools:fis_get_experiment_template]{get_experiment_template} \tab Gets information about the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_get_target_account_configuration]{get_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment template\cr
 #'  \link[paws.developer.tools:fis_get_target_resource_type]{get_target_resource_type} \tab Gets information about the specified resource type\cr
 #'  \link[paws.developer.tools:fis_list_actions]{list_actions} \tab Lists the available FIS actions\cr
+#'  \link[paws.developer.tools:fis_list_experiment_resolved_targets]{list_experiment_resolved_targets} \tab Lists the resolved targets information of the specified experiment\cr
 #'  \link[paws.developer.tools:fis_list_experiments]{list_experiments} \tab Lists your experiments\cr
+#'  \link[paws.developer.tools:fis_list_experiment_target_account_configurations]{list_experiment_target_account_configurations} \tab Lists the target account configurations of the specified experiment\cr
 #'  \link[paws.developer.tools:fis_list_experiment_templates]{list_experiment_templates} \tab Lists your experiment templates\cr
 #'  \link[paws.developer.tools:fis_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+#'  \link[paws.developer.tools:fis_list_target_account_configurations]{list_target_account_configurations} \tab Lists the target account configurations of the specified experiment template\cr
 #'  \link[paws.developer.tools:fis_list_target_resource_types]{list_target_resource_types} \tab Lists the target resource types\cr
 #'  \link[paws.developer.tools:fis_start_experiment]{start_experiment} \tab Starts running an experiment from the specified experiment template\cr
 #'  \link[paws.developer.tools:fis_stop_experiment]{stop_experiment} \tab Stops the specified experiment\cr
 #'  \link[paws.developer.tools:fis_tag_resource]{tag_resource} \tab Applies the specified tags to the specified resource\cr
 #'  \link[paws.developer.tools:fis_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
-#'  \link[paws.developer.tools:fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template
+#'  \link[paws.developer.tools:fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_update_target_account_configuration]{update_target_account_configuration} \tab Updates the target account configuration for the specified experiment template
 #' }
 #'
 #' @return
@@ -17337,16 +17556,21 @@ xray <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'  \link[paws.management:prometheusservice_create_alert_manager_definition]{create_alert_manager_definition} \tab Create an alert manager definition\cr
 #'  \link[paws.management:prometheusservice_create_logging_configuration]{create_logging_configuration} \tab Create logging configuration\cr
 #'  \link[paws.management:prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace} \tab Create a rule group namespace\cr
+#'  \link[paws.management:prometheusservice_create_scraper]{create_scraper} \tab Create a scraper\cr
 #'  \link[paws.management:prometheusservice_create_workspace]{create_workspace} \tab Creates a new AMP workspace\cr
 #'  \link[paws.management:prometheusservice_delete_alert_manager_definition]{delete_alert_manager_definition} \tab Deletes an alert manager definition\cr
 #'  \link[paws.management:prometheusservice_delete_logging_configuration]{delete_logging_configuration} \tab Delete logging configuration\cr
 #'  \link[paws.management:prometheusservice_delete_rule_groups_namespace]{delete_rule_groups_namespace} \tab Delete a rule groups namespace\cr
+#'  \link[paws.management:prometheusservice_delete_scraper]{delete_scraper} \tab Deletes a scraper\cr
 #'  \link[paws.management:prometheusservice_delete_workspace]{delete_workspace} \tab Deletes an AMP workspace\cr
 #'  \link[paws.management:prometheusservice_describe_alert_manager_definition]{describe_alert_manager_definition} \tab Describes an alert manager definition\cr
 #'  \link[paws.management:prometheusservice_describe_logging_configuration]{describe_logging_configuration} \tab Describes logging configuration\cr
 #'  \link[paws.management:prometheusservice_describe_rule_groups_namespace]{describe_rule_groups_namespace} \tab Describe a rule groups namespace\cr
+#'  \link[paws.management:prometheusservice_describe_scraper]{describe_scraper} \tab Describe an existing scraper\cr
 #'  \link[paws.management:prometheusservice_describe_workspace]{describe_workspace} \tab Describes an existing AMP workspace\cr
+#'  \link[paws.management:prometheusservice_get_default_scraper_configuration]{get_default_scraper_configuration} \tab Gets a default configuration\cr
 #'  \link[paws.management:prometheusservice_list_rule_groups_namespaces]{list_rule_groups_namespaces} \tab Lists rule groups namespaces\cr
+#'  \link[paws.management:prometheusservice_list_scrapers]{list_scrapers} \tab Lists all scrapers in a customer account, including scrapers being created or deleted\cr
 #'  \link[paws.management:prometheusservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags you have assigned to the resource\cr
 #'  \link[paws.management:prometheusservice_list_workspaces]{list_workspaces} \tab Lists all AMP workspaces, including workspaces being created or deleted\cr
 #'  \link[paws.management:prometheusservice_put_alert_manager_definition]{put_alert_manager_definition} \tab Update an alert manager definition\cr
@@ -17407,6 +17631,8 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 #' -   Amazon SageMaker endpoint variants
 #' 
 #' -   Amazon SageMaker Serverless endpoint provisioned concurrency
+#' 
+#' -   Amazon SageMaker inference components
 #' 
 #' -   Spot Fleets (Amazon EC2)
 #' 
@@ -18693,6 +18919,8 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.management:cloudtrail_deregister_organization_delegated_admin]{deregister_organization_delegated_admin} \tab Removes CloudTrail delegated administrator permissions from a member account in an organization\cr
 #'  \link[paws.management:cloudtrail_describe_query]{describe_query} \tab Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status\cr
 #'  \link[paws.management:cloudtrail_describe_trails]{describe_trails} \tab Retrieves settings for one or more trails associated with the current Region for your account\cr
+#'  \link[paws.management:cloudtrail_disable_federation]{disable_federation} \tab Disables Lake query federation on the specified event data store\cr
+#'  \link[paws.management:cloudtrail_enable_federation]{enable_federation} \tab Enables Lake query federation on the specified event data store\cr
 #'  \link[paws.management:cloudtrail_get_channel]{get_channel} \tab Returns information about a specific channel\cr
 #'  \link[paws.management:cloudtrail_get_event_data_store]{get_event_data_store} \tab Returns information about an event data store specified as either an ARN or the ID portion of the ARN\cr
 #'  \link[paws.management:cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail\cr
@@ -19091,9 +19319,10 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' AWS Control Tower
 #'
 #' @description
-#' These interfaces allow you to apply the AWS library of pre-defined
-#' *controls* to your organizational units, programmatically. In AWS
-#' Control Tower, the terms "control" and "guardrail" are synonyms.
+#' These interfaces allow you to apply the Amazon Web Services library of
+#' pre-defined *controls* to your organizational units, programmatically.
+#' In Amazon Web Services Control Tower, the terms "control" and
+#' "guardrail" are synonyms.
 #' 
 #' To call these APIs, you'll need to know:
 #' 
@@ -19105,26 +19334,27 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' 
 #' -   the ARN associated with a resource that you wish to tag or untag.
 #' 
-#' **To get the `controlIdentifier` for your AWS Control Tower control:**
+#' **To get the `controlIdentifier` for your Amazon Web Services Control
+#' Tower control:**
 #' 
 #' The `controlIdentifier` is an ARN that is specified for each control.
 #' You can view the `controlIdentifier` in the console on the **Control
 #' details** page, as well as in the documentation.
 #' 
-#' The `controlIdentifier` is unique in each AWS Region for each control.
-#' You can find the `controlIdentifier` for each Region and control in the
-#' [Tables of control
+#' The `controlIdentifier` is unique in each Amazon Web Services Region for
+#' each control. You can find the `controlIdentifier` for each Region and
+#' control in the [Tables of control
 #' metadata](https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html)
-#' in the *AWS Control Tower User Guide.*
+#' in the *Amazon Web Services Control Tower User Guide.*
 #' 
-#' A quick-reference list of control identifers for the AWS Control Tower
-#' legacy *Strongly recommended* and *Elective* controls is given in
-#' [Resource identifiers for APIs and
+#' A quick-reference list of control identifers for the Amazon Web Services
+#' Control Tower legacy *Strongly recommended* and *Elective* controls is
+#' given in [Resource identifiers for APIs and
 #' controls](https://docs.aws.amazon.com/controltower/latest/userguide/) in
 #' the [Controls reference guide
 #' section](https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html)
-#' of the *AWS Control Tower User Guide*. Remember that *Mandatory*
-#' controls cannot be added or removed.
+#' of the *Amazon Web Services Control Tower User Guide*. Remember that
+#' *Mandatory* controls cannot be added or removed.
 #' 
 #' **ARN format:** `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}`
 #' 
@@ -19136,8 +19366,9 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' 
 #' The `targetIdentifier` is the ARN for an OU.
 #' 
-#' In the AWS Organizations console, you can find the ARN for the OU on the
-#' **Organizational unit details** page associated with that OU.
+#' In the Amazon Web Services Organizations console, you can find the ARN
+#' for the OU on the **Organizational unit details** page associated with
+#' that OU.
 #' 
 #' **OU ARN format:**
 #' 
@@ -19163,7 +19394,8 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' -   [Controls library
 #'     groupings](https://docs.aws.amazon.com/controltower/latest/userguide/controls-reference.html)
 #' 
-#' -   [Creating AWS Control Tower resources with AWS
+#' -   [Creating Amazon Web Services Control Tower resources with Amazon
+#'     Web Services
 #'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
 #' 
 #' To view the open source resource repository on GitHub, see
@@ -19171,16 +19403,18 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' 
 #' **Recording API Requests**
 #' 
-#' AWS Control Tower supports AWS CloudTrail, a service that records AWS
-#' API calls for your AWS account and delivers log files to an Amazon S3
+#' Amazon Web Services Control Tower supports Amazon Web Services
+#' CloudTrail, a service that records Amazon Web Services API calls for
+#' your Amazon Web Services account and delivers log files to an Amazon S3
 #' bucket. By using information collected by CloudTrail, you can determine
-#' which requests the AWS Control Tower service received, who made the
-#' request and when, and so on. For more about AWS Control Tower and its
-#' support for CloudTrail, see [Logging AWS Control Tower Actions with AWS
+#' which requests the Amazon Web Services Control Tower service received,
+#' who made the request and when, and so on. For more about Amazon Web
+#' Services Control Tower and its support for CloudTrail, see [Logging
+#' Amazon Web Services Control Tower Actions with Amazon Web Services
 #' CloudTrail](https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html)
-#' in the AWS Control Tower User Guide. To learn more about CloudTrail,
-#' including how to turn it on and find your log files, see the AWS
-#' CloudTrail User Guide.
+#' in the Amazon Web Services Control Tower User Guide. To learn more about
+#' CloudTrail, including how to turn it on and find your log files, see the
+#' Amazon Web Services CloudTrail User Guide.
 #'
 #' @param
 #' config
@@ -19258,21 +19492,29 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' @examples
 #' \dontrun{
 #' svc <- controltower()
-#' svc$disable_control(
+#' svc$create_landing_zone(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.management:controltower_create_landing_zone]{create_landing_zone} \tab Creates a new landing zone\cr
+#'  \link[paws.management:controltower_delete_landing_zone]{delete_landing_zone} \tab Decommissions a landing zone\cr
 #'  \link[paws.management:controltower_disable_control]{disable_control} \tab This API call turns off a control\cr
 #'  \link[paws.management:controltower_enable_control]{enable_control} \tab This API call activates a control\cr
 #'  \link[paws.management:controltower_get_control_operation]{get_control_operation} \tab Returns the status of a particular EnableControl or DisableControl operation\cr
 #'  \link[paws.management:controltower_get_enabled_control]{get_enabled_control} \tab Retrieves details about an enabled control\cr
-#'  \link[paws.management:controltower_list_enabled_controls]{list_enabled_controls} \tab Lists the controls enabled by AWS Control Tower on the specified organizational unit and the accounts it contains\cr
+#'  \link[paws.management:controltower_get_landing_zone]{get_landing_zone} \tab Returns details about the landing zone\cr
+#'  \link[paws.management:controltower_get_landing_zone_operation]{get_landing_zone_operation} \tab Returns the status of the specified landing zone operation\cr
+#'  \link[paws.management:controltower_list_enabled_controls]{list_enabled_controls} \tab Lists the controls enabled by Amazon Web Services Control Tower on the specified organizational unit and the accounts it contains\cr
+#'  \link[paws.management:controltower_list_landing_zones]{list_landing_zones} \tab Returns the landing zone ARN for the landing zone deployed in your managed account\cr
 #'  \link[paws.management:controltower_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the resource\cr
+#'  \link[paws.management:controltower_reset_landing_zone]{reset_landing_zone} \tab This API call resets a landing zone\cr
 #'  \link[paws.management:controltower_tag_resource]{tag_resource} \tab Applies tags to a resource\cr
-#'  \link[paws.management:controltower_untag_resource]{untag_resource} \tab Removes tags from a resource
+#'  \link[paws.management:controltower_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+#'  \link[paws.management:controltower_update_enabled_control]{update_enabled_control} \tab Updates the configuration of an already enabled control\cr
+#'  \link[paws.management:controltower_update_landing_zone]{update_landing_zone} \tab This API call updates the landing zone
 #' }
 #'
 #' @return
@@ -19720,27 +19962,39 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.management:finspace_create_kx_changeset]{create_kx_changeset} \tab Creates a changeset for a kdb database\cr
 #'  \link[paws.management:finspace_create_kx_cluster]{create_kx_cluster} \tab Creates a new kdb cluster\cr
 #'  \link[paws.management:finspace_create_kx_database]{create_kx_database} \tab Creates a new kdb database in the environment\cr
+#'  \link[paws.management:finspace_create_kx_dataview]{create_kx_dataview} \tab Creates a snapshot of kdb database with tiered storage capabilities and a pre-warmed cache, ready for mounting on kdb clusters\cr
 #'  \link[paws.management:finspace_create_kx_environment]{create_kx_environment} \tab Creates a managed kdb environment for the account\cr
+#'  \link[paws.management:finspace_create_kx_scaling_group]{create_kx_scaling_group} \tab Creates a new scaling group\cr
 #'  \link[paws.management:finspace_create_kx_user]{create_kx_user} \tab Creates a user in FinSpace kdb environment with an associated IAM role\cr
+#'  \link[paws.management:finspace_create_kx_volume]{create_kx_volume} \tab Creates a new volume with a specific amount of throughput and storage capacity\cr
 #'  \link[paws.management:finspace_delete_environment]{delete_environment} \tab Delete an FinSpace environment\cr
 #'  \link[paws.management:finspace_delete_kx_cluster]{delete_kx_cluster} \tab Deletes a kdb cluster\cr
 #'  \link[paws.management:finspace_delete_kx_database]{delete_kx_database} \tab Deletes the specified database and all of its associated data\cr
+#'  \link[paws.management:finspace_delete_kx_dataview]{delete_kx_dataview} \tab Deletes the specified dataview\cr
 #'  \link[paws.management:finspace_delete_kx_environment]{delete_kx_environment} \tab Deletes the kdb environment\cr
+#'  \link[paws.management:finspace_delete_kx_scaling_group]{delete_kx_scaling_group} \tab Deletes the specified scaling group\cr
 #'  \link[paws.management:finspace_delete_kx_user]{delete_kx_user} \tab Deletes a user in the specified kdb environment\cr
+#'  \link[paws.management:finspace_delete_kx_volume]{delete_kx_volume} \tab Deletes a volume\cr
 #'  \link[paws.management:finspace_get_environment]{get_environment} \tab Returns the FinSpace environment object\cr
 #'  \link[paws.management:finspace_get_kx_changeset]{get_kx_changeset} \tab Returns information about a kdb changeset\cr
 #'  \link[paws.management:finspace_get_kx_cluster]{get_kx_cluster} \tab Retrieves information about a kdb cluster\cr
 #'  \link[paws.management:finspace_get_kx_connection_string]{get_kx_connection_string} \tab Retrieves a connection string for a user to connect to a kdb cluster\cr
 #'  \link[paws.management:finspace_get_kx_database]{get_kx_database} \tab Returns database information for the specified environment ID\cr
+#'  \link[paws.management:finspace_get_kx_dataview]{get_kx_dataview} \tab Retrieves details of the dataview\cr
 #'  \link[paws.management:finspace_get_kx_environment]{get_kx_environment} \tab Retrieves all the information for the specified kdb environment\cr
+#'  \link[paws.management:finspace_get_kx_scaling_group]{get_kx_scaling_group} \tab Retrieves details of a scaling group\cr
 #'  \link[paws.management:finspace_get_kx_user]{get_kx_user} \tab Retrieves information about the specified kdb user\cr
+#'  \link[paws.management:finspace_get_kx_volume]{get_kx_volume} \tab Retrieves the information about the volume\cr
 #'  \link[paws.management:finspace_list_environments]{list_environments} \tab A list of all of your FinSpace environments\cr
 #'  \link[paws.management:finspace_list_kx_changesets]{list_kx_changesets} \tab Returns a list of all the changesets for a database\cr
 #'  \link[paws.management:finspace_list_kx_cluster_nodes]{list_kx_cluster_nodes} \tab Lists all the nodes in a kdb cluster\cr
 #'  \link[paws.management:finspace_list_kx_clusters]{list_kx_clusters} \tab Returns a list of clusters\cr
 #'  \link[paws.management:finspace_list_kx_databases]{list_kx_databases} \tab Returns a list of all the databases in the kdb environment\cr
+#'  \link[paws.management:finspace_list_kx_dataviews]{list_kx_dataviews} \tab Returns a list of all the dataviews in the database\cr
 #'  \link[paws.management:finspace_list_kx_environments]{list_kx_environments} \tab Returns a list of kdb environments created in an account\cr
+#'  \link[paws.management:finspace_list_kx_scaling_groups]{list_kx_scaling_groups} \tab Returns a list of scaling groups in a kdb environment\cr
 #'  \link[paws.management:finspace_list_kx_users]{list_kx_users} \tab Lists all the users in a kdb environment\cr
+#'  \link[paws.management:finspace_list_kx_volumes]{list_kx_volumes} \tab Lists all the volumes in a kdb environment\cr
 #'  \link[paws.management:finspace_list_tags_for_resource]{list_tags_for_resource} \tab A list of all tags for a resource\cr
 #'  \link[paws.management:finspace_tag_resource]{tag_resource} \tab Adds metadata tags to a FinSpace resource\cr
 #'  \link[paws.management:finspace_untag_resource]{untag_resource} \tab Removes metadata tags from a FinSpace resource\cr
@@ -19748,9 +20002,11 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.management:finspace_update_kx_cluster_code_configuration]{update_kx_cluster_code_configuration} \tab Allows you to update code configuration on a running cluster\cr
 #'  \link[paws.management:finspace_update_kx_cluster_databases]{update_kx_cluster_databases} \tab Updates the databases mounted on a kdb cluster, which includes the changesetId and all the dbPaths to be cached\cr
 #'  \link[paws.management:finspace_update_kx_database]{update_kx_database} \tab Updates information for the given kdb database\cr
+#'  \link[paws.management:finspace_update_kx_dataview]{update_kx_dataview} \tab Updates the specified dataview\cr
 #'  \link[paws.management:finspace_update_kx_environment]{update_kx_environment} \tab Updates information for the given kdb environment\cr
 #'  \link[paws.management:finspace_update_kx_environment_network]{update_kx_environment_network} \tab Updates environment network to connect to your internal network by using a transit gateway\cr
-#'  \link[paws.management:finspace_update_kx_user]{update_kx_user} \tab Updates the user details
+#'  \link[paws.management:finspace_update_kx_user]{update_kx_user} \tab Updates the user details\cr
+#'  \link[paws.management:finspace_update_kx_volume]{update_kx_volume} \tab Updates the throughput or capacity of a volume
 #' }
 #'
 #' @return
@@ -20604,6 +20860,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
 #'  \link[paws.management:cloudwatchlogs_create_delivery]{create_delivery} \tab Creates a delivery\cr
 #'  \link[paws.management:cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket\cr
+#'  \link[paws.management:cloudwatchlogs_create_log_anomaly_detector]{create_log_anomaly_detector} \tab Creates an anomaly detector that regularly scans one or more log groups and look for patterns and anomalies in the logs\cr
 #'  \link[paws.management:cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
 #'  \link[paws.management:cloudwatchlogs_create_log_stream]{create_log_stream} \tab Creates a log stream for the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_delete_account_policy]{delete_account_policy} \tab Deletes a CloudWatch Logs account policy\cr
@@ -20613,6 +20870,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_delete_delivery_destination_policy]{delete_delivery_destination_policy} \tab Deletes a delivery destination policy\cr
 #'  \link[paws.management:cloudwatchlogs_delete_delivery_source]{delete_delivery_source} \tab Deletes a delivery source\cr
 #'  \link[paws.management:cloudwatchlogs_delete_destination]{delete_destination} \tab Deletes the specified destination, and eventually disables all the subscription filters that publish to it\cr
+#'  \link[paws.management:cloudwatchlogs_delete_log_anomaly_detector]{delete_log_anomaly_detector} \tab Deletes the specified CloudWatch Logs anomaly detector\cr
 #'  \link[paws.management:cloudwatchlogs_delete_log_group]{delete_log_group} \tab Deletes the specified log group and permanently deletes all the archived log events associated with the log group\cr
 #'  \link[paws.management:cloudwatchlogs_delete_log_stream]{delete_log_stream} \tab Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream\cr
 #'  \link[paws.management:cloudwatchlogs_delete_metric_filter]{delete_metric_filter} \tab Deletes the specified metric filter\cr
@@ -20640,10 +20898,13 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_get_delivery_destination]{get_delivery_destination} \tab Retrieves complete information about one delivery destination\cr
 #'  \link[paws.management:cloudwatchlogs_get_delivery_destination_policy]{get_delivery_destination_policy} \tab Retrieves the delivery destination policy assigned to the delivery destination that you specify\cr
 #'  \link[paws.management:cloudwatchlogs_get_delivery_source]{get_delivery_source} \tab Retrieves complete information about one delivery source\cr
+#'  \link[paws.management:cloudwatchlogs_get_log_anomaly_detector]{get_log_anomaly_detector} \tab Retrieves information about the log anomaly detector that you specify\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all of the fields and values of a single log event\cr
 #'  \link[paws.management:cloudwatchlogs_get_query_results]{get_query_results} \tab Returns the results from the specified query\cr
+#'  \link[paws.management:cloudwatchlogs_list_anomalies]{list_anomalies} \tab Returns a list of anomalies that log anomaly detectors have found\cr
+#'  \link[paws.management:cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors} \tab Retrieves a list of the log anomaly detectors in the account\cr
 #'  \link[paws.management:cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Logs resource\cr
 #'  \link[paws.management:cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
 #'  \link[paws.management:cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy that applies to all log groups in the account\cr
@@ -20659,13 +20920,16 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy allowing other Amazon Web Services services to put log events to this account, such as Amazon Route 53\cr
 #'  \link[paws.management:cloudwatchlogs_put_retention_policy]{put_retention_policy} \tab Sets the retention of the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_put_subscription_filter]{put_subscription_filter} \tab Creates or updates a subscription filter and associates it with the specified log group\cr
+#'  \link[paws.management:cloudwatchlogs_start_live_tail]{start_live_tail} \tab Starts a Live Tail streaming session for one or more log groups\cr
 #'  \link[paws.management:cloudwatchlogs_start_query]{start_query} \tab Schedules a query of a log group using CloudWatch Logs Insights\cr
 #'  \link[paws.management:cloudwatchlogs_stop_query]{stop_query} \tab Stops a CloudWatch Logs Insights query that is in progress\cr
 #'  \link[paws.management:cloudwatchlogs_tag_log_group]{tag_log_group} \tab The TagLogGroup operation is on the path to deprecation\cr
 #'  \link[paws.management:cloudwatchlogs_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch Logs resource\cr
 #'  \link[paws.management:cloudwatchlogs_test_metric_filter]{test_metric_filter} \tab Tests the filter pattern of a metric filter against a sample of log event messages\cr
 #'  \link[paws.management:cloudwatchlogs_untag_log_group]{untag_log_group} \tab The UntagLogGroup operation is on the path to deprecation\cr
-#'  \link[paws.management:cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
+#'  \link[paws.management:cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+#'  \link[paws.management:cloudwatchlogs_update_anomaly]{update_anomaly} \tab Use this operation to suppress anomaly detection for a specified anomaly or pattern\cr
+#'  \link[paws.management:cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector
 #' }
 #'
 #' @return
@@ -20809,9 +21073,13 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.management:cloudwatchinternetmonitor_delete_monitor]{delete_monitor} \tab Deletes a monitor in Amazon CloudWatch Internet Monitor\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_get_health_event]{get_health_event} \tab Gets information the Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_get_monitor]{get_monitor} \tab Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_get_query_results]{get_query_results} \tab Return the data for a query with the Amazon CloudWatch Internet Monitor query interface\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_get_query_status]{get_query_status} \tab Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_list_health_events]{list_health_events} \tab Lists all health events for a monitor in Amazon CloudWatch Internet Monitor\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_list_monitors]{list_monitors} \tab Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the Amazon Resource Name (ARN) and name of each monitor\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_start_query]{start_query} \tab Start a query to return data for a specific query type for the Amazon CloudWatch Internet Monitor query interface\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_stop_query]{stop_query} \tab Stop a query that is progress for a specific monitor\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
 #'  \link[paws.management:cloudwatchinternetmonitor_update_monitor]{update_monitor} \tab Updates a monitor
@@ -23039,7 +23307,7 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' 
 #' -   For information about each of the capabilities that comprise Systems
 #'     Manager, see [Systems Manager
-#'     capabilities](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/)
+#'     capabilities](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities)
 #'     in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' -   For details about predefined runbooks for Automation, a capability
@@ -23541,13 +23809,14 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' @examples
 #' \dontrun{
 #' svc <- ssmincidents()
-#' svc$create_replication_set(
+#' svc$batch_get_incident_findings(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.management:ssmincidents_batch_get_incident_findings]{batch_get_incident_findings} \tab Retrieves details about all specified findings for an incident, including descriptive details about each finding\cr
 #'  \link[paws.management:ssmincidents_create_replication_set]{create_replication_set} \tab A replication set replicates and encrypts your data to the provided Regions with the provided KMS key\cr
 #'  \link[paws.management:ssmincidents_create_response_plan]{create_response_plan} \tab Creates a response plan that automates the initial response to incidents\cr
 #'  \link[paws.management:ssmincidents_create_timeline_event]{create_timeline_event} \tab Creates a custom timeline event on the incident details page of an incident record\cr
@@ -23561,11 +23830,12 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.management:ssmincidents_get_resource_policies]{get_resource_policies} \tab Retrieves the resource policies attached to the specified response plan\cr
 #'  \link[paws.management:ssmincidents_get_response_plan]{get_response_plan} \tab Retrieves the details of the specified response plan\cr
 #'  \link[paws.management:ssmincidents_get_timeline_event]{get_timeline_event} \tab Retrieves a timeline event based on its ID and incident record\cr
+#'  \link[paws.management:ssmincidents_list_incident_findings]{list_incident_findings} \tab Retrieves a list of the IDs of findings, plus their last modified times, that have been identified for a specified incident\cr
 #'  \link[paws.management:ssmincidents_list_incident_records]{list_incident_records} \tab Lists all incident records in your account\cr
 #'  \link[paws.management:ssmincidents_list_related_items]{list_related_items} \tab List all related items for an incident record\cr
 #'  \link[paws.management:ssmincidents_list_replication_sets]{list_replication_sets} \tab Lists details about the replication set configured in your account\cr
 #'  \link[paws.management:ssmincidents_list_response_plans]{list_response_plans} \tab Lists all response plans in your account\cr
-#'  \link[paws.management:ssmincidents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified response plan\cr
+#'  \link[paws.management:ssmincidents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified response plan or incident\cr
 #'  \link[paws.management:ssmincidents_list_timeline_events]{list_timeline_events} \tab Lists timeline events for the specified incident record\cr
 #'  \link[paws.management:ssmincidents_put_resource_policy]{put_resource_policy} \tab Adds a resource policy to the specified response plan\cr
 #'  \link[paws.management:ssmincidents_start_incident]{start_incident} \tab Used to start an incident from CloudWatch alarms, EventBridge events, or manually\cr
@@ -24080,7 +24350,7 @@ supportapp <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' integrate with CloudWatch ServiceLens to help you trace the causes of
 #' impacted nodes in your applications. For more information, see [Using
 #' ServiceLens to Monitor the Health of Your
-#' Applications](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html)
+#' Applications](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html)
 #' in the *Amazon CloudWatch User Guide*.
 #' 
 #' Before you create and manage canaries, be aware of the security
@@ -24364,7 +24634,7 @@ synthetics <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.machine.learning:comprehend_list_targeted_sentiment_detection_jobs]{list_targeted_sentiment_detection_jobs} \tab Gets a list of targeted sentiment detection jobs that you have submitted\cr
 #'  \link[paws.machine.learning:comprehend_list_topics_detection_jobs]{list_topics_detection_jobs} \tab Gets a list of the topic detection jobs that you have submitted\cr
 #'  \link[paws.machine.learning:comprehend_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a custom model\cr
-#'  \link[paws.machine.learning:comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job\cr
+#'  \link[paws.machine.learning:comprehend_start_document_classification_job]{start_document_classification_job} \tab Starts an asynchronous document classification job using a custom classification model\cr
 #'  \link[paws.machine.learning:comprehend_start_dominant_language_detection_job]{start_dominant_language_detection_job} \tab Starts an asynchronous dominant language detection job for a collection of documents\cr
 #'  \link[paws.machine.learning:comprehend_start_entities_detection_job]{start_entities_detection_job} \tab Starts an asynchronous entity detection job for a collection of documents\cr
 #'  \link[paws.machine.learning:comprehend_start_events_detection_job]{start_events_detection_job} \tab Starts an asynchronous event detection job for a collection of documents\cr
@@ -25395,7 +25665,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 #'  \link[paws.machine.learning:lexmodelsv2_create_bot]{create_bot} \tab Creates an Amazon Lex conversational bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_create_bot_alias]{create_bot_alias} \tab Creates an alias for the specified version of a bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_create_bot_locale]{create_bot_locale} \tab Creates a locale in the bot\cr
-#'  \link[paws.machine.learning:lexmodelsv2_create_bot_version]{create_bot_version} \tab Creates a new version of the bot based on the DRAFT version\cr
+#'  \link[paws.machine.learning:lexmodelsv2_create_bot_version]{create_bot_version} \tab Creates an immutable version of the bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_create_export]{create_export} \tab Creates a zip archive containing the contents of a bot or a bot locale\cr
 #'  \link[paws.machine.learning:lexmodelsv2_create_intent]{create_intent} \tab Creates an intent\cr
 #'  \link[paws.machine.learning:lexmodelsv2_create_resource_policy]{create_resource_policy} \tab Creates a new resource policy with the specified policy statements\cr
@@ -25422,6 +25692,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 #'  \link[paws.machine.learning:lexmodelsv2_describe_bot_alias]{describe_bot_alias} \tab Get information about a specific bot alias\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_bot_locale]{describe_bot_locale} \tab Describes the settings that a bot has for a specific locale\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_bot_recommendation]{describe_bot_recommendation} \tab Provides metadata information about a bot recommendation\cr
+#'  \link[paws.machine.learning:lexmodelsv2_describe_bot_resource_generation]{describe_bot_resource_generation} \tab Returns information about a request to generate a bot through natural language description, made through the StartBotResource API\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_bot_version]{describe_bot_version} \tab Provides metadata about a version of a bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_custom_vocabulary_metadata]{describe_custom_vocabulary_metadata} \tab Provides metadata information about a custom vocabulary\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_export]{describe_export} \tab Gets information about a specific export\cr
@@ -25434,11 +25705,13 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 #'  \link[paws.machine.learning:lexmodelsv2_describe_test_set]{describe_test_set} \tab Gets metadata information about the test set\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_test_set_discrepancy_report]{describe_test_set_discrepancy_report} \tab Gets metadata information about the test set discrepancy report\cr
 #'  \link[paws.machine.learning:lexmodelsv2_describe_test_set_generation]{describe_test_set_generation} \tab Gets metadata information about the test set generation\cr
+#'  \link[paws.machine.learning:lexmodelsv2_generate_bot_element]{generate_bot_element} \tab Generates sample utterances for an intent\cr
 #'  \link[paws.machine.learning:lexmodelsv2_get_test_execution_artifacts_url]{get_test_execution_artifacts_url} \tab The pre-signed Amazon S3 URL to download the test execution result artifacts\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_aggregated_utterances]{list_aggregated_utterances} \tab Provides a list of utterances that users have sent to the bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_bot_aliases]{list_bot_aliases} \tab Gets a list of aliases for the specified bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_bot_locales]{list_bot_locales} \tab Gets a list of locales for the specified bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_bot_recommendations]{list_bot_recommendations} \tab Get a list of bot recommendations that meet the specified criteria\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_bot_resource_generations]{list_bot_resource_generations} \tab Lists the generation requests made for a bot locale\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_bots]{list_bots} \tab Gets a list of available bots\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_bot_versions]{list_bot_versions} \tab Gets information about all of the versions of a bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_built_in_intents]{list_built_in_intents} \tab Gets a list of built-in intents provided by Amazon Lex that you can use in your bot\cr
@@ -25464,6 +25737,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 #'  \link[paws.machine.learning:lexmodelsv2_list_utterance_metrics]{list_utterance_metrics} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 #'  \link[paws.machine.learning:lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
 #'  \link[paws.machine.learning:lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
+#'  \link[paws.machine.learning:lexmodelsv2_start_bot_resource_generation]{start_bot_resource_generation} \tab Starts a request for the descriptive bot builder to generate a bot locale configuration based on the prompt you provide it\cr
 #'  \link[paws.machine.learning:lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr
 #'  \link[paws.machine.learning:lexmodelsv2_start_test_execution]{start_test_execution} \tab The action to start test set execution\cr
 #'  \link[paws.machine.learning:lexmodelsv2_start_test_set_generation]{start_test_set_generation} \tab The action to start the generation of test set\cr
@@ -26408,7 +26682,7 @@ panorama <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Creates a batch inference job\cr
+#'  \link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Generates batch recommendations based on a list of items or users stored in Amazon S3 and exports the recommendations to an Amazon S3 bucket\cr
 #'  \link[paws.machine.learning:personalize_create_batch_segment_job]{create_batch_segment_job} \tab Creates a batch segment job\cr
 #'  \link[paws.machine.learning:personalize_create_campaign]{create_campaign} \tab Creates a campaign that deploys a solution version\cr
 #'  \link[paws.machine.learning:personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group\cr
@@ -26471,7 +26745,7 @@ panorama <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.machine.learning:personalize_stop_solution_version_creation]{stop_solution_version_creation} \tab Stops creating a solution version that is in a state of CREATE_PENDING or CREATE IN_PROGRESS\cr
 #'  \link[paws.machine.learning:personalize_tag_resource]{tag_resource} \tab Add a list of tags to a resource\cr
 #'  \link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Remove tags that are attached to a resource\cr
-#'  \link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter\cr
+#'  \link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's minProvisionedTPS, or modify your campaign's configuration, such as the exploration configuration\cr
 #'  \link[paws.machine.learning:personalize_update_dataset]{update_dataset} \tab Update a dataset to replace its schema with a new or existing one\cr
 #'  \link[paws.machine.learning:personalize_update_metric_attribution]{update_metric_attribution} \tab Updates a metric attribution\cr
 #'  \link[paws.machine.learning:personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration
@@ -26499,8 +26773,9 @@ personalize <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' @description
 #' Amazon Personalize can consume real-time user event data, such as
 #' *stream* or *click* data, and use it for model training either alone or
-#' combined with historical data. For more information see [Recording
-#' Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
+#' combined with historical data. For more information see [Recording item
+#' interaction
+#' events](https://docs.aws.amazon.com/personalize/latest/dg/recording-item-interaction-events.html).
 #'
 #' @param
 #' config
@@ -26578,14 +26853,16 @@ personalize <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' @examples
 #' \dontrun{
 #' svc <- personalizeevents()
-#' svc$put_events(
+#' svc$put_action_interactions(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.machine.learning:personalizeevents_put_events]{put_events} \tab Records user interaction event data\cr
+#'  \link[paws.machine.learning:personalizeevents_put_action_interactions]{put_action_interactions} \tab Records action interaction event data\cr
+#'  \link[paws.machine.learning:personalizeevents_put_actions]{put_actions} \tab Adds one or more actions to an Actions dataset\cr
+#'  \link[paws.machine.learning:personalizeevents_put_events]{put_events} \tab Records item interaction event data\cr
 #'  \link[paws.machine.learning:personalizeevents_put_items]{put_items} \tab Adds one or more items to an Items dataset\cr
 #'  \link[paws.machine.learning:personalizeevents_put_users]{put_users} \tab Adds one or more users to a Users dataset
 #' }
@@ -26687,13 +26964,14 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
 #' @examples
 #' \dontrun{
 #' svc <- personalizeruntime()
-#' svc$get_personalized_ranking(
+#' svc$get_action_recommendations(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.machine.learning:personalizeruntime_get_action_recommendations]{get_action_recommendations} \tab Returns a list of recommended actions in sorted in descending order by prediction score\cr
 #'  \link[paws.machine.learning:personalizeruntime_get_personalized_ranking]{get_personalized_ranking} \tab Re-ranks a list of recommended items for the given user\cr
 #'  \link[paws.machine.learning:personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
 #' }
@@ -27287,12 +27565,13 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
 #'  \link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
 #'  \link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
+#'  \link[paws.machine.learning:sagemaker_create_cluster]{create_cluster} \tab Creates a SageMaker HyperPod cluster\cr
 #'  \link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
 #'  \link[paws.machine.learning:sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
 #'  \link[paws.machine.learning:sagemaker_create_context]{create_context} \tab Creates a context\cr
 #'  \link[paws.machine.learning:sagemaker_create_data_quality_job_definition]{create_data_quality_job_definition} \tab Creates a definition for a job that monitors data quality and drift\cr
 #'  \link[paws.machine.learning:sagemaker_create_device_fleet]{create_device_fleet} \tab Creates a device fleet\cr
-#'  \link[paws.machine.learning:sagemaker_create_domain]{create_domain} \tab Creates a Domain used by Amazon SageMaker Studio\cr
+#'  \link[paws.machine.learning:sagemaker_create_domain]{create_domain} \tab Creates a Domain\cr
 #'  \link[paws.machine.learning:sagemaker_create_edge_deployment_plan]{create_edge_deployment_plan} \tab Creates an edge deployment plan, consisting of multiple stages\cr
 #'  \link[paws.machine.learning:sagemaker_create_edge_deployment_stage]{create_edge_deployment_stage} \tab Creates a new stage in an existing edge deployment plan\cr
 #'  \link[paws.machine.learning:sagemaker_create_edge_packaging_job]{create_edge_packaging_job} \tab Starts a SageMaker Edge Manager model packaging job\cr
@@ -27306,6 +27585,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
 #'  \link[paws.machine.learning:sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
 #'  \link[paws.machine.learning:sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker image specified by ImageName\cr
+#'  \link[paws.machine.learning:sagemaker_create_inference_component]{create_inference_component} \tab Creates an inference component, which is a SageMaker hosting object that you can use to deploy a model to an endpoint\cr
 #'  \link[paws.machine.learning:sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 #'  \link[paws.machine.learning:sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
 #'  \link[paws.machine.learning:sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
@@ -27326,7 +27606,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
 #'  \link[paws.machine.learning:sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
 #'  \link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a space used for real time collaboration in a Domain\cr
-#'  \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Studio Lifecycle Configuration\cr
+#'  \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[paws.machine.learning:sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 #'  \link[paws.machine.learning:sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
 #'  \link[paws.machine.learning:sagemaker_create_trial]{create_trial} \tab Creates an SageMaker trial\cr
@@ -27340,7 +27620,9 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_delete_app_image_config]{delete_app_image_config} \tab Deletes an AppImageConfig\cr
 #'  \link[paws.machine.learning:sagemaker_delete_artifact]{delete_artifact} \tab Deletes an artifact\cr
 #'  \link[paws.machine.learning:sagemaker_delete_association]{delete_association} \tab Deletes an association\cr
+#'  \link[paws.machine.learning:sagemaker_delete_cluster]{delete_cluster} \tab Delete a SageMaker HyperPod cluster\cr
 #'  \link[paws.machine.learning:sagemaker_delete_code_repository]{delete_code_repository} \tab Deletes the specified Git repository from your account\cr
+#'  \link[paws.machine.learning:sagemaker_delete_compilation_job]{delete_compilation_job} \tab Deletes the specified compilation job\cr
 #'  \link[paws.machine.learning:sagemaker_delete_context]{delete_context} \tab Deletes an context\cr
 #'  \link[paws.machine.learning:sagemaker_delete_data_quality_job_definition]{delete_data_quality_job_definition} \tab Deletes a data quality monitoring job definition\cr
 #'  \link[paws.machine.learning:sagemaker_delete_device_fleet]{delete_device_fleet} \tab Deletes a fleet\cr
@@ -27357,6 +27639,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
 #'  \link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
 #'  \link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
+#'  \link[paws.machine.learning:sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
@@ -27372,7 +27655,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 #'  \link[paws.machine.learning:sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 #'  \link[paws.machine.learning:sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
-#'  \link[paws.machine.learning:sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Studio Lifecycle Configuration\cr
+#'  \link[paws.machine.learning:sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[paws.machine.learning:sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an SageMaker resource\cr
 #'  \link[paws.machine.learning:sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
 #'  \link[paws.machine.learning:sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component\cr
@@ -27387,6 +27670,8 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
 #'  \link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an AutoML job created by calling CreateAutoMLJob\cr
 #'  \link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
+#'  \link[paws.machine.learning:sagemaker_describe_cluster]{describe_cluster} \tab Retrieves information of a SageMaker HyperPod cluster\cr
+#'  \link[paws.machine.learning:sagemaker_describe_cluster_node]{describe_cluster_node} \tab Retrieves information of an instance (also called a node interchangeably) of a SageMaker HyperPod cluster\cr
 #'  \link[paws.machine.learning:sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 #'  \link[paws.machine.learning:sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -27408,6 +27693,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Returns a description of a hyperparameter tuning job, depending on the fields selected\cr
 #'  \link[paws.machine.learning:sagemaker_describe_image]{describe_image} \tab Describes a SageMaker image\cr
 #'  \link[paws.machine.learning:sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker image\cr
+#'  \link[paws.machine.learning:sagemaker_describe_inference_component]{describe_inference_component} \tab Returns information about an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_describe_inference_experiment]{describe_inference_experiment} \tab Returns details about an inference experiment\cr
 #'  \link[paws.machine.learning:sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
@@ -27429,7 +27715,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
 #'  \link[paws.machine.learning:sagemaker_describe_space]{describe_space} \tab Describes the space\cr
-#'  \link[paws.machine.learning:sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Studio Lifecycle Configuration\cr
+#'  \link[paws.machine.learning:sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[paws.machine.learning:sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
 #'  \link[paws.machine.learning:sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job\cr
@@ -27457,6 +27743,8 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_list_associations]{list_associations} \tab Lists the associations in your account and their properties\cr
 #'  \link[paws.machine.learning:sagemaker_list_auto_ml_jobs]{list_auto_ml_jobs} \tab Request a list of jobs\cr
 #'  \link[paws.machine.learning:sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the candidates created for the job\cr
+#'  \link[paws.machine.learning:sagemaker_list_cluster_nodes]{list_cluster_nodes} \tab Retrieves the list of instances (also called nodes interchangeably) in a SageMaker HyperPod cluster\cr
+#'  \link[paws.machine.learning:sagemaker_list_clusters]{list_clusters} \tab Retrieves the list of SageMaker HyperPod clusters\cr
 #'  \link[paws.machine.learning:sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account\cr
 #'  \link[paws.machine.learning:sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters\cr
 #'  \link[paws.machine.learning:sagemaker_list_contexts]{list_contexts} \tab Lists the contexts in your account and their properties\cr
@@ -27478,6 +27766,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs} \tab Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account\cr
 #'  \link[paws.machine.learning:sagemaker_list_images]{list_images} \tab Lists the images in your account and their properties\cr
 #'  \link[paws.machine.learning:sagemaker_list_image_versions]{list_image_versions} \tab Lists the versions of a specified image and their properties\cr
+#'  \link[paws.machine.learning:sagemaker_list_inference_components]{list_inference_components} \tab Lists the inference components in your account and their properties\cr
 #'  \link[paws.machine.learning:sagemaker_list_inference_experiments]{list_inference_experiments} \tab Returns the list of all inference experiments\cr
 #'  \link[paws.machine.learning:sagemaker_list_inference_recommendations_jobs]{list_inference_recommendations_jobs} \tab Lists recommendation jobs that satisfy various filters\cr
 #'  \link[paws.machine.learning:sagemaker_list_inference_recommendations_job_steps]{list_inference_recommendations_job_steps} \tab Returns a list of the subtasks for an Inference Recommender job\cr
@@ -27509,7 +27798,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_list_resource_catalogs]{list_resource_catalogs} \tab Lists Amazon SageMaker Catalogs based on given filters and orders\cr
 #'  \link[paws.machine.learning:sagemaker_list_spaces]{list_spaces} \tab Lists spaces\cr
 #'  \link[paws.machine.learning:sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
-#'  \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Studio Lifecycle Configurations in your Amazon Web Services Account\cr
+#'  \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Amazon SageMaker Studio Lifecycle Configurations in your Amazon Web Services Account\cr
 #'  \link[paws.machine.learning:sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace\cr
 #'  \link[paws.machine.learning:sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified SageMaker resource\cr
 #'  \link[paws.machine.learning:sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs\cr
@@ -27550,6 +27839,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_update_action]{update_action} \tab Updates an action\cr
 #'  \link[paws.machine.learning:sagemaker_update_app_image_config]{update_app_image_config} \tab Updates the properties of an AppImageConfig\cr
 #'  \link[paws.machine.learning:sagemaker_update_artifact]{update_artifact} \tab Updates an artifact\cr
+#'  \link[paws.machine.learning:sagemaker_update_cluster]{update_cluster} \tab Update a SageMaker HyperPod cluster\cr
 #'  \link[paws.machine.learning:sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values\cr
 #'  \link[paws.machine.learning:sagemaker_update_context]{update_context} \tab Updates a context\cr
 #'  \link[paws.machine.learning:sagemaker_update_device_fleet]{update_device_fleet} \tab Updates a fleet of devices\cr
@@ -27563,6 +27853,8 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_update_hub]{update_hub} \tab Update a hub\cr
 #'  \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
 #'  \link[paws.machine.learning:sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker image version\cr
+#'  \link[paws.machine.learning:sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr
+#'  \link[paws.machine.learning:sagemaker_update_inference_component_runtime_config]{update_inference_component_runtime_config} \tab Runtime settings for a model that is deployed with an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_update_inference_experiment]{update_inference_experiment} \tab Updates an inference experiment that you created\cr
 #'  \link[paws.machine.learning:sagemaker_update_model_card]{update_model_card} \tab Update an Amazon SageMaker Model Card\cr
 #'  \link[paws.machine.learning:sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr
@@ -28574,6 +28866,7 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.machine.learning:transcribeservice_delete_call_analytics_category]{delete_call_analytics_category} \tab Deletes a Call Analytics category\cr
 #'  \link[paws.machine.learning:transcribeservice_delete_call_analytics_job]{delete_call_analytics_job} \tab Deletes a Call Analytics job\cr
 #'  \link[paws.machine.learning:transcribeservice_delete_language_model]{delete_language_model} \tab Deletes a custom language model\cr
+#'  \link[paws.machine.learning:transcribeservice_delete_medical_scribe_job]{delete_medical_scribe_job} \tab Deletes a Medical Scribe job\cr
 #'  \link[paws.machine.learning:transcribeservice_delete_medical_transcription_job]{delete_medical_transcription_job} \tab Deletes a medical transcription job\cr
 #'  \link[paws.machine.learning:transcribeservice_delete_medical_vocabulary]{delete_medical_vocabulary} \tab Deletes a custom medical vocabulary\cr
 #'  \link[paws.machine.learning:transcribeservice_delete_transcription_job]{delete_transcription_job} \tab Deletes a transcription job\cr
@@ -28582,6 +28875,7 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.machine.learning:transcribeservice_describe_language_model]{describe_language_model} \tab Provides information about the specified custom language model\cr
 #'  \link[paws.machine.learning:transcribeservice_get_call_analytics_category]{get_call_analytics_category} \tab Provides information about the specified Call Analytics category\cr
 #'  \link[paws.machine.learning:transcribeservice_get_call_analytics_job]{get_call_analytics_job} \tab Provides information about the specified Call Analytics job\cr
+#'  \link[paws.machine.learning:transcribeservice_get_medical_scribe_job]{get_medical_scribe_job} \tab Provides information about the specified Medical Scribe job\cr
 #'  \link[paws.machine.learning:transcribeservice_get_medical_transcription_job]{get_medical_transcription_job} \tab Provides information about the specified medical transcription job\cr
 #'  \link[paws.machine.learning:transcribeservice_get_medical_vocabulary]{get_medical_vocabulary} \tab Provides information about the specified custom medical vocabulary\cr
 #'  \link[paws.machine.learning:transcribeservice_get_transcription_job]{get_transcription_job} \tab Provides information about the specified transcription job\cr
@@ -28590,6 +28884,7 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.machine.learning:transcribeservice_list_call_analytics_categories]{list_call_analytics_categories} \tab Provides a list of Call Analytics categories, including all rules that make up each category\cr
 #'  \link[paws.machine.learning:transcribeservice_list_call_analytics_jobs]{list_call_analytics_jobs} \tab Provides a list of Call Analytics jobs that match the specified criteria\cr
 #'  \link[paws.machine.learning:transcribeservice_list_language_models]{list_language_models} \tab Provides a list of custom language models that match the specified criteria\cr
+#'  \link[paws.machine.learning:transcribeservice_list_medical_scribe_jobs]{list_medical_scribe_jobs} \tab Provides a list of Medical Scribe jobs that match the specified criteria\cr
 #'  \link[paws.machine.learning:transcribeservice_list_medical_transcription_jobs]{list_medical_transcription_jobs} \tab Provides a list of medical transcription jobs that match the specified criteria\cr
 #'  \link[paws.machine.learning:transcribeservice_list_medical_vocabularies]{list_medical_vocabularies} \tab Provides a list of custom medical vocabularies that match the specified criteria\cr
 #'  \link[paws.machine.learning:transcribeservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with the specified transcription job, vocabulary, model, or resource\cr
@@ -28597,6 +28892,7 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.machine.learning:transcribeservice_list_vocabularies]{list_vocabularies} \tab Provides a list of custom vocabularies that match the specified criteria\cr
 #'  \link[paws.machine.learning:transcribeservice_list_vocabulary_filters]{list_vocabulary_filters} \tab Provides a list of custom vocabulary filters that match the specified criteria\cr
 #'  \link[paws.machine.learning:transcribeservice_start_call_analytics_job]{start_call_analytics_job} \tab Transcribes the audio from a customer service call and applies any additional Request Parameters you choose to include in your request\cr
+#'  \link[paws.machine.learning:transcribeservice_start_medical_scribe_job]{start_medical_scribe_job} \tab Transcribes patient-clinician conversations and generates clinical notes\cr
 #'  \link[paws.machine.learning:transcribeservice_start_medical_transcription_job]{start_medical_transcription_job} \tab Transcribes the audio from a medical dictation or conversation and applies any additional Request Parameters you choose to include in your request\cr
 #'  \link[paws.machine.learning:transcribeservice_start_transcription_job]{start_transcription_job} \tab Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request\cr
 #'  \link[paws.machine.learning:transcribeservice_tag_resource]{tag_resource} \tab Adds one or more custom tags, each in the form of a key:value pair, to the specified resource\cr
@@ -28892,7 +29188,8 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' Amazon Bedrock
 #'
 #' @description
-#' Describes the API operations for creating and managing Bedrock models.
+#' Describes the API operations for creating and managing Amazon Bedrock
+#' models.
 #'
 #' @param
 #' config
@@ -28982,13 +29279,13 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'  \link[paws.machine.learning:bedrock_delete_custom_model]{delete_custom_model} \tab Deletes a custom model that you created earlier\cr
 #'  \link[paws.machine.learning:bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
 #'  \link[paws.machine.learning:bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a provisioned throughput\cr
-#'  \link[paws.machine.learning:bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Bedrock custom model that you have created\cr
-#'  \link[paws.machine.learning:bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Bedrock foundation model\cr
+#'  \link[paws.machine.learning:bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Amazon Bedrock custom model that you have created\cr
+#'  \link[paws.machine.learning:bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Amazon Bedrock foundation model\cr
 #'  \link[paws.machine.learning:bedrock_get_model_customization_job]{get_model_customization_job} \tab Retrieves the properties associated with a model-customization job, including the status of the job\cr
 #'  \link[paws.machine.learning:bedrock_get_model_invocation_logging_configuration]{get_model_invocation_logging_configuration} \tab Get the current configuration values for model invocation logging\cr
 #'  \link[paws.machine.learning:bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Get details for a provisioned throughput\cr
 #'  \link[paws.machine.learning:bedrock_list_custom_models]{list_custom_models} \tab Returns a list of the custom models that you have created with the CreateModelCustomizationJob operation\cr
-#'  \link[paws.machine.learning:bedrock_list_foundation_models]{list_foundation_models} \tab List of Bedrock foundation models that you can use\cr
+#'  \link[paws.machine.learning:bedrock_list_foundation_models]{list_foundation_models} \tab List of Amazon Bedrock foundation models that you can use\cr
 #'  \link[paws.machine.learning:bedrock_list_model_customization_jobs]{list_model_customization_jobs} \tab Returns a list of model customization jobs that you have submitted\cr
 #'  \link[paws.machine.learning:bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab List the provisioned capacities\cr
 #'  \link[paws.machine.learning:bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr
@@ -29144,11 +29441,6 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
 #' not support the API. For more information and to download the driver,
 #' see [Accessing Amazon Athena with
 #' JDBC](https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html).
-#' 
-#' For code samples using the Amazon Web Services SDK for Java, see
-#' [Examples and Code
-#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-#' in the *Amazon Athena User Guide*.
 #'
 #' @param
 #' config
@@ -30261,6 +30553,7 @@ elasticsearchservice <- function(config = list(), credentials = list(), endpoint
 #'  \link[paws.analytics:emr_remove_managed_scaling_policy]{remove_managed_scaling_policy} \tab Removes a managed scaling policy from a specified Amazon EMR cluster\cr
 #'  \link[paws.analytics:emr_remove_tags]{remove_tags} \tab Removes tags from an Amazon EMR resource, such as a cluster or Amazon EMR Studio\cr
 #'  \link[paws.analytics:emr_run_job_flow]{run_job_flow} \tab RunJobFlow creates and starts running a new cluster (job flow)\cr
+#'  \link[paws.analytics:emr_set_keep_job_flow_alive_when_no_steps]{set_keep_job_flow_alive_when_no_steps} \tab You can use the SetKeepJobFlowAliveWhenNoSteps to configure a cluster (job flow) to terminate after the step execution, i\cr
 #'  \link[paws.analytics:emr_set_termination_protection]{set_termination_protection} \tab SetTerminationProtection locks a cluster (job flow) so the Amazon EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error\cr
 #'  \link[paws.analytics:emr_set_visible_to_all_users]{set_visible_to_all_users} \tab The SetVisibleToAllUsers parameter is no longer supported\cr
 #'  \link[paws.analytics:emr_start_notebook_execution]{start_notebook_execution} \tab Starts a notebook execution\cr
@@ -30663,6 +30956,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names\cr
 #'  \link[paws.analytics:glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names\cr
 #'  \link[paws.analytics:glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request\cr
+#'  \link[paws.analytics:glue_batch_get_table_optimizer]{batch_get_table_optimizer} \tab Returns the configuration for the specified table optimizers\cr
 #'  \link[paws.analytics:glue_batch_get_triggers]{batch_get_triggers} \tab Returns a list of resource metadata for a given list of trigger names\cr
 #'  \link[paws.analytics:glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names\cr
 #'  \link[paws.analytics:glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition\cr
@@ -30690,6 +30984,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_create_security_configuration]{create_security_configuration} \tab Creates a new security configuration\cr
 #'  \link[paws.analytics:glue_create_session]{create_session} \tab Creates a new session\cr
 #'  \link[paws.analytics:glue_create_table]{create_table} \tab Creates a new table definition in the Data Catalog\cr
+#'  \link[paws.analytics:glue_create_table_optimizer]{create_table_optimizer} \tab Creates a new table optimizer for a specific function\cr
 #'  \link[paws.analytics:glue_create_trigger]{create_trigger} \tab Creates a new trigger\cr
 #'  \link[paws.analytics:glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
 #'  \link[paws.analytics:glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
@@ -30714,6 +31009,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_delete_security_configuration]{delete_security_configuration} \tab Deletes a specified security configuration\cr
 #'  \link[paws.analytics:glue_delete_session]{delete_session} \tab Deletes the session\cr
 #'  \link[paws.analytics:glue_delete_table]{delete_table} \tab Removes a table definition from the Data Catalog\cr
+#'  \link[paws.analytics:glue_delete_table_optimizer]{delete_table_optimizer} \tab Deletes an optimizer and all associated metadata for a table\cr
 #'  \link[paws.analytics:glue_delete_table_version]{delete_table_version} \tab Deletes a specified version of a table\cr
 #'  \link[paws.analytics:glue_delete_trigger]{delete_trigger} \tab Deletes a specified trigger\cr
 #'  \link[paws.analytics:glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog\cr
@@ -30726,6 +31022,8 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog\cr
 #'  \link[paws.analytics:glue_get_column_statistics_for_partition]{get_column_statistics_for_partition} \tab Retrieves partition statistics of columns\cr
 #'  \link[paws.analytics:glue_get_column_statistics_for_table]{get_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
+#'  \link[paws.analytics:glue_get_column_statistics_task_run]{get_column_statistics_task_run} \tab Get the associated metadata/information for a task run, given a task run ID\cr
+#'  \link[paws.analytics:glue_get_column_statistics_task_runs]{get_column_statistics_task_runs} \tab Retrieves information about all runs associated with the specified table\cr
 #'  \link[paws.analytics:glue_get_connection]{get_connection} \tab Retrieves a connection definition from the Data Catalog\cr
 #'  \link[paws.analytics:glue_get_connections]{get_connections} \tab Retrieves a list of connection definitions from the Data Catalog\cr
 #'  \link[paws.analytics:glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler\cr
@@ -30768,6 +31066,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_get_session]{get_session} \tab Retrieves the session\cr
 #'  \link[paws.analytics:glue_get_statement]{get_statement} \tab Retrieves the statement\cr
 #'  \link[paws.analytics:glue_get_table]{get_table} \tab Retrieves the Table definition in a Data Catalog for a specified table\cr
+#'  \link[paws.analytics:glue_get_table_optimizer]{get_table_optimizer} \tab Returns the configuration of all optimizers associated with a specified table\cr
 #'  \link[paws.analytics:glue_get_tables]{get_tables} \tab Retrieves the definitions of some or all of the tables in a given Database\cr
 #'  \link[paws.analytics:glue_get_table_version]{get_table_version} \tab Retrieves a specified version of a table\cr
 #'  \link[paws.analytics:glue_get_table_versions]{get_table_versions} \tab Retrieves a list of strings that identify available versions of a specified table\cr
@@ -30785,6 +31084,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_get_workflow_runs]{get_workflow_runs} \tab Retrieves metadata for all runs of a given workflow\cr
 #'  \link[paws.analytics:glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to Glue\cr
 #'  \link[paws.analytics:glue_list_blueprints]{list_blueprints} \tab Lists all the blueprint names in an account\cr
+#'  \link[paws.analytics:glue_list_column_statistics_task_runs]{list_column_statistics_task_runs} \tab List all task runs for a particular account\cr
 #'  \link[paws.analytics:glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag\cr
 #'  \link[paws.analytics:glue_list_crawls]{list_crawls} \tab Returns all the crawls of a specified crawler\cr
 #'  \link[paws.analytics:glue_list_custom_entity_types]{list_custom_entity_types} \tab Lists all the custom patterns that have been created\cr
@@ -30800,6 +31100,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_list_schema_versions]{list_schema_versions} \tab Returns a list of schema versions that you have created, with minimal information\cr
 #'  \link[paws.analytics:glue_list_sessions]{list_sessions} \tab Retrieve a list of sessions\cr
 #'  \link[paws.analytics:glue_list_statements]{list_statements} \tab Lists statements for the session\cr
+#'  \link[paws.analytics:glue_list_table_optimizer_runs]{list_table_optimizer_runs} \tab Lists the history of previous optimizer runs for a specific table\cr
 #'  \link[paws.analytics:glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag\cr
 #'  \link[paws.analytics:glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
 #'  \link[paws.analytics:glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
@@ -30814,6 +31115,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_run_statement]{run_statement} \tab Executes the statement\cr
 #'  \link[paws.analytics:glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database\cr
 #'  \link[paws.analytics:glue_start_blueprint_run]{start_blueprint_run} \tab Starts a new run of the specified blueprint\cr
+#'  \link[paws.analytics:glue_start_column_statistics_task_run]{start_column_statistics_task_run} \tab Starts a column statistics task run, for a specified table and columns\cr
 #'  \link[paws.analytics:glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled\cr
 #'  \link[paws.analytics:glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
 #'  \link[paws.analytics:glue_start_data_quality_rule_recommendation_run]{start_data_quality_rule_recommendation_run} \tab Starts a recommendation run that is used to generate rules when you don't know what rules to write\cr
@@ -30825,6 +31127,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run} \tab Starts the active learning workflow for your machine learning transform to improve the transform's quality by generating label sets and adding labels\cr
 #'  \link[paws.analytics:glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
 #'  \link[paws.analytics:glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow\cr
+#'  \link[paws.analytics:glue_stop_column_statistics_task_run]{stop_column_statistics_task_run} \tab Stops a task run for the specified table\cr
 #'  \link[paws.analytics:glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
 #'  \link[paws.analytics:glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
 #'  \link[paws.analytics:glue_stop_session]{stop_session} \tab Stops the session\cr
@@ -30850,6 +31153,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.analytics:glue_update_schema]{update_schema} \tab Updates the description, compatibility setting, or version checkpoint for a schema set\cr
 #'  \link[paws.analytics:glue_update_source_control_from_job]{update_source_control_from_job} \tab Synchronizes a job to the source control repository\cr
 #'  \link[paws.analytics:glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog\cr
+#'  \link[paws.analytics:glue_update_table_optimizer]{update_table_optimizer} \tab Updates the configuration for an existing table optimizer\cr
 #'  \link[paws.analytics:glue_update_trigger]{update_trigger} \tab Updates a trigger definition\cr
 #'  \link[paws.analytics:glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog\cr
 #'  \link[paws.analytics:glue_update_workflow]{update_workflow} \tab Updates an existing workflow
@@ -31567,8 +31871,17 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' -   A *participant object* represents participants (people) in the stage
 #'     and contains information about them. When a token is created, it
 #'     includes a participant ID; when a participant uses that token to
-#'     join a stage, the participant is associated with that participant ID
-#'     There is a 1:1 mapping between participant tokens and participants.
+#'     join a stage, the participant is associated with that participant
+#'     ID. There is a 1:1 mapping between participant tokens and
+#'     participants.
+#' 
+#' -   Server-side composition: The *composition* process composites
+#'     participants of a stage into a single video and forwards it to a set
+#'     of outputs (e.g., IVS channels). Composition endpoints support this
+#'     process.
+#' 
+#' -   Server-side composition: A *composition* controls the look of the
+#'     outputs, including how participants are positioned in the video.
 #' 
 #' **Resources**
 #' 
@@ -31644,6 +31957,56 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' 
 #' -   `update_stage` — Updates a stage’s
 #'     configuration.
+#' 
+#' **Composition Endpoints**
+#' 
+#' -   `get_composition` — Gets information
+#'     about the specified Composition resource.
+#' 
+#' -   `list_compositions` — Gets summary
+#'     information about all Compositions in your account, in the AWS
+#'     region where the API request is processed.
+#' 
+#' -   `start_composition` — Starts a
+#'     Composition from a stage based on the configuration provided in the
+#'     request.
+#' 
+#' -   `stop_composition` — Stops and
+#'     deletes a Composition resource. Any broadcast from the Composition
+#'     resource is stopped.
+#' 
+#' **EncoderConfiguration Endpoints**
+#' 
+#' -   `create_encoder_configuration`
+#'     — Creates an EncoderConfiguration object.
+#' 
+#' -   `delete_encoder_configuration`
+#'     — Deletes an EncoderConfiguration resource. Ensures that no
+#'     Compositions are using this template; otherwise, returns an error.
+#' 
+#' -   `get_encoder_configuration`
+#'     — Gets information about the specified EncoderConfiguration
+#'     resource.
+#' 
+#' -   `list_encoder_configurations`
+#'     — Gets summary information about all EncoderConfigurations in your
+#'     account, in the AWS region where the API request is processed.
+#' 
+#' **StorageConfiguration Endpoints**
+#' 
+#' -   `create_storage_configuration`
+#'     — Creates a new storage configuration, used to enable recording to
+#'     Amazon S3.
+#' 
+#' -   `delete_storage_configuration`
+#'     — Deletes the storage configuration for the specified ARN.
+#' 
+#' -   `get_storage_configuration`
+#'     — Gets the storage configuration for the specified ARN.
+#' 
+#' -   `list_storage_configurations`
+#'     — Gets summary information about all storage configurations in your
+#'     account, in the AWS region where the API request is processed.
 #' 
 #' **Tags Endpoints**
 #' 
@@ -31732,25 +32095,37 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' @examples
 #' \dontrun{
 #' svc <- ivsrealtime()
-#' svc$create_participant_token(
+#' svc$create_encoder_configuration(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.analytics:ivsrealtime_create_encoder_configuration]{create_encoder_configuration} \tab Creates an EncoderConfiguration object\cr
 #'  \link[paws.analytics:ivsrealtime_create_participant_token]{create_participant_token} \tab Creates an additional token for a specified stage\cr
 #'  \link[paws.analytics:ivsrealtime_create_stage]{create_stage} \tab Creates a new stage (and optionally participant tokens)\cr
+#'  \link[paws.analytics:ivsrealtime_create_storage_configuration]{create_storage_configuration} \tab Creates a new storage configuration, used to enable recording to Amazon S3\cr
+#'  \link[paws.analytics:ivsrealtime_delete_encoder_configuration]{delete_encoder_configuration} \tab Deletes an EncoderConfiguration resource\cr
 #'  \link[paws.analytics:ivsrealtime_delete_stage]{delete_stage} \tab Shuts down and deletes the specified stage (disconnecting all participants)\cr
+#'  \link[paws.analytics:ivsrealtime_delete_storage_configuration]{delete_storage_configuration} \tab Deletes the storage configuration for the specified ARN\cr
 #'  \link[paws.analytics:ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant and revokes the participant permanently from a specified stage\cr
+#'  \link[paws.analytics:ivsrealtime_get_composition]{get_composition} \tab Get information about the specified Composition resource\cr
+#'  \link[paws.analytics:ivsrealtime_get_encoder_configuration]{get_encoder_configuration} \tab Gets information about the specified EncoderConfiguration resource\cr
 #'  \link[paws.analytics:ivsrealtime_get_participant]{get_participant} \tab Gets information about the specified participant token\cr
 #'  \link[paws.analytics:ivsrealtime_get_stage]{get_stage} \tab Gets information for the specified stage\cr
 #'  \link[paws.analytics:ivsrealtime_get_stage_session]{get_stage_session} \tab Gets information for the specified stage session\cr
+#'  \link[paws.analytics:ivsrealtime_get_storage_configuration]{get_storage_configuration} \tab Gets the storage configuration for the specified ARN\cr
+#'  \link[paws.analytics:ivsrealtime_list_compositions]{list_compositions} \tab Gets summary information about all Compositions in your account, in the AWS region where the API request is processed\cr
+#'  \link[paws.analytics:ivsrealtime_list_encoder_configurations]{list_encoder_configurations} \tab Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[paws.analytics:ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
 #'  \link[paws.analytics:ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
 #'  \link[paws.analytics:ivsrealtime_list_stages]{list_stages} \tab Gets summary information about all stages in your account, in the AWS region where the API request is processed\cr
 #'  \link[paws.analytics:ivsrealtime_list_stage_sessions]{list_stage_sessions} \tab Gets all sessions for a specified stage\cr
+#'  \link[paws.analytics:ivsrealtime_list_storage_configurations]{list_storage_configurations} \tab Gets summary information about all storage configurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[paws.analytics:ivsrealtime_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
+#'  \link[paws.analytics:ivsrealtime_start_composition]{start_composition} \tab Starts a Composition from a stage based on the configuration provided in the request\cr
+#'  \link[paws.analytics:ivsrealtime_stop_composition]{stop_composition} \tab Stops and deletes a Composition resource\cr
 #'  \link[paws.analytics:ivsrealtime_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 #'  \link[paws.analytics:ivsrealtime_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
 #'  \link[paws.analytics:ivsrealtime_update_stage]{update_stage} \tab Updates a stage’s configuration
@@ -32434,6 +32809,7 @@ kendraranking <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.analytics:kinesis_add_tags_to_stream]{add_tags_to_stream} \tab Adds or updates tags for the specified Kinesis data stream\cr
 #'  \link[paws.analytics:kinesis_create_stream]{create_stream} \tab Creates a Kinesis data stream\cr
 #'  \link[paws.analytics:kinesis_decrease_stream_retention_period]{decrease_stream_retention_period} \tab Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream\cr
+#'  \link[paws.analytics:kinesis_delete_resource_policy]{delete_resource_policy} \tab Delete a policy for the specified data stream or consumer\cr
 #'  \link[paws.analytics:kinesis_delete_stream]{delete_stream} \tab Deletes a Kinesis data stream and all its shards and data\cr
 #'  \link[paws.analytics:kinesis_deregister_stream_consumer]{deregister_stream_consumer} \tab To deregister a consumer, provide its ARN\cr
 #'  \link[paws.analytics:kinesis_describe_limits]{describe_limits} \tab Describes the shard limits and usage for the account\cr
@@ -32443,6 +32819,7 @@ kendraranking <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.analytics:kinesis_disable_enhanced_monitoring]{disable_enhanced_monitoring} \tab Disables enhanced monitoring\cr
 #'  \link[paws.analytics:kinesis_enable_enhanced_monitoring]{enable_enhanced_monitoring} \tab Enables enhanced Kinesis data stream monitoring for shard-level metrics\cr
 #'  \link[paws.analytics:kinesis_get_records]{get_records} \tab Gets data records from a Kinesis data stream's shard\cr
+#'  \link[paws.analytics:kinesis_get_resource_policy]{get_resource_policy} \tab Returns a policy attached to the specified data stream or consumer\cr
 #'  \link[paws.analytics:kinesis_get_shard_iterator]{get_shard_iterator} \tab Gets an Amazon Kinesis shard iterator\cr
 #'  \link[paws.analytics:kinesis_increase_stream_retention_period]{increase_stream_retention_period} \tab Increases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream\cr
 #'  \link[paws.analytics:kinesis_list_shards]{list_shards} \tab Lists the shards in a stream and provides information about each shard\cr
@@ -32452,6 +32829,7 @@ kendraranking <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.analytics:kinesis_merge_shards]{merge_shards} \tab Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data\cr
 #'  \link[paws.analytics:kinesis_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis data stream\cr
 #'  \link[paws.analytics:kinesis_put_records]{put_records} \tab Writes multiple data records into a Kinesis data stream in a single call (also referred to as a PutRecords request)\cr
+#'  \link[paws.analytics:kinesis_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a data stream or registered consumer\cr
 #'  \link[paws.analytics:kinesis_register_stream_consumer]{register_stream_consumer} \tab Registers a consumer with a Kinesis data stream\cr
 #'  \link[paws.analytics:kinesis_remove_tags_from_stream]{remove_tags_from_stream} \tab Removes tags from the specified Kinesis data stream\cr
 #'  \link[paws.analytics:kinesis_split_shard]{split_shard} \tab Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data\cr
@@ -33003,6 +33381,7 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.analytics:opensearchservice_accept_inbound_connection]{accept_inbound_connection} \tab Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request\cr
+#'  \link[paws.analytics:opensearchservice_add_data_source]{add_data_source} \tab Creates a new direct-query data source to the specified domain\cr
 #'  \link[paws.analytics:opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
@@ -33011,6 +33390,7 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.analytics:opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain\cr
 #'  \link[paws.analytics:opensearchservice_create_package]{create_package} \tab Creates a package for use with Amazon OpenSearch Service domains\cr
 #'  \link[paws.analytics:opensearchservice_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates an Amazon OpenSearch Service-managed VPC endpoint\cr
+#'  \link[paws.analytics:opensearchservice_delete_data_source]{delete_data_source} \tab Deletes a direct-query data source\cr
 #'  \link[paws.analytics:opensearchservice_delete_domain]{delete_domain} \tab Deletes an Amazon OpenSearch Service domain and all of its data\cr
 #'  \link[paws.analytics:opensearchservice_delete_inbound_connection]{delete_inbound_connection} \tab Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection\cr
 #'  \link[paws.analytics:opensearchservice_delete_outbound_connection]{delete_outbound_connection} \tab Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection\cr
@@ -33033,10 +33413,12 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.analytics:opensearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
 #'  \link[paws.analytics:opensearchservice_dissociate_package]{dissociate_package} \tab Removes a package from the specified Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to\cr
+#'  \link[paws.analytics:opensearchservice_get_data_source]{get_data_source} \tab Retrieves information about a direct query data source\cr
 #'  \link[paws.analytics:opensearchservice_get_domain_maintenance_status]{get_domain_maintenance_status} \tab The status of the maintenance action\cr
 #'  \link[paws.analytics:opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package)\cr
 #'  \link[paws.analytics:opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain\cr
+#'  \link[paws.analytics:opensearchservice_list_data_sources]{list_data_sources} \tab Lists direct-query data sources for a specific domain\cr
 #'  \link[paws.analytics:opensearchservice_list_domain_maintenances]{list_domain_maintenances} \tab A list of maintenance actions for the domain\cr
 #'  \link[paws.analytics:opensearchservice_list_domain_names]{list_domain_names} \tab Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region\cr
 #'  \link[paws.analytics:opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with a given package\cr
@@ -33054,6 +33436,7 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.analytics:opensearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
 #'  \link[paws.analytics:opensearchservice_start_domain_maintenance]{start_domain_maintenance} \tab Starts the node maintenance process on the data node\cr
 #'  \link[paws.analytics:opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
+#'  \link[paws.analytics:opensearchservice_update_data_source]{update_data_source} \tab Updates a direct-query data source\cr
 #'  \link[paws.analytics:opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr
 #'  \link[paws.analytics:opensearchservice_update_scheduled_action]{update_scheduled_action} \tab Reschedules a planned domain configuration change for a later time\cr
@@ -33468,6 +33851,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion for a dataset\cr
 #'  \link[paws.analytics:quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight\cr
 #'  \link[paws.analytics:quicksight_create_refresh_schedule]{create_refresh_schedule} \tab Creates a refresh schedule for a dataset\cr
+#'  \link[paws.analytics:quicksight_create_role_membership]{create_role_membership} \tab Use CreateRoleMembership to add an existing Amazon QuickSight group to an existing role\cr
 #'  \link[paws.analytics:quicksight_create_template]{create_template} \tab Creates a template either from a TemplateDefinition or from an existing Amazon QuickSight analysis or template\cr
 #'  \link[paws.analytics:quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template\cr
 #'  \link[paws.analytics:quicksight_create_theme]{create_theme} \tab Creates a theme\cr
@@ -33487,8 +33871,11 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_delete_group]{delete_group} \tab Removes a user group from Amazon QuickSight\cr
 #'  \link[paws.analytics:quicksight_delete_group_membership]{delete_group_membership} \tab Removes a user from a group so that the user is no longer a member of the group\cr
 #'  \link[paws.analytics:quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment\cr
+#'  \link[paws.analytics:quicksight_delete_identity_propagation_config]{delete_identity_propagation_config} \tab Deletes all access scopes and authorized targets that are associated with a service from the Amazon QuickSight IAM Identity Center application\cr
 #'  \link[paws.analytics:quicksight_delete_namespace]{delete_namespace} \tab Deletes a namespace and the users and groups that are associated with the namespace\cr
 #'  \link[paws.analytics:quicksight_delete_refresh_schedule]{delete_refresh_schedule} \tab Deletes a refresh schedule from a dataset\cr
+#'  \link[paws.analytics:quicksight_delete_role_custom_permission]{delete_role_custom_permission} \tab Removes custom permissions from the role\cr
+#'  \link[paws.analytics:quicksight_delete_role_membership]{delete_role_membership} \tab Removes a group from a role\cr
 #'  \link[paws.analytics:quicksight_delete_template]{delete_template} \tab Deletes a template\cr
 #'  \link[paws.analytics:quicksight_delete_template_alias]{delete_template_alias} \tab Deletes the item that the specified template alias points to\cr
 #'  \link[paws.analytics:quicksight_delete_theme]{delete_theme} \tab Deletes a theme\cr
@@ -33526,6 +33913,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_describe_ip_restriction]{describe_ip_restriction} \tab Provides a summary and status of IP rules\cr
 #'  \link[paws.analytics:quicksight_describe_namespace]{describe_namespace} \tab Describes the current namespace\cr
 #'  \link[paws.analytics:quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
+#'  \link[paws.analytics:quicksight_describe_role_custom_permission]{describe_role_custom_permission} \tab Describes all custom permissions that are mapped to a role\cr
 #'  \link[paws.analytics:quicksight_describe_template]{describe_template} \tab Describes a template's metadata\cr
 #'  \link[paws.analytics:quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template alias for a template\cr
 #'  \link[paws.analytics:quicksight_describe_template_definition]{describe_template_definition} \tab Provides a detailed description of the definition of a template\cr
@@ -33556,9 +33944,11 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_list_groups]{list_groups} \tab Lists all user groups in Amazon QuickSight\cr
 #'  \link[paws.analytics:quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists the IAM policy assignments in the current Amazon QuickSight account\cr
 #'  \link[paws.analytics:quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to\cr
+#'  \link[paws.analytics:quicksight_list_identity_propagation_configs]{list_identity_propagation_configs} \tab Lists all services and authorized targets that the Amazon QuickSight IAM Identity Center application can access\cr
 #'  \link[paws.analytics:quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset\cr
 #'  \link[paws.analytics:quicksight_list_namespaces]{list_namespaces} \tab Lists the namespaces for the specified Amazon Web Services account\cr
 #'  \link[paws.analytics:quicksight_list_refresh_schedules]{list_refresh_schedules} \tab Lists the refresh schedules of a dataset\cr
+#'  \link[paws.analytics:quicksight_list_role_memberships]{list_role_memberships} \tab Lists all groups that are associated with a role\cr
 #'  \link[paws.analytics:quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
 #'  \link[paws.analytics:quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template\cr
 #'  \link[paws.analytics:quicksight_list_templates]{list_templates} \tab Lists all the templates in the current Amazon QuickSight account\cr
@@ -33590,6 +33980,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_update_analysis]{update_analysis} \tab Updates an analysis in Amazon QuickSight\cr
 #'  \link[paws.analytics:quicksight_update_analysis_permissions]{update_analysis_permissions} \tab Updates the read and write permissions for an analysis\cr
 #'  \link[paws.analytics:quicksight_update_dashboard]{update_dashboard} \tab Updates a dashboard in an Amazon Web Services account\cr
+#'  \link[paws.analytics:quicksight_update_dashboard_links]{update_dashboard_links} \tab Updates the linked analyses on a dashboard\cr
 #'  \link[paws.analytics:quicksight_update_dashboard_permissions]{update_dashboard_permissions} \tab Updates read and write permissions on a dashboard\cr
 #'  \link[paws.analytics:quicksight_update_dashboard_published_version]{update_dashboard_published_version} \tab Updates the published version of a dashboard\cr
 #'  \link[paws.analytics:quicksight_update_data_set]{update_data_set} \tab Updates a dataset\cr
@@ -33600,9 +33991,11 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.analytics:quicksight_update_folder_permissions]{update_folder_permissions} \tab Updates permissions of a folder\cr
 #'  \link[paws.analytics:quicksight_update_group]{update_group} \tab Changes a group description\cr
 #'  \link[paws.analytics:quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing IAM policy assignment\cr
+#'  \link[paws.analytics:quicksight_update_identity_propagation_config]{update_identity_propagation_config} \tab Adds or updates services and authorized targets to configure what the Amazon QuickSight IAM Identity Center application can access\cr
 #'  \link[paws.analytics:quicksight_update_ip_restriction]{update_ip_restriction} \tab Updates the content and status of IP rules\cr
 #'  \link[paws.analytics:quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab Use the UpdatePublicSharingSettings operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard\cr
 #'  \link[paws.analytics:quicksight_update_refresh_schedule]{update_refresh_schedule} \tab Updates a refresh schedule for a dataset\cr
+#'  \link[paws.analytics:quicksight_update_role_custom_permission]{update_role_custom_permission} \tab Updates the custom permissions that are associated with a role\cr
 #'  \link[paws.analytics:quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon QuickSight analysis or another template\cr
 #'  \link[paws.analytics:quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template\cr
 #'  \link[paws.analytics:quicksight_update_template_permissions]{update_template_permissions} \tab Updates the resource permissions for a template\cr
@@ -33636,23 +34029,39 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' Access Analyzer
 #'
 #' @description
-#' Identity and Access Management Access Analyzer helps identify potential
-#' resource-access risks by enabling you to identify any policies that
-#' grant access to an external principal. It does this by using logic-based
+#' Identity and Access Management Access Analyzer helps you to set, verify,
+#' and refine your IAM policies by providing a suite of capabilities. Its
+#' features include findings for external and unused access, basic and
+#' custom policy checks for validating policies, and policy generation to
+#' generate fine-grained policies. To start using IAM Access Analyzer to
+#' identify external or unused access, you first need to create an
+#' analyzer.
+#' 
+#' **External access analyzers** help identify potential risks of accessing
+#' resources by enabling you to identify any resource policies that grant
+#' access to an external principal. It does this by using logic-based
 #' reasoning to analyze resource-based policies in your Amazon Web Services
 #' environment. An external principal can be another Amazon Web Services
 #' account, a root user, an IAM user or role, a federated user, an Amazon
 #' Web Services service, or an anonymous user. You can also use IAM Access
-#' Analyzer to preview and validate public and cross-account access to your
-#' resources before deploying permissions changes. This guide describes the
-#' Identity and Access Management Access Analyzer operations that you can
+#' Analyzer to preview public and cross-account access to your resources
+#' before deploying permissions changes.
+#' 
+#' **Unused access analyzers** help identify potential identity access
+#' risks by enabling you to identify unused IAM roles, unused access keys,
+#' unused console passwords, and IAM principals with unused service and
+#' action-level permissions.
+#' 
+#' Beyond findings, IAM Access Analyzer provides basic and custom policy
+#' checks to validate IAM policies before deploying permissions changes.
+#' You can use policy generation to refine permissions by attaching a
+#' policy generated using access activity logged in CloudTrail logs.
+#' 
+#' This guide describes the IAM Access Analyzer operations that you can
 #' call programmatically. For general information about IAM Access
 #' Analyzer, see [Identity and Access Management Access
 #' Analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html)
 #' in the **IAM User Guide**.
-#' 
-#' To start using IAM Access Analyzer, you first need to create an
-#' analyzer.
 #'
 #' @param
 #' config
@@ -33739,6 +34148,8 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' \tabular{ll}{
 #'  \link[paws.security.identity:accessanalyzer_apply_archive_rule]{apply_archive_rule} \tab Retroactively applies the archive rule to existing findings that meet the archive rule criteria\cr
 #'  \link[paws.security.identity:accessanalyzer_cancel_policy_generation]{cancel_policy_generation} \tab Cancels the requested policy generation\cr
+#'  \link[paws.security.identity:accessanalyzer_check_access_not_granted]{check_access_not_granted} \tab Checks whether the specified access isn't allowed by a policy\cr
+#'  \link[paws.security.identity:accessanalyzer_check_no_new_access]{check_no_new_access} \tab Checks whether new access is allowed for an updated policy when compared to the existing policy\cr
 #'  \link[paws.security.identity:accessanalyzer_create_access_preview]{create_access_preview} \tab Creates an access preview that allows you to preview IAM Access Analyzer findings for your resource before deploying resource permissions\cr
 #'  \link[paws.security.identity:accessanalyzer_create_analyzer]{create_analyzer} \tab Creates an analyzer for your account\cr
 #'  \link[paws.security.identity:accessanalyzer_create_archive_rule]{create_archive_rule} \tab Creates an archive rule for the specified analyzer\cr
@@ -33749,6 +34160,7 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.security.identity:accessanalyzer_get_analyzer]{get_analyzer} \tab Retrieves information about the specified analyzer\cr
 #'  \link[paws.security.identity:accessanalyzer_get_archive_rule]{get_archive_rule} \tab Retrieves information about an archive rule\cr
 #'  \link[paws.security.identity:accessanalyzer_get_finding]{get_finding} \tab Retrieves information about the specified finding\cr
+#'  \link[paws.security.identity:accessanalyzer_get_finding_v2]{get_finding_v2} \tab Retrieves information about the specified finding\cr
 #'  \link[paws.security.identity:accessanalyzer_get_generated_policy]{get_generated_policy} \tab Retrieves the policy that was generated using StartPolicyGeneration\cr
 #'  \link[paws.security.identity:accessanalyzer_list_access_preview_findings]{list_access_preview_findings} \tab Retrieves a list of access preview findings generated by the specified access preview\cr
 #'  \link[paws.security.identity:accessanalyzer_list_access_previews]{list_access_previews} \tab Retrieves a list of access previews for the specified analyzer\cr
@@ -33756,6 +34168,7 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.security.identity:accessanalyzer_list_analyzers]{list_analyzers} \tab Retrieves a list of analyzers\cr
 #'  \link[paws.security.identity:accessanalyzer_list_archive_rules]{list_archive_rules} \tab Retrieves a list of archive rules created for the specified analyzer\cr
 #'  \link[paws.security.identity:accessanalyzer_list_findings]{list_findings} \tab Retrieves a list of findings generated by the specified analyzer\cr
+#'  \link[paws.security.identity:accessanalyzer_list_findings_v2]{list_findings_v2} \tab Retrieves a list of findings generated by the specified analyzer\cr
 #'  \link[paws.security.identity:accessanalyzer_list_policy_generations]{list_policy_generations} \tab Lists all of the policy generations requested in the last seven days\cr
 #'  \link[paws.security.identity:accessanalyzer_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags applied to the specified resource\cr
 #'  \link[paws.security.identity:accessanalyzer_start_policy_generation]{start_policy_generation} \tab Starts the policy generation request\cr
@@ -34780,29 +35193,48 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' Amazon Cognito Identity Provider
 #'
 #' @description
-#' With the Amazon Cognito user pools API, you can set up user pools and
-#' app clients, and authenticate users. To authenticate users from
-#' third-party identity providers (IdPs) in this API, you can [link IdP
-#' users to native user
+#' With the Amazon Cognito user pools API, you can configure user pools and
+#' authenticate users. To authenticate users from third-party identity
+#' providers (IdPs) in this API, you can [link IdP users to native user
 #' profiles](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html).
 #' Learn more about the authentication and authorization of federated users
-#' in the [Using the Amazon Cognito user pools API and user pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html).
+#' at [Adding user pool sign-in through a third
+#' party](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html)
+#' and in the [User pool federation endpoints and hosted UI
+#' reference](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html).
 #' 
 #' This API reference provides detailed information about API operations
-#' and object types in Amazon Cognito. At the bottom of the page for each
-#' API operation and object, under *See Also*, you can learn how to use it
-#' in an Amazon Web Services SDK in the language of your choice.
+#' and object types in Amazon Cognito.
 #' 
 #' Along with resource management operations, the Amazon Cognito user pools
 #' API includes classes of operations and authorization models for
-#' client-side and server-side user operations. For more information, see
-#' [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' client-side and server-side authentication of users. You can interact
+#' with operations in the Amazon Cognito user pools API as any of the
+#' following subjects.
+#' 
+#' 1.  An administrator who wants to configure user pools, app clients,
+#'     users, groups, or other user pool functions.
+#' 
+#' 2.  A server-side app, like a web application, that wants to use its
+#'     Amazon Web Services privileges to manage, authenticate, or authorize
+#'     a user.
+#' 
+#' 3.  A client-side app, like a mobile app, that wants to make
+#'     unauthenticated requests to manage, authenticate, or authorize a
+#'     user.
+#' 
+#' For more information, see [Using the Amazon Cognito user pools API and
+#' user pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
-#' You can also start reading about the `CognitoIdentityProvider` client in
-#' the following SDK guides.
+#' With your Amazon Web Services SDK, you can build the logic to support
+#' operational flows in every use case for this API. You can also make
+#' direct REST API requests to [Amazon Cognito user pools service
+#' endpoints](https://docs.aws.amazon.com/general/latest/gr/cognito_identity.html#cognito_identity_your_user_pools_region).
+#' The following links can get you started with the
+#' `CognitoIdentityProvider` client in other supported Amazon Web Services
+#' SDKs.
 #' 
 #' -   [Amazon Web Services Command Line
 #'     Interface](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp)
@@ -34943,8 +35375,8 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.security.identity:cognitoidentityprovider_add_custom_attributes]{add_custom_attributes} \tab Adds additional user attributes to the user pool schema\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_admin_add_user_to_group]{admin_add_user_to_group} \tab Adds the specified user to the specified group\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_admin_confirm_sign_up]{admin_confirm_sign_up} \tab Confirms user registration as an admin without using a confirmation code\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_admin_add_user_to_group]{admin_add_user_to_group} \tab Adds a user to a group\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_admin_confirm_sign_up]{admin_confirm_sign_up} \tab This IAM-authenticated API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_create_user]{admin_create_user} \tab Creates a new user in the specified user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_delete_user]{admin_delete_user} \tab Deletes a user as an administrator\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_delete_user_attributes]{admin_delete_user_attributes} \tab Deletes the user attributes in a user pool as an administrator\cr
@@ -34957,23 +35389,23 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth} \tab Initiates the authentication flow, as an administrator\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_link_provider_for_user]{admin_link_provider_for_user} \tab Links an existing user account in a user pool (DestinationUser) to an identity from an external IdP (SourceUser) based on a specified attribute name and value from the external IdP\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_list_devices]{admin_list_devices} \tab Lists devices, as an administrator\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_admin_list_groups_for_user]{admin_list_groups_for_user} \tab Lists the groups that the user belongs to\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_admin_list_groups_for_user]{admin_list_groups_for_user} \tab Lists the groups that a user belongs to\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_list_user_auth_events]{admin_list_user_auth_events} \tab A history of user activity and any risks detected as part of Amazon Cognito advanced security\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_remove_user_from_group]{admin_remove_user_from_group} \tab Removes the specified user from the specified group\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password} \tab Resets the specified user's password in a user pool as an administrator\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab The user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool as an administrator\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab This action is no longer supported\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event indicating if it was from a valid user\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab This action might generate an SMS text message\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out} \tab Signs out a user from all devices\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out} \tab Invalidates the identity, access, and refresh tokens that Amazon Cognito issued to a user\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_associate_software_token]{associate_software_token} \tab Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_change_password]{change_password} \tab Changes the password for a specified user in a user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_confirm_device]{confirm_device} \tab Confirms tracking of the device\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password} \tab Allows a user to enter a confirmation code to reset a forgotten password\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_confirm_sign_up]{confirm_sign_up} \tab Confirms registration of a new user\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_confirm_sign_up]{confirm_sign_up} \tab This public API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool via the SignUp API operation\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_create_group]{create_group} \tab Creates a new group in the specified user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_create_identity_provider]{create_identity_provider} \tab Creates an IdP for a user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_create_resource_server]{create_resource_server} \tab Creates a new OAuth2\cr
@@ -35008,7 +35440,7 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.security.identity:cognitoidentityprovider_get_user]{get_user} \tab Gets the user attributes and metadata for a user\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_get_user_attribute_verification_code]{get_user_attribute_verification_code} \tab Generates a user attribute verification code for the specified attribute name\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_get_user_pool_mfa_config]{get_user_pool_mfa_config} \tab Gets the user pool multi-factor authentication (MFA) configuration\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_global_sign_out]{global_sign_out} \tab Signs out a user from all devices\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_global_sign_out]{global_sign_out} \tab Invalidates the identity, access, and refresh tokens that Amazon Cognito issued to a user\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_initiate_auth]{initiate_auth} \tab Initiates sign-in for a user in the Amazon Cognito user directory\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_list_devices]{list_devices} \tab Lists the sign-in devices that Amazon Cognito has registered to the current user\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_list_groups]{list_groups} \tab Lists the groups associated with a user pool\cr
@@ -35021,7 +35453,7 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.security.identity:cognitoidentityprovider_list_users]{list_users} \tab Lists users and their basic details in a user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_list_users_in_group]{list_users_in_group} \tab Lists the users in the specified group\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_resend_confirmation_code]{resend_confirmation_code} \tab Resends the confirmation (for confirmation of registration) to a specific user in the user pool\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Responds to the authentication challenge\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Some API operations in a user pool generate a challenge, like a prompt for an MFA code, for device authentication that bypasses MFA, or for a custom authentication challenge\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_revoke_token]{revoke_token} \tab Revokes all of the access tokens generated by, and at the same time as, the specified refresh token\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_set_log_delivery_configuration]{set_log_delivery_configuration} \tab Sets up or modifies the detailed activity logging configuration of a user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_set_risk_configuration]{set_risk_configuration} \tab Configures actions on detected risks\cr
@@ -35039,7 +35471,7 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.security.identity:cognitoidentityprovider_update_group]{update_group} \tab Updates the specified group with the specified attributes\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_update_identity_provider]{update_identity_provider} \tab Updates IdP information for a user pool\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_update_resource_server]{update_resource_server} \tab Updates the name and scopes of resource server\cr
-#'  \link[paws.security.identity:cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab Allows a user to update a specific attribute (one at a time)\cr
+#'  \link[paws.security.identity:cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab With this operation, your users can update one or more of their attributes with their own credentials\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_update_user_pool]{update_user_pool} \tab This action might generate an SMS text message\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_update_user_pool_client]{update_user_pool_client} \tab Updates the specified user pool app client with the specified attributes\cr
 #'  \link[paws.security.identity:cognitoidentityprovider_update_user_pool_domain]{update_user_pool_domain} \tab Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool\cr
@@ -35086,9 +35518,9 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
-#' Android](https://docs.amplify.aws/start/q/integration/android/) and the
-#' [Developer Guide for
-#' iOS](https://docs.amplify.aws/start/q/integration/ios/).
+#' Android](https://docs.amplify.aws/android/start/getting-started/introduction/)
+#' and the [Developer Guide for
+#' iOS](https://docs.amplify.aws/swift/start/getting-started/introduction/).
 #'
 #' @param
 #' config
@@ -35381,18 +35813,23 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.security.identity:detective_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the Detective administrator account in the current Region\cr
 #'  \link[paws.security.identity:detective_disassociate_membership]{disassociate_membership} \tab Removes the member account from the specified behavior graph\cr
 #'  \link[paws.security.identity:detective_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Detective administrator account for the organization in the current Region\cr
+#'  \link[paws.security.identity:detective_get_investigation]{get_investigation} \tab Returns the investigation results of an investigation for a behavior graph\cr
 #'  \link[paws.security.identity:detective_get_members]{get_members} \tab Returns the membership details for specified member accounts for a behavior graph\cr
 #'  \link[paws.security.identity:detective_list_datasource_packages]{list_datasource_packages} \tab Lists data source packages in the behavior graph\cr
 #'  \link[paws.security.identity:detective_list_graphs]{list_graphs} \tab Returns the list of behavior graphs that the calling account is an administrator account of\cr
+#'  \link[paws.security.identity:detective_list_indicators]{list_indicators} \tab Get the indicators from an investigation\cr
+#'  \link[paws.security.identity:detective_list_investigations]{list_investigations} \tab List all Investigations\cr
 #'  \link[paws.security.identity:detective_list_invitations]{list_invitations} \tab Retrieves the list of open and accepted behavior graph invitations for the member account\cr
 #'  \link[paws.security.identity:detective_list_members]{list_members} \tab Retrieves the list of member accounts for a behavior graph\cr
 #'  \link[paws.security.identity:detective_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Returns information about the Detective administrator account for an organization\cr
 #'  \link[paws.security.identity:detective_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tag values that are assigned to a behavior graph\cr
 #'  \link[paws.security.identity:detective_reject_invitation]{reject_invitation} \tab Rejects an invitation to contribute the account data to a behavior graph\cr
+#'  \link[paws.security.identity:detective_start_investigation]{start_investigation} \tab initiate an investigation on an entity in a graph\cr
 #'  \link[paws.security.identity:detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
 #'  \link[paws.security.identity:detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
 #'  \link[paws.security.identity:detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
 #'  \link[paws.security.identity:detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
+#'  \link[paws.security.identity:detective_update_investigation_state]{update_investigation_state} \tab Update the state of an investigation\cr
 #'  \link[paws.security.identity:detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
 #' }
 #'
@@ -35766,17 +36203,20 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon GuardDuty is a continuous security monitoring service that
-#' analyzes and processes the following data sources: VPC flow logs, Amazon
-#' Web Services CloudTrail management event logs, CloudTrail S3 data event
-#' logs, EKS audit logs, DNS logs, and Amazon EBS volume data. It uses
-#' threat intelligence feeds, such as lists of malicious IPs and domains,
-#' and machine learning to identify unexpected, potentially unauthorized,
-#' and malicious activity within your Amazon Web Services environment. This
-#' can include issues like escalations of privileges, uses of exposed
-#' credentials, or communication with malicious IPs, domains, or presence
-#' of malware on your Amazon EC2 instances and container workloads. For
-#' example, GuardDuty can detect compromised EC2 instances and container
-#' workloads serving malware, or mining bitcoin.
+#' analyzes and processes the following foundational data sources - VPC
+#' flow logs, Amazon Web Services CloudTrail management event logs,
+#' CloudTrail S3 data event logs, EKS audit logs, DNS logs, Amazon EBS
+#' volume data, runtime activity belonging to container workloads, such as
+#' Amazon EKS, Amazon ECS (including Amazon Web Services Fargate), and
+#' Amazon EC2 instances. It uses threat intelligence feeds, such as lists
+#' of malicious IPs and domains, and machine learning to identify
+#' unexpected, potentially unauthorized, and malicious activity within your
+#' Amazon Web Services environment. This can include issues like
+#' escalations of privileges, uses of exposed credentials, or communication
+#' with malicious IPs, domains, or presence of malware on your Amazon EC2
+#' instances and container workloads. For example, GuardDuty can detect
+#' compromised EC2 instances and container workloads serving malware, or
+#' mining bitcoin.
 #' 
 #' GuardDuty also monitors Amazon Web Services account access behavior for
 #' signs of compromise, such as unauthorized infrastructure deployments
@@ -35910,6 +36350,7 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[paws.security.identity:guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
 #'  \link[paws.security.identity:guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs\cr
+#'  \link[paws.security.identity:guardduty_get_organization_statistics]{get_organization_statistics} \tab Retrieves how many active member accounts in your Amazon Web Services organization have each feature enabled within GuardDuty\cr
 #'  \link[paws.security.identity:guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 #'  \link[paws.security.identity:guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 #'  \link[paws.security.identity:guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
@@ -36939,131 +37380,6 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
   )
 }
 
-#' Amazon Macie
-#'
-#' @description
-#' Amazon Macie Classic
-#' 
-#' Amazon Macie Classic has been discontinued and is no longer available.
-#' 
-#' A new Amazon Macie is now available with significant design improvements
-#' and additional features, at a lower price and in most Amazon Web
-#' Services Regions. We encourage you to take advantage of the new and
-#' improved features, and benefit from the reduced cost. To learn about
-#' features and pricing for the new Macie, see [Amazon
-#' Macie](https://aws.amazon.com/macie/). To learn how to use the new
-#' Macie, see the [Amazon Macie User
-#' Guide](https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html).
-#'
-#' @param
-#' config
-#' Optional configuration of credentials, endpoint, and/or region.
-#' \itemize{
-#' \item{\strong{credentials}:} {\itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' }}
-#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
-#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
-#' }
-#' @param
-#' credentials
-#' Optional credentials shorthand for the config parameter
-#' \itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' }
-#' @param
-#' endpoint
-#' Optional shorthand for complete URL to use for the constructed client.
-#' @param
-#' region
-#' Optional shorthand for AWS Region used in instantiating the client.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- macie(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string"
-#'       ),
-#'       profile = "string",
-#'       anonymous = "logical"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string",
-#'     close_connection = "logical",
-#'     timeout = "numeric",
-#'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
-#'   ),
-#'   credentials = list(
-#'     creds = list(
-#'       access_key_id = "string",
-#'       secret_access_key = "string",
-#'       session_token = "string"
-#'     ),
-#'     profile = "string",
-#'     anonymous = "logical"
-#'   ),
-#'   endpoint = "string",
-#'   region = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' svc <- macie()
-#' svc$associate_member_account(
-#'   Foo = 123
-#' )
-#' }
-#'
-#' @section Operations:
-#' \tabular{ll}{
-#'  \link[paws.security.identity:macie_associate_member_account]{associate_member_account} \tab (Discontinued) Associates a specified Amazon Web Services account with Amazon Macie Classic as a member account\cr
-#'  \link[paws.security.identity:macie_associate_s3_resources]{associate_s3_resources} \tab (Discontinued) Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
-#'  \link[paws.security.identity:macie_disassociate_member_account]{disassociate_member_account} \tab (Discontinued) Removes the specified member account from Amazon Macie Classic\cr
-#'  \link[paws.security.identity:macie_disassociate_s3_resources]{disassociate_s3_resources} \tab (Discontinued) Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
-#'  \link[paws.security.identity:macie_list_member_accounts]{list_member_accounts} \tab (Discontinued) Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account\cr
-#'  \link[paws.security.identity:macie_list_s3_resources]{list_s3_resources} \tab (Discontinued) Lists all the S3 resources associated with Amazon Macie Classic\cr
-#'  \link[paws.security.identity:macie_update_s3_resources]{update_s3_resources} \tab (Discontinued) Updates the classification types for the specified S3 resources
-#' }
-#'
-#' @return
-#' A client for the service. You can call the service's operations using
-#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
-#' to the client. The available operations are listed in the
-#' Operations section.
-#'
-#' @rdname macie
-#' @export
-macie <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
-  paws.security.identity::macie(
-    config = config,
-    credentials = credentials,
-    endpoint = endpoint,
-    region = region
-  )
-}
-
 #' Amazon Macie 2
 #'
 #' @description
@@ -37829,6 +38145,7 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.security.identity:secretsmanager_batch_get_secret_value]{batch_get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary for up to 20 secrets\cr
 #'  \link[paws.security.identity:secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation\cr
 #'  \link[paws.security.identity:secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
 #'  \link[paws.security.identity:secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr
@@ -38018,6 +38335,7 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.security.identity:securityhub_batch_disable_standards]{batch_disable_standards} \tab Disables the standards specified by the provided StandardsSubscriptionArns\cr
 #'  \link[paws.security.identity:securityhub_batch_enable_standards]{batch_enable_standards} \tab Enables the standards specified by the provided StandardsArn\cr
 #'  \link[paws.security.identity:securityhub_batch_get_automation_rules]{batch_get_automation_rules} \tab Retrieves a list of details for automation rules based on rule Amazon Resource Names (ARNs)\cr
+#'  \link[paws.security.identity:securityhub_batch_get_configuration_policy_associations]{batch_get_configuration_policy_associations} \tab Returns associations between an Security Hub configuration and a batch of target accounts, organizational units, or the root\cr
 #'  \link[paws.security.identity:securityhub_batch_get_security_controls]{batch_get_security_controls} \tab Provides details about a batch of security controls for the current Amazon Web Services account and Amazon Web Services Region\cr
 #'  \link[paws.security.identity:securityhub_batch_get_standards_control_associations]{batch_get_standards_control_associations} \tab For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard\cr
 #'  \link[paws.security.identity:securityhub_batch_import_findings]{batch_import_findings} \tab Imports security findings generated by a finding provider into Security Hub\cr
@@ -38026,18 +38344,20 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.security.identity:securityhub_batch_update_standards_control_associations]{batch_update_standards_control_associations} \tab For a batch of security controls and standards, this operation updates the enablement status of a control in a standard\cr
 #'  \link[paws.security.identity:securityhub_create_action_target]{create_action_target} \tab Creates a custom action target in Security Hub\cr
 #'  \link[paws.security.identity:securityhub_create_automation_rule]{create_automation_rule} \tab Creates an automation rule based on input parameters\cr
+#'  \link[paws.security.identity:securityhub_create_configuration_policy]{create_configuration_policy} \tab Creates a configuration policy with the defined configuration\cr
 #'  \link[paws.security.identity:securityhub_create_finding_aggregator]{create_finding_aggregator} \tab Used to enable finding aggregation\cr
 #'  \link[paws.security.identity:securityhub_create_insight]{create_insight} \tab Creates a custom insight in Security Hub\cr
 #'  \link[paws.security.identity:securityhub_create_members]{create_members} \tab Creates a member association in Security Hub between the specified accounts and the account used to make the request, which is the administrator account\cr
 #'  \link[paws.security.identity:securityhub_decline_invitations]{decline_invitations} \tab Declines invitations to become a member account\cr
 #'  \link[paws.security.identity:securityhub_delete_action_target]{delete_action_target} \tab Deletes a custom action target from Security Hub\cr
+#'  \link[paws.security.identity:securityhub_delete_configuration_policy]{delete_configuration_policy} \tab Deletes a configuration policy\cr
 #'  \link[paws.security.identity:securityhub_delete_finding_aggregator]{delete_finding_aggregator} \tab Deletes a finding aggregator\cr
 #'  \link[paws.security.identity:securityhub_delete_insight]{delete_insight} \tab Deletes the insight specified by the InsightArn\cr
 #'  \link[paws.security.identity:securityhub_delete_invitations]{delete_invitations} \tab Deletes invitations received by the Amazon Web Services account to become a member account\cr
 #'  \link[paws.security.identity:securityhub_delete_members]{delete_members} \tab Deletes the specified member accounts from Security Hub\cr
 #'  \link[paws.security.identity:securityhub_describe_action_targets]{describe_action_targets} \tab Returns a list of the custom action targets in Security Hub in your account\cr
 #'  \link[paws.security.identity:securityhub_describe_hub]{describe_hub} \tab Returns details about the Hub resource in your account, including the HubArn and the time when you enabled Security Hub\cr
-#'  \link[paws.security.identity:securityhub_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the Organizations configuration for Security Hub\cr
+#'  \link[paws.security.identity:securityhub_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the way your organization is configured in Security Hub\cr
 #'  \link[paws.security.identity:securityhub_describe_products]{describe_products} \tab Returns information about product integrations in Security Hub\cr
 #'  \link[paws.security.identity:securityhub_describe_standards]{describe_standards} \tab Returns a list of the available standards in Security Hub\cr
 #'  \link[paws.security.identity:securityhub_describe_standards_controls]{describe_standards_controls} \tab Returns a list of security standards controls\cr
@@ -38051,6 +38371,8 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.security.identity:securityhub_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Security Hub administrator account for an organization\cr
 #'  \link[paws.security.identity:securityhub_enable_security_hub]{enable_security_hub} \tab Enables Security Hub for your account in the current Region or the Region you specify in the request\cr
 #'  \link[paws.security.identity:securityhub_get_administrator_account]{get_administrator_account} \tab Provides the details for the Security Hub administrator account for the current member account\cr
+#'  \link[paws.security.identity:securityhub_get_configuration_policy]{get_configuration_policy} \tab Provides information about a configuration policy\cr
+#'  \link[paws.security.identity:securityhub_get_configuration_policy_association]{get_configuration_policy_association} \tab Returns the association between a configuration and a target account, organizational unit, or the root\cr
 #'  \link[paws.security.identity:securityhub_get_enabled_standards]{get_enabled_standards} \tab Returns a list of the standards that are currently enabled\cr
 #'  \link[paws.security.identity:securityhub_get_finding_aggregator]{get_finding_aggregator} \tab Returns the current finding aggregation configuration\cr
 #'  \link[paws.security.identity:securityhub_get_finding_history]{get_finding_history} \tab Returns history for a Security Hub finding in the last 90 days\cr
@@ -38060,8 +38382,11 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.security.identity:securityhub_get_invitations_count]{get_invitations_count} \tab Returns the count of all Security Hub membership invitations that were sent to the current member account, not including the currently accepted invitation\cr
 #'  \link[paws.security.identity:securityhub_get_master_account]{get_master_account} \tab This method is deprecated\cr
 #'  \link[paws.security.identity:securityhub_get_members]{get_members} \tab Returns the details for the Security Hub member accounts for the specified account IDs\cr
+#'  \link[paws.security.identity:securityhub_get_security_control_definition]{get_security_control_definition} \tab Retrieves the definition of a security control\cr
 #'  \link[paws.security.identity:securityhub_invite_members]{invite_members} \tab Invites other Amazon Web Services accounts to become member accounts for the Security Hub administrator account that the invitation is sent from\cr
 #'  \link[paws.security.identity:securityhub_list_automation_rules]{list_automation_rules} \tab A list of automation rules and their metadata for the calling account\cr
+#'  \link[paws.security.identity:securityhub_list_configuration_policies]{list_configuration_policies} \tab Lists the configuration policies that the Security Hub delegated administrator has created for your organization\cr
+#'  \link[paws.security.identity:securityhub_list_configuration_policy_associations]{list_configuration_policy_associations} \tab Provides information about the associations for your configuration policies and self-managed behavior\cr
 #'  \link[paws.security.identity:securityhub_list_enabled_products_for_import]{list_enabled_products_for_import} \tab Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub\cr
 #'  \link[paws.security.identity:securityhub_list_finding_aggregators]{list_finding_aggregators} \tab If finding aggregation is enabled, then ListFindingAggregators returns the ARN of the finding aggregator\cr
 #'  \link[paws.security.identity:securityhub_list_invitations]{list_invitations} \tab Lists all Security Hub membership invitations that were sent to the current Amazon Web Services account\cr
@@ -38070,13 +38395,17 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.security.identity:securityhub_list_security_control_definitions]{list_security_control_definitions} \tab Lists all of the security controls that apply to a specified standard\cr
 #'  \link[paws.security.identity:securityhub_list_standards_control_associations]{list_standards_control_associations} \tab Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account\cr
 #'  \link[paws.security.identity:securityhub_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with a resource\cr
+#'  \link[paws.security.identity:securityhub_start_configuration_policy_association]{start_configuration_policy_association} \tab Associates a target account, organizational unit, or the root with a specified configuration\cr
+#'  \link[paws.security.identity:securityhub_start_configuration_policy_disassociation]{start_configuration_policy_disassociation} \tab Disassociates a target account, organizational unit, or the root from a specified configuration\cr
 #'  \link[paws.security.identity:securityhub_tag_resource]{tag_resource} \tab Adds one or more tags to a resource\cr
 #'  \link[paws.security.identity:securityhub_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 #'  \link[paws.security.identity:securityhub_update_action_target]{update_action_target} \tab Updates the name and description of a custom action target in Security Hub\cr
+#'  \link[paws.security.identity:securityhub_update_configuration_policy]{update_configuration_policy} \tab Updates a configuration policy\cr
 #'  \link[paws.security.identity:securityhub_update_finding_aggregator]{update_finding_aggregator} \tab Updates the finding aggregation configuration\cr
 #'  \link[paws.security.identity:securityhub_update_findings]{update_findings} \tab UpdateFindings is deprecated\cr
 #'  \link[paws.security.identity:securityhub_update_insight]{update_insight} \tab Updates the Security Hub insight identified by the specified insight ARN\cr
-#'  \link[paws.security.identity:securityhub_update_organization_configuration]{update_organization_configuration} \tab Used to update the configuration related to Organizations\cr
+#'  \link[paws.security.identity:securityhub_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration of your organization in Security Hub\cr
+#'  \link[paws.security.identity:securityhub_update_security_control]{update_security_control} \tab Updates the properties of a security control\cr
 #'  \link[paws.security.identity:securityhub_update_security_hub_configuration]{update_security_hub_configuration} \tab Updates configuration options for Security Hub\cr
 #'  \link[paws.security.identity:securityhub_update_standards_control]{update_standards_control} \tab Used to control whether an individual security standard control is enabled or disabled
 #' }
@@ -38675,40 +39004,76 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:ssoadmin_attach_customer_managed_policy_reference_to_permission_set]{attach_customer_managed_policy_reference_to_permission_set} \tab Attaches the specified customer managed policy to the specified PermissionSet\cr
 #'  \link[paws.security.identity:ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an Amazon Web Services managed policy ARN to a permission set\cr
 #'  \link[paws.security.identity:ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified Amazon Web Services account using a specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_create_application]{create_application} \tab Creates an application in IAM Identity Center for the given application provider\cr
+#'  \link[paws.security.identity:ssoadmin_create_application_assignment]{create_application_assignment} \tab Grant application access to a user or group\cr
+#'  \link[paws.security.identity:ssoadmin_create_instance]{create_instance} \tab Creates an instance of IAM Identity Center for a standalone Amazon Web Services account that is not managed by Organizations or a member Amazon Web Services account in an organization\cr
 #'  \link[paws.security.identity:ssoadmin_create_instance_access_control_attribute_configuration]{create_instance_access_control_attribute_configuration} \tab Enables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_create_permission_set]{create_permission_set} \tab Creates a permission set within a specified IAM Identity Center instance\cr
+#'  \link[paws.security.identity:ssoadmin_create_trusted_token_issuer]{create_trusted_token_issuer} \tab Creates a connection to a trusted token issuer in an instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_delete_account_assignment]{delete_account_assignment} \tab Deletes a principal's access from a specified Amazon Web Services account using a specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_delete_application]{delete_application} \tab Deletes the association with the application\cr
+#'  \link[paws.security.identity:ssoadmin_delete_application_access_scope]{delete_application_access_scope} \tab Deletes an IAM Identity Center access scope from an application\cr
+#'  \link[paws.security.identity:ssoadmin_delete_application_assignment]{delete_application_assignment} \tab Revoke application access to an application by deleting application assignments for a user or group\cr
+#'  \link[paws.security.identity:ssoadmin_delete_application_authentication_method]{delete_application_authentication_method} \tab Deletes an authentication method from an application\cr
+#'  \link[paws.security.identity:ssoadmin_delete_application_grant]{delete_application_grant} \tab Deletes a grant from an application\cr
 #'  \link[paws.security.identity:ssoadmin_delete_inline_policy_from_permission_set]{delete_inline_policy_from_permission_set} \tab Deletes the inline policy from a specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_delete_instance]{delete_instance} \tab Deletes the instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_delete_instance_access_control_attribute_configuration]{delete_instance_access_control_attribute_configuration} \tab Disables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance and deletes all of the attribute mappings that have been configured\cr
 #'  \link[paws.security.identity:ssoadmin_delete_permissions_boundary_from_permission_set]{delete_permissions_boundary_from_permission_set} \tab Deletes the permissions boundary from a specified PermissionSet\cr
 #'  \link[paws.security.identity:ssoadmin_delete_permission_set]{delete_permission_set} \tab Deletes the specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_delete_trusted_token_issuer]{delete_trusted_token_issuer} \tab Deletes a trusted token issuer configuration from an instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_describe_account_assignment_creation_status]{describe_account_assignment_creation_status} \tab Describes the status of the assignment creation request\cr
 #'  \link[paws.security.identity:ssoadmin_describe_account_assignment_deletion_status]{describe_account_assignment_deletion_status} \tab Describes the status of the assignment deletion request\cr
+#'  \link[paws.security.identity:ssoadmin_describe_application]{describe_application} \tab Retrieves the details of an application associated with an instance of IAM Identity Center\cr
+#'  \link[paws.security.identity:ssoadmin_describe_application_assignment]{describe_application_assignment} \tab Retrieves a direct assignment of a user or group to an application\cr
+#'  \link[paws.security.identity:ssoadmin_describe_application_provider]{describe_application_provider} \tab Retrieves details about a provider that can be used to connect an Amazon Web Services managed application or customer managed application to IAM Identity Center\cr
+#'  \link[paws.security.identity:ssoadmin_describe_instance]{describe_instance} \tab Returns the details of an instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_describe_instance_access_control_attribute_configuration]{describe_instance_access_control_attribute_configuration} \tab Returns the list of IAM Identity Center identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_describe_permission_set]{describe_permission_set} \tab Gets the details of the permission set\cr
 #'  \link[paws.security.identity:ssoadmin_describe_permission_set_provisioning_status]{describe_permission_set_provisioning_status} \tab Describes the status for the given permission set provisioning request\cr
+#'  \link[paws.security.identity:ssoadmin_describe_trusted_token_issuer]{describe_trusted_token_issuer} \tab Retrieves details about a trusted token issuer configuration stored in an instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_detach_customer_managed_policy_reference_from_permission_set]{detach_customer_managed_policy_reference_from_permission_set} \tab Detaches the specified customer managed policy from the specified PermissionSet\cr
 #'  \link[paws.security.identity:ssoadmin_detach_managed_policy_from_permission_set]{detach_managed_policy_from_permission_set} \tab Detaches the attached Amazon Web Services managed policy ARN from the specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_get_application_access_scope]{get_application_access_scope} \tab Retrieves the authorized targets for an IAM Identity Center access scope for an application\cr
+#'  \link[paws.security.identity:ssoadmin_get_application_assignment_configuration]{get_application_assignment_configuration} \tab Retrieves the configuration of PutApplicationAssignmentConfiguration\cr
+#'  \link[paws.security.identity:ssoadmin_get_application_authentication_method]{get_application_authentication_method} \tab Retrieves details about an authentication method used by an application\cr
+#'  \link[paws.security.identity:ssoadmin_get_application_grant]{get_application_grant} \tab Retrieves details about an application grant\cr
 #'  \link[paws.security.identity:ssoadmin_get_inline_policy_for_permission_set]{get_inline_policy_for_permission_set} \tab Obtains the inline policy assigned to the permission set\cr
 #'  \link[paws.security.identity:ssoadmin_get_permissions_boundary_for_permission_set]{get_permissions_boundary_for_permission_set} \tab Obtains the permissions boundary for a specified PermissionSet\cr
 #'  \link[paws.security.identity:ssoadmin_list_account_assignment_creation_status]{list_account_assignment_creation_status} \tab Lists the status of the Amazon Web Services account assignment creation requests for a specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_list_account_assignment_deletion_status]{list_account_assignment_deletion_status} \tab Lists the status of the Amazon Web Services account assignment deletion requests for a specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_list_account_assignments]{list_account_assignments} \tab Lists the assignee of the specified Amazon Web Services account with the specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_list_account_assignments_for_principal]{list_account_assignments_for_principal} \tab Retrieves a list of the IAM Identity Center associated Amazon Web Services accounts that the principal has access to\cr
 #'  \link[paws.security.identity:ssoadmin_list_accounts_for_provisioned_permission_set]{list_accounts_for_provisioned_permission_set} \tab Lists all the Amazon Web Services accounts where the specified permission set is provisioned\cr
+#'  \link[paws.security.identity:ssoadmin_list_application_access_scopes]{list_application_access_scopes} \tab Lists the access scopes and authorized targets associated with an application\cr
+#'  \link[paws.security.identity:ssoadmin_list_application_assignments]{list_application_assignments} \tab Lists Amazon Web Services account users that are assigned to an application\cr
+#'  \link[paws.security.identity:ssoadmin_list_application_assignments_for_principal]{list_application_assignments_for_principal} \tab Lists the applications to which a specified principal is assigned\cr
+#'  \link[paws.security.identity:ssoadmin_list_application_authentication_methods]{list_application_authentication_methods} \tab Lists all of the authentication methods supported by the specified application\cr
+#'  \link[paws.security.identity:ssoadmin_list_application_grants]{list_application_grants} \tab List the grants associated with an application\cr
+#'  \link[paws.security.identity:ssoadmin_list_application_providers]{list_application_providers} \tab Lists the application providers configured in the IAM Identity Center identity store\cr
+#'  \link[paws.security.identity:ssoadmin_list_applications]{list_applications} \tab Lists all applications associated with the instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_list_customer_managed_policy_references_in_permission_set]{list_customer_managed_policy_references_in_permission_set} \tab Lists all customer managed policies attached to a specified PermissionSet\cr
-#'  \link[paws.security.identity:ssoadmin_list_instances]{list_instances} \tab Lists the IAM Identity Center instances that the caller has access to\cr
+#'  \link[paws.security.identity:ssoadmin_list_instances]{list_instances} \tab Lists the details of the organization and account instances of IAM Identity Center that were created in or visible to the account calling this API\cr
 #'  \link[paws.security.identity:ssoadmin_list_managed_policies_in_permission_set]{list_managed_policies_in_permission_set} \tab Lists the Amazon Web Services managed policy that is attached to a specified permission set\cr
 #'  \link[paws.security.identity:ssoadmin_list_permission_set_provisioning_status]{list_permission_set_provisioning_status} \tab Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_list_permission_sets]{list_permission_sets} \tab Lists the PermissionSets in an IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_list_permission_sets_provisioned_to_account]{list_permission_sets_provisioned_to_account} \tab Lists all the permission sets that are provisioned to a specified Amazon Web Services account\cr
 #'  \link[paws.security.identity:ssoadmin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to a specified resource\cr
+#'  \link[paws.security.identity:ssoadmin_list_trusted_token_issuers]{list_trusted_token_issuers} \tab Lists all the trusted token issuers configured in an instance of IAM Identity Center\cr
 #'  \link[paws.security.identity:ssoadmin_provision_permission_set]{provision_permission_set} \tab The process by which a specified permission set is provisioned to the specified target\cr
+#'  \link[paws.security.identity:ssoadmin_put_application_access_scope]{put_application_access_scope} \tab Adds or updates the list of authorized targets for an IAM Identity Center access scope for an application\cr
+#'  \link[paws.security.identity:ssoadmin_put_application_assignment_configuration]{put_application_assignment_configuration} \tab Configure how users gain access to an application\cr
+#'  \link[paws.security.identity:ssoadmin_put_application_authentication_method]{put_application_authentication_method} \tab Adds or updates an authentication method for an application\cr
+#'  \link[paws.security.identity:ssoadmin_put_application_grant]{put_application_grant} \tab Adds a grant to an application\cr
 #'  \link[paws.security.identity:ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
 #'  \link[paws.security.identity:ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
 #'  \link[paws.security.identity:ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr
 #'  \link[paws.security.identity:ssoadmin_untag_resource]{untag_resource} \tab Disassociates a set of tags from a specified resource\cr
+#'  \link[paws.security.identity:ssoadmin_update_application]{update_application} \tab Updates application properties\cr
+#'  \link[paws.security.identity:ssoadmin_update_instance]{update_instance} \tab Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account\cr
 #'  \link[paws.security.identity:ssoadmin_update_instance_access_control_attribute_configuration]{update_instance_access_control_attribute_configuration} \tab Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC)\cr
-#'  \link[paws.security.identity:ssoadmin_update_permission_set]{update_permission_set} \tab Updates an existing permission set
+#'  \link[paws.security.identity:ssoadmin_update_permission_set]{update_permission_set} \tab Updates an existing permission set\cr
+#'  \link[paws.security.identity:ssoadmin_update_trusted_token_issuer]{update_trusted_token_issuer} \tab Updates the name of the trusted token issuer, or the path of a source attribute or destination attribute for a trusted token issuer configuration
 #' }
 #'
 #' @return
@@ -38731,16 +39096,13 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' AWS SSO OIDC
 #'
 #' @description
-#' AWS IAM Identity Center (successor to AWS Single Sign-On) OpenID Connect
-#' (OIDC) is a web service that enables a client (such as AWS CLI or a
-#' native application) to register with IAM Identity Center. The service
-#' also enables the client to fetch the user’s access token upon successful
-#' authentication and authorization with IAM Identity Center.
+#' IAM Identity Center OpenID Connect (OIDC) is a web service that enables
+#' a client (such as CLI or a native application) to register with IAM
+#' Identity Center. The service also enables the client to fetch the user’s
+#' access token upon successful authentication and authorization with IAM
+#' Identity Center.
 #' 
-#' Although AWS Single Sign-On was renamed, the `sso` and `identitystore`
-#' API namespaces will continue to retain their original name for backward
-#' compatibility purposes. For more information, see [IAM Identity Center
-#' rename](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed).
+#' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
 #' 
 #' **Considerations for Using This Guide**
 #' 
@@ -38752,21 +39114,27 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'     portions of the OAuth 2.0 Device Authorization Grant standard
 #'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
 #'     that are necessary to enable single sign-on authentication with the
-#'     AWS CLI. Support for other OIDC flows frequently needed for native
-#'     applications, such as Authorization Code Flow (+ PKCE), will be
-#'     addressed in future releases.
+#'     CLI.
 #' 
-#' -   The service emits only OIDC access tokens, such that obtaining a new
-#'     token (For example, token refresh) requires explicit user
-#'     re-authentication.
+#' -   With older versions of the CLI, the service only emits OIDC access
+#'     tokens, so to obtain a new token, users must explicitly
+#'     re-authenticate. To access the OIDC flow that supports token refresh
+#'     and doesn’t require re-authentication, update to the latest CLI
+#'     version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for
+#'     OIDC token refresh and configurable IAM Identity Center session
+#'     durations. For more information, see [Configure Amazon Web Services
+#'     access portal session
+#'     duration](https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html)
+#'     .
 #' 
-#' -   The access tokens provided by this service grant access to all AWS
-#'     account entitlements assigned to an IAM Identity Center user, not
-#'     just a particular application.
+#' -   The access tokens provided by this service grant access to all
+#'     Amazon Web Services account entitlements assigned to an IAM Identity
+#'     Center user, not just a particular application.
 #' 
 #' -   The documentation in this guide does not describe the mechanism to
-#'     convert the access token into AWS Auth (“sigv4”) credentials for use
-#'     with IAM-protected AWS service endpoints. For more information, see
+#'     convert the access token into Amazon Web Services Auth (“sigv4”)
+#'     credentials for use with IAM-protected Amazon Web Services service
+#'     endpoints. For more information, see
 #'     [GetRoleCredentials](https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html)
 #'     in the *IAM Identity Center Portal API Reference Guide*.
 #' 
@@ -38851,14 +39219,19 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' @examples
 #' \dontrun{
 #' svc <- ssooidc()
+#' # 
 #' svc$create_token(
-#'   Foo = 123
+#'   clientId = "_yzkThXVzLWVhc3QtMQEXAMPLECLIENTID",
+#'   clientSecret = "VERYLONGSECRETeyJraWQiOiJrZXktMTU2NDAyODA5OSIsImFsZyI6IkhTMzg0In0",
+#'   deviceCode = "yJraWQiOiJrZXktMTU2Njk2ODA4OCIsImFsZyI6IkhTMzIn0EXAMPLEDEVICECODE",
+#'   grantType = "urn:ietf:params:oauth:grant-type:device-code"
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.security.identity:ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client\cr
+#'  \link[paws.security.identity:ssooidc_create_token]{create_token} \tab Creates and returns access and refresh tokens for clients that are authenticated using client secrets\cr
+#'  \link[paws.security.identity:ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for clients and applications that are authenticated using IAM entities\cr
 #'  \link[paws.security.identity:ssooidc_register_client]{register_client} \tab Registers a client with IAM Identity Center\cr
 #'  \link[paws.security.identity:ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 #' }
@@ -39169,13 +39542,14 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' @examples
 #' \dontrun{
 #' svc <- verifiedpermissions()
-#' svc$create_identity_source(
+#' svc$batch_is_authorized(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.security.identity:verifiedpermissions_batch_is_authorized]{batch_is_authorized} \tab Makes a series of decisions about multiple authorization requests for one principal or resource\cr
 #'  \link[paws.security.identity:verifiedpermissions_create_identity_source]{create_identity_source} \tab Creates a reference to an Amazon Cognito user pool as an external identity provider (IdP)\cr
 #'  \link[paws.security.identity:verifiedpermissions_create_policy]{create_policy} \tab Creates a Cedar policy and saves it in the specified policy store\cr
 #'  \link[paws.security.identity:verifiedpermissions_create_policy_store]{create_policy_store} \tab Creates a policy store\cr
@@ -40758,10 +41132,12 @@ eventbridgepipes <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.application.integration:resourceexplorer_delete_index]{delete_index} \tab Deletes the specified index and turns off Amazon Web Services Resource Explorer in the specified Amazon Web Services Region\cr
 #'  \link[paws.application.integration:resourceexplorer_delete_view]{delete_view} \tab Deletes the specified view\cr
 #'  \link[paws.application.integration:resourceexplorer_disassociate_default_view]{disassociate_default_view} \tab After you call this operation, the affected Amazon Web Services Region no longer has a default view\cr
+#'  \link[paws.application.integration:resourceexplorer_get_account_level_service_configuration]{get_account_level_service_configuration} \tab Retrieves the status of your account's Amazon Web Services service access, and validates the service linked role required to access the multi-account search feature\cr
 #'  \link[paws.application.integration:resourceexplorer_get_default_view]{get_default_view} \tab Retrieves the Amazon Resource Name (ARN) of the view that is the default for the Amazon Web Services Region in which you call this operation\cr
 #'  \link[paws.application.integration:resourceexplorer_get_index]{get_index} \tab Retrieves details about the Amazon Web Services Resource Explorer index in the Amazon Web Services Region in which you invoked the operation\cr
 #'  \link[paws.application.integration:resourceexplorer_get_view]{get_view} \tab Retrieves details of the specified view\cr
 #'  \link[paws.application.integration:resourceexplorer_list_indexes]{list_indexes} \tab Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
+#'  \link[paws.application.integration:resourceexplorer_list_indexes_for_members]{list_indexes_for_members} \tab Retrieves a list of a member's indexes in all Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
 #'  \link[paws.application.integration:resourceexplorer_list_supported_resource_types]{list_supported_resource_types} \tab Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer\cr
 #'  \link[paws.application.integration:resourceexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified resource\cr
 #'  \link[paws.application.integration:resourceexplorer_list_views]{list_views} \tab Lists the Amazon resource names (ARNs) of the views available in the Amazon Web Services Region in which you call this operation\cr
@@ -41075,6 +41451,12 @@ eventbridgescheduler <- function(config = list(), credentials = list(), endpoint
 #' Amazon Web Services. You can access and use Step Functions using the
 #' console, the Amazon Web Services SDKs, or an HTTP API. For more
 #' information about Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
+#' 
+#' If you use the Step Functions API actions using Amazon Web Services SDK
+#' integrations, make sure the API actions are in camel case and parameter
+#' names are in Pascal case. For example, you could use Step Functions API
+#' action `startSyncExecution` and specify its parameter as
+#' `StateMachineArn`.
 #'
 #' @param
 #' config
@@ -41182,13 +41564,15 @@ eventbridgescheduler <- function(config = list(), credentials = list(), endpoint
 #'  \link[paws.application.integration:sfn_list_state_machine_versions]{list_state_machine_versions} \tab Lists versions for the specified state machine Amazon Resource Name (ARN)\cr
 #'  \link[paws.application.integration:sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
 #'  \link[paws.application.integration:sfn_publish_state_machine_version]{publish_state_machine_version} \tab Creates a version from the current revision of a state machine\cr
-#'  \link[paws.application.integration:sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
-#'  \link[paws.application.integration:sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
-#'  \link[paws.application.integration:sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
+#'  \link[paws.application.integration:sfn_redrive_execution]{redrive_execution} \tab Restarts unsuccessful executions of Standard workflows that didn't complete successfully in the last 14 days\cr
+#'  \link[paws.application.integration:sfn_send_task_failure]{send_task_failure} \tab Used by activity workers, Task states using the callback pattern, and optionally Task states using the job run pattern to report that the task identified by the taskToken failed\cr
+#'  \link[paws.application.integration:sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and Task states using the callback pattern, and optionally Task states using the job run pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
+#'  \link[paws.application.integration:sfn_send_task_success]{send_task_success} \tab Used by activity workers, Task states using the callback pattern, and optionally Task states using the job run pattern to report that the task identified by the taskToken completed successfully\cr
 #'  \link[paws.application.integration:sfn_start_execution]{start_execution} \tab Starts a state machine execution\cr
 #'  \link[paws.application.integration:sfn_start_sync_execution]{start_sync_execution} \tab Starts a Synchronous Express state machine execution\cr
 #'  \link[paws.application.integration:sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
 #'  \link[paws.application.integration:sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
+#'  \link[paws.application.integration:sfn_test_state]{test_state} \tab Accepts the definition of a single state and executes it\cr
 #'  \link[paws.application.integration:sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 #'  \link[paws.application.integration:sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
 #'  \link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr
@@ -41715,8 +42099,8 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon Web Services Billing Conductor is a fully managed service that
-#' you can use to customize a [pro
-#' forma](https://docs.aws.amazon.com/billingconductor/latest/userguide/#eb-other-definitions)
+#' you can use to customize a
+#' [proforma](https://docs.aws.amazon.com/billingconductor/latest/userguide/#eb-other-definitions)
 #' version of your billing data each month, to accurately show or
 #' chargeback your end customers. Amazon Web Services Billing Conductor
 #' doesn't change the way you're billed by Amazon Web Services each month
@@ -41832,6 +42216,7 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.cost.management:billingconductor_delete_pricing_rule]{delete_pricing_rule} \tab Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN)\cr
 #'  \link[paws.cost.management:billingconductor_disassociate_accounts]{disassociate_accounts} \tab Removes the specified list of account IDs from the given billing group\cr
 #'  \link[paws.cost.management:billingconductor_disassociate_pricing_rules]{disassociate_pricing_rules} \tab Disassociates a list of pricing rules from a pricing plan\cr
+#'  \link[paws.cost.management:billingconductor_get_billing_group_cost_report]{get_billing_group_cost_report} \tab Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Service for a specific billing group\cr
 #'  \link[paws.cost.management:billingconductor_list_account_associations]{list_account_associations} \tab This is a paginated call to list linked accounts that are linked to the payer account for the specified time period\cr
 #'  \link[paws.cost.management:billingconductor_list_billing_group_cost_reports]{list_billing_group_cost_reports} \tab A paginated call to retrieve a summary report of actual Amazon Web Services charges and the calculated Amazon Web Services charges based on the associated pricing plan of a billing group\cr
 #'  \link[paws.cost.management:billingconductor_list_billing_groups]{list_billing_groups} \tab A paginated call to retrieve a list of billing groups for the given billing period\cr
@@ -42423,13 +42808,14 @@ costexplorer <- function(config = list(), credentials = list(), endpoint = NULL,
 #' @examples
 #' \dontrun{
 #' svc <- marketplacecatalog()
-#' svc$cancel_change_set(
+#' svc$batch_describe_entities(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.cost.management:marketplacecatalog_batch_describe_entities]{batch_describe_entities} \tab Returns metadata and content for multiple entities\cr
 #'  \link[paws.cost.management:marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
 #'  \link[paws.cost.management:marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an entity that is identified by its resource ARN\cr
 #'  \link[paws.cost.management:marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
@@ -43119,11 +43505,11 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #' Payment Cryptography Control Plane
 #'
 #' @description
-#' You use the Amazon Web Services Payment Cryptography Control Plane to
-#' manage the encryption keys you use for payment-related cryptographic
-#' operations. You can create, import, export, share, manage, and delete
-#' keys. You can also manage Identity and Access Management (IAM) policies
-#' for keys. For more information, see [Identity and access
+#' Amazon Web Services Payment Cryptography Control Plane APIs manage
+#' encryption keys for use during payment-related cryptographic operations.
+#' You can create, import, export, share, manage, and delete keys. You can
+#' also manage Identity and Access Management (IAM) policies for keys. For
+#' more information, see [Identity and access
 #' management](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security-iam.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide.*
 #' 
@@ -43131,21 +43517,22 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #' associated cryptographic operations, you use the [Amazon Web Services
 #' Payment Cryptography Data
 #' Plane](https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/Welcome.html).
-#' You can encrypt, decrypt, generate, verify, and translate
-#' payment-related cryptographic operations.
+#' You can perform actions like encrypt, decrypt, generate, and verify
+#' payment-related data.
 #' 
 #' All Amazon Web Services Payment Cryptography API calls must be signed
 #' and transmitted using Transport Layer Security (TLS). We recommend you
 #' always use the latest supported TLS version for logging API requests.
 #' 
-#' Amazon Web Services Payment Cryptography supports CloudTrail, a service
-#' that logs Amazon Web Services API calls and related events for your
-#' Amazon Web Services account and delivers them to an Amazon S3 bucket
-#' that you specify. By using the information collected by CloudTrail, you
-#' can determine what requests were made to Amazon Web Services Payment
-#' Cryptography, who made the request, when it was made, and so on. If you
-#' don't conﬁgure a trail, you can still view the most recent events in the
-#' CloudTrail console. For more information, see the [CloudTrail User
+#' Amazon Web Services Payment Cryptography supports CloudTrail for control
+#' plane operations, a service that logs Amazon Web Services API calls and
+#' related events for your Amazon Web Services account and delivers them to
+#' an Amazon S3 bucket you specify. By using the information collected by
+#' CloudTrail, you can determine what requests were made to Amazon Web
+#' Services Payment Cryptography, who made the request, when it was made,
+#' and so on. If you don't conﬁgure a trail, you can still view the most
+#' recent events in the CloudTrail console. For more information, see the
+#' [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
 #'
 #' @param
@@ -43234,14 +43621,14 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_create_alias]{create_alias} \tab Creates an alias, or a friendly name, for an Amazon Web Services Payment Cryptography key\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_create_key]{create_key} \tab Creates an Amazon Web Services Payment Cryptography key, a logical representation of a cryptographic key, that is unique in your account and Amazon Web Services Region\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_delete_alias]{delete_alias} \tab Deletes the alias, but doesn't affect the underlying key\cr
-#'  \link[paws.cost.management:paymentcryptographycontrolplane_delete_key]{delete_key} \tab Deletes the key material and all metadata associated with Amazon Web Services Payment Cryptography key\cr
-#'  \link[paws.cost.management:paymentcryptographycontrolplane_export_key]{export_key} \tab Exports a key from Amazon Web Services Payment Cryptography using either ANSI X9 TR-34 or TR-31 key export standard\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_delete_key]{delete_key} \tab Deletes the key material and metadata associated with Amazon Web Services Payment Cryptography key\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_export_key]{export_key} \tab Exports a key from Amazon Web Services Payment Cryptography\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_get_alias]{get_alias} \tab Gets the Amazon Web Services Payment Cryptography key associated with the alias\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_get_key]{get_key} \tab Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_get_parameters_for_export]{get_parameters_for_export} \tab Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography\cr
-#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate to initiate a TR-34 key import into Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_get_public_key_certificate]{get_public_key_certificate} \tab Gets the public key certificate of the asymmetric key pair that exists within Amazon Web Services Payment Cryptography\cr
-#'  \link[paws.cost.management:paymentcryptographycontrolplane_import_key]{import_key} \tab Imports keys and public key certificates into Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_import_key]{import_key} \tab Imports symmetric keys and public key certificates in PEM format (base64 encoded) into Amazon Web Services Payment Cryptography\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_list_aliases]{list_aliases} \tab Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_list_keys]{list_keys} \tab Lists the keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
 #'  \link[paws.cost.management:paymentcryptographycontrolplane_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Web Services resource\cr
@@ -43507,9 +43894,11 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.customer.engagement:connect_activate_evaluation_form]{activate_evaluation_form} \tab Activates an evaluation form in the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_associate_analytics_data_set]{associate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_approved_origin]{associate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_bot]{associate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_default_vocabulary]{associate_default_vocabulary} \tab Associates an existing vocabulary as the default\cr
+#'  \link[paws.customer.engagement:connect_associate_flow]{associate_flow} \tab Associates a connect resource to a flow\cr
 #'  \link[paws.customer.engagement:connect_associate_instance_storage_config]{associate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_lambda_function]{associate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_lex_bot]{associate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -43518,6 +43907,9 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
 #'  \link[paws.customer.engagement:connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_traffic_distribution_group_user]{associate_traffic_distribution_group_user} \tab Associates an agent with a traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_associate_user_proficiencies]{associate_user_proficiencies} \tab >Associates a set of proficiencies with a user\cr
+#'  \link[paws.customer.engagement:connect_batch_associate_analytics_data_set]{batch_associate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_batch_disassociate_analytics_data_set]{batch_disassociate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_batch_get_flow_association]{batch_get_flow_association} \tab Retrieve the flow associations for the given resources\cr
 #'  \link[paws.customer.engagement:connect_batch_put_contact]{batch_put_contact} \tab Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API\cr
 #'  \link[paws.customer.engagement:connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
@@ -43530,6 +43922,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_create_participant]{create_participant} \tab Adds a new participant into an on-going chat contact\cr
 #'  \link[paws.customer.engagement:connect_create_persistent_contact_association]{create_persistent_contact_association} \tab Enables rehydration of chats for the lifespan of a contact\cr
+#'  \link[paws.customer.engagement:connect_create_predefined_attribute]{create_predefined_attribute} \tab Creates a new predefined attribute for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_create_prompt]{create_prompt} \tab Creates a prompt\cr
 #'  \link[paws.customer.engagement:connect_create_queue]{create_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_create_quick_connect]{create_quick_connect} \tab Creates a quick connect for the specified Amazon Connect instance\cr
@@ -43552,6 +43945,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_delete_hours_of_operation]{delete_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_delete_predefined_attribute]{delete_predefined_attribute} \tab Deletes a predefined attribute from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_delete_prompt]{delete_prompt} \tab Deletes a prompt\cr
 #'  \link[paws.customer.engagement:connect_delete_queue]{delete_queue} \tab Deletes a queue\cr
 #'  \link[paws.customer.engagement:connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
@@ -43577,6 +43971,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_describe_instance_attribute]{describe_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_describe_instance_storage_config]{describe_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_describe_phone_number]{describe_phone_number} \tab Gets details and status of a phone number that’s claimed to your Amazon Connect instance or traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_describe_predefined_attribute]{describe_predefined_attribute} \tab Describes a predefined attribute for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_describe_prompt]{describe_prompt} \tab Describes the prompt\cr
 #'  \link[paws.customer.engagement:connect_describe_queue]{describe_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_describe_quick_connect]{describe_quick_connect} \tab Describes the quick connect\cr
@@ -43584,13 +43979,15 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_describe_rule]{describe_rule} \tab Describes a rule for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab Gets basic information about the security profle\cr
 #'  \link[paws.customer.engagement:connect_describe_traffic_distribution_group]{describe_traffic_distribution_group} \tab Gets details and status of a traffic distribution group\cr
-#'  \link[paws.customer.engagement:connect_describe_user]{describe_user} \tab Describes the specified user account\cr
+#'  \link[paws.customer.engagement:connect_describe_user]{describe_user} \tab Describes the specified user\cr
 #'  \link[paws.customer.engagement:connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
 #'  \link[paws.customer.engagement:connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_describe_view]{describe_view} \tab Retrieves the view for the specified Amazon Connect instance and view identifier\cr
 #'  \link[paws.customer.engagement:connect_describe_vocabulary]{describe_vocabulary} \tab Describes the specified vocabulary\cr
+#'  \link[paws.customer.engagement:connect_disassociate_analytics_data_set]{disassociate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_disassociate_approved_origin]{disassociate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_disassociate_bot]{disassociate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_disassociate_flow]{disassociate_flow} \tab Disassociates a connect resource from a flow\cr
 #'  \link[paws.customer.engagement:connect_disassociate_instance_storage_config]{disassociate_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_disassociate_lambda_function]{disassociate_lambda_function} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_disassociate_lex_bot]{disassociate_lex_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -43599,17 +43996,21 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_disassociate_routing_profile_queues]{disassociate_routing_profile_queues} \tab Disassociates a set of queues from a routing profile\cr
 #'  \link[paws.customer.engagement:connect_disassociate_security_key]{disassociate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_disassociate_traffic_distribution_group_user]{disassociate_traffic_distribution_group_user} \tab Disassociates an agent from a traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_disassociate_user_proficiencies]{disassociate_user_proficiencies} \tab Disassociates a set of proficiencies from a user\cr
 #'  \link[paws.customer.engagement:connect_dismiss_user_contact]{dismiss_user_contact} \tab Dismisses contacts from an agent’s CCP and returns the agent to an available state, which allows the agent to receive a new routed contact\cr
 #'  \link[paws.customer.engagement:connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 #'  \link[paws.customer.engagement:connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_federation_token]{get_federation_token} \tab Supports SAML sign-in for Amazon Connect\cr
+#'  \link[paws.customer.engagement:connect_get_flow_association]{get_flow_association} \tab Retrieves the flow associated for a given resource\cr
 #'  \link[paws.customer.engagement:connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_metric_data_v2]{get_metric_data_v2} \tab Gets metric data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_prompt_file]{get_prompt_file} \tab Gets the prompt file\cr
 #'  \link[paws.customer.engagement:connect_get_task_template]{get_task_template} \tab Gets details about a specific task template in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_traffic_distribution]{get_traffic_distribution} \tab Retrieves the current traffic distribution for a given traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_import_phone_number]{import_phone_number} \tab Imports a claimed phone number from an external service, such as Amazon Pinpoint, into an Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_agent_statuses]{list_agent_statuses} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_list_analytics_data_associations]{list_analytics_data_associations} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_list_bots]{list_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_list_contact_evaluations]{list_contact_evaluations} \tab Lists contact evaluations in the specified Amazon Connect instance\cr
@@ -43619,6 +44020,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_list_default_vocabularies]{list_default_vocabularies} \tab Lists the default vocabularies for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_evaluation_forms]{list_evaluation_forms} \tab Lists evaluation forms in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_evaluation_form_versions]{list_evaluation_form_versions} \tab Lists versions of an evaluation form in the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_list_flow_associations]{list_flow_associations} \tab List the flow association based on the filters\cr
 #'  \link[paws.customer.engagement:connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_instance_attributes]{list_instance_attributes} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_list_instances]{list_instances} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -43628,10 +44030,12 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_list_lex_bots]{list_lex_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_phone_numbers_v2]{list_phone_numbers_v2} \tab Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_list_predefined_attributes]{list_predefined_attributes} \tab Lists predefined attributes for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_prompts]{list_prompts} \tab Provides information about the prompts for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_queue_quick_connects]{list_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_quick_connects]{list_quick_connects} \tab Provides information about the quick connects for the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_list_realtime_contact_analysis_segments_v2]{list_realtime_contact_analysis_segments_v2} \tab Provides a list of analysis segments for a real-time analysis session\cr
 #'  \link[paws.customer.engagement:connect_list_routing_profile_queues]{list_routing_profile_queues} \tab Lists the queues associated with a routing profile\cr
 #'  \link[paws.customer.engagement:connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_rules]{list_rules} \tab List all rules for the specified Amazon Connect instance\cr
@@ -43645,16 +44049,21 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_list_traffic_distribution_group_users]{list_traffic_distribution_group_users} \tab Lists traffic distribution group users\cr
 #'  \link[paws.customer.engagement:connect_list_use_cases]{list_use_cases} \tab Lists the use cases for the integration association\cr
 #'  \link[paws.customer.engagement:connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_list_user_proficiencies]{list_user_proficiencies} \tab Lists proficiencies associated with a user\cr
 #'  \link[paws.customer.engagement:connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_views]{list_views} \tab Returns views in the given instance\cr
 #'  \link[paws.customer.engagement:connect_list_view_versions]{list_view_versions} \tab Returns all the available versions for the specified Amazon Connect instance and view identifier\cr
 #'  \link[paws.customer.engagement:connect_monitor_contact]{monitor_contact} \tab Initiates silent monitoring of a contact\cr
+#'  \link[paws.customer.engagement:connect_pause_contact]{pause_contact} \tab Allows pausing an ongoing task contact\cr
 #'  \link[paws.customer.engagement:connect_put_user_status]{put_user_status} \tab Changes the current status of a user or agent in Amazon Connect\cr
 #'  \link[paws.customer.engagement:connect_release_phone_number]{release_phone_number} \tab Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions\cr
+#'  \link[paws.customer.engagement:connect_resume_contact]{resume_contact} \tab Allows resuming a task contact in a paused state\cr
 #'  \link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both\cr
 #'  \link[paws.customer.engagement:connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_search_contacts]{search_contacts} \tab Searches contacts in an Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
+#'  \link[paws.customer.engagement:connect_search_predefined_attributes]{search_predefined_attributes} \tab Predefined attributes that meet certain criteria\cr
 #'  \link[paws.customer.engagement:connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_queues]{search_queues} \tab Searches queues in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_quick_connects]{search_quick_connects} \tab Searches quick connects in an Amazon Connect instance, with optional filtering\cr
@@ -43663,19 +44072,23 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_search_security_profiles]{search_security_profiles} \tab Searches security profiles in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
+#'  \link[paws.customer.engagement:connect_send_chat_integration_event]{send_chat_integration_event} \tab Processes chat integration events from Amazon Web Services or external integrations to Amazon Connect\cr
 #'  \link[paws.customer.engagement:connect_start_chat_contact]{start_chat_contact} \tab Initiates a flow to start a new chat for the customer\cr
 #'  \link[paws.customer.engagement:connect_start_contact_evaluation]{start_contact_evaluation} \tab Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the particular contact\cr
 #'  \link[paws.customer.engagement:connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
 #'  \link[paws.customer.engagement:connect_start_contact_streaming]{start_contact_streaming} \tab Initiates real-time message streaming for a new chat contact\cr
 #'  \link[paws.customer.engagement:connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the flow\cr
 #'  \link[paws.customer.engagement:connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task contact\cr
+#'  \link[paws.customer.engagement:connect_start_web_rtc_contact]{start_web_rtc_contact} \tab Places an inbound in-app, web, or video call to a contact, and then initiates the flow\cr
 #'  \link[paws.customer.engagement:connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
 #'  \link[paws.customer.engagement:connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 #'  \link[paws.customer.engagement:connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
 #'  \link[paws.customer.engagement:connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call, screen, or both\cr
+#'  \link[paws.customer.engagement:connect_tag_contact]{tag_contact} \tab Adds the specified tags to the contact resource\cr
 #'  \link[paws.customer.engagement:connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[paws.customer.engagement:connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
+#'  \link[paws.customer.engagement:connect_untag_contact]{untag_contact} \tab Removes the specified tags from the contact resource\cr
 #'  \link[paws.customer.engagement:connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[paws.customer.engagement:connect_update_agent_status]{update_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_update_contact]{update_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -43686,6 +44099,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_update_contact_flow_module_content]{update_contact_flow_module_content} \tab Updates specified flow module for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_update_contact_flow_module_metadata]{update_contact_flow_module_metadata} \tab Updates metadata about specified flow module\cr
 #'  \link[paws.customer.engagement:connect_update_contact_flow_name]{update_contact_flow_name} \tab The name of the flow\cr
+#'  \link[paws.customer.engagement:connect_update_contact_routing_data]{update_contact_routing_data} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_update_contact_schedule]{update_contact_schedule} \tab Updates the scheduled time of a task contact that is already scheduled\cr
 #'  \link[paws.customer.engagement:connect_update_evaluation_form]{update_evaluation_form} \tab Updates details about a specific evaluation form version in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_update_hours_of_operation]{update_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -43694,6 +44108,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr
 #'  \link[paws.customer.engagement:connect_update_phone_number]{update_phone_number} \tab Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region\cr
 #'  \link[paws.customer.engagement:connect_update_phone_number_metadata]{update_phone_number_metadata} \tab Updates a phone number’s metadata\cr
+#'  \link[paws.customer.engagement:connect_update_predefined_attribute]{update_predefined_attribute} \tab Updates a predefined attribute for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_update_prompt]{update_prompt} \tab Updates a prompt\cr
 #'  \link[paws.customer.engagement:connect_update_queue_hours_of_operation]{update_queue_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_update_queue_max_contacts]{update_queue_max_contacts} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -43716,6 +44131,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_update_user_hierarchy_structure]{update_user_hierarchy_structure} \tab Updates the user hierarchy structure: add, remove, and rename user hierarchy levels\cr
 #'  \link[paws.customer.engagement:connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user\cr
 #'  \link[paws.customer.engagement:connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user\cr
+#'  \link[paws.customer.engagement:connect_update_user_proficiencies]{update_user_proficiencies} \tab Updates the properties associated with the proficiencies of a user\cr
 #'  \link[paws.customer.engagement:connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr
 #'  \link[paws.customer.engagement:connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user\cr
 #'  \link[paws.customer.engagement:connect_update_view_content]{update_view_content} \tab Updates the view content of the given view identifier in the specified Amazon Connect instance\cr
@@ -44559,33 +44975,43 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:connectwisdomservice_create_assistant_association]{create_assistant_association} \tab Creates an association between an Amazon Connect Wisdom assistant and another resource\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_create_content]{create_content} \tab Creates Wisdom content\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_create_knowledge_base]{create_knowledge_base} \tab Creates a knowledge base\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_create_quick_response]{create_quick_response} \tab Creates a Wisdom quick response\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_create_session]{create_session} \tab Creates a session\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_delete_assistant]{delete_assistant} \tab Deletes an assistant\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_delete_assistant_association]{delete_assistant_association} \tab Deletes an assistant association\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_delete_content]{delete_content} \tab Deletes the content\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_delete_import_job]{delete_import_job} \tab Deletes the quick response import job\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_delete_knowledge_base]{delete_knowledge_base} \tab Deletes the knowledge base\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_delete_quick_response]{delete_quick_response} \tab Deletes a quick response\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_assistant]{get_assistant} \tab Retrieves information about an assistant\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_assistant_association]{get_assistant_association} \tab Retrieves information about an assistant association\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_content]{get_content} \tab Retrieves content, including a pre-signed URL to download the content\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_content_summary]{get_content_summary} \tab Retrieves summary information about the content\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_get_import_job]{get_import_job} \tab Retrieves the started import job\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_knowledge_base]{get_knowledge_base} \tab Retrieves information about the knowledge base\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_get_quick_response]{get_quick_response} \tab Retrieves the quick response\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_recommendations]{get_recommendations} \tab Retrieves recommendations for the specified session\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_get_session]{get_session} \tab Retrieves information for a specified session\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_list_assistant_associations]{list_assistant_associations} \tab Lists information about assistant associations\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_list_assistants]{list_assistants} \tab Lists information about assistants\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_list_contents]{list_contents} \tab Lists the content\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_list_import_jobs]{list_import_jobs} \tab Lists information about import jobs\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_list_knowledge_bases]{list_knowledge_bases} \tab Lists the knowledge bases\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_list_quick_responses]{list_quick_responses} \tab Lists information about quick response\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_notify_recommendations_received]{notify_recommendations_received} \tab Removes the specified recommendations from the specified assistant's queue of newly available recommendations\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_query_assistant]{query_assistant} \tab Performs a manual search against the specified assistant\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_remove_knowledge_base_template_uri]{remove_knowledge_base_template_uri} \tab Removes a URI template from a knowledge base\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_search_content]{search_content} \tab Searches for content in a specified knowledge base\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_search_quick_responses]{search_quick_responses} \tab Searches existing Wisdom quick responses in a Wisdom knowledge base\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_search_sessions]{search_sessions} \tab Searches for sessions\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_start_content_upload]{start_content_upload} \tab Get a URL to upload content to a knowledge base\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_start_import_job]{start_import_job} \tab Start an asynchronous job to import Wisdom resources from an uploaded source file\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[paws.customer.engagement:connectwisdomservice_update_content]{update_content} \tab Updates information about the content\cr
-#'  \link[paws.customer.engagement:connectwisdomservice_update_knowledge_base_template_uri]{update_knowledge_base_template_uri} \tab Updates the template URI of a knowledge base
+#'  \link[paws.customer.engagement:connectwisdomservice_update_knowledge_base_template_uri]{update_knowledge_base_template_uri} \tab Updates the template URI of a knowledge base\cr
+#'  \link[paws.customer.engagement:connectwisdomservice_update_quick_response]{update_quick_response} \tab Updates an existing Wisdom quick response
 #' }
 #'
 #' @return
@@ -44715,6 +45141,7 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
 #'  \link[paws.customer.engagement:customerprofiles_delete_profile_object]{delete_profile_object} \tab Removes an object associated with a profile of a given ProfileObjectType\cr
 #'  \link[paws.customer.engagement:customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
 #'  \link[paws.customer.engagement:customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
+#'  \link[paws.customer.engagement:customerprofiles_detect_profile_object_type]{detect_profile_object_type} \tab The process of detecting profile object type mapping by using given objects\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_auto_merging_preview]{get_auto_merging_preview} \tab Tests the auto-merging settings of your Identity Resolution Job without merging your data\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_calculated_attribute_definition]{get_calculated_attribute_definition} \tab Provides more information on a calculated attribute definition for Customer Profiles\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_calculated_attribute_for_profile]{get_calculated_attribute_for_profile} \tab Retrieve a calculated attribute for a customer profile\cr
@@ -45214,6 +45641,30 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #' mobile apps and other types of applications. The guide also provides key
 #' information, such as Amazon Pinpoint integration with other Amazon Web
 #' Services services, and the quotas that apply to use of the service.
+#' 
+#' **Regional availability**
+#' 
+#' The *Amazon Pinpoint SMS and Voice, version 2 API Reference* is
+#' available in several Amazon Web Services Regions and it provides an
+#' endpoint for each of these Regions. For a list of all the Regions and
+#' endpoints where the API is currently available, see [Amazon Web Services
+#' Service
+#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region)
+#' and [Amazon Pinpoint endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/pinpoint.html) in
+#' the Amazon Web Services General Reference. To learn more about Amazon
+#' Web Services Regions, see [Managing Amazon Web Services
+#' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
+#' in the Amazon Web Services General Reference.
+#' 
+#' In each Region, Amazon Web Services maintains multiple Availability
+#' Zones. These Availability Zones are physically isolated from each other,
+#' but are united by private, low-latency, high-throughput, and highly
+#' redundant network connections. These Availability Zones enable us to
+#' provide very high levels of availability and redundancy, while also
+#' minimizing latency. To learn more about the number of Availability Zones
+#' that are available in each Region, see [Amazon Web Services Global
+#' Infrastructure.](https://aws.amazon.com/about-aws/global-infrastructure/)
 #'
 #' @param
 #' config
@@ -45303,6 +45754,11 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_event_destination]{create_event_destination} \tab Creates a new event destination in a configuration set\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_opt_out_list]{create_opt_out_list} \tab Creates a new opt-out list\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_pool]{create_pool} \tab Creates a new pool and associates the specified origination identity to the pool\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration]{create_registration} \tab Creates a new registration based on the RegistrationType field\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration_association]{create_registration_association} \tab Associate the registration with an origination identity such as a phone number or sender ID\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration_attachment]{create_registration_attachment} \tab Create a new registration attachment to use for uploading a file or a URL to a file\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_registration_version]{create_registration_version} \tab Create a new version of the registration and increase the VersionNumber\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_create_verified_destination_number]{create_verified_destination_number} \tab You can only send messages to verified destination numbers when your account is in the sandbox\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_default_message_type]{delete_default_message_type} \tab Deletes an existing default message type on a configuration set\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_default_sender_id]{delete_default_sender_id} \tab Deletes an existing default sender ID on a configuration set\cr
@@ -45311,7 +45767,11 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_opted_out_number]{delete_opted_out_number} \tab Deletes an existing opted out destination phone number from the specified opt-out list\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_opt_out_list]{delete_opt_out_list} \tab Deletes an existing opt-out list\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_pool]{delete_pool} \tab Deletes an existing pool\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration]{delete_registration} \tab Permanently delete an existing registration from your account\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration_attachment]{delete_registration_attachment} \tab Permanently delete the specified registration attachment\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_registration_field_value]{delete_registration_field_value} \tab Delete the value in a registration form field\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_text_message_spend_limit_override]{delete_text_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending text messages\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_verified_destination_number]{delete_verified_destination_number} \tab Delete a verified destination phone number\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_delete_voice_message_spend_limit_override]{delete_voice_message_spend_limit_override} \tab Deletes an account level monthly spend limit override for sending voice messages\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your Amazon Web Services account\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_account_limits]{describe_account_limits} \tab Describes the current Amazon Pinpoint SMS Voice V2 resource quotas for your account\cr
@@ -45321,26 +45781,43 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_opt_out_lists]{describe_opt_out_lists} \tab Describes the specified opt-out list or all opt-out lists in your account\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers} \tab Describes the specified origination phone number, or all the phone numbers in your account\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_pools]{describe_pools} \tab Retrieves the specified pools or all pools associated with your Amazon Web Services account\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_attachments]{describe_registration_attachments} \tab Retrieves the specified registration attachments or all registration attachments associated with your Amazon Web Services account\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_field_definitions]{describe_registration_field_definitions} \tab Retrieves the specified registration type field definitions\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_field_values]{describe_registration_field_values} \tab Retrieves the specified registration field values\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registrations]{describe_registrations} \tab Retrieves the specified registrations\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_section_definitions]{describe_registration_section_definitions} \tab Retrieves the specified registration section definitions\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_type_definitions]{describe_registration_type_definitions} \tab Retrieves the specified registration type definitions\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_registration_versions]{describe_registration_versions} \tab Retrieves the specified registration version\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_sender_ids]{describe_sender_ids} \tab Describes the specified SenderIds or all SenderIds associated with your Amazon Web Services account\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_spend_limits]{describe_spend_limits} \tab Describes the current Amazon Pinpoint monthly spend limits for sending voice and text messages\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_describe_verified_destination_numbers]{describe_verified_destination_numbers} \tab Retrieves the specified verified destiona numbers\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_disassociate_origination_identity]{disassociate_origination_identity} \tab Removes the specified origination identity from an existing pool\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_discard_registration_version]{discard_registration_version} \tab Discard the current version of the registration\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_list_pool_origination_identities]{list_pool_origination_identities} \tab Lists all associated origination identities in your pool\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_list_registration_associations]{list_registration_associations} \tab Retreive all of the origination identies that are associated with a registration\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_list_tags_for_resource]{list_tags_for_resource} \tab List all tags associated with a resource\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_put_keyword]{put_keyword} \tab Creates or updates a keyword configuration on an origination phone number or pool\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_put_opted_out_number]{put_opted_out_number} \tab Creates an opted out destination phone number in the opt-out list\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_put_registration_field_value]{put_registration_field_value} \tab Creates or updates a field value for a registration\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_release_phone_number]{release_phone_number} \tab Releases an existing origination phone number in your account\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_release_sender_id]{release_sender_id} \tab Releases an existing sender ID in your account\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_request_phone_number]{request_phone_number} \tab Request an origination phone number for use in your account\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_request_sender_id]{request_sender_id} \tab Request a new sender ID that doesn't require registration\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_send_destination_number_verification_code]{send_destination_number_verification_code} \tab Before you can send test messages to a verified destination phone number you need to opt-in the verified destination phone number\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_send_text_message]{send_text_message} \tab Creates a new text message and sends it to a recipient's phone number\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a text message through Amazon Pinpoint\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a voice message through Amazon Pinpoint\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_set_default_message_type]{set_default_message_type} \tab Sets the default message type on a configuration set\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_set_default_sender_id]{set_default_sender_id} \tab Sets default sender ID on a configuration set\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_set_text_message_spend_limit_override]{set_text_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending text messages\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_set_voice_message_spend_limit_override]{set_voice_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending voice messages\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_submit_registration_version]{submit_registration_version} \tab Submit the specified registration for review and approval\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_tag_resource]{tag_resource} \tab Adds or overwrites only the specified tags for the specified Amazon Pinpoint SMS Voice, version 2 resource\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_untag_resource]{untag_resource} \tab Removes the association of the specified tags from an Amazon Pinpoint SMS Voice V2 resource\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_update_event_destination]{update_event_destination} \tab Updates an existing event destination in a configuration set\cr
 #'  \link[paws.customer.engagement:pinpointsmsvoicev2_update_phone_number]{update_phone_number} \tab Updates the configuration of an existing origination phone number\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoicev2_update_pool]{update_pool} \tab Updates the configuration of an existing pool
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_update_pool]{update_pool} \tab Updates the configuration of an existing pool\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_update_sender_id]{update_sender_id} \tab Updates the configuration of an existing sender ID\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoicev2_verify_destination_number]{verify_destination_number} \tab Use the verification code that was received by the verified destination phone number to opt-in the verified destination phone number to receive more messages
 #' }
 #'
 #' @return

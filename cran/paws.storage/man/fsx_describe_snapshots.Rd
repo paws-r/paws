@@ -9,7 +9,8 @@ fsx_describe_snapshots(
   SnapshotIds = NULL,
   Filters = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  IncludeShared = NULL
 )
 }
 \arguments{
@@ -23,6 +24,11 @@ error occurs.}
 \item{MaxResults}{}
 
 \item{NextToken}{}
+
+\item{IncludeShared}{Set to \code{false} (default) if you want to only see the snapshots in your
+Amazon Web Services account. Set to \code{true} if you want to see the
+snapshots in your account and the ones shared with you from another
+account.}
 }
 \description{
 Returns the description of specific Amazon FSx for OpenZFS snapshots, if a \code{SnapshotIds} value is provided. Otherwise, this operation returns all snapshots owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.

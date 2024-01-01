@@ -11,7 +11,7 @@ route53resolver_create_resolver_rule(
   CreatorRequestId,
   Name = NULL,
   RuleType,
-  DomainName,
+  DomainName = NULL,
   TargetIps = NULL,
   ResolverEndpointId = NULL,
   Tags = NULL
@@ -41,7 +41,7 @@ and specify \code{SYSTEM} for \code{RuleType}.
 Currently, only Resolver can create rules that have a value of
 \code{RECURSIVE} for \code{RuleType}.}
 
-\item{DomainName}{[required] DNS queries for this domain name are forwarded to the IP addresses that
+\item{DomainName}{DNS queries for this domain name are forwarded to the IP addresses that
 you specify in \code{TargetIps}. If a query matches multiple Resolver rules
 (example.com and www.example.com), outbound DNS queries are routed using
 the Resolver rule that contains the most specific domain name

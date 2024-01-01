@@ -4,13 +4,22 @@
 \alias{connectwisdomservice_start_content_upload}
 \title{Get a URL to upload content to a knowledge base}
 \usage{
-connectwisdomservice_start_content_upload(contentType, knowledgeBaseId)
+connectwisdomservice_start_content_upload(
+  contentType,
+  knowledgeBaseId,
+  presignedUrlTimeToLive = NULL
+)
 }
 \arguments{
 \item{contentType}{[required] The type of content to upload.}
 
-\item{knowledgeBaseId}{[required] The identifier of the knowledge base. Can be either the ID or the ARN.
-URLs cannot contain the ARN.}
+\item{knowledgeBaseId}{[required] The identifier of the knowledge base. This should not be a
+QUICK_RESPONSES type knowledge base if you're storing Wisdom Content
+resource to it. Can be either the ID or the ARN. URLs cannot contain the
+ARN.}
+
+\item{presignedUrlTimeToLive}{The expected expiration time of the generated presigned URL, specified
+in minutes.}
 }
 \description{
 Get a URL to upload content to a knowledge base. To upload content, first make a PUT request to the returned URL with your file, making sure to include the required headers. Then use \code{\link[=connectwisdomservice_create_content]{create_content}} to finalize the content creation process or \code{\link[=connectwisdomservice_update_content]{update_content}} to modify an existing resource. You can only upload content to a knowledge base of type CUSTOM.

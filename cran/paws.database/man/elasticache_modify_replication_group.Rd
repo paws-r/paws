@@ -219,7 +219,7 @@ cluster mode enabled, you can then complete cluster mode configuration
 and set the cluster mode to Enabled.}
 }
 \description{
-Modifies the settings for a replication group.
+Modifies the settings for a replication group. This is limited to Redis 7 and newer.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/} for full documentation.
 }

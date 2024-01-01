@@ -6,6 +6,7 @@
 \usage{
 braket_create_job(
   algorithmSpecification,
+  associations = NULL,
   checkpointConfig = NULL,
   clientToken,
   deviceConfig,
@@ -23,6 +24,8 @@ braket_create_job(
 \item{algorithmSpecification}{[required] Definition of the Amazon Braket job to be created. Specifies the
 container image the job uses and information about the Python scripts
 used for entry and training.}
+
+\item{associations}{The list of Amazon Braket resources associated with the hybrid job.}
 
 \item{checkpointConfig}{Information about the output locations for job checkpoint data.}
 

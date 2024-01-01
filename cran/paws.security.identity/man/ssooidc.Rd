@@ -48,15 +48,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS IAM Identity Center (successor to AWS Single Sign-On) OpenID Connect
-(OIDC) is a web service that enables a client (such as AWS CLI or a
-native application) to register with IAM Identity Center. The service
-also enables the client to fetch the user’s access token upon successful
-authentication and authorization with IAM Identity Center.
+IAM Identity Center OpenID Connect (OIDC) is a web service that enables
+a client (such as CLI or a native application) to register with IAM
+Identity Center. The service also enables the client to fetch the user’s
+access token upon successful authentication and authorization with IAM
+Identity Center.
 
-Although AWS Single Sign-On was renamed, the \code{sso} and \code{identitystore}
-API namespaces will continue to retain their original name for backward
-compatibility purposes. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed}{IAM Identity Center rename}.
+IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
 
 \strong{Considerations for Using This Guide}
 
@@ -68,18 +66,22 @@ OIDC service works.
 portions of the OAuth 2.0 Device Authorization Grant standard
 (\href{https://datatracker.ietf.org/doc/html/rfc8628}{https://tools.ietf.org/html/rfc8628})
 that are necessary to enable single sign-on authentication with the
-AWS CLI. Support for other OIDC flows frequently needed for native
-applications, such as Authorization Code Flow (+ PKCE), will be
-addressed in future releases.
-\item The service emits only OIDC access tokens, such that obtaining a new
-token (For example, token refresh) requires explicit user
-re-authentication.
-\item The access tokens provided by this service grant access to all AWS
-account entitlements assigned to an IAM Identity Center user, not
-just a particular application.
+CLI.
+\item With older versions of the CLI, the service only emits OIDC access
+tokens, so to obtain a new token, users must explicitly
+re-authenticate. To access the OIDC flow that supports token refresh
+and doesn’t require re-authentication, update to the latest CLI
+version (1.27.10 for CLI V1 and 2.9.0 for CLI V2) with support for
+OIDC token refresh and configurable IAM Identity Center session
+durations. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html}{Configure Amazon Web Services access portal session duration}
+.
+\item The access tokens provided by this service grant access to all
+Amazon Web Services account entitlements assigned to an IAM Identity
+Center user, not just a particular application.
 \item The documentation in this guide does not describe the mechanism to
-convert the access token into AWS Auth (“sigv4”) credentials for use
-with IAM-protected AWS service endpoints. For more information, see
+convert the access token into Amazon Web Services Auth (“sigv4”)
+credentials for use with IAM-protected Amazon Web Services service
+endpoints. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html}{GetRoleCredentials}
 in the \emph{IAM Identity Center Portal API Reference Guide}.
 }
@@ -126,7 +128,8 @@ in the \emph{IAM Identity Center User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client\cr
+\link[=ssooidc_create_token]{create_token} \tab Creates and returns access and refresh tokens for clients that are authenticated using client secrets\cr
+\link[=ssooidc_create_token_with_iam]{create_token_with_iam} \tab Creates and returns access and refresh tokens for clients and applications that are authenticated using IAM entities\cr
 \link[=ssooidc_register_client]{register_client} \tab Registers a client with IAM Identity Center\cr
 \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 }
@@ -135,8 +138,12 @@ in the \emph{IAM Identity Center User Guide}.
 \examples{
 \dontrun{
 svc <- ssooidc()
+# 
 svc$create_token(
-  Foo = 123
+  clientId = "_yzkThXVzLWVhc3QtMQEXAMPLECLIENTID",
+  clientSecret = "VERYLONGSECRETeyJraWQiOiJrZXktMTU2NDAyODA5OSIsImFsZyI6IkhTMzg0In0",
+  deviceCode = "yJraWQiOiJrZXktMTU2Njk2ODA4OCIsImFsZyI6IkhTMzIn0EXAMPLEDEVICECODE",
+  grantType = "urn:ietf:params:oauth:grant-type:device-code"
 )
 }
 

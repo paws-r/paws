@@ -1056,7 +1056,8 @@ kafka_delete_vpc_connection <- function(Arn) {
 #'     ),
 #'     ZookeeperConnectString = "string",
 #'     ZookeeperConnectStringTls = "string",
-#'     StorageMode = "LOCAL"|"TIERED"
+#'     StorageMode = "LOCAL"|"TIERED",
+#'     CustomerActionStatus = "CRITICAL_ACTION_REQUIRED"|"ACTION_RECOMMENDED"|"NONE"
 #'   )
 #' )
 #' ```
@@ -1230,7 +1231,8 @@ kafka_describe_cluster <- function(ClusterArn) {
 #'       NumberOfBrokerNodes = 123,
 #'       ZookeeperConnectString = "string",
 #'       ZookeeperConnectStringTls = "string",
-#'       StorageMode = "LOCAL"|"TIERED"
+#'       StorageMode = "LOCAL"|"TIERED",
+#'       CustomerActionStatus = "CRITICAL_ACTION_REQUIRED"|"ACTION_RECOMMENDED"|"NONE"
 #'     ),
 #'     Serverless = list(
 #'       VpcConfigs = list(
@@ -2855,7 +2857,8 @@ kafka_list_cluster_operations_v2 <- function(ClusterArn, MaxResults = NULL, Next
 #'       ),
 #'       ZookeeperConnectString = "string",
 #'       ZookeeperConnectStringTls = "string",
-#'       StorageMode = "LOCAL"|"TIERED"
+#'       StorageMode = "LOCAL"|"TIERED",
+#'       CustomerActionStatus = "CRITICAL_ACTION_REQUIRED"|"ACTION_RECOMMENDED"|"NONE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3040,7 +3043,8 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #'         NumberOfBrokerNodes = 123,
 #'         ZookeeperConnectString = "string",
 #'         ZookeeperConnectStringTls = "string",
-#'         StorageMode = "LOCAL"|"TIERED"
+#'         StorageMode = "LOCAL"|"TIERED",
+#'         CustomerActionStatus = "CRITICAL_ACTION_REQUIRED"|"ACTION_RECOMMENDED"|"NONE"
 #'       ),
 #'       Serverless = list(
 #'         VpcConfigs = list(

@@ -26,8 +26,10 @@ IP address, or location. Amazon Cognito advanced security evaluates the
 risk of an authentication event based on the context that your app
 generates and passes to Amazon Cognito when it makes API requests.}
 
-\item{Username}{[required] The \code{username} attribute of the user to whom you want to resend a
-confirmation code.}
+\item{Username}{[required] The username of the user that you want to query or modify. The value of
+this parameter is typically your user's username, but it can be any of
+their alias attributes. If \code{username} isn't an alias attribute in your
+user pool, you can also use their \code{sub} in this request.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
 for

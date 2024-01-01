@@ -8,7 +8,8 @@ codedeploy_create_deployment_config(
   deploymentConfigName,
   minimumHealthyHosts = NULL,
   trafficRoutingConfig = NULL,
-  computePlatform = NULL
+  computePlatform = NULL,
+  zonalConfig = NULL
 )
 }
 \arguments{
@@ -38,6 +39,13 @@ FLEET_PERCENT and a value of 95.}
 
 \item{computePlatform}{The destination platform type for the deployment (\code{Lambda}, \code{Server}, or
 \code{ECS}).}
+
+\item{zonalConfig}{Configure the \code{ZonalConfig} object if you want CodeDeploy to deploy your
+application to one \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones}{Availability Zone}
+at a time, within an Amazon Web Services Region.
+
+For more information about the zonal configuration feature, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations-create.html#zonal-config}{zonal configuration}
+in the \emph{CodeDeploy User Guide}.}
 }
 \description{
 Creates a deployment configuration.

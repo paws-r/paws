@@ -118,7 +118,7 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_health_event/](https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_health_event/) for full documentation.
 #'
 #' @param MonitorName &#91;required&#93; The name of the monitor.
-#' @param EventId &#91;required&#93; The internally generated identifier of a health event. Because `EventID`
+#' @param EventId &#91;required&#93; The internally-generated identifier of a health event. Because `EventID`
 #' contains the forward slash (“/”) character, you must URL-encode the
 #' `EventID` field in the request URL.
 #'
@@ -171,6 +171,73 @@ cloudwatchinternetmonitor_get_monitor <- function(MonitorName) {
   return(response)
 }
 .cloudwatchinternetmonitor$operations$get_monitor <- cloudwatchinternetmonitor_get_monitor
+
+#' Return the data for a query with the Amazon CloudWatch Internet Monitor
+#' query interface
+#'
+#' @description
+#' Return the data for a query with the Amazon CloudWatch Internet Monitor query interface. Specify the query that you want to return results for by providing a `QueryId` and a monitor name.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_query_results/](https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_query_results/) for full documentation.
+#'
+#' @param MonitorName &#91;required&#93; The name of the monitor to return data for.
+#' @param QueryId &#91;required&#93; The ID of the query that you want to return data results for. A
+#' `QueryId` is an internally-generated identifier for a specific query.
+#' @param NextToken The token for the next set of results. You receive this token from a
+#' previous call.
+#' @param MaxResults The number of query results that you want to return with this call.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchinternetmonitor_get_query_results
+cloudwatchinternetmonitor_get_query_results <- function(MonitorName, QueryId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetQueryResults",
+    http_method = "GET",
+    http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .cloudwatchinternetmonitor$get_query_results_input(MonitorName = MonitorName, QueryId = QueryId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudwatchinternetmonitor$get_query_results_output()
+  config <- get_config()
+  svc <- .cloudwatchinternetmonitor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchinternetmonitor$operations$get_query_results <- cloudwatchinternetmonitor_get_query_results
+
+#' Returns the current status of a query for the Amazon CloudWatch Internet
+#' Monitor query interface, for a specified query ID and monitor
+#'
+#' @description
+#' Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor. When you run a query, check the status to make sure that the query has `SUCCEEDED` before you review the results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_query_status/](https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_query_status/) for full documentation.
+#'
+#' @param MonitorName &#91;required&#93; The name of the monitor.
+#' @param QueryId &#91;required&#93; The ID of the query that you want to return the status for. A `QueryId`
+#' is an internally-generated dentifier for a specific query.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchinternetmonitor_get_query_status
+cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
+  op <- new_operation(
+    name = "GetQueryStatus",
+    http_method = "GET",
+    http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Status",
+    paginator = list()
+  )
+  input <- .cloudwatchinternetmonitor$get_query_status_input(MonitorName = MonitorName, QueryId = QueryId)
+  output <- .cloudwatchinternetmonitor$get_query_status_output()
+  config <- get_config()
+  svc <- .cloudwatchinternetmonitor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchinternetmonitor$operations$get_query_status <- cloudwatchinternetmonitor_get_query_status
 
 #' Lists all health events for a monitor in Amazon CloudWatch Internet
 #' Monitor
@@ -276,6 +343,95 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .cloudwatchinternetmonitor$operations$list_tags_for_resource <- cloudwatchinternetmonitor_list_tags_for_resource
+
+#' Start a query to return data for a specific query type for the Amazon
+#' CloudWatch Internet Monitor query interface
+#'
+#' @description
+#' Start a query to return data for a specific query type for the Amazon CloudWatch Internet Monitor query interface. Specify a time period for the data that you want returned by using `StartTime` and `EndTime`. You filter the query results to return by providing parameters that you specify with `FilterParameters`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_start_query/](https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_start_query/) for full documentation.
+#'
+#' @param MonitorName &#91;required&#93; The name of the monitor to query.
+#' @param StartTime &#91;required&#93; The timestamp that is the beginning of the period that you want to
+#' retrieve data for with your query.
+#' @param EndTime &#91;required&#93; The timestamp that is the end of the period that you want to retrieve
+#' data for with your query.
+#' @param QueryType &#91;required&#93; The type of query to run. The following are the three types of queries
+#' that you can run using the Internet Monitor query interface:
+#' 
+#' -   `MEASUREMENTS`: TBD definition
+#' 
+#' -   `TOP_LOCATIONS`: TBD definition
+#' 
+#' -   `TOP_LOCATION_DETAILS`: TBD definition
+#' 
+#' For lists of the fields returned with each query type and more
+#' information about how each type of query is performed, see [Using the
+#' Amazon CloudWatch Internet Monitor query
+#' interface](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
+#' @param FilterParameters The `FilterParameters` field that you use with Amazon CloudWatch
+#' Internet Monitor queries is a string the defines how you want a query to
+#' be filtered. The filter parameters that you can specify depend on the
+#' query type, since each query type returns a different set of Internet
+#' Monitor data.
+#' 
+#' For more information about specifying filter parameters, see [Using the
+#' Amazon CloudWatch Internet Monitor query
+#' interface](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchinternetmonitor_start_query
+cloudwatchinternetmonitor_start_query <- function(MonitorName, StartTime, EndTime, QueryType, FilterParameters = NULL) {
+  op <- new_operation(
+    name = "StartQuery",
+    http_method = "POST",
+    http_path = "/v20210603/Monitors/{MonitorName}/Queries",
+    paginator = list()
+  )
+  input <- .cloudwatchinternetmonitor$start_query_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, QueryType = QueryType, FilterParameters = FilterParameters)
+  output <- .cloudwatchinternetmonitor$start_query_output()
+  config <- get_config()
+  svc <- .cloudwatchinternetmonitor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchinternetmonitor$operations$start_query <- cloudwatchinternetmonitor_start_query
+
+#' Stop a query that is progress for a specific monitor
+#'
+#' @description
+#' Stop a query that is progress for a specific monitor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_stop_query/](https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_stop_query/) for full documentation.
+#'
+#' @param MonitorName &#91;required&#93; The name of the monitor.
+#' @param QueryId &#91;required&#93; The ID of the query that you want to stop. A `QueryId` is an
+#' internally-generated identifier for a specific query.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchinternetmonitor_stop_query
+cloudwatchinternetmonitor_stop_query <- function(MonitorName, QueryId) {
+  op <- new_operation(
+    name = "StopQuery",
+    http_method = "DELETE",
+    http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}",
+    paginator = list()
+  )
+  input <- .cloudwatchinternetmonitor$stop_query_input(MonitorName = MonitorName, QueryId = QueryId)
+  output <- .cloudwatchinternetmonitor$stop_query_output()
+  config <- get_config()
+  svc <- .cloudwatchinternetmonitor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchinternetmonitor$operations$stop_query <- cloudwatchinternetmonitor_stop_query
 
 #' Adds a tag to a resource
 #'

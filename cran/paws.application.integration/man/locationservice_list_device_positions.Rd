@@ -12,7 +12,7 @@ locationservice_list_device_positions(
 )
 }
 \arguments{
-\item{FilterGeometry}{The geomerty used to filter device positions.}
+\item{FilterGeometry}{The geometry used to filter device positions.}
 
 \item{MaxResults}{An optional limit for the number of entries returned in a single call.
 

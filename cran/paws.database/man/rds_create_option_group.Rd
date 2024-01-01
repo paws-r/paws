@@ -24,11 +24,12 @@ Constraints:
 
 Example: \code{myoptiongroup}}
 
-\item{EngineName}{[required] Specifies the name of the engine that this option group should be
-associated with.
+\item{EngineName}{[required] The name of the engine to associate this option group with.
 
 Valid Values:
 \itemize{
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}

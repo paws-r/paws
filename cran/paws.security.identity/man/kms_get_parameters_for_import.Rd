@@ -54,8 +54,8 @@ except RSA key material (private key).
 
 You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
 RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
-\item \strong{RSAES_PKCS1_V1_5} (Deprecated) — Supported only for symmetric
-encryption key material (and only in legacy mode).
+\item \strong{RSAES_PKCS1_V1_5} (Deprecated) — As of October 10, 2023, KMS does
+not support the RSAES_PKCS1_V1_5 wrapping algorithm.
 }}
 
 \item{WrappingKeySpec}{[required] The type of RSA public key to return in the response. You will use this

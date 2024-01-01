@@ -51,9 +51,9 @@ include the following permissions:
 \item firehose:PutRecordBatch
 }}
 
-\item{OutputFormat}{[required] The output format for the stream. Valid values are \code{json} and
-\code{opentelemetry0.7}. For more information about metric stream output
-formats, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html}{Metric streams output formats}.}
+\item{OutputFormat}{[required] The output format for the stream. Valid values are \code{json},
+\code{opentelemetry1.0}, and \code{opentelemetry0.7}. For more information about
+metric stream output formats, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html}{Metric streams output formats}.}
 
 \item{Tags}{A list of key-value pairs to associate with the metric stream. You can
 associate as many as 50 tags with a metric stream.
@@ -80,8 +80,8 @@ additional statistics that you can stream depend on the stream's
 \code{OutputFormat}. If the \code{OutputFormat} is \code{json}, you can stream any
 additional statistic that is supported by CloudWatch, listed in
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/}{CloudWatch statistics definitions}.
-If the \code{OutputFormat} is \code{opentelemetry0.7}, you can stream percentile
-statistics such as p95, p99.9, and so on.}
+If the \code{OutputFormat} is \code{opentelemetry1.0} or \code{opentelemetry0.7}, you
+can stream percentile statistics such as p95, p99.9, and so on.}
 
 \item{IncludeLinkedAccountsMetrics}{If you are creating a metric stream in a monitoring account, specify
 \code{true} to include metrics from source accounts in the metric stream.}

@@ -10,7 +10,7 @@ sfn_delete_state_machine(stateMachineArn)
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to delete.}
 }
 \description{
-Deletes a state machine. This is an asynchronous operation: It sets the state machine's status to \code{DELETING} and begins the deletion process.
+Deletes a state machine. This is an asynchronous operation. It sets the state machine's status to \code{DELETING} and begins the deletion process. A state machine is deleted only when all its executions are completed. On the next state transition, the state machine's executions are terminated.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_delete_state_machine/} for full documentation.
 }

@@ -10,7 +10,8 @@ personalizeruntime_get_personalized_ranking(
   userId,
   context = NULL,
   filterArn = NULL,
-  filterValues = NULL
+  filterValues = NULL,
+  metadataColumns = NULL
 )
 }
 \arguments{
@@ -19,7 +20,8 @@ personalized ranking.}
 
 \item{inputList}{[required] A list of items (by \code{itemId}) to rank. If an item was not included in
 the training dataset, the item is appended to the end of the reranked
-list. The maximum is 500.}
+list. If you are including metadata in recommendations, the maximum is
+50. Otherwise, the maximum is 500.}
 
 \item{userId}{[required] The user for which you want the campaign to provide a personalized
 ranking.}
@@ -46,6 +48,14 @@ Personalize doesn't use that portion of the expression to filter
 recommendations.
 
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
+
+\item{metadataColumns}{If you enabled metadata in recommendations when you created or updated
+the campaign, specify metadata columns from your Items dataset to
+include in the personalized ranking. The map key is \code{ITEMS} and the
+value is a list of column names from your Items dataset. The maximum
+number of columns you can provide is 10.
+
+For information about enabling metadata for a campaign, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Enabling metadata in recommendations for a campaign}.}
 }
 \description{
 Re-ranks a list of recommended items for the given user. The first item in the list is deemed the most likely item to be of interest to the user.

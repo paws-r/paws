@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_option_group_options}
 \alias{rds_describe_option_group_options}
-\title{Describes all available options}
+\title{Describes all available options for the specified engine}
 \usage{
 rds_describe_option_group_options(
   EngineName,
@@ -13,11 +13,12 @@ rds_describe_option_group_options(
 )
 }
 \arguments{
-\item{EngineName}{[required] A required parameter. Options available for the given engine name are
-described.
+\item{EngineName}{[required] The name of the engine to describe options for.
 
 Valid Values:
 \itemize{
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -50,7 +51,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Describes all available options.
+Describes all available options for the specified engine.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_describe_option_group_options/} for full documentation.
 }

@@ -9,7 +9,9 @@ opensearchingestion_update_pipeline(
   MinUnits = NULL,
   MaxUnits = NULL,
   PipelineConfigurationBody = NULL,
-  LogPublishingOptions = NULL
+  LogPublishingOptions = NULL,
+  BufferOptions = NULL,
+  EncryptionAtRestOptions = NULL
 )
 }
 \arguments{
@@ -25,6 +27,11 @@ provide the configuration as a string, each new line must be escaped
 with \verb{\\\\n}.}
 
 \item{LogPublishingOptions}{Key-value pairs to configure log publishing.}
+
+\item{BufferOptions}{Key-value pairs to configure persistent buffering for the pipeline.}
+
+\item{EncryptionAtRestOptions}{Key-value pairs to configure encryption for data that is written to a
+persistent buffer.}
 }
 \description{
 Updates an OpenSearch Ingestion pipeline. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/update-pipeline.html}{Updating Amazon OpenSearch Ingestion pipelines}.

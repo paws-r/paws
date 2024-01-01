@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_metrics_configuration}
 \alias{s3_put_bucket_metrics_configuration}
-\title{Sets a metrics configuration (specified by the metrics configuration ID)
-for the bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_bucket_metrics_configuration(
   Bucket,
@@ -21,12 +20,12 @@ and underscores.}
 
 \item{MetricsConfiguration}{[required] Specifies the metrics configuration.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Sets a metrics configuration (specified by the metrics configuration ID) for the bucket. You can have up to 1,000 metrics configurations per bucket. If you're updating an existing metrics configuration, note that this is a full replacement of the existing metrics configuration. If you don't include the elements you want to keep, they are erased.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_metrics_configuration/} for full documentation.
 }

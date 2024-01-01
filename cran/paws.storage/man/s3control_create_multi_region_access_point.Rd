@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_multi_region_access_point}
 \alias{s3control_create_multi_region_access_point}
-\title{Creates a Multi-Region Access Point and associates it with the specified
-buckets}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3control_create_multi_region_access_point(AccountId, ClientToken, Details)
 }
@@ -19,7 +18,7 @@ requests are unique.}
 Point.}
 }
 \description{
-Creates a Multi-Region Access Point and associates it with the specified buckets. For more information about creating Multi-Region Access Points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html}{Creating Multi-Region Access Points} in the \emph{Amazon S3 User Guide}.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_create_multi_region_access_point/} for full documentation.
 }

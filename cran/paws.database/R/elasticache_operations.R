@@ -170,6 +170,41 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 }
 .elasticache$operations$complete_migration <- elasticache_complete_migration
 
+#' Creates a copy of an existing serverless cache’s snapshot
+#'
+#' @description
+#' Creates a copy of an existing serverless cache’s snapshot. Available for Redis only.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_copy_serverless_cache_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_copy_serverless_cache_snapshot/) for full documentation.
+#'
+#' @param SourceServerlessCacheSnapshotName &#91;required&#93; The identifier of the existing serverless cache’s snapshot to be copied.
+#' Available for Redis only.
+#' @param TargetServerlessCacheSnapshotName &#91;required&#93; The identifier for the snapshot to be created. Available for Redis only.
+#' @param KmsKeyId The identifier of the KMS key used to encrypt the target snapshot.
+#' Available for Redis only.
+#' @param Tags A list of tags to be added to the target snapshot resource. A tag is a
+#' key-value pair. Available for Redis only. Default: NULL
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_copy_serverless_cache_snapshot
+elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnapshotName, TargetServerlessCacheSnapshotName, KmsKeyId = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CopyServerlessCacheSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$copy_serverless_cache_snapshot_input(SourceServerlessCacheSnapshotName = SourceServerlessCacheSnapshotName, TargetServerlessCacheSnapshotName = TargetServerlessCacheSnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
+  output <- .elasticache$copy_serverless_cache_snapshot_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$copy_serverless_cache_snapshot <- elasticache_copy_serverless_cache_snapshot
+
 #' Makes a copy of an existing snapshot
 #'
 #' @description
@@ -296,14 +331,18 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #'     -   Current generation:
 #' 
+#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#' 
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
 #'         **M6g node types** (available only for Redis engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
-#' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -346,15 +385,18 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #'     -   Current generation:
 #' 
-#'         **R6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
 #'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
+#'         **R6g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'         `cache.r6g.16xlarge`
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -770,14 +812,18 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #'     -   Current generation:
 #' 
+#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#' 
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
 #'         **M6g node types** (available only for Redis engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
-#' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -820,15 +866,18 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #'     -   Current generation:
 #' 
-#'         **R6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
 #'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
+#'         **R6g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'         `cache.r6g.16xlarge`
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -1054,18 +1103,20 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' cluster mode disabled. After you migrate all Redis clients to use
 #' cluster mode enabled, you can then complete cluster mode configuration
 #' and set the cluster mode to Enabled.
+#' @param ServerlessCacheSnapshotName The name of the snapshot used to create a replication group. Available
+#' for Redis only.
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_replication_group
-elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL, LogDeliveryConfigurations = NULL, DataTieringEnabled = NULL, NetworkType = NULL, IpDiscovery = NULL, TransitEncryptionMode = NULL, ClusterMode = NULL) {
+elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL, LogDeliveryConfigurations = NULL, DataTieringEnabled = NULL, NetworkType = NULL, IpDiscovery = NULL, TransitEncryptionMode = NULL, ClusterMode = NULL, ServerlessCacheSnapshotName = NULL) {
   op <- new_operation(
     name = "CreateReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode)
+  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$create_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1074,6 +1125,105 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
   return(response)
 }
 .elasticache$operations$create_replication_group <- elasticache_create_replication_group
+
+#' Creates a serverless cache
+#'
+#' @description
+#' Creates a serverless cache.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_serverless_cache/](https://www.paws-r-sdk.com/docs/elasticache_create_serverless_cache/) for full documentation.
+#'
+#' @param ServerlessCacheName &#91;required&#93; User-provided identifier for the serverless cache. This parameter is
+#' stored as a lowercase string.
+#' @param Description User-provided description for the serverless cache. The default is NULL,
+#' i.e. if no description is provided then an empty string will be
+#' returned. The maximum length is 255 characters.
+#' @param Engine &#91;required&#93; The name of the cache engine to be used for creating the serverless
+#' cache.
+#' @param MajorEngineVersion The version of the cache engine that will be used to create the
+#' serverless cache.
+#' @param CacheUsageLimits Sets the cache usage limits for storage and ElastiCache Processing Units
+#' for the cache.
+#' @param KmsKeyId ARN of the customer managed key for encrypting the data at rest. If no
+#' KMS key is provided, a default service key is used.
+#' @param SecurityGroupIds A list of the one or more VPC security groups to be associated with the
+#' serverless cache. The security group will authorize traffic access for
+#' the VPC end-point (private-link). If no other information is given this
+#' will be the VPC’s Default Security Group that is associated with the
+#' cluster VPC end-point.
+#' @param SnapshotArnsToRestore The ARN(s) of the snapshot that the new serverless cache will be created
+#' from. Available for Redis only.
+#' @param Tags The list of tags (key, value) pairs to be added to the serverless cache
+#' resource. Default is NULL.
+#' @param UserGroupId The identifier of the UserGroup to be associated with the serverless
+#' cache. Available for Redis only. Default is NULL.
+#' @param SubnetIds A list of the identifiers of the subnets where the VPC endpoint for the
+#' serverless cache will be deployed. All the subnetIds must belong to the
+#' same VPC.
+#' @param SnapshotRetentionLimit The number of snapshots that will be retained for the serverless cache
+#' that is being created. As new snapshots beyond this limit are added, the
+#' oldest snapshots will be deleted on a rolling basis. Available for Redis
+#' only.
+#' @param DailySnapshotTime The daily time that snapshots will be created from the new serverless
+#' cache. By default this number is populated with 0, i.e. no snapshots
+#' will be created on an automatic daily basis. Available for Redis only.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_create_serverless_cache
+elasticache_create_serverless_cache <- function(ServerlessCacheName, Description = NULL, Engine, MajorEngineVersion = NULL, CacheUsageLimits = NULL, KmsKeyId = NULL, SecurityGroupIds = NULL, SnapshotArnsToRestore = NULL, Tags = NULL, UserGroupId = NULL, SubnetIds = NULL, SnapshotRetentionLimit = NULL, DailySnapshotTime = NULL) {
+  op <- new_operation(
+    name = "CreateServerlessCache",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
+  output <- .elasticache$create_serverless_cache_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$create_serverless_cache <- elasticache_create_serverless_cache
+
+#' This API creates a copy of an entire ServerlessCache at a specific
+#' moment in time
+#'
+#' @description
+#' This API creates a copy of an entire ServerlessCache at a specific moment in time. Available for Redis only.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_serverless_cache_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_create_serverless_cache_snapshot/) for full documentation.
+#'
+#' @param ServerlessCacheSnapshotName &#91;required&#93; The name for the snapshot being created. Must be unique for the customer
+#' account. Available for Redis only. Must be between 1 and 255 characters.
+#' @param ServerlessCacheName &#91;required&#93; The name of an existing serverless cache. The snapshot is created from
+#' this cache. Available for Redis only.
+#' @param KmsKeyId The ID of the KMS key used to encrypt the snapshot. Available for Redis
+#' only. Default: NULL
+#' @param Tags A list of tags to be added to the snapshot resource. A tag is a
+#' key-value pair. Available for Redis only.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_create_serverless_cache_snapshot
+elasticache_create_serverless_cache_snapshot <- function(ServerlessCacheSnapshotName, ServerlessCacheName, KmsKeyId = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateServerlessCacheSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$create_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, ServerlessCacheName = ServerlessCacheName, KmsKeyId = KmsKeyId, Tags = Tags)
+  output <- .elasticache$create_serverless_cache_snapshot_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$create_serverless_cache_snapshot <- elasticache_create_serverless_cache_snapshot
 
 #' Creates a copy of an entire cluster or replication group at a specific
 #' moment in time
@@ -1162,6 +1312,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' @param UserIds The list of user IDs that belong to the user group.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
+#' Available for Redis only.
 #'
 #' @keywords internal
 #'
@@ -1478,6 +1629,67 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
   return(response)
 }
 .elasticache$operations$delete_replication_group <- elasticache_delete_replication_group
+
+#' Deletes a specified existing serverless cache
+#'
+#' @description
+#' Deletes a specified existing serverless cache.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_serverless_cache/](https://www.paws-r-sdk.com/docs/elasticache_delete_serverless_cache/) for full documentation.
+#'
+#' @param ServerlessCacheName &#91;required&#93; The identifier of the serverless cache to be deleted.
+#' @param FinalSnapshotName Name of the final snapshot to be taken before the serverless cache is
+#' deleted. Available for Redis only. Default: NULL, i.e. a final snapshot
+#' is not taken.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_delete_serverless_cache
+elasticache_delete_serverless_cache <- function(ServerlessCacheName, FinalSnapshotName = NULL) {
+  op <- new_operation(
+    name = "DeleteServerlessCache",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$delete_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, FinalSnapshotName = FinalSnapshotName)
+  output <- .elasticache$delete_serverless_cache_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$delete_serverless_cache <- elasticache_delete_serverless_cache
+
+#' Deletes an existing serverless cache snapshot
+#'
+#' @description
+#' Deletes an existing serverless cache snapshot. Available for Redis only.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_serverless_cache_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_delete_serverless_cache_snapshot/) for full documentation.
+#'
+#' @param ServerlessCacheSnapshotName &#91;required&#93; Idenfitier of the snapshot to be deleted. Available for Redis only.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_delete_serverless_cache_snapshot
+elasticache_delete_serverless_cache_snapshot <- function(ServerlessCacheSnapshotName) {
+  op <- new_operation(
+    name = "DeleteServerlessCacheSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$delete_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
+  output <- .elasticache$delete_serverless_cache_snapshot_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$delete_serverless_cache_snapshot <- elasticache_delete_serverless_cache_snapshot
 
 #' Deletes an existing snapshot
 #'
@@ -2042,14 +2254,18 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'     -   Current generation:
 #' 
+#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#' 
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
 #'         **M6g node types** (available only for Redis engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
-#' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -2092,15 +2308,18 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'     -   Current generation:
 #' 
-#'         **R6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
 #'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
+#'         **R6g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'         `cache.r6g.16xlarge`
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -2200,14 +2419,18 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'     -   Current generation:
 #' 
+#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#' 
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
 #'         **M6g node types** (available only for Redis engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
-#' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -2250,15 +2473,18 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'     -   Current generation:
 #' 
-#'         **R6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
 #'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#' 
+#'         **R6g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'         `cache.r6g.16xlarge`
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -2333,6 +2559,87 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
   return(response)
 }
 .elasticache$operations$describe_reserved_cache_nodes_offerings <- elasticache_describe_reserved_cache_nodes_offerings
+
+#' Returns information about serverless cache snapshots
+#'
+#' @description
+#' Returns information about serverless cache snapshots. By default, this API lists all of the customer’s serverless cache snapshots. It can also describe a single serverless cache snapshot, or the snapshots associated with a particular serverless cache. Available for Redis only.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_serverless_cache_snapshots/](https://www.paws-r-sdk.com/docs/elasticache_describe_serverless_cache_snapshots/) for full documentation.
+#'
+#' @param ServerlessCacheName The identifier of serverless cache. If this parameter is specified, only
+#' snapshots associated with that specific serverless cache are described.
+#' Available for Redis only.
+#' @param ServerlessCacheSnapshotName The identifier of the serverless cache’s snapshot. If this parameter is
+#' specified, only this snapshot is described. Available for Redis only.
+#' @param SnapshotType The type of snapshot that is being described. Available for Redis only.
+#' @param NextToken An optional marker returned from a prior request to support pagination
+#' of results from this operation. If this parameter is specified, the
+#' response includes only records beyond the marker, up to the value
+#' specified by max-results. Available for Redis only.
+#' @param MaxResults The maximum number of records to include in the response. If more
+#' records exist than the specified max-results value, a market is included
+#' in the response so that remaining results can be retrieved. Available
+#' for Redis only.The default is 50. The Validation Constraints are a
+#' maximum of 50.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_describe_serverless_cache_snapshots
+elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName = NULL, ServerlessCacheSnapshotName = NULL, SnapshotType = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeServerlessCacheSnapshots",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots")
+  )
+  input <- .elasticache$describe_serverless_cache_snapshots_input(ServerlessCacheName = ServerlessCacheName, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, SnapshotType = SnapshotType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .elasticache$describe_serverless_cache_snapshots_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$describe_serverless_cache_snapshots <- elasticache_describe_serverless_cache_snapshots
+
+#' Returns information about a specific serverless cache
+#'
+#' @description
+#' Returns information about a specific serverless cache. If no identifier is specified, then the API returns information on all the serverless caches belonging to this Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_serverless_caches/](https://www.paws-r-sdk.com/docs/elasticache_describe_serverless_caches/) for full documentation.
+#'
+#' @param ServerlessCacheName The identifier for the serverless cache. If this parameter is specified,
+#' only information about that specific serverless cache is returned.
+#' Default: NULL
+#' @param MaxResults The maximum number of records in the response. If more records exist
+#' than the specified max-records value, the next token is included in the
+#' response so that remaining results can be retrieved. The default is 50.
+#' @param NextToken An optional marker returned from a prior request to support pagination
+#' of results from this operation. If this parameter is specified, the
+#' response includes only records beyond the marker, up to the value
+#' specified by MaxResults.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_describe_serverless_caches
+elasticache_describe_serverless_caches <- function(ServerlessCacheName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeServerlessCaches",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches")
+  )
+  input <- .elasticache$describe_serverless_caches_input(ServerlessCacheName = ServerlessCacheName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticache$describe_serverless_caches_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$describe_serverless_caches <- elasticache_describe_serverless_caches
 
 #' Returns details of the service updates
 #'
@@ -2571,6 +2878,40 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
   return(response)
 }
 .elasticache$operations$disassociate_global_replication_group <- elasticache_disassociate_global_replication_group
+
+#' Provides the functionality to export the serverless cache snapshot data
+#' to Amazon S3
+#'
+#' @description
+#' Provides the functionality to export the serverless cache snapshot data to Amazon S3. Available for Redis only.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_export_serverless_cache_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_export_serverless_cache_snapshot/) for full documentation.
+#'
+#' @param ServerlessCacheSnapshotName &#91;required&#93; The identifier of the serverless cache snapshot to be exported to S3.
+#' Available for Redis only.
+#' @param S3BucketName &#91;required&#93; Name of the Amazon S3 bucket to export the snapshot to. The Amazon S3
+#' bucket must also be in same region as the snapshot. Available for Redis
+#' only.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_export_serverless_cache_snapshot
+elasticache_export_serverless_cache_snapshot <- function(ServerlessCacheSnapshotName, S3BucketName) {
+  op <- new_operation(
+    name = "ExportServerlessCacheSnapshot",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$export_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, S3BucketName = S3BucketName)
+  output <- .elasticache$export_serverless_cache_snapshot_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$export_serverless_cache_snapshot <- elasticache_export_serverless_cache_snapshot
 
 #' Used to failover the primary region to a secondary region
 #'
@@ -3151,7 +3492,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' Modifies the settings for a replication group
 #'
 #' @description
-#' Modifies the settings for a replication group.
+#' Modifies the settings for a replication group. This is limited to Redis 7 and newer.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/) for full documentation.
 #'
@@ -3396,6 +3737,57 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
   return(response)
 }
 .elasticache$operations$modify_replication_group_shard_configuration <- elasticache_modify_replication_group_shard_configuration
+
+#' This API modifies the attributes of a serverless cache
+#'
+#' @description
+#' This API modifies the attributes of a serverless cache.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_serverless_cache/](https://www.paws-r-sdk.com/docs/elasticache_modify_serverless_cache/) for full documentation.
+#'
+#' @param ServerlessCacheName &#91;required&#93; User-provided identifier for the serverless cache to be modified.
+#' @param Description User provided description for the serverless cache. Default = NULL, i.e.
+#' the existing description is not removed/modified. The description has a
+#' maximum length of 255 characters.
+#' @param CacheUsageLimits Modify the cache usage limit for the serverless cache.
+#' @param RemoveUserGroup The identifier of the UserGroup to be removed from association with the
+#' Redis serverless cache. Available for Redis only. Default is NULL.
+#' @param UserGroupId The identifier of the UserGroup to be associated with the serverless
+#' cache. Available for Redis only. Default is NULL - the existing
+#' UserGroup is not removed.
+#' @param SecurityGroupIds The new list of VPC security groups to be associated with the serverless
+#' cache. Populating this list means the current VPC security groups will
+#' be removed. This security group is used to authorize traffic access for
+#' the VPC end-point (private-link). Default = NULL - the existing list of
+#' VPC security groups is not removed.
+#' @param SnapshotRetentionLimit The number of days for which Elasticache retains automatic snapshots
+#' before deleting them. Available for Redis only. Default = NULL, i.e. the
+#' existing snapshot-retention-limit will not be removed or modified. The
+#' maximum value allowed is 35 days.
+#' @param DailySnapshotTime The daily time during which Elasticache begins taking a daily snapshot
+#' of the serverless cache. Available for Redis only. The default is NULL,
+#' i.e. the existing snapshot time configured for the cluster is not
+#' removed.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_modify_serverless_cache
+elasticache_modify_serverless_cache <- function(ServerlessCacheName, Description = NULL, CacheUsageLimits = NULL, RemoveUserGroup = NULL, UserGroupId = NULL, SecurityGroupIds = NULL, SnapshotRetentionLimit = NULL, DailySnapshotTime = NULL) {
+  op <- new_operation(
+    name = "ModifyServerlessCache",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$modify_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, CacheUsageLimits = CacheUsageLimits, RemoveUserGroup = RemoveUserGroup, UserGroupId = UserGroupId, SecurityGroupIds = SecurityGroupIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
+  output <- .elasticache$modify_serverless_cache_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$modify_serverless_cache <- elasticache_modify_serverless_cache
 
 #' Changes user password(s) and/or access string
 #'

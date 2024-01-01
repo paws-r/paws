@@ -73,84 +73,6 @@ rds_create_db_instance(
 \item{DBName}{The meaning of this parameter differs according to the database engine
 you use.
 
-\strong{MySQL}
-
-The name of the database to create when the DB instance is created. If
-this parameter isn't specified, no database is created in the DB
-instance.
-
-Constraints:
-\itemize{
-\item Must contain 1 to 64 letters or numbers.
-\item Must begin with a letter. Subsequent characters can be letters,
-underscores, or digits (0-9).
-\item Can't be a word reserved by the specified database engine
-}
-
-\strong{MariaDB}
-
-The name of the database to create when the DB instance is created. If
-this parameter isn't specified, no database is created in the DB
-instance.
-
-Constraints:
-\itemize{
-\item Must contain 1 to 64 letters or numbers.
-\item Must begin with a letter. Subsequent characters can be letters,
-underscores, or digits (0-9).
-\item Can't be a word reserved by the specified database engine
-}
-
-\strong{PostgreSQL}
-
-The name of the database to create when the DB instance is created. If
-this parameter isn't specified, a database named \code{postgres} is created
-in the DB instance.
-
-Constraints:
-\itemize{
-\item Must contain 1 to 63 letters, numbers, or underscores.
-\item Must begin with a letter. Subsequent characters can be letters,
-underscores, or digits (0-9).
-\item Can't be a word reserved by the specified database engine
-}
-
-\strong{Oracle}
-
-The Oracle System ID (SID) of the created DB instance. If you don't
-specify a value, the default value is \code{ORCL}. You can't specify the
-string \code{null}, or any other reserved word, for \code{DBName}.
-
-Default: \code{ORCL}
-
-Constraints:
-\itemize{
-\item Can't be longer than 8 characters
-}
-
-\strong{Amazon RDS Custom for Oracle}
-
-The Oracle System ID (SID) of the created RDS Custom DB instance. If you
-don't specify a value, the default value is \code{ORCL} for non-CDBs and
-\code{RDSCDB} for CDBs.
-
-Default: \code{ORCL}
-
-Constraints:
-\itemize{
-\item It must contain 1 to 8 alphanumeric characters.
-\item It must contain a letter.
-\item It can't be a word reserved by the database engine.
-}
-
-\strong{Amazon RDS Custom for SQL Server}
-
-Not applicable. Must be null.
-
-\strong{SQL Server}
-
-Not applicable. Must be null.
-
 \strong{Amazon Aurora MySQL}
 
 The name of the database to create when the primary DB instance of the
@@ -160,8 +82,8 @@ cluster.
 
 Constraints:
 \itemize{
-\item It must contain 1 to 64 alphanumeric characters.
-\item It can't be a word reserved by the database engine.
+\item Must contain 1 to 64 alphanumeric characters.
+\item Can't be a word reserved by the database engine.
 }
 
 \strong{Amazon Aurora PostgreSQL}
@@ -174,10 +96,102 @@ specified for an Aurora PostgreSQL DB cluster, a database named
 Constraints:
 \itemize{
 \item It must contain 1 to 63 alphanumeric characters.
-\item It must begin with a letter. Subsequent characters can be letters,
+\item Must begin with a letter. Subsequent characters can be letters,
 underscores, or digits (0 to 9).
-\item It can't be a word reserved by the database engine.
-}}
+\item Can't be a word reserved by the database engine.
+}
+
+\strong{Amazon RDS Custom for Oracle}
+
+The Oracle System ID (SID) of the created RDS Custom DB instance. If you
+don't specify a value, the default value is \code{ORCL} for non-CDBs and
+\code{RDSCDB} for CDBs.
+
+Default: \code{ORCL}
+
+Constraints:
+\itemize{
+\item Must contain 1 to 8 alphanumeric characters.
+\item Must contain a letter.
+\item Can't be a word reserved by the database engine.
+}
+
+\strong{Amazon RDS Custom for SQL Server}
+
+Not applicable. Must be null.
+
+\strong{RDS for Db2}
+
+The name of the database to create when the DB instance is created. If
+this parameter isn't specified, no database is created in the DB
+instance.
+
+Constraints:
+\itemize{
+\item Must contain 1 to 64 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
+\item Can't be a word reserved by the specified database engine.
+}
+
+\strong{RDS for MariaDB}
+
+The name of the database to create when the DB instance is created. If
+this parameter isn't specified, no database is created in the DB
+instance.
+
+Constraints:
+\itemize{
+\item Must contain 1 to 64 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
+\item Can't be a word reserved by the specified database engine.
+}
+
+\strong{RDS for MySQL}
+
+The name of the database to create when the DB instance is created. If
+this parameter isn't specified, no database is created in the DB
+instance.
+
+Constraints:
+\itemize{
+\item Must contain 1 to 64 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
+\item Can't be a word reserved by the specified database engine.
+}
+
+\strong{RDS for Oracle}
+
+The Oracle System ID (SID) of the created DB instance. If you don't
+specify a value, the default value is \code{ORCL}. You can't specify the
+string \code{null}, or any other reserved word, for \code{DBName}.
+
+Default: \code{ORCL}
+
+Constraints:
+\itemize{
+\item Can't be longer than 8 characters.
+}
+
+\strong{RDS for PostgreSQL}
+
+The name of the database to create when the DB instance is created. If
+this parameter isn't specified, a database named \code{postgres} is created
+in the DB instance.
+
+Constraints:
+\itemize{
+\item Must contain 1 to 63 letters, numbers, or underscores.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
+\item Can't be a word reserved by the specified database engine.
+}
+
+\strong{RDS for SQL Server}
+
+Not applicable. Must be null.}
 
 \item{DBInstanceIdentifier}{[required] The identifier for this DB instance. This parameter is stored as a
 lowercase string.
@@ -209,6 +223,17 @@ to 65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
 Server.
 \item Provisioned IOPS storage (io1): Must be an integer from 40 to 65536
 for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
+}
+
+\strong{RDS for Db2}
+
+Constraints to the amount of storage for each storage type are the
+following:
+\itemize{
+\item General Purpose (SSD) storage (gp3): Must be an integer from 20 to
+64000.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+64000.
 }
 
 \strong{RDS for MariaDB}
@@ -305,6 +330,8 @@ Valid Values:
 \item \code{custom-sqlserver-ee} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-se} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-web} (for RDS Custom for SQL Server DB instances)
+\item \code{db2-ae}
+\item \code{db2-se}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -347,6 +374,7 @@ For RDS for Oracle, can't include the "&" (ampersand) or the "'"
 
 Length Constraints:
 \itemize{
+\item RDS for Db2 - Must contain from 8 to 255 characters.
 \item RDS for MariaDB - Must contain from 8 to 41 characters.
 \item RDS for Microsoft SQL Server - Must contain from 8 to 128
 characters.
@@ -475,6 +503,7 @@ Valid Values: \code{1150-65535}
 
 Default:
 \itemize{
+\item RDS for Db2 - \code{50000}
 \item RDS for MariaDB - \code{3306}
 \item RDS for Microsoft SQL Server - \code{1433}
 \item RDS for MySQL - \code{3306}
@@ -526,6 +555,11 @@ in the \emph{Amazon RDS User Guide}.
 See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits-MS.html}{RDS Custom for SQL Server general requirements}
 in the \emph{Amazon RDS User Guide}.
 
+\strong{RDS for Db2}
+
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Db2.html#Db2.Concepts.VersionMgmt}{Db2 on Amazon RDS versions}
+in the \emph{Amazon RDS User Guide}.
+
 \strong{RDS for MariaDB}
 
 For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS versions}
@@ -564,6 +598,7 @@ This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
 
 Valid Values:
 \itemize{
+\item RDS for Db2 - \code{bring-your-own-license}
 \item RDS for MariaDB - \code{general-public-license}
 \item RDS for Microsoft SQL Server - \code{license-included}
 \item RDS for MySQL - \code{general-public-license}
@@ -581,7 +616,7 @@ managed by the DB cluster.
 
 Constraints:
 \itemize{
-\item For RDS for MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
+\item For RDS for Db2, MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
 multiple between .5 and 50 of the storage amount for the DB
 instance.
 \item For RDS for SQL Server - Must be a multiple between 1 and 50 of the
@@ -706,8 +741,8 @@ Custom doesn't use the default key when this parameter is empty. You
 must explicitly specify a key.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in.
-Currently, only Microsoft SQL Server, MySQL, Oracle, and PostgreSQL DB
-instances can be created in an Active Directory Domain.
+Currently, you can create only Db2, MySQL, Microsoft SQL Server, Oracle,
+and PostgreSQL DB instances in an Active Directory Domain.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.
@@ -861,8 +896,8 @@ Default: \code{7} days
 If you specify a retention period that isn't valid, such as \code{94}, Amazon
 RDS returns an error.}
 
-\item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
-CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+\item{EnableCloudwatchLogsExports}{The list of log types to enable for exporting to CloudWatch Logs. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to the following DB instances:
@@ -874,6 +909,7 @@ cluster.)
 
 The following values are valid for each DB engine:
 \itemize{
+\item RDS for Db2 - \code{diag.log | notify.log}
 \item RDS for MariaDB - \code{audit | error | general | slowquery}
 \item RDS for Microsoft SQL Server - \code{agent | error}
 \item RDS for MySQL - \code{audit | error | general | slowquery}
@@ -943,7 +979,7 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{BackupTarget}{The location for storing automated backups and manual snapshots.
 
-Valie Values:
+Valid Values:
 \itemize{
 \item \code{outposts} (Amazon Web Services Outposts)
 \item \code{region} (Amazon Web Services Region)

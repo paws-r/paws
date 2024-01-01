@@ -26,9 +26,13 @@ finspace_update_kx_cluster_code_configuration(
 \item{initializationScript}{Specifies a Q program that will be run at launch of a cluster. It is a
 relative path within \emph{.zip} file that contains the custom code, which
 will be loaded on the cluster. It must include the file name itself. For
-example, \code{somedir/init.q}.}
+example, \code{somedir/init.q}.
 
-\item{commandLineArguments}{Specifies the key-value pairs to make them available inside the cluster.}
+You cannot update this parameter for a \code{NO_RESTART} deployment.}
+
+\item{commandLineArguments}{Specifies the key-value pairs to make them available inside the cluster.
+
+You cannot update this parameter for a \code{NO_RESTART} deployment.}
 
 \item{deploymentConfiguration}{The configuration that allows you to choose how you want to update the
 code on a cluster.}

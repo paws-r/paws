@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_job}
 \alias{s3control_create_job}
-\title{You can use S3 Batch Operations to perform large-scale batch actions on
-Amazon S3 objects}
+\title{This operation creates an S3 Batch Operations job}
 \usage{
 s3control_create_job(
   AccountId,
@@ -57,7 +56,7 @@ created with either a manifest file or a ManifestGenerator, but not
 both.}
 }
 \description{
-You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
+This operation creates an S3 Batch Operations job.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_create_job/} for full documentation.
 }

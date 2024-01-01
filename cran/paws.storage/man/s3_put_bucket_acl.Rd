@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_acl}
 \alias{s3_put_bucket_acl}
-\title{Sets the permissions on an existing bucket using access control lists
-(ACL)}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_bucket_acl(
   ACL = NULL,
@@ -36,9 +35,9 @@ For requests made using the Amazon Web Services Command Line Interface
 automatically.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
-using the SDK. This header will not provide any additional functionality
-if not using the SDK. When sending this header, there must be a
-corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+you use the SDK. This header will not provide any additional
+functionality if you don't use the SDK. When you send this header, there
+must be a corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
 \verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
@@ -60,12 +59,12 @@ deletions and overwrites of those objects.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
 
-\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
-different account, the request fails with the HTTP status code
-\verb{403 Forbidden} (access denied).}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
+provide does not match the actual owner of the bucket, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Sets the permissions on an existing bucket using access control lists (ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}. To set the ACL of a bucket, you must have \code{WRITE_ACP} permission.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/} for full documentation.
 }

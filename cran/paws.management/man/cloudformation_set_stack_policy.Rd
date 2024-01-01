@@ -15,7 +15,7 @@ cloudformation_set_stack_policy(
 
 \item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent updates to stack resources}
-in the CloudFormation User Guide. You can specify either the
+in the \emph{CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a

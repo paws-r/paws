@@ -2,9 +2,9 @@
 % Please edit documentation in R/arczonalshift_operations.R
 \name{arczonalshift_list_managed_resources}
 \alias{arczonalshift_list_managed_resources}
-\title{Lists all the resources in your AWS account in this AWS Region that are
-managed for zonal shifts in Amazon Route 53 Application Recovery
-Controller, and information about them}
+\title{Lists all the resources in your Amazon Web Services account in this
+Amazon Web Services Region that are managed for zonal shifts in Amazon
+Route 53 Application Recovery Controller, and information about them}
 \usage{
 arczonalshift_list_managed_resources(maxResults = NULL, nextToken = NULL)
 }
@@ -18,7 +18,7 @@ the value provided by the previous call's \code{NextToken} response to
 request the next page of results.}
 }
 \description{
-Lists all the resources in your AWS account in this AWS Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them. The information includes their Amazon Resource Names (ARNs), the Availability Zones the resources are deployed in, and the resource name.
+Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them. The information includes the zonal autoshift status for the resource, as well as the Amazon Resource Name (ARN), the Availability Zones that each resource is deployed in, and the resource name.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_list_managed_resources/} for full documentation.
 }

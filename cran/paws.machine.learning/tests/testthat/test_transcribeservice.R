@@ -24,6 +24,14 @@ test_that("list_language_models", {
   expect_error(svc$list_language_models(MaxResults = 20), NA)
 })
 
+test_that("list_medical_scribe_jobs", {
+  expect_error(svc$list_medical_scribe_jobs(), NA)
+})
+
+test_that("list_medical_scribe_jobs", {
+  expect_error(svc$list_medical_scribe_jobs(MaxResults = 20), NA)
+})
+
 test_that("list_medical_transcription_jobs", {
   expect_error(svc$list_medical_transcription_jobs(), NA)
 })

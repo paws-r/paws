@@ -141,7 +141,9 @@ the \emph{Amazon Web Services General Reference}.
 \link[=ecr_start_lifecycle_policy_preview]{start_lifecycle_policy_preview} \tab Starts a preview of a lifecycle policy for the specified repository\cr
 \link[=ecr_tag_resource]{tag_resource} \tab Adds specified tags to a resource with the specified ARN\cr
 \link[=ecr_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
-\link[=ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR
+\link[=ecr_update_pull_through_cache_rule]{update_pull_through_cache_rule} \tab Updates an existing pull through cache rule\cr
+\link[=ecr_upload_layer_part]{upload_layer_part} \tab Uploads an image layer part to Amazon ECR\cr
+\link[=ecr_validate_pull_through_cache_rule]{validate_pull_through_cache_rule} \tab Validates an existing pull through cache rule for an upstream registry that requires authentication
 }
 }
 

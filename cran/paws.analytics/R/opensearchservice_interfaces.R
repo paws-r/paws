@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.opensearchservice$add_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(type = "string")), DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$add_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .opensearchservice$add_tags_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ARN = structure(logical(0), tags = list(type = "string")), TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -106,6 +118,18 @@ NULL
 .opensearchservice$create_vpc_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VpcEndpoint = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$delete_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$delete_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -373,6 +397,18 @@ NULL
   return(populate(args, shape))
 }
 
+.opensearchservice$get_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$get_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .opensearchservice$get_domain_maintenance_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), MaintenanceId = structure(logical(0), tags = list(location = "querystring", locationName = "maintenanceId", type = "string"))), tags = list(type = "structure"))
@@ -418,6 +454,18 @@ NULL
 .opensearchservice$get_upgrade_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(UpgradeStep = structure(logical(0), tags = list(type = "string")), StepStatus = structure(logical(0), tags = list(type = "string")), UpgradeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$list_data_sources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$list_data_sources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataSources = structure(list(structure(list(DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -620,6 +668,18 @@ NULL
 .opensearchservice$start_service_software_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ServiceSoftwareOptions = structure(list(CurrentVersion = structure(logical(0), tags = list(type = "string")), NewVersion = structure(logical(0), tags = list(type = "string")), UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Cancellable = structure(logical(0), tags = list(type = "boolean")), UpdateStatus = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AutomatedUpdateDate = structure(logical(0), tags = list(type = "timestamp")), OptionalDeployment = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$update_data_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "DataSourceName", type = "string")), DataSourceType = structure(list(S3GlueDataCatalog = structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.opensearchservice$update_data_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

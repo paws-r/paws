@@ -2,15 +2,21 @@
 % Please edit documentation in R/dlm_operations.R
 \name{dlm_create_lifecycle_policy}
 \alias{dlm_create_lifecycle_policy}
-\title{Creates a policy to manage the lifecycle of the specified Amazon Web
-Services resources}
+\title{Creates an Amazon Data Lifecycle Manager lifecycle policy}
 \usage{
 dlm_create_lifecycle_policy(
   ExecutionRoleArn,
   Description,
   State,
-  PolicyDetails,
-  Tags = NULL
+  PolicyDetails = NULL,
+  Tags = NULL,
+  DefaultPolicy = NULL,
+  CreateInterval = NULL,
+  RetainInterval = NULL,
+  CopyTags = NULL,
+  ExtendDeletion = NULL,
+  CrossRegionCopyTargets = NULL,
+  Exclusions = NULL
 )
 }
 \arguments{
@@ -20,14 +26,83 @@ operations specified by the lifecycle policy.}
 \item{Description}{[required] A description of the lifecycle policy. The characters ^[0-9A-Za-z
 _-]+$ are supported.}
 
-\item{State}{[required] The desired activation state of the lifecycle policy after creation.}
+\item{State}{[required] The activation state of the lifecycle policy after creation.}
 
-\item{PolicyDetails}{[required] The configuration details of the lifecycle policy.}
+\item{PolicyDetails}{The configuration details of the lifecycle policy.
+
+If you create a default policy, you can specify the request parameters
+either in the request body, or in the PolicyDetails request structure,
+but not both.}
 
 \item{Tags}{The tags to apply to the lifecycle policy during creation.}
+
+\item{DefaultPolicy}{\strong{[Default policies only]} Specify the type of default policy to
+create.
+\itemize{
+\item To create a default policy for EBS snapshots, that creates snapshots
+of all volumes in the Region that do not have recent backups,
+specify \code{VOLUME}.
+\item To create a default policy for EBS-backed AMIs, that creates
+EBS-backed AMIs from all instances in the Region that do not have
+recent backups, specify \code{INSTANCE}.
+}}
+
+\item{CreateInterval}{\strong{[Default policies only]} Specifies how often the policy should run
+and create snapshots or AMIs. The creation frequency can range from 1 to
+7 days. If you do not specify a value, the default is 1.
+
+Default: 1}
+
+\item{RetainInterval}{\strong{[Default policies only]} Specifies how long the policy should
+retain snapshots or AMIs before deleting them. The retention period can
+range from 2 to 14 days, but it must be greater than the creation
+frequency to ensure that the policy retains at least 1 snapshot or AMI
+at any given time. If you do not specify a value, the default is 7.
+
+Default: 7}
+
+\item{CopyTags}{\strong{[Default policies only]} Indicates whether the policy should copy
+tags from the source resource to the snapshot or AMI. If you do not
+specify a value, the default is \code{false}.
+
+Default: false}
+
+\item{ExtendDeletion}{\strong{[Default policies only]} Defines the snapshot or AMI retention
+behavior for the policy if the source volume or instance is deleted, or
+if the policy enters the error, disabled, or deleted state.
+
+By default (\strong{ExtendDeletion=false}):
+\itemize{
+\item If a source resource is deleted, Amazon Data Lifecycle Manager will
+continue to delete previously created snapshots or AMIs, up to but
+not including the last one, based on the specified retention period.
+If you want Amazon Data Lifecycle Manager to delete all snapshots or
+AMIs, including the last one, specify \code{true}.
+\item If a policy enters the error, disabled, or deleted state, Amazon
+Data Lifecycle Manager stops deleting snapshots and AMIs. If you
+want Amazon Data Lifecycle Manager to continue deleting snapshots or
+AMIs, including the last one, if the policy enters one of these
+states, specify \code{true}.
+}
+
+If you enable extended deletion (\strong{ExtendDeletion=true}), you override
+both default behaviors simultaneously.
+
+If you do not specify a value, the default is \code{false}.
+
+Default: false}
+
+\item{CrossRegionCopyTargets}{\strong{[Default policies only]} Specifies destination Regions for snapshot
+or AMI copies. You can specify up to 3 destination Regions. If you do
+not want to create cross-Region copies, omit this parameter.}
+
+\item{Exclusions}{\strong{[Default policies only]} Specifies exclusion parameters for volumes
+or instances for which you do not want to create snapshots or AMIs. The
+policy will not create snapshots or AMIs for target resources that match
+any of the specified exclusion parameters.}
 }
 \description{
-Creates a policy to manage the lifecycle of the specified Amazon Web Services resources. You can create up to 100 lifecycle policies.
+Creates an Amazon Data Lifecycle Manager lifecycle policy. Amazon Data Lifecycle Manager supports the following policy types:
 
 See \url{https://www.paws-r-sdk.com/docs/dlm_create_lifecycle_policy/} for full documentation.
 }

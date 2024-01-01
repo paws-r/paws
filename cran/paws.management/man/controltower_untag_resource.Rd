@@ -12,7 +12,7 @@ controltower_untag_resource(resourceArn, tagKeys)
 \item{tagKeys}{[required] Tag keys to be removed from the resource.}
 }
 \description{
-Removes tags from a resource. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the AWS Control Tower User Guide}} .
+Removes tags from a resource. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_untag_resource/} for full documentation.
 }

@@ -21,7 +21,8 @@ ec2_create_network_interface(
   SubnetId,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  EnablePrimaryIpv6 = NULL
+  EnablePrimaryIpv6 = NULL,
+  ConnectionTrackingSpecification = NULL
 )
 }
 \arguments{
@@ -124,6 +125,8 @@ detached. If you have multiple IPv6 addresses associated with an ENI
 attached to your instance and you enable a primary IPv6 address, the
 first IPv6 GUA address associated with the ENI becomes the primary IPv6
 address.}
+
+\item{ConnectionTrackingSpecification}{A connection tracking specification for the network interface.}
 }
 \description{
 Creates a network interface in the specified subnet.

@@ -11,7 +11,7 @@ sfn_describe_map_run(mapRunArn)
 \item{mapRunArn}{[required] The Amazon Resource Name (ARN) that identifies a Map Run.}
 }
 \description{
-Provides information about a Map Run's configuration, progress, and results. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html}{Examining Map Run} in the \emph{Step Functions Developer Guide}.
+Provides information about a Map Run's configuration, progress, and results. If you've \href{https://docs.aws.amazon.com/step-functions/latest/dg/redrive-map-run.html}{redriven} a Map Run, this API action also returns information about the redrives of that Map Run. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html}{Examining Map Run} in the \emph{Step Functions Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_describe_map_run/} for full documentation.
 }

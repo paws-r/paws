@@ -626,7 +626,7 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'
 #' @usage
 #' lexmodelsv2_create_bot_locale(botId, botVersion, localeId, description,
-#'   nluIntentConfidenceThreshold, voiceSettings)
+#'   nluIntentConfidenceThreshold, voiceSettings, generativeAISettings)
 #'
 #' @param botId &#91;required&#93; The identifier of the bot to create the locale for.
 #' @param botVersion &#91;required&#93; The version of the bot to create the locale for. This can only be the
@@ -659,6 +659,7 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' -   IntentC
 #' @param voiceSettings The Amazon Polly voice ID that Amazon Lex uses for voice interaction
 #' with the user.
+#' @param generativeAISettings 
 #'
 #' @return
 #' A list with the following syntax:
@@ -677,6 +678,30 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'   botLocaleStatus = "Creating"|"Building"|"Built"|"ReadyExpressTesting"|"Failed"|"Deleting"|"NotBuilt"|"Importing"|"Processing",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   generativeAISettings = list(
+#'     runtimeSettings = list(
+#'       slotResolutionImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     ),
+#'     buildtimeSettings = list(
+#'       descriptiveBotBuilder = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       sampleUtteranceGeneration = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -692,6 +717,30 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'   voiceSettings = list(
 #'     voiceId = "string",
 #'     engine = "standard"|"neural"
+#'   ),
+#'   generativeAISettings = list(
+#'     runtimeSettings = list(
+#'       slotResolutionImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     ),
+#'     buildtimeSettings = list(
+#'       descriptiveBotBuilder = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       sampleUtteranceGeneration = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -701,14 +750,14 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' @rdname lexmodelsv2_create_bot_locale
 #'
 #' @aliases lexmodelsv2_create_bot_locale
-lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL) {
+lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, generativeAISettings = NULL) {
   op <- new_operation(
     name = "CreateBotLocale",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings)
+  input <- .lexmodelsv2$create_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
   output <- .lexmodelsv2$create_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -718,16 +767,15 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
 }
 .lexmodelsv2$operations$create_bot_locale <- lexmodelsv2_create_bot_locale
 
-#' Creates a new version of the bot based on the DRAFT version
+#' Creates an immutable version of the bot
 #'
 #' @description
-#' Creates a new version of the bot based on the `DRAFT` version. If the
-#' `DRAFT` version of this resource hasn't changed since you created the
-#' last version, Amazon Lex doesn't create a new version, it returns the
-#' last created version.
-#' 
-#' When you create the first version of a bot, Amazon Lex sets the version
-#' to 1. Subsequent versions increment by 1.
+#' Creates an immutable version of the bot. When you create the first
+#' version of a bot, Amazon Lex sets the version number to 1. Subsequent
+#' bot versions increase in an increment of 1. The version number will
+#' always represent the total number of versions created of the bot, not
+#' the current number of versions. If a bot version is deleted, that bot
+#' version number will not be reused.
 #'
 #' @usage
 #' lexmodelsv2_create_bot_version(botId, description,
@@ -10097,6 +10145,9 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'         enableCodeHookInvocation = TRUE|FALSE,
 #'         invocationLabel = "string"
 #'       )
+#'     ),
+#'     slotResolutionSetting = list(
+#'       slotResolutionStrategy = "EnhancedFallback"|"Default"
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -11877,6 +11928,9 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'         enableCodeHookInvocation = TRUE|FALSE,
 #'         invocationLabel = "string"
 #'       )
+#'     ),
+#'     slotResolutionSetting = list(
+#'       slotResolutionStrategy = "EnhancedFallback"|"Default"
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -13508,6 +13562,30 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'   ),
 #'   recommendedActions = list(
 #'     "string"
+#'   ),
+#'   generativeAISettings = list(
+#'     runtimeSettings = list(
+#'       slotResolutionImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     ),
+#'     buildtimeSettings = list(
+#'       descriptiveBotBuilder = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       sampleUtteranceGeneration = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -13656,6 +13734,83 @@ lexmodelsv2_describe_bot_recommendation <- function(botId, botVersion, localeId,
   return(response)
 }
 .lexmodelsv2$operations$describe_bot_recommendation <- lexmodelsv2_describe_bot_recommendation
+
+#' Returns information about a request to generate a bot through natural
+#' language description, made through the StartBotResource API
+#'
+#' @description
+#' Returns information about a request to generate a bot through natural
+#' language description, made through the `StartBotResource` API. Use the
+#' `generatedBotLocaleUrl` to retrieve the Amazon S3 object containing the
+#' bot locale configuration. You can then modify and import this
+#' configuration.
+#'
+#' @usage
+#' lexmodelsv2_describe_bot_resource_generation(botId, botVersion,
+#'   localeId, generationId)
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot for which to return the generation
+#' details.
+#' @param botVersion &#91;required&#93; The version of the bot for which to return the generation details.
+#' @param localeId &#91;required&#93; The locale of the bot for which to return the generation details.
+#' @param generationId &#91;required&#93; The unique identifier of the generation request for which to return the
+#' generation details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   generationId = "string",
+#'   failureReasons = list(
+#'     "string"
+#'   ),
+#'   generationStatus = "Failed"|"Complete"|"InProgress",
+#'   generationInputPrompt = "string",
+#'   generatedBotLocaleUrl = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   modelArn = "string",
+#'   lastUpdatedDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_bot_resource_generation(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   generationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_bot_resource_generation
+#'
+#' @aliases lexmodelsv2_describe_bot_resource_generation
+lexmodelsv2_describe_bot_resource_generation <- function(botId, botVersion, localeId, generationId) {
+  op <- new_operation(
+    name = "DescribeBotResourceGeneration",
+    http_method = "GET",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generations/{generationId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$describe_bot_resource_generation_input(botId = botId, botVersion = botVersion, localeId = localeId, generationId = generationId)
+  output <- .lexmodelsv2$describe_bot_resource_generation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_bot_resource_generation <- lexmodelsv2_describe_bot_resource_generation
 
 #' Provides metadata about a version of a bot
 #'
@@ -19290,6 +19445,9 @@ lexmodelsv2_describe_resource_policy <- function(resourceArn) {
 #'         enableCodeHookInvocation = TRUE|FALSE,
 #'         invocationLabel = "string"
 #'       )
+#'     ),
+#'     slotResolutionSetting = list(
+#'       slotResolutionStrategy = "EnhancedFallback"|"Default"
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -20012,6 +20170,67 @@ lexmodelsv2_describe_test_set_generation <- function(testSetGenerationId) {
 }
 .lexmodelsv2$operations$describe_test_set_generation <- lexmodelsv2_describe_test_set_generation
 
+#' Generates sample utterances for an intent
+#'
+#' @description
+#' Generates sample utterances for an intent.
+#'
+#' @usage
+#' lexmodelsv2_generate_bot_element(intentId, botId, botVersion, localeId)
+#'
+#' @param intentId &#91;required&#93; The intent unique Id for the bot request to generate utterances.
+#' @param botId &#91;required&#93; The bot unique Id for the bot request to generate utterances.
+#' @param botVersion &#91;required&#93; The bot version for the bot request to generate utterances.
+#' @param localeId &#91;required&#93; The unique locale Id for the bot request to generate utterances.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   intentId = "string",
+#'   sampleUtterances = list(
+#'     list(
+#'       utterance = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$generate_bot_element(
+#'   intentId = "string",
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_generate_bot_element
+#'
+#' @aliases lexmodelsv2_generate_bot_element
+lexmodelsv2_generate_bot_element <- function(intentId, botId, botVersion, localeId) {
+  op <- new_operation(
+    name = "GenerateBotElement",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generate",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$generate_bot_element_input(intentId = intentId, botId = botId, botVersion = botVersion, localeId = localeId)
+  output <- .lexmodelsv2$generate_bot_element_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$generate_bot_element <- lexmodelsv2_generate_bot_element
+
 #' The pre-signed Amazon S3 URL to download the test execution result
 #' artifacts
 #'
@@ -20455,6 +20674,87 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
   return(response)
 }
 .lexmodelsv2$operations$list_bot_recommendations <- lexmodelsv2_list_bot_recommendations
+
+#' Lists the generation requests made for a bot locale
+#'
+#' @description
+#' Lists the generation requests made for a bot locale.
+#'
+#' @usage
+#' lexmodelsv2_list_bot_resource_generations(botId, botVersion, localeId,
+#'   sortBy, maxResults, nextToken)
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot whose generation requests you want to
+#' view.
+#' @param botVersion &#91;required&#93; The version of the bot whose generation requests you want to view.
+#' @param localeId &#91;required&#93; The locale of the bot whose generation requests you want to view.
+#' @param sortBy An object containing information about the attribute and the method by
+#' which to sort the results
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken If the total number of results is greater than the number specified in
+#' the `maxResults`, the response returns a token in the `nextToken` field.
+#' Use this token when making a request to return the next batch of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   generationSummaries = list(
+#'     list(
+#'       generationId = "string",
+#'       generationStatus = "Failed"|"Complete"|"InProgress",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_bot_resource_generations(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   sortBy = list(
+#'     attribute = "creationStartTime"|"lastUpdatedTime",
+#'     order = "Ascending"|"Descending"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_bot_resource_generations
+#'
+#' @aliases lexmodelsv2_list_bot_resource_generations
+lexmodelsv2_list_bot_resource_generations <- function(botId, botVersion, localeId, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListBotResourceGenerations",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generations",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_bot_resource_generations_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_bot_resource_generations_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_bot_resource_generations <- lexmodelsv2_list_bot_resource_generations
 
 #' Gets information about all of the versions of a bot
 #'
@@ -23449,6 +23749,80 @@ lexmodelsv2_start_bot_recommendation <- function(botId, botVersion, localeId, tr
 }
 .lexmodelsv2$operations$start_bot_recommendation <- lexmodelsv2_start_bot_recommendation
 
+#' Starts a request for the descriptive bot builder to generate a bot
+#' locale configuration based on the prompt you provide it
+#'
+#' @description
+#' Starts a request for the descriptive bot builder to generate a bot
+#' locale configuration based on the prompt you provide it. After you make
+#' this call, use the
+#' [`describe_bot_resource_generation`][lexmodelsv2_describe_bot_resource_generation]
+#' operation to check on the status of the generation and for the
+#' `generatedBotLocaleUrl` when the generation is complete. Use that value
+#' to retrieve the Amazon S3 object containing the bot locale
+#' configuration. You can then modify and import this configuration.
+#'
+#' @usage
+#' lexmodelsv2_start_bot_resource_generation(generationInputPrompt, botId,
+#'   botVersion, localeId)
+#'
+#' @param generationInputPrompt &#91;required&#93; The prompt to generate intents and slot types for the bot locale. Your
+#' description should be both *detailed* and *precise* to help generate
+#' appropriate and sufficient intents for your bot. Include a list of
+#' actions to improve the intent creation process.
+#' @param botId &#91;required&#93; The unique identifier of the bot for which to generate intents and slot
+#' types.
+#' @param botVersion &#91;required&#93; The version of the bot for which to generate intents and slot types.
+#' @param localeId &#91;required&#93; The locale of the bot for which to generate intents and slot types.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   generationInputPrompt = "string",
+#'   generationId = "string",
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   generationStatus = "Failed"|"Complete"|"InProgress",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_bot_resource_generation(
+#'   generationInputPrompt = "string",
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_start_bot_resource_generation
+#'
+#' @aliases lexmodelsv2_start_bot_resource_generation
+lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, botId, botVersion, localeId) {
+  op <- new_operation(
+    name = "StartBotResourceGeneration",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/startgeneration",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$start_bot_resource_generation_input(generationInputPrompt = generationInputPrompt, botId = botId, botVersion = botVersion, localeId = localeId)
+  output <- .lexmodelsv2$start_bot_resource_generation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$start_bot_resource_generation <- lexmodelsv2_start_bot_resource_generation
+
 #' Starts importing a bot, bot locale, or custom vocabulary from a zip
 #' archive that you uploaded to an S3 bucket
 #'
@@ -24231,7 +24605,7 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'
 #' @usage
 #' lexmodelsv2_update_bot_locale(botId, botVersion, localeId, description,
-#'   nluIntentConfidenceThreshold, voiceSettings)
+#'   nluIntentConfidenceThreshold, voiceSettings, generativeAISettings)
 #'
 #' @param botId &#91;required&#93; The unique identifier of the bot that contains the locale.
 #' @param botVersion &#91;required&#93; The version of the bot that contains the locale to be updated. The
@@ -24245,6 +24619,10 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' list of possible intents for an utterance.
 #' @param voiceSettings The new Amazon Polly voice Amazon Lex should use for voice interaction
 #' with the user.
+#' @param generativeAISettings Contains settings for generative AI features powered by Amazon Bedrock
+#' for your bot locale. Use this object to turn generative AI features on
+#' and off. Pricing may differ if you turn a feature on. For more
+#' information, see LINK.
 #'
 #' @return
 #' A list with the following syntax:
@@ -24272,6 +24650,30 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'   ),
 #'   recommendedActions = list(
 #'     "string"
+#'   ),
+#'   generativeAISettings = list(
+#'     runtimeSettings = list(
+#'       slotResolutionImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     ),
+#'     buildtimeSettings = list(
+#'       descriptiveBotBuilder = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       sampleUtteranceGeneration = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -24287,6 +24689,30 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'   voiceSettings = list(
 #'     voiceId = "string",
 #'     engine = "standard"|"neural"
+#'   ),
+#'   generativeAISettings = list(
+#'     runtimeSettings = list(
+#'       slotResolutionImprovement = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     ),
+#'     buildtimeSettings = list(
+#'       descriptiveBotBuilder = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       ),
+#'       sampleUtteranceGeneration = list(
+#'         enabled = TRUE|FALSE,
+#'         bedrockModelSpecification = list(
+#'           modelArn = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -24296,14 +24722,14 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' @rdname lexmodelsv2_update_bot_locale
 #'
 #' @aliases lexmodelsv2_update_bot_locale
-lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL) {
+lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL, generativeAISettings = NULL) {
   op <- new_operation(
     name = "UpdateBotLocale",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings)
+  input <- .lexmodelsv2$update_bot_locale_input(botId = botId, botVersion = botVersion, localeId = localeId, description = description, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, voiceSettings = voiceSettings, generativeAISettings = generativeAISettings)
   output <- .lexmodelsv2$update_bot_locale_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -33539,6 +33965,9 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'         enableCodeHookInvocation = TRUE|FALSE,
 #'         invocationLabel = "string"
 #'       )
+#'     ),
+#'     slotResolutionSetting = list(
+#'       slotResolutionStrategy = "EnhancedFallback"|"Default"
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -35323,6 +35752,9 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'         enableCodeHookInvocation = TRUE|FALSE,
 #'         invocationLabel = "string"
 #'       )
+#'     ),
+#'     slotResolutionSetting = list(
+#'       slotResolutionStrategy = "EnhancedFallback"|"Default"
 #'     )
 #'   ),
 #'   obfuscationSetting = list(

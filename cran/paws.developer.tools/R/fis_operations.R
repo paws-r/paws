@@ -20,18 +20,19 @@ NULL
 #' service permission to perform service actions on your behalf.
 #' @param tags The tags to apply to the experiment template.
 #' @param logConfiguration The configuration for experiment logging.
+#' @param experimentOptions The experiment options for the experiment template.
 #'
 #' @keywords internal
 #'
 #' @rdname fis_create_experiment_template
-fis_create_experiment_template <- function(clientToken, description, stopConditions, targets = NULL, actions, roleArn, tags = NULL, logConfiguration = NULL) {
+fis_create_experiment_template <- function(clientToken, description, stopConditions, targets = NULL, actions, roleArn, tags = NULL, logConfiguration = NULL, experimentOptions = NULL) {
   op <- new_operation(
     name = "CreateExperimentTemplate",
     http_method = "POST",
     http_path = "/experimentTemplates",
     paginator = list()
   )
-  input <- .fis$create_experiment_template_input(clientToken = clientToken, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, tags = tags, logConfiguration = logConfiguration)
+  input <- .fis$create_experiment_template_input(clientToken = clientToken, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, tags = tags, logConfiguration = logConfiguration, experimentOptions = experimentOptions)
   output <- .fis$create_experiment_template_output()
   config <- get_config()
   svc <- .fis$service(config)
@@ -40,6 +41,40 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
   return(response)
 }
 .fis$operations$create_experiment_template <- fis_create_experiment_template
+
+#' Creates a target account configuration for the experiment template
+#'
+#' @description
+#' Creates a target account configuration for the experiment template. A target account configuration is required when `accountTargeting` of `experimentOptions` is set to `multi-account`. For more information, see [experiment options](https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html) in the *Fault Injection Simulator User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_create_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_create_target_account_configuration/) for full documentation.
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param experimentTemplateId &#91;required&#93; The experiment template ID.
+#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role for the target account.
+#' @param description The description of the target account.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_create_target_account_configuration
+fis_create_target_account_configuration <- function(clientToken = NULL, experimentTemplateId, accountId, roleArn, description = NULL) {
+  op <- new_operation(
+    name = "CreateTargetAccountConfiguration",
+    http_method = "POST",
+    http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    paginator = list()
+  )
+  input <- .fis$create_target_account_configuration_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, accountId = accountId, roleArn = roleArn, description = description)
+  output <- .fis$create_target_account_configuration_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$create_target_account_configuration <- fis_create_target_account_configuration
 
 #' Deletes the specified experiment template
 #'
@@ -69,6 +104,37 @@ fis_delete_experiment_template <- function(id) {
   return(response)
 }
 .fis$operations$delete_experiment_template <- fis_delete_experiment_template
+
+#' Deletes the specified target account configuration of the experiment
+#' template
+#'
+#' @description
+#' Deletes the specified target account configuration of the experiment template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_delete_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_delete_target_account_configuration/) for full documentation.
+#'
+#' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
+#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_delete_target_account_configuration
+fis_delete_target_account_configuration <- function(experimentTemplateId, accountId) {
+  op <- new_operation(
+    name = "DeleteTargetAccountConfiguration",
+    http_method = "DELETE",
+    http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    paginator = list()
+  )
+  input <- .fis$delete_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId)
+  output <- .fis$delete_target_account_configuration_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$delete_target_account_configuration <- fis_delete_target_account_configuration
 
 #' Gets information about the specified FIS action
 #'
@@ -128,6 +194,37 @@ fis_get_experiment <- function(id) {
 }
 .fis$operations$get_experiment <- fis_get_experiment
 
+#' Gets information about the specified target account configuration of the
+#' experiment
+#'
+#' @description
+#' Gets information about the specified target account configuration of the experiment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_get_experiment_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_get_experiment_target_account_configuration/) for full documentation.
+#'
+#' @param experimentId &#91;required&#93; The ID of the experiment.
+#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_get_experiment_target_account_configuration
+fis_get_experiment_target_account_configuration <- function(experimentId, accountId) {
+  op <- new_operation(
+    name = "GetExperimentTargetAccountConfiguration",
+    http_method = "GET",
+    http_path = "/experiments/{id}/targetAccountConfigurations/{accountId}",
+    paginator = list()
+  )
+  input <- .fis$get_experiment_target_account_configuration_input(experimentId = experimentId, accountId = accountId)
+  output <- .fis$get_experiment_target_account_configuration_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$get_experiment_target_account_configuration <- fis_get_experiment_target_account_configuration
+
 #' Gets information about the specified experiment template
 #'
 #' @description
@@ -156,6 +253,37 @@ fis_get_experiment_template <- function(id) {
   return(response)
 }
 .fis$operations$get_experiment_template <- fis_get_experiment_template
+
+#' Gets information about the specified target account configuration of the
+#' experiment template
+#'
+#' @description
+#' Gets information about the specified target account configuration of the experiment template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_get_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_get_target_account_configuration/) for full documentation.
+#'
+#' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
+#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_get_target_account_configuration
+fis_get_target_account_configuration <- function(experimentTemplateId, accountId) {
+  op <- new_operation(
+    name = "GetTargetAccountConfiguration",
+    http_method = "GET",
+    http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    paginator = list()
+  )
+  input <- .fis$get_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId)
+  output <- .fis$get_target_account_configuration_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$get_target_account_configuration <- fis_get_target_account_configuration
 
 #' Gets information about the specified resource type
 #'
@@ -217,6 +345,70 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
   return(response)
 }
 .fis$operations$list_actions <- fis_list_actions
+
+#' Lists the resolved targets information of the specified experiment
+#'
+#' @description
+#' Lists the resolved targets information of the specified experiment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_list_experiment_resolved_targets/](https://www.paws-r-sdk.com/docs/fis_list_experiment_resolved_targets/) for full documentation.
+#'
+#' @param experimentId &#91;required&#93; The ID of the experiment.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param nextToken The token for the next page of results.
+#' @param targetName The name of the target.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_list_experiment_resolved_targets
+fis_list_experiment_resolved_targets <- function(experimentId, maxResults = NULL, nextToken = NULL, targetName = NULL) {
+  op <- new_operation(
+    name = "ListExperimentResolvedTargets",
+    http_method = "GET",
+    http_path = "/experiments/{id}/resolvedTargets",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .fis$list_experiment_resolved_targets_input(experimentId = experimentId, maxResults = maxResults, nextToken = nextToken, targetName = targetName)
+  output <- .fis$list_experiment_resolved_targets_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$list_experiment_resolved_targets <- fis_list_experiment_resolved_targets
+
+#' Lists the target account configurations of the specified experiment
+#'
+#' @description
+#' Lists the target account configurations of the specified experiment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_list_experiment_target_account_configurations/](https://www.paws-r-sdk.com/docs/fis_list_experiment_target_account_configurations/) for full documentation.
+#'
+#' @param experimentId &#91;required&#93; The ID of the experiment.
+#' @param nextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_list_experiment_target_account_configurations
+fis_list_experiment_target_account_configurations <- function(experimentId, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListExperimentTargetAccountConfigurations",
+    http_method = "GET",
+    http_path = "/experiments/{id}/targetAccountConfigurations",
+    paginator = list()
+  )
+  input <- .fis$list_experiment_target_account_configurations_input(experimentId = experimentId, nextToken = nextToken)
+  output <- .fis$list_experiment_target_account_configurations_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$list_experiment_target_account_configurations <- fis_list_experiment_target_account_configurations
 
 #' Lists your experiment templates
 #'
@@ -310,6 +502,40 @@ fis_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .fis$operations$list_tags_for_resource <- fis_list_tags_for_resource
+
+#' Lists the target account configurations of the specified experiment
+#' template
+#'
+#' @description
+#' Lists the target account configurations of the specified experiment template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_list_target_account_configurations/](https://www.paws-r-sdk.com/docs/fis_list_target_account_configurations/) for full documentation.
+#'
+#' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned nextToken
+#' value.
+#' @param nextToken The token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_list_target_account_configurations
+fis_list_target_account_configurations <- function(experimentTemplateId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTargetAccountConfigurations",
+    http_method = "GET",
+    http_path = "/experimentTemplates/{id}/targetAccountConfigurations",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .fis$list_target_account_configurations_input(experimentTemplateId = experimentTemplateId, maxResults = maxResults, nextToken = nextToken)
+  output <- .fis$list_target_account_configurations_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$list_target_account_configurations <- fis_list_target_account_configurations
 
 #' Lists the target resource types
 #'
@@ -479,18 +705,19 @@ fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
 #' @param roleArn The Amazon Resource Name (ARN) of an IAM role that grants the FIS
 #' service permission to perform service actions on your behalf.
 #' @param logConfiguration The configuration for experiment logging.
+#' @param experimentOptions The experiment options for the experiment template.
 #'
 #' @keywords internal
 #'
 #' @rdname fis_update_experiment_template
-fis_update_experiment_template <- function(id, description = NULL, stopConditions = NULL, targets = NULL, actions = NULL, roleArn = NULL, logConfiguration = NULL) {
+fis_update_experiment_template <- function(id, description = NULL, stopConditions = NULL, targets = NULL, actions = NULL, roleArn = NULL, logConfiguration = NULL, experimentOptions = NULL) {
   op <- new_operation(
     name = "UpdateExperimentTemplate",
     http_method = "PATCH",
     http_path = "/experimentTemplates/{id}",
     paginator = list()
   )
-  input <- .fis$update_experiment_template_input(id = id, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, logConfiguration = logConfiguration)
+  input <- .fis$update_experiment_template_input(id = id, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, logConfiguration = logConfiguration, experimentOptions = experimentOptions)
   output <- .fis$update_experiment_template_output()
   config <- get_config()
   svc <- .fis$service(config)
@@ -499,3 +726,36 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
   return(response)
 }
 .fis$operations$update_experiment_template <- fis_update_experiment_template
+
+#' Updates the target account configuration for the specified experiment
+#' template
+#'
+#' @description
+#' Updates the target account configuration for the specified experiment template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fis_update_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_update_target_account_configuration/) for full documentation.
+#'
+#' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
+#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param roleArn The Amazon Resource Name (ARN) of an IAM role for the target account.
+#' @param description The description of the target account.
+#'
+#' @keywords internal
+#'
+#' @rdname fis_update_target_account_configuration
+fis_update_target_account_configuration <- function(experimentTemplateId, accountId, roleArn = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdateTargetAccountConfiguration",
+    http_method = "PATCH",
+    http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
+    paginator = list()
+  )
+  input <- .fis$update_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId, roleArn = roleArn, description = description)
+  output <- .fis$update_target_account_configuration_output()
+  config <- get_config()
+  svc <- .fis$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fis$operations$update_target_account_configuration <- fis_update_target_account_configuration

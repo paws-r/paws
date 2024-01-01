@@ -27,11 +27,11 @@ NULL
 #' `t2.micro`).
 #' @param subnetId The ID of the subnet in Amazon VPC that Cloud9 will use to communicate
 #' with the Amazon EC2 instance.
-#' @param imageId The identifier for the Amazon Machine Image (AMI) that's used to create
+#' @param imageId &#91;required&#93; The identifier for the Amazon Machine Image (AMI) that's used to create
 #' the EC2 instance. To choose an AMI for the instance, you must specify a
 #' valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path.
 #' 
-#' From November 20, 2023, you will be required to include the `imageId`
+#' From December 04, 2023, you will be required to include the `imageId`
 #' parameter for the
 #' [`create_environment_ec2`][cloud9_create_environment_ec2] action. This
 #' change will be reflected across all direct methods of communicating with
@@ -42,7 +42,7 @@ NULL
 #' From January 22, 2024, Amazon Linux (AL1) will be removed from the list
 #' of available image IDs for Cloud9. This is necessary as AL1 will reach
 #' the end of maintenance support in December 2023, and as a result will no
-#' longer receive security updates. We recommend using Amazon Linux 2 as
+#' longer receive security updates. We recommend using Amazon Linux 2023 as
 #' the AMI to create your environment as it is fully supported. This change
 #' will only affect direct API consumers, and not Cloud9 console users.
 #' 
@@ -51,9 +51,11 @@ NULL
 #' 
 #' **AMI aliases**
 #' 
-#' -   **Amazon Linux (default): `amazonlinux-1-x86_64`**
+#' -   Amazon Linux: `amazonlinux-1-x86_64`
 #' 
 #' -   Amazon Linux 2: `amazonlinux-2-x86_64`
+#' 
+#' -   Amazon Linux 2023 (recommended): `amazonlinux-2023-x86_64`
 #' 
 #' -   Ubuntu 18.04: `ubuntu-18.04-x86_64`
 #' 
@@ -61,11 +63,14 @@ NULL
 #' 
 #' **SSM paths**
 #' 
-#' -   **Amazon Linux (default):
-#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64`**
+#' -   Amazon Linux:
+#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64`
 #' 
 #' -   Amazon Linux 2:
 #'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64`
+#' 
+#' -   Amazon Linux 2023 (recommended):
+#'     `resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2023-x86_64`
 #' 
 #' -   Ubuntu 18.04:
 #'     `resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64`
@@ -95,7 +100,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_ec2
-cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, imageId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL, dryRun = NULL) {
+cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, imageId, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentEC2",
     http_method = "POST",
