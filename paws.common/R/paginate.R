@@ -19,7 +19,9 @@
 #' @param MaxItems Limits the maximum number of total returned items returned while paginating.
 #' @param StartingToken Can be used to modify the starting marker or token of a paginator.
 #' This argument if useful for resuming pagination from a previous token or starting pagination at a known position.
-#' @param StopOnSameToken Exist paginator if previous token matches current token.
+#' @param StopOnSameToken Exits paginator if previous token matches current token.
+#' For some APIs, such as CloudWatchLogs events, the next page token will always be present.
+#' When \code{TRUE}, the paginator will stop when the token doesn't change.
 #' @param FUN the function to be applied to each response element of \code{operation}.
 #' @param simplify See \link[base:sapply]{base::sapply()}.
 #' @param ... optional arguments to \code{FUN}.

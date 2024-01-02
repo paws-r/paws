@@ -45,7 +45,9 @@ paginate_sapply(
 \item{StartingToken}{Can be used to modify the starting marker or token of a paginator.
 This argument if useful for resuming pagination from a previous token or starting pagination at a known position.}
 
-\item{StopOnSameToken}{Exist paginator if previous token matches current token.}
+\item{StopOnSameToken}{Exits paginator if previous token matches current token.
+For some APIs, such as CloudWatchLogs events, the next page token will always be present.
+When \code{TRUE}, the paginator will stop when the token doesn't change.}
 
 \item{FUN}{the function to be applied to each response element of \code{operation}.}
 
