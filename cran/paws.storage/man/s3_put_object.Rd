@@ -198,7 +198,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguid
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
-information, see \url{https://www.rfc-editor.org/rfc/rfc7234#section-5.3}.}
+information, see https://www.rfc-editor.org/rfc/rfc7234#section-5.3.}
 
 \item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
