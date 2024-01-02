@@ -1,6 +1,6 @@
 Package: paws.end.user.computing
 Title: 'Amazon Web Services' End User Computing Services
-Version: 0.5.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
