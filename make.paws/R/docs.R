@@ -318,9 +318,9 @@ comment_list_item <- function(items = list()) {
   items_list <- setNames(character(length(items_names)), items_names)
   for (i in items_names) {
     if (is.list(items[[i]])) {
-      items_list[i] <- sprintf("\\item{%s:} {%s}", comment_bold(i), comment_list_itemize(items[[i]]))
+      items_list[i] <- sprintf("\\item{%s: %s}", comment_bold(i), comment_list_itemize(items[[i]]))
     } else {
-      items_list[i] <- sprintf("\\item{%s:} {%s}", comment_bold(i), items[[i]])
+      items_list[i] <- sprintf("\\item{%s: %s}", comment_bold(i), items[[i]])
     }
   }
   return(paste(items_list, collapse = "\n"))
