@@ -117,3 +117,23 @@ kwargs <- list(
 )
 result <- do.call(svc$list_objects, kwargs) |> paginate_lapply(\(page) page$Contents)
 ```
+
+## Stop on Same Token:
+
+Since paws.common 0.7.0 paginate works with AWS APIs that always return a token i.e. `cloudwatchlogs`. To handle these type of apis you can see the parameter `StopOnSameToken = TRUE`
+
+```r
+library(paws)
+
+client <- cloudwatchlogs()
+
+pages <- paginate(
+  client$get_log_events(
+    logGroupName = "/aws/sagemaker/NotebookInstances",
+    logStreamName = "paws-demo/jupyter.log",
+    startFromHead = TRUE
+  ),
+  StopOnSameToken = TRUE
+)
+```
+This aligns with AWS SDK JS V3 implementation ([aws-sdk-js-v3:v3.78.0](https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0)).
