@@ -304,7 +304,8 @@ get_region <- function(profile = "") {
 
   region <- check_config_file_region(profile)
 
-  if (is.null(region)) stop("No region provided")
+  if (is.null(region))
+    region <- "aws-global"
 
   return(region)
 }
