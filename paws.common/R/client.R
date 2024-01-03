@@ -84,6 +84,11 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     match <- matches[order(nchar(matches), decreasing = TRUE)][1]
     return(match)
   }
+  # Set default region for s3:
+  # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
+  if (service == "s3" & (region == "aws-global")) {
+    region <- "us-east-1"
+  }
   # locate global endpoint
   global_found <- vapply(
     endpoints, function(x) if (is.list(x)) x$global else FALSE,
