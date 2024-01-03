@@ -85,8 +85,13 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     return(match)
   }
   # locate global endpoint
-  global_found <- vapply(endpoints, function(x) if (is.list(x)) x$global else FALSE, FUN.VALUE = logical(1))
+  global_found <- vapply(
+    endpoints, function(x) if (is.list(x)) x$global else FALSE, FUN.VALUE = logical(1)
+  )
   global_region <- (region == "aws-global")
+  if (!any(global_found) & global_region) {
+    stop("No region provided and no global region found.")
+  }
   search_region <- (
     if (any(global_found) & global_region) names(global_found[global_found][1]) else region
   )
@@ -95,11 +100,6 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   if (is.character(e)) {
     e <- list(endpoint = e, global = FALSE)
   }
-  global <- e[["global"]]
-  if (global_region & isFALSE(global)) {
-    stop("No region provided and no global region found.")
-  }
-
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e$endpoint <- set_sts_regional_endpoint(
       sts_regional_endpoint,
@@ -107,7 +107,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     )
     region <- set_sts_region(sts_regional_endpoint, region)
   }
-  signing_region <- if (global) "us-east-1" else region
+  signing_region <- if (e[["global"]]) "us-east-1" else region
   endpoint <- gsub("{service}", service, e[["endpoint"]], fixed = TRUE)
   endpoint <- gsub("{region}", signing_region, endpoint, fixed = TRUE)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
