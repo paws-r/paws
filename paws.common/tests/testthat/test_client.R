@@ -73,6 +73,17 @@ test_that("resolver_endpoint service sts_regional_endpoint", {
   expect_equal(r$signing_region, "us-east-1")
 })
 
+test_that("resolver_endpoint service s3 default region", {
+  endpoints <- list(
+    "*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
+    "us-west-*" = list(endpoint = "https://us-west.amazonaws.com", global = TRUE)
+  )
+
+  r <- resolver_endpoint("s3", "aws-global", endpoints)
+  expect_equal(r$endpoint, "https://s3.amazonaws.com")
+  expect_equal(r$signing_region, "us-east-1")
+})
+
 test_that("client_config uses custom endpoint", {
   Sys.setenv("AWS_REGION" = "region")
   cfgs <- Config()
