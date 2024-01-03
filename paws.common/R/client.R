@@ -84,23 +84,29 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     match <- matches[order(nchar(matches), decreasing = TRUE)][1]
     return(match)
   }
-  e <- endpoints[[get_region_pattern(region, endpoints)]]
+  # locate global endpoint
+  global_found <- vapply(endpoints, function(x) if (is.list(x)) x$global else FALSE, FUN.VALUE = logical(1))
+  global_region <- (region == "aws-global")
+  search_region <- (
+    if (any(global_found) & global_region) names(global_found[global_found][1]) else region
+  )
+  e <- endpoints[[get_region_pattern(search_region, endpoints)]]
   # TODO: Delete old endpoint format handling once all packages are updated.
   if (is.character(e)) {
-    e <- list(endpoint = endpoint, global = FALSE)
+    e <- list(endpoint = e, global = FALSE)
   }
-  if (region == "aws-global" & isFALSE(e[["global"]])) {
+  global <- e[["global"]]
+  if (global_region & isFALSE(global)) {
     stop("No region provided and no global region found.")
   }
 
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e$endpoint <- set_sts_regional_endpoint(
       sts_regional_endpoint,
-      endpoint
+      e
     )
     region <- set_sts_region(sts_regional_endpoint, region)
   }
-  global <- (region == "aws-global" & isTRUE(e[["global"]]))
   signing_region <- if (global) "us-east-1" else region
   endpoint <- gsub("{service}", service, e[["endpoint"]], fixed = TRUE)
   endpoint <- gsub("{region}", signing_region, endpoint, fixed = TRUE)

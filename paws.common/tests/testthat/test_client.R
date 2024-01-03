@@ -16,6 +16,20 @@ test_that("resolver_endpoint", {
   r <- resolver_endpoint("service", "us-west-2", endpoints)
   expect_equal(r$endpoint, "https://us-west.amazonaws.com")
   expect_equal(r$signing_region, "us-east-1")
+
+  r <- resolver_endpoint("service", "aws-global", endpoints)
+  expect_equal(r$endpoint, "https://us-west.amazonaws.com")
+  expect_equal(r$signing_region, "us-east-1")
+
+  endpoints <- list(
+    "*" = list(endpoint = "https://{service}.amazonaws.com", global = TRUE),
+    "us-east-*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
+    "us-west-*" = list(endpoint = "https://us-west.amazonaws.com", global = TRUE)
+  )
+
+  r <- resolver_endpoint("service", "aws-global", endpoints)
+  expect_equal(r$endpoint, "https://service.amazonaws.com")
+  expect_equal(r$signing_region, "us-east-1")
 })
 
 test_that("resolver_endpoint old endpoint format handling", {
