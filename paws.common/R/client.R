@@ -84,30 +84,30 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     match <- matches[order(nchar(matches), decreasing = TRUE)][1]
     return(match)
   }
-  if (region == "aws-global") {
-    global <- vapply(endpoints, function(x) x$global, FUN.VALUE = logical(1))
-    if (!any(global)) {
-      stop("No region provided and no global region found.")
-    }
-    endpoint <- endpoints[global][[1]]$endpoint
-    endpoints[global][[1]]$endpoint <- set_sts_regional_endpoint(
-      sts_regional_endpoint,
-      endpoint
-    )
-  }
-  signing_region <- NULL
-  if (service == "sts" & nzchar(sts_regional_endpoint)) {
-    signing_region <- set_sts_signing_region(sts_regional_endpoint, region)
-  }
   e <- endpoints[[get_region_pattern(region, endpoints)]]
   # TODO: Delete old endpoint format handling once all packages are updated.
   if (is.character(e)) {
-    e <- list(endpoint = e, global = FALSE)
+    e <- list(endpoint = endpoint, global = FALSE)
   }
-  endpoint <- gsub("{service}", service, e$endpoint, fixed = TRUE)
-  endpoint <- gsub("{region}", region, endpoint, fixed = TRUE)
+  global <- region == "aws-global" & e[["global"]]
+
+  if (region == "aws-global" & isFALSE(e[["global"]])) {
+    stop("No region provided and no global region found.")
+  }
+
+  if (service == "sts" & nzchar(sts_regional_endpoint)) {
+    e$endpoint <- set_sts_regional_endpoint(
+      sts_regional_endpoint,
+      endpoint
+    )
+    region <- set_sts_region(sts_regional_endpoint, region)
+  }
+
+  signing_region <- if (global) "us-east-1" else region
+  endpoint <- gsub("{service}", service, e[["endpoint"]], fixed = TRUE)
+  endpoint <- gsub("{region}", signing_region, endpoint, fixed = TRUE)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
-  signing_region <- signing_region %||% ifelse(e$global, "us-east-1", region)
+
   return(list(
     endpoint = endpoint,
     signing_region = signing_region
@@ -122,8 +122,7 @@ set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {
   )
 }
 
-set_sts_signing_region <- function(sts_regional_endpoint, region) {
-  if (region == "aws-global") region <- "us-east-1"
+set_sts_region <- function(sts_regional_endpoint, region) {
   switch(sts_regional_endpoint,
     "legacy" = "us-east-1",
     "regional" = region
