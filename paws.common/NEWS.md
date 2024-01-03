@@ -1,7 +1,8 @@
 # paws.common 0.7.0
-* support sse md5 (#718)
+* support sse md5 (#718). Thanks to @odysseu for raising issue.
 * add pagination StopOnSameToken option (#721) aligns with aws-sdk-js-v3 implementation (https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0). Thanks to @wlandau for raising error in `paginate`.
 * tidy up internal function `jmespath_index`
+* fix `aws-global` region when resolving endpoint point (#730). Thanks to @atheriel for identifying the issue.
 
 # paws.common 0.6.4
 * ensure xml build structure is correctly flattened (#597)

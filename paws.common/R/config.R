@@ -295,17 +295,16 @@ get_region <- function(profile = "") {
   if (region != "") {
     return(region)
   }
-
   # Check if default region is specified
   region <- get_env("AWS_DEFAULT_REGION")
   if (region != "") {
     return(region)
   }
-
   region <- check_config_file_region(profile)
 
-  if (is.null(region)) stop("No region provided")
-
+  if (is.null(region)) {
+    region <- "aws-global"
+  }
   return(region)
 }
 
