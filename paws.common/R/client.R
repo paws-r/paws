@@ -86,7 +86,8 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   }
   # locate global endpoint
   global_found <- vapply(
-    endpoints, function(x) if (is.list(x)) x$global else FALSE, FUN.VALUE = logical(1)
+    endpoints, function(x) if (is.list(x)) x$global else FALSE,
+    FUN.VALUE = logical(1)
   )
   global_region <- (region == "aws-global")
   if (!any(global_found) & global_region) {
