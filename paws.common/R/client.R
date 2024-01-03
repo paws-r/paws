@@ -102,8 +102,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   }
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e$endpoint <- set_sts_regional_endpoint(
-      sts_regional_endpoint,
-      e
+      sts_regional_endpoint, e
     )
     region <- set_sts_region(sts_regional_endpoint, region)
   }
