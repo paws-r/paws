@@ -89,8 +89,6 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   if (is.character(e)) {
     e <- list(endpoint = endpoint, global = FALSE)
   }
-  global <- region == "aws-global" & e[["global"]]
-
   if (region == "aws-global" & isFALSE(e[["global"]])) {
     stop("No region provided and no global region found.")
   }
@@ -102,7 +100,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     )
     region <- set_sts_region(sts_regional_endpoint, region)
   }
-
+  global <- (region == "aws-global" & isTRUE(e[["global"]]))
   signing_region <- if (global) "us-east-1" else region
   endpoint <- gsub("{service}", service, e[["endpoint"]], fixed = TRUE)
   endpoint <- gsub("{region}", signing_region, endpoint, fixed = TRUE)
