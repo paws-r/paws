@@ -834,7 +834,8 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
 #'     coverage in your region of interest, see HERE car routing coverage
-#'     and HERE truck routing coverage.
+#'     and [HERE truck routing
+#'     coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/truck-routing.html).
 #' 
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)

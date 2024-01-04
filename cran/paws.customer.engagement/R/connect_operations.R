@@ -7263,14 +7263,14 @@ connect_search_available_phone_numbers <- function(TargetArn = NULL, InstanceId 
 #' See [https://www.paws-r-sdk.com/docs/connect_search_contacts/](https://www.paws-r-sdk.com/docs/connect_search_contacts/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The identifier of Amazon Connect instance. You can find the instance ID
-#' in the Amazon Resource Name (ARN) of the instance
-#' @param TimeRange &#91;required&#93; Time range that you want to search results
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param TimeRange &#91;required&#93; Time range that you want to search results.
 #' @param SearchCriteria The search criteria to be used to return contacts.
 #' @param MaxResults The maximum number of results to return per page.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
-#' @param Sort Specifies a field to sort by and a sort order
+#' @param Sort Specifies a field to sort by and a sort order.
 #'
 #' @keywords internal
 #'
