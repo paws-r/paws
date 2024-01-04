@@ -53,8 +53,8 @@ policies.
 The plaintext that you use for both inline and managed session policies
 can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
-character list (\\code{U+0020} through \\verb{U+00FF}). It can also include the tab
-(\\code{U+0009}), linefeed (\\verb{U+000A}), and carriage return (\\verb{U+000D}) characters.
+character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
+(\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
 
 An Amazon Web Services conversion compresses the passed inline session
 policy, managed policy ARNs, and session tags into a packed binary

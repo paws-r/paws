@@ -15,9 +15,9 @@ connect_search_contacts(
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of Amazon Connect instance. You can find the instance ID
-in the Amazon Resource Name (ARN) of the instance}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{TimeRange}{[required] Time range that you want to search results}
+\item{TimeRange}{[required] Time range that you want to search results.}
 
 \item{SearchCriteria}{The search criteria to be used to return contacts.}
 
@@ -27,7 +27,7 @@ in the Amazon Resource Name (ARN) of the instance}
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{Sort}{Specifies a field to sort by and a sort order}
+\item{Sort}{Specifies a field to sort by and a sort order.}
 }
 \description{
 Searches contacts in an Amazon Connect instance.
