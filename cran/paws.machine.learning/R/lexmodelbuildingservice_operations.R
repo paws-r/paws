@@ -647,7 +647,9 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/) for full documentation.
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
-#' an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
+#' an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
+#' in the *Alexa Skills Kit*.
 #'
 #' @keywords internal
 #'
@@ -1579,8 +1581,9 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' slot type called `AMAZON.DATE`, you can't create a custom slot type
 #' called `DATE`.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the slot type.
 #' @param enumerationValues A list of `EnumerationValue` objects that defines the values that the
 #' slot type can take. Each value can have a list of `synonyms`, which are
