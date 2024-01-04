@@ -48,8 +48,8 @@ install: build
 build: codegen
 	@echo "build the AWS SDK package"
 	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}', '${DOC_DIR}', cache_dir = '${CACHE_DIR}')"
-	@Rscript -e "make.paws:::paws_unescape_latex_post_build(root='.')"
-	@Rscript -e "make.paws:::paws_fix_html_span(root = '.')"
+	# Post build clean up
+	@Rscript ./script/post_build_formatting.R '.' '${OUT_DIR}'
 
 check:
 	@echo "run R CMD check on packages"

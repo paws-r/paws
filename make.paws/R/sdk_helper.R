@@ -396,8 +396,65 @@ paws_build_cran_comments <- function(in_dir = "../cran",
   }
 }
 
-# TODO: add this helper function into make build/rebuild command
-# This function un-escapes any special characters after build.
+#' @title Update R script files within paws
+#' @param root Directory containing paws sdk R scripts
+#' @param before character string containing a regular expression to be matched in the given character vector.
+#' @param after a replacement for matched pattern in sub and gsub.
+#' @export
+paws_gsub <- function(
+    root = "..",
+    before = "",
+    after = "") {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+
+  paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
+  cran_pkg <- fs::dir_ls(file.path(root, "cran"))
+  cran_r <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+  )
+  log_info(
+    "Removed escaped latex scripts from paws directory."
+  )
+
+  cran_file_gsub <- function(before, after, files) {
+    for (file in files) {
+      result <- readLines(file)
+      result <- gsub(before, after, result)
+      writeLines(result, file)
+    }
+  }
+  for (pkg in cran_pkg) {
+    cran_file_gsub(before, after, cran_r[[pkg]])
+    log_info("Successfully update package: %s", pkg)
+  }
+  for (file in paws_r) {
+    result <- readLines(file)
+    result <- gsub(before, after, result)
+    writeLines(result, file)
+  }
+}
+
+#' @title Rebuild paws documentation
+#' @param in_dir Directory containing paws sdk packages.
+#' @param pkg_list list of packages to release, release all packages by default
+#' @export
+paws_pkg_doc_build <- function(in_dir = "../cran",
+                               pkg_list = list()) {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+  pkgs <- list_paws_pkgs(in_dir, pkg_list)
+  log_info(
+    "Rebuild paws documentation."
+  )
+  for (pkg in pkgs[basename(pkgs) != "paws"]) {
+    roxygen2::roxygenise(package.dir = pkg)
+    log_info("Successfully update r documentation for package: %s", basename(pkg))
+  }
+}
+
+#' @title Unescape any latex post paws sdk build
+#' @param root Directory containing paws sdk R scripts
+#' @param special_characters character to be removed
+#' @export
 paws_unescape_latex_post_build <- function(
     root = "..",
     special_characters = c("#", "$", "_")) {
@@ -434,6 +491,9 @@ paws_unescape_latex_post_build <- function(
   }
 }
 
+#' @title Fix html after paws sdk build
+#' @param root Directory containing paws sdk R scripts
+#' @export
 paws_fix_html_span <- function(root = "..") {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
 
