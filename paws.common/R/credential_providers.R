@@ -374,11 +374,14 @@ container_credentials_provider <- function() {
   credentials_response <- NULL
 
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  container_credentials_full_uri <- get_env("AWS_CONTAINER_CREDENTIALS_FULL_URI")
   container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
 
   # Look for job role credentials first, then web identity token file
-  if (container_credentials_uri != "") {
-    credentials_response <- get_container_credentials()
+  if (container_credentials_uri != "" || container_credentials_full_uri != "") {
+    credentials_response <- get_container_credentials(
+      container_credentials_uri, container_credentials_full_uri
+    )
   } else if (container_credentials_token != "") {
     credentials_response <- get_container_credentials_eks()
   }
@@ -413,13 +416,13 @@ container_credentials_provider <- function() {
 }
 
 # Gets the job role credentials by making an http request
-get_container_credentials <- function() {
-  credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
-  if (nchar(credentials_uri) == 0) {
-    return(NULL)
+get_container_credentials <- function(credentials_uri, credentials_full_uri) {
+  if (credentials_uri != "") {
+    metadata_url <- file.path("http://169.254.170.2", credentials_uri)
+  } else {
+    metadata_url <- credentials_full_uri
   }
 
-  metadata_url <- file.path("http://169.254.170.2", credentials_uri)
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
 
