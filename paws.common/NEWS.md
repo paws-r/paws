@@ -4,6 +4,7 @@
 * tidy up internal function `jmespath_index`
 * fix `aws-global` region when resolving endpoint (#730). Thanks to @atheriel for identifying the issue.
 * fix default region for service s3 (#730). Thanks to @atheriel for identifying the issue.
+* support `AWS_CONTAINER_CREDENTIALS_FULL_URI` environmental variable. This supports to services like sagemaker serverless endpoints (#737). Thanks to @ncullen93 for raising issue and testing.
 
 # paws.common 0.6.4
 * ensure xml build structure is correctly flattened (#597)
