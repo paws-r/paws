@@ -1,5 +1,5 @@
 ## Submission
-This release contains bug fixes that prevented previous release being installed on specific unix os systems.
+This release contains bug fixes and new features
 
 ## Test environments
 
@@ -9,15 +9,7 @@ This release contains bug fixes that prevented previous release being installed 
 
 ## R CMD check results
 
-There was one NOTE, no ERRORs or WARNINGs.
-
-* checking CRAN incoming feasibility ... [10s] NOTE
-  Maintainer: 'Dyfan Jones <dyfan.r.jones@gmail.com>'
-  
-  Days since last update: 5
-
-Maintainers Comments:
-Apologies for the fast turn over. This is to address a bug that prevented the package from being installed on some unix OS systems.
+There was no NOTE, no ERRORs or WARNINGs.
 
 ## Downstream dependencies
 
