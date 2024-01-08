@@ -374,11 +374,14 @@ container_credentials_provider <- function() {
   credentials_response <- NULL
 
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  container_credentials_full_uri <- get_env("AWS_CONTAINER_CREDENTIALS_FULL_URI")
   container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
 
   # Look for job role credentials first, then web identity token file
-  if (container_credentials_uri != "") {
-    credentials_response <- get_container_credentials()
+  if (container_credentials_uri != "" || container_credentials_full_uri != "") {
+    credentials_response <- get_container_credentials(
+      container_credentials_uri, container_credentials_full_uri
+    )
   } else if (container_credentials_token != "") {
     credentials_response <- get_container_credentials_eks()
   }
@@ -389,16 +392,14 @@ container_credentials_provider <- function() {
   expiration <- credentials_response$expiration
 
   # return credential
-  if (is.null(access_key_id) || is.null(secret_access_key) ||
-    is.null(session_token)) {
+  if (is.null(access_key_id) || is.null(secret_access_key) || is.null(session_token)) {
     log_info(
       "Unable to obtain access_key_id, secret_access_key or session_token"
     )
     return(NULL)
   }
 
-  if (access_key_id != "" && secret_access_key != "" &&
-    session_token != "") {
+  if (access_key_id != "" && secret_access_key != "" && session_token != "") {
     creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
@@ -413,16 +414,17 @@ container_credentials_provider <- function() {
 }
 
 # Gets the job role credentials by making an http request
-get_container_credentials <- function() {
-  credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
-  if (nchar(credentials_uri) == 0) {
-    return(NULL)
+get_container_credentials <- function(credentials_uri, credentials_full_uri) {
+  if (credentials_uri != "") {
+    metadata_url <- file.path("http://169.254.170.2", credentials_uri)
+  } else {
+    metadata_url <- credentials_full_uri
   }
-
-  metadata_url <- file.path("http://169.254.170.2", credentials_uri)
-  metadata_request <-
-    new_http_request("GET", metadata_url, timeout = 1)
-
+  # add headers
+  headers <- set_container_credentails_headers()
+  kwargs <- list(method = "GET", url = metadata_url, timeout = 1)
+  kwargs[["header"]] <- headers
+  metadata_request <- do.call(new_http_request, kwargs)
   metadata_response <- tryCatch(
     {
       issue(metadata_request)
@@ -447,6 +449,27 @@ get_container_credentials <- function() {
   )
 
   return(credentials_list)
+}
+
+# Developed from:
+# https://github.com/boto/botocore/blob/ba7da3497853ac83e9b8552f41de83cb27932fe9/botocore/credentials.py#L1945-L1955C22
+set_container_credentails_headers <- function() {
+  auth_token <- NULL
+  ENV_VAR_AUTH_TOKEN <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN")
+  ENV_VAR_AUTH_TOKEN_FILE <- get_env("AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE")
+  if (ENV_VAR_AUTH_TOKEN_FILE != "") {
+    auth_token <- readLines("token_file", encoding = "utf-8", warn = FALSE)
+  } else if (ENV_VAR_AUTH_TOKEN != "") {
+    auth_token <- ENV_VAR_AUTH_TOKEN
+  }
+  # validate auth token
+  if (!is.null(auth_token)) {
+    if (grepl("\r|\n", auth_token)) {
+      stop("Auth token value is not a legal header value")
+    }
+    names(auth_token) <- "Authorization"
+  }
+  return(auth_token)
 }
 
 get_container_credentials_eks <- function() {
