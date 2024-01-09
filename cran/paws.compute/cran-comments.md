@@ -9,12 +9,12 @@
 There were no ERRORs, or WARNINGs.
 Notes:
 checking installed package size ... NOTE
-  installed size is  6.6Mb
+  installed size is  6.5Mb
   sub-directories of 1Mb or more:
     R      3.1Mb
     help   3.3Mb
 
-Maintainer Notes: tarball package size: 957K
+Maintainer Notes: tarball package size: 1002.02K
 
 ## Downstream dependencies
 
