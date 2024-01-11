@@ -2566,7 +2566,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' See [https://www.paws-r-sdk.com/docs/comprehend_start_pii_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_pii_entities_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; The input properties for a PII entities detection job.
-#' @param OutputDataConfig &#91;required&#93; Provides conﬁguration parameters for the output of PII entity detection
+#' @param OutputDataConfig &#91;required&#93; Provides configuration parameters for the output of PII entity detection
 #' jobs.
 #' @param Mode &#91;required&#93; Specifies whether the output provides the locations (offsets) of PII
 #' entities or a file in which PII entities are redacted.

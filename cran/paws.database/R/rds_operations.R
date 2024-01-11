@@ -9585,7 +9585,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @param DedicatedLogVolume Indicates whether the DB instance has a dedicated log volume (DLV)
 #' enabled.
 #' @param MultiTenant Specifies whether the to convert your DB instance from the single-tenant
-#' conﬁguration to the multi-tenant conﬁguration. This parameter is
+#' configuration to the multi-tenant configuration. This parameter is
 #' supported only for RDS for Oracle CDB instances.
 #' 
 #' During the conversion, RDS creates an initial tenant database and
@@ -13414,7 +13414,7 @@ rds_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClust
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identiﬁer of an existing Oracle read replica DB
+#' -   Must match the identifier of an existing Oracle read replica DB
 #'     instance.
 #'
 #' @keywords internal

@@ -43530,7 +43530,7 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #' an Amazon S3 bucket you specify. By using the information collected by
 #' CloudTrail, you can determine what requests were made to Amazon Web
 #' Services Payment Cryptography, who made the request, when it was made,
-#' and so on. If you don't conﬁgure a trail, you can still view the most
+#' and so on. If you don't configure a trail, you can still view the most
 #' recent events in the CloudTrail console. For more information, see the
 #' [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).

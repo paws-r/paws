@@ -80,7 +80,7 @@ range \code{U+0000} to \verb{00FF}. Must be aligned to multiples of 256.}
 \item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
 to authorize the request.}
 
-\item{MapName}{[required] The map resource associated with the glyph ﬁle.}
+\item{MapName}{[required] The map resource associated with the glyph file.}
 }
 \description{
 Retrieves glyphs used to display labels on a map.

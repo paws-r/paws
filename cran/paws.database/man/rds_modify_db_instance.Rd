@@ -920,7 +920,7 @@ group with \code{--option-group-name}.
 enabled.}
 
 \item{MultiTenant}{Specifies whether the to convert your DB instance from the single-tenant
-conﬁguration to the multi-tenant conﬁguration. This parameter is
+configuration to the multi-tenant configuration. This parameter is
 supported only for RDS for Oracle CDB instances.
 
 During the conversion, RDS creates an initial tenant database and

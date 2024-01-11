@@ -20,7 +20,7 @@ comprehend_start_pii_entities_detection_job(
 \arguments{
 \item{InputDataConfig}{[required] The input properties for a PII entities detection job.}
 
-\item{OutputDataConfig}{[required] Provides conﬁguration parameters for the output of PII entity detection
+\item{OutputDataConfig}{[required] Provides configuration parameters for the output of PII entity detection
 jobs.}
 
 \item{Mode}{[required] Specifies whether the output provides the locations (offsets) of PII
