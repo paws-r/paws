@@ -2653,7 +2653,7 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 #' Adds a route to a network to a Client VPN endpoint
 #'
 #' @description
-#' Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traﬃc to speciﬁc resources or networks.
+#' Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the available destination network routes. Each route in the route table specifies the path for traﬃc to specific resources or networks.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_client_vpn_route/](https://www.paws-r-sdk.com/docs/ec2_create_client_vpn_route/) for full documentation.
 #'

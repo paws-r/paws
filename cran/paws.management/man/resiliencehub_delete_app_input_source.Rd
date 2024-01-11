@@ -32,7 +32,7 @@ remove from the Resilience Hub application. For more information about
 ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{terraformSource}{The imported Terraform s3 state ﬁle you want to remove from the
+\item{terraformSource}{The imported Terraform s3 state file you want to remove from the
 Resilience Hub application.}
 }
 \description{
