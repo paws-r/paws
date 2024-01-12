@@ -412,6 +412,9 @@ paws_gsub <- function(
   cran_r <- lapply(
     cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
   )
+  cran_rd <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+  )
   log_info(
     "Removed escaped latex scripts from paws directory."
   )
@@ -419,19 +422,20 @@ paws_gsub <- function(
   cran_file_gsub <- function(before, after, files) {
     for (file in files) {
       result <- readLines(file)
-      result <- gsub(before, after, result)
-      writeLines(result, file)
+      found <- grep(before, after, result)
+      if (length(found) > 0) {
+        result[found] <- gsub(before, after, result[found])
+        writeLines(result, file)
+      }
     }
   }
   for (pkg in cran_pkg) {
     cran_file_gsub(before, after, cran_r[[pkg]])
-    log_info("Successfully update package: %s", pkg)
+    log_info("Successfully update package R scripts: %s", pkg)
+    cran_file_gsub(before, after, cran_rd[[pkg]])
+    log_info("Successfully update package rd documentation: %s", pkg)
   }
-  for (file in paws_r) {
-    result <- readLines(file)
-    result <- gsub(before, after, result)
-    writeLines(result, file)
-  }
+  cran_file_gsub(before, after, paws_r)
 }
 
 #' @title Rebuild paws documentation
