@@ -431,9 +431,7 @@ paws_gsub <- function(
   }
   for (pkg in cran_pkg) {
     cran_file_gsub(before, after, cran_r[[pkg]])
-    log_info("Successfully update package: %s", pkg)
-  }
-  for (pkg in cran_pkg) {
+    log_info("Successfully update package R scripts: %s", pkg)
     cran_file_gsub(before, after, cran_rd[[pkg]])
     log_info("Successfully update package rd documentation: %s", pkg)
   }
