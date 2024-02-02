@@ -121,7 +121,7 @@ sort_list <- function(x) {
   if (length(x) == 0) {
     return(x)
   }
-  x[sort(names(x))]
+  x[char_sort(names(x))]
 }
 
 str_match <- function(str, pattern) {
@@ -224,4 +224,23 @@ stopf <- function(fmt, ...) {
 # https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html
 is_atomic <- function(x) {
   return(is.atomic(x) || is.null(x))
+}
+
+parse_in_half <- function(x, char = "=") {
+  match_loc <- regexpr(char, x, fixed = TRUE)
+  match_len <- attr(match_loc, "match.length")
+
+  left_end <- match_loc - 1
+  right_start <- match_loc + match_len
+  right_end <- nchar(x)
+
+  no_match <- match_loc == -1
+  left_end[no_match] <- right_end[no_match]
+  right_start[no_match] <- 0
+  right_end[no_match] <- 0
+
+  cbind(
+    substr(x, 1, left_end),
+    substr(x, right_start, right_end)
+  )
 }
