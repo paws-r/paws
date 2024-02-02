@@ -19,19 +19,18 @@ Url <- struct(
 # Parse a URL into a Url object.
 # TODO: Finish.
 parse_url <- function(url) {
-  p <- httr::parse_url(url)
-  if (is.null(p$scheme)) p$scheme <- ""
+  p <- paws_url_parse(url)
   if (is.null(p$hostname)) p$hostname <- ""
   if (!is.null(p$port)) p$hostname <- paste0(p$hostname, ":", p$port)
   raw_path <- p$path
-  if (raw_path == "") {
+  if (is.null(raw_path)) {
     raw_path <- "/"
   } else if (substr(raw_path, 1, 1) != "/") raw_path <- paste0("/", raw_path)
   path <- unescape(raw_path)
   escaped_path <- escape(raw_path, "encodePath")
   if (escaped_path == raw_path) raw_path <- ""
   u <- Url(
-    scheme = p$scheme,
+    scheme = p$scheme %||% "",
     host = p$hostname,
     path = path,
     raw_path = raw_path,
@@ -40,11 +39,69 @@ parse_url <- function(url) {
   return(u)
 }
 
+# Developed from httr2:
+# https://github.com/r-lib/httr2/blob/main/R/url.R#L26-L67
+paws_url_parse <- function(url) {
+  pieces <- paws_parse_match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?")
+  scheme <- pieces[[2]]
+  authority <- pieces[[4]]
+  path <- pieces[[5]]
+  query <- pieces[[7]]
+  if (!is.null(query)) {
+    query <- parse_query_string(query)
+  }
+  fragment <- pieces[[9]]
+  pieces <- paws_parse_match(authority %||% "", "^(([^@]+)@)?([^:]+)?(:([^#]+))?")
+  userinfo <- pieces[[2]]
+  if (!is.null(userinfo)) {
+    if (grepl(":", userinfo)) {
+      userinfo <- parse_in_half(userinfo, ":")
+    } else {
+      userinfo <- list(userinfo, NULL)
+    }
+  }
+  hostname <- pieces[[3]]
+  port <- pieces[[5]]
+  return(
+    list(
+      scheme = scheme,
+      hostname = hostname,
+      port = port,
+      path = path,
+      query = query,
+      fragment = fragment,
+      username = userinfo[[1]],
+      password = userinfo[[2]]
+    )
+  )
+}
+
+paws_parse_match <- function(x, pattern) {
+  m <- regexec(pattern, x, perl = TRUE)
+  pieces <- regmatches(x, m)[[1]][-1]
+  empty <- pieces == ""
+  pieces <- as.list(pieces)
+  pieces[empty] <- list(NULL)
+  return(pieces)
+}
+
+paws_parse_delim <- function(x, delim, quote = "\"", ...) {
+  scan(
+    text = x,
+    what = character(),
+    sep = delim,
+    quote = quote,
+    quiet = TRUE,
+    strip.white = TRUE,
+    ...
+  )
+}
+
 # Build a URL from a Url object.
 # <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
 build_url <- function(url) {
-  if (nzchar(url$scheme) && nzchar(url$host)) {
-    l <- paste0(url$scheme, "://", url$host)
+  if (nzchar(url$scheme) && nzchar(url$hostname)) {
+    l <- paste0(url$scheme, "://", url$hostname)
   } else {
     return("")
   }
@@ -63,53 +120,45 @@ query_empty <- function(params) {
   (is.null(params) || length(params) == 0)
 }
 
+
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
 build_query_string <- function(params) {
-  # Remove empty elements from params
-  params_filter <- Filter(Negate(query_empty), params)
-
-  # Exit function if params_filter is empty to prevent Warning message:
-  # In is.na(x) : is.na() applied to non-(list or vector) of type 'NULL'
-  # in older versions of R
-  if (query_empty(params_filter)) {
+  if (query_empty(params)) {
     return("")
   }
+  found_lgl <- vapply(params, is.logical, logical(1))
+  params[found_lgl] <- tolower(params[found_lgl])
 
-  # convert query elements and escape them
-  params_filter <- lapply(
-    params_filter, function(element) {
-      query_escape(query_convert(element))
-    }
+  # remove nulls
+  params <- params[lengths(params) > 0]
+  found_multi <- lengths(params) > 1
+  param_names <- names(params)
+
+  params[found_multi] <- vapply(
+    param_names[found_multi], function(nm) {
+      paste(nm, curl::curl_escape(params[[nm]]), sep = "=", collapse = "&")
+    },
+    FUN.VALUE = ""
   )
-
-  # Build query string for each element
-  params <- lapply(
-    sort(names(params_filter)), function(name) {
-      paste(name, params_filter[[name]], sep = "=", collapse = "&")
-    }
+  params[!found_multi] <- paste(
+    param_names[!found_multi], curl::curl_escape(params[!found_multi]),
+    sep = "="
   )
-
-  # build query string
-  return(paste(params, collapse = "&"))
+  return(paste(params[char_sort(param_names)], collapse = "&"))
 }
 
 # Decode a query string into a list.
 # e.g. `parse_query_string("bar=baz&foo=qux")` -> `list(bar = "baz", foo = "qux")`
 parse_query_string <- function(query) {
-  result <- list()
-  for (el in strsplit(query, "&")[[1]]) {
-    pair <- strsplit(el, "=")[[1]]
-    key <- pair[1]
-    value <- if (length(pair) > 1) {
-      pair[2]
-    } else {
-      ""
-    }
-    res_len <- length(result[[key]])
-    result[[key]][res_len + 1] <- query_unescape(value)
+  x <- gsub("^\\?", "", query)
+  params <- parse_in_half(paws_parse_delim(query, "&"), "=")
+  if (length(params) == 0) {
+    return(NULL)
   }
-  return(result)
+  out <- as.list(curl::curl_unescape(params[, 2]))
+  names(out) <- curl::curl_unescape(params[, 1])
+  return(out)
 }
 
 # Add the key/value pairs in `params` to a query string in `query_string`,
