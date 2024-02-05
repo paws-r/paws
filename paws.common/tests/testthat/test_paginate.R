@@ -3,6 +3,7 @@
 ########################################################################
 
 test_that("check token is correctly retrieved", {
+  jmes_path_token <- NULL
   output_tokens <- list(
     "NextToken",
     "Contents.Keys[-1].Id",
@@ -14,11 +15,12 @@ test_that("check token is correctly retrieved", {
     Mark = list(NextToken = "token3")
   )
   expected <- setNames(list("token1", "token2", "token3"), output_tokens)
-  actual <- get_tokens(resp, output_tokens)
+  actual <- get_tokens(resp, output_tokens, environment())
   expect_equal(actual, expected)
 })
 
 test_that("check empty token is returned", {
+  jmes_path_token <- NULL
   output_tokens <- list(
     "NextToken",
     "Contents[-1].Id"
@@ -28,7 +30,7 @@ test_that("check empty token is returned", {
     Contents = list()
   )
   expected <- setNames(list(character(0), character(0)), output_tokens)
-  actual <- get_tokens(resp, output_tokens)
+  actual <- get_tokens(resp, output_tokens, environment())
   expect_equal(actual, expected)
 })
 
