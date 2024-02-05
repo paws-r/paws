@@ -100,8 +100,8 @@ paws_parse_delim <- function(x, delim, quote = "\"", ...) {
 # Build a URL from a Url object.
 # <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
 build_url <- function(url) {
-  if (nzchar(url$scheme) && nzchar(url$hostname)) {
-    l <- paste0(url$scheme, "://", url$hostname)
+  if (nzchar(url$scheme) && nzchar(url$host)) {
+    l <- paste0(url$scheme, "://", url$host)
   } else {
     return("")
   }
@@ -151,7 +151,7 @@ build_query_string <- function(params) {
 # Decode a query string into a list.
 # e.g. `parse_query_string("bar=baz&foo=qux")` -> `list(bar = "baz", foo = "qux")`
 parse_query_string <- function(query) {
-  x <- gsub("^\\?", "", query)
+  query <- gsub("^\\?", "", query)
   params <- parse_in_half(paws_parse_delim(query, "&"), "=")
   if (length(params) == 0) {
     return(NULL)
@@ -171,11 +171,6 @@ update_query_string <- function(query_string, params) {
     result[[key]] <- params[[key]]
   }
   return(build_query_string(result))
-}
-
-# Escape strings so they can be safely included in a URL query.
-query_escape <- function(string) {
-  return(escape(string, "encodeQueryComponent"))
 }
 
 # Escape strings so they can be safely included in a URL.
@@ -221,14 +216,6 @@ unescape <- function(string) {
   return(curl_unescape(string))
 }
 
-# The inverse of query_escape: convert the encoded string back to the original,
-# e.g. "%20" -> " ".
-# TODO: Complete.
-query_unescape <- function(string) {
-  return(unescape(string))
-}
-
-#
 escaped_path <- function(url) {
   if (url$raw_path != "" && valid_encoded_path(url$raw_path)) {
     if (unescape(url$raw_path) == url$path) {
