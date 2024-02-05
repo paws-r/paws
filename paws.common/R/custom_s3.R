@@ -453,8 +453,8 @@ s3_get_bucket_region <- function(response, error) {
 set_request_url <- function(original_endpoint,
                             new_endpoint,
                             use_new_scheme = TRUE) {
-  new_endpoint_components <- httr::parse_url(new_endpoint)
-  original_endpoint_components <- httr::parse_url(original_endpoint)
+  new_endpoint_components <- paws_url_parse(new_endpoint)
+  original_endpoint_components <- paws_url_parse(original_endpoint)
   scheme <- original_endpoint_components$scheme
   if (use_new_scheme) {
     scheme <- new_endpoint_components$scheme
