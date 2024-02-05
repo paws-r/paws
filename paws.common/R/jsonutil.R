@@ -101,7 +101,7 @@ json_build_list <- function(values) {
 
 json_build_map <- function(values) {
   v <- list()
-  for (key in sort(names(values))) {
+  for (key in char_sort(names(values))) {
     value <- values[[key]]
     buf <- sprintf('"%s":%s', key, json_build_any(value))
     v[[length(v) + 1]] <- buf

@@ -368,7 +368,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
     ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
     headers[length(headers) + 1] <- lower_case_key
   }
-  headers <- sort(headers)
+  headers <- char_sort(headers)
   ctx$signed_headers <- paste(headers, collapse = ";")
 
   if (ctx$is_presigned) {
