@@ -6,8 +6,8 @@ op <- Operation(name = "OperationName")
 svc <- Client()
 svc$client_info$api_version <- "2014-01-01"
 svc$handlers$build <- HandlerList(ec2query_build)
-options(idempotency_rand_fn = function() {
-  0
+options(idempotency_rand_fn = function(len) {
+  rep(0, len)
 })
 
 op_input1 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {

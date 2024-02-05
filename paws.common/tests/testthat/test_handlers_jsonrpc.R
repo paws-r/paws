@@ -10,8 +10,8 @@ svc <- Client(
   )
 )
 svc$handlers$build <- HandlerList(jsonrpc_build)
-options(idempotency_rand_fn = function() {
-  0
+options(idempotency_rand_fn = function(len) {
+  rep(0, len)
 })
 
 op_input1 <- function(Name) {

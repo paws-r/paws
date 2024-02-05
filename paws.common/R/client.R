@@ -80,7 +80,9 @@ new_session <- function() {
 resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https") {
   get_region_pattern <- function(region, endpoints) {
     patterns <- names(endpoints)
-    matches <- patterns[sapply(patterns, function(pattern) grepl(pattern, region))]
+    matches <- patterns[
+      vapply(patterns, function(pattern) grepl(pattern, region), FUN.VALUE = logical(1))
+    ]
     match <- matches[order(nchar(matches), decreasing = TRUE)][1]
     return(match)
   }

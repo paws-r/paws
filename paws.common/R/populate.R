@@ -2,7 +2,7 @@
 
 # Sometimes the locationName is different from the interface name
 check_location_name <- function(name, interface) {
-  location_names <- sapply(interface, function(x) tag_get(x, "locationName"))
+  location_names <- vapply(interface, function(x) tag_get(x, "locationName"), FUN.VALUE = character(1))
 
   in_location_names <- name %in% location_names
   if (!in_location_names) {
