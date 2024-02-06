@@ -302,18 +302,19 @@ get_tokens <- function(resp, token, caller_env) {
   last <- function(x) x[[length(x)]]
   tokens <- list()
   for (tkn in token) {
-    tokens[[tkn]] <- tryCatch({
-      jmes_path <- caller_env[["jmes_path_token"]][[tkn]] %||% jmespath_index(tkn, caller_env)
-      eval(parse(text = jmes_path, keep.source = FALSE), envir = environment())
-    },
-    error = function(err) {
-      # Return default character(0) for empty lists
-      if (grepl(token_error_msg, err[["message"]], perl = T)) {
-        character(0)
-      } else {
-        stop(err)
+    jmes_path <- caller_env[["jmes_path_token"]][[tkn]] %||% jmespath_index(tkn, caller_env)
+    tokens[[tkn]] <- tryCatch(
+      {
+        eval(parse(text = jmes_path, keep.source = FALSE), envir = environment())
+      },
+      error = function(err) {
+        # Return default character(0) for empty lists
+        if (grepl(token_error_msg, err[["message"]], perl = T)) {
+          character(0)
+        } else {
+          stop(err)
+        }
       }
-    }
     )
   }
   return(tokens)

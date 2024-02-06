@@ -44,7 +44,7 @@ read_ini <- function(file_name) {
   start <- (found + 1)
   end <- c(found[-1] - 1, length(content))
   split_content <- parse_in_half(content)
-  nested_contents <- split_content[,2] == ""
+  nested_contents <- split_content[, 2] == ""
 
   sub_grps <- !grepl("^[ ]+", split_content[, 1])
   split_content <- sub("[ \t\r\n]+$", "", split_content, perl = TRUE)
