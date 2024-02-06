@@ -226,6 +226,8 @@ is_atomic <- function(x) {
   return(is.atomic(x) || is.null(x))
 }
 
+# fast method to parse strings in half
+# https://gist.github.com/hadley/2fd32cdc053099d62d56f5f28898ec95
 parse_in_half <- function(x, char = "=") {
   match_loc <- regexpr(char, x, fixed = TRUE)
   match_len <- attr(match_loc, "match.length")
