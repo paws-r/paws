@@ -1,3 +1,6 @@
+# paws.common 0.7.0.9000
+* minor performance enhancements
+
 # paws.common 0.7.0
 * support sse md5 (#718). Thanks to @odysseu for raising issue.
 * add pagination StopOnSameToken option (#721) aligns with aws-sdk-js-v3 implementation (https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0). Thanks to @wlandau for raising error in `paginate`.
