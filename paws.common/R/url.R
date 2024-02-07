@@ -155,9 +155,7 @@ parse_query_string <- function(query) {
 # e.g. `update_query_string("a=1&b=2", list(b = 3, c = 4))` -> "a=1&b=3&c=4"
 update_query_string <- function(query_string, params) {
   result <- parse_query_string(query_string)
-  for (key in names(params)) {
-    result[[key]] <- params[[key]]
-  }
+  result[names(params)] <- params
   return(build_query_string(result))
 }
 
