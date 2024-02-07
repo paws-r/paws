@@ -85,18 +85,6 @@ paws_parse_match <- function(x, pattern) {
   return(pieces)
 }
 
-paws_parse_delim <- function(x, delim, quote = "\"", ...) {
-  scan(
-    text = x,
-    what = character(),
-    sep = delim,
-    quote = quote,
-    quiet = TRUE,
-    strip.white = TRUE,
-    ...
-  )
-}
-
 # Build a URL from a Url object.
 # <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
 build_url <- function(url) {
@@ -152,7 +140,7 @@ build_query_string <- function(params) {
 # e.g. `parse_query_string("bar=baz&foo=qux")` -> `list(bar = "baz", foo = "qux")`
 parse_query_string <- function(query) {
   query <- gsub("^\\?", "", query)
-  params <- parse_in_half(paws_parse_delim(query, "&"), "=")
+  params <- parse_in_half(strsplit(query,"&")[[1]], "=")
   if (length(params) == 0) {
     return(NULL)
   }
