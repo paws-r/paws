@@ -459,7 +459,7 @@ set_request_url <- function(original_endpoint,
   if (use_new_scheme) {
     scheme <- new_endpoint_components$scheme
   }
-  final_endpoint_components <- structure(list(
+  final_endpoint_components <- list(
     scheme = scheme,
     hostname = new_endpoint_components$hostname %||% "",
     path = original_endpoint_components$path %||% "",
@@ -467,7 +467,7 @@ set_request_url <- function(original_endpoint,
     fragment = "",
     raw_path = "",
     raw_query = ""
-  ), class = "url")
+  )
   final_endpoint <- build_url(final_endpoint_components)
   return(final_endpoint)
 }
