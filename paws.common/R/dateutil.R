@@ -7,7 +7,7 @@ as_timestamp <- function(x, format, tz = "GMT") {
     return(result)
   }
   if (length(x) == 1 && nchar(x) == 0) {
-    result <- NA_character_
+    result <- NA_integer_
     class(result) <- c("POSIXct", "POSIXt")
     attr(result, "tzone") <- tz
     return(result)
