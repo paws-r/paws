@@ -140,7 +140,7 @@ build_query_string <- function(params) {
 # e.g. `parse_query_string("bar=baz&foo=qux")` -> `list(bar = "baz", foo = "qux")`
 parse_query_string <- function(query) {
   query <- gsub("^\\?", "", query)
-  params <- parse_in_half(strsplit(query,"&")[[1]], "=")
+  params <- parse_in_half(strsplit(query, "&")[[1]], "=")
   if (length(params) == 0) {
     return(NULL)
   }
@@ -221,15 +221,4 @@ escaped_path <- function(url) {
 # TODO: Implement.
 valid_encoded_path <- function(path) {
   return(TRUE)
-}
-
-# Convert a value to be used in a query string.
-query_convert <- function(value) {
-  # find elements that are logical
-  found <- as.logical(unlist(lapply(value, is.logical)))
-  # convert logical elements
-  value[which(found)] <- tolower(value[which(found)])
-  # convert non-logical elements
-  value[which(!found)] <- as.character(value[which(!found)])
-  return(value)
 }
