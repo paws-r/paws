@@ -108,7 +108,6 @@ query_empty <- function(params) {
   (is.null(params) || length(params) == 0)
 }
 
-
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
 build_query_string <- function(params) {
