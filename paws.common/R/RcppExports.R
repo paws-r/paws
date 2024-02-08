@@ -7,3 +7,9 @@ paws_url_encoder <- function(urls, safe = "") {
     .Call('_paws_common_paws_url_encoder', PACKAGE = 'paws.common', urls, safe)
 }
 
+#' @useDynLib paws.common _paws_common_char_sort
+#' @importFrom Rcpp evalCpp
+char_sort <- function(str) {
+    .Call('_paws_common_char_sort', PACKAGE = 'paws.common', str)
+}
+

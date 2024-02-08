@@ -8,8 +8,8 @@ svc <- Client(
   )
 )
 svc$handlers$build <- HandlerList(restjson_build)
-options(idempotency_rand_fn = function() {
-  0
+options(idempotency_rand_fn = function(len) {
+  rep(0, len)
 })
 
 test_that("no parameters", {

@@ -1,5 +1,5 @@
 IDEMPOTENCY_TOKEN_FILL_TAG <- "idempotencyToken"
-IDEMPOTENCY_RAND_FN <- function() sample(0:(2^8 - 1), 1)
+IDEMPOTENCY_RAND_FN <- function(len) sample(0:(2^8 - 1), len, replace = TRUE)
 
 # Return whether the idempotency token can be automatically set.
 can_set_idempotency_token <- function(value) {
@@ -9,8 +9,7 @@ can_set_idempotency_token <- function(value) {
 # Return a randomly-generated idempotency token.
 get_idempotency_token <- function() {
   rand <- getOption("idempotency_rand_fn", default = IDEMPOTENCY_RAND_FN)
-  b <- sapply(1:16, function(x) rand())
-  return(uuid(b))
+  return(uuid(rand(16)))
 }
 
 # Return a UUID version 4 based on the given `bytes`.

@@ -59,11 +59,11 @@ paginate <- function(Operation,
   paginator <- fn_update$paginator
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
+  jmes_path_token <- NULL
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
     resp <- eval(fn, envir = parent.frame())
-    new_tokens <- get_tokens(resp, paginator$output_token)
-
+    new_tokens <- get_tokens(resp, paginator$output_token, environment())
     # Exit paginator if previous token matches current token
     # https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/src/pagination/createPaginator.ts#L53
     if (isTRUE(StopOnSameToken)) {
@@ -258,10 +258,11 @@ paginate_xapply <- function(
     StopOnSameToken = FALSE) {
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
+  jmes_path_token <- NULL
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
     resp <- eval(fn, envir = parent.frame(n = 2))
-    new_tokens <- get_tokens(resp, paginator$output_token)
+    new_tokens <- get_tokens(resp, paginator$output_token, environment())
 
     # Exit paginator if previous token matches current token
     # https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/src/pagination/createPaginator.ts#L53
@@ -297,12 +298,15 @@ paginate_xapply <- function(
 
 token_error_msg <- "attempt to select less than one element in integerOneIndex"
 # Get all output tokens
-get_tokens <- function(resp, token) {
+get_tokens <- function(resp, token, caller_env) {
   last <- function(x) x[[length(x)]]
   tokens <- list()
   for (tkn in token) {
+    jmes_path <- caller_env[["jmes_path_token"]][[tkn]] %||% jmespath_index(tkn, caller_env)
     tokens[[tkn]] <- tryCatch(
-      eval(parse(text = jmespath_index(tkn)), envir = environment()),
+      {
+        eval(parse(text = jmes_path, keep.source = FALSE), envir = environment())
+      },
       error = function(err) {
         # Return default character(0) for empty lists
         if (grepl(token_error_msg, err[["message"]], perl = T)) {
@@ -325,7 +329,7 @@ split_token <- function(token) {
 # This is a simple implementation of jmespath for R list: i.e.
 # Path.To[-1].Token -> last(resp[["Path"]][["To"]])[["Token"]]
 # Path.To.Token -> resp[["Path"]][["To"]][["Token"]]
-jmespath_index <- function(token) {
+jmespath_index <- function(token, caller_env) {
   token_prts <- split_token(token)
   pattern <- "[[:alpha:]]+"
 
@@ -355,5 +359,6 @@ jmespath_index <- function(token) {
     # Path.To.Token
     final_token <- sprintf("resp[[%s]]", paste0(token_prts, collapse = "]][["))
   }
+  caller_env[["jmes_path_token"]][[token]] <- final_token
   return(final_token)
 }

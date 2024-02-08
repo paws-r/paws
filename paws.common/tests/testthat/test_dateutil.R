@@ -10,8 +10,14 @@ test_that("as_timestamp ISO8601", {
   expect_equal(out, exp)
 })
 
-test_that("as_timestamp empty input", {
+test_that("as_timestamp NULL input", {
   out <- as_timestamp(NULL, format = "foo")
-  exp <- structure(numeric(0), class = c("POSIXct", "POSIXt"))
+  exp <- structure(numeric(0), class = c("POSIXct", "POSIXt"), tzone = "GMT")
+  expect_equal(out, exp)
+})
+
+test_that("as_timestamp empty input", {
+  out <- as_timestamp("", format = "foo", tz = "GMT")
+  exp <- as.POSIXct("", tz = "GMT", format = "foo")
   expect_equal(out, exp)
 })

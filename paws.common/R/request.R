@@ -37,7 +37,7 @@ Operation <- struct(
 #' @export
 new_operation <- function(name, http_method, http_path, paginator, before_presign_fn = NULL) {
   args <- as.list(environment())
-  args[sapply(args, is.null)] <- NULL
+  args[lengths(args) == 0] <- NULL
   return(do.call(Operation, args))
 }
 

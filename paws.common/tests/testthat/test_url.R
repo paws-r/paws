@@ -17,3 +17,14 @@ test_that("parse and build query strings", {
   expected <- input
   expect_equal(actual, expected)
 })
+
+test_that("missing query values become empty strings", {
+  expect_equal(parse_query_string("?q="), list(q = ""))
+  expect_equal(parse_query_string("?q"), list(q = ""))
+  expect_equal(parse_query_string("?a&q"), list(a = "", q = ""))
+})
+
+test_that("empty queries become NULL", {
+  expect_equal(parse_query_string("?"), NULL)
+  expect_equal(parse_query_string(""), NULL)
+})

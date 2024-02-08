@@ -453,13 +453,13 @@ s3_get_bucket_region <- function(response, error) {
 set_request_url <- function(original_endpoint,
                             new_endpoint,
                             use_new_scheme = TRUE) {
-  new_endpoint_components <- httr::parse_url(new_endpoint)
-  original_endpoint_components <- httr::parse_url(original_endpoint)
+  new_endpoint_components <- paws_url_parse(new_endpoint)
+  original_endpoint_components <- paws_url_parse(original_endpoint)
   scheme <- original_endpoint_components$scheme
   if (use_new_scheme) {
     scheme <- new_endpoint_components$scheme
   }
-  final_endpoint_components <- structure(list(
+  final_endpoint_components <- list(
     scheme = scheme,
     hostname = new_endpoint_components$hostname %||% "",
     path = original_endpoint_components$path %||% "",
@@ -467,7 +467,7 @@ set_request_url <- function(original_endpoint,
     fragment = "",
     raw_path = "",
     raw_query = ""
-  ), class = "url")
+  )
   final_endpoint <- build_url(final_endpoint_components)
   return(final_endpoint)
 }

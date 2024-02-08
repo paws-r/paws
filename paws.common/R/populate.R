@@ -2,15 +2,15 @@
 
 # Sometimes the locationName is different from the interface name
 check_location_name <- function(name, interface) {
-  location_names <- sapply(interface, function(x) tag_get(x, "locationName"))
-
+  location_names <- vapply(
+    interface, function(x) tag_get(x, "locationName"),
+    FUN.VALUE = character(1)
+  )
   in_location_names <- name %in% location_names
   if (!in_location_names) {
     return(in_location_names)
   }
-
   location_index <- which(name == location_names)
-
   return(location_index)
 }
 
@@ -29,7 +29,6 @@ populate_structure <- function(input, interface) {
       if (!check_location) {
         stopf("invalid name: %s", name)
       }
-
       interface[[check_location]] <- populate(
         input[[name]],
         interface[[check_location]]

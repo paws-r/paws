@@ -1,8 +1,16 @@
 # Return a POSIXct timestamp given a string and a format.
-# TODO: Allow setting time zone.
 as_timestamp <- function(x, format, tz = "GMT") {
   if (length(x) == 0) {
-    return(structure(numeric(0), class = c("POSIXct", "POSIXt")))
+    result <- numeric(0)
+    class(result) <- c("POSIXct", "POSIXt")
+    attr(result, "tzone") <- tz
+    return(result)
+  }
+  if (length(x) == 1 && nchar(x) == 0) {
+    result <- NA_integer_
+    class(result) <- c("POSIXct", "POSIXt")
+    attr(result, "tzone") <- tz
+    return(result)
   }
   lookup <- c(
     "iso8601" = "%Y-%m-%dT%H:%M:%S",

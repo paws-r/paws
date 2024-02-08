@@ -22,9 +22,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// char_sort
+CharacterVector char_sort(CharacterVector str);
+RcppExport SEXP _paws_common_char_sort(SEXP strSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< CharacterVector >::type str(strSEXP);
+    rcpp_result_gen = Rcpp::wrap(char_sort(str));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_paws_url_encoder", (DL_FUNC) &_paws_common_paws_url_encoder, 2},
+    {"_paws_common_char_sort", (DL_FUNC) &_paws_common_char_sort, 1},
     {NULL, NULL, 0}
 };
 

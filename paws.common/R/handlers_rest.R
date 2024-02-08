@@ -80,7 +80,7 @@ rest_build_query_string <- function(query, field, name) {
   if (t == "list") {
     query[[name]] <- field
   } else if (t == "map") {
-    for (key in sort(names(field))) {
+    for (key in char_sort(names(field))) {
       query[[key]] <- field[[key]]
     }
   } else {
