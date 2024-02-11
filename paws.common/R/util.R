@@ -124,15 +124,24 @@ sort_list <- function(x) {
   x[char_sort(names(x))]
 }
 
-str_match <- function(str, pattern) {
-  m <- gregexec(pattern, str, perl = T)
-  return(unlist(regmatches(str, m)))
+str_match_all <- function(text, pattern) {
+  match_loc <- gregexpr(pattern, text, perl = TRUE)[[1]]
+  cap_len <- attr(match_loc, "capture.length")
+  cap_start <- attr(match_loc, "capture.start")
+  cap_end <- cap_start + cap_len - 1
+  cap_end[cap_end == -1] <- 0
+  substring(text, cap_start, cap_end)
 }
 
-# Get parameter names from http_path template:
-get_template_params <- function(str) {
-  out <- str_match(str, "\\{(.*?)}")
-  return(out[grep("\\{.*\\}", out, invert = T, perl = T)])
+str_match <- function(char, pattern) {
+  match_loc <- regexpr(pattern, char, perl = TRUE)
+  cap_len <- attr(match_loc, "capture.length")
+  cap_start <- attr(match_loc, "capture.start")
+  cap_end <- cap_start + cap_len - 1
+  cap_end[cap_end == -1] <- 0
+  pieces <- as.list(substring(char, cap_start, cap_end))
+  pieces[pieces == ""] <- list(NULL)
+  pieces
 }
 
 # convert http_path template to sprintf format:
@@ -141,11 +150,7 @@ get_template_params <- function(str) {
 sprintf_template <- function(template) {
   temp_split <- unlist(strsplit(template, "\\?"))
   auth_temp <- temp_split[grepl("\\{.*\\}", temp_split)]
-
-  # set template to sprintf format
-  m <- gregexpr("\\{(.*?)}", auth_temp, perl = T)
-  regmatches(auth_temp, m) <- "%s"
-  return(auth_temp)
+  gsub("\\{(.*?)}", "%s", auth_temp)
 }
 
 # Developed from:
@@ -156,23 +161,14 @@ sprintf_template <- function(template) {
 # /{Bucket}/{Key+} -> /demo_bucket/path/to/file
 render_template <- function(request) {
   template <- request$operation$http_path
-  template_params <- get_template_params(template)
-  encoded_params <- vector("list", length(template_params))
-  names(encoded_params) <- template_params
-  for (p in template_params) {
-    if (grepl("\\+", p, perl = TRUE)) {
-      encoded_params[[p]] <- paws_url_encoder(
-        request$params[[gsub("\\+", "", p, perl = TRUE)]],
-        safe = "/~"
-      )
-    } else {
-      encoded_params[[p]] <- paws_url_encoder(
-        request$params[[p]]
-      )
-    }
-  }
+  template_params <- str_match_all(template, "\\{(.*?)}")
+  found <- grepl("\\+", template_params, perl = TRUE)
+  template_params <- gsub("\\+", "", template_params, perl = TRUE)
+  encoded_params <- as.character(request[["params"]][template_params])
+  encoded_params[found] <- paws_url_encoder(encoded_params[found], safe = "/~")
+  encoded_params[!found] <- curl::curl_escape(encoded_params[!found])
   mod_temp <- sprintf_template(template)
-  return(do.call(sprintf, c(fmt = mod_temp, encoded_params)))
+  return(do.call(sprintf, c(fmt = mod_temp, as.list(encoded_params))))
 }
 
 LABEL_RE <- "[a-z0-9][a-z0-9\\-]*[a-z0-9]"
