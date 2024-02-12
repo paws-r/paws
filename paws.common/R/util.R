@@ -185,7 +185,7 @@ check_dns_name <- function(bucket_name) {
   }
   m <- regexpr(LABEL_RE, bucket_name, perl = T)
   match <- regmatches(bucket_name, m)
-  if (identical(match, character(0)) || nchar(match) != nchar(bucket_name)) {
+  if (identical(match, character(0)) || nchar(match) != n) {
     return(FALSE)
   }
   return(TRUE)
