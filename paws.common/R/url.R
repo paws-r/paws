@@ -42,7 +42,7 @@ parse_url <- function(url) {
 # Developed from httr2:
 # https://github.com/r-lib/httr2/blob/main/R/url.R#L26-L67
 paws_url_parse <- function(url) {
-  pieces <- paws_parse_match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?")
+  pieces <- str_match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?")
   scheme <- pieces[[2]]
   authority <- pieces[[4]]
   path <- pieces[[5]]
@@ -51,7 +51,7 @@ paws_url_parse <- function(url) {
     query <- parse_query_string(query)
   }
   fragment <- pieces[[9]]
-  pieces <- paws_parse_match(authority %||% "", "^(([^@]+)@)?([^:]+)?(:([^#]+))?")
+  pieces <- str_match(authority %||% "", "^(([^@]+)@)?([^:]+)?(:([^#]+))?")
   userinfo <- pieces[[2]]
   if (!is.null(userinfo)) {
     if (grepl(":", userinfo)) {
@@ -74,17 +74,6 @@ paws_url_parse <- function(url) {
       password = userinfo[[2]]
     )
   )
-}
-
-paws_parse_match <- function(char, pattern) {
-  match_loc <- regexpr(pattern, char, perl = TRUE)
-  cap_start <- attr(match_loc, "capture.start")
-  cap_len <- attr(match_loc, "capture.length")
-  cap_end <- cap_start + cap_len - 1
-  cap_end[cap_end == -1] <- 0
-  pieces <- as.list(substring(char, cap_start, cap_end))
-  pieces[pieces == ""] <- list(NULL)
-  pieces
 }
 
 # Build a URL from a Url object.
