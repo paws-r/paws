@@ -33,6 +33,16 @@ get_credentials <- function(credentials) {
   return(credentials)
 }
 
+#' @title Locate AWS credentials
+#' @param profile The name of a profile to use. If not given, then the default profile is used.
+#' @param anonymous Set anonymous credentials.
+#' @export
+locate_credentials <- function(profile = "", anonymous = FALSE) {
+  credentials <- Credentials(profile = profile, anonymous = anonymous)
+  result <- get_credentials(credentials)
+  return(result$creds)
+}
+
 # Return whether a creds object has at least the minimum data needed to
 # authenticate.
 is_credentials_provided <- function(creds, window = 5 * 60) {
