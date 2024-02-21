@@ -30,7 +30,7 @@ env_provider <- function() {
   secret_access_key <- get_env("AWS_SECRET_ACCESS_KEY")
   session_token <- get_env("AWS_SESSION_TOKEN")
   expiration <- as_timestamp(get_env("AWS_CREDENTIAL_EXPIRATION"), "iso8601")
-  if (length(expiration) == 0) expiration <- Inf
+  if (is.na(expiration)) expiration <- Inf
 
   if (access_key_id != "" && secret_access_key != "") {
     creds <- Creds(

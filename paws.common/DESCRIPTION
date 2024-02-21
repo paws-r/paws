@@ -39,7 +39,7 @@ Suggests:
     testthat (>= 3.0.0)
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Collate:
     'RcppExports.R'
     'cache.R'

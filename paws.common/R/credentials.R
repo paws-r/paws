@@ -1,5 +1,6 @@
 #' @include struct.R
 #' @include credential_providers.R
+#' @include config.R
 NULL
 
 Credentials <- struct(
@@ -31,6 +32,18 @@ get_credentials <- function(credentials) {
     }
   }
   return(credentials)
+}
+
+#' @title Locate AWS credentials
+#' @param profile The name of a profile to use. If not given, then the default profile is used.
+#' @param anonymous Set anonymous credentials.
+#' @return list containing AWS credentials
+#' @export
+locate_credentials <- function(profile = "", anonymous = FALSE) {
+  credentials <- Credentials(profile = profile, anonymous = anonymous)
+  result <- as.list(get_credentials(credentials)$creds)
+  result$region <- get_region(profile)
+  return(result[names(result) != "provider_name"])
 }
 
 # Return whether a creds object has at least the minimum data needed to
