@@ -1,5 +1,6 @@
 #' @include struct.R
 #' @include credential_providers.R
+#' @include config.R
 NULL
 
 Credentials <- struct(
@@ -41,6 +42,7 @@ get_credentials <- function(credentials) {
 locate_credentials <- function(profile = "", anonymous = FALSE) {
   credentials <- Credentials(profile = profile, anonymous = anonymous)
   result <- as.list(get_credentials(credentials)$creds)
+  result$region <- get_region(profile)
   return(result[names(result) != "provider_name"])
 }
 

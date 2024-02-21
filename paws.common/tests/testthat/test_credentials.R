@@ -137,3 +137,24 @@ test_that("credentials refresh when expired", {
 
   expect_true(expiration1 != expiration3)
 })
+
+test_that("check locate_credentials", {
+  env <- list(
+    "AWS_ACCESS_KEY_ID" = "foo",
+    "AWS_SECRET_ACCESS_KEY" = "bar",
+    "AWS_REGION" = "zoo"
+  )
+  do.call(Sys.setenv, env)
+
+  actual <- locate_credentials()
+  expect_equal(actual, list(
+    access_key_id = "foo",
+    secret_access_key = "bar",
+    session_token = "",
+    access_token = "",
+    expiration = Inf,
+    region = "zoo"
+  ))
+
+  Sys.unsetenv(names(env))
+})
