@@ -5,13 +5,14 @@ restjson_build <- function(request) {
   if (t == "structure" || t == "") {
     request <- jsonrpc_build(request)
   }
-  # Modified:
+  # Developed from boto3:
   # https://github.com/boto/botocore/blob/d5b2e4ab4bc4ad84f8e0e568e70ddc8ab7f094a8/botocore/serialize.py#L671-L700
   if (has_streaming_payload(request, t)) {
-    if (is.null(request[["http_request"]][["header"]][["Content-Type"]])) {
+    headers <- request[["http_request"]][["header"]]
+    if (is.null(headers[["Content-Type"]])) {
       request[["http_request"]][["header"]][["Content-Type"]] <- "application/json"
     }
-    if (is.null(request[["http_request"]][["header"]][["Accept"]])) {
+    if (is.null(headers[["Accept"]])) {
       request[["http_request"]][["header"]][["Accept"]] <- "application/json"
     }
   }
