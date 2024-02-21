@@ -1,5 +1,7 @@
 # paws.common 0.7.0.9000
 * minor performance enhancements
+* fix MIME type for AWS BedrockRuntime Client (#749), thanks to @alex23lemm for raising issue.
+* export locate_credentials (#750), thanks to @tyner for raising request.
 
 # paws.common 0.7.0
 * support sse md5 (#718). Thanks to @odysseu for raising issue.
