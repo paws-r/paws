@@ -5,7 +5,31 @@ restjson_build <- function(request) {
   if (t == "structure" || t == "") {
     request <- jsonrpc_build(request)
   }
+  # Developed from boto3:
+  # https://github.com/boto/botocore/blob/d5b2e4ab4bc4ad84f8e0e568e70ddc8ab7f094a8/botocore/serialize.py#L671-L700
+  if (has_streaming_payload(request, t)) {
+    headers <- request[["http_request"]][["header"]]
+    if (is.null(headers[["Content-Type"]])) {
+      request[["http_request"]][["header"]][["Content-Type"]] <- "application/json"
+    }
+    if (is.null(headers[["Accept"]])) {
+      request[["http_request"]][["header"]][["Accept"]] <- "application/json"
+    }
+  }
   return(request)
+}
+
+has_streaming_payload <- function(request, type) {
+  values <- request$params
+  if (!is.null(values)) {
+    payload_name <- tag_get(values, "payload")
+    if (payload_name != "") {
+      if(length(values[[payload_name]]) > 0 && type %in% c('blob', 'string')) {
+        return(TRUE)
+      }
+    }
+  }
+  return(FALSE)
 }
 
 # Unmarshal metadata from a REST JSON protocol API response.

@@ -14,33 +14,30 @@ rest_build_location_elements <- function(request, values, build_get_query) {
 
   request$http_request$url$raw_path <- request$http_request$url$path
 
+  values <- values[lengths(values) > 0]
   for (field_name in names(values)) {
     field <- values[[field_name]]
 
-    if (is_valid(field)) {
-      name <- tag_get(field, "locationName")
-      if (name == "") {
-        name <- field_name
-      }
+    name <- tag_get(field, "locationName")
+    if (name == "") {
+      name <- field_name
+    }
 
-      if (tag_get(field, "ignore") != "") {
-        next
-      }
+    if (tag_get(field, "ignore") != "") {
+      next
+    }
 
-      location <- tag_get(field, "location")
-      if (location == "headers") {
-        request$http_request$header <- rest_build_header_map(request$http_request$header, field)
-      } else if (location == "header") {
-        request$http_request$header <- rest_build_header(request$http_request$header, field, name)
-      } else if (location == "uri") {
-        request$http_request$url <- rest_build_uri(request$http_request$url, field, name)
-      } else if (location == "querystring") {
-        query <- rest_build_query_string(query, field, name)
-      } else {
-        if (build_get_query) {
-          query <- rest_build_query_string(query, field, name)
-        }
-      }
+    location <- tag_get(field, "location")
+    if (location == "headers") {
+      request$http_request$header <- rest_build_header_map(request$http_request$header, field)
+    } else if (location == "header") {
+      request$http_request$header <- rest_build_header(request$http_request$header, field, name)
+    } else if (location == "uri") {
+      request$http_request$url <- rest_build_uri(request$http_request$url, field, name)
+    } else if (location == "querystring") {
+      query <- rest_build_query_string(query, field, name)
+    } else if (build_get_query) {
+      query <- rest_build_query_string(query, field, name)
     }
   }
 
@@ -90,9 +87,8 @@ rest_build_query_string <- function(query, field, name) {
 }
 
 rest_build_body <- function(request, values) {
-  field <- values
-  if (!is.null(field)) {
-    payload_name <- tag_get(field, "payload")
+  if (!is.null(values)) {
+    payload_name <- tag_get(values, "payload")
     if (payload_name != "") {
       payload <- values[[payload_name]]
       t <- tag_get(payload, "type")
@@ -101,8 +97,6 @@ rest_build_body <- function(request, values) {
           request <- set_body(request, as.character(payload))
         } else if (t == "blob") {
           request <- set_body(request, payload)
-        } else {
-          stop()
         }
       }
     }
