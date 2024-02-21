@@ -11,6 +11,9 @@ locate_credentials(profile = "", anonymous = FALSE)
 
 \item{anonymous}{Set anonymous credentials.}
 }
+\value{
+list containing AWS credentials
+}
 \description{
 Locate AWS credentials
 }
