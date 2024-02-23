@@ -125,13 +125,12 @@ json_build_scalar <- function(values) {
 
 # Escape control characters by replacing them with their Unicode representation.
 json_escape_unicode <- function(string) {
-  result <- string
+  from <- intToUtf8(1:31, multiple = TRUE)
+  to <- paste0("\\u00", format(as.hexmode(1:31), width = 2))
   for (i in 1:31) {
-    from <- intToUtf8(i)
-    to <- paste0("\\u00", format(as.hexmode(i), width = 2))
-    result <- gsub(from, to, result, fixed = TRUE)
+    string <- gsub(from[i], to[i], string, fixed = TRUE)
   }
-  return(result)
+  return(string)
 }
 
 # Return a string for a JSON value, with special characters escaped.
@@ -145,15 +144,12 @@ json_convert_string <- function(string) {
     c("\t", "\\t"),
     c("\n", "\\n")
   )
-  result <- string
   for (elem in replace) {
-    from <- elem[1]
-    to <- elem[2]
-    result <- gsub(from, to, result, fixed = TRUE)
+    string <- gsub(elem[1], elem[2], string, fixed = TRUE)
   }
-  result <- json_escape_unicode(result)
-  result <- sprintf('"%s"', result)
-  return(result)
+  string <- json_escape_unicode(string)
+  string <- sprintf('"%s"', string)
+  return(string)
 }
 
 #-------------------------------------------------------------------------------
