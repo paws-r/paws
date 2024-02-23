@@ -78,20 +78,18 @@ query_parse_list <- function(values, value, prefix, tag, is_ec2 = FALSE) {
       prefix <- paste(prefix, list_name, sep = ".")
     }
   }
-
+  value <- value[lengths(value) > 0]
   for (i in seq_along(value)) {
     field <- value[[i]]
-    if (length(field) > 0) {
-      # TODO: Call query_parse_scalar for an array of bytes.
+    # TODO: Call query_parse_scalar for an array of bytes.
 
-      if (prefix == "") {
-        slice_prefix <- as.character(i)
-      } else {
-        slice_prefix <- paste(prefix, as.character(i), sep = ".")
-      }
-
-      values <- query_parse_value(values, field, slice_prefix, "", is_ec2)
+    if (prefix == "") {
+      slice_prefix <- as.character(i)
+    } else {
+      slice_prefix <- paste(prefix, as.character(i), sep = ".")
     }
+
+    values <- query_parse_value(values, field, slice_prefix, "", is_ec2)
   }
   return(values)
 }
