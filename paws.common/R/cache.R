@@ -1,3 +1,5 @@
+#' @include utils.R
+
 ini_cache <- new.env(parent = emptyenv())
 
 os_env_cache <- new.env(parent = emptyenv())
@@ -13,15 +15,7 @@ set_os_env_cache <- function() {
   if (length(aws_env_vars) == 0) {
     return()
   }
-  aws_env_vars <- strsplit(
-    sub("=", "U+003D", aws_env_vars, fixed = TRUE),
-    "U+003D",
-    fixed = TRUE
-  )
-  found <- lengths(aws_env_vars) == 1
-  aws_env_vars <- trimws(do.call(rbind, aws_env_vars))
-  if (ncol(aws_env_vars) == 1) aws_env_vars <- cbind(aws_env_vars, "")
-  aws_env_vars[found, 2] <- ""
+  aws_env_vars <- trimws(parse_in_half(aws_env_vars))
   for (i in seq_len(nrow(aws_env_vars))) {
     os_env_cache[[aws_env_vars[i, 1]]] <- aws_env_vars[i, 2]
   }
