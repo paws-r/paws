@@ -1,3 +1,5 @@
+#' @include RcppExports.R
+
 # Decode raw bytes JSON into an R list object.
 decode_json <- function(raw) {
   obj <- json_to_list(raw_to_utf8(raw))
@@ -119,37 +121,6 @@ json_build_scalar <- function(values) {
     sprintf('"%s"', values)
   )
   return(s)
-}
-
-#-------------------------------------------------------------------------------
-
-# Escape control characters by replacing them with their Unicode representation.
-json_escape_unicode <- function(string) {
-  from <- intToUtf8(1:31, multiple = TRUE)
-  to <- paste0("\\u00", format(as.hexmode(1:31), width = 2))
-  for (i in 1:31) {
-    string <- gsub(from[i], to[i], string, fixed = TRUE)
-  }
-  return(string)
-}
-
-# Return a string for a JSON value, with special characters escaped.
-json_convert_string <- function(string) {
-  replace <- list(
-    c("\\", "\\\\"),
-    c('"', '\\"'),
-    c("\b", "\\b"),
-    c("\f", "\\f"),
-    c("\r", "\\r"),
-    c("\t", "\\t"),
-    c("\n", "\\n")
-  )
-  for (elem in replace) {
-    string <- gsub(elem[1], elem[2], string, fixed = TRUE)
-  }
-  string <- json_escape_unicode(string)
-  string <- sprintf('"%s"', string)
-  return(string)
 }
 
 #-------------------------------------------------------------------------------
