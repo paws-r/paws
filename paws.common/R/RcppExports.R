@@ -13,3 +13,9 @@ char_sort <- function(str) {
     .Call('_paws_common_char_sort', PACKAGE = 'paws.common', str)
 }
 
+#' @useDynLib paws.common _paws_common_json_convert_string
+#' @importFrom Rcpp evalCpp
+json_convert_string <- function(x) {
+    .Call('_paws_common_json_convert_string', PACKAGE = 'paws.common', x)
+}
+

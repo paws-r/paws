@@ -1,4 +1,4 @@
-#' @include utils.R
+#' @include util.R
 
 ini_cache <- new.env(parent = emptyenv())
 
