@@ -1,0 +1,20 @@
+as.list.struct          Create a list from an struct object
+get_config              Get the service configuration from the service
+                        object.
+is_empty                Check whether an object is empty
+is_empty_xml            Check whether an object is empty for xml builds
+list_paginators         List methods that can be paginated from a paws
+                        client.
+locate_credentials      Locate AWS credentials
+new_handlers            Return request handlers for a service
+new_operation           Return an API operation object
+new_request             Return an API request object
+new_service             Return an AWS API service object
+paginate                Paginate over an operation.
+paws_config_log         paws logging system
+paws_reset_cache        Clear down paws cache environments
+populate                Populate a list with data from another list
+send_request            Send a request and handle the response
+set_config              Add configuration settings to a service object.
+set_service_parameter   Set service parameters
+tags                    Get, set, and delete object tags
