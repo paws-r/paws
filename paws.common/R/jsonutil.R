@@ -2,7 +2,17 @@
 
 # Decode raw bytes JSON into an R list object.
 decode_json <- function(raw) {
-  obj <- json_to_list(raw_to_utf8(raw))
+  if (length(raw) == 0) {
+    return(list())
+  }
+  con <- rawConnection(raw)
+  on.exit(close(con))
+  obj <- jsonlite::fromJSON(
+    con,
+    simplifyVector = FALSE,
+    simplifyDataFrame = FALSE,
+    simplifyMatrix = FALSE
+  )
   return(obj)
 }
 
