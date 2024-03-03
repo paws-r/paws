@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.7.1
+Version: 0.7.0.999
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -42,10 +42,10 @@ Config/testthat/edition: 3
 RemoteType: local
 RemoteUrl: /Users/dyfanjones/Documents/Packages/paws/paws.common
 NeedsCompilation: yes
-Packaged: 2024-02-29 17:16:20 UTC; dyfanjones
+Packaged: 2024-03-03 18:16:07 UTC; dyfanjones
 Author: David Kretch [aut],
   Adam Banker [aut],
   Dyfan Jones [cre],
   Amazon.com, Inc. [cph]
 Maintainer: Dyfan Jones <dyfan.r.jones@gmail.com>
-Built: R 4.3.2; aarch64-apple-darwin20; 2024-02-29 17:16:21 UTC; unix
+Built: R 4.3.2; aarch64-apple-darwin20; 2024-03-03 18:16:07 UTC; unix
