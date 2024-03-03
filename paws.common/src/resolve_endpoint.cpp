@@ -26,6 +26,7 @@ LogicalVector check_global(List endpoint) {
 
 // Unescape endpoint
 // param endpoint AWS escaped endpoint
+// param service AWS service
 // param region AWS region
 //' @useDynLib paws.common _paws_common_endpoint_unescape
 //' @importFrom Rcpp evalCpp
