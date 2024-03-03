@@ -1,8 +1,9 @@
-# paws.common 0.7.1
+# paws.common 0.7.0.999
 * minor performance enhancements
 * fix MIME type for AWS BedrockRuntime Client (#749), thanks to @alex23lemm for raising issue.
 * export locate_credentials (#750), thanks to @tyner for raising request.
 * convert `json_convert_string` to `cpp` for significant performance improvement (#754)
+* convert components of `resolve_endpoint` to `cpp` to get a x2 performance enhancements
 
 # paws.common 0.7.0
 * support sse md5 (#718). Thanks to @odysseu for raising issue.
