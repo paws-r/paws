@@ -3,7 +3,7 @@
 using namespace Rcpp;
 
 // Return logical vector for global region pattern
-// param L
+// param endpoint list containing region pattern, endpoint url and global status
 //' @useDynLib paws.common _paws_common_check_global
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
