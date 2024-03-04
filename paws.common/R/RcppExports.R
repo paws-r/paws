@@ -7,15 +7,33 @@ paws_url_encoder <- function(urls, safe = "") {
     .Call('_paws_common_paws_url_encoder', PACKAGE = 'paws.common', urls, safe)
 }
 
-#' @useDynLib paws.common _paws_common_char_sort
-#' @importFrom Rcpp evalCpp
-char_sort <- function(str) {
-    .Call('_paws_common_char_sort', PACKAGE = 'paws.common', str)
-}
-
 #' @useDynLib paws.common _paws_common_json_convert_string
 #' @importFrom Rcpp evalCpp
 json_convert_string <- function(x) {
     .Call('_paws_common_json_convert_string', PACKAGE = 'paws.common', x)
+}
+
+#' @useDynLib paws.common _paws_common_check_global
+#' @importFrom Rcpp evalCpp
+check_global <- function(endpoint) {
+    .Call('_paws_common_check_global', PACKAGE = 'paws.common', endpoint)
+}
+
+#' @useDynLib paws.common _paws_common_endpoint_unescape
+#' @importFrom Rcpp evalCpp
+endpoint_unescape <- function(endpoint, service, region) {
+    .Call('_paws_common_endpoint_unescape', PACKAGE = 'paws.common', endpoint, service, region)
+}
+
+#' @useDynLib paws.common _paws_common_get_region_pattern
+#' @importFrom Rcpp evalCpp
+get_region_pattern <- function(region_pattern, region) {
+    .Call('_paws_common_get_region_pattern', PACKAGE = 'paws.common', region_pattern, region)
+}
+
+#' @useDynLib paws.common _paws_common_char_sort
+#' @importFrom Rcpp evalCpp
+char_sort <- function(str) {
+    .Call('_paws_common_char_sort', PACKAGE = 'paws.common', str)
 }
 

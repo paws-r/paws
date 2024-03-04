@@ -1,3 +1,4 @@
+#' @include RcppExports.R
 #' @include config.R
 #' @include credentials.R
 #' @include handlers.R
@@ -78,24 +79,13 @@ new_session <- function() {
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
 resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https") {
-  get_region_pattern <- function(region, endpoints) {
-    patterns <- names(endpoints)
-    matches <- patterns[
-      vapply(patterns, function(pattern) grepl(pattern, region), FUN.VALUE = logical(1))
-    ]
-    match <- matches[order(nchar(matches), decreasing = TRUE)][1]
-    return(match)
-  }
   # Set default region for s3:
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
   if (service == "s3" & (region == "aws-global")) {
     region <- "us-east-1"
   }
   # locate global endpoint
-  global_found <- vapply(
-    endpoints, function(x) if (is.list(x)) x$global else FALSE,
-    FUN.VALUE = logical(1)
-  )
+  global_found <- check_global(endpoints)
   global_region <- (region == "aws-global")
   if (!any(global_found) & global_region) {
     stop("No region provided and no global region found.")
@@ -103,7 +93,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   search_region <- (
     if (any(global_found) & global_region) names(global_found[global_found][1]) else region
   )
-  e <- endpoints[[get_region_pattern(search_region, endpoints)]]
+  e <- endpoints[[get_region_pattern(names(endpoints), search_region)]]
   # TODO: Delete old endpoint format handling once all packages are updated.
   if (is.character(e)) {
     e <- list(endpoint = e, global = FALSE)
@@ -115,8 +105,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
     region <- set_sts_region(sts_regional_endpoint, region)
   }
   signing_region <- if (e[["global"]]) "us-east-1" else region
-  endpoint <- gsub("{service}", service, e[["endpoint"]], fixed = TRUE)
-  endpoint <- gsub("{region}", signing_region, endpoint, fixed = TRUE)
+  endpoint <- endpoint_unescape(e[["endpoint"]], service, signing_region)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
   return(list(
