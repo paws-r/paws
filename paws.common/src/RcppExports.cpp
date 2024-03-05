@@ -45,26 +45,26 @@ BEGIN_RCPP
 END_RCPP
 }
 // endpoint_unescape
-std::string endpoint_unescape(String endpoint, std::string service, std::string region);
+std::string endpoint_unescape(std::string endpoint, const std::string& service, const std::string& region);
 RcppExport SEXP _paws_common_endpoint_unescape(SEXP endpointSEXP, SEXP serviceSEXP, SEXP regionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< String >::type endpoint(endpointSEXP);
-    Rcpp::traits::input_parameter< std::string >::type service(serviceSEXP);
-    Rcpp::traits::input_parameter< std::string >::type region(regionSEXP);
+    Rcpp::traits::input_parameter< std::string >::type endpoint(endpointSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type service(serviceSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type region(regionSEXP);
     rcpp_result_gen = Rcpp::wrap(endpoint_unescape(endpoint, service, region));
     return rcpp_result_gen;
 END_RCPP
 }
 // get_region_pattern
-CharacterVector get_region_pattern(StringVector region_pattern, std::string region);
+CharacterVector get_region_pattern(CharacterVector region_pattern, const std::string& region);
 RcppExport SEXP _paws_common_get_region_pattern(SEXP region_patternSEXP, SEXP regionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< StringVector >::type region_pattern(region_patternSEXP);
-    Rcpp::traits::input_parameter< std::string >::type region(regionSEXP);
+    Rcpp::traits::input_parameter< CharacterVector >::type region_pattern(region_patternSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type region(regionSEXP);
     rcpp_result_gen = Rcpp::wrap(get_region_pattern(region_pattern, region));
     return rcpp_result_gen;
 END_RCPP
