@@ -12,7 +12,7 @@ LogicalVector check_global(List endpoint) {
   CharacterVector names = endpoint.names();
   LogicalVector output(n);
 
-  for(int i=0; i< endpoint.length(); ++i){
+  for(int i=0; i<n; ++i){
     if (is<List>(endpoint[i])) {
       List ll = endpoint[i];
       output[i] = ll["global"];
