@@ -288,8 +288,8 @@ xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL, 
 
   # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
   # a list interface though it isn't a list?!
-  if (isTRUE(flattened)) {
-    result <- transpose(result)
+  if (isTRUE(flattened) && is.list(result)) {
+    result <- .mapply(list, result, NULL)
   } else {
     result <- as.list(result)
   }
@@ -357,8 +357,8 @@ xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL, flatt
 
   # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
   # a list interface though it isn't a list?!
-  if (isTRUE(flattened)) {
-    result <- transpose(result)
+  if (isTRUE(flattened) && is.list(result)) {
+    result <- .mapply(list, result, NULL)
   }
 
   return(result)
@@ -459,37 +459,4 @@ default_parse_scalar <- function(interface_i, tag_type = NULL) {
     xml_scalar_default(interface_i, character())
   )
   return(result)
-}
-
-transpose <- function(x) {
-  if (!is.list(x)) {
-    return(x)
-  }
-  n_col <- length(x)
-  if (n_col == 0) {
-    return(list())
-  }
-  n_row <- length(x[[1]])
-  if (n_row == 0) {
-    return(list())
-  }
-  out <- vector("list", length = n_row)
-  col_seq <- seq.int(n_col, 1)
-
-  vals <- vector("list", length = n_col)
-  names(vals) <- names(x)
-
-  for (row in seq.int(1, n_row)) {
-    for (col in col_seq) {
-      vals[col] <- (
-        if (length(x[[col]]) < n_row) {
-          list(rep_len(x[[col]], n_row)[[row]])
-        } else {
-          list(x[[col]][[row]])
-        })
-    }
-    out[[row]] <- vals
-  }
-  names(out) <- names(x[[1]])
-  return(out)
 }
