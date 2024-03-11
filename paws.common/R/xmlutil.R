@@ -288,10 +288,8 @@ xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL, 
 
   # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
   # a list interface though it isn't a list?!
-  if (isTRUE(flattened)) {
-    if (is.list(result)) {
-      result <- .mapply(list, result, NULL)
-    }
+  if (isTRUE(flattened) && is.list(result)) {
+    result <- .mapply(list, result, NULL)
   } else {
     result <- as.list(result)
   }
@@ -359,10 +357,8 @@ xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL, flatt
 
   # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
   # a list interface though it isn't a list?!
-  if (isTRUE(flattened)) {
-    if (is.list(result)) {
-      result <- .mapply(list, result, NULL)
-    }
+  if (isTRUE(flattened) && is.list(result)) {
+    result <- .mapply(list, result, NULL)
   }
 
   return(result)
