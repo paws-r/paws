@@ -1,3 +1,6 @@
+# paws.common 0.7.1.9000
+* improve performance of `restxml_unmarshal` by x3
+
 # paws.common 0.7.1
 * minor performance enhancements
 * fix MIME type for AWS BedrockRuntime Client (#749), thanks to @alex23lemm for raising issue.
