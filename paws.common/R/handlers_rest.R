@@ -137,16 +137,16 @@ rest_unmarshal <- function(request) {
 # Unmarshal headers and status from a REST protocol API response.
 rest_unmarshal_location_elements <- function(request) {
   values <- request$data
-  # field_names <- names(values)
-  # field_names <- (
-  #   field_names[substr(field_names, 1, 1) != tolower(substr(field_names, 1, 1))]
-  # )
   for (field_name in names(values)) {
     field <- values[[field_name]]
-    name <- tag_get(field, "locationName")
-    if (name == "") name <- field_name
-    tags <- tag_get_all(field)
-    location <- tag_get(field, "location")
+    # if location isn't found skip:
+    # https://github.com/boto/botocore/blob/7e24ee2369ef2fbd0bb89294848e2e4fc76e66a7/botocore/parsers.py#L956-L957
+    if ((location <- tag_get(field, "location")) == "") {
+      next
+    }
+    if ((name <- tag_get(field, "locationName")) == "") {
+      name <- field_name
+    }
     if (location == "statusCode") {
       result <- rest_unmarshal_status_code(request$http_response$status_code)
     } else if (location == "header") {
@@ -158,11 +158,9 @@ rest_unmarshal_location_elements <- function(request) {
       prefix <- tag_get(field, "locationName")
       type <- tag_get(field, "type")
       result <- rest_unmarshal_header_map(v, prefix, type)
-    } else {
-      result <- values[[field_name]]
     }
-    result <- tag_add(result, tags)
-    values[[field_name]] <- result
+    tags <- tag_get_all(field)
+    values[[field_name]] <- tag_add(result, tags)
   }
   request$data <- values
   return(request)
