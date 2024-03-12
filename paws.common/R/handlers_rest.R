@@ -121,10 +121,8 @@ rest_unmarshal_meta <- function(request) {
 # Unmarshal the body from a REST protocol API response.
 rest_unmarshal <- function(request) {
   values <- request$data
-  payload_name <- tag_get(values, "payload")
-  if (payload_name != "") {
-    payload_type <- tag_get(values[[payload_name]], "type")
-    if (payload_type == "blob") {
+  if ((payload_name <- tag_get(values, "payload")) != "") {
+    if ((payload_type <- tag_get(values[[payload_name]], "type")) == "blob") {
       payload <- request$http_response$body
     } else {
       payload <- raw_to_utf8(request$http_response$body)
@@ -139,18 +137,14 @@ rest_unmarshal <- function(request) {
 # Unmarshal headers and status from a REST protocol API response.
 rest_unmarshal_location_elements <- function(request) {
   values <- request$data
+  # field_names <- names(values)
+  # field_names <- (
+  #   field_names[substr(field_names, 1, 1) != tolower(substr(field_names, 1, 1))]
+  # )
   for (field_name in names(values)) {
     field <- values[[field_name]]
-
-    if (substr(field_name, 1, 1) == tolower(substr(field_name, 1, 1))) {
-      next
-    }
-
     name <- tag_get(field, "locationName")
-    if (name == "") {
-      name <- field_name
-    }
-
+    if (name == "") name <- field_name
     tags <- tag_get_all(field)
     location <- tag_get(field, "location")
     if (location == "statusCode") {
@@ -200,14 +194,14 @@ rest_unmarshal_header <- function(value, type) {
 
 # Unmarshal a collection of header values that share a common prefix.
 rest_unmarshal_header_map <- function(values, prefix, type) {
-  result <- list()
-  starts_with <- function(x, p) grepl(sprintf("^%s", p), x, ignore.case = TRUE)
-  for (name in names(values)) {
-    if (starts_with(name, prefix)) {
-      out_name <- substr(name, nchar(prefix) + 1, 1e6L)
-      result[[out_name]] <- rest_unmarshal_header(values[[name]], type)
-    }
-  }
+  value_names <- names(values)
+  value_names <- value_names[
+    grepl(sprintf("^%s", prefix), value_names, ignore.case = T)
+  ]
+  result <- lapply(value_names, function(name) {
+    rest_unmarshal_header(values[[name]], type)
+  })
+  names(result) <- substr(value_names, nchar(prefix) + 1, nchar(value_names))
   return(result)
 }
 
