@@ -121,10 +121,8 @@ rest_unmarshal_meta <- function(request) {
 # Unmarshal the body from a REST protocol API response.
 rest_unmarshal <- function(request) {
   values <- request$data
-  payload_name <- tag_get(values, "payload")
-  if (payload_name != "") {
-    payload_type <- tag_get(values[[payload_name]], "type")
-    if (payload_type == "blob") {
+  if ((payload_name <- tag_get(values, "payload")) != "") {
+    if ((payload_type <- tag_get(values[[payload_name]], "type")) == "blob") {
       payload <- request$http_response$body
     } else {
       payload <- raw_to_utf8(request$http_response$body)
@@ -141,18 +139,14 @@ rest_unmarshal_location_elements <- function(request) {
   values <- request$data
   for (field_name in names(values)) {
     field <- values[[field_name]]
-
-    if (substr(field_name, 1, 1) == tolower(substr(field_name, 1, 1))) {
+    # if location isn't found skip:
+    # https://github.com/boto/botocore/blob/7e24ee2369ef2fbd0bb89294848e2e4fc76e66a7/botocore/parsers.py#L956-L957
+    if ((location <- tag_get(field, "location")) == "") {
       next
     }
-
-    name <- tag_get(field, "locationName")
-    if (name == "") {
+    if ((name <- tag_get(field, "locationName")) == "") {
       name <- field_name
     }
-
-    tags <- tag_get_all(field)
-    location <- tag_get(field, "location")
     if (location == "statusCode") {
       result <- rest_unmarshal_status_code(request$http_response$status_code)
     } else if (location == "header") {
@@ -164,11 +158,9 @@ rest_unmarshal_location_elements <- function(request) {
       prefix <- tag_get(field, "locationName")
       type <- tag_get(field, "type")
       result <- rest_unmarshal_header_map(v, prefix, type)
-    } else {
-      result <- values[[field_name]]
     }
-    result <- tag_add(result, tags)
-    values[[field_name]] <- result
+    tags <- tag_get_all(field)
+    values[[field_name]] <- tag_add(result, tags)
   }
   request$data <- values
   return(request)
@@ -200,14 +192,14 @@ rest_unmarshal_header <- function(value, type) {
 
 # Unmarshal a collection of header values that share a common prefix.
 rest_unmarshal_header_map <- function(values, prefix, type) {
-  result <- list()
-  starts_with <- function(x, p) grepl(sprintf("^%s", p), x, ignore.case = TRUE)
-  for (name in names(values)) {
-    if (starts_with(name, prefix)) {
-      out_name <- substr(name, nchar(prefix) + 1, 1e6L)
-      result[[out_name]] <- rest_unmarshal_header(values[[name]], type)
-    }
-  }
+  value_names <- names(values)
+  value_names <- value_names[
+    grepl(sprintf("^%s", prefix), value_names, ignore.case = T)
+  ]
+  result <- lapply(value_names, function(name) {
+    rest_unmarshal_header(values[[name]], type)
+  })
+  names(result) <- substr(value_names, nchar(prefix) + 1, nchar(value_names))
   return(result)
 }
 

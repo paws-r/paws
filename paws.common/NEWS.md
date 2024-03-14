@@ -1,5 +1,6 @@
 # paws.common 0.7.1.9000
 * improve performance of `restxml_unmarshal` by x3
+* fix `rest_unmarshal_location_elements` only skip header if location is not found (#761) 
 
 # paws.common 0.7.1
 * minor performance enhancements

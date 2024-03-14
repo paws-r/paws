@@ -24,7 +24,7 @@ has_streaming_payload <- function(request, type) {
   if (!is.null(values)) {
     payload_name <- tag_get(values, "payload")
     if (payload_name != "") {
-      if(length(values[[payload_name]]) > 0 && type %in% c('blob', 'string')) {
+      if (length(values[[payload_name]]) > 0 && type %in% c("blob", "string")) {
         return(TRUE)
       }
     }
