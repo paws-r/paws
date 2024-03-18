@@ -267,6 +267,6 @@ inject_signature_query <- function(ctx) {
 
   query_list <- if (!ctx$anonymous) query_list else list()
   query <- ctx$request$url$raw_query
-  new_query <- Filter(nzchar, c(query, build_query_string(query_list)))
-  return(paste(new_query, collapse = "&"))
+  new_query <- c(query, build_query_string(query_list))
+  return(paste(new_query[nzchar(new_query)], collapse = "&"))
 }
