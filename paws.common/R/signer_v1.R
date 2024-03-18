@@ -219,7 +219,7 @@ canonical_resource <- function(ctx, auth_path) {
   if (nzchar(raw_query)) {
     qsa <- parse_query_string(raw_query)
     found <- names(qsa) %in% QSAOfInterest
-    qsa <- lapply(qsa[found], unescape)
+    qsa <- qsa[found]
     buf <- c(buf, build_query_string(qsa))
     buf <- buf[nzchar(buf)]
   }
