@@ -59,7 +59,7 @@ s3 =
 region=us-east-1
 output=json
 endpoint_url = http://localhost:1234
-services = profileminio
+services = profilelocalstack
 
 [services profilelocalstack]
 s3 =
