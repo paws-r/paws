@@ -394,8 +394,7 @@ get_web_identity_token <- function(web_identity_token_file = "") {
 
 # Check if sts_regional_endpoint is present in config file
 check_config_file_sts_regional_endpoint <- function(profile = "") {
-  config_path <- get_config_file_path()
-  if (is.null(config_path)) {
+  if (is.null(config_path <- get_config_file_path())) {
     return(NULL)
   }
 
