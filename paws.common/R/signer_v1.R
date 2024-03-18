@@ -204,7 +204,7 @@ canonical_custom_headers <- function(ctx, headers) {
       collapse = "\n"
     )
   )
-  return(Filter(nzchar, canonical_headers))
+  return(canonical_headers[nzchar(canonical_headers)])
 }
 
 # Developed from:
@@ -219,8 +219,9 @@ canonical_resource <- function(ctx, auth_path) {
   if (nzchar(raw_query)) {
     qsa <- parse_query_string(raw_query)
     found <- names(qsa) %in% QSAOfInterest
-    qsa <- lapply(qsa[found], unescape)
-    buf <- Filter(nzchar, c(buf, build_query_string(qsa)))
+    qsa <- qsa[found]
+    buf <- c(buf, build_query_string(qsa))
+    buf <- buf[nzchar(buf)]
   }
   return(paste(buf, collapse = "?"))
 }
@@ -257,16 +258,16 @@ inject_signature_query <- function(ctx) {
   query_list["Expires"] <- ctx$request$header$Date
 
   header_names <- names(headers)
-  found <- vapply(tolower(header_names), function(nn) {
-    grepl("x-amz-", nn) || nn %in% c("content-md5", "content-type")
-  }, FUN.VALUE = logical(1))
+  l_header_nms <- tolower(header_names)
+  found <- grepl("x-amz-", l_header_nms)
+  found[!found] <- l_header_nms[!found] %in% c("content-md5", "content-type")
 
   for (header_name in header_names[found]) {
-    query_list[tolower(header_name)] <- ctx$request$header[[header_name]]
+    query_list[l_header_nms] <- ctx$request$header[[header_name]]
   }
 
   query_list <- if (!ctx$anonymous) query_list else list()
   query <- ctx$request$url$raw_query
-  new_query <- Filter(nzchar, c(query, build_query_string(query_list)))
-  return(paste(new_query, collapse = "&"))
+  new_query <- c(query, build_query_string(query_list))
+  return(paste(new_query[nzchar(new_query)], collapse = "&"))
 }
