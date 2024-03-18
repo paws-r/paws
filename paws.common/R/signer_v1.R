@@ -257,9 +257,9 @@ inject_signature_query <- function(ctx) {
   query_list["Expires"] <- ctx$request$header$Date
 
   header_names <- names(headers)
-  found <- vapply(tolower(header_names), function(nn) {
-    grepl("x-amz-", nn) || nn %in% c("content-md5", "content-type")
-  }, FUN.VALUE = logical(1))
+  l_header_nms <- tolower(header_names)
+  found <- grepl("x-amz-", l_header_nms)
+  found[!found] <- l_header_nms[!found] %in% c("content-md5", "content-type")
 
   for (header_name in header_names[found]) {
     query_list[tolower(header_name)] <- ctx$request$header[[header_name]]
