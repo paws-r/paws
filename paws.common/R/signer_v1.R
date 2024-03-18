@@ -262,7 +262,7 @@ inject_signature_query <- function(ctx) {
   found[!found] <- l_header_nms[!found] %in% c("content-md5", "content-type")
 
   for (header_name in header_names[found]) {
-    query_list[tolower(header_name)] <- ctx$request$header[[header_name]]
+    query_list[l_header_nms] <- ctx$request$header[[header_name]]
   }
 
   query_list <- if (!ctx$anonymous) query_list else list()
