@@ -204,7 +204,7 @@ canonical_custom_headers <- function(ctx, headers) {
       collapse = "\n"
     )
   )
-  return(Filter(nzchar, canonical_headers))
+  return(canonical_headers[nzchar(canonical_headers)])
 }
 
 # Developed from:
@@ -220,7 +220,8 @@ canonical_resource <- function(ctx, auth_path) {
     qsa <- parse_query_string(raw_query)
     found <- names(qsa) %in% QSAOfInterest
     qsa <- lapply(qsa[found], unescape)
-    buf <- Filter(nzchar, c(buf, build_query_string(qsa)))
+    buf <- c(buf, build_query_string(qsa))
+    buf <- buf[nzchar(buf)]
   }
   return(paste(buf, collapse = "?"))
 }
