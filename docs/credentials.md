@@ -552,6 +552,10 @@ Paws supports the following settings in environment variables.
 
 * `AWS_SHARED_CREDENTIALS_FILES` - Specifies the location of the file used to
   store access keys. The default path is `~/.aws/credentials`.
+  
+* `AWS_ENDPOINT_URL`- Set global endpoint URL.
+
+* `AWS_ENDPOINT_URL_<SERVICE>` - [Service-specific endpoints: List of service-specific identifiers](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html#endpoints-service-specific-table)
 
 ---
 
@@ -620,4 +624,7 @@ Paws supports the following settings in the AWS config file.
   the SDK can use to assume a role that you specified with the `role_arn`
   parameter. You cannot specify both `source_profile` and `credential_source`
   in the same profile.
-
+  
+* `endpoint_url` - Global endpoint for all AWS Services [Use endpoints](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html#endpoints-service-specific-config)
+    
+* `services` - Service-specific endpoint configuration provides the option to use a persistent endpoint of your choosing [set service-specific endpoints](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html#endpoints-service-specific). [Service-specific endpoints: List of service-specific identifiers](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html#endpoints-service-specific-table).
