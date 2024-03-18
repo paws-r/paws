@@ -38,7 +38,7 @@ nested1 =
   arg1 = value1
   arg2 = value2
 arg3 = value3
-nested2 =   
+nested2 =
   arg4 = value4
   ; arg2=value2
 
@@ -54,3 +54,14 @@ services = profileminio
 s3 =
  endpoint_url = http://localhost:9000
  # Empty comment
+
+[profile localstack]
+region=us-east-1
+output=json
+endpoint_url = http://localhost:1234
+services = profileminio
+
+[services profilelocalstack]
+s3 =
+ endpoint_url = http://localhost:9000
+ec2 =

@@ -116,11 +116,15 @@ test_that("test custom config credentials take priority", {
 })
 
 test_that("test service endpoint config file with service present", {
-  mock_get_config_file_path <- mock2("data_ini")
+  mock_get_config_file_path <- mock2("data_ini", cycle = T)
   mockery::stub(check_config_file_endpoint, "get_config_file_path", mock_get_config_file_path)
 
-  endpoint <- check_config_file_endpoint("minio", "s3")
-  expect_equal(endpoint, "http://localhost:9000")
+  s3_endpoint <- check_config_file_endpoint("localstack", "s3")
+  ec2_endpoint <- check_config_file_endpoint("localstack", "ec2")
+  bob_endpoint <- check_config_file_endpoint("localstack", "bob")
+  expect_equal(s3_endpoint, "http://localhost:9000")
+  expect_equal(ec2_endpoint, "http://localhost:1234")
+  expect_equal(bob_endpoint, "http://localhost:1234")
 })
 
 test_that("test service endpoint config file with service not present", {
@@ -134,14 +138,17 @@ test_that("test service endpoint config file with service not present", {
 test_that("test service endpoint environment variables", {
   Sys.setenv(
     "AWS_ENDPOINT_URL_BAR" = "http://localhost:9000",
-    "AWS_ENDPOINT_URL_BAZ_CHO" = "http://localhost:9090"
+    "AWS_ENDPOINT_URL_BAZ_CHO" = "http://localhost:9090",
+    "AWS_ENDPOINT_URL" = "http://localhost:1234"
   )
 
   endpoint1 <- get_service_endpoint("foo", "bar")
   endpoint2 <- get_service_endpoint("foo", "baz cho")
+  endpoint3 <- get_service_endpoint("foo", "zoo")
 
   expect_equal(endpoint1, "http://localhost:9000")
   expect_equal(endpoint2, "http://localhost:9090")
+  expect_equal(endpoint3, "http://localhost:1234")
 
-  Sys.unsetenv(c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO"))
+  Sys.unsetenv(c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO", "AWS_ENDPOINT_URL"))
 })
