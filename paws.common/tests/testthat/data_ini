@@ -54,3 +54,14 @@ services = profileminio
 s3 =
  endpoint_url = http://localhost:9000
  # Empty comment
+
+[profile localstack]
+region=us-east-1
+output=json
+endpoint_url = http://localhost:1234
+services = profilelocalstack
+
+[services profilelocalstack]
+s3 =
+ endpoint_url = http://localhost:9000
+ec2 =

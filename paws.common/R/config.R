@@ -150,18 +150,24 @@ get_credentials_file_path <- function() {
   return(NULL)
 }
 
-get_env <- function(variable) {
-  value <- Sys.getenv(variable)
-  if (value != "") {
+get_env <- function(variable, default_variable = NULL) {
+  if (is.null(default_variable)) {
+    if ((value <- Sys.getenv(variable)) != "") {
+      return(value)
+    }
+    return(get_os_env(variable))
+  } else {
+    if ((value <- Sys.getenv(variable)) == "") {
+      value <- Sys.getenv(default_variable)
+    }
+    if (value != "") {
+      return(value)
+    }
+    if ((value <- get_os_env(variable)) == "") {
+      value <- get_os_env(default_variable)
+    }
     return(value)
   }
-
-  value <- get_os_env(variable)
-  if (value != "") {
-    return(value)
-  }
-
-  return("")
 }
 
 # Get the name of the IAM role from the instance metadata.
@@ -249,7 +255,6 @@ get_os_env <- function(var) {
   } else {
     value <- "" # Not implemented on Windows.
   }
-
   return(value)
 }
 
@@ -258,11 +263,7 @@ get_profile_name <- function(profile = "") {
   if (!is.null(profile) && profile != "") {
     return(profile)
   }
-
-  profile <- get_env("AWS_PROFILE")
-
-  if (profile == "") profile <- "default"
-
+  if ((profile <- get_env("AWS_PROFILE")) == "") profile <- "default"
   return(profile)
 }
 
@@ -313,7 +314,10 @@ get_region <- function(profile = "") {
 # https://docs.aws.amazon.com/sdkref/latest/guide/feature-ss-endpoints.html#ss-endpoints-envar
 get_service_endpoint <- function(profile = "", service_id = "") {
   service_id <- gsub(" ", "_", service_id)
-  endpoint <- get_env(paste0("AWS_ENDPOINT_URL_", toupper(service_id)))
+  endpoint <- get_env(
+    paste0("AWS_ENDPOINT_URL_", toupper(service_id)),
+    "AWS_ENDPOINT_URL"
+  )
   if (endpoint != "") {
     return(endpoint)
   }
@@ -327,29 +331,20 @@ check_config_file_endpoint <- function(profile = "", service_id = "") {
   if (is.null(config_path)) {
     return(NULL)
   }
-
   profile_name <- get_profile_name(profile)
   if (profile_name != "default") profile_name <- paste("profile", profile_name)
-
   config_values <- read_ini(config_path)
-
-  if (is.null(config_values[[profile_name]])) {
+  if (is.null(profile <- config_values[[profile_name]])) {
     return(NULL)
   }
-
-  profile <- config_values[[profile_name]]
-
-  if (!("services" %in% names(profile))) {
-    return(NULL)
+  if (is.null(service_name <- profile[["services"]])) {
+    return(profile[["endpoint_url"]])
   }
-
-  service_name <- profile[["services"]]
   profile_service <- config_values[[paste("services", service_name)]][[service_id]]
   if (is.null(profile_service)) {
-    return(NULL)
+    return(profile[["endpoint_url"]])
   }
-
-  endpoint <- profile_service[["endpoint_url"]]
+  endpoint <- profile_service[["endpoint_url"]] %||% profile[["endpoint_url"]]
   return(endpoint)
 }
 
@@ -399,8 +394,7 @@ get_web_identity_token <- function(web_identity_token_file = "") {
 
 # Check if sts_regional_endpoint is present in config file
 check_config_file_sts_regional_endpoint <- function(profile = "") {
-  config_path <- get_config_file_path()
-  if (is.null(config_path)) {
+  if (is.null(config_path <- get_config_file_path())) {
     return(NULL)
   }
 
