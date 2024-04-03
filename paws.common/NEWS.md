@@ -2,6 +2,7 @@
 * improve performance of `restxml_unmarshal` by x3
 * fix `rest_unmarshal_location_elements` only skip header if location is not found (#761)
 * support global `endpoint_url` in config file and environmental variables (#764), thanks to @James-G-Hill for raising issue
+* ensure custom endpoints aren't modified
 
 # paws.common 0.7.1
 * minor performance enhancements
