@@ -31,27 +31,28 @@ convert_file_to_raw <- function(request) {
 }
 
 ################################################################################
-
-bucket_name_from_req_params <- function(request) {
-  request_params <- request$params
-  bucket <- request_params["Bucket"]
-
-  if (is.null(bucket)) {
-    return(NULL)
-  }
-
-  bucket_name <- bucket[[1]]
-
-  return(bucket_name)
-}
-
-host_compatible_bucket_name <- function(bucket) {
-  if (grepl(".", bucket, fixed = TRUE)) {
+# host_compatible_bucket_name returns true if the request should
+# put the bucket in the host. This is false if S3ForcePathStyle is
+# explicitly set or if the bucket is not DNS compatible.
+host_compatible_bucket_name <- function(url, bucket) {
+  # Bucket might be DNS compatible but dots in the hostname will fail
+  # certificate validation, so do not use host-style.
+  if (url$scheme == "https" && grepl(".", bucket, fixed = TRUE)) {
     return(FALSE)
   }
+  return(dns_compatible_bucket_name(bucket))
+}
+
+# dns_compatible_bucket_name returns true if the bucket name is DNS compatible.
+# Buckets created outside of the classic region MUST be DNS compatible.
+dns_compatible_bucket_name <- function(bucket) {
   domain <- "^[a-z0-9][a-z0-9\\.\\-]{1,61}[a-z0-9]$"
   ip_address <- "^(\\d+\\.){3}\\d+$"
-  return(grepl(domain, bucket) && !grepl(ip_address, bucket))
+  return(
+    grepl(domain, bucket) &&
+      !grepl(ip_address, bucket) &&
+      !grepl("..", bucket, fixed = T)
+  )
 }
 
 move_bucket_to_host <- function(url, bucket) {
@@ -95,9 +96,7 @@ remove_bucket_from_url <- function(url) {
 }
 
 update_endpoint_for_s3_config <- function(request) {
-  bucket_name <- bucket_name_from_req_params(request)
-
-  if (is.null(bucket_name)) {
+  if (is.null(bucket_name <- request$params[["Bucket"]])) {
     return(request)
   }
 
@@ -107,7 +106,7 @@ update_endpoint_for_s3_config <- function(request) {
     return(request)
   }
 
-  if (!host_compatible_bucket_name(bucket_name)) {
+  if (!host_compatible_bucket_name(request$http_request$url, bucket_name)) {
     return(request)
   }
 
@@ -117,7 +116,9 @@ update_endpoint_for_s3_config <- function(request) {
 
   use_virtual_host_style <- TRUE
   if (request$config$s3_force_path_style) use_virtual_host_style <- FALSE
-  if (request$config$endpoint != "") use_virtual_host_style <- FALSE
+  if (request$client_info$custom_endpoint) {
+    use_virtual_host_style <- FALSE
+  }
 
   if (use_virtual_host_style) {
     request$http_request$url <-
@@ -354,7 +355,7 @@ s3_redirect_from_error <- function(request) {
   if (!can_be_redirected(request, error_code, error)) {
     return(request)
   }
-  bucket_name <- bucket_name_from_req_params(request)
+  bucket_name <- request$params[["Bucket"]]
   new_region <- s3_get_bucket_region(request$http_response, error)
   if (is.null(new_region)) {
     log_debug(

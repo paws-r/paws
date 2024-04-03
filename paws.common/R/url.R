@@ -132,7 +132,7 @@ parse_query_string <- function(query) {
   query <- gsub("^\\?", "", query)
   params <- parse_in_half(strsplit(query, "&")[[1]], "=")
   if (length(params) == 0) {
-    return(NULL)
+    return(list())
   }
   out <- as.list(curl::curl_unescape(params[, 2]))
   names(out) <- curl::curl_unescape(params[, 1])

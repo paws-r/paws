@@ -21,6 +21,12 @@ test_that("update_endpoint_for_s3_config", {
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "foo.s3.amazonaws.com")
 
+  # Don't modify URL when using custom host
+  req <- build_request(bucket = "foo-bar", operation = "ListObjects")
+  req$client_info$custom_endpoint <- TRUE
+  result <- update_endpoint_for_s3_config(req)
+  expect_equal(result$http_request$url$host, "s3.amazonaws.com")
+
   req <- build_request(bucket = "foo-bar", operation = "ListObjects")
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "foo-bar.s3.amazonaws.com")
@@ -28,12 +34,6 @@ test_that("update_endpoint_for_s3_config", {
   # Use a path style URL if the config specifies path style.
   req <- build_request(bucket = "foo-bar", operation = "ListObjects")
   req$config$s3_force_path_style <- TRUE
-  result <- update_endpoint_for_s3_config(req)
-  expect_equal(result$http_request$url$host, "s3.amazonaws.com")
-
-  # Use a path style URL if the config has a custom endpoint.
-  req <- build_request(bucket = "foo-bar", operation = "ListObjects")
-  req$config$endpoint <- "localhost:9000"
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
 
@@ -284,7 +284,7 @@ test_that("ignore redirect when no http response is given", {
 test_that("ignore redirect when http status is successful", {
   for (status in c(200, 201, 202, 204, 206)) {
     req <- build_request(bucket = "foo", operation = "ListObjects")
-    req$http_response <- paws.common:::HttpResponse(
+    req$http_response <- HttpResponse(
       status_code = status,
       body = raw(0),
       header = list()
@@ -296,7 +296,7 @@ test_that("ignore redirect when http status is successful", {
 
 test_that("ignore redirect if already redirected", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
-  req$http_response <- paws.common:::HttpResponse(
+  req$http_response <- HttpResponse(
     status_code = 301,
     body = charToRaw(paste0(
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
@@ -319,7 +319,7 @@ test_that("ignore redirect if unable to find S3 region", {
     "<Bucket>foo</Bucket></Error>"
   ))
   req <- build_request(bucket = "foo", operation = "ListObjects")
-  req$http_response <- paws.common:::HttpResponse(
+  req$http_response <- HttpResponse(
     status_code = 301,
     body = raw_error
   )
@@ -331,7 +331,7 @@ test_that("ignore redirect if unable to find S3 region", {
 
 test_that("redirect request from http response error", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
-  req$http_response <- paws.common:::HttpResponse(
+  req$http_response <- HttpResponse(
     status_code = 301,
     body = charToRaw(paste0(
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
@@ -357,7 +357,7 @@ test_that("redirect request from http response error", {
 
 test_that("redirect error with region", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
-  req$http_response <- paws.common:::HttpResponse(
+  req$http_response <- HttpResponse(
     status_code = 301,
     body = charToRaw(paste0(
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
@@ -380,7 +380,7 @@ test_that("redirect error with region", {
 
 test_that("redirect error without region", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
-  req$http_response <- paws.common:::HttpResponse(
+  req$http_response <- HttpResponse(
     status_code = 301,
     body = charToRaw(paste0(
       "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",

@@ -43,6 +43,7 @@ ClientConfig <- struct(
   config = Config(),
   handlers = Handlers(),
   endpoint = "",
+  custom_endpoint = FALSE,
   signing_region = "",
   signing_name = "",
   signing_name_derived = FALSE
@@ -54,6 +55,7 @@ ClientInfo <- struct(
   service_id = "",
   api_version = "",
   endpoint = "",
+  custom_endpoint = FALSE,
   signing_name = "",
   signing_region = "",
   json_version = "",
@@ -135,6 +137,7 @@ client_config <- function(service_name, endpoints, cfgs, service_id) {
   if (!is.null(cfgs)) {
     s$config <- cfgs
   }
+  custom_endpoint <- FALSE
   # If region not defined, set it
   if (nchar(s$config$region) == 0) {
     s$config$region <- get_region(cfgs[["credentials"]][["profile"]])
@@ -147,6 +150,7 @@ client_config <- function(service_name, endpoints, cfgs, service_id) {
     endpoint <- get_service_endpoint(cfgs[["credentials"]][["profile"]], service_id)
     if (!is.null(endpoint)) {
       signing_region <- region
+      custom_endpoint <- TRUE
     } else {
       sts_regional_endpoint <- s$config$sts_regional_endpoint
       e <- resolver_endpoint(service_name, region, endpoints, sts_regional_endpoint)
@@ -158,6 +162,7 @@ client_config <- function(service_name, endpoints, cfgs, service_id) {
     config = s$config,
     handlers = s$handlers,
     endpoint = endpoint,
+    custom_endpoint = custom_endpoint,
     signing_region = signing_region,
     signing_name = service_name
   )

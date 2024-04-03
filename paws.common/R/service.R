@@ -123,6 +123,7 @@ new_service <- function(metadata, handlers, cfgs = NULL) {
 
   signing_name <- metadata$signing_name
   if (is.null(signing_name)) signing_name <- cfg$signing_name
+  custom_endpoint <- cfg$config$endpoint != "" || cfg$custom_endpoint
   client_info <- ClientInfo(
     service_name = metadata$service_name,
     service_id = metadata$service_id,
@@ -130,6 +131,7 @@ new_service <- function(metadata, handlers, cfgs = NULL) {
     signing_name = signing_name,
     signing_region = cfg$signing_region,
     endpoint = cfg$endpoint,
+    custom_endpoint = custom_endpoint,
     json_version = metadata$json_version,
     target_prefix = metadata$target_prefix
   )

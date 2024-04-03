@@ -25,6 +25,6 @@ test_that("missing query values become empty strings", {
 })
 
 test_that("empty queries become NULL", {
-  expect_equal(parse_query_string("?"), NULL)
-  expect_equal(parse_query_string(""), NULL)
+  expect_equal(parse_query_string("?"), list())
+  expect_equal(parse_query_string(""), list())
 })
