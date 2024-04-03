@@ -95,14 +95,6 @@ remove_bucket_from_url <- function(url) {
   return(url)
 }
 
-has_custom_endpoint <- function(endpoint, host_url) {
-  if (endpoint != "")
-    return(TRUE)
-  if (!grepl("^s3.*(amazonaws|c2s.ic|sc2s.sgov).*(com|cn|gov)$", host_url, perl=T))
-    return(TRUE)
-  return(FALSE)
-}
-
 update_endpoint_for_s3_config <- function(request) {
   if (is.null(bucket_name <- request$params[["Bucket"]])) {
     return(request)
@@ -124,8 +116,9 @@ update_endpoint_for_s3_config <- function(request) {
 
   use_virtual_host_style <- TRUE
   if (request$config$s3_force_path_style) use_virtual_host_style <- FALSE
-  if (has_custom_endpoint(request$config$endpoint, request$http_request$url$host))
+  if (request$client_info$custom_endpoint) {
     use_virtual_host_style <- FALSE
+  }
 
   if (use_virtual_host_style) {
     request$http_request$url <-

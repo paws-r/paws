@@ -21,6 +21,12 @@ test_that("update_endpoint_for_s3_config", {
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "foo.s3.amazonaws.com")
 
+  # Don't modify URL when using custom host
+  req <- build_request(bucket = "foo-bar", operation = "ListObjects")
+  req$client_info$custom_endpoint <- TRUE
+  result <- update_endpoint_for_s3_config(req)
+  expect_equal(result$http_request$url$host, "s3.amazonaws.com")
+
   req <- build_request(bucket = "foo-bar", operation = "ListObjects")
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "foo-bar.s3.amazonaws.com")
@@ -46,12 +52,6 @@ test_that("update_endpoint_for_s3_config", {
   req <- build_request(bucket = "foo-bar", operation = "GetBucketLocation")
   result <- update_endpoint_for_s3_config(req)
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
-
-  # Don't modify URL when using custom host
-  req <- build_request(bucket = "foo-bar", operation = "ListObjects")
-  req$http_request$url$host <- "127.0.0.1"
-  result <- update_endpoint_for_s3_config(req)
-  expect_equal(result$http_request$url$host, "127.0.0.1")
 })
 
 test_that("content_md5 works with an empty body", {
