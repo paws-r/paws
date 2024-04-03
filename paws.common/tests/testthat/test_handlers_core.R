@@ -61,3 +61,23 @@ test_that("validate_response_handler", {
   out <- validate_response_handler(r)
   expect_true(!is.null(out$error))
 })
+
+expect_user_agent <- function(request) {
+  paws_version <- utils::packageVersion("paws.common")
+  r_version <- getRversion()
+  r_os <- R.Version()$os
+  r_arch <- R.Version()$arch
+  user_agent <- sprintf(
+    "paws/%s (R%s; %s; %s)",
+    paws_version, r_version, r_os, r_arch
+  )
+  request$http_request$header["User-Agent"] <- user_agent
+  return(request)
+}
+
+test_that("check if user agent string is built correctly", {
+  request <- list(http_request = list(header = list()))
+  actual <- sdk_version_user_agent_handler(request)
+  expected <- expect_user_agent(request)
+  expect_equal(actual, expected)
+})
