@@ -1,5 +1,5 @@
 
-# Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](https://paws-r.github.io)
+# Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](https://www.paws-r-sdk.com)
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
@@ -172,6 +172,6 @@ design based on [AWS SDK for Go](https://github.com/aws/aws-sdk-go).
 
 [Logo](docs/logo.png) by [Hsinyi Chen](https://linktr.ee/starfolio).
 
-[Home page design](https://paws-r.github.io) and [cheat sheet](docs/cheat_sheet.pdf) by Mara Ursu.
+[Home page design](https://www.paws-r-sdk.com) and [cheat sheet](docs/cheat_sheet.pdf) by Mara Ursu.
 
 Supported by the AWS Open Source promotional credits program.
