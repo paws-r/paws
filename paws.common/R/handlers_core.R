@@ -1,3 +1,5 @@
+#' @importFrom utils packageVersion
+
 #' @include util.R
 
 # Add the name/version to the User-Agent request header.
