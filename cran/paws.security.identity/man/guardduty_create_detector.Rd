@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_detector}
 \alias{guardduty_create_detector}
-\title{Creates a single Amazon GuardDuty detector}
+\title{Creates a single GuardDuty detector}
 \usage{
 guardduty_create_detector(
   Enable,
@@ -31,7 +31,7 @@ presently supported. For more information, see \href{https://docs.aws.amazon.com
 \item{Features}{A list of features that will be configured for the detector.}
 }
 \description{
-Creates a single Amazon GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
+Creates a single GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_create_detector/} for full documentation.
 }

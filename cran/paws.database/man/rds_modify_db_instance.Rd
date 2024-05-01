@@ -86,7 +86,15 @@ existing value are rounded up so that they are 10\% greater than the
 current value.
 
 For the valid values for allocated storage for each engine, see
-\code{\link[=rds_create_db_instance]{create_db_instance}}.}
+\code{\link[=rds_create_db_instance]{create_db_instance}}.
+
+Constraints:
+\itemize{
+\item When you increase the allocated storage for a DB instance that uses
+Provisioned IOPS (\code{gp3}, \code{io1}, or \code{io2} storage type), you must
+also specify the \code{Iops} parameter. You can use the current value for
+\code{Iops}.
+}}
 
 \item{DBInstanceClass}{The new compute and memory capacity of the DB instance, for example
 \code{db.m4.large}. Not all DB instance classes are available in all Amazon
@@ -122,7 +130,7 @@ Changing the subnet group causes an outage during the change. The change
 is applied during the next maintenance window, unless you enable
 \code{ApplyImmediately}.
 
-This parameter doesn't apply to RDS Custom DB instances.
+This setting doesn't apply to RDS Custom DB instances.
 
 Constraints:
 \itemize{
@@ -418,6 +426,9 @@ PostgreSQL - The value supplied must be at least 10\% greater than
 the current value. Values that are not at least 10\% greater than the
 existing value are rounded up so that they are 10\% greater than the
 current value.
+\item When you increase the Provisioned IOPS, you must also specify the
+\code{AllocatedStorage} parameter. You can use the current value for
+\code{AllocatedStorage}.
 }
 
 Default: Uses existing setting}
@@ -457,8 +468,8 @@ Example: \code{mydbinstance}}
 
 \item{StorageType}{The storage type to associate with the DB instance.
 
-If you specify Provisioned IOPS (\code{io1}), you must also include a value
-for the \code{Iops} parameter.
+If you specify \code{io1}, \code{io2}, or \code{gp3} you must also include a value for
+the \code{Iops} parameter.
 
 If you choose to migrate your DB instance from using standard storage to
 using Provisioned IOPS, or from using Provisioned IOPS to using standard
@@ -475,7 +486,7 @@ instance, including modifying the instance, rebooting the instance,
 deleting the instance, creating a read replica for the instance, and
 creating a DB snapshot of the instance.
 
-Valid Values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
 Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
 
@@ -719,7 +730,13 @@ This setting doesn't apply to RDS Custom DB instances.}
 \item{DeletionProtection}{Specifies whether the DB instance has deletion protection enabled. The
 database can't be deleted when deletion protection is enabled. By
 default, deletion protection isn't enabled. For more information, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.
+
+This setting doesn't apply to Amazon Aurora DB instances. You can enable
+or disable deletion protection for the DB cluster. For more information,
+see \code{\link[=rds_modify_db_cluster]{modify_db_cluster}}. DB instances in a DB
+cluster can be deleted even when deletion protection is enabled for the
+DB cluster.}
 
 \item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
 scale the storage of the DB instance.
@@ -920,7 +937,7 @@ group with \code{--option-group-name}.
 enabled.}
 
 \item{MultiTenant}{Specifies whether the to convert your DB instance from the single-tenant
-configuration to the multi-tenant configuration. This parameter is
+conﬁguration to the multi-tenant conﬁguration. This parameter is
 supported only for RDS for Oracle CDB instances.
 
 During the conversion, RDS creates an initial tenant database and

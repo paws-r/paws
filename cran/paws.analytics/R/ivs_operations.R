@@ -100,17 +100,21 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #'
 #' @param authorized Whether the channel is private (enabled for playback authorization).
 #' Default: `false`.
-#' @param insecureIngest Whether the channel allows insecure RTMP ingest. Default: `false`.
+#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
+#' `false`.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
-#' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
-#' Ultra-low and Standard, respectively.) Default: `LOW`.
+#' Default: `LOW`.
 #' @param name Channel name.
+#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
+#' the ARN and enables playback restriction. Default: "" (empty string, no
+#' playback restriction policy is applied).
 #' @param preset Optional transcode preset for the channel. This is selectable only for
 #' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
 #' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
 #' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
-#' @param recordingConfigurationArn Recording-configuration ARN. Default: "" (empty string, recording is
+#' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
+#' ARN and enables recording. Default: "" (empty string, recording is
 #' disabled).
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
 #' [Tagging Amazon Web Services
@@ -127,14 +131,14 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
-ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, preset = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
+ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, playbackRestrictionPolicyArn = NULL, preset = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
+  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -143,6 +147,52 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
   return(response)
 }
 .ivs$operations$create_channel <- ivs_create_channel
+
+#' Creates a new playback restriction policy, for constraining playback by
+#' countries and/or origins
+#'
+#' @description
+#' Creates a new playback restriction policy, for constraining playback by countries and/or origins.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_create_playback_restriction_policy/](https://www.paws-r-sdk.com/docs/ivs_create_playback_restriction_policy/) for full documentation.
+#'
+#' @param allowedCountries A list of country codes that control geoblocking restriction. Allowed
+#' values are the officially assigned [ISO 3166-1
+#' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes.
+#' Default: All countries (an empty array).
+#' @param allowedOrigins A list of origin sites that control CORS restriction. Allowed values are
+#' the same as valid values of the Origin header defined at
+#' <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin>.
+#' Default: All origins (an empty array).
+#' @param enableStrictOriginEnforcement Whether channel playback is constrained by origin site. Default:
+#' `false`.
+#' @param name Playback-restriction-policy name. The value does not need to be unique.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
+#' [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_create_playback_restriction_policy
+ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allowedOrigins = NULL, enableStrictOriginEnforcement = NULL, name = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreatePlaybackRestrictionPolicy",
+    http_method = "POST",
+    http_path = "/CreatePlaybackRestrictionPolicy",
+    paginator = list()
+  )
+  input <- .ivs$create_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name, tags = tags)
+  output <- .ivs$create_playback_restriction_policy_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$create_playback_restriction_policy <- ivs_create_playback_restriction_policy
 
 #' Creates a new recording configuration, used to enable recording to
 #' Amazon S3
@@ -283,6 +333,35 @@ ivs_delete_playback_key_pair <- function(arn) {
 }
 .ivs$operations$delete_playback_key_pair <- ivs_delete_playback_key_pair
 
+#' Deletes the specified playback restriction policy
+#'
+#' @description
+#' Deletes the specified playback restriction policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_delete_playback_restriction_policy/](https://www.paws-r-sdk.com/docs/ivs_delete_playback_restriction_policy/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the playback restriction policy to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_delete_playback_restriction_policy
+ivs_delete_playback_restriction_policy <- function(arn) {
+  op <- new_operation(
+    name = "DeletePlaybackRestrictionPolicy",
+    http_method = "POST",
+    http_path = "/DeletePlaybackRestrictionPolicy",
+    paginator = list()
+  )
+  input <- .ivs$delete_playback_restriction_policy_input(arn = arn)
+  output <- .ivs$delete_playback_restriction_policy_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$delete_playback_restriction_policy <- ivs_delete_playback_restriction_policy
+
 #' Deletes the recording configuration for the specified ARN
 #'
 #' @description
@@ -400,6 +479,35 @@ ivs_get_playback_key_pair <- function(arn) {
   return(response)
 }
 .ivs$operations$get_playback_key_pair <- ivs_get_playback_key_pair
+
+#' Gets the specified playback restriction policy
+#'
+#' @description
+#' Gets the specified playback restriction policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_get_playback_restriction_policy/](https://www.paws-r-sdk.com/docs/ivs_get_playback_restriction_policy/) for full documentation.
+#'
+#' @param arn &#91;required&#93; ARN of the playback restriction policy to be returned.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_get_playback_restriction_policy
+ivs_get_playback_restriction_policy <- function(arn) {
+  op <- new_operation(
+    name = "GetPlaybackRestrictionPolicy",
+    http_method = "POST",
+    http_path = "/GetPlaybackRestrictionPolicy",
+    paginator = list()
+  )
+  input <- .ivs$get_playback_restriction_policy_input(arn = arn)
+  output <- .ivs$get_playback_restriction_policy_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$get_playback_restriction_policy <- ivs_get_playback_restriction_policy
 
 #' Gets the recording configuration for the specified ARN
 #'
@@ -566,6 +674,7 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' See [https://www.paws-r-sdk.com/docs/ivs_list_channels/](https://www.paws-r-sdk.com/docs/ivs_list_channels/) for full documentation.
 #'
 #' @param filterByName Filters the channel list to match the specified name.
+#' @param filterByPlaybackRestrictionPolicyArn Filters the channel list to match the specified policy.
 #' @param filterByRecordingConfigurationArn Filters the channel list to match the specified recording-configuration
 #' ARN.
 #' @param maxResults Maximum number of channels to return. Default: 100.
@@ -575,14 +684,14 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' @keywords internal
 #'
 #' @rdname ivs_list_channels
-ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfigurationArn = NULL, maxResults = NULL, nextToken = NULL) {
+ivs_list_channels <- function(filterByName = NULL, filterByPlaybackRestrictionPolicyArn = NULL, filterByRecordingConfigurationArn = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListChannels",
     http_method = "POST",
     http_path = "/ListChannels",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .ivs$list_channels_input(filterByName = filterByName, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .ivs$list_channels_input(filterByName = filterByName, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_channels_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -623,6 +732,37 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
   return(response)
 }
 .ivs$operations$list_playback_key_pairs <- ivs_list_playback_key_pairs
+
+#' Gets summary information about playback restriction policies
+#'
+#' @description
+#' Gets summary information about playback restriction policies.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_list_playback_restriction_policies/](https://www.paws-r-sdk.com/docs/ivs_list_playback_restriction_policies/) for full documentation.
+#'
+#' @param maxResults Maximum number of policies to return. Default: 1.
+#' @param nextToken The first policy to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_list_playback_restriction_policies
+ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListPlaybackRestrictionPolicies",
+    http_method = "POST",
+    http_path = "/ListPlaybackRestrictionPolicies",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .ivs$list_playback_restriction_policies_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .ivs$list_playback_restriction_policies_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$list_playback_restriction_policies <- ivs_list_playback_restriction_policies
 
 #' Gets summary information about all recording configurations in your
 #' account, in the Amazon Web Services region where the API request is
@@ -928,7 +1068,7 @@ ivs_tag_resource <- function(resourceArn, tags) {
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed. The ARN must be
 #' URL-encoded.
 #' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
-#' s`tring:string (key:value)`. See [Tagging Amazon Web Services
+#' `string:string (key:value)`. See [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' for more information, including restrictions that apply to tags and "Tag
 #' naming limits and requirements"; Amazon IVS has no service-specific
@@ -963,19 +1103,21 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
 #' @param authorized Whether the channel is private (enabled for playback authorization).
-#' @param insecureIngest Whether the channel allows insecure RTMP ingest. Default: `false`.
+#' @param insecureIngest Whether the channel allows insecure RTMP and SRT ingest. Default:
+#' `false`.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
-#' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
-#' Ultra-low and Standard, respectively.)
 #' @param name Channel name.
+#' @param playbackRestrictionPolicyArn Playback-restriction-policy ARN. A valid ARN value here both specifies
+#' the ARN and enables playback restriction. If this is set to an empty
+#' string, playback restriction policy is disabled.
 #' @param preset Optional transcode preset for the channel. This is selectable only for
 #' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
 #' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
 #' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
-#' @param recordingConfigurationArn Recording-configuration ARN. If this is set to an empty string,
-#' recording is disabled. A value other than an empty string indicates that
-#' recording is enabled
+#' @param recordingConfigurationArn Recording-configuration ARN. A valid ARN value here both specifies the
+#' ARN and enables recording. If this is set to an empty string, recording
+#' is disabled.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable input resolution or bitrate, the stream
 #' probably will disconnect immediately.* Default: `STANDARD`. For details,
@@ -985,14 +1127,14 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
-ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, preset = NULL, recordingConfigurationArn = NULL, type = NULL) {
+ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, playbackRestrictionPolicyArn = NULL, preset = NULL, recordingConfigurationArn = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
+  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -1001,3 +1143,43 @@ ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, la
   return(response)
 }
 .ivs$operations$update_channel <- ivs_update_channel
+
+#' Updates a specified playback restriction policy
+#'
+#' @description
+#' Updates a specified playback restriction policy.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ivs_update_playback_restriction_policy/](https://www.paws-r-sdk.com/docs/ivs_update_playback_restriction_policy/) for full documentation.
+#'
+#' @param allowedCountries A list of country codes that control geoblocking restriction. Allowed
+#' values are the officially assigned [ISO 3166-1
+#' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes.
+#' Default: All countries (an empty array).
+#' @param allowedOrigins A list of origin sites that control CORS restriction. Allowed values are
+#' the same as valid values of the Origin header defined at
+#' <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin>.
+#' Default: All origins (an empty array).
+#' @param arn &#91;required&#93; ARN of the playback-restriction-policy to be updated.
+#' @param enableStrictOriginEnforcement Whether channel playback is constrained by origin site. Default:
+#' `false`.
+#' @param name Playback-restriction-policy name. The value does not need to be unique.
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_update_playback_restriction_policy
+ivs_update_playback_restriction_policy <- function(allowedCountries = NULL, allowedOrigins = NULL, arn, enableStrictOriginEnforcement = NULL, name = NULL) {
+  op <- new_operation(
+    name = "UpdatePlaybackRestrictionPolicy",
+    http_method = "POST",
+    http_path = "/UpdatePlaybackRestrictionPolicy",
+    paginator = list()
+  )
+  input <- .ivs$update_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, arn = arn, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
+  output <- .ivs$update_playback_restriction_policy_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$update_playback_restriction_policy <- ivs_update_playback_restriction_policy

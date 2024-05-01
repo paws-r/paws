@@ -111,7 +111,7 @@ retrieving chat transcripts.
 \link[paws.customer.engagement:connectparticipant_disconnect_participant]{disconnect_participant} \tab Disconnects a participant\cr
 \link[paws.customer.engagement:connectparticipant_get_attachment]{get_attachment} \tab Provides a pre-signed URL for download of a completed attachment\cr
 \link[paws.customer.engagement:connectparticipant_get_transcript]{get_transcript} \tab Retrieves a transcript of the session, including details about any attachments\cr
-\link[paws.customer.engagement:connectparticipant_send_event]{send_event} \tab Sends an event\cr
+\link[paws.customer.engagement:connectparticipant_send_event]{send_event} \tab The application/vnd\cr
 \link[paws.customer.engagement:connectparticipant_send_message]{send_message} \tab Sends a message\cr
 \link[paws.customer.engagement:connectparticipant_start_attachment_upload]{start_attachment_upload} \tab Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3
 }

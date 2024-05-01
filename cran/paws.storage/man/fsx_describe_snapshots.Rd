@@ -25,8 +25,8 @@ error occurs.}
 
 \item{NextToken}{}
 
-\item{IncludeShared}{Set to \code{false} (default) if you want to only see the snapshots in your
-Amazon Web Services account. Set to \code{true} if you want to see the
+\item{IncludeShared}{Set to \code{false} (default) if you want to only see the snapshots owned by
+your Amazon Web Services account. Set to \code{true} if you want to see the
 snapshots in your account and the ones shared with you from another
 account.}
 }

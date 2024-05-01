@@ -77,6 +77,8 @@ supportapp_create_slack_channel_configuration <- function(channelId, channelName
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_delete_account_alias/](https://www.paws-r-sdk.com/docs/supportapp_delete_account_alias/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname supportapp_delete_account_alias
@@ -167,6 +169,8 @@ supportapp_delete_slack_workspace_configuration <- function(teamId) {
 #' Retrieves the alias from an Amazon Web Services account ID. The alias appears in the Amazon Web Services Support App page of the Amazon Web Services Support Center. The alias also appears in Slack messages from the Amazon Web Services Support App.
 #'
 #' See [https://www.paws-r-sdk.com/docs/supportapp_get_account_alias/](https://www.paws-r-sdk.com/docs/supportapp_get_account_alias/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

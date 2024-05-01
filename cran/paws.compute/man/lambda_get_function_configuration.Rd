@@ -7,7 +7,7 @@
 lambda_get_function_configuration(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
+\item{FunctionName}{[required] The name or ARN of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{

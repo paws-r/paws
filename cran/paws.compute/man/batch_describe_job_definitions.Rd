@@ -16,7 +16,8 @@ batch_describe_job_definitions(
 \item{jobDefinitions}{A list of up to 100 job definitions. Each entry in the list can either
 be an ARN in the format
 \verb{arn:aws:batch:$\{Region\}:$\{Account\}:job-definition/$\{JobDefinitionName\}:$\{Revision\}}
-or a short version using the form \verb{$\{JobDefinitionName\}:$\{Revision\}}.}
+or a short version using the form \verb{$\{JobDefinitionName\}:$\{Revision\}}.
+This parameter can't be used with other parameters.}
 
 \item{maxResults}{The maximum number of results returned by
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} in

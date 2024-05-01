@@ -190,8 +190,8 @@ NULL
 #'  \link[=globalaccelerator_list_accelerators]{list_accelerators} \tab List the accelerators for an Amazon Web Services account\cr
 #'  \link[=globalaccelerator_list_byoip_cidrs]{list_byoip_cidrs} \tab Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, including the current state and a history of state changes\cr
 #'  \link[=globalaccelerator_list_cross_account_attachments]{list_cross_account_attachments} \tab List the cross-account attachments that have been created in Global Accelerator\cr
-#'  \link[=globalaccelerator_list_cross_account_resource_accounts]{list_cross_account_resource_accounts} \tab List the accounts that have cross-account endpoints\cr
-#'  \link[=globalaccelerator_list_cross_account_resources]{list_cross_account_resources} \tab List the cross-account endpoints available to add to an accelerator\cr
+#'  \link[=globalaccelerator_list_cross_account_resource_accounts]{list_cross_account_resource_accounts} \tab List the accounts that have cross-account resources\cr
+#'  \link[=globalaccelerator_list_cross_account_resources]{list_cross_account_resources} \tab List the cross-account resources available to work with\cr
 #'  \link[=globalaccelerator_list_custom_routing_accelerators]{list_custom_routing_accelerators} \tab List the custom routing accelerators for an Amazon Web Services account\cr
 #'  \link[=globalaccelerator_list_custom_routing_endpoint_groups]{list_custom_routing_endpoint_groups} \tab List the endpoint groups that are associated with a listener for a custom routing accelerator\cr
 #'  \link[=globalaccelerator_list_custom_routing_listeners]{list_custom_routing_listeners} \tab List the listeners for a custom routing accelerator\cr
@@ -245,7 +245,7 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 
 .globalaccelerator$metadata <- list(
   service_name = "globalaccelerator",
-  endpoints = list("*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "globalaccelerator.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "globalaccelerator.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "globalaccelerator.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "globalaccelerator.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "globalaccelerator.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "globalaccelerator.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Global Accelerator",
   api_version = "2018-08-08",
   signing_name = "globalaccelerator",

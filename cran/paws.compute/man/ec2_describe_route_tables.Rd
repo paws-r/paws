@@ -15,6 +15,8 @@ ec2_describe_route_tables(
 \arguments{
 \item{Filters}{The filters.
 \itemize{
+\item \code{association.gateway-id} - The ID of the gateway involved in the
+association.
 \item \code{association.route-table-association-id} - The ID of an association
 ID for the route table.
 \item \code{association.route-table-id} - The ID of the route table involved in

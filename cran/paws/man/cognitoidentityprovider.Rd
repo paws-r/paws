@@ -175,7 +175,7 @@ example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/lat
 \link[paws.security.identity:cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password} \tab Allows a user to enter a confirmation code to reset a forgotten password\cr
 \link[paws.security.identity:cognitoidentityprovider_confirm_sign_up]{confirm_sign_up} \tab This public API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool via the SignUp API operation\cr
 \link[paws.security.identity:cognitoidentityprovider_create_group]{create_group} \tab Creates a new group in the specified user pool\cr
-\link[paws.security.identity:cognitoidentityprovider_create_identity_provider]{create_identity_provider} \tab Creates an IdP for a user pool\cr
+\link[paws.security.identity:cognitoidentityprovider_create_identity_provider]{create_identity_provider} \tab Adds a configuration and trust relationship between a third-party identity provider (IdP) and a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_create_resource_server]{create_resource_server} \tab Creates a new OAuth2\cr
 \link[paws.security.identity:cognitoidentityprovider_create_user_import_job]{create_user_import_job} \tab Creates a user import job\cr
 \link[paws.security.identity:cognitoidentityprovider_create_user_pool]{create_user_pool} \tab This action might generate an SMS text message\cr

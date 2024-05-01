@@ -684,7 +684,10 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #'   MaxResults, QueryParameters, OptionalParameters, HealthStatus)
 #'
 #' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
-#' member of the `Properties` member of the namespace.
+#' member of the `Properties` member of the namespace. In most cases,
+#' `Name` and `HttpName` match. However, if you reuse `Name` for namespace
+#' creation, a generated hash is added to `HttpName` to distinguish the
+#' two.
 #' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
 #' instance.
 #' @param MaxResults The maximum number of instances that you want Cloud Map to return in the
@@ -818,6 +821,16 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #'   ServiceName = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example discovers the revision ID for a registered
+#' # instance.
+#' svc$discover_instances_revision(
+#'   NamespaceName = "example-namespace",
+#'   ServiceName = "example-service"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1529,11 +1542,11 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 .servicediscovery$operations$list_operations <- servicediscovery_list_operations
 
 #' Lists summary information for all the services that are associated with
-#' one or more specified namespaces
+#' one or more namespaces
 #'
 #' @description
 #' Lists summary information for all the services that are associated with
-#' one or more specified namespaces.
+#' one or more namespaces.
 #'
 #' @usage
 #' servicediscovery_list_services(NextToken, MaxResults, Filters)
@@ -1799,7 +1812,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' Do not include sensitive information in the attributes if the namespace
 #' is discoverable by public DNS queries.
 #' 
-#' Supported attribute keys include the following:
+#' The following are the supported attribute keys.
 #' 
 #' **AWS_ALIAS_DNS_NAME**
 #' 
@@ -1829,6 +1842,9 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don't specify
 #'     values for any of the `AWS_INSTANCE` attributes.
+#' 
+#' -   The `AWS_ALIAS_DNS_NAME` is not supported in the GovCloud (US)
+#'     Regions.
 #' 
 #' **AWS_EC2_INSTANCE_ID**
 #' 
@@ -2117,6 +2133,17 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example updates the description of a HTTP namespace.
+#' svc$update_http_namespace(
+#'   Id = "ns-vh4nbmEXAMPLE",
+#'   Namespace = list(
+#'     Description = "The updated namespace description."
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_http_namespace
@@ -2253,6 +2280,28 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the description of a private DNS
+#' # namespace.
+#' svc$update_private_dns_namespace(
+#'   Id = "ns-bk3aEXAMPLE",
+#'   Namespace = list(
+#'     Description = "The updated namespace description."
+#'   ),
+#'   UpdaterRequestId = ""
+#' )
+#' 
+#' # The following example updates the description of a public DNS namespace.
+#' svc$update_private_dns_namespace(
+#'   Id = "ns-bk3aEXAMPLE",
+#'   Namespace = list(
+#'     Description = "The updated namespace description."
+#'   ),
+#'   UpdaterRequestId = ""
+#' )
+#' }
 #'
 #' @keywords internal
 #'

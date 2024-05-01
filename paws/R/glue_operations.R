@@ -10285,8 +10285,9 @@ glue_get_custom_entity_type <- function(Name) {
 #' list(
 #'   DataCatalogEncryptionSettings = list(
 #'     EncryptionAtRest = list(
-#'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       SseAwsKmsKeyId = "string"
+#'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-KMS-WITH-SERVICE-ROLE",
+#'       SseAwsKmsKeyId = "string",
+#'       CatalogEncryptionServiceRole = "string"
 #'     ),
 #'     ConnectionPasswordEncryption = list(
 #'       ReturnConnectionPasswordEncrypted = TRUE|FALSE,
@@ -16358,7 +16359,24 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #'       Identifier = "string",
 #'       DatabaseIdentifier = "string",
 #'       ConnectionName = "string"
-#'     )
+#'     ),
+#'     ViewDefinition = list(
+#'       IsProtected = TRUE|FALSE,
+#'       Definer = "string",
+#'       SubObjects = list(
+#'         "string"
+#'       ),
+#'       Representations = list(
+#'         list(
+#'           Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'           DialectVersion = "string",
+#'           ViewOriginalText = "string",
+#'           ViewExpandedText = "string",
+#'           IsStale = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     IsMultiDialectView = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -16608,7 +16626,24 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
 #'         Identifier = "string",
 #'         DatabaseIdentifier = "string",
 #'         ConnectionName = "string"
-#'       )
+#'       ),
+#'       ViewDefinition = list(
+#'         IsProtected = TRUE|FALSE,
+#'         Definer = "string",
+#'         SubObjects = list(
+#'           "string"
+#'         ),
+#'         Representations = list(
+#'           list(
+#'             Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'             DialectVersion = "string",
+#'             ViewOriginalText = "string",
+#'             ViewExpandedText = "string",
+#'             IsStale = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       IsMultiDialectView = TRUE|FALSE
 #'     ),
 #'     VersionId = "string"
 #'   )
@@ -16781,7 +16816,24 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #'           Identifier = "string",
 #'           DatabaseIdentifier = "string",
 #'           ConnectionName = "string"
-#'         )
+#'         ),
+#'         ViewDefinition = list(
+#'           IsProtected = TRUE|FALSE,
+#'           Definer = "string",
+#'           SubObjects = list(
+#'             "string"
+#'           ),
+#'           Representations = list(
+#'             list(
+#'               Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'               DialectVersion = "string",
+#'               ViewOriginalText = "string",
+#'               ViewExpandedText = "string",
+#'               IsStale = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         IsMultiDialectView = TRUE|FALSE
 #'       ),
 #'       VersionId = "string"
 #'     )
@@ -16960,7 +17012,24 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #'         Identifier = "string",
 #'         DatabaseIdentifier = "string",
 #'         ConnectionName = "string"
-#'       )
+#'       ),
+#'       ViewDefinition = list(
+#'         IsProtected = TRUE|FALSE,
+#'         Definer = "string",
+#'         SubObjects = list(
+#'           "string"
+#'         ),
+#'         Representations = list(
+#'           list(
+#'             Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'             DialectVersion = "string",
+#'             ViewOriginalText = "string",
+#'             ViewExpandedText = "string",
+#'             IsStale = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       IsMultiDialectView = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -17674,20 +17743,20 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 }
 .glue$operations$get_unfiltered_partitions_metadata <- glue_get_unfiltered_partitions_metadata
 
-#' Retrieves table metadata from the Data Catalog that contains unfiltered
-#' metadata
+#' Allows a third-party analytical engine to retrieve unfiltered table
+#' metadata from the Data Catalog
 #'
 #' @description
-#' Retrieves table metadata from the Data Catalog that contains unfiltered
-#' metadata.
+#' Allows a third-party analytical engine to retrieve unfiltered table
+#' metadata from the Data Catalog.
 #' 
 #' For IAM authorization, the public IAM action associated with this API is
 #' `glue:GetTable`.
 #'
 #' @usage
 #' glue_get_unfiltered_table_metadata(Region, CatalogId, DatabaseName,
-#'   Name, AuditContext, SupportedPermissionTypes, SupportedDialect,
-#'   Permissions, QuerySessionContext)
+#'   Name, AuditContext, SupportedPermissionTypes, ParentResourceArn,
+#'   RootResourceArn, SupportedDialect, Permissions, QuerySessionContext)
 #'
 #' @param Region Specified only if the base tables belong to a different Amazon Web
 #' Services Region.
@@ -17696,7 +17765,44 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #' @param Name &#91;required&#93; (Required) Specifies the name of a table for which you are requesting
 #' metadata.
 #' @param AuditContext A structure containing Lake Formation audit context information.
-#' @param SupportedPermissionTypes &#91;required&#93; (Required) A list of supported permission types.
+#' @param SupportedPermissionTypes &#91;required&#93; Indicates the level of filtering a third-party analytical engine is
+#' capable of enforcing when calling the
+#' [`get_unfiltered_table_metadata`][glue_get_unfiltered_table_metadata]
+#' API operation. Accepted values are:
+#' 
+#' -   `COLUMN_PERMISSION` - Column permissions ensure that users can
+#'     access only specific columns in the table. If there are particular
+#'     columns contain sensitive data, data lake administrators can define
+#'     column filters that exclude access to specific columns.
+#' 
+#' -   `CELL_FILTER_PERMISSION` - Cell-level filtering combines column
+#'     filtering (include or exclude columns) and row filter expressions to
+#'     restrict access to individual elements in the table.
+#' 
+#' -   `NESTED_PERMISSION` - Nested permissions combines cell-level
+#'     filtering and nested column filtering to restrict access to columns
+#'     and/or nested columns in specific rows based on row filter
+#'     expressions.
+#' 
+#' -   `NESTED_CELL_PERMISSION` - Nested cell permissions combines nested
+#'     permission with nested cell-level filtering. This allows different
+#'     subsets of nested columns to be restricted based on an array of row
+#'     filter expressions.
+#' 
+#' Note: Each of these permission types follows a hierarchical order where
+#' each subsequent permission type includes all permission of the previous
+#' type.
+#' 
+#' Important: If you provide a supported permission type that doesn't match
+#' the user's level of permissions on the table, then Lake Formation raises
+#' an exception. For example, if the third-party engine calling the
+#' [`get_unfiltered_table_metadata`][glue_get_unfiltered_table_metadata]
+#' operation can enforce only column-level filtering, and the user has
+#' nested cell filtering applied on the table, Lake Formation throws an
+#' exception, and will not return unfiltered table metadata and data access
+#' credentials.
+#' @param ParentResourceArn The resource ARN of the view.
+#' @param RootResourceArn The resource ARN of the root view in a chain of nested views.
 #' @param SupportedDialect A structure specifying the dialect and dialect version used by the query
 #' engine.
 #' @param Permissions The Lake Formation data permissions of the caller on the table. Used to
@@ -17817,7 +17923,24 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'       Identifier = "string",
 #'       DatabaseIdentifier = "string",
 #'       ConnectionName = "string"
-#'     )
+#'     ),
+#'     ViewDefinition = list(
+#'       IsProtected = TRUE|FALSE,
+#'       Definer = "string",
+#'       SubObjects = list(
+#'         "string"
+#'       ),
+#'       Representations = list(
+#'         list(
+#'           Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'           DialectVersion = "string",
+#'           ViewOriginalText = "string",
+#'           ViewExpandedText = "string",
+#'           IsStale = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     IsMultiDialectView = TRUE|FALSE
 #'   ),
 #'   AuthorizedColumns = list(
 #'     "string"
@@ -17830,10 +17953,13 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'     )
 #'   ),
 #'   QueryAuthorizationId = "string",
+#'   IsMultiDialectView = TRUE|FALSE,
 #'   ResourceArn = "string",
+#'   IsProtected = TRUE|FALSE,
 #'   Permissions = list(
 #'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
-#'   )
+#'   ),
+#'   RowFilter = "string"
 #' )
 #' ```
 #'
@@ -17854,6 +17980,8 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #'   SupportedPermissionTypes = list(
 #'     "COLUMN_PERMISSION"|"CELL_FILTER_PERMISSION"|"NESTED_PERMISSION"|"NESTED_CELL_PERMISSION"
 #'   ),
+#'   ParentResourceArn = "string",
+#'   RootResourceArn = "string",
 #'   SupportedDialect = list(
 #'     Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
 #'     DialectVersion = "string"
@@ -17880,14 +18008,14 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #' @rdname glue_get_unfiltered_table_metadata
 #'
 #' @aliases glue_get_unfiltered_table_metadata
-glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes, SupportedDialect = NULL, Permissions = NULL, QuerySessionContext = NULL) {
+glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes, ParentResourceArn = NULL, RootResourceArn = NULL, SupportedDialect = NULL, Permissions = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "GetUnfilteredTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
+  input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, ParentResourceArn = ParentResourceArn, RootResourceArn = RootResourceArn, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_table_metadata_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -20400,8 +20528,9 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #'   CatalogId = "string",
 #'   DataCatalogEncryptionSettings = list(
 #'     EncryptionAtRest = list(
-#'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
-#'       SseAwsKmsKeyId = "string"
+#'       CatalogEncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-KMS-WITH-SERVICE-ROLE",
+#'       SseAwsKmsKeyId = "string",
+#'       CatalogEncryptionServiceRole = "string"
 #'     ),
 #'     ConnectionPasswordEncryption = list(
 #'       ReturnConnectionPasswordEncrypted = TRUE|FALSE,
@@ -21210,7 +21339,24 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #'         Identifier = "string",
 #'         DatabaseIdentifier = "string",
 #'         ConnectionName = "string"
-#'       )
+#'       ),
+#'       ViewDefinition = list(
+#'         IsProtected = TRUE|FALSE,
+#'         Definer = "string",
+#'         SubObjects = list(
+#'           "string"
+#'         ),
+#'         Representations = list(
+#'           list(
+#'             Dialect = "REDSHIFT"|"ATHENA"|"SPARK",
+#'             DialectVersion = "string",
+#'             ViewOriginalText = "string",
+#'             ViewExpandedText = "string",
+#'             IsStale = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       IsMultiDialectView = TRUE|FALSE
 #'     )
 #'   )
 #' )

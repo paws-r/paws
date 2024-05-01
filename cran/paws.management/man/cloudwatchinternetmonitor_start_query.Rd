@@ -10,7 +10,8 @@ cloudwatchinternetmonitor_start_query(
   StartTime,
   EndTime,
   QueryType,
-  FilterParameters = NULL
+  FilterParameters = NULL,
+  LinkedAccountId = NULL
 )
 }
 \arguments{
@@ -25,9 +26,15 @@ data for with your query.}
 \item{QueryType}{[required] The type of query to run. The following are the three types of queries
 that you can run using the Internet Monitor query interface:
 \itemize{
-\item \code{MEASUREMENTS}: TBD definition
-\item \code{TOP_LOCATIONS}: TBD definition
-\item \code{TOP_LOCATION_DETAILS}: TBD definition
+\item \code{MEASUREMENTS}: Provides availability score, performance score,
+total traffic, and round-trip times, at 5 minute intervals.
+\item \code{TOP_LOCATIONS}: Provides availability score, performance score,
+total traffic, and time to first byte (TTFB) information, for the
+top location and ASN combinations that you're monitoring, by traffic
+volume.
+\item \code{TOP_LOCATION_DETAILS}: Provides TTFB for Amazon CloudFront, your
+current configuration, and the best performing EC2 configuration, at
+1 hour intervals.
 }
 
 For lists of the fields returned with each query type and more
@@ -41,6 +48,12 @@ query type, since each query type returns a different set of Internet
 Monitor data.
 
 For more information about specifying filter parameters, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html}{Using the Amazon CloudWatch Internet Monitor query interface}
+in the Amazon CloudWatch Internet Monitor User Guide.}
+
+\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing
+for in Amazon CloudWatch Internet Monitor. You configure cross-account
+sharing by using Amazon CloudWatch Observability Access Manager. For
+more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
 in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{

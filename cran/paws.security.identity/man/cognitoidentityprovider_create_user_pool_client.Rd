@@ -184,7 +184,9 @@ App callback URLs such as myapp://example are also supported.}
 
 \item{LogoutURLs}{A list of allowed logout URLs for the IdPs.}
 
-\item{DefaultRedirectURI}{The default redirect URI. Must be in the \code{CallbackURLs} list.
+\item{DefaultRedirectURI}{The default redirect URI. In app clients with one assigned IdP, replaces
+\code{redirect_uri} in authentication requests. Must be in the \code{CallbackURLs}
+list.
 
 A redirect URI must:
 \itemize{
@@ -193,14 +195,16 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html#cognito-user-pools-app-idp-settings-about}{Default redirect URI}.
 
 Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 testing purposes only.
 
 App callback URLs such as myapp://example are also supported.}
 
-\item{AllowedOAuthFlows}{The allowed OAuth flows.
+\item{AllowedOAuthFlows}{The OAuth grant types that you want your app client to generate. To
+create an app client that generates client credentials grants, you must
+add \code{client_credentials} as the only allowed OAuth flow.
 
 \strong{code}
 

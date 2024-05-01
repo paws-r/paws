@@ -12,7 +12,8 @@ dynamodb_list_contributor_insights(
 )
 }
 \arguments{
-\item{TableName}{The name of the table.}
+\item{TableName}{The name of the table. You can also provide the Amazon Resource Name
+(ARN) of the table in this parameter.}
 
 \item{NextToken}{A token to for the desired page, if there is one.}
 

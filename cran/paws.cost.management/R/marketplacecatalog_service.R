@@ -141,7 +141,7 @@ marketplacecatalog <- function(config = list(), credentials = list(), endpoint =
 
 .marketplacecatalog$metadata <- list(
   service_name = "marketplacecatalog",
-  endpoints = list("*" = list(endpoint = "catalog.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "catalog.marketplace.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "catalog.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "catalog.marketplace.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "catalog.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "catalog.marketplace.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "catalog.marketplace.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "catalog.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "catalog.marketplace.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "catalog.marketplace.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Marketplace Catalog",
   api_version = "2018-09-17",
   signing_name = "aws-marketplace",

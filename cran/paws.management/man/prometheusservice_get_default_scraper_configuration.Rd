@@ -2,12 +2,13 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_get_default_scraper_configuration}
 \alias{prometheusservice_get_default_scraper_configuration}
-\title{Gets a default configuration}
+\title{The GetDefaultScraperConfiguration operation returns the default scraper
+configuration used when Amazon EKS creates a scraper for you}
 \usage{
 prometheusservice_get_default_scraper_configuration()
 }
 \description{
-Gets a default configuration.
+The \code{\link[=prometheusservice_get_default_scraper_configuration]{get_default_scraper_configuration}} operation returns the default scraper configuration used when Amazon EKS creates a scraper for you.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_get_default_scraper_configuration/} for full documentation.
 }

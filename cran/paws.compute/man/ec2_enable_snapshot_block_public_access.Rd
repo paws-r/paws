@@ -28,7 +28,10 @@ available.
 in the Region. Users in the account will no longer be able to
 request new public sharing. However, snapshots that are already
 publicly shared, remain publicly available.
-}}
+}
+
+\code{unblocked} is not a valid value for
+\strong{EnableSnapshotBlockPublicAccess}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

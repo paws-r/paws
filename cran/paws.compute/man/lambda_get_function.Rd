@@ -8,7 +8,7 @@ to download the deployment package that's valid for 10 minutes}
 lambda_get_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
+\item{FunctionName}{[required] The name or ARN of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{

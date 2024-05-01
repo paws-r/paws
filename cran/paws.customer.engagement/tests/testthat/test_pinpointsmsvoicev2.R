@@ -48,6 +48,14 @@ test_that("describe_pools", {
   expect_error(svc$describe_pools(MaxResults = 20), NA)
 })
 
+test_that("describe_protect_configurations", {
+  expect_error(svc$describe_protect_configurations(), NA)
+})
+
+test_that("describe_protect_configurations", {
+  expect_error(svc$describe_protect_configurations(MaxResults = 20), NA)
+})
+
 test_that("describe_registration_attachments", {
   expect_error(svc$describe_registration_attachments(), NA)
 })

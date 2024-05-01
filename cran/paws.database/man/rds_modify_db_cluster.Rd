@@ -48,7 +48,9 @@ rds_modify_db_cluster(
   EngineMode = NULL,
   AllowEngineModeChange = NULL,
   EnableLocalWriteForwarding = NULL,
-  AwsBackupRecoveryPointArn = NULL
+  AwsBackupRecoveryPointArn = NULL,
+  EnableLimitlessDatabase = NULL,
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -370,7 +372,7 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 Valid Values:
 \itemize{
 \item Aurora DB clusters - \code{aurora | aurora-iopt1}
-\item Multi-AZ DB clusters - \code{io1}
+\item Multi-AZ DB clusters - \code{io1 | io2 | gp3}
 }
 
 Default:
@@ -579,6 +581,19 @@ Valid for: Aurora DB clusters only}
 
 \item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in Amazon Web
 Services Backup.}
+
+\item{EnableLimitlessDatabase}{Specifies whether to enable Aurora Limitless Database. You must enable
+Aurora Limitless Database to create a DB shard group.
+
+Valid for: Aurora DB clusters only}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB cluster's server
+certificate.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide}.
+
+Valid for Cluster Type: Multi-AZ DB clusters}
 }
 \description{
 Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.

@@ -126,6 +126,38 @@ elasticsearchservice_authorize_vpc_endpoint_access <- function(DomainName, Accou
 }
 .elasticsearchservice$operations$authorize_vpc_endpoint_access <- elasticsearchservice_authorize_vpc_endpoint_access
 
+#' Cancels a pending configuration change on an Amazon OpenSearch Service
+#' domain
+#'
+#' @description
+#' Cancels a pending configuration change on an Amazon OpenSearch Service domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_cancel_domain_config_change/](https://www.paws-r-sdk.com/docs/elasticsearchservice_cancel_domain_config_change/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain configuration request to cancel.
+#' @param DryRun When set to **True**, returns the list of change IDs and properties that
+#' will be cancelled without actually cancelling the change.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_cancel_domain_config_change
+elasticsearchservice_cancel_domain_config_change <- function(DomainName, DryRun = NULL) {
+  op <- new_operation(
+    name = "CancelDomainConfigChange",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/domain/{DomainName}/config/cancel",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$cancel_domain_config_change_input(DomainName = DomainName, DryRun = DryRun)
+  output <- .elasticsearchservice$cancel_domain_config_change_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$cancel_domain_config_change <- elasticsearchservice_cancel_domain_config_change
+
 #' Cancels a scheduled service software update for an Amazon ES domain
 #'
 #' @description

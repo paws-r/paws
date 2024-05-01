@@ -29,17 +29,17 @@ For more information about the IAM role to use with the Amazon Redshift
 scheduler, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html}{Using Identity-Based Policies for Amazon Redshift}
 in the Amazon Redshift Cluster Management Guide}
 
-\item{schedule}{The schedule for a one-time (at format) or recurring (cron format)
-scheduled action. Schedule invocations must be separated by at least one
-hour.
-
-Format of at expressions is "\code{at(yyyy-mm-ddThh:mm:ss)}". For example,
-"\verb{at(2016-03-04T17:27:00)}".
-
-Format of cron expressions is
-"\verb{cron(Minutes Hours Day-of-month Month Day-of-week Year)}". For
-example, "\verb{cron(0 10 ? * MON *)}". For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions}{Cron Expressions}
-in the \emph{Amazon CloudWatch Events User Guide}.}
+\item{schedule}{The schedule for a one-time (at timestamp format) or recurring (cron
+format) scheduled action. Schedule invocations must be separated by at
+least one hour. Times are in UTC.
+\itemize{
+\item Format of at timestamp is \code{yyyy-mm-ddThh:mm:ss}. For example,
+\verb{2016-03-04T17:27:00}.
+\item Format of cron expression is
+\verb{(Minutes Hours Day-of-month Month Day-of-week Year)}. For example,
+\code{"(0 10 ? * MON *)"}. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions}{Cron Expressions}
+in the \emph{Amazon CloudWatch Events User Guide}.
+}}
 
 \item{scheduledActionDescription}{The descripion of the scheduled action to update to.}
 

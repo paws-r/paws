@@ -112,7 +112,7 @@ finspace_create_environment <- function(name, description = NULL, kmsKeyId = NUL
 #' @param databaseName &#91;required&#93; The name of the kdb database.
 #' @param changeRequests &#91;required&#93; A list of change request objects that are run in order. A change request
 #' object consists of `changeType` , `s3Path`, and `dbPath`. A changeType
-#' can has the following values:
+#' can have the following values:
 #' 
 #' -   PUT – Adds or updates files in a database.
 #' 
@@ -353,7 +353,8 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #'             dbPaths = list(
 #'               "string"
 #'             ),
-#'             volumeName = "string"
+#'             volumeName = "string",
+#'             onDemand = TRUE|FALSE
 #'           )
 #'         )
 #'       )
@@ -460,7 +461,8 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #'             dbPaths = list(
 #'               "string"
 #'             ),
-#'             volumeName = "string"
+#'             volumeName = "string",
+#'             onDemand = TRUE|FALSE
 #'           )
 #'         )
 #'       )
@@ -631,18 +633,15 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
 #' @usage
 #' finspace_create_kx_dataview(environmentId, databaseName, dataviewName,
 #'   azMode, availabilityZoneId, changesetId, segmentConfigurations,
-#'   autoUpdate, description, tags, clientToken)
+#'   autoUpdate, readWrite, description, tags, clientToken)
 #'
 #' @param environmentId &#91;required&#93; A unique identifier for the kdb environment, where you want to create
 #' the dataview.
 #' @param databaseName &#91;required&#93; The name of the database where you want to create a dataview.
 #' @param dataviewName &#91;required&#93; A unique identifier for the dataview.
-#' @param azMode &#91;required&#93; The number of availability zones you want to assign per cluster. This
-#' can be one of the following
-#' 
-#' -   `SINGLE` – Assigns one availability zone per cluster.
-#' 
-#' -   `MULTI` – Assigns all the availability zones per cluster.
+#' @param azMode &#91;required&#93; The number of availability zones you want to assign per volume.
+#' Currently, FinSpace only supports `SINGLE` for volumes. This places
+#' dataview in a single AZ.
 #' @param availabilityZoneId The identifier of the availability zones.
 #' @param changesetId A unique identifier of the changeset that you want to use to ingest
 #' data.
@@ -654,6 +653,23 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
 #' @param autoUpdate The option to specify whether you want to apply all the future additions
 #' and corrections automatically to the dataview, when you ingest new
 #' changesets. The default value is false.
+#' @param readWrite The option to specify whether you want to make the dataview writable to
+#' perform database maintenance. The following are some considerations
+#' related to writable dataviews.
+#' 
+#' -   You cannot create partial writable dataviews. When you create
+#'     writeable dataviews you must provide the entire database path.
+#' 
+#' -   You cannot perform updates on a writeable dataview. Hence,
+#'     `autoUpdate` must be set as **False** if `readWrite` is **True** for
+#'     a dataview.
+#' 
+#' -   You must also use a unique volume for creating a writeable dataview.
+#'     So, if you choose a volume that is already in use by another
+#'     dataview, the dataview creation fails.
+#' 
+#' -   Once you create a dataview as writeable, you cannot change it to
+#'     read-only. So, you cannot update the `readWrite` parameter later.
 #' @param description A description of the dataview.
 #' @param tags A list of key-value pairs to label the dataview. You can add up to 50
 #' tags to a dataview.
@@ -674,11 +690,13 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
 #'       dbPaths = list(
 #'         "string"
 #'       ),
-#'       volumeName = "string"
+#'       volumeName = "string",
+#'       onDemand = TRUE|FALSE
 #'     )
 #'   ),
 #'   description = "string",
 #'   autoUpdate = TRUE|FALSE,
+#'   readWrite = TRUE|FALSE,
 #'   createdTimestamp = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -703,10 +721,12 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
 #'       dbPaths = list(
 #'         "string"
 #'       ),
-#'       volumeName = "string"
+#'       volumeName = "string",
+#'       onDemand = TRUE|FALSE
 #'     )
 #'   ),
 #'   autoUpdate = TRUE|FALSE,
+#'   readWrite = TRUE|FALSE,
 #'   description = "string",
 #'   tags = list(
 #'     "string"
@@ -720,14 +740,14 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
 #' @rdname finspace_create_kx_dataview
 #'
 #' @aliases finspace_create_kx_dataview
-finspace_create_kx_dataview <- function(environmentId, databaseName, dataviewName, azMode, availabilityZoneId = NULL, changesetId = NULL, segmentConfigurations = NULL, autoUpdate = NULL, description = NULL, tags = NULL, clientToken) {
+finspace_create_kx_dataview <- function(environmentId, databaseName, dataviewName, azMode, availabilityZoneId = NULL, changesetId = NULL, segmentConfigurations = NULL, autoUpdate = NULL, readWrite = NULL, description = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateKxDataview",
     http_method = "POST",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
     paginator = list()
   )
-  input <- .finspace$create_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, azMode = azMode, availabilityZoneId = availabilityZoneId, changesetId = changesetId, segmentConfigurations = segmentConfigurations, autoUpdate = autoUpdate, description = description, tags = tags, clientToken = clientToken)
+  input <- .finspace$create_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, azMode = azMode, availabilityZoneId = availabilityZoneId, changesetId = changesetId, segmentConfigurations = segmentConfigurations, autoUpdate = autoUpdate, readWrite = readWrite, description = description, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_dataview_output()
   config <- get_config()
   svc <- .finspace$service(config)
@@ -819,6 +839,26 @@ finspace_create_kx_environment <- function(name, description = NULL, kmsKeyId, t
 #' @param scalingGroupName &#91;required&#93; A unique identifier for the kdb scaling group.
 #' @param hostType &#91;required&#93; The memory and CPU capabilities of the scaling group host on which
 #' FinSpace Managed kdb clusters will be placed.
+#' 
+#' You can add one of the following values:
+#' 
+#' -   `kx.sg.4xlarge` – The host type with a configuration of 108 GiB
+#'     memory and 16 vCPUs.
+#' 
+#' -   `kx.sg.8xlarge` – The host type with a configuration of 216 GiB
+#'     memory and 32 vCPUs.
+#' 
+#' -   `kx.sg.16xlarge` – The host type with a configuration of 432 GiB
+#'     memory and 64 vCPUs.
+#' 
+#' -   `kx.sg.32xlarge` – The host type with a configuration of 864 GiB
+#'     memory and 128 vCPUs.
+#' 
+#' -   `kx.sg1.16xlarge` – The host type with a configuration of 1949 GiB
+#'     memory and 64 vCPUs.
+#' 
+#' -   `kx.sg1.24xlarge` – The host type with a configuration of 2948 GiB
+#'     memory and 96 vCPUs.
 #' @param availabilityZoneId &#91;required&#93; The identifier of the availability zones.
 #' @param tags A list of key-value pairs to label the scaling group. You can add up to
 #' 50 tags to a scaling group.
@@ -963,8 +1003,9 @@ finspace_create_kx_user <- function(environmentId, userName, iamRole, tags = NUL
 #' @param nas1Configuration Specifies the configuration for the Network attached storage (NAS_1)
 #' file system volume. This parameter is required when you choose
 #' `volumeType` as *NAS_1*.
-#' @param azMode &#91;required&#93; The number of availability zones you want to assign per cluster.
-#' Currently, FinSpace only support `SINGLE` for volumes.
+#' @param azMode &#91;required&#93; The number of availability zones you want to assign per volume.
+#' Currently, FinSpace only supports `SINGLE` for volumes. This places
+#' dataview in a single AZ.
 #' @param availabilityZoneIds &#91;required&#93; The identifier of the availability zones.
 #' @param tags A list of key-value pairs to label the volume. You can add up to 50 tags
 #' to a volume.
@@ -1125,6 +1166,52 @@ finspace_delete_kx_cluster <- function(environmentId, clusterName, clientToken =
   return(response)
 }
 .finspace$operations$delete_kx_cluster <- finspace_delete_kx_cluster
+
+#' Deletes the specified nodes from a cluster
+#'
+#' @description
+#' Deletes the specified nodes from a cluster.
+#'
+#' @usage
+#' finspace_delete_kx_cluster_node(environmentId, clusterName, nodeId)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterName &#91;required&#93; The name of the cluster, for which you want to delete the nodes.
+#' @param nodeId &#91;required&#93; A unique identifier for the node that you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_kx_cluster_node(
+#'   environmentId = "string",
+#'   clusterName = "string",
+#'   nodeId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_cluster_node
+#'
+#' @aliases finspace_delete_kx_cluster_node
+finspace_delete_kx_cluster_node <- function(environmentId, clusterName, nodeId) {
+  op <- new_operation(
+    name = "DeleteKxClusterNode",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes/{nodeId}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_cluster_node_input(environmentId = environmentId, clusterName = clusterName, nodeId = nodeId)
+  output <- .finspace$delete_kx_cluster_node_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_cluster_node <- finspace_delete_kx_cluster_node
 
 #' Deletes the specified database and all of its associated data
 #'
@@ -1613,7 +1700,8 @@ finspace_get_kx_changeset <- function(environmentId, databaseName, changesetId) 
 #'             dbPaths = list(
 #'               "string"
 #'             ),
-#'             volumeName = "string"
+#'             volumeName = "string",
+#'             onDemand = TRUE|FALSE
 #'           )
 #'         )
 #'       )
@@ -1860,7 +1948,8 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
 #'       dbPaths = list(
 #'         "string"
 #'       ),
-#'       volumeName = "string"
+#'       volumeName = "string",
+#'       onDemand = TRUE|FALSE
 #'     )
 #'   ),
 #'   activeVersions = list(
@@ -1871,7 +1960,8 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
 #'           dbPaths = list(
 #'             "string"
 #'           ),
-#'           volumeName = "string"
+#'           volumeName = "string",
+#'           onDemand = TRUE|FALSE
 #'         )
 #'       ),
 #'       attachedClusters = list(
@@ -1885,6 +1975,7 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
 #'   ),
 #'   description = "string",
 #'   autoUpdate = TRUE|FALSE,
+#'   readWrite = TRUE|FALSE,
 #'   environmentId = "string",
 #'   createdTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -2383,7 +2474,8 @@ finspace_list_kx_changesets <- function(environmentId, databaseName, nextToken =
 #'       availabilityZoneId = "string",
 #'       launchTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       status = "RUNNING"|"PROVISIONING"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2627,7 +2719,8 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
 #'           dbPaths = list(
 #'             "string"
 #'           ),
-#'           volumeName = "string"
+#'           volumeName = "string",
+#'           onDemand = TRUE|FALSE
 #'         )
 #'       ),
 #'       activeVersions = list(
@@ -2638,7 +2731,8 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
 #'               dbPaths = list(
 #'                 "string"
 #'               ),
-#'               volumeName = "string"
+#'               volumeName = "string",
+#'               onDemand = TRUE|FALSE
 #'             )
 #'           ),
 #'           attachedClusters = list(
@@ -2653,6 +2747,7 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
 #'       status = "CREATING"|"ACTIVE"|"UPDATING"|"FAILED"|"DELETING",
 #'       description = "string",
 #'       autoUpdate = TRUE|FALSE,
+#'       readWrite = TRUE|FALSE,
 #'       createdTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -3376,7 +3471,8 @@ finspace_update_kx_cluster_code_configuration <- function(environmentId, cluster
 #'             dbPaths = list(
 #'               "string"
 #'             ),
-#'             volumeName = "string"
+#'             volumeName = "string",
+#'             onDemand = TRUE|FALSE
 #'           )
 #'         )
 #'       )
@@ -3509,7 +3605,8 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
 #'       dbPaths = list(
 #'         "string"
 #'       ),
-#'       volumeName = "string"
+#'       volumeName = "string",
+#'       onDemand = TRUE|FALSE
 #'     )
 #'   ),
 #'   activeVersions = list(
@@ -3520,7 +3617,8 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
 #'           dbPaths = list(
 #'             "string"
 #'           ),
-#'           volumeName = "string"
+#'           volumeName = "string",
+#'           onDemand = TRUE|FALSE
 #'         )
 #'       ),
 #'       attachedClusters = list(
@@ -3534,6 +3632,7 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
 #'   ),
 #'   status = "CREATING"|"ACTIVE"|"UPDATING"|"FAILED"|"DELETING",
 #'   autoUpdate = TRUE|FALSE,
+#'   readWrite = TRUE|FALSE,
 #'   description = "string",
 #'   createdTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -3557,7 +3656,8 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
 #'       dbPaths = list(
 #'         "string"
 #'       ),
-#'       volumeName = "string"
+#'       volumeName = "string",
+#'       onDemand = TRUE|FALSE
 #'     )
 #'   ),
 #'   clientToken = "string"

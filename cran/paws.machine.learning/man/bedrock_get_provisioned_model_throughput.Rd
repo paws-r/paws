@@ -2,15 +2,15 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_get_provisioned_model_throughput}
 \alias{bedrock_get_provisioned_model_throughput}
-\title{Get details for a provisioned throughput}
+\title{Returns details for a Provisioned Throughput}
 \usage{
 bedrock_get_provisioned_model_throughput(provisionedModelId)
 }
 \arguments{
-\item{provisionedModelId}{[required] The ARN or name of the provisioned throughput.}
+\item{provisionedModelId}{[required] The Amazon Resource Name (ARN) or name of the Provisioned Throughput.}
 }
 \description{
-Get details for a provisioned throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Provisioned throughput} in the Bedrock User Guide.
+Returns details for a Provisioned Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_provisioned_model_throughput/} for full documentation.
 }

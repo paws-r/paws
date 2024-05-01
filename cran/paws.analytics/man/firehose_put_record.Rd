@@ -2,8 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_put_record}
 \alias{firehose_put_record}
-\title{Writes a single data record into an Amazon Kinesis Data Firehose
-delivery stream}
+\title{Writes a single data record into an Amazon Firehose delivery stream}
 \usage{
 firehose_put_record(DeliveryStreamName, Record)
 }
@@ -13,7 +12,7 @@ firehose_put_record(DeliveryStreamName, Record)
 \item{Record}{[required] The record.}
 }
 \description{
-Writes a single data record into an Amazon Kinesis Data Firehose delivery stream. To write multiple data records into a delivery stream, use \code{\link[=firehose_put_record_batch]{put_record_batch}}. Applications using these operations are referred to as producers.
+Writes a single data record into an Amazon Firehose delivery stream. To write multiple data records into a delivery stream, use \code{\link[=firehose_put_record_batch]{put_record_batch}}. Applications using these operations are referred to as producers.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_put_record/} for full documentation.
 }

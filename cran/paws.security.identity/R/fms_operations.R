@@ -174,6 +174,8 @@ fms_delete_apps_list <- function(ListId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_delete_notification_channel/](https://www.paws-r-sdk.com/docs/fms_delete_notification_channel/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname fms_delete_notification_channel
@@ -325,6 +327,8 @@ fms_delete_resource_set <- function(Identifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_disassociate_admin_account/](https://www.paws-r-sdk.com/docs/fms_disassociate_admin_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname fms_disassociate_admin_account
@@ -383,6 +387,8 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_admin_account/](https://www.paws-r-sdk.com/docs/fms_get_admin_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname fms_get_admin_account
@@ -406,11 +412,11 @@ fms_get_admin_account <- function() {
 #' Returns information about the specified account's administrative scope
 #'
 #' @description
-#' Returns information about the specified account's administrative scope. The admistrative scope defines the resources that an Firewall Manager administrator can manage.
+#' Returns information about the specified account's administrative scope. The administrative scope defines the resources that an Firewall Manager administrator can manage.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_admin_scope/](https://www.paws-r-sdk.com/docs/fms_get_admin_scope/) for full documentation.
 #'
-#' @param AdminAccount &#91;required&#93; The administator account that you want to get the details for.
+#' @param AdminAccount &#91;required&#93; The administrator account that you want to get the details for.
 #'
 #' @keywords internal
 #'
@@ -506,6 +512,8 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 #' Information about the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_notification_channel/](https://www.paws-r-sdk.com/docs/fms_get_notification_channel/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -717,6 +725,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' -   Network Firewall
 #' 
 #' -   Security group content audit
+#' 
+#' -   Network ACL
 #' 
 #' -   Third-party firewall
 #' @param MemberAccount &#91;required&#93; The Amazon Web Services account ID that you want the details for.

@@ -159,7 +159,7 @@ appfabric <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .appfabric$metadata <- list(
   service_name = "appfabric",
-  endpoints = list("*" = list(endpoint = "appfabric.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appfabric.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "appfabric.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "appfabric.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "appfabric.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appfabric.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "appfabric.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "appfabric.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "appfabric.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "appfabric.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "AppFabric",
   api_version = "2023-05-19",
   signing_name = "appfabric",

@@ -2,8 +2,8 @@
 % Please edit documentation in R/glue_operations.R
 \name{glue_get_unfiltered_table_metadata}
 \alias{glue_get_unfiltered_table_metadata}
-\title{Retrieves table metadata from the Data Catalog that contains unfiltered
-metadata}
+\title{Allows a third-party analytical engine to retrieve unfiltered table
+metadata from the Data Catalog}
 \usage{
 glue_get_unfiltered_table_metadata(
   Region = NULL,
@@ -12,6 +12,8 @@ glue_get_unfiltered_table_metadata(
   Name,
   AuditContext = NULL,
   SupportedPermissionTypes,
+  ParentResourceArn = NULL,
+  RootResourceArn = NULL,
   SupportedDialect = NULL,
   Permissions = NULL,
   QuerySessionContext = NULL
@@ -30,7 +32,44 @@ metadata.}
 
 \item{AuditContext}{A structure containing Lake Formation audit context information.}
 
-\item{SupportedPermissionTypes}{[required] (Required) A list of supported permission types.}
+\item{SupportedPermissionTypes}{[required] Indicates the level of filtering a third-party analytical engine is
+capable of enforcing when calling the
+\code{\link[=glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata}}
+API operation. Accepted values are:
+\itemize{
+\item \code{COLUMN_PERMISSION} - Column permissions ensure that users can
+access only specific columns in the table. If there are particular
+columns contain sensitive data, data lake administrators can define
+column filters that exclude access to specific columns.
+\item \code{CELL_FILTER_PERMISSION} - Cell-level filtering combines column
+filtering (include or exclude columns) and row filter expressions to
+restrict access to individual elements in the table.
+\item \code{NESTED_PERMISSION} - Nested permissions combines cell-level
+filtering and nested column filtering to restrict access to columns
+and/or nested columns in specific rows based on row filter
+expressions.
+\item \code{NESTED_CELL_PERMISSION} - Nested cell permissions combines nested
+permission with nested cell-level filtering. This allows different
+subsets of nested columns to be restricted based on an array of row
+filter expressions.
+}
+
+Note: Each of these permission types follows a hierarchical order where
+each subsequent permission type includes all permission of the previous
+type.
+
+Important: If you provide a supported permission type that doesn't match
+the user's level of permissions on the table, then Lake Formation raises
+an exception. For example, if the third-party engine calling the
+\code{\link[=glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata}}
+operation can enforce only column-level filtering, and the user has
+nested cell filtering applied on the table, Lake Formation throws an
+exception, and will not return unfiltered table metadata and data access
+credentials.}
+
+\item{ParentResourceArn}{The resource ARN of the view.}
+
+\item{RootResourceArn}{The resource ARN of the root view in a chain of nested views.}
 
 \item{SupportedDialect}{A structure specifying the dialect and dialect version used by the query
 engine.}
@@ -43,7 +82,7 @@ or Glue. Contains both a Lake Formation generated authorization
 identifier and information from the request's authorization context.}
 }
 \description{
-Retrieves table metadata from the Data Catalog that contains unfiltered metadata.
+Allows a third-party analytical engine to retrieve unfiltered table metadata from the Data Catalog.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/} for full documentation.
 }

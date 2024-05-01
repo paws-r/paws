@@ -155,7 +155,7 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 
 .emrserverless$metadata <- list(
   service_name = "emrserverless",
-  endpoints = list("*" = list(endpoint = "emr-serverless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emr-serverless.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "emr-serverless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emr-serverless.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "emr-serverless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emr-serverless.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "emr-serverless.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "emr-serverless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emr-serverless.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "emr-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EMR Serverless",
   api_version = "2021-07-13",
   signing_name = "emr-serverless",

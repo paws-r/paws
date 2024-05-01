@@ -94,12 +94,16 @@ NULL
 #'  \link[=kafkaconnect_create_worker_configuration]{create_worker_configuration} \tab Creates a worker configuration using the specified properties\cr
 #'  \link[=kafkaconnect_delete_connector]{delete_connector} \tab Deletes the specified connector\cr
 #'  \link[=kafkaconnect_delete_custom_plugin]{delete_custom_plugin} \tab Deletes a custom plugin\cr
+#'  \link[=kafkaconnect_delete_worker_configuration]{delete_worker_configuration} \tab Deletes the specified worker configuration\cr
 #'  \link[=kafkaconnect_describe_connector]{describe_connector} \tab Returns summary information about the connector\cr
 #'  \link[=kafkaconnect_describe_custom_plugin]{describe_custom_plugin} \tab A summary description of the custom plugin\cr
 #'  \link[=kafkaconnect_describe_worker_configuration]{describe_worker_configuration} \tab Returns information about a worker configuration\cr
 #'  \link[=kafkaconnect_list_connectors]{list_connectors} \tab Returns a list of all the connectors in this account and Region\cr
 #'  \link[=kafkaconnect_list_custom_plugins]{list_custom_plugins} \tab Returns a list of all of the custom plugins in this account and Region\cr
+#'  \link[=kafkaconnect_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags attached to the specified resource\cr
 #'  \link[=kafkaconnect_list_worker_configurations]{list_worker_configurations} \tab Returns a list of all of the worker configurations in this account and Region\cr
+#'  \link[=kafkaconnect_tag_resource]{tag_resource} \tab Attaches tags to the specified resource\cr
+#'  \link[=kafkaconnect_untag_resource]{untag_resource} \tab Removes tags from the specified resource\cr
 #'  \link[=kafkaconnect_update_connector]{update_connector} \tab Updates the specified connector
 #' }
 #'
@@ -132,7 +136,7 @@ kafkaconnect <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .kafkaconnect$metadata <- list(
   service_name = "kafkaconnect",
-  endpoints = list("*" = list(endpoint = "kafkaconnect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kafkaconnect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kafkaconnect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kafkaconnect.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kafkaconnect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kafkaconnect.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "kafkaconnect.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "kafkaconnect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kafkaconnect.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "kafkaconnect.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "KafkaConnect",
   api_version = "2021-09-14",
   signing_name = "kafkaconnect",

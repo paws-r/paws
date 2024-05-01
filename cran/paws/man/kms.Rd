@@ -198,13 +198,14 @@ policies, by using the console.
 \link[paws.security.identity:kms_generate_mac]{generate_mac} \tab Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports\cr
 \link[paws.security.identity:kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
 \link[paws.security.identity:kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
-\link[paws.security.identity:kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified KMS key\cr
+\link[paws.security.identity:kms_get_key_rotation_status]{get_key_rotation_status} \tab Provides detailed information about the rotation status for a KMS key, including whether automatic rotation of the key material is enabled for the specified KMS key, the rotation period, and the next scheduled rotation date\cr
 \link[paws.security.identity:kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the public key and an import token you need to import or reimport key material for a KMS key\cr
 \link[paws.security.identity:kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric KMS key\cr
 \link[paws.security.identity:kms_import_key_material]{import_key_material} \tab Imports or reimports key material into an existing KMS key that was created without key material\cr
 \link[paws.security.identity:kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
 \link[paws.security.identity:kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
 \link[paws.security.identity:kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr
+\link[paws.security.identity:kms_list_key_rotations]{list_key_rotations} \tab Returns information about all completed key material rotations for the specified KMS key\cr
 \link[paws.security.identity:kms_list_keys]{list_keys} \tab Gets a list of all KMS keys in the caller's Amazon Web Services account and Region\cr
 \link[paws.security.identity:kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified KMS key\cr
 \link[paws.security.identity:kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal\cr
@@ -213,6 +214,7 @@ policies, by using the console.
 \link[paws.security.identity:kms_replicate_key]{replicate_key} \tab Replicates a multi-Region key into the specified Region\cr
 \link[paws.security.identity:kms_retire_grant]{retire_grant} \tab Deletes a grant\cr
 \link[paws.security.identity:kms_revoke_grant]{revoke_grant} \tab Deletes the specified grant\cr
+\link[paws.security.identity:kms_rotate_key_on_demand]{rotate_key_on_demand} \tab Immediately initiates rotation of the key material of the specified symmetric encryption KMS key\cr
 \link[paws.security.identity:kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a KMS key\cr
 \link[paws.security.identity:kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric signing KMS key\cr
 \link[paws.security.identity:kms_tag_resource]{tag_resource} \tab Adds or edits tags on a customer managed key\cr

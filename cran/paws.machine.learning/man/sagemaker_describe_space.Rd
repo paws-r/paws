@@ -7,7 +7,7 @@
 sagemaker_describe_space(DomainId, SpaceName)
 }
 \arguments{
-\item{DomainId}{[required] The ID of the associated Domain.}
+\item{DomainId}{[required] The ID of the associated domain.}
 
 \item{SpaceName}{[required] The name of the space.}
 }

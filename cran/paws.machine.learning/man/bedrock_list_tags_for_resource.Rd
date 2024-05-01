@@ -7,7 +7,7 @@
 bedrock_list_tags_for_resource(resourceARN)
 }
 \arguments{
-\item{resourceARN}{[required] The ARN of the resource.}
+\item{resourceARN}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
 \description{
 List the tags associated with the specified resource.

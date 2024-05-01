@@ -9,7 +9,8 @@ sagemaker_create_app_image_config(
   AppImageConfigName,
   Tags = NULL,
   KernelGatewayImageConfig = NULL,
-  JupyterLabAppImageConfig = NULL
+  JupyterLabAppImageConfig = NULL,
+  CodeEditorAppImageConfig = NULL
 )
 }
 \arguments{
@@ -25,9 +26,13 @@ JupyterLab.}
 \item{JupyterLabAppImageConfig}{The \code{JupyterLabAppImageConfig}. You can only specify one image kernel in
 the \code{AppImageConfig} API. This kernel is shown to users before the image
 starts. After the image runs, all kernels are visible in JupyterLab.}
+
+\item{CodeEditorAppImageConfig}{The \code{CodeEditorAppImageConfig}. You can only specify one image kernel in
+the AppImageConfig API. This kernel is shown to users before the image
+starts. After the image runs, all kernels are visible in Code Editor.}
 }
 \description{
-Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the kernels in the image.
+Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/} for full documentation.
 }

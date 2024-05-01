@@ -2,12 +2,12 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_domain}
 \alias{lightsail_create_domain}
-\title{Creates a domain resource for the specified domain (e}
+\title{Creates a domain resource for the specified domain (example}
 \usage{
 lightsail_create_domain(domainName, tags = NULL)
 }
 \arguments{
-\item{domainName}{[required] The domain name to manage (e.g., \code{example.com}).}
+\item{domainName}{[required] The domain name to manage (\code{example.com}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
@@ -15,7 +15,7 @@ Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
 }
 \description{
-Creates a domain resource for the specified domain (e.g., example.com).
+Creates a domain resource for the specified domain (example.com).
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_create_domain/} for full documentation.
 }

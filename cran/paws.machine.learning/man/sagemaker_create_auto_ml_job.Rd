@@ -34,7 +34,7 @@ the validation dataset.}
 needed to store artifacts from an AutoML job. Format(s) supported: CSV.}
 
 \item{ProblemType}{Defines the type of supervised learning problem available for the
-candidates. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types}{Amazon SageMaker Autopilot problem types}.}
+candidates. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types}{SageMaker Autopilot problem types}.}
 
 \item{AutoMLJobObjective}{Specifies a metric to minimize or maximize as the objective of a job. If
 not specified, the default objective metric depends on the problem type.

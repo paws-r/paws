@@ -2,7 +2,7 @@
 % Please edit documentation in R/globalaccelerator_operations.R
 \name{globalaccelerator_list_cross_account_resources}
 \alias{globalaccelerator_list_cross_account_resources}
-\title{List the cross-account endpoints available to add to an accelerator}
+\title{List the cross-account resources available to work with}
 \usage{
 globalaccelerator_list_cross_account_resources(
   AcceleratorArn = NULL,
@@ -17,14 +17,14 @@ attachment.}
 
 \item{ResourceOwnerAwsAccountId}{[required] The account ID of a resource owner in a cross-account attachment.}
 
-\item{MaxResults}{The number of cross-account endpoints objects that you want to return
+\item{MaxResults}{The number of cross-account resource objects that you want to return
 with this call. The default value is 10.}
 
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
 \description{
-List the cross-account endpoints available to add to an accelerator.
+List the cross-account resources available to work with.
 
 See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_cross_account_resources/} for full documentation.
 }

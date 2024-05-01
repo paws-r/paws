@@ -13,7 +13,7 @@ cognitoidentityprovider_get_device(DeviceKey, AccessToken = NULL)
 information you want to request.}
 }
 \description{
-Gets the device.
+Gets the device. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_device/} for full documentation.
 }

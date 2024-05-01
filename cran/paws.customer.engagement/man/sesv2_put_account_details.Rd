@@ -31,9 +31,7 @@ the current Amazon Web Services Region.
 
 If the value is \code{false}, then your account is in the \emph{sandbox}. When
 your account is in the sandbox, you can only send email to verified
-identities. Additionally, the maximum number of emails you can send in a
-24-hour period (your sending quota) is 200, and the maximum number of
-emails you can send per second (your maximum sending rate) is 1.
+identities.
 
 If the value is \code{true}, then your account has production access. When
 your account has production access, you can send email to any address.

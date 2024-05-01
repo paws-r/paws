@@ -124,7 +124,7 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' 
 #' Example JSON: `"TokenDomains": ["abc.com", "store.abc.com"]`
 #' 
-#' Public suffixes aren't allowed. For example, you can't use `usa.gov` or
+#' Public suffixes aren't allowed. For example, you can't use `gov.au` or
 #' `co.uk` as token domains.
 #'
 #' @keywords internal
@@ -425,18 +425,22 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' Example JSON:
 #' `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
 #' 
-#' Public suffixes aren't allowed. For example, you can't use `usa.gov` or
+#' Public suffixes aren't allowed. For example, you can't use `gov.au` or
 #' `co.uk` as token domains.
 #' @param AssociationConfig Specifies custom configurations for the associations between the web ACL
 #' and protected resources.
 #' 
 #' Use this to customize the maximum size of the request body that your
-#' protected CloudFront distributions forward to WAF for inspection. The
-#' default is 16 KB (16,384 bytes).
+#' protected resources forward to WAF for inspection. You can customize
+#' this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or
+#' Verified Access resources. The default setting is 16 KB (16,384 bytes).
 #' 
 #' You are charged additional fees when your protected resources forward
 #' body sizes that are larger than the default. For more information, see
 #' [WAF Pricing](https://aws.amazon.com/waf/pricing/).
+#' 
+#' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
+#' (8,192 bytes).
 #'
 #' @keywords internal
 #'
@@ -457,6 +461,48 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
   return(response)
 }
 .wafv2$operations$create_web_acl <- wafv2_create_web_acl
+
+#' Deletes the specified API key
+#'
+#' @description
+#' Deletes the specified API key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_api_key/](https://www.paws-r-sdk.com/docs/wafv2_delete_api_key/) for full documentation.
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param APIKey &#91;required&#93; The encrypted API key that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_delete_api_key
+wafv2_delete_api_key <- function(Scope, APIKey) {
+  op <- new_operation(
+    name = "DeleteAPIKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$delete_api_key_input(Scope = Scope, APIKey = APIKey)
+  output <- .wafv2$delete_api_key_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$delete_api_key <- wafv2_delete_api_key
 
 #' Deletes all rule groups that are managed by Firewall Manager for the
 #' specified web ACL
@@ -2652,18 +2698,22 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' Example JSON:
 #' `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
 #' 
-#' Public suffixes aren't allowed. For example, you can't use `usa.gov` or
+#' Public suffixes aren't allowed. For example, you can't use `gov.au` or
 #' `co.uk` as token domains.
 #' @param AssociationConfig Specifies custom configurations for the associations between the web ACL
 #' and protected resources.
 #' 
 #' Use this to customize the maximum size of the request body that your
-#' protected CloudFront distributions forward to WAF for inspection. The
-#' default is 16 KB (16,384 bytes).
+#' protected resources forward to WAF for inspection. You can customize
+#' this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or
+#' Verified Access resources. The default setting is 16 KB (16,384 bytes).
 #' 
 #' You are charged additional fees when your protected resources forward
 #' body sizes that are larger than the default. For more information, see
 #' [WAF Pricing](https://aws.amazon.com/waf/pricing/).
+#' 
+#' For Application Load Balancer and AppSync, the limit is fixed at 8 KB
+#' (8,192 bytes).
 #'
 #' @keywords internal
 #'

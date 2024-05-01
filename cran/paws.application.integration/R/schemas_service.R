@@ -152,7 +152,7 @@ schemas <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .schemas$metadata <- list(
   service_name = "schemas",
-  endpoints = list("*" = list(endpoint = "schemas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "schemas.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "schemas.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "schemas.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "schemas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "schemas.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "schemas.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "schemas.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "schemas.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "schemas.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "schemas",
   api_version = "2019-12-02",
   signing_name = "schemas",

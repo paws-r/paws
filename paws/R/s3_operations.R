@@ -83,7 +83,7 @@ NULL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -206,8 +206,9 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' that don't use exceptions, they return an error).
 #' 
 #' Note that if [`complete_multipart_upload`][s3_complete_multipart_upload]
-#' fails, applications should be prepared to retry the failed requests. For
-#' more information, see [Amazon S3 Error Best
+#' fails, applications should be prepared to retry any failed requests
+#' (including 500 error responses). For more information, see [Amazon S3
+#' Error Best
 #' Practices](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ErrorBestPractices.html).
 #' 
 #' You can't use `Content-Type: application/x-www-form-urlencoded` for the
@@ -321,7 +322,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -527,6 +528,10 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #' Both the Region that you want to copy the object from and the Region
 #' that you want to copy the object to must be enabled for your account.
+#' For more information about how to enable a Region for your account, see
+#' [Enable or disable a Region for standalone
+#' accounts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#manage-acct-regions-enable-standalone)
+#' in the *Amazon Web Services Account Management Guide*.
 #' 
 #' Amazon S3 transfer acceleration does not support cross-Region copies. If
 #' you request a cross-Region copy using a transfer acceleration endpoint,
@@ -563,7 +568,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'         that is being copied.
 #' 
 #'     -   If the destination bucket is a general purpose bucket, you must
-#'         have **`s3:PubObject`** permission to write the object copy to
+#'         have **`s3:PutObject`** permission to write the object copy to
 #'         the destination bucket.
 #' 
 #' -   **Directory bucket permissions** - You must have permissions in a
@@ -637,7 +642,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' The copy request charge is based on the storage class and Region that
 #' you specify for the destination object. The request can also result in a
 #' data retrieval charge for the source if the source storage class bills
-#' for data retrieval. For pricing information, see [Amazon S3
+#' for data retrieval. If the copy source is in a different region, the
+#' data transfer is billed to the copy source account. For pricing
+#' information, see [Amazon S3
 #' pricing](https://aws.amazon.com/s3/pricing/).
 #' 
 #' ### HTTP Host header syntax
@@ -700,7 +707,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -1371,14 +1378,25 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'         `x-amz-object-ownership` header, then the
 #'         `s3:PutBucketOwnershipControls` permission is required.
 #' 
-#'         If your [`create_bucket`][s3_create_bucket] request sets
-#'         `BucketOwnerEnforced` for Amazon S3 Object Ownership and
-#'         specifies a bucket ACL that provides access to an external
-#'         Amazon Web Services account, your request fails with a `400`
-#'         error and returns the `InvalidBucketAcLWithObjectOwnership`
-#'         error code. For more information, see [Setting Object Ownership
-#'         on an existing
-#'         bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-ownership-existing-bucket.html)
+#'         To set an ACL on a bucket as part of a
+#'         [`create_bucket`][s3_create_bucket] request, you must explicitly
+#'         set S3 Object Ownership for the bucket to a different value than
+#'         the default, `BucketOwnerEnforced`. Additionally, if your
+#'         desired bucket ACL grants public access, you must first create
+#'         the bucket (without the bucket ACL) and then explicitly disable
+#'         Block Public Access on the bucket before using
+#'         [`put_bucket_acl`][s3_put_bucket_acl] to set the ACL. If you try
+#'         to create a bucket with a public ACL, the request will fail.
+#' 
+#'         For the majority of modern use cases in S3, we recommend that
+#'         you keep all Block Public Access settings enabled and keep ACLs
+#'         disabled. If you would like to share data with users outside of
+#'         your account, you can use bucket policies as needed. For more
+#'         information, see [Controlling ownership of objects and disabling
+#'         ACLs for your
+#'         bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html)
+#'         and [Blocking public access to your Amazon S3
+#'         storage](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
 #'         in the *Amazon S3 User Guide*.
 #' 
 #'     -   **S3 Block Public Access** - If your specific use case requires
@@ -1451,7 +1469,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -1803,7 +1821,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -2453,7 +2471,7 @@ s3_create_session <- function(SessionMode = NULL, Bucket) {
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -3172,7 +3190,7 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -3454,14 +3472,27 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Removes an object from a bucket. The behavior depends on the bucket's
 #' versioning state:
 #' 
-#' -   If versioning is enabled, the operation removes the null version (if
-#'     there is one) of an object and inserts a delete marker, which
-#'     becomes the latest version of the object. If there isn't a null
-#'     version, Amazon S3 does not remove any objects but will still
-#'     respond that the command was successful.
-#' 
-#' -   If versioning is suspended or not enabled, the operation permanently
+#' -   If bucket versioning is not enabled, the operation permanently
 #'     deletes the object.
+#' 
+#' -   If bucket versioning is enabled, the operation inserts a delete
+#'     marker, which becomes the current version of the object. To
+#'     permanently delete an object in a versioned bucket, you must include
+#'     the object’s `versionId` in the request. For more information about
+#'     versioning-enabled buckets, see [Deleting object versions from a
+#'     versioning-enabled
+#'     bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjectVersions.html).
+#' 
+#' -   If bucket versioning is suspended, the operation removes the object
+#'     that has a null `versionId`, if there is one, and inserts a delete
+#'     marker that becomes the current version of the object. If there
+#'     isn't an object with a null `versionId`, and all versions of the
+#'     object have a `versionId`, Amazon S3 does not remove the object and
+#'     only inserts a delete marker. To permanently delete an object that
+#'     has a `versionId`, you must include the object’s `versionId` in the
+#'     request. For more information about versioning-suspended buckets,
+#'     see [Deleting objects from versioning-suspended
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjectsfromVersioningSuspendedBuckets.html).
 #' 
 #' 
 #' -   **Directory buckets** - S3 Versioning isn't enabled and supported
@@ -3517,7 +3548,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'         must always have the `s3:DeleteObject` permission.
 #' 
 #'     -   **`s3:DeleteObjectVersion`** - To delete a specific version of
-#'         an object from a versiong-enabled bucket, you must have the
+#'         an object from a versioning-enabled bucket, you must have the
 #'         `s3:DeleteObjectVersion` permission.
 #' 
 #' -   **Directory bucket permissions** - To grant access to this API
@@ -3559,7 +3590,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3635,16 +3666,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes an object from a non-versioned bucket.
-#' svc$delete_object(
-#'   Bucket = "ExampleBucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
 #' # The following example deletes an object from an S3 bucket.
 #' svc$delete_object(
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey.jpg"
+#' )
+#' 
+#' # The following example deletes an object from a non-versioned bucket.
+#' svc$delete_object(
+#'   Bucket = "ExampleBucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -3911,7 +3942,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -5034,13 +5065,16 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' This operation is not supported by directory buckets.
 #' 
 #' Bucket lifecycle configuration now supports specifying a lifecycle rule
-#' using an object key name prefix, one or more object tags, or a
-#' combination of both. Accordingly, this section describes the latest API.
-#' The response describes the new filter element that you can use to
-#' specify a filter to select a subset of objects to which the rule
-#' applies. If you are using a previous version of the lifecycle
-#' configuration, it still works. For the earlier action, see
-#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle].
+#' using an object key name prefix, one or more object tags, object size,
+#' or any combination of these. Accordingly, this section describes the
+#' latest API. The previous version of the API supported filtering based
+#' only on an object key name prefix, which is supported for backward
+#' compatibility. For the related API description, see
+#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle]. Accordingly, this
+#' section describes the latest API. The response describes the new filter
+#' element that you can use to specify a filter to select a subset of
+#' objects to which the rule applies. If you are using a previous version
+#' of the lifecycle configuration, it still works. For the earlier action,
 #' 
 #' Returns the lifecycle configuration information set on the bucket. For
 #' information about lifecycle configuration, see [Object Lifecycle
@@ -5887,7 +5921,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -6700,7 +6734,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -6918,6 +6952,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   Expires = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   ExpiresString = "string",
 #'   WebsiteRedirectLocation = "string",
 #'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
@@ -7311,7 +7346,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -7805,18 +7840,18 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #'
 #' @examples
 #' \dontrun{
-#' # The following example retrieves tag set of an object.
-#' svc$get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+#' )
+#' 
+#' # The following example retrieves tag set of an object.
+#' svc$get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -8021,7 +8056,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' If the bucket does not exist or you do not have permission to access it,
 #' the `HEAD` request returns a generic `400 Bad Request`, `403 Forbidden`
 #' or `404 Not Found` code. A message body is not included, so you cannot
-#' determine the exception beyond these error codes.
+#' determine the exception beyond these HTTP response codes.
 #' 
 #' **Directory buckets** - You must make requests for this API operation to
 #' the Zonal endpoint. These endpoints support virtual-hosted-style
@@ -8088,7 +8123,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -8214,7 +8249,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     have the `s3:GetObject` permission. You need the relevant read
 #'     object (or version) permission for this operation. For more
 #'     information, see [Actions, resources, and condition keys for Amazon
-#'     S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/list_amazons3.html)
+#'     S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #'     If the object you request doesn't exist, the error that Amazon S3
@@ -8323,7 +8358,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -8477,6 +8512,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   Expires = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   ExpiresString = "string",
 #'   WebsiteRedirectLocation = "string",
 #'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
@@ -9322,7 +9358,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -9656,11 +9692,8 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #'
 #' @examples
 #' \dontrun{
-#' # The following example return versions of an object with specific key
-#' # name prefix. The request limits the number of items returned to two. If
-#' # there are are more than two object version, S3 returns NextToken in the
-#' # response. You can specify this token value in your next request to fetch
-#' # next set of object versions.
+#' # The following example returns versions of an object with specific key
+#' # name prefix.
 #' svc$list_object_versions(
 #'   Bucket = "examplebucket",
 #'   Prefix = "HappyFace.jpg"
@@ -9730,7 +9763,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -9965,7 +9998,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -10009,6 +10042,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
 #'     in the *Amazon S3 User Guide*.
 #' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
+#' If using `url`, non-ASCII characters used in an object's key name will
+#' be URL encoded. For example, the object test_file(3).png will appear as
+#' test_file%283%29.png.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
 #' the action returns up to 1,000 key names. The response might contain
 #' fewer keys but will never contain more.
@@ -10241,7 +10277,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -11690,11 +11726,11 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
 #' 
 #' Bucket lifecycle configuration now supports specifying a lifecycle rule
-#' using an object key name prefix, one or more object tags, or a
-#' combination of both. Accordingly, this section describes the latest API.
-#' The previous version of the API supported filtering based only on an
-#' object key name prefix, which is supported for backward compatibility.
-#' For the related API description, see
+#' using an object key name prefix, one or more object tags, object size,
+#' or any combination of these. Accordingly, this section describes the
+#' latest API. The previous version of the API supported filtering based
+#' only on an object key name prefix, which is supported for backward
+#' compatibility. For the related API description, see
 #' [`put_bucket_lifecycle`][s3_put_bucket_lifecycle].
 #' 
 #' ### Rules
@@ -11705,8 +11741,8 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' This limit is not adjustable. Each rule consists of the following:
 #' 
 #' -   A filter identifying a subset of objects to which the rule applies.
-#'     The filter can be based on a key name prefix, object tags, or a
-#'     combination of both.
+#'     The filter can be based on a key name prefix, object tags, object
+#'     size, or any combination of these.
 #' 
 #' -   A status indicating whether the rule is in effect.
 #' 
@@ -12655,7 +12691,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -13713,7 +13749,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -14048,24 +14084,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'
 #' @examples
 #' \dontrun{
-#' # The following example uploads an object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
+#' # The following example uploads an object to a versioning-enabled bucket.
+#' # The source file is specified using Windows file syntax. S3 returns
+#' # VersionId of the newly created object.
 #' svc$put_object(
-#'   Body = "filetoupload",
+#'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   ServerSideEncryption = "AES256",
-#'   Tagging = "key1=value1&key2=value2"
-#' )
-#' 
-#' # The following example creates an object. If the bucket is versioning
-#' # enabled, S3 returns version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey"
+#'   Key = "HappyFace.jpg"
 #' )
 #' 
 #' # The following example uploads an object. The request specifies optional
@@ -14077,16 +14102,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Key = "HappyFace.jpg",
 #'   ServerSideEncryption = "AES256",
 #'   StorageClass = "STANDARD_IA"
-#' )
-#' 
-#' # The following example uploads an object. The request specifies optional
-#' # object tags. The bucket is versioned, therefore S3 returns version ID of
-#' # the newly created object.
-#' svc$put_object(
-#'   Body = "c:\\HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   Tagging = "key1=value1&key2=value2"
 #' )
 #' 
 #' # The following example creates an object. The request also specifies
@@ -14113,13 +14128,34 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Key = "exampleobject"
 #' )
 #' 
-#' # The following example uploads an object to a versioning-enabled bucket.
-#' # The source file is specified using Windows file syntax. S3 returns
-#' # VersionId of the newly created object.
+#' # The following example creates an object. If the bucket is versioning
+#' # enabled, S3 returns version ID in response.
 #' svc$put_object(
-#'   Body = "HappyFace.jpg",
+#'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
+#'   Key = "objectkey"
+#' )
+#' 
+#' # The following example uploads an object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
+#'   Tagging = "key1=value1&key2=value2"
+#' )
+#' 
+#' # The following example uploads an object. The request specifies optional
+#' # object tags. The bucket is versioned, therefore S3 returns version ID of
+#' # the newly created object.
+#' svc$put_object(
+#'   Body = "c:\\HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
+#'   Tagging = "key1=value1&key2=value2"
 #' )
 #' }
 #'
@@ -15077,8 +15113,6 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' 
 #' This action performs the following types of requests:
 #' 
-#' -   `select` - Perform a select query on an archived object
-#' 
 #' -   `restore an archive` - Restore an archived object
 #' 
 #' For more information about the `S3` structure in the request body, see
@@ -15093,51 +15127,6 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' -   [Protecting Data Using Server-Side
 #'     Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
 #'     in the *Amazon S3 User Guide*
-#' 
-#' Define the SQL expression for the `SELECT` type of restoration for your
-#' query in the request body's `SelectParameters` structure. You can use
-#' expressions like the following examples.
-#' 
-#' -   The following expression returns all records from the specified
-#'     object.
-#' 
-#'     `SELECT * FROM Object`
-#' 
-#' -   Assuming that you are not using any headers for data stored in the
-#'     object, you can specify columns with positional headers.
-#' 
-#'     `SELECT s._1, s._2 FROM Object s WHERE s._3 > 100`
-#' 
-#' -   If you have headers and you set the `fileHeaderInfo` in the `CSV`
-#'     structure in the request body to `USE`, you can specify headers in
-#'     the query. (If you set the `fileHeaderInfo` field to `IGNORE`, the
-#'     first row is skipped for the query.) You cannot mix ordinal
-#'     positions with header column names.
-#' 
-#'     `SELECT s.Id, s.FirstName, s.SSN FROM S3Object s`
-#' 
-#' When making a select request, you can also do the following:
-#' 
-#' -   To expedite your queries, specify the `Expedited` tier. For more
-#'     information about tiers, see "Restoring Archives," later in this
-#'     topic.
-#' 
-#' -   Specify details about the data serialization format of both the
-#'     input object that is being queried and the serialization of the
-#'     CSV-encoded query results.
-#' 
-#' The following are additional important facts about the select feature:
-#' 
-#' -   The output results are new Amazon S3 objects. Unlike archive
-#'     retrievals, they are stored until explicitly deleted-manually or
-#'     through a lifecycle configuration.
-#' 
-#' -   You can issue more than one select request on the same Amazon S3
-#'     object. Amazon S3 doesn't duplicate requests, so avoid issuing
-#'     duplicate requests.
-#' 
-#' -   Amazon S3 accepts a select request even if the object has already
-#'     been restored. A select request doesn’t return error response `409`.
 #' 
 #' ### Permissions
 #' 
@@ -15259,8 +15248,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' 
 #'     -   *Code: RestoreAlreadyInProgress*
 #' 
-#'     -   *Cause: Object restore is already in progress. (This error does
-#'         not apply to SELECT type requests.)*
+#'     -   *Cause: Object restore is already in progress.*
 #' 
 #'     -   *HTTP Status Code: 409 Conflict*
 #' 
@@ -15907,7 +15895,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -16157,7 +16145,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'         that is being copied.
 #' 
 #'     -   If the destination bucket is a general purpose bucket, you must
-#'         have the **`s3:PubObject`** permission to write the object copy
+#'         have the **`s3:PutObject`** permission to write the object copy
 #'         to the destination bucket.
 #' 
 #'     For information about permissions required to use the multipart
@@ -16257,7 +16245,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.

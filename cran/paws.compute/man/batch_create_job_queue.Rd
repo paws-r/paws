@@ -10,7 +10,8 @@ batch_create_job_queue(
   schedulingPolicyArn = NULL,
   priority,
   computeEnvironmentOrder,
-  tags = NULL
+  tags = NULL,
+  jobStateTimeLimitActions = NULL
 )
 }
 \arguments{
@@ -57,6 +58,10 @@ architecture types in a single job queue.}
 organize your resources. Each tag consists of a key and an optional
 value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging your Batch resources}
 in \emph{Batch User Guide}.}
+
+\item{jobStateTimeLimitActions}{The set of actions that Batch performs on jobs that remain at the head
+of the job queue in the specified state longer than specified times.
+Batch will perform each action after \code{maxTimeSeconds} has passed.}
 }
 \description{
 Creates an Batch job queue. When you create a job queue, you associate one or more compute environments to the queue and assign an order of preference for the compute environments.

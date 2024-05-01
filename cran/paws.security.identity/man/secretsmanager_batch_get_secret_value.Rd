@@ -24,7 +24,8 @@ or \code{SecretIdList}, but not both.}
 If there are more results available, in the response, Secrets Manager
 includes \code{NextToken}. To get the next results, call
 \code{\link[=secretsmanager_batch_get_secret_value]{batch_get_secret_value}} again
-with the value from \code{NextToken}.}
+with the value from \code{NextToken}. To use this parameter, you must also
+use the \code{Filters} parameter.}
 
 \item{NextToken}{A token that indicates where the output should continue from, if a
 previous call did not show all results. To get the next results, call

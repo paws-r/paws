@@ -29,7 +29,8 @@ generates and passes to Amazon Cognito when it makes API requests.}
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
 their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, you can also use their \code{sub} in this request.}
+user pool, this value must be the \code{sub} of a local user or the username
+of a user from a third-party IdP.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
 for

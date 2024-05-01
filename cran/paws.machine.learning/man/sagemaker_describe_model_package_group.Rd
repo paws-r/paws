@@ -7,7 +7,7 @@
 sagemaker_describe_model_package_group(ModelPackageGroupName)
 }
 \arguments{
-\item{ModelPackageGroupName}{[required] The name of gthe model group to describe.}
+\item{ModelPackageGroupName}{[required] The name of the model group to describe.}
 }
 \description{
 Gets a description for the specified model group.

@@ -3,7 +3,7 @@
 \name{autoscaling_describe_instance_refreshes}
 \alias{autoscaling_describe_instance_refreshes}
 \title{Gets information about the instance refreshes for the specified Auto
-Scaling group}
+Scaling group from the previous six weeks}
 \usage{
 autoscaling_describe_instance_refreshes(
   AutoScalingGroupName,
@@ -24,7 +24,7 @@ from a previous call.)}
 is \code{50} and the maximum value is \code{100}.}
 }
 \description{
-Gets information about the instance refreshes for the specified Auto Scaling group.
+Gets information about the instance refreshes for the specified Auto Scaling group from the previous six weeks.
 
 See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_instance_refreshes/} for full documentation.
 }

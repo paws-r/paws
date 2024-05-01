@@ -4,7 +4,12 @@
 \alias{ec2_create_network_acl}
 \title{Creates a network ACL in a VPC}
 \usage{
-ec2_create_network_acl(DryRun = NULL, VpcId, TagSpecifications = NULL)
+ec2_create_network_acl(
+  DryRun = NULL,
+  VpcId,
+  TagSpecifications = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,6 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC.}
 
 \item{TagSpecifications}{The tags to assign to the network ACL.}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }
 \description{
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.

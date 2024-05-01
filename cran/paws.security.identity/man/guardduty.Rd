@@ -122,7 +122,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_accept_administrator_invitation]{accept_administrator_invitation} \tab Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation\cr
 \link[=guardduty_accept_invitation]{accept_invitation} \tab Accepts the invitation to be monitored by a GuardDuty administrator account\cr
 \link[=guardduty_archive_findings]{archive_findings} \tab Archives GuardDuty findings that are specified by the list of finding IDs\cr
-\link[=guardduty_create_detector]{create_detector} \tab Creates a single Amazon GuardDuty detector\cr
+\link[=guardduty_create_detector]{create_detector} \tab Creates a single GuardDuty detector\cr
 \link[=guardduty_create_filter]{create_filter} \tab Creates a filter using the specified finding criteria\cr
 \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, which is called a trusted IP list in the console user interface\cr
 \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
@@ -157,7 +157,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 \link[=guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
 \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs\cr
-\link[=guardduty_get_organization_statistics]{get_organization_statistics} \tab Retrieves how many active member accounts in your Amazon Web Services organization have each feature enabled within GuardDuty\cr
+\link[=guardduty_get_organization_statistics]{get_organization_statistics} \tab Retrieves how many active member accounts have each feature enabled within GuardDuty\cr
 \link[=guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 \link[=guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
@@ -165,7 +165,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_list_coverage]{list_coverage} \tab Lists coverage details for your GuardDuty account\cr
 \link[=guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources\cr
 \link[=guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters\cr
-\link[=guardduty_list_findings]{list_findings} \tab Lists Amazon GuardDuty findings for the specified detector ID\cr
+\link[=guardduty_list_findings]{list_findings} \tab Lists GuardDuty findings for the specified detector ID\cr
 \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
@@ -179,7 +179,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[=guardduty_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 \link[=guardduty_unarchive_findings]{unarchive_findings} \tab Unarchives GuardDuty findings specified by the findingIds\cr
 \link[=guardduty_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
-\link[=guardduty_update_detector]{update_detector} \tab Updates the Amazon GuardDuty detector specified by the detectorId\cr
+\link[=guardduty_update_detector]{update_detector} \tab Updates the GuardDuty detector specified by the detector ID\cr
 \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name\cr
 \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks the specified GuardDuty findings as useful or not useful\cr
 \link[=guardduty_update_ip_set]{update_ip_set} \tab Updates the IPSet specified by the IPSet ID\cr

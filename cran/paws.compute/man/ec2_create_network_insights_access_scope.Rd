@@ -18,7 +18,7 @@ ec2_create_network_insights_access_scope(
 \item{ExcludePaths}{The paths to exclude.}
 
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{How to ensure idempotency}.}
 
 \item{TagSpecifications}{The tags to apply.}
 

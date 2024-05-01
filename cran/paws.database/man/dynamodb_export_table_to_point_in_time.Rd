@@ -42,7 +42,10 @@ parameters within the 8-hour idempotency window, DynamoDB returns an
 \item{S3Bucket}{[required] The name of the Amazon S3 bucket to export the snapshot to.}
 
 \item{S3BucketOwner}{The ID of the Amazon Web Services account that owns the bucket the
-export will be stored in.}
+export will be stored in.
+
+S3BucketOwner is a required parameter when exporting to a S3 bucket in
+another account.}
 
 \item{S3Prefix}{The Amazon S3 bucket prefix to use as the file name and path of the
 exported snapshot.}

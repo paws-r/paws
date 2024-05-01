@@ -7,8 +7,9 @@
 athena_import_notebook(
   WorkGroup,
   Name,
-  Payload,
+  Payload = NULL,
   Type,
+  NotebookS3LocationUri = NULL,
   ClientRequestToken = NULL
 )
 }
@@ -17,9 +18,13 @@ athena_import_notebook(
 
 \item{Name}{[required] The name of the notebook to import.}
 
-\item{Payload}{[required] The notebook content to be imported.}
+\item{Payload}{The notebook content to be imported. The payload must be in \code{ipynb}
+format.}
 
 \item{Type}{[required] The notebook content type. Currently, the only valid type is \code{IPYNB}.}
+
+\item{NotebookS3LocationUri}{A URI that specifies the Amazon S3 location of a notebook file in
+\code{ipynb} format.}
 
 \item{ClientRequestToken}{A unique case-sensitive string used to ensure the request to import the
 notebook is idempotent (executes only once).
@@ -31,7 +36,7 @@ Amazon Web Services CLI, you must provide this token or the action will
 fail.}
 }
 \description{
-Imports a single \code{ipynb} file to a Spark enabled workgroup. The maximum file size that can be imported is 10 megabytes. If an \code{ipynb} file with the same name already exists in the workgroup, throws an error.
+Imports a single \code{ipynb} file to a Spark enabled workgroup. To import the notebook, the request must specify a value for either \code{Payload} or \code{NoteBookS3LocationUri}. If neither is specified or both are specified, an \code{InvalidRequestException} occurs. The maximum file size that can be imported is 10 megabytes. If an \code{ipynb} file with the same name already exists in the workgroup, throws an error.
 
 See \url{https://www.paws-r-sdk.com/docs/athena_import_notebook/} for full documentation.
 }

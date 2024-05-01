@@ -15,7 +15,21 @@ connect_associate_instance_storage_config(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{ResourceType}{[required] A valid resource type.}
+\item{ResourceType}{[required] A valid resource type. To \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-contact-analysis-segment-streams.html}{enable streaming for real-time analysis of contacts},
+use the following types:
+\itemize{
+\item For chat contacts, use \code{REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS}.
+\item For voice contacts, use \code{REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS}.
+}
+
+\code{REAL_TIME_CONTACT_ANALYSIS_SEGMENTS} is deprecated, but it is still
+supported and will apply only to VOICE channel contacts. Use
+\code{REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS} for voice contacts moving
+forward.
+
+If you have previously associated a stream with
+\code{REAL_TIME_CONTACT_ANALYSIS_SEGMENTS}, no action is needed to update the
+stream to \code{REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS}.}
 
 \item{StorageConfig}{[required] A valid storage type.}
 }

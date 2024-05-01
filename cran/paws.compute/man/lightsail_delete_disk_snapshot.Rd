@@ -7,8 +7,7 @@
 lightsail_delete_disk_snapshot(diskSnapshotName)
 }
 \arguments{
-\item{diskSnapshotName}{[required] The name of the disk snapshot you want to delete (e.g.,
-\code{my-disk-snapshot}).}
+\item{diskSnapshotName}{[required] The name of the disk snapshot you want to delete (\code{my-disk-snapshot}).}
 }
 \description{
 Deletes the specified disk snapshot.

@@ -8,7 +8,7 @@ specified Amazon Web Services Regions}
 securitylake_list_data_lakes(regions = NULL)
 }
 \arguments{
-\item{regions}{The list of regions where Security Lake is enabled.}
+\item{regions}{The list of Regions where Security Lake is enabled.}
 }
 \description{
 Retrieves the Amazon Security Lake configuration object for the specified Amazon Web Services Regions. You can use this operation to determine whether Security Lake is enabled for a Region.

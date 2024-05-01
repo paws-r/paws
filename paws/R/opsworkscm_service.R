@@ -208,7 +208,7 @@ opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .opsworkscm$metadata <- list(
   service_name = "opsworks-cm",
-  endpoints = list("*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "opsworks-cm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "opsworks-cm.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "opsworks-cm.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "opsworks-cm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "opsworks-cm.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "opsworks-cm.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "OpsWorksCM",
   api_version = "2016-11-01",
   signing_name = "opsworks-cm",

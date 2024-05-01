@@ -14,14 +14,16 @@ NULL
 #' datazone_accept_predictions(acceptChoices, acceptRule, clientToken,
 #'   domainIdentifier, identifier, revision)
 #'
-#' @param acceptChoices 
+#' @param acceptChoices Specifies the prediction (aka, the automatically generated piece of
+#' metadata) and the target (for example, a column name) that can be
+#' accepted.
 #' @param acceptRule Specifies the rule (or the conditions) under which a prediction can be
 #' accepted.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request. This field is automatically populated if not provided.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
-#' @param identifier &#91;required&#93; 
-#' @param revision 
+#' @param identifier &#91;required&#93; The identifier of the asset.
+#' @param revision The revision that is to be made to the asset.
 #'
 #' @return
 #' A list with the following syntax:
@@ -38,6 +40,7 @@ NULL
 #' svc$accept_predictions(
 #'   acceptChoices = list(
 #'     list(
+#'       editedValue = "string",
 #'       predictionChoice = 123,
 #'       predictionTarget = "string"
 #'     )
@@ -175,6 +178,51 @@ datazone_accept_subscription_request <- function(decisionComment = NULL, domainI
 }
 .datazone$operations$accept_subscription_request <- datazone_accept_subscription_request
 
+#' Cancels the metadata generation run
+#'
+#' @description
+#' Cancels the metadata generation run.
+#'
+#' @usage
+#' datazone_cancel_metadata_generation_run(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the metadata generation
+#' run is to be cancelled.
+#' @param identifier &#91;required&#93; The ID of the metadata generation run.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_metadata_generation_run(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_cancel_metadata_generation_run
+#'
+#' @aliases datazone_cancel_metadata_generation_run
+datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "CancelMetadataGenerationRun",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}/cancel",
+    paginator = list()
+  )
+  input <- .datazone$cancel_metadata_generation_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$cancel_metadata_generation_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$cancel_metadata_generation_run <- datazone_cancel_metadata_generation_run
+
 #' Cancels the subscription to the specified asset
 #'
 #' @description
@@ -280,7 +328,7 @@ datazone_cancel_subscription <- function(domainIdentifier, identifier) {
 #' idempotency of the request.
 #' @param description Asset description.
 #' @param domainIdentifier &#91;required&#93; Amazon DataZone domain where the asset is created.
-#' @param externalIdentifier 
+#' @param externalIdentifier The external identifier of the asset.
 #' @param formsInput Metadata forms attached to the asset.
 #' @param glossaryTerms Glossary terms attached to the asset.
 #' @param name &#91;required&#93; Asset name.
@@ -317,6 +365,18 @@ datazone_cancel_subscription <- function(domainIdentifier, identifier) {
 #'     "string"
 #'   ),
 #'   id = "string",
+#'   latestTimeSeriesDataPointFormsOutput = list(
+#'     list(
+#'       contentSummary = "string",
+#'       formName = "string",
+#'       id = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   listing = list(
 #'     listingId = "string",
 #'     listingStatus = "CREATING"|"ACTIVE"|"INACTIVE"
@@ -445,6 +505,18 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
 #'     "string"
 #'   ),
 #'   id = "string",
+#'   latestTimeSeriesDataPointFormsOutput = list(
+#'     list(
+#'       contentSummary = "string",
+#'       formName = "string",
+#'       id = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   listing = list(
 #'     listingId = "string",
 #'     listingStatus = "CREATING"|"ACTIVE"|"INACTIVE"
@@ -652,6 +724,7 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
+#'       autoImportDataQualityResult = TRUE|FALSE,
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -748,6 +821,7 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 #'   clientToken = "string",
 #'   configuration = list(
 #'     glueRunConfiguration = list(
+#'       autoImportDataQualityResult = TRUE|FALSE,
 #'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
@@ -1427,21 +1501,24 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
 }
 .datazone$operations$create_group_profile <- datazone_create_group_profile
 
-#' Create listing change set
+#' Publishes a listing (a record of an asset at a given time) or removes a
+#' listing from the catalog
 #'
 #' @description
-#' Create listing change set
+#' Publishes a listing (a record of an asset at a given time) or removes a
+#' listing from the catalog.
 #'
 #' @usage
 #' datazone_create_listing_change_set(action, clientToken,
 #'   domainIdentifier, entityIdentifier, entityRevision, entityType)
 #'
-#' @param action &#91;required&#93; 
-#' @param clientToken 
-#' @param domainIdentifier &#91;required&#93; 
-#' @param entityIdentifier &#91;required&#93; 
-#' @param entityRevision 
-#' @param entityType &#91;required&#93; 
+#' @param action &#91;required&#93; Specifies whether to publish or unpublish a listing.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset.
+#' @param entityRevision The revision of an asset.
+#' @param entityType &#91;required&#93; The type of an entity.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1511,6 +1588,12 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'   createdBy = "string",
 #'   description = "string",
 #'   domainId = "string",
+#'   failureReasons = list(
+#'     list(
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
@@ -1518,7 +1601,8 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string"
+#'   name = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"
 #' )
 #' ```
 #'
@@ -1730,7 +1814,7 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the subscription request
 #' is created.
 #' @param requestReason &#91;required&#93; The reason for the subscription request.
-#' @param subscribedListings &#91;required&#93; 
+#' @param subscribedListings &#91;required&#93; The published asset for which the subscription grant is to be created.
 #' @param subscribedPrincipals &#91;required&#93; The Amazon DataZone principals for whom the subscription request is
 #' created.
 #'
@@ -2122,6 +2206,7 @@ datazone_delete_asset_type <- function(domainIdentifier, identifier) {
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
+#'       autoImportDataQualityResult = TRUE|FALSE,
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -2238,11 +2323,13 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #' Deletes a Amazon DataZone domain.
 #'
 #' @usage
-#' datazone_delete_domain(clientToken, identifier)
+#' datazone_delete_domain(clientToken, identifier, skipDeletionCheck)
 #'
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
 #' @param identifier &#91;required&#93; The identifier of the Amazon Web Services domain that is to be deleted.
+#' @param skipDeletionCheck Specifies the optional flag to delete all child entities within the
+#' domain.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2256,7 +2343,8 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #' ```
 #' svc$delete_domain(
 #'   clientToken = "string",
-#'   identifier = "string"
+#'   identifier = "string",
+#'   skipDeletionCheck = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2265,14 +2353,14 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
 #' @rdname datazone_delete_domain
 #'
 #' @aliases datazone_delete_domain
-datazone_delete_domain <- function(clientToken = NULL, identifier) {
+datazone_delete_domain <- function(clientToken = NULL, identifier, skipDeletionCheck = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
     http_method = "DELETE",
     http_path = "/v2/domains/{identifier}",
     paginator = list()
   )
-  input <- .datazone$delete_domain_input(clientToken = clientToken, identifier = identifier)
+  input <- .datazone$delete_domain_input(clientToken = clientToken, identifier = identifier, skipDeletionCheck = skipDeletionCheck)
   output <- .datazone$delete_domain_output()
   config <- get_config()
   svc <- .datazone$service(config)
@@ -2553,16 +2641,16 @@ datazone_delete_glossary_term <- function(domainIdentifier, identifier) {
 }
 .datazone$operations$delete_glossary_term <- datazone_delete_glossary_term
 
-#' Delete listing
+#' Deletes a listing (a record of an asset at a given time)
 #'
 #' @description
-#' Delete listing
+#' Deletes a listing (a record of an asset at a given time).
 #'
 #' @usage
 #' datazone_delete_listing(domainIdentifier, identifier)
 #'
-#' @param domainIdentifier &#91;required&#93; 
-#' @param identifier &#91;required&#93; 
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
+#' @param identifier &#91;required&#93; The ID of the listing to be deleted.
 #'
 #' @return
 #' An empty list.
@@ -2603,10 +2691,12 @@ datazone_delete_listing <- function(domainIdentifier, identifier) {
 #' Deletes a project in Amazon DataZone.
 #'
 #' @usage
-#' datazone_delete_project(domainIdentifier, identifier)
+#' datazone_delete_project(domainIdentifier, identifier, skipDeletionCheck)
 #'
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the project is deleted.
 #' @param identifier &#91;required&#93; The identifier of the project that is to be deleted.
+#' @param skipDeletionCheck Specifies the optional flag to delete all child entities within the
+#' project.
 #'
 #' @return
 #' An empty list.
@@ -2615,7 +2705,8 @@ datazone_delete_listing <- function(domainIdentifier, identifier) {
 #' ```
 #' svc$delete_project(
 #'   domainIdentifier = "string",
-#'   identifier = "string"
+#'   identifier = "string",
+#'   skipDeletionCheck = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2624,14 +2715,14 @@ datazone_delete_listing <- function(domainIdentifier, identifier) {
 #' @rdname datazone_delete_project
 #'
 #' @aliases datazone_delete_project
-datazone_delete_project <- function(domainIdentifier, identifier) {
+datazone_delete_project <- function(domainIdentifier, identifier, skipDeletionCheck = NULL) {
   op <- new_operation(
     name = "DeleteProject",
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/projects/{identifier}",
     paginator = list()
   )
-  input <- .datazone$delete_project_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$delete_project_input(domainIdentifier = domainIdentifier, identifier = identifier, skipDeletionCheck = skipDeletionCheck)
   output <- .datazone$delete_project_output()
   config <- get_config()
   svc <- .datazone$service(config)
@@ -2872,6 +2963,59 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
 }
 .datazone$operations$delete_subscription_target <- datazone_delete_subscription_target
 
+#' Deletes the specified time series form for the specified asset
+#'
+#' @description
+#' Deletes the specified time series form for the specified asset.
+#'
+#' @usage
+#' datazone_delete_time_series_data_points(clientToken, domainIdentifier,
+#'   entityIdentifier, entityType, formName)
+#'
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the asset for which you
+#' want to delete a time series form.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to delete a time series form.
+#' @param entityType &#91;required&#93; The type of the asset for which you want to delete a time series form.
+#' @param formName &#91;required&#93; The name of the time series form that you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_time_series_data_points(
+#'   clientToken = "string",
+#'   domainIdentifier = "string",
+#'   entityIdentifier = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   formName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_time_series_data_points
+#'
+#' @aliases datazone_delete_time_series_data_points
+datazone_delete_time_series_data_points <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, formName) {
+  op <- new_operation(
+    name = "DeleteTimeSeriesDataPoints",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+    paginator = list()
+  )
+  input <- .datazone$delete_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName)
+  output <- .datazone$delete_time_series_data_points_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_time_series_data_points <- datazone_delete_time_series_data_points
+
 #' Gets an Amazon DataZone asset
 #'
 #' @description
@@ -2911,6 +3055,18 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
 #'     "string"
 #'   ),
 #'   id = "string",
+#'   latestTimeSeriesDataPointFormsOutput = list(
+#'     list(
+#'       contentSummary = "string",
+#'       formName = "string",
+#'       id = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   listing = list(
 #'     listingId = "string",
 #'     listingStatus = "CREATING"|"ACTIVE"|"INACTIVE"
@@ -3060,6 +3216,7 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
+#'       autoImportDataQualityResult = TRUE|FALSE,
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -3969,17 +4126,17 @@ datazone_get_iam_portal_login_url <- function(domainIdentifier) {
 }
 .datazone$operations$get_iam_portal_login_url <- datazone_get_iam_portal_login_url
 
-#' Get listing
+#' Gets a listing (a record of an asset at a given time)
 #'
 #' @description
-#' Get listing
+#' Gets a listing (a record of an asset at a given time).
 #'
 #' @usage
 #' datazone_get_listing(domainIdentifier, identifier, listingRevision)
 #'
-#' @param domainIdentifier &#91;required&#93; 
-#' @param identifier &#91;required&#93; 
-#' @param listingRevision 
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain.
+#' @param identifier &#91;required&#93; The ID of the listing.
+#' @param listingRevision The revision of the listing.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4005,6 +4162,18 @@ datazone_get_iam_portal_login_url <- function(domainIdentifier) {
 #'         list(
 #'           name = "string",
 #'           shortDescription = "string"
+#'         )
+#'       ),
+#'       latestTimeSeriesDataPointForms = list(
+#'         list(
+#'           contentSummary = "string",
+#'           formName = "string",
+#'           id = "string",
+#'           timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
 #'         )
 #'       ),
 #'       owningProjectId = "string"
@@ -4051,6 +4220,69 @@ datazone_get_listing <- function(domainIdentifier, identifier, listingRevision =
 }
 .datazone$operations$get_listing <- datazone_get_listing
 
+#' Gets a metadata generation run in Amazon DataZone
+#'
+#' @description
+#' Gets a metadata generation run in Amazon DataZone.
+#'
+#' @usage
+#' datazone_get_metadata_generation_run(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain the metadata generation run of
+#' which you want to get.
+#' @param identifier &#91;required&#93; The identifier of the metadata generation run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   domainId = "string",
+#'   id = "string",
+#'   owningProjectId = "string",
+#'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED",
+#'   target = list(
+#'     identifier = "string",
+#'     revision = "string",
+#'     type = "ASSET"
+#'   ),
+#'   type = "BUSINESS_DESCRIPTIONS"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_metadata_generation_run(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_metadata_generation_run
+#'
+#' @aliases datazone_get_metadata_generation_run
+datazone_get_metadata_generation_run <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "GetMetadataGenerationRun",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}",
+    paginator = list()
+  )
+  input <- .datazone$get_metadata_generation_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$get_metadata_generation_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_metadata_generation_run <- datazone_get_metadata_generation_run
+
 #' Gets a project in Amazon DataZone
 #'
 #' @description
@@ -4072,6 +4304,12 @@ datazone_get_listing <- function(domainIdentifier, identifier, listingRevision =
 #'   createdBy = "string",
 #'   description = "string",
 #'   domainId = "string",
+#'   failureReasons = list(
+#'     list(
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
@@ -4079,7 +4317,8 @@ datazone_get_listing <- function(domainIdentifier, identifier, listingRevision =
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string"
+#'   name = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"
 #' )
 #' ```
 #'
@@ -4461,6 +4700,77 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
   return(response)
 }
 .datazone$operations$get_subscription_target <- datazone_get_subscription_target
+
+#' Gets the existing data point for the asset
+#'
+#' @description
+#' Gets the existing data point for the asset.
+#'
+#' @usage
+#' datazone_get_time_series_data_point(domainIdentifier, entityIdentifier,
+#'   entityType, formName, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the asset for which you
+#' want to get the data point.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to get the data point.
+#' @param entityType &#91;required&#93; The type of the asset for which you want to get the data point.
+#' @param formName &#91;required&#93; The name of the time series form that houses the data point that you
+#' want to get.
+#' @param identifier &#91;required&#93; The ID of the data point that you want to get.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainId = "string",
+#'   entityId = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   form = list(
+#'     content = "string",
+#'     formName = "string",
+#'     id = "string",
+#'     timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     typeIdentifier = "string",
+#'     typeRevision = "string"
+#'   ),
+#'   formName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_time_series_data_point(
+#'   domainIdentifier = "string",
+#'   entityIdentifier = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   formName = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_time_series_data_point
+#'
+#' @aliases datazone_get_time_series_data_point
+datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifier, entityType, formName, identifier) {
+  op <- new_operation(
+    name = "GetTimeSeriesDataPoint",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points/{identifier}",
+    paginator = list()
+  )
+  input <- .datazone$get_time_series_data_point_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, identifier = identifier)
+  output <- .datazone$get_time_series_data_point_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_time_series_data_point <- datazone_get_time_series_data_point
 
 #' Gets a user profile in Amazon DataZone
 #'
@@ -5271,7 +5581,7 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
 #' response contains a `NextToken` value that you can use in a subsequent
 #' call to [`list_environments`][datazone_list_environments] to list the
 #' next set of environments.
-#' @param name 
+#' @param name The name of the environment.
 #' @param nextToken When the number of environments is greater than the default value for
 #' the `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of environments, the response
@@ -5350,6 +5660,90 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
   return(response)
 }
 .datazone$operations$list_environments <- datazone_list_environments
+
+#' Lists all metadata generation runs
+#'
+#' @description
+#' Lists all metadata generation runs.
+#'
+#' @usage
+#' datazone_list_metadata_generation_runs(domainIdentifier, maxResults,
+#'   nextToken, status, type)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where you want to list metadata
+#' generation runs.
+#' @param maxResults The maximum number of metadata generation runs to return in a single
+#' call to ListMetadataGenerationRuns. When the number of metadata
+#' generation runs to be listed is greater than the value of MaxResults,
+#' the response contains a NextToken value that you can use in a subsequent
+#' call to ListMetadataGenerationRuns to list the next set of revisions.
+#' @param nextToken When the number of metadata generation runs is greater than the default
+#' value for the MaxResults parameter, or if you explicitly specify a value
+#' for MaxResults that is less than the number of metadata generation runs,
+#' the response includes a pagination token named NextToken. You can
+#' specify this NextToken value in a subsequent call to
+#' ListMetadataGenerationRuns to list the next set of revisions.
+#' @param status The status of the metadata generation runs.
+#' @param type The type of the metadata generation runs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       domainId = "string",
+#'       id = "string",
+#'       owningProjectId = "string",
+#'       status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED",
+#'       target = list(
+#'         identifier = "string",
+#'         revision = "string",
+#'         type = "ASSET"
+#'       ),
+#'       type = "BUSINESS_DESCRIPTIONS"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_metadata_generation_runs(
+#'   domainIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED",
+#'   type = "BUSINESS_DESCRIPTIONS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_metadata_generation_runs
+#'
+#' @aliases datazone_list_metadata_generation_runs
+datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, status = NULL, type = NULL) {
+  op <- new_operation(
+    name = "ListMetadataGenerationRuns",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .datazone$list_metadata_generation_runs_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status, type = type)
+  output <- .datazone$list_metadata_generation_runs_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_metadata_generation_runs <- datazone_list_metadata_generation_runs
 
 #' Lists all Amazon DataZone notifications
 #'
@@ -5560,7 +5954,7 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #' contains a `NextToken` value that you can use in a subsequent call to
 #' [`list_projects`][datazone_list_projects] to list the next set of
 #' projects.
-#' @param name 
+#' @param name The name of the project.
 #' @param nextToken When the number of projects is greater than the default value for the
 #' `MaxResults` parameter, or if you explicitly specify a value for
 #' `MaxResults` that is less than the number of projects, the response
@@ -5582,8 +5976,15 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
 #'       createdBy = "string",
 #'       description = "string",
 #'       domainId = "string",
+#'       failureReasons = list(
+#'         list(
+#'           code = "string",
+#'           message = "string"
+#'         )
+#'       ),
 #'       id = "string",
 #'       name = "string",
+#'       projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -6149,6 +6550,178 @@ datazone_list_tags_for_resource <- function(resourceArn) {
 }
 .datazone$operations$list_tags_for_resource <- datazone_list_tags_for_resource
 
+#' Lists time series data points
+#'
+#' @description
+#' Lists time series data points.
+#'
+#' @usage
+#' datazone_list_time_series_data_points(domainIdentifier, endedAt,
+#'   entityIdentifier, entityType, formName, maxResults, nextToken,
+#'   startedAt)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain that houses the assets for which
+#' you want to list time series data points.
+#' @param endedAt The timestamp at which the data points that you wanted to list ended.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to list data points.
+#' @param entityType &#91;required&#93; The type of the asset for which you want to list data points.
+#' @param formName &#91;required&#93; The name of the time series data points form.
+#' @param maxResults The maximum number of data points to return in a single call to
+#' ListTimeSeriesDataPoints. When the number of data points to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListTimeSeriesDataPoints
+#' to list the next set of data points.
+#' @param nextToken When the number of data points is greater than the default value for the
+#' MaxResults parameter, or if you explicitly specify a value for
+#' MaxResults that is less than the number of data points, the response
+#' includes a pagination token named NextToken. You can specify this
+#' NextToken value in a subsequent call to ListTimeSeriesDataPoints to list
+#' the next set of data points.
+#' @param startedAt The timestamp at which the data points that you want to list started.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       contentSummary = "string",
+#'       formName = "string",
+#'       id = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_time_series_data_points(
+#'   domainIdentifier = "string",
+#'   endedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   entityIdentifier = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   formName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   startedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_time_series_data_points
+#'
+#' @aliases datazone_list_time_series_data_points
+datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NULL, entityIdentifier, entityType, formName, maxResults = NULL, nextToken = NULL, startedAt = NULL) {
+  op <- new_operation(
+    name = "ListTimeSeriesDataPoints",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .datazone$list_time_series_data_points_input(domainIdentifier = domainIdentifier, endedAt = endedAt, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, maxResults = maxResults, nextToken = nextToken, startedAt = startedAt)
+  output <- .datazone$list_time_series_data_points_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_time_series_data_points <- datazone_list_time_series_data_points
+
+#' Posts time series data points to Amazon DataZone for the specified asset
+#'
+#' @description
+#' Posts time series data points to Amazon DataZone for the specified
+#' asset.
+#'
+#' @usage
+#' datazone_post_time_series_data_points(clientToken, domainIdentifier,
+#'   entityIdentifier, entityType, forms)
+#'
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which you want to post time
+#' series data points.
+#' @param entityIdentifier &#91;required&#93; The ID of the asset for which you want to post time series data points.
+#' @param entityType &#91;required&#93; The type of the asset for which you want to post data points.
+#' @param forms &#91;required&#93; The forms that contain the data points that you want to post.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainId = "string",
+#'   entityId = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   forms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       id = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$post_time_series_data_points(
+#'   clientToken = "string",
+#'   domainIdentifier = "string",
+#'   entityIdentifier = "string",
+#'   entityType = "ASSET"|"LISTING",
+#'   forms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_post_time_series_data_points
+#'
+#' @aliases datazone_post_time_series_data_points
+datazone_post_time_series_data_points <- function(clientToken = NULL, domainIdentifier, entityIdentifier, entityType, forms) {
+  op <- new_operation(
+    name = "PostTimeSeriesDataPoints",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+    paginator = list()
+  )
+  input <- .datazone$post_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, forms = forms)
+  output <- .datazone$post_time_series_data_points_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$post_time_series_data_points <- datazone_post_time_series_data_points
+
 #' Writes the configuration for the specified environment blueprint in
 #' Amazon DataZone
 #'
@@ -6248,9 +6821,12 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
 #' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param identifier &#91;required&#93; The identifier of the prediction.
-#' @param rejectChoices 
-#' @param rejectRule 
-#' @param revision 
+#' @param rejectChoices Specifies the prediction (aka, the automatically generated piece of
+#' metadata) and the target (for example, a column name) that can be
+#' rejected.
+#' @param rejectRule Specifies the rule (or the conditions) under which a prediction can be
+#' rejected.
+#' @param revision The revision that is to be made to the asset.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6524,7 +7100,7 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' `NextToken` value in a subsequent call to [`search`][datazone_search] to
 #' list the next set of results.
 #' @param owningProjectIdentifier The identifier of the owning project specified for the search.
-#' @param searchIn 
+#' @param searchIn The details of the search.
 #' @param searchScope &#91;required&#93; The scope of the search.
 #' @param searchText Specifies the text for which to search.
 #' @param sort Specifies the way in which the search results are to be sorted.
@@ -6542,6 +7118,18 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #'               content = "string",
 #'               formName = "string",
 #'               typeName = "string",
+#'               typeRevision = "string"
+#'             )
+#'           ),
+#'           latestTimeSeriesDataPointFormsOutput = list(
+#'             list(
+#'               contentSummary = "string",
+#'               formName = "string",
+#'               id = "string",
+#'               timestamp = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               typeIdentifier = "string",
 #'               typeRevision = "string"
 #'             )
 #'           ),
@@ -6650,7 +7238,7 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
 #' ```
 #' svc$search(
 #'   additionalAttributes = list(
-#'     "FORMS"
+#'     "FORMS"|"TIME_SERIES_DATA_POINT_FORMS"
 #'   ),
 #'   domainIdentifier = "string",
 #'   filters = list(
@@ -6781,10 +7369,12 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 }
 .datazone$operations$search_group_profiles <- datazone_search_group_profiles
 
-#' Searches listings in Amazon DataZone
+#' Searches listings (records of an asset at a given time) in Amazon
+#' DataZone
 #'
 #' @description
-#' Searches listings in Amazon DataZone.
+#' Searches listings (records of an asset at a given time) in Amazon
+#' DataZone.
 #'
 #' @usage
 #' datazone_search_listings(additionalAttributes, domainIdentifier,
@@ -6806,7 +7396,7 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' `NextToken` value in a subsequent call to
 #' [`search_listings`][datazone_search_listings] to list the next set of
 #' results.
-#' @param searchIn 
+#' @param searchIn The details of the search.
 #' @param searchText Specifies the text for which to search.
 #' @param sort Specifies the way for sorting the search results.
 #'
@@ -6818,7 +7408,19 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #'     list(
 #'       assetListing = list(
 #'         additionalAttributes = list(
-#'           forms = "string"
+#'           forms = "string",
+#'           latestTimeSeriesDataPointForms = list(
+#'             list(
+#'               contentSummary = "string",
+#'               formName = "string",
+#'               id = "string",
+#'               timestamp = as.POSIXct(
+#'                 "2015-01-01"
+#'               ),
+#'               typeIdentifier = "string",
+#'               typeRevision = "string"
+#'             )
+#'           )
 #'         ),
 #'         createdAt = as.POSIXct(
 #'           "2015-01-01"
@@ -6851,7 +7453,7 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
 #' ```
 #' svc$search_listings(
 #'   additionalAttributes = list(
-#'     "FORMS"
+#'     "FORMS"|"TIME_SERIES_DATA_POINT_FORMS"
 #'   ),
 #'   domainIdentifier = "string",
 #'   filters = list(
@@ -6915,7 +7517,7 @@ datazone_search_listings <- function(additionalAttributes = NULL, domainIdentifi
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to invoke the
 #' [`search_types`][datazone_search_types] action.
 #' @param filters The filters for the [`search_types`][datazone_search_types] action.
-#' @param managed &#91;required&#93; 
+#' @param managed &#91;required&#93; Specifies whether the search is managed.
 #' @param maxResults The maximum number of results to return in a single call to
 #' [`search_types`][datazone_search_types]. When the number of results to
 #' be listed is greater than the value of `MaxResults`, the response
@@ -6927,7 +7529,7 @@ datazone_search_listings <- function(additionalAttributes = NULL, domainIdentifi
 #' includes a pagination token named `NextToken`. You can specify this
 #' `NextToken` value in a subsequent call to
 #' [`search_types`][datazone_search_types] to list the next set of results.
-#' @param searchIn 
+#' @param searchIn The details of the search.
 #' @param searchScope &#91;required&#93; Specifies the scope of the search for types.
 #' @param searchText Specifies the text for which to search.
 #' @param sort The specifies the way to sort the
@@ -7218,6 +7820,77 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
 }
 .datazone$operations$start_data_source_run <- datazone_start_data_source_run
 
+#' Starts the metadata generation run
+#'
+#' @description
+#' Starts the metadata generation run.
+#'
+#' @usage
+#' datazone_start_metadata_generation_run(clientToken, domainIdentifier,
+#'   owningProjectIdentifier, target, type)
+#'
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request. This field is automatically populated if not provided.
+#' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where you want to start a metadata
+#' generation run.
+#' @param owningProjectIdentifier &#91;required&#93; The ID of the project that owns the asset for which you want to start a
+#' metadata generation run.
+#' @param target &#91;required&#93; The asset for which you want to start a metadata generation run.
+#' @param type &#91;required&#93; The type of the metadata generation run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   domainId = "string",
+#'   id = "string",
+#'   owningProjectId = "string",
+#'   status = "SUBMITTED"|"IN_PROGRESS"|"CANCELED"|"SUCCEEDED"|"FAILED",
+#'   type = "BUSINESS_DESCRIPTIONS"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_metadata_generation_run(
+#'   clientToken = "string",
+#'   domainIdentifier = "string",
+#'   owningProjectIdentifier = "string",
+#'   target = list(
+#'     identifier = "string",
+#'     revision = "string",
+#'     type = "ASSET"
+#'   ),
+#'   type = "BUSINESS_DESCRIPTIONS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_start_metadata_generation_run
+#'
+#' @aliases datazone_start_metadata_generation_run
+datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIdentifier, owningProjectIdentifier, target, type) {
+  op <- new_operation(
+    name = "StartMetadataGenerationRun",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs",
+    paginator = list()
+  )
+  input <- .datazone$start_metadata_generation_run_input(clientToken = clientToken, domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, target = target, type = type)
+  output <- .datazone$start_metadata_generation_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$start_metadata_generation_run <- datazone_start_metadata_generation_run
+
 #' Tags a resource in Amazon DataZone
 #'
 #' @description
@@ -7356,6 +8029,7 @@ datazone_untag_resource <- function(resourceArn, tagKeys) {
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
+#'       autoImportDataQualityResult = TRUE|FALSE,
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -7451,6 +8125,7 @@ datazone_untag_resource <- function(resourceArn, tagKeys) {
 #'   ),
 #'   configuration = list(
 #'     glueRunConfiguration = list(
+#'       autoImportDataQualityResult = TRUE|FALSE,
 #'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
@@ -8080,6 +8755,12 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   createdBy = "string",
 #'   description = "string",
 #'   domainId = "string",
+#'   failureReasons = list(
+#'     list(
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
@@ -8087,7 +8768,8 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   lastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   name = "string"
+#'   name = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"
 #' )
 #' ```
 #'

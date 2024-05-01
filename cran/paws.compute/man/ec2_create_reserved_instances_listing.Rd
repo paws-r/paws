@@ -15,7 +15,7 @@ ec2_create_reserved_instances_listing(
 \arguments{
 \item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 your listings. This helps avoid duplicate listings. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceCount}{[required] The number of instances that are a part of a Reserved Instance account
 to be listed in the Reserved Instance Marketplace. This number should be

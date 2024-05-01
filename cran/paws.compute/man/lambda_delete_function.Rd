@@ -7,7 +7,7 @@
 lambda_delete_function(FunctionName, Qualifier = NULL)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function or version.
+\item{FunctionName}{[required] The name or ARN of the Lambda function or version.
 
 \strong{Name formats}
 \itemize{

@@ -41,7 +41,7 @@ specified, it defaults to the latest version. For more information, see
 \href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (MWAA)}.
 
 Valid values: \verb{1.10.12}, \verb{2.0.2}, \verb{2.2.2}, \verb{2.4.3}, \verb{2.5.1}, \verb{2.6.3},
-\verb{2.7.2}}
+\verb{2.7.2} \verb{2.8.1}}
 
 \item{DagS3Path}{[required] The relative path to the DAGs folder on your Amazon S3 bucket. For
 example, \code{dags}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}

@@ -166,6 +166,7 @@ NULL
 #'  \link[=wafv2_create_regex_pattern_set]{create_regex_pattern_set} \tab Creates a RegexPatternSet, which you reference in a RegexPatternSetReferenceStatement, to have WAF inspect a web request component for the specified patterns\cr
 #'  \link[=wafv2_create_rule_group]{create_rule_group} \tab Creates a RuleGroup per the specifications provided\cr
 #'  \link[=wafv2_create_web_acl]{create_web_acl} \tab Creates a WebACL per the specifications provided\cr
+#'  \link[=wafv2_delete_api_key]{delete_api_key} \tab Deletes the specified API key\cr
 #'  \link[=wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by Firewall Manager for the specified web ACL\cr
 #'  \link[=wafv2_delete_ip_set]{delete_ip_set} \tab Deletes the specified IPSet\cr
 #'  \link[=wafv2_delete_logging_configuration]{delete_logging_configuration} \tab Deletes the LoggingConfiguration from the specified web ACL\cr
@@ -243,7 +244,7 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .wafv2$metadata <- list(
   service_name = "wafv2",
-  endpoints = list("*" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "wafv2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "wafv2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WAFV2",
   api_version = "2019-07-29",
   signing_name = "wafv2",

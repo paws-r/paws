@@ -103,8 +103,8 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=paymentcryptographydataplane_decrypt_data]{decrypt_data} \tab Decrypts ciphertext data to plaintext using symmetric, asymmetric, or DUKPT data encryption key\cr
-#'  \link[=paymentcryptographydataplane_encrypt_data]{encrypt_data} \tab Encrypts plaintext data to ciphertext using symmetric, asymmetric, or DUKPT data encryption key\cr
+#'  \link[=paymentcryptographydataplane_decrypt_data]{decrypt_data} \tab Decrypts ciphertext data to plaintext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme\cr
+#'  \link[=paymentcryptographydataplane_encrypt_data]{encrypt_data} \tab Encrypts plaintext data to ciphertext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme\cr
 #'  \link[=paymentcryptographydataplane_generate_card_validation_data]{generate_card_validation_data} \tab Generates card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2), or Card Security Codes (CSC)\cr
 #'  \link[=paymentcryptographydataplane_generate_mac]{generate_mac} \tab Generates a Message Authentication Code (MAC) cryptogram within Amazon Web Services Payment Cryptography\cr
 #'  \link[=paymentcryptographydataplane_generate_pin_data]{generate_pin_data} \tab Generates pin-related data such as PIN, PIN Verification Value (PVV), PIN Block, and PIN Offset during new card issuance or reissuance\cr
@@ -145,7 +145,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 
 .paymentcryptographydataplane$metadata <- list(
   service_name = "paymentcryptographydataplane",
-  endpoints = list("*" = list(endpoint = "dataplane.payment-cryptography.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dataplane.payment-cryptography.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dataplane.payment-cryptography.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dataplane.payment-cryptography.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "dataplane.payment-cryptography.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dataplane.payment-cryptography.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "dataplane.payment-cryptography.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "dataplane.payment-cryptography.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dataplane.payment-cryptography.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "dataplane.payment-cryptography.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Payment Cryptography Data",
   api_version = "2022-02-03",
   signing_name = "payment-cryptography",

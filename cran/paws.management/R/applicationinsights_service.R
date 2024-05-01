@@ -167,7 +167,7 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 
 .applicationinsights$metadata <- list(
   service_name = "applicationinsights",
-  endpoints = list("*" = list(endpoint = "applicationinsights.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "applicationinsights.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "applicationinsights.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "applicationinsights.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "applicationinsights.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "applicationinsights.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "applicationinsights.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "applicationinsights.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "applicationinsights.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "applicationinsights.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Application Insights",
   api_version = "2018-11-25",
   signing_name = "applicationinsights",

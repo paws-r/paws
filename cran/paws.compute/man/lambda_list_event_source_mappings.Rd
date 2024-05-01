@@ -19,12 +19,12 @@ consumer.
 \item \strong{Amazon DynamoDB Streams} – The ARN of the stream.
 \item \strong{Amazon Simple Queue Service} – The ARN of the queue.
 \item \strong{Amazon Managed Streaming for Apache Kafka} – The ARN of the
-cluster.
+cluster or the ARN of the VPC connection (for \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc}{cross-account event source mappings}).
 \item \strong{Amazon MQ} – The ARN of the broker.
 \item \strong{Amazon DocumentDB} – The ARN of the DocumentDB change stream.
 }}
 
-\item{FunctionName}{The name of the Lambda function.
+\item{FunctionName}{The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_list_provisioned_model_throughputs}
 \alias{bedrock_list_provisioned_model_throughputs}
-\title{List the provisioned capacities}
+\title{Lists the Provisioned Throughputs in the account}
 \usage{
 bedrock_list_provisioned_model_throughputs(
   creationTimeAfter = NULL,
@@ -17,30 +17,36 @@ bedrock_list_provisioned_model_throughputs(
 )
 }
 \arguments{
-\item{creationTimeAfter}{Return provisioned capacities created after the specified time.}
+\item{creationTimeAfter}{A filter that returns Provisioned Throughputs created after the
+specified time.}
 
-\item{creationTimeBefore}{Return provisioned capacities created before the specified time.}
+\item{creationTimeBefore}{A filter that returns Provisioned Throughputs created before the
+specified time.}
 
-\item{statusEquals}{Return the list of provisioned capacities that match the specified
-status.}
+\item{statusEquals}{A filter that returns Provisioned Throughputs if their statuses matches
+the value that you specify.}
 
-\item{modelArnEquals}{Return the list of provisioned capacities where their model ARN is equal
-to this parameter.}
+\item{modelArnEquals}{A filter that returns Provisioned Throughputs whose model Amazon
+Resource Name (ARN) is equal to the value that you specify.}
 
-\item{nameContains}{Return the list of provisioned capacities if their name contains these
-characters.}
+\item{nameContains}{A filter that returns Provisioned Throughputs if their name contains the
+expression that you specify.}
 
-\item{maxResults}{THe maximum number of results to return in the response.}
+\item{maxResults}{THe maximum number of results to return in the response. If there are
+more results than the number you specified, the response returns a
+\code{nextToken} value. To see the next batch of results, send the
+\code{nextToken} value in another list request.}
 
-\item{nextToken}{Continuation token from the previous response, for Amazon Bedrock to
-list the next set of results.}
+\item{nextToken}{If there are more results than the number you specified in the
+\code{maxResults} field, the response returns a \code{nextToken} value. To see the
+next batch of results, specify the \code{nextToken} value in this field.}
 
-\item{sortBy}{The field to sort by in the returned list of provisioned capacities.}
+\item{sortBy}{The field by which to sort the returned list of Provisioned Throughputs.}
 
 \item{sortOrder}{The sort order of the results.}
 }
 \description{
-List the provisioned capacities. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Provisioned throughput} in the Bedrock User Guide.
+Lists the Provisioned Throughputs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_provisioned_model_throughputs/} for full documentation.
 }

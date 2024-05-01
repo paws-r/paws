@@ -7,8 +7,8 @@
 lightsail_detach_disk(diskName)
 }
 \arguments{
-\item{diskName}{[required] The unique name of the disk you want to detach from your instance (e.g.,
-\code{my-disk}).}
+\item{diskName}{[required] The unique name of the disk you want to detach from your instance
+(\code{my-disk}).}
 }
 \description{
 Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.

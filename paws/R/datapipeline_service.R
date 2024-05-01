@@ -162,7 +162,7 @@ datapipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .datapipeline$metadata <- list(
   service_name = "datapipeline",
-  endpoints = list("*" = list(endpoint = "datapipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datapipeline.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "datapipeline.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "datapipeline.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "datapipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datapipeline.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "datapipeline.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "datapipeline.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "datapipeline.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "datapipeline.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Data Pipeline",
   api_version = "2012-10-29",
   signing_name = "datapipeline",

@@ -3995,14 +3995,21 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 }
 .storagegateway$operations$describe_tape_recovery_points <- storagegateway_describe_tape_recovery_points
 
-#' Returns a description of the specified Amazon Resource Name (ARN) of
-#' virtual tapes
+#' Returns a description of virtual tapes that correspond to the specified
+#' Amazon Resource Names (ARNs)
 #'
 #' @description
-#' Returns a description of the specified Amazon Resource Name (ARN) of
-#' virtual tapes. If a `TapeARN` is not specified, returns a description of
-#' all virtual tapes associated with the specified gateway. This operation
-#' is only supported in the tape gateway type.
+#' Returns a description of virtual tapes that correspond to the specified
+#' Amazon Resource Names (ARNs). If `TapeARN` is not specified, returns a
+#' description of the virtual tapes associated with the specified gateway.
+#' This operation is only supported for the tape gateway type.
+#' 
+#' The operation supports pagination. By default, the operation returns a
+#' maximum of up to 100 tapes. You can optionally specify the `Limit` field
+#' in the body to limit the number of tapes in the response. If the number
+#' of tapes returned in the response is truncated, the response includes a
+#' `Marker` field. You can use this `Marker` value in your subsequent
+#' request to retrieve the next set of tapes.
 #'
 #' @usage
 #' storagegateway_describe_tapes(GatewayARN, TapeARNs, Marker, Limit)
@@ -4853,7 +4860,9 @@ storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limi
 #'       Ec2InstanceId = "string",
 #'       Ec2InstanceRegion = "string",
 #'       HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER"|"SNOWBALL",
-#'       HostEnvironmentId = "string"
+#'       HostEnvironmentId = "string",
+#'       DeprecationDate = "string",
+#'       SoftwareVersion = "string"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -5430,11 +5439,11 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 .storagegateway$operations$list_volumes <- storagegateway_list_volumes
 
 #' Sends you notification through CloudWatch Events when all files written
-#' to your file share have been uploaded to S3
+#' to your file share have been uploaded to Amazon S3
 #'
 #' @description
 #' Sends you notification through CloudWatch Events when all files written
-#' to your file share have been uploaded to S3. Amazon S3.
+#' to your file share have been uploaded to Amazon S3.
 #' 
 #' Storage Gateway can send a notification through Amazon CloudWatch Events
 #' when all files written to your file share up to that point in time have
@@ -5506,9 +5515,9 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' You can subscribe to be notified through an Amazon CloudWatch event when
 #' your [`refresh_cache`][storagegateway_refresh_cache] operation
 #' completes. For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/#get-notification)
-#' in the *Storage Gateway User Guide*. This operation is Only supported
-#' for S3 File Gateways.
+#' operations](https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification)
+#' in the *Amazon S3 File Gateway User Guide*. This operation is Only
+#' supported for S3 File Gateways.
 #' 
 #' When this API is called, it only initiates the refresh operation. When
 #' the API call completes and returns a success code, it doesn't
@@ -5522,8 +5531,8 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' more than two refreshes at any time. We recommend using the
 #' refresh-complete CloudWatch event notification before issuing additional
 #' requests. For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/#get-notification)
-#' in the *Storage Gateway User Guide*.
+#' operations](https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification)
+#' in the *Amazon S3 File Gateway User Guide*.
 #' 
 #' -   Wait at least 60 seconds between consecutive RefreshCache API
 #'     requests.
@@ -5537,8 +5546,8 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' of folders in the FolderList parameter.
 #' 
 #' For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/#get-notification)
-#' in the *Storage Gateway User Guide*.
+#' operations](https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification)
+#' in the *Amazon S3 File Gateway User Guide*.
 #'
 #' @usage
 #' storagegateway_refresh_cache(FileShareARN, FolderList, Recursive)
@@ -5996,11 +6005,15 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 }
 .storagegateway$operations$set_smb_guest_password <- storagegateway_set_smb_guest_password
 
-#' Shuts down a gateway
+#' Shuts down a Tape Gateway or Volume Gateway
 #'
 #' @description
-#' Shuts down a gateway. To specify which gateway to shut down, use the
-#' Amazon Resource Name (ARN) of the gateway in the body of your request.
+#' Shuts down a Tape Gateway or Volume Gateway. To specify which gateway to
+#' shut down, use the Amazon Resource Name (ARN) of the gateway in the body
+#' of your request.
+#' 
+#' This API action cannot be used to shut down S3 File Gateway or FSx File
+#' Gateway.
 #' 
 #' The operation shuts down the gateway service component running in the
 #' gateway's virtual machine (VM) and not the host VM.

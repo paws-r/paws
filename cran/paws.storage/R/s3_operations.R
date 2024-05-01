@@ -18,7 +18,7 @@ NULL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -90,7 +90,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -235,7 +235,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -766,7 +766,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -851,7 +851,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -1269,7 +1269,7 @@ s3_create_session <- function(SessionMode = NULL, Bucket) {
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -1577,7 +1577,7 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -1720,7 +1720,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -1865,7 +1865,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -2566,7 +2566,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -2822,7 +2822,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3097,7 +3097,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3467,7 +3467,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3545,7 +3545,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3912,7 +3912,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4094,7 +4094,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4176,7 +4176,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4220,6 +4220,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'     Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
 #'     in the *Amazon S3 User Guide*.
 #' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
+#' If using `url`, non-ASCII characters used in an object's key name will
+#' be URL encoded. For example, the object test_file(3).png will appear as
+#' test_file%283%29.png.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
 #' the action returns up to 1,000 key names. The response might contain
 #' fewer keys but will never contain more.
@@ -4291,7 +4294,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -5011,7 +5014,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
 #' must be unique in the chosen Availability Zone. Bucket names must also
 #' follow the format ` bucket_base_name--az_id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
@@ -5398,7 +5401,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -6259,7 +6262,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -6397,7 +6400,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' are not supported. Directory bucket names must be unique in the chosen
 #' Availability Zone. Bucket names must follow the format
 #' ` bucket_base_name--az-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az2--x-s3`). For information about bucket
+#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.

@@ -149,7 +149,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .recyclebin$metadata <- list(
   service_name = "recyclebin",
-  endpoints = list("*" = list(endpoint = "rbin.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rbin.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rbin.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rbin.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "rbin.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rbin.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rbin.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rbin.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rbin.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rbin.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "rbin",
   api_version = "2021-06-15",
   signing_name = "rbin",

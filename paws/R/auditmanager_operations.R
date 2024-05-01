@@ -1231,6 +1231,8 @@ auditmanager_delete_control <- function(controlId) {
 #' @usage
 #' auditmanager_deregister_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1430,6 +1432,8 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 #'
 #' @usage
 #' auditmanager_get_account_status()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -2505,6 +2509,8 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 #' @usage
 #' auditmanager_get_insights()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2616,6 +2622,8 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
 #' @usage
 #' auditmanager_get_organization_admin_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2665,6 +2673,8 @@ auditmanager_get_organization_admin_account <- function() {
 #'
 #' @usage
 #' auditmanager_get_services_in_scope()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

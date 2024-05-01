@@ -12,10 +12,11 @@ sns_list_endpoints_by_platform_application(
 )
 }
 \arguments{
-\item{PlatformApplicationArn}{[required] PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+\item{PlatformApplicationArn}{[required] \code{PlatformApplicationArn} for \code{ListEndpointsByPlatformApplicationInput}
 action.}
 
-\item{NextToken}{NextToken string is used when calling ListEndpointsByPlatformApplication
+\item{NextToken}{\code{NextToken} string is used when calling
+\code{\link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application}}
 action to retrieve additional records that are available after the first
 page results.}
 }

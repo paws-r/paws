@@ -14,7 +14,7 @@ kinesisanalyticsv2_delete_application(ApplicationName, CreateTimestamp)
 operation to get this value.}
 }
 \description{
-Deletes the specified application. Kinesis Data Analytics halts application execution and deletes the application.
+Deletes the specified application. Managed Service for Apache Flink halts application execution and deletes the application.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application/} for full documentation.
 }

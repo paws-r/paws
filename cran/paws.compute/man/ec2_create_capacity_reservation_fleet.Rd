@@ -26,7 +26,7 @@ in the Amazon EC2 User Guide.
 Valid values: \code{prioritized}}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 
 \item{InstanceTypeSpecifications}{[required] Information about the instance types for which to reserve the capacity.}
 

@@ -16,18 +16,18 @@ savingsplans_create_savings_plan(
 \arguments{
 \item{savingsPlanOfferingId}{[required] The ID of the offering.}
 
-\item{commitment}{[required] The hourly commitment, in USD. This is a value between 0.001 and 1
-million. You cannot specify more than five digits after the decimal
-point.}
+\item{commitment}{[required] The hourly commitment, in the same currency of the
+\code{savingsPlanOfferingId}. This is a value between 0.001 and 1 million.
+You cannot specify more than five digits after the decimal point.}
 
 \item{upfrontPaymentAmount}{The up-front payment amount. This is a whole number between 50 and 99
-percent of the total value of the Savings Plan. This parameter is
-supported only if the payment option is \verb{Partial Upfront}.}
+percent of the total value of the Savings Plan. This parameter is only
+supported if the payment option is \verb{Partial Upfront}.}
 
-\item{purchaseTime}{The time at which to purchase the Savings Plan, in UTC format
+\item{purchaseTime}{The purchase time of the Savings Plan in UTC format
 (YYYY-MM-DDTHH:MM:SSZ).}
 
-\item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
+\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
 \item{tags}{One or more tags.}

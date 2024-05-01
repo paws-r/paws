@@ -118,6 +118,7 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
 \link[paws.cost.management:costexplorer_get_anomalies]{get_anomalies} \tab Retrieves all of the cost anomalies detected on your account during the time period that's specified by the DateInterval object\cr
 \link[paws.cost.management:costexplorer_get_anomaly_monitors]{get_anomaly_monitors} \tab Retrieves the cost anomaly monitor definitions for your account\cr
 \link[paws.cost.management:costexplorer_get_anomaly_subscriptions]{get_anomaly_subscriptions} \tab Retrieves the cost anomaly subscription objects for your account\cr
+\link[paws.cost.management:costexplorer_get_approximate_usage_records]{get_approximate_usage_records} \tab Retrieves estimated usage records for hourly granularity or resource-level data at daily granularity\cr
 \link[paws.cost.management:costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account\cr
 \link[paws.cost.management:costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account\cr
 \link[paws.cost.management:costexplorer_get_cost_categories]{get_cost_categories} \tab Retrieves an array of Cost Category names and values incurred cost\cr
@@ -134,11 +135,13 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
 \link[paws.cost.management:costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details} \tab Retrieves attribute data along with aggregate utilization and savings data for a given time period\cr
 \link[paws.cost.management:costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period\cr
 \link[paws.cost.management:costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage\cr
+\link[paws.cost.management:costexplorer_list_cost_allocation_tag_backfill_history]{list_cost_allocation_tag_backfill_history} \tab Retrieves a list of your historical cost allocation tag backfill requests\cr
 \link[paws.cost.management:costexplorer_list_cost_allocation_tags]{list_cost_allocation_tags} \tab Get a list of cost allocation tags\cr
 \link[paws.cost.management:costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab Returns the name, Amazon Resource Name (ARN), NumberOfRules and effective dates of all Cost Categories defined in the account\cr
 \link[paws.cost.management:costexplorer_list_savings_plans_purchase_recommendation_generation]{list_savings_plans_purchase_recommendation_generation} \tab Retrieves a list of your historical recommendation generations within the past 30 days\cr
 \link[paws.cost.management:costexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of resource tags associated with the resource specified by the Amazon Resource Name (ARN)\cr
 \link[paws.cost.management:costexplorer_provide_anomaly_feedback]{provide_anomaly_feedback} \tab Modifies the feedback property of a given cost anomaly\cr
+\link[paws.cost.management:costexplorer_start_cost_allocation_tag_backfill]{start_cost_allocation_tag_backfill} \tab Request a cost allocation tag backfill\cr
 \link[paws.cost.management:costexplorer_start_savings_plans_purchase_recommendation_generation]{start_savings_plans_purchase_recommendation_generation} \tab Requests a Savings Plans recommendation generation\cr
 \link[paws.cost.management:costexplorer_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
 \link[paws.cost.management:costexplorer_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr

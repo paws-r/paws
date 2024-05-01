@@ -11,7 +11,7 @@ globalaccelerator_delete_cross_account_attachment(AttachmentArn)
 delete.}
 }
 \description{
-Delete a cross-account attachment. When you delete an attachment, Global Accelerator revokes the permission to use the resources in the attachment from all principals in the list of principals. Global Accelerator revokes the permission for specific resources by doing the following:
+Delete a cross-account attachment. When you delete an attachment, Global Accelerator revokes the permission to use the resources in the attachment from all principals in the list of principals. Global Accelerator revokes the permission for specific resources.
 
 See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_delete_cross_account_attachment/} for full documentation.
 }

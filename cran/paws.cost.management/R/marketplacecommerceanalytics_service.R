@@ -123,7 +123,7 @@ marketplacecommerceanalytics <- function(config = list(), credentials = list(), 
 
 .marketplacecommerceanalytics$metadata <- list(
   service_name = "marketplacecommerceanalytics",
-  endpoints = list("*" = list(endpoint = "marketplacecommerceanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "marketplacecommerceanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "marketplacecommerceanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "marketplacecommerceanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "marketplacecommerceanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "marketplacecommerceanalytics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "marketplacecommerceanalytics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "marketplacecommerceanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "marketplacecommerceanalytics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "marketplacecommerceanalytics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Marketplace Commerce Analytics",
   api_version = "2015-07-01",
   signing_name = "marketplacecommerceanalytics",

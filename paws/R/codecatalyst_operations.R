@@ -115,7 +115,8 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #' no default when programmatically creating a Dev Environment. Valid
 #' values for persistent storage are based on memory sizes in 16GB
 #' increments. Valid values are 16, 32, and 64.
-#' @param vpcConnectionName The name of the connection to use connect to a Amazon VPC.
+#' @param vpcConnectionName The name of the connection that will be used to connect to Amazon VPC,
+#' if any.
 #'
 #' @return
 #' A list with the following syntax:
@@ -937,7 +938,11 @@ codecatalyst_get_space <- function(name) {
 #' ```
 #' list(
 #'   subscriptionType = "string",
-#'   awsAccountName = "string"
+#'   awsAccountName = "string",
+#'   pendingSubscriptionType = "string",
+#'   pendingSubscriptionStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -1417,7 +1422,7 @@ codecatalyst_list_dev_environments <- function(spaceName, projectName = NULL, fi
 #' with CloudTrail Event
 #' History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)
 #' and [Working with CloudTrail
-#' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-getting-started.html).
+#' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-trails.html).
 #'
 #' @usage
 #' codecatalyst_list_event_logs(spaceName, startTime, endTime, eventName,

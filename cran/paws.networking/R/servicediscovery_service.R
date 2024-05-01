@@ -118,7 +118,7 @@ NULL
 #'  \link[=servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
 #'  \link[=servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account\cr
 #'  \link[=servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
-#'  \link[=servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more specified namespaces\cr
+#'  \link[=servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more namespaces\cr
 #'  \link[=servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr
 #'  \link[=servicediscovery_register_instance]{register_instance} \tab Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service\cr
 #'  \link[=servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
@@ -159,7 +159,7 @@ servicediscovery <- function(config = list(), credentials = list(), endpoint = N
 
 .servicediscovery$metadata <- list(
   service_name = "servicediscovery",
-  endpoints = list("*" = list(endpoint = "servicediscovery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicediscovery.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicediscovery.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicediscovery.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "servicediscovery.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicediscovery.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "servicediscovery.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "servicediscovery.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicediscovery.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "servicediscovery.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ServiceDiscovery",
   api_version = "2017-03-14",
   signing_name = "servicediscovery",

@@ -58,7 +58,7 @@ NULL
 #' records with the `eventName` of
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage]. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config
@@ -178,7 +178,7 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 
 .marketplacemetering$metadata <- list(
   service_name = "metering.marketplace",
-  endpoints = list("*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "metering.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "metering.marketplace.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "metering.marketplace.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "metering.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "metering.marketplace.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "metering.marketplace.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Marketplace Metering",
   api_version = "2016-01-14",
   signing_name = "aws-marketplace",

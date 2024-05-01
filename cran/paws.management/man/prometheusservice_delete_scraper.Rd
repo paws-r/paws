@@ -2,18 +2,19 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_delete_scraper}
 \alias{prometheusservice_delete_scraper}
-\title{Deletes a scraper}
+\title{The DeleteScraper operation deletes one scraper, and stops any metrics
+collection that the scraper performs}
 \usage{
-prometheusservice_delete_scraper(scraperId, clientToken = NULL)
+prometheusservice_delete_scraper(clientToken = NULL, scraperId)
 }
 \arguments{
-\item{scraperId}{[required] The ID of the scraper to delete.}
+\item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to
+ensure the idempotency of the request.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{scraperId}{[required] The ID of the scraper to delete.}
 }
 \description{
-Deletes a scraper.
+The \code{\link[=prometheusservice_delete_scraper]{delete_scraper}} operation deletes one scraper, and stops any metrics collection that the scraper performs.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_scraper/} for full documentation.
 }

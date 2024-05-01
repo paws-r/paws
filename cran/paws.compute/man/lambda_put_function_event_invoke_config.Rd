@@ -14,7 +14,7 @@ lambda_put_function_event_invoke_config(
 )
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
+\item{FunctionName}{[required] The name or ARN of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{

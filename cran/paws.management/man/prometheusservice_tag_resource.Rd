@@ -2,17 +2,20 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_tag_resource}
 \alias{prometheusservice_tag_resource}
-\title{Creates tags for the specified resource}
+\title{The TagResource operation associates tags with an Amazon Managed Service
+for Prometheus resource}
 \usage{
 prometheusservice_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the resource.}
+\item{resourceArn}{[required] The ARN of the workspace or rule groups namespace to apply tags to.}
 
-\item{tags}{[required]}
+\item{tags}{[required] The list of tag keys and values to associate with the resource.
+
+Keys may not begin with \verb{aws:}.}
 }
 \description{
-Creates tags for the specified resource.
+The \code{\link[=prometheusservice_tag_resource]{tag_resource}} operation associates tags with an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are workspaces and rule groups namespaces.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/} for full documentation.
 }

@@ -34,8 +34,12 @@ to monitor the status of the \code{PortfolioShare} creation process.}
 \item{ShareTagOptions}{Enables or disables \code{TagOptions } sharing when creating the portfolio
 share. If this flag is not provided, TagOptions sharing is disabled.}
 
-\item{SharePrincipals}{Enables or disables \code{Principal} sharing when creating the portfolio
-share. If this flag is not provided, principal sharing is disabled.
+\item{SharePrincipals}{This parameter is only supported for portfolios with an
+\strong{OrganizationalNode} Type of \code{ORGANIZATION} or \code{ORGANIZATIONAL_UNIT}.
+
+Enables or disables \code{Principal} sharing when creating the portfolio
+share. If you do \strong{not} provide this flag, principal sharing is
+disabled.
 
 When you enable Principal Name Sharing for a portfolio share, the share
 recipient account end users with a principal that matches any of the

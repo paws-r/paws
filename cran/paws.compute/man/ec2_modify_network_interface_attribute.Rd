@@ -13,7 +13,8 @@ ec2_modify_network_interface_attribute(
   SourceDestCheck = NULL,
   EnaSrdSpecification = NULL,
   EnablePrimaryIpv6 = NULL,
-  ConnectionTrackingSpecification = NULL
+  ConnectionTrackingSpecification = NULL,
+  AssociatePublicIpAddress = NULL
 )
 }
 \arguments{
@@ -62,6 +63,10 @@ first IPv6 GUA address associated with the ENI becomes the primary IPv6
 address.}
 
 \item{ConnectionTrackingSpecification}{A connection tracking specification.}
+
+\item{AssociatePublicIpAddress}{Indicates whether to assign a public IPv4 address to a network
+interface. This option can be enabled for any network interface but will
+only apply to the primary network interface (eth0).}
 }
 \description{
 Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.

@@ -2,15 +2,15 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_delete_share}
 \alias{omics_delete_share}
-\title{Deletes a share of an analytics store}
+\title{Deletes a resource share}
 \usage{
 omics_delete_share(shareId)
 }
 \arguments{
-\item{shareId}{[required] The ID for the share request to be deleted.}
+\item{shareId}{[required] The ID for the resource share to be deleted.}
 }
 \description{
-Deletes a share of an analytics store.
+Deletes a resource share. If you are the resource owner, the subscriber will no longer have access to the shared resource. If you are the subscriber, this operation deletes your access to the share.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_delete_share/} for full documentation.
 }

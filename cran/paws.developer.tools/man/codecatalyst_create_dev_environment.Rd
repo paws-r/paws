@@ -56,7 +56,8 @@ no default when programmatically creating a Dev Environment. Valid
 values for persistent storage are based on memory sizes in 16GB
 increments. Valid values are 16, 32, and 64.}
 
-\item{vpcConnectionName}{The name of the connection to use connect to a Amazon VPC.}
+\item{vpcConnectionName}{The name of the connection that will be used to connect to Amazon VPC,
+if any.}
 }
 \description{
 Creates a Dev Environment in Amazon CodeCatalyst, a cloud-based development environment that you can use to quickly work on the code stored in the source repositories of your project.

@@ -21,7 +21,8 @@ wellarchitected_update_workload(
   Notes = NULL,
   ImprovementStatus = NULL,
   DiscoveryConfig = NULL,
-  Applications = NULL
+  Applications = NULL,
+  JiraConfiguration = NULL
 )
 }
 \arguments{
@@ -64,6 +65,8 @@ added.}
 workload.}
 
 \item{Applications}{List of AppRegistry application ARNs to associate to the workload.}
+
+\item{JiraConfiguration}{Configuration of the Jira integration.}
 }
 \description{
 Update an existing workload.

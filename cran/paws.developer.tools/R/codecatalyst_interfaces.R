@@ -191,7 +191,7 @@ NULL
 
 .codecatalyst$get_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(subscriptionType = structure(logical(0), tags = list(type = "string")), awsAccountName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(subscriptionType = structure(logical(0), tags = list(type = "string")), awsAccountName = structure(logical(0), tags = list(type = "string")), pendingSubscriptionType = structure(logical(0), tags = list(type = "string")), pendingSubscriptionStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

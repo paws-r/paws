@@ -71,7 +71,8 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
 #' no default when programmatically creating a Dev Environment. Valid
 #' values for persistent storage are based on memory sizes in 16GB
 #' increments. Valid values are 16, 32, and 64.
-#' @param vpcConnectionName The name of the connection to use connect to a Amazon VPC.
+#' @param vpcConnectionName The name of the connection that will be used to connect to Amazon VPC,
+#' if any.
 #'
 #' @keywords internal
 #'

@@ -7,7 +7,8 @@
 sagemaker_update_app_image_config(
   AppImageConfigName,
   KernelGatewayImageConfig = NULL,
-  JupyterLabAppImageConfig = NULL
+  JupyterLabAppImageConfig = NULL,
+  CodeEditorAppImageConfig = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ sagemaker_update_app_image_config(
 \item{KernelGatewayImageConfig}{The new KernelGateway app to run on the image.}
 
 \item{JupyterLabAppImageConfig}{The JupyterLab app running on the image.}
+
+\item{CodeEditorAppImageConfig}{The Code Editor app running on the image.}
 }
 \description{
 Updates the properties of an AppImageConfig.

@@ -142,11 +142,11 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' resource-id segment. You can use special characters anywhere within the
 #' resource-id.
 #' 
-#' The "&#42;" character also matches the "/" character, allowing paths to be
-#' formed \emph{within} the resource-id. For example,
-#' \emph{arn:aws:iam:::role/&#42;/ResourceName_?} matches both
-#' \emph{arn:aws:iam:::role/pathA/pathB/ResourceName_1} and
-#' \emph{arn:aws:iam:::role/pathA/ResourceName_1}.
+#' The "*" character also matches the "/" character, allowing paths to be
+#' formed *within* the resource-id. For example,
+#' *arn:aws:iam:::role/*/ResourceName_?* matches both
+#' *arn:aws:iam:::role/pathA/pathB/ResourceName_1* and
+#' *arn:aws:iam:::role/pathA/ResourceName_1*.
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
 #' defined Amazon Resource Name (ARN), or `IAM_PATTERN` if you use an ARN
 #' with no `accountID`, with or without wildcard characters.
@@ -223,18 +223,22 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
+#' requests from the same Amazon Web Services account use the same
+#' idempotency token, the same response is returned for each repeated
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_associ_servic_action_with_provis_artifa
-servicecatalog_associate_service_action_with_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL) {
+servicecatalog_associate_service_action_with_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "AssociateServiceActionWithProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$associate_service_action_with_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage)
+  input <- .servicecatalog$associate_service_action_with_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$associate_service_action_with_provisioning_artifact_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -569,8 +573,12 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' to monitor the status of the `PortfolioShare` creation process.
 #' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio
 #' share. If this flag is not provided, TagOptions sharing is disabled.
-#' @param SharePrincipals Enables or disables `Principal` sharing when creating the portfolio
-#' share. If this flag is not provided, principal sharing is disabled.
+#' @param SharePrincipals This parameter is only supported for portfolios with an
+#' **OrganizationalNode** Type of `ORGANIZATION` or `ORGANIZATIONAL_UNIT`.
+#' 
+#' Enables or disables `Principal` sharing when creating the portfolio
+#' share. If you do **not** provide this flag, principal sharing is
+#' disabled.
 #' 
 #' When you enable Principal Name Sharing for a portfolio share, the share
 #' recipient account end users with a principal that matches any of the
@@ -1073,18 +1081,22 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
+#' requests from the same Amazon Web Services account use the same
+#' idempotency token, the same response is returned for each repeated
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_service_action
-servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
+servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "DeleteServiceAction",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$delete_service_action_input(Id = Id, AcceptLanguage = AcceptLanguage)
+  input <- .servicecatalog$delete_service_action_input(Id = Id, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$delete_service_action_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -1728,6 +1740,8 @@ servicecatalog_describe_tag_option <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_disable_aws_organizations_access/](https://www.paws-r-sdk.com/docs/servicecatalog_disable_aws_organizations_access/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disable_aws_organizations_access
@@ -1872,18 +1886,22 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
+#' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
+#' requests from the same Amazon Web Services account use the same
+#' idempotency token, the same response is returned for each repeated
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disass_servic_action_from_provis_artifa
-servicecatalog_disassociate_service_action_from_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL) {
+servicecatalog_disassociate_service_action_from_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "DisassociateServiceActionFromProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage)
+  input <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -1929,6 +1947,8 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #' Enable portfolio sharing feature through Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_enable_aws_organizations_access/](https://www.paws-r-sdk.com/docs/servicecatalog_enable_aws_organizations_access/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -2036,6 +2056,8 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 #' Get the Access Status for Organizations portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_get_aws_organizations_access_status/](https://www.paws-r-sdk.com/docs/servicecatalog_get_aws_organizations_access_status/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

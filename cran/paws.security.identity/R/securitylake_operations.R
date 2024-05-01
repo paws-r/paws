@@ -42,7 +42,7 @@ securitylake_create_aws_log_source <- function(sources) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_create_custom_log_source/](https://www.paws-r-sdk.com/docs/securitylake_create_custom_log_source/) for full documentation.
 #'
-#' @param configuration The configuration for the third-party custom source.
+#' @param configuration &#91;required&#93; The configuration for the third-party custom source.
 #' @param eventClasses The Open Cybersecurity Schema Framework (OCSF) event classes which
 #' describes the type of data that the custom source will send to Security
 #' Lake. The supported event classes are:
@@ -112,7 +112,7 @@ securitylake_create_aws_log_source <- function(sources) {
 #' @keywords internal
 #'
 #' @rdname securitylake_create_custom_log_source
-securitylake_create_custom_log_source <- function(configuration = NULL, eventClasses = NULL, sourceName, sourceVersion = NULL) {
+securitylake_create_custom_log_source <- function(configuration, eventClasses = NULL, sourceName, sourceVersion = NULL) {
   op <- new_operation(
     name = "CreateCustomLogSource",
     http_method = "POST",
@@ -207,13 +207,13 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_create_data_lake_organization_configuration/](https://www.paws-r-sdk.com/docs/securitylake_create_data_lake_organization_configuration/) for full documentation.
 #'
-#' @param autoEnableNewAccount &#91;required&#93; Enable Security Lake with the specified configuration settings, to begin
+#' @param autoEnableNewAccount Enable Security Lake with the specified configuration settings, to begin
 #' collecting security data for new accounts in your organization.
 #'
 #' @keywords internal
 #'
 #' @rdname securitylake_create_data_lake_organization_configuration
-securitylake_create_data_lake_organization_configuration <- function(autoEnableNewAccount) {
+securitylake_create_data_lake_organization_configuration <- function(autoEnableNewAccount = NULL) {
   op <- new_operation(
     name = "CreateDataLakeOrganizationConfiguration",
     http_method = "POST",
@@ -403,6 +403,8 @@ securitylake_delete_data_lake <- function(regions) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_delete_data_lake_exception_subscription/](https://www.paws-r-sdk.com/docs/securitylake_delete_data_lake_exception_subscription/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securitylake_delete_data_lake_exception_subscription
@@ -431,13 +433,13 @@ securitylake_delete_data_lake_exception_subscription <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_delete_data_lake_organization_configuration/](https://www.paws-r-sdk.com/docs/securitylake_delete_data_lake_organization_configuration/) for full documentation.
 #'
-#' @param autoEnableNewAccount &#91;required&#93; Turns off automatic enablement of Security Lake for member accounts that
+#' @param autoEnableNewAccount Turns off automatic enablement of Security Lake for member accounts that
 #' are added to an organization.
 #'
 #' @keywords internal
 #'
 #' @rdname securitylake_delete_data_lake_organization_configuration
-securitylake_delete_data_lake_organization_configuration <- function(autoEnableNewAccount) {
+securitylake_delete_data_lake_organization_configuration <- function(autoEnableNewAccount = NULL) {
   op <- new_operation(
     name = "DeleteDataLakeOrganizationConfiguration",
     http_method = "POST",
@@ -523,6 +525,8 @@ securitylake_delete_subscriber_notification <- function(subscriberId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_deregister_data_lake_delegated_administrator/](https://www.paws-r-sdk.com/docs/securitylake_deregister_data_lake_delegated_administrator/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securitylake_deregister_data_lake_delegated_administrator
@@ -550,6 +554,8 @@ securitylake_deregister_data_lake_delegated_administrator <- function() {
 #' Retrieves the details of exception notifications for the account in Amazon Security Lake.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_exception_subscription/](https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_exception_subscription/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -579,6 +585,8 @@ securitylake_get_data_lake_exception_subscription <- function() {
 #' Retrieves the configuration that will be automatically set up for accounts added to the organization after the organization has onboarded to Amazon Security Lake. This API does not take input parameters.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_organization_configuration/](https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_organization_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -689,8 +697,7 @@ securitylake_get_subscriber <- function(subscriberId) {
 #' 
 #' Each pagination token expires after 24 hours. Using an expired
 #' pagination token will return an HTTP 400 InvalidToken error.
-#' @param regions List the Amazon Web Services Regions from which exceptions are
-#' retrieved.
+#' @param regions The Amazon Web Services Regions from which exceptions are retrieved.
 #'
 #' @keywords internal
 #'
@@ -720,7 +727,7 @@ securitylake_list_data_lake_exceptions <- function(maxResults = NULL, nextToken 
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_list_data_lakes/](https://www.paws-r-sdk.com/docs/securitylake_list_data_lakes/) for full documentation.
 #'
-#' @param regions The list of regions where Security Lake is enabled.
+#' @param regions The list of Regions where Security Lake is enabled.
 #'
 #' @keywords internal
 #'
@@ -754,7 +761,7 @@ securitylake_list_data_lakes <- function(regions = NULL) {
 #' @param maxResults The maximum number of accounts for which the log sources are displayed.
 #' @param nextToken If nextToken is returned, there are more results available. You can
 #' repeat the call using the returned token to retrieve the next page.
-#' @param regions The list of regions for which log sources are displayed.
+#' @param regions The list of Regions for which log sources are displayed.
 #' @param sources The list of sources for which log sources are displayed.
 #'
 #' @keywords internal
@@ -818,8 +825,8 @@ securitylake_list_subscribers <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/securitylake_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Security Lake resource to
-#' retrieve the tags for.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Security Lake resource for
+#' which you want to retrieve the tags.
 #'
 #' @keywords internal
 #'
@@ -952,18 +959,21 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param configurations &#91;required&#93; Specify the Region or Regions that will contribute data to the rollup
 #' region.
+#' @param metaStoreManagerRoleArn The Amazon Resource Name (ARN) used to create and update the Glue table.
+#' This table contains partitions generated by the ingestion and
+#' normalization of Amazon Web Services log sources and custom sources.
 #'
 #' @keywords internal
 #'
 #' @rdname securitylake_update_data_lake
-securitylake_update_data_lake <- function(configurations) {
+securitylake_update_data_lake <- function(configurations, metaStoreManagerRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateDataLake",
     http_method = "PUT",
     http_path = "/v1/datalake",
     paginator = list()
   )
-  input <- .securitylake$update_data_lake_input(configurations = configurations)
+  input <- .securitylake$update_data_lake_input(configurations = configurations, metaStoreManagerRoleArn = metaStoreManagerRoleArn)
   output <- .securitylake$update_data_lake_output()
   config <- get_config()
   svc <- .securitylake$service(config)

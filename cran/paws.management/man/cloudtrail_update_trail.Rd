@@ -41,7 +41,7 @@ files. See \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnam
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
-see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html}{Finding Your CloudTrail Log Files}.
+see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html}{Finding Your CloudTrail Log Files}.
 The maximum length is 200 characters.}
 
 \item{SnsTopicName}{Specifies the name of the Amazon SNS topic defined for notification of
@@ -75,10 +75,7 @@ delete a trail.}
 identifier that represents the log group to which CloudTrail logs are
 delivered. You must use a log group that exists in your account.
 
-Not required unless you specify \code{CloudWatchLogsRoleArn}.
-
-Only the management account can configure a CloudWatch Logs log group
-for an organization trail.}
+Not required unless you specify \code{CloudWatchLogsRoleArn}.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group. You must use a role that exists in your account.}

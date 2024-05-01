@@ -2,10 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_update_endpoint}
 \alias{sagemaker_update_endpoint}
-\title{Deploys the new EndpointConfig specified in the request, switches to
-using newly created endpoint, and then deletes resources provisioned for
-the endpoint using the previous EndpointConfig (there is no availability
-loss)}
+\title{Deploys the EndpointConfig specified in the request to a new fleet of
+instances}
 \usage{
 sagemaker_update_endpoint(
   EndpointName,
@@ -44,7 +42,7 @@ deployment strategy and rollback configurations.}
 default value is false (the configuration is not reused).}
 }
 \description{
-Deploys the new \code{EndpointConfig} specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous \code{EndpointConfig} (there is no availability loss).
+Deploys the \code{EndpointConfig} specified in the request to a new fleet of instances. SageMaker shifts endpoint traffic to the new instances with the updated endpoint configuration and then deletes the old instances using the previous \code{EndpointConfig} (there is no availability loss). For more information about how to control the update and traffic shifting process, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html}{Update models in production}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint/} for full documentation.
 }

@@ -14,7 +14,8 @@ managedgrafana_update_workspace_configuration(
 \item{configuration}{[required] The new configuration string for the workspace. For more information
 about the format and configuration options available, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html}{Working in your Grafana workspace}.}
 
-\item{grafanaVersion}{Specifies the version of Grafana to support in the new workspace.
+\item{grafanaVersion}{Specifies the version of Grafana to support in the workspace. If not
+specified, keeps the current version of the workspace.
 
 Can only be used to upgrade (for example, from 8.4 to 9.4), not
 downgrade (for example, from 9.4 to 8.4).

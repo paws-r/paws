@@ -2,24 +2,39 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_list_cluster_snapshots}
 \alias{docdbelastic_list_cluster_snapshots}
-\title{Returns information about Elastic DocumentDB snapshots for a specified
-cluster}
+\title{Returns information about snapshots for a specified elastic cluster}
 \usage{
 docdbelastic_list_cluster_snapshots(
   clusterArn = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  snapshotType = NULL
 )
 }
 \arguments{
-\item{clusterArn}{The arn of the Elastic DocumentDB cluster.}
+\item{clusterArn}{The ARN identifier of the elastic cluster.}
 
-\item{maxResults}{The maximum number of entries to recieve in the response.}
+\item{maxResults}{The maximum number of elastic cluster snapshot results to receive in the
+response.}
 
-\item{nextToken}{The nextToken which is used the get the next page of data.}
+\item{nextToken}{A pagination token provided by a previous request. If this parameter is
+specified, the response includes only records beyond this token, up to
+the value specified by \code{max-results}.
+
+If there is no more data in the responce, the \code{nextToken} will not be
+returned.}
+
+\item{snapshotType}{The type of cluster snapshots to be returned. You can specify one of the
+following values:
+\itemize{
+\item \code{automated} - Return all cluster snapshots that Amazon DocumentDB
+has automatically created for your Amazon Web Services account.
+\item \code{manual} - Return all cluster snapshots that you have manually
+created for your Amazon Web Services account.
+}}
 }
 \description{
-Returns information about Elastic DocumentDB snapshots for a specified cluster.
+Returns information about snapshots for a specified elastic cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_list_cluster_snapshots/} for full documentation.
 }

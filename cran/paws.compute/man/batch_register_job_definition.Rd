@@ -16,7 +16,8 @@ batch_register_job_definition(
   timeout = NULL,
   tags = NULL,
   platformCapabilities = NULL,
-  eksProperties = NULL
+  eksProperties = NULL,
+  ecsProperties = NULL
 )
 }
 \arguments{
@@ -27,6 +28,11 @@ long. It can contain uppercase and lowercase letters, numbers, hyphens
 \item{type}{[required] The type of job definition. For more information about multi-node
 parallel jobs, see \href{https://docs.aws.amazon.com/batch/latest/userguide/}{Creating a multi-node parallel job definition} in the
 \emph{Batch User Guide}.
+\itemize{
+\item If the value is \code{container}, then one of the following is required:
+\code{containerProperties}, \code{ecsProperties}, or \code{eksProperties}.
+\item If the value is \code{multinode}, then \code{nodeProperties} is required.
+}
 
 If the job is run on Fargate resources, then \code{multinode} isn't
 supported.}
@@ -44,21 +50,19 @@ with a lower scheduling priority.
 The minimum supported value is 0 and the maximum supported value is
 9999.}
 
-\item{containerProperties}{An object with various properties specific to Amazon ECS based
-single-node container-based jobs. If the job definition's \code{type}
-parameter is \code{container}, then you must specify either
-\code{containerProperties} or \code{nodeProperties}. This must not be specified
-for Amazon EKS based job definitions.
+\item{containerProperties}{An object with properties specific to Amazon ECS-based single-node
+container-based jobs. If the job definition's \code{type} parameter is
+\code{container}, then you must specify either \code{containerProperties} or
+\code{nodeProperties}. This must not be specified for Amazon EKS-based job
+definitions.
 
 If the job runs on Fargate resources, then you must not specify
 \code{nodeProperties}; use only \code{containerProperties}.}
 
-\item{nodeProperties}{An object with various properties specific to multi-node parallel jobs.
-If you specify node properties for a job, it becomes a multi-node
-parallel job. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs}
-in the \emph{Batch User Guide}. If the job definition's \code{type} parameter is
-\code{container}, then you must specify either \code{containerProperties} or
-\code{nodeProperties}.
+\item{nodeProperties}{An object with properties specific to multi-node parallel jobs. If you
+specify node properties for a job, it becomes a multi-node parallel job.
+For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs}
+in the \emph{Batch User Guide}.
 
 If the job runs on Fargate resources, then you must not specify
 \code{nodeProperties}; use \code{containerProperties} instead.
@@ -102,8 +106,11 @@ specify \code{FARGATE}.
 If the job runs on Amazon EKS resources, then you must not specify
 \code{platformCapabilities}.}
 
-\item{eksProperties}{An object with various properties that are specific to Amazon EKS based
-jobs. This must not be specified for Amazon ECS based job definitions.}
+\item{eksProperties}{An object with properties that are specific to Amazon EKS-based jobs.
+This must not be specified for Amazon ECS based job definitions.}
+
+\item{ecsProperties}{An object with properties that are specific to Amazon ECS-based jobs.
+This must not be specified for Amazon EKS-based job definitions.}
 }
 \description{
 Registers an Batch job definition.

@@ -210,7 +210,7 @@ neptune <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .neptune$metadata <- list(
   service_name = "rds",
-  endpoints = list("*" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rds.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rds.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rds.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rds.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Neptune",
   api_version = "2014-10-31",
   signing_name = "rds",

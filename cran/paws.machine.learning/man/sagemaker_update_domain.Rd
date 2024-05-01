@@ -28,7 +28,7 @@ inter-app communication in \code{VPCOnly} mode. Required when
 is provided. If setting up the domain for use with RStudio, this value
 must be set to \code{Service}.}
 
-\item{DefaultSpaceSettings}{The default settings used to create a space within the Domain.}
+\item{DefaultSpaceSettings}{The default settings used to create a space within the domain.}
 
 \item{SubnetIds}{The VPC subnets that Studio uses for communication.
 

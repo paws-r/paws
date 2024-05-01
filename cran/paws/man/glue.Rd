@@ -222,7 +222,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job\cr
 \link[paws.analytics:glue_get_unfiltered_partition_metadata]{get_unfiltered_partition_metadata} \tab Retrieves partition metadata from the Data Catalog that contains unfiltered metadata\cr
 \link[paws.analytics:glue_get_unfiltered_partitions_metadata]{get_unfiltered_partitions_metadata} \tab Retrieves partition metadata from the Data Catalog that contains unfiltered metadata\cr
-\link[paws.analytics:glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata} \tab Retrieves table metadata from the Data Catalog that contains unfiltered metadata\cr
+\link[paws.analytics:glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata} \tab Allows a third-party analytical engine to retrieve unfiltered table metadata from the Data Catalog\cr
 \link[paws.analytics:glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog\cr
 \link[paws.analytics:glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves multiple function definitions from the Data Catalog\cr
 \link[paws.analytics:glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow\cr

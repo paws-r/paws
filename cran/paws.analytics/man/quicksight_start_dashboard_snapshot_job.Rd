@@ -2,7 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_start_dashboard_snapshot_job}
 \alias{quicksight_start_dashboard_snapshot_job}
-\title{Starts an asynchronous job that generates a dashboard snapshot}
+\title{Starts an asynchronous job that generates a snapshot of a dashboard's
+output}
 \usage{
 quicksight_start_dashboard_snapshot_job(
   AwsAccountId,
@@ -32,7 +33,7 @@ registered Amazon QuickSight.}
 \item{SnapshotConfiguration}{[required] A structure that describes the configuration of the dashboard snapshot.}
 }
 \description{
-Starts an asynchronous job that generates a dashboard snapshot. You can request one of the following format configurations per API call.
+Starts an asynchronous job that generates a snapshot of a dashboard's output. You can request one or several of the following format configurations in each API call.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job/} for full documentation.
 }

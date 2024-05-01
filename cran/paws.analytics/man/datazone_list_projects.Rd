@@ -25,7 +25,7 @@ contains a \code{NextToken} value that you can use in a subsequent call to
 \code{\link[=datazone_list_projects]{list_projects}} to list the next set of
 projects.}
 
-\item{name}{}
+\item{name}{The name of the project.}
 
 \item{nextToken}{When the number of projects is greater than the default value for the
 \code{MaxResults} parameter, or if you explicitly specify a value for

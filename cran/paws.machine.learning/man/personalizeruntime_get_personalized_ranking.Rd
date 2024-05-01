@@ -55,7 +55,7 @@ include in the personalized ranking. The map key is \code{ITEMS} and the
 value is a list of column names from your Items dataset. The maximum
 number of columns you can provide is 10.
 
-For information about enabling metadata for a campaign, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Enabling metadata in recommendations for a campaign}.}
+For information about enabling metadata for a campaign, see \href{https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-return-metadata}{Enabling metadata in recommendations for a campaign}.}
 }
 \description{
 Re-ranks a list of recommended items for the given user. The first item in the list is deemed the most likely item to be of interest to the user.

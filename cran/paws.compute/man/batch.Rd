@@ -57,7 +57,7 @@ Batch uses the advantages of the batch computing to remove the
 undifferentiated heavy lifting of configuring and managing required
 infrastructure. At the same time, it also adopts a familiar batch
 computing software approach. You can use Batch to efficiently provision
-resources d, and work toward eliminating capacity constraints, reducing
+resources, and work toward eliminating capacity constraints, reducing
 your overall compute costs, and delivering results more quickly.
 
 As a fully managed service, Batch can run batch computing workloads of

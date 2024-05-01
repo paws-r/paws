@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_create_identity_provider}
 \alias{cognitoidentityprovider_create_identity_provider}
-\title{Creates an IdP for a user pool}
+\title{Adds a configuration and trust relationship between a third-party
+identity provider (IdP) and a user pool}
 \usage{
 cognitoidentityprovider_create_identity_provider(
   UserPoolId,
@@ -20,64 +21,75 @@ cognitoidentityprovider_create_identity_provider(
 
 \item{ProviderType}{[required] The IdP type.}
 
-\item{ProviderDetails}{[required] The IdP details. The following list describes the provider detail keys
-for each IdP type.
-\itemize{
-\item For Google and Login with Amazon:
-\itemize{
-\item client_id
-\item client_secret
-\item authorize_scopes
-}
-\item For Facebook:
-\itemize{
-\item client_id
-\item client_secret
-\item authorize_scopes
-\item api_version
-}
-\item For Sign in with Apple:
-\itemize{
-\item client_id
-\item team_id
-\item key_id
-\item private_key
-\item authorize_scopes
-}
-\item For OpenID Connect (OIDC) providers:
-\itemize{
-\item client_id
-\item client_secret
-\item attributes_request_method
-\item oidc_issuer
-\item authorize_scopes
-\item The following keys are only present if Amazon Cognito didn't
-discover them at the \code{oidc_issuer} URL.
-\itemize{
-\item authorize_url
-\item token_url
-\item attributes_url
-\item jwks_uri
-}
-\item Amazon Cognito sets the value of the following keys
-automatically. They are read-only.
-\itemize{
-\item attributes_url_add_attributes
-}
-}
-\item For SAML providers:
-\itemize{
-\item MetadataFile or MetadataURL
-\item IDPSignout \emph{optional}
-}
-}}
+\item{ProviderDetails}{[required] The scopes, URLs, and identifiers for your external identity provider.
+The following examples describe the provider detail keys for each IdP
+type. These values and their schema are subject to change. Social IdP
+\code{authorize_scopes} values must match the values listed here.
+
+\strong{OpenID Connect (OIDC)}
+
+Amazon Cognito accepts the following elements when it can't discover
+endpoint URLs from \code{oidc_issuer}: \code{attributes_url}, \code{authorize_url},
+\code{jwks_uri}, \code{token_url}.
+
+Create or update request:
+\verb{"ProviderDetails": \{ "attributes_request_method": "GET", "attributes_url": "https://auth.example.com/userInfo", "authorize_scopes": "openid profile email", "authorize_url": "https://auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https://auth.example.com/.well-known/jwks.json", "oidc_issuer": "https://auth.example.com", "token_url": "https://example.com/token" \}}
+
+Describe response:
+\verb{"ProviderDetails": \{ "attributes_request_method": "GET", "attributes_url": "https://auth.example.com/userInfo", "attributes_url_add_attributes": "false", "authorize_scopes": "openid profile email", "authorize_url": "https://auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https://auth.example.com/.well-known/jwks.json", "oidc_issuer": "https://auth.example.com", "token_url": "https://example.com/token" \}}
+
+\strong{SAML}
+
+Create or update request with Metadata URL:
+\verb{"ProviderDetails": \{ "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256" \}}
+
+Create or update request with Metadata file:
+\verb{"ProviderDetails": \{ "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataFile": "[metadata XML]", "RequestSigningAlgorithm": "rsa-sha256" \}}
+
+The value of \code{MetadataFile} must be the plaintext metadata document with
+all quote (") characters escaped by backslashes.
+
+Describe response:
+\verb{"ProviderDetails": \{ "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "ActiveEncryptionCertificate": "[certificate]", "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256", "SLORedirectBindingURI": "https://auth.example.com/slo/saml", "SSORedirectBindingURI": "https://auth.example.com/sso/saml" \}}
+
+\strong{LoginWithAmazon}
+
+Create or update request:
+\verb{"ProviderDetails": \\\{ "authorize_scopes": "profile postal_code", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret"}
+
+Describe response:
+\verb{"ProviderDetails": \{ "attributes_url": "https://api.amazon.com/user/profile", "attributes_url_add_attributes": "false", "authorize_scopes": "profile postal_code", "authorize_url": "https://www.amazon.com/ap/oa", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "POST", "token_url": "https://api.amazon.com/auth/o2/token" \}}
+
+\strong{Google}
+
+Create or update request:
+\verb{"ProviderDetails": \{ "authorize_scopes": "email profile openid", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret" \}}
+
+Describe response:
+\verb{"ProviderDetails": \{ "attributes_url": "https://people.googleapis.com/v1/people/me?personFields=", "attributes_url_add_attributes": "true", "authorize_scopes": "email profile openid", "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret", "oidc_issuer": "https://accounts.google.com", "token_request_method": "POST", "token_url": "https://www.googleapis.com/oauth2/v4/token" \}}
+
+\strong{SignInWithApple}
+
+Create or update request:
+\verb{"ProviderDetails": \{ "authorize_scopes": "email name", "client_id": "com.example.cognito", "private_key": "1EXAMPLE", "key_id": "2EXAMPLE", "team_id": "3EXAMPLE" \}}
+
+Describe response:
+\verb{"ProviderDetails": \{ "attributes_url_add_attributes": "false", "authorize_scopes": "email name", "authorize_url": "https://appleid.apple.com/auth/authorize", "client_id": "com.example.cognito", "key_id": "1EXAMPLE", "oidc_issuer": "https://appleid.apple.com", "team_id": "2EXAMPLE", "token_request_method": "POST", "token_url": "https://appleid.apple.com/auth/token" \}}
+
+\strong{Facebook}
+
+Create or update request:
+\verb{"ProviderDetails": \{ "api_version": "v17.0", "authorize_scopes": "public_profile, email", "client_id": "1example23456789", "client_secret": "provider-app-client-secret" \}}
+
+Describe response:
+\verb{"ProviderDetails": \{ "api_version": "v17.0", "attributes_url": "https://graph.facebook.com/v17.0/me?fields=", "attributes_url_add_attributes": "true", "authorize_scopes": "public_profile, email", "authorize_url": "https://www.facebook.com/v17.0/dialog/oauth", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "GET", "token_url": "https://graph.facebook.com/v17.0/oauth/access_token" \}}}
 
 \item{AttributeMapping}{A mapping of IdP attributes to standard and custom user pool attributes.}
 
 \item{IdpIdentifiers}{A list of IdP identifiers.}
 }
 \description{
-Creates an IdP for a user pool.
+Adds a configuration and trust relationship between a third-party identity provider (IdP) and a user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_identity_provider/} for full documentation.
 }

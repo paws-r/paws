@@ -22,35 +22,35 @@ update.}
 
 \item{AddPrincipals}{The principals to add to the cross-account attachment. A principal is an
 account or the Amazon Resource Name (ARN) of an accelerator that the
-attachment gives permission to add the resources from another account,
-listed in the attachment.
+attachment gives permission to work with resources from another account.
+The resources are also listed in the attachment.
 
 To add more than one principal, separate the account numbers or
 accelerator ARNs, or both, with commas.}
 
 \item{RemovePrincipals}{The principals to remove from the cross-account attachment. A principal
 is an account or the Amazon Resource Name (ARN) of an accelerator that
-is given permission to add the resources from another account, listed in
-the cross-account attachment.
+the attachment gives permission to work with resources from another
+account. The resources are also listed in the attachment.
 
 To remove more than one principal, separate the account numbers or
 accelerator ARNs, or both, with commas.}
 
 \item{AddResources}{The resources to add to the cross-account attachment. A resource listed
-in a cross-account attachment can be added to an accelerator by the
+in a cross-account attachment can be used with an accelerator by the
 principals that are listed in the attachment.
 
 To add more than one resource, separate the resource ARNs with commas.}
 
 \item{RemoveResources}{The resources to remove from the cross-account attachment. A resource
-listed in a cross-account attachment can be added to an accelerator fy
-principals that are listed in the cross-account attachment.
+listed in a cross-account attachment can be used with an accelerator by
+the principals that are listed in the attachment.
 
 To remove more than one resource, separate the resource ARNs with
 commas.}
 }
 \description{
-Update a cross-account attachment to add or remove principals or resources. When you update an attachment to remove a principal (account ID or accelerator) or a resource, Global Accelerator revokes the permission for specific resources by doing the following:
+Update a cross-account attachment to add or remove principals or resources. When you update an attachment to remove a principal (account ID or accelerator) or a resource, Global Accelerator revokes the permission for specific resources.
 
 See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_update_cross_account_attachment/} for full documentation.
 }

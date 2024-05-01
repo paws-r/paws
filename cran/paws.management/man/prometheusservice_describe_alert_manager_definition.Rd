@@ -2,15 +2,16 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_describe_alert_manager_definition}
 \alias{prometheusservice_describe_alert_manager_definition}
-\title{Describes an alert manager definition}
+\title{Retrieves the full information about the alert manager definition for a
+workspace}
 \usage{
 prometheusservice_describe_alert_manager_definition(workspaceId)
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace to describe.}
+\item{workspaceId}{[required] The ID of the workspace to retrieve the alert manager definition from.}
 }
 \description{
-Describes an alert manager definition.
+Retrieves the full information about the alert manager definition for a workspace.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_alert_manager_definition/} for full documentation.
 }

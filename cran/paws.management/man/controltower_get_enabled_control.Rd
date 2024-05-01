@@ -10,7 +10,7 @@ controltower_get_enabled_control(enabledControlIdentifier)
 \item{enabledControlIdentifier}{[required] The \code{controlIdentifier} of the enabled control.}
 }
 \description{
-Retrieves details about an enabled control. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
+Retrieves details about an enabled control. For usage examples, see \href{https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html}{\emph{the Amazon Web Services Control Tower User Guide}} .
 
 See \url{https://www.paws-r-sdk.com/docs/controltower_get_enabled_control/} for full documentation.
 }

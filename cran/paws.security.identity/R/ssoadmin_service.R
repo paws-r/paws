@@ -221,7 +221,7 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .ssoadmin$metadata <- list(
   service_name = "ssoadmin",
-  endpoints = list("*" = list(endpoint = "sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sso.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sso.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sso.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sso.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "sso.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "sso.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sso.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "sso.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSO Admin",
   api_version = "2020-07-20",
   signing_name = "sso",

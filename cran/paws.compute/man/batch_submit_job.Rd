@@ -19,7 +19,8 @@ batch_submit_job(
   propagateTags = NULL,
   timeout = NULL,
   tags = NULL,
-  eksPropertiesOverride = NULL
+  eksPropertiesOverride = NULL,
+  ecsPropertiesOverride = NULL
 )
 }
 \arguments{
@@ -40,7 +41,8 @@ followed by an asterisk (*).}
 \item{schedulingPriorityOverride}{The scheduling priority for the job. This only affects jobs in job
 queues with a fair share policy. Jobs with a higher scheduling priority
 are scheduled before jobs with a lower scheduling priority. This
-overrides any scheduling priority in the job definition.
+overrides any scheduling priority in the job definition and works only
+within a single share identifier.
 
 The minimum supported value is 0 and the maximum supported value is
 9999.}
@@ -74,7 +76,7 @@ are specified as a key and value pair mapping. Parameters in a
 \code{\link[=batch_submit_job]{submit_job}} request override any corresponding
 parameter defaults from the job definition.}
 
-\item{containerOverrides}{An object with various properties that override the defaults for the job
+\item{containerOverrides}{An object with properties that override the defaults for the job
 definition that specify the name of a container in the specified job
 definition and the overrides it should receive. You can override the
 default command for a container, which is specified in the job
@@ -117,9 +119,13 @@ organize your resources. Each tag consists of a key and an optional
 value. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 in \emph{Amazon Web Services General Reference}.}
 
-\item{eksPropertiesOverride}{An object that can only be specified for jobs that are run on Amazon EKS
-resources with various properties that override defaults for the job
-definition.}
+\item{eksPropertiesOverride}{An object, with properties that override defaults for the job
+definition, can only be specified for jobs that are run on Amazon EKS
+resources.}
+
+\item{ecsPropertiesOverride}{An object, with properties that override defaults for the job
+definition, can only be specified for jobs that are run on Amazon ECS
+resources.}
 }
 \description{
 Submits an Batch job from a job definition. Parameters that are specified during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in the job definition. vCPU and memory requirements that are specified in the \code{resourceRequirements} objects in the job definition are the exception. They can't be overridden this way using the \code{memory} and \code{vcpus} parameters. Rather, you must specify updates to job definition parameters in a \code{resourceRequirements} object that's included in the \code{containerOverrides} parameter.

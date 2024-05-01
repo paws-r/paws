@@ -9,11 +9,10 @@ cloudwatchlogs_delete_account_policy(policyName, policyType)
 \arguments{
 \item{policyName}{[required] The name of the policy to delete.}
 
-\item{policyType}{[required] The type of policy to delete. Currently, the only valid value is
-\code{DATA_PROTECTION_POLICY}.}
+\item{policyType}{[required] The type of policy to delete.}
 }
 \description{
-Deletes a CloudWatch Logs account policy.
+Deletes a CloudWatch Logs account policy. This stops the policy from applying to all log groups or a subset of log groups in the account. Log-group level policies will still be in effect.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_account_policy/} for full documentation.
 }

@@ -25,8 +25,11 @@ dynamodb_scan(
 )
 }
 \arguments{
-\item{TableName}{[required] The name of the table containing the requested items; or, if you provide
-\code{IndexName}, the name of the table to which that index belongs.}
+\item{TableName}{[required] The name of the table containing the requested items or if you provide
+\code{IndexName}, the name of the table to which that index belongs.
+
+You can also provide the Amazon Resource Name (ARN) of the table in this
+parameter.}
 
 \item{IndexName}{The name of a secondary index to scan. This index can be any local
 secondary index or global secondary index. Note that if you use the

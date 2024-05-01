@@ -831,49 +831,57 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' admin contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the admin contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' registrant contact (the domain owner).
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the registrant contact (the domain owner).
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' technical contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the technical contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
+#' @param BillingContact Provides detailed contact information. For information about the values
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' @param PrivacyProtectBillingContact Whether you want to conceal contact information from WHOIS queries. If
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the billing contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' billing, registrant, and technical contacts.
 #'
 #' @keywords internal
 #'
 #' @rdname route53domains_register_domain
-route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL) {
+route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL, BillingContact = NULL, PrivacyProtectBillingContact = NULL) {
   op <- new_operation(
     name = "RegisterDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$register_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact)
+  input <- .route53domains$register_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact, BillingContact = BillingContact, PrivacyProtectBillingContact = PrivacyProtectBillingContact)
   output <- .route53domains$register_domain_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -1098,38 +1106,45 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' registrant contact (domain owner).
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the registrant contact (domain owner).
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' technical contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the technical contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
+#' @param BillingContact Provides detailed contact information.
+#' @param PrivacyProtectBillingContact Whether you want to conceal contact information from WHOIS queries. If
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the billing contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' billing, registrant, and technical contacts.
 #'
 #' @keywords internal
 #'
 #' @rdname route53domains_transfer_domain
-route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL) {
+route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL, BillingContact = NULL, PrivacyProtectBillingContact = NULL) {
   op <- new_operation(
     name = "TransferDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$transfer_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, Nameservers = Nameservers, AuthCode = AuthCode, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact)
+  input <- .route53domains$transfer_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, Nameservers = Nameservers, AuthCode = AuthCode, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact, BillingContact = BillingContact, PrivacyProtectBillingContact = PrivacyProtectBillingContact)
   output <- .route53domains$transfer_domain_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -1185,18 +1200,19 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @param TechContact Provides detailed contact information.
 #' @param Consent Customer's consent for the owner change request. Required if the domain
 #' is not free (consent price is more than $0.00).
+#' @param BillingContact Provides detailed contact information.
 #'
 #' @keywords internal
 #'
 #' @rdname route53domains_update_domain_contact
-route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL, Consent = NULL) {
+route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL, Consent = NULL, BillingContact = NULL) {
   op <- new_operation(
     name = "UpdateDomainContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent)
+  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent, BillingContact = BillingContact)
   output <- .route53domains$update_domain_contact_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -1216,43 +1232,48 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update the privacy setting for.
 #' @param AdminPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' admin contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the admin contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' @param RegistrantPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' registrant contact (domain owner).
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the registrant contact (domain owner).
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' @param TechPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' technical contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the technical contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
+#' @param BillingPrivacy Whether you want to conceal contact information from WHOIS queries. If
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the billing contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' billing, registrant, and technical contacts.
 #'
 #' @keywords internal
 #'
 #' @rdname route53domains_update_domain_contact_privacy
-route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivacy = NULL, RegistrantPrivacy = NULL, TechPrivacy = NULL) {
+route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivacy = NULL, RegistrantPrivacy = NULL, TechPrivacy = NULL, BillingPrivacy = NULL) {
   op <- new_operation(
     name = "UpdateDomainContactPrivacy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$update_domain_contact_privacy_input(DomainName = DomainName, AdminPrivacy = AdminPrivacy, RegistrantPrivacy = RegistrantPrivacy, TechPrivacy = TechPrivacy)
+  input <- .route53domains$update_domain_contact_privacy_input(DomainName = DomainName, AdminPrivacy = AdminPrivacy, RegistrantPrivacy = RegistrantPrivacy, TechPrivacy = TechPrivacy, BillingPrivacy = BillingPrivacy)
   output <- .route53domains$update_domain_contact_privacy_output()
   config <- get_config()
   svc <- .route53domains$service(config)

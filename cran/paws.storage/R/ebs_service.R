@@ -28,7 +28,7 @@ NULL
 #' information about the elements that make up the EBS direct APIs, and
 #' examples of how to use them effectively, see [Accessing the Contents of
 #' an Amazon EBS
-#' Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html)
+#' Snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-accessing-snapshot.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*. For more information
 #' about the supported Amazon Web Services Regions, endpoints, and service
 #' quotas for the EBS direct APIs, see [Amazon Elastic Block Store
@@ -156,7 +156,7 @@ ebs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ebs$metadata <- list(
   service_name = "ebs",
-  endpoints = list("*" = list(endpoint = "ebs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ebs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ebs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ebs.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ebs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ebs.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ebs.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ebs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ebs.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ebs.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EBS",
   api_version = "2019-11-02",
   signing_name = "ebs",

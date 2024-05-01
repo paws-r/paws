@@ -28,8 +28,8 @@ snapshot on an Outpost, specify the ARN of the destination Outpost.
 The snapshot must be created on the same Outpost as the volume.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-snapshot}{Create local snapshots from volumes on an Outpost}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-snapshot}{Create local snapshots from volumes on an Outpost}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{VolumeId}{[required] The ID of the Amazon EBS volume.}
 

@@ -19,7 +19,8 @@ passed, only \code{TemplateBody} is used.}
 template (max size: 460,800 bytes) that is located in an Amazon S3
 bucket or a Systems Manager document. For more information, go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}.
+in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
+must start with \verb{https://}.
 
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}

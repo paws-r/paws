@@ -152,7 +152,7 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .voiceid$metadata <- list(
   service_name = "voiceid",
-  endpoints = list("*" = list(endpoint = "voiceid.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "voiceid.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "voiceid.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "voiceid.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "voiceid.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "voiceid.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "voiceid.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "voiceid.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "voiceid.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "voiceid.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Voice ID",
   api_version = "2021-09-27",
   signing_name = "voiceid",

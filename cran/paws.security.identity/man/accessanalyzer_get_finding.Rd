@@ -13,7 +13,7 @@ that generated the finding.}
 \item{id}{[required] The ID of the finding to retrieve.}
 }
 \description{
-Retrieves information about the specified finding.
+Retrieves information about the specified finding. GetFinding and GetFindingV2 both use \code{access-analyzer:GetFinding} in the \code{Action} element of an IAM policy statement. You must have permission to perform the \code{access-analyzer:GetFinding} action.
 
 See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding/} for full documentation.
 }

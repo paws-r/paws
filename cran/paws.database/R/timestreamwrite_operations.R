@@ -237,6 +237,8 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/timestreamwrite_describe_endpoints/](https://www.paws-r-sdk.com/docs/timestreamwrite_describe_endpoints/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_describe_endpoints

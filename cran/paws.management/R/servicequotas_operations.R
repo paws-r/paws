@@ -10,6 +10,8 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_associate_service_quota_template/](https://www.paws-r-sdk.com/docs/servicequotas_associate_service_quota_template/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname servicequotas_associate_service_quota_template
@@ -75,6 +77,8 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_disassociate_service_quota_template/](https://www.paws-r-sdk.com/docs/servicequotas_disassociate_service_quota_template/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname servicequotas_disassociate_service_quota_template
@@ -137,6 +141,8 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
 #' Retrieves the status of the association for the quota request template.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_get_association_for_service_quota_template/](https://www.paws-r-sdk.com/docs/servicequotas_get_association_for_service_quota_template/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

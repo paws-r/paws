@@ -22,8 +22,7 @@ unchanged.
 Each pagination token expires after 24 hours. Using an expired
 pagination token will return an HTTP 400 InvalidToken error.}
 
-\item{regions}{List the Amazon Web Services Regions from which exceptions are
-retrieved.}
+\item{regions}{The Amazon Web Services Regions from which exceptions are retrieved.}
 }
 \description{
 Lists the Amazon Security Lake exceptions that you can use to find the source of problems and fix them.

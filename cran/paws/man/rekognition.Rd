@@ -77,8 +77,10 @@ common errors.
 \item \code{detect_text}
 \item \code{disassociate_faces}
 \item \code{get_celebrity_info}
+\item \code{get_media_analysis_job}
 \item \code{index_faces}
 \item \code{list_collections}
+\item \href{https://docs.aws.amazon.com/rekognition/latest/APIReference/}{ListMediaAnalysisJob}
 \item \code{list_faces}
 \item \code{list_users}
 \item \code{recognize_celebrities}
@@ -86,6 +88,7 @@ common errors.
 \item \code{search_faces_by_image}
 \item \code{search_users}
 \item \code{search_users_by_image}
+\item \code{start_media_analysis_job}
 }
 
 \strong{Amazon Rekognition Custom Labels}

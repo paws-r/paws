@@ -186,7 +186,7 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .apprunner$metadata <- list(
   service_name = "apprunner",
-  endpoints = list("*" = list(endpoint = "apprunner.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apprunner.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "apprunner.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apprunner.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "apprunner.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apprunner.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "apprunner.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "apprunner.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apprunner.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "apprunner.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "AppRunner",
   api_version = "2020-05-15",
   signing_name = "apprunner",

@@ -3,6 +3,146 @@
 #' @include entityresolution_service.R
 NULL
 
+#' Adds a policy statement object
+#'
+#' @description
+#' Adds a policy statement object. To retrieve a list of existing policy
+#' statements, use the [`get_policy`][entityresolution_get_policy] API.
+#'
+#' @usage
+#' entityresolution_add_policy_statement(action, arn, condition, effect,
+#'   principal, statementId)
+#'
+#' @param action &#91;required&#93; The action that the principal can use on the resource.
+#' 
+#' For example, `entityresolution:GetIdMappingJob`,
+#' `entityresolution:GetMatchingJob`.
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that will be accessed by
+#' the principal.
+#' @param condition A set of condition keys that you can use in key policies.
+#' @param effect &#91;required&#93; Determines whether the permissions specified in the policy are to be
+#' allowed (`Allow`) or denied (`Deny`).
+#' @param principal &#91;required&#93; The Amazon Web Services service or Amazon Web Services account that can
+#' access the resource defined as ARN.
+#' @param statementId &#91;required&#93; A statement identifier that differentiates the statement from others in
+#' the same policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   policy = "string",
+#'   token = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_policy_statement(
+#'   action = list(
+#'     "string"
+#'   ),
+#'   arn = "string",
+#'   condition = "string",
+#'   effect = "Allow"|"Deny",
+#'   principal = list(
+#'     "string"
+#'   ),
+#'   statementId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_add_policy_statement
+#'
+#' @aliases entityresolution_add_policy_statement
+entityresolution_add_policy_statement <- function(action, arn, condition = NULL, effect, principal, statementId) {
+  op <- new_operation(
+    name = "AddPolicyStatement",
+    http_method = "POST",
+    http_path = "/policies/{arn}/{statementId}",
+    paginator = list()
+  )
+  input <- .entityresolution$add_policy_statement_input(action = action, arn = arn, condition = condition, effect = effect, principal = principal, statementId = statementId)
+  output <- .entityresolution$add_policy_statement_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$add_policy_statement <- entityresolution_add_policy_statement
+
+#' Deletes multiple unique IDs in a matching workflow
+#'
+#' @description
+#' Deletes multiple unique IDs in a matching workflow.
+#'
+#' @usage
+#' entityresolution_batch_delete_unique_id(inputSource, uniqueIds,
+#'   workflowName)
+#'
+#' @param inputSource The input source for the batch delete unique ID operation.
+#' @param uniqueIds &#91;required&#93; The unique IDs to delete.
+#' @param workflowName &#91;required&#93; The name of the workflow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deleted = list(
+#'     list(
+#'       uniqueId = "string"
+#'     )
+#'   ),
+#'   disconnectedUniqueIds = list(
+#'     "string"
+#'   ),
+#'   errors = list(
+#'     list(
+#'       errorType = "SERVICE_ERROR"|"VALIDATION_ERROR",
+#'       uniqueId = "string"
+#'     )
+#'   ),
+#'   status = "COMPLETED"|"ACCEPTED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_unique_id(
+#'   inputSource = "string",
+#'   uniqueIds = list(
+#'     "string"
+#'   ),
+#'   workflowName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_batch_delete_unique_id
+#'
+#' @aliases entityresolution_batch_delete_unique_id
+entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueIds, workflowName) {
+  op <- new_operation(
+    name = "BatchDeleteUniqueId",
+    http_method = "DELETE",
+    http_path = "/matchingworkflows/{workflowName}/uniqueids",
+    paginator = list()
+  )
+  input <- .entityresolution$batch_delete_unique_id_input(inputSource = inputSource, uniqueIds = uniqueIds, workflowName = workflowName)
+  output <- .entityresolution$batch_delete_unique_id_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$batch_delete_unique_id <- entityresolution_batch_delete_unique_id
+
 #' Creates an IdMappingWorkflow object which stores the configuration of
 #' the data processing job to be run
 #'
@@ -23,7 +163,7 @@ NULL
 #' `providerProperties`.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
-#' @param outputSourceConfig &#91;required&#93; A list of `IdMappingWorkflowOutputSource` objects, each of which
+#' @param outputSourceConfig A list of `IdMappingWorkflowOutputSource` objects, each of which
 #' contains fields `OutputS3Path` and `Output`.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
@@ -50,7 +190,8 @@ NULL
 #'   inputSourceConfig = list(
 #'     list(
 #'       inputSourceARN = "string",
-#'       schemaName = "string"
+#'       schemaName = "string",
+#'       type = "SOURCE"|"TARGET"
 #'     )
 #'   ),
 #'   outputSourceConfig = list(
@@ -82,7 +223,8 @@ NULL
 #'   inputSourceConfig = list(
 #'     list(
 #'       inputSourceARN = "string",
-#'       schemaName = "string"
+#'       schemaName = "string",
+#'       type = "SOURCE"|"TARGET"
 #'     )
 #'   ),
 #'   outputSourceConfig = list(
@@ -104,7 +246,7 @@ NULL
 #' @rdname entityresolution_create_id_mapping_workflow
 #'
 #' @aliases entityresolution_create_id_mapping_workflow
-entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig, roleArn, tags = NULL, workflowName) {
+entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn, tags = NULL, workflowName) {
   op <- new_operation(
     name = "CreateIdMappingWorkflow",
     http_method = "POST",
@@ -120,6 +262,124 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
   return(response)
 }
 .entityresolution$operations$create_id_mapping_workflow <- entityresolution_create_id_mapping_workflow
+
+#' Creates an ID namespace object which will help customers provide
+#' metadata explaining their dataset and how to use it
+#'
+#' @description
+#' Creates an ID namespace object which will help customers provide
+#' metadata explaining their dataset and how to use it. Each ID namespace
+#' must have a unique name. To modify an existing ID namespace, use the
+#' [`update_id_namespace`][entityresolution_update_id_namespace] API.
+#'
+#' @usage
+#' entityresolution_create_id_namespace(description,
+#'   idMappingWorkflowProperties, idNamespaceName, inputSourceConfig,
+#'   roleArn, tags, type)
+#'
+#' @param description The description of the ID namespace.
+#' @param idMappingWorkflowProperties Determines the properties of `IdMappingWorflow` where this `IdNamespace`
+#' can be used as a `Source` or a `Target`.
+#' @param idNamespaceName &#91;required&#93; The name of the ID namespace.
+#' @param inputSourceConfig A list of `InputSource` objects, which have the fields `InputSourceARN`
+#' and `SchemaName`.
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' assumes this role to access the resources defined in this `IdNamespace`
+#' on your behalf as part of the workflow run.
+#' @param tags The tags used to organize, track, or control access for this resource.
+#' @param type &#91;required&#93; The type of ID namespace. There are two types: `SOURCE` and `TARGET`.
+#' 
+#' The `SOURCE` contains configurations for `sourceId` data that will be
+#' processed in an ID mapping workflow.
+#' 
+#' The `TARGET` contains a configuration of `targetId` to which all
+#' `sourceIds` will resolve to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string",
+#'   idMappingWorkflowProperties = list(
+#'     list(
+#'       idMappingType = "PROVIDER",
+#'       providerProperties = list(
+#'         providerConfiguration = list(),
+#'         providerServiceArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   idNamespaceArn = "string",
+#'   idNamespaceName = "string",
+#'   inputSourceConfig = list(
+#'     list(
+#'       inputSourceARN = "string",
+#'       schemaName = "string"
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   type = "SOURCE"|"TARGET",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_id_namespace(
+#'   description = "string",
+#'   idMappingWorkflowProperties = list(
+#'     list(
+#'       idMappingType = "PROVIDER",
+#'       providerProperties = list(
+#'         providerConfiguration = list(),
+#'         providerServiceArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   idNamespaceName = "string",
+#'   inputSourceConfig = list(
+#'     list(
+#'       inputSourceARN = "string",
+#'       schemaName = "string"
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   type = "SOURCE"|"TARGET"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_create_id_namespace
+#'
+#' @aliases entityresolution_create_id_namespace
+entityresolution_create_id_namespace <- function(description = NULL, idMappingWorkflowProperties = NULL, idNamespaceName, inputSourceConfig = NULL, roleArn = NULL, tags = NULL, type) {
+  op <- new_operation(
+    name = "CreateIdNamespace",
+    http_method = "POST",
+    http_path = "/idnamespaces",
+    paginator = list()
+  )
+  input <- .entityresolution$create_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn, tags = tags, type = type)
+  output <- .entityresolution$create_id_namespace_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$create_id_namespace <- entityresolution_create_id_namespace
 
 #' Creates a MatchingWorkflow object which stores the configuration of the
 #' data processing job to be run
@@ -416,6 +676,53 @@ entityresolution_delete_id_mapping_workflow <- function(workflowName) {
 }
 .entityresolution$operations$delete_id_mapping_workflow <- entityresolution_delete_id_mapping_workflow
 
+#' Deletes the IdNamespace with a given name
+#'
+#' @description
+#' Deletes the `IdNamespace` with a given name.
+#'
+#' @usage
+#' entityresolution_delete_id_namespace(idNamespaceName)
+#'
+#' @param idNamespaceName &#91;required&#93; The name of the ID namespace.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_id_namespace(
+#'   idNamespaceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_delete_id_namespace
+#'
+#' @aliases entityresolution_delete_id_namespace
+entityresolution_delete_id_namespace <- function(idNamespaceName) {
+  op <- new_operation(
+    name = "DeleteIdNamespace",
+    http_method = "DELETE",
+    http_path = "/idnamespaces/{idNamespaceName}",
+    paginator = list()
+  )
+  input <- .entityresolution$delete_id_namespace_input(idNamespaceName = idNamespaceName)
+  output <- .entityresolution$delete_id_namespace_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$delete_id_namespace <- entityresolution_delete_id_namespace
+
 #' Deletes the MatchingWorkflow with a given name
 #'
 #' @description
@@ -463,6 +770,58 @@ entityresolution_delete_matching_workflow <- function(workflowName) {
   return(response)
 }
 .entityresolution$operations$delete_matching_workflow <- entityresolution_delete_matching_workflow
+
+#' Deletes the policy statement
+#'
+#' @description
+#' Deletes the policy statement.
+#'
+#' @usage
+#' entityresolution_delete_policy_statement(arn, statementId)
+#'
+#' @param arn &#91;required&#93; The ARN of the resource for which the policy need to be deleted.
+#' @param statementId &#91;required&#93; A statement identifier that differentiates the statement from others in
+#' the same policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   policy = "string",
+#'   token = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_policy_statement(
+#'   arn = "string",
+#'   statementId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_delete_policy_statement
+#'
+#' @aliases entityresolution_delete_policy_statement
+entityresolution_delete_policy_statement <- function(arn, statementId) {
+  op <- new_operation(
+    name = "DeletePolicyStatement",
+    http_method = "DELETE",
+    http_path = "/policies/{arn}/{statementId}",
+    paginator = list()
+  )
+  input <- .entityresolution$delete_policy_statement_input(arn = arn, statementId = statementId)
+  output <- .entityresolution$delete_policy_statement_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$delete_policy_statement <- entityresolution_delete_policy_statement
 
 #' Deletes the SchemaMapping with a given name
 #'
@@ -543,6 +902,13 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
 #'     recordsNotProcessed = 123,
 #'     totalRecordsProcessed = 123
 #'   ),
+#'   outputSourceConfig = list(
+#'     list(
+#'       KMSArn = "string",
+#'       outputS3Path = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -611,7 +977,8 @@ entityresolution_get_id_mapping_job <- function(jobId, workflowName) {
 #'   inputSourceConfig = list(
 #'     list(
 #'       inputSourceARN = "string",
-#'       schemaName = "string"
+#'       schemaName = "string",
+#'       type = "SOURCE"|"TARGET"
 #'     )
 #'   ),
 #'   outputSourceConfig = list(
@@ -661,6 +1028,81 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
 }
 .entityresolution$operations$get_id_mapping_workflow <- entityresolution_get_id_mapping_workflow
 
+#' Returns the IdNamespace with a given name, if it exists
+#'
+#' @description
+#' Returns the `IdNamespace` with a given name, if it exists.
+#'
+#' @usage
+#' entityresolution_get_id_namespace(idNamespaceName)
+#'
+#' @param idNamespaceName &#91;required&#93; The name of the ID namespace.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string",
+#'   idMappingWorkflowProperties = list(
+#'     list(
+#'       idMappingType = "PROVIDER",
+#'       providerProperties = list(
+#'         providerConfiguration = list(),
+#'         providerServiceArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   idNamespaceArn = "string",
+#'   idNamespaceName = "string",
+#'   inputSourceConfig = list(
+#'     list(
+#'       inputSourceARN = "string",
+#'       schemaName = "string"
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   type = "SOURCE"|"TARGET",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_id_namespace(
+#'   idNamespaceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_get_id_namespace
+#'
+#' @aliases entityresolution_get_id_namespace
+entityresolution_get_id_namespace <- function(idNamespaceName) {
+  op <- new_operation(
+    name = "GetIdNamespace",
+    http_method = "GET",
+    http_path = "/idnamespaces/{idNamespaceName}",
+    paginator = list()
+  )
+  input <- .entityresolution$get_id_namespace_input(idNamespaceName = idNamespaceName)
+  output <- .entityresolution$get_id_namespace_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$get_id_namespace <- entityresolution_get_id_namespace
+
 #' Returns the corresponding Match ID of a customer record if the record
 #' has been processed
 #'
@@ -669,8 +1111,12 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
 #' has been processed.
 #'
 #' @usage
-#' entityresolution_get_match_id(record, workflowName)
+#' entityresolution_get_match_id(applyNormalization, record, workflowName)
 #'
+#' @param applyNormalization Normalizes the attributes defined in the schema in the input data. For
+#' example, if an attribute has an `AttributeType` of `PHONE_NUMBER`, and
+#' the data in the input table is in a format of 1234567890, Entity
+#' Resolution will normalize this field in the output to (123)-456-7890.
 #' @param record &#91;required&#93; The record to fetch the Match ID for.
 #' @param workflowName &#91;required&#93; The name of the workflow.
 #'
@@ -678,13 +1124,15 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   matchId = "string"
+#'   matchId = "string",
+#'   matchRule = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_match_id(
+#'   applyNormalization = TRUE|FALSE,
 #'   record = list(
 #'     "string"
 #'   ),
@@ -697,14 +1145,14 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
 #' @rdname entityresolution_get_match_id
 #'
 #' @aliases entityresolution_get_match_id
-entityresolution_get_match_id <- function(record, workflowName) {
+entityresolution_get_match_id <- function(applyNormalization = NULL, record, workflowName) {
   op <- new_operation(
     name = "GetMatchId",
     http_method = "POST",
     http_path = "/matchingworkflows/{workflowName}/matches",
     paginator = list()
   )
-  input <- .entityresolution$get_match_id_input(record = record, workflowName = workflowName)
+  input <- .entityresolution$get_match_id_input(applyNormalization = applyNormalization, record = record, workflowName = workflowName)
   output <- .entityresolution$get_match_id_output()
   config <- get_config()
   svc <- .entityresolution$service(config)
@@ -743,6 +1191,13 @@ entityresolution_get_match_id <- function(record, workflowName) {
 #'     matchIDs = 123,
 #'     recordsNotProcessed = 123,
 #'     totalRecordsProcessed = 123
+#'   ),
+#'   outputSourceConfig = list(
+#'     list(
+#'       KMSArn = "string",
+#'       outputS3Path = "string",
+#'       roleArn = "string"
+#'     )
 #'   ),
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
@@ -884,6 +1339,56 @@ entityresolution_get_matching_workflow <- function(workflowName) {
 }
 .entityresolution$operations$get_matching_workflow <- entityresolution_get_matching_workflow
 
+#' Returns the resource-based policy
+#'
+#' @description
+#' Returns the resource-based policy.
+#'
+#' @usage
+#' entityresolution_get_policy(arn)
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the policy need
+#' to be returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   policy = "string",
+#'   token = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_policy(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_get_policy
+#'
+#' @aliases entityresolution_get_policy
+entityresolution_get_policy <- function(arn) {
+  op <- new_operation(
+    name = "GetPolicy",
+    http_method = "GET",
+    http_path = "/policies/{arn}",
+    paginator = list()
+  )
+  input <- .entityresolution$get_policy_input(arn = arn)
+  output <- .entityresolution$get_policy_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$get_policy <- entityresolution_get_policy
+
 #' Returns the ProviderService of a given name
 #'
 #' @description
@@ -901,6 +1406,21 @@ entityresolution_get_matching_workflow <- function(workflowName) {
 #' ```
 #' list(
 #'   anonymizedOutput = TRUE|FALSE,
+#'   providerComponentSchema = list(
+#'     providerSchemaAttributes = list(
+#'       list(
+#'         fieldName = "string",
+#'         hashing = TRUE|FALSE,
+#'         subType = "string",
+#'         type = "NAME"|"NAME_FIRST"|"NAME_MIDDLE"|"NAME_LAST"|"ADDRESS"|"ADDRESS_STREET1"|"ADDRESS_STREET2"|"ADDRESS_STREET3"|"ADDRESS_CITY"|"ADDRESS_STATE"|"ADDRESS_COUNTRY"|"ADDRESS_POSTALCODE"|"PHONE"|"PHONE_NUMBER"|"PHONE_COUNTRYCODE"|"EMAIL_ADDRESS"|"UNIQUE_ID"|"DATE"|"STRING"|"PROVIDER_ID"
+#'       )
+#'     ),
+#'     schemas = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
 #'   providerConfigurationDefinition = list(),
 #'   providerEndpointConfiguration = list(
 #'     marketplaceConfiguration = list(
@@ -911,6 +1431,11 @@ entityresolution_get_matching_workflow <- function(workflowName) {
 #'     )
 #'   ),
 #'   providerEntityOutputDefinition = list(),
+#'   providerIdNameSpaceConfiguration = list(
+#'     description = "string",
+#'     providerSourceConfigurationDefinition = list(),
+#'     providerTargetConfigurationDefinition = list()
+#'   ),
 #'   providerIntermediateDataAccessConfiguration = list(
 #'     awsAccountIds = list(
 #'       "string"
@@ -919,6 +1444,7 @@ entityresolution_get_matching_workflow <- function(workflowName) {
 #'       "string"
 #'     )
 #'   ),
+#'   providerJobConfiguration = list(),
 #'   providerName = "string",
 #'   providerServiceArn = "string",
 #'   providerServiceDisplayName = "string",
@@ -1151,6 +1677,69 @@ entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextTo
   return(response)
 }
 .entityresolution$operations$list_id_mapping_workflows <- entityresolution_list_id_mapping_workflows
+
+#' Returns a list of all ID namespaces
+#'
+#' @description
+#' Returns a list of all ID namespaces.
+#'
+#' @usage
+#' entityresolution_list_id_namespaces(maxResults, nextToken)
+#'
+#' @param maxResults The maximum number of `IdNamespace` objects returned per page.
+#' @param nextToken The pagination token from the previous API call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   idNamespaceSummaries = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       description = "string",
+#'       idNamespaceArn = "string",
+#'       idNamespaceName = "string",
+#'       type = "SOURCE"|"TARGET",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_id_namespaces(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_list_id_namespaces
+#'
+#' @aliases entityresolution_list_id_namespaces
+entityresolution_list_id_namespaces <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIdNamespaces",
+    http_method = "GET",
+    http_path = "/idnamespaces",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "idNamespaceSummaries")
+  )
+  input <- .entityresolution$list_id_namespaces_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .entityresolution$list_id_namespaces_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$list_id_namespaces <- entityresolution_list_id_namespaces
 
 #' Lists all jobs for a given workflow
 #'
@@ -1457,6 +2046,60 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 }
 .entityresolution$operations$list_tags_for_resource <- entityresolution_list_tags_for_resource
 
+#' Updates the resource-based policy
+#'
+#' @description
+#' Updates the resource-based policy.
+#'
+#' @usage
+#' entityresolution_put_policy(arn, policy, token)
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the policy
+#' needs to be updated.
+#' @param policy &#91;required&#93; The resource-based policy.
+#' @param token A unique identifier for the current revision of the policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   policy = "string",
+#'   token = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_policy(
+#'   arn = "string",
+#'   policy = "string",
+#'   token = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_put_policy
+#'
+#' @aliases entityresolution_put_policy
+entityresolution_put_policy <- function(arn, policy, token = NULL) {
+  op <- new_operation(
+    name = "PutPolicy",
+    http_method = "PUT",
+    http_path = "/policies/{arn}",
+    paginator = list()
+  )
+  input <- .entityresolution$put_policy_input(arn = arn, policy = policy, token = token)
+  output <- .entityresolution$put_policy_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$put_policy <- entityresolution_put_policy
+
 #' Starts the IdMappingJob of a workflow
 #'
 #' @description
@@ -1466,21 +2109,36 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 #' endpoint.
 #'
 #' @usage
-#' entityresolution_start_id_mapping_job(workflowName)
+#' entityresolution_start_id_mapping_job(outputSourceConfig, workflowName)
 #'
+#' @param outputSourceConfig A list of `OutputSource` objects.
 #' @param workflowName &#91;required&#93; The name of the ID mapping job to be retrieved.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   jobId = "string"
+#'   jobId = "string",
+#'   outputSourceConfig = list(
+#'     list(
+#'       KMSArn = "string",
+#'       outputS3Path = "string",
+#'       roleArn = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$start_id_mapping_job(
+#'   outputSourceConfig = list(
+#'     list(
+#'       KMSArn = "string",
+#'       outputS3Path = "string",
+#'       roleArn = "string"
+#'     )
+#'   ),
 #'   workflowName = "string"
 #' )
 #' ```
@@ -1490,14 +2148,14 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 #' @rdname entityresolution_start_id_mapping_job
 #'
 #' @aliases entityresolution_start_id_mapping_job
-entityresolution_start_id_mapping_job <- function(workflowName) {
+entityresolution_start_id_mapping_job <- function(outputSourceConfig = NULL, workflowName) {
   op <- new_operation(
     name = "StartIdMappingJob",
     http_method = "POST",
     http_path = "/idmappingworkflows/{workflowName}/jobs",
     paginator = list()
   )
-  input <- .entityresolution$start_id_mapping_job_input(workflowName = workflowName)
+  input <- .entityresolution$start_id_mapping_job_input(outputSourceConfig = outputSourceConfig, workflowName = workflowName)
   output <- .entityresolution$start_id_mapping_job_output()
   config <- get_config()
   svc <- .entityresolution$service(config)
@@ -1681,10 +2339,11 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' `providerProperties`.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
-#' @param outputSourceConfig &#91;required&#93; A list of `OutputSource` objects, each of which contains fields
+#' @param outputSourceConfig A list of `OutputSource` objects, each of which contains fields
 #' `OutputS3Path` and `KMSArn`.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
-#' assumes this role to access resources on your behalf.
+#' assumes this role to access Amazon Web Services resources on your
+#' behalf.
 #' @param workflowName &#91;required&#93; The name of the workflow.
 #'
 #' @return
@@ -1705,7 +2364,8 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #'   inputSourceConfig = list(
 #'     list(
 #'       inputSourceARN = "string",
-#'       schemaName = "string"
+#'       schemaName = "string",
+#'       type = "SOURCE"|"TARGET"
 #'     )
 #'   ),
 #'   outputSourceConfig = list(
@@ -1737,7 +2397,8 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #'   inputSourceConfig = list(
 #'     list(
 #'       inputSourceARN = "string",
-#'       schemaName = "string"
+#'       schemaName = "string",
+#'       type = "SOURCE"|"TARGET"
 #'     )
 #'   ),
 #'   outputSourceConfig = list(
@@ -1756,7 +2417,7 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname entityresolution_update_id_mapping_workflow
 #'
 #' @aliases entityresolution_update_id_mapping_workflow
-entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig, roleArn, workflowName) {
+entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn, workflowName) {
   op <- new_operation(
     name = "UpdateIdMappingWorkflow",
     http_method = "PUT",
@@ -1772,6 +2433,105 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
   return(response)
 }
 .entityresolution$operations$update_id_mapping_workflow <- entityresolution_update_id_mapping_workflow
+
+#' Updates an existing ID namespace
+#'
+#' @description
+#' Updates an existing ID namespace.
+#'
+#' @usage
+#' entityresolution_update_id_namespace(description,
+#'   idMappingWorkflowProperties, idNamespaceName, inputSourceConfig,
+#'   roleArn)
+#'
+#' @param description The description of the ID namespace.
+#' @param idMappingWorkflowProperties Determines the properties of `IdMappingWorkflow` where this
+#' `IdNamespace` can be used as a `Source` or a `Target`.
+#' @param idNamespaceName &#91;required&#93; The name of the ID namespace.
+#' @param inputSourceConfig A list of `InputSource` objects, which have the fields `InputSourceARN`
+#' and `SchemaName`.
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' assumes this role to access the resources defined in this `IdNamespace`
+#' on your behalf as part of a workflow run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string",
+#'   idMappingWorkflowProperties = list(
+#'     list(
+#'       idMappingType = "PROVIDER",
+#'       providerProperties = list(
+#'         providerConfiguration = list(),
+#'         providerServiceArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   idNamespaceArn = "string",
+#'   idNamespaceName = "string",
+#'   inputSourceConfig = list(
+#'     list(
+#'       inputSourceARN = "string",
+#'       schemaName = "string"
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   type = "SOURCE"|"TARGET",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_id_namespace(
+#'   description = "string",
+#'   idMappingWorkflowProperties = list(
+#'     list(
+#'       idMappingType = "PROVIDER",
+#'       providerProperties = list(
+#'         providerConfiguration = list(),
+#'         providerServiceArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   idNamespaceName = "string",
+#'   inputSourceConfig = list(
+#'     list(
+#'       inputSourceARN = "string",
+#'       schemaName = "string"
+#'     )
+#'   ),
+#'   roleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname entityresolution_update_id_namespace
+#'
+#' @aliases entityresolution_update_id_namespace
+entityresolution_update_id_namespace <- function(description = NULL, idMappingWorkflowProperties = NULL, idNamespaceName, inputSourceConfig = NULL, roleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateIdNamespace",
+    http_method = "PUT",
+    http_path = "/idnamespaces/{idNamespaceName}",
+    paginator = list()
+  )
+  input <- .entityresolution$update_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn)
+  output <- .entityresolution$update_id_namespace_output()
+  config <- get_config()
+  svc <- .entityresolution$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.entityresolution$operations$update_id_namespace <- entityresolution_update_id_namespace
 
 #' Updates an existing MatchingWorkflow
 #'

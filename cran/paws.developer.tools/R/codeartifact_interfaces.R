@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codeartifact$create_package_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(type = "string")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$create_package_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroup = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeartifact$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), repository = structure(logical(0), tags = list(location = "querystring", locationName = "repository", type = "string")), description = structure(logical(0), tags = list(type = "string")), upstreams = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -84,6 +96,18 @@ NULL
 .codeartifact$delete_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(deletedPackage = structure(list(format = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), package = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(publish = structure(logical(0), tags = list(type = "string")), upstream = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$delete_package_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(location = "querystring", locationName = "package-group", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$delete_package_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroup = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -147,6 +171,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codeartifact$describe_package_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(location = "querystring", locationName = "package-group", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$describe_package_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroup = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeartifact$describe_package_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), repository = structure(logical(0), tags = list(location = "querystring", locationName = "repository", type = "string")), format = structure(logical(0), tags = list(location = "querystring", locationName = "format", type = "string")), namespace = structure(logical(0), tags = list(location = "querystring", locationName = "namespace", type = "string")), package = structure(logical(0), tags = list(location = "querystring", locationName = "package", type = "string")), packageVersion = structure(logical(0), tags = list(location = "querystring", locationName = "version", type = "string"))), tags = list(type = "structure"))
@@ -195,6 +231,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codeartifact$get_associated_package_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), format = structure(logical(0), tags = list(location = "querystring", locationName = "format", type = "string")), namespace = structure(logical(0), tags = list(location = "querystring", locationName = "namespace", type = "string")), package = structure(logical(0), tags = list(location = "querystring", locationName = "package", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$get_associated_package_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroup = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), associationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeartifact$get_authorization_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), durationSeconds = structure(logical(0), tags = list(location = "querystring", locationName = "duration", type = "long"))), tags = list(type = "structure"))
@@ -203,7 +251,7 @@ NULL
 
 .codeartifact$get_authorization_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(authorizationToken = structure(logical(0), tags = list(type = "string")), expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(authorizationToken = structure(logical(0), tags = list(type = "string")), expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", sensitive = TRUE))
   return(populate(args, shape))
 }
 
@@ -267,6 +315,30 @@ NULL
   return(populate(args, shape))
 }
 
+.codeartifact$list_allowed_repositories_for_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(location = "querystring", locationName = "package-group", type = "string")), originRestrictionType = structure(logical(0), tags = list(location = "querystring", locationName = "originRestrictionType", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_allowed_repositories_for_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(allowedRepositories = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_associated_packages_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(location = "querystring", locationName = "package-group", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), preview = structure(logical(0), tags = list(location = "querystring", locationName = "preview", type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_associated_packages_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packages = structure(list(structure(list(format = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string")), package = structure(logical(0), tags = list(type = "string")), associationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeartifact$list_domains_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -276,6 +348,18 @@ NULL
 .codeartifact$list_domains_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domains = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_package_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), prefix = structure(logical(0), tags = list(location = "querystring", locationName = "prefix", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_package_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroups = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -348,6 +432,18 @@ NULL
 .codeartifact$list_repositories_in_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(repositories = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), administratorAccount = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_sub_package_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(location = "querystring", locationName = "package-group", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_sub_package_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroups = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -432,6 +528,30 @@ NULL
 .codeartifact$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$update_package_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(type = "string")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$update_package_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroup = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$update_package_group_origin_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), packageGroup = structure(logical(0), tags = list(location = "querystring", locationName = "package-group", type = "string")), restrictions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), addAllowedRepositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), originRestrictionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), removeAllowedRepositories = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), originRestrictionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$update_package_group_origin_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(packageGroup = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), contactInfo = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), originConfiguration = structure(list(restrictions = structure(list(structure(list(mode = structure(logical(0), tags = list(type = "string")), effectiveMode = structure(logical(0), tags = list(type = "string")), inheritedFrom = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), repositoriesCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map"))), tags = list(type = "structure")), parent = structure(list(arn = structure(logical(0), tags = list(type = "string")), pattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), allowedRepositoryUpdates = structure(list(structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

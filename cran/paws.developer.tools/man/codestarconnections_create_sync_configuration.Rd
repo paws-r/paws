@@ -12,7 +12,9 @@ codestarconnections_create_sync_configuration(
   RepositoryLinkId,
   ResourceName,
   RoleArn,
-  SyncType
+  SyncType,
+  PublishDeploymentStatus = NULL,
+  TriggerResourceUpdateOn = NULL
 )
 }
 \arguments{
@@ -35,6 +37,11 @@ to use Git sync to update a given Amazon Web Services resource on your
 behalf.}
 
 \item{SyncType}{[required] The type of sync configuration.}
+
+\item{PublishDeploymentStatus}{Whether to enable or disable publishing of deployment status to source
+providers.}
+
+\item{TriggerResourceUpdateOn}{When to trigger Git sync to begin the stack update.}
 }
 \description{
 Creates a sync configuration which allows Amazon Web Services to sync content from a Git repository to update a specified Amazon Web Services resource. Parameters for the sync configuration are determined by the sync type.

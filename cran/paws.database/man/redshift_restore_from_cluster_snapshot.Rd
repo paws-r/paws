@@ -77,7 +77,9 @@ cluster name.}
 
 Default: The same port as the original cluster.
 
-Constraints: Must be between \code{1115} and \code{65535}.}
+Valid values: For clusters with ds2 or dc2 nodes, must be within the
+range \code{1150}-\code{65535}. For clusters with ra3 nodes, must be within the
+ranges \code{5431}-\code{5455} or \code{8191}-\code{8215}.}
 
 \item{AvailabilityZone}{The Amazon EC2 Availability Zone in which to restore the cluster.
 

@@ -31,7 +31,7 @@ NULL
 #' list(
 #'   DatastoreId = "string",
 #'   DatastoreArn = "string",
-#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
 #'   DatastoreEndpoint = "string"
 #' )
 #' ```
@@ -104,7 +104,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' list(
 #'   DatastoreId = "string",
 #'   DatastoreArn = "string",
-#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'   DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
 #'   DatastoreEndpoint = "string"
 #' )
 #' ```
@@ -162,7 +162,7 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
 #'     DatastoreId = "string",
 #'     DatastoreArn = "string",
 #'     DatastoreName = "string",
-#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -182,6 +182,10 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
 #'       FineGrainedAuthorizationEnabled = TRUE|FALSE,
 #'       Metadata = "string",
 #'       IdpLambdaArn = "string"
+#'     ),
+#'     ErrorCause = list(
+#'       ErrorMessage = "string",
+#'       ErrorCategory = "RETRYABLE_ERROR"|"NON_RETRYABLE_ERROR"
 #'     )
 #'   )
 #' )
@@ -324,6 +328,16 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'         KmsKeyId = "string"
 #'       )
 #'     ),
+#'     JobProgressReport = list(
+#'       TotalNumberOfScannedFiles = 123,
+#'       TotalSizeOfScannedFilesInMB = 123.0,
+#'       TotalNumberOfImportedFiles = 123,
+#'       TotalNumberOfResourcesScanned = 123,
+#'       TotalNumberOfResourcesImported = 123,
+#'       TotalNumberOfResourcesWithCustomerError = 123,
+#'       TotalNumberOfFilesReadWithCustomerError = 123,
+#'       Throughput = 123.0
+#'     ),
 #'     DataAccessRoleArn = "string",
 #'     Message = "string"
 #'   )
@@ -384,7 +398,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'       DatastoreId = "string",
 #'       DatastoreArn = "string",
 #'       DatastoreName = "string",
-#'       DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'       DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -404,6 +418,10 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'         FineGrainedAuthorizationEnabled = TRUE|FALSE,
 #'         Metadata = "string",
 #'         IdpLambdaArn = "string"
+#'       ),
+#'       ErrorCause = list(
+#'         ErrorMessage = "string",
+#'         ErrorCategory = "RETRYABLE_ERROR"|"NON_RETRYABLE_ERROR"
 #'       )
 #'     )
 #'   ),
@@ -416,7 +434,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #' svc$list_fhir_datastores(
 #'   Filter = list(
 #'     DatastoreName = "string",
-#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED",
+#'     DatastoreStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"CREATE_FAILED",
 #'     CreatedBefore = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -594,6 +612,16 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #'           S3Uri = "string",
 #'           KmsKeyId = "string"
 #'         )
+#'       ),
+#'       JobProgressReport = list(
+#'         TotalNumberOfScannedFiles = 123,
+#'         TotalSizeOfScannedFilesInMB = 123.0,
+#'         TotalNumberOfImportedFiles = 123,
+#'         TotalNumberOfResourcesScanned = 123,
+#'         TotalNumberOfResourcesImported = 123,
+#'         TotalNumberOfResourcesWithCustomerError = 123,
+#'         TotalNumberOfFilesReadWithCustomerError = 123,
+#'         Throughput = 123.0
 #'       ),
 #'       DataAccessRoleArn = "string",
 #'       Message = "string"

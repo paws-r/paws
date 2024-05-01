@@ -14,7 +14,7 @@ NULL
 #' undifferentiated heavy lifting of configuring and managing required
 #' infrastructure. At the same time, it also adopts a familiar batch
 #' computing software approach. You can use Batch to efficiently provision
-#' resources d, and work toward eliminating capacity constraints, reducing
+#' resources, and work toward eliminating capacity constraints, reducing
 #' your overall compute costs, and delivering results more quickly.
 #' 
 #' As a fully managed service, Batch can run batch computing workloads of
@@ -164,7 +164,7 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .batch$metadata <- list(
   service_name = "batch",
-  endpoints = list("*" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "batch.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "batch.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "batch.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "batch.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "batch.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "batch.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "batch.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "batch.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Batch",
   api_version = "2016-08-10",
   signing_name = "batch",

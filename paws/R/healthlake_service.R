@@ -136,7 +136,7 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .healthlake$metadata <- list(
   service_name = "healthlake",
-  endpoints = list("*" = list(endpoint = "healthlake.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "healthlake.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "healthlake.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "healthlake.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "healthlake.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "healthlake.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "healthlake.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "healthlake.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "healthlake.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "healthlake.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "HealthLake",
   api_version = "2017-07-01",
   signing_name = "healthlake",

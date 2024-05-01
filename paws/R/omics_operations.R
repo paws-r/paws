@@ -47,15 +47,15 @@ omics_abort_multipart_read_set_upload <- function(sequenceStoreId, uploadId) {
 }
 .omics$operations$abort_multipart_read_set_upload <- omics_abort_multipart_read_set_upload
 
-#' Accepts a share for an analytics store
+#' Accept a resource share request
 #'
 #' @description
-#' Accepts a share for an analytics store.
+#' Accept a resource share request.
 #'
 #' @usage
 #' omics_accept_share(shareId)
 #'
-#' @param shareId &#91;required&#93; The ID for a share offer for analytics store data.
+#' @param shareId &#91;required&#93; The ID of the resource share.
 #'
 #' @return
 #' A list with the following syntax:
@@ -763,7 +763,7 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #'
 #' @usage
 #' omics_create_sequence_store(name, description, sseConfig, tags,
-#'   clientToken, fallbackLocation)
+#'   clientToken, fallbackLocation, eTagAlgorithmFamily)
 #'
 #' @param name &#91;required&#93; A name for the store.
 #' @param description A description for the store.
@@ -773,6 +773,7 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #' for each request.
 #' @param fallbackLocation An S3 location that is used to store files that have failed a direct
 #' upload.
+#' @param eTagAlgorithmFamily The ETag algorithm family to use for ingested read sets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -789,7 +790,8 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #'   creationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   fallbackLocation = "string"
+#'   fallbackLocation = "string",
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
 #' )
 #' ```
 #'
@@ -806,7 +808,8 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #'     "string"
 #'   ),
 #'   clientToken = "string",
-#'   fallbackLocation = "string"
+#'   fallbackLocation = "string",
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
 #' )
 #' ```
 #'
@@ -815,14 +818,14 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #' @rdname omics_create_sequence_store
 #'
 #' @aliases omics_create_sequence_store
-omics_create_sequence_store <- function(name, description = NULL, sseConfig = NULL, tags = NULL, clientToken = NULL, fallbackLocation = NULL) {
+omics_create_sequence_store <- function(name, description = NULL, sseConfig = NULL, tags = NULL, clientToken = NULL, fallbackLocation = NULL, eTagAlgorithmFamily = NULL) {
   op <- new_operation(
     name = "CreateSequenceStore",
     http_method = "POST",
     http_path = "/sequencestore",
     paginator = list()
   )
-  input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation)
+  input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation, eTagAlgorithmFamily = eTagAlgorithmFamily)
   output <- .omics$create_sequence_store_output()
   config <- get_config()
   svc <- .omics$service(config)
@@ -832,21 +835,28 @@ omics_create_sequence_store <- function(name, description = NULL, sseConfig = NU
 }
 .omics$operations$create_sequence_store <- omics_create_sequence_store
 
-#' Creates a share offer that can be accepted outside the account by a
-#' subscriber
+#' Creates a cross-account shared resource
 #'
 #' @description
-#' Creates a share offer that can be accepted outside the account by a
-#' subscriber. The share is created by the owner and accepted by the
-#' principal subscriber.
+#' Creates a cross-account shared resource. The resource owner makes an
+#' offer to share the resource with the principal subscriber (an AWS user
+#' with a different account than the resource owner).
+#' 
+#' The following resources support cross-account sharing:
+#' 
+#' -   Healthomics variant stores
+#' 
+#' -   Healthomics annotation stores
+#' 
+#' -   Private workflows
 #'
 #' @usage
 #' omics_create_share(resourceArn, principalSubscriber, shareName)
 #'
-#' @param resourceArn &#91;required&#93; The resource ARN for the analytics store to be shared.
-#' @param principalSubscriber &#91;required&#93; The principal subscriber is the account being given access to the
-#' analytics store data through the share offer.
-#' @param shareName A name given to the share.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to be shared.
+#' @param principalSubscriber &#91;required&#93; The principal subscriber is the account being offered shared access to
+#' the resource.
+#' @param shareName A name that the owner defines for the share.
 #'
 #' @return
 #' A list with the following syntax:
@@ -977,7 +987,7 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #' @param definitionUri The URI of a definition for the workflow.
 #' @param main The path of the main definition file for the workflow.
 #' @param parameterTemplate A parameter template for the workflow.
-#' @param storageCapacity A storage capacity for the workflow in gibibytes.
+#' @param storageCapacity The storage capacity for the workflow in gibibytes.
 #' @param tags Tags for the workflow.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
@@ -1362,15 +1372,17 @@ omics_delete_sequence_store <- function(id) {
 }
 .omics$operations$delete_sequence_store <- omics_delete_sequence_store
 
-#' Deletes a share of an analytics store
+#' Deletes a resource share
 #'
 #' @description
-#' Deletes a share of an analytics store.
+#' Deletes a resource share. If you are the resource owner, the subscriber
+#' will no longer have access to the shared resource. If you are the
+#' subscriber, this operation deletes your access to the share.
 #'
 #' @usage
 #' omics_delete_share(shareId)
 #'
-#' @param shareId &#91;required&#93; The ID for the share request to be deleted.
+#' @param shareId &#91;required&#93; The ID for the resource share to be deleted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2056,23 +2068,32 @@ omics_get_read_set_import_job <- function(id, sequenceStoreId) {
 #'     source1 = list(
 #'       totalParts = 123,
 #'       partSize = 123,
-#'       contentLength = 123
+#'       contentLength = 123,
+#'       s3Access = list(
+#'         s3Uri = "string"
+#'       )
 #'     ),
 #'     source2 = list(
 #'       totalParts = 123,
 #'       partSize = 123,
-#'       contentLength = 123
+#'       contentLength = 123,
+#'       s3Access = list(
+#'         s3Uri = "string"
+#'       )
 #'     ),
 #'     index = list(
 #'       totalParts = 123,
 #'       partSize = 123,
-#'       contentLength = 123
+#'       contentLength = 123,
+#'       s3Access = list(
+#'         s3Uri = "string"
+#'       )
 #'     )
 #'   ),
 #'   statusMessage = "string",
 #'   creationType = "IMPORT"|"UPLOAD",
 #'   etag = list(
-#'     algorithm = "FASTQ_MD5up"|"BAM_MD5up"|"CRAM_MD5up",
+#'     algorithm = "FASTQ_MD5up"|"BAM_MD5up"|"CRAM_MD5up"|"FASTQ_SHA256up"|"BAM_SHA256up"|"CRAM_SHA256up"|"FASTQ_SHA512up"|"BAM_SHA512up"|"CRAM_SHA512up",
 #'     source1 = "string",
 #'     source2 = "string"
 #'   )
@@ -2267,12 +2288,18 @@ omics_get_reference_import_job <- function(id, referenceStoreId) {
 #'     source = list(
 #'       totalParts = 123,
 #'       partSize = 123,
-#'       contentLength = 123
+#'       contentLength = 123,
+#'       s3Access = list(
+#'         s3Uri = "string"
+#'       )
 #'     ),
 #'     index = list(
 #'       totalParts = 123,
 #'       partSize = 123,
-#'       contentLength = 123
+#'       contentLength = 123,
+#'       s3Access = list(
+#'         s3Uri = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2369,6 +2396,9 @@ omics_get_reference_store <- function(id) {
 #'
 #' @description
 #' Gets information about a workflow run.
+#' 
+#' If a workflow is shared with you, you cannot export information about
+#' the run.
 #'
 #' @usage
 #' omics_get_run(id, export)
@@ -2421,7 +2451,9 @@ omics_get_reference_store <- function(id) {
 #'     runLogStream = "string"
 #'   ),
 #'   uuid = "string",
-#'   runOutputUri = "string"
+#'   runOutputUri = "string",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   workflowOwnerId = "string"
 #' )
 #' ```
 #'
@@ -2608,7 +2640,12 @@ omics_get_run_task <- function(id, taskId) {
 #'   creationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   fallbackLocation = "string"
+#'   fallbackLocation = "string",
+#'   s3Access = list(
+#'     s3Uri = "string",
+#'     s3AccessPointArn = "string"
+#'   ),
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
 #' )
 #' ```
 #'
@@ -2641,15 +2678,15 @@ omics_get_sequence_store <- function(id) {
 }
 .omics$operations$get_sequence_store <- omics_get_sequence_store
 
-#' Retrieves the metadata for a share
+#' Retrieves the metadata for the specified resource share
 #'
 #' @description
-#' Retrieves the metadata for a share.
+#' Retrieves the metadata for the specified resource share.
 #'
 #' @usage
 #' omics_get_share(shareId)
 #'
-#' @param shareId &#91;required&#93; The generated ID for a share.
+#' @param shareId &#91;required&#93; The ID of the share.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2658,6 +2695,7 @@ omics_get_sequence_store <- function(id) {
 #'   share = list(
 #'     shareId = "string",
 #'     resourceArn = "string",
+#'     resourceId = "string",
 #'     principalSubscriber = "string",
 #'     ownerId = "string",
 #'     status = "PENDING"|"ACTIVATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED",
@@ -2846,13 +2884,16 @@ omics_get_variant_store <- function(name) {
 #'
 #' @description
 #' Gets information about a workflow.
+#' 
+#' If a workflow is shared with you, you cannot export the workflow.
 #'
 #' @usage
-#' omics_get_workflow(id, type, export)
+#' omics_get_workflow(id, type, export, workflowOwnerId)
 #'
 #' @param id &#91;required&#93; The workflow's ID.
 #' @param type The workflow's type.
 #' @param export The export format for the workflow.
+#' @param workflowOwnerId The ID of the workflow owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2896,7 +2937,8 @@ omics_get_variant_store <- function(name) {
 #'   type = "PRIVATE"|"READY2RUN",
 #'   export = list(
 #'     "DEFINITION"
-#'   )
+#'   ),
+#'   workflowOwnerId = "string"
 #' )
 #' ```
 #'
@@ -2905,14 +2947,14 @@ omics_get_variant_store <- function(name) {
 #' @rdname omics_get_workflow
 #'
 #' @aliases omics_get_workflow
-omics_get_workflow <- function(id, type = NULL, export = NULL) {
+omics_get_workflow <- function(id, type = NULL, export = NULL, workflowOwnerId = NULL) {
   op <- new_operation(
     name = "GetWorkflow",
     http_method = "GET",
     http_path = "/workflow/{id}",
     paginator = list()
   )
-  input <- .omics$get_workflow_input(id = id, type = type, export = export)
+  input <- .omics$get_workflow_input(id = id, type = type, export = export, workflowOwnerId = workflowOwnerId)
   output <- .omics$get_workflow_output()
   config <- get_config()
   svc <- .omics$service(config)
@@ -3168,7 +3210,7 @@ omics_list_annotation_stores <- function(ids = NULL, maxResults = NULL, nextToke
 #' @description
 #' Lists multipart read set uploads and for in progress uploads. Once the
 #' upload is completed, a read set is created and the upload will no longer
-#' be returned in the respone.
+#' be returned in the response.
 #'
 #' @usage
 #' omics_list_multipart_read_set_uploads(sequenceStoreId, maxResults,
@@ -3595,7 +3637,7 @@ omics_list_read_set_upload_parts <- function(sequenceStoreId, uploadId, partSour
 #'       statusMessage = "string",
 #'       creationType = "IMPORT"|"UPLOAD",
 #'       etag = list(
-#'         algorithm = "FASTQ_MD5up"|"BAM_MD5up"|"CRAM_MD5up",
+#'         algorithm = "FASTQ_MD5up"|"BAM_MD5up"|"CRAM_MD5up"|"FASTQ_SHA256up"|"BAM_SHA256up"|"CRAM_SHA256up"|"FASTQ_SHA512up"|"BAM_SHA512up"|"CRAM_SHA512up",
 #'         source1 = "string",
 #'         source2 = "string"
 #'       )
@@ -4058,7 +4100,8 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #'       ),
 #'       stopTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       storageType = "STATIC"|"DYNAMIC"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4129,7 +4172,8 @@ omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       fallbackLocation = "string"
+#'       fallbackLocation = "string",
+#'       eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
 #'     )
 #'   )
 #' )
@@ -4174,16 +4218,18 @@ omics_list_sequence_stores <- function(maxResults = NULL, nextToken = NULL, filt
 }
 .omics$operations$list_sequence_stores <- omics_list_sequence_stores
 
-#' Lists all shares associated with an account
+#' Retrieves the resource shares associated with an account
 #'
 #' @description
-#' Lists all shares associated with an account.
+#' Retrieves the resource shares associated with an account. Use the filter
+#' parameter to retrieve a specific subset of the shares.
 #'
 #' @usage
 #' omics_list_shares(resourceOwner, filter, nextToken, maxResults)
 #'
-#' @param resourceOwner &#91;required&#93; The account that owns the analytics store shared.
-#' @param filter Attributes used to filter for a specific subset of shares.
+#' @param resourceOwner &#91;required&#93; The account that owns the resource shares.
+#' @param filter Attributes that you use to filter for a specific subset of resource
+#' shares.
 #' @param nextToken Next token returned in the response of a previous
 #' ListReadSetUploadPartsRequest call. Used to get the next page of
 #' results.
@@ -4197,6 +4243,7 @@ omics_list_sequence_stores <- function(maxResults = NULL, nextToken = NULL, filt
 #'     list(
 #'       shareId = "string",
 #'       resourceArn = "string",
+#'       resourceId = "string",
 #'       principalSubscriber = "string",
 #'       ownerId = "string",
 #'       status = "PENDING"|"ACTIVATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED",
@@ -4224,6 +4271,9 @@ omics_list_sequence_stores <- function(maxResults = NULL, nextToken = NULL, filt
 #'     ),
 #'     status = list(
 #'       "PENDING"|"ACTIVATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED"
+#'     ),
+#'     type = list(
+#'       "VARIANT_STORE"|"ANNOTATION_STORE"|"WORKFLOW"
 #'     )
 #'   ),
 #'   nextToken = "string",
@@ -4472,8 +4522,8 @@ omics_list_variant_stores <- function(maxResults = NULL, ids = NULL, nextToken =
 #' @usage
 #' omics_list_workflows(type, name, startingToken, maxResults)
 #'
-#' @param type The workflows' type.
-#' @param name The workflows' name.
+#' @param type Filter the list by workflow type.
+#' @param name Filter the list by workflow name.
 #' @param startingToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
 #' @param maxResults The maximum number of workflows to return in one page of results.
@@ -4902,15 +4952,25 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' Starts a workflow run. To duplicate a run, specify the run's ID and a
 #' role ARN. The remaining parameters are copied from the previous run.
 #' 
+#' StartRun will not support re-run for a workflow that is shared with you.
+#' 
 #' The total number of runs in your account is subject to a quota per
 #' Region. To avoid needing to delete runs manually, you can set the
 #' retention mode to `REMOVE`. Runs with this setting are deleted
 #' automatically when the run quoata is exceeded.
+#' 
+#' By default, the run uses STATIC storage. For STATIC storage, set the
+#' `storageCapacity` field. You can set the storage type to DYNAMIC. You do
+#' not set `storageCapacity`, because HealthOmics dynamically scales the
+#' storage up or down as required. For more information about static and
+#' dynamic storage, see [Running
+#' workflows](https://docs.aws.amazon.com/omics/latest/dev/Using-workflows.html)
+#' in the *AWS HealthOmics User Guide*.
 #'
 #' @usage
 #' omics_start_run(workflowId, workflowType, runId, roleArn, name,
 #'   runGroupId, priority, parameters, storageCapacity, outputUri, logLevel,
-#'   tags, requestId, retentionMode)
+#'   tags, requestId, retentionMode, storageType, workflowOwnerId)
 #'
 #' @param workflowId The run's workflow ID.
 #' @param workflowType The run's workflow type.
@@ -4920,13 +4980,20 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @param runGroupId The run's group ID.
 #' @param priority A priority for the run.
 #' @param parameters Parameters for the run.
-#' @param storageCapacity A storage capacity for the run in gigabytes.
+#' @param storageCapacity A storage capacity for the run in gibibytes. This field is not required
+#' if the storage type is dynamic (the system ignores any value that you
+#' enter).
 #' @param outputUri An output URI for the run.
 #' @param logLevel A log level for the run.
 #' @param tags Tags for the run.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
 #' @param retentionMode The retention mode for the run.
+#' @param storageType The run's storage type. By default, the run uses STATIC storage type,
+#' which allocates a fixed amount of storage. If you set the storage type
+#' to DYNAMIC, HealthOmics dynamically scales the storage up or down, based
+#' on file system utilization.
+#' @param workflowOwnerId The ID of the workflow owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4961,7 +5028,9 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #'     "string"
 #'   ),
 #'   requestId = "string",
-#'   retentionMode = "RETAIN"|"REMOVE"
+#'   retentionMode = "RETAIN"|"REMOVE",
+#'   storageType = "STATIC"|"DYNAMIC",
+#'   workflowOwnerId = "string"
 #' )
 #' ```
 #'
@@ -4970,14 +5039,14 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @rdname omics_start_run
 #'
 #' @aliases omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
     http_path = "/run",
     paginator = list()
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config)

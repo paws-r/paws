@@ -35,8 +35,11 @@ To use a DB instance as a data source, specify its \code{DbiResourceId}
 value. For example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 
 \item{MetricQueries}{[required] An array of one or more queries to perform. Each query must specify a
-Performance Insights metric, and can optionally specify aggregation and
-filtering criteria.}
+Performance Insights metric and specify an aggregate function, and you
+can provide filtering criteria. You must append the aggregate function
+to the metric. For example, to find the average for the metric \code{db.load}
+you must use \code{db.load.avg}. Valid values for aggregate functions include
+\code{.avg}, \code{.min}, \code{.max}, and \code{.sum}.}
 
 \item{StartTime}{[required] The date and time specifying the beginning of the requested time series
 query range. You can't specify a \code{StartTime} that is earlier than 7 days
@@ -80,7 +83,7 @@ token, up to the value specified by \code{MaxRecords}.}
 periods. The default value is \code{END_TIME}.}
 }
 \description{
-Retrieve Performance Insights metrics for a set of data sources over a time period. You can provide specific dimension groups and dimensions, and provide aggregation and filtering criteria for each group.
+Retrieve Performance Insights metrics for a set of data sources over a time period. You can provide specific dimension groups and dimensions, and provide filtering criteria for each group. You must specify an aggregate function for each metric.
 
 See \url{https://www.paws-r-sdk.com/docs/pi_get_resource_metrics/} for full documentation.
 }

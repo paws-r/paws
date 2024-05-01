@@ -319,6 +319,38 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
 }
 .lexmodelsv2$operations$create_bot_locale <- lexmodelsv2_create_bot_locale
 
+#' Action to create a replication of the source bot in the secondary region
+#'
+#' @description
+#' Action to create a replication of the source bot in the secondary region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_create_bot_replica/](https://www.paws-r-sdk.com/docs/lexmodelsv2_create_bot_replica/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The request for the unique bot ID of the source bot to be replicated in
+#' the secondary region.
+#' @param replicaRegion &#91;required&#93; The request for the secondary region that will be used in the
+#' replication of the source bot.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_create_bot_replica
+lexmodelsv2_create_bot_replica <- function(botId, replicaRegion) {
+  op <- new_operation(
+    name = "CreateBotReplica",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/replicas/",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$create_bot_replica_input(botId = botId, replicaRegion = replicaRegion)
+  output <- .lexmodelsv2$create_bot_replica_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$create_bot_replica <- lexmodelsv2_create_bot_replica
+
 #' Creates an immutable version of the bot
 #'
 #' @description
@@ -468,18 +500,22 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param initialResponseSetting Configuration settings for the response that is sent to the user at the
 #' beginning of a conversation, before eliciting slot values.
+#' @param qnAIntentConfiguration Specifies the configuration of the built-in `Amazon.QnAIntent`. The
+#' `AMAZON.QnAIntent` intent is called when Amazon Lex can't determine
+#' another intent to invoke. If you specify this field, you can't specify
+#' the `kendraConfiguration` field.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_intent
-lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL) {
+lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting)
+  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -744,6 +780,8 @@ lexmodelsv2_create_test_set_discrepancy_report <- function(testSetId, target) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_create_upload_url/](https://www.paws-r-sdk.com/docs/lexmodelsv2_create_upload_url/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_upload_url
@@ -866,6 +904,37 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
   return(response)
 }
 .lexmodelsv2$operations$delete_bot_locale <- lexmodelsv2_delete_bot_locale
+
+#' The action to delete the replicated bot in the secondary region
+#'
+#' @description
+#' The action to delete the replicated bot in the secondary region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_replica/](https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_replica/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The unique ID of the replicated bot to be deleted from the secondary
+#' region
+#' @param replicaRegion &#91;required&#93; The secondary region of the replicated bot that will be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_delete_bot_replica
+lexmodelsv2_delete_bot_replica <- function(botId, replicaRegion) {
+  op <- new_operation(
+    name = "DeleteBotReplica",
+    http_method = "DELETE",
+    http_path = "/bots/{botId}/replicas/{replicaRegion}/",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$delete_bot_replica_input(botId = botId, replicaRegion = replicaRegion)
+  output <- .lexmodelsv2$delete_bot_replica_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$delete_bot_replica <- lexmodelsv2_delete_bot_replica
 
 #' Deletes a specific version of a bot
 #'
@@ -1371,6 +1440,36 @@ lexmodelsv2_describe_bot_recommendation <- function(botId, botVersion, localeId,
   return(response)
 }
 .lexmodelsv2$operations$describe_bot_recommendation <- lexmodelsv2_describe_bot_recommendation
+
+#' Monitors the bot replication status through the UI console
+#'
+#' @description
+#' Monitors the bot replication status through the UI console.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_replica/](https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_replica/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The request for the unique bot ID of the replicated bot being monitored.
+#' @param replicaRegion &#91;required&#93; The request for the region of the replicated bot being monitored.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_bot_replica
+lexmodelsv2_describe_bot_replica <- function(botId, replicaRegion) {
+  op <- new_operation(
+    name = "DescribeBotReplica",
+    http_method = "GET",
+    http_path = "/bots/{botId}/replicas/{replicaRegion}/",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$describe_bot_replica_input(botId = botId, replicaRegion = replicaRegion)
+  output <- .lexmodelsv2$describe_bot_replica_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_bot_replica <- lexmodelsv2_describe_bot_replica
 
 #' Returns information about a request to generate a bot through natural
 #' language description, made through the StartBotResource API
@@ -1894,6 +1993,42 @@ lexmodelsv2_list_aggregated_utterances <- function(botId, botAliasId = NULL, bot
 }
 .lexmodelsv2$operations$list_aggregated_utterances <- lexmodelsv2_list_aggregated_utterances
 
+#' The action to list the replicated bots created from the source bot alias
+#'
+#' @description
+#' The action to list the replicated bots created from the source bot alias.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_alias_replicas/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_alias_replicas/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The request for the unique bot ID of the replicated bot created from the
+#' source bot alias.
+#' @param replicaRegion &#91;required&#93; The request for the secondary region of the replicated bot created from
+#' the source bot alias.
+#' @param maxResults The request for maximum results to list the replicated bots created from
+#' the source bot alias.
+#' @param nextToken The request for the next token for the replicated bot created from the
+#' source bot alias.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_bot_alias_replicas
+lexmodelsv2_list_bot_alias_replicas <- function(botId, replicaRegion, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListBotAliasReplicas",
+    http_method = "POST",
+    http_path = "/bots/{botId}/replicas/{replicaRegion}/botaliases/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_bot_alias_replicas_input(botId = botId, replicaRegion = replicaRegion, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_bot_alias_replicas_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_bot_alias_replicas <- lexmodelsv2_list_bot_alias_replicas
+
 #' Gets a list of aliases for the specified bot
 #'
 #' @description
@@ -2014,6 +2149,35 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
 }
 .lexmodelsv2$operations$list_bot_recommendations <- lexmodelsv2_list_bot_recommendations
 
+#' The action to list the replicated bots
+#'
+#' @description
+#' The action to list the replicated bots.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_replicas/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_replicas/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The request for the unique bot IDs in the list of replicated bots.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_bot_replicas
+lexmodelsv2_list_bot_replicas <- function(botId) {
+  op <- new_operation(
+    name = "ListBotReplicas",
+    http_method = "POST",
+    http_path = "/bots/{botId}/replicas/",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_bot_replicas_input(botId = botId)
+  output <- .lexmodelsv2$list_bot_replicas_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_bot_replicas <- lexmodelsv2_list_bot_replicas
+
 #' Lists the generation requests made for a bot locale
 #'
 #' @description
@@ -2052,6 +2216,40 @@ lexmodelsv2_list_bot_resource_generations <- function(botId, botVersion, localeI
   return(response)
 }
 .lexmodelsv2$operations$list_bot_resource_generations <- lexmodelsv2_list_bot_resource_generations
+
+#' Contains information about all the versions replication statuses
+#' applicable for Global Resiliency
+#'
+#' @description
+#' Contains information about all the versions replication statuses applicable for Global Resiliency.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_version_replicas/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_version_replicas/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The request for the unique ID in the list of replicated bots.
+#' @param replicaRegion &#91;required&#93; The request for the region used in the list of replicated bots.
+#' @param maxResults The maximum results given in the list of replicated bots.
+#' @param nextToken The next token given in the list of replicated bots.
+#' @param sortBy The requested sort category for the list of replicated bots.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_bot_version_replicas
+lexmodelsv2_list_bot_version_replicas <- function(botId, replicaRegion, maxResults = NULL, nextToken = NULL, sortBy = NULL) {
+  op <- new_operation(
+    name = "ListBotVersionReplicas",
+    http_method = "POST",
+    http_path = "/bots/{botId}/replicas/{replicaRegion}/botversions/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_bot_version_replicas_input(botId = botId, replicaRegion = replicaRegion, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
+  output <- .lexmodelsv2$list_bot_version_replicas_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_bot_version_replicas <- lexmodelsv2_list_bot_version_replicas
 
 #' Gets information about all of the versions of a bot
 #'
@@ -3692,18 +3890,22 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param initialResponseSetting Configuration settings for a response sent to the user before Amazon Lex
 #' starts eliciting slots.
+#' @param qnAIntentConfiguration Specifies the configuration of the built-in `Amazon.QnAIntent`. The
+#' `AMAZON.QnAIntent` intent is called when Amazon Lex can't determine
+#' another intent to invoke. If you specify this field, you can't specify
+#' the `kendraConfiguration` field.
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_intent
-lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL) {
+lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL, qnAIntentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting)
+  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting, qnAIntentConfiguration = qnAIntentConfiguration)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)

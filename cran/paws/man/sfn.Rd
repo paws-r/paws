@@ -68,7 +68,7 @@ ensure your application is available at any scale. You can run tasks on
 Amazon Web Services, your own servers, or any system that has access to
 Amazon Web Services. You can access and use Step Functions using the
 console, the Amazon Web Services SDKs, or an HTTP API. For more
-information about Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}} .
+information about Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{StepFunctions Developer Guide}} .
 
 If you use the Step Functions API actions using Amazon Web Services SDK
 integrations, make sure the API actions are in camel case and parameter
@@ -150,7 +150,8 @@ action \code{startSyncExecution} and specify its parameter as
 \link[paws.application.integration:sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 \link[paws.application.integration:sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
 \link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr
-\link[paws.application.integration:sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration
+\link[paws.application.integration:sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration\cr
+\link[paws.application.integration:sfn_validate_state_machine_definition]{validate_state_machine_definition} \tab Validates the syntax of a state machine definition
 }
 }
 

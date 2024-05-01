@@ -7,7 +7,8 @@
 dynamodb_describe_kinesis_streaming_destination(TableName)
 }
 \arguments{
-\item{TableName}{[required] The name of the table being described.}
+\item{TableName}{[required] The name of the table being described. You can also provide the Amazon
+Resource Name (ARN) of the table in this parameter.}
 }
 \description{
 Returns information about the status of Kinesis streaming.

@@ -5,7 +5,7 @@ NULL
 
 .kafkaconnect$create_connector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(capacity = structure(list(autoScaling = structure(list(maxWorkerCount = structure(logical(0), tags = list(type = "integer")), mcuCount = structure(logical(0), tags = list(type = "integer")), minWorkerCount = structure(logical(0), tags = list(type = "integer")), scaleInPolicy = structure(list(cpuUtilizationPercentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), scaleOutPolicy = structure(list(cpuUtilizationPercentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), provisionedCapacity = structure(list(mcuCount = structure(logical(0), tags = list(type = "integer")), workerCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), connectorConfiguration = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), connectorDescription = structure(logical(0), tags = list(type = "string")), connectorName = structure(logical(0), tags = list(type = "string")), kafkaCluster = structure(list(apacheKafkaCluster = structure(list(bootstrapServers = structure(logical(0), tags = list(type = "string")), vpc = structure(list(securityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), kafkaClusterClientAuthentication = structure(list(authenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kafkaClusterEncryptionInTransit = structure(list(encryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kafkaConnectVersion = structure(logical(0), tags = list(type = "string")), logDelivery = structure(list(workerLogDelivery = structure(list(cloudWatchLogs = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), logGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStream = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), s3 = structure(list(bucket = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), plugins = structure(list(structure(list(customPlugin = structure(list(customPluginArn = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), serviceExecutionRoleArn = structure(logical(0), tags = list(type = "string")), workerConfiguration = structure(list(revision = structure(logical(0), tags = list(type = "long")), workerConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(capacity = structure(list(autoScaling = structure(list(maxWorkerCount = structure(logical(0), tags = list(type = "integer")), mcuCount = structure(logical(0), tags = list(type = "integer")), minWorkerCount = structure(logical(0), tags = list(type = "integer")), scaleInPolicy = structure(list(cpuUtilizationPercentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), scaleOutPolicy = structure(list(cpuUtilizationPercentage = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), provisionedCapacity = structure(list(mcuCount = structure(logical(0), tags = list(type = "integer")), workerCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), connectorConfiguration = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), connectorDescription = structure(logical(0), tags = list(type = "string")), connectorName = structure(logical(0), tags = list(type = "string")), kafkaCluster = structure(list(apacheKafkaCluster = structure(list(bootstrapServers = structure(logical(0), tags = list(type = "string")), vpc = structure(list(securityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), kafkaClusterClientAuthentication = structure(list(authenticationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kafkaClusterEncryptionInTransit = structure(list(encryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), kafkaConnectVersion = structure(logical(0), tags = list(type = "string")), logDelivery = structure(list(workerLogDelivery = structure(list(cloudWatchLogs = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), logGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), firehose = structure(list(deliveryStream = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), s3 = structure(list(bucket = structure(logical(0), tags = list(type = "string")), enabled = structure(logical(0), tags = list(type = "boolean")), prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), plugins = structure(list(structure(list(customPlugin = structure(list(customPluginArn = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), serviceExecutionRoleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), workerConfiguration = structure(list(revision = structure(logical(0), tags = list(type = "long")), workerConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .kafkaconnect$create_custom_plugin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(contentType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), location = structure(list(s3Location = structure(list(bucketArn = structure(logical(0), tags = list(type = "string")), fileKey = structure(logical(0), tags = list(type = "string")), objectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(contentType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), location = structure(list(s3Location = structure(list(bucketArn = structure(logical(0), tags = list(type = "string")), fileKey = structure(logical(0), tags = list(type = "string")), objectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,13 +29,13 @@ NULL
 
 .kafkaconnect$create_worker_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), propertiesFileContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), propertiesFileContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kafkaconnect$create_worker_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestRevision = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), workerConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestRevision = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), workerConfigurationArn = structure(logical(0), tags = list(type = "string")), workerConfigurationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -60,6 +60,18 @@ NULL
 .kafkaconnect$delete_custom_plugin_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(customPluginArn = structure(logical(0), tags = list(type = "string")), customPluginState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$delete_worker_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workerConfigurationArn = structure(logical(0), tags = list(location = "uri", locationName = "workerConfigurationArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$delete_worker_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workerConfigurationArn = structure(logical(0), tags = list(type = "string")), workerConfigurationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -95,7 +107,7 @@ NULL
 
 .kafkaconnect$describe_worker_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), latestRevision = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), propertiesFileContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), workerConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), latestRevision = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), propertiesFileContent = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), workerConfigurationArn = structure(logical(0), tags = list(type = "string")), workerConfigurationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +125,7 @@ NULL
 
 .kafkaconnect$list_custom_plugins_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), namePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "namePrefix", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -123,15 +135,51 @@ NULL
   return(populate(args, shape))
 }
 
+.kafkaconnect$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kafkaconnect$list_worker_configurations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), namePrefix = structure(logical(0), tags = list(location = "querystring", locationName = "namePrefix", type = "string")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kafkaconnect$list_worker_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), workerConfigurations = structure(list(structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), latestRevision = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), workerConfigurationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), workerConfigurations = structure(list(structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), latestRevision = structure(list(creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), workerConfigurationArn = structure(logical(0), tags = list(type = "string")), workerConfigurationState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kafkaconnect$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

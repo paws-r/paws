@@ -227,9 +227,14 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 }
 .personalize$operations$create_batch_segment_job <- personalize_create_batch_segment_job
 
-#' Creates a campaign that deploys a solution version
+#' You incur campaign costs while it is active
 #'
 #' @description
+#' You incur campaign costs while it is active. To avoid unnecessary costs,
+#' make sure to delete the campaign when you are finished. For information
+#' about campaign costs, see [Amazon Personalize
+#' pricing](https://aws.amazon.com/personalize/pricing/).
+#' 
 #' Creates a campaign that deploys a solution version. When a client calls
 #' the
 #' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
@@ -239,27 +244,33 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #' 
 #' **Minimum Provisioned TPS and Auto-Scaling**
 #' 
-#' A high `minProvisionedTPS` will increase your bill. We recommend
+#' A high `minProvisionedTPS` will increase your cost. We recommend
 #' starting with 1 for `minProvisionedTPS` (the default). Track your usage
 #' using Amazon CloudWatch metrics, and increase the `minProvisionedTPS` as
 #' necessary.
 #' 
-#' A transaction is a single `GetRecommendations` or
-#' `GetPersonalizedRanking` call. Transactions per second (TPS) is the
-#' throughput and unit of billing for Amazon Personalize. The minimum
-#' provisioned TPS (`minProvisionedTPS`) specifies the baseline throughput
-#' provisioned by Amazon Personalize, and thus, the minimum billing charge.
+#' When you create an Amazon Personalize campaign, you can specify the
+#' minimum provisioned transactions per second (`minProvisionedTPS`) for
+#' the campaign. This is the baseline transaction throughput for the
+#' campaign provisioned by Amazon Personalize. It sets the minimum billing
+#' charge for the campaign while it is active. A transaction is a single
+#' `GetRecommendations` or `GetPersonalizedRanking` request. The default
+#' `minProvisionedTPS` is 1.
 #' 
-#' If your TPS increases beyond `minProvisionedTPS`, Amazon Personalize
+#' If your TPS increases beyond the `minProvisionedTPS`, Amazon Personalize
 #' auto-scales the provisioned capacity up and down, but never below
 #' `minProvisionedTPS`. There's a short time delay while the capacity is
-#' increased that might cause loss of transactions.
+#' increased that might cause loss of transactions. When your traffic
+#' reduces, capacity returns to the `minProvisionedTPS`.
 #' 
-#' The actual TPS used is calculated as the average requests/second within
-#' a 5-minute window. You pay for maximum of either the minimum provisioned
-#' TPS or the actual TPS. We recommend starting with a low
-#' `minProvisionedTPS`, track your usage using Amazon CloudWatch metrics,
-#' and then increase the `minProvisionedTPS` as necessary.
+#' You are charged for the the minimum provisioned TPS or, if your requests
+#' exceed the `minProvisionedTPS`, the actual TPS. The actual TPS is the
+#' total number of recommendation requests you make. We recommend starting
+#' with a low `minProvisionedTPS`, track your usage using Amazon CloudWatch
+#' metrics, and then increase the `minProvisionedTPS` as necessary.
+#' 
+#' For more information about campaign costs, see [Amazon Personalize
+#' pricing](https://aws.amazon.com/personalize/pricing/).
 #' 
 #' **Status**
 #' 
@@ -291,7 +302,19 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #'
 #' @param name &#91;required&#93; A name for the new campaign. The campaign name must be unique within
 #' your account.
-#' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version to deploy.
+#' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the trained model to deploy with the
+#' campaign. To specify the latest solution version of your solution,
+#' specify the ARN of your *solution* in `SolutionArn/$LATEST` format. You
+#' must use this format if you set `syncWithLatestSolutionVersion` to
+#' `True` in the
+#' [CampaignConfig](https://docs.aws.amazon.com/personalize/latest/dg/API_CampaignConfig.html).
+#' 
+#' To deploy a model that isn't the latest solution version of your
+#' solution, specify the ARN of the solution version.
+#' 
+#' For more information about automatic campaign updates, see [Enabling
+#' automatic campaign
+#' updates](https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-automatic-latest-sv-update).
 #' @param minProvisionedTPS Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support. A
 #' high `minProvisionedTPS` will increase your bill. We recommend starting
@@ -321,7 +344,8 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #'     itemExplorationConfig = list(
 #'       "string"
 #'     ),
-#'     enableMetadataWithRecommendations = TRUE|FALSE
+#'     enableMetadataWithRecommendations = TRUE|FALSE,
+#'     syncWithLatestSolutionVersion = TRUE|FALSE
 #'   ),
 #'   tags = list(
 #'     list(
@@ -1258,30 +1282,51 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 }
 .personalize$operations$create_schema <- personalize_create_schema
 
-#' Creates the configuration for training a model
+#' After you create a solution, you can’t change its configuration
 #'
 #' @description
-#' Creates the configuration for training a model. A trained model is known
-#' as a solution version. After the configuration is created, you train the
-#' model (create a solution version) by calling the
-#' [`create_solution_version`][personalize_create_solution_version]
-#' operation. Every time you call
-#' [`create_solution_version`][personalize_create_solution_version], a new
-#' version of the solution is created.
+#' After you create a solution, you can’t change its configuration. By
+#' default, all new solutions use automatic training. With automatic
+#' training, you incur training costs while your solution is active. You
+#' can't stop automatic training for a solution. To avoid unnecessary
+#' costs, make sure to delete the solution when you are finished. For
+#' information about training costs, see [Amazon Personalize
+#' pricing](https://aws.amazon.com/personalize/pricing/).
 #' 
-#' After creating a solution version, you check its accuracy by calling
+#' Creates the configuration for training a model (creating a solution
+#' version). This configuration includes the recipe to use for model
+#' training and optional training configuration, such as columns to use in
+#' training and feature transformation parameters. For more information
+#' about configuring a solution, see [Creating and configuring a
+#' solution](https://docs.aws.amazon.com/personalize/latest/dg/customizing-solution-config.html).
+#' 
+#' By default, new solutions use automatic training to create solution
+#' versions every 7 days. You can change the training frequency. Automatic
+#' solution version creation starts one hour after the solution is ACTIVE.
+#' If you manually create a solution version within the hour, the solution
+#' skips the first automatic training. For more information, see
+#' [Configuring automatic
+#' training](https://docs.aws.amazon.com/personalize/latest/dg/solution-config-auto-training.html).
+#' 
+#' To turn off automatic training, set `performAutoTraining` to false. If
+#' you turn off automatic training, you must manually create a solution
+#' version by calling the
+#' [`create_solution_version`][personalize_create_solution_version]
+#' operation.
+#' 
+#' After training starts, you can get the solution version's Amazon
+#' Resource Name (ARN) with the
+#' [`list_solution_versions`][personalize_list_solution_versions] API
+#' operation. To get its status, use the
+#' [`describe_solution_version`][personalize_describe_solution_version].
+#' 
+#' After training completes you can evaluate model accuracy by calling
 #' [`get_solution_metrics`][personalize_get_solution_metrics]. When you are
-#' satisfied with the version, you deploy it using
+#' satisfied with the solution version, you deploy it using
 #' [`create_campaign`][personalize_create_campaign]. The campaign provides
 #' recommendations to a client through the
 #' [GetRecommendations](https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html)
 #' API.
-#' 
-#' To train a model, Amazon Personalize requires training data and a
-#' recipe. The training data comes from the dataset group that you provide
-#' in the request. A recipe specifies the training algorithm and a feature
-#' transformation. You can specify one of the predefined recipes provided
-#' by Amazon Personalize.
 #' 
 #' Amazon Personalize doesn't support configuring the `hpoObjective` for
 #' solution hyperparameter optimization at this time.
@@ -1295,8 +1340,8 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the solution, call
-#' [`describe_solution`][personalize_describe_solution]. Wait until the
-#' status shows as ACTIVE before calling
+#' [`describe_solution`][personalize_describe_solution]. If you use manual
+#' training, the status must be ACTIVE before you call
 #' [`create_solution_version`][personalize_create_solution_version].
 #' 
 #' **Related APIs**
@@ -1315,8 +1360,9 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' -   [`describe_solution_version`][personalize_describe_solution_version]
 #'
 #' @usage
-#' personalize_create_solution(name, performHPO, performAutoML, recipeArn,
-#'   datasetGroupArn, eventType, solutionConfig, tags)
+#' personalize_create_solution(name, performHPO, performAutoML,
+#'   performAutoTraining, recipeArn, datasetGroupArn, eventType,
+#'   solutionConfig, tags)
 #'
 #' @param name &#91;required&#93; The name for the solution.
 #' @param performHPO Whether to perform hyperparameter optimization (HPO) on the specified or
@@ -1326,8 +1372,8 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' not set it to `false`.
 #' @param performAutoML We don't recommend enabling automated machine learning. Instead, match
 #' your use case to the available Amazon Personalize recipes. For more
-#' information, see [Determining your use
-#' case.](https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html#use-cases)
+#' information, see [Choosing a
+#' recipe](https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html).
 #' 
 #' Whether to perform automated machine learning (AutoML). The default is
 #' `false`. For this case, you must specify `recipeArn`.
@@ -1338,8 +1384,27 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' optimal recipe by running tests with different values for the
 #' hyperparameters. AutoML lengthens the training process as compared to
 #' selecting a specific recipe.
-#' @param recipeArn The ARN of the recipe to use for model training. This is required when
-#' `performAutoML` is false.
+#' @param performAutoTraining Whether the solution uses automatic training to create new solution
+#' versions (trained models). The default is `True` and the solution
+#' automatically creates new solution versions every 7 days. You can change
+#' the training frequency by specifying a `schedulingExpression` in the
+#' `AutoTrainingConfig` as part of solution configuration. For more
+#' information about automatic training, see [Configuring automatic
+#' training](https://docs.aws.amazon.com/personalize/latest/dg/solution-config-auto-training.html).
+#' 
+#' Automatic solution version creation starts one hour after the solution
+#' is ACTIVE. If you manually create a solution version within the hour,
+#' the solution skips the first automatic training.
+#' 
+#' After training starts, you can get the solution version's Amazon
+#' Resource Name (ARN) with the
+#' [`list_solution_versions`][personalize_list_solution_versions] API
+#' operation. To get its status, use the
+#' [`describe_solution_version`][personalize_describe_solution_version].
+#' @param recipeArn The Amazon Resource Name (ARN) of the recipe to use for model training.
+#' This is required when `performAutoML` is false. For information about
+#' different Amazon Personalize recipes and their ARNs, see [Choosing a
+#' recipe](https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html).
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group that provides the
 #' training data.
 #' @param eventType When your have multiple event types (using an `EVENT_TYPE` schema
@@ -1372,6 +1437,7 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #'   name = "string",
 #'   performHPO = TRUE|FALSE,
 #'   performAutoML = TRUE|FALSE,
+#'   performAutoTraining = TRUE|FALSE,
 #'   recipeArn = "string",
 #'   datasetGroupArn = "string",
 #'   eventType = "string",
@@ -1434,6 +1500,9 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     autoTrainingConfig = list(
+#'       schedulingExpression = "string"
 #'     )
 #'   ),
 #'   tags = list(
@@ -1450,14 +1519,14 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' @rdname personalize_create_solution
 #'
 #' @aliases personalize_create_solution
-personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
+personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, performAutoTraining = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
+  input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -1562,7 +1631,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' svc$create_solution_version(
 #'   name = "string",
 #'   solutionArn = "string",
-#'   trainingMode = "FULL"|"UPDATE",
+#'   trainingMode = "FULL"|"UPDATE"|"AUTOTRAIN",
 #'   tags = list(
 #'     list(
 #'       tagKey = "string",
@@ -2298,7 +2367,8 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
 #'       itemExplorationConfig = list(
 #'         "string"
 #'       ),
-#'       enableMetadataWithRecommendations = TRUE|FALSE
+#'       enableMetadataWithRecommendations = TRUE|FALSE,
+#'       syncWithLatestSolutionVersion = TRUE|FALSE
 #'     ),
 #'     status = "string",
 #'     failureReason = "string",
@@ -2315,7 +2385,8 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
 #'         itemExplorationConfig = list(
 #'           "string"
 #'         ),
-#'         enableMetadataWithRecommendations = TRUE|FALSE
+#'         enableMetadataWithRecommendations = TRUE|FALSE,
+#'         syncWithLatestSolutionVersion = TRUE|FALSE
 #'       ),
 #'       status = "string",
 #'       failureReason = "string",
@@ -3159,6 +3230,7 @@ personalize_describe_schema <- function(schemaArn) {
 #'     solutionArn = "string",
 #'     performHPO = TRUE|FALSE,
 #'     performAutoML = TRUE|FALSE,
+#'     performAutoTraining = TRUE|FALSE,
 #'     recipeArn = "string",
 #'     datasetGroupArn = "string",
 #'     eventType = "string",
@@ -3221,6 +3293,9 @@ personalize_describe_schema <- function(schemaArn) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       autoTrainingConfig = list(
+#'         schedulingExpression = "string"
 #'       )
 #'     ),
 #'     autoMLResult = list(
@@ -3236,6 +3311,8 @@ personalize_describe_schema <- function(schemaArn) {
 #'     latestSolutionVersion = list(
 #'       solutionVersionArn = "string",
 #'       status = "string",
+#'       trainingMode = "FULL"|"UPDATE"|"AUTOTRAIN",
+#'       trainingType = "AUTOMATIC"|"MANUAL",
 #'       creationDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -3360,10 +3437,13 @@ personalize_describe_solution <- function(solutionArn) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       autoTrainingConfig = list(
+#'         schedulingExpression = "string"
 #'       )
 #'     ),
 #'     trainingHours = 123.0,
-#'     trainingMode = "FULL"|"UPDATE",
+#'     trainingMode = "FULL"|"UPDATE"|"AUTOTRAIN",
 #'     tunedHPOParams = list(
 #'       algorithmHyperParameters = list(
 #'         "string"
@@ -3376,7 +3456,8 @@ personalize_describe_solution <- function(solutionArn) {
 #'     ),
 #'     lastUpdatedDateTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     trainingType = "AUTOMATIC"|"MANUAL"
 #'   )
 #' )
 #' ```
@@ -4489,6 +4570,8 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
 #'     list(
 #'       solutionVersionArn = "string",
 #'       status = "string",
+#'       trainingMode = "FULL"|"UPDATE"|"AUTOTRAIN",
+#'       trainingType = "AUTOMATIC"|"MANUAL",
 #'       creationDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -4533,14 +4616,14 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
 }
 .personalize$operations$list_solution_versions <- personalize_list_solution_versions
 
-#' Returns a list of solutions that use the given dataset group
+#' Returns a list of solutions in a given dataset group
 #'
 #' @description
-#' Returns a list of solutions that use the given dataset group. When a
-#' dataset group is not specified, all the solutions associated with the
-#' account are listed. The response provides the properties for each
-#' solution, including the Amazon Resource Name (ARN). For more information
-#' on solutions, see [`create_solution`][personalize_create_solution].
+#' Returns a list of solutions in a given dataset group. When a dataset
+#' group is not specified, all the solutions associated with the account
+#' are listed. The response provides the properties for each solution,
+#' including the Amazon Resource Name (ARN). For more information on
+#' solutions, see [`create_solution`][personalize_create_solution].
 #'
 #' @usage
 #' personalize_list_solutions(datasetGroupArn, nextToken, maxResults)
@@ -4614,7 +4697,7 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 #' @usage
 #' personalize_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name.
+#' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name (ARN).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4824,7 +4907,7 @@ personalize_stop_solution_version_creation <- function(solutionVersionArn) {
 #' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name (ARN).
 #' @param tags &#91;required&#93; Tags to apply to the resource. For more information see [Tagging Amazon
 #' Personalize
-#' recources](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html).
+#' resources](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html).
 #'
 #' @return
 #' An empty list.
@@ -4864,18 +4947,18 @@ personalize_tag_resource <- function(resourceArn, tags) {
 }
 .personalize$operations$tag_resource <- personalize_tag_resource
 
-#' Remove tags that are attached to a resource
+#' Removes the specified tags that are attached to a resource
 #'
 #' @description
-#' Remove
-#' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
-#' that are attached to a resource.
+#' Removes the specified tags that are attached to a resource. For more
+#' information, see [Removing tags from Amazon Personalize
+#' resources](https://docs.aws.amazon.com/personalize/latest/dg/tags-remove.html).
 #'
 #' @usage
 #' personalize_untag_resource(resourceArn, tagKeys)
 #'
 #' @param resourceArn &#91;required&#93; The resource's Amazon Resource Name (ARN).
-#' @param tagKeys &#91;required&#93; Keys to remove from the resource's tags.
+#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @return
 #' An empty list.
@@ -4914,12 +4997,22 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a campaign to deploy a retrained solution version with an
 #' existing campaign, change your campaign's minProvisionedTPS, or modify
-#' your campaign's configuration, such as the exploration configuration
+#' your campaign's configuration
 #'
 #' @description
 #' Updates a campaign to deploy a retrained solution version with an
 #' existing campaign, change your campaign's `minProvisionedTPS`, or modify
-#' your campaign's configuration, such as the exploration configuration.
+#' your campaign's configuration. For example, you can set
+#' `enableMetadataWithRecommendations` to true for an existing campaign.
+#' 
+#' To update a campaign to start automatically using the latest solution
+#' version, specify the following:
+#' 
+#' -   For the `SolutionVersionArn` parameter, specify the Amazon Resource
+#'     Name (ARN) of your solution in `SolutionArn/$LATEST` format.
+#' 
+#' -   In the `campaignConfig`, set `syncWithLatestSolutionVersion` to
+#'     `true`.
 #' 
 #' To update a campaign, the campaign status must be ACTIVE or CREATE
 #' FAILED. Check the campaign status using the
@@ -4941,7 +5034,18 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 #'   minProvisionedTPS, campaignConfig)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign.
-#' @param solutionVersionArn The ARN of a new solution version to deploy.
+#' @param solutionVersionArn The Amazon Resource Name (ARN) of a new model to deploy. To specify the
+#' latest solution version of your solution, specify the ARN of your
+#' *solution* in `SolutionArn/$LATEST` format. You must use this format if
+#' you set `syncWithLatestSolutionVersion` to `True` in the
+#' [CampaignConfig](https://docs.aws.amazon.com/personalize/latest/dg/API_CampaignConfig.html).
+#' 
+#' To deploy a model that isn't the latest solution version of your
+#' solution, specify the ARN of the solution version.
+#' 
+#' For more information about automatic campaign updates, see [Enabling
+#' automatic campaign
+#' updates](https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-automatic-latest-sv-update).
 #' @param minProvisionedTPS Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support. A
 #' high `minProvisionedTPS` will increase your bill. We recommend starting
@@ -4968,7 +5072,8 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 #'     itemExplorationConfig = list(
 #'       "string"
 #'     ),
-#'     enableMetadataWithRecommendations = TRUE|FALSE
+#'     enableMetadataWithRecommendations = TRUE|FALSE,
+#'     syncWithLatestSolutionVersion = TRUE|FALSE
 #'   )
 #' )
 #' ```

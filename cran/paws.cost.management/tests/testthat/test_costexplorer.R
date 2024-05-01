@@ -1,5 +1,13 @@
 svc <- paws::costexplorer()
 
+test_that("list_cost_allocation_tag_backfill_history", {
+  expect_error(svc$list_cost_allocation_tag_backfill_history(), NA)
+})
+
+test_that("list_cost_allocation_tag_backfill_history", {
+  expect_error(svc$list_cost_allocation_tag_backfill_history(MaxResults = 20), NA)
+})
+
 test_that("list_cost_allocation_tags", {
   expect_error(svc$list_cost_allocation_tags(), NA)
 })

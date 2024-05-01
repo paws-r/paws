@@ -2,17 +2,17 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_untag_resource}
 \alias{docdbelastic_untag_resource}
-\title{Removes metadata tags to a Elastic DocumentDB resource}
+\title{Removes metadata tags from an elastic cluster resource}
 \usage{
 docdbelastic_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The arn of the Elastic DocumentDB resource.}
+\item{resourceArn}{[required] The ARN identifier of the elastic cluster resource.}
 
-\item{tagKeys}{[required] The tag keys to be removed from the Elastic DocumentDB resource.}
+\item{tagKeys}{[required] The tag keys to be removed from the elastic cluster resource.}
 }
 \description{
-Removes metadata tags to a Elastic DocumentDB resource
+Removes metadata tags from an elastic cluster resource
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_untag_resource/} for full documentation.
 }

@@ -101,6 +101,7 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_create_bot]{create_bot} \tab Creates an Amazon Lex conversational bot\cr
 \link[paws.machine.learning:lexmodelsv2_create_bot_alias]{create_bot_alias} \tab Creates an alias for the specified version of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_create_bot_locale]{create_bot_locale} \tab Creates a locale in the bot\cr
+\link[paws.machine.learning:lexmodelsv2_create_bot_replica]{create_bot_replica} \tab Action to create a replication of the source bot in the secondary region\cr
 \link[paws.machine.learning:lexmodelsv2_create_bot_version]{create_bot_version} \tab Creates an immutable version of the bot\cr
 \link[paws.machine.learning:lexmodelsv2_create_export]{create_export} \tab Creates a zip archive containing the contents of a bot or a bot locale\cr
 \link[paws.machine.learning:lexmodelsv2_create_intent]{create_intent} \tab Creates an intent\cr
@@ -113,6 +114,7 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_delete_bot]{delete_bot} \tab Deletes all versions of a bot, including the Draft version\cr
 \link[paws.machine.learning:lexmodelsv2_delete_bot_alias]{delete_bot_alias} \tab Deletes the specified bot alias\cr
 \link[paws.machine.learning:lexmodelsv2_delete_bot_locale]{delete_bot_locale} \tab Removes a locale from a bot\cr
+\link[paws.machine.learning:lexmodelsv2_delete_bot_replica]{delete_bot_replica} \tab The action to delete the replicated bot in the secondary region\cr
 \link[paws.machine.learning:lexmodelsv2_delete_bot_version]{delete_bot_version} \tab Deletes a specific version of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_delete_custom_vocabulary]{delete_custom_vocabulary} \tab Removes a custom vocabulary from the specified locale in the specified bot\cr
 \link[paws.machine.learning:lexmodelsv2_delete_export]{delete_export} \tab Removes a previous export and the associated files stored in an S3 bucket\cr
@@ -128,6 +130,7 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_describe_bot_alias]{describe_bot_alias} \tab Get information about a specific bot alias\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_locale]{describe_bot_locale} \tab Describes the settings that a bot has for a specific locale\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_recommendation]{describe_bot_recommendation} \tab Provides metadata information about a bot recommendation\cr
+\link[paws.machine.learning:lexmodelsv2_describe_bot_replica]{describe_bot_replica} \tab Monitors the bot replication status through the UI console\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_resource_generation]{describe_bot_resource_generation} \tab Returns information about a request to generate a bot through natural language description, made through the StartBotResource API\cr
 \link[paws.machine.learning:lexmodelsv2_describe_bot_version]{describe_bot_version} \tab Provides metadata about a version of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_describe_custom_vocabulary_metadata]{describe_custom_vocabulary_metadata} \tab Provides metadata information about a custom vocabulary\cr
@@ -145,10 +148,13 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_get_test_execution_artifacts_url]{get_test_execution_artifacts_url} \tab The pre-signed Amazon S3 URL to download the test execution result artifacts\cr
 \link[paws.machine.learning:lexmodelsv2_list_aggregated_utterances]{list_aggregated_utterances} \tab Provides a list of utterances that users have sent to the bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_aliases]{list_bot_aliases} \tab Gets a list of aliases for the specified bot\cr
+\link[paws.machine.learning:lexmodelsv2_list_bot_alias_replicas]{list_bot_alias_replicas} \tab The action to list the replicated bots created from the source bot alias\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_locales]{list_bot_locales} \tab Gets a list of locales for the specified bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_recommendations]{list_bot_recommendations} \tab Get a list of bot recommendations that meet the specified criteria\cr
+\link[paws.machine.learning:lexmodelsv2_list_bot_replicas]{list_bot_replicas} \tab The action to list the replicated bots\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_resource_generations]{list_bot_resource_generations} \tab Lists the generation requests made for a bot locale\cr
 \link[paws.machine.learning:lexmodelsv2_list_bots]{list_bots} \tab Gets a list of available bots\cr
+\link[paws.machine.learning:lexmodelsv2_list_bot_version_replicas]{list_bot_version_replicas} \tab Contains information about all the versions replication statuses applicable for Global Resiliency\cr
 \link[paws.machine.learning:lexmodelsv2_list_bot_versions]{list_bot_versions} \tab Gets information about all of the versions of a bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_built_in_intents]{list_built_in_intents} \tab Gets a list of built-in intents provided by Amazon Lex that you can use in your bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_built_in_slot_types]{list_built_in_slot_types} \tab Gets a list of built-in slot types that meet the specified criteria\cr

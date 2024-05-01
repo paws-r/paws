@@ -172,7 +172,7 @@ licensemanager <- function(config = list(), credentials = list(), endpoint = NUL
 
 .licensemanager$metadata <- list(
   service_name = "licensemanager",
-  endpoints = list("*" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "license-manager.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "license-manager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "license-manager.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "license-manager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "license-manager.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "license-manager.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "license-manager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "license-manager.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "license-manager.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "License Manager",
   api_version = "2018-08-01",
   signing_name = "license-manager",

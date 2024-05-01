@@ -168,12 +168,13 @@ one of the following scenarios, then you can omit this parameter. The
 following list shows each of the supported scenario values and the
 resources that you must define to run the simulation.
 
-Each of the EC2 scenarios requires that you specify instance, image, and
-security group resources. If your scenario includes an EBS volume, then
-you must specify that volume as a resource. If the EC2 scenario includes
-VPC, then you must supply the network interface resource. If it includes
-an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/}{Supported platforms}
+Each of the Amazon EC2 scenarios requires that you specify instance,
+image, and security group resources. If your scenario includes an EBS
+volume, then you must specify that volume as a resource. If the Amazon
+EC2 scenario includes VPC, then you must supply the network interface
+resource. If it includes an IP subnet, then you must specify the subnet
+resource. For more information on the Amazon EC2 scenario options, see
+\href{https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/}{Supported platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-VPC-InstanceStore}

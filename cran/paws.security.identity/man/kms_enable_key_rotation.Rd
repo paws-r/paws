@@ -5,7 +5,7 @@
 \title{Enables automatic rotation of the key material of the specified
 symmetric encryption KMS key}
 \usage{
-kms_enable_key_rotation(KeyId)
+kms_enable_key_rotation(KeyId, RotationPeriodInDays = NULL)
 }
 \arguments{
 \item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable automatic
@@ -28,9 +28,21 @@ For example:
 
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
+
+\item{RotationPeriodInDays}{Use this parameter to specify a custom period of time between each
+rotation date. If no value is specified, the default value is 365 days.
+
+The rotation period defines the number of days after you enable
+automatic key rotation that KMS will rotate your key material, and the
+number of days between each automatic rotation thereafter.
+
+You can use the
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days}{\code{kms:RotationPeriodInDays}}
+condition key to further constrain the values that principals can
+specify in the \code{RotationPeriodInDays} parameter.}
 }
 \description{
-Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
+Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/} for full documentation.
 }

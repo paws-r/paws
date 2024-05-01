@@ -32,9 +32,9 @@ organization. If you specify \code{ORGANIZATION}, you must specify which
 organizational units the workspace can access in the
 \code{workspaceOrganizationalUnits} parameter.}
 
-\item{authenticationProviders}{[required] Specifies whether this workspace uses SAML 2.0, IAM Identity Center
-(successor to Single Sign-On), or both to authenticate users for using
-the Grafana console within a workspace. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html}{User authentication in Amazon Managed Grafana}.}
+\item{authenticationProviders}{[required] Specifies whether this workspace uses SAML 2.0, IAM Identity Center, or
+both to authenticate users for using the Grafana console within a
+workspace. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html}{User authentication in Amazon Managed Grafana}.}
 
 \item{clientToken}{A unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
@@ -43,9 +43,10 @@ idempotency of the request.}
 information about the format and configuration options available, see
 \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html}{Working in your Grafana workspace}.}
 
-\item{grafanaVersion}{Specifies the version of Grafana to support in the new workspace.
+\item{grafanaVersion}{Specifies the version of Grafana to support in the new workspace. If not
+specified, defaults to the latest version (for example, 9.4).
 
-To get a list of supported version, use the
+To get a list of supported versions, use the
 \code{\link[=managedgrafana_list_versions]{list_versions}} operation.}
 
 \item{networkAccessControl}{Configuration for network access to your workspace.

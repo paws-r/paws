@@ -22,11 +22,14 @@ idempotency of the request.}
 
 \item{identifier}{[required] The identifier of the prediction.}
 
-\item{rejectChoices}{}
+\item{rejectChoices}{Specifies the prediction (aka, the automatically generated piece of
+metadata) and the target (for example, a column name) that can be
+rejected.}
 
-\item{rejectRule}{}
+\item{rejectRule}{Specifies the rule (or the conditions) under which a prediction can be
+rejected.}
 
-\item{revision}{}
+\item{revision}{The revision that is to be made to the asset.}
 }
 \description{
 Rejects automatically generated business-friendly metadata for your Amazon DataZone assets.

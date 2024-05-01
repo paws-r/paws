@@ -115,7 +115,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'   SourceArn, SourceAccount, EventSourceToken, Qualifier, RevisionId,
 #'   PrincipalOrgID, FunctionUrlAuthType)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -226,7 +226,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' lambda_create_alias(FunctionName, Name, FunctionVersion, Description,
 #'   RoutingConfig)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -471,12 +471,14 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' -   **Amazon Simple Queue Service** – The ARN of the queue.
 #' 
 #' -   **Amazon Managed Streaming for Apache Kafka** – The ARN of the
-#'     cluster.
+#'     cluster or the ARN of the VPC connection (for [cross-account event
+#'     source
+#'     mappings](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc)).
 #' 
 #' -   **Amazon MQ** – The ARN of the broker.
 #' 
 #' -   **Amazon DocumentDB** – The ARN of the DocumentDB change stream.
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -543,8 +545,9 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' MSK, and self-managed Apache Kafka.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
 #' start reading. `StartingPositionTimestamp` cannot be in the future.
-#' @param DestinationConfig (Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
-#' standard Amazon SNS topic destination for discarded records.
+#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+#' configuration object that specifies the destination of an event after
+#' Lambda processes it.
 #' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
 #' specified age. The default value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Kinesis and DynamoDB Streams only) If the function returns an error,
@@ -827,7 +830,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'   FileSystemConfigs, ImageConfig, CodeSigningConfigArn, Architectures,
 #'   EphemeralStorage, SnapStart, LoggingConfig)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -861,7 +864,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' is 900 seconds. For more information, see [Lambda execution
 #' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the
-#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console)
 #' at runtime. Increasing the function memory also increases its CPU
 #' allocation. The default value is 128 MB. The value can be any multiple
 #' of 1 MB.
@@ -904,7 +907,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #' @param ImageConfig Container image [configuration
-#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#configuration-images-settings)
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
 #' that override the values in the container image Dockerfile.
 #' @param CodeSigningConfigArn To enable code signing for this function, specify the ARN of a
 #' code-signing configuration. A code-signing configuration includes a set
@@ -914,7 +917,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' string array with one of the valid values (arm64 or x86_64). The default
 #' value is `x86_64`.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is
-#' 512, but can be any whole number between 512 and 10,240 MB.
+#' 512, but can be any whole number between 512 and 10,240 MB. For more
+#' information, see [Configuring ephemeral storage
+#' (console)](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
@@ -926,7 +931,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -1032,7 +1037,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -1142,7 +1147,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' lambda_create_function_url_config(FunctionName, Qualifier, AuthType,
 #'   Cors, InvokeMode)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1264,7 +1269,7 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
 #' @usage
 #' lambda_delete_alias(FunctionName, Name)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1494,7 +1499,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' @usage
 #' lambda_delete_function(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function or version.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function or version.
 #' 
 #' **Name formats**
 #' 
@@ -1553,7 +1558,7 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #' @usage
 #' lambda_delete_function_code_signing_config(FunctionName)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1607,7 +1612,7 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #' @usage
 #' lambda_delete_function_concurrency(FunctionName)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1666,7 +1671,7 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' @usage
 #' lambda_delete_function_event_invoke_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -1726,7 +1731,7 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' @usage
 #' lambda_delete_function_url_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1830,7 +1835,7 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #' @usage
 #' lambda_delete_provisioned_concurrency_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1889,6 +1894,8 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #' @usage
 #' lambda_get_account_settings()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1943,7 +1950,7 @@ lambda_get_account_settings <- function() {
 #' @usage
 #' lambda_get_alias(FunctionName, Name)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2196,7 +2203,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' @usage
 #' lambda_get_function(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -2221,7 +2228,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Configuration = list(
 #'     FunctionName = "string",
 #'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'     Role = "string",
 #'     Handler = "string",
 #'     CodeSize = 123,
@@ -2374,7 +2381,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #' @usage
 #' lambda_get_function_code_signing_config(FunctionName)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2437,7 +2444,7 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' @usage
 #' lambda_get_function_concurrency(FunctionName)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2502,7 +2509,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' @usage
 #' lambda_get_function_configuration(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -2526,7 +2533,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -2671,7 +2678,7 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' @usage
 #' lambda_get_function_event_invoke_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -2747,7 +2754,7 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @usage
 #' lambda_get_function_url_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2852,7 +2859,7 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -2921,7 +2928,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -3022,7 +3029,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' @usage
 #' lambda_get_policy(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -3088,7 +3095,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' @usage
 #' lambda_get_provisioned_concurrency_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3160,7 +3167,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' @usage
 #' lambda_get_runtime_management_config(FunctionName, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3277,7 +3284,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' lambda_invoke(FunctionName, InvocationType, LogType, ClientContext,
 #'   Payload, Qualifier)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -3308,7 +3315,9 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' @param LogType Set to `Tail` to include the execution log in the response. Applies to
 #' synchronously invoked functions only.
 #' @param ClientContext Up to 3,583 bytes of base64-encoded data about the invoking client to
-#' pass to the function in the context object.
+#' pass to the function in the context object. Lambda passes the
+#' `ClientContext` object to your function for synchronous invocations
+#' only.
 #' @param Payload The JSON that you want to provide to your Lambda function as input.
 #' 
 #' You can enter the JSON directly. For example,
@@ -3369,11 +3378,15 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' For asynchronous function invocation, use [`invoke`][lambda_invoke].
 #' 
 #' Invokes a function asynchronously.
+#' 
+#' If you do use the InvokeAsync action, note that it doesn't support the
+#' use of X-Ray active tracing. Trace ID is not propagated to the function,
+#' even if X-Ray active tracing is turned on.
 #'
 #' @usage
 #' lambda_invoke_async(FunctionName, InvokeArgs)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3445,7 +3458,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' lambda_invoke_with_response_stream(FunctionName, InvocationType,
 #'   LogType, ClientContext, Qualifier, Payload)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3542,7 +3555,7 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
 #' @usage
 #' lambda_list_aliases(FunctionName, FunctionVersion, Marker, MaxItems)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3704,12 +3717,14 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' -   **Amazon Simple Queue Service** – The ARN of the queue.
 #' 
 #' -   **Amazon Managed Streaming for Apache Kafka** – The ARN of the
-#'     cluster.
+#'     cluster or the ARN of the VPC connection (for [cross-account event
+#'     source
+#'     mappings](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc)).
 #' 
 #' -   **Amazon MQ** – The ARN of the broker.
 #' 
 #' -   **Amazon DocumentDB** – The ARN of the DocumentDB change stream.
-#' @param FunctionName The name of the Lambda function.
+#' @param FunctionName The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3859,7 +3874,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' lambda_list_function_event_invoke_configs(FunctionName, Marker,
 #'   MaxItems)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -3941,7 +3956,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' @usage
 #' lambda_list_function_url_configs(FunctionName, Marker, MaxItems)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -4068,7 +4083,7 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4277,7 +4292,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
 #'   MaxItems, CompatibleArchitecture)
 #'
-#' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
+#' @param CompatibleRuntime A runtime identifier. For example, `java21`.
 #' 
 #' The following list includes deprecated runtimes. For more information,
 #' see [Runtime deprecation
@@ -4300,7 +4315,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'       Description = "string",
 #'       CreatedDate = "string",
 #'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
 #'       ),
 #'       LicenseInfo = "string",
 #'       CompatibleArchitectures = list(
@@ -4314,7 +4329,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123,
@@ -4362,7 +4377,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' lambda_list_layers(CompatibleRuntime, Marker, MaxItems,
 #'   CompatibleArchitecture)
 #'
-#' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
+#' @param CompatibleRuntime A runtime identifier. For example, `java21`.
 #' 
 #' The following list includes deprecated runtimes. For more information,
 #' see [Runtime deprecation
@@ -4387,7 +4402,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'         Description = "string",
 #'         CreatedDate = "string",
 #'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
 #'         ),
 #'         LicenseInfo = "string",
 #'         CompatibleArchitectures = list(
@@ -4402,7 +4417,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Marker = "string",
 #'   MaxItems = 123,
 #'   CompatibleArchitecture = "x86_64"|"arm64"
@@ -4442,7 +4457,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' lambda_list_provisioned_concurrency_configs(FunctionName, Marker,
 #'   MaxItems)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -4573,7 +4588,7 @@ lambda_list_tags <- function(Resource) {
 #' @usage
 #' lambda_list_versions_by_function(FunctionName, Marker, MaxItems)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -4602,7 +4617,7 @@ lambda_list_tags <- function(Resource) {
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4794,7 +4809,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -4815,7 +4830,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -4868,7 +4883,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' lambda_publish_version(FunctionName, CodeSha256, Description,
 #'   RevisionId)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -4898,7 +4913,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -5044,7 +5059,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #'   FunctionName)
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -5122,7 +5137,7 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' lambda_put_function_concurrency(FunctionName,
 #'   ReservedConcurrentExecutions)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -5206,7 +5221,7 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' lambda_put_function_event_invoke_config(FunctionName, Qualifier,
 #'   MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -5310,7 +5325,7 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' lambda_put_provisioned_concurrency_config(FunctionName, Qualifier,
 #'   ProvisionedConcurrentExecutions)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -5382,7 +5397,7 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #' lambda_put_runtime_management_config(FunctionName, Qualifier,
 #'   UpdateRuntimeOn, RuntimeVersionArn)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -5536,7 +5551,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' lambda_remove_permission(FunctionName, StatementId, Qualifier,
 #'   RevisionId)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -5699,7 +5714,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' lambda_update_alias(FunctionName, Name, FunctionVersion, Description,
 #'   RoutingConfig, RevisionId)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -5935,7 +5950,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   FunctionResponseTypes, ScalingConfig, DocumentDBEventSourceConfig)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
-#' @param FunctionName The name of the Lambda function.
+#' @param FunctionName The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -5994,8 +6009,9 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' Related setting: For streams and Amazon SQS event sources, when you set
 #' `BatchSize` to a value greater than 10, you must set
 #' `MaximumBatchingWindowInSeconds` to at least 1.
-#' @param DestinationConfig (Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
-#' standard Amazon SNS topic destination for discarded records.
+#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+#' configuration object that specifies the destination of an event after
+#' Lambda processes it.
 #' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
 #' specified age. The default value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Kinesis and DynamoDB Streams only) If the function returns an error,
@@ -6199,7 +6215,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
 #'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId, Architectures)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -6243,7 +6259,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6418,7 +6434,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'   FileSystemConfigs, ImageConfig, EphemeralStorage, SnapStart,
 #'   LoggingConfig)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -6444,7 +6460,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' is 900 seconds. For more information, see [Lambda execution
 #' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the
-#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console)
 #' at runtime. Increasing the function memory also increases its CPU
 #' allocation. The default value is 128 MB. The value can be any multiple
 #' of 1 MB.
@@ -6490,10 +6506,12 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #' @param ImageConfig [Container image configuration
-#' values](https://docs.aws.amazon.com/lambda/latest/dg/) that override the
-#' values in the container image Docker file.
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
+#' that override the values in the container image Docker file.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is
-#' 512, but can be any whole number between 512 and 10,240 MB.
+#' 512, but can be any whole number between 512 and 10,240 MB. For more
+#' information, see [Configuring ephemeral storage
+#' (console)](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
@@ -6505,7 +6523,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6630,7 +6648,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -6708,7 +6726,7 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' lambda_update_function_event_invoke_config(FunctionName, Qualifier,
 #'   MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -6810,7 +6828,7 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' lambda_update_function_url_config(FunctionName, Qualifier, AuthType,
 #'   Cors, InvokeMode)
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 

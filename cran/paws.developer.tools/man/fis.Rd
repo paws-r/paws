@@ -48,9 +48,9 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Fault Injection Simulator is a managed service that enables you to
-perform fault injection experiments on your Amazon Web Services
-workloads. For more information, see the \href{https://docs.aws.amazon.com/fis/latest/userguide/}{Fault Injection Simulator User Guide}.
+Fault Injection Service is a managed service that enables you to perform
+fault injection experiments on your Amazon Web Services workloads. For
+more information, see the \href{https://docs.aws.amazon.com/fis/latest/userguide/}{Fault Injection Service User Guide}.
 }
 \section{Service syntax}{
 

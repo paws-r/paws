@@ -17,7 +17,7 @@ cluster is assumed.}
 you're using a custom scheduler, you can use this parameter to specify
 the reason for stopping the task here, and the message appears in
 subsequent \code{\link[=ecs_describe_tasks]{describe_tasks}} API operations on this
-task. Up to 255 characters are allowed in this message.}
+task.}
 }
 \description{
 Stops a running task. Any tags associated with the task will be deleted.

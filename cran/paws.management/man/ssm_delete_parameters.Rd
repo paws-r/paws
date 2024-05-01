@@ -8,7 +8,10 @@ ssm_delete_parameters(Names)
 }
 \arguments{
 \item{Names}{[required] The names of the parameters to delete. After deleting a parameter, wait
-for at least 30 seconds to create a parameter with the same name.}
+for at least 30 seconds to create a parameter with the same name.
+
+You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+parameter name itself.}
 }
 \description{
 Delete a list of parameters. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.

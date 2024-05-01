@@ -41,7 +41,9 @@ underscore characters.}
 
 \item{ParticipantDetails}{[required] Information identifying the participant.}
 
-\item{InitialMessage}{The initial message to be sent to the newly created chat.}
+\item{InitialMessage}{The initial message to be sent to the newly created chat. If you have a
+Lex bot in your flow, the initial message is not delivered to the Lex
+bot.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -93,7 +95,7 @@ to set \code{SegmentAttributes} as
 \{\verb{ "connect:Subtype": \\\{"valueString" : "connect:Guide" \\\}\\\}}.}
 }
 \description{
-Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.
+Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_start_chat_contact/} for full documentation.
 }

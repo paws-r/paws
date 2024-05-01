@@ -848,6 +848,8 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
 #' @usage
 #' ecrpublic_get_authorization_token()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -895,6 +897,8 @@ ecrpublic_get_authorization_token <- function() {
 #'
 #' @usage
 #' ecrpublic_get_registry_catalog_data()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

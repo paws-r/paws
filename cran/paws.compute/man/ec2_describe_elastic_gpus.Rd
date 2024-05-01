@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_elastic_gpus}
 \alias{ec2_describe_elastic_gpus}
-\title{Describes the Elastic Graphics accelerator associated with your
-instances}
+\title{Amazon Elastic Graphics reached end of life on January 8, 2024}
 \usage{
 ec2_describe_elastic_gpus(
   ElasticGpuIds = NULL,
@@ -42,7 +41,7 @@ value. This value can be between 5 and 1000.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
+Amazon Elastic Graphics reached end of life on January 8, 2024. For workloads that require graphics acceleration, we recommend that you use Amazon EC2 G4ad, G4dn, or G5 instances.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_elastic_gpus/} for full documentation.
 }

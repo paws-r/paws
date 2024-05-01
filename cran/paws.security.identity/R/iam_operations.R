@@ -533,19 +533,22 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' There is no defined format for a client ID. The
 #' `CreateOpenIDConnectProviderRequest` operation accepts client IDs up to
 #' 255 characters long.
-#' @param ThumbprintList &#91;required&#93; A list of server certificate thumbprints for the OpenID Connect (OIDC)
+#' @param ThumbprintList A list of server certificate thumbprints for the OpenID Connect (OIDC)
 #' identity provider's server certificates. Typically this list includes
 #' only one entry. However, IAM lets you have up to five thumbprints for an
 #' OIDC provider. This lets you maintain multiple thumbprints if the
 #' identity provider is rotating certificates.
 #' 
+#' This parameter is optional. If it is not included, IAM will retrieve and
+#' use the top intermediate certificate authority (CA) thumbprint of the
+#' OpenID Connect identity provider server certificate.
+#' 
 #' The server certificate thumbprint is the hex-encoded SHA-1 hash value of
 #' the X.509 certificate used by the domain where the OpenID Connect
 #' provider makes its keys available. It is always a 40-character string.
 #' 
-#' You must provide at least one thumbprint when creating an IAM OIDC
-#' provider. For example, assume that the OIDC provider is
-#' `server.example.com` and the provider stores its keys at
+#' For example, assume that the OIDC provider is `server.example.com` and
+#' the provider stores its keys at
 #' https://keys.server.example.com/openid-connect. In that case, the
 #' thumbprint string would be the hex-encoded SHA-1 hash value of the
 #' certificate used by `https://keys.server.example.com.`
@@ -567,7 +570,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' @keywords internal
 #'
 #' @rdname iam_create_open_id_connect_provider
-iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, ThumbprintList, Tags = NULL) {
+iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, ThumbprintList = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateOpenIDConnectProvider",
     http_method = "POST",
@@ -4114,6 +4117,8 @@ iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Mar
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_list_open_id_connect_providers/](https://www.paws-r-sdk.com/docs/iam_list_open_id_connect_providers/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname iam_list_open_id_connect_providers
@@ -4556,6 +4561,8 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
 #' Lists the SAML provider resource objects defined in IAM in the account. IAM resource-listing operations return a subset of the available attributes for the resource. For example, this operation does not return tags, even though they are an attribute of the returned object. To view all of the information for a SAML provider, see [`get_saml_provider`][iam_get_saml_provider].
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_list_saml_providers/](https://www.paws-r-sdk.com/docs/iam_list_saml_providers/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -5321,10 +5328,11 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 }
 .iam$operations$remove_client_id_from_open_id_connect_provider <- iam_remove_client_id_from_open_id_connect_provider
 
-#' Removes the specified IAM role from the specified EC2 instance profile
+#' Removes the specified IAM role from the specified Amazon EC2 instance
+#' profile
 #'
 #' @description
-#' Removes the specified IAM role from the specified EC2 instance profile.
+#' Removes the specified IAM role from the specified Amazon EC2 instance profile.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_remove_role_from_instance_profile/](https://www.paws-r-sdk.com/docs/iam_remove_role_from_instance_profile/) for full documentation.
 #'
@@ -5722,12 +5730,13 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' following list shows each of the supported scenario values and the
 #' resources that you must define to run the simulation.
 #' 
-#' Each of the EC2 scenarios requires that you specify instance, image, and
-#' security group resources. If your scenario includes an EBS volume, then
-#' you must specify that volume as a resource. If the EC2 scenario includes
-#' VPC, then you must supply the network interface resource. If it includes
-#' an IP subnet, then you must specify the subnet resource. For more
-#' information on the EC2 scenario options, see [Supported
+#' Each of the Amazon EC2 scenarios requires that you specify instance,
+#' image, and security group resources. If your scenario includes an EBS
+#' volume, then you must specify that volume as a resource. If the Amazon
+#' EC2 scenario includes VPC, then you must supply the network interface
+#' resource. If it includes an IP subnet, then you must specify the subnet
+#' resource. For more information on the Amazon EC2 scenario options, see
+#' [Supported
 #' platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 User Guide*.
 #' 
@@ -5939,12 +5948,13 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' following list shows each of the supported scenario values and the
 #' resources that you must define to run the simulation.
 #' 
-#' Each of the EC2 scenarios requires that you specify instance, image, and
-#' security group resources. If your scenario includes an EBS volume, then
-#' you must specify that volume as a resource. If the EC2 scenario includes
-#' VPC, then you must supply the network interface resource. If it includes
-#' an IP subnet, then you must specify the subnet resource. For more
-#' information on the EC2 scenario options, see [Supported
+#' Each of the Amazon EC2 scenarios requires that you specify instance,
+#' image, and security group resources. If your scenario includes an EBS
+#' volume, then you must specify that volume as a resource. If the Amazon
+#' EC2 scenario includes VPC, then you must supply the network interface
+#' resource. If it includes an IP subnet, then you must specify the subnet
+#' resource. For more information on the Amazon EC2 scenario options, see
+#' [Supported
 #' platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 User Guide*.
 #' 
@@ -6955,6 +6965,9 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' operations to create a console URL. For more information, see [Using IAM
 #' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
+#' 
+#' IAM role credentials provided by Amazon EC2 instances assigned to the
+#' role are not subject to the specified maximum session duration.
 #'
 #' @keywords internal
 #'

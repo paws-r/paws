@@ -213,7 +213,7 @@ frauddetector <- function(config = list(), credentials = list(), endpoint = NULL
 
 .frauddetector$metadata <- list(
   service_name = "frauddetector",
-  endpoints = list("*" = list(endpoint = "frauddetector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "frauddetector.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "frauddetector.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "frauddetector.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "frauddetector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "frauddetector.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "frauddetector.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "frauddetector.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "frauddetector.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "frauddetector.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "FraudDetector",
   api_version = "2019-11-15",
   signing_name = "frauddetector",

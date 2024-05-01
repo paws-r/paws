@@ -35,7 +35,7 @@ NULL
 
 .mwaa$create_web_login_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WebServerHostname = structure(logical(0), tags = list(type = "string")), WebToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(AirflowIdentity = structure(logical(0), tags = list(type = "string")), IamIdentity = structure(logical(0), tags = list(type = "string")), WebServerHostname = structure(logical(0), tags = list(type = "string")), WebToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

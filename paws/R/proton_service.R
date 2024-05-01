@@ -364,7 +364,7 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .proton$metadata <- list(
   service_name = "proton",
-  endpoints = list("*" = list(endpoint = "proton.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "proton.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "proton.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "proton.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "proton.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "proton.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "proton.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "proton.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "proton.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "proton.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Proton",
   api_version = "2020-07-20",
   signing_name = "proton",

@@ -2,29 +2,34 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_create_workspace}
 \alias{prometheusservice_create_workspace}
-\title{Creates a new AMP workspace}
+\title{Creates a Prometheus workspace}
 \usage{
 prometheusservice_create_workspace(
   alias = NULL,
   clientToken = NULL,
-  tags = NULL,
-  kmsKeyArn = NULL
+  kmsKeyArn = NULL,
+  tags = NULL
 )
 }
 \arguments{
-\item{alias}{An optional user-assigned alias for this workspace. This alias is for
-user reference and does not need to be unique.}
+\item{alias}{An alias that you assign to this workspace to help you identify it. It
+does not need to be unique.
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+Blank spaces at the beginning or end of the alias that you specify will
+be trimmed from the value used.}
 
-\item{tags}{Optional, user-provided tags for this workspace.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{kmsKeyArn}{Optional, customer managed KMS key used to encrypt data for this
-workspace}
+\item{kmsKeyArn}{(optional) The ARN for a customer managed KMS key to use for encrypting
+data within your workspace. For more information about using your own
+key in your workspace, see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html}{Encryption at rest}
+in the \emph{Amazon Managed Service for Prometheus User Guide}.}
+
+\item{tags}{The list of tag keys and values to associate with the workspace.}
 }
 \description{
-Creates a new AMP workspace.
+Creates a Prometheus workspace. A workspace is a logical space dedicated to the storage and querying of Prometheus metrics. You can have one or more workspaces in each Region in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_workspace/} for full documentation.
 }

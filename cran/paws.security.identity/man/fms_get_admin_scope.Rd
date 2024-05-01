@@ -7,10 +7,10 @@
 fms_get_admin_scope(AdminAccount)
 }
 \arguments{
-\item{AdminAccount}{[required] The administator account that you want to get the details for.}
+\item{AdminAccount}{[required] The administrator account that you want to get the details for.}
 }
 \description{
-Returns information about the specified account's administrative scope. The admistrative scope defines the resources that an Firewall Manager administrator can manage.
+Returns information about the specified account's administrative scope. The administrative scope defines the resources that an Firewall Manager administrator can manage.
 
 See \url{https://www.paws-r-sdk.com/docs/fms_get_admin_scope/} for full documentation.
 }

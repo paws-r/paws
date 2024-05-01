@@ -130,7 +130,7 @@ backupstorage <- function(config = list(), credentials = list(), endpoint = NULL
 
 .backupstorage$metadata <- list(
   service_name = "backupstorage",
-  endpoints = list("*" = list(endpoint = "backupstorage.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "backupstorage.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "backupstorage.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "backupstorage.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "backupstorage.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "backupstorage.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "backupstorage.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "backupstorage.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "backupstorage.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "backupstorage.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "BackupStorage",
   api_version = "2018-04-10",
   signing_name = "backup-storage",

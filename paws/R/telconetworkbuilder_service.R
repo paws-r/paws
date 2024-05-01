@@ -158,7 +158,7 @@ telconetworkbuilder <- function(config = list(), credentials = list(), endpoint 
 
 .telconetworkbuilder$metadata <- list(
   service_name = "telconetworkbuilder",
-  endpoints = list("*" = list(endpoint = "tnb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tnb.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "tnb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "tnb.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "tnb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tnb.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "tnb.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "tnb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "tnb.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "tnb.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "tnb",
   api_version = "2008-10-21",
   signing_name = "tnb",

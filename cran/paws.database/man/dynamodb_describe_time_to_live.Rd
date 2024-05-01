@@ -8,7 +8,8 @@ table}
 dynamodb_describe_time_to_live(TableName)
 }
 \arguments{
-\item{TableName}{[required] The name of the table to be described.}
+\item{TableName}{[required] The name of the table to be described. You can also provide the Amazon
+Resource Name (ARN) of the table in this parameter.}
 }
 \description{
 Gives a description of the Time to Live (TTL) status on the specified table.

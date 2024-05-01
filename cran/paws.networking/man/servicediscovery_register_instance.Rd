@@ -60,7 +60,7 @@ service.
 Do not include sensitive information in the attributes if the namespace
 is discoverable by public DNS queries.
 
-Supported attribute keys include the following:
+The following are the supported attribute keys.
 
 \strong{AWS_ALIAS_DNS_NAME}
 
@@ -86,6 +86,8 @@ route traffic to Amazon Web Services resources other than Elastic
 Load Balancing load balancers.
 \item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify
 values for any of the \code{AWS_INSTANCE} attributes.
+\item The \code{AWS_ALIAS_DNS_NAME} is not supported in the GovCloud (US)
+Regions.
 }
 
 \strong{AWS_EC2_INSTANCE_ID}

@@ -28,11 +28,11 @@ example, \verb{us-east-1a}.}
 \item{Encrypted}{Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to \code{true} depends on the volume origin (new or from
 a snapshot), starting encryption state, ownership, and whether
-encryption by default is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default}{Encryption by default}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+encryption by default is enabled. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/work-with-ebs-encr.html#encryption-by-default}{Encryption by default}
+in the \emph{Amazon EBS User Guide}.
 
 Encrypted Amazon EBS volumes must be attached to instances that support
-Amazon EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances}{Supported instance types}.}
+Amazon EBS encryption. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption-requirements.html#ebs-encryption_supported_instances}{Supported instance types}.}
 
 \item{Iops}{The number of I/O operations per second (IOPS). For \code{gp3}, \code{io1}, and
 \code{io2} volumes, this represents the number of IOPS that are provisioned
@@ -104,8 +104,8 @@ snapshot ID or a volume size.}
 Throughput Optimized HDD (\code{st1}) and Cold HDD (\code{sc1}) volumes can't be
 used as boot volumes.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html}{Amazon EBS volume types}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html}{Amazon EBS volume types}
+in the \emph{Amazon EBS User Guide}.
 
 Default: \code{gp2}}
 
@@ -119,8 +119,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{MultiAttachEnabled}{Indicates whether to enable Amazon EBS Multi-Attach. If you enable
 Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}
 in the same Availability Zone. This parameter is supported with \code{io1}
-and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{Throughput}{The throughput to provision for a volume, with a maximum of 1,000 MiB/s.
 
@@ -129,7 +129,7 @@ This parameter is valid only for \code{gp3} volumes.
 Valid Range: Minimum value of 125. Maximum value of 1000.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 }
 \description{
 Creates an EBS volume that can be attached to an instance in the same Availability Zone.

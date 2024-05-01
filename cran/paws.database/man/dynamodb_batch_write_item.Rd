@@ -12,9 +12,9 @@ dynamodb_batch_write_item(
 )
 }
 \arguments{
-\item{RequestItems}{[required] A map of one or more table names and, for each table, a list of
-operations to be performed (\code{DeleteRequest} or \code{PutRequest}). Each
-element in the map consists of the following:
+\item{RequestItems}{[required] A map of one or more table names or table ARNs and, for each table, a
+list of operations to be performed (\code{DeleteRequest} or \code{PutRequest}).
+Each element in the map consists of the following:
 \itemize{
 \item \code{DeleteRequest} - Perform a \code{\link[=dynamodb_delete_item]{delete_item}}
 operation on the specified item. The item to be deleted is

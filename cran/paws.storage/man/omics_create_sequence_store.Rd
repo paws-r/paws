@@ -10,7 +10,8 @@ omics_create_sequence_store(
   sseConfig = NULL,
   tags = NULL,
   clientToken = NULL,
-  fallbackLocation = NULL
+  fallbackLocation = NULL,
+  eTagAlgorithmFamily = NULL
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ for each request.}
 
 \item{fallbackLocation}{An S3 location that is used to store files that have failed a direct
 upload.}
+
+\item{eTagAlgorithmFamily}{The ETag algorithm family to use for ingested read sets.}
 }
 \description{
 Creates a sequence store.

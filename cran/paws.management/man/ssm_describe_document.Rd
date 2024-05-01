@@ -14,8 +14,8 @@ ssm_describe_document(Name, DocumentVersion = NULL, VersionName = NULL)
 version or the default version.}
 
 \item{VersionName}{An optional field specifying the version of the artifact associated with
-the document. For example, "Release 12, Update 6". This value is unique
-across all versions of a document, and can't be changed.}
+the document. For example, 12.6. This value is unique across all
+versions of a document, and can't be changed.}
 }
 \description{
 Describes the specified Amazon Web Services Systems Manager document (SSM document).

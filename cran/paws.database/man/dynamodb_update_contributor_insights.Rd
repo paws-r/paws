@@ -12,7 +12,8 @@ dynamodb_update_contributor_insights(
 )
 }
 \arguments{
-\item{TableName}{[required] The name of the table.}
+\item{TableName}{[required] The name of the table. You can also provide the Amazon Resource Name
+(ARN) of the table in this parameter.}
 
 \item{IndexName}{The global secondary index name, if applicable.}
 

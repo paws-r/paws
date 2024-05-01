@@ -16,9 +16,10 @@ resourcegroups_create_group(
 \item{Name}{[required] The name of the group, which is the identifier of the group in other
 operations. You can't change the name of a resource group after you
 create it. A resource group name can consist of letters, numbers,
-hyphens, periods, and underscores. The name cannot start with \code{AWS} or
-\code{aws}; these are reserved. A resource group name must be unique within
-each Amazon Web Services Region in your Amazon Web Services account.}
+hyphens, periods, and underscores. The name cannot start with \code{AWS},
+\code{aws}, or any other possible capitalization; these are reserved. A
+resource group name must be unique within each Amazon Web Services
+Region in your Amazon Web Services account.}
 
 \item{Description}{The description of the resource group. Descriptions can consist of
 letters, numbers, hyphens, underscores, periods, and spaces.}

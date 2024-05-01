@@ -97,6 +97,7 @@ Services Lake Formation.
 \tabular{ll}{
 \link[paws.analytics:datazone_accept_predictions]{accept_predictions} \tab Accepts automatically generated business-friendly metadata for your Amazon DataZone assets\cr
 \link[paws.analytics:datazone_accept_subscription_request]{accept_subscription_request} \tab Accepts a subscription request to a specific asset\cr
+\link[paws.analytics:datazone_cancel_metadata_generation_run]{cancel_metadata_generation_run} \tab Cancels the metadata generation run\cr
 \link[paws.analytics:datazone_cancel_subscription]{cancel_subscription} \tab Cancels the subscription to the specified asset\cr
 \link[paws.analytics:datazone_create_asset]{create_asset} \tab Creates an asset in Amazon DataZone catalog\cr
 \link[paws.analytics:datazone_create_asset_revision]{create_asset_revision} \tab Creates a revision of the asset\cr
@@ -109,7 +110,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_create_glossary]{create_glossary} \tab Creates an Amazon DataZone business glossary\cr
 \link[paws.analytics:datazone_create_glossary_term]{create_glossary_term} \tab Creates a business glossary term\cr
 \link[paws.analytics:datazone_create_group_profile]{create_group_profile} \tab Creates a group profile in Amazon DataZone\cr
-\link[paws.analytics:datazone_create_listing_change_set]{create_listing_change_set} \tab Create listing change set\cr
+\link[paws.analytics:datazone_create_listing_change_set]{create_listing_change_set} \tab Publishes a listing (a record of an asset at a given time) or removes a listing from the catalog\cr
 \link[paws.analytics:datazone_create_project]{create_project} \tab Creates an Amazon DataZone project\cr
 \link[paws.analytics:datazone_create_project_membership]{create_project_membership} \tab Creates a project membership in Amazon DataZone\cr
 \link[paws.analytics:datazone_create_subscription_grant]{create_subscription_grant} \tab Creates a subsscription grant in Amazon DataZone\cr
@@ -126,12 +127,13 @@ Services Lake Formation.
 \link[paws.analytics:datazone_delete_form_type]{delete_form_type} \tab Delets and metadata form type in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_glossary]{delete_glossary} \tab Deletes a business glossary in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_glossary_term]{delete_glossary_term} \tab Deletes a business glossary term in Amazon DataZone\cr
-\link[paws.analytics:datazone_delete_listing]{delete_listing} \tab Delete listing\cr
+\link[paws.analytics:datazone_delete_listing]{delete_listing} \tab Deletes a listing (a record of an asset at a given time)\cr
 \link[paws.analytics:datazone_delete_project]{delete_project} \tab Deletes a project in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_project_membership]{delete_project_membership} \tab Deletes project membership in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_subscription_grant]{delete_subscription_grant} \tab Deletes and subscription grant in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_subscription_request]{delete_subscription_request} \tab Deletes a subscription request in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_subscription_target]{delete_subscription_target} \tab Deletes a subscription target in Amazon DataZone\cr
+\link[paws.analytics:datazone_delete_time_series_data_points]{delete_time_series_data_points} \tab Deletes the specified time series form for the specified asset\cr
 \link[paws.analytics:datazone_get_asset]{get_asset} \tab Gets an Amazon DataZone asset\cr
 \link[paws.analytics:datazone_get_asset_type]{get_asset_type} \tab Gets an Amazon DataZone asset type\cr
 \link[paws.analytics:datazone_get_data_source]{get_data_source} \tab Gets an Amazon DataZone data source\cr
@@ -146,12 +148,14 @@ Services Lake Formation.
 \link[paws.analytics:datazone_get_glossary_term]{get_glossary_term} \tab Gets a business glossary term in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_group_profile]{get_group_profile} \tab Gets a group profile in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_iam_portal_login_url]{get_iam_portal_login_url} \tab Gets the data portal URL for the specified Amazon DataZone domain\cr
-\link[paws.analytics:datazone_get_listing]{get_listing} \tab Get listing\cr
+\link[paws.analytics:datazone_get_listing]{get_listing} \tab Gets a listing (a record of an asset at a given time)\cr
+\link[paws.analytics:datazone_get_metadata_generation_run]{get_metadata_generation_run} \tab Gets a metadata generation run in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_project]{get_project} \tab Gets a project in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_subscription]{get_subscription} \tab Gets a subscription in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_subscription_grant]{get_subscription_grant} \tab Gets the subscription grant in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_subscription_request_details]{get_subscription_request_details} \tab Gets the details of the specified subscription request\cr
 \link[paws.analytics:datazone_get_subscription_target]{get_subscription_target} \tab Gets the subscription target in Amazon DataZone\cr
+\link[paws.analytics:datazone_get_time_series_data_point]{get_time_series_data_point} \tab Gets the existing data point for the asset\cr
 \link[paws.analytics:datazone_get_user_profile]{get_user_profile} \tab Gets a user profile in Amazon DataZone\cr
 \link[paws.analytics:datazone_list_asset_revisions]{list_asset_revisions} \tab Lists the revisions for the asset\cr
 \link[paws.analytics:datazone_list_data_source_run_activities]{list_data_source_run_activities} \tab Lists data source run activities\cr
@@ -162,6 +166,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_list_environment_blueprints]{list_environment_blueprints} \tab Lists blueprints in an Amazon DataZone environment\cr
 \link[paws.analytics:datazone_list_environment_profiles]{list_environment_profiles} \tab Lists Amazon DataZone environment profiles\cr
 \link[paws.analytics:datazone_list_environments]{list_environments} \tab Lists Amazon DataZone environments\cr
+\link[paws.analytics:datazone_list_metadata_generation_runs]{list_metadata_generation_runs} \tab Lists all metadata generation runs\cr
 \link[paws.analytics:datazone_list_notifications]{list_notifications} \tab Lists all Amazon DataZone notifications\cr
 \link[paws.analytics:datazone_list_project_memberships]{list_project_memberships} \tab Lists all members of the specified project\cr
 \link[paws.analytics:datazone_list_projects]{list_projects} \tab Lists Amazon DataZone projects\cr
@@ -170,16 +175,19 @@ Services Lake Formation.
 \link[paws.analytics:datazone_list_subscriptions]{list_subscriptions} \tab Lists subscriptions in Amazon DataZone\cr
 \link[paws.analytics:datazone_list_subscription_targets]{list_subscription_targets} \tab Lists subscription targets in Amazon DataZone\cr
 \link[paws.analytics:datazone_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource in Amazon DataZone\cr
+\link[paws.analytics:datazone_list_time_series_data_points]{list_time_series_data_points} \tab Lists time series data points\cr
+\link[paws.analytics:datazone_post_time_series_data_points]{post_time_series_data_points} \tab Posts time series data points to Amazon DataZone for the specified asset\cr
 \link[paws.analytics:datazone_put_environment_blueprint_configuration]{put_environment_blueprint_configuration} \tab Writes the configuration for the specified environment blueprint in Amazon DataZone\cr
 \link[paws.analytics:datazone_reject_predictions]{reject_predictions} \tab Rejects automatically generated business-friendly metadata for your Amazon DataZone assets\cr
 \link[paws.analytics:datazone_reject_subscription_request]{reject_subscription_request} \tab Rejects the specified subscription request\cr
 \link[paws.analytics:datazone_revoke_subscription]{revoke_subscription} \tab Revokes a specified subscription in Amazon DataZone\cr
 \link[paws.analytics:datazone_search]{search} \tab Searches for assets in Amazon DataZone\cr
 \link[paws.analytics:datazone_search_group_profiles]{search_group_profiles} \tab Searches group profiles in Amazon DataZone\cr
-\link[paws.analytics:datazone_search_listings]{search_listings} \tab Searches listings in Amazon DataZone\cr
+\link[paws.analytics:datazone_search_listings]{search_listings} \tab Searches listings (records of an asset at a given time) in Amazon DataZone\cr
 \link[paws.analytics:datazone_search_types]{search_types} \tab Searches for types in Amazon DataZone\cr
 \link[paws.analytics:datazone_search_user_profiles]{search_user_profiles} \tab Searches user profiles in Amazon DataZone\cr
 \link[paws.analytics:datazone_start_data_source_run]{start_data_source_run} \tab Start the run of the specified data source in Amazon DataZone\cr
+\link[paws.analytics:datazone_start_metadata_generation_run]{start_metadata_generation_run} \tab Starts the metadata generation run\cr
 \link[paws.analytics:datazone_tag_resource]{tag_resource} \tab Tags a resource in Amazon DataZone\cr
 \link[paws.analytics:datazone_untag_resource]{untag_resource} \tab Untags a resource in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_data_source]{update_data_source} \tab Updates the specified data source in Amazon DataZone\cr

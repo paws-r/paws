@@ -5,10 +5,12 @@
 \title{Automatically enables Amazon Security Lake for new member accounts in
 your organization}
 \usage{
-securitylake_create_data_lake_organization_configuration(autoEnableNewAccount)
+securitylake_create_data_lake_organization_configuration(
+  autoEnableNewAccount = NULL
+)
 }
 \arguments{
-\item{autoEnableNewAccount}{[required] Enable Security Lake with the specified configuration settings, to begin
+\item{autoEnableNewAccount}{Enable Security Lake with the specified configuration settings, to begin
 collecting security data for new accounts in your organization.}
 }
 \description{

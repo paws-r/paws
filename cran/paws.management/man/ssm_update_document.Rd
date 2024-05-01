@@ -29,8 +29,8 @@ a value for this parameter in your request, the existing value is
 applied to the new document version.}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
-updating with the document. For example, "Release 12, Update 6". This
-value is unique across all versions of a document, and can't be changed.}
+updating with the document. For example, 12.6. This value is unique
+across all versions of a document, and can't be changed.}
 
 \item{DocumentVersion}{The version of the document that you want to update. Currently, Systems
 Manager supports updating only the latest version of the document. You

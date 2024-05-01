@@ -6,14 +6,14 @@
 Amazon Web Services Region where you want to create a custom source}
 \usage{
 securitylake_create_custom_log_source(
-  configuration = NULL,
+  configuration,
   eventClasses = NULL,
   sourceName,
   sourceVersion = NULL
 )
 }
 \arguments{
-\item{configuration}{The configuration for the third-party custom source.}
+\item{configuration}{[required] The configuration for the third-party custom source.}
 
 \item{eventClasses}{The Open Cybersecurity Schema Framework (OCSF) event classes which
 describes the type of data that the custom source will send to Security

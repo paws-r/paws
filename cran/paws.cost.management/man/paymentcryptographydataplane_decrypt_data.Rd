@@ -2,8 +2,8 @@
 % Please edit documentation in R/paymentcryptographydataplane_operations.R
 \name{paymentcryptographydataplane_decrypt_data}
 \alias{paymentcryptographydataplane_decrypt_data}
-\title{Decrypts ciphertext data to plaintext using symmetric, asymmetric, or
-DUKPT data encryption key}
+\title{Decrypts ciphertext data to plaintext using a symmetric (TDES, AES),
+asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme}
 \usage{
 paymentcryptographydataplane_decrypt_data(
   CipherText,
@@ -20,7 +20,7 @@ paymentcryptographydataplane_decrypt_data(
 Cryptography uses for ciphertext decryption.}
 }
 \description{
-Decrypts ciphertext data to plaintext using symmetric, asymmetric, or DUKPT data encryption key. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html}{Decrypt data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
+Decrypts ciphertext data to plaintext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html}{Decrypt data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_decrypt_data/} for full documentation.
 }

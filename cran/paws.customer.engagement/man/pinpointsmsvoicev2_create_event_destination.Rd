@@ -29,7 +29,7 @@ used, then Amazon Pinpoint logs every event type.
 The \code{TEXT_SENT} event type is not supported.}
 
 \item{CloudWatchLogsDestination}{An object that contains information about an event destination for
-logging to Amazon CloudWatch logs.}
+logging to Amazon CloudWatch Logs.}
 
 \item{KinesisFirehoseDestination}{An object that contains information about an event destination for
 logging to Amazon Kinesis Data Firehose.}

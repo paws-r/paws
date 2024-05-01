@@ -173,6 +173,8 @@ opensearchingestion_get_pipeline_change_progress <- function(PipelineName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchingestion_list_pipeline_blueprints/](https://www.paws-r-sdk.com/docs/opensearchingestion_list_pipeline_blueprints/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname opensearchingestion_list_pipeline_blueprints

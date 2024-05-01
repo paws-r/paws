@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_list_foundation_models}
 \alias{bedrock_list_foundation_models}
-\title{List of Amazon Bedrock foundation models that you can use}
+\title{Lists Amazon Bedrock foundation models that you can use}
 \usage{
 bedrock_list_foundation_models(
   byProvider = NULL,
@@ -12,16 +12,20 @@ bedrock_list_foundation_models(
 )
 }
 \arguments{
-\item{byProvider}{A Amazon Bedrock model provider.}
+\item{byProvider}{Return models belonging to the model provider that you specify.}
 
-\item{byCustomizationType}{List by customization type.}
+\item{byCustomizationType}{Return models that support the customization type that you specify. For
+more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models}
+in the Amazon Bedrock User Guide.}
 
-\item{byOutputModality}{List by output modality type.}
+\item{byOutputModality}{Return models that support the output modality that you specify.}
 
-\item{byInferenceType}{List by inference type.}
+\item{byInferenceType}{Return models that support the inference type that you specify. For more
+information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput}
+in the Amazon Bedrock User Guide.}
 }
 \description{
-List of Amazon Bedrock foundation models that you can use. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Foundation models} in the Bedrock User Guide.
+Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Foundation models} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/} for full documentation.
 }

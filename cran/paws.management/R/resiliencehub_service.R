@@ -181,7 +181,7 @@ resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL
 
 .resiliencehub$metadata <- list(
   service_name = "resiliencehub",
-  endpoints = list("*" = list(endpoint = "resiliencehub.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resiliencehub.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "resiliencehub.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resiliencehub.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "resiliencehub.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resiliencehub.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "resiliencehub.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "resiliencehub.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resiliencehub.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "resiliencehub.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "resiliencehub",
   api_version = "2020-04-30",
   signing_name = "resiliencehub",

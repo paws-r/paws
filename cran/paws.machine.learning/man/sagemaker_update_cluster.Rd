@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_update_cluster}
 \alias{sagemaker_update_cluster}
-\title{Update a SageMaker HyperPod cluster}
+\title{Updates a SageMaker HyperPod cluster}
 \usage{
 sagemaker_update_cluster(ClusterName, InstanceGroups)
 }
@@ -12,7 +12,7 @@ sagemaker_update_cluster(ClusterName, InstanceGroups)
 \item{InstanceGroups}{[required] Specify the instance groups to update.}
 }
 \description{
-Update a SageMaker HyperPod cluster.
+Updates a SageMaker HyperPod cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_cluster/} for full documentation.
 }

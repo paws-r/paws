@@ -37,7 +37,7 @@ NULL
 #' meaning to and are interpreted strictly as a string of characters.
 #' 
 #' For more information about using tags with Amazon Elastic Compute Cloud
-#' (Amazon EC2) instances, see [Tagging your Amazon EC2
+#' (Amazon EC2) instances, see [Tag your Amazon EC2
 #' resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 #' in the *Amazon EC2 User Guide*.
 #'
@@ -298,7 +298,8 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' capabilities. You use the activation code and ID when installing SSM
 #' Agent on machines in your hybrid environment. For more information about
 #' requirements for managing on-premises machines using Systems Manager,
-#' see [Setting up Amazon Web Services Systems Manager for hybrid
+#' see [Setting up Amazon Web Services Systems Manager for hybrid and
+#' multicloud
 #' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
@@ -323,7 +324,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' to assign to the managed node. This IAM role must provide AssumeRole
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
-#' service role for a hybrid
+#' service role for a hybrid and multicloud
 #' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
@@ -443,8 +444,8 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'   Targets, ScheduleExpression, OutputLocation, AssociationName,
 #'   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
 #'   ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval,
-#'   CalendarNames, TargetLocations, ScheduleOffset, TargetMaps, Tags,
-#'   AlarmConfiguration)
+#'   CalendarNames, TargetLocations, ScheduleOffset, Duration, TargetMaps,
+#'   Tags, AlarmConfiguration)
 #'
 #' @param Name &#91;required&#93; The name of the SSM Command document or Automation runbook that contains
 #' the configuration information for the managed node.
@@ -466,7 +467,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' For Amazon Web Services-predefined documents and SSM documents you
 #' created in your account, you only need to specify the document name. For
 #' example, `AWS-ApplyPatchBaseline` or `My-Document`.
-#' @param DocumentVersion The document version you want to associate with the target(s). Can be a
+#' @param DocumentVersion The document version you want to associate with the targets. Can be a
 #' specific version or the default version.
 #' 
 #' State Manager doesn't support running associations that use a new
@@ -492,11 +493,11 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' Amazon Web Services account, or individual managed node IDs. You can
 #' target all managed nodes in an Amazon Web Services account by specifying
 #' the `InstanceIds` key with a value of `*`. For more information about
-#' choosing targets for an association, see [Using targets and rate
-#' controls with State Manager
+#' choosing targets for an association, see [About targets and rate
+#' controls in State Manager
 #' associations](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' @param ScheduleExpression A cron expression when the association will be applied to the target(s).
+#' @param ScheduleExpression A cron expression when the association will be applied to the targets.
 #' @param OutputLocation An Amazon Simple Storage Service (Amazon S3) bucket where you want to
 #' store the output details of the request.
 #' @param AssociationName Specify a descriptive name for the association.
@@ -570,6 +571,22 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' To use offsets, you must specify the `ApplyOnlyAtCronInterval`
 #' parameter. This option tells the system not to run an association
 #' immediately after you create it.
+#' @param Duration The number of hours the association can run before it is canceled.
+#' Duration applies to associations that are currently running, and any
+#' pending and in progress commands on all targets. If a target was taken
+#' offline for the association to run, it is made available again
+#' immediately, without a reboot.
+#' 
+#' The `Duration` parameter applies only when both these conditions are
+#' true:
+#' 
+#' -   The association for which you specify a duration is cancelable
+#'     according to the parameters of the SSM command document or
+#'     Automation runbook associated with this execution.
+#' 
+#' -   The command specifies the ` ApplyOnlyAtCronInterval ` parameter,
+#'     which means that the association doesn't run immediately after it is
+#'     created, but only according to the specified schedule.
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps can't be specified together.
 #' @param Tags Adds or overwrites one or more tags for a State Manager association.
@@ -669,6 +686,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
+#'     Duration = 123,
 #'     TargetMaps = list(
 #'       list(
 #'         list(
@@ -753,6 +771,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'     )
 #'   ),
 #'   ScheduleOffset = 123,
+#'   Duration = 123,
 #'   TargetMaps = list(
 #'     list(
 #'       list(
@@ -782,14 +801,14 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @rdname ssm_create_association
 #'
 #' @aliases ssm_create_association
-ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, TargetMaps = NULL, Tags = NULL, AlarmConfiguration = NULL) {
+ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, Duration = NULL, TargetMaps = NULL, Tags = NULL, AlarmConfiguration = NULL) {
   op <- new_operation(
     name = "CreateAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, TargetMaps = TargetMaps, Tags = Tags, AlarmConfiguration = AlarmConfiguration)
+  input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, Tags = Tags, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$create_association_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -911,6 +930,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'         )
 #'       ),
 #'       ScheduleOffset = 123,
+#'       Duration = 123,
 #'       TargetMaps = list(
 #'         list(
 #'           list(
@@ -993,6 +1013,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'           )
 #'         ),
 #'         ScheduleOffset = 123,
+#'         Duration = 123,
 #'         TargetMaps = list(
 #'           list(
 #'             list(
@@ -1077,6 +1098,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'         )
 #'       ),
 #'       ScheduleOffset = 123,
+#'       Duration = 123,
 #'       TargetMaps = list(
 #'         list(
 #'           list(
@@ -1143,14 +1165,14 @@ ssm_create_association_batch <- function(Entries) {
 #' For examples, see the following topics in the *Amazon Web Services
 #' Systems Manager User Guide*.
 #' 
-#' -   [Create an SSM document (Amazon Web Services
-#'     API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html)
+#' -   [Create an SSM document
+#'     (console)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-console)
 #' 
-#' -   [Create an SSM document (Amazon Web Services
-#'     CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html)
+#' -   [Create an SSM document (command
+#'     line)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-cli)
 #' 
 #' -   [Create an SSM document
-#'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html)
+#'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-api)
 #' @param Requires A list of SSM documents required by a document. This parameter is used
 #' exclusively by AppConfig. When a user creates an AppConfig configuration
 #' in an SSM document, the user must also specify a required document for
@@ -1171,6 +1193,12 @@ ssm_create_association_batch <- function(Entries) {
 #' -   `amazon`
 #' 
 #' -   `amzn`
+#' 
+#' -   `AWSEC2`
+#' 
+#' -   `AWSConfigRemediation`
+#' 
+#' -   `AWSSupport`
 #' @param DisplayName An optional field where you can specify a friendly name for the SSM
 #' document. This value can differ for each version of the document. You
 #' can update this value at a later time using the
@@ -1365,6 +1393,9 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' @param StartDate The date and time, in ISO-8601 Extended format, for when you want the
 #' maintenance window to become active. `StartDate` allows you to delay
 #' activation of the maintenance window until the specified future date.
+#' 
+#' When using a rate schedule, if you provide a start date that occurs in
+#' the past, the current date and time are used as the start date.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
 #' maintenance window to become inactive. `EndDate` allows you to set a
 #' date and time in the future when the maintenance window will no longer
@@ -1533,7 +1564,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' resource in the request. Use the `/aws/automations` key in
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
-#' [Creating OpsItems
+#' [Create OpsItems
 #' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
@@ -1776,11 +1807,12 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #'     reported as `InstalledOther`. This is the default action if no
 #'     option is specified.
 #' 
-#' -   **`BLOCK`** : Packages in the `RejectedPatches` list, and packages
-#'     that include them as dependencies, aren't installed under any
-#'     circumstances. If a package was installed before it was added to the
-#'     Rejected patches list, it is considered non-compliant with the patch
-#'     baseline, and its status is reported as `InstalledRejected`.
+#' -   **BLOCK**: Packages in the **Rejected patches** list, and packages
+#'     that include them as dependencies, aren't installed by Patch Manager
+#'     under any circumstances. If a package was installed before it was
+#'     added to the **Rejected patches** list, or is installed outside of
+#'     Patch Manager afterward, it's considered noncompliant with the patch
+#'     baseline and its status is reported as *InstalledRejected*.
 #' @param Description A description of the patch baseline.
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to
@@ -2429,6 +2461,9 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
 #' ssm_delete_parameter(Name)
 #'
 #' @param Name &#91;required&#93; The name of the parameter to delete.
+#' 
+#' You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+#' parameter name itself.
 #'
 #' @return
 #' An empty list.
@@ -2473,6 +2508,9 @@ ssm_delete_parameter <- function(Name) {
 #'
 #' @param Names &#91;required&#93; The names of the parameters to delete. After deleting a parameter, wait
 #' for at least 30 seconds to create a parameter with the same name.
+#' 
+#' You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+#' parameter name itself.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2616,11 +2654,19 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
 #' @description
 #' Deletes a Systems Manager resource policy. A resource policy helps you
 #' to define the IAM entity (for example, an Amazon Web Services account)
-#' that can manage your Systems Manager resources. Currently,
-#' `OpsItemGroup` is the only resource that supports Systems Manager
-#' resource policies. The resource policy for `OpsItemGroup` enables Amazon
-#' Web Services accounts to view and interact with OpsCenter operational
-#' work items (OpsItems).
+#' that can manage your Systems Manager resources. The following resources
+#' support Systems Manager resource policies.
+#' 
+#' -   `OpsItemGroup` - The resource policy for `OpsItemGroup` enables
+#'     Amazon Web Services accounts to view and interact with OpsCenter
+#'     operational work items (OpsItems).
+#' 
+#' -   `Parameter` - The resource policy is used to share a parameter with
+#'     other accounts using Resource Access Manager (RAM). For more
+#'     information about cross-account sharing of parameters, see [Working
+#'     with shared
+#'     parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html)
+#'     in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @usage
 #' ssm_delete_resource_policy(ResourceArn, PolicyId, PolicyHash)
@@ -3069,6 +3115,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
+#'     Duration = 123,
 #'     TargetMaps = list(
 #'       list(
 #'         list(
@@ -3663,6 +3710,11 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #'
 #' @description
 #' Lists all patches eligible to be included in a patch baseline.
+#' 
+#' Currently,
+#' [`describe_available_patches`][ssm_describe_available_patches] supports
+#' only the Amazon Linux 1, Amazon Linux 2, and Windows Server operating
+#' systems.
 #'
 #' @usage
 #' ssm_describe_available_patches(Filters, MaxResults, NextToken)
@@ -3856,8 +3908,8 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #' @param DocumentVersion The document version for which you want information. Can be a specific
 #' version or the default version.
 #' @param VersionName An optional field specifying the version of the artifact associated with
-#' the document. For example, "Release 12, Update 6". This value is unique
-#' across all versions of a document, and can't be changed.
+#' the document. For example, 12.6. This value is unique across all
+#' versions of a document, and can't be changed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4039,10 +4091,10 @@ ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = 
 }
 .ssm$operations$describe_document_permission <- ssm_describe_document_permission
 
-#' All associations for the managed node(s)
+#' All associations for the managed nodes
 #'
 #' @description
-#' All associations for the managed node(s).
+#' All associations for the managed nodes.
 #'
 #' @usage
 #' ssm_describe_effective_instance_associations(InstanceId, MaxResults,
@@ -4202,10 +4254,10 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 }
 .ssm$operations$describe_effective_patches_for_patch_baseline <- ssm_describe_effective_patches_for_patch_baseline
 
-#' The status of the associations for the managed node(s)
+#' The status of the associations for the managed nodes
 #'
 #' @description
-#' The status of the associations for the managed node(s).
+#' The status of the associations for the managed nodes.
 #'
 #' @usage
 #' ssm_describe_instance_associations_status(InstanceId, MaxResults,
@@ -4705,6 +4757,125 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
   return(response)
 }
 .ssm$operations$describe_instance_patches <- ssm_describe_instance_patches
+
+#' An API operation used by the Systems Manager console to display
+#' information about Systems Manager managed nodes
+#'
+#' @description
+#' An API operation used by the Systems Manager console to display
+#' information about Systems Manager managed nodes.
+#'
+#' @usage
+#' ssm_describe_instance_properties(InstancePropertyFilterList,
+#'   FiltersWithOperator, MaxResults, NextToken)
+#'
+#' @param InstancePropertyFilterList An array of instance property filters.
+#' @param FiltersWithOperator The request filters to use with the operator.
+#' @param MaxResults The maximum number of items to return for the call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken The token provided by a previous request to use to return the next set
+#' of properties.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceProperties = list(
+#'     list(
+#'       Name = "string",
+#'       InstanceId = "string",
+#'       InstanceType = "string",
+#'       InstanceRole = "string",
+#'       KeyName = "string",
+#'       InstanceState = "string",
+#'       Architecture = "string",
+#'       IPAddress = "string",
+#'       LaunchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PingStatus = "Online"|"ConnectionLost"|"Inactive",
+#'       LastPingDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AgentVersion = "string",
+#'       PlatformType = "Windows"|"Linux"|"MacOS",
+#'       PlatformName = "string",
+#'       PlatformVersion = "string",
+#'       ActivationId = "string",
+#'       IamRole = "string",
+#'       RegistrationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceType = "string",
+#'       ComputerName = "string",
+#'       AssociationStatus = "string",
+#'       LastAssociationExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastSuccessfulAssociationExecutionDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       AssociationOverview = list(
+#'         DetailedStatus = "string",
+#'         InstanceAssociationStatusAggregatedCount = list(
+#'           123
+#'         )
+#'       ),
+#'       SourceId = "string",
+#'       SourceType = "AWS::EC2::Instance"|"AWS::IoT::Thing"|"AWS::SSM::ManagedInstance"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_instance_properties(
+#'   InstancePropertyFilterList = list(
+#'     list(
+#'       key = "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"DocumentName"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus",
+#'       valueSet = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   FiltersWithOperator = list(
+#'     list(
+#'       Key = "string",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Operator = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_describe_instance_properties
+#'
+#' @aliases ssm_describe_instance_properties
+ssm_describe_instance_properties <- function(InstancePropertyFilterList = NULL, FiltersWithOperator = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeInstanceProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceProperties")
+  )
+  input <- .ssm$describe_instance_properties_input(InstancePropertyFilterList = InstancePropertyFilterList, FiltersWithOperator = FiltersWithOperator, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .ssm$describe_instance_properties_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$describe_instance_properties <- ssm_describe_instance_properties
 
 #' Describes a specific delete inventory operation
 #'
@@ -5512,8 +5683,9 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' Operations engineers and IT professionals use Amazon Web Services
 #' Systems Manager OpsCenter to view, investigate, and remediate
 #' operational issues impacting the performance and health of their Amazon
-#' Web Services resources. For more information, see
-#' [OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+#' Web Services resources. For more information, see [Amazon Web Services
+#' Systems Manager
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @usage
@@ -5675,10 +5847,14 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 }
 .ssm$operations$describe_ops_items <- ssm_describe_ops_items
 
-#' Get information about a parameter
+#' Lists the parameters in your Amazon Web Services account or the
+#' parameters shared with you when you enable the Shared option
 #'
 #' @description
-#' Get information about a parameter.
+#' Lists the parameters in your Amazon Web Services account or the
+#' parameters shared with you when you enable the
+#' [Shared](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeParameters.html#systemsmanager-DescribeParameters-request-Shared)
+#' option.
 #' 
 #' Request results are returned on a best-effort basis. If you specify
 #' `MaxResults` in the request, the response includes information up to the
@@ -5696,7 +5872,7 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #'
 #' @usage
 #' ssm_describe_parameters(Filters, ParameterFilters, MaxResults,
-#'   NextToken)
+#'   NextToken, Shared)
 #'
 #' @param Filters This data type is deprecated. Instead, use `ParameterFilters`.
 #' @param ParameterFilters Filters to limit the request results.
@@ -5705,6 +5881,20 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' next set of results.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
+#' @param Shared Lists parameters that are shared with you.
+#' 
+#' By default when using this option, the command returns parameters that
+#' have been shared using a standard Resource Access Manager Resource
+#' Share. In order for a parameter that was shared using the
+#' [`put_resource_policy`][ssm_put_resource_policy] command to be returned,
+#' the associated `RAM Resource Share Created From Policy` must have been
+#' promoted to a standard Resource Share using the RAM
+#' [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+#' API operation.
+#' 
+#' For more information about sharing parameters, see [Working with shared
+#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5713,6 +5903,7 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #'   Parameters = list(
 #'     list(
 #'       Name = "string",
+#'       ARN = "string",
 #'       Type = "String"|"StringList"|"SecureString",
 #'       KeyId = "string",
 #'       LastModifiedDate = as.POSIXct(
@@ -5758,7 +5949,8 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #'     )
 #'   ),
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Shared = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5767,14 +5959,14 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' @rdname ssm_describe_parameters
 #'
 #' @aliases ssm_describe_parameters
-ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, MaxResults = NULL, NextToken = NULL) {
+ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, MaxResults = NULL, NextToken = NULL, Shared = NULL) {
   op <- new_operation(
     name = "DescribeParameters",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
-  input <- .ssm$describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .ssm$describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, MaxResults = MaxResults, NextToken = NextToken, Shared = Shared)
   output <- .ssm$describe_parameters_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -6964,8 +7156,8 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #'
 #' @param Name &#91;required&#93; The name of the SSM document.
 #' @param VersionName An optional field specifying the version of the artifact associated with
-#' the document. For example, "Release 12, Update 6". This value is unique
-#' across all versions of a document and can't be changed.
+#' the document. For example, 12.6. This value is unique across all
+#' versions of a document and can't be changed.
 #' @param DocumentVersion The document version for which you want information.
 #' @param DocumentFormat Returns the document in the specified format. The document format can be
 #' either JSON or YAML. JSON is the default format.
@@ -7666,8 +7858,9 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' Operations engineers and IT professionals use Amazon Web Services
 #' Systems Manager OpsCenter to view, investigate, and remediate
 #' operational issues impacting the performance and health of their Amazon
-#' Web Services resources. For more information, see
-#' [OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+#' Web Services resources. For more information, see [Amazon Web Services
+#' Systems Manager
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @usage
@@ -7951,10 +8144,16 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' @usage
 #' ssm_get_parameter(Name, WithDecryption)
 #'
-#' @param Name &#91;required&#93; The name of the parameter you want to query.
+#' @param Name &#91;required&#93; The name or Amazon Resource Name (ARN) of the parameter that you want to
+#' query. For parameters shared with you from another account, you must use
+#' the full ARN.
 #' 
 #' To query by parameter label, use `"Name": "name:label"`. To query by
 #' parameter version, use `"Name": "name:version"`.
+#' 
+#' For more information about shared parameters, see [Working with shared
+#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
 #' ignored for `String` and `StringList` parameter types.
 #'
@@ -8022,7 +8221,9 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #' @usage
 #' ssm_get_parameter_history(Name, WithDecryption, MaxResults, NextToken)
 #'
-#' @param Name &#91;required&#93; The name of the parameter for which you want to review history.
+#' @param Name &#91;required&#93; The name or Amazon Resource Name (ARN) of the parameter for which you
+#' want to review history. For parameters shared with you from another
+#' account, you must use the full ARN.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
 #' ignored for `String` and `StringList` parameter types.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -8111,10 +8312,19 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #' @usage
 #' ssm_get_parameters(Names, WithDecryption)
 #'
-#' @param Names &#91;required&#93; Names of the parameters for which you want to query information.
+#' @param Names &#91;required&#93; The names or Amazon Resource Names (ARNs) of the parameters that you
+#' want to query. For parameters shared with you from another account, you
+#' must use the full ARNs.
 #' 
 #' To query by parameter label, use `"Name": "name:label"`. To query by
 #' parameter version, use `"Name": "name:version"`.
+#' 
+#' The results for [`get_parameters`][ssm_get_parameters] requests are
+#' listed in alphabetical order in query responses.
+#' 
+#' For information about shared parameters, see [Working with shared
+#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param WithDecryption Return decrypted secure string value. Return decrypted values for secure
 #' string parameters. This flag is ignored for `String` and `StringList`
 #' parameter types.
@@ -8652,6 +8862,9 @@ ssm_get_service_setting <- function(SettingId) {
 #' ssm_label_parameter_version(Name, ParameterVersion, Labels)
 #'
 #' @param Name &#91;required&#93; The parameter name on which you want to attach one or more labels.
+#' 
+#' You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+#' parameter name itself.
 #' @param ParameterVersion The specific version of the parameter on which you want to attach one or
 #' more labels. If no version is specified, the system attaches the label
 #' to the latest version.
@@ -8781,6 +8994,7 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #'         )
 #'       ),
 #'       ScheduleOffset = 123,
+#'       Duration = 123,
 #'       TargetMaps = list(
 #'         list(
 #'           list(
@@ -8883,6 +9097,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #'       ScheduleExpression = "string",
 #'       AssociationName = "string",
 #'       ScheduleOffset = 123,
+#'       Duration = 123,
 #'       TargetMaps = list(
 #'         list(
 #'           list(
@@ -10279,7 +10494,7 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' The account IDs can either be a group of account IDs or *All*.
 #' @param AccountIdsToRemove The Amazon Web Services users that should no longer have access to the
 #' document. The Amazon Web Services user can either be a group of account
-#' IDs or *All*. This action has a higher priority than *AccountIdsToAdd*.
+#' IDs or *All*. This action has a higher priority than `AccountIdsToAdd`.
 #' If you specify an ID to add and the same ID to remove, the system
 #' removes access to the document.
 #' @param SharedDocumentVersion (Optional) The version of the document to share. If it isn't specified,
@@ -10373,7 +10588,7 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' 
 #' -   InstalledTime: The time the association, patch, or custom compliance
 #'     item was applied to the resource. Specify the time by using the
-#'     following format: yyyy-MM-dd'T'HH:mm:ss'Z'
+#'     following format: `yyyy-MM-dd'T'HH:mm:ss'Z'`
 #'
 #' @usage
 #' ssm_put_compliance_items(ResourceId, ResourceType, ComplianceType,
@@ -10388,7 +10603,7 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' @param ExecutionSummary &#91;required&#93; A summary of the call execution that includes an execution ID, the type
 #' of execution (for example, `Command`), and the date/time of the
 #' execution using a datetime object that is saved in the following format:
-#' yyyy-MM-dd'T'HH:mm:ss'Z'.
+#' `yyyy-MM-dd'T'HH:mm:ss'Z'`
 #' @param Items &#91;required&#93; Information about the compliance as defined by the resource type. For
 #' example, for a patch compliance type, `Items` includes information about
 #' the PatchSeverity, Classification, and so on.
@@ -10537,7 +10752,12 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #'   AllowedPattern, Tags, Tier, Policies, DataType)
 #'
 #' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to add to the
-#' system. The fully qualified name includes the complete hierarchy of the
+#' system.
+#' 
+#' You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+#' parameter name itself.
+#' 
+#' The fully qualified name includes the complete hierarchy of the
 #' parameter path and name. For parameters in a hierarchy, you must include
 #' a leading forward slash character (/) when you create or reference a
 #' parameter. For example: `/Dev/DBServer/MySQL/db-string13`
@@ -10637,7 +10857,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' configured to use parameter policies. You can create a maximum of
 #' 100,000 advanced parameters for each Region in an Amazon Web Services
 #' account. Advanced parameters incur a charge. For more information, see
-#' [Standard and advanced parameter
+#' [Managing parameter
 #' tiers](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
@@ -10693,8 +10913,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' For more information about configuring the default tier option, see
 #' [Specifying a default parameter
-#' tier](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in
-#' the *Amazon Web Services Systems Manager User Guide*.
+#' tier](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html#ps-default-tier)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Policies One or more policies to apply to a parameter. This operation takes a
 #' JSON array. Parameter Store, a capability of Amazon Web Services Systems
 #' Manager supports the following policy types:
@@ -10750,7 +10970,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' based on Parameter Store
 #' events](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-cwe.html).
 #' For more information about AMI format validation , see [Native parameter
-#' support for Amazon Machine Image (AMI)
+#' support for Amazon Machine Image
 #' IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html).
 #'
 #' @return
@@ -10811,11 +11031,47 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
 #' @description
 #' Creates or updates a Systems Manager resource policy. A resource policy
 #' helps you to define the IAM entity (for example, an Amazon Web Services
-#' account) that can manage your Systems Manager resources. Currently,
-#' `OpsItemGroup` is the only resource that supports Systems Manager
-#' resource policies. The resource policy for `OpsItemGroup` enables Amazon
-#' Web Services accounts to view and interact with OpsCenter operational
-#' work items (OpsItems).
+#' account) that can manage your Systems Manager resources. The following
+#' resources support Systems Manager resource policies.
+#' 
+#' -   `OpsItemGroup` - The resource policy for `OpsItemGroup` enables
+#'     Amazon Web Services accounts to view and interact with OpsCenter
+#'     operational work items (OpsItems).
+#' 
+#' -   `Parameter` - The resource policy is used to share a parameter with
+#'     other accounts using Resource Access Manager (RAM).
+#' 
+#'     To share a parameter, it must be in the advanced parameter tier. For
+#'     information about parameter tiers, see [Managing parameter
+#'     tiers](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html).
+#'     For information about changing an existing standard parameter to an
+#'     advanced parameter, see [Changing a standard parameter to an
+#'     advanced
+#'     parameter](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html#parameter-store-advanced-parameters-enabling).
+#' 
+#'     To share a `SecureString` parameter, it must be encrypted with a
+#'     customer managed key, and you must share the key separately through
+#'     Key Management Service. Amazon Web Services managed keys cannot be
+#'     shared. Parameters encrypted with the default Amazon Web Services
+#'     managed key can be updated to use a customer managed key instead.
+#'     For KMS key definitions, see [KMS
+#'     concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html)
+#'     in the *Key Management Service Developer Guide*.
+#' 
+#'     While you can share a parameter using the Systems Manager
+#'     [`put_resource_policy`][ssm_put_resource_policy] operation, we
+#'     recommend using Resource Access Manager (RAM) instead. This is
+#'     because using [`put_resource_policy`][ssm_put_resource_policy]
+#'     requires the extra step of promoting the parameter to a standard RAM
+#'     Resource Share using the RAM
+#'     [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+#'     API operation. Otherwise, the parameter won't be returned by the
+#'     Systems Manager [`describe_parameters`][ssm_describe_parameters] API
+#'     operation using the `--shared` option.
+#' 
+#'     For more information, see [Sharing a
+#'     parameter](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html#share)
+#'     in the *Amazon Web Services Systems Manager User Guide*
 #'
 #' @usage
 #' ssm_put_resource_policy(ResourceArn, Policy, PolicyId, PolicyHash)
@@ -11113,20 +11369,19 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @param TaskArn &#91;required&#93; The ARN of the task to run.
 #' @param ServiceRoleArn The Amazon Resource Name (ARN) of the IAM service role for Amazon Web
 #' Services Systems Manager to assume when running a maintenance window
-#' task. If you do not specify a service role ARN, Systems Manager uses
-#' your account's service-linked role. If no service-linked role for
-#' Systems Manager exists in your account, it is created when you run
+#' task. If you do not specify a service role ARN, Systems Manager uses a
+#' service-linked role in your account. If no appropriate service-linked
+#' role for Systems Manager exists in your account, it is created when you
+#' run
 #' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
-#' For more information, see the following topics in the in the *Amazon Web
-#' Services Systems Manager User Guide*:
-#' 
-#' -   [Using service-linked roles for Systems
-#'     Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
-#' 
-#' -   [Should I use a service-linked role or a custom service role to run
-#'     maintenance window
-#'     tasks?](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+#' However, for an improved security posture, we strongly recommend
+#' creating a custom policy and custom service role for running your
+#' maintenance window tasks. The policy can be crafted to provide only the
+#' permissions needed for your particular maintenance window tasks. For
+#' more information, see [Setting up maintenance
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html)
+#' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskType &#91;required&#93; The type of task being registered.
 #' @param TaskParameters The parameters that should be passed to the task when it is run.
 #' 
@@ -11631,9 +11886,8 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' managed nodes to send commands to, you can a send command to tens,
 #' hundreds, or thousands of nodes at once.
 #' 
-#' For more information about how to use targets, see [Using targets and
-#' rate controls to send commands to a
-#' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+#' For more information about how to use targets, see [Run commands at
+#' scale](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Targets An array of search criteria that targets managed nodes using a
 #' `Key,Value` combination that you specify. Specifying targets is most
@@ -11645,15 +11899,14 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' To send a command to a smaller number of managed nodes, you can use the
 #' `InstanceIds` option instead.
 #' 
-#' For more information about how to use targets, see [Sending commands to
-#' a
-#' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+#' For more information about how to use targets, see [Run commands at
+#' scale](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param DocumentName &#91;required&#93; The name of the Amazon Web Services Systems Manager document (SSM
 #' document) to run. This can be a public document or a custom document. To
 #' run a shared document belonging to another account, specify the document
 #' Amazon Resource Name (ARN). For more information about how to use shared
-#' documents, see [Using shared SSM
+#' documents, see [Sharing SSM
 #' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
@@ -11925,7 +12178,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @param DocumentName &#91;required&#93; The name of the SSM document to run. This can be a public document or a
 #' custom document. To run a shared document belonging to another account,
 #' specify the document ARN. For more information about how to use shared
-#' documents, see [Using shared SSM
+#' documents, see [Sharing SSM
 #' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param DocumentVersion The version of the Automation runbook to use for this execution.
@@ -12440,6 +12693,9 @@ ssm_terminate_session <- function(SessionId) {
 #'
 #' @param Name &#91;required&#93; The name of the parameter from which you want to delete one or more
 #' labels.
+#' 
+#' You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+#' parameter name itself.
 #' @param ParameterVersion &#91;required&#93; The specific version of the parameter which you want to delete one or
 #' more labels from. If it isn't present, the call will fail.
 #' @param Labels &#91;required&#93; One or more labels to delete from the specified parameter version.
@@ -12524,7 +12780,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #'   AssociationVersion, AutomationTargetParameterName, MaxErrors,
 #'   MaxConcurrency, ComplianceSeverity, SyncCompliance,
 #'   ApplyOnlyAtCronInterval, CalendarNames, TargetLocations, ScheduleOffset,
-#'   TargetMaps, AlarmConfiguration)
+#'   Duration, TargetMaps, AlarmConfiguration)
 #'
 #' @param AssociationId &#91;required&#93; The ID of the association you want to update.
 #' @param Parameters The parameters you want to update for the association. If you create a
@@ -12656,6 +12912,22 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' To use offsets, you must specify the `ApplyOnlyAtCronInterval`
 #' parameter. This option tells the system not to run an association
 #' immediately after you create it.
+#' @param Duration The number of hours the association can run before it is canceled.
+#' Duration applies to associations that are currently running, and any
+#' pending and in progress commands on all targets. If a target was taken
+#' offline for the association to run, it is made available again
+#' immediately, without a reboot.
+#' 
+#' The `Duration` parameter applies only when both these conditions are
+#' true:
+#' 
+#' -   The association for which you specify a duration is cancelable
+#'     according to the parameters of the SSM command document or
+#'     Automation runbook associated with this execution.
+#' 
+#' -   The command specifies the ` ApplyOnlyAtCronInterval ` parameter,
+#'     which means that the association doesn't run immediately after it is
+#'     updated, but only according to the specified schedule.
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps can't be specified together.
 #' @param AlarmConfiguration 
@@ -12750,6 +13022,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
+#'     Duration = 123,
 #'     TargetMaps = list(
 #'       list(
 #'         list(
@@ -12835,6 +13108,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #'     )
 #'   ),
 #'   ScheduleOffset = 123,
+#'   Duration = 123,
 #'   TargetMaps = list(
 #'     list(
 #'       list(
@@ -12858,14 +13132,14 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @rdname ssm_update_association
 #'
 #' @aliases ssm_update_association
-ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, TargetMaps = NULL, AlarmConfiguration = NULL) {
+ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, Duration = NULL, TargetMaps = NULL, AlarmConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateAssociation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, TargetMaps = TargetMaps, AlarmConfiguration = AlarmConfiguration)
+  input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$update_association_output()
   config <- get_config()
   svc <- .ssm$service(config)
@@ -12984,6 +13258,7 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
+#'     Duration = 123,
 #'     TargetMaps = list(
 #'       list(
 #'         list(
@@ -13065,8 +13340,8 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' a value for this parameter in your request, the existing value is
 #' applied to the new document version.
 #' @param VersionName An optional field specifying the version of the artifact you are
-#' updating with the document. For example, "Release 12, Update 6". This
-#' value is unique across all versions of a document, and can't be changed.
+#' updating with the document. For example, 12.6. This value is unique
+#' across all versions of a document, and can't be changed.
 #' @param DocumentVersion The version of the document that you want to update. Currently, Systems
 #' Manager supports updating only the latest version of the document. You
 #' can specify the version number of the latest version or use the
@@ -13342,6 +13617,9 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' @param StartDate The date and time, in ISO-8601 Extended format, for when you want the
 #' maintenance window to become active. `StartDate` allows you to delay
 #' activation of the maintenance window until the specified future date.
+#' 
+#' When using a rate schedule, if you provide a start date that occurs in
+#' the past, the current date and time are used as the start date.
 #' @param EndDate The date and time, in ISO-8601 Extended format, for when you want the
 #' maintenance window to become inactive. `EndDate` allows you to set a
 #' date and time in the future when the maintenance window will no longer
@@ -13603,20 +13881,19 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @param TaskArn The task ARN to modify.
 #' @param ServiceRoleArn The Amazon Resource Name (ARN) of the IAM service role for Amazon Web
 #' Services Systems Manager to assume when running a maintenance window
-#' task. If you do not specify a service role ARN, Systems Manager uses
-#' your account's service-linked role. If no service-linked role for
-#' Systems Manager exists in your account, it is created when you run
+#' task. If you do not specify a service role ARN, Systems Manager uses a
+#' service-linked role in your account. If no appropriate service-linked
+#' role for Systems Manager exists in your account, it is created when you
+#' run
 #' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
 #' 
-#' For more information, see the following topics in the in the *Amazon Web
-#' Services Systems Manager User Guide*:
-#' 
-#' -   [Using service-linked roles for Systems
-#'     Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
-#' 
-#' -   [Should I use a service-linked role or a custom service role to run
-#'     maintenance window
-#'     tasks?](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
+#' However, for an improved security posture, we strongly recommend
+#' creating a custom policy and custom service role for running your
+#' maintenance window tasks. The policy can be crafted to provide only the
+#' permissions needed for your particular maintenance window tasks. For
+#' more information, see [Setting up maintenance
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html)
+#' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskParameters The parameters to modify.
 #' 
 #' `TaskParameters` has been deprecated. To specify parameters to pass to a
@@ -13924,7 +14201,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' to assign to the managed node. This IAM role must provide AssumeRole
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
-#' service role for a hybrid
+#' service role for a hybrid and multicloud
 #' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
@@ -13976,8 +14253,9 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Operations engineers and IT professionals use Amazon Web Services
 #' Systems Manager OpsCenter to view, investigate, and remediate
 #' operational issues impacting the performance and health of their Amazon
-#' Web Services resources. For more information, see
-#' [OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
+#' Web Services resources. For more information, see [Amazon Web Services
+#' Systems Manager
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @usage
@@ -14218,11 +14496,12 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #'     reported as `InstalledOther`. This is the default action if no
 #'     option is specified.
 #' 
-#' -   **`BLOCK`** : Packages in the `RejectedPatches` list, and packages
-#'     that include them as dependencies, aren't installed under any
-#'     circumstances. If a package was installed before it was added to the
-#'     `Rejected` patches list, it is considered non-compliant with the
-#'     patch baseline, and its status is reported as `InstalledRejected`.
+#' -   **BLOCK**: Packages in the **Rejected patches** list, and packages
+#'     that include them as dependencies, aren't installed by Patch Manager
+#'     under any circumstances. If a package was installed before it was
+#'     added to the **Rejected patches** list, or is installed outside of
+#'     Patch Manager afterward, it's considered noncompliant with the patch
+#'     baseline and its status is reported as *InstalledRejected*.
 #' @param Description A description of the patch baseline.
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to

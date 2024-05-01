@@ -145,7 +145,7 @@ codegurusecurity <- function(config = list(), credentials = list(), endpoint = N
 
 .codegurusecurity$metadata <- list(
   service_name = "codegurusecurity",
-  endpoints = list("*" = list(endpoint = "codeguru-security.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeguru-security.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codeguru-security.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeguru-security.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codeguru-security.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeguru-security.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codeguru-security.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codeguru-security.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeguru-security.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codeguru-security.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CodeGuru Security",
   api_version = "2018-05-10",
   signing_name = "codeguru-security",

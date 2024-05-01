@@ -217,7 +217,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' 
 #' -   An external key store with `PUBLIC_ENDPOINT` connectivity cannot use
 #'     the same `XksProxyUriEndpoint` value as an external key store with
-#'     `VPC_ENDPOINT_SERVICE` connectivity in the same Amazon Web Services
+#'     `VPC_ENDPOINT_SERVICE` connectivity in this Amazon Web Services
 #'     Region.
 #' 
 #' -   Each external key store with `VPC_ENDPOINT_SERVICE` connectivity
@@ -1032,7 +1032,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     name = "DescribeCustomKeyStores",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "CustomKeyStores")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "CustomKeyStores")
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
@@ -1277,7 +1277,7 @@ kms_enable_key <- function(KeyId) {
 #' symmetric encryption KMS key
 #'
 #' @description
-#' Enables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) of the specified symmetric encryption KMS key.
+#' Enables [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable) of the specified symmetric encryption KMS key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/](https://www.paws-r-sdk.com/docs/kms_enable_key_rotation/) for full documentation.
 #'
@@ -1306,18 +1306,29 @@ kms_enable_key <- function(KeyId) {
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param RotationPeriodInDays Use this parameter to specify a custom period of time between each
+#' rotation date. If no value is specified, the default value is 365 days.
+#' 
+#' The rotation period defines the number of days after you enable
+#' automatic key rotation that KMS will rotate your key material, and the
+#' number of days between each automatic rotation thereafter.
+#' 
+#' You can use the
+#' [`kms:RotationPeriodInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days)
+#' condition key to further constrain the values that principals can
+#' specify in the `RotationPeriodInDays` parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname kms_enable_key_rotation
-kms_enable_key_rotation <- function(KeyId) {
+kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
   op <- new_operation(
     name = "EnableKeyRotation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$enable_key_rotation_input(KeyId = KeyId)
+  input <- .kms$enable_key_rotation_input(KeyId = KeyId, RotationPeriodInDays = RotationPeriodInDays)
   output <- .kms$enable_key_rotation_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -1992,14 +2003,15 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PolicyName &#91;required&#93; Specifies the name of the key policy. The only valid name is `default`.
-#' To get the names of key policies, use
+#' @param PolicyName Specifies the name of the key policy. If no policy name is specified,
+#' the default value is `default`. The only valid name is `default`. To get
+#' the names of key policies, use
 #' [`list_key_policies`][kms_list_key_policies].
 #'
 #' @keywords internal
 #'
 #' @rdname kms_get_key_policy
-kms_get_key_policy <- function(KeyId, PolicyName) {
+kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
   op <- new_operation(
     name = "GetKeyPolicy",
     http_method = "POST",
@@ -2016,11 +2028,13 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 }
 .kms$operations$get_key_policy <- kms_get_key_policy
 
-#' Gets a Boolean value that indicates whether automatic rotation of the
-#' key material is enabled for the specified KMS key
+#' Provides detailed information about the rotation status for a KMS key,
+#' including whether automatic rotation of the key material is enabled for
+#' the specified KMS key, the rotation period, and the next scheduled
+#' rotation date
 #'
 #' @description
-#' Gets a Boolean value that indicates whether [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled for the specified KMS key.
+#' Provides detailed information about the rotation status for a KMS key, including whether [automatic rotation of the key material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html) is enabled for the specified KMS key, the [rotation period](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period), and the next scheduled rotation date.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/](https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/) for full documentation.
 #'
@@ -2346,7 +2360,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Aliases")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
@@ -2402,7 +2416,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     name = "ListGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
   output <- .kms$list_grants_output()
@@ -2454,7 +2468,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListKeyPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "PolicyNames")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "PolicyNames")
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
@@ -2465,6 +2479,57 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
   return(response)
 }
 .kms$operations$list_key_policies <- kms_list_key_policies
+
+#' Returns information about all completed key material rotations for the
+#' specified KMS key
+#'
+#' @description
+#' Returns information about all completed key material rotations for the specified KMS key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kms_list_key_rotations/](https://www.paws-r-sdk.com/docs/kms_list_key_rotations/) for full documentation.
+#'
+#' @param KeyId &#91;required&#93; Gets the key rotations for the specified KMS key.
+#' 
+#' Specify the key ID or key ARN of the KMS key.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a KMS key, use
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param Limit Use this parameter to specify the maximum number of items to return.
+#' When this value is present, KMS does not return more than the specified
+#' number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and
+#' 1000, inclusive. If you do not include a value, it defaults to 100.
+#' @param Marker Use this parameter in a subsequent request after you receive a response
+#' with truncated results. Set it to the value of `NextMarker` from the
+#' truncated response you just received.
+#'
+#' @keywords internal
+#'
+#' @rdname kms_list_key_rotations
+kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListKeyRotations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations")
+  )
+  input <- .kms$list_key_rotations_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
+  output <- .kms$list_key_rotations_output()
+  config <- get_config()
+  svc <- .kms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$list_key_rotations <- kms_list_key_rotations
 
 #' Gets a list of all KMS keys in the caller's Amazon Web Services account
 #' and Region
@@ -2492,7 +2557,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Keys")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Keys")
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
@@ -2545,7 +2610,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListResourceTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Tags")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Tags")
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
@@ -2593,7 +2658,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     name = "ListRetirableGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal)
   output <- .kms$list_retirable_grants_output()
@@ -2625,7 +2690,8 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PolicyName &#91;required&#93; The name of the key policy. The only valid value is `default`.
+#' @param PolicyName The name of the key policy. If no policy name is specified, the default
+#' value is `default`. The only valid value is `default`.
 #' @param Policy &#91;required&#93; The key policy to attach to the KMS key.
 #' 
 #' The key policy must meet the following criteria:
@@ -2683,7 +2749,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' @keywords internal
 #'
 #' @rdname kms_put_key_policy
-kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
+kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
   op <- new_operation(
     name = "PutKeyPolicy",
     http_method = "POST",
@@ -3084,7 +3150,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' Deletes the specified grant
 #'
 #' @description
-#' Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/#grant-delete) in the *Key Management Service Developer Guide* .
+#' Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete) in the *Key Management Service Developer Guide* .
 #'
 #' See [https://www.paws-r-sdk.com/docs/kms_revoke_grant/](https://www.paws-r-sdk.com/docs/kms_revoke_grant/) for full documentation.
 #'
@@ -3132,6 +3198,59 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
   return(response)
 }
 .kms$operations$revoke_grant <- kms_revoke_grant
+
+#' Immediately initiates rotation of the key material of the specified
+#' symmetric encryption KMS key
+#'
+#' @description
+#' Immediately initiates rotation of the key material of the specified symmetric encryption KMS key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kms_rotate_key_on_demand/](https://www.paws-r-sdk.com/docs/kms_rotate_key_on_demand/) for full documentation.
+#'
+#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot perform on-demand
+#' rotation of [asymmetric KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html),
+#' [HMAC KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
+#' KMS keys with [imported key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+#' or KMS keys in a [custom key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#' To perform on-demand rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' invoke the on-demand rotation on the primary key.
+#' 
+#' Specify the key ID or key ARN of the KMS key.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a KMS key, use
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#'
+#' @keywords internal
+#'
+#' @rdname kms_rotate_key_on_demand
+kms_rotate_key_on_demand <- function(KeyId) {
+  op <- new_operation(
+    name = "RotateKeyOnDemand",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kms$rotate_key_on_demand_input(KeyId = KeyId)
+  output <- .kms$rotate_key_on_demand_output()
+  config <- get_config()
+  svc <- .kms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$rotate_key_on_demand <- kms_rotate_key_on_demand
 
 #' Schedules the deletion of a KMS key
 #'

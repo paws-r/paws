@@ -282,8 +282,7 @@ comprehend_classify_document <- function(Text = NULL, EndpointArn, Bytes = NULL,
 #' See [https://www.paws-r-sdk.com/docs/comprehend_contains_pii_entities/](https://www.paws-r-sdk.com/docs/comprehend_contains_pii_entities/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 100 KB.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
-#' valid language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents.
 #'
 #' @keywords internal
 #'
@@ -1398,8 +1397,8 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' See [https://www.paws-r-sdk.com/docs/comprehend_detect_pii_entities/](https://www.paws-r-sdk.com/docs/comprehend_detect_pii_entities/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 100 KB.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
-#' valid language.
+#' @param LanguageCode &#91;required&#93; The language of the input text. Enter the language code for English (en)
+#' or Spanish (es).
 #'
 #' @keywords internal
 #'
@@ -2566,7 +2565,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' See [https://www.paws-r-sdk.com/docs/comprehend_start_pii_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_pii_entities_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; The input properties for a PII entities detection job.
-#' @param OutputDataConfig &#91;required&#93; Provides configuration parameters for the output of PII entity detection
+#' @param OutputDataConfig &#91;required&#93; Provides conﬁguration parameters for the output of PII entity detection
 #' jobs.
 #' @param Mode &#91;required&#93; Specifies whether the output provides the locations (offsets) of PII
 #' entities or a file in which PII entities are redacted.
@@ -2578,8 +2577,8 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
 #' Comprehend read access to your input data.
 #' @param JobName The identifier of the job.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
-#' valid language.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Enter the language code for English
+#' (en) or Spanish (es).
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
 #' @param Tags Tags to associate with the PII entities detection job. A tag is a

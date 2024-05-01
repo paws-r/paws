@@ -834,8 +834,7 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
 #'     coverage in your region of interest, see HERE car routing coverage
-#'     and [HERE truck routing
-#'     coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/truck-routing.html).
+#'     and HERE truck routing coverage.
 #' 
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
@@ -1543,7 +1542,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' -   VectorEsriStreets – `Arial Regular` | `Arial Italic` | `Arial Bold`
 #' 
 #' -   VectorEsriNavigation – `Arial Regular` | `Arial Italic` |
-#'     `Arial Bold`
+#'     `Arial Bold` | `Arial Unicode MS Bold` | `Arial Unicode MS Regular`
 #' 
 #' Valid font stacks for [HERE
 #' Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)
@@ -1592,7 +1591,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
-#' @param MapName &#91;required&#93; The map resource associated with the glyph file.
+#' @param MapName &#91;required&#93; The map resource associated with the glyph ﬁle.
 #'
 #' @keywords internal
 #'
@@ -1621,14 +1620,14 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/](https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/) for full documentation.
 #'
-#' @param FileName &#91;required&#93; The name of the sprite file. Use the following file names for the sprite
+#' @param FileName &#91;required&#93; The name of the sprite ﬁle. Use the following ﬁle names for the sprite
 #' sheet:
 #' 
 #' -   `sprites.png`
 #' 
 #' -   `sprites@@2x.png` for high pixel density displays
 #' 
-#' For the JSON document containing image offsets. Use the following file
+#' For the JSON document containing image offsets. Use the following ﬁle
 #' names:
 #' 
 #' -   `sprites.json`
@@ -1637,7 +1636,7 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NU
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
-#' @param MapName &#91;required&#93; The map resource associated with the sprite file.
+#' @param MapName &#91;required&#93; The map resource associated with the sprite ﬁle.
 #'
 #' @keywords internal
 #'
@@ -1756,6 +1755,39 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
 #' @param PlaceId &#91;required&#93; The identifier of the place to find.
+#' 
+#' While you can use PlaceID in subsequent requests, PlaceID is not
+#' intended to be a permanent identifier and the ID can change between
+#' consecutive API calls. Please see the following PlaceID behaviour for
+#' each data provider:
+#' 
+#' -   Esri: Place IDs will change every quarter at a minimum. The typical
+#'     time period for these changes would be March, June, September, and
+#'     December. Place IDs might also change between the typical quarterly
+#'     change but that will be much less frequent.
+#' 
+#' -   HERE: We recommend that you cache data for no longer than a week to
+#'     keep your data data fresh. You can assume that less than 1% ID
+#'     shifts will release over release which is approximately 1 - 2 times
+#'     per week.
+#' 
+#' -   Grab: Place IDs can expire or become invalid in the following
+#'     situations.
+#' 
+#'     -   Data operations: The POI may be removed from Grab POI database
+#'         by Grab Map Ops based on the ground-truth, such as being closed
+#'         in the real world, being detected as a duplicate POI, or having
+#'         incorrect information. Grab will synchronize data to the
+#'         Waypoint environment on weekly basis.
+#' 
+#'     -   Interpolated POI: Interpolated POI is a temporary POI generated
+#'         in real time when serving a request, and it will be marked as
+#'         derived in the `place.result_type` field in the response. The
+#'         information of interpolated POIs will be retained for at least
+#'         30 days, which means that within 30 days, you are able to obtain
+#'         POI details by Place ID from Place Details API. After 30 days,
+#'         the interpolated POIs(both Place ID and details) may expire and
+#'         inaccessible from the Places Details API.
 #'
 #' @keywords internal
 #'

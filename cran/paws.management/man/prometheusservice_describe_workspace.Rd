@@ -2,7 +2,7 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_describe_workspace}
 \alias{prometheusservice_describe_workspace}
-\title{Describes an existing AMP workspace}
+\title{Returns information about an existing workspace}
 \usage{
 prometheusservice_describe_workspace(workspaceId)
 }
@@ -10,7 +10,7 @@ prometheusservice_describe_workspace(workspaceId)
 \item{workspaceId}{[required] The ID of the workspace to describe.}
 }
 \description{
-Describes an existing AMP workspace.
+Returns information about an existing workspace.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace/} for full documentation.
 }

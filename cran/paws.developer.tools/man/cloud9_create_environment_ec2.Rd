@@ -31,7 +31,7 @@ account.}
 \item{clientRequestToken}{A unique, case-sensitive string that helps Cloud9 to ensure this
 operation completes no more than one time.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Client Tokens}
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Client Tokens}
 in the \emph{Amazon EC2 API Reference}.}
 
 \item{instanceType}{[required] The type of instance to connect to the environment (for example,
@@ -52,19 +52,14 @@ the API, such as Amazon Web Services SDK, Amazon Web Services CLI and
 Amazon Web Services CloudFormation. This change will only affect direct
 API consumers, and not Cloud9 console users.
 
-From January 22, 2024, Amazon Linux (AL1) will be removed from the list
-of available image IDs for Cloud9. This is necessary as AL1 will reach
-the end of maintenance support in December 2023, and as a result will no
-longer receive security updates. We recommend using Amazon Linux 2023 as
-the AMI to create your environment as it is fully supported. This change
-will only affect direct API consumers, and not Cloud9 console users.
+We recommend using Amazon Linux 2023 as the AMI to create your
+environment as it is fully supported.
 
 Since Ubuntu 18.04 has ended standard support as of May 31, 2023, we
 recommend you choose Ubuntu 22.04.
 
 \strong{AMI aliases}
 \itemize{
-\item Amazon Linux: \code{amazonlinux-1-x86_64}
 \item Amazon Linux 2: \code{amazonlinux-2-x86_64}
 \item Amazon Linux 2023 (recommended): \code{amazonlinux-2023-x86_64}
 \item Ubuntu 18.04: \code{ubuntu-18.04-x86_64}
@@ -73,8 +68,6 @@ recommend you choose Ubuntu 22.04.
 
 \strong{SSM paths}
 \itemize{
-\item Amazon Linux:
-\verb{resolve:ssm:/aws/service/cloud9/amis/amazonlinux-1-x86_64}
 \item Amazon Linux 2:
 \verb{resolve:ssm:/aws/service/cloud9/amis/amazonlinux-2-x86_64}
 \item Amazon Linux 2023 (recommended):

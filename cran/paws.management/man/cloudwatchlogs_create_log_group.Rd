@@ -37,7 +37,8 @@ Logs features and incurs lower costs.
 
 If you omit this parameter, the default of \code{STANDARD} is used.
 
-After a log group is created, its class can't be changed.
+The value of \code{logGroupClass} can't be changed after a log group is
+created.
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}
 }

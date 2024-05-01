@@ -276,6 +276,40 @@ inspector2_cancel_sbom_export <- function(reportId) {
 }
 .inspector2$operations$cancel_sbom_export <- inspector2_cancel_sbom_export
 
+#' Creates a CIS scan configuration
+#'
+#' @description
+#' Creates a CIS scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_cis_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_create_cis_scan_configuration/) for full documentation.
+#'
+#' @param scanName &#91;required&#93; The scan name for the CIS scan configuration.
+#' @param schedule &#91;required&#93; The schedule for the CIS scan configuration.
+#' @param securityLevel &#91;required&#93; The security level for the CIS scan configuration. Security level refers
+#' to the Benchmark levels that CIS assigns to a profile.
+#' @param tags The tags for the CIS scan configuration.
+#' @param targets &#91;required&#93; The targets for the CIS scan configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_cis_scan_configuration
+inspector2_create_cis_scan_configuration <- function(scanName, schedule, securityLevel, tags = NULL, targets) {
+  op <- new_operation(
+    name = "CreateCisScanConfiguration",
+    http_method = "POST",
+    http_path = "/cis/scan-configuration/create",
+    paginator = list()
+  )
+  input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, schedule = schedule, securityLevel = securityLevel, tags = tags, targets = targets)
+  output <- .inspector2$create_cis_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_cis_scan_configuration <- inspector2_create_cis_scan_configuration
+
 #' Creates a filter resource using specified filter criteria
 #'
 #' @description
@@ -376,6 +410,35 @@ inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria =
 }
 .inspector2$operations$create_sbom_export <- inspector2_create_sbom_export
 
+#' Deletes a CIS scan configuration
+#'
+#' @description
+#' Deletes a CIS scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_delete_cis_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_delete_cis_scan_configuration/) for full documentation.
+#'
+#' @param scanConfigurationArn &#91;required&#93; The ARN of the CIS scan configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_delete_cis_scan_configuration
+inspector2_delete_cis_scan_configuration <- function(scanConfigurationArn) {
+  op <- new_operation(
+    name = "DeleteCisScanConfiguration",
+    http_method = "POST",
+    http_path = "/cis/scan-configuration/delete",
+    paginator = list()
+  )
+  input <- .inspector2$delete_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
+  output <- .inspector2$delete_cis_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$delete_cis_scan_configuration <- inspector2_delete_cis_scan_configuration
+
 #' Deletes a filter resource
 #'
 #' @description
@@ -412,6 +475,8 @@ inspector2_delete_filter <- function(arn) {
 #' Describe Amazon Inspector configuration settings for an Amazon Web Services organization.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/inspector2_describe_organization_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -590,12 +655,82 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
 }
 .inspector2$operations$enable_delegated_admin_account <- inspector2_enable_delegated_admin_account
 
+#' Retrieves a CIS scan report
+#'
+#' @description
+#' Retrieves a CIS scan report.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_report/](https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_report/) for full documentation.
+#'
+#' @param scanArn &#91;required&#93; The scan ARN.
+#' @param targetAccounts The target accounts.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_cis_scan_report
+inspector2_get_cis_scan_report <- function(scanArn, targetAccounts = NULL) {
+  op <- new_operation(
+    name = "GetCisScanReport",
+    http_method = "POST",
+    http_path = "/cis/scan/report/get",
+    paginator = list()
+  )
+  input <- .inspector2$get_cis_scan_report_input(scanArn = scanArn, targetAccounts = targetAccounts)
+  output <- .inspector2$get_cis_scan_report_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_cis_scan_report <- inspector2_get_cis_scan_report
+
+#' Retrieves CIS scan result details
+#'
+#' @description
+#' Retrieves CIS scan result details.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_result_details/](https://www.paws-r-sdk.com/docs/inspector2_get_cis_scan_result_details/) for full documentation.
+#'
+#' @param accountId &#91;required&#93; The account ID.
+#' @param filterCriteria The filter criteria.
+#' @param maxResults The maximum number of CIS scan result details to be returned in a single
+#' page of results.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param scanArn &#91;required&#93; The scan ARN.
+#' @param sortBy The sort by order.
+#' @param sortOrder The sort order.
+#' @param targetResourceId &#91;required&#93; The target resource ID.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_cis_scan_result_details
+inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL, targetResourceId) {
+  op <- new_operation(
+    name = "GetCisScanResultDetails",
+    http_method = "POST",
+    http_path = "/cis/scan-result/details/get",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanResultDetails")
+  )
+  input <- .inspector2$get_cis_scan_result_details_input(accountId = accountId, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder, targetResourceId = targetResourceId)
+  output <- .inspector2$get_cis_scan_result_details_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_cis_scan_result_details <- inspector2_get_cis_scan_result_details
+
 #' Retrieves setting configurations for Inspector scans
 #'
 #' @description
 #' Retrieves setting configurations for Inspector scans.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -625,6 +760,8 @@ inspector2_get_configuration <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_delegated_admin_account/](https://www.paws-r-sdk.com/docs/inspector2_get_delegated_admin_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname inspector2_get_delegated_admin_account
@@ -652,6 +789,8 @@ inspector2_get_delegated_admin_account <- function() {
 #' Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_get_ec_2_deep_inspection_configuration/](https://www.paws-r-sdk.com/docs/inspector2_get_ec_2_deep_inspection_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -829,6 +968,148 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
   return(response)
 }
 .inspector2$operations$list_account_permissions <- inspector2_list_account_permissions
+
+#' Lists CIS scan configurations
+#'
+#' @description
+#' Lists CIS scan configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_configurations/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_configurations/) for full documentation.
+#'
+#' @param filterCriteria The CIS scan configuration filter criteria.
+#' @param maxResults The maximum number of CIS scan configurations to be returned in a single
+#' page of results.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param sortBy The CIS scan configuration sort by order.
+#' @param sortOrder The CIS scan configuration sort order order.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_cis_scan_configurations
+inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListCisScanConfigurations",
+    http_method = "POST",
+    http_path = "/cis/scan-configuration/list",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations")
+  )
+  input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .inspector2$list_cis_scan_configurations_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_cis_scan_configurations <- inspector2_list_cis_scan_configurations
+
+#' Lists scan results aggregated by checks
+#'
+#' @description
+#' Lists scan results aggregated by checks.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_checks/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_checks/) for full documentation.
+#'
+#' @param filterCriteria The filter criteria.
+#' @param maxResults The maximum number of scan results aggregated by checks to be returned
+#' in a single page of results.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param scanArn &#91;required&#93; The scan ARN.
+#' @param sortBy The sort by order.
+#' @param sortOrder The sort order.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_cis_scan_results_aggregated_by_checks
+inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListCisScanResultsAggregatedByChecks",
+    http_method = "POST",
+    http_path = "/cis/scan-result/check/list",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "checkAggregations")
+  )
+  input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .inspector2$list_cis_scan_results_aggregated_by_checks_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_cis_scan_results_aggregated_by_checks <- inspector2_list_cis_scan_results_aggregated_by_checks
+
+#' Lists scan results aggregated by a target resource
+#'
+#' @description
+#' Lists scan results aggregated by a target resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_target_resource/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scan_results_aggregated_by_target_resource/) for full documentation.
+#'
+#' @param filterCriteria The filter criteria.
+#' @param maxResults The maximum number of scan results aggregated by a target resource to be
+#' returned in a single page of results.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param scanArn &#91;required&#93; The scan ARN.
+#' @param sortBy The sort by order.
+#' @param sortOrder The sort order.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_cis_scan_resul_aggre_by_targe_resou
+inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, scanArn, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListCisScanResultsAggregatedByTargetResource",
+    http_method = "POST",
+    http_path = "/cis/scan-result/resource/list",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceAggregations")
+  )
+  input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_cis_scan_results_aggregated_by_target_resource <- inspector2_list_cis_scan_results_aggregated_by_target_resource
+
+#' Returns a CIS scan list
+#'
+#' @description
+#' Returns a CIS scan list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_list_cis_scans/](https://www.paws-r-sdk.com/docs/inspector2_list_cis_scans/) for full documentation.
+#'
+#' @param detailLevel The detail applied to the CIS scan.
+#' @param filterCriteria The CIS scan filter criteria.
+#' @param maxResults The maximum number of results to be returned.
+#' @param nextToken The pagination token from a previous request that's used to retrieve the
+#' next page of results.
+#' @param sortBy The CIS scans sort by order.
+#' @param sortOrder The CIS scans sort order.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_list_cis_scans
+inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListCisScans",
+    http_method = "POST",
+    http_path = "/cis/scan/list",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scans")
+  )
+  input <- .inspector2$list_cis_scans_input(detailLevel = detailLevel, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .inspector2$list_cis_scans_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$list_cis_scans <- inspector2_list_cis_scans
 
 #' Lists coverage details for you environment
 #'
@@ -1240,6 +1521,128 @@ inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) 
 }
 .inspector2$operations$search_vulnerabilities <- inspector2_search_vulnerabilities
 
+#' Sends a CIS session health
+#'
+#' @description
+#' Sends a CIS session health. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_send_cis_session_health/](https://www.paws-r-sdk.com/docs/inspector2_send_cis_session_health/) for full documentation.
+#'
+#' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
+#' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_send_cis_session_health
+inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
+  op <- new_operation(
+    name = "SendCisSessionHealth",
+    http_method = "PUT",
+    http_path = "/cissession/health/send",
+    paginator = list()
+  )
+  input <- .inspector2$send_cis_session_health_input(scanJobId = scanJobId, sessionToken = sessionToken)
+  output <- .inspector2$send_cis_session_health_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$send_cis_session_health <- inspector2_send_cis_session_health
+
+#' Sends a CIS session telemetry
+#'
+#' @description
+#' Sends a CIS session telemetry. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_send_cis_session_telemetry/](https://www.paws-r-sdk.com/docs/inspector2_send_cis_session_telemetry/) for full documentation.
+#'
+#' @param messages &#91;required&#93; The CIS session telemetry messages.
+#' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
+#' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_send_cis_session_telemetry
+inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionToken) {
+  op <- new_operation(
+    name = "SendCisSessionTelemetry",
+    http_method = "PUT",
+    http_path = "/cissession/telemetry/send",
+    paginator = list()
+  )
+  input <- .inspector2$send_cis_session_telemetry_input(messages = messages, scanJobId = scanJobId, sessionToken = sessionToken)
+  output <- .inspector2$send_cis_session_telemetry_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$send_cis_session_telemetry <- inspector2_send_cis_session_telemetry
+
+#' Starts a CIS session
+#'
+#' @description
+#' Starts a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_start_cis_session/](https://www.paws-r-sdk.com/docs/inspector2_start_cis_session/) for full documentation.
+#'
+#' @param message &#91;required&#93; The start CIS session message.
+#' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_start_cis_session
+inspector2_start_cis_session <- function(message, scanJobId) {
+  op <- new_operation(
+    name = "StartCisSession",
+    http_method = "PUT",
+    http_path = "/cissession/start",
+    paginator = list()
+  )
+  input <- .inspector2$start_cis_session_input(message = message, scanJobId = scanJobId)
+  output <- .inspector2$start_cis_session_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$start_cis_session <- inspector2_start_cis_session
+
+#' Stops a CIS session
+#'
+#' @description
+#' Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/](https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/) for full documentation.
+#'
+#' @param message &#91;required&#93; The stop CIS session message.
+#' @param scanJobId &#91;required&#93; A unique identifier for the scan job.
+#' @param sessionToken &#91;required&#93; The unique token that identifies the CIS session.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_stop_cis_session
+inspector2_stop_cis_session <- function(message, scanJobId, sessionToken) {
+  op <- new_operation(
+    name = "StopCisSession",
+    http_method = "PUT",
+    http_path = "/cissession/stop",
+    paginator = list()
+  )
+  input <- .inspector2$stop_cis_session_input(message = message, scanJobId = scanJobId, sessionToken = sessionToken)
+  output <- .inspector2$stop_cis_session_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$stop_cis_session <- inspector2_stop_cis_session
+
 #' Adds tags to a resource
 #'
 #' @description
@@ -1300,6 +1703,40 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 }
 .inspector2$operations$untag_resource <- inspector2_untag_resource
 
+#' Updates a CIS scan configuration
+#'
+#' @description
+#' Updates a CIS scan configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_cis_scan_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_cis_scan_configuration/) for full documentation.
+#'
+#' @param scanConfigurationArn &#91;required&#93; The CIS scan configuration ARN.
+#' @param scanName The scan name for the CIS scan configuration.
+#' @param schedule The schedule for the CIS scan configuration.
+#' @param securityLevel The security level for the CIS scan configuration. Security level refers
+#' to the Benchmark levels that CIS assigns to a profile.
+#' @param targets The targets for the CIS scan configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_cis_scan_configuration
+inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanName = NULL, schedule = NULL, securityLevel = NULL, targets = NULL) {
+  op <- new_operation(
+    name = "UpdateCisScanConfiguration",
+    http_method = "POST",
+    http_path = "/cis/scan-configuration/update",
+    paginator = list()
+  )
+  input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, schedule = schedule, securityLevel = securityLevel, targets = targets)
+  output <- .inspector2$update_cis_scan_configuration_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_cis_scan_configuration <- inspector2_update_cis_scan_configuration
+
 #' Updates setting configurations for your Amazon Inspector account
 #'
 #' @description
@@ -1307,20 +1744,22 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_update_configuration/](https://www.paws-r-sdk.com/docs/inspector2_update_configuration/) for full documentation.
 #'
-#' @param ecrConfiguration &#91;required&#93; Specifies how the ECR automated re-scan will be updated for your
+#' @param ec2Configuration Specifies how the Amazon EC2 automated scan will be updated for your
+#' environment.
+#' @param ecrConfiguration Specifies how the ECR automated re-scan will be updated for your
 #' environment.
 #'
 #' @keywords internal
 #'
 #' @rdname inspector2_update_configuration
-inspector2_update_configuration <- function(ecrConfiguration) {
+inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
     http_method = "POST",
     http_path = "/configuration/update",
     paginator = list()
   )
-  input <- .inspector2$update_configuration_input(ecrConfiguration = ecrConfiguration)
+  input <- .inspector2$update_configuration_input(ec2Configuration = ec2Configuration, ecrConfiguration = ecrConfiguration)
   output <- .inspector2$update_configuration_output()
   config <- get_config()
   svc <- .inspector2$service(config)
@@ -1369,7 +1808,7 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
 #' Updates an encryption key
 #'
 #' @description
-#' Updates an encryption key. A `ResourceNotFoundException` means that an AWS owned key is being used for encryption.
+#' Updates an encryption key. A `ResourceNotFoundException` means that an Amazon Web Services owned key is being used for encryption.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/) for full documentation.
 #'

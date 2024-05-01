@@ -129,7 +129,7 @@ resourcegroupstaggingapi <- function(config = list(), credentials = list(), endp
 
 .resourcegroupstaggingapi$metadata <- list(
   service_name = "tagging",
-  endpoints = list("*" = list(endpoint = "tagging.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tagging.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "tagging.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "tagging.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "tagging.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tagging.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "tagging.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "tagging.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "tagging.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "tagging.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Resource Groups Tagging API",
   api_version = "2017-01-26",
   signing_name = "tagging",

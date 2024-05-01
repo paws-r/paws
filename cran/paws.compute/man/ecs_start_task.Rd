@@ -17,7 +17,8 @@ ecs_start_task(
   referenceId = NULL,
   startedBy = NULL,
   tags = NULL,
-  taskDefinition
+  taskDefinition,
+  volumeConfigurations = NULL
 )
 }
 \arguments{
@@ -100,6 +101,12 @@ your tags per resource limit.
 \item{taskDefinition}{[required] The \code{family} and \code{revision} (\code{family:revision}) or full ARN of the task
 definition to start. If a \code{revision} isn't specified, the latest
 \code{ACTIVE} revision is used.}
+
+\item{volumeConfigurations}{The details of the volume that was \code{configuredAtLaunch}. You can
+configure the size, volumeType, IOPS, throughput, snapshot and
+encryption in
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html}{TaskManagedEBSVolumeConfiguration}.
+The \code{name} of the volume must match the \code{name} from the task definition.}
 }
 \description{
 Starts a new task from the specified task definition on the specified container instance or instances.

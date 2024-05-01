@@ -5,12 +5,15 @@ NULL
 #' Amazon Kinesis Firehose
 #'
 #' @description
-#' Amazon Kinesis Data Firehose API Reference
+#' Amazon Data Firehose
 #' 
-#' Amazon Kinesis Data Firehose is a fully managed service that delivers
-#' real-time streaming data to destinations such as Amazon Simple Storage
-#' Service (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk,
-#' and various other supportd destinations.
+#' Amazon Data Firehose was previously known as Amazon Kinesis Data
+#' Firehose.
+#' 
+#' Amazon Data Firehose is a fully managed service that delivers real-time
+#' streaming data to destinations such as Amazon Simple Storage Service
+#' (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk, and
+#' various other supportd destinations.
 #'
 #' @param
 #' config
@@ -95,12 +98,12 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=firehose_create_delivery_stream]{create_delivery_stream} \tab Creates a Kinesis Data Firehose delivery stream\cr
+#'  \link[=firehose_create_delivery_stream]{create_delivery_stream} \tab Creates a Firehose delivery stream\cr
 #'  \link[=firehose_delete_delivery_stream]{delete_delivery_stream} \tab Deletes a delivery stream and its data\cr
 #'  \link[=firehose_describe_delivery_stream]{describe_delivery_stream} \tab Describes the specified delivery stream and its status\cr
 #'  \link[=firehose_list_delivery_streams]{list_delivery_streams} \tab Lists your delivery streams in alphabetical order of their names\cr
 #'  \link[=firehose_list_tags_for_delivery_stream]{list_tags_for_delivery_stream} \tab Lists the tags for the specified delivery stream\cr
-#'  \link[=firehose_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis Data Firehose delivery stream\cr
+#'  \link[=firehose_put_record]{put_record} \tab Writes a single data record into an Amazon Firehose delivery stream\cr
 #'  \link[=firehose_put_record_batch]{put_record_batch} \tab Writes multiple data records into a delivery stream in a single call, which can achieve higher throughput per producer than when writing single records\cr
 #'  \link[=firehose_start_delivery_stream_encryption]{start_delivery_stream_encryption} \tab Enables server-side encryption (SSE) for the delivery stream\cr
 #'  \link[=firehose_stop_delivery_stream_encryption]{stop_delivery_stream_encryption} \tab Disables server-side encryption (SSE) for the delivery stream\cr
@@ -138,7 +141,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .firehose$metadata <- list(
   service_name = "firehose",
-  endpoints = list("*" = list(endpoint = "firehose.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "firehose.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "firehose.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "firehose.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "firehose.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "firehose.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "firehose.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "firehose.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "firehose.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "firehose.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Firehose",
   api_version = "2015-08-04",
   signing_name = "firehose",

@@ -22,7 +22,8 @@ dynamodb_update_item(
 )
 }
 \arguments{
-\item{TableName}{[required] The name of the table containing the item to update.}
+\item{TableName}{[required] The name of the table containing the item to update. You can also
+provide the Amazon Resource Name (ARN) of the table in this parameter.}
 
 \item{Key}{[required] The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.

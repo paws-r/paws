@@ -1002,6 +1002,8 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/securityhub_describe_organization_configuration/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_organization_configuration
@@ -1202,6 +1204,8 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/](https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_security_hub
@@ -1230,6 +1234,8 @@ securityhub_disable_security_hub <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_administrator_account/](https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_administrator_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_from_administrator_account
@@ -1256,6 +1262,8 @@ securityhub_disassociate_from_administrator_account <- function() {
 #' This method is deprecated. Instead, use [`disassociate_from_administrator_account`][securityhub_disassociate_from_administrator_account].
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_master_account/](https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_master_account/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1424,6 +1432,8 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_administrator_account/](https://www.paws-r-sdk.com/docs/securityhub_get_administrator_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_administrator_account
@@ -1582,12 +1592,8 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/](https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/) for full documentation.
 #'
 #' @param FindingIdentifier &#91;required&#93; 
-#' @param StartTime An ISO 8601-formatted timestamp that indicates the start time of the
-#' requested finding history. A correctly formatted example is
-#' `2020-05-21T20:16:34.724Z`. The value cannot contain spaces, and date
-#' and time should be separated by `T`. For more information, see [RFC 3339
-#' section 5.6, Internet Date/Time
-#' Format](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
+#' @param StartTime A timestamp that indicates the start time of the requested finding
+#' history.
 #' 
 #' If you provide values for both `StartTime` and `EndTime`, Security Hub
 #' returns finding history for the specified time period. If you provide a
@@ -1601,12 +1607,26 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' CreatedAt timestamp of the finding to the time at which the API is
 #' called. In all of these scenarios, the response is limited to 100
 #' results, and the maximum time period is limited to 90 days.
+#' 
+#' This field accepts only the specified formats. Timestamps can end with
+#' `Z` or `("+" / "-") time-hour [":" time-minute]`. The time-secfrac after
+#' seconds is limited to a maximum of 9 digits. The offset is bounded by
+#' +/-18:00. Here are valid timestamp formats with examples:
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SSZ` (for example, `2019-01-31T23:00:00Z`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ` (for example,
+#'     `2019-01-31T23:00:00.123456789Z`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS+HH:MM` (for example,
+#'     `2024-01-04T15:25:10+17:59`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS-HHMM` (for example, `2024-01-04T15:25:10-1759`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM` (for example,
+#'     `2024-01-04T15:25:10.123456789+17:59`)
 #' @param EndTime An ISO 8601-formatted timestamp that indicates the end time of the
-#' requested finding history. A correctly formatted example is
-#' `2020-05-21T20:16:34.724Z`. The value cannot contain spaces, and date
-#' and time should be separated by `T`. For more information, see [RFC 3339
-#' section 5.6, Internet Date/Time
-#' Format](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
+#' requested finding history.
 #' 
 #' If you provide values for both `StartTime` and `EndTime`, Security Hub
 #' returns finding history for the specified time period. If you provide a
@@ -1620,6 +1640,24 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' CreatedAt timestamp of the finding to the time at which the API is
 #' called. In all of these scenarios, the response is limited to 100
 #' results, and the maximum time period is limited to 90 days.
+#' 
+#' This field accepts only the specified formats. Timestamps can end with
+#' `Z` or `("+" / "-") time-hour [":" time-minute]`. The time-secfrac after
+#' seconds is limited to a maximum of 9 digits. The offset is bounded by
+#' +/-18:00. Here are valid timestamp formats with examples:
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SSZ` (for example, `2019-01-31T23:00:00Z`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ` (for example,
+#'     `2019-01-31T23:00:00.123456789Z`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS+HH:MM` (for example,
+#'     `2024-01-04T15:25:10+17:59`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS-HHMM` (for example, `2024-01-04T15:25:10-1759`)
+#' 
+#' -   `YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM` (for example,
+#'     `2024-01-04T15:25:10.123456789+17:59`)
 #' @param NextToken A token for pagination purposes. Provide `NULL` as the initial value. In
 #' subsequent requests, provide the token included in the response to get
 #' up to an additional 100 results of finding history. If you don’t provide
@@ -1772,6 +1810,8 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/](https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_invitations_count
@@ -1798,6 +1838,8 @@ securityhub_get_invitations_count <- function() {
 #' This method is deprecated. Instead, use [`get_administrator_account`][securityhub_get_administrator_account].
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_master_account/](https://www.paws-r-sdk.com/docs/securityhub_get_master_account/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

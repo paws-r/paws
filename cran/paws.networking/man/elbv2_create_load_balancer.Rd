@@ -25,10 +25,10 @@ This name must be unique per region per account, can have a maximum of
 must not begin or end with a hyphen, and must not begin with
 "internal-".}
 
-\item{Subnets}{The IDs of the public subnets. You can specify only one subnet per
-Availability Zone. You must specify either subnets or subnet mappings,
-but not both. To specify an Elastic IP address, specify subnet mappings
-instead of subnets.
+\item{Subnets}{The IDs of the subnets. You can specify only one subnet per Availability
+Zone. You must specify either subnets or subnet mappings, but not both.
+To specify an Elastic IP address, specify subnet mappings instead of
+subnets.
 
 [Application Load Balancers] You must specify subnets from at least
 two Availability Zones.
@@ -45,9 +45,8 @@ Availability Zones.
 [Gateway Load Balancers] You can specify subnets from one or more
 Availability Zones.}
 
-\item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
-Availability Zone. You must specify either subnets or subnet mappings,
-but not both.
+\item{SubnetMappings}{The IDs of the subnets. You can specify only one subnet per Availability
+Zone. You must specify either subnets or subnet mappings, but not both.
 
 [Application Load Balancers] You must specify subnets from at least
 two Availability Zones. You cannot specify Elastic IP addresses for your

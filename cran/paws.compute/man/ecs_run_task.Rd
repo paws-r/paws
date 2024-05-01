@@ -22,7 +22,8 @@ ecs_run_task(
   startedBy = NULL,
   tags = NULL,
   taskDefinition,
-  clientToken = NULL
+  clientToken = NULL,
+  volumeConfigurations = NULL
 )
 }
 \arguments{
@@ -69,8 +70,8 @@ The \code{FARGATE} launch type runs your tasks on Fargate On-Demand
 infrastructure.
 
 Fargate Spot infrastructure is available for use but a capacity provider
-strategy must be used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html}{Fargate capacity providers}
-in the \emph{Amazon ECS User Guide for Fargate}.
+strategy must be used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-capacity-providers.html}{Fargate capacity providers}
+in the \emph{Amazon ECS Developer Guide}.
 
 The \code{EC2} launch type runs your tasks on Amazon EC2 instances registered
 to your cluster.
@@ -165,32 +166,33 @@ your tags per resource limit.
 definition to run. If a \code{revision} isn't specified, the latest \code{ACTIVE}
 revision is used.
 
-When you create a policy for run-task, you can set the resource to be
-the latest task definition revision, or a specific revision.
-
 The full ARN value must match the value that you specified as the
 \code{Resource} of the principal's permissions policy.
 
-When you specify the policy resource as the latest task definition
-version (by setting the \code{Resource} in the policy to
-\code{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName}),
-then set this value to
-\code{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName}.
+When you specify a task definition, you must either specify a specific
+revision, or all revisions in the ARN.
 
-When you specify the policy resource as a specific task definition
-version (by setting the \code{Resource} in the policy to
-\code{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:1} or
-\verb{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:*}),
-then set this value to
-\code{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:1}.
+To specify a specific revision, include the revision number in the ARN.
+For example, to specify revision 2, use
+\code{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:2}.
+
+To specify all revisions, use the wildcard (*) in the ARN. For example,
+to specify all revisions, use
+\verb{arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:*}.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-resources}{Policy Resources for Amazon ECS}
-in the Amazon Elastic Container Service developer Guide.}
+in the Amazon Elastic Container Service Developer Guide.}
 
 \item{clientToken}{An identifier that you provide to ensure the idempotency of the request.
 It must be unique and is case sensitive. Up to 64 characters are
 allowed. The valid characters are characters in the range of 33-126,
 inclusive. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html}{Ensuring idempotency}.}
+
+\item{volumeConfigurations}{The details of the volume that was \code{configuredAtLaunch}. You can
+configure the size, volumeType, IOPS, throughput, snapshot and
+encryption in in
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html}{TaskManagedEBSVolumeConfiguration}.
+The \code{name} of the volume must match the \code{name} from the task definition.}
 }
 \description{
 Starts a new task using the specified task definition.

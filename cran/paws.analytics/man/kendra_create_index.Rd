@@ -69,7 +69,9 @@ accessible to the user will be searchable and displayable.}
 
 \item{UserGroupResolutionConfiguration}{Gets users and groups from IAM Identity Center identity source. To
 configure this, see
-\href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.}
+\href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.
+This is useful for user context filtering, where search results are
+filtered based on the user or their group access to documents.}
 }
 \description{
 Creates an Amazon Kendra index. Index creation is an asynchronous API. To determine if index creation has completed, check the \code{Status} field returned from a call to \code{\link[=kendra_describe_index]{describe_index}}. The \code{Status} field is set to \code{ACTIVE} when the index is ready to use.

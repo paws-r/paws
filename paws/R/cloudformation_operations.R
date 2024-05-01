@@ -13,6 +13,8 @@ NULL
 #' @usage
 #' cloudformation_activate_organizations_access()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -57,7 +59,7 @@ cloudformation_activate_organizations_access <- function() {
 #' [`set_type_configuration`][cloudformation_set_type_configuration] to
 #' specify configuration properties for the extension. For more
 #' information, see [Configuring extensions at the account
-#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#registry-set-configuration)
+#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration)
 #' in the *CloudFormation User Guide*.
 #'
 #' @usage
@@ -170,7 +172,7 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
 #' from the CloudFormation registry for the account and Region.
 #' 
 #' For more information, see [Configuring extensions at the account
-#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#registry-set-configuration)
+#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration)
 #' in the *CloudFormation User Guide*.
 #'
 #' @usage
@@ -501,7 +503,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' must point to a template (max size: 460,800 bytes) that's located in an
 #' Amazon S3 bucket or a Systems Manager document. CloudFormation generates
 #' the change set by comparing this template with the stack that you
-#' specified.
+#' specified. The location for an Amazon S3 bucket must start with
+#' `https://`.
 #' 
 #' Conditional: You must specify only `TemplateBody` or `TemplateURL`.
 #' @param UsePreviousTemplate Whether to reuse the template that's associated with the stack to create
@@ -781,6 +784,105 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 }
 .cloudformation$operations$create_change_set <- cloudformation_create_change_set
 
+#' Creates a template from existing resources that are not already managed
+#' with CloudFormation
+#'
+#' @description
+#' Creates a template from existing resources that are not already managed
+#' with CloudFormation. You can check the status of the template generation
+#' using the
+#' [`describe_generated_template`][cloudformation_describe_generated_template]
+#' API action.
+#'
+#' @usage
+#' cloudformation_create_generated_template(Resources,
+#'   GeneratedTemplateName, StackName, TemplateConfiguration)
+#'
+#' @param Resources An optional list of resources to be included in the generated template.
+#' 
+#' If no resources are specified,the template will be created without any
+#' resources. Resources can be added to the template using the
+#' [`update_generated_template`][cloudformation_update_generated_template]
+#' API action.
+#' @param GeneratedTemplateName &#91;required&#93; The name assigned to the generated template.
+#' @param StackName An optional name or ARN of a stack to use as the base stack for the
+#' generated template.
+#' @param TemplateConfiguration The configuration details of the generated template, including the
+#' `DeletionPolicy` and `UpdateReplacePolicy`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeneratedTemplateId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_generated_template(
+#'   Resources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       LogicalResourceId = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   GeneratedTemplateName = "string",
+#'   StackName = "string",
+#'   TemplateConfiguration = list(
+#'     DeletionPolicy = "DELETE"|"RETAIN",
+#'     UpdateReplacePolicy = "DELETE"|"RETAIN"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example creates a generated template with a resources file.
+#' svc$create_generated_template(
+#'   GeneratedTemplateName = "JazzyTemplate",
+#'   Resources = list(
+#'     list(
+#'       ResourceIdentifier = list(
+#'         BucketName = "jazz-bucket"
+#'       ),
+#'       ResourceType = "AWS::S3::Bucket"
+#'     ),
+#'     list(
+#'       ResourceIdentifier = list(
+#'         DhcpOptionsId = "random-id123"
+#'       ),
+#'       ResourceType = "AWS::EC2::DHCPOptions"
+#'     )
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_create_generated_template
+#'
+#' @aliases cloudformation_create_generated_template
+cloudformation_create_generated_template <- function(Resources = NULL, GeneratedTemplateName, StackName = NULL, TemplateConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateGeneratedTemplate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$create_generated_template_input(Resources = Resources, GeneratedTemplateName = GeneratedTemplateName, StackName = StackName, TemplateConfiguration = TemplateConfiguration)
+  output <- .cloudformation$create_generated_template_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$create_generated_template <- cloudformation_create_generated_template
+
 #' Creates a stack as specified in the template
 #'
 #' @description
@@ -814,7 +916,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
 #' or a Systems Manager document. For more information, go to the [Template
 #' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
+#' must start with `https://`.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
@@ -830,8 +933,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' creation and updating operations, and for the specified monitoring
 #' period afterwards.
 #' @param TimeoutInMinutes The amount of time that can pass before the stack status becomes
-#' CREATE_FAILED; if `DisableRollback` is not set or is set to `false`, the
-#' stack will be rolled back.
+#' `CREATE_FAILED`; if `DisableRollback` is not set or is set to `false`,
+#' the stack will be rolled back.
 #' @param NotificationARNs The Amazon Simple Notification Service (Amazon SNS) topic ARNs to
 #' publish stack related events. You can find your Amazon SNS topic ARNs
 #' using the Amazon SNS console or your Command Line Interface (CLI).
@@ -959,7 +1062,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
 #' policy (maximum size: 16 KB) located in an S3 bucket in the same Region
-#' as the stack. You can specify either the `StackPolicyBody` or the
+#' as the stack. The location for an Amazon S3 bucket must start with
+#' `https://`. You can specify either the `StackPolicyBody` or the
 #' `StackPolicyURL` parameter, but not both.
 #' @param Tags Key-value pairs to associate with this stack. CloudFormation also
 #' propagates these tags to the resources created in the stack. A maximum
@@ -1267,7 +1371,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 1 byte and a maximum length of 51,200 bytes. For more information, see
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
@@ -1276,7 +1380,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' Amazon S3 bucket or a Systems Manager document. For more information,
 #' see [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
@@ -1506,6 +1610,8 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' @usage
 #' cloudformation_deactivate_organizations_access()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -1654,6 +1760,56 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
   return(response)
 }
 .cloudformation$operations$delete_change_set <- cloudformation_delete_change_set
+
+#' Deleted a generated template
+#'
+#' @description
+#' Deleted a generated template.
+#'
+#' @usage
+#' cloudformation_delete_generated_template(GeneratedTemplateName)
+#'
+#' @param GeneratedTemplateName &#91;required&#93; The name or Amazon Resource Name (ARN) of a generated template.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_generated_template(
+#'   GeneratedTemplateName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example deletes a generated template
+#' svc$delete_generated_template(
+#'   GeneratedTemplateName = "JazzyTemplate"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_delete_generated_template
+#'
+#' @aliases cloudformation_delete_generated_template
+cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
+  op <- new_operation(
+    name = "DeleteGeneratedTemplate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$delete_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
+  output <- .cloudformation$delete_generated_template_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$delete_generated_template <- cloudformation_delete_generated_template
 
 #' Deletes a specified stack
 #'
@@ -2077,7 +2233,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' in the *CloudFormation User Guide*.
 #'
 #' @usage
-#' cloudformation_describe_change_set(ChangeSetName, StackName, NextToken)
+#' cloudformation_describe_change_set(ChangeSetName, StackName, NextToken,
+#'   IncludePropertyValues)
 #'
 #' @param ChangeSetName &#91;required&#93; The name or Amazon Resource Name (ARN) of the change set that you want
 #' to describe.
@@ -2087,6 +2244,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' [`describe_change_set`][cloudformation_describe_change_set] response
 #' output) that identifies the next page of information that you want to
 #' retrieve.
+#' @param IncludePropertyValues If `true`, the returned changes include detailed changes in the property
+#' values.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2137,6 +2296,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'       Type = "Resource",
 #'       HookInvocationCount = 123,
 #'       ResourceChange = list(
+#'         PolicyAction = "Delete"|"Retain"|"Snapshot"|"ReplaceAndDelete"|"ReplaceAndRetain"|"ReplaceAndSnapshot",
 #'         Action = "Add"|"Modify"|"Remove"|"Import"|"Dynamic",
 #'         LogicalResourceId = "string",
 #'         PhysicalResourceId = "string",
@@ -2150,7 +2310,11 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'             Target = list(
 #'               Attribute = "Properties"|"Metadata"|"CreationPolicy"|"UpdatePolicy"|"DeletionPolicy"|"UpdateReplacePolicy"|"Tags",
 #'               Name = "string",
-#'               RequiresRecreation = "Never"|"Conditionally"|"Always"
+#'               RequiresRecreation = "Never"|"Conditionally"|"Always",
+#'               Path = "string",
+#'               BeforeValue = "string",
+#'               AfterValue = "string",
+#'               AttributeChangeType = "Add"|"Remove"|"Modify"
 #'             ),
 #'             Evaluation = "Static"|"Dynamic",
 #'             ChangeSource = "ResourceReference"|"ParameterReference"|"ResourceAttribute"|"DirectModification"|"Automatic",
@@ -2161,7 +2325,9 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'         ModuleInfo = list(
 #'           TypeHierarchy = "string",
 #'           LogicalIdHierarchy = "string"
-#'         )
+#'         ),
+#'         BeforeContext = "string",
+#'         AfterContext = "string"
 #'       )
 #'     )
 #'   ),
@@ -2179,7 +2345,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' svc$describe_change_set(
 #'   ChangeSetName = "string",
 #'   StackName = "string",
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   IncludePropertyValues = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2188,14 +2355,14 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' @rdname cloudformation_describe_change_set
 #'
 #' @aliases cloudformation_describe_change_set
-cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, NextToken = NULL) {
+cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, NextToken = NULL, IncludePropertyValues = NULL) {
   op <- new_operation(
     name = "DescribeChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken)
+  input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, IncludePropertyValues = IncludePropertyValues)
   output <- .cloudformation$describe_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -2288,6 +2455,110 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
   return(response)
 }
 .cloudformation$operations$describe_change_set_hooks <- cloudformation_describe_change_set_hooks
+
+#' Describes a generated template
+#'
+#' @description
+#' Describes a generated template. The output includes details about the
+#' progress of the creation of a generated template started by a
+#' [`create_generated_template`][cloudformation_create_generated_template]
+#' API action or the update of a generated template started with an
+#' [`update_generated_template`][cloudformation_update_generated_template]
+#' API action.
+#'
+#' @usage
+#' cloudformation_describe_generated_template(GeneratedTemplateName)
+#'
+#' @param GeneratedTemplateName &#91;required&#93; The name or Amazon Resource Name (ARN) of a generated template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeneratedTemplateId = "string",
+#'   GeneratedTemplateName = "string",
+#'   Resources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       LogicalResourceId = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       ),
+#'       ResourceStatus = "PENDING"|"IN_PROGRESS"|"FAILED"|"COMPLETE",
+#'       ResourceStatusReason = "string",
+#'       Warnings = list(
+#'         list(
+#'           Type = "MUTUALLY_EXCLUSIVE_PROPERTIES"|"UNSUPPORTED_PROPERTIES"|"MUTUALLY_EXCLUSIVE_TYPES",
+#'           Properties = list(
+#'             list(
+#'               PropertyPath = "string",
+#'               Required = TRUE|FALSE,
+#'               Description = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Status = "CREATE_PENDING"|"UPDATE_PENDING"|"DELETE_PENDING"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"COMPLETE",
+#'   StatusReason = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Progress = list(
+#'     ResourcesSucceeded = 123,
+#'     ResourcesFailed = 123,
+#'     ResourcesProcessing = 123,
+#'     ResourcesPending = 123
+#'   ),
+#'   StackId = "string",
+#'   TemplateConfiguration = list(
+#'     DeletionPolicy = "DELETE"|"RETAIN",
+#'     UpdateReplacePolicy = "DELETE"|"RETAIN"
+#'   ),
+#'   TotalWarnings = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_generated_template(
+#'   GeneratedTemplateName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example describes a generated template
+#' svc$describe_generated_template(
+#'   GeneratedTemplateName = "JazzyTemplate"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_generated_template
+#'
+#' @aliases cloudformation_describe_generated_template
+cloudformation_describe_generated_template <- function(GeneratedTemplateName) {
+  op <- new_operation(
+    name = "DescribeGeneratedTemplate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$describe_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
+  output <- .cloudformation$describe_generated_template_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_generated_template <- cloudformation_describe_generated_template
 
 #' Retrieves information about the account's OrganizationAccess status
 #'
@@ -2422,6 +2693,75 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
 }
 .cloudformation$operations$describe_publisher <- cloudformation_describe_publisher
 
+#' Describes details of a resource scan
+#'
+#' @description
+#' Describes details of a resource scan.
+#'
+#' @usage
+#' cloudformation_describe_resource_scan(ResourceScanId)
+#'
+#' @param ResourceScanId &#91;required&#93; The Amazon Resource Name (ARN) of the resource scan.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceScanId = "string",
+#'   Status = "IN_PROGRESS"|"FAILED"|"COMPLETE"|"EXPIRED",
+#'   StatusReason = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PercentageCompleted = 123.0,
+#'   ResourceTypes = list(
+#'     "string"
+#'   ),
+#'   ResourcesScanned = 123,
+#'   ResourcesRead = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_resource_scan(
+#'   ResourceScanId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example describes a selected resource scan
+#' svc$describe_resource_scan(
+#'   ResourceScanId = "arn:aws:cloudformation:us-east-1:123456789012:resourceS..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_resource_scan
+#'
+#' @aliases cloudformation_describe_resource_scan
+cloudformation_describe_resource_scan <- function(ResourceScanId) {
+  op <- new_operation(
+    name = "DescribeResourceScan",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$describe_resource_scan_input(ResourceScanId = ResourceScanId)
+  output <- .cloudformation$describe_resource_scan_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_resource_scan <- cloudformation_describe_resource_scan
+
 #' Returns information about a stack drift detection operation
 #'
 #' @description
@@ -2505,8 +2845,8 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' @description
 #' Returns all stack related events for a specified stack in reverse
 #' chronological order. For more information about a stack's event history,
-#' go to
-#' [Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
+#' see [CloudFormation stack creation
+#' events](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html)
 #' in the *CloudFormation User Guide*.
 #' 
 #' You can list events for stacks that have failed to create or have been
@@ -2550,7 +2890,8 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #'       HookStatus = "HOOK_IN_PROGRESS"|"HOOK_COMPLETE_SUCCEEDED"|"HOOK_COMPLETE_FAILED"|"HOOK_FAILED",
 #'       HookStatusReason = "string",
 #'       HookInvocationPoint = "PRE_PROVISION",
-#'       HookFailureMode = "FAIL"|"WARN"
+#'       HookFailureMode = "FAIL"|"WARN",
+#'       DetailedStatus = "CONFIGURATION_COMPLETE"|"VALIDATION_FAILED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2644,7 +2985,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #'     ),
 #'     Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
 #'     StackInstanceStatus = list(
-#'       DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"|"SKIPPED_SUSPENDED_ACCOUNT"
+#'       DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"|"SKIPPED_SUSPENDED_ACCOUNT"|"FAILED_IMPORT"
 #'     ),
 #'     StatusReason = "string",
 #'     OrganizationalUnitId = "string",
@@ -3264,6 +3605,10 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' @description
 #' Returns the description for the specified stack; if no stack name was
 #' specified, then it returns the description for all the stacks created.
+#' For more information about a stack's event history, see [CloudFormation
+#' stack creation
+#' events](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html)
+#' in the *CloudFormation User Guide*.
 #' 
 #' If the stack doesn't exist, a `ValidationError` is returned.
 #'
@@ -3368,7 +3713,8 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #'           "2015-01-01"
 #'         )
 #'       ),
-#'       RetainExceptOnCreate = TRUE|FALSE
+#'       RetainExceptOnCreate = TRUE|FALSE,
+#'       DetailedStatus = "CONFIGURATION_COMPLETE"|"VALIDATION_FAILED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3928,7 +4274,8 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' template that's located in an Amazon S3 bucket or a Systems Manager
 #' document. For more information, go to [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
+#' must start with `https://`.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.
@@ -4076,6 +4423,82 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
   return(response)
 }
 .cloudformation$operations$execute_change_set <- cloudformation_execute_change_set
+
+#' Retrieves a generated template
+#'
+#' @description
+#' Retrieves a generated template. If the template is in an `InProgress` or
+#' `Pending` status then the template returned will be the template when
+#' the template was last in a `Complete` status. If the template has not
+#' yet been in a `Complete` status then an empty template will be returned.
+#'
+#' @usage
+#' cloudformation_get_generated_template(Format, GeneratedTemplateName)
+#'
+#' @param Format The language to use to retrieve for the generated template. Supported
+#' values are:
+#' 
+#' -   `JSON`
+#' 
+#' -   `YAML`
+#' @param GeneratedTemplateName &#91;required&#93; The name or Amazon Resource Name (ARN) of the generated template. The
+#' format is
+#' `arn:${Partition}:cloudformation:${Region}:${Account}:generatedtemplate/${Id}`.
+#' For example,
+#' `arn:aws:cloudformation:us-east-1:123456789012:generatedtemplate/2e8465c1-9a80-43ea-a3a3-4f2d692fe6dc `.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "CREATE_PENDING"|"UPDATE_PENDING"|"DELETE_PENDING"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"COMPLETE",
+#'   TemplateBody = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_generated_template(
+#'   Format = "JSON"|"YAML",
+#'   GeneratedTemplateName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example gets a generated template ins JSON format.
+#' svc$get_generated_template(
+#'   GeneratedTemplateName = "JazzyTemplate"
+#' )
+#' 
+#' # This example gets a generated template in YAML format.
+#' svc$get_generated_template(
+#'   Format = "YAML",
+#'   GeneratedTemplateName = "JazzyTemplate"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_get_generated_template
+#'
+#' @aliases cloudformation_get_generated_template
+cloudformation_get_generated_template <- function(Format = NULL, GeneratedTemplateName) {
+  op <- new_operation(
+    name = "GetGeneratedTemplate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$get_generated_template_input(Format = Format, GeneratedTemplateName = GeneratedTemplateName)
+  output <- .cloudformation$get_generated_template_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$get_generated_template <- cloudformation_get_generated_template
 
 #' Returns the stack policy for a specified stack
 #'
@@ -4239,7 +4662,8 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' or a Systems Manager document. For more information about templates, see
 #' [Template
 #' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
+#' must start with `https://`.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `StackName`, `StackSetName`, `TemplateBody`, or `TemplateURL`.
@@ -4593,6 +5017,81 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 }
 .cloudformation$operations$list_exports <- cloudformation_list_exports
 
+#' Lists your generated templates in this Region
+#'
+#' @description
+#' Lists your generated templates in this Region.
+#'
+#' @usage
+#' cloudformation_list_generated_templates(NextToken, MaxResults)
+#'
+#' @param NextToken A string that identifies the next page of resource scan results.
+#' @param MaxResults If the number of available results exceeds this maximum, the response
+#' includes a `NextToken` value that you can use for the `NextToken`
+#' parameter to get the next set of results. By default the
+#' [`list_generated_templates`][cloudformation_list_generated_templates]
+#' API action will return at most 50 results in each response. The maximum
+#' value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summaries = list(
+#'     list(
+#'       GeneratedTemplateId = "string",
+#'       GeneratedTemplateName = "string",
+#'       Status = "CREATE_PENDING"|"UPDATE_PENDING"|"DELETE_PENDING"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"FAILED"|"COMPLETE",
+#'       StatusReason = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NumberOfResources = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_generated_templates(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example lists the generated templates.
+#' svc$list_generated_templates()
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_generated_templates
+#'
+#' @aliases cloudformation_list_generated_templates
+cloudformation_list_generated_templates <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListGeneratedTemplates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+  )
+  input <- .cloudformation$list_generated_templates_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudformation$list_generated_templates_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_generated_templates <- cloudformation_list_generated_templates
+
 #' Lists all stacks that are importing an exported output value
 #'
 #' @description
@@ -4654,6 +5153,276 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
   return(response)
 }
 .cloudformation$operations$list_imports <- cloudformation_list_imports
+
+#' Lists the related resources for a list of resources from a resource scan
+#'
+#' @description
+#' Lists the related resources for a list of resources from a resource
+#' scan. The response indicates whether each returned resource is already
+#' managed by CloudFormation.
+#'
+#' @usage
+#' cloudformation_list_resource_scan_related_resources(ResourceScanId,
+#'   Resources, NextToken, MaxResults)
+#'
+#' @param ResourceScanId &#91;required&#93; The Amazon Resource Name (ARN) of the resource scan.
+#' @param Resources &#91;required&#93; The list of resources for which you want to get the related resources.
+#' Up to 100 resources can be provided.
+#' @param NextToken A string that identifies the next page of resource scan results.
+#' @param MaxResults If the number of available results exceeds this maximum, the response
+#' includes a `NextToken` value that you can use for the `NextToken`
+#' parameter to get the next set of results. By default the
+#' [`list_resource_scan_related_resources`][cloudformation_list_resource_scan_related_resources]
+#' API action will return up to 100 results in each response. The maximum
+#' value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RelatedResources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       ),
+#'       ManagedByStack = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_scan_related_resources(
+#'   ResourceScanId = "string",
+#'   Resources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example lists the resources related to the passed in resources
+#' svc$list_resource_scan_related_resources(
+#'   ResourceScanId = "arn:aws:cloudformation:us-east-1:123456789012:resourceS...",
+#'   Resources = list(
+#'     list(
+#'       ResourceIdentifier = list(
+#'         BucketName = "jazz-bucket"
+#'       ),
+#'       ResourceType = "AWS::S3::Bucket"
+#'     ),
+#'     list(
+#'       ResourceIdentifier = list(
+#'         DhcpOptionsId = "random-id123"
+#'       ),
+#'       ResourceType = "AWS::EC2::DHCPOptions"
+#'     )
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_resource_scan_related_resources
+#'
+#' @aliases cloudformation_list_resource_scan_related_resources
+cloudformation_list_resource_scan_related_resources <- function(ResourceScanId, Resources, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceScanRelatedResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RelatedResources")
+  )
+  input <- .cloudformation$list_resource_scan_related_resources_input(ResourceScanId = ResourceScanId, Resources = Resources, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudformation$list_resource_scan_related_resources_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_resource_scan_related_resources <- cloudformation_list_resource_scan_related_resources
+
+#' Lists the resources from a resource scan
+#'
+#' @description
+#' Lists the resources from a resource scan. The results can be filtered by
+#' resource identifier, resource type prefix, tag key, and tag value. Only
+#' resources that match all specified filters are returned. The response
+#' indicates whether each returned resource is already managed by
+#' CloudFormation.
+#'
+#' @usage
+#' cloudformation_list_resource_scan_resources(ResourceScanId,
+#'   ResourceIdentifier, ResourceTypePrefix, TagKey, TagValue, NextToken,
+#'   MaxResults)
+#'
+#' @param ResourceScanId &#91;required&#93; The Amazon Resource Name (ARN) of the resource scan.
+#' @param ResourceIdentifier If specified, the returned resources will have the specified resource
+#' identifier (or one of them in the case where the resource has multiple
+#' identifiers).
+#' @param ResourceTypePrefix If specified, the returned resources will be of any of the resource
+#' types with the specified prefix.
+#' @param TagKey If specified, the returned resources will have a matching tag key.
+#' @param TagValue If specified, the returned resources will have a matching tag value.
+#' @param NextToken A string that identifies the next page of resource scan results.
+#' @param MaxResults If the number of available results exceeds this maximum, the response
+#' includes a `NextToken` value that you can use for the `NextToken`
+#' parameter to get the next set of results. By default the
+#' [`list_resource_scan_resources`][cloudformation_list_resource_scan_resources]
+#' API action will return at most 100 results in each response. The maximum
+#' value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Resources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       ),
+#'       ManagedByStack = TRUE|FALSE
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_scan_resources(
+#'   ResourceScanId = "string",
+#'   ResourceIdentifier = "string",
+#'   ResourceTypePrefix = "string",
+#'   TagKey = "string",
+#'   TagValue = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example lists the resources in your resource scan
+#' svc$list_resource_scan_resources(
+#'   ResourceScanId = "arn:aws:cloudformation:us-east-1:123456789012:resourceS..."
+#' )
+#' 
+#' # This example lists the resources in your resource scan filtering only
+#' # the resources that start with the passed in prefix
+#' svc$list_resource_scan_resources(
+#'   ResourceScanId = "arn:aws:cloudformation:us-east-1:123456789012:resourceS...",
+#'   ResourceTypePrefix = "AWS::S3"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_resource_scan_resources
+#'
+#' @aliases cloudformation_list_resource_scan_resources
+cloudformation_list_resource_scan_resources <- function(ResourceScanId, ResourceIdentifier = NULL, ResourceTypePrefix = NULL, TagKey = NULL, TagValue = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceScanResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Resources")
+  )
+  input <- .cloudformation$list_resource_scan_resources_input(ResourceScanId = ResourceScanId, ResourceIdentifier = ResourceIdentifier, ResourceTypePrefix = ResourceTypePrefix, TagKey = TagKey, TagValue = TagValue, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudformation$list_resource_scan_resources_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_resource_scan_resources <- cloudformation_list_resource_scan_resources
+
+#' List the resource scans from newest to oldest
+#'
+#' @description
+#' List the resource scans from newest to oldest. By default it will return
+#' up to 10 resource scans.
+#'
+#' @usage
+#' cloudformation_list_resource_scans(NextToken, MaxResults)
+#'
+#' @param NextToken A string that identifies the next page of resource scan results.
+#' @param MaxResults If the number of available results exceeds this maximum, the response
+#' includes a `NextToken` value that you can use for the `NextToken`
+#' parameter to get the next set of results. The default value is 10. The
+#' maximum value is 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceScanSummaries = list(
+#'     list(
+#'       ResourceScanId = "string",
+#'       Status = "IN_PROGRESS"|"FAILED"|"COMPLETE"|"EXPIRED",
+#'       StatusReason = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PercentageCompleted = 123.0
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_scans(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example shows how to list resource scans
+#' svc$list_resource_scans()
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_resource_scans
+#'
+#' @aliases cloudformation_list_resource_scans
+cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceScans",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceScanSummaries")
+  )
+  input <- .cloudformation$list_resource_scans_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudformation$list_resource_scans_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_resource_scans <- cloudformation_list_resource_scans
 
 #' Returns drift information for resources in a stack instance
 #'
@@ -4848,7 +5617,7 @@ cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, Nex
 #'       Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
 #'       StatusReason = "string",
 #'       StackInstanceStatus = list(
-#'         DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"|"SKIPPED_SUSPENDED_ACCOUNT"
+#'         DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"|"SKIPPED_SUSPENDED_ACCOUNT"|"FAILED_IMPORT"
 #'       ),
 #'       OrganizationalUnitId = "string",
 #'       DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
@@ -4984,6 +5753,89 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
   return(response)
 }
 .cloudformation$operations$list_stack_resources <- cloudformation_list_stack_resources
+
+#' Returns summary information about deployment targets for a stack set
+#'
+#' @description
+#' Returns summary information about deployment targets for a stack set.
+#'
+#' @usage
+#' cloudformation_list_stack_set_auto_deployment_targets(StackSetName,
+#'   NextToken, MaxResults, CallAs)
+#'
+#' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to get automatic
+#' deployment targets for.
+#' @param NextToken A string that identifies the next page of stack set deployment targets
+#' that you want to retrieve.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#' @param CallAs Specifies whether you are acting as an account administrator in the
+#' organization's management account or as a delegated administrator in a
+#' member account.
+#' 
+#' By default, `SELF` is specified. Use `SELF` for StackSets with
+#' self-managed permissions.
+#' 
+#' -   If you are signed in to the management account, specify `SELF`.
+#' 
+#' -   If you are signed in to a delegated administrator account, specify
+#'     `DELEGATED_ADMIN`.
+#' 
+#'     Your Amazon Web Services account must be registered as a delegated
+#'     administrator in the management account. For more information, see
+#'     [Register a delegated
+#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'     in the *CloudFormation User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summaries = list(
+#'     list(
+#'       OrganizationalUnitId = "string",
+#'       Regions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_stack_set_auto_deployment_targets(
+#'   StackSetName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CallAs = "SELF"|"DELEGATED_ADMIN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_stack_set_auto_deployment_targets
+#'
+#' @aliases cloudformation_list_stack_set_auto_deployment_targets
+cloudformation_list_stack_set_auto_deployment_targets <- function(StackSetName, NextToken = NULL, MaxResults = NULL, CallAs = NULL) {
+  op <- new_operation(
+    name = "ListStackSetAutoDeploymentTargets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$list_stack_set_auto_deployment_targets_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
+  output <- .cloudformation$list_stack_set_auto_deployment_targets_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_stack_set_auto_deployment_targets <- cloudformation_list_stack_set_auto_deployment_targets
 
 #' Returns summary information about the results of a stack set operation
 #'
@@ -5977,7 +6829,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' use [`set_type_configuration`][cloudformation_set_type_configuration] to
 #' specify configuration properties for the extension. For more
 #' information, see [Configuring extensions at the account
-#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#registry-set-configuration)
+#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration)
 #' in the *CloudFormation User Guide*.
 #'
 #' @usage
@@ -6192,7 +7044,8 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
 #' policy (maximum size: 16 KB) located in an Amazon S3 bucket in the same
-#' Amazon Web Services Region as the stack. You can specify either the
+#' Amazon Web Services Region as the stack. The location for an Amazon S3
+#' bucket must start with `https://`. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #'
 #' @return
@@ -6240,7 +7093,7 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #' `ConfigurationSchema` element of
 #' [`describe_type`][cloudformation_describe_type]. For more information,
 #' see [Configuring extensions at the account
-#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#registry-set-configuration)
+#' level](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private.html#registry-set-configuration)
 #' in the *CloudFormation User Guide*.
 #' 
 #' It's strongly recommended that you use dynamic references to restrict
@@ -6256,13 +7109,12 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #' @param TypeArn The Amazon Resource Name (ARN) for the extension, in this account and
 #' Region.
 #' 
-#' For public extensions, this will be the ARN assigned when you [activate
-#' the
-#' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html)
-#' in this account and Region. For private extensions, this will be the ARN
-#' assigned when you [register the
-#' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html)
-#' in this account and Region.
+#' For public extensions, this will be the ARN assigned when you call the
+#' [`activate_type`][cloudformation_activate_type] API operation in this
+#' account and Region. For private extensions, this will be the ARN
+#' assigned when you call the
+#' [`register_type`][cloudformation_register_type] API operation in this
+#' account and Region.
 #' 
 #' Do not include the extension versions suffix at the end of the ARN. You
 #' can set the configuration for an extension, but not for a specific
@@ -6452,6 +7304,64 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
 }
 .cloudformation$operations$signal_resource <- cloudformation_signal_resource
 
+#' Starts a scan of the resources in this account in this Region
+#'
+#' @description
+#' Starts a scan of the resources in this account in this Region. You can
+#' the status of a scan using the
+#' [`list_resource_scans`][cloudformation_list_resource_scans] API action.
+#'
+#' @usage
+#' cloudformation_start_resource_scan(ClientRequestToken)
+#'
+#' @param ClientRequestToken A unique identifier for this
+#' [`start_resource_scan`][cloudformation_start_resource_scan] request.
+#' Specify this token if you plan to retry requests so that CloudFormation
+#' knows that you're not attempting to start a new resource scan.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceScanId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_resource_scan(
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example shows how to start a new resource scan
+#' svc$start_resource_scan()
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_start_resource_scan
+#'
+#' @aliases cloudformation_start_resource_scan
+cloudformation_start_resource_scan <- function(ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "StartResourceScan",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$start_resource_scan_input(ClientRequestToken = ClientRequestToken)
+  output <- .cloudformation$start_resource_scan_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$start_resource_scan <- cloudformation_start_resource_scan
+
 #' Stops an in-progress operation on a stack set and its associated stack
 #' instances
 #'
@@ -6636,6 +7546,126 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 }
 .cloudformation$operations$test_type <- cloudformation_test_type
 
+#' Updates a generated template
+#'
+#' @description
+#' Updates a generated template. This can be used to change the name, add
+#' and remove resources, refresh resources, and change the `DeletionPolicy`
+#' and `UpdateReplacePolicy` settings. You can check the status of the
+#' update to the generated template using the
+#' [`describe_generated_template`][cloudformation_describe_generated_template]
+#' API action.
+#'
+#' @usage
+#' cloudformation_update_generated_template(GeneratedTemplateName,
+#'   NewGeneratedTemplateName, AddResources, RemoveResources,
+#'   RefreshAllResources, TemplateConfiguration)
+#'
+#' @param GeneratedTemplateName &#91;required&#93; The name or Amazon Resource Name (ARN) of a generated template.
+#' @param NewGeneratedTemplateName An optional new name to assign to the generated template.
+#' @param AddResources An optional list of resources to be added to the generated template.
+#' @param RemoveResources A list of logical ids for resources to remove from the generated
+#' template.
+#' @param RefreshAllResources If `true`, update the resource properties in the generated template with
+#' their current live state. This feature is useful when the resource
+#' properties in your generated a template does not reflect the live state
+#' of the resource properties. This happens when a user update the resource
+#' properties after generating a template.
+#' @param TemplateConfiguration The configuration details of the generated template, including the
+#' `DeletionPolicy` and `UpdateReplacePolicy`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GeneratedTemplateId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_generated_template(
+#'   GeneratedTemplateName = "string",
+#'   NewGeneratedTemplateName = "string",
+#'   AddResources = list(
+#'     list(
+#'       ResourceType = "string",
+#'       LogicalResourceId = "string",
+#'       ResourceIdentifier = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RemoveResources = list(
+#'     "string"
+#'   ),
+#'   RefreshAllResources = TRUE|FALSE,
+#'   TemplateConfiguration = list(
+#'     DeletionPolicy = "DELETE"|"RETAIN",
+#'     UpdateReplacePolicy = "DELETE"|"RETAIN"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example updates a generated template with a new name.
+#' svc$update_generated_template(
+#'   GeneratedTemplateName = "JazzyTemplate",
+#'   NewGeneratedTemplateName = "JazzierTemplate"
+#' )
+#' 
+#' # This example removes resources from a generated template
+#' svc$update_generated_template(
+#'   GeneratedTemplateName = "JazzyTemplate",
+#'   RemoveResources = list(
+#'     "LogicalResourceId1",
+#'     "LogicalResourceId2"
+#'   )
+#' )
+#' 
+#' # This example adds resources to a generated template
+#' svc$update_generated_template(
+#'   AddResources = list(
+#'     list(
+#'       ResourceIdentifier = list(
+#'         BucketName = "jazz-bucket"
+#'       ),
+#'       ResourceType = "AWS::S3::Bucket"
+#'     ),
+#'     list(
+#'       ResourceIdentifier = list(
+#'         DhcpOptionsId = "random-id123"
+#'       ),
+#'       ResourceType = "AWS::EC2::DHCPOptions"
+#'     )
+#'   ),
+#'   GeneratedTemplateName = "JazzyTemplate"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_update_generated_template
+#'
+#' @aliases cloudformation_update_generated_template
+cloudformation_update_generated_template <- function(GeneratedTemplateName, NewGeneratedTemplateName = NULL, AddResources = NULL, RemoveResources = NULL, RefreshAllResources = NULL, TemplateConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateGeneratedTemplate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$update_generated_template_input(GeneratedTemplateName = GeneratedTemplateName, NewGeneratedTemplateName = NewGeneratedTemplateName, AddResources = AddResources, RemoveResources = RemoveResources, RefreshAllResources = RefreshAllResources, TemplateConfiguration = TemplateConfiguration)
+  output <- .cloudformation$update_generated_template_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$update_generated_template <- cloudformation_update_generated_template
+
 #' Updates a stack as specified in the template
 #'
 #' @description
@@ -6673,7 +7703,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' template that's located in an Amazon S3 bucket or a Systems Manager
 #' document. For more information, go to [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
+#' must start with `https://`.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody`, `TemplateURL`, or set the `UsePreviousTemplate` to
@@ -6694,7 +7725,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' used.
 #' @param StackPolicyDuringUpdateURL Location of a file containing the temporary overriding stack policy. The
 #' URL must point to a policy (max size: 16KB) located in an S3 bucket in
-#' the same Region as the stack. You can specify either the
+#' the same Region as the stack. The location for an Amazon S3 bucket must
+#' start with `https://`. You can specify either the
 #' `StackPolicyDuringUpdateBody` or the `StackPolicyDuringUpdateURL`
 #' parameter, but not both.
 #' 
@@ -6824,7 +7856,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' stack is unchanged.
 #' @param StackPolicyURL Location of a file containing the updated stack policy. The URL must
 #' point to a policy (max size: 16KB) located in an S3 bucket in the same
-#' Region as the stack. You can specify either the `StackPolicyBody` or the
+#' Region as the stack. The location for an Amazon S3 bucket must start
+#' with `https://`. You can specify either the `StackPolicyBody` or the
 #' `StackPolicyURL` parameter, but not both.
 #' 
 #' You might update the stack policy, for example, in order to protect a
@@ -7166,7 +8199,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 1 byte and a maximum length of 51,200 bytes. For more information, see
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`—or set `UsePreviousTemplate` to true.
@@ -7175,7 +8208,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' Amazon S3 bucket or a Systems Manager document. For more information,
 #' see [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the CloudFormation User Guide.
+#' in the *CloudFormation User Guide*.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`—or set `UsePreviousTemplate` to true.
@@ -7588,7 +8621,8 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' bucket or a Systems Manager document. For more information, go to
 #' [Template
 #' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
+#' must start with `https://`.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.

@@ -140,7 +140,7 @@ braket <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .braket$metadata <- list(
   service_name = "braket",
-  endpoints = list("*" = list(endpoint = "braket.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "braket.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "braket.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "braket.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "braket.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "braket.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "braket.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "braket.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "braket.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "braket.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Braket",
   api_version = "2019-09-01",
   signing_name = "braket",

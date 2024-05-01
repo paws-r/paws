@@ -28,7 +28,8 @@ sagemaker_create_training_job(
   Environment = NULL,
   RetryStrategy = NULL,
   RemoteDebugConfig = NULL,
-  InfraCheckConfig = NULL
+  InfraCheckConfig = NULL,
+  SessionChainingConfig = NULL
 )
 }
 \arguments{
@@ -174,6 +175,9 @@ debugging functionality of SageMaker, see \href{https://docs.aws.amazon.com/sage
 
 \item{InfraCheckConfig}{Contains information about the infrastructure health check configuration
 for the training job.}
+
+\item{SessionChainingConfig}{Contains information about attribute-based access control (ABAC) for the
+training job.}
 }
 \description{
 Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.

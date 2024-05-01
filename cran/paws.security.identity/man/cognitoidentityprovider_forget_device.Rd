@@ -13,7 +13,7 @@ registered device you want to forget.}
 \item{DeviceKey}{[required] The device key.}
 }
 \description{
-Forgets the specified device.
+Forgets the specified device. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forget_device/} for full documentation.
 }

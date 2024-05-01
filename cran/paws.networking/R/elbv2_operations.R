@@ -178,10 +178,10 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' 32 characters, must contain only alphanumeric characters or hyphens,
 #' must not begin or end with a hyphen, and must not begin with
 #' "internal-".
-#' @param Subnets The IDs of the public subnets. You can specify only one subnet per
-#' Availability Zone. You must specify either subnets or subnet mappings,
-#' but not both. To specify an Elastic IP address, specify subnet mappings
-#' instead of subnets.
+#' @param Subnets The IDs of the subnets. You can specify only one subnet per Availability
+#' Zone. You must specify either subnets or subnet mappings, but not both.
+#' To specify an Elastic IP address, specify subnet mappings instead of
+#' subnets.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones.
@@ -197,9 +197,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' 
 #' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
-#' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
-#' Availability Zone. You must specify either subnets or subnet mappings,
-#' but not both.
+#' @param SubnetMappings The IDs of the subnets. You can specify only one subnet per Availability
+#' Zone. You must specify either subnets or subnet mappings, but not both.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones. You cannot specify Elastic IP addresses for your

@@ -9,11 +9,7 @@ ec2_bundle_instance(InstanceId, Storage, DryRun = NULL)
 \arguments{
 \item{InstanceId}{[required] The ID of the instance to bundle.
 
-Type: String
-
-Default: None
-
-Required: Yes}
+Default: None}
 
 \item{Storage}{[required] The bucket in which to store the AMI. You can specify a bucket that you
 already own or a new bucket that Amazon EC2 creates on your behalf. If

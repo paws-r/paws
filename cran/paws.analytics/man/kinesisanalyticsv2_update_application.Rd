@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_update_application}
 \alias{kinesisanalyticsv2_update_application}
-\title{Updates an existing Kinesis Data Analytics application}
+\title{Updates an existing Managed Service for Apache Flink application}
 \usage{
 kinesisanalyticsv2_update_application(
   ApplicationName,
@@ -11,7 +11,8 @@ kinesisanalyticsv2_update_application(
   ServiceExecutionRoleUpdate = NULL,
   RunConfigurationUpdate = NULL,
   CloudWatchLoggingOptionUpdates = NULL,
-  ConditionalToken = NULL
+  ConditionalToken = NULL,
+  RuntimeEnvironmentUpdate = NULL
 )
 }
 \arguments{
@@ -41,9 +42,18 @@ You must provide the \code{CurrentApplicationVersionId} or the
 using \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}.
 For better concurrency support, use the \code{ConditionalToken} parameter
 instead of \code{CurrentApplicationVersionId}.}
+
+\item{RuntimeEnvironmentUpdate}{Updates the Managed Service for Apache Flink runtime environment used to
+run your code. To avoid issues you must:
+\itemize{
+\item Ensure your new jar and dependencies are compatible with the new
+runtime selected.
+\item Ensure your new code's state is compatible with the snapshot from
+which your application will start
+}}
 }
 \description{
-Updates an existing Kinesis Data Analytics application. Using this operation, you can update application code, input configuration, and output configuration.
+Updates an existing Managed Service for Apache Flink application. Using this operation, you can update application code, input configuration, and output configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application/} for full documentation.
 }

@@ -174,7 +174,7 @@ supportapp <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .supportapp$metadata <- list(
   service_name = "supportapp",
-  endpoints = list("*" = list(endpoint = "supportapp.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "supportapp.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "supportapp.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "supportapp.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "supportapp.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "supportapp.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "supportapp.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "supportapp.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "supportapp.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "supportapp.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Support App",
   api_version = "2021-08-20",
   signing_name = "supportapp",

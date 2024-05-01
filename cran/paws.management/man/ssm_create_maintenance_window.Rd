@@ -27,7 +27,10 @@ specifying a description to help you organize your maintenance windows.}
 
 \item{StartDate}{The date and time, in ISO-8601 Extended format, for when you want the
 maintenance window to become active. \code{StartDate} allows you to delay
-activation of the maintenance window until the specified future date.}
+activation of the maintenance window until the specified future date.
+
+When using a rate schedule, if you provide a start date that occurs in
+the past, the current date and time are used as the start date.}
 
 \item{EndDate}{The date and time, in ISO-8601 Extended format, for when you want the
 maintenance window to become inactive. \code{EndDate} allows you to set a

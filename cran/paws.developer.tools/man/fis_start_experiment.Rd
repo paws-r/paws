@@ -4,13 +4,20 @@
 \alias{fis_start_experiment}
 \title{Starts running an experiment from the specified experiment template}
 \usage{
-fis_start_experiment(clientToken, experimentTemplateId, tags = NULL)
+fis_start_experiment(
+  clientToken,
+  experimentTemplateId,
+  experimentOptions = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{clientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
 \item{experimentTemplateId}{[required] The ID of the experiment template.}
+
+\item{experimentOptions}{The experiment options for running the experiment.}
 
 \item{tags}{The tags to apply to the experiment.}
 }

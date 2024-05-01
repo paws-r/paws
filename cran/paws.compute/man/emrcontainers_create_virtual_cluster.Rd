@@ -8,7 +8,8 @@ emrcontainers_create_virtual_cluster(
   name,
   containerProvider,
   clientToken,
-  tags = NULL
+  tags = NULL,
+  securityConfigurationId = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ emrcontainers_create_virtual_cluster(
 \item{clientToken}{[required] The client token of the virtual cluster.}
 
 \item{tags}{The tags assigned to the virtual cluster.}
+
+\item{securityConfigurationId}{The ID of the security configuration.}
 }
 \description{
 Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.

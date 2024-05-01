@@ -73,6 +73,8 @@ devopsguru_delete_insight <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_account_health/](https://www.paws-r-sdk.com/docs/devopsguru_describe_account_health/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_account_health
@@ -168,6 +170,8 @@ devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
 #' Returns the integration status of services that are integrated with DevOps Guru as Consumer via EventBridge. The one service that can be integrated with DevOps Guru is Amazon CodeGuru Profiler, which can produce proactive recommendations which can be stored and viewed in DevOps Guru.
 #'
 #' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_event_sources_config/](https://www.paws-r-sdk.com/docs/devopsguru_describe_event_sources_config/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -408,6 +412,8 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #' Returns the integration status of services that are integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon Web Services Systems Manager, which can be used to create an OpsItem for each generated insight.
 #'
 #' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_service_integration/](https://www.paws-r-sdk.com/docs/devopsguru_describe_service_integration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

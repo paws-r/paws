@@ -24,7 +24,7 @@ address with a private NAT gateway. If the Elastic IP address is
 associated with another resource, you must first disassociate it.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.
 
 Constraint: Maximum 64 ASCII characters.}
 

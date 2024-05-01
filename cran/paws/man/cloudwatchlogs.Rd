@@ -165,7 +165,7 @@ it.
 \link[paws.management:cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account\cr
 \link[paws.management:cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 \link[paws.management:cloudwatchlogs_get_data_protection_policy]{get_data_protection_policy} \tab Returns information about a log group data protection policy\cr
-\link[paws.management:cloudwatchlogs_get_delivery]{get_delivery} \tab Returns complete information about one delivery\cr
+\link[paws.management:cloudwatchlogs_get_delivery]{get_delivery} \tab Returns complete information about one logical delivery\cr
 \link[paws.management:cloudwatchlogs_get_delivery_destination]{get_delivery_destination} \tab Retrieves complete information about one delivery destination\cr
 \link[paws.management:cloudwatchlogs_get_delivery_destination_policy]{get_delivery_destination_policy} \tab Retrieves the delivery destination policy assigned to the delivery destination that you specify\cr
 \link[paws.management:cloudwatchlogs_get_delivery_source]{get_delivery_source} \tab Retrieves complete information about one delivery source\cr
@@ -178,7 +178,7 @@ it.
 \link[paws.management:cloudwatchlogs_list_log_anomaly_detectors]{list_log_anomaly_detectors} \tab Retrieves a list of the log anomaly detectors in the account\cr
 \link[paws.management:cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch Logs resource\cr
 \link[paws.management:cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
-\link[paws.management:cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy that applies to all log groups in the account\cr
+\link[paws.management:cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy or subscription filter policy that applies to all log groups or a subset of log groups in the account\cr
 \link[paws.management:cloudwatchlogs_put_data_protection_policy]{put_data_protection_policy} \tab Creates a data protection policy for the specified log group\cr
 \link[paws.management:cloudwatchlogs_put_delivery_destination]{put_delivery_destination} \tab Creates or updates a logical delivery destination\cr
 \link[paws.management:cloudwatchlogs_put_delivery_destination_policy]{put_delivery_destination_policy} \tab Creates and assigns an IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account\cr

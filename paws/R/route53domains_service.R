@@ -156,7 +156,7 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 
 .route53domains$metadata <- list(
   service_name = "route53domains",
-  endpoints = list("*" = list(endpoint = "route53domains.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53domains.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "route53domains.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53domains.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "route53domains.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53domains.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "route53domains.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "route53domains.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53domains.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "route53domains.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route 53 Domains",
   api_version = "2014-05-15",
   signing_name = "route53domains",

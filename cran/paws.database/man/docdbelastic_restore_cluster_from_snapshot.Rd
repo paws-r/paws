@@ -2,11 +2,13 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_restore_cluster_from_snapshot}
 \alias{docdbelastic_restore_cluster_from_snapshot}
-\title{Restores a Elastic DocumentDB cluster from a snapshot}
+\title{Restores an elastic cluster from a snapshot}
 \usage{
 docdbelastic_restore_cluster_from_snapshot(
   clusterName,
   kmsKeyId = NULL,
+  shardCapacity = NULL,
+  shardInstanceCount = NULL,
   snapshotArn,
   subnetIds = NULL,
   tags = NULL,
@@ -14,33 +16,39 @@ docdbelastic_restore_cluster_from_snapshot(
 )
 }
 \arguments{
-\item{clusterName}{[required] The name of the Elastic DocumentDB cluster.}
+\item{clusterName}{[required] The name of the elastic cluster.}
 
-\item{kmsKeyId}{The KMS key identifier to use to encrypt the new Elastic DocumentDB
-cluster.
+\item{kmsKeyId}{The KMS key identifier to use to encrypt the new Amazon DocumentDB
+elastic clusters cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are creating a cluster using the same Amazon
 account that owns this KMS encryption key, you can use the KMS key alias
 instead of the ARN as the KMS encryption key.
 
-If an encryption key is not specified here, Elastic DocumentDB uses the
+If an encryption key is not specified here, Amazon DocumentDB uses the
 default encryption key that KMS creates for your account. Your account
 has a different default encryption key for each Amazon Region.}
 
-\item{snapshotArn}{[required] The arn of the Elastic DocumentDB snapshot.}
+\item{shardCapacity}{The capacity of each shard in the new restored elastic cluster.}
 
-\item{subnetIds}{The Amazon EC2 subnet IDs for the Elastic DocumentDB cluster.}
+\item{shardInstanceCount}{The number of replica instances applying to all shards in the elastic
+cluster. A \code{shardInstanceCount} value of 1 means there is one writer
+instance, and any additional instances are replicas that can be used for
+reads and to improve availability.}
 
-\item{tags}{A list of the tag names to be assigned to the restored DB cluster, in
-the form of an array of key-value pairs in which the key is the tag name
-and the value is the key value.}
+\item{snapshotArn}{[required] The ARN identifier of the elastic cluster snapshot.}
 
-\item{vpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the Elastic
-DocumentDB cluster.}
+\item{subnetIds}{The Amazon EC2 subnet IDs for the elastic cluster.}
+
+\item{tags}{A list of the tag names to be assigned to the restored elastic cluster,
+in the form of an array of key-value pairs in which the key is the tag
+name and the value is the key value.}
+
+\item{vpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the elastic cluster.}
 }
 \description{
-Restores a Elastic DocumentDB cluster from a snapshot.
+Restores an elastic cluster from a snapshot.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_restore_cluster_from_snapshot/} for full documentation.
 }

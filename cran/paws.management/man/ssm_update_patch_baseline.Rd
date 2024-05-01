@@ -54,11 +54,12 @@ is installed only if it is a dependency of another package. It is
 considered compliant with the patch baseline, and its status is
 reported as \code{InstalledOther}. This is the default action if no
 option is specified.
-\item \strong{\code{BLOCK}} : Packages in the \code{RejectedPatches} list, and packages
-that include them as dependencies, aren't installed under any
-circumstances. If a package was installed before it was added to the
-\code{Rejected} patches list, it is considered non-compliant with the
-patch baseline, and its status is reported as \code{InstalledRejected}.
+\item \strong{BLOCK}: Packages in the \strong{Rejected patches} list, and packages
+that include them as dependencies, aren't installed by Patch Manager
+under any circumstances. If a package was installed before it was
+added to the \strong{Rejected patches} list, or is installed outside of
+Patch Manager afterward, it's considered noncompliant with the patch
+baseline and its status is reported as \emph{InstalledRejected}.
 }}
 
 \item{Description}{A description of the patch baseline.}

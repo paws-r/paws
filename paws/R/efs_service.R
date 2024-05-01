@@ -171,7 +171,7 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .efs$metadata <- list(
   service_name = "elasticfilesystem",
-  endpoints = list("*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticfilesystem.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticfilesystem.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "elasticfilesystem.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "elasticfilesystem.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticfilesystem.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "elasticfilesystem.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EFS",
   api_version = "2015-02-01",
   signing_name = "elasticfilesystem",

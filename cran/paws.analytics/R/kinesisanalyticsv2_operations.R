@@ -12,9 +12,9 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_cloud_watch_logging_option/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_cloud_watch_logging_option/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Data Analytics application name.
-#' @param CurrentApplicationVersionId The version ID of the Kinesis Data Analytics application. You must
-#' provide the `CurrentApplicationVersionId` or the `ConditionalToken`.You
-#' can retrieve the application version ID using
+#' @param CurrentApplicationVersionId The version ID of the SQL-based Kinesis Data Analytics application. You
+#' must provide the `CurrentApplicationVersionId` or the
+#' `ConditionalToken`.You can retrieve the application version ID using
 #' [`describe_application`][kinesisanalyticsv2_describe_application]. For
 #' better concurrency support, use the `ConditionalToken` parameter instead
 #' of `CurrentApplicationVersionId`.
@@ -252,10 +252,10 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 }
 .kinesisanalyticsv2$operations$add_application_vpc_configuration <- kinesisanalyticsv2_add_application_vpc_configuration
 
-#' Creates a Kinesis Data Analytics application
+#' Creates a Managed Service for Apache Flink application
 #'
 #' @description
-#' Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see [Creating an Application](https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html).
+#' Creates a Managed Service for Apache Flink application. For information about creating a Managed Service for Apache Flink application, see [Creating an Application](https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/) for full documentation.
 #'
@@ -273,9 +273,9 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' number of application tags includes system tags. The maximum number of
 #' user-defined application tags is 50. For more information, see [Using
 #' Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
-#' @param ApplicationMode Use the `STREAMING` mode to create a Kinesis Data Analytics For Flink
-#' application. To create a Kinesis Data Analytics Studio notebook, use the
-#' `INTERACTIVE` mode.
+#' @param ApplicationMode Use the `STREAMING` mode to create a Managed Service for Apache Flink
+#' application. To create a Managed Service for Apache Flink Studio
+#' notebook, use the `INTERACTIVE` mode.
 #'
 #' @keywords internal
 #'
@@ -363,7 +363,7 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
 #' Deletes the specified application
 #'
 #' @description
-#' Deletes the specified application. Kinesis Data Analytics halts application execution and deletes the application.
+#' Deletes the specified application. Managed Service for Apache Flink halts application execution and deletes the application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application/) for full documentation.
 #'
@@ -392,11 +392,11 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 }
 .kinesisanalyticsv2$operations$delete_application <- kinesisanalyticsv2_delete_application
 
-#' Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
-#' application
+#' Deletes an Amazon CloudWatch log stream from an SQL-based Kinesis Data
+#' Analytics application
 #'
 #' @description
-#' Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application.
+#' Deletes an Amazon CloudWatch log stream from an SQL-based Kinesis Data Analytics application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_cloud_watch_logging_option/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_cloud_watch_logging_option/) for full documentation.
 #'
@@ -594,10 +594,11 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 }
 .kinesisanalyticsv2$operations$delete_application_snapshot <- kinesisanalyticsv2_delete_application_snapshot
 
-#' Removes a VPC configuration from a Kinesis Data Analytics application
+#' Removes a VPC configuration from a Managed Service for Apache Flink
+#' application
 #'
 #' @description
-#' Removes a VPC configuration from a Kinesis Data Analytics application.
+#' Removes a VPC configuration from a Managed Service for Apache Flink application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_vpc_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_vpc_configuration/) for full documentation.
 #'
@@ -636,16 +637,17 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 }
 .kinesisanalyticsv2$operations$delete_application_vpc_configuration <- kinesisanalyticsv2_delete_application_vpc_configuration
 
-#' Returns information about a specific Kinesis Data Analytics application
+#' Returns information about a specific Managed Service for Apache Flink
+#' application
 #'
 #' @description
-#' Returns information about a specific Kinesis Data Analytics application.
+#' Returns information about a specific Managed Service for Apache Flink application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
-#' @param IncludeAdditionalDetails Displays verbose information about a Kinesis Data Analytics application,
-#' including the application's job plan.
+#' @param IncludeAdditionalDetails Displays verbose information about a Managed Service for Apache Flink
+#' application, including the application's job plan.
 #'
 #' @keywords internal
 #'
@@ -744,7 +746,7 @@ kinesisanalyticsv2_describe_application_version <- function(ApplicationName, App
 #' @param ResourceARN The Amazon Resource Name (ARN) of the streaming source.
 #' @param ServiceExecutionRole &#91;required&#93; The ARN of the role that is used to access the streaming source.
 #' @param InputStartingPositionConfiguration The point at which you want Kinesis Data Analytics to start reading
-#' records from the specified streaming source discovery purposes.
+#' records from the specified streaming source for discovery purposes.
 #' @param S3Configuration Specify this parameter to discover a schema from data in an Amazon S3
 #' object.
 #' @param InputProcessingConfiguration The InputProcessingConfiguration to use to preprocess the records before
@@ -841,10 +843,11 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
 }
 .kinesisanalyticsv2$operations$list_application_versions <- kinesisanalyticsv2_list_application_versions
 
-#' Returns a list of Kinesis Data Analytics applications in your account
+#' Returns a list of Managed Service for Apache Flink applications in your
+#' account
 #'
 #' @description
-#' Returns a list of Kinesis Data Analytics applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status.
+#' Returns a list of Managed Service for Apache Flink applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_applications/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_applications/) for full documentation.
 #'
@@ -935,16 +938,16 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
 }
 .kinesisanalyticsv2$operations$rollback_application <- kinesisanalyticsv2_rollback_application
 
-#' Starts the specified Kinesis Data Analytics application
+#' Starts the specified Managed Service for Apache Flink application
 #'
 #' @description
-#' Starts the specified Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
+#' Starts the specified Managed Service for Apache Flink application. After creating an application, you must exclusively call this operation to start your application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_start_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_start_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
-#' @param RunConfiguration Identifies the run configuration (start parameters) of a Kinesis Data
-#' Analytics application.
+#' @param RunConfiguration Identifies the run configuration (start parameters) of a Managed Service
+#' for Apache Flink application.
 #'
 #' @keywords internal
 #'
@@ -975,17 +978,16 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 #'
 #' @param ApplicationName &#91;required&#93; The name of the running application to stop.
 #' @param Force Set to `true` to force the application to stop. If you set `Force` to
-#' `true`, Kinesis Data Analytics stops the application without taking a
-#' snapshot.
+#' `true`, Managed Service for Apache Flink stops the application without
+#' taking a snapshot.
 #' 
 #' Force-stopping your application may lead to data loss or duplication. To
 #' prevent data loss or duplicate processing of data during application
 #' restarts, we recommend you to take frequent snapshots of your
 #' application.
 #' 
-#' You can only force stop a Flink-based Kinesis Data Analytics
-#' application. You can't force stop a SQL-based Kinesis Data Analytics
-#' application.
+#' You can only force stop a Managed Service for Apache Flink application.
+#' You can't force stop a SQL-based Kinesis Data Analytics application.
 #' 
 #' The application must be in the `STARTING`, `UPDATING`, `STOPPING`,
 #' `AUTOSCALING`, or `RUNNING` status.
@@ -1010,10 +1012,11 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
 }
 .kinesisanalyticsv2$operations$stop_application <- kinesisanalyticsv2_stop_application
 
-#' Adds one or more key-value tags to a Kinesis Data Analytics application
+#' Adds one or more key-value tags to a Managed Service for Apache Flink
+#' application
 #'
 #' @description
-#' Adds one or more key-value tags to a Kinesis Data Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
+#' Adds one or more key-value tags to a Managed Service for Apache Flink application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/) for full documentation.
 #'
@@ -1040,15 +1043,16 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 }
 .kinesisanalyticsv2$operations$tag_resource <- kinesisanalyticsv2_tag_resource
 
-#' Removes one or more tags from a Kinesis Data Analytics application
+#' Removes one or more tags from a Managed Service for Apache Flink
+#' application
 #'
 #' @description
-#' Removes one or more tags from a Kinesis Data Analytics application. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
+#' Removes one or more tags from a Managed Service for Apache Flink application. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/) for full documentation.
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the Kinesis Data Analytics application from which to remove
-#' the tags.
+#' @param ResourceARN &#91;required&#93; The ARN of the Managed Service for Apache Flink application from which
+#' to remove the tags.
 #' @param TagKeys &#91;required&#93; A list of keys of tags to remove from the specified application.
 #'
 #' @keywords internal
@@ -1071,10 +1075,10 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .kinesisanalyticsv2$operations$untag_resource <- kinesisanalyticsv2_untag_resource
 
-#' Updates an existing Kinesis Data Analytics application
+#' Updates an existing Managed Service for Apache Flink application
 #'
 #' @description
-#' Updates an existing Kinesis Data Analytics application. Using this operation, you can update application code, input configuration, and output configuration.
+#' Updates an existing Managed Service for Apache Flink application. Using this operation, you can update application code, input configuration, and output configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application/) for full documentation.
 #'
@@ -1098,18 +1102,26 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' using [`describe_application`][kinesisanalyticsv2_describe_application].
 #' For better concurrency support, use the `ConditionalToken` parameter
 #' instead of `CurrentApplicationVersionId`.
+#' @param RuntimeEnvironmentUpdate Updates the Managed Service for Apache Flink runtime environment used to
+#' run your code. To avoid issues you must:
+#' 
+#' -   Ensure your new jar and dependencies are compatible with the new
+#'     runtime selected.
+#' 
+#' -   Ensure your new code's state is compatible with the snapshot from
+#'     which your application will start
 #'
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_update_application
-kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplicationVersionId = NULL, ApplicationConfigurationUpdate = NULL, ServiceExecutionRoleUpdate = NULL, RunConfigurationUpdate = NULL, CloudWatchLoggingOptionUpdates = NULL, ConditionalToken = NULL) {
+kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplicationVersionId = NULL, ApplicationConfigurationUpdate = NULL, ServiceExecutionRoleUpdate = NULL, RunConfigurationUpdate = NULL, CloudWatchLoggingOptionUpdates = NULL, ConditionalToken = NULL, RuntimeEnvironmentUpdate = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates, ConditionalToken = ConditionalToken)
+  input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates, ConditionalToken = ConditionalToken, RuntimeEnvironmentUpdate = RuntimeEnvironmentUpdate)
   output <- .kinesisanalyticsv2$update_application_output()
   config <- get_config()
   svc <- .kinesisanalyticsv2$service(config)
@@ -1119,11 +1131,11 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
 }
 .kinesisanalyticsv2$operations$update_application <- kinesisanalyticsv2_update_application
 
-#' Updates the maintenance configuration of the Kinesis Data Analytics
-#' application
+#' Updates the maintenance configuration of the Managed Service for Apache
+#' Flink application
 #'
 #' @description
-#' Updates the maintenance configuration of the Kinesis Data Analytics application.
+#' Updates the maintenance configuration of the Managed Service for Apache Flink application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application_maintenance_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application_maintenance_configuration/) for full documentation.
 #'

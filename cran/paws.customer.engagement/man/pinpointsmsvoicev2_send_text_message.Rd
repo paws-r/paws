@@ -15,7 +15,8 @@ pinpointsmsvoicev2_send_text_message(
   TimeToLive = NULL,
   Context = NULL,
   DestinationCountryParameters = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  ProtectConfigurationId = NULL
 )
 }
 \arguments{
@@ -47,10 +48,12 @@ logged to the event destination.}
 
 \item{DestinationCountryParameters}{This field is used for any country-specific registration requirements.
 Currently, this setting is only used when you send messages to
-recipients in India using a sender ID. For more information see \href{https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html}{Special requirements for sending SMS messages to recipients in India}.}
+recipients in India using a sender ID. For more information see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html}{Special requirements for sending SMS messages to recipients in India}.}
 
 \item{DryRun}{When set to true, the message is checked and validated, but isn't sent
 to the end recipient.}
+
+\item{ProtectConfigurationId}{The unique identifier for the protect configuration.}
 }
 \description{
 Creates a new text message and sends it to a recipient's phone number.

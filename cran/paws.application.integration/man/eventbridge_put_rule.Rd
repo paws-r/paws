@@ -24,31 +24,7 @@ eventbridge_put_rule(
 \item{EventPattern}{The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html}{Amazon EventBridge event patterns}
 in the \emph{Amazon EventBridge User Guide}.}
 
-\item{State}{The state of the rule.
-
-Valid values include:
-\itemize{
-\item \code{DISABLED}: The rule is disabled. EventBridge does not match any
-events against the rule.
-\item \code{ENABLED}: The rule is enabled. EventBridge matches events against
-the rule, \emph{except} for Amazon Web Services management events
-delivered through CloudTrail.
-\item \code{ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS}: The rule is enabled
-for all events, including Amazon Web Services management events
-delivered through CloudTrail.
-
-Management events provide visibility into management operations that
-are performed on resources in your Amazon Web Services account.
-These are also known as control plane operations. For more
-information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events}{Logging management events}
-in the \emph{CloudTrail User Guide}, and \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html#eb-service-event-cloudtrail}{Filtering management events from Amazon Web Services services}
-in the \emph{Amazon EventBridge User Guide}.
-
-This value is only valid for rules on the
-\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is-how-it-works-concepts.html#eb-bus-concepts-buses}{default}
-event bus or \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-event-bus.html}{custom event buses}.
-It does not apply to \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-saas.html}{partner event buses}.
-}}
+\item{State}{Indicates whether the rule is enabled or disabled.}
 
 \item{Description}{A description of the rule.}
 

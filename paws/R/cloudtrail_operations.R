@@ -243,13 +243,13 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' For more information about how to use advanced event selectors to
 #' include Config configuration items in your event data store, see [Create
 #' an event data store for Config configuration
-#' items](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-lake-cli.html#lake-cli-create-eds-config)
+#' items](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-eds-cli.html#lake-cli-create-eds-config)
 #' in the CloudTrail User Guide.
 #' 
 #' For more information about how to use advanced event selectors to
 #' include non-Amazon Web Services events in your event data store, see
 #' [Create an integration to log events from outside Amazon Web
-#' Services](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-lake-cli.html#lake-cli-create-integration)
+#' Services](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-eds-cli.html#lake-cli-create-integration)
 #' in the CloudTrail User Guide.
 #' @param MultiRegionEnabled Specifies whether the event data store includes events from all Regions,
 #' or only from the Region in which the event data store is created.
@@ -487,7 +487,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log
-#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html).
 #' The maximum length is 200 characters.
 #' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
 #' log file delivery. The maximum length is 256 characters.
@@ -514,9 +514,6 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' be delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
-#' 
-#' Only the management account can configure a CloudWatch Logs log group
-#' for an organization trail.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -1024,11 +1021,12 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #'
 #' @description
 #' Disables Lake query federation on the specified event data store. When
-#' you disable federation, CloudTrail removes the metadata associated with
-#' the federated event data store in the Glue Data Catalog and removes
-#' registration for the federation role ARN and event data store in Lake
-#' Formation. No CloudTrail Lake data is deleted when you disable
-#' federation.
+#' you disable federation, CloudTrail disables the integration with Glue,
+#' Lake Formation, and Amazon Athena. After disabling Lake query
+#' federation, you can no longer query your event data in Amazon Athena.
+#' 
+#' No CloudTrail Lake data is deleted when you disable federation and you
+#' can continue to run queries in CloudTrail Lake.
 #'
 #' @usage
 #' cloudtrail_disable_federation(EventDataStore)
@@ -1086,13 +1084,13 @@ cloudtrail_disable_federation <- function(EventDataStore) {
 #' engine know how to find, read, and process the data that you want to
 #' query.
 #' 
-#' When you enable Lake query federation, CloudTrail creates a federated
+#' When you enable Lake query federation, CloudTrail creates a managed
 #' database named `aws:cloudtrail` (if the database doesn't already exist)
-#' and a federated table in the Glue Data Catalog. The event data store ID
-#' is used for the table name. CloudTrail registers the role ARN and event
-#' data store in [Lake
-#' Formation](https://docs.aws.amazon.com/lake-formation/latest/dg/how-it-works.html),
-#' the service responsible for revoking or granting permissions to the
+#' and a managed federated table in the Glue Data Catalog. The event data
+#' store ID is used for the table name. CloudTrail registers the role ARN
+#' and event data store in [Lake
+#' Formation](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-federation-lake-formation.html),
+#' the service responsible for allowing fine-grained access control of the
 #' federated resources in the Glue Data Catalog.
 #' 
 #' For more information about Lake query federation, see [Federate an event
@@ -2201,6 +2199,140 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
   return(response)
 }
 .cloudtrail$operations$list_imports <- cloudtrail_list_imports
+
+#' Returns Insights metrics data for trails that have enabled Insights
+#'
+#' @description
+#' Returns Insights metrics data for trails that have enabled Insights. The
+#' request must include the `EventSource`, `EventName`, and `InsightType`
+#' parameters.
+#' 
+#' If the `InsightType` is set to `ApiErrorRateInsight`, the request must
+#' also include the `ErrorCode` parameter.
+#' 
+#' The following are the available time periods for
+#' [`list_insights_metric_data`][cloudtrail_list_insights_metric_data].
+#' Each cutoff is inclusive.
+#' 
+#' -   Data points with a period of 60 seconds (1-minute) are available for
+#'     15 days.
+#' 
+#' -   Data points with a period of 300 seconds (5-minute) are available
+#'     for 63 days.
+#' 
+#' -   Data points with a period of 3600 seconds (1 hour) are available for
+#'     90 days.
+#' 
+#' Access to the
+#' [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] API
+#' operation is linked to the `cloudtrail:LookupEvents` action. To use this
+#' operation, you must have permissions to perform the
+#' `cloudtrail:LookupEvents` action.
+#'
+#' @usage
+#' cloudtrail_list_insights_metric_data(EventSource, EventName,
+#'   InsightType, ErrorCode, StartTime, EndTime, Period, DataType,
+#'   MaxResults, NextToken)
+#'
+#' @param EventSource &#91;required&#93; The Amazon Web Services service to which the request was made, such as
+#' `iam.amazonaws.com` or `s3.amazonaws.com`.
+#' @param EventName &#91;required&#93; The name of the event, typically the Amazon Web Services API on which
+#' unusual levels of activity were recorded.
+#' @param InsightType &#91;required&#93; The type of CloudTrail Insights event, which is either
+#' `ApiCallRateInsight` or `ApiErrorRateInsight`. The `ApiCallRateInsight`
+#' Insights type analyzes write-only management API calls that are
+#' aggregated per minute against a baseline API call volume. The
+#' `ApiErrorRateInsight` Insights type analyzes management API calls that
+#' result in error codes.
+#' @param ErrorCode Conditionally required if the `InsightType` parameter is set to
+#' `ApiErrorRateInsight`.
+#' 
+#' If returning metrics for the `ApiErrorRateInsight` Insights type, this
+#' is the error to retrieve data for. For example, `AccessDenied`.
+#' @param StartTime Specifies, in UTC, the start time for time-series data. The value
+#' specified is inclusive; results include data points with the specified
+#' time stamp.
+#' 
+#' The default is 90 days before the time of request.
+#' @param EndTime Specifies, in UTC, the end time for time-series data. The value
+#' specified is exclusive; results include data points up to the specified
+#' time stamp.
+#' 
+#' The default is the time of request.
+#' @param Period Granularity of data to retrieve, in seconds. Valid values are `60`,
+#' `300`, and `3600`. If you specify any other value, you will get an
+#' error. The default is 3600 seconds.
+#' @param DataType Type of datapoints to return. Valid values are `NonZeroData` and
+#' `FillWithZeros`. The default is `NonZeroData`.
+#' @param MaxResults The maximum number of datapoints to return. Valid values are integers
+#' from 1 to 21600. The default value is 21600.
+#' @param NextToken Returned if all datapoints can't be returned in a single call. For
+#' example, due to reaching `MaxResults`.
+#' 
+#' Add this parameter to the request to continue retrieving results
+#' starting from the last evaluated point.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventSource = "string",
+#'   EventName = "string",
+#'   InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
+#'   ErrorCode = "string",
+#'   Timestamps = list(
+#'     as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   Values = list(
+#'     123.0
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_insights_metric_data(
+#'   EventSource = "string",
+#'   EventName = "string",
+#'   InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight",
+#'   ErrorCode = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Period = 123,
+#'   DataType = "FillWithZeros"|"NonZeroData",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_list_insights_metric_data
+#'
+#' @aliases cloudtrail_list_insights_metric_data
+cloudtrail_list_insights_metric_data <- function(EventSource, EventName, InsightType, ErrorCode = NULL, StartTime = NULL, EndTime = NULL, Period = NULL, DataType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInsightsMetricData",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .cloudtrail$list_insights_metric_data_input(EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudtrail$list_insights_metric_data_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$list_insights_metric_data <- cloudtrail_list_insights_metric_data
 
 #' Returns all public keys whose private keys were used to sign the digest
 #' files within the specified time range
@@ -3801,13 +3933,14 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' is enabled.
 #' 
 #' For event data stores for CloudTrail events, `AdvancedEventSelectors`
-#' includes or excludes management, data, or Insights events in your event
-#' data store. For more information about `AdvancedEventSelectors`, see
+#' includes or excludes management or data events in your event data store.
+#' For more information about `AdvancedEventSelectors`, see
 #' [AdvancedEventSelectors](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html).
 #' 
-#' For event data stores for Config configuration items, Audit Manager
-#' evidence, or non-Amazon Web Services events, `AdvancedEventSelectors`
-#' includes events of that type in your event data store.
+#' For event data stores for CloudTrail Insights events, Config
+#' configuration items, Audit Manager evidence, or non-Amazon Web Services
+#' events, `AdvancedEventSelectors` includes events of that type in your
+#' event data store.
 #'
 #' @usage
 #' cloudtrail_update_event_data_store(EventDataStore, Name,
@@ -4061,7 +4194,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log
-#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+#' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html).
 #' The maximum length is 200 characters.
 #' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
 #' log file delivery. The maximum length is 256 characters.
@@ -4091,9 +4224,6 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
-#' 
-#' Only the management account can configure a CloudWatch Logs log group
-#' for an organization trail.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by

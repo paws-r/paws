@@ -124,7 +124,9 @@ Not applicable. Must be null.
 
 The name of the database to create when the DB instance is created. If
 this parameter isn't specified, no database is created in the DB
-instance.
+instance. In some cases, we recommend that you don't add a database
+name. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-db-instance-prereqs.html#db2-prereqs-additional-considerations}{Additional considerations}
+in the \emph{Amazon RDS User Guide}.
 
 Constraints:
 \itemize{
@@ -221,8 +223,9 @@ following:
 \item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 40
 to 65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
 Server.
-\item Provisioned IOPS storage (io1): Must be an integer from 40 to 65536
-for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
+\item Provisioned IOPS storage (io1, io2): Must be an integer from 40 to
+65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
+Server.
 }
 
 \strong{RDS for Db2}
@@ -231,9 +234,9 @@ Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
 \item General Purpose (SSD) storage (gp3): Must be an integer from 20 to
-64000.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to
-64000.
+65536.
+\item Provisioned IOPS storage (io1, io2): Must be an integer from 100 to
+65536.
 }
 
 \strong{RDS for MariaDB}
@@ -243,7 +246,7 @@ following:
 \itemize{
 \item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
 to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+\item Provisioned IOPS storage (io1, io2): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
@@ -255,7 +258,7 @@ following:
 \itemize{
 \item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
 to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+\item Provisioned IOPS storage (io1, io2): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
@@ -267,7 +270,7 @@ following:
 \itemize{
 \item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
 to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+\item Provisioned IOPS storage (io1, io2): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
@@ -279,7 +282,7 @@ following:
 \itemize{
 \item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
 to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+\item Provisioned IOPS storage (io1, io2): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
@@ -295,7 +298,7 @@ following:
 16384.
 \item Web and Express editions: Must be an integer from 20 to 16384.
 }
-\item Provisioned IOPS storage (io1):
+\item Provisioned IOPS storage (io1, io2):
 \itemize{
 \item Enterprise and Standard editions: Must be an integer from 100 to
 16384.
@@ -327,6 +330,8 @@ Valid Values:
 \item \code{aurora-postgresql} (for Aurora PostgreSQL DB instances)
 \item \code{custom-oracle-ee} (for RDS Custom for Oracle DB instances)
 \item \code{custom-oracle-ee-cdb} (for RDS Custom for Oracle DB instances)
+\item \code{custom-oracle-se2} (for RDS Custom for Oracle DB instances)
+\item \code{custom-oracle-se2-cdb} (for RDS Custom for Oracle DB instances)
 \item \code{custom-sqlserver-ee} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-se} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-web} (for RDS Custom for SQL Server DB instances)
@@ -689,13 +694,13 @@ This setting doesn't apply to RDS Custom DB instances.}
 
 \item{StorageType}{The storage type to associate with the DB instance.
 
-If you specify \code{io1} or \code{gp3}, you must also include a value for the
-\code{Iops} parameter.
+If you specify \code{io1}, \code{io2}, or \code{gp3}, you must also include a value for
+the \code{Iops} parameter.
 
 This setting doesn't apply to Amazon Aurora DB instances. Storage is
 managed by the DB cluster.
 
-Valid Values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
 Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
 
@@ -843,7 +848,8 @@ Default: \code{1}
 Valid Values: \code{0 - 15}}
 
 \item{Timezone}{The time zone of the DB instance. The time zone parameter is currently
-supported only by \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone}{Microsoft SQL Server}.}
+supported only by \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-time-zone.html}{RDS for Db2}
+and \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone}{RDS for SQL Server}.}
 
 \item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
 Access Management (IAM) accounts to database accounts. By default,

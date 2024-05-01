@@ -198,7 +198,7 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .imagebuilder$metadata <- list(
   service_name = "imagebuilder",
-  endpoints = list("*" = list(endpoint = "imagebuilder.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "imagebuilder.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "imagebuilder.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "imagebuilder.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "imagebuilder.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "imagebuilder.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "imagebuilder.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "imagebuilder.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "imagebuilder.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "imagebuilder.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "imagebuilder",
   api_version = "2019-12-02",
   signing_name = "imagebuilder",

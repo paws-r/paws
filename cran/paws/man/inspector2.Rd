@@ -105,9 +105,11 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[paws.security.identity:inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status} \tab Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization\cr
 \link[paws.security.identity:inspector2_cancel_findings_report]{cancel_findings_report} \tab Cancels the given findings report\cr
 \link[paws.security.identity:inspector2_cancel_sbom_export]{cancel_sbom_export} \tab Cancels a software bill of materials (SBOM) report\cr
+\link[paws.security.identity:inspector2_create_cis_scan_configuration]{create_cis_scan_configuration} \tab Creates a CIS scan configuration\cr
 \link[paws.security.identity:inspector2_create_filter]{create_filter} \tab Creates a filter resource using specified filter criteria\cr
 \link[paws.security.identity:inspector2_create_findings_report]{create_findings_report} \tab Creates a finding report\cr
 \link[paws.security.identity:inspector2_create_sbom_export]{create_sbom_export} \tab Creates a software bill of materials (SBOM) report\cr
+\link[paws.security.identity:inspector2_delete_cis_scan_configuration]{delete_cis_scan_configuration} \tab Deletes a CIS scan configuration\cr
 \link[paws.security.identity:inspector2_delete_filter]{delete_filter} \tab Deletes a filter resource\cr
 \link[paws.security.identity:inspector2_describe_organization_configuration]{describe_organization_configuration} \tab Describe Amazon Inspector configuration settings for an Amazon Web Services organization\cr
 \link[paws.security.identity:inspector2_disable]{disable} \tab Disables Amazon Inspector scans for one or more Amazon Web Services accounts\cr
@@ -115,6 +117,8 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[paws.security.identity:inspector2_disassociate_member]{disassociate_member} \tab Disassociates a member account from an Amazon Inspector delegated administrator\cr
 \link[paws.security.identity:inspector2_enable]{enable} \tab Enables Amazon Inspector scans for one or more Amazon Web Services accounts\cr
 \link[paws.security.identity:inspector2_enable_delegated_admin_account]{enable_delegated_admin_account} \tab Enables the Amazon Inspector delegated administrator for your Organizations organization\cr
+\link[paws.security.identity:inspector2_get_cis_scan_report]{get_cis_scan_report} \tab Retrieves a CIS scan report\cr
+\link[paws.security.identity:inspector2_get_cis_scan_result_details]{get_cis_scan_result_details} \tab Retrieves CIS scan result details\cr
 \link[paws.security.identity:inspector2_get_configuration]{get_configuration} \tab Retrieves setting configurations for Inspector scans\cr
 \link[paws.security.identity:inspector2_get_delegated_admin_account]{get_delegated_admin_account} \tab Retrieves information about the Amazon Inspector delegated administrator for your organization\cr
 \link[paws.security.identity:inspector2_get_ec_2_deep_inspection_configuration]{get_ec_2_deep_inspection_configuration} \tab Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account\cr
@@ -123,6 +127,10 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[paws.security.identity:inspector2_get_member]{get_member} \tab Gets member information for your organization\cr
 \link[paws.security.identity:inspector2_get_sbom_export]{get_sbom_export} \tab Gets details of a software bill of materials (SBOM) report\cr
 \link[paws.security.identity:inspector2_list_account_permissions]{list_account_permissions} \tab Lists the permissions an account has to configure Amazon Inspector\cr
+\link[paws.security.identity:inspector2_list_cis_scan_configurations]{list_cis_scan_configurations} \tab Lists CIS scan configurations\cr
+\link[paws.security.identity:inspector2_list_cis_scan_results_aggregated_by_checks]{list_cis_scan_results_aggregated_by_checks} \tab Lists scan results aggregated by checks\cr
+\link[paws.security.identity:inspector2_list_cis_scan_results_aggregated_by_target_resource]{list_cis_scan_results_aggregated_by_target_resource} \tab Lists scan results aggregated by a target resource\cr
+\link[paws.security.identity:inspector2_list_cis_scans]{list_cis_scans} \tab Returns a CIS scan list\cr
 \link[paws.security.identity:inspector2_list_coverage]{list_coverage} \tab Lists coverage details for you environment\cr
 \link[paws.security.identity:inspector2_list_coverage_statistics]{list_coverage_statistics} \tab Lists Amazon Inspector coverage statistics for your environment\cr
 \link[paws.security.identity:inspector2_list_delegated_admin_accounts]{list_delegated_admin_accounts} \tab Lists information about the Amazon Inspector delegated administrator of your organization\cr
@@ -134,8 +142,13 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[paws.security.identity:inspector2_list_usage_totals]{list_usage_totals} \tab Lists the Amazon Inspector usage totals over the last 30 days\cr
 \link[paws.security.identity:inspector2_reset_encryption_key]{reset_encryption_key} \tab Resets an encryption key\cr
 \link[paws.security.identity:inspector2_search_vulnerabilities]{search_vulnerabilities} \tab Lists Amazon Inspector coverage details for a specific vulnerability\cr
+\link[paws.security.identity:inspector2_send_cis_session_health]{send_cis_session_health} \tab Sends a CIS session health\cr
+\link[paws.security.identity:inspector2_send_cis_session_telemetry]{send_cis_session_telemetry} \tab Sends a CIS session telemetry\cr
+\link[paws.security.identity:inspector2_start_cis_session]{start_cis_session} \tab Starts a CIS session\cr
+\link[paws.security.identity:inspector2_stop_cis_session]{stop_cis_session} \tab Stops a CIS session\cr
 \link[paws.security.identity:inspector2_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 \link[paws.security.identity:inspector2_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+\link[paws.security.identity:inspector2_update_cis_scan_configuration]{update_cis_scan_configuration} \tab Updates a CIS scan configuration\cr
 \link[paws.security.identity:inspector2_update_configuration]{update_configuration} \tab Updates setting configurations for your Amazon Inspector account\cr
 \link[paws.security.identity:inspector2_update_ec_2_deep_inspection_configuration]{update_ec_2_deep_inspection_configuration} \tab Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account\cr
 \link[paws.security.identity:inspector2_update_encryption_key]{update_encryption_key} \tab Updates an encryption key\cr

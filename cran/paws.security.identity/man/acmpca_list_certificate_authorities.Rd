@@ -20,7 +20,10 @@ the \code{NextToken} parameter from the response you just received.}
 of items to return in the response on each page. If additional items
 exist beyond the number you specify, the \code{NextToken} element is sent in
 the response. Use this \code{NextToken} value in a subsequent request to
-retrieve additional items.}
+retrieve additional items.
+
+Although the maximum value is 1000, the action only returns a maximum of
+100 items.}
 
 \item{ResourceOwner}{Use this parameter to filter the returned set of certificate authorities
 based on their owner. The default is SELF.}

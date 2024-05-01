@@ -151,7 +151,7 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 
 .managedgrafana$metadata <- list(
   service_name = "managedgrafana",
-  endpoints = list("*" = list(endpoint = "grafana.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "grafana.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "grafana.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "grafana.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "grafana.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "grafana.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "grafana.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "grafana.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "grafana.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "grafana.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "grafana",
   api_version = "2020-08-18",
   signing_name = "grafana",

@@ -121,6 +121,8 @@ supportapp_create_slack_channel_configuration <- function(channelId, channelName
 #' @usage
 #' supportapp_delete_account_alias()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -254,6 +256,8 @@ supportapp_delete_slack_workspace_configuration <- function(teamId) {
 #'
 #' @usage
 #' supportapp_get_account_alias()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

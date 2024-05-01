@@ -12,7 +12,7 @@ redshift_describe_data_shares(
 )
 }
 \arguments{
-\item{DataShareArn}{The identifier of the datashare to describe details of.}
+\item{DataShareArn}{The Amazon resource name (ARN) of the datashare to describe details of.}
 
 \item{MaxRecords}{The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified \code{MaxRecords}

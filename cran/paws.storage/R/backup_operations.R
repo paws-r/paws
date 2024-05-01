@@ -905,6 +905,8 @@ backup_describe_framework <- function(FrameworkName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_describe_global_settings/](https://www.paws-r-sdk.com/docs/backup_describe_global_settings/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname backup_describe_global_settings
@@ -1000,6 +1002,8 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn, Ba
 #' Returns the current service opt-in settings for the Region. If service opt-in is enabled for a service, Backup tries to protect that service's resources in this Region, when the resource is included in an on-demand backup or scheduled backup plan. Otherwise, Backup does not try to protect that service's resources in this Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_describe_region_settings/](https://www.paws-r-sdk.com/docs/backup_describe_region_settings/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1649,6 +1653,19 @@ backup_get_supported_resource_types <- function() {
 #' 
 #' `AGGREGATE_ALL` aggregates job counts for all states and returns the
 #' sum.
+#' 
+#' `Completed with issues` is a status found only in the Backup console.
+#' For API, this status refers to jobs with a state of `COMPLETED` and a
+#' `MessageCategory` with a value other than `SUCCESS`; that is, the status
+#' is completed but comes with a status message. To obtain the job count
+#' for `Completed with issues`, run two GET requests, and subtract the
+#' second, smaller number:
+#' 
+#' GET
+#' /audit/backup-job-summaries?AggregationPeriod=FOURTEEN_DAYS&State=COMPLETED
+#' 
+#' GET
+#' /audit/backup-job-summaries?AggregationPeriod=FOURTEEN_DAYS&MessageCategory=SUCCESS&State=COMPLETED
 #' @param ResourceType Returns the job count for the specified resource type. Use request
 #' [`get_supported_resource_types`][backup_get_supported_resource_types] to
 #' obtain strings for supported resource types.
@@ -1725,6 +1742,18 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
 #' @param ByResourceArn Returns only backup jobs that match the specified resource Amazon
 #' Resource Name (ARN).
 #' @param ByState Returns only backup jobs that are in the specified state.
+#' 
+#' `Completed with issues` is a status found only in the Backup console.
+#' For API, this status refers to jobs with a state of `COMPLETED` and a
+#' `MessageCategory` with a value other than `SUCCESS`; that is, the status
+#' is completed but comes with a status message.
+#' 
+#' To obtain the job count for `Completed with issues`, run two GET
+#' requests, and subtract the second, smaller number:
+#' 
+#' GET /backup-jobs/?state=COMPLETED
+#' 
+#' GET /backup-jobs/?messageCategory=SUCCESS&state=COMPLETED
 #' @param ByBackupVaultName Returns only backup jobs that will be stored in the specified backup
 #' vault. Backup vaults are identified by names that are unique to the
 #' account used to create them and the Amazon Web Services Region where
@@ -2439,18 +2468,27 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
 #' @param MaxResults The maximum number of items to be returned.
 #' 
 #' Amazon RDS requires a value of at least 20.
+#' @param ManagedByAWSBackupOnly This attribute filters recovery points based on ownership.
+#' 
+#' If this is set to `TRUE`, the response will contain recovery points
+#' associated with the selected resources that are managed by Backup.
+#' 
+#' If this is set to `FALSE`, the response will contain all recovery points
+#' associated with the selected resource.
+#' 
+#' Type: Boolean
 #'
 #' @keywords internal
 #'
 #' @rdname backup_list_recovery_points_by_resource
-backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
+backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL, ManagedByAWSBackupOnly = NULL) {
   op <- new_operation(
     name = "ListRecoveryPointsByResource",
     http_method = "GET",
     http_path = "/resources/{resourceArn}/recovery-points/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
-  input <- .backup$list_recovery_points_by_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .backup$list_recovery_points_by_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults, ManagedByAWSBackupOnly = ManagedByAWSBackupOnly)
   output <- .backup$list_recovery_points_by_resource_output()
   config <- get_config()
   svc <- .backup$service(config)

@@ -128,7 +128,7 @@ NULL
 #'  \link[=autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups} \tab Gets information about the Auto Scaling groups in the account and Region\cr
 #'  \link[=autoscaling_describe_auto_scaling_instances]{describe_auto_scaling_instances} \tab Gets information about the Auto Scaling instances in the account and Region\cr
 #'  \link[=autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types} \tab Describes the notification types that are supported by Amazon EC2 Auto Scaling\cr
-#'  \link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes} \tab Gets information about the instance refreshes for the specified Auto Scaling group\cr
+#'  \link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes} \tab Gets information about the instance refreshes for the specified Auto Scaling group from the previous six weeks\cr
 #'  \link[=autoscaling_describe_launch_configurations]{describe_launch_configurations} \tab Gets information about the launch configurations in the account and Region\cr
 #'  \link[=autoscaling_describe_lifecycle_hooks]{describe_lifecycle_hooks} \tab Gets information about the lifecycle hooks for the specified Auto Scaling group\cr
 #'  \link[=autoscaling_describe_lifecycle_hook_types]{describe_lifecycle_hook_types} \tab Describes the available types of lifecycle hooks\cr
@@ -200,7 +200,7 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .autoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Auto Scaling",
   api_version = "2011-01-01",
   signing_name = "autoscaling",

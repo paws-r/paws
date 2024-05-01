@@ -149,7 +149,7 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .appregistry$metadata <- list(
   service_name = "appregistry",
-  endpoints = list("*" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicecatalog-appregistry.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicecatalog-appregistry.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicecatalog-appregistry.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "servicecatalog-appregistry.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "servicecatalog-appregistry.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicecatalog-appregistry.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "servicecatalog-appregistry.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Service Catalog AppRegistry",
   api_version = "2020-06-24",
   signing_name = "servicecatalog",

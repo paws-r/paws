@@ -51,7 +51,14 @@ different from the one associated with the source DB cluster.}
 \item{Tags}{Tags to assign to the blue/green deployment.}
 
 \item{TargetDBInstanceClass}{Specify the DB instance class for the databases in the green
-environment.}
+environment.
+
+This parameter only applies to RDS DB instances, because DB instances
+within an Aurora DB cluster can have multiple different instance
+classes. If you're creating a blue/green deployment from an Aurora DB
+cluster, don't specify this parameter. After the green environment is
+created, you can individually modify the instance classes of the DB
+instances within the green DB cluster.}
 
 \item{UpgradeTargetStorageConfig}{Whether to upgrade the storage file system configuration on the green
 database. This option migrates the green DB instance from the older

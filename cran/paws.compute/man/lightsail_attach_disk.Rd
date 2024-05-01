@@ -8,12 +8,12 @@ and exposes it to the instance with the specified disk name}
 lightsail_attach_disk(diskName, instanceName, diskPath, autoMounting = NULL)
 }
 \arguments{
-\item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
+\item{diskName}{[required] The unique Lightsail disk name (\code{my-disk}).}
 
 \item{instanceName}{[required] The name of the Lightsail instance where you want to utilize the storage
 disk.}
 
-\item{diskPath}{[required] The disk path to expose to the instance (e.g., \verb{/dev/xvdf}).}
+\item{diskPath}{[required] The disk path to expose to the instance (\verb{/dev/xvdf}).}
 
 \item{autoMounting}{A Boolean value used to determine the automatic mounting of a storage
 volume to a virtual computer. The default value is \code{False}.

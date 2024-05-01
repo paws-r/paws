@@ -11,8 +11,8 @@ NULL
 #' focus on running analytics workloads while Amazon EMR on EKS builds,
 #' configures, and manages containers for open-source applications. For
 #' more information about Amazon EMR on EKS concepts and tasks, see [What
-#' is shared
-#' id="EMR-EKS"/\>](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html).
+#' is Amazon EMR on
+#' EKS](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html).
 #' 
 #' *Amazon EMR containers* is the API name for Amazon EMR on EKS. The
 #' `emr-containers` prefix is used in the following scenarios:
@@ -116,6 +116,7 @@ NULL
 #'  \link[=emrcontainers_cancel_job_run]{cancel_job_run} \tab Cancels a job run\cr
 #'  \link[=emrcontainers_create_job_template]{create_job_template} \tab Creates a job template\cr
 #'  \link[=emrcontainers_create_managed_endpoint]{create_managed_endpoint} \tab Creates a managed endpoint\cr
+#'  \link[=emrcontainers_create_security_configuration]{create_security_configuration} \tab Creates a security configuration\cr
 #'  \link[=emrcontainers_create_virtual_cluster]{create_virtual_cluster} \tab Creates a virtual cluster\cr
 #'  \link[=emrcontainers_delete_job_template]{delete_job_template} \tab Deletes a job template\cr
 #'  \link[=emrcontainers_delete_managed_endpoint]{delete_managed_endpoint} \tab Deletes a managed endpoint\cr
@@ -123,11 +124,13 @@ NULL
 #'  \link[=emrcontainers_describe_job_run]{describe_job_run} \tab Displays detailed information about a job run\cr
 #'  \link[=emrcontainers_describe_job_template]{describe_job_template} \tab Displays detailed information about a specified job template\cr
 #'  \link[=emrcontainers_describe_managed_endpoint]{describe_managed_endpoint} \tab Displays detailed information about a managed endpoint\cr
+#'  \link[=emrcontainers_describe_security_configuration]{describe_security_configuration} \tab Displays detailed information about a specified security configuration\cr
 #'  \link[=emrcontainers_describe_virtual_cluster]{describe_virtual_cluster} \tab Displays detailed information about a specified virtual cluster\cr
 #'  \link[=emrcontainers_get_managed_endpoint_session_credentials]{get_managed_endpoint_session_credentials} \tab Generate a session token to connect to a managed endpoint\cr
 #'  \link[=emrcontainers_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
 #'  \link[=emrcontainers_list_job_templates]{list_job_templates} \tab Lists job templates based on a set of parameters\cr
 #'  \link[=emrcontainers_list_managed_endpoints]{list_managed_endpoints} \tab Lists managed endpoints based on a set of parameters\cr
+#'  \link[=emrcontainers_list_security_configurations]{list_security_configurations} \tab Lists security configurations based on a set of parameters\cr
 #'  \link[=emrcontainers_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
 #'  \link[=emrcontainers_list_virtual_clusters]{list_virtual_clusters} \tab Lists information about the specified virtual cluster\cr
 #'  \link[=emrcontainers_start_job_run]{start_job_run} \tab Starts a job run\cr
@@ -164,7 +167,7 @@ emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL
 
 .emrcontainers$metadata <- list(
   service_name = "emrcontainers",
-  endpoints = list("*" = list(endpoint = "emr-containers.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emr-containers.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "emr-containers.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emr-containers.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "emr-containers.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emr-containers.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "emr-containers.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "emr-containers.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emr-containers.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "emr-containers.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EMR containers",
   api_version = "2020-10-01",
   signing_name = "emr-containers",

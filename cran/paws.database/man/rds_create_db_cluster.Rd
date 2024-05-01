@@ -50,12 +50,14 @@ rds_create_db_cluster(
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
+  EnableLimitlessDatabase = NULL,
   ServerlessV2ScalingConfiguration = NULL,
   NetworkType = NULL,
   DBSystemId = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
   EnableLocalWriteForwarding = NULL,
+  CACertificateIdentifier = NULL,
   SourceRegion = NULL
 )
 }
@@ -98,7 +100,8 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item Must contain from 1 to 63 (for Aurora DB clusters) or 1 to 52 (for
+Multi-AZ DB clusters) letters, numbers, or hyphens.
 \item First character must be a letter.
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }
@@ -392,7 +395,8 @@ in the \emph{Amazon Aurora User Guide}.}
 \code{serverless}.
 
 The \code{serverless} engine mode only applies for Aurora Serverless v1 DB
-clusters.
+clusters. Aurora Serverless v2 DB clusters use the \code{provisioned} engine
+mode.
 
 For information about limitations and requirements for Serverless DB
 clusters, see the following sections in the \emph{Amazon Aurora User Guide}:
@@ -510,7 +514,7 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 Valid Values:
 \itemize{
 \item Aurora DB clusters - \code{aurora | aurora-iopt1}
-\item Multi-AZ DB clusters - \code{io1}
+\item Multi-AZ DB clusters - \code{io1 | io2 | gp3}
 }
 
 Default:
@@ -643,6 +647,11 @@ Default: \code{7} days
 If you specify a retention period that isn't valid, such as \code{94}, Amazon
 RDS issues an error.}
 
+\item{EnableLimitlessDatabase}{Specifies whether to enable Aurora Limitless Database. You must enable
+Aurora Limitless Database to create a DB shard group.
+
+Valid for: Aurora DB clusters only}
+
 \item{ServerlessV2ScalingConfiguration}{}
 
 \item{NetworkType}{The network type of the DB cluster.
@@ -703,6 +712,14 @@ writer DB instance in the DB cluster. By default, write operations
 aren't allowed on reader DB instances.
 
 Valid for: Aurora DB clusters only}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB cluster's server
+certificate.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide}.
+
+Valid for Cluster Type: Multi-AZ DB clusters}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

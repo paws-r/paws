@@ -23,6 +23,7 @@ ssm_update_association(
   CalendarNames = NULL,
   TargetLocations = NULL,
   ScheduleOffset = NULL,
+  Duration = NULL,
   TargetMaps = NULL,
   AlarmConfiguration = NULL
 )
@@ -172,6 +173,23 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.
 To use offsets, you must specify the \code{ApplyOnlyAtCronInterval}
 parameter. This option tells the system not to run an association
 immediately after you create it.}
+
+\item{Duration}{The number of hours the association can run before it is canceled.
+Duration applies to associations that are currently running, and any
+pending and in progress commands on all targets. If a target was taken
+offline for the association to run, it is made available again
+immediately, without a reboot.
+
+The \code{Duration} parameter applies only when both these conditions are
+true:
+\itemize{
+\item The association for which you specify a duration is cancelable
+according to the parameters of the SSM command document or
+Automation runbook associated with this execution.
+\item The command specifies the \code{ApplyOnlyAtCronInterval} parameter,
+which means that the association doesn't run immediately after it is
+updated, but only according to the specified schedule.
+}}
 
 \item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
 Targets and TargetMaps can't be specified together.}

@@ -7,7 +7,7 @@ NULL
 #' pre-signed URL provided in StartAttachmentUpload API
 #'
 #' @description
-#' Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API.
+#' Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectparticipant_complete_attachment_upload/](https://www.paws-r-sdk.com/docs/connectparticipant_complete_attachment_upload/) for full documentation.
 #'
@@ -213,10 +213,10 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 }
 .connectparticipant$operations$get_transcript <- connectparticipant_get_transcript
 
-#' Sends an event
+#' The application/vnd
 #'
 #' @description
-#' Sends an event.
+#' The `application/vnd.amazonaws.connect.event.connection.acknowledged` ContentType will no longer be supported starting December 31, 2024. This event has been migrated to the [`create_participant_connection`][connectparticipant_create_participant_connection] API using the `ConnectParticipant` field.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectparticipant_send_event/](https://www.paws-r-sdk.com/docs/connectparticipant_send_event/) for full documentation.
 #'
@@ -225,6 +225,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' -   application/vnd.amazonaws.connect.event.typing
 #' 
 #' -   application/vnd.amazonaws.connect.event.connection.acknowledged
+#'     (will be deprecated on December 31, 2024)
 #' 
 #' -   application/vnd.amazonaws.connect.event.message.delivered
 #' 

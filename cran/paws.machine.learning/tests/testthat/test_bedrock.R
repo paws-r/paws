@@ -4,8 +4,16 @@ test_that("list_custom_models", {
   expect_error(svc$list_custom_models(), NA)
 })
 
+test_that("list_evaluation_jobs", {
+  expect_error(svc$list_evaluation_jobs(), NA)
+})
+
 test_that("list_foundation_models", {
   expect_error(svc$list_foundation_models(), NA)
+})
+
+test_that("list_guardrails", {
+  expect_error(svc$list_guardrails(), NA)
 })
 
 test_that("list_model_customization_jobs", {

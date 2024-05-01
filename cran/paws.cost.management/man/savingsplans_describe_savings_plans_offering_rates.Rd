@@ -2,7 +2,7 @@
 % Please edit documentation in R/savingsplans_operations.R
 \name{savingsplans_describe_savings_plans_offering_rates}
 \alias{savingsplans_describe_savings_plans_offering_rates}
-\title{Describes the specified Savings Plans offering rates}
+\title{Describes the offering rates for the specified Savings Plans}
 \usage{
 savingsplans_describe_savings_plans_offering_rates(
   savingsPlanOfferingIds = NULL,
@@ -24,13 +24,14 @@ savingsplans_describe_savings_plans_offering_rates(
 
 \item{savingsPlanTypes}{The plan types.}
 
-\item{products}{The AWS products.}
+\item{products}{The Amazon Web Services products.}
 
 \item{serviceCodes}{The services.}
 
 \item{usageTypes}{The usage details of the line item in the billing report.}
 
-\item{operations}{The specific AWS operation for the line item in the billing report.}
+\item{operations}{The specific Amazon Web Services operation for the line item in the
+billing report.}
 
 \item{filters}{The filters.}
 
@@ -40,7 +41,7 @@ savingsplans_describe_savings_plans_offering_rates(
 additional results, make another call with the returned token value.}
 }
 \description{
-Describes the specified Savings Plans offering rates.
+Describes the offering rates for the specified Savings Plans.
 
 See \url{https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offering_rates/} for full documentation.
 }

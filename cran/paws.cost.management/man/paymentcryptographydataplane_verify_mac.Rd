@@ -20,7 +20,8 @@ Cryptography uses to verify MAC data.}
 
 \item{MacLength}{The length of the MAC.}
 
-\item{MessageData}{[required] The data on for which MAC is under verification.}
+\item{MessageData}{[required] The data on for which MAC is under verification. This value must be
+hexBinary.}
 
 \item{VerificationAttributes}{[required] The attributes and data values to use for MAC verification within Amazon
 Web Services Payment Cryptography.}

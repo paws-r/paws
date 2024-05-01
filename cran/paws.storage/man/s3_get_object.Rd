@@ -37,7 +37,7 @@ bucket, you must use virtual-hosted-style requests in the format
 are not supported. Directory bucket names must be unique in the chosen
 Availability Zone. Bucket names must follow the format
 \code{ bucket_base_name--az-id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
 

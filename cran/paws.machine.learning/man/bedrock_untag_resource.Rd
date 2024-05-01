@@ -7,12 +7,12 @@
 bedrock_untag_resource(resourceARN, tagKeys)
 }
 \arguments{
-\item{resourceARN}{[required] The ARN of the resource to untag.}
+\item{resourceARN}{[required] The Amazon Resource Name (ARN) of the resource to untag.}
 
 \item{tagKeys}{[required] Tag keys of the tags to remove from the resource.}
 }
 \description{
-Remove one or more tags from a resource. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Tagging resources} in the Bedrock User Guide.
+Remove one or more tags from a resource. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_untag_resource/} for full documentation.
 }

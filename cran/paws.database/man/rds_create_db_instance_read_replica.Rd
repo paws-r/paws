@@ -50,6 +50,7 @@ rds_create_db_instance_read_replica(
   SourceDBClusterIdentifier = NULL,
   DedicatedLogVolume = NULL,
   UpgradeStorageConfig = NULL,
+  CACertificateIdentifier = NULL,
   SourceRegion = NULL
 )
 }
@@ -201,10 +202,10 @@ VPC.}
 
 \item{StorageType}{The storage type to associate with the read replica.
 
-If you specify \code{io1} or \code{gp3}, you must also include a value for the
-\code{Iops} parameter.
+If you specify \code{io1}, \code{io2}, or \code{gp3}, you must also include a value for
+the \code{Iops} parameter.
 
-Valid Values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
 Default: \code{io1} if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
 
@@ -560,6 +561,15 @@ enabled.}
 \item{UpgradeStorageConfig}{Whether to upgrade the storage file system configuration on the read
 replica. This option migrates the read replica from the old storage file
 system layout to the preferred layout.}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the read replica's server
+certificate.
+
+This setting doesn't apply to RDS Custom DB instances.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

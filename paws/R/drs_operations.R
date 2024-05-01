@@ -154,10 +154,12 @@ drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
 #'           deviceName = "string",
 #'           replicatedStorageBytes = 123,
 #'           rescannedStorageBytes = 123,
-#'           totalStorageBytes = 123
+#'           totalStorageBytes = 123,
+#'           volumeStatus = "REGULAR"|"CONTAINS_MARKETPLACE_PRODUCT_CODES"|"MISSING_VOLUME_ATTRIBUTES"|"MISSING_VOLUME_ATTRIBUTES_AND_PRECHECK_UNAVAILABLE"|"PENDING"
 #'         )
 #'       ),
-#'       stagingAvailabilityZone = "string"
+#'       stagingAvailabilityZone = "string",
+#'       stagingOutpostArn = "string"
 #'     ),
 #'     lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'     lifeCycle = list(
@@ -180,7 +182,8 @@ drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
 #'     sourceCloudProperties = list(
 #'       originAccountID = "string",
 #'       originAvailabilityZone = "string",
-#'       originRegion = "string"
+#'       originRegion = "string",
+#'       sourceOutpostArn = "string"
 #'     ),
 #'     sourceNetworkID = "string",
 #'     sourceProperties = list(
@@ -870,6 +873,14 @@ drs_delete_source_server <- function(sourceServerID) {
 #'               "string"
 #'             )
 #'           ),
+#'           volumeToProductCodes = list(
+#'             list(
+#'               list(
+#'                 productCodeId = "string",
+#'                 productCodeMode = "ENABLED"|"DISABLED"
+#'               )
+#'             )
+#'           ),
 #'           volumeToVolumeSize = list(
 #'             123
 #'           )
@@ -1167,7 +1178,8 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
 #'             totalStorageBytes = 123
 #'           )
 #'         ),
-#'         stagingAvailabilityZone = "string"
+#'         stagingAvailabilityZone = "string",
+#'         stagingOutpostArn = "string"
 #'       ),
 #'       ec2InstanceID = "string",
 #'       ec2InstanceState = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"|"SHUTTING-DOWN"|"TERMINATED"|"NOT_FOUND",
@@ -1224,6 +1236,7 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
 #'         ),
 #'         ramBytes = 123
 #'       ),
+#'       sourceOutpostArn = "string",
 #'       sourceServerID = "string",
 #'       tags = list(
 #'         "string"
@@ -1558,10 +1571,12 @@ drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, next
 #'             deviceName = "string",
 #'             replicatedStorageBytes = 123,
 #'             rescannedStorageBytes = 123,
-#'             totalStorageBytes = 123
+#'             totalStorageBytes = 123,
+#'             volumeStatus = "REGULAR"|"CONTAINS_MARKETPLACE_PRODUCT_CODES"|"MISSING_VOLUME_ATTRIBUTES"|"MISSING_VOLUME_ATTRIBUTES_AND_PRECHECK_UNAVAILABLE"|"PENDING"
 #'           )
 #'         ),
-#'         stagingAvailabilityZone = "string"
+#'         stagingAvailabilityZone = "string",
+#'         stagingOutpostArn = "string"
 #'       ),
 #'       lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'       lifeCycle = list(
@@ -1584,7 +1599,8 @@ drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, next
 #'       sourceCloudProperties = list(
 #'         originAccountID = "string",
 #'         originAvailabilityZone = "string",
-#'         originRegion = "string"
+#'         originRegion = "string",
+#'         sourceOutpostArn = "string"
 #'       ),
 #'       sourceNetworkID = "string",
 #'       sourceProperties = list(
@@ -1785,10 +1801,12 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #'         deviceName = "string",
 #'         replicatedStorageBytes = 123,
 #'         rescannedStorageBytes = 123,
-#'         totalStorageBytes = 123
+#'         totalStorageBytes = 123,
+#'         volumeStatus = "REGULAR"|"CONTAINS_MARKETPLACE_PRODUCT_CODES"|"MISSING_VOLUME_ATTRIBUTES"|"MISSING_VOLUME_ATTRIBUTES_AND_PRECHECK_UNAVAILABLE"|"PENDING"
 #'       )
 #'     ),
-#'     stagingAvailabilityZone = "string"
+#'     stagingAvailabilityZone = "string",
+#'     stagingOutpostArn = "string"
 #'   ),
 #'   lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'   lifeCycle = list(
@@ -1811,7 +1829,8 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #'   sourceCloudProperties = list(
 #'     originAccountID = "string",
 #'     originAvailabilityZone = "string",
-#'     originRegion = "string"
+#'     originRegion = "string",
+#'     sourceOutpostArn = "string"
 #'   ),
 #'   sourceNetworkID = "string",
 #'   sourceProperties = list(
@@ -2145,6 +2164,8 @@ drs_get_replication_configuration <- function(sourceServerID) {
 #'
 #' @usage
 #' drs_initialize_service()
+#'
+
 #'
 #' @return
 #' An empty list.
@@ -2557,10 +2578,12 @@ drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, c
 #'         deviceName = "string",
 #'         replicatedStorageBytes = 123,
 #'         rescannedStorageBytes = 123,
-#'         totalStorageBytes = 123
+#'         totalStorageBytes = 123,
+#'         volumeStatus = "REGULAR"|"CONTAINS_MARKETPLACE_PRODUCT_CODES"|"MISSING_VOLUME_ATTRIBUTES"|"MISSING_VOLUME_ATTRIBUTES_AND_PRECHECK_UNAVAILABLE"|"PENDING"
 #'       )
 #'     ),
-#'     stagingAvailabilityZone = "string"
+#'     stagingAvailabilityZone = "string",
+#'     stagingOutpostArn = "string"
 #'   ),
 #'   lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'   lifeCycle = list(
@@ -2583,7 +2606,8 @@ drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, c
 #'   sourceCloudProperties = list(
 #'     originAccountID = "string",
 #'     originAvailabilityZone = "string",
-#'     originRegion = "string"
+#'     originRegion = "string",
+#'     sourceOutpostArn = "string"
 #'   ),
 #'   sourceNetworkID = "string",
 #'   sourceProperties = list(
@@ -2985,10 +3009,12 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 #'           deviceName = "string",
 #'           replicatedStorageBytes = 123,
 #'           rescannedStorageBytes = 123,
-#'           totalStorageBytes = 123
+#'           totalStorageBytes = 123,
+#'           volumeStatus = "REGULAR"|"CONTAINS_MARKETPLACE_PRODUCT_CODES"|"MISSING_VOLUME_ATTRIBUTES"|"MISSING_VOLUME_ATTRIBUTES_AND_PRECHECK_UNAVAILABLE"|"PENDING"
 #'         )
 #'       ),
-#'       stagingAvailabilityZone = "string"
+#'       stagingAvailabilityZone = "string",
+#'       stagingOutpostArn = "string"
 #'     ),
 #'     lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'     lifeCycle = list(
@@ -3011,7 +3037,8 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 #'     sourceCloudProperties = list(
 #'       originAccountID = "string",
 #'       originAvailabilityZone = "string",
-#'       originRegion = "string"
+#'       originRegion = "string",
+#'       sourceOutpostArn = "string"
 #'     ),
 #'     sourceNetworkID = "string",
 #'     sourceProperties = list(
@@ -3364,10 +3391,12 @@ drs_stop_failback <- function(recoveryInstanceID) {
 #'           deviceName = "string",
 #'           replicatedStorageBytes = 123,
 #'           rescannedStorageBytes = 123,
-#'           totalStorageBytes = 123
+#'           totalStorageBytes = 123,
+#'           volumeStatus = "REGULAR"|"CONTAINS_MARKETPLACE_PRODUCT_CODES"|"MISSING_VOLUME_ATTRIBUTES"|"MISSING_VOLUME_ATTRIBUTES_AND_PRECHECK_UNAVAILABLE"|"PENDING"
 #'         )
 #'       ),
-#'       stagingAvailabilityZone = "string"
+#'       stagingAvailabilityZone = "string",
+#'       stagingOutpostArn = "string"
 #'     ),
 #'     lastLaunchResult = "NOT_STARTED"|"PENDING"|"SUCCEEDED"|"FAILED",
 #'     lifeCycle = list(
@@ -3390,7 +3419,8 @@ drs_stop_failback <- function(recoveryInstanceID) {
 #'     sourceCloudProperties = list(
 #'       originAccountID = "string",
 #'       originAvailabilityZone = "string",
-#'       originRegion = "string"
+#'       originRegion = "string",
+#'       sourceOutpostArn = "string"
 #'     ),
 #'     sourceNetworkID = "string",
 #'     sourceProperties = list(

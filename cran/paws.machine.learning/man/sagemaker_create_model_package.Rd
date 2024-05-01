@@ -25,7 +25,8 @@ sagemaker_create_model_package(
   CustomerMetadataProperties = NULL,
   DriftCheckBaselines = NULL,
   AdditionalInferenceSpecifications = NULL,
-  SkipModelValidation = NULL
+  SkipModelValidation = NULL,
+  SourceUri = NULL
 )
 }
 \arguments{
@@ -43,8 +44,8 @@ unversioned models.}
 
 \item{ModelPackageDescription}{A description of the model package.}
 
-\item{InferenceSpecification}{Specifies details about inference jobs that can be run with models based
-on this model package, including the following:
+\item{InferenceSpecification}{Specifies details about inference jobs that you can run with models
+based on this model package, including the following information:
 \itemize{
 \item The Amazon ECR paths of containers that contain the inference code
 and model artifacts.
@@ -121,6 +122,10 @@ that can be used on inference endpoints. Generally used with SageMaker
 Neo to store the compiled artifacts.}
 
 \item{SkipModelValidation}{Indicates if you want to skip model validation.}
+
+\item{SourceUri}{The URI of the source for the model package. If you want to clone a
+model package, set it to the model package Amazon Resource Name (ARN).
+If you want to register a model, set it to the model ARN.}
 }
 \description{
 Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.

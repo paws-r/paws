@@ -146,7 +146,7 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .sso$metadata <- list(
   service_name = "sso",
-  endpoints = list("*" = list(endpoint = "portal.sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "portal.sso.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "portal.sso.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "portal.sso.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "portal.sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "portal.sso.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "portal.sso.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "portal.sso.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "portal.sso.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "portal.sso.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSO",
   api_version = "2019-06-10",
   signing_name = "awsssoportal",

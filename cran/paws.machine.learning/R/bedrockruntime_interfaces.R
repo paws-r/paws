@@ -5,7 +5,7 @@ NULL
 
 .bedrockruntime$invoke_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), accept = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string")), modelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string"))), tags = list(type = "structure", payload = "body"))
+  shape <- structure(list(body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), accept = structure(logical(0), tags = list(location = "header", locationName = "Accept", type = "string")), modelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string")), trace = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-Trace", type = "string")), guardrailIdentifier = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-GuardrailIdentifier", type = "string")), guardrailVersion = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-GuardrailVersion", type = "string"))), tags = list(type = "structure", payload = "body"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .bedrockruntime$invoke_model_with_response_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), accept = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-Accept", type = "string")), modelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string"))), tags = list(type = "structure", payload = "body"))
+  shape <- structure(list(body = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), accept = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-Accept", type = "string")), modelId = structure(logical(0), tags = list(location = "uri", locationName = "modelId", type = "string")), trace = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-Trace", type = "string")), guardrailIdentifier = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-GuardrailIdentifier", type = "string")), guardrailVersion = structure(logical(0), tags = list(location = "header", locationName = "X-Amzn-Bedrock-GuardrailVersion", type = "string"))), tags = list(type = "structure", payload = "body"))
   return(populate(args, shape))
 }
 

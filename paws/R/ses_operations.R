@@ -1258,6 +1258,8 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' @usage
 #' ses_describe_active_receipt_rule_set()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2699,6 +2701,8 @@ ses_list_identity_policies <- function(Identity) {
 #'
 #' @usage
 #' ses_list_receipt_filters()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

@@ -781,6 +781,8 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #' @usage
 #' cloudhsm_list_available_zones()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

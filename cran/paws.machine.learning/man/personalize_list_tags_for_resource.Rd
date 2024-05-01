@@ -7,7 +7,7 @@
 personalize_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The resource's Amazon Resource Name.}
+\item{resourceArn}{[required] The resource's Amazon Resource Name (ARN).}
 }
 \description{
 Get a list of \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags} attached to a resource.

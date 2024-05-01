@@ -2,15 +2,25 @@
 % Please edit documentation in R/bedrockruntime_operations.R
 \name{bedrockruntime_invoke_model}
 \alias{bedrockruntime_invoke_model}
-\title{Invokes the specified Bedrock model to run inference using the input
-provided in the request body}
+\title{Invokes the specified Amazon Bedrock model to run inference using the
+prompt and inference parameters provided in the request body}
 \usage{
-bedrockruntime_invoke_model(body, contentType = NULL, accept = NULL, modelId)
+bedrockruntime_invoke_model(
+  body,
+  contentType = NULL,
+  accept = NULL,
+  modelId,
+  trace = NULL,
+  guardrailIdentifier = NULL,
+  guardrailVersion = NULL
+)
 }
 \arguments{
-\item{body}{[required] Input data in the format specified in the content-type request header.
-To see the format and content of this field for different models, refer
-to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.}
+\item{body}{[required] The prompt and inference parameters in the format specified in the
+\code{contentType} in the header. To see the format and content of the
+request and response bodies for different models, refer to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.
+For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html}{Run inference}
+in the Bedrock User Guide.}
 
 \item{contentType}{The MIME type of the input data in the request. The default value is
 \code{application/json}.}
@@ -18,10 +28,42 @@ to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.h
 \item{accept}{The desired MIME type of the inference body in the response. The default
 value is \code{application/json}.}
 
-\item{modelId}{[required] Identifier of the model.}
+\item{modelId}{[required] The unique identifier of the model to invoke to run inference.
+
+The \code{modelId} to provide depends on the type of model that you use:
+\itemize{
+\item If you use a base model, specify the model ID or its ARN. For a list
+of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
+in the Amazon Bedrock User Guide.
+\item If you use a provisioned model, specify the ARN of the Provisioned
+Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html}{Run inference using a Provisioned Throughput}
+in the Amazon Bedrock User Guide.
+\item If you use a custom model, first purchase Provisioned Throughput for
+it. Then specify the ARN of the resulting provisioned model. For
+more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
+in the Amazon Bedrock User Guide.
+}}
+
+\item{trace}{Specifies whether to enable or disable the Bedrock trace. If enabled,
+you can see the full Bedrock trace.}
+
+\item{guardrailIdentifier}{The unique identifier of the guardrail that you want to use. If you
+don't provide a value, no guardrail is applied to the invocation.
+
+An error will be thrown in the following situations.
+\itemize{
+\item You don't provide a guardrail identifier but you specify the
+\code{amazon-bedrock-guardrailConfig} field in the request body.
+\item You enable the guardrail but the \code{contentType} isn't
+\code{application/json}.
+\item You provide a guardrail identifier, but \code{guardrailVersion} isn't
+specified.
+}}
+
+\item{guardrailVersion}{The version number for the guardrail. The value can also be \code{DRAFT}.}
 }
 \description{
-Invokes the specified Bedrock model to run inference using the input provided in the request body. You use InvokeModel to run inference for text models, image models, and embedding models.
+Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body. You use model inference to generate text, images, and embeddings.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockruntime_invoke_model/} for full documentation.
 }

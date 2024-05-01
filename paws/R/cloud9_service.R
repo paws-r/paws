@@ -190,7 +190,7 @@ cloud9 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .cloud9$metadata <- list(
   service_name = "cloud9",
-  endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloud9.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloud9.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "cloud9.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "cloud9.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloud9.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "cloud9.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Cloud9",
   api_version = "2017-09-23",
   signing_name = "cloud9",

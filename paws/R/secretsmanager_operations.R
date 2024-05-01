@@ -47,7 +47,8 @@ NULL
 #' If there are more results available, in the response, Secrets Manager
 #' includes `NextToken`. To get the next results, call
 #' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
-#' with the value from `NextToken`.
+#' with the value from `NextToken`. To use this parameter, you must also
+#' use the `Filters` parameter.
 #' @param NextToken A token that indicates where the output should continue from, if a
 #' previous call did not show all results. To get the next results, call
 #' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
@@ -101,6 +102,18 @@ NULL
 #'   NextToken = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example gets the values for three secrets.
+#' svc$batch_get_secret_value(
+#'   SecretIdList = list(
+#'     "MySecret1",
+#'     "MySecret2",
+#'     "MySecret3"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -822,13 +835,12 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' @description
 #' Generates a random password. We recommend that you specify the maximum
 #' length and include every character type that the system you are
-#' generating a password for can support.
+#' generating a password for can support. By default, Secrets Manager uses
+#' uppercase and lowercase letters, numbers, and the following characters
+#' in passwords: `` !\\"#$%&\'()*+,-./:;<=>?@@[\\]^_\`{|}~ ``
 #' 
 #' Secrets Manager generates a CloudTrail log entry when you call this
-#' action. Do not include sensitive information in request parameters
-#' because it might be logged. For more information, see [Logging Secrets
-#' Manager events with
-#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' action.
 #' 
 #' **Required permissions:** `secretsmanager:GetRandomPassword`. For more
 #' information, see [IAM policy actions for Secrets
@@ -1120,7 +1132,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' Lists the versions of a secret. Secrets Manager uses staging labels to
 #' indicate the different versions of a secret. For more information, see
 #' [Secrets Manager concepts:
-#' Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' To list the secrets in the account, use
 #' [`list_secrets`][secretsmanager_list_secrets].
@@ -1238,9 +1250,9 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' Services account, not including secrets that are marked for deletion. To
 #' see secrets marked for deletion, use the Secrets Manager console.
 #' 
-#' ListSecrets is eventually consistent, however it might not reflect
-#' changes from the last five minutes. To get the latest information for a
-#' specific secret, use
+#' All Secrets Manager operations are eventually consistent. ListSecrets
+#' might not reflect changes from the last five minutes. You can get more
+#' recent information for a specific secret by calling
 #' [`describe_secret`][secretsmanager_describe_secret].
 #' 
 #' To list the versions of a secret, use
@@ -1424,6 +1436,22 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
 #' principal. By default, public policies aren't blocked.
+#' 
+#' Resource policy validation and the BlockPublicPolicy parameter help
+#' protect your resources by preventing public access from being granted
+#' through the resource policies that are directly attached to your
+#' secrets. In addition to using these features, carefully inspect the
+#' following policies to confirm that they do not grant public access:
+#' 
+#' -   Identity-based policies attached to associated Amazon Web Services
+#'     principals (for example, IAM roles)
+#' 
+#' -   Resource-based policies attached to associated Amazon Web Services
+#'     resources (for example, Key Management Service (KMS) keys)
+#' 
+#' To review permissions to your secrets, see [Determine who has
+#' permissions to your
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/determine-acccess_examine-iam-policies.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1733,7 +1761,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #'
 #' @description
 #' Replicates the secret to a new Regions. See [Multi-Region
-#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html).
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html).
 #' 
 #' Secrets Manager generates a CloudTrail log entry when you call this
 #' action. Do not include sensitive information in request parameters
@@ -1741,8 +1769,12 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' Manager events with
 #' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
-#' **Required permissions:** `secretsmanager:ReplicateSecretToRegions`. For
-#' more information, see [IAM policy actions for Secrets
+#' **Required permissions:** `secretsmanager:ReplicateSecretToRegions`. If
+#' the primary secret is encrypted with a KMS key other than
+#' `aws/secretsmanager`, you also need `kms:Decrypt` permission to the key.
+#' To encrypt the replicated secret with a KMS key other than
+#' `aws/secretsmanager`, you need `kms:GenerateDataKey` and `kms:Encrypt`
+#' to the key. For more information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
@@ -2415,7 +2447,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
 #' not re-ecrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' A key alias is always prefixed by `alias/`, for example
 #' `alias/aws/secretsmanager`. For more information, see [About
@@ -2529,7 +2561,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' already attached to another version, Secrets Manager first removes it
 #' from the other version first and then attaches it to this one. For more
 #' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' The staging labels that you specify in the `VersionStage` parameter are
 #' added to the existing list of staging labels for the version.

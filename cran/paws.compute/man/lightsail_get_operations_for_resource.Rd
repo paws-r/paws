@@ -2,7 +2,7 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_operations_for_resource}
 \alias{lightsail_get_operations_for_resource}
-\title{Gets operations for a specific resource (e}
+\title{Gets operations for a specific resource (an instance or a static IP)}
 \usage{
 lightsail_get_operations_for_resource(resourceName, pageToken = NULL)
 }
@@ -18,7 +18,7 @@ page token that you can specify as the page token in a subsequent
 request.}
 }
 \description{
-Gets operations for a specific resource (e.g., an instance or a static IP).
+Gets operations for a specific resource (an instance or a static IP).
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_get_operations_for_resource/} for full documentation.
 }

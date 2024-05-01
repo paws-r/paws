@@ -2,19 +2,19 @@
 % Please edit documentation in R/datazone_operations.R
 \name{datazone_get_listing}
 \alias{datazone_get_listing}
-\title{Get listing}
+\title{Gets a listing (a record of an asset at a given time)}
 \usage{
 datazone_get_listing(domainIdentifier, identifier, listingRevision = NULL)
 }
 \arguments{
-\item{domainIdentifier}{[required]}
+\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain.}
 
-\item{identifier}{[required]}
+\item{identifier}{[required] The ID of the listing.}
 
-\item{listingRevision}{}
+\item{listingRevision}{The revision of the listing.}
 }
 \description{
-Get listing
+Gets a listing (a record of an asset at a given time).
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_get_listing/} for full documentation.
 }

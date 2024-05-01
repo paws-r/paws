@@ -62,7 +62,7 @@ arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{Content}{[required] An object that contains the body of the message. You can send either a
-Simple message Raw message or a template Message.}
+Simple message, Raw message, or a Templated message.}
 
 \item{EmailTags}{A list of tags, in the form of name/value pairs, to apply to an email
 that you send using the \code{\link[=sesv2_send_email]{send_email}} operation. Tags

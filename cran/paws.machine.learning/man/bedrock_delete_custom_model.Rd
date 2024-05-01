@@ -10,7 +10,7 @@ bedrock_delete_custom_model(modelIdentifier)
 \item{modelIdentifier}{[required] Name of the model to delete.}
 }
 \description{
-Deletes a custom model that you created earlier. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Bedrock User Guide.
+Deletes a custom model that you created earlier. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_delete_custom_model/} for full documentation.
 }

@@ -17,10 +17,12 @@ cloudformation_set_type_configuration(
 \item{TypeArn}{The Amazon Resource Name (ARN) for the extension, in this account and
 Region.
 
-For public extensions, this will be the ARN assigned when you \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html}{activate the type}
-in this account and Region. For private extensions, this will be the ARN
-assigned when you \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html}{register the type}
-in this account and Region.
+For public extensions, this will be the ARN assigned when you call the
+\code{\link[=cloudformation_activate_type]{activate_type}} API operation in this
+account and Region. For private extensions, this will be the ARN
+assigned when you call the
+\code{\link[=cloudformation_register_type]{register_type}} API operation in this
+account and Region.
 
 Do not include the extension versions suffix at the end of the ARN. You
 can set the configuration for an extension, but not for a specific

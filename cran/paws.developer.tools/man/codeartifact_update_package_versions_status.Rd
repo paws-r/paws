@@ -30,15 +30,15 @@ want to update.}
 \item{format}{[required] A format that specifies the type of the package with the statuses to
 update.}
 
-\item{namespace}{The namespace of the package version to be updated. The package version
+\item{namespace}{The namespace of the package version to be updated. The package
 component that specifies its namespace depends on its type. For example:
 \itemize{
 \item The namespace of a Maven package version is its \code{groupId}.
-\item The namespace of an npm package version is its \code{scope}.
-\item Python and NuGet package versions do not contain a corresponding
-component, package versions of those formats do not have a
-namespace.
+\item The namespace of an npm or Swift package version is its \code{scope}.
 \item The namespace of a generic package is its \code{namespace}.
+\item Python, NuGet, and Ruby package versions do not contain a
+corresponding component, package versions of those formats do not
+have a namespace.
 }}
 
 \item{package}{[required] The name of the package with the version statuses to update.}

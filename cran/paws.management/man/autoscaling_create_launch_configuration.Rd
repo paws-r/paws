@@ -61,7 +61,7 @@ for the block device mapping.
 To create a launch configuration with a block device mapping or override
 any other instance attributes, specify them as part of the same request.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html}{Creating a launch configuration using an EC2 instance}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html}{Creating a launch configuration using an EC2 instance}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{InstanceType}{Specifies the instance type of the EC2 instance. For information about
@@ -148,7 +148,7 @@ instance with \code{dedicated} tenancy runs on isolated, single-tenant
 hardware and can only be launched into a VPC. To launch dedicated
 instances into a shared tenancy VPC (a VPC with the instance placement
 tenancy attribute set to \code{default}), you must set the value of this
-property to \code{dedicated}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html}{Configuring instance tenancy with Amazon EC2 Auto Scaling}
+property to \code{dedicated}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/advanced-settings-for-your-launch-template.html}{Configuring instance tenancy with Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you specify \code{PlacementTenancy}, you must specify at least one subnet

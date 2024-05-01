@@ -2,15 +2,15 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_get_cluster_snapshot}
 \alias{docdbelastic_get_cluster_snapshot}
-\title{Returns information about a specific Elastic DocumentDB snapshot}
+\title{Returns information about a specific elastic cluster snapshot}
 \usage{
 docdbelastic_get_cluster_snapshot(snapshotArn)
 }
 \arguments{
-\item{snapshotArn}{[required] The arn of the Elastic DocumentDB snapshot.}
+\item{snapshotArn}{[required] The ARN identifier of the elastic cluster snapshot.}
 }
 \description{
-Returns information about a specific Elastic DocumentDB snapshot
+Returns information about a specific elastic cluster snapshot
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_get_cluster_snapshot/} for full documentation.
 }

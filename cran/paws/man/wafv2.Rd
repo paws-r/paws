@@ -159,6 +159,7 @@ it.
 \link[paws.security.identity:wafv2_create_regex_pattern_set]{create_regex_pattern_set} \tab Creates a RegexPatternSet, which you reference in a RegexPatternSetReferenceStatement, to have WAF inspect a web request component for the specified patterns\cr
 \link[paws.security.identity:wafv2_create_rule_group]{create_rule_group} \tab Creates a RuleGroup per the specifications provided\cr
 \link[paws.security.identity:wafv2_create_web_acl]{create_web_acl} \tab Creates a WebACL per the specifications provided\cr
+\link[paws.security.identity:wafv2_delete_api_key]{delete_api_key} \tab Deletes the specified API key\cr
 \link[paws.security.identity:wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by Firewall Manager for the specified web ACL\cr
 \link[paws.security.identity:wafv2_delete_ip_set]{delete_ip_set} \tab Deletes the specified IPSet\cr
 \link[paws.security.identity:wafv2_delete_logging_configuration]{delete_logging_configuration} \tab Deletes the LoggingConfiguration from the specified web ACL\cr

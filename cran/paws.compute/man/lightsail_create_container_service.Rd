@@ -64,8 +64,7 @@ create.
 Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.
 
-For more information about tags in Lightsail, see the Amazon Lightsail
-Developer Guide.}
+For more information about tags in Lightsail, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-tags.html}{Amazon Lightsail Developer Guide}.}
 
 \item{publicDomainNames}{The public domain names to use with the container service, such as
 \code{example.com} and \code{www.example.com}.
@@ -100,9 +99,8 @@ the health check configuration.}
 access private container image repositories, such as Amazon Elastic
 Container Registry (Amazon ECR) private repositories.
 
-For more information, see Configuring access to an Amazon ECR private
-repository for an Amazon Lightsail container service in the \emph{Amazon
-Lightsail Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html}{Configuring access to an Amazon ECR private repository for an Amazon Lightsail container service}
+in the \emph{Amazon Lightsail Developer Guide}.}
 }
 \description{
 Creates an Amazon Lightsail container service.

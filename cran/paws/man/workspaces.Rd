@@ -115,11 +115,13 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.end.user.computing:workspaces_accept_account_link_invitation]{accept_account_link_invitation} \tab Accepts the account link invitation\cr
 \link[paws.end.user.computing:workspaces_associate_connection_alias]{associate_connection_alias} \tab Associates the specified connection alias with the specified directory to enable cross-Region redirection\cr
 \link[paws.end.user.computing:workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory\cr
 \link[paws.end.user.computing:workspaces_associate_workspace_application]{associate_workspace_application} \tab Associates the specified application to the specified WorkSpace\cr
 \link[paws.end.user.computing:workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
 \link[paws.end.user.computing:workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
+\link[paws.end.user.computing:workspaces_create_account_link_invitation]{create_account_link_invitation} \tab Creates the account link invitation\cr
 \link[paws.end.user.computing:workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Amazon Connect within a directory\cr
 \link[paws.end.user.computing:workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
 \link[paws.end.user.computing:workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
@@ -129,6 +131,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_create_workspace_bundle]{create_workspace_bundle} \tab Creates the specified WorkSpace bundle\cr
 \link[paws.end.user.computing:workspaces_create_workspace_image]{create_workspace_image} \tab Creates a new WorkSpace image from an existing WorkSpace\cr
 \link[paws.end.user.computing:workspaces_create_workspaces]{create_workspaces} \tab Creates one or more WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_delete_account_link_invitation]{delete_account_link_invitation} \tab Deletes the account link invitation\cr
 \link[paws.end.user.computing:workspaces_delete_client_branding]{delete_client_branding} \tab Deletes customized client branding\cr
 \link[paws.end.user.computing:workspaces_delete_connect_client_add_in]{delete_connect_client_add_in} \tab Deletes a client-add-in for Amazon Connect that is configured within a directory\cr
 \link[paws.end.user.computing:workspaces_delete_connection_alias]{delete_connection_alias} \tab Deletes the specified connection alias\cr
@@ -162,8 +165,10 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_workspace_application]{disassociate_workspace_application} \tab Disassociates the specified application from a WorkSpace\cr
+\link[paws.end.user.computing:workspaces_get_account_link]{get_account_link} \tab Retrieves account link information\cr
 \link[paws.end.user.computing:workspaces_import_client_branding]{import_client_branding} \tab Imports client branding\cr
 \link[paws.end.user.computing:workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_list_account_links]{list_account_links} \tab Lists all account links\cr
 \link[paws.end.user.computing:workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr
 \link[paws.end.user.computing:workspaces_migrate_workspace]{migrate_workspace} \tab Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume\cr
 \link[paws.end.user.computing:workspaces_modify_account]{modify_account} \tab Modifies the configuration of Bring Your Own License (BYOL) for the specified account\cr
@@ -178,6 +183,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_reboot_workspaces]{reboot_workspaces} \tab Reboots the specified WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_rebuild_workspaces]{rebuild_workspaces} \tab Rebuilds the specified WorkSpace\cr
 \link[paws.end.user.computing:workspaces_register_workspace_directory]{register_workspace_directory} \tab Registers the specified directory\cr
+\link[paws.end.user.computing:workspaces_reject_account_link_invitation]{reject_account_link_invitation} \tab Rejects the account link invitation\cr
 \link[paws.end.user.computing:workspaces_restore_workspace]{restore_workspace} \tab Restores the specified WorkSpace to its last known healthy state\cr
 \link[paws.end.user.computing:workspaces_revoke_ip_rules]{revoke_ip_rules} \tab Removes one or more rules from the specified IP access control group\cr
 \link[paws.end.user.computing:workspaces_start_workspaces]{start_workspaces} \tab Starts the specified WorkSpaces\cr
@@ -194,7 +200,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \examples{
 \dontrun{
 svc <- workspaces()
-svc$associate_connection_alias(
+svc$accept_account_link_invitation(
   Foo = 123
 )
 }

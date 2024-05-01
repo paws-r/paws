@@ -124,11 +124,13 @@ NULL
 #' \tabular{ll}{
 #'  \link[=cloudwatchinternetmonitor_create_monitor]{create_monitor} \tab Creates a monitor in Amazon CloudWatch Internet Monitor\cr
 #'  \link[=cloudwatchinternetmonitor_delete_monitor]{delete_monitor} \tab Deletes a monitor in Amazon CloudWatch Internet Monitor\cr
-#'  \link[=cloudwatchinternetmonitor_get_health_event]{get_health_event} \tab Gets information the Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor\cr
+#'  \link[=cloudwatchinternetmonitor_get_health_event]{get_health_event} \tab Gets information that Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor\cr
+#'  \link[=cloudwatchinternetmonitor_get_internet_event]{get_internet_event} \tab Gets information that Amazon CloudWatch Internet Monitor has generated about an internet event\cr
 #'  \link[=cloudwatchinternetmonitor_get_monitor]{get_monitor} \tab Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name\cr
 #'  \link[=cloudwatchinternetmonitor_get_query_results]{get_query_results} \tab Return the data for a query with the Amazon CloudWatch Internet Monitor query interface\cr
 #'  \link[=cloudwatchinternetmonitor_get_query_status]{get_query_status} \tab Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor\cr
 #'  \link[=cloudwatchinternetmonitor_list_health_events]{list_health_events} \tab Lists all health events for a monitor in Amazon CloudWatch Internet Monitor\cr
+#'  \link[=cloudwatchinternetmonitor_list_internet_events]{list_internet_events} \tab Lists internet events that cause performance or availability issues for client locations\cr
 #'  \link[=cloudwatchinternetmonitor_list_monitors]{list_monitors} \tab Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the Amazon Resource Name (ARN) and name of each monitor\cr
 #'  \link[=cloudwatchinternetmonitor_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
 #'  \link[=cloudwatchinternetmonitor_start_query]{start_query} \tab Start a query to return data for a specific query type for the Amazon CloudWatch Internet Monitor query interface\cr
@@ -167,7 +169,7 @@ cloudwatchinternetmonitor <- function(config = list(), credentials = list(), end
 
 .cloudwatchinternetmonitor$metadata <- list(
   service_name = "cloudwatchinternetmonitor",
-  endpoints = list("*" = list(endpoint = "internetmonitor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "internetmonitor.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "internetmonitor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "internetmonitor.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "internetmonitor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "internetmonitor.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "internetmonitor.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "internetmonitor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "internetmonitor.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "internetmonitor.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "InternetMonitor",
   api_version = "2021-06-03",
   signing_name = "internetmonitor",

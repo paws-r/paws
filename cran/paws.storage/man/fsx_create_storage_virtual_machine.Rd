@@ -19,7 +19,7 @@ fsx_create_storage_virtual_machine(
 \item{ActiveDirectoryConfiguration}{Describes the self-managed Microsoft Active Directory to which you want
 to join the SVM. Joining an Active Directory provides user
 authentication and access control for SMB clients, including Microsoft
-Windows and macOS client accessing the file system.}
+Windows and macOS clients accessing the file system.}
 
 \item{ClientRequestToken}{}
 
@@ -39,11 +39,13 @@ following values:
 \item \code{UNIX} if the file system is managed by a UNIX administrator, the
 majority of users are NFS clients, and an application accessing the
 data uses a UNIX user as the service account.
-\item \code{NTFS} if the file system is managed by a Windows administrator, the
-majority of users are SMB clients, and an application accessing the
-data uses a Windows user as the service account.
-\item \code{MIXED} if the file system is managed by both UNIX and Windows
-administrators and users consist of both NFS and SMB clients.
+\item \code{NTFS} if the file system is managed by a Microsoft Windows
+administrator, the majority of users are SMB clients, and an
+application accessing the data uses a Microsoft Windows user as the
+service account.
+\item \code{MIXED} This is an advanced setting. For more information, see
+\href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/}{Volume security style} in the
+Amazon FSx for NetApp ONTAP User Guide.
 }}
 }
 \description{

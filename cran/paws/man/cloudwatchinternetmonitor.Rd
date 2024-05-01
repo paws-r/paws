@@ -127,11 +127,13 @@ in the \emph{Amazon CloudWatch User Guide}.
 \tabular{ll}{
 \link[paws.management:cloudwatchinternetmonitor_create_monitor]{create_monitor} \tab Creates a monitor in Amazon CloudWatch Internet Monitor\cr
 \link[paws.management:cloudwatchinternetmonitor_delete_monitor]{delete_monitor} \tab Deletes a monitor in Amazon CloudWatch Internet Monitor\cr
-\link[paws.management:cloudwatchinternetmonitor_get_health_event]{get_health_event} \tab Gets information the Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor\cr
+\link[paws.management:cloudwatchinternetmonitor_get_health_event]{get_health_event} \tab Gets information that Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor\cr
+\link[paws.management:cloudwatchinternetmonitor_get_internet_event]{get_internet_event} \tab Gets information that Amazon CloudWatch Internet Monitor has generated about an internet event\cr
 \link[paws.management:cloudwatchinternetmonitor_get_monitor]{get_monitor} \tab Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name\cr
 \link[paws.management:cloudwatchinternetmonitor_get_query_results]{get_query_results} \tab Return the data for a query with the Amazon CloudWatch Internet Monitor query interface\cr
 \link[paws.management:cloudwatchinternetmonitor_get_query_status]{get_query_status} \tab Returns the current status of a query for the Amazon CloudWatch Internet Monitor query interface, for a specified query ID and monitor\cr
 \link[paws.management:cloudwatchinternetmonitor_list_health_events]{list_health_events} \tab Lists all health events for a monitor in Amazon CloudWatch Internet Monitor\cr
+\link[paws.management:cloudwatchinternetmonitor_list_internet_events]{list_internet_events} \tab Lists internet events that cause performance or availability issues for client locations\cr
 \link[paws.management:cloudwatchinternetmonitor_list_monitors]{list_monitors} \tab Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the Amazon Resource Name (ARN) and name of each monitor\cr
 \link[paws.management:cloudwatchinternetmonitor_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
 \link[paws.management:cloudwatchinternetmonitor_start_query]{start_query} \tab Start a query to return data for a specific query type for the Amazon CloudWatch Internet Monitor query interface\cr

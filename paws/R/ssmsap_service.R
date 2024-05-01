@@ -142,7 +142,7 @@ ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .ssmsap$metadata <- list(
   service_name = "ssmsap",
-  endpoints = list("*" = list(endpoint = "ssm-sap.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-sap.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssm-sap.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-sap.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ssm-sap.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-sap.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ssm-sap.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ssm-sap.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-sap.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ssm-sap.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Ssm Sap",
   api_version = "2018-05-10",
   signing_name = "ssm-sap",

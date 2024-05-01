@@ -158,7 +158,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 
 .computeoptimizer$metadata <- list(
   service_name = "computeoptimizer",
-  endpoints = list("*" = list(endpoint = "compute-optimizer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "compute-optimizer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "compute-optimizer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "compute-optimizer.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "compute-optimizer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "compute-optimizer.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "compute-optimizer.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "compute-optimizer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "compute-optimizer.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "compute-optimizer.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Compute Optimizer",
   api_version = "2019-11-01",
   signing_name = "compute-optimizer",

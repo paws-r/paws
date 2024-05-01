@@ -47,7 +47,7 @@ NULL
 
 .savingsplans$describe_savings_plans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(savingsPlans = structure(list(structure(list(offeringId = structure(logical(0), tags = list(type = "string")), savingsPlanId = structure(logical(0), tags = list(type = "string")), savingsPlanArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "string")), end = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), ec2InstanceFamily = structure(logical(0), tags = list(type = "string")), savingsPlanType = structure(logical(0), tags = list(type = "string")), paymentOption = structure(logical(0), tags = list(type = "string")), productTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), currency = structure(logical(0), tags = list(type = "string")), commitment = structure(logical(0), tags = list(type = "string")), upfrontPaymentAmount = structure(logical(0), tags = list(type = "string")), recurringPaymentAmount = structure(logical(0), tags = list(type = "string")), termDurationInSeconds = structure(logical(0), tags = list(type = "long")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(savingsPlans = structure(list(structure(list(offeringId = structure(logical(0), tags = list(type = "string")), savingsPlanId = structure(logical(0), tags = list(type = "string")), savingsPlanArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "string")), end = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), region = structure(logical(0), tags = list(type = "string")), ec2InstanceFamily = structure(logical(0), tags = list(type = "string")), savingsPlanType = structure(logical(0), tags = list(type = "string")), paymentOption = structure(logical(0), tags = list(type = "string")), productTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), currency = structure(logical(0), tags = list(type = "string")), commitment = structure(logical(0), tags = list(type = "string")), upfrontPaymentAmount = structure(logical(0), tags = list(type = "string")), recurringPaymentAmount = structure(logical(0), tags = list(type = "string")), termDurationInSeconds = structure(logical(0), tags = list(type = "long")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), returnableUntil = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -84,6 +84,18 @@ NULL
 .savingsplans$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.savingsplans$return_savings_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(savingsPlanId = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.savingsplans$return_savings_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(savingsPlanId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

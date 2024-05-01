@@ -94,7 +94,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=omics_abort_multipart_read_set_upload]{abort_multipart_read_set_upload} \tab Stops a multipart upload\cr
-#'  \link[=omics_accept_share]{accept_share} \tab Accepts a share for an analytics store\cr
+#'  \link[=omics_accept_share]{accept_share} \tab Accept a resource share request\cr
 #'  \link[=omics_batch_delete_read_set]{batch_delete_read_set} \tab Deletes one or more read sets\cr
 #'  \link[=omics_cancel_annotation_import_job]{cancel_annotation_import_job} \tab Cancels an annotation import job\cr
 #'  \link[=omics_cancel_run]{cancel_run} \tab Cancels a run\cr
@@ -106,7 +106,7 @@ NULL
 #'  \link[=omics_create_reference_store]{create_reference_store} \tab Creates a reference store\cr
 #'  \link[=omics_create_run_group]{create_run_group} \tab Creates a run group\cr
 #'  \link[=omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
-#'  \link[=omics_create_share]{create_share} \tab Creates a share offer that can be accepted outside the account by a subscriber\cr
+#'  \link[=omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
 #'  \link[=omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
 #'  \link[=omics_create_workflow]{create_workflow} \tab Creates a workflow\cr
 #'  \link[=omics_delete_annotation_store]{delete_annotation_store} \tab Deletes an annotation store\cr
@@ -116,7 +116,7 @@ NULL
 #'  \link[=omics_delete_run]{delete_run} \tab Deletes a workflow run\cr
 #'  \link[=omics_delete_run_group]{delete_run_group} \tab Deletes a workflow run group\cr
 #'  \link[=omics_delete_sequence_store]{delete_sequence_store} \tab Deletes a sequence store\cr
-#'  \link[=omics_delete_share]{delete_share} \tab Deletes a share of an analytics store\cr
+#'  \link[=omics_delete_share]{delete_share} \tab Deletes a resource share\cr
 #'  \link[=omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
 #'  \link[=omics_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
 #'  \link[=omics_get_annotation_import_job]{get_annotation_import_job} \tab Gets information about an annotation import job\cr
@@ -135,7 +135,7 @@ NULL
 #'  \link[=omics_get_run_group]{get_run_group} \tab Gets information about a workflow run group\cr
 #'  \link[=omics_get_run_task]{get_run_task} \tab Gets information about a workflow run task\cr
 #'  \link[=omics_get_sequence_store]{get_sequence_store} \tab Gets information about a sequence store\cr
-#'  \link[=omics_get_share]{get_share} \tab Retrieves the metadata for a share\cr
+#'  \link[=omics_get_share]{get_share} \tab Retrieves the metadata for the specified resource share\cr
 #'  \link[=omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
 #'  \link[=omics_get_variant_store]{get_variant_store} \tab Gets information about a variant store\cr
 #'  \link[=omics_get_workflow]{get_workflow} \tab Gets information about a workflow\cr
@@ -155,7 +155,7 @@ NULL
 #'  \link[=omics_list_runs]{list_runs} \tab Retrieves a list of runs\cr
 #'  \link[=omics_list_run_tasks]{list_run_tasks} \tab Retrieves a list of tasks for a run\cr
 #'  \link[=omics_list_sequence_stores]{list_sequence_stores} \tab Retrieves a list of sequence stores\cr
-#'  \link[=omics_list_shares]{list_shares} \tab Lists all shares associated with an account\cr
+#'  \link[=omics_list_shares]{list_shares} \tab Retrieves the resource shares associated with an account\cr
 #'  \link[=omics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
 #'  \link[=omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
 #'  \link[=omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr
@@ -206,7 +206,7 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .omics$metadata <- list(
   service_name = "omics",
-  endpoints = list("*" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "omics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "omics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "omics.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "omics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "omics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "omics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "omics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "omics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Omics",
   api_version = "2022-11-28",
   signing_name = "omics",

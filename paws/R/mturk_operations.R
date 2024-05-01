@@ -1273,6 +1273,8 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 #' @usage
 #' mturk_get_account_balance()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

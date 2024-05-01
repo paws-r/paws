@@ -28,17 +28,13 @@ NULL
 #'     apps) using the Amazon IVS Chat Messaging API. We refer to these as
 #'     *clients*.
 #' 
-#' **Resources**
-#' 
-#' The following resources are part of Amazon IVS Chat:
+#' **Key Concepts**
 #' 
 #' -   **LoggingConfiguration** — A configuration that allows customers to
-#'     store and record sent messages in a chat room. See the Logging
-#'     Configuration endpoints for more information.
+#'     store and record sent messages in a chat room.
 #' 
 #' -   **Room** — The central Amazon IVS Chat resource through which
-#'     clients connect to and exchange chat messages. See the Room
-#'     endpoints for more information.
+#'     clients connect to and exchange chat messages.
 #' 
 #' **Tagging**
 #' 
@@ -324,7 +320,7 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .ivschat$metadata <- list(
   service_name = "ivschat",
-  endpoints = list("*" = list(endpoint = "ivschat.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivschat.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ivschat.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivschat.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ivschat.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivschat.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ivschat.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ivschat.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivschat.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ivschat.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ivschat",
   api_version = "2020-07-14",
   signing_name = "ivschat",

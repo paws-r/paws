@@ -15,7 +15,8 @@ pinpointsmsvoicev2_send_voice_message(
   MaxPricePerMinute = NULL,
   TimeToLive = NULL,
   Context = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  ProtectConfigurationId = NULL
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ logged to the event destination.}
 
 \item{DryRun}{When set to true, the message is checked and validated, but isn't sent
 to the end recipient.}
+
+\item{ProtectConfigurationId}{The unique identifier for the protect configuration.}
 }
 \description{
 Allows you to send a request that sends a voice message through Amazon Pinpoint. This operation uses \href{https://aws.amazon.com/polly/}{Amazon Polly} to convert a text script into a voice message.

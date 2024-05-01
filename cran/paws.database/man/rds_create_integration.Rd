@@ -10,7 +10,9 @@ rds_create_integration(
   IntegrationName,
   KMSKeyId = NULL,
   AdditionalEncryptionContext = NULL,
-  Tags = NULL
+  Tags = NULL,
+  DataFilter = NULL,
+  Description = NULL
 )
 }
 \arguments{
@@ -36,6 +38,13 @@ You can only include this parameter if you specify the \code{KMSKeyId}
 parameter.}
 
 \item{Tags}{}
+
+\item{DataFilter}{Data filtering options for the integration. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.filtering.html}{Data filtering for Aurora zero-ETL integrations with Amazon Redshift}.
+
+Valid for: Integrations with Aurora MySQL source DB clusters only}
+
+\item{Description}{A description of the integration.}
 }
 \description{
 Creates a zero-ETL integration with Amazon Redshift.

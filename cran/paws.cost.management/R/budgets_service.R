@@ -189,7 +189,7 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .budgets$metadata <- list(
   service_name = "budgets",
-  endpoints = list("*" = list(endpoint = "https://budgets.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "budgets.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "budgets.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "budgets.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://budgets.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "budgets.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "budgets.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "budgets.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "budgets.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "budgets.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Budgets",
   api_version = "2016-10-20",
   signing_name = "budgets",

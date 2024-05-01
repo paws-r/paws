@@ -124,12 +124,13 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- secretsmanager()
-#' # The following example shows how to cancel rotation for a secret. The
-#' # operation sets the RotationEnabled field to false and cancels all
-#' # scheduled rotations. To resume scheduled rotations, you must re-enable
-#' # rotation by calling the rotate-secret operation.
-#' svc$cancel_rotate_secret(
-#'   SecretId = "MyTestDatabaseSecret"
+#' # The following example gets the values for three secrets.
+#' svc$batch_get_secret_value(
+#'   SecretIdList = list(
+#'     "MySecret1",
+#'     "MySecret2",
+#'     "MySecret3"
+#'   )
 #' )
 #' }
 #'
@@ -189,7 +190,7 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 
 .secretsmanager$metadata <- list(
   service_name = "secretsmanager",
-  endpoints = list("*" = list(endpoint = "secretsmanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "secretsmanager.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "secretsmanager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "secretsmanager.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "secretsmanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "secretsmanager.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "secretsmanager.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "secretsmanager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "secretsmanager.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "secretsmanager.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Secrets Manager",
   api_version = "2017-10-17",
   signing_name = "secretsmanager",

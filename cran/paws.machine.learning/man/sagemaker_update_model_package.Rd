@@ -10,7 +10,9 @@ sagemaker_update_model_package(
   ApprovalDescription = NULL,
   CustomerMetadataProperties = NULL,
   CustomerMetadataPropertiesToRemove = NULL,
-  AdditionalInferenceSpecificationsToAdd = NULL
+  AdditionalInferenceSpecificationsToAdd = NULL,
+  InferenceSpecification = NULL,
+  SourceUri = NULL
 )
 }
 \arguments{
@@ -31,6 +33,19 @@ additional Inference Specifications can not exceed 15. Each additional
 Inference Specification specifies artifacts based on this model package
 that can be used on inference endpoints. Generally used with SageMaker
 Neo to store the compiled artifacts.}
+
+\item{InferenceSpecification}{Specifies details about inference jobs that you can run with models
+based on this model package, including the following information:
+\itemize{
+\item The Amazon ECR paths of containers that contain the inference code
+and model artifacts.
+\item The instance types that the model package supports for transform
+jobs and real-time endpoints used for inference.
+\item The input and output content formats that the model package supports
+for inference.
+}}
+
+\item{SourceUri}{The URI of the source for the model package.}
 }
 \description{
 Updates a versioned model.

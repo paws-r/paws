@@ -108,20 +108,20 @@ Amazon Kendra is a service for indexing large document sets.
 \link[paws.analytics:kendra_delete_data_source]{delete_data_source} \tab Deletes an Amazon Kendra data source connector\cr
 \link[paws.analytics:kendra_delete_experience]{delete_experience} \tab Deletes your Amazon Kendra experience such as a search application\cr
 \link[paws.analytics:kendra_delete_faq]{delete_faq} \tab Removes an FAQ from an index\cr
-\link[paws.analytics:kendra_delete_index]{delete_index} \tab Deletes an existing Amazon Kendra index\cr
+\link[paws.analytics:kendra_delete_index]{delete_index} \tab Deletes an Amazon Kendra index\cr
 \link[paws.analytics:kendra_delete_principal_mapping]{delete_principal_mapping} \tab Deletes a group so that all users and sub groups that belong to the group can no longer access documents only available to that group\cr
 \link[paws.analytics:kendra_delete_query_suggestions_block_list]{delete_query_suggestions_block_list} \tab Deletes a block list used for query suggestions for an index\cr
-\link[paws.analytics:kendra_delete_thesaurus]{delete_thesaurus} \tab Deletes an existing Amazon Kendra thesaurus\cr
+\link[paws.analytics:kendra_delete_thesaurus]{delete_thesaurus} \tab Deletes an Amazon Kendra thesaurus\cr
 \link[paws.analytics:kendra_describe_access_control_configuration]{describe_access_control_configuration} \tab Gets information about an access control configuration that you created for your documents in an index\cr
 \link[paws.analytics:kendra_describe_data_source]{describe_data_source} \tab Gets information about an Amazon Kendra data source connector\cr
 \link[paws.analytics:kendra_describe_experience]{describe_experience} \tab Gets information about your Amazon Kendra experience such as a search application\cr
 \link[paws.analytics:kendra_describe_faq]{describe_faq} \tab Gets information about an FAQ list\cr
 \link[paws.analytics:kendra_describe_featured_results_set]{describe_featured_results_set} \tab Gets information about a set of featured results\cr
-\link[paws.analytics:kendra_describe_index]{describe_index} \tab Gets information about an existing Amazon Kendra index\cr
+\link[paws.analytics:kendra_describe_index]{describe_index} \tab Gets information about an Amazon Kendra index\cr
 \link[paws.analytics:kendra_describe_principal_mapping]{describe_principal_mapping} \tab Describes the processing of PUT and DELETE actions for mapping users to their groups\cr
 \link[paws.analytics:kendra_describe_query_suggestions_block_list]{describe_query_suggestions_block_list} \tab Gets information about a block list used for query suggestions for an index\cr
 \link[paws.analytics:kendra_describe_query_suggestions_config]{describe_query_suggestions_config} \tab Gets information on the settings of query suggestions for an index\cr
-\link[paws.analytics:kendra_describe_thesaurus]{describe_thesaurus} \tab Gets information about an existing Amazon Kendra thesaurus\cr
+\link[paws.analytics:kendra_describe_thesaurus]{describe_thesaurus} \tab Gets information about an Amazon Kendra thesaurus\cr
 \link[paws.analytics:kendra_disassociate_entities_from_experience]{disassociate_entities_from_experience} \tab Prevents users or groups in your IAM Identity Center identity source from accessing your Amazon Kendra experience\cr
 \link[paws.analytics:kendra_disassociate_personas_from_entities]{disassociate_personas_from_entities} \tab Removes the specific permissions of users or groups in your IAM Identity Center identity source with access to your Amazon Kendra experience\cr
 \link[paws.analytics:kendra_get_query_suggestions]{get_query_suggestions} \tab Fetches the queries that are suggested to your users\cr
@@ -148,10 +148,10 @@ Amazon Kendra is a service for indexing large document sets.
 \link[paws.analytics:kendra_tag_resource]{tag_resource} \tab Adds the specified tag to the specified index, FAQ, or data source resource\cr
 \link[paws.analytics:kendra_untag_resource]{untag_resource} \tab Removes a tag from an index, FAQ, or a data source\cr
 \link[paws.analytics:kendra_update_access_control_configuration]{update_access_control_configuration} \tab Updates an access control configuration for your documents in an index\cr
-\link[paws.analytics:kendra_update_data_source]{update_data_source} \tab Updates an existing Amazon Kendra data source connector\cr
+\link[paws.analytics:kendra_update_data_source]{update_data_source} \tab Updates an Amazon Kendra data source connector\cr
 \link[paws.analytics:kendra_update_experience]{update_experience} \tab Updates your Amazon Kendra experience such as a search application\cr
 \link[paws.analytics:kendra_update_featured_results_set]{update_featured_results_set} \tab Updates a set of featured results\cr
-\link[paws.analytics:kendra_update_index]{update_index} \tab Updates an existing Amazon Kendra index\cr
+\link[paws.analytics:kendra_update_index]{update_index} \tab Updates an Amazon Kendra index\cr
 \link[paws.analytics:kendra_update_query_suggestions_block_list]{update_query_suggestions_block_list} \tab Updates a block list used for query suggestions for an index\cr
 \link[paws.analytics:kendra_update_query_suggestions_config]{update_query_suggestions_config} \tab Updates the settings of query suggestions for an index\cr
 \link[paws.analytics:kendra_update_thesaurus]{update_thesaurus} \tab Updates a thesaurus for an index

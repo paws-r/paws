@@ -37,11 +37,12 @@ returned. Note that although this option is called \code{--namespace} and not
 
 Each package format uses namespace as follows:
 \itemize{
-\item The namespace of a Maven package is its \code{groupId}.
-\item The namespace of an npm package is its \code{scope}.
-\item Python and NuGet packages do not contain a corresponding component,
-packages of those formats do not have a namespace.
+\item The namespace of a Maven package version is its \code{groupId}.
+\item The namespace of an npm or Swift package version is its \code{scope}.
 \item The namespace of a generic package is its \code{namespace}.
+\item Python, NuGet, and Ruby package versions do not contain a
+corresponding component, package versions of those formats do not
+have a namespace.
 }}
 
 \item{packagePrefix}{A prefix used to filter requested packages. Only packages with names

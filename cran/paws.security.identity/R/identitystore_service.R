@@ -149,7 +149,7 @@ identitystore <- function(config = list(), credentials = list(), endpoint = NULL
 
 .identitystore$metadata <- list(
   service_name = "identitystore",
-  endpoints = list("*" = list(endpoint = "identitystore.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "identitystore.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "identitystore.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "identitystore.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "identitystore.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "identitystore.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "identitystore.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "identitystore.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "identitystore.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "identitystore.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "identitystore",
   api_version = "2020-06-15",
   signing_name = "identitystore",

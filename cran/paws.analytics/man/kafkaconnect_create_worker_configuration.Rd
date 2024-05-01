@@ -7,7 +7,8 @@
 kafkaconnect_create_worker_configuration(
   description = NULL,
   name,
-  propertiesFileContent
+  propertiesFileContent,
+  tags = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ kafkaconnect_create_worker_configuration(
 \item{name}{[required] The name of the worker configuration.}
 
 \item{propertiesFileContent}{[required] Base64 encoded contents of connect-distributed.properties file.}
+
+\item{tags}{The tags you want to attach to the worker configuration.}
 }
 \description{
 Creates a worker configuration using the specified properties.

@@ -71,7 +71,10 @@ next set of data points.}
 \item{ScanBy}{The order in which data points should be returned. \code{TimestampDescending}
 returns the newest data first and paginates when the \code{MaxDatapoints}
 limit is reached. \code{TimestampAscending} returns the oldest data first and
-paginates when the \code{MaxDatapoints} limit is reached.}
+paginates when the \code{MaxDatapoints} limit is reached.
+
+If you omit this parameter, the default of \code{TimestampDescending} is
+used.}
 
 \item{MaxDatapoints}{The maximum number of data points the request should return before
 paginating. If you omit this, the default of 100,800 is used.}

@@ -188,7 +188,7 @@ elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = N
 
 .elasticbeanstalk$metadata <- list(
   service_name = "elasticbeanstalk",
-  endpoints = list("*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticbeanstalk.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticbeanstalk.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticbeanstalk.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "elasticbeanstalk.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "elasticbeanstalk.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticbeanstalk.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "elasticbeanstalk.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Elastic Beanstalk",
   api_version = "2010-12-01",
   signing_name = "elasticbeanstalk",

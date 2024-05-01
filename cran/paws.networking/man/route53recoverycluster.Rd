@@ -88,7 +88,7 @@ operations. For more information, see the \href{https://docs.aws.amazon.com/reco
 \item Learn about the components in recovery control, including clusters,
 routing controls, and control panels, and how to work with Route 53
 ARC in the Amazon Web Services console. For more information, see
-\href{https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components.html#introduction-components-routing}{Recovery control components}
+\href{https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components-zonal.html#introduction-components-routing}{Recovery control components}
 in the Amazon Route 53 Application Recovery Controller Developer
 Guide.
 \item Route 53 ARC also provides readiness checks that continually audit

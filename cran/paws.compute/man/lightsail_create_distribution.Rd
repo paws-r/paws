@@ -12,7 +12,9 @@ lightsail_create_distribution(
   cacheBehaviors = NULL,
   bundleId,
   ipAddressType = NULL,
-  tags = NULL
+  tags = NULL,
+  certificateName = NULL,
+  viewerMinimumTlsProtocolVersion = NULL
 )
 }
 \arguments{
@@ -52,6 +54,14 @@ create.
 
 Use the \code{\link[=lightsail_tag_resource]{tag_resource}} action to tag a
 resource after it's created.}
+
+\item{certificateName}{The name of the SSL/TLS certificate that you want to attach to the
+distribution.
+
+Use the \code{\link[=lightsail_get_certificates]{get_certificates}} action to get a
+list of certificate names that you can specify.}
+
+\item{viewerMinimumTlsProtocolVersion}{The minimum TLS protocol version for the SSL/TLS certificate.}
 }
 \description{
 Creates an Amazon Lightsail content delivery network (CDN) distribution.

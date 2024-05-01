@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_list_findings}
 \alias{guardduty_list_findings}
-\title{Lists Amazon GuardDuty findings for the specified detector ID}
+\title{Lists GuardDuty findings for the specified detector ID}
 \usage{
 guardduty_list_findings(
   DetectorId,
@@ -88,7 +88,7 @@ subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
 \description{
-Lists Amazon GuardDuty findings for the specified detector ID.
+Lists GuardDuty findings for the specified detector ID.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_list_findings/} for full documentation.
 }

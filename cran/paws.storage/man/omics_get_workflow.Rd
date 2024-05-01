@@ -4,7 +4,7 @@
 \alias{omics_get_workflow}
 \title{Gets information about a workflow}
 \usage{
-omics_get_workflow(id, type = NULL, export = NULL)
+omics_get_workflow(id, type = NULL, export = NULL, workflowOwnerId = NULL)
 }
 \arguments{
 \item{id}{[required] The workflow's ID.}
@@ -12,6 +12,8 @@ omics_get_workflow(id, type = NULL, export = NULL)
 \item{type}{The workflow's type.}
 
 \item{export}{The export format for the workflow.}
+
+\item{workflowOwnerId}{The ID of the workflow owner.}
 }
 \description{
 Gets information about a workflow.

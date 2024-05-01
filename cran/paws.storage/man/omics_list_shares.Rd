@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_list_shares}
 \alias{omics_list_shares}
-\title{Lists all shares associated with an account}
+\title{Retrieves the resource shares associated with an account}
 \usage{
 omics_list_shares(
   resourceOwner,
@@ -12,9 +12,10 @@ omics_list_shares(
 )
 }
 \arguments{
-\item{resourceOwner}{[required] The account that owns the analytics store shared.}
+\item{resourceOwner}{[required] The account that owns the resource shares.}
 
-\item{filter}{Attributes used to filter for a specific subset of shares.}
+\item{filter}{Attributes that you use to filter for a specific subset of resource
+shares.}
 
 \item{nextToken}{Next token returned in the response of a previous
 ListReadSetUploadPartsRequest call. Used to get the next page of
@@ -23,7 +24,7 @@ results.}
 \item{maxResults}{The maximum number of shares to return in one page of results.}
 }
 \description{
-Lists all shares associated with an account.
+Retrieves the resource shares associated with an account. Use the filter parameter to retrieve a specific subset of the shares.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_shares/} for full documentation.
 }

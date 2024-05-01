@@ -143,6 +143,7 @@ NULL
 #'  \link[=emr_run_job_flow]{run_job_flow} \tab RunJobFlow creates and starts running a new cluster (job flow)\cr
 #'  \link[=emr_set_keep_job_flow_alive_when_no_steps]{set_keep_job_flow_alive_when_no_steps} \tab You can use the SetKeepJobFlowAliveWhenNoSteps to configure a cluster (job flow) to terminate after the step execution, i\cr
 #'  \link[=emr_set_termination_protection]{set_termination_protection} \tab SetTerminationProtection locks a cluster (job flow) so the Amazon EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error\cr
+#'  \link[=emr_set_unhealthy_node_replacement]{set_unhealthy_node_replacement} \tab Specify whether to enable unhealthy node replacement, which lets Amazon EMR gracefully replace core nodes on a cluster if any nodes become unhealthy\cr
 #'  \link[=emr_set_visible_to_all_users]{set_visible_to_all_users} \tab The SetVisibleToAllUsers parameter is no longer supported\cr
 #'  \link[=emr_start_notebook_execution]{start_notebook_execution} \tab Starts a notebook execution\cr
 #'  \link[=emr_stop_notebook_execution]{stop_notebook_execution} \tab Stops a notebook execution\cr
@@ -180,7 +181,7 @@ emr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .emr$metadata <- list(
   service_name = "elasticmapreduce",
-  endpoints = list("*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticmapreduce.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticmapreduce.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticmapreduce.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "elasticmapreduce.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "elasticmapreduce.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticmapreduce.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "elasticmapreduce.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EMR",
   api_version = "2009-03-31",
   signing_name = "elasticmapreduce",

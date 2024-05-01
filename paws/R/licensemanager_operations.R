@@ -1774,6 +1774,8 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #' @usage
 #' licensemanager_get_service_settings()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

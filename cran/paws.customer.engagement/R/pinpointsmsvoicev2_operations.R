@@ -45,6 +45,36 @@ pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, Originatio
 }
 .pinpointsmsvoicev2$operations$associate_origination_identity <- pinpointsmsvoicev2_associate_origination_identity
 
+#' Associate a protect configuration with a configuration set
+#'
+#' @description
+#' Associate a protect configuration with a configuration set. This replaces the configuration sets current protect configuration. A configuration set can only be associated with one protect configuration at a time. A protect configuration can be associated with multiple configuration sets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_associate_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_associate_protect_configuration/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#' @param ConfigurationSetName &#91;required&#93; The name of the ConfigurationSet.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_associate_protect_configuration
+pinpointsmsvoicev2_associate_protect_configuration <- function(ProtectConfigurationId, ConfigurationSetName) {
+  op <- new_operation(
+    name = "AssociateProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$associate_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId, ConfigurationSetName = ConfigurationSetName)
+  output <- .pinpointsmsvoicev2$associate_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$associate_protect_configuration <- pinpointsmsvoicev2_associate_protect_configuration
+
 #' Creates a new configuration set
 #'
 #' @description
@@ -97,7 +127,7 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' 
 #' The `TEXT_SENT` event type is not supported.
 #' @param CloudWatchLogsDestination An object that contains information about an event destination for
-#' logging to Amazon CloudWatch logs.
+#' logging to Amazon CloudWatch Logs.
 #' @param KinesisFirehoseDestination An object that contains information about an event destination for
 #' logging to Amazon Kinesis Data Firehose.
 #' @param SnsDestination An object that contains information about an event destination for
@@ -206,6 +236,41 @@ pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, 
   return(response)
 }
 .pinpointsmsvoicev2$operations$create_pool <- pinpointsmsvoicev2_create_pool
+
+#' Create a new protect configuration
+#'
+#' @description
+#' Create a new protect configuration. By default all country rule sets for each capability are set to `ALLOW`. Update the country rule sets using [`update_protect_configuration_country_rule_set`][pinpointsmsvoicev2_update_protect_configuration_country_rule_set]. A protect configurations name is stored as a Tag with the key set to `Name` and value as the name of the protect configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_protect_configuration/) for full documentation.
+#'
+#' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you don't specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#' @param DeletionProtectionEnabled When set to true deletion protection is enabled. By default this is set
+#' to false.
+#' @param Tags An array of key and value pair tags that are associated with the
+#' resource.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_create_protect_configuration
+pinpointsmsvoicev2_create_protect_configuration <- function(ClientToken = NULL, DeletionProtectionEnabled = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$create_protect_configuration_input(ClientToken = ClientToken, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags)
+  output <- .pinpointsmsvoicev2$create_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$create_protect_configuration <- pinpointsmsvoicev2_create_protect_configuration
 
 #' Creates a new registration based on the RegistrationType field
 #'
@@ -378,6 +443,35 @@ pinpointsmsvoicev2_create_verified_destination_number <- function(DestinationPho
 }
 .pinpointsmsvoicev2$operations$create_verified_destination_number <- pinpointsmsvoicev2_create_verified_destination_number
 
+#' Removes the current account default protect configuration
+#'
+#' @description
+#' Removes the current account default protect configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_account_default_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_account_default_protect_configuration/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_accoun_defaul_protec_config
+pinpointsmsvoicev2_delete_account_default_protect_configuration <- function() {
+  op <- new_operation(
+    name = "DeleteAccountDefaultProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_account_default_protect_configuration_input()
+  output <- .pinpointsmsvoicev2$delete_account_default_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_account_default_protect_configuration <- pinpointsmsvoicev2_delete_account_default_protect_configuration
+
 #' Deletes an existing configuration set
 #'
 #' @description
@@ -546,6 +640,36 @@ pinpointsmsvoicev2_delete_keyword <- function(OriginationIdentity, Keyword) {
 }
 .pinpointsmsvoicev2$operations$delete_keyword <- pinpointsmsvoicev2_delete_keyword
 
+#' Deletes an account-level monthly spending limit override for sending
+#' multimedia messages (MMS)
+#'
+#' @description
+#' Deletes an account-level monthly spending limit override for sending multimedia messages (MMS). Deleting a spend limit override will set the `EnforcedLimit` to equal the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spend limits (quotas) see [Quotas for Server Migration Service](https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html) in the *Server Migration Service User Guide*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_media_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_media_message_spend_limit_override/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_media_message_spend_limit_override
+pinpointsmsvoicev2_delete_media_message_spend_limit_override <- function() {
+  op <- new_operation(
+    name = "DeleteMediaMessageSpendLimitOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_media_message_spend_limit_override_input()
+  output <- .pinpointsmsvoicev2$delete_media_message_spend_limit_override_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_media_message_spend_limit_override <- pinpointsmsvoicev2_delete_media_message_spend_limit_override
+
 #' Deletes an existing opt-out list
 #'
 #' @description
@@ -639,6 +763,35 @@ pinpointsmsvoicev2_delete_pool <- function(PoolId) {
   return(response)
 }
 .pinpointsmsvoicev2$operations$delete_pool <- pinpointsmsvoicev2_delete_pool
+
+#' Permanently delete the protect configuration
+#'
+#' @description
+#' Permanently delete the protect configuration. The protect configuration must have deletion protection disabled and must not be associated as the account default protect configuration or associated with a configuration set.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_protect_configuration/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_delete_protect_configuration
+pinpointsmsvoicev2_delete_protect_configuration <- function(ProtectConfigurationId) {
+  op <- new_operation(
+    name = "DeleteProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$delete_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId)
+  output <- .pinpointsmsvoicev2$delete_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$delete_protect_configuration <- pinpointsmsvoicev2_delete_protect_configuration
 
 #' Permanently delete an existing registration from your account
 #'
@@ -738,6 +891,8 @@ pinpointsmsvoicev2_delete_registration_field_value <- function(RegistrationId, F
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_text_message_spend_limit_override/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_text_message_spend_limit_override
@@ -794,6 +949,8 @@ pinpointsmsvoicev2_delete_verified_destination_number <- function(VerifiedDestin
 #' Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the `EnforcedLimit` equal to the `MaxLimit`, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see [Amazon Pinpoint quotas](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html) in the *Amazon Pinpoint Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1093,6 +1250,39 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
   return(response)
 }
 .pinpointsmsvoicev2$operations$describe_pools <- pinpointsmsvoicev2_describe_pools
+
+#' Retrieves the protect configurations that match any of filters
+#'
+#' @description
+#' Retrieves the protect configurations that match any of filters. If a filter isn’t provided then all protect configurations are returned.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_protect_configurations/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_protect_configurations/) for full documentation.
+#'
+#' @param ProtectConfigurationIds An array of protect configuration identifiers to search for.
+#' @param Filters An array of ProtectConfigurationFilter objects to filter the results.
+#' @param NextToken The token to be used for the next set of paginated results. You don't
+#' need to supply a value for this field in the initial request.
+#' @param MaxResults The maximum number of results to return per each request.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_describe_protect_configurations
+pinpointsmsvoicev2_describe_protect_configurations <- function(ProtectConfigurationIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeProtectConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProtectConfigurations")
+  )
+  input <- .pinpointsmsvoicev2$describe_protect_configurations_input(ProtectConfigurationIds = ProtectConfigurationIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pinpointsmsvoicev2$describe_protect_configurations_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$describe_protect_configurations <- pinpointsmsvoicev2_describe_protect_configurations
 
 #' Retrieves the specified registration attachments or all registration
 #' attachments associated with your Amazon Web Services account
@@ -1482,6 +1672,36 @@ pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, Origina
 }
 .pinpointsmsvoicev2$operations$disassociate_origination_identity <- pinpointsmsvoicev2_disassociate_origination_identity
 
+#' Disassociate a protect configuration from a configuration set
+#'
+#' @description
+#' Disassociate a protect configuration from a configuration set.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_disassociate_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_disassociate_protect_configuration/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#' @param ConfigurationSetName &#91;required&#93; The name of the ConfigurationSet.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_disassociate_protect_configuration
+pinpointsmsvoicev2_disassociate_protect_configuration <- function(ProtectConfigurationId, ConfigurationSetName) {
+  op <- new_operation(
+    name = "DisassociateProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$disassociate_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId, ConfigurationSetName = ConfigurationSetName)
+  output <- .pinpointsmsvoicev2$disassociate_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$disassociate_protect_configuration <- pinpointsmsvoicev2_disassociate_protect_configuration
+
 #' Discard the current version of the registration
 #'
 #' @description
@@ -1510,6 +1730,38 @@ pinpointsmsvoicev2_discard_registration_version <- function(RegistrationId) {
   return(response)
 }
 .pinpointsmsvoicev2$operations$discard_registration_version <- pinpointsmsvoicev2_discard_registration_version
+
+#' Retrieve the CountryRuleSet for the specified NumberCapability from a
+#' protect configuration
+#'
+#' @description
+#' Retrieve the CountryRuleSet for the specified NumberCapability from a protect configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_get_protect_configuration_country_rule_set/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_get_protect_configuration_country_rule_set/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#' @param NumberCapability &#91;required&#93; The capability type to return the CountryRuleSet for. Valid values are
+#' `SMS`, `VOICE`, or `MMS`.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_get_prote_confi_count_rule_set
+pinpointsmsvoicev2_get_protect_configuration_country_rule_set <- function(ProtectConfigurationId, NumberCapability) {
+  op <- new_operation(
+    name = "GetProtectConfigurationCountryRuleSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$get_protect_configuration_country_rule_set_input(ProtectConfigurationId = ProtectConfigurationId, NumberCapability = NumberCapability)
+  output <- .pinpointsmsvoicev2$get_protect_configuration_country_rule_set_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$get_protect_configuration_country_rule_set <- pinpointsmsvoicev2_get_protect_configuration_country_rule_set
 
 #' Lists all associated origination identities in your pool
 #'
@@ -1785,7 +2037,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #' Request an origination phone number for use in your account
 #'
 #' @description
-#' Request an origination phone number for use in your account. For more information on phone number request see [Requesting a number](https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html) in the *Amazon Pinpoint User Guide*.
+#' Request an origination phone number for use in your account. For more information on phone number request see [Requesting a number](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html) in the *Amazon Pinpoint User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/) for full documentation.
 #'
@@ -1893,7 +2145,7 @@ pinpointsmsvoicev2_request_sender_id <- function(SenderId, IsoCountryCode, Messa
 #' Currently, this setting is only used when you send messages to
 #' recipients in India using a sender ID. For more information see [Special
 #' requirements for sending SMS messages to recipients in
-#' India](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html).
+#' India](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html).
 #'
 #' @keywords internal
 #'
@@ -1914,6 +2166,62 @@ pinpointsmsvoicev2_send_destination_number_verification_code <- function(Verifie
   return(response)
 }
 .pinpointsmsvoicev2$operations$send_destination_number_verification_code <- pinpointsmsvoicev2_send_destination_number_verification_code
+
+#' Creates a new multimedia message (MMS) and sends it to a recipient's
+#' phone number
+#'
+#' @description
+#' Creates a new multimedia message (MMS) and sends it to a recipient's phone number.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_media_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_media_message/) for full documentation.
+#'
+#' @param DestinationPhoneNumber &#91;required&#93; The destination phone number in E.164 format.
+#' @param OriginationIdentity &#91;required&#93; The origination identity of the message. This can be either the
+#' PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
+#' PoolId, or PoolArn.
+#' @param MessageBody The text body of the message.
+#' @param MediaUrls An array of URLs to each media file to send.
+#' 
+#' The media files have to be stored in a publicly available S3 bucket.
+#' Supported media file formats are listed in [MMS file types, size and
+#' character
+#' limits](https://docs.aws.amazon.com/sms-voice/latest/userguide/mms-limitations-character.html).
+#' For more information on creating an S3 bucket and managing objects, see
+#' [Creating a
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+#' and [Uploading
+#' objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html)
+#' in the S3 user guide.
+#' @param ConfigurationSetName The name of the configuration set to use. This can be either the
+#' ConfigurationSetName or ConfigurationSetArn.
+#' @param MaxPrice The maximum amount that you want to spend, in US dollars, per each MMS
+#' message.
+#' @param TimeToLive How long the text message is valid for. By default this is 72 hours.
+#' @param Context You can specify custom data in this field. If you do, that data is
+#' logged to the event destination.
+#' @param DryRun When set to true, the message is checked and validated, but isn't sent
+#' to the end recipient.
+#' @param ProtectConfigurationId The unique identifier of the protect configuration to use.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_send_media_message
+pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, OriginationIdentity, MessageBody = NULL, MediaUrls = NULL, ConfigurationSetName = NULL, MaxPrice = NULL, TimeToLive = NULL, Context = NULL, DryRun = NULL, ProtectConfigurationId = NULL) {
+  op <- new_operation(
+    name = "SendMediaMessage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$send_media_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MediaUrls = MediaUrls, ConfigurationSetName = ConfigurationSetName, MaxPrice = MaxPrice, TimeToLive = TimeToLive, Context = Context, DryRun = DryRun, ProtectConfigurationId = ProtectConfigurationId)
+  output <- .pinpointsmsvoicev2$send_media_message_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$send_media_message <- pinpointsmsvoicev2_send_media_message
 
 #' Creates a new text message and sends it to a recipient's phone number
 #'
@@ -1943,21 +2251,22 @@ pinpointsmsvoicev2_send_destination_number_verification_code <- function(Verifie
 #' Currently, this setting is only used when you send messages to
 #' recipients in India using a sender ID. For more information see [Special
 #' requirements for sending SMS messages to recipients in
-#' India](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html).
+#' India](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html).
 #' @param DryRun When set to true, the message is checked and validated, but isn't sent
 #' to the end recipient.
+#' @param ProtectConfigurationId The unique identifier for the protect configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_send_text_message
-pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, OriginationIdentity = NULL, MessageBody = NULL, MessageType = NULL, Keyword = NULL, ConfigurationSetName = NULL, MaxPrice = NULL, TimeToLive = NULL, Context = NULL, DestinationCountryParameters = NULL, DryRun = NULL) {
+pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, OriginationIdentity = NULL, MessageBody = NULL, MessageType = NULL, Keyword = NULL, ConfigurationSetName = NULL, MaxPrice = NULL, TimeToLive = NULL, Context = NULL, DestinationCountryParameters = NULL, DryRun = NULL, ProtectConfigurationId = NULL) {
   op <- new_operation(
     name = "SendTextMessage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .pinpointsmsvoicev2$send_text_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MessageType = MessageType, Keyword = Keyword, ConfigurationSetName = ConfigurationSetName, MaxPrice = MaxPrice, TimeToLive = TimeToLive, Context = Context, DestinationCountryParameters = DestinationCountryParameters, DryRun = DryRun)
+  input <- .pinpointsmsvoicev2$send_text_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MessageType = MessageType, Keyword = Keyword, ConfigurationSetName = ConfigurationSetName, MaxPrice = MaxPrice, TimeToLive = TimeToLive, Context = Context, DestinationCountryParameters = DestinationCountryParameters, DryRun = DryRun, ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$send_text_message_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config)
@@ -1999,18 +2308,19 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 #' logged to the event destination.
 #' @param DryRun When set to true, the message is checked and validated, but isn't sent
 #' to the end recipient.
+#' @param ProtectConfigurationId The unique identifier for the protect configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_send_voice_message
-pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, OriginationIdentity, MessageBody = NULL, MessageBodyTextType = NULL, VoiceId = NULL, ConfigurationSetName = NULL, MaxPricePerMinute = NULL, TimeToLive = NULL, Context = NULL, DryRun = NULL) {
+pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, OriginationIdentity, MessageBody = NULL, MessageBodyTextType = NULL, VoiceId = NULL, ConfigurationSetName = NULL, MaxPricePerMinute = NULL, TimeToLive = NULL, Context = NULL, DryRun = NULL, ProtectConfigurationId = NULL) {
   op <- new_operation(
     name = "SendVoiceMessage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .pinpointsmsvoicev2$send_voice_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MessageBodyTextType = MessageBodyTextType, VoiceId = VoiceId, ConfigurationSetName = ConfigurationSetName, MaxPricePerMinute = MaxPricePerMinute, TimeToLive = TimeToLive, Context = Context, DryRun = DryRun)
+  input <- .pinpointsmsvoicev2$send_voice_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MessageBodyTextType = MessageBodyTextType, VoiceId = VoiceId, ConfigurationSetName = ConfigurationSetName, MaxPricePerMinute = MaxPricePerMinute, TimeToLive = TimeToLive, Context = Context, DryRun = DryRun, ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$send_voice_message_output()
   config <- get_config()
   svc <- .pinpointsmsvoicev2$service(config)
@@ -2019,6 +2329,35 @@ pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, Origin
   return(response)
 }
 .pinpointsmsvoicev2$operations$send_voice_message <- pinpointsmsvoicev2_send_voice_message
+
+#' Set a protect configuration as your account default
+#'
+#' @description
+#' Set a protect configuration as your account default. You can only have one account default protect configuration at a time. The current account default protect configuration is replaced with the provided protect configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_account_default_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_account_default_protect_configuration/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_set_account_default_protect_configuration
+pinpointsmsvoicev2_set_account_default_protect_configuration <- function(ProtectConfigurationId) {
+  op <- new_operation(
+    name = "SetAccountDefaultProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$set_account_default_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId)
+  output <- .pinpointsmsvoicev2$set_account_default_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$set_account_default_protect_configuration <- pinpointsmsvoicev2_set_account_default_protect_configuration
 
 #' Sets the default message type on a configuration set
 #'
@@ -2089,6 +2428,36 @@ pinpointsmsvoicev2_set_default_sender_id <- function(ConfigurationSetName, Sende
   return(response)
 }
 .pinpointsmsvoicev2$operations$set_default_sender_id <- pinpointsmsvoicev2_set_default_sender_id
+
+#' Sets an account level monthly spend limit override for sending MMS
+#' messages
+#'
+#' @description
+#' Sets an account level monthly spend limit override for sending MMS messages. The requested spend limit must be less than or equal to the `MaxLimit`, which is set by Amazon Web Services.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_media_message_spend_limit_override/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_media_message_spend_limit_override/) for full documentation.
+#'
+#' @param MonthlyLimit &#91;required&#93; The new monthly limit to enforce on text messages.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_set_media_message_spend_limit_override
+pinpointsmsvoicev2_set_media_message_spend_limit_override <- function(MonthlyLimit) {
+  op <- new_operation(
+    name = "SetMediaMessageSpendLimitOverride",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$set_media_message_spend_limit_override_input(MonthlyLimit = MonthlyLimit)
+  output <- .pinpointsmsvoicev2$set_media_message_spend_limit_override_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$set_media_message_spend_limit_override <- pinpointsmsvoicev2_set_media_message_spend_limit_override
 
 #' Sets an account level monthly spend limit override for sending text
 #' messages
@@ -2372,6 +2741,74 @@ pinpointsmsvoicev2_update_pool <- function(PoolId, TwoWayEnabled = NULL, TwoWayC
   return(response)
 }
 .pinpointsmsvoicev2$operations$update_pool <- pinpointsmsvoicev2_update_pool
+
+#' Update the setting for an existing protect configuration
+#'
+#' @description
+#' Update the setting for an existing protect configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_protect_configuration/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_protect_configuration/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#' @param DeletionProtectionEnabled When set to true deletion protection is enabled. By default this is set
+#' to false.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_update_protect_configuration
+pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfigurationId, DeletionProtectionEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateProtectConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$update_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  output <- .pinpointsmsvoicev2$update_protect_configuration_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$update_protect_configuration <- pinpointsmsvoicev2_update_protect_configuration
+
+#' Update a country rule set to ALLOW or BLOCK messages to be sent to the
+#' specified destination counties
+#'
+#' @description
+#' Update a country rule set to `ALLOW` or `BLOCK` messages to be sent to the specified destination counties. You can update one or multiple countries at a time. The updates are only applied to the specified NumberCapability type.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_protect_configuration_country_rule_set/](https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_protect_configuration_country_rule_set/) for full documentation.
+#'
+#' @param ProtectConfigurationId &#91;required&#93; The unique identifier for the protect configuration.
+#' @param NumberCapability &#91;required&#93; The number capability to apply the CountryRuleSetUpdates updates to.
+#' @param CountryRuleSetUpdates &#91;required&#93; A map of ProtectConfigurationCountryRuleSetInformation objects that
+#' contain the details for the requested NumberCapability. The Key is the
+#' two-letter ISO country code. For a list of supported ISO country codes,
+#' see [Supported countries and regions (SMS
+#' channel)](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html)
+#' in the Amazon Pinpoint SMS user guide.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpointsmsvoicev2_updat_prote_confi_count_rule_set
+pinpointsmsvoicev2_update_protect_configuration_country_rule_set <- function(ProtectConfigurationId, NumberCapability, CountryRuleSetUpdates) {
+  op <- new_operation(
+    name = "UpdateProtectConfigurationCountryRuleSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pinpointsmsvoicev2$update_protect_configuration_country_rule_set_input(ProtectConfigurationId = ProtectConfigurationId, NumberCapability = NumberCapability, CountryRuleSetUpdates = CountryRuleSetUpdates)
+  output <- .pinpointsmsvoicev2$update_protect_configuration_country_rule_set_output()
+  config <- get_config()
+  svc <- .pinpointsmsvoicev2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpointsmsvoicev2$operations$update_protect_configuration_country_rule_set <- pinpointsmsvoicev2_update_protect_configuration_country_rule_set
 
 #' Updates the configuration of an existing sender ID
 #'

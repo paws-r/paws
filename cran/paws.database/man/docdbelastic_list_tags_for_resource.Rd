@@ -2,15 +2,15 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_list_tags_for_resource}
 \alias{docdbelastic_list_tags_for_resource}
-\title{Lists all tags on a Elastic DocumentDB resource}
+\title{Lists all tags on a elastic cluster resource}
 \usage{
 docdbelastic_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The arn of the Elastic DocumentDB resource.}
+\item{resourceArn}{[required] The ARN identifier of the elastic cluster resource.}
 }
 \description{
-Lists all tags on a Elastic DocumentDB resource
+Lists all tags on a elastic cluster resource
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_list_tags_for_resource/} for full documentation.
 }

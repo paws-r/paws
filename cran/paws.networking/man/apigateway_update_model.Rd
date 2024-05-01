@@ -14,7 +14,7 @@ apigateway_update_model(restApiId, modelName, patchOperations = NULL)
 \item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
-Changes information about a model.
+Changes information about a model. The maximum size of the model is 400 KB.
 
 See \url{https://www.paws-r-sdk.com/docs/apigateway_update_model/} for full documentation.
 }

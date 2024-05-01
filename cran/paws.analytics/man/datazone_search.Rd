@@ -40,7 +40,7 @@ list the next set of results.}
 
 \item{owningProjectIdentifier}{The identifier of the owning project specified for the search.}
 
-\item{searchIn}{}
+\item{searchIn}{The details of the search.}
 
 \item{searchScope}{[required] The scope of the search.}
 

@@ -53,10 +53,11 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Savings Plans are a pricing model that offer significant savings on AWS
-usage (for example, on Amazon EC2 instances). You commit to a consistent
-amount of usage, in USD per hour, for a term of 1 or 3 years, and
-receive a lower price for that usage. For more information, see the \href{https://docs.aws.amazon.com/savingsplans/latest/userguide/}{AWS Savings Plans User Guide}.
+Savings Plans are a pricing model that offer significant savings on
+Amazon Web Services usage (for example, on Amazon EC2 instances). You
+commit to a consistent amount of usage per hour, in the specified
+currency, for a term of one or three years, and receive a lower price
+for that usage. For more information, see the \href{https://docs.aws.amazon.com/savingsplans/latest/userguide/}{Amazon Web Services Savings Plans User Guide}.
 }
 \section{Service syntax}{
 
@@ -99,11 +100,12 @@ receive a lower price for that usage. For more information, see the \href{https:
 \tabular{ll}{
 \link[paws.cost.management:savingsplans_create_savings_plan]{create_savings_plan} \tab Creates a Savings Plan\cr
 \link[paws.cost.management:savingsplans_delete_queued_savings_plan]{delete_queued_savings_plan} \tab Deletes the queued purchase for the specified Savings Plan\cr
-\link[paws.cost.management:savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the specified Savings Plans rates\cr
+\link[paws.cost.management:savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the rates for the specified Savings Plan\cr
 \link[paws.cost.management:savingsplans_describe_savings_plans]{describe_savings_plans} \tab Describes the specified Savings Plans\cr
-\link[paws.cost.management:savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the specified Savings Plans offering rates\cr
-\link[paws.cost.management:savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the specified Savings Plans offerings\cr
+\link[paws.cost.management:savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the offering rates for the specified Savings Plans\cr
+\link[paws.cost.management:savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the offerings for the specified Savings Plans\cr
 \link[paws.cost.management:savingsplans_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[paws.cost.management:savingsplans_return_savings_plan]{return_savings_plan} \tab Returns the specified Savings Plan\cr
 \link[paws.cost.management:savingsplans_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[paws.cost.management:savingsplans_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource
 }

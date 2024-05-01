@@ -7,7 +7,8 @@
 dynamodb_create_backup(TableName, BackupName)
 }
 \arguments{
-\item{TableName}{[required] The name of the table.}
+\item{TableName}{[required] The name of the table. You can also provide the Amazon Resource Name
+(ARN) of the table in this parameter.}
 
 \item{BackupName}{[required] Specified name for the backup.}
 }

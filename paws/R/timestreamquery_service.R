@@ -93,6 +93,7 @@ NULL
 #'  \link[=timestreamquery_cancel_query]{cancel_query} \tab Cancels a query that has been issued\cr
 #'  \link[=timestreamquery_create_scheduled_query]{create_scheduled_query} \tab Create a scheduled query that will be run on your behalf at the configured schedule\cr
 #'  \link[=timestreamquery_delete_scheduled_query]{delete_scheduled_query} \tab Deletes a given scheduled query\cr
+#'  \link[=timestreamquery_describe_account_settings]{describe_account_settings} \tab Describes the settings for your account that include the query pricing model and the configured maximum TCUs the service can use for your query workload\cr
 #'  \link[=timestreamquery_describe_endpoints]{describe_endpoints} \tab DescribeEndpoints returns a list of available endpoints to make Timestream API calls against\cr
 #'  \link[=timestreamquery_describe_scheduled_query]{describe_scheduled_query} \tab Provides detailed information about a scheduled query\cr
 #'  \link[=timestreamquery_execute_scheduled_query]{execute_scheduled_query} \tab You can use this API to run a scheduled query manually\cr
@@ -102,6 +103,7 @@ NULL
 #'  \link[=timestreamquery_query]{query} \tab Query is a synchronous operation that enables you to run a query against your Amazon Timestream data\cr
 #'  \link[=timestreamquery_tag_resource]{tag_resource} \tab Associate a set of tags with a Timestream resource\cr
 #'  \link[=timestreamquery_untag_resource]{untag_resource} \tab Removes the association of tags from a Timestream query resource\cr
+#'  \link[=timestreamquery_update_account_settings]{update_account_settings} \tab Transitions your account to use TCUs for query pricing and modifies the maximum query compute units that you've configured\cr
 #'  \link[=timestreamquery_update_scheduled_query]{update_scheduled_query} \tab Update a scheduled query
 #' }
 #'
@@ -134,7 +136,7 @@ timestreamquery <- function(config = list(), credentials = list(), endpoint = NU
 
 .timestreamquery$metadata <- list(
   service_name = "timestreamquery",
-  endpoints = list("*" = list(endpoint = "query.timestream.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "query.timestream.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "query.timestream.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "query.timestream.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "query.timestream.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "query.timestream.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "query.timestream.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "query.timestream.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "query.timestream.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "query.timestream.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Timestream Query",
   api_version = "2018-11-01",
   signing_name = "timestream",

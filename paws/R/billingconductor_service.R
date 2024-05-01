@@ -172,7 +172,7 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
 
 .billingconductor$metadata <- list(
   service_name = "billingconductor",
-  endpoints = list("*" = list(endpoint = "billingconductor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "billingconductor.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "billingconductor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "billingconductor.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "billingconductor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "billingconductor.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "billingconductor.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "billingconductor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "billingconductor.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "billingconductor.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "billingconductor",
   api_version = "2021-07-30",
   signing_name = "billingconductor",

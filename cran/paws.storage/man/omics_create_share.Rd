@@ -2,21 +2,20 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_create_share}
 \alias{omics_create_share}
-\title{Creates a share offer that can be accepted outside the account by a
-subscriber}
+\title{Creates a cross-account shared resource}
 \usage{
 omics_create_share(resourceArn, principalSubscriber, shareName = NULL)
 }
 \arguments{
-\item{resourceArn}{[required] The resource ARN for the analytics store to be shared.}
+\item{resourceArn}{[required] The ARN of the resource to be shared.}
 
-\item{principalSubscriber}{[required] The principal subscriber is the account being given access to the
-analytics store data through the share offer.}
+\item{principalSubscriber}{[required] The principal subscriber is the account being offered shared access to
+the resource.}
 
-\item{shareName}{A name given to the share.}
+\item{shareName}{A name that the owner defines for the share.}
 }
 \description{
-Creates a share offer that can be accepted outside the account by a subscriber. The share is created by the owner and accepted by the principal subscriber.
+Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner).
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_share/} for full documentation.
 }

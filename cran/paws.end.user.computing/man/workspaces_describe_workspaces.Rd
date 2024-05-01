@@ -10,7 +10,8 @@ workspaces_describe_workspaces(
   UserName = NULL,
   BundleId = NULL,
   Limit = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  WorkspaceName = NULL
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ filter.}
 
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
+
+\item{WorkspaceName}{The name of the user-decoupled WorkSpace.}
 }
 \description{
 Describes the specified WorkSpaces.

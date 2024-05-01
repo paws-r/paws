@@ -25,7 +25,7 @@ that will receive the logs.}
 For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}}
 }
 \description{
-Creates or updates a logical \emph{delivery destination}. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Kinesis Data Firehose are supported as logs delivery destinations.
+Creates or updates a logical \emph{delivery destination}. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Firehose are supported as logs delivery destinations.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/} for full documentation.
 }

@@ -16,12 +16,12 @@ redshift_associate_data_share_consumer(
 }
 \arguments{
 \item{DataShareArn}{[required] The Amazon Resource Name (ARN) of the datashare that the consumer is to
-use with the account or the namespace.}
+use.}
 
 \item{AssociateEntireAccount}{A value that specifies whether the datashare is associated with the
 entire account.}
 
-\item{ConsumerArn}{The Amazon Resource Name (ARN) of the consumer that is associated with
+\item{ConsumerArn}{The Amazon Resource Name (ARN) of the consumer namespace associated with
 the datashare.}
 
 \item{ConsumerRegion}{From a datashare consumer account, associates a datashare with all

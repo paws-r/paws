@@ -130,6 +130,8 @@ codegurusecurity_create_upload_url <- function(scanName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/codegurusecurity_get_account_configuration/](https://www.paws-r-sdk.com/docs/codegurusecurity_get_account_configuration/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname codegurusecurity_get_account_configuration

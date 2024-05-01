@@ -45,14 +45,14 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
 #' Creates a target account configuration for the experiment template
 #'
 #' @description
-#' Creates a target account configuration for the experiment template. A target account configuration is required when `accountTargeting` of `experimentOptions` is set to `multi-account`. For more information, see [experiment options](https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html) in the *Fault Injection Simulator User Guide*.
+#' Creates a target account configuration for the experiment template. A target account configuration is required when `accountTargeting` of `experimentOptions` is set to `multi-account`. For more information, see [experiment options](https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html) in the *Fault Injection Service User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fis_create_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_create_target_account_configuration/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param experimentTemplateId &#91;required&#93; The experiment template ID.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role for the target account.
 #' @param description The description of the target account.
 #'
@@ -114,7 +114,7 @@ fis_delete_experiment_template <- function(id) {
 #' See [https://www.paws-r-sdk.com/docs/fis_delete_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_delete_target_account_configuration/) for full documentation.
 #'
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #'
 #' @keywords internal
 #'
@@ -203,7 +203,7 @@ fis_get_experiment <- function(id) {
 #' See [https://www.paws-r-sdk.com/docs/fis_get_experiment_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_get_experiment_target_account_configuration/) for full documentation.
 #'
 #' @param experimentId &#91;required&#93; The ID of the experiment.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #'
 #' @keywords internal
 #'
@@ -263,7 +263,7 @@ fis_get_experiment_template <- function(id) {
 #' See [https://www.paws-r-sdk.com/docs/fis_get_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_get_target_account_configuration/) for full documentation.
 #'
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #'
 #' @keywords internal
 #'
@@ -453,18 +453,19 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param nextToken The token for the next page of results.
+#' @param experimentTemplateId The ID of the experiment template.
 #'
 #' @keywords internal
 #'
 #' @rdname fis_list_experiments
-fis_list_experiments <- function(maxResults = NULL, nextToken = NULL) {
+fis_list_experiments <- function(maxResults = NULL, nextToken = NULL, experimentTemplateId = NULL) {
   op <- new_operation(
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/experiments",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken, experimentTemplateId = experimentTemplateId)
   output <- .fis$list_experiments_output()
   config <- get_config()
   svc <- .fis$service(config)
@@ -579,19 +580,20 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
+#' @param experimentOptions The experiment options for running the experiment.
 #' @param tags The tags to apply to the experiment.
 #'
 #' @keywords internal
 #'
 #' @rdname fis_start_experiment
-fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL) {
+fis_start_experiment <- function(clientToken, experimentTemplateId, experimentOptions = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartExperiment",
     http_method = "POST",
     http_path = "/experiments",
     paginator = list()
   )
-  input <- .fis$start_experiment_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, tags = tags)
+  input <- .fis$start_experiment_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, experimentOptions = experimentOptions, tags = tags)
   output <- .fis$start_experiment_output()
   config <- get_config()
   svc <- .fis$service(config)
@@ -736,7 +738,7 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
 #' See [https://www.paws-r-sdk.com/docs/fis_update_target_account_configuration/](https://www.paws-r-sdk.com/docs/fis_update_target_account_configuration/) for full documentation.
 #'
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #' @param roleArn The Amazon Resource Name (ARN) of an IAM role for the target account.
 #' @param description The description of the target account.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_describe_thesaurus}
 \alias{kendra_describe_thesaurus}
-\title{Gets information about an existing Amazon Kendra thesaurus}
+\title{Gets information about an Amazon Kendra thesaurus}
 \usage{
 kendra_describe_thesaurus(Id, IndexId)
 }
@@ -12,7 +12,7 @@ kendra_describe_thesaurus(Id, IndexId)
 \item{IndexId}{[required] The identifier of the index for the thesaurus.}
 }
 \description{
-Gets information about an existing Amazon Kendra thesaurus.
+Gets information about an Amazon Kendra thesaurus.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_describe_thesaurus/} for full documentation.
 }

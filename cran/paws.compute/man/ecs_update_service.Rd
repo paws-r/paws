@@ -22,7 +22,8 @@ ecs_update_service(
   loadBalancers = NULL,
   propagateTags = NULL,
   serviceRegistries = NULL,
-  serviceConnectConfiguration = NULL
+  serviceConnectConfiguration = NULL,
+  volumeConfigurations = NULL
 )
 }
 \arguments{
@@ -195,6 +196,15 @@ container that collects logs and metrics for increased visibility. Only
 the tasks that Amazon ECS services create are supported with Service
 Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{volumeConfigurations}{The details of the volume that was \code{configuredAtLaunch}. You can
+configure the size, volumeType, IOPS, throughput, snapshot and
+encryption in
+\href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceManagedEBSVolumeConfiguration.html}{ServiceManagedEBSVolumeConfiguration}.
+The \code{name} of the volume must match the \code{name} from the task definition.
+If set to null, no new deployment is triggered. Otherwise, if this
+configuration differs from the existing one, it triggers a new
+deployment.}
 }
 \description{
 Modifies the parameters of a service.

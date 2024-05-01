@@ -1132,6 +1132,8 @@ proton_delete_template_sync_config <- function(templateName, templateType) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/proton_get_account_settings/](https://www.paws-r-sdk.com/docs/proton_get_account_settings/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname proton_get_account_settings
@@ -1408,6 +1410,8 @@ proton_get_repository_sync_status <- function(branch, repositoryName, repository
 #' Get counts of Proton resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/proton_get_resources_summary/](https://www.paws-r-sdk.com/docs/proton_get_resources_summary/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

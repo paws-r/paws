@@ -26,7 +26,24 @@ alarm state of the composite alarm. The default is \code{TRUE}.}
 from any other state. Each action is specified as an Amazon Resource
 Name (ARN).
 
-Valid Values: \code{arn:aws:sns:region:account-id:sns-topic-name } |
+Valid Values: ]
+
+\strong{Amazon SNS actions:}
+
+\code{arn:aws:sns:region:account-id:sns-topic-name }
+
+\strong{Lambda actions:}
+\itemize{
+\item Invoke the latest version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+}
+
+\strong{Systems Manager actions:}
+
 \code{arn:aws:ssm:region:account-id:opsitem:severity }}
 
 \item{AlarmDescription}{The description for the composite alarm.}
@@ -91,20 +108,55 @@ child alarms, TRUE or FALSE statements, and parentheses.}
 \code{INSUFFICIENT_DATA} state from any other state. Each action is specified
 as an Amazon Resource Name (ARN).
 
-Valid Values: \code{arn:aws:sns:region:account-id:sns-topic-name }}
+Valid Values: ]
+
+\strong{Amazon SNS actions:}
+
+\code{arn:aws:sns:region:account-id:sns-topic-name }
+
+\strong{Lambda actions:}
+\itemize{
+\item Invoke the latest version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+}}
 
 \item{OKActions}{The actions to execute when this alarm transitions to an \code{OK} state from
 any other state. Each action is specified as an Amazon Resource Name
 (ARN).
 
-Valid Values: \code{arn:aws:sns:region:account-id:sns-topic-name }}
+Valid Values: ]
 
-\item{Tags}{A list of key-value pairs to associate with the composite alarm. You can
-associate as many as 50 tags with an alarm.
+\strong{Amazon SNS actions:}
+
+\code{arn:aws:sns:region:account-id:sns-topic-name }
+
+\strong{Lambda actions:}
+\itemize{
+\item Invoke the latest version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+}}
+
+\item{Tags}{A list of key-value pairs to associate with the alarm. You can associate
+as many as 50 tags with an alarm. To be able to associate tags with the
+alarm when you create the alarm, you must have the
+\code{cloudwatch:TagResource} permission.
 
 Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
-access or change only resources with certain tag values.}
+use them to scope user permissions by granting a user permission to
+access or change only resources with certain tag values.
+
+If you are using this operation to update an existing alarm, any tags
+you specify in this parameter are ignored. To change the tags of an
+existing alarm, use \code{\link[=cloudwatch_tag_resource]{tag_resource}} or
+\code{\link[=cloudwatch_untag_resource]{untag_resource}}.}
 
 \item{ActionsSuppressor}{Actions will be suppressed if the suppressor alarm is in the \code{ALARM}
 state. \code{ActionsSuppressor} can be an AlarmName or an Amazon Resource

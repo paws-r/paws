@@ -71,8 +71,8 @@ Items dataset to include in item recommendations. The map key is \code{ITEMS}
 and the value is a list of column names from your Items dataset. The
 maximum number of columns you can provide is 10.
 
-For information about enabling metadata for a campaign, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Enabling metadata in recommendations for a campaign}. For
-information about enabling metadata for a recommender, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Enabling metadata in recommendations for a recommender}.}
+For information about enabling metadata for a campaign, see \href{https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-return-metadata}{Enabling metadata in recommendations for a campaign}.
+For information about enabling metadata for a recommender, see \href{https://docs.aws.amazon.com/personalize/latest/dg/creating-recommenders.html#create-recommender-return-metadata}{Enabling metadata in recommendations for a recommender}.}
 }
 \description{
 Returns a list of recommended items. For campaigns, the campaign's Amazon Resource Name (ARN) is required and the required user and item input depends on the recipe type used to create the solution backing the campaign as follows:

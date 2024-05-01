@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_authorize_security_group_egress}
 \alias{ec2_authorize_security_group_egress}
-\title{Adds the specified outbound (egress) rules to a security group for use
-with a VPC}
+\title{Adds the specified outbound (egress) rules to a security group}
 \usage{
 ec2_authorize_security_group_egress(
   DryRun = NULL,
@@ -26,28 +25,24 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
-group and a CIDR IP address range in the same set of permissions.}
+\item{IpPermissions}{The permissions for the security group rules.}
 
 \item{TagSpecifications}{The tags applied to the security group rule.}
 
-\item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
+\item{CidrIp}{Not supported. Use IP permissions instead.}
 
-\item{FromPort}{Not supported. Use a set of IP permissions to specify the port.}
+\item{FromPort}{Not supported. Use IP permissions instead.}
 
-\item{IpProtocol}{Not supported. Use a set of IP permissions to specify the protocol name
-or number.}
+\item{IpProtocol}{Not supported. Use IP permissions instead.}
 
-\item{ToPort}{Not supported. Use a set of IP permissions to specify the port.}
+\item{ToPort}{Not supported. Use IP permissions instead.}
 
-\item{SourceSecurityGroupName}{Not supported. Use a set of IP permissions to specify a destination
-security group.}
+\item{SourceSecurityGroupName}{Not supported. Use IP permissions instead.}
 
-\item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination
-security group.}
+\item{SourceSecurityGroupOwnerId}{Not supported. Use IP permissions instead.}
 }
 \description{
-Adds the specified outbound (egress) rules to a security group for use with a VPC.
+Adds the specified outbound (egress) rules to a security group.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_authorize_security_group_egress/} for full documentation.
 }

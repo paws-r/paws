@@ -47,6 +47,8 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname elasticinference_describe_accelerator_types

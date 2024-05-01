@@ -133,7 +133,8 @@ lookoutequipment_create_dataset <- function(DatasetName, DatasetSchema = NULL, S
 #' list(
 #'   InferenceSchedulerArn = "string",
 #'   InferenceSchedulerName = "string",
-#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
+#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'   ModelQuality = "QUALITY_THRESHOLD_MET"|"CANNOT_DETERMINE_QUALITY"|"POOR_QUALITY_DETECTED"
 #' )
 #' ```
 #'
@@ -371,7 +372,7 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #'   LabelsInputConfiguration, ClientToken, TrainingDataStartTime,
 #'   TrainingDataEndTime, EvaluationDataStartTime, EvaluationDataEndTime,
 #'   RoleArn, DataPreProcessingConfiguration, ServerSideKmsKeyId, Tags,
-#'   OffCondition)
+#'   OffCondition, ModelDiagnosticsOutputConfiguration)
 #'
 #' @param ModelName &#91;required&#93; The name for the machine learning model to be created.
 #' @param DatasetName &#91;required&#93; The name of the dataset for the machine learning model being created.
@@ -406,6 +407,9 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' @param OffCondition Indicates that the asset associated with this sensor has been shut off.
 #' As long as this condition is met, Lookout for Equipment will not use
 #' data from this asset for training, evaluation, or inference.
+#' @param ModelDiagnosticsOutputConfiguration The Amazon S3 location where you want Amazon Lookout for Equipment to
+#' save the pointwise model diagnostics. You must also specify the
+#' `RoleArn` request parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -455,7 +459,14 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #'       Value = "string"
 #'     )
 #'   ),
-#'   OffCondition = "string"
+#'   OffCondition = "string",
+#'   ModelDiagnosticsOutputConfiguration = list(
+#'     S3OutputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     KmsKeyId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -464,14 +475,14 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' @rdname lookoutequipment_create_model
 #'
 #' @aliases lookoutequipment_create_model
-lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema = NULL, LabelsInputConfiguration = NULL, ClientToken, TrainingDataStartTime = NULL, TrainingDataEndTime = NULL, EvaluationDataStartTime = NULL, EvaluationDataEndTime = NULL, RoleArn = NULL, DataPreProcessingConfiguration = NULL, ServerSideKmsKeyId = NULL, Tags = NULL, OffCondition = NULL) {
+lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema = NULL, LabelsInputConfiguration = NULL, ClientToken, TrainingDataStartTime = NULL, TrainingDataEndTime = NULL, EvaluationDataStartTime = NULL, EvaluationDataEndTime = NULL, RoleArn = NULL, DataPreProcessingConfiguration = NULL, ServerSideKmsKeyId = NULL, Tags = NULL, OffCondition = NULL, ModelDiagnosticsOutputConfiguration = NULL) {
   op <- new_operation(
     name = "CreateModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lookoutequipment$create_model_input(ModelName = ModelName, DatasetName = DatasetName, DatasetSchema = DatasetSchema, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, TrainingDataStartTime = TrainingDataStartTime, TrainingDataEndTime = TrainingDataEndTime, EvaluationDataStartTime = EvaluationDataStartTime, EvaluationDataEndTime = EvaluationDataEndTime, RoleArn = RoleArn, DataPreProcessingConfiguration = DataPreProcessingConfiguration, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, OffCondition = OffCondition)
+  input <- .lookoutequipment$create_model_input(ModelName = ModelName, DatasetName = DatasetName, DatasetSchema = DatasetSchema, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, TrainingDataStartTime = TrainingDataStartTime, TrainingDataEndTime = TrainingDataEndTime, EvaluationDataStartTime = EvaluationDataStartTime, EvaluationDataEndTime = EvaluationDataEndTime, RoleArn = RoleArn, DataPreProcessingConfiguration = DataPreProcessingConfiguration, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, OffCondition = OffCondition, ModelDiagnosticsOutputConfiguration = ModelDiagnosticsOutputConfiguration)
   output <- .lookoutequipment$create_model_output()
   config <- get_config()
   svc <- .lookoutequipment$service(config)
@@ -1415,7 +1426,15 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
 #'   AccumulatedInferenceDataEndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   RetrainingSchedulerStatus = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
+#'   RetrainingSchedulerStatus = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'   ModelDiagnosticsOutputConfiguration = list(
+#'     S3OutputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     KmsKeyId = "string"
+#'   ),
+#'   ModelQuality = "QUALITY_THRESHOLD_MET"|"CANNOT_DETERMINE_QUALITY"|"POOR_QUALITY_DETECTED"
 #' )
 #' ```
 #'
@@ -1522,7 +1541,19 @@ lookoutequipment_describe_model <- function(ModelName) {
 #'   PriorModelMetrics = "string",
 #'   RetrainingAvailableDataInDays = 123,
 #'   AutoPromotionResult = "MODEL_PROMOTED"|"MODEL_NOT_PROMOTED"|"RETRAINING_INTERNAL_ERROR"|"RETRAINING_CUSTOMER_ERROR"|"RETRAINING_CANCELLED",
-#'   AutoPromotionResultReason = "string"
+#'   AutoPromotionResultReason = "string",
+#'   ModelDiagnosticsOutputConfiguration = list(
+#'     S3OutputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     KmsKeyId = "string"
+#'   ),
+#'   ModelDiagnosticsResultsObject = list(
+#'     Bucket = "string",
+#'     Key = "string"
+#'   ),
+#'   ModelQuality = "QUALITY_THRESHOLD_MET"|"CANNOT_DETERMINE_QUALITY"|"POOR_QUALITY_DETECTED"
 #' )
 #' ```
 #'
@@ -2318,7 +2349,7 @@ lookoutequipment_list_label_groups <- function(LabelGroupNameBeginsWith = NULL, 
 #' lookoutequipment_list_labels(LabelGroupName, IntervalStartTime,
 #'   IntervalEndTime, FaultCode, Equipment, NextToken, MaxResults)
 #'
-#' @param LabelGroupName &#91;required&#93; Retruns the name of the label group.
+#' @param LabelGroupName &#91;required&#93; Returns the name of the label group.
 #' @param IntervalStartTime Returns all the labels with a end time equal to or later than the start
 #' time given.
 #' @param IntervalEndTime Returns all labels with a start time earlier than the end time given.
@@ -2438,7 +2469,8 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
 #'         "2015-01-01"
 #'       ),
 #'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED",
-#'       SourceType = "TRAINING"|"RETRAINING"|"IMPORT"
+#'       SourceType = "TRAINING"|"RETRAINING"|"IMPORT",
+#'       ModelQuality = "QUALITY_THRESHOLD_MET"|"CANNOT_DETERMINE_QUALITY"|"POOR_QUALITY_DETECTED"
 #'     )
 #'   )
 #' )
@@ -2529,7 +2561,15 @@ lookoutequipment_list_model_versions <- function(ModelName, NextToken = NULL, Ma
 #'       NextScheduledRetrainingStartDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       RetrainingSchedulerStatus = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
+#'       RetrainingSchedulerStatus = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'       ModelDiagnosticsOutputConfiguration = list(
+#'         S3OutputConfiguration = list(
+#'           Bucket = "string",
+#'           Prefix = "string"
+#'         ),
+#'         KmsKeyId = "string"
+#'       ),
+#'       ModelQuality = "QUALITY_THRESHOLD_MET"|"CANNOT_DETERMINE_QUALITY"|"POOR_QUALITY_DETECTED"
 #'     )
 #'   )
 #' )
@@ -3451,11 +3491,14 @@ lookoutequipment_update_label_group <- function(LabelGroupName, FaultCodes = NUL
 #'
 #' @usage
 #' lookoutequipment_update_model(ModelName, LabelsInputConfiguration,
-#'   RoleArn)
+#'   RoleArn, ModelDiagnosticsOutputConfiguration)
 #'
 #' @param ModelName &#91;required&#93; The name of the model to update.
 #' @param LabelsInputConfiguration 
 #' @param RoleArn The ARN of the model to update.
+#' @param ModelDiagnosticsOutputConfiguration The Amazon S3 location where you want Amazon Lookout for Equipment to
+#' save the pointwise model diagnostics for the model. You must also
+#' specify the `RoleArn` request parameter.
 #'
 #' @return
 #' An empty list.
@@ -3471,7 +3514,14 @@ lookoutequipment_update_label_group <- function(LabelGroupName, FaultCodes = NUL
 #'     ),
 #'     LabelGroupName = "string"
 #'   ),
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   ModelDiagnosticsOutputConfiguration = list(
+#'     S3OutputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     KmsKeyId = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3491,14 +3541,14 @@ lookoutequipment_update_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' @rdname lookoutequipment_update_model
 #'
 #' @aliases lookoutequipment_update_model
-lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = NULL, RoleArn = NULL) {
+lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = NULL, RoleArn = NULL, ModelDiagnosticsOutputConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lookoutequipment$update_model_input(ModelName = ModelName, LabelsInputConfiguration = LabelsInputConfiguration, RoleArn = RoleArn)
+  input <- .lookoutequipment$update_model_input(ModelName = ModelName, LabelsInputConfiguration = LabelsInputConfiguration, RoleArn = RoleArn, ModelDiagnosticsOutputConfiguration = ModelDiagnosticsOutputConfiguration)
   output <- .lookoutequipment$update_model_output()
   config <- get_config()
   svc <- .lookoutequipment$service(config)

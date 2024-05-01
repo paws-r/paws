@@ -282,6 +282,8 @@ codegurusecurity_create_upload_url <- function(scanName) {
 #' @usage
 #' codegurusecurity_get_account_configuration()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

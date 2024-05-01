@@ -33,7 +33,7 @@ omics_create_workflow(
 
 \item{parameterTemplate}{A parameter template for the workflow.}
 
-\item{storageCapacity}{A storage capacity for the workflow in gibibytes.}
+\item{storageCapacity}{The storage capacity for the workflow in gibibytes.}
 
 \item{tags}{Tags for the workflow.}
 

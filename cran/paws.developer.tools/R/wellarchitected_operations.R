@@ -313,18 +313,19 @@ wellarchitected_create_template_share <- function(TemplateArn, SharedWith, Clien
 #' @param Applications List of AppRegistry application ARNs associated to the workload.
 #' @param ProfileArns The list of profile ARNs associated with the workload.
 #' @param ReviewTemplateArns The list of review template ARNs to associate with the workload.
+#' @param JiraConfiguration Jira configuration settings when creating a workload.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL, ProfileArns = NULL, ReviewTemplateArns = NULL) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL, ProfileArns = NULL, ReviewTemplateArns = NULL, JiraConfiguration = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns, ReviewTemplateArns = ReviewTemplateArns)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns, ReviewTemplateArns = ReviewTemplateArns, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -768,6 +769,35 @@ wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResourc
 }
 .wellarchitected$operations$get_consolidated_report <- wellarchitected_get_consolidated_report
 
+#' Global settings for all workloads
+#'
+#' @description
+#' Global settings for all workloads.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_global_settings/](https://www.paws-r-sdk.com/docs/wellarchitected_get_global_settings/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_global_settings
+wellarchitected_get_global_settings <- function() {
+  op <- new_operation(
+    name = "GetGlobalSettings",
+    http_method = "GET",
+    http_path = "/global-settings",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_global_settings_input()
+  output <- .wellarchitected$get_global_settings_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_global_settings <- wellarchitected_get_global_settings
+
 #' Get an existing lens
 #'
 #' @description
@@ -957,6 +987,8 @@ wellarchitected_get_profile <- function(ProfileArn, ProfileVersion = NULL) {
 #' Get profile template.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_profile_template/](https://www.paws-r-sdk.com/docs/wellarchitected_get_profile_template/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1235,10 +1267,10 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 }
 .wellarchitected$operations$list_check_summaries <- wellarchitected_list_check_summaries
 
-#' List lens review improvements
+#' List the improvements of a particular lens review
 #'
 #' @description
-#' List lens review improvements.
+#' List the improvements of a particular lens review.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_review_improvements/](https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_review_improvements/) for full documentation.
 #'
@@ -1859,28 +1891,29 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 }
 .wellarchitected$operations$update_answer <- wellarchitected_update_answer
 
-#' Updates whether the Amazon Web Services account is opted into
+#' Update whether the Amazon Web Services account is opted into
 #' organization sharing and discovery integration features
 #'
 #' @description
-#' Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
+#' Update whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_global_settings/](https://www.paws-r-sdk.com/docs/wellarchitected_update_global_settings/) for full documentation.
 #'
 #' @param OrganizationSharingStatus The status of organization sharing settings.
 #' @param DiscoveryIntegrationStatus The status of discovery support settings.
+#' @param JiraConfiguration The status of Jira integration settings.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_global_settings
-wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL, DiscoveryIntegrationStatus = NULL) {
+wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL, DiscoveryIntegrationStatus = NULL, JiraConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateGlobalSettings",
     http_method = "PATCH",
     http_path = "/global-settings",
     paginator = list()
   )
-  input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus, DiscoveryIntegrationStatus = DiscoveryIntegrationStatus)
+  input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus, DiscoveryIntegrationStatus = DiscoveryIntegrationStatus, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$update_global_settings_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1889,6 +1922,37 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
   return(response)
 }
 .wellarchitected$operations$update_global_settings <- wellarchitected_update_global_settings
+
+#' Update integration features
+#'
+#' @description
+#' Update integration features.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_integration/](https://www.paws-r-sdk.com/docs/wellarchitected_update_integration/) for full documentation.
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ClientRequestToken &#91;required&#93; 
+#' @param IntegratingService &#91;required&#93; Which integrated service to update.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_integration
+wellarchitected_update_integration <- function(WorkloadId, ClientRequestToken, IntegratingService) {
+  op <- new_operation(
+    name = "UpdateIntegration",
+    http_method = "POST",
+    http_path = "/workloads/{WorkloadId}/updateIntegration",
+    paginator = list()
+  )
+  input <- .wellarchitected$update_integration_input(WorkloadId = WorkloadId, ClientRequestToken = ClientRequestToken, IntegratingService = IntegratingService)
+  output <- .wellarchitected$update_integration_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_integration <- wellarchitected_update_integration
 
 #' Update lens review for a particular workload
 #'
@@ -1901,18 +1965,19 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 #' @param LensAlias &#91;required&#93; 
 #' @param LensNotes 
 #' @param PillarNotes 
+#' @param JiraConfiguration Configuration of the Jira integration.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_lens_review
-wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes = NULL, PillarNotes = NULL) {
+wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes = NULL, PillarNotes = NULL, JiraConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateLensReview",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}",
     paginator = list()
   )
-  input <- .wellarchitected$update_lens_review_input(WorkloadId = WorkloadId, LensAlias = LensAlias, LensNotes = LensNotes, PillarNotes = PillarNotes)
+  input <- .wellarchitected$update_lens_review_input(WorkloadId = WorkloadId, LensAlias = LensAlias, LensNotes = LensNotes, PillarNotes = PillarNotes, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$update_lens_review_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -2116,18 +2181,19 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @param DiscoveryConfig Well-Architected discovery configuration settings to associate to the
 #' workload.
 #' @param Applications List of AppRegistry application ARNs to associate to the workload.
+#' @param JiraConfiguration Configuration of the Jira integration.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_workload
-wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL, DiscoveryConfig = NULL, Applications = NULL) {
+wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL, DiscoveryConfig = NULL, Applications = NULL, JiraConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateWorkload",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}",
     paginator = list()
   )
-  input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
+  input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus, DiscoveryConfig = DiscoveryConfig, Applications = Applications, JiraConfiguration = JiraConfiguration)
   output <- .wellarchitected$update_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)

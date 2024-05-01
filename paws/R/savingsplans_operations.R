@@ -13,15 +13,15 @@ NULL
 #'   upfrontPaymentAmount, purchaseTime, clientToken, tags)
 #'
 #' @param savingsPlanOfferingId &#91;required&#93; The ID of the offering.
-#' @param commitment &#91;required&#93; The hourly commitment, in USD. This is a value between 0.001 and 1
-#' million. You cannot specify more than five digits after the decimal
-#' point.
+#' @param commitment &#91;required&#93; The hourly commitment, in the same currency of the
+#' `savingsPlanOfferingId`. This is a value between 0.001 and 1 million.
+#' You cannot specify more than five digits after the decimal point.
 #' @param upfrontPaymentAmount The up-front payment amount. This is a whole number between 50 and 99
-#' percent of the total value of the Savings Plan. This parameter is
-#' supported only if the payment option is `Partial Upfront`.
-#' @param purchaseTime The time at which to purchase the Savings Plan, in UTC format
+#' percent of the total value of the Savings Plan. This parameter is only
+#' supported if the payment option is `Partial Upfront`.
+#' @param purchaseTime The purchase time of the Savings Plan in UTC format
 #' (YYYY-MM-DDTHH:MM:SSZ).
-#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param tags One or more tags.
 #'
@@ -113,10 +113,10 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 }
 .savingsplans$operations$delete_queued_savings_plan <- savingsplans_delete_queued_savings_plan
 
-#' Describes the specified Savings Plans rates
+#' Describes the rates for the specified Savings Plan
 #'
 #' @description
-#' Describes the specified Savings Plans rates.
+#' Describes the rates for the specified Savings Plan.
 #'
 #' @usage
 #' savingsplans_describe_savings_plan_rates(savingsPlanId, filters,
@@ -207,7 +207,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' additional results, make another call with the returned token value.
-#' @param states The states.
+#' @param states The current states of the Savings Plans.
 #' @param filters The filters.
 #'
 #' @return
@@ -222,7 +222,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'       description = "string",
 #'       start = "string",
 #'       end = "string",
-#'       state = "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted",
+#'       state = "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted"|"pending-return"|"returned",
 #'       region = "string",
 #'       ec2InstanceFamily = "string",
 #'       savingsPlanType = "Compute"|"EC2Instance"|"SageMaker",
@@ -237,7 +237,8 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'       termDurationInSeconds = 123,
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       returnableUntil = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -256,7 +257,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   states = list(
-#'     "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted"
+#'     "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted"|"pending-return"|"returned"
 #'   ),
 #'   filters = list(
 #'     list(
@@ -291,10 +292,10 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 }
 .savingsplans$operations$describe_savings_plans <- savingsplans_describe_savings_plans
 
-#' Describes the specified Savings Plans offering rates
+#' Describes the offering rates for the specified Savings Plans
 #'
 #' @description
-#' Describes the specified Savings Plans offering rates.
+#' Describes the offering rates for the specified Savings Plans.
 #'
 #' @usage
 #' savingsplans_describe_savings_plans_offering_rates(
@@ -305,10 +306,11 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #' @param savingsPlanOfferingIds The IDs of the offerings.
 #' @param savingsPlanPaymentOptions The payment options.
 #' @param savingsPlanTypes The plan types.
-#' @param products The AWS products.
+#' @param products The Amazon Web Services products.
 #' @param serviceCodes The services.
 #' @param usageTypes The usage details of the line item in the billing report.
-#' @param operations The specific AWS operation for the line item in the billing report.
+#' @param operations The specific Amazon Web Services operation for the line item in the
+#' billing report.
 #' @param filters The filters.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -405,10 +407,10 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 }
 .savingsplans$operations$describe_savings_plans_offering_rates <- savingsplans_describe_savings_plans_offering_rates
 
-#' Describes the specified Savings Plans offerings
+#' Describes the offerings for the specified Savings Plans
 #'
 #' @description
-#' Describes the specified Savings Plans offerings.
+#' Describes the offerings for the specified Savings Plans.
 #'
 #' @usage
 #' savingsplans_describe_savings_plans_offerings(offeringIds,
@@ -419,13 +421,14 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #' @param offeringIds The IDs of the offerings.
 #' @param paymentOptions The payment options.
 #' @param productType The product type.
-#' @param planTypes The plan type.
-#' @param durations The durations, in seconds.
+#' @param planTypes The plan types.
+#' @param durations The duration, in seconds.
 #' @param currencies The currencies.
 #' @param descriptions The descriptions.
 #' @param serviceCodes The services.
 #' @param usageTypes The usage details of the line item in the billing report.
-#' @param operations The specific AWS operation for the line item in the billing report.
+#' @param operations The specific Amazon Web Services operation for the line item in the
+#' billing report.
 #' @param filters The filters.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -575,6 +578,56 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .savingsplans$operations$list_tags_for_resource <- savingsplans_list_tags_for_resource
+
+#' Returns the specified Savings Plan
+#'
+#' @description
+#' Returns the specified Savings Plan.
+#'
+#' @usage
+#' savingsplans_return_savings_plan(savingsPlanId, clientToken)
+#'
+#' @param savingsPlanId &#91;required&#93; The ID of the Savings Plan.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   savingsPlanId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$return_savings_plan(
+#'   savingsPlanId = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname savingsplans_return_savings_plan
+#'
+#' @aliases savingsplans_return_savings_plan
+savingsplans_return_savings_plan <- function(savingsPlanId, clientToken = NULL) {
+  op <- new_operation(
+    name = "ReturnSavingsPlan",
+    http_method = "POST",
+    http_path = "/ReturnSavingsPlan",
+    paginator = list()
+  )
+  input <- .savingsplans$return_savings_plan_input(savingsPlanId = savingsPlanId, clientToken = clientToken)
+  output <- .savingsplans$return_savings_plan_output()
+  config <- get_config()
+  svc <- .savingsplans$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.savingsplans$operations$return_savings_plan <- savingsplans_return_savings_plan
 
 #' Adds the specified tags to the specified resource
 #'

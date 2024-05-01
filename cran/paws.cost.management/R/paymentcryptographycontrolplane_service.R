@@ -30,7 +30,7 @@ NULL
 #' an Amazon S3 bucket you specify. By using the information collected by
 #' CloudTrail, you can determine what requests were made to Amazon Web
 #' Services Payment Cryptography, who made the request, when it was made,
-#' and so on. If you don't configure a trail, you can still view the most
+#' and so on. If you don't conﬁgure a trail, you can still view the most
 #' recent events in the CloudTrail console. For more information, see the
 #' [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
@@ -126,7 +126,7 @@ NULL
 #'  \link[=paymentcryptographycontrolplane_get_alias]{get_alias} \tab Gets the Amazon Web Services Payment Cryptography key associated with the alias\cr
 #'  \link[=paymentcryptographycontrolplane_get_key]{get_key} \tab Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created\cr
 #'  \link[=paymentcryptographycontrolplane_get_parameters_for_export]{get_parameters_for_export} \tab Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography\cr
-#'  \link[=paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock\cr
+#'  \link[=paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock or a RSA WrappedKeyCryptogram import into Amazon Web Services Payment Cryptography\cr
 #'  \link[=paymentcryptographycontrolplane_get_public_key_certificate]{get_public_key_certificate} \tab Gets the public key certificate of the asymmetric key pair that exists within Amazon Web Services Payment Cryptography\cr
 #'  \link[=paymentcryptographycontrolplane_import_key]{import_key} \tab Imports symmetric keys and public key certificates in PEM format (base64 encoded) into Amazon Web Services Payment Cryptography\cr
 #'  \link[=paymentcryptographycontrolplane_list_aliases]{list_aliases} \tab Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
@@ -169,7 +169,7 @@ paymentcryptographycontrolplane <- function(config = list(), credentials = list(
 
 .paymentcryptographycontrolplane$metadata <- list(
   service_name = "paymentcryptographycontrolplane",
-  endpoints = list("*" = list(endpoint = "controlplane.payment-cryptography.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "controlplane.payment-cryptography.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "controlplane.payment-cryptography.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "controlplane.payment-cryptography.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "controlplane.payment-cryptography.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "controlplane.payment-cryptography.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "controlplane.payment-cryptography.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "controlplane.payment-cryptography.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "controlplane.payment-cryptography.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "controlplane.payment-cryptography.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Payment Cryptography",
   api_version = "2021-09-14",
   signing_name = "payment-cryptography",

@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_capacity_block_offerings}
 \alias{ec2_describe_capacity_block_offerings}
-\title{Describes Capacity Block offerings available for purchase}
+\title{Describes Capacity Block offerings available for purchase in the Amazon
+Web Services Region that you're currently using}
 \usage{
 ec2_describe_capacity_block_offerings(
   DryRun = NULL,
@@ -34,13 +35,13 @@ capacity.}
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return for the request in a single
-page. The remaining results can be seen by sending another request with
-the returned \code{nextToken} value. This value can be between 5 and 500. If
-\code{maxResults} is given a larger value than 500, you receive an error.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
-Describes Capacity Block offerings available for purchase. With Capacity Blocks, you purchase a specific instance type for a period of time.
+Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using. With Capacity Blocks, you purchase a specific instance type for a period of time.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_capacity_block_offerings/} for full documentation.
 }

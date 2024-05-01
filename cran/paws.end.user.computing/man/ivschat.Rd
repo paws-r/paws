@@ -68,16 +68,12 @@ apps) using the Amazon IVS Chat Messaging API. We refer to these as
 \emph{clients}.
 }
 
-\strong{Resources}
-
-The following resources are part of Amazon IVS Chat:
+\strong{Key Concepts}
 \itemize{
 \item \strong{LoggingConfiguration} — A configuration that allows customers to
-store and record sent messages in a chat room. See the Logging
-Configuration endpoints for more information.
+store and record sent messages in a chat room.
 \item \strong{Room} — The central Amazon IVS Chat resource through which
-clients connect to and exchange chat messages. See the Room
-endpoints for more information.
+clients connect to and exchange chat messages.
 }
 
 \strong{Tagging}

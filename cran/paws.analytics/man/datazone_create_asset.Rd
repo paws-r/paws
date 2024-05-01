@@ -26,7 +26,7 @@ idempotency of the request.}
 
 \item{domainIdentifier}{[required] Amazon DataZone domain where the asset is created.}
 
-\item{externalIdentifier}{}
+\item{externalIdentifier}{The external identifier of the asset.}
 
 \item{formsInput}{Metadata forms attached to the asset.}
 

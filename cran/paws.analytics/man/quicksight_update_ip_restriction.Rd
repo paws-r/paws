@@ -7,6 +7,8 @@
 quicksight_update_ip_restriction(
   AwsAccountId,
   IpRestrictionRuleMap = NULL,
+  VpcIdRestrictionRuleMap = NULL,
+  VpcEndpointIdRestrictionRuleMap = NULL,
   Enabled = NULL
 )
 }
@@ -16,10 +18,17 @@ quicksight_update_ip_restriction(
 \item{IpRestrictionRuleMap}{A map that describes the updated IP rules with CIDR ranges and
 descriptions.}
 
+\item{VpcIdRestrictionRuleMap}{A map of VPC IDs and their corresponding rules. When you configure this
+parameter, traffic from all VPC endpoints that are present in the
+specified VPC is allowed.}
+
+\item{VpcEndpointIdRestrictionRuleMap}{A map of allowed VPC endpoint IDs and their corresponding rule
+descriptions.}
+
 \item{Enabled}{A value that specifies whether IP rules are turned on.}
 }
 \description{
-Updates the content and status of IP rules. To use this operation, you must provide the entire map of rules. You can use the \code{\link[=quicksight_describe_ip_restriction]{describe_ip_restriction}} operation to get the current rule map.
+Updates the content and status of IP rules. Traffic from a source is allowed when the source satisfies either the \code{IpRestrictionRule}, \code{VpcIdRestrictionRule}, or \code{VpcEndpointIdRestrictionRule}. To use this operation, you must provide the entire map of rules. You can use the \code{\link[=quicksight_describe_ip_restriction]{describe_ip_restriction}} operation to get the current rule map.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_update_ip_restriction/} for full documentation.
 }

@@ -22,9 +22,10 @@ that you're embedding.}
 
 \item{UserArn}{[required] The Amazon Resource Name for the registered user.}
 
-\item{ExperienceConfiguration}{[required] The experience you are embedding. For registered users, you can embed
-Amazon QuickSight dashboards, Amazon QuickSight visuals, the Amazon
-QuickSight Q search bar, or the entire Amazon QuickSight console.}
+\item{ExperienceConfiguration}{[required] The experience that you want to embed. For registered users, you can
+embed Amazon QuickSight dashboards, Amazon QuickSight visuals, the
+Amazon QuickSight Q search bar, the Amazon QuickSight Generative Q&A
+experience, or the entire Amazon QuickSight console.}
 
 \item{AllowedDomains}{The domains that you want to add to the allow list for access to the
 generated URL that is then embedded. This optional parameter overrides

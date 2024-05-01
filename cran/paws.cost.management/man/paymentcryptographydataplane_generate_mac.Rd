@@ -20,7 +20,8 @@ Web Services Payment Cryptography.}
 
 \item{MacLength}{The length of a MAC under generation.}
 
-\item{MessageData}{[required] The data for which a MAC is under generation.}
+\item{MessageData}{[required] The data for which a MAC is under generation. This value must be
+hexBinary.}
 }
 \description{
 Generates a Message Authentication Code (MAC) cryptogram within Amazon Web Services Payment Cryptography.

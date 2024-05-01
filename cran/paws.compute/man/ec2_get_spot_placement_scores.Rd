@@ -29,9 +29,7 @@ If you specify \code{InstanceTypes}, you can't specify
 
 \item{TargetCapacity}{[required] The target capacity.}
 
-\item{TargetCapacityUnitType}{The unit for the target capacity.
-
-Default: \code{units} (translates to number of instances)}
+\item{TargetCapacityUnitType}{The unit for the target capacity.}
 
 \item{SingleAvailabilityZone}{Specify \code{true} so that the response returns a list of scored
 Availability Zones. Otherwise, the response returns a list of scored

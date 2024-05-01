@@ -574,7 +574,23 @@ ivsrealtime_disconnect_participant <- function(participantId, reason = NULL, sta
 #'     ),
 #'     layout = list(
 #'       grid = list(
-#'         featuredParticipantAttribute = "string"
+#'         featuredParticipantAttribute = "string",
+#'         gridGap = 123,
+#'         omitStoppedVideo = TRUE|FALSE,
+#'         videoAspectRatio = "AUTO"|"VIDEO"|"SQUARE"|"PORTRAIT",
+#'         videoFillMode = "FILL"|"COVER"|"CONTAIN"
+#'       ),
+#'       pip = list(
+#'         featuredParticipantAttribute = "string",
+#'         gridGap = 123,
+#'         omitStoppedVideo = TRUE|FALSE,
+#'         pipBehavior = "STATIC"|"DYNAMIC",
+#'         pipHeight = 123,
+#'         pipOffset = 123,
+#'         pipParticipantAttribute = "string",
+#'         pipPosition = "TOP_LEFT"|"TOP_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_RIGHT",
+#'         pipWidth = 123,
+#'         videoFillMode = "FILL"|"COVER"|"CONTAIN"
 #'       )
 #'     ),
 #'     stageArn = "string",
@@ -1535,7 +1551,23 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'     ),
 #'     layout = list(
 #'       grid = list(
-#'         featuredParticipantAttribute = "string"
+#'         featuredParticipantAttribute = "string",
+#'         gridGap = 123,
+#'         omitStoppedVideo = TRUE|FALSE,
+#'         videoAspectRatio = "AUTO"|"VIDEO"|"SQUARE"|"PORTRAIT",
+#'         videoFillMode = "FILL"|"COVER"|"CONTAIN"
+#'       ),
+#'       pip = list(
+#'         featuredParticipantAttribute = "string",
+#'         gridGap = 123,
+#'         omitStoppedVideo = TRUE|FALSE,
+#'         pipBehavior = "STATIC"|"DYNAMIC",
+#'         pipHeight = 123,
+#'         pipOffset = 123,
+#'         pipParticipantAttribute = "string",
+#'         pipPosition = "TOP_LEFT"|"TOP_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_RIGHT",
+#'         pipWidth = 123,
+#'         videoFillMode = "FILL"|"COVER"|"CONTAIN"
 #'       )
 #'     ),
 #'     stageArn = "string",
@@ -1574,7 +1606,23 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'   idempotencyToken = "string",
 #'   layout = list(
 #'     grid = list(
-#'       featuredParticipantAttribute = "string"
+#'       featuredParticipantAttribute = "string",
+#'       gridGap = 123,
+#'       omitStoppedVideo = TRUE|FALSE,
+#'       videoAspectRatio = "AUTO"|"VIDEO"|"SQUARE"|"PORTRAIT",
+#'       videoFillMode = "FILL"|"COVER"|"CONTAIN"
+#'     ),
+#'     pip = list(
+#'       featuredParticipantAttribute = "string",
+#'       gridGap = 123,
+#'       omitStoppedVideo = TRUE|FALSE,
+#'       pipBehavior = "STATIC"|"DYNAMIC",
+#'       pipHeight = 123,
+#'       pipOffset = 123,
+#'       pipParticipantAttribute = "string",
+#'       pipPosition = "TOP_LEFT"|"TOP_RIGHT"|"BOTTOM_LEFT"|"BOTTOM_RIGHT",
+#'       pipWidth = 123,
+#'       videoFillMode = "FILL"|"COVER"|"CONTAIN"
 #'     )
 #'   ),
 #'   stageArn = "string",

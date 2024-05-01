@@ -28,12 +28,12 @@ Availability Zones by using the \href{https://docs.aws.amazon.com/lightsail/2016
 operation. Be sure to add the \verb{include Availability Zones} parameter to
 your request.}
 
-\item{customImageName}{(Deprecated) The name for your custom image.
+\item{customImageName}{(Discontinued) The name for your custom image.
 
 In releases prior to June 12, 2017, this parameter was ignored by the
-API. It is now deprecated.}
+API. It is now discontinued.}
 
-\item{blueprintId}{[required] The ID for a virtual private server image (e.g., \code{app_wordpress_4_4} or
+\item{blueprintId}{[required] The ID for a virtual private server image (\code{app_wordpress_4_4} or
 \code{app_lamp_7_0}). Use the \verb{get blueprints} operation to return a list of
 available images (or \emph{blueprints}).
 
@@ -44,7 +44,7 @@ inactive when they become outdated due to operating system updates or
 new application releases.}
 
 \item{bundleId}{[required] The bundle of specification information for your virtual private server
-(or \emph{instance}), including the pricing plan (e.g., \code{micro_1_0}).}
+(or \emph{instance}), including the pricing plan (\code{micro_1_0}).}
 
 \item{userData}{A launch script you can create that configures a server with additional
 user data. For example, you might want to run \verb{apt-get -y update}.
@@ -52,7 +52,7 @@ user data. For example, you might want to run \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the Amazon Lightsail Developer Guide.}
+the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html}{Amazon Lightsail Developer Guide}.}
 
 \item{keyPairName}{The name of your key pair.}
 

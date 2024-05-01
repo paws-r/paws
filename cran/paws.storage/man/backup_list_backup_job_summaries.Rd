@@ -33,7 +33,20 @@ authenticated organization, then returns the sum.}
 The the value ANY returns count of all states.
 
 \code{AGGREGATE_ALL} aggregates job counts for all states and returns the
-sum.}
+sum.
+
+\verb{Completed with issues} is a status found only in the Backup console.
+For API, this status refers to jobs with a state of \code{COMPLETED} and a
+\code{MessageCategory} with a value other than \code{SUCCESS}; that is, the status
+is completed but comes with a status message. To obtain the job count
+for \verb{Completed with issues}, run two GET requests, and subtract the
+second, smaller number:
+
+GET
+/audit/backup-job-summaries?AggregationPeriod=FOURTEEN_DAYS&State=COMPLETED
+
+GET
+/audit/backup-job-summaries?AggregationPeriod=FOURTEEN_DAYS&MessageCategory=SUCCESS&State=COMPLETED}
 
 \item{ResourceType}{Returns the job count for the specified resource type. Use request
 \code{\link[=backup_get_supported_resource_types]{get_supported_resource_types}} to

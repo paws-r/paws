@@ -93,7 +93,7 @@ permitted.
 be unique in the Amazon Web Services account and Region.
 \item An external key store with \code{PUBLIC_ENDPOINT} connectivity cannot use
 the same \code{XksProxyUriEndpoint} value as an external key store with
-\code{VPC_ENDPOINT_SERVICE} connectivity in the same Amazon Web Services
+\code{VPC_ENDPOINT_SERVICE} connectivity in this Amazon Web Services
 Region.
 \item Each external key store with \code{VPC_ENDPOINT_SERVICE} connectivity
 must have its own private DNS name. The \code{XksProxyUriEndpoint} value

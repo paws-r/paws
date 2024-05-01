@@ -1117,6 +1117,8 @@ opensearchserviceserverless_get_access_policy <- function(name, type) {
 #' @usage
 #' opensearchserviceserverless_get_account_settings()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1166,6 +1168,8 @@ opensearchserviceserverless_get_account_settings <- function() {
 #'
 #' @usage
 #' opensearchserviceserverless_get_policies_stats()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

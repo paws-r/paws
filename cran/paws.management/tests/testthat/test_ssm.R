@@ -32,6 +32,14 @@ test_that("describe_instance_information", {
   expect_error(svc$describe_instance_information(MaxResults = 20), NA)
 })
 
+test_that("describe_instance_properties", {
+  expect_error(svc$describe_instance_properties(), NA)
+})
+
+test_that("describe_instance_properties", {
+  expect_error(svc$describe_instance_properties(MaxResults = 20), NA)
+})
+
 test_that("describe_inventory_deletions", {
   expect_error(svc$describe_inventory_deletions(), NA)
 })

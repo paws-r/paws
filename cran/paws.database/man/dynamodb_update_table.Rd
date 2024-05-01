@@ -23,7 +23,8 @@ dynamodb_update_table(
 indexes. If you are adding a new global secondary index to the table,
 \code{AttributeDefinitions} must include the key element(s) of the new index.}
 
-\item{TableName}{[required] The name of the table to be updated.}
+\item{TableName}{[required] The name of the table to be updated. You can also provide the Amazon
+Resource Name (ARN) of the table in this parameter.}
 
 \item{BillingMode}{Controls how you are charged for read and write throughput and how you
 manage capacity. When switching from pay-per-request to provisioned
@@ -59,16 +60,16 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{StreamSpecification}{Represents the DynamoDB Streams configuration for the table.
 
-You receive a \code{ResourceInUseException} if you try to enable a stream on
-a table that already has a stream, or if you try to disable a stream on
-a table that doesn't have a stream.}
+You receive a \code{ValidationException} if you try to enable a stream on a
+table that already has a stream, or if you try to disable a stream on a
+table that doesn't have a stream.}
 
 \item{SSESpecification}{The new server-side encryption settings for the specified table.}
 
 \item{ReplicaUpdates}{A list of replica update actions (create, delete, or update) for the
 table.
 
-This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21 (Current)}
+This property only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/}{Version 2019.11.21 (Current)}
 of global tables.}
 
 \item{TableClass}{The table class of the table to be updated. Valid values are \code{STANDARD}

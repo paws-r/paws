@@ -156,6 +156,7 @@ mutating (create and update) operations.
 
 \tabular{ll}{
 \link[paws.security.identity:verifiedpermissions_batch_is_authorized]{batch_is_authorized} \tab Makes a series of decisions about multiple authorization requests for one principal or resource\cr
+\link[paws.security.identity:verifiedpermissions_batch_is_authorized_with_token]{batch_is_authorized_with_token} \tab Makes a series of decisions about multiple authorization requests for one token\cr
 \link[paws.security.identity:verifiedpermissions_create_identity_source]{create_identity_source} \tab Creates a reference to an Amazon Cognito user pool as an external identity provider (IdP)\cr
 \link[paws.security.identity:verifiedpermissions_create_policy]{create_policy} \tab Creates a Cedar policy and saves it in the specified policy store\cr
 \link[paws.security.identity:verifiedpermissions_create_policy_store]{create_policy_store} \tab Creates a policy store\cr

@@ -288,6 +288,8 @@ fms_delete_apps_list <- function(ListId) {
 #' @usage
 #' fms_delete_notification_channel()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -499,6 +501,8 @@ fms_delete_resource_set <- function(Identifier) {
 #' @usage
 #' fms_disassociate_admin_account()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -591,6 +595,8 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
 #' @usage
 #' fms_get_admin_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -631,13 +637,13 @@ fms_get_admin_account <- function() {
 #'
 #' @description
 #' Returns information about the specified account's administrative scope.
-#' The admistrative scope defines the resources that an Firewall Manager
+#' The administrative scope defines the resources that an Firewall Manager
 #' administrator can manage.
 #'
 #' @usage
 #' fms_get_admin_scope(AdminAccount)
 #'
-#' @param AdminAccount &#91;required&#93; The administator account that you want to get the details for.
+#' @param AdminAccount &#91;required&#93; The administrator account that you want to get the details for.
 #'
 #' @return
 #' A list with the following syntax:
@@ -666,7 +672,7 @@ fms_get_admin_account <- function() {
 #'     ),
 #'     PolicyTypeScope = list(
 #'       PolicyTypes = list(
-#'         "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"
+#'         "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON"
 #'       ),
 #'       AllPolicyTypesEnabled = TRUE|FALSE
 #'     )
@@ -792,23 +798,8 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #' account. Details include resources that are in and out of compliance
 #' with the specified policy.
 #' 
-#' -   Resources are considered noncompliant for WAF and Shield Advanced
-#'     policies if the specified policy has not been applied to them.
-#' 
-#' -   Resources are considered noncompliant for security group policies if
-#'     they are in scope of the policy, they violate one or more of the
-#'     policy rules, and remediation is disabled or not possible.
-#' 
-#' -   Resources are considered noncompliant for Network Firewall policies
-#'     if a firewall is missing in the VPC, if the firewall endpoint isn't
-#'     set up in an expected Availability Zone and subnet, if a subnet
-#'     created by the Firewall Manager doesn't have the expected route
-#'     table, and for modifications to a firewall policy that violate the
-#'     Firewall Manager policy's rules.
-#' 
-#' -   Resources are considered noncompliant for DNS Firewall policies if a
-#'     DNS Firewall rule group is missing from the rule group associations
-#'     for the VPC.
+#' The reasons for resources being considered compliant depend on the
+#' Firewall Manager policy type.
 #'
 #' @usage
 #' fms_get_compliance_detail(PolicyId, MemberAccount)
@@ -830,7 +821,7 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #'     Violators = list(
 #'       list(
 #'         ResourceId = "string",
-#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"FMS_CREATED_SECURITY_GROUP_EDITED"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED"|"FIREWALL_SUBNET_IS_OUT_OF_SCOPE"|"INTERNET_GATEWAY_MISSING_EXPECTED_ROUTE"|"FIREWALL_SUBNET_MISSING_EXPECTED_ROUTE"|"UNEXPECTED_FIREWALL_ROUTES"|"UNEXPECTED_TARGET_GATEWAY_ROUTES"|"TRAFFIC_INSPECTION_CROSSES_AZ_BOUNDARY"|"INVALID_ROUTE_CONFIGURATION"|"MISSING_TARGET_GATEWAY"|"INTERNET_TRAFFIC_NOT_INSPECTED"|"BLACK_HOLE_ROUTE_DETECTED"|"BLACK_HOLE_ROUTE_DETECTED_IN_FIREWALL_SUBNET"|"RESOURCE_MISSING_DNS_FIREWALL"|"ROUTE_HAS_OUT_OF_SCOPE_ENDPOINT"|"FIREWALL_SUBNET_MISSING_VPCE_ENDPOINT",
+#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"FMS_CREATED_SECURITY_GROUP_EDITED"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED"|"FIREWALL_SUBNET_IS_OUT_OF_SCOPE"|"INTERNET_GATEWAY_MISSING_EXPECTED_ROUTE"|"FIREWALL_SUBNET_MISSING_EXPECTED_ROUTE"|"UNEXPECTED_FIREWALL_ROUTES"|"UNEXPECTED_TARGET_GATEWAY_ROUTES"|"TRAFFIC_INSPECTION_CROSSES_AZ_BOUNDARY"|"INVALID_ROUTE_CONFIGURATION"|"MISSING_TARGET_GATEWAY"|"INTERNET_TRAFFIC_NOT_INSPECTED"|"BLACK_HOLE_ROUTE_DETECTED"|"BLACK_HOLE_ROUTE_DETECTED_IN_FIREWALL_SUBNET"|"RESOURCE_MISSING_DNS_FIREWALL"|"ROUTE_HAS_OUT_OF_SCOPE_ENDPOINT"|"FIREWALL_SUBNET_MISSING_VPCE_ENDPOINT"|"INVALID_NETWORK_ACL_ENTRY",
 #'         ResourceType = "string",
 #'         Metadata = list(
 #'           "string"
@@ -888,6 +879,8 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 #' @usage
 #' fms_get_notification_channel()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -943,7 +936,7 @@ fms_get_notification_channel <- function() {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON",
 #'       ManagedServiceData = "string",
 #'       PolicyOption = list(
 #'         NetworkFirewallPolicy = list(
@@ -951,6 +944,46 @@ fms_get_notification_channel <- function() {
 #'         ),
 #'         ThirdPartyFirewallPolicy = list(
 #'           FirewallDeploymentModel = "CENTRALIZED"|"DISTRIBUTED"
+#'         ),
+#'         NetworkAclCommonPolicy = list(
+#'           NetworkAclEntrySet = list(
+#'             FirstEntries = list(
+#'               list(
+#'                 IcmpTypeCode = list(
+#'                   Code = 123,
+#'                   Type = 123
+#'                 ),
+#'                 Protocol = "string",
+#'                 PortRange = list(
+#'                   From = 123,
+#'                   To = 123
+#'                 ),
+#'                 CidrBlock = "string",
+#'                 Ipv6CidrBlock = "string",
+#'                 RuleAction = "allow"|"deny",
+#'                 Egress = TRUE|FALSE
+#'               )
+#'             ),
+#'             ForceRemediateForFirstEntries = TRUE|FALSE,
+#'             LastEntries = list(
+#'               list(
+#'                 IcmpTypeCode = list(
+#'                   Code = 123,
+#'                   Type = 123
+#'                 ),
+#'                 Protocol = "string",
+#'                 PortRange = list(
+#'                   From = 123,
+#'                   To = 123
+#'                 ),
+#'                 CidrBlock = "string",
+#'                 Ipv6CidrBlock = "string",
+#'                 RuleAction = "allow"|"deny",
+#'                 Egress = TRUE|FALSE
+#'               )
+#'             ),
+#'             ForceRemediateForLastEntries = TRUE|FALSE
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1056,7 +1089,7 @@ fms_get_policy <- function(PolicyId) {
 #' ```
 #' list(
 #'   AdminAccountId = "string",
-#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
+#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON",
 #'   Data = "string",
 #'   NextToken = "string"
 #' )
@@ -1303,6 +1336,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' 
 #' -   Security group content audit
 #' 
+#' -   Network ACL
+#' 
 #' -   Third-party firewall
 #' @param MemberAccount &#91;required&#93; The Amazon Web Services account ID that you want the details for.
 #' @param ResourceId &#91;required&#93; The ID of the resource that has violations.
@@ -1420,7 +1455,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'               "string"
 #'             ),
 #'             StatefulEngineOptions = list(
-#'               RuleOrder = "STRICT_ORDER"|"DEFAULT_ACTION_ORDER"
+#'               RuleOrder = "STRICT_ORDER"|"DEFAULT_ACTION_ORDER",
+#'               StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT"|"FMS_IGNORE"
 #'             )
 #'           ),
 #'           ExpectedPolicyDescription = list(
@@ -1454,7 +1490,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'               "string"
 #'             ),
 #'             StatefulEngineOptions = list(
-#'               RuleOrder = "STRICT_ORDER"|"DEFAULT_ACTION_ORDER"
+#'               RuleOrder = "STRICT_ORDER"|"DEFAULT_ACTION_ORDER",
+#'               StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT"|"FMS_IGNORE"
 #'             )
 #'           )
 #'         ),
@@ -1663,6 +1700,147 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'           ViolationTargetDescription = "string",
 #'           NumberOfRuleGroupsAlreadyAssociated = 123
 #'         ),
+#'         FirewallSubnetIsOutOfScopeViolation = list(
+#'           FirewallSubnetId = "string",
+#'           VpcId = "string",
+#'           SubnetAvailabilityZone = "string",
+#'           SubnetAvailabilityZoneId = "string",
+#'           VpcEndpointId = "string"
+#'         ),
+#'         RouteHasOutOfScopeEndpointViolation = list(
+#'           SubnetId = "string",
+#'           VpcId = "string",
+#'           RouteTableId = "string",
+#'           ViolatingRoutes = list(
+#'             list(
+#'               DestinationType = "IPV4"|"IPV6"|"PREFIX_LIST",
+#'               TargetType = "GATEWAY"|"CARRIER_GATEWAY"|"INSTANCE"|"LOCAL_GATEWAY"|"NAT_GATEWAY"|"NETWORK_INTERFACE"|"VPC_ENDPOINT"|"VPC_PEERING_CONNECTION"|"EGRESS_ONLY_INTERNET_GATEWAY"|"TRANSIT_GATEWAY",
+#'               Destination = "string",
+#'               Target = "string"
+#'             )
+#'           ),
+#'           SubnetAvailabilityZone = "string",
+#'           SubnetAvailabilityZoneId = "string",
+#'           CurrentFirewallSubnetRouteTable = "string",
+#'           FirewallSubnetId = "string",
+#'           FirewallSubnetRoutes = list(
+#'             list(
+#'               DestinationType = "IPV4"|"IPV6"|"PREFIX_LIST",
+#'               TargetType = "GATEWAY"|"CARRIER_GATEWAY"|"INSTANCE"|"LOCAL_GATEWAY"|"NAT_GATEWAY"|"NETWORK_INTERFACE"|"VPC_ENDPOINT"|"VPC_PEERING_CONNECTION"|"EGRESS_ONLY_INTERNET_GATEWAY"|"TRANSIT_GATEWAY",
+#'               Destination = "string",
+#'               Target = "string"
+#'             )
+#'           ),
+#'           InternetGatewayId = "string",
+#'           CurrentInternetGatewayRouteTable = "string",
+#'           InternetGatewayRoutes = list(
+#'             list(
+#'               DestinationType = "IPV4"|"IPV6"|"PREFIX_LIST",
+#'               TargetType = "GATEWAY"|"CARRIER_GATEWAY"|"INSTANCE"|"LOCAL_GATEWAY"|"NAT_GATEWAY"|"NETWORK_INTERFACE"|"VPC_ENDPOINT"|"VPC_PEERING_CONNECTION"|"EGRESS_ONLY_INTERNET_GATEWAY"|"TRANSIT_GATEWAY",
+#'               Destination = "string",
+#'               Target = "string"
+#'             )
+#'           )
+#'         ),
+#'         ThirdPartyFirewallMissingFirewallViolation = list(
+#'           ViolationTarget = "string",
+#'           VPC = "string",
+#'           AvailabilityZone = "string",
+#'           TargetViolationReason = "string"
+#'         ),
+#'         ThirdPartyFirewallMissingSubnetViolation = list(
+#'           ViolationTarget = "string",
+#'           VPC = "string",
+#'           AvailabilityZone = "string",
+#'           TargetViolationReason = "string"
+#'         ),
+#'         ThirdPartyFirewallMissingExpectedRouteTableViolation = list(
+#'           ViolationTarget = "string",
+#'           VPC = "string",
+#'           AvailabilityZone = "string",
+#'           CurrentRouteTable = "string",
+#'           ExpectedRouteTable = "string"
+#'         ),
+#'         FirewallSubnetMissingVPCEndpointViolation = list(
+#'           FirewallSubnetId = "string",
+#'           VpcId = "string",
+#'           SubnetAvailabilityZone = "string",
+#'           SubnetAvailabilityZoneId = "string"
+#'         ),
+#'         InvalidNetworkAclEntriesViolation = list(
+#'           Vpc = "string",
+#'           Subnet = "string",
+#'           SubnetAvailabilityZone = "string",
+#'           CurrentAssociatedNetworkAcl = "string",
+#'           EntryViolations = list(
+#'             list(
+#'               ExpectedEntry = list(
+#'                 EntryDetail = list(
+#'                   IcmpTypeCode = list(
+#'                     Code = 123,
+#'                     Type = 123
+#'                   ),
+#'                   Protocol = "string",
+#'                   PortRange = list(
+#'                     From = 123,
+#'                     To = 123
+#'                   ),
+#'                   CidrBlock = "string",
+#'                   Ipv6CidrBlock = "string",
+#'                   RuleAction = "allow"|"deny",
+#'                   Egress = TRUE|FALSE
+#'                 ),
+#'                 EntryRuleNumber = 123,
+#'                 EntryType = "FMS_MANAGED_FIRST_ENTRY"|"FMS_MANAGED_LAST_ENTRY"|"CUSTOM_ENTRY"
+#'               ),
+#'               ExpectedEvaluationOrder = "string",
+#'               ActualEvaluationOrder = "string",
+#'               EntryAtExpectedEvaluationOrder = list(
+#'                 EntryDetail = list(
+#'                   IcmpTypeCode = list(
+#'                     Code = 123,
+#'                     Type = 123
+#'                   ),
+#'                   Protocol = "string",
+#'                   PortRange = list(
+#'                     From = 123,
+#'                     To = 123
+#'                   ),
+#'                   CidrBlock = "string",
+#'                   Ipv6CidrBlock = "string",
+#'                   RuleAction = "allow"|"deny",
+#'                   Egress = TRUE|FALSE
+#'                 ),
+#'                 EntryRuleNumber = 123,
+#'                 EntryType = "FMS_MANAGED_FIRST_ENTRY"|"FMS_MANAGED_LAST_ENTRY"|"CUSTOM_ENTRY"
+#'               ),
+#'               EntriesWithConflicts = list(
+#'                 list(
+#'                   EntryDetail = list(
+#'                     IcmpTypeCode = list(
+#'                       Code = 123,
+#'                       Type = 123
+#'                     ),
+#'                     Protocol = "string",
+#'                     PortRange = list(
+#'                       From = 123,
+#'                       To = 123
+#'                     ),
+#'                     CidrBlock = "string",
+#'                     Ipv6CidrBlock = "string",
+#'                     RuleAction = "allow"|"deny",
+#'                     Egress = TRUE|FALSE
+#'                   ),
+#'                   EntryRuleNumber = 123,
+#'                   EntryType = "FMS_MANAGED_FIRST_ENTRY"|"FMS_MANAGED_LAST_ENTRY"|"CUSTOM_ENTRY"
+#'                 )
+#'               ),
+#'               EntryViolationReasons = list(
+#'                 "MISSING_EXPECTED_ENTRY"|"INCORRECT_ENTRY_ORDER"|"ENTRY_CONFLICT"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         PossibleRemediationActions = list(
 #'           Description = "string",
 #'           Actions = list(
@@ -1761,6 +1939,84 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'                     FMSPolicyUpdateFirewallCreationConfigAction = list(
 #'                       Description = "string",
 #'                       FirewallCreationConfig = "string"
+#'                     ),
+#'                     CreateNetworkAclAction = list(
+#'                       Description = "string",
+#'                       Vpc = list(
+#'                         ResourceId = "string",
+#'                         Description = "string"
+#'                       ),
+#'                       FMSCanRemediate = TRUE|FALSE
+#'                     ),
+#'                     ReplaceNetworkAclAssociationAction = list(
+#'                       Description = "string",
+#'                       AssociationId = list(
+#'                         ResourceId = "string",
+#'                         Description = "string"
+#'                       ),
+#'                       NetworkAclId = list(
+#'                         ResourceId = "string",
+#'                         Description = "string"
+#'                       ),
+#'                       FMSCanRemediate = TRUE|FALSE
+#'                     ),
+#'                     CreateNetworkAclEntriesAction = list(
+#'                       Description = "string",
+#'                       NetworkAclId = list(
+#'                         ResourceId = "string",
+#'                         Description = "string"
+#'                       ),
+#'                       NetworkAclEntriesToBeCreated = list(
+#'                         list(
+#'                           EntryDetail = list(
+#'                             IcmpTypeCode = list(
+#'                               Code = 123,
+#'                               Type = 123
+#'                             ),
+#'                             Protocol = "string",
+#'                             PortRange = list(
+#'                               From = 123,
+#'                               To = 123
+#'                             ),
+#'                             CidrBlock = "string",
+#'                             Ipv6CidrBlock = "string",
+#'                             RuleAction = "allow"|"deny",
+#'                             Egress = TRUE|FALSE
+#'                           ),
+#'                           EntryRuleNumber = 123,
+#'                           EntryType = "FMS_MANAGED_FIRST_ENTRY"|"FMS_MANAGED_LAST_ENTRY"|"CUSTOM_ENTRY"
+#'                         )
+#'                       ),
+#'                       FMSCanRemediate = TRUE|FALSE
+#'                     ),
+#'                     DeleteNetworkAclEntriesAction = list(
+#'                       Description = "string",
+#'                       NetworkAclId = list(
+#'                         ResourceId = "string",
+#'                         Description = "string"
+#'                       ),
+#'                       NetworkAclEntriesToBeDeleted = list(
+#'                         list(
+#'                           EntryDetail = list(
+#'                             IcmpTypeCode = list(
+#'                               Code = 123,
+#'                               Type = 123
+#'                             ),
+#'                             Protocol = "string",
+#'                             PortRange = list(
+#'                               From = 123,
+#'                               To = 123
+#'                             ),
+#'                             CidrBlock = "string",
+#'                             Ipv6CidrBlock = "string",
+#'                             RuleAction = "allow"|"deny",
+#'                             Egress = TRUE|FALSE
+#'                           ),
+#'                           EntryRuleNumber = 123,
+#'                           EntryType = "FMS_MANAGED_FIRST_ENTRY"|"FMS_MANAGED_LAST_ENTRY"|"CUSTOM_ENTRY"
+#'                         )
+#'                       ),
+#'                       FMSCanRemediate = TRUE|FALSE
 #'                     )
 #'                   ),
 #'                   Order = 123
@@ -1769,73 +2025,6 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'               IsDefaultAction = TRUE|FALSE
 #'             )
 #'           )
-#'         ),
-#'         FirewallSubnetIsOutOfScopeViolation = list(
-#'           FirewallSubnetId = "string",
-#'           VpcId = "string",
-#'           SubnetAvailabilityZone = "string",
-#'           SubnetAvailabilityZoneId = "string",
-#'           VpcEndpointId = "string"
-#'         ),
-#'         RouteHasOutOfScopeEndpointViolation = list(
-#'           SubnetId = "string",
-#'           VpcId = "string",
-#'           RouteTableId = "string",
-#'           ViolatingRoutes = list(
-#'             list(
-#'               DestinationType = "IPV4"|"IPV6"|"PREFIX_LIST",
-#'               TargetType = "GATEWAY"|"CARRIER_GATEWAY"|"INSTANCE"|"LOCAL_GATEWAY"|"NAT_GATEWAY"|"NETWORK_INTERFACE"|"VPC_ENDPOINT"|"VPC_PEERING_CONNECTION"|"EGRESS_ONLY_INTERNET_GATEWAY"|"TRANSIT_GATEWAY",
-#'               Destination = "string",
-#'               Target = "string"
-#'             )
-#'           ),
-#'           SubnetAvailabilityZone = "string",
-#'           SubnetAvailabilityZoneId = "string",
-#'           CurrentFirewallSubnetRouteTable = "string",
-#'           FirewallSubnetId = "string",
-#'           FirewallSubnetRoutes = list(
-#'             list(
-#'               DestinationType = "IPV4"|"IPV6"|"PREFIX_LIST",
-#'               TargetType = "GATEWAY"|"CARRIER_GATEWAY"|"INSTANCE"|"LOCAL_GATEWAY"|"NAT_GATEWAY"|"NETWORK_INTERFACE"|"VPC_ENDPOINT"|"VPC_PEERING_CONNECTION"|"EGRESS_ONLY_INTERNET_GATEWAY"|"TRANSIT_GATEWAY",
-#'               Destination = "string",
-#'               Target = "string"
-#'             )
-#'           ),
-#'           InternetGatewayId = "string",
-#'           CurrentInternetGatewayRouteTable = "string",
-#'           InternetGatewayRoutes = list(
-#'             list(
-#'               DestinationType = "IPV4"|"IPV6"|"PREFIX_LIST",
-#'               TargetType = "GATEWAY"|"CARRIER_GATEWAY"|"INSTANCE"|"LOCAL_GATEWAY"|"NAT_GATEWAY"|"NETWORK_INTERFACE"|"VPC_ENDPOINT"|"VPC_PEERING_CONNECTION"|"EGRESS_ONLY_INTERNET_GATEWAY"|"TRANSIT_GATEWAY",
-#'               Destination = "string",
-#'               Target = "string"
-#'             )
-#'           )
-#'         ),
-#'         ThirdPartyFirewallMissingFirewallViolation = list(
-#'           ViolationTarget = "string",
-#'           VPC = "string",
-#'           AvailabilityZone = "string",
-#'           TargetViolationReason = "string"
-#'         ),
-#'         ThirdPartyFirewallMissingSubnetViolation = list(
-#'           ViolationTarget = "string",
-#'           VPC = "string",
-#'           AvailabilityZone = "string",
-#'           TargetViolationReason = "string"
-#'         ),
-#'         ThirdPartyFirewallMissingExpectedRouteTableViolation = list(
-#'           ViolationTarget = "string",
-#'           VPC = "string",
-#'           AvailabilityZone = "string",
-#'           CurrentRouteTable = "string",
-#'           ExpectedRouteTable = "string"
-#'         ),
-#'         FirewallSubnetMissingVPCEndpointViolation = list(
-#'           FirewallSubnetId = "string",
-#'           VpcId = "string",
-#'           SubnetAvailabilityZone = "string",
-#'           SubnetAvailabilityZoneId = "string"
 #'         )
 #'       )
 #'     ),
@@ -2350,7 +2539,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'       PolicyId = "string",
 #'       PolicyName = "string",
 #'       ResourceType = "string",
-#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
+#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON",
 #'       RemediationEnabled = TRUE|FALSE,
 #'       DeleteUnusedFMManagedResources = TRUE|FALSE,
 #'       PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
@@ -2787,7 +2976,7 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
 #'     ),
 #'     PolicyTypeScope = list(
 #'       PolicyTypes = list(
-#'         "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"
+#'         "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON"
 #'       ),
 #'       AllPolicyTypesEnabled = TRUE|FALSE
 #'     )
@@ -2998,6 +3187,9 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' 
 #' Firewall Manager provides the following types of policies:
 #' 
+#' -   **WAF policy** - This policy applies WAF web ACL protections to
+#'     specified accounts and resources.
+#' 
 #' -   **Shield Advanced policy** - This policy applies Shield Advanced
 #'     protection to specified accounts and resources.
 #' 
@@ -3005,6 +3197,11 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     over security groups that are in use throughout your organization in
 #'     Organizations and lets you enforce a baseline set of rules across
 #'     your organization.
+#' 
+#' -   **Network ACL policy** - This type of policy gives you control over
+#'     the network ACLs that are in use throughout your organization in
+#'     Organizations and lets you enforce a baseline set of first and last
+#'     network ACL rules across your organization.
 #' 
 #' -   **Network Firewall policy** - This policy applies Network Firewall
 #'     protection to your organization's VPCs.
@@ -3045,7 +3242,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON",
 #'       ManagedServiceData = "string",
 #'       PolicyOption = list(
 #'         NetworkFirewallPolicy = list(
@@ -3053,6 +3250,46 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'         ),
 #'         ThirdPartyFirewallPolicy = list(
 #'           FirewallDeploymentModel = "CENTRALIZED"|"DISTRIBUTED"
+#'         ),
+#'         NetworkAclCommonPolicy = list(
+#'           NetworkAclEntrySet = list(
+#'             FirstEntries = list(
+#'               list(
+#'                 IcmpTypeCode = list(
+#'                   Code = 123,
+#'                   Type = 123
+#'                 ),
+#'                 Protocol = "string",
+#'                 PortRange = list(
+#'                   From = 123,
+#'                   To = 123
+#'                 ),
+#'                 CidrBlock = "string",
+#'                 Ipv6CidrBlock = "string",
+#'                 RuleAction = "allow"|"deny",
+#'                 Egress = TRUE|FALSE
+#'               )
+#'             ),
+#'             ForceRemediateForFirstEntries = TRUE|FALSE,
+#'             LastEntries = list(
+#'               list(
+#'                 IcmpTypeCode = list(
+#'                   Code = 123,
+#'                   Type = 123
+#'                 ),
+#'                 Protocol = "string",
+#'                 PortRange = list(
+#'                   From = 123,
+#'                   To = 123
+#'                 ),
+#'                 CidrBlock = "string",
+#'                 Ipv6CidrBlock = "string",
+#'                 RuleAction = "allow"|"deny",
+#'                 Egress = TRUE|FALSE
+#'               )
+#'             ),
+#'             ForceRemediateForLastEntries = TRUE|FALSE
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -3097,7 +3334,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"|"NETWORK_ACL_COMMON",
 #'       ManagedServiceData = "string",
 #'       PolicyOption = list(
 #'         NetworkFirewallPolicy = list(
@@ -3105,6 +3342,46 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'         ),
 #'         ThirdPartyFirewallPolicy = list(
 #'           FirewallDeploymentModel = "CENTRALIZED"|"DISTRIBUTED"
+#'         ),
+#'         NetworkAclCommonPolicy = list(
+#'           NetworkAclEntrySet = list(
+#'             FirstEntries = list(
+#'               list(
+#'                 IcmpTypeCode = list(
+#'                   Code = 123,
+#'                   Type = 123
+#'                 ),
+#'                 Protocol = "string",
+#'                 PortRange = list(
+#'                   From = 123,
+#'                   To = 123
+#'                 ),
+#'                 CidrBlock = "string",
+#'                 Ipv6CidrBlock = "string",
+#'                 RuleAction = "allow"|"deny",
+#'                 Egress = TRUE|FALSE
+#'               )
+#'             ),
+#'             ForceRemediateForFirstEntries = TRUE|FALSE,
+#'             LastEntries = list(
+#'               list(
+#'                 IcmpTypeCode = list(
+#'                   Code = 123,
+#'                   Type = 123
+#'                 ),
+#'                 Protocol = "string",
+#'                 PortRange = list(
+#'                   From = 123,
+#'                   To = 123
+#'                 ),
+#'                 CidrBlock = "string",
+#'                 Ipv6CidrBlock = "string",
+#'                 RuleAction = "allow"|"deny",
+#'                 Egress = TRUE|FALSE
+#'               )
+#'             ),
+#'             ForceRemediateForLastEntries = TRUE|FALSE
+#'           )
 #'         )
 #'       )
 #'     ),

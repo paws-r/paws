@@ -264,6 +264,89 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 }
 .emrcontainers$operations$create_managed_endpoint <- emrcontainers_create_managed_endpoint
 
+#' Creates a security configuration
+#'
+#' @description
+#' Creates a security configuration. Security configurations in Amazon EMR
+#' on EKS are templates for different security setups. You can use security
+#' configurations to configure the Lake Formation integration setup. You
+#' can also create a security configuration to re-use a security setup each
+#' time you create a virtual cluster.
+#'
+#' @usage
+#' emrcontainers_create_security_configuration(clientToken, name,
+#'   securityConfigurationData, tags)
+#'
+#' @param clientToken &#91;required&#93; The client idempotency token to use when creating the security
+#' configuration.
+#' @param name &#91;required&#93; The name of the security configuration.
+#' @param securityConfigurationData &#91;required&#93; Security configuration input for the request.
+#' @param tags The tags to add to the security configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   name = "string",
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_security_configuration(
+#'   clientToken = "string",
+#'   name = "string",
+#'   securityConfigurationData = list(
+#'     authorizationConfiguration = list(
+#'       lakeFormationConfiguration = list(
+#'         authorizedSessionTagValue = "string",
+#'         secureNamespaceInfo = list(
+#'           clusterId = "string",
+#'           namespace = "string"
+#'         ),
+#'         queryEngineRoleArn = "string"
+#'       ),
+#'       encryptionConfiguration = list(
+#'         inTransitEncryptionConfiguration = list(
+#'           tlsCertificateConfiguration = list(
+#'             certificateProviderType = "PEM",
+#'             publicCertificateSecretArn = "string",
+#'             privateCertificateSecretArn = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_create_security_configuration
+#'
+#' @aliases emrcontainers_create_security_configuration
+emrcontainers_create_security_configuration <- function(clientToken, name, securityConfigurationData, tags = NULL) {
+  op <- new_operation(
+    name = "CreateSecurityConfiguration",
+    http_method = "POST",
+    http_path = "/securityconfigurations",
+    paginator = list()
+  )
+  input <- .emrcontainers$create_security_configuration_input(clientToken = clientToken, name = name, securityConfigurationData = securityConfigurationData, tags = tags)
+  output <- .emrcontainers$create_security_configuration_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$create_security_configuration <- emrcontainers_create_security_configuration
+
 #' Creates a virtual cluster
 #'
 #' @description
@@ -276,12 +359,13 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #'
 #' @usage
 #' emrcontainers_create_virtual_cluster(name, containerProvider,
-#'   clientToken, tags)
+#'   clientToken, tags, securityConfigurationId)
 #'
 #' @param name &#91;required&#93; The specified name of the virtual cluster.
 #' @param containerProvider &#91;required&#93; The container provider of the virtual cluster.
 #' @param clientToken &#91;required&#93; The client token of the virtual cluster.
 #' @param tags The tags assigned to the virtual cluster.
+#' @param securityConfigurationId The ID of the security configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -309,7 +393,8 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   securityConfigurationId = "string"
 #' )
 #' ```
 #'
@@ -318,14 +403,14 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #' @rdname emrcontainers_create_virtual_cluster
 #'
 #' @aliases emrcontainers_create_virtual_cluster
-emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL) {
+emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL, securityConfigurationId = NULL) {
   op <- new_operation(
     name = "CreateVirtualCluster",
     http_method = "POST",
     http_path = "/virtualclusters",
     paginator = list()
   )
-  input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags)
+  input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId)
   output <- .emrcontainers$create_virtual_cluster_output()
   config <- get_config()
   svc <- .emrcontainers$service(config)
@@ -819,6 +904,90 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 }
 .emrcontainers$operations$describe_managed_endpoint <- emrcontainers_describe_managed_endpoint
 
+#' Displays detailed information about a specified security configuration
+#'
+#' @description
+#' Displays detailed information about a specified security configuration.
+#' Security configurations in Amazon EMR on EKS are templates for different
+#' security setups. You can use security configurations to configure the
+#' Lake Formation integration setup. You can also create a security
+#' configuration to re-use a security setup each time you create a virtual
+#' cluster.
+#'
+#' @usage
+#' emrcontainers_describe_security_configuration(id)
+#'
+#' @param id &#91;required&#93; The ID of the security configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityConfiguration = list(
+#'     id = "string",
+#'     name = "string",
+#'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     securityConfigurationData = list(
+#'       authorizationConfiguration = list(
+#'         lakeFormationConfiguration = list(
+#'           authorizedSessionTagValue = "string",
+#'           secureNamespaceInfo = list(
+#'             clusterId = "string",
+#'             namespace = "string"
+#'           ),
+#'           queryEngineRoleArn = "string"
+#'         ),
+#'         encryptionConfiguration = list(
+#'           inTransitEncryptionConfiguration = list(
+#'             tlsCertificateConfiguration = list(
+#'               certificateProviderType = "PEM",
+#'               publicCertificateSecretArn = "string",
+#'               privateCertificateSecretArn = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_security_configuration(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_describe_security_configuration
+#'
+#' @aliases emrcontainers_describe_security_configuration
+emrcontainers_describe_security_configuration <- function(id) {
+  op <- new_operation(
+    name = "DescribeSecurityConfiguration",
+    http_method = "GET",
+    http_path = "/securityconfigurations/{securityConfigurationId}",
+    paginator = list()
+  )
+  input <- .emrcontainers$describe_security_configuration_input(id = id)
+  output <- .emrcontainers$describe_security_configuration_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$describe_security_configuration <- emrcontainers_describe_security_configuration
+
 #' Displays detailed information about a specified virtual cluster
 #'
 #' @description
@@ -858,7 +1027,8 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 #'     ),
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     securityConfigurationId = "string"
 #'   )
 #' )
 #' ```
@@ -1348,6 +1518,104 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
 }
 .emrcontainers$operations$list_managed_endpoints <- emrcontainers_list_managed_endpoints
 
+#' Lists security configurations based on a set of parameters
+#'
+#' @description
+#' Lists security configurations based on a set of parameters. Security
+#' configurations in Amazon EMR on EKS are templates for different security
+#' setups. You can use security configurations to configure the Lake
+#' Formation integration setup. You can also create a security
+#' configuration to re-use a security setup each time you create a virtual
+#' cluster.
+#'
+#' @usage
+#' emrcontainers_list_security_configurations(createdAfter, createdBefore,
+#'   maxResults, nextToken)
+#'
+#' @param createdAfter The date and time after which the security configuration was created.
+#' @param createdBefore The date and time before which the security configuration was created.
+#' @param maxResults The maximum number of security configurations the operation can list.
+#' @param nextToken The token for the next set of security configurations to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityConfigurations = list(
+#'     list(
+#'       id = "string",
+#'       name = "string",
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       securityConfigurationData = list(
+#'         authorizationConfiguration = list(
+#'           lakeFormationConfiguration = list(
+#'             authorizedSessionTagValue = "string",
+#'             secureNamespaceInfo = list(
+#'               clusterId = "string",
+#'               namespace = "string"
+#'             ),
+#'             queryEngineRoleArn = "string"
+#'           ),
+#'           encryptionConfiguration = list(
+#'             inTransitEncryptionConfiguration = list(
+#'               tlsCertificateConfiguration = list(
+#'                 certificateProviderType = "PEM",
+#'                 publicCertificateSecretArn = "string",
+#'                 privateCertificateSecretArn = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_security_configurations(
+#'   createdAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrcontainers_list_security_configurations
+#'
+#' @aliases emrcontainers_list_security_configurations
+emrcontainers_list_security_configurations <- function(createdAfter = NULL, createdBefore = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSecurityConfigurations",
+    http_method = "GET",
+    http_path = "/securityconfigurations",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "securityConfigurations")
+  )
+  input <- .emrcontainers$list_security_configurations_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
+  output <- .emrcontainers$list_security_configurations_output()
+  config <- get_config()
+  svc <- .emrcontainers$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrcontainers$operations$list_security_configurations <- emrcontainers_list_security_configurations
+
 #' Lists the tags assigned to the resources
 #'
 #' @description
@@ -1410,7 +1678,7 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' @usage
 #' emrcontainers_list_virtual_clusters(containerProviderId,
 #'   containerProviderType, createdAfter, createdBefore, states, maxResults,
-#'   nextToken)
+#'   nextToken, eksAccessEntryIntegrated)
 #'
 #' @param containerProviderId The container provider ID of the virtual cluster.
 #' @param containerProviderType The container provider type of the virtual cluster. Amazon EKS is the
@@ -1420,6 +1688,10 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' @param states The states of the requested virtual clusters.
 #' @param maxResults The maximum number of virtual clusters that can be listed.
 #' @param nextToken The token for the next set of virtual clusters to return.
+#' @param eksAccessEntryIntegrated Optional Boolean that specifies whether the operation should return the
+#' virtual clusters that have the access entry integration enabled or
+#' disabled. If not specified, the operation returns all applicable virtual
+#' clusters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1445,7 +1717,8 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #'       ),
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       securityConfigurationId = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1467,7 +1740,8 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #'     "RUNNING"|"TERMINATING"|"TERMINATED"|"ARRESTED"
 #'   ),
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   eksAccessEntryIntegrated = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1476,14 +1750,14 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' @rdname emrcontainers_list_virtual_clusters
 #'
 #' @aliases emrcontainers_list_virtual_clusters
-emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, containerProviderType = NULL, createdAfter = NULL, createdBefore = NULL, states = NULL, maxResults = NULL, nextToken = NULL) {
+emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, containerProviderType = NULL, createdAfter = NULL, createdBefore = NULL, states = NULL, maxResults = NULL, nextToken = NULL, eksAccessEntryIntegrated = NULL) {
   op <- new_operation(
     name = "ListVirtualClusters",
     http_method = "GET",
     http_path = "/virtualclusters",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "virtualClusters")
   )
-  input <- .emrcontainers$list_virtual_clusters_input(containerProviderId = containerProviderId, containerProviderType = containerProviderType, createdAfter = createdAfter, createdBefore = createdBefore, states = states, maxResults = maxResults, nextToken = nextToken)
+  input <- .emrcontainers$list_virtual_clusters_input(containerProviderId = containerProviderId, containerProviderType = containerProviderType, createdAfter = createdAfter, createdBefore = createdBefore, states = states, maxResults = maxResults, nextToken = nextToken, eksAccessEntryIntegrated = eksAccessEntryIntegrated)
   output <- .emrcontainers$list_virtual_clusters_output()
   config <- get_config()
   svc <- .emrcontainers$service(config)

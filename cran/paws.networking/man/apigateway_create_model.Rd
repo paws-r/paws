@@ -20,7 +20,7 @@ apigateway_create_model(
 \item{description}{The description of the model.}
 
 \item{schema}{The schema for the model. For \code{application/json} models, this should be
-JSON schema draft 4 model.}
+JSON schema draft 4 model. The maximum size of the model is 400 KB.}
 
 \item{contentType}{[required] The content-type for the model.}
 }

@@ -11,7 +11,8 @@ cloudwatchinternetmonitor_list_health_events(
   EndTime = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  EventStatus = NULL
+  EventStatus = NULL,
+  LinkedAccountId = NULL
 )
 }
 \arguments{
@@ -29,9 +30,15 @@ previous call.}
 call.}
 
 \item{EventStatus}{The status of a health event.}
+
+\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing
+for in Amazon CloudWatch Internet Monitor. You configure cross-account
+sharing by using Amazon CloudWatch Observability Access Manager. For
+more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
+in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{
-Lists all health events for a monitor in Amazon CloudWatch Internet Monitor. Returns information for health events including the event start and end time and the status.
+Lists all health events for a monitor in Amazon CloudWatch Internet Monitor. Returns information for health events including the event start and end times, and the status.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_list_health_events/} for full documentation.
 }

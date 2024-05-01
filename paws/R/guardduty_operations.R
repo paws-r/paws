@@ -156,14 +156,29 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 }
 .guardduty$operations$archive_findings <- guardduty_archive_findings
 
-#' Creates a single Amazon GuardDuty detector
+#' Creates a single GuardDuty detector
 #'
 #' @description
-#' Creates a single Amazon GuardDuty detector. A detector is a resource
-#' that represents the GuardDuty service. To start using GuardDuty, you
-#' must create a detector in each Region where you enable the service. You
-#' can have only one detector per account per Region. All data sources are
+#' Creates a single GuardDuty detector. A detector is a resource that
+#' represents the GuardDuty service. To start using GuardDuty, you must
+#' create a detector in each Region where you enable the service. You can
+#' have only one detector per account per Region. All data sources are
 #' enabled in a new detector by default.
+#' 
+#' -   When you don't specify any `features`, with an exception to
+#'     `RUNTIME_MONITORING`, all the optional features are enabled by
+#'     default.
+#' 
+#' -   When you specify some of the `features`, any feature that is not
+#'     specified in the API call gets enabled by default, with an exception
+#'     to `RUNTIME_MONITORING`.
+#' 
+#' Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and
+#' Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can
+#' add only one of these two features because Runtime Monitoring already
+#' includes the threat detection for Amazon EKS resources. For more
+#' information, see [Runtime
+#' Monitoring](https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html).
 #' 
 #' There might be regional differences because some data sources might not
 #' be available in all the Amazon Web Services Regions where GuardDuty is
@@ -235,7 +250,7 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED"
 #'         )
 #'       )
@@ -389,6 +404,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV6
+#' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.organization.asn
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
@@ -413,6 +430,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV6
+#' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.organization.asn
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
@@ -423,6 +442,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
+#' 
 #' -   service.action.kubernetesApiCallAction.namespace
 #' 
 #' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
@@ -432,6 +453,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.action.kubernetesApiCallAction.statusCode
 #' 
 #' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV6
 #' 
 #' -   service.action.networkConnectionAction.protocol
 #' 
@@ -665,19 +688,19 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' settings for your organization, see
 #' [`describe_organization_configuration`][guardduty_describe_organization_configuration].
 #' 
-#' If you are adding accounts by invitation, before using
-#' [`invite_members`][guardduty_invite_members], use
-#' [`create_members`][guardduty_create_members] after GuardDuty has been
-#' enabled in potential member accounts.
-#' 
-#' If you disassociate a member from a GuardDuty delegated administrator,
-#' the member account details obtained from this API, including the
-#' associated email addresses, will be retained. This is done so that the
-#' delegated administrator can invoke the
+#' If you disassociate a member account that was added by invitation, the
+#' member account details obtained from this API, including the associated
+#' email addresses, will be retained. This is done so that the delegated
+#' administrator can invoke the
 #' [`invite_members`][guardduty_invite_members] API without the need to
 #' invoke the CreateMembers API again. To remove the details associated
 #' with a member account, the delegated administrator must invoke the
 #' [`delete_members`][guardduty_delete_members] API.
+#' 
+#' When the member accounts added through Organizations are later
+#' disassociated, you (administrator) can't invite them by calling the
+#' InviteMembers API. You can create an association with these member
+#' accounts again only by calling the CreateMembers API.
 #'
 #' @usage
 #' guardduty_create_members(DetectorId, AccountDetails)
@@ -1496,7 +1519,7 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #'       AutoEnable = "NEW"|"NONE"|"ALL",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'           AutoEnable = "NEW"|"NONE"|"ALL"
 #'         )
 #'       )
@@ -1775,6 +1798,20 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' With `autoEnableOrganizationMembers` configuration for your organization
 #' set to `ALL`, you'll receive an error if you attempt to disassociate a
 #' member account before removing them from your organization.
+#' 
+#' If you disassociate a member account that was added by invitation, the
+#' member account details obtained from this API, including the associated
+#' email addresses, will be retained. This is done so that the delegated
+#' administrator can invoke the
+#' [`invite_members`][guardduty_invite_members] API without the need to
+#' invoke the CreateMembers API again. To remove the details associated
+#' with a member account, the delegated administrator must invoke the
+#' [`delete_members`][guardduty_delete_members] API.
+#' 
+#' When the member accounts added through Organizations are later
+#' disassociated, you (administrator) can't invite them by calling the
+#' InviteMembers API. You can create an association with these member
+#' accounts again only by calling the CreateMembers API.
 #'
 #' @usage
 #' guardduty_disassociate_members(DetectorId, AccountIds)
@@ -2076,7 +2113,7 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
 #'       ),
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED",
 #'           UpdatedAt = as.POSIXct(
 #'             "2015-01-01"
@@ -2584,6 +2621,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 Lon = 123.0
 #'               ),
 #'               IpAddressV4 = "string",
+#'               IpAddressV6 = "string",
 #'               Organization = list(
 #'                 Asn = "string",
 #'                 AsnOrg = "string",
@@ -2615,7 +2653,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             ),
 #'             Protocol = "string",
 #'             LocalIpDetails = list(
-#'               IpAddressV4 = "string"
+#'               IpAddressV4 = "string",
+#'               IpAddressV6 = "string"
 #'             ),
 #'             RemoteIpDetails = list(
 #'               City = list(
@@ -2630,6 +2669,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 Lon = 123.0
 #'               ),
 #'               IpAddressV4 = "string",
+#'               IpAddressV6 = "string",
 #'               Organization = list(
 #'                 Asn = "string",
 #'                 AsnOrg = "string",
@@ -2651,7 +2691,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                   PortName = "string"
 #'                 ),
 #'                 LocalIpDetails = list(
-#'                   IpAddressV4 = "string"
+#'                   IpAddressV4 = "string",
+#'                   IpAddressV6 = "string"
 #'                 ),
 #'                 RemoteIpDetails = list(
 #'                   City = list(
@@ -2666,6 +2707,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                     Lon = 123.0
 #'                   ),
 #'                   IpAddressV4 = "string",
+#'                   IpAddressV6 = "string",
 #'                   Organization = list(
 #'                     Asn = "string",
 #'                     AsnOrg = "string",
@@ -2696,6 +2738,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 Lon = 123.0
 #'               ),
 #'               IpAddressV4 = "string",
+#'               IpAddressV6 = "string",
 #'               Organization = list(
 #'                 Asn = "string",
 #'                 AsnOrg = "string",
@@ -2724,6 +2767,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 Lon = 123.0
 #'               ),
 #'               IpAddressV4 = "string",
+#'               IpAddressV6 = "string",
 #'               Organization = list(
 #'                 Asn = "string",
 #'                 AsnOrg = "string",
@@ -2765,7 +2809,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'               ThreatListName = "string",
 #'               ThreatNames = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               ThreatFileSha256 = "string"
 #'             )
 #'           )
 #'         ),
@@ -2949,7 +2994,12 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             IanaProtocolNumber = 123,
 #'             MemoryRegions = list(
 #'               "string"
-#'             )
+#'             ),
+#'             ToolName = "string",
+#'             ToolCategory = "string",
+#'             ServiceName = "string",
+#'             CommandLineExample = "string",
+#'             ThreatFilePath = "string"
 #'           )
 #'         ),
 #'         Detection = list(
@@ -3037,6 +3087,11 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #' @description
 #' Lists Amazon GuardDuty findings statistics for the specified detector
 #' ID.
+#' 
+#' There might be regional differences because some flags might not be
+#' available in all the Regions where GuardDuty is currently supported. For
+#' more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
@@ -3181,6 +3236,8 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #'
 #' @usage
 #' guardduty_get_invitations_count()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -3407,7 +3464,7 @@ guardduty_get_master_account <- function(DetectorId) {
 #'           ),
 #'           AdditionalConfiguration = list(
 #'             list(
-#'               Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'               Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'               Status = "ENABLED"|"DISABLED",
 #'               UpdatedAt = as.POSIXct(
 #'                 "2015-01-01"
@@ -3531,16 +3588,16 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$get_members <- guardduty_get_members
 
-#' Retrieves how many active member accounts in your Amazon Web Services
-#' organization have each feature enabled within GuardDuty
+#' Retrieves how many active member accounts have each feature enabled
+#' within GuardDuty
 #'
 #' @description
-#' Retrieves how many active member accounts in your Amazon Web Services
-#' organization have each feature enabled within GuardDuty. Only a
-#' delegated GuardDuty administrator of an organization can run this API.
+#' Retrieves how many active member accounts have each feature enabled
+#' within GuardDuty. Only a delegated GuardDuty administrator of an
+#' organization can run this API.
 #' 
-#' When you create a new Amazon Web Services organization, it might take up
-#' to 24 hours to generate the statistics for the entire organization.
+#' When you create a new organization, it might take up to 24 hours to
+#' generate the statistics for the entire organization.
 #'
 #' @usage
 #' guardduty_get_organization_statistics()
@@ -3566,7 +3623,7 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #'           EnabledAccountsCount = 123,
 #'           AdditionalConfiguration = list(
 #'             list(
-#'               Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'               Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'               EnabledAccountsCount = 123
 #'             )
 #'           )
@@ -3794,7 +3851,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'     ),
 #'     TopAccountsByFeature = list(
 #'       list(
-#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING",
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS",
 #'         Accounts = list(
 #'           list(
 #'             AccountId = "string",
@@ -3835,7 +3892,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'     ),
 #'     SumByFeature = list(
 #'       list(
-#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING",
+#'         Feature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS",
 #'         Total = list(
 #'           Amount = "string",
 #'           Unit = "string"
@@ -3863,7 +3920,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'       "string"
 #'     ),
 #'     Features = list(
-#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"
+#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|"RDS_DBI_PROTECTION_PROVISIONED"|"RDS_DBI_PROTECTION_SERVERLESS"
 #'     )
 #'   ),
 #'   Unit = "string",
@@ -3925,6 +3982,20 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' [`create_members`][guardduty_create_members] again. To remove the
 #' details associated with a member account, you must also invoke
 #' [`delete_members`][guardduty_delete_members].
+#' 
+#' If you disassociate a member account that was added by invitation, the
+#' member account details obtained from this API, including the associated
+#' email addresses, will be retained. This is done so that the delegated
+#' administrator can invoke the
+#' [`invite_members`][guardduty_invite_members] API without the need to
+#' invoke the CreateMembers API again. To remove the details associated
+#' with a member account, the delegated administrator must invoke the
+#' [`delete_members`][guardduty_delete_members] API.
+#' 
+#' When the member accounts added through Organizations are later
+#' disassociated, you (administrator) can't invite them by calling the
+#' InviteMembers API. You can create an association with these member
+#' accounts again only by calling the CreateMembers API.
 #'
 #' @usage
 #' guardduty_invite_members(DetectorId, AccountIds,
@@ -4234,10 +4305,15 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_filters <- guardduty_list_filters
 
-#' Lists Amazon GuardDuty findings for the specified detector ID
+#' Lists GuardDuty findings for the specified detector ID
 #'
 #' @description
-#' Lists Amazon GuardDuty findings for the specified detector ID.
+#' Lists GuardDuty findings for the specified detector ID.
+#' 
+#' There might be regional differences because some flags might not be
+#' available in all the Regions where GuardDuty is currently supported. For
+#' more information, see [Regions and
+#' endpoints](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html).
 #'
 #' @usage
 #' guardduty_list_findings(DetectorId, FindingCriteria, SortCriteria,
@@ -4879,6 +4955,10 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' the [Service-linked
 #' role](https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html)
 #' in the corresponding account.
+#' 
+#' When the malware scan starts, you can use the associated scan ID to
+#' track the status of the scan. For more information, see
+#' [`describe_malware_scans`][guardduty_describe_malware_scans].
 #'
 #' @usage
 #' guardduty_start_malware_scan(ResourceArn)
@@ -5186,10 +5266,17 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .guardduty$operations$untag_resource <- guardduty_untag_resource
 
-#' Updates the Amazon GuardDuty detector specified by the detectorId
+#' Updates the GuardDuty detector specified by the detector ID
 #'
 #' @description
-#' Updates the Amazon GuardDuty detector specified by the detectorId.
+#' Updates the GuardDuty detector specified by the detector ID.
+#' 
+#' Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and
+#' Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can
+#' add only one of these two features because Runtime Monitoring already
+#' includes the threat detection for Amazon EKS resources. For more
+#' information, see [Runtime
+#' Monitoring](https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html).
 #' 
 #' There might be regional differences because some data sources might not
 #' be available in all the Amazon Web Services Regions where GuardDuty is
@@ -5242,7 +5329,7 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED"
 #'         )
 #'       )
@@ -5548,6 +5635,13 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #' @description
 #' Contains information on member accounts to be updated.
 #' 
+#' Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and
+#' Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can
+#' add only one of these two features because Runtime Monitoring already
+#' includes the threat detection for Amazon EKS resources. For more
+#' information, see [Runtime
+#' Monitoring](https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html).
+#' 
 #' There might be regional differences because some data sources might not
 #' be available in all the Amazon Web Services Regions where GuardDuty is
 #' presently supported. For more information, see [Regions and
@@ -5604,7 +5698,7 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #'       Status = "ENABLED"|"DISABLED",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'           Status = "ENABLED"|"DISABLED"
 #'         )
 #'       )
@@ -5641,6 +5735,13 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' Configures the delegated administrator account with the provided values.
 #' You must provide a value for either `autoEnableOrganizationMembers` or
 #' `autoEnable`, but not both.
+#' 
+#' Specifying both EKS Runtime Monitoring (`EKS_RUNTIME_MONITORING`) and
+#' Runtime Monitoring (`RUNTIME_MONITORING`) will cause an error. You can
+#' add only one of these two features because Runtime Monitoring already
+#' includes the threat detection for Amazon EKS resources. For more
+#' information, see [Runtime
+#' Monitoring](https://docs.aws.amazon.com/guardduty/latest/ug/runtime-monitoring.html).
 #' 
 #' There might be regional differences because some data sources might not
 #' be available in all the Amazon Web Services Regions where GuardDuty is
@@ -5682,6 +5783,13 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' -   `NONE`: Indicates that GuardDuty will not be automatically enabled
 #'     for any account in the organization. The administrator must manage
 #'     GuardDuty for each account in the organization individually.
+#' 
+#'     When you update the auto-enable setting from `ALL` or `NEW` to
+#'     `NONE`, this action doesn't disable the corresponding option for
+#'     your existing accounts. This configuration will apply to the new
+#'     accounts that join the organization. After you update the
+#'     auto-enable settings, no new account will have the corresponding
+#'     option as enabled.
 #'
 #' @return
 #' An empty list.
@@ -5714,7 +5822,7 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'       AutoEnable = "NEW"|"NONE"|"ALL",
 #'       AdditionalConfiguration = list(
 #'         list(
-#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT",
+#'           Name = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|"EC2_AGENT_MANAGEMENT",
 #'           AutoEnable = "NEW"|"NONE"|"ALL"
 #'         )
 #'       )

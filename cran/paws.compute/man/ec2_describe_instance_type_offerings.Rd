@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instance_type_offerings}
 \alias{ec2_describe_instance_type_offerings}
-\title{Returns a list of all instance types offered}
+\title{Lists the instance types that are offered for the specified location}
 \usage{
 ec2_describe_instance_type_offerings(
   DryRun = NULL,
@@ -18,14 +18,26 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{LocationType}{The location type.}
+\item{LocationType}{The location type.
+\itemize{
+\item \code{availability-zone} - The Availability Zone. When you specify a
+location filter, it must be an Availability Zone for the current
+Region.
+\item \code{availability-zone-id} - The AZ ID. When you specify a location
+filter, it must be an AZ ID for the current Region.
+\item \code{outpost} - The Outpost ARN. When you specify a location filter, it
+must be an Outpost ARN for the current Region.
+\item \code{region} - The current Region. If you specify a location filter, it
+must match the current Region.
+}}
 
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
-\item \code{location} - This depends on the location type. For example, if the
-location type is \code{region} (default), the location is the Region code
-(for example, \code{us-east-2}.)
-\item \code{instance-type} - The instance type. For example, \code{c5.2xlarge}.
+\item \code{instance-type} - The instance type. For a list of possible values,
+see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html}{Instance}.
+\item \code{location} - The location. For a list of possible identifiers, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions and Zones}.
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
@@ -37,7 +49,7 @@ output. For more information, see
 continues from the end of the items returned by the previous request.}
 }
 \description{
-Returns a list of all instance types offered. The results can be filtered by location (Region or Availability Zone). If no location is specified, the instance types offered in the current Region are returned.
+Lists the instance types that are offered for the specified location. If no location is specified, the default is to list the instance types that are offered in the current Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_type_offerings/} for full documentation.
 }

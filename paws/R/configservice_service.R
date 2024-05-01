@@ -239,7 +239,7 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 
 .configservice$metadata <- list(
   service_name = "config",
-  endpoints = list("*" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "config.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "config.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "config.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "config.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "config.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "config.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Config Service",
   api_version = "2014-11-12",
   signing_name = "config",

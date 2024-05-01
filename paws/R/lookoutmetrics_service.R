@@ -154,7 +154,7 @@ lookoutmetrics <- function(config = list(), credentials = list(), endpoint = NUL
 
 .lookoutmetrics$metadata <- list(
   service_name = "lookoutmetrics",
-  endpoints = list("*" = list(endpoint = "lookoutmetrics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lookoutmetrics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lookoutmetrics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lookoutmetrics.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "lookoutmetrics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lookoutmetrics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "lookoutmetrics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "lookoutmetrics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lookoutmetrics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "lookoutmetrics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "LookoutMetrics",
   api_version = "2017-07-25",
   signing_name = "lookoutmetrics",

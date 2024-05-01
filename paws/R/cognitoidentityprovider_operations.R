@@ -106,7 +106,8 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param GroupName &#91;required&#93; The name of the group that you want to add your user to.
 #'
 #' @return
@@ -181,7 +182,8 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
 #' custom workflows that this action triggers.
 #' 
@@ -567,7 +569,8 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #'
 #' @return
 #' An empty list.
@@ -630,7 +633,8 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param UserAttributeNames &#91;required&#93; An array of strings representing the user attribute names you want to
 #' delete.
 #' 
@@ -794,7 +798,8 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #'
 #' @return
 #' An empty list.
@@ -854,7 +859,8 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #'
 #' @return
 #' An empty list.
@@ -915,7 +921,8 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param DeviceKey &#91;required&#93; The device key.
 #'
 #' @return
@@ -979,7 +986,8 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1064,7 +1072,8 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1525,7 +1534,8 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param Limit The limit of the devices request.
 #' @param PaginationToken This API operation returns a limited number of results. The pagination
 #' token is an identifier that you can present in an additional API request
@@ -1619,7 +1629,8 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Limit The limit of the request to list groups.
 #' @param NextToken An identifier that was returned from the previous call to this
@@ -1709,7 +1720,8 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param MaxResults The maximum number of authentication events to return. Returns 60 events
 #' if you set `MaxResults` to 0, or if you don't include a `MaxResults`
 #' parameter.
@@ -1816,7 +1828,8 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param GroupName &#91;required&#93; The group name.
 #'
 #' @return
@@ -1858,6 +1871,11 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' @description
 #' Resets the specified user's password in a user pool as an administrator.
 #' Works on any user.
+#' 
+#' To use this API operation, your user pool must have self-service account
+#' recovery configured. Use
+#' [`admin_set_user_password`][cognitoidentityprovider_admin_set_user_password]
+#' if you manage passwords as an administrator.
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -1909,7 +1927,8 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
 #' custom workflows that this action triggers.
 #' 
@@ -2274,7 +2293,8 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #'
 #' @return
@@ -2371,7 +2391,8 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param Password &#91;required&#93; The password for the user.
 #' @param Permanent `True` if the password is permanent, `False` if it is temporary.
 #'
@@ -2441,7 +2462,8 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param MFAOptions &#91;required&#93; You can use this parameter only to set an SMS configuration that uses
 #' SMS for delivery.
 #'
@@ -2513,7 +2535,8 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param EventId &#91;required&#93; The authentication event ID.
 #' @param FeedbackValue &#91;required&#93; The authentication event feedback value. When you provide a
 #' `FeedbackValue` value of `valid`, you tell Amazon Cognito that you trust
@@ -2583,7 +2606,8 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param DeviceRememberedStatus The status indicating whether a device has been remembered or not.
 #'
@@ -2675,7 +2699,8 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param UserAttributes &#91;required&#93; An array of name-value pairs representing user attributes.
 #' 
 #' For custom attributes, you must prepend the `custom:` prefix to the
@@ -2818,7 +2843,8 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #'
 #' @return
 #' An empty list.
@@ -2885,8 +2911,9 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_associate_software_token(AccessToken, Session)
@@ -2941,12 +2968,16 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
 #' @description
 #' Changes the password for a specified user in a user pool.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_change_password(PreviousPassword,
@@ -2995,14 +3026,20 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
 #'
 #' @description
 #' Confirms tracking of the device. This API call is the call that begins
-#' device tracking.
+#' device tracking. For more information about device authentication, see
+#' [Working with user devices in your user
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html).
+#' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
 #' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_confirm_device(AccessToken, DeviceKey,
@@ -3067,8 +3104,9 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_confirm_forgot_password(ClientId, SecretHash,
@@ -3084,7 +3122,8 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param ConfirmationCode &#91;required&#93; The confirmation code from your user's request to reset their password.
 #' For more information, see
 #' [`forgot_password`][cognitoidentityprovider_forgot_password].
@@ -3198,8 +3237,9 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_confirm_sign_up(ClientId, SecretHash, Username,
@@ -3213,7 +3253,8 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param ConfirmationCode &#91;required&#93; The confirmation code sent by a user's request to confirm registration.
 #' @param ForceAliasCreation Boolean to be specified to force user confirmation irrespective of
 #' existing alias. By default set to `False`. If this parameter is set to
@@ -3400,10 +3441,12 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 }
 .cognitoidentityprovider$operations$create_group <- cognitoidentityprovider_create_group
 
-#' Creates an IdP for a user pool
+#' Adds a configuration and trust relationship between a third-party
+#' identity provider (IdP) and a user pool
 #'
 #' @description
-#' Creates an IdP for a user pool.
+#' Adds a configuration and trust relationship between a third-party
+#' identity provider (IdP) and a user pool.
 #' 
 #' Amazon Cognito evaluates Identity and Access Management (IAM) policies
 #' in requests for this API operation. For this operation, you must use IAM
@@ -3426,72 +3469,68 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The IdP name.
 #' @param ProviderType &#91;required&#93; The IdP type.
-#' @param ProviderDetails &#91;required&#93; The IdP details. The following list describes the provider detail keys
-#' for each IdP type.
+#' @param ProviderDetails &#91;required&#93; The scopes, URLs, and identifiers for your external identity provider.
+#' The following examples describe the provider detail keys for each IdP
+#' type. These values and their schema are subject to change. Social IdP
+#' `authorize_scopes` values must match the values listed here.
 #' 
-#' -   For Google and Login with Amazon:
+#' **OpenID Connect (OIDC)**
 #' 
-#'     -   client_id
+#' Amazon Cognito accepts the following elements when it can't discover
+#' endpoint URLs from `oidc_issuer`: `attributes_url`, `authorize_url`,
+#' `jwks_uri`, `token_url`.
 #' 
-#'     -   client_secret
+#' Create or update request:
+#' `"ProviderDetails": { "attributes_request_method": "GET", "attributes_url": "https://auth.example.com/userInfo", "authorize_scopes": "openid profile email", "authorize_url": "https://auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https://auth.example.com/.well-known/jwks.json", "oidc_issuer": "https://auth.example.com", "token_url": "https://example.com/token" }`
 #' 
-#'     -   authorize_scopes
+#' Describe response:
+#' `"ProviderDetails": { "attributes_request_method": "GET", "attributes_url": "https://auth.example.com/userInfo", "attributes_url_add_attributes": "false", "authorize_scopes": "openid profile email", "authorize_url": "https://auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https://auth.example.com/.well-known/jwks.json", "oidc_issuer": "https://auth.example.com", "token_url": "https://example.com/token" }`
 #' 
-#' -   For Facebook:
+#' **SAML**
 #' 
-#'     -   client_id
+#' Create or update request with Metadata URL:
+#' `"ProviderDetails": { "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256" }`
 #' 
-#'     -   client_secret
+#' Create or update request with Metadata file:
+#' `"ProviderDetails": { "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataFile": "[metadata XML]", "RequestSigningAlgorithm": "rsa-sha256" }`
 #' 
-#'     -   authorize_scopes
+#' The value of `MetadataFile` must be the plaintext metadata document with
+#' all quote (") characters escaped by backslashes.
 #' 
-#'     -   api_version
+#' Describe response:
+#' `"ProviderDetails": { "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "ActiveEncryptionCertificate": "[certificate]", "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256", "SLORedirectBindingURI": "https://auth.example.com/slo/saml", "SSORedirectBindingURI": "https://auth.example.com/sso/saml" }`
 #' 
-#' -   For Sign in with Apple:
+#' **LoginWithAmazon**
 #' 
-#'     -   client_id
+#' Create or update request:
+#' `"ProviderDetails": \{ "authorize_scopes": "profile postal_code", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret"`
 #' 
-#'     -   team_id
+#' Describe response:
+#' `"ProviderDetails": { "attributes_url": "https://api.amazon.com/user/profile", "attributes_url_add_attributes": "false", "authorize_scopes": "profile postal_code", "authorize_url": "https://www.amazon.com/ap/oa", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "POST", "token_url": "https://api.amazon.com/auth/o2/token" }`
 #' 
-#'     -   key_id
+#' **Google**
 #' 
-#'     -   private_key
+#' Create or update request:
+#' `"ProviderDetails": { "authorize_scopes": "email profile openid", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret" }`
 #' 
-#'     -   authorize_scopes
+#' Describe response:
+#' `"ProviderDetails": { "attributes_url": "https://people.googleapis.com/v1/people/me?personFields=", "attributes_url_add_attributes": "true", "authorize_scopes": "email profile openid", "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret", "oidc_issuer": "https://accounts.google.com", "token_request_method": "POST", "token_url": "https://www.googleapis.com/oauth2/v4/token" }`
 #' 
-#' -   For OpenID Connect (OIDC) providers:
+#' **SignInWithApple**
 #' 
-#'     -   client_id
+#' Create or update request:
+#' `"ProviderDetails": { "authorize_scopes": "email name", "client_id": "com.example.cognito", "private_key": "1EXAMPLE", "key_id": "2EXAMPLE", "team_id": "3EXAMPLE" }`
 #' 
-#'     -   client_secret
+#' Describe response:
+#' `"ProviderDetails": { "attributes_url_add_attributes": "false", "authorize_scopes": "email name", "authorize_url": "https://appleid.apple.com/auth/authorize", "client_id": "com.example.cognito", "key_id": "1EXAMPLE", "oidc_issuer": "https://appleid.apple.com", "team_id": "2EXAMPLE", "token_request_method": "POST", "token_url": "https://appleid.apple.com/auth/token" }`
 #' 
-#'     -   attributes_request_method
+#' **Facebook**
 #' 
-#'     -   oidc_issuer
+#' Create or update request:
+#' `"ProviderDetails": { "api_version": "v17.0", "authorize_scopes": "public_profile, email", "client_id": "1example23456789", "client_secret": "provider-app-client-secret" }`
 #' 
-#'     -   authorize_scopes
-#' 
-#'     -   The following keys are only present if Amazon Cognito didn't
-#'         discover them at the `oidc_issuer` URL.
-#' 
-#'         -   authorize_url
-#' 
-#'         -   token_url
-#' 
-#'         -   attributes_url
-#' 
-#'         -   jwks_uri
-#' 
-#'     -   Amazon Cognito sets the value of the following keys
-#'         automatically. They are read-only.
-#' 
-#'         -   attributes_url_add_attributes
-#' 
-#' -   For SAML providers:
-#' 
-#'     -   MetadataFile or MetadataURL
-#' 
-#'     -   IDPSignout *optional*
+#' Describe response:
+#' `"ProviderDetails": { "api_version": "v17.0", "attributes_url": "https://graph.facebook.com/v17.0/me?fields=", "attributes_url_add_attributes": "true", "authorize_scopes": "public_profile, email", "authorize_url": "https://www.facebook.com/v17.0/dialog/oauth", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "GET", "token_url": "https://graph.facebook.com/v17.0/oauth/access_token" }`
 #' @param AttributeMapping A mapping of IdP attributes to standard and custom user pool attributes.
 #' @param IdpIdentifiers A list of IdP identifiers.
 #'
@@ -3586,9 +3625,14 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #'   Name, Scopes)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
-#' @param Identifier &#91;required&#93; A unique resource server identifier for the resource server. This could
-#' be an HTTPS endpoint where the resource server is located, such as
-#' `https://my-weather-api.example.com`.
+#' @param Identifier &#91;required&#93; A unique resource server identifier for the resource server. The
+#' identifier can be an API friendly name like `solar-system-data`. You can
+#' also set an API URL like `https://solar-system-data-api.example.com` as
+#' your identifier.
+#' 
+#' Amazon Cognito represents scopes in the access token in the format
+#' `$resource-server-identifier/$scope`. Longer scope-identifier strings
+#' increase the size of your access tokens.
 #' @param Name &#91;required&#93; A friendly name for the resource server.
 #' @param Scopes A list of scopes. Each scope is a key-value map with the keys `name` and
 #' `description`.
@@ -3807,7 +3851,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' Lambda function.
 #' 
 #' For more information on using the Lambda API to add permission, see
-#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html)
+#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html)
 #' .
 #' 
 #' For adding permission using the CLI, see
@@ -3917,11 +3961,11 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       CreateAuthChallenge = "string",
 #'       VerifyAuthChallengeResponse = "string",
 #'       PreTokenGeneration = "string",
+#'       UserMigration = "string",
 #'       PreTokenGenerationConfig = list(
 #'         LambdaVersion = "V1_0"|"V2_0",
 #'         LambdaArn = "string"
 #'       ),
-#'       UserMigration = "string",
 #'       CustomSMSSender = list(
 #'         LambdaVersion = "V1_0",
 #'         LambdaArn = "string"
@@ -4060,11 +4104,11 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'     CreateAuthChallenge = "string",
 #'     VerifyAuthChallengeResponse = "string",
 #'     PreTokenGeneration = "string",
+#'     UserMigration = "string",
 #'     PreTokenGenerationConfig = list(
 #'       LambdaVersion = "V1_0"|"V2_0",
 #'       LambdaArn = "string"
 #'     ),
-#'     UserMigration = "string",
 #'     CustomSMSSender = list(
 #'       LambdaVersion = "V1_0",
 #'       LambdaArn = "string"
@@ -4492,7 +4536,9 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' App callback URLs such as myapp://example are also supported.
 #' @param LogoutURLs A list of allowed logout URLs for the IdPs.
-#' @param DefaultRedirectURI The default redirect URI. Must be in the `CallbackURLs` list.
+#' @param DefaultRedirectURI The default redirect URI. In app clients with one assigned IdP, replaces
+#' `redirect_uri` in authentication requests. Must be in the `CallbackURLs`
+#' list.
 #' 
 #' A redirect URI must:
 #' 
@@ -4502,14 +4548,16 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
+#' For more information, see [Default redirect
+#' URI](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html#cognito-user-pools-app-idp-settings-about).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
 #' 
 #' App callback URLs such as myapp://example are also supported.
-#' @param AllowedOAuthFlows The allowed OAuth flows.
+#' @param AllowedOAuthFlows The OAuth grant types that you want your app client to generate. To
+#' create an app client that generates client credentials grants, you must
+#' add `client_credentials` as the only allowed OAuth flow.
 #' 
 #' **code**
 #' 
@@ -5017,12 +5065,16 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
 #' @description
 #' Allows a user to delete their own user profile.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_delete_user(AccessToken)
@@ -5067,12 +5119,16 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
 #' @description
 #' Deletes the attributes for a user.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_delete_user_attributes(UserAttributeNames,
@@ -5331,7 +5387,14 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
 #' cognitoidentityprovider_describe_resource_server(UserPoolId, Identifier)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that hosts the resource server.
-#' @param Identifier &#91;required&#93; The identifier for the resource server
+#' @param Identifier &#91;required&#93; A unique resource server identifier for the resource server. The
+#' identifier can be an API friendly name like `solar-system-data`. You can
+#' also set an API URL like `https://solar-system-data-api.example.com` as
+#' your identifier.
+#' 
+#' Amazon Cognito represents scopes in the access token in the format
+#' `$resource-server-identifier/$scope`. Longer scope-identifier strings
+#' increase the size of your access tokens.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5612,11 +5675,11 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'       CreateAuthChallenge = "string",
 #'       VerifyAuthChallengeResponse = "string",
 #'       PreTokenGeneration = "string",
+#'       UserMigration = "string",
 #'       PreTokenGenerationConfig = list(
 #'         LambdaVersion = "V1_0"|"V2_0",
 #'         LambdaArn = "string"
 #'       ),
-#'       UserMigration = "string",
 #'       CustomSMSSender = list(
 #'         LambdaVersion = "V1_0",
 #'         LambdaArn = "string"
@@ -5942,14 +6005,20 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
 #' Forgets the specified device
 #'
 #' @description
-#' Forgets the specified device.
+#' Forgets the specified device. For more information about device
+#' authentication, see [Working with user devices in your user
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html).
+#' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
 #' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_forget_device(AccessToken, DeviceKey)
@@ -6011,12 +6080,18 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' secret and you don't provide a `SECRET_HASH` parameter, this API returns
 #' `NotAuthorizedException`.
 #' 
+#' To use this API operation, your user pool must have self-service account
+#' recovery configured. Use
+#' [`admin_set_user_password`][cognitoidentityprovider_admin_set_user_password]
+#' if you manage passwords as an administrator.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -6051,7 +6126,8 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata that contributes to your metrics
 #' for [`forgot_password`][cognitoidentityprovider_forgot_password] calls.
 #' @param ClientMetadata A map of custom key-value pairs that you can provide as input for any
@@ -6194,14 +6270,20 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
 #' Gets the device
 #'
 #' @description
-#' Gets the device.
+#' Gets the device. For more information about device authentication, see
+#' [Working with user devices in your user
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html).
+#' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
 #' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_get_device(DeviceKey, AccessToken)
@@ -6580,12 +6662,16 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
 #' @description
 #' Gets the user attributes and metadata for a user.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_get_user(AccessToken)
@@ -6654,12 +6740,16 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' name. Sends a message to a user with a code that they must return in a
 #' VerifyUserAttribute request.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -6851,12 +6941,16 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #' 
 #' Other requests might be valid until your user's token expires.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_global_sign_out(AccessToken)
@@ -6909,8 +7003,9 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -7145,14 +7240,20 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
 #'
 #' @description
 #' Lists the sign-in devices that Amazon Cognito has registered to the
-#' current user.
+#' current user. For more information about device authentication, see
+#' [Working with user devices in your user
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html).
+#' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
 #' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_list_devices(AccessToken, Limit,
@@ -7734,11 +7835,11 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #'         CreateAuthChallenge = "string",
 #'         VerifyAuthChallengeResponse = "string",
 #'         PreTokenGeneration = "string",
+#'         UserMigration = "string",
 #'         PreTokenGenerationConfig = list(
 #'           LambdaVersion = "V1_0"|"V2_0",
 #'           LambdaArn = "string"
 #'         ),
-#'         UserMigration = "string",
 #'         CustomSMSSender = list(
 #'           LambdaVersion = "V1_0",
 #'           LambdaArn = "string"
@@ -7836,15 +7937,15 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' paginate through the full list of items.
 #' @param Filter A filter string of the form "*AttributeName* *Filter-Type*
 #' "*AttributeValue*"". Quotation marks within the filter string must be
-#' escaped using the backslash (\\) character. For example, "`family_name`
-#' = \\"Reddy\\"".
+#' escaped using the backslash (`\`) character. For example,
+#' `"family_name = \"Reddy\""`.
 #' 
 #' -   *AttributeName*: The name of the attribute to search for. You can
 #'     only search for one attribute at a time.
 #' 
-#' -   *Filter-Type*: For an exact match, use =, for example, "`given_name`
-#'     = \\"Jon\\"". For a prefix ("starts with") match, use ^=, for
-#'     example, "`given_name` ^= \\"Jon\\"".
+#' -   *Filter-Type*: For an exact match, use `=`, for example,
+#'     "`given_name = \"Jon\"`". For a prefix ("starts with") match, use
+#'     `^=`, for example, "`given_name ^= \"Jon\"`".
 #' 
 #' -   *AttributeValue*: The attribute value that must be matched for each
 #'     user.
@@ -8089,8 +8190,9 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -8125,7 +8227,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata that contributes to your metrics
 #' for
 #' [`resend_confirmation_code`][cognitoidentityprovider_resend_confirmation_code]
@@ -8234,8 +8337,9 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -8462,8 +8566,9 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_revoke_token(Token, ClientId, ClientSecret)
@@ -8850,12 +8955,16 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
 #' assessed risk level of sign-in attempts, deactivate MFA for users and
 #' turn on Adaptive Authentication for the user pool.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
@@ -9018,12 +9127,16 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' [`set_user_mfa_preference`][cognitoidentityprovider_set_user_mfa_preference]
 #' instead.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_set_user_settings(AccessToken, MFAOptions)
@@ -9082,8 +9195,9 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -9505,8 +9619,9 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_update_auth_event_feedback(UserPoolId, Username,
@@ -9516,7 +9631,8 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Username &#91;required&#93; The username of the user that you want to query or modify. The value of
 #' this parameter is typically your user's username, but it can be any of
 #' their alias attributes. If `username` isn't an alias attribute in your
-#' user pool, you can also use their `sub` in this request.
+#' user pool, this value must be the `sub` of a local user or the username
+#' of a user from a third-party IdP.
 #' @param EventId &#91;required&#93; The event ID.
 #' @param FeedbackToken &#91;required&#93; The feedback token.
 #' @param FeedbackValue &#91;required&#93; The authentication event feedback value. When you provide a
@@ -9565,14 +9681,20 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
 #' Updates the device status
 #'
 #' @description
-#' Updates the device status.
+#' Updates the device status. For more information about device
+#' authentication, see [Working with user devices in your user
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html).
+#' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
 #' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_update_device_status(AccessToken, DeviceKey,
@@ -9725,7 +9847,68 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The IdP name.
-#' @param ProviderDetails The IdP details to be updated, such as `MetadataURL` and `MetadataFile`.
+#' @param ProviderDetails The scopes, URLs, and identifiers for your external identity provider.
+#' The following examples describe the provider detail keys for each IdP
+#' type. These values and their schema are subject to change. Social IdP
+#' `authorize_scopes` values must match the values listed here.
+#' 
+#' **OpenID Connect (OIDC)**
+#' 
+#' Amazon Cognito accepts the following elements when it can't discover
+#' endpoint URLs from `oidc_issuer`: `attributes_url`, `authorize_url`,
+#' `jwks_uri`, `token_url`.
+#' 
+#' Create or update request:
+#' `"ProviderDetails": { "attributes_request_method": "GET", "attributes_url": "https://auth.example.com/userInfo", "authorize_scopes": "openid profile email", "authorize_url": "https://auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https://auth.example.com/.well-known/jwks.json", "oidc_issuer": "https://auth.example.com", "token_url": "https://example.com/token" }`
+#' 
+#' Describe response:
+#' `"ProviderDetails": { "attributes_request_method": "GET", "attributes_url": "https://auth.example.com/userInfo", "attributes_url_add_attributes": "false", "authorize_scopes": "openid profile email", "authorize_url": "https://auth.example.com/authorize", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "jwks_uri": "https://auth.example.com/.well-known/jwks.json", "oidc_issuer": "https://auth.example.com", "token_url": "https://example.com/token" }`
+#' 
+#' **SAML**
+#' 
+#' Create or update request with Metadata URL:
+#' `"ProviderDetails": { "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256" }`
+#' 
+#' Create or update request with Metadata file:
+#' `"ProviderDetails": { "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataFile": "[metadata XML]", "RequestSigningAlgorithm": "rsa-sha256" }`
+#' 
+#' The value of `MetadataFile` must be the plaintext metadata document with
+#' all quote (") characters escaped by backslashes.
+#' 
+#' Describe response:
+#' `"ProviderDetails": { "IDPInit": "true", "IDPSignout": "true", "EncryptedResponses" : "true", "ActiveEncryptionCertificate": "[certificate]", "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm": "rsa-sha256", "SLORedirectBindingURI": "https://auth.example.com/slo/saml", "SSORedirectBindingURI": "https://auth.example.com/sso/saml" }`
+#' 
+#' **LoginWithAmazon**
+#' 
+#' Create or update request:
+#' `"ProviderDetails": \{ "authorize_scopes": "profile postal_code", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret"`
+#' 
+#' Describe response:
+#' `"ProviderDetails": { "attributes_url": "https://api.amazon.com/user/profile", "attributes_url_add_attributes": "false", "authorize_scopes": "profile postal_code", "authorize_url": "https://www.amazon.com/ap/oa", "client_id": "amzn1.application-oa2-client.1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "POST", "token_url": "https://api.amazon.com/auth/o2/token" }`
+#' 
+#' **Google**
+#' 
+#' Create or update request:
+#' `"ProviderDetails": { "authorize_scopes": "email profile openid", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret" }`
+#' 
+#' Describe response:
+#' `"ProviderDetails": { "attributes_url": "https://people.googleapis.com/v1/people/me?personFields=", "attributes_url_add_attributes": "true", "authorize_scopes": "email profile openid", "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth", "client_id": "1example23456789.apps.googleusercontent.com", "client_secret": "provider-app-client-secret", "oidc_issuer": "https://accounts.google.com", "token_request_method": "POST", "token_url": "https://www.googleapis.com/oauth2/v4/token" }`
+#' 
+#' **SignInWithApple**
+#' 
+#' Create or update request:
+#' `"ProviderDetails": { "authorize_scopes": "email name", "client_id": "com.example.cognito", "private_key": "1EXAMPLE", "key_id": "2EXAMPLE", "team_id": "3EXAMPLE" }`
+#' 
+#' Describe response:
+#' `"ProviderDetails": { "attributes_url_add_attributes": "false", "authorize_scopes": "email name", "authorize_url": "https://appleid.apple.com/auth/authorize", "client_id": "com.example.cognito", "key_id": "1EXAMPLE", "oidc_issuer": "https://appleid.apple.com", "team_id": "2EXAMPLE", "token_request_method": "POST", "token_url": "https://appleid.apple.com/auth/token" }`
+#' 
+#' **Facebook**
+#' 
+#' Create or update request:
+#' `"ProviderDetails": { "api_version": "v17.0", "authorize_scopes": "public_profile, email", "client_id": "1example23456789", "client_secret": "provider-app-client-secret" }`
+#' 
+#' Describe response:
+#' `"ProviderDetails": { "api_version": "v17.0", "attributes_url": "https://graph.facebook.com/v17.0/me?fields=", "attributes_url_add_attributes": "true", "authorize_scopes": "public_profile, email", "authorize_url": "https://www.facebook.com/v17.0/dialog/oauth", "client_id": "1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": "GET", "token_url": "https://graph.facebook.com/v17.0/oauth/access_token" }`
 #' @param AttributeMapping The IdP attribute mapping to be changed.
 #' @param IdpIdentifiers A list of IdP identifiers.
 #'
@@ -9822,7 +10005,14 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #'   Name, Scopes)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
-#' @param Identifier &#91;required&#93; The identifier for the resource server.
+#' @param Identifier &#91;required&#93; A unique resource server identifier for the resource server. The
+#' identifier can be an API friendly name like `solar-system-data`. You can
+#' also set an API URL like `https://solar-system-data-api.example.com` as
+#' your identifier.
+#' 
+#' Amazon Cognito represents scopes in the access token in the format
+#' `$resource-server-identifier/$scope`. Longer scope-identifier strings
+#' increase the size of your access tokens.
 #' @param Name &#91;required&#93; The name of the resource server.
 #' @param Scopes The scope values to be set for the resource server.
 #'
@@ -9891,12 +10081,16 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' submit the attribute in your API request with a blank value. Custom
 #' attribute values in this request must include the `custom:` prefix.
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -10177,11 +10371,11 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'     CreateAuthChallenge = "string",
 #'     VerifyAuthChallengeResponse = "string",
 #'     PreTokenGeneration = "string",
+#'     UserMigration = "string",
 #'     PreTokenGenerationConfig = list(
 #'       LambdaVersion = "V1_0"|"V2_0",
 #'       LambdaArn = "string"
 #'     ),
-#'     UserMigration = "string",
 #'     CustomSMSSender = list(
 #'       LambdaVersion = "V1_0",
 #'       LambdaArn = "string"
@@ -10822,8 +11016,9 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_verify_software_token(AccessToken, Session,
@@ -10888,12 +11083,16 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
 #' to its pending value. For more information, see
 #' [UserAttributeUpdateSettingsType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UserAttributeUpdateSettingsType.html).
 #' 
+#' Authorize this action with a signed-in user's access token. It must
+#' include the scope `aws.cognito.signin.user.admin`.
+#' 
 #' Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
 #' policies in requests for this API operation. For this operation, you
 #' can't use IAM credentials to authorize requests, and you can't grant IAM
 #' permissions in policies. For more information about authorization models
-#' in Amazon Cognito, see [Using the Amazon Cognito native and OIDC
-#' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
+#' pool
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #'
 #' @usage
 #' cognitoidentityprovider_verify_user_attribute(AccessToken,

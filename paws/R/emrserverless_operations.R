@@ -122,7 +122,8 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'       workerConfiguration = list(
 #'         cpu = "string",
 #'         memory = "string",
-#'         disk = "string"
+#'         disk = "string",
+#'         diskType = "string"
 #'       )
 #'     )
 #'   ),
@@ -188,6 +189,9 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     prometheusMonitoringConfiguration = list(
+#'       remoteWriteUrl = "string"
 #'     )
 #'   )
 #' )
@@ -286,7 +290,8 @@ emrserverless_delete_application <- function(applicationId) {
 #'         workerConfiguration = list(
 #'           cpu = "string",
 #'           memory = "string",
-#'           disk = "string"
+#'           disk = "string",
+#'           diskType = "string"
 #'         )
 #'       )
 #'     ),
@@ -360,6 +365,9 @@ emrserverless_delete_application <- function(applicationId) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       prometheusMonitoringConfiguration = list(
+#'         remoteWriteUrl = "string"
 #'       )
 #'     )
 #'   )
@@ -515,6 +523,9 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #'               "string"
 #'             )
 #'           )
+#'         ),
+#'         prometheusMonitoringConfiguration = list(
+#'           remoteWriteUrl = "string"
 #'         )
 #'       )
 #'     ),
@@ -922,6 +933,9 @@ emrserverless_start_application <- function(applicationId) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       prometheusMonitoringConfiguration = list(
+#'         remoteWriteUrl = "string"
 #'       )
 #'     )
 #'   ),
@@ -1165,7 +1179,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'         workerConfiguration = list(
 #'           cpu = "string",
 #'           memory = "string",
-#'           disk = "string"
+#'           disk = "string",
+#'           diskType = "string"
 #'         )
 #'       )
 #'     ),
@@ -1239,6 +1254,9 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       prometheusMonitoringConfiguration = list(
+#'         remoteWriteUrl = "string"
 #'       )
 #'     )
 #'   )
@@ -1256,7 +1274,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'       workerConfiguration = list(
 #'         cpu = "string",
 #'         memory = "string",
-#'         disk = "string"
+#'         disk = "string",
+#'         diskType = "string"
 #'       )
 #'     )
 #'   ),
@@ -1320,6 +1339,9 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     prometheusMonitoringConfiguration = list(
+#'       remoteWriteUrl = "string"
 #'     )
 #'   )
 #' )

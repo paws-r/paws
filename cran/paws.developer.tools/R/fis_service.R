@@ -5,9 +5,9 @@ NULL
 #' AWS Fault Injection Simulator
 #'
 #' @description
-#' Fault Injection Simulator is a managed service that enables you to
-#' perform fault injection experiments on your Amazon Web Services
-#' workloads. For more information, see the [Fault Injection Simulator User
+#' Fault Injection Service is a managed service that enables you to perform
+#' fault injection experiments on your Amazon Web Services workloads. For
+#' more information, see the [Fault Injection Service User
 #' Guide](https://docs.aws.amazon.com/fis/latest/userguide/).
 #'
 #' @param
@@ -148,7 +148,7 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .fis$metadata <- list(
   service_name = "fis",
-  endpoints = list("*" = list(endpoint = "fis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fis.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "fis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "fis.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "fis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fis.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "fis.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "fis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "fis.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "fis.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "fis",
   api_version = "2020-12-01",
   signing_name = "fis",

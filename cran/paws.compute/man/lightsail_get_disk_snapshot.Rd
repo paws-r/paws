@@ -7,7 +7,7 @@
 lightsail_get_disk_snapshot(diskSnapshotName)
 }
 \arguments{
-\item{diskSnapshotName}{[required] The name of the disk snapshot (e.g., \code{my-disk-snapshot}).}
+\item{diskSnapshotName}{[required] The name of the disk snapshot (\code{my-disk-snapshot}).}
 }
 \description{
 Returns information about a specific block storage disk snapshot.

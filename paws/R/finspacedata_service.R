@@ -152,7 +152,7 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .finspacedata$metadata <- list(
   service_name = "finspacedata",
-  endpoints = list("*" = list(endpoint = "finspace-api.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "finspace-api.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "finspace-api.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "finspace-api.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "finspace-api.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "finspace-api.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "finspace-api.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "finspace-api.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "finspace-api.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "finspace-api.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "finspace data",
   api_version = "2020-07-13",
   signing_name = "finspace-api",

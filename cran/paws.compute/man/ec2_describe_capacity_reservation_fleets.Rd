@@ -17,10 +17,10 @@ ec2_describe_capacity_reservation_fleets(
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 
-\item{MaxResults}{The maximum number of results to return for the request in a single
-page. The remaining results can be seen by sending another request with
-the returned \code{nextToken} value. This value can be between 5 and 500. If
-\code{maxResults} is given a larger value than 500, you receive an error.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
 \item{Filters}{One or more filters.
 \itemize{

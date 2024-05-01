@@ -629,8 +629,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' create an Amazon EKS cluster, you must configure your Kubernetes tooling
 #' to communicate with the API server and launch nodes into your cluster.
 #' For more information, see [Managing Cluster
-#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/) and
-#' [Launching Amazon EKS
+#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/cluster-auth.html)
+#' and [Launching Amazon EKS
 #' nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 #' in the *Amazon EKS User Guide*.
 #'
@@ -1320,7 +1320,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -1344,7 +1344,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive",
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive"|"KubernetesLabelInvalid"|"Ec2LaunchTemplateVersionMaxLimitExceeded",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -1385,7 +1385,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'   instanceTypes = list(
 #'     "string"
 #'   ),
-#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64",
+#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD",
 #'   remoteAccess = list(
 #'     ec2SshKey = "string",
 #'     sourceSecurityGroups = list(
@@ -2083,7 +2083,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -2107,7 +2107,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive",
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive"|"KubernetesLabelInvalid"|"Ec2LaunchTemplateVersionMaxLimitExceeded",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -3229,7 +3229,7 @@ eks_describe_insight <- function(clusterName, id) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -3253,7 +3253,7 @@ eks_describe_insight <- function(clusterName, id) {
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive",
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive"|"KubernetesLabelInvalid"|"Ec2LaunchTemplateVersionMaxLimitExceeded",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"

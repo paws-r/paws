@@ -44,7 +44,8 @@ rds_restore_db_instance_from_db_snapshot(
   StorageThroughput = NULL,
   DBClusterSnapshotIdentifier = NULL,
   AllocatedStorage = NULL,
-  DedicatedLogVolume = NULL
+  DedicatedLogVolume = NULL,
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -200,10 +201,10 @@ This setting doesn't apply to RDS Custom.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid Values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
-If you specify \code{io1} or \code{gp3}, you must also include a value for the
-\code{Iops} parameter.
+If you specify \code{io1}, \code{io2}, or \code{gp3}, you must also include a value for
+the \code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
@@ -399,8 +400,7 @@ in the \emph{Amazon RDS User Guide.}}
 
 This setting doesn't apply to RDS Custom or Amazon Aurora.}
 
-\item{DBClusterSnapshotIdentifier}{The identifier for the RDS for MySQL Multi-AZ DB cluster snapshot to
-restore from.
+\item{DBClusterSnapshotIdentifier}{The identifier for the Multi-AZ DB cluster snapshot to restore from.
 
 For more information on Multi-AZ DB clusters, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html}{Multi-AZ DB cluster deployments}
 in the \emph{Amazon RDS User Guide}.
@@ -415,8 +415,6 @@ snapshot.
 snapshot, the \code{DBClusterSnapshotIdentifier} must be the ARN of the
 shared snapshot.
 \item Can't be the identifier of an Aurora DB cluster snapshot.
-\item Can't be the identifier of an RDS for PostgreSQL Multi-AZ DB cluster
-snapshot.
 }}
 
 \item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
@@ -428,6 +426,15 @@ for future growth.}
 
 \item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
 instance.}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB instance's server
+certificate.
+
+This setting doesn't apply to RDS Custom DB instances.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
+in the \emph{Amazon Aurora User Guide}.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.

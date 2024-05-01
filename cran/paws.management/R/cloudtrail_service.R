@@ -142,6 +142,7 @@ NULL
 #'  \link[=cloudtrail_list_event_data_stores]{list_event_data_stores} \tab Returns information about all event data stores in the account, in the current Region\cr
 #'  \link[=cloudtrail_list_import_failures]{list_import_failures} \tab Returns a list of failures for the specified import\cr
 #'  \link[=cloudtrail_list_imports]{list_imports} \tab Returns information on all imports, or a select set of imports by ImportStatus or Destination\cr
+#'  \link[=cloudtrail_list_insights_metric_data]{list_insights_metric_data} \tab Returns Insights metrics data for trails that have enabled Insights\cr
 #'  \link[=cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
 #'  \link[=cloudtrail_list_queries]{list_queries} \tab Returns a list of queries and query statuses for the past seven days\cr
 #'  \link[=cloudtrail_list_tags]{list_tags} \tab Lists the tags for the specified trails, event data stores, or channels in the current Region\cr
@@ -194,7 +195,7 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .cloudtrail$metadata <- list(
   service_name = "cloudtrail",
-  endpoints = list("*" = list(endpoint = "cloudtrail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudtrail.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudtrail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudtrail.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloudtrail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudtrail.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "cloudtrail.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "cloudtrail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudtrail.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "cloudtrail.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CloudTrail",
   api_version = "2013-11-01",
   signing_name = "cloudtrail",

@@ -10,6 +10,7 @@ cloudwatch_put_anomaly_detector(
   Dimensions = NULL,
   Stat = NULL,
   Configuration = NULL,
+  MetricCharacteristics = NULL,
   SingleMetricAnomalyDetector = NULL,
   MetricMathAnomalyDetector = NULL
 )
@@ -29,6 +30,10 @@ and updating the model. You can specify as many as 10 time ranges.
 
 The configuration can also include the time zone to use for the metric.}
 
+\item{MetricCharacteristics}{Use this object to include parameters to provide information about your
+metric to CloudWatch to help it build more accurate anomaly detection
+models. Currently, it includes the \code{PeriodicSpikes} parameter.}
+
 \item{SingleMetricAnomalyDetector}{A single metric anomaly detector to be created.
 
 When using \code{SingleMetricAnomalyDetector}, you cannot include the
@@ -38,7 +43,7 @@ following parameters in the same operation:
 \item \code{MetricName}
 \item \code{Namespace}
 \item \code{Stat}
-\item the \code{MetricMatchAnomalyDetector} parameters of
+\item the \code{MetricMathAnomalyDetector} parameters of
 \code{PutAnomalyDetectorInput}
 }
 

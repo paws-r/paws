@@ -306,11 +306,6 @@ new replication group is being created.}
 \item{PreferredMaintenanceWindow}{Specifies the weekly time range during which maintenance on the cluster
 is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-is a 60 minute period. Valid values for \code{ddd} are:
-
-Specifies the weekly time range during which maintenance on the cluster
-is performed. It is specified as a range in the format
-ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period.
 
 Valid values for \code{ddd} are:
@@ -372,7 +367,7 @@ length.
 the AUTH token.
 }
 
-For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
+For more information, see AUTH password at
 http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.

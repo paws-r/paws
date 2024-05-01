@@ -21,7 +21,7 @@ the next page of results in a paginated response.}
 \item{Limit}{The number of rule evaluation results that you want returned.
 
 This parameter is required if the rule limit for your account is more
-than the default of 150 rules.
+than the default of 1000 rules.
 
 For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{Config Limits}
 in the \emph{Amazon Web Services General Reference Guide}.}

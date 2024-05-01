@@ -39,9 +39,21 @@ NULL
   return(populate(args, shape))
 }
 
+.emrcontainers$create_security_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), securityConfigurationData = structure(list(authorizationConfiguration = structure(list(lakeFormationConfiguration = structure(list(authorizedSessionTagValue = structure(logical(0), tags = list(type = "string")), secureNamespaceInfo = structure(list(clusterId = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queryEngineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(inTransitEncryptionConfiguration = structure(list(tlsCertificateConfiguration = structure(list(certificateProviderType = structure(logical(0), tags = list(type = "string")), publicCertificateSecretArn = structure(logical(0), tags = list(type = "string")), privateCertificateSecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.emrcontainers$create_security_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .emrcontainers$create_virtual_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -123,6 +135,18 @@ NULL
   return(populate(args, shape))
 }
 
+.emrcontainers$describe_security_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "securityConfigurationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.emrcontainers$describe_security_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(securityConfiguration = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), securityConfigurationData = structure(list(authorizationConfiguration = structure(list(lakeFormationConfiguration = structure(list(authorizedSessionTagValue = structure(logical(0), tags = list(type = "string")), secureNamespaceInfo = structure(list(clusterId = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queryEngineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(inTransitEncryptionConfiguration = structure(list(tlsCertificateConfiguration = structure(list(certificateProviderType = structure(logical(0), tags = list(type = "string")), publicCertificateSecretArn = structure(logical(0), tags = list(type = "string")), privateCertificateSecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .emrcontainers$describe_virtual_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "virtualClusterId", type = "string"))), tags = list(type = "structure"))
@@ -131,7 +155,7 @@ NULL
 
 .emrcontainers$describe_virtual_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualCluster = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(virtualCluster = structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,6 +207,18 @@ NULL
   return(populate(args, shape))
 }
 
+.emrcontainers$list_security_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.emrcontainers$list_security_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(securityConfigurations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), securityConfigurationData = structure(list(authorizationConfiguration = structure(list(lakeFormationConfiguration = structure(list(authorizedSessionTagValue = structure(logical(0), tags = list(type = "string")), secureNamespaceInfo = structure(list(clusterId = structure(logical(0), tags = list(type = "string")), namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), queryEngineRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(inTransitEncryptionConfiguration = structure(list(tlsCertificateConfiguration = structure(list(certificateProviderType = structure(logical(0), tags = list(type = "string")), publicCertificateSecretArn = structure(logical(0), tags = list(type = "string")), privateCertificateSecretArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .emrcontainers$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
@@ -197,13 +233,13 @@ NULL
 
 .emrcontainers$list_virtual_clusters_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(containerProviderId = structure(logical(0), tags = list(location = "querystring", locationName = "containerProviderId", type = "string")), containerProviderType = structure(logical(0), tags = list(location = "querystring", locationName = "containerProviderType", type = "string")), createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(containerProviderId = structure(logical(0), tags = list(location = "querystring", locationName = "containerProviderId", type = "string")), containerProviderType = structure(logical(0), tags = list(location = "querystring", locationName = "containerProviderType", type = "string")), createdAfter = structure(logical(0), tags = list(location = "querystring", locationName = "createdAfter", type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(location = "querystring", locationName = "createdBefore", type = "timestamp", timestampFormat = "iso8601")), states = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "states", type = "list")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), eksAccessEntryIntegrated = structure(logical(0), tags = list(location = "querystring", locationName = "eksAccessEntryIntegrated", type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .emrcontainers$list_virtual_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(virtualClusters = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(virtualClusters = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), containerProvider = structure(list(type = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), info = structure(list(eksInfo = structure(list(namespace = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

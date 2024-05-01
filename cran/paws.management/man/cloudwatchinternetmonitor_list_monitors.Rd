@@ -9,7 +9,8 @@ each monitor}
 cloudwatchinternetmonitor_list_monitors(
   NextToken = NULL,
   MaxResults = NULL,
-  MonitorStatus = NULL
+  MonitorStatus = NULL,
+  IncludeLinkedAccounts = NULL
 )
 }
 \arguments{
@@ -23,6 +24,13 @@ for the monitor and the status of the monitor itself.
 
 For information about the statuses for a monitor, see
 \href{https://docs.aws.amazon.com/internet-monitor/latest/api/API_Monitor.html}{Monitor}.}
+
+\item{IncludeLinkedAccounts}{A boolean option that you can set to \code{TRUE} to include monitors for
+linked accounts in a list of monitors, when you've set up cross-account
+sharing in Amazon CloudWatch Internet Monitor. You configure
+cross-account sharing by using Amazon CloudWatch Observability Access
+Manager. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
+in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{
 Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the Amazon Resource Name (ARN) and name of each monitor.

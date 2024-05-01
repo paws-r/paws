@@ -14,7 +14,7 @@ sns_create_platform_endpoint(
 )
 }
 \arguments{
-\item{PlatformApplicationArn}{[required] PlatformApplicationArn returned from CreatePlatformApplication is used
+\item{PlatformApplicationArn}{[required] \code{PlatformApplicationArn} returned from CreatePlatformApplication is used
 to create a an endpoint.}
 
 \item{Token}{[required] Unique identifier created by the notification service for an app on a
@@ -28,7 +28,8 @@ is called the registration ID.}
 use this data. The data must be in UTF-8 format and less than 2KB.}
 
 \item{Attributes}{For a list of attributes, see
-\code{\link[=sns_set_endpoint_attributes]{set_endpoint_attributes}}.}
+\href{https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html}{\code{set_endpoint_attributes}}
+.}
 }
 \description{
 Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. \code{\link[=sns_create_platform_endpoint]{create_platform_endpoint}} requires the \code{PlatformApplicationArn} that is returned from \code{\link[=sns_create_platform_application]{create_platform_application}}. You can use the returned \code{EndpointArn} to send a message to a mobile app or by the \code{\link[=sns_subscribe]{subscribe}} action for subscription to a topic. The \code{\link[=sns_create_platform_endpoint]{create_platform_endpoint}} action is idempotent, so if the requester already owns an endpoint with the same device token and attributes, that endpoint's ARN is returned without creating a new endpoint. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.

@@ -2,12 +2,12 @@
 % Please edit documentation in R/globalaccelerator_operations.R
 \name{globalaccelerator_list_cross_account_resource_accounts}
 \alias{globalaccelerator_list_cross_account_resource_accounts}
-\title{List the accounts that have cross-account endpoints}
+\title{List the accounts that have cross-account resources}
 \usage{
 globalaccelerator_list_cross_account_resource_accounts()
 }
 \description{
-List the accounts that have cross-account endpoints.
+List the accounts that have cross-account resources.
 
 See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_cross_account_resource_accounts/} for full documentation.
 }

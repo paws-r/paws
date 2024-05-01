@@ -21,7 +21,8 @@ lexmodelsv2_update_intent(
   botId,
   botVersion,
   localeId,
-  initialResponseSetting = NULL
+  initialResponseSetting = NULL,
+  qnAIntentConfiguration = NULL
 )
 }
 \arguments{
@@ -69,6 +70,11 @@ see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Suppor
 
 \item{initialResponseSetting}{Configuration settings for a response sent to the user before Amazon Lex
 starts eliciting slots.}
+
+\item{qnAIntentConfiguration}{Specifies the configuration of the built-in \code{Amazon.QnAIntent}. The
+\code{AMAZON.QnAIntent} intent is called when Amazon Lex can't determine
+another intent to invoke. If you specify this field, you can't specify
+the \code{kendraConfiguration} field.}
 }
 \description{
 Updates the settings for an intent.

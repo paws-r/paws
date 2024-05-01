@@ -53,7 +53,24 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The new Amazon Elastic DocumentDB service endpoint.
+Amazon DocumentDB elastic clusters
+
+Amazon DocumentDB elastic-clusters support workloads with millions of
+reads/writes per second and petabytes of storage capacity. Amazon
+DocumentDB elastic clusters also simplify how developers interact with
+Amazon DocumentDB elastic-clusters by eliminating the need to choose,
+manage or upgrade instances.
+
+Amazon DocumentDB elastic-clusters were created to:
+\itemize{
+\item provide a solution for customers looking for a database that
+provides virtually limitless scale with rich query capabilities and
+MongoDB API compatibility.
+\item give customers higher connection limits, and to reduce downtime from
+patching.
+\item continue investing in a cloud-native, elastic, and class leading
+architecture for JSON workloads.
+}
 }
 \section{Service syntax}{
 
@@ -94,26 +111,29 @@ The new Amazon Elastic DocumentDB service endpoint.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.database:docdbelastic_create_cluster]{create_cluster} \tab Creates a new Elastic DocumentDB cluster and returns its Cluster structure\cr
-\link[paws.database:docdbelastic_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a snapshot of a cluster\cr
-\link[paws.database:docdbelastic_delete_cluster]{delete_cluster} \tab Delete a Elastic DocumentDB cluster\cr
-\link[paws.database:docdbelastic_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Delete a Elastic DocumentDB snapshot\cr
-\link[paws.database:docdbelastic_get_cluster]{get_cluster} \tab Returns information about a specific Elastic DocumentDB cluster\cr
-\link[paws.database:docdbelastic_get_cluster_snapshot]{get_cluster_snapshot} \tab Returns information about a specific Elastic DocumentDB snapshot\cr
-\link[paws.database:docdbelastic_list_clusters]{list_clusters} \tab Returns information about provisioned Elastic DocumentDB clusters\cr
-\link[paws.database:docdbelastic_list_cluster_snapshots]{list_cluster_snapshots} \tab Returns information about Elastic DocumentDB snapshots for a specified cluster\cr
-\link[paws.database:docdbelastic_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a Elastic DocumentDB resource\cr
-\link[paws.database:docdbelastic_restore_cluster_from_snapshot]{restore_cluster_from_snapshot} \tab Restores a Elastic DocumentDB cluster from a snapshot\cr
-\link[paws.database:docdbelastic_tag_resource]{tag_resource} \tab Adds metadata tags to a Elastic DocumentDB resource\cr
-\link[paws.database:docdbelastic_untag_resource]{untag_resource} \tab Removes metadata tags to a Elastic DocumentDB resource\cr
-\link[paws.database:docdbelastic_update_cluster]{update_cluster} \tab Modifies a Elastic DocumentDB cluster
+\link[paws.database:docdbelastic_copy_cluster_snapshot]{copy_cluster_snapshot} \tab Copies a snapshot of an elastic cluster\cr
+\link[paws.database:docdbelastic_create_cluster]{create_cluster} \tab Creates a new Amazon DocumentDB elastic cluster and returns its cluster structure\cr
+\link[paws.database:docdbelastic_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a snapshot of an elastic cluster\cr
+\link[paws.database:docdbelastic_delete_cluster]{delete_cluster} \tab Delete an elastic cluster\cr
+\link[paws.database:docdbelastic_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Delete an elastic cluster snapshot\cr
+\link[paws.database:docdbelastic_get_cluster]{get_cluster} \tab Returns information about a specific elastic cluster\cr
+\link[paws.database:docdbelastic_get_cluster_snapshot]{get_cluster_snapshot} \tab Returns information about a specific elastic cluster snapshot\cr
+\link[paws.database:docdbelastic_list_clusters]{list_clusters} \tab Returns information about provisioned Amazon DocumentDB elastic clusters\cr
+\link[paws.database:docdbelastic_list_cluster_snapshots]{list_cluster_snapshots} \tab Returns information about snapshots for a specified elastic cluster\cr
+\link[paws.database:docdbelastic_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a elastic cluster resource\cr
+\link[paws.database:docdbelastic_restore_cluster_from_snapshot]{restore_cluster_from_snapshot} \tab Restores an elastic cluster from a snapshot\cr
+\link[paws.database:docdbelastic_start_cluster]{start_cluster} \tab Restarts the stopped elastic cluster that is specified by clusterARN\cr
+\link[paws.database:docdbelastic_stop_cluster]{stop_cluster} \tab Stops the running elastic cluster that is specified by clusterArn\cr
+\link[paws.database:docdbelastic_tag_resource]{tag_resource} \tab Adds metadata tags to an elastic cluster resource\cr
+\link[paws.database:docdbelastic_untag_resource]{untag_resource} \tab Removes metadata tags from an elastic cluster resource\cr
+\link[paws.database:docdbelastic_update_cluster]{update_cluster} \tab Modifies an elastic cluster
 }
 }
 
 \examples{
 \dontrun{
 svc <- docdbelastic()
-svc$create_cluster(
+svc$copy_cluster_snapshot(
   Foo = 123
 )
 }

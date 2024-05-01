@@ -124,7 +124,8 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Firebase
 #' Cloud Messaging).
 #' @param Attributes &#91;required&#93; For a list of attributes, see
-#' [`set_platform_application_attributes`][sns_set_platform_application_attributes].
+#' [`set_platform_application_attributes`](https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
+#' .
 #'
 #' @keywords internal
 #'
@@ -155,7 +156,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_create_platform_endpoint/](https://www.paws-r-sdk.com/docs/sns_create_platform_endpoint/) for full documentation.
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn returned from CreatePlatformApplication is used
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` returned from CreatePlatformApplication is used
 #' to create a an endpoint.
 #' @param Token &#91;required&#93; Unique identifier created by the notification service for an app on a
 #' device. The specific name for Token will vary, depending on which
@@ -166,7 +167,8 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' @param CustomUserData Arbitrary user data to associate with the endpoint. Amazon SNS does not
 #' use this data. The data must be in UTF-8 format and less than 2KB.
 #' @param Attributes For a list of attributes, see
-#' [`set_endpoint_attributes`][sns_set_endpoint_attributes].
+#' [`set_endpoint_attributes`](https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html)
+#' .
 #'
 #' @keywords internal
 #'
@@ -343,7 +345,7 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectio
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_delete_endpoint/](https://www.paws-r-sdk.com/docs/sns_delete_endpoint/) for full documentation.
 #'
-#' @param EndpointArn &#91;required&#93; EndpointArn of endpoint to delete.
+#' @param EndpointArn &#91;required&#93; `EndpointArn` of endpoint to delete.
 #'
 #' @keywords internal
 #'
@@ -373,7 +375,7 @@ sns_delete_endpoint <- function(EndpointArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_delete_platform_application/](https://www.paws-r-sdk.com/docs/sns_delete_platform_application/) for full documentation.
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn of platform application object to delete.
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` of platform application object to delete.
 #'
 #' @keywords internal
 #'
@@ -497,7 +499,8 @@ sns_get_data_protection_policy <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_get_endpoint_attributes/](https://www.paws-r-sdk.com/docs/sns_get_endpoint_attributes/) for full documentation.
 #'
-#' @param EndpointArn &#91;required&#93; EndpointArn for GetEndpointAttributes input.
+#' @param EndpointArn &#91;required&#93; `EndpointArn` for
+#' [`get_endpoint_attributes`][sns_get_endpoint_attributes] input.
 #'
 #' @keywords internal
 #'
@@ -528,7 +531,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_get_platform_application_attributes/](https://www.paws-r-sdk.com/docs/sns_get_platform_application_attributes/) for full documentation.
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for GetPlatformApplicationAttributesInput.
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` for GetPlatformApplicationAttributesInput.
 #'
 #' @keywords internal
 #'
@@ -593,6 +596,8 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 #' Retrieves the SMS sandbox status for the calling Amazon Web Services account in the target Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_get_sms_sandbox_account_status/](https://www.paws-r-sdk.com/docs/sns_get_sms_sandbox_account_status/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -681,9 +686,10 @@ sns_get_topic_attributes <- function(TopicArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_list_endpoints_by_platform_application/](https://www.paws-r-sdk.com/docs/sns_list_endpoints_by_platform_application/) for full documentation.
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` for `ListEndpointsByPlatformApplicationInput`
 #' action.
-#' @param NextToken NextToken string is used when calling ListEndpointsByPlatformApplication
+#' @param NextToken `NextToken` string is used when calling
+#' [`list_endpoints_by_platform_application`][sns_list_endpoints_by_platform_application]
 #' action to retrieve additional records that are available after the first
 #' page results.
 #'
@@ -781,7 +787,8 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_list_platform_applications/](https://www.paws-r-sdk.com/docs/sns_list_platform_applications/) for full documentation.
 #'
-#' @param NextToken NextToken string is used when calling ListPlatformApplications action to
+#' @param NextToken `NextToken` string is used when calling
+#' [`list_platform_applications`][sns_list_platform_applications] action to
 #' retrieve additional records that are available after the first page
 #' results.
 #'
@@ -1239,7 +1246,8 @@ sns_remove_permission <- function(TopicArn, Label) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_set_endpoint_attributes/](https://www.paws-r-sdk.com/docs/sns_set_endpoint_attributes/) for full documentation.
 #'
-#' @param EndpointArn &#91;required&#93; EndpointArn used for SetEndpointAttributes action.
+#' @param EndpointArn &#91;required&#93; EndpointArn used for
+#' [`set_endpoint_attributes`][sns_set_endpoint_attributes] action.
 #' @param Attributes &#91;required&#93; A map of the endpoint attributes. Attributes in this map include the
 #' following:
 #' 
@@ -1286,7 +1294,9 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_set_platform_application_attributes/](https://www.paws-r-sdk.com/docs/sns_set_platform_application_attributes/) for full documentation.
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for SetPlatformApplicationAttributes action.
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` for
+#' [`set_platform_application_attributes`][sns_set_platform_application_attributes]
+#' action.
 #' @param Attributes &#91;required&#93; A map of the platform application attributes. Attributes in this map
 #' include the following:
 #' 
@@ -1301,8 +1311,17 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #'     -   For Apple Services using token credentials, `PlatformCredential`
 #'         is signing key.
 #' 
-#'     -   For GCM (Firebase Cloud Messaging), `PlatformCredential` is API
-#'         key.
+#'     -   For GCM (Firebase Cloud Messaging) using key credentials, there
+#'         is no `PlatformPrincipal`. The `PlatformCredential` is
+#'         `API key`.
+#' 
+#'     -   For GCM (Firebase Cloud Messaging) using token credentials,
+#'         there is no `PlatformPrincipal`. The `PlatformCredential` is a
+#'         JSON formatted private key file. When using the Amazon Web
+#'         Services CLI, the file must be in string format and special
+#'         characters must be ignored. To format the file correctly, Amazon
+#'         SNS recommends using the following command:
+#'         `` SERVICE_JSON=`jq @@json <<< cat service.json` ``.
 #' 
 #' 
 #' -   `PlatformPrincipal` – The principal received from the notification

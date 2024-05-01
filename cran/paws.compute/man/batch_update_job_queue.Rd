@@ -9,7 +9,8 @@ batch_update_job_queue(
   state = NULL,
   schedulingPolicyArn = NULL,
   priority = NULL,
-  computeEnvironmentOrder = NULL
+  computeEnvironmentOrder = NULL,
+  jobStateTimeLimitActions = NULL
 )
 }
 \arguments{
@@ -47,6 +48,10 @@ EC2 and Fargate compute environments can't be mixed.
 All compute environments that are associated with a job queue must share
 the same architecture. Batch doesn't support mixing compute environment
 architecture types in a single job queue.}
+
+\item{jobStateTimeLimitActions}{The set of actions that Batch perform on jobs that remain at the head of
+the job queue in the specified state longer than specified times. Batch
+will perform each action after \code{maxTimeSeconds} has passed.}
 }
 \description{
 Updates a job queue.

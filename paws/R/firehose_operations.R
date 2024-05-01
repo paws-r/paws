@@ -3,10 +3,10 @@
 #' @include firehose_service.R
 NULL
 
-#' Creates a Kinesis Data Firehose delivery stream
+#' Creates a Firehose delivery stream
 #'
 #' @description
-#' Creates a Kinesis Data Firehose delivery stream.
+#' Creates a Firehose delivery stream.
 #' 
 #' By default, you can create up to 50 delivery streams per Amazon Web
 #' Services Region.
@@ -27,9 +27,8 @@ NULL
 #' [`delete_delivery_stream`][firehose_delete_delivery_stream] operation to
 #' delete it.
 #' 
-#' A Kinesis Data Firehose delivery stream can be configured to receive
-#' records directly from providers using
-#' [`put_record`][firehose_put_record] or
+#' A Firehose delivery stream can be configured to receive records directly
+#' from providers using [`put_record`][firehose_put_record] or
 #' [`put_record_batch`][firehose_put_record_batch], or it can be configured
 #' to use an existing Kinesis stream as its source. To specify a Kinesis
 #' data stream as input, set the `DeliveryStreamType` parameter to
@@ -58,21 +57,21 @@ NULL
 #' When you specify `S3DestinationConfiguration`, you can also provide the
 #' following optional values: BufferingHints, `EncryptionConfiguration`,
 #' and `CompressionFormat`. By default, if no `BufferingHints` value is
-#' provided, Kinesis Data Firehose buffers data up to 5 MB or for 5
-#' minutes, whichever condition is satisfied first. `BufferingHints` is a
-#' hint, so there are some cases where the service cannot adhere to these
-#' conditions strictly. For example, record boundaries might be such that
-#' the size is a little over or under the configured buffering size. By
-#' default, no encryption is performed. We strongly recommend that you
-#' enable encryption to ensure secure data storage in Amazon S3.
+#' provided, Firehose buffers data up to 5 MB or for 5 minutes, whichever
+#' condition is satisfied first. `BufferingHints` is a hint, so there are
+#' some cases where the service cannot adhere to these conditions strictly.
+#' For example, record boundaries might be such that the size is a little
+#' over or under the configured buffering size. By default, no encryption
+#' is performed. We strongly recommend that you enable encryption to ensure
+#' secure data storage in Amazon S3.
 #' 
 #' A few notes about Amazon Redshift as a destination:
 #' 
 #' -   An Amazon Redshift destination requires an S3 bucket as intermediate
-#'     location. Kinesis Data Firehose first delivers data to Amazon S3 and
-#'     then uses `COPY` syntax to load data into an Amazon Redshift table.
-#'     This is specified in the
-#'     `RedshiftDestinationConfiguration.S3Configuration` parameter.
+#'     location. Firehose first delivers data to Amazon S3 and then uses
+#'     `COPY` syntax to load data into an Amazon Redshift table. This is
+#'     specified in the `RedshiftDestinationConfiguration.S3Configuration`
+#'     parameter.
 #' 
 #' -   The compression formats `SNAPPY` or `ZIP` cannot be specified in
 #'     `RedshiftDestinationConfiguration.S3Configuration` because the
@@ -80,17 +79,16 @@ NULL
 #'     doesn't support these compression formats.
 #' 
 #' -   We strongly recommend that you use the user name and password you
-#'     provide exclusively with Kinesis Data Firehose, and that the
-#'     permissions for the account are restricted for Amazon Redshift
-#'     `INSERT` permissions.
+#'     provide exclusively with Firehose, and that the permissions for the
+#'     account are restricted for Amazon Redshift `INSERT` permissions.
 #' 
-#' Kinesis Data Firehose assumes the IAM role that is configured as part of
-#' the destination. The role should allow the Kinesis Data Firehose
-#' principal to assume the role, and the role should have permissions that
-#' allow the service to deliver the data. For more information, see [Grant
-#' Kinesis Data Firehose Access to an Amazon S3
+#' Firehose assumes the IAM role that is configured as part of the
+#' destination. The role should allow the Firehose principal to assume the
+#' role, and the role should have permissions that allow the service to
+#' deliver the data. For more information, see [Grant Firehose Access to an
+#' Amazon S3
 #' Destination](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
-#' in the *Amazon Kinesis Data Firehose Developer Guide*.
+#' in the *Amazon Firehose Developer Guide*.
 #'
 #' @usage
 #' firehose_create_delivery_stream(DeliveryStreamName, DeliveryStreamType,
@@ -101,7 +99,7 @@ NULL
 #'   AmazonopensearchserviceDestinationConfiguration,
 #'   SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration,
 #'   Tags, AmazonOpenSearchServerlessDestinationConfiguration,
-#'   MSKSourceConfiguration)
+#'   MSKSourceConfiguration, SnowflakeDestinationConfiguration)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per Amazon Web
 #' Services account in the same Amazon Web Services Region. If the delivery
@@ -142,9 +140,28 @@ NULL
 #' in the Amazon Web Services Billing and Cost Management User Guide.
 #' 
 #' You can specify up to 50 tags when creating a delivery stream.
+#' 
+#' If you specify tags in the
+#' [`create_delivery_stream`][firehose_create_delivery_stream] action,
+#' Amazon Data Firehose performs an additional authorization on the
+#' `firehose:TagDeliveryStream` action to verify if users have permissions
+#' to create tags. If you do not provide this permission, requests to
+#' create new Firehose delivery streams with IAM resource tags will fail
+#' with an `AccessDeniedException` such as following.
+#' 
+#' **AccessDeniedException**
+#' 
+#' User: arn:aws:sts::x:assumed-role/x/x is not authorized to perform:
+#' firehose:TagDeliveryStream on resource:
+#' arn:aws:firehose:us-east-1:x:deliverystream/x with an explicit deny in
+#' an identity-based policy.
+#' 
+#' For an example IAM policy, see [Tag
+#' example.](https://docs.aws.amazon.com/firehose/latest/APIReference/API_CreateDeliveryStream.html#API_CreateDeliveryStream_Examples)
 #' @param AmazonOpenSearchServerlessDestinationConfiguration The destination in the Serverless offering for Amazon OpenSearch
 #' Service. You can specify only one destination.
 #' @param MSKSourceConfiguration 
+#' @param SnowflakeDestinationConfiguration Configure Snowflake destination
 #'
 #' @return
 #' A list with the following syntax:
@@ -214,10 +231,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -305,7 +322,9 @@ NULL
 #'         DurationInSeconds = 123
 #'       ),
 #'       Enabled = TRUE|FALSE
-#'     )
+#'     ),
+#'     FileExtension = "string",
+#'     CustomTimeZone = "string"
 #'   ),
 #'   RedshiftDestinationConfiguration = list(
 #'     RoleARN = "string",
@@ -346,10 +365,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -426,10 +445,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -495,10 +514,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -558,10 +577,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -606,10 +625,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -688,10 +707,10 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -720,6 +739,71 @@ NULL
 #'       RoleARN = "string",
 #'       Connectivity = "PUBLIC"|"PRIVATE"
 #'     )
+#'   ),
+#'   SnowflakeDestinationConfiguration = list(
+#'     AccountUrl = "string",
+#'     PrivateKey = "string",
+#'     KeyPassphrase = "string",
+#'     User = "string",
+#'     Database = "string",
+#'     Schema = "string",
+#'     Table = "string",
+#'     SnowflakeRoleConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       SnowflakeRole = "string"
+#'     ),
+#'     DataLoadingOption = "JSON_MAPPING"|"VARIANT_CONTENT_MAPPING"|"VARIANT_CONTENT_AND_METADATA_MAPPING",
+#'     MetaDataColumnName = "string",
+#'     ContentColumnName = "string",
+#'     SnowflakeVpcConfiguration = list(
+#'       PrivateLinkVpceId = "string"
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RoleARN = "string",
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3BackupMode = "FailedDataOnly"|"AllData",
+#'     S3Configuration = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -729,14 +813,14 @@ NULL
 #' @rdname firehose_create_delivery_stream
 #'
 #' @aliases firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -751,33 +835,39 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' @description
 #' Deletes a delivery stream and its data.
 #' 
-#' To check the state of a delivery stream, use
-#' [`describe_delivery_stream`][firehose_describe_delivery_stream]. You can
-#' delete a delivery stream only if it is in one of the following states:
-#' `ACTIVE`, `DELETING`, `CREATING_FAILED`, or `DELETING_FAILED`. You can't
-#' delete a delivery stream that is in the `CREATING` state. While the
-#' deletion request is in process, the delivery stream is in the `DELETING`
-#' state.
+#' You can delete a delivery stream only if it is in one of the following
+#' states: `ACTIVE`, `DELETING`, `CREATING_FAILED`, or `DELETING_FAILED`.
+#' You can't delete a delivery stream that is in the `CREATING` state. To
+#' check the state of a delivery stream, use
+#' [`describe_delivery_stream`][firehose_describe_delivery_stream].
 #' 
-#' While the delivery stream is in the `DELETING` state, the service might
-#' continue to accept records, but it doesn't make any guarantees with
-#' respect to delivering the data. Therefore, as a best practice, first
-#' stop any applications that are sending records before you delete a
-#' delivery stream.
+#' DeleteDeliveryStream is an asynchronous API. When an API request to
+#' DeleteDeliveryStream succeeds, the delivery stream is marked for
+#' deletion, and it goes into the `DELETING` state.While the delivery
+#' stream is in the `DELETING` state, the service might continue to accept
+#' records, but it doesn't make any guarantees with respect to delivering
+#' the data. Therefore, as a best practice, first stop any applications
+#' that are sending records before you delete a delivery stream.
+#' 
+#' Removal of a delivery stream that is in the `DELETING` state is a low
+#' priority operation for the service. A stream may remain in the
+#' `DELETING` state for several minutes. Therefore, as a best practice,
+#' applications should not wait for streams in the `DELETING` state to be
+#' removed.
 #'
 #' @usage
 #' firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param AllowForceDelete Set this to true if you want to delete the delivery stream even if
-#' Kinesis Data Firehose is unable to retire the grant for the CMK. Kinesis
-#' Data Firehose might be unable to retire the grant due to a customer
-#' error, such as when the CMK or the grant are in an invalid state. If you
-#' force deletion, you can then use the
+#' Firehose is unable to retire the grant for the CMK. Firehose might be
+#' unable to retire the grant due to a customer error, such as when the CMK
+#' or the grant are in an invalid state. If you force deletion, you can
+#' then use the
 #' [RevokeGrant](https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
-#' operation to revoke the grant you gave to Kinesis Data Firehose. If a
-#' failure to retire the grant happens due to an Amazon Web Services KMS
-#' issue, Kinesis Data Firehose keeps retrying the delete operation.
+#' operation to revoke the grant you gave to Firehose. If a failure to
+#' retire the grant happens due to an Amazon Web Services KMS issue,
+#' Firehose keeps retrying the delete operation.
 #' 
 #' The default value is false.
 #'
@@ -840,8 +930,7 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' @param Limit The limit on the number of destinations to return. You can have one
 #' destination per delivery stream.
 #' @param ExclusiveStartDestinationId The ID of the destination to start returning the destination
-#' information. Kinesis Data Firehose supports one destination per delivery
-#' stream.
+#' information. Firehose supports one destination per delivery stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -942,10 +1031,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1033,7 +1122,9 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'               DurationInSeconds = 123
 #'             ),
 #'             Enabled = TRUE|FALSE
-#'           )
+#'           ),
+#'           FileExtension = "string",
+#'           CustomTimeZone = "string"
 #'         ),
 #'         RedshiftDestinationDescription = list(
 #'           RoleARN = "string",
@@ -1073,10 +1164,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1153,10 +1244,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1223,10 +1314,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1287,10 +1378,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1334,10 +1425,73 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
+#'                     ParameterValue = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RoleARN = "string",
+#'           RetryOptions = list(
+#'             DurationInSeconds = 123
+#'           ),
+#'           S3BackupMode = "FailedDataOnly"|"AllData",
+#'           S3DestinationDescription = list(
+#'             RoleARN = "string",
+#'             BucketARN = "string",
+#'             Prefix = "string",
+#'             ErrorOutputPrefix = "string",
+#'             BufferingHints = list(
+#'               SizeInMBs = 123,
+#'               IntervalInSeconds = 123
+#'             ),
+#'             CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'             EncryptionConfiguration = list(
+#'               NoEncryptionConfig = "NoEncryption",
+#'               KMSEncryptionConfig = list(
+#'                 AWSKMSKeyARN = "string"
+#'               )
+#'             ),
+#'             CloudWatchLoggingOptions = list(
+#'               Enabled = TRUE|FALSE,
+#'               LogGroupName = "string",
+#'               LogStreamName = "string"
+#'             )
+#'           )
+#'         ),
+#'         SnowflakeDestinationDescription = list(
+#'           AccountUrl = "string",
+#'           User = "string",
+#'           Database = "string",
+#'           Schema = "string",
+#'           Table = "string",
+#'           SnowflakeRoleConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             SnowflakeRole = "string"
+#'           ),
+#'           DataLoadingOption = "JSON_MAPPING"|"VARIANT_CONTENT_MAPPING"|"VARIANT_CONTENT_AND_METADATA_MAPPING",
+#'           MetaDataColumnName = "string",
+#'           ContentColumnName = "string",
+#'           SnowflakeVpcConfiguration = list(
+#'             PrivateLinkVpceId = "string"
+#'           ),
+#'           CloudWatchLoggingOptions = list(
+#'             Enabled = TRUE|FALSE,
+#'             LogGroupName = "string",
+#'             LogStreamName = "string"
+#'           ),
+#'           ProcessingConfiguration = list(
+#'             Enabled = TRUE|FALSE,
+#'             Processors = list(
+#'               list(
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Parameters = list(
+#'                   list(
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1410,10 +1564,10 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'             Enabled = TRUE|FALSE,
 #'             Processors = list(
 #'               list(
-#'                 Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'                 Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'                 Parameters = list(
 #'                   list(
-#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'                     ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'                     ParameterValue = "string"
 #'                   )
 #'                 )
@@ -1616,13 +1770,12 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 }
 .firehose$operations$list_tags_for_delivery_stream <- firehose_list_tags_for_delivery_stream
 
-#' Writes a single data record into an Amazon Kinesis Data Firehose
-#' delivery stream
+#' Writes a single data record into an Amazon Firehose delivery stream
 #'
 #' @description
-#' Writes a single data record into an Amazon Kinesis Data Firehose
-#' delivery stream. To write multiple data records into a delivery stream,
-#' use [`put_record_batch`][firehose_put_record_batch]. Applications using
+#' Writes a single data record into an Amazon Firehose delivery stream. To
+#' write multiple data records into a delivery stream, use
+#' [`put_record_batch`][firehose_put_record_batch]. Applications using
 #' these operations are referred to as producers.
 #' 
 #' By default, each delivery stream can take in up to 2,000 transactions
@@ -1631,14 +1784,14 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' [`put_record_batch`][firehose_put_record_batch], the limits are an
 #' aggregate across these two operations for each delivery stream. For more
 #' information about limits and how to request an increase, see [Amazon
-#' Kinesis Data Firehose
+#' Firehose
 #' Limits](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 #' 
-#' Kinesis Data Firehose accumulates and publishes a particular metric for
-#' a customer account in one minute intervals. It is possible that the
-#' bursts of incoming bytes/records ingested to a delivery stream last only
-#' for a few seconds. Due to this, the actual spikes in the traffic might
-#' not be fully visible in the customer's 1 minute CloudWatch metrics.
+#' Firehose accumulates and publishes a particular metric for a customer
+#' account in one minute intervals. It is possible that the bursts of
+#' incoming bytes/records ingested to a delivery stream last only for a few
+#' seconds. Due to this, the actual spikes in the traffic might not be
+#' fully visible in the customer's 1 minute CloudWatch metrics.
 #' 
 #' You must specify the name of the delivery stream and the data record
 #' when using [`put_record`][firehose_put_record]. The data record consists
@@ -1646,12 +1799,12 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' data. For example, it can be a segment from a log file, geographic
 #' location data, website clickstream data, and so on.
 #' 
-#' Kinesis Data Firehose buffers records before delivering them to the
-#' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\\n`) or
-#' some other character unique within the data. This allows the consumer
-#' application to parse individual data items when reading the data from
-#' the destination.
+#' Firehose buffers records before delivering them to the destination. To
+#' disambiguate the data blobs at the destination, a common solution is to
+#' use delimiters in the data, such as a newline (`\\n`) or some other
+#' character unique within the data. This allows the consumer application
+#' to parse individual data items when reading the data from the
+#' destination.
 #' 
 #' The [`put_record`][firehose_put_record] operation returns a `RecordId`,
 #' which is a unique string assigned to each record. Producer applications
@@ -1666,10 +1819,10 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' PutRecordBatch) can result in data duplicates. For larger data assets,
 #' allow for a longer time out before retrying Put API operations.
 #' 
-#' Data records sent to Kinesis Data Firehose are stored for 24 hours from
-#' the time they are added to a delivery stream as it tries to send the
-#' records to the destination. If the destination is unreachable for more
-#' than 24 hours, the data is no longer available.
+#' Data records sent to Firehose are stored for 24 hours from the time they
+#' are added to a delivery stream as it tries to send the records to the
+#' destination. If the destination is unreachable for more than 24 hours,
+#' the data is no longer available.
 #' 
 #' Don't concatenate two or more base64 strings to form the data fields of
 #' your records. Instead, concatenate the raw data, then perform base64
@@ -1733,13 +1886,13 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' [`put_record`][firehose_put_record]. Applications using these operations
 #' are referred to as producers.
 #' 
-#' Kinesis Data Firehose accumulates and publishes a particular metric for
-#' a customer account in one minute intervals. It is possible that the
-#' bursts of incoming bytes/records ingested to a delivery stream last only
-#' for a few seconds. Due to this, the actual spikes in the traffic might
-#' not be fully visible in the customer's 1 minute CloudWatch metrics.
+#' Firehose accumulates and publishes a particular metric for a customer
+#' account in one minute intervals. It is possible that the bursts of
+#' incoming bytes/records ingested to a delivery stream last only for a few
+#' seconds. Due to this, the actual spikes in the traffic might not be
+#' fully visible in the customer's 1 minute CloudWatch metrics.
 #' 
-#' For information about service quota, see [Amazon Kinesis Data Firehose
+#' For information about service quota, see [Amazon Firehose
 #' Quota](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 #' 
 #' Each [`put_record_batch`][firehose_put_record_batch] request supports up
@@ -1753,12 +1906,12 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' For example, it could be a segment from a log file, geographic location
 #' data, website clickstream data, and so on.
 #' 
-#' Kinesis Data Firehose buffers records before delivering them to the
-#' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\\n`) or
-#' some other character unique within the data. This allows the consumer
-#' application to parse individual data items when reading the data from
-#' the destination.
+#' Firehose buffers records before delivering them to the destination. To
+#' disambiguate the data blobs at the destination, a common solution is to
+#' use delimiters in the data, such as a newline (`\\n`) or some other
+#' character unique within the data. This allows the consumer application
+#' to parse individual data items when reading the data from the
+#' destination.
 #' 
 #' The [`put_record_batch`][firehose_put_record_batch] response includes a
 #' count of failed records, `FailedPutCount`, and an array of responses,
@@ -1771,9 +1924,9 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' array using the same ordering, from the top to the bottom. The response
 #' array always includes the same number of records as the request array.
 #' `RequestResponses` includes both successfully and unsuccessfully
-#' processed records. Kinesis Data Firehose tries to process all records in
-#' each [`put_record_batch`][firehose_put_record_batch] request. A single
-#' record failure does not stop the processing of subsequent records.
+#' processed records. Firehose tries to process all records in each
+#' [`put_record_batch`][firehose_put_record_batch] request. A single record
+#' failure does not stop the processing of subsequent records.
 #' 
 #' A successfully processed record includes a `RecordId` value, which is
 #' unique for the record. An unsuccessfully processed record includes
@@ -1798,10 +1951,10 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' PutRecordBatch) can result in data duplicates. For larger data assets,
 #' allow for a longer time out before retrying Put API operations.
 #' 
-#' Data records sent to Kinesis Data Firehose are stored for 24 hours from
-#' the time they are added to a delivery stream as it attempts to send the
-#' records to the destination. If the destination is unreachable for more
-#' than 24 hours, the data is no longer available.
+#' Data records sent to Firehose are stored for 24 hours from the time they
+#' are added to a delivery stream as it attempts to send the records to the
+#' destination. If the destination is unreachable for more than 24 hours,
+#' the data is no longer available.
 #' 
 #' Don't concatenate two or more base64 strings to form the data fields of
 #' your records. Instead, concatenate the raw data, then perform base64
@@ -1869,9 +2022,9 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' Enables server-side encryption (SSE) for the delivery stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
-#' it, Kinesis Data Firehose first sets the encryption status of the stream
-#' to `ENABLING`, and then to `ENABLED`. The encryption status of a
-#' delivery stream is the `Status` property in
+#' it, Firehose first sets the encryption status of the stream to
+#' `ENABLING`, and then to `ENABLED`. The encryption status of a delivery
+#' stream is the `Status` property in
 #' DeliveryStreamEncryptionConfiguration. If the operation fails, the
 #' encryption status changes to `ENABLING_FAILED`. You can continue to read
 #' and write data to your delivery stream while the encryption status is
@@ -1888,13 +2041,12 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' Even if encryption is currently enabled for a delivery stream, you can
 #' still invoke this operation on it to change the ARN of the CMK or both
 #' its type and ARN. If you invoke this method to change the CMK, and the
-#' old CMK is of type `CUSTOMER_MANAGED_CMK`, Kinesis Data Firehose
-#' schedules the grant it had on the old CMK for retirement. If the new CMK
-#' is of type `CUSTOMER_MANAGED_CMK`, Kinesis Data Firehose creates a grant
-#' that enables it to use the new CMK to encrypt and decrypt data and to
-#' manage the grant.
+#' old CMK is of type `CUSTOMER_MANAGED_CMK`, Firehose schedules the grant
+#' it had on the old CMK for retirement. If the new CMK is of type
+#' `CUSTOMER_MANAGED_CMK`, Firehose creates a grant that enables it to use
+#' the new CMK to encrypt and decrypt data and to manage the grant.
 #' 
-#' For the KMS grant creation to be successful, Kinesis Data Firehose APIs
+#' For the KMS grant creation to be successful, Firehose APIs
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
 #' and [`create_delivery_stream`][firehose_create_delivery_stream] should
 #' not be called with session credentials that are more than 6 hours old.
@@ -1908,7 +2060,7 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' If the encryption status of your delivery stream is `ENABLING_FAILED`,
 #' you can invoke this operation again with a valid CMK. The CMK must be
 #' enabled and the key policy mustn't explicitly deny the permission for
-#' Kinesis Data Firehose to invoke KMS encrypt and decrypt operations.
+#' Firehose to invoke KMS encrypt and decrypt operations.
 #' 
 #' You can enable SSE for a delivery stream only if it's a delivery stream
 #' that uses `DirectPut` as its source.
@@ -1975,11 +2127,11 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #' Disables server-side encryption (SSE) for the delivery stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
-#' it, Kinesis Data Firehose first sets the encryption status of the stream
-#' to `DISABLING`, and then to `DISABLED`. You can continue to read and
-#' write data to your stream while its status is `DISABLING`. It can take
-#' up to 5 seconds after the encryption status changes to `DISABLED` before
-#' all records written to the delivery stream are no longer subject to
+#' it, Firehose first sets the encryption status of the stream to
+#' `DISABLING`, and then to `DISABLED`. You can continue to read and write
+#' data to your stream while its status is `DISABLING`. It can take up to 5
+#' seconds after the encryption status changes to `DISABLED` before all
+#' records written to the delivery stream are no longer subject to
 #' encryption. To find out whether a record or a batch of records was
 #' encrypted, check the response elements PutRecordOutput$Encrypted and
 #' PutRecordBatchOutput$Encrypted, respectively.
@@ -1989,9 +2141,9 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #' 
 #' If SSE is enabled using a customer managed CMK and then you invoke
 #' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption],
-#' Kinesis Data Firehose schedules the related KMS grant for retirement and
-#' then retires it after it ensures that it is finished delivering records
-#' to the destination.
+#' Firehose schedules the related KMS grant for retirement and then retires
+#' it after it ensures that it is finished delivering records to the
+#' destination.
 #' 
 #' The
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
@@ -2174,24 +2326,23 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' supported. For an Amazon OpenSearch Service destination, you can only
 #' update to another Amazon OpenSearch Service destination.
 #' 
-#' If the destination type is the same, Kinesis Data Firehose merges the
-#' configuration parameters specified with the destination configuration
-#' that already exists on the delivery stream. If any of the parameters are
-#' not specified in the call, the existing values are retained. For
-#' example, in the Amazon S3 destination, if EncryptionConfiguration is not
-#' specified, then the existing `EncryptionConfiguration` is maintained on
-#' the destination.
+#' If the destination type is the same, Firehose merges the configuration
+#' parameters specified with the destination configuration that already
+#' exists on the delivery stream. If any of the parameters are not
+#' specified in the call, the existing values are retained. For example, in
+#' the Amazon S3 destination, if EncryptionConfiguration is not specified,
+#' then the existing `EncryptionConfiguration` is maintained on the
+#' destination.
 #' 
 #' If the destination type is not the same, for example, changing the
-#' destination from Amazon S3 to Amazon Redshift, Kinesis Data Firehose
-#' does not merge any parameters. In this case, all parameters must be
-#' specified.
+#' destination from Amazon S3 to Amazon Redshift, Firehose does not merge
+#' any parameters. In this case, all parameters must be specified.
 #' 
-#' Kinesis Data Firehose uses `CurrentDeliveryStreamVersionId` to avoid
-#' race conditions and conflicting merges. This is a required field, and
-#' the service updates the configuration only if the existing configuration
-#' has a version ID that matches. After the update is applied successfully,
-#' the version ID is updated, and can be retrieved using
+#' Firehose uses `CurrentDeliveryStreamVersionId` to avoid race conditions
+#' and conflicting merges. This is a required field, and the service
+#' updates the configuration only if the existing configuration has a
+#' version ID that matches. After the update is applied successfully, the
+#' version ID is updated, and can be retrieved using
 #' [`describe_delivery_stream`][firehose_describe_delivery_stream]. Use the
 #' new version ID to set `CurrentDeliveryStreamVersionId` in the next call.
 #'
@@ -2202,7 +2353,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'   ElasticsearchDestinationUpdate,
 #'   AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate,
 #'   HttpEndpointDestinationUpdate,
-#'   AmazonOpenSearchServerlessDestinationUpdate)
+#'   AmazonOpenSearchServerlessDestinationUpdate, SnowflakeDestinationUpdate)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of
@@ -2222,6 +2373,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
 #' @param AmazonOpenSearchServerlessDestinationUpdate Describes an update for a destination in the Serverless offering for
 #' Amazon OpenSearch Service.
+#' @param SnowflakeDestinationUpdate Update to the Snowflake destination condiguration settings
 #'
 #' @return
 #' An empty list.
@@ -2279,10 +2431,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2370,7 +2522,9 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'         DurationInSeconds = 123
 #'       ),
 #'       Enabled = TRUE|FALSE
-#'     )
+#'     ),
+#'     FileExtension = "string",
+#'     CustomTimeZone = "string"
 #'   ),
 #'   RedshiftDestinationUpdate = list(
 #'     RoleARN = "string",
@@ -2411,10 +2565,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2490,10 +2644,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2549,10 +2703,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2603,10 +2757,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2651,10 +2805,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2726,10 +2880,10 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       Enabled = TRUE|FALSE,
 #'       Processors = list(
 #'         list(
-#'           Type = "RecordDeAggregation"|"Decompression"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
 #'           Parameters = list(
 #'             list(
-#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat",
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
 #'               ParameterValue = "string"
 #'             )
 #'           )
@@ -2741,6 +2895,68 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       LogGroupName = "string",
 #'       LogStreamName = "string"
 #'     )
+#'   ),
+#'   SnowflakeDestinationUpdate = list(
+#'     AccountUrl = "string",
+#'     PrivateKey = "string",
+#'     KeyPassphrase = "string",
+#'     User = "string",
+#'     Database = "string",
+#'     Schema = "string",
+#'     Table = "string",
+#'     SnowflakeRoleConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       SnowflakeRole = "string"
+#'     ),
+#'     DataLoadingOption = "JSON_MAPPING"|"VARIANT_CONTENT_MAPPING"|"VARIANT_CONTENT_AND_METADATA_MAPPING",
+#'     MetaDataColumnName = "string",
+#'     ContentColumnName = "string",
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "RecordDeAggregation"|"Decompression"|"CloudWatchLogProcessing"|"Lambda"|"MetadataExtraction"|"AppendDelimiterToRecord",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"MetadataExtractionQuery"|"JsonParsingEngine"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds"|"SubRecordType"|"Delimiter"|"CompressionFormat"|"DataMessageExtraction",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RoleARN = "string",
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3BackupMode = "FailedDataOnly"|"AllData",
+#'     S3Update = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2750,14 +2966,14 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @rdname firehose_update_destination
 #'
 #' @aliases firehose_update_destination
-firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL, AmazonOpenSearchServerlessDestinationUpdate = NULL) {
+firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL, AmazonOpenSearchServerlessDestinationUpdate = NULL, SnowflakeDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate)
+  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate, SnowflakeDestinationUpdate = SnowflakeDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
   svc <- .firehose$service(config)

@@ -10,8 +10,8 @@ comprehend_detect_pii_entities(Text, LanguageCode)
 \arguments{
 \item{Text}{[required] A UTF-8 text string. The maximum string size is 100 KB.}
 
-\item{LanguageCode}{[required] The language of the input documents. Currently, English is the only
-valid language.}
+\item{LanguageCode}{[required] The language of the input text. Enter the language code for English (en)
+or Spanish (es).}
 }
 \description{
 Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them.

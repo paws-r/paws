@@ -90,6 +90,35 @@ codebuild_batch_get_builds <- function(ids) {
 }
 .codebuild$operations$batch_get_builds <- codebuild_batch_get_builds
 
+#' Gets information about one or more compute fleets
+#'
+#' @description
+#' Gets information about one or more compute fleets.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_fleets/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_fleets/) for full documentation.
+#'
+#' @param names &#91;required&#93; The names or ARNs of the compute fleets.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_batch_get_fleets
+codebuild_batch_get_fleets <- function(names) {
+  op <- new_operation(
+    name = "BatchGetFleets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codebuild$batch_get_fleets_input(names = names)
+  output <- .codebuild$batch_get_fleets_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$batch_get_fleets <- codebuild_batch_get_fleets
+
 #' Gets information about one or more build projects
 #'
 #' @description
@@ -178,6 +207,126 @@ codebuild_batch_get_reports <- function(reportArns) {
   return(response)
 }
 .codebuild$operations$batch_get_reports <- codebuild_batch_get_reports
+
+#' Creates a compute fleet
+#'
+#' @description
+#' Creates a compute fleet.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_create_fleet/](https://www.paws-r-sdk.com/docs/codebuild_create_fleet/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the compute fleet.
+#' @param baseCapacity &#91;required&#93; The initial number of machines allocated to the ﬂeet, which deﬁnes the
+#' number of builds that can run in parallel.
+#' @param environmentType &#91;required&#93; The environment type of the compute fleet.
+#' 
+#' -   The environment type `ARM_CONTAINER` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
+#'     America (São Paulo).
+#' 
+#' -   The environment type `LINUX_CONTAINER` is available only in regions
+#'     US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
+#'     Asia Pacific (Mumbai).
+#' 
+#' -   The environment type `LINUX_GPU_CONTAINER` is available only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
+#'     (Sydney).
+#' 
+#' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
+#'     (Mumbai) and EU (Ireland).
+#' 
+#' -   The environment type `WINDOWS_SERVER_2022_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), EU (Ireland), EU (Frankfurt), Asia Pacific (Sydney), Asia
+#'     Pacific (Singapore), Asia Pacific (Tokyo), South America (São Paulo)
+#'     and Asia Pacific (Mumbai).
+#' 
+#' For more information, see [Build environment compute
+#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+#' in the *CodeBuild user guide*.
+#' @param computeType &#91;required&#93; Information about the compute resources the compute fleet uses.
+#' Available values include:
+#' 
+#' -   `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for
+#'     builds.
+#' 
+#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for
+#'     builds.
+#' 
+#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for
+#'     builds, depending on your environment type.
+#' 
+#' -   `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
+#'     builds, depending on your environment type.
+#' 
+#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
+#'     GB of SSD storage for builds. This compute type supports Docker
+#'     images up to 100 GB uncompressed.
+#' 
+#' If you use `BUILD_GENERAL1_SMALL`:
+#' 
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 3 GB
+#'     memory and 2 vCPUs for builds.
+#' 
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
+#'     memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
+#' 
+#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
+#'     and 2 vCPUs on ARM-based processors for builds.
+#' 
+#' If you use `BUILD_GENERAL1_LARGE`:
+#' 
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 15 GB
+#'     memory and 8 vCPUs for builds.
+#' 
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
+#'     memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+#' 
+#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
+#'     and 8 vCPUs on ARM-based processors for builds.
+#' 
+#' For more information, see [Build environment compute
+#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+#' in the *CodeBuild User Guide.*
+#' @param scalingConfiguration The scaling configuration of the compute fleet.
+#' @param overflowBehavior The compute fleet overflow behavior.
+#' 
+#' -   For overflow behavior `QUEUE`, your overflow builds need to wait on
+#'     the existing fleet instance to become available.
+#' 
+#' -   For overflow behavior `ON_DEMAND`, your overflow builds run on
+#'     CodeBuild on-demand.
+#' @param tags A list of tag key and value pairs associated with this compute fleet.
+#' 
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild build project tags.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_create_fleet
+codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, tags = tags)
+  output <- .codebuild$create_fleet_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$create_fleet <- codebuild_create_fleet
 
 #' Creates a build project
 #'
@@ -392,6 +541,35 @@ codebuild_delete_build_batch <- function(id) {
   return(response)
 }
 .codebuild$operations$delete_build_batch <- codebuild_delete_build_batch
+
+#' Deletes a compute fleet
+#'
+#' @description
+#' Deletes a compute fleet. When you delete a compute fleet, its builds are not deleted.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_fleet/](https://www.paws-r-sdk.com/docs/codebuild_delete_fleet/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The ARN of the compute fleet.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_delete_fleet
+codebuild_delete_fleet <- function(arn) {
+  op <- new_operation(
+    name = "DeleteFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codebuild$delete_fleet_input(arn = arn)
+  output <- .codebuild$delete_fleet_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$delete_fleet <- codebuild_delete_fleet
 
 #' Deletes a build project
 #'
@@ -784,7 +962,7 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This parameter
 #' is not valid for other types of source providers or connections.
 #' @param token &#91;required&#93; For GitHub or GitHub Enterprise, this is the personal access token. For
-#' Bitbucket, this is the app password.
+#' Bitbucket, this is either the access token or the app password.
 #' @param serverType &#91;required&#93; The source provider used for this project.
 #' @param authType &#91;required&#93; The type of authentication used to connect to a GitHub, GitHub
 #' Enterprise, or Bitbucket repository. An OAUTH connection is not
@@ -1021,6 +1199,8 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 #'
 #' See [https://www.paws-r-sdk.com/docs/codebuild_list_curated_environment_images/](https://www.paws-r-sdk.com/docs/codebuild_list_curated_environment_images/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname codebuild_list_curated_environment_images
@@ -1040,6 +1220,63 @@ codebuild_list_curated_environment_images <- function() {
   return(response)
 }
 .codebuild$operations$list_curated_environment_images <- codebuild_list_curated_environment_images
+
+#' Gets a list of compute fleet names with each compute fleet name
+#' representing a single compute fleet
+#'
+#' @description
+#' Gets a list of compute fleet names with each compute fleet name representing a single compute fleet.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_fleets/](https://www.paws-r-sdk.com/docs/codebuild_list_fleets/) for full documentation.
+#'
+#' @param nextToken During a previous call, if there are more than 100 items in the list,
+#' only the first 100 items are returned, along with a unique string called
+#' a *nextToken*. To get the next batch of items in the list, call this
+#' operation again, adding the next token to the call. To get all of the
+#' items in the list, keep calling this operation with each subsequent next
+#' token that is returned, until no more next tokens are returned.
+#' @param maxResults The maximum number of paginated compute fleets returned per response.
+#' Use `nextToken` to iterate pages in the list of returned compute fleets.
+#' @param sortOrder The order in which to list compute fleets. Valid values include:
+#' 
+#' -   `ASCENDING`: List in ascending order.
+#' 
+#' -   `DESCENDING`: List in descending order.
+#' 
+#' Use `sortBy` to specify the criterion to be used to list compute fleet
+#' names.
+#' @param sortBy The criterion to be used to list compute fleet names. Valid values
+#' include:
+#' 
+#' -   `CREATED_TIME`: List based on when each compute fleet was created.
+#' 
+#' -   `LAST_MODIFIED_TIME`: List based on when information about each
+#'     compute fleet was last changed.
+#' 
+#' -   `NAME`: List based on each compute fleet's name.
+#' 
+#' Use `sortOrder` to specify in what order to list the compute fleet names
+#' based on the preceding criteria.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_fleets
+codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder = NULL, sortBy = NULL) {
+  op <- new_operation(
+    name = "ListFleets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
+  )
+  input <- .codebuild$list_fleets_input(nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy)
+  output <- .codebuild$list_fleets_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_fleets <- codebuild_list_fleets
 
 #' Gets a list of build project names, with each build project name
 #' representing a single build project
@@ -1345,6 +1582,8 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/codebuild_list_source_credentials/](https://www.paws-r-sdk.com/docs/codebuild_list_source_credentials/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname codebuild_list_source_credentials
@@ -1473,10 +1712,10 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 }
 .codebuild$operations$retry_build_batch <- codebuild_retry_build_batch
 
-#' Starts running a build
+#' Starts running a build with the settings defined in the project
 #'
 #' @description
-#' Starts running a build.
+#' Starts running a build with the settings defined in the project. These setting include: how to run a build, where to get the source code, which build environment to use, which build commands to run, and where to store the build output.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codebuild_start_build/](https://www.paws-r-sdk.com/docs/codebuild_start_build/) for full documentation.
 #'
@@ -1537,8 +1776,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' the build project.
 #' @param gitSubmodulesConfigOverride Information about the Git submodules configuration for this build of an
 #' CodeBuild build project.
-#' @param buildspecOverride A buildspec file declaration that overrides, for this build only, the
-#' latest one already defined in the build project.
+#' @param buildspecOverride A buildspec file declaration that overrides the latest one defined in
+#' the build project, for this build only. The buildspec defined on the
+#' project is not changed.
 #' 
 #' If this value is set, it can be either an inline buildspec definition,
 #' the path to an alternate buildspec file relative to the value of the
@@ -1550,6 +1790,12 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' buildspec file in its root directory. For more information, see
 #' [Buildspec File Name and Storage
 #' Location](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage).
+#' 
+#' Since this property allows you to change the build commands that will
+#' run in the container, you should note that an IAM principal with the
+#' ability to call this API and set this parameter can override the default
+#' settings. Moreover, we encourage that you use a trustworthy buildspec
+#' location like a file in your source repository or a Amazon S3 bucket.
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified
 #' in the build project. The insecure SSL setting determines whether to
 #' ignore SSL warnings while connecting to the project source code. This
@@ -1625,18 +1871,20 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param debugSessionEnabled Specifies if session debugging is enabled for this build. For more
 #' information, see [Viewing a running build in Session
 #' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
+#' @param fleetOverride A ProjectFleet object specified for this build that overrides the one
+#' defined in the build project.
 #'
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build
-codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL) {
+codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL, fleetOverride = NULL) {
   op <- new_operation(
     name = "StartBuild",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled)
+  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride)
   output <- .codebuild$start_build_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -1871,6 +2119,126 @@ codebuild_stop_build_batch <- function(id) {
   return(response)
 }
 .codebuild$operations$stop_build_batch <- codebuild_stop_build_batch
+
+#' Updates a compute fleet
+#'
+#' @description
+#' Updates a compute fleet.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codebuild_update_fleet/](https://www.paws-r-sdk.com/docs/codebuild_update_fleet/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The ARN of the compute fleet.
+#' @param baseCapacity The initial number of machines allocated to the compute ﬂeet, which
+#' deﬁnes the number of builds that can run in parallel.
+#' @param environmentType The environment type of the compute fleet.
+#' 
+#' -   The environment type `ARM_CONTAINER` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
+#'     America (São Paulo).
+#' 
+#' -   The environment type `LINUX_CONTAINER` is available only in regions
+#'     US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
+#'     Asia Pacific (Mumbai).
+#' 
+#' -   The environment type `LINUX_GPU_CONTAINER` is available only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
+#'     (Sydney).
+#' 
+#' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
+#'     (Mumbai) and EU (Ireland).
+#' 
+#' -   The environment type `WINDOWS_SERVER_2022_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), EU (Ireland), EU (Frankfurt), Asia Pacific (Sydney), Asia
+#'     Pacific (Singapore), Asia Pacific (Tokyo), South America (São Paulo)
+#'     and Asia Pacific (Mumbai).
+#' 
+#' For more information, see [Build environment compute
+#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+#' in the *CodeBuild user guide*.
+#' @param computeType Information about the compute resources the compute fleet uses.
+#' Available values include:
+#' 
+#' -   `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for
+#'     builds.
+#' 
+#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for
+#'     builds.
+#' 
+#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for
+#'     builds, depending on your environment type.
+#' 
+#' -   `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
+#'     builds, depending on your environment type.
+#' 
+#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
+#'     GB of SSD storage for builds. This compute type supports Docker
+#'     images up to 100 GB uncompressed.
+#' 
+#' If you use `BUILD_GENERAL1_SMALL`:
+#' 
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 3 GB
+#'     memory and 2 vCPUs for builds.
+#' 
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
+#'     memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
+#' 
+#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
+#'     and 2 vCPUs on ARM-based processors for builds.
+#' 
+#' If you use `BUILD_GENERAL1_LARGE`:
+#' 
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 15 GB
+#'     memory and 8 vCPUs for builds.
+#' 
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
+#'     memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+#' 
+#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
+#'     and 8 vCPUs on ARM-based processors for builds.
+#' 
+#' For more information, see [Build environment compute
+#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+#' in the *CodeBuild User Guide.*
+#' @param scalingConfiguration The scaling configuration of the compute fleet.
+#' @param overflowBehavior The compute fleet overflow behavior.
+#' 
+#' -   For overflow behavior `QUEUE`, your overflow builds need to wait on
+#'     the existing fleet instance to become available.
+#' 
+#' -   For overflow behavior `ON_DEMAND`, your overflow builds run on
+#'     CodeBuild on-demand.
+#' @param tags A list of tag key and value pairs associated with this compute fleet.
+#' 
+#' These tags are available for use by Amazon Web Services services that
+#' support CodeBuild build project tags.
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_update_fleet
+codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "UpdateFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, tags = tags)
+  output <- .codebuild$update_fleet_output()
+  config <- get_config()
+  svc <- .codebuild$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$update_fleet <- codebuild_update_fleet
 
 #' Changes the settings of a build project
 #'

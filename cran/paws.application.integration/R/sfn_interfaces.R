@@ -434,3 +434,15 @@ NULL
   shape <- structure(list(updateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
+
+.sfn$validate_state_machine_definition_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sfn$validate_state_machine_definition_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(result = structure(logical(0), tags = list(type = "string")), diagnostics = structure(list(structure(list(severity = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}

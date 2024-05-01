@@ -324,7 +324,7 @@ cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
 #' Create a new invalidation
 #'
 #' @description
-#' Create a new invalidation.
+#' Create a new invalidation. For more information, see [Invalidating files](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html) in the *Amazon CloudFront Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_create_invalidation/](https://www.paws-r-sdk.com/docs/cloudfront_create_invalidation/) for full documentation.
 #'
@@ -381,16 +381,16 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 }
 .cloudfront$operations$create_key_group <- cloudfront_create_key_group
 
-#' Specifies the Key Value Store resource to add to your account
+#' Specifies the key value store resource to add to your account
 #'
 #' @description
-#' Specifies the Key Value Store resource to add to your account. In your account, the Key Value Store names must be unique. You can also import Key Value Store data in JSON format from an S3 bucket by providing a valid `ImportSource` that you own.
+#' Specifies the key value store resource to add to your account. In your account, the key value store names must be unique. You can also import key value store data in JSON format from an S3 bucket by providing a valid `ImportSource` that you own.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_create_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_create_key_value_store/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Key Value Store. The maximum length of the name is 32
-#' characters.
-#' @param Comment The comment of the Key Value Store.
+#' @param Name &#91;required&#93; The name of the key value store. The minimum length is 1 character and
+#' the maximum length is 64 characters.
+#' @param Comment The comment of the key value store.
 #' @param ImportSource The S3 bucket that provides the source for the import. The source must
 #' be in a valid JSON format.
 #'
@@ -550,10 +550,9 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 #' fields](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/real-time-logs.html#understand-real-time-log-config-fields)
 #' in the *Amazon CloudFront Developer Guide*.
 #' @param Name &#91;required&#93; A unique name to identify this real-time log configuration.
-#' @param SamplingRate &#91;required&#93; The sampling rate for this real-time log configuration. The sampling
-#' rate determines the percentage of viewer requests that are represented
-#' in the real-time log data. You must provide an integer between 1 and
-#' 100, inclusive.
+#' @param SamplingRate &#91;required&#93; The sampling rate for this real-time log configuration. You can specify
+#' a whole number between 1 and 100 (inclusive) to determine the percentage
+#' of viewer requests that are represented in the real-time log data.
 #'
 #' @keywords internal
 #'
@@ -921,15 +920,15 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_key_group <- cloudfront_delete_key_group
 
-#' Specifies the Key Value Store to delete
+#' Specifies the key value store to delete
 #'
 #' @description
-#' Specifies the Key Value Store to delete.
+#' Specifies the key value store to delete.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_delete_key_value_store/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Key Value Store.
-#' @param IfMatch &#91;required&#93; The Key Value Store to delete, if a match occurs.
+#' @param Name &#91;required&#93; The name of the key value store.
+#' @param IfMatch &#91;required&#93; The key value store to delete, if a match occurs.
 #'
 #' @keywords internal
 #'
@@ -1214,14 +1213,14 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
 }
 .cloudfront$operations$describe_function <- cloudfront_describe_function
 
-#' Specifies the Key Value Store and its configuration
+#' Specifies the key value store and its configuration
 #'
 #' @description
-#' Specifies the Key Value Store and its configuration.
+#' Specifies the key value store and its configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_describe_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_describe_key_value_store/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Key Value Store.
+#' @param Name &#91;required&#93; The name of the key value store.
 #'
 #' @keywords internal
 #'
@@ -2504,6 +2503,12 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #' @param WebACLId &#91;required&#93; The ID of the WAF web ACL that you want to list the associated
 #' distributions. If you specify "null" for the ID, the request returns a
 #' list of the distributions that aren't associated with a web ACL.
+#' 
+#' For WAFV2, this is the ARN of the web ACL, such as
+#' `arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`.
+#' 
+#' For WAF Classic, this is the ID of the web ACL, such as
+#' `a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`.
 #'
 #' @keywords internal
 #'
@@ -2706,16 +2711,16 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 }
 .cloudfront$operations$list_key_groups <- cloudfront_list_key_groups
 
-#' Specifies the Key Value Stores to list
+#' Specifies the key value stores to list
 #'
 #' @description
-#' Specifies the Key Value Stores to list.
+#' Specifies the key value stores to list.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_list_key_value_stores/](https://www.paws-r-sdk.com/docs/cloudfront_list_key_value_stores/) for full documentation.
 #'
-#' @param Marker The marker associated with the Key Value Stores list.
-#' @param MaxItems The maximum number of items in the Key Value Stores list.
-#' @param Status The status of the request for the Key Value Stores list.
+#' @param Marker The marker associated with the key value stores list.
+#' @param MaxItems The maximum number of items in the key value stores list.
+#' @param Status The status of the request for the key value stores list.
 #'
 #' @keywords internal
 #'
@@ -3421,16 +3426,16 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 }
 .cloudfront$operations$update_key_group <- cloudfront_update_key_group
 
-#' Specifies the Key Value Store to update
+#' Specifies the key value store to update
 #'
 #' @description
-#' Specifies the Key Value Store to update.
+#' Specifies the key value store to update.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_update_key_value_store/](https://www.paws-r-sdk.com/docs/cloudfront_update_key_value_store/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the Key Value Store to update.
-#' @param Comment &#91;required&#93; The comment of the Key Value Store to update.
-#' @param IfMatch &#91;required&#93; The Key Value Store to update, if a match occurs.
+#' @param Name &#91;required&#93; The name of the key value store to update.
+#' @param Comment &#91;required&#93; The comment of the key value store to update.
+#' @param IfMatch &#91;required&#93; The key value store to update, if a match occurs.
 #'
 #' @keywords internal
 #'

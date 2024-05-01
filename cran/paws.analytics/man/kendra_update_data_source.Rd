@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_update_data_source}
 \alias{kendra_update_data_source}
-\title{Updates an existing Amazon Kendra data source connector}
+\title{Updates an Amazon Kendra data source connector}
 \usage{
 kendra_update_data_source(
   Id,
@@ -50,7 +50,7 @@ metadata, or make other content alterations when you ingest documents
 into Amazon Kendra, see \href{https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html}{Customizing document metadata during the ingestion process}.}
 }
 \description{
-Updates an existing Amazon Kendra data source connector.
+Updates an Amazon Kendra data source connector.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_update_data_source/} for full documentation.
 }

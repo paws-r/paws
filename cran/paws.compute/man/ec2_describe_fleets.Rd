@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_fleets}
 \alias{ec2_describe_fleets}
-\title{Describes the specified EC2 Fleets or all of your EC2 Fleets}
+\title{Describes the specified EC2 Fleet or all of your EC2 Fleets}
 \usage{
 ec2_describe_fleets(
   DryRun = NULL,
@@ -47,7 +47,7 @@ replace unhealthy instances (\code{true} | \code{false}).
 }}
 }
 \description{
-Describes the specified EC2 Fleets or all of your EC2 Fleets.
+Describes the specified EC2 Fleet or all of your EC2 Fleets.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fleets/} for full documentation.
 }

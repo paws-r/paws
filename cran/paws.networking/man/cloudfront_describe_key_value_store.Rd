@@ -2,15 +2,15 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_describe_key_value_store}
 \alias{cloudfront_describe_key_value_store}
-\title{Specifies the Key Value Store and its configuration}
+\title{Specifies the key value store and its configuration}
 \usage{
 cloudfront_describe_key_value_store(Name)
 }
 \arguments{
-\item{Name}{[required] The name of the Key Value Store.}
+\item{Name}{[required] The name of the key value store.}
 }
 \description{
-Specifies the Key Value Store and its configuration.
+Specifies the key value store and its configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_describe_key_value_store/} for full documentation.
 }

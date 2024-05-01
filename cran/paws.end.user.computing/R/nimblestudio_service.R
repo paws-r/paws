@@ -176,7 +176,7 @@ nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .nimblestudio$metadata <- list(
   service_name = "nimblestudio",
-  endpoints = list("*" = list(endpoint = "nimble.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "nimble.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "nimble.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "nimble.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "nimble.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "nimble.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "nimble.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "nimble.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "nimble.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "nimble.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "nimble",
   api_version = "2020-08-01",
   signing_name = "nimble",

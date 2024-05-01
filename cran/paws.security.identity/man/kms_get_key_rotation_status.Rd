@@ -2,8 +2,10 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_get_key_rotation_status}
 \alias{kms_get_key_rotation_status}
-\title{Gets a Boolean value that indicates whether automatic rotation of the
-key material is enabled for the specified KMS key}
+\title{Provides detailed information about the rotation status for a KMS key,
+including whether automatic rotation of the key material is enabled for
+the specified KMS key, the rotation period, and the next scheduled
+rotation date}
 \usage{
 kms_get_key_rotation_status(KeyId)
 }
@@ -24,7 +26,7 @@ To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Gets a Boolean value that indicates whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} is enabled for the specified KMS key.
+Provides detailed information about the rotation status for a KMS key, including whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} is enabled for the specified KMS key, the \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period}{rotation period}, and the next scheduled rotation date.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/} for full documentation.
 }

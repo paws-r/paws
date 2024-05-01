@@ -26,7 +26,7 @@ bucket, you must use virtual-hosted-style requests in the format
 are not supported. Directory bucket names must be unique in the chosen
 Availability Zone. Bucket names must follow the format
 \code{ bucket_base_name--az-id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
 
@@ -66,7 +66,10 @@ uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuover
 in the \emph{Amazon S3 User Guide}.
 }}
 
-\item{EncodingType}{Encoding type used by Amazon S3 to encode object keys in the response.}
+\item{EncodingType}{Encoding type used by Amazon S3 to encode object keys in the response.
+If using \code{url}, non-ASCII characters used in an object's key name will
+be URL encoded. For example, the object test_file(3).png will appear as
+test_file\%283\%29.png.}
 
 \item{MaxKeys}{Sets the maximum number of keys returned in the response. By default,
 the action returns up to 1,000 key names. The response might contain

@@ -11,6 +11,7 @@ sagemaker_create_feature_group(
   FeatureDefinitions,
   OnlineStoreConfig = NULL,
   OfflineStoreConfig = NULL,
+  ThroughputConfig = NULL,
   RoleArn = NULL,
   Description = NULL,
   Tags = NULL
@@ -18,11 +19,13 @@ sagemaker_create_feature_group(
 }
 \arguments{
 \item{FeatureGroupName}{[required] The name of the \code{FeatureGroup}. The name must be unique within an Amazon
-Web Services Region in an Amazon Web Services account. The name:
+Web Services Region in an Amazon Web Services account.
+
+The name:
 \itemize{
-\item Must start and end with an alphanumeric character.
-\item Can only contain alphanumeric character and hyphens. Spaces are not
-allowed.
+\item Must start with an alphanumeric character.
+\item Can only include alphanumeric characters, underscores, and hyphens.
+Spaces are not allowed.
 }}
 
 \item{RecordIdentifierFeatureName}{[required] The name of the \code{Feature} whose value uniquely identifies a \code{Record}
@@ -35,7 +38,7 @@ You use the \code{RecordIdentifierFeatureName} to access data in a
 
 This name:
 \itemize{
-\item Must start and end with an alphanumeric character.
+\item Must start with an alphanumeric character.
 \item Can only contains alphanumeric characters, hyphens, underscores.
 Spaces are not allowed.
 }}
@@ -98,6 +101,8 @@ to 99 percent.
 
 To learn more about this parameter, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html}{OfflineStoreConfig}.}
+
+\item{ThroughputConfig}{}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM execution role used to persist
 data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}

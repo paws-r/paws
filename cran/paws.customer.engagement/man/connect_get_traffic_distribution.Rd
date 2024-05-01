@@ -8,7 +8,10 @@ distribution group}
 connect_get_traffic_distribution(Id)
 }
 \arguments{
-\item{Id}{[required] The identifier of the traffic distribution group.}
+\item{Id}{[required] The identifier of the traffic distribution group. This can be the ID or
+the ARN if the API is being called in the Region where the traffic
+distribution group was created. The ARN must be provided if the call is
+from the replicated Region.}
 }
 \description{
 Retrieves the current traffic distribution for a given traffic distribution group.

@@ -10,14 +10,14 @@ firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete = NULL)
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
 
 \item{AllowForceDelete}{Set this to true if you want to delete the delivery stream even if
-Kinesis Data Firehose is unable to retire the grant for the CMK. Kinesis
-Data Firehose might be unable to retire the grant due to a customer
-error, such as when the CMK or the grant are in an invalid state. If you
-force deletion, you can then use the
+Firehose is unable to retire the grant for the CMK. Firehose might be
+unable to retire the grant due to a customer error, such as when the CMK
+or the grant are in an invalid state. If you force deletion, you can
+then use the
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html}{RevokeGrant}
-operation to revoke the grant you gave to Kinesis Data Firehose. If a
-failure to retire the grant happens due to an Amazon Web Services KMS
-issue, Kinesis Data Firehose keeps retrying the delete operation.
+operation to revoke the grant you gave to Firehose. If a failure to
+retire the grant happens due to an Amazon Web Services KMS issue,
+Firehose keeps retrying the delete operation.
 
 The default value is false.}
 }

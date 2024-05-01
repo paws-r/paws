@@ -72,29 +72,27 @@ For a summary of notable documentation changes in each release, see
 \item \verb{Content-Type:}application/json
 }
 
-\strong{Resources}
-
-The following resources contain information about your IVS live stream
-(see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html}{Getting Started with Amazon IVS}):
+\strong{Key Concepts}
 \itemize{
 \item \strong{Channel} — Stores configuration data related to your live stream.
 You first create a channel and then use the channel’s stream key to
-start your live stream. See the Channel endpoints for more
-information.
+start your live stream.
 \item \strong{Stream key} — An identifier assigned by Amazon IVS when you
-create a channel, which is then used to authorize streaming. See the
-StreamKey endpoints for more information. \emph{Treat the stream key like
-a secret, since it allows anyone to stream to the channel.}
+create a channel, which is then used to authorize streaming. \emph{Treat
+the stream key like a secret, since it allows anyone to stream to
+the channel.}
 \item \strong{Playback key pair} — Video playback may be restricted using
 playback-authorization tokens, which use public-key encryption. A
 playback key pair is the public-private pair of keys used to sign
-and validate the playback-authorization token. See the
-PlaybackKeyPair endpoints for more information.
+and validate the playback-authorization token.
 \item \strong{Recording configuration} — Stores configuration related to
 recording a live stream and where to store the recorded content.
 Multiple channels can reference the same recording configuration.
-See the Recording Configuration endpoints for more information.
+\item \strong{Playback restriction policy} — Restricts playback by countries
+and/or origin sites.
 }
+
+For more information about your IVS live stream, also see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html}{Getting Started with IVS Low-Latency Streaming}.
 
 \strong{Tagging}
 
@@ -183,43 +181,19 @@ take effect.
 channel.
 }
 
-\strong{StreamKey Endpoints}
+\strong{Playback Restriction Policy Endpoints}
 \itemize{
-\item \code{create_stream_key} — Creates a stream key,
-used to initiate a stream, for the specified channel ARN.
-\item \code{get_stream_key} — Gets stream key information
-for the specified ARN.
-\item \code{batch_get_stream_key} — Performs
-\code{get_stream_key} on multiple ARNs
-simultaneously.
-\item \code{list_stream_keys} — Gets summary
-information about stream keys for the specified channel.
-\item \code{delete_stream_key} — Deletes the stream
-key for the specified ARN, so it can no longer be used to stream.
-}
-
-\strong{Stream Endpoints}
-\itemize{
-\item \code{get_stream} — Gets information about the active
-(live) stream on a specified channel.
-\item \code{get_stream_session} — Gets metadata on a
-specified stream.
-\item \code{list_streams} — Gets summary information about
-live streams in your account, in the Amazon Web Services region
-where the API request is processed.
-\item \code{list_stream_sessions} — Gets a summary
-of current and previous streams for a specified channel in your
-account, in the AWS region where the API request is processed.
-\item \code{stop_stream} — Disconnects the incoming RTMPS
-stream for the specified channel. Can be used in conjunction with
-\code{delete_stream_key} to prevent further
-streaming to a channel.
-\item \code{put_metadata} — Inserts metadata into the
-active stream of the specified channel. At most 5 requests per
-second per channel are allowed, each with a maximum 1 KB payload.
-(If 5 TPS is not sufficient for your needs, we recommend batching
-your data into a single PutMetadata call.) At most 155 requests per
-second per account are allowed.
+\item \code{create_playback_restriction_policy}
+— Creates a new playback restriction policy, for constraining
+playback by countries and/or origins.
+\item \code{delete_playback_restriction_policy}
+— Deletes the specified playback restriction policy
+\item \code{get_playback_restriction_policy}
+— Gets the specified playback restriction policy.
+\item \code{list_playback_restriction_policies}
+— Gets summary information about playback restriction policies.
+\item \code{update_playback_restriction_policy}
+— Updates a specified playback restriction policy.
 }
 
 \strong{Private Channel Endpoints}
@@ -253,7 +227,7 @@ version.
 on multiple channel ARN and viewer ID pairs simultaneously.
 }
 
-\strong{RecordingConfiguration Endpoints}
+\strong{Recording Configuration Endpoints}
 \itemize{
 \item \code{create_recording_configuration}
 — Creates a new recording configuration, used to enable recording to
@@ -266,6 +240,45 @@ your account, in the Amazon Web Services region where the API
 request is processed.
 \item \code{delete_recording_configuration}
 — Deletes the recording configuration for the specified ARN.
+}
+
+\strong{Stream Endpoints}
+\itemize{
+\item \code{get_stream} — Gets information about the active
+(live) stream on a specified channel.
+\item \code{get_stream_session} — Gets metadata on a
+specified stream.
+\item \code{list_streams} — Gets summary information about
+live streams in your account, in the Amazon Web Services region
+where the API request is processed.
+\item \code{list_stream_sessions} — Gets a summary
+of current and previous streams for a specified channel in your
+account, in the AWS region where the API request is processed.
+\item \code{stop_stream} — Disconnects the incoming RTMPS
+stream for the specified channel. Can be used in conjunction with
+\code{delete_stream_key} to prevent further
+streaming to a channel.
+\item \code{put_metadata} — Inserts metadata into the
+active stream of the specified channel. At most 5 requests per
+second per channel are allowed, each with a maximum 1 KB payload.
+(If 5 TPS is not sufficient for your needs, we recommend batching
+your data into a single PutMetadata call.) At most 155 requests per
+second per account are allowed.
+}
+
+\strong{Stream Key Endpoints}
+\itemize{
+\item \code{create_stream_key} — Creates a stream key,
+used to initiate a stream, for the specified channel ARN.
+\item \code{get_stream_key} — Gets stream key information
+for the specified ARN.
+\item \code{batch_get_stream_key} — Performs
+\code{get_stream_key} on multiple ARNs
+simultaneously.
+\item \code{list_stream_keys} — Gets summary
+information about stream keys for the specified channel.
+\item \code{delete_stream_key} — Deletes the stream
+key for the specified ARN, so it can no longer be used to stream.
 }
 
 \strong{Amazon Web Services Tags Endpoints}
@@ -321,14 +334,17 @@ information about Amazon Web Services tags for the specified ARN.
 \link[paws.analytics:ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously\cr
 \link[paws.analytics:ivs_batch_start_viewer_session_revocation]{batch_start_viewer_session_revocation} \tab Performs StartViewerSessionRevocation on multiple channel ARN and viewer ID pairs simultaneously\cr
 \link[paws.analytics:ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming\cr
+\link[paws.analytics:ivs_create_playback_restriction_policy]{create_playback_restriction_policy} \tab Creates a new playback restriction policy, for constraining playback by countries and/or origins\cr
 \link[paws.analytics:ivs_create_recording_configuration]{create_recording_configuration} \tab Creates a new recording configuration, used to enable recording to Amazon S3\cr
 \link[paws.analytics:ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for the specified channel ARN\cr
 \link[paws.analytics:ivs_delete_channel]{delete_channel} \tab Deletes the specified channel and its associated stream keys\cr
 \link[paws.analytics:ivs_delete_playback_key_pair]{delete_playback_key_pair} \tab Deletes a specified authorization key pair\cr
+\link[paws.analytics:ivs_delete_playback_restriction_policy]{delete_playback_restriction_policy} \tab Deletes the specified playback restriction policy\cr
 \link[paws.analytics:ivs_delete_recording_configuration]{delete_recording_configuration} \tab Deletes the recording configuration for the specified ARN\cr
 \link[paws.analytics:ivs_delete_stream_key]{delete_stream_key} \tab Deletes the stream key for the specified ARN, so it can no longer be used to stream\cr
 \link[paws.analytics:ivs_get_channel]{get_channel} \tab Gets the channel configuration for the specified channel ARN\cr
 \link[paws.analytics:ivs_get_playback_key_pair]{get_playback_key_pair} \tab Gets a specified playback authorization key pair and returns the arn and fingerprint\cr
+\link[paws.analytics:ivs_get_playback_restriction_policy]{get_playback_restriction_policy} \tab Gets the specified playback restriction policy\cr
 \link[paws.analytics:ivs_get_recording_configuration]{get_recording_configuration} \tab Gets the recording configuration for the specified ARN\cr
 \link[paws.analytics:ivs_get_stream]{get_stream} \tab Gets information about the active (live) stream on a specified channel\cr
 \link[paws.analytics:ivs_get_stream_key]{get_stream_key} \tab Gets stream-key information for a specified ARN\cr
@@ -336,6 +352,7 @@ information about Amazon Web Services tags for the specified ARN.
 \link[paws.analytics:ivs_import_playback_key_pair]{import_playback_key_pair} \tab Imports the public portion of a new key pair and returns its arn and fingerprint\cr
 \link[paws.analytics:ivs_list_channels]{list_channels} \tab Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed\cr
 \link[paws.analytics:ivs_list_playback_key_pairs]{list_playback_key_pairs} \tab Gets summary information about playback key pairs\cr
+\link[paws.analytics:ivs_list_playback_restriction_policies]{list_playback_restriction_policies} \tab Gets summary information about playback restriction policies\cr
 \link[paws.analytics:ivs_list_recording_configurations]{list_recording_configurations} \tab Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed\cr
 \link[paws.analytics:ivs_list_stream_keys]{list_stream_keys} \tab Gets summary information about stream keys for the specified channel\cr
 \link[paws.analytics:ivs_list_streams]{list_streams} \tab Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed\cr
@@ -346,7 +363,8 @@ information about Amazon Web Services tags for the specified ARN.
 \link[paws.analytics:ivs_stop_stream]{stop_stream} \tab Disconnects the incoming RTMPS stream for the specified channel\cr
 \link[paws.analytics:ivs_tag_resource]{tag_resource} \tab Adds or updates tags for the Amazon Web Services resource with the specified ARN\cr
 \link[paws.analytics:ivs_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
-\link[paws.analytics:ivs_update_channel]{update_channel} \tab Updates a channel's configuration
+\link[paws.analytics:ivs_update_channel]{update_channel} \tab Updates a channel's configuration\cr
+\link[paws.analytics:ivs_update_playback_restriction_policy]{update_playback_restriction_policy} \tab Updates a specified playback restriction policy
 }
 }
 

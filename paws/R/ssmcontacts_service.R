@@ -170,7 +170,7 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .ssmcontacts$metadata <- list(
   service_name = "ssmcontacts",
-  endpoints = list("*" = list(endpoint = "ssm-contacts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-contacts.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssm-contacts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-contacts.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ssm-contacts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-contacts.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ssm-contacts.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ssm-contacts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-contacts.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ssm-contacts.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSM Contacts",
   api_version = "2021-05-03",
   signing_name = "ssm-contacts",

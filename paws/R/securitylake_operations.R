@@ -47,7 +47,7 @@ NULL
 #'       regions = list(
 #'         "string"
 #'       ),
-#'       sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'       sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'       sourceVersion = "string"
 #'     )
 #'   )
@@ -94,7 +94,7 @@ securitylake_create_aws_log_source <- function(sources) {
 #' securitylake_create_custom_log_source(configuration, eventClasses,
 #'   sourceName, sourceVersion)
 #'
-#' @param configuration The configuration for the third-party custom source.
+#' @param configuration &#91;required&#93; The configuration for the third-party custom source.
 #' @param eventClasses The Open Cybersecurity Schema Framework (OCSF) event classes which
 #' describes the type of data that the custom source will send to Security
 #' Lake. The supported event classes are:
@@ -206,7 +206,7 @@ securitylake_create_aws_log_source <- function(sources) {
 #' @rdname securitylake_create_custom_log_source
 #'
 #' @aliases securitylake_create_custom_log_source
-securitylake_create_custom_log_source <- function(configuration = NULL, eventClasses = NULL, sourceName, sourceVersion = NULL) {
+securitylake_create_custom_log_source <- function(configuration, eventClasses = NULL, sourceName, sourceVersion = NULL) {
   op <- new_operation(
     name = "CreateCustomLogSource",
     http_method = "POST",
@@ -426,7 +426,7 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
 #' securitylake_create_data_lake_organization_configuration(
 #'   autoEnableNewAccount)
 #'
-#' @param autoEnableNewAccount &#91;required&#93; Enable Security Lake with the specified configuration settings, to begin
+#' @param autoEnableNewAccount Enable Security Lake with the specified configuration settings, to begin
 #' collecting security data for new accounts in your organization.
 #'
 #' @return
@@ -440,7 +440,7 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
 #'       region = "string",
 #'       sources = list(
 #'         list(
-#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'           sourceVersion = "string"
 #'         )
 #'       )
@@ -454,7 +454,7 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
 #' @rdname securitylake_create_data_lake_organization_configuration
 #'
 #' @aliases securitylake_create_data_lake_organization_configuration
-securitylake_create_data_lake_organization_configuration <- function(autoEnableNewAccount) {
+securitylake_create_data_lake_organization_configuration <- function(autoEnableNewAccount = NULL) {
   op <- new_operation(
     name = "CreateDataLakeOrganizationConfiguration",
     http_method = "POST",
@@ -512,7 +512,7 @@ securitylake_create_data_lake_organization_configuration <- function(autoEnableN
 #'     sources = list(
 #'       list(
 #'         awsLogSource = list(
-#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'           sourceVersion = "string"
 #'         ),
 #'         customLogSource = list(
@@ -556,7 +556,7 @@ securitylake_create_data_lake_organization_configuration <- function(autoEnableN
 #'   sources = list(
 #'     list(
 #'       awsLogSource = list(
-#'         sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'         sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'         sourceVersion = "string"
 #'       ),
 #'       customLogSource = list(
@@ -715,7 +715,7 @@ securitylake_create_subscriber_notification <- function(configuration, subscribe
 #'       regions = list(
 #'         "string"
 #'       ),
-#'       sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'       sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'       sourceVersion = "string"
 #'     )
 #'   )
@@ -858,6 +858,8 @@ securitylake_delete_data_lake <- function(regions) {
 #' @usage
 #' securitylake_delete_data_lake_exception_subscription()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -903,7 +905,7 @@ securitylake_delete_data_lake_exception_subscription <- function() {
 #' securitylake_delete_data_lake_organization_configuration(
 #'   autoEnableNewAccount)
 #'
-#' @param autoEnableNewAccount &#91;required&#93; Turns off automatic enablement of Security Lake for member accounts that
+#' @param autoEnableNewAccount Turns off automatic enablement of Security Lake for member accounts that
 #' are added to an organization.
 #'
 #' @return
@@ -917,7 +919,7 @@ securitylake_delete_data_lake_exception_subscription <- function() {
 #'       region = "string",
 #'       sources = list(
 #'         list(
-#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'           sourceVersion = "string"
 #'         )
 #'       )
@@ -931,7 +933,7 @@ securitylake_delete_data_lake_exception_subscription <- function() {
 #' @rdname securitylake_delete_data_lake_organization_configuration
 #'
 #' @aliases securitylake_delete_data_lake_organization_configuration
-securitylake_delete_data_lake_organization_configuration <- function(autoEnableNewAccount) {
+securitylake_delete_data_lake_organization_configuration <- function(autoEnableNewAccount = NULL) {
   op <- new_operation(
     name = "DeleteDataLakeOrganizationConfiguration",
     http_method = "POST",
@@ -1053,6 +1055,8 @@ securitylake_delete_subscriber_notification <- function(subscriberId) {
 #' @usage
 #' securitylake_deregister_data_lake_delegated_administrator()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -1092,6 +1096,8 @@ securitylake_deregister_data_lake_delegated_administrator <- function() {
 #'
 #' @usage
 #' securitylake_get_data_lake_exception_subscription()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -1142,6 +1148,8 @@ securitylake_get_data_lake_exception_subscription <- function() {
 #' @usage
 #' securitylake_get_data_lake_organization_configuration()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1151,7 +1159,7 @@ securitylake_get_data_lake_exception_subscription <- function() {
 #'       region = "string",
 #'       sources = list(
 #'         list(
-#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'           sourceVersion = "string"
 #'         )
 #'       )
@@ -1300,7 +1308,7 @@ securitylake_get_data_lake_sources <- function(accounts = NULL, maxResults = NUL
 #'     sources = list(
 #'       list(
 #'         awsLogSource = list(
-#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'           sourceVersion = "string"
 #'         ),
 #'         customLogSource = list(
@@ -1382,8 +1390,7 @@ securitylake_get_subscriber <- function(subscriberId) {
 #' 
 #' Each pagination token expires after 24 hours. Using an expired
 #' pagination token will return an HTTP 400 InvalidToken error.
-#' @param regions List the Amazon Web Services Regions from which exceptions are
-#' retrieved.
+#' @param regions The Amazon Web Services Regions from which exceptions are retrieved.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1447,7 +1454,7 @@ securitylake_list_data_lake_exceptions <- function(maxResults = NULL, nextToken 
 #' @usage
 #' securitylake_list_data_lakes(regions)
 #'
-#' @param regions The list of regions where Security Lake is enabled.
+#' @param regions The list of Regions where Security Lake is enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1537,7 +1544,7 @@ securitylake_list_data_lakes <- function(regions = NULL) {
 #' @param maxResults The maximum number of accounts for which the log sources are displayed.
 #' @param nextToken If nextToken is returned, there are more results available. You can
 #' repeat the call using the returned token to retrieve the next page.
-#' @param regions The list of regions for which log sources are displayed.
+#' @param regions The list of Regions for which log sources are displayed.
 #' @param sources The list of sources for which log sources are displayed.
 #'
 #' @return
@@ -1552,7 +1559,7 @@ securitylake_list_data_lakes <- function(regions = NULL) {
 #'       sources = list(
 #'         list(
 #'           awsLogSource = list(
-#'             sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'             sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'             sourceVersion = "string"
 #'           ),
 #'           customLogSource = list(
@@ -1589,7 +1596,7 @@ securitylake_list_data_lakes <- function(regions = NULL) {
 #'   sources = list(
 #'     list(
 #'       awsLogSource = list(
-#'         sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'         sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'         sourceVersion = "string"
 #'       ),
 #'       customLogSource = list(
@@ -1666,7 +1673,7 @@ securitylake_list_log_sources <- function(accounts = NULL, maxResults = NULL, ne
 #'       sources = list(
 #'         list(
 #'           awsLogSource = list(
-#'             sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'             sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'             sourceVersion = "string"
 #'           ),
 #'           customLogSource = list(
@@ -1746,8 +1753,8 @@ securitylake_list_subscribers <- function(maxResults = NULL, nextToken = NULL) {
 #' @usage
 #' securitylake_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Security Lake resource to
-#' retrieve the tags for.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Security Lake resource for
+#' which you want to retrieve the tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1965,10 +1972,13 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
 #' Services Regions.
 #'
 #' @usage
-#' securitylake_update_data_lake(configurations)
+#' securitylake_update_data_lake(configurations, metaStoreManagerRoleArn)
 #'
 #' @param configurations &#91;required&#93; Specify the Region or Regions that will contribute data to the rollup
 #' region.
+#' @param metaStoreManagerRoleArn The Amazon Resource Name (ARN) used to create and update the Glue table.
+#' This table contains partitions generated by the ingestion and
+#' normalization of Amazon Web Services log sources and custom sources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2040,7 +2050,8 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
 #'         roleArn = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   metaStoreManagerRoleArn = "string"
 #' )
 #' ```
 #'
@@ -2049,14 +2060,14 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname securitylake_update_data_lake
 #'
 #' @aliases securitylake_update_data_lake
-securitylake_update_data_lake <- function(configurations) {
+securitylake_update_data_lake <- function(configurations, metaStoreManagerRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateDataLake",
     http_method = "PUT",
     http_path = "/v1/datalake",
     paginator = list()
   )
-  input <- .securitylake$update_data_lake_input(configurations = configurations)
+  input <- .securitylake$update_data_lake_input(configurations = configurations, metaStoreManagerRoleArn = metaStoreManagerRoleArn)
   output <- .securitylake$update_data_lake_output()
   config <- get_config()
   svc <- .securitylake$service(config)
@@ -2155,7 +2166,7 @@ securitylake_update_data_lake_exception_subscription <- function(exceptionTimeTo
 #'     sources = list(
 #'       list(
 #'         awsLogSource = list(
-#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'           sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'           sourceVersion = "string"
 #'         ),
 #'         customLogSource = list(
@@ -2196,7 +2207,7 @@ securitylake_update_data_lake_exception_subscription <- function(exceptionTimeTo
 #'   sources = list(
 #'     list(
 #'       awsLogSource = list(
-#'         sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA",
+#'         sourceName = "ROUTE53"|"VPC_FLOW"|"SH_FINDINGS"|"CLOUD_TRAIL_MGMT"|"LAMBDA_EXECUTION"|"S3_DATA"|"EKS_AUDIT"|"WAF",
 #'         sourceVersion = "string"
 #'       ),
 #'       customLogSource = list(

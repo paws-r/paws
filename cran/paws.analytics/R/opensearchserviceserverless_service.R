@@ -170,7 +170,7 @@ opensearchserviceserverless <- function(config = list(), credentials = list(), e
 
 .opensearchserviceserverless$metadata <- list(
   service_name = "opensearchserviceserverless",
-  endpoints = list("*" = list(endpoint = "aoss.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "aoss.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "aoss.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "aoss.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "aoss.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "aoss.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "aoss.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "aoss.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "aoss.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "aoss.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "OpenSearchServerless",
   api_version = "2021-11-01",
   signing_name = "aoss",

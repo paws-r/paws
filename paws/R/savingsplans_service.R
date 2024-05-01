@@ -5,10 +5,11 @@ NULL
 #' AWS Savings Plans
 #'
 #' @description
-#' Savings Plans are a pricing model that offer significant savings on AWS
-#' usage (for example, on Amazon EC2 instances). You commit to a consistent
-#' amount of usage, in USD per hour, for a term of 1 or 3 years, and
-#' receive a lower price for that usage. For more information, see the [AWS
+#' Savings Plans are a pricing model that offer significant savings on
+#' Amazon Web Services usage (for example, on Amazon EC2 instances). You
+#' commit to a consistent amount of usage per hour, in the specified
+#' currency, for a term of one or three years, and receive a lower price
+#' for that usage. For more information, see the [Amazon Web Services
 #' Savings Plans User
 #' Guide](https://docs.aws.amazon.com/savingsplans/latest/userguide/).
 #'
@@ -97,11 +98,12 @@ NULL
 #' \tabular{ll}{
 #'  \link[=savingsplans_create_savings_plan]{create_savings_plan} \tab Creates a Savings Plan\cr
 #'  \link[=savingsplans_delete_queued_savings_plan]{delete_queued_savings_plan} \tab Deletes the queued purchase for the specified Savings Plan\cr
-#'  \link[=savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the specified Savings Plans rates\cr
+#'  \link[=savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the rates for the specified Savings Plan\cr
 #'  \link[=savingsplans_describe_savings_plans]{describe_savings_plans} \tab Describes the specified Savings Plans\cr
-#'  \link[=savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the specified Savings Plans offering rates\cr
-#'  \link[=savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the specified Savings Plans offerings\cr
+#'  \link[=savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the offering rates for the specified Savings Plans\cr
+#'  \link[=savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the offerings for the specified Savings Plans\cr
 #'  \link[=savingsplans_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+#'  \link[=savingsplans_return_savings_plan]{return_savings_plan} \tab Returns the specified Savings Plan\cr
 #'  \link[=savingsplans_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[=savingsplans_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource
 #' }
@@ -135,7 +137,7 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .savingsplans$metadata <- list(
   service_name = "savingsplans",
-  endpoints = list("*" = list(endpoint = "savingsplans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "savingsplans.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "savingsplans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "savingsplans.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "savingsplans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "savingsplans.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "savingsplans.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "savingsplans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "savingsplans.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "savingsplans.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "savingsplans",
   api_version = "2019-06-28",
   signing_name = "savingsplans",

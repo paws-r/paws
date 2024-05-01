@@ -184,7 +184,7 @@ ecr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ecr$metadata <- list(
   service_name = "ecr",
-  endpoints = list("*" = list(endpoint = "api.ecr.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.ecr.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.ecr.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.ecr.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.ecr.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.ecr.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "api.ecr.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "api.ecr.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.ecr.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "api.ecr.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ECR",
   api_version = "2015-09-21",
   signing_name = "ecr",

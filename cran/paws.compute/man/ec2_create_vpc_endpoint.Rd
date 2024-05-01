@@ -55,7 +55,7 @@ use the default security group for the VPC.}
 \item{DnsOptions}{The DNS options for the endpoint.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{How to ensure idempotency}.}
 
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether to associate a private hosted
 zone with the specified VPC. The private hosted zone contains a record

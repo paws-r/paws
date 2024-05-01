@@ -2,21 +2,24 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_update_global_settings}
 \alias{wellarchitected_update_global_settings}
-\title{Updates whether the Amazon Web Services account is opted into
+\title{Update whether the Amazon Web Services account is opted into
 organization sharing and discovery integration features}
 \usage{
 wellarchitected_update_global_settings(
   OrganizationSharingStatus = NULL,
-  DiscoveryIntegrationStatus = NULL
+  DiscoveryIntegrationStatus = NULL,
+  JiraConfiguration = NULL
 )
 }
 \arguments{
 \item{OrganizationSharingStatus}{The status of organization sharing settings.}
 
 \item{DiscoveryIntegrationStatus}{The status of discovery support settings.}
+
+\item{JiraConfiguration}{The status of Jira integration settings.}
 }
 \description{
-Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
+Update whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
 
 See \url{https://www.paws-r-sdk.com/docs/wellarchitected_update_global_settings/} for full documentation.
 }

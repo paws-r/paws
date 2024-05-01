@@ -8,7 +8,7 @@ alias or version}
 lambda_get_provisioned_concurrency_config(FunctionName, Qualifier)
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{

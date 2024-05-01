@@ -13,7 +13,8 @@ cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
 their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, you can also use their \code{sub} in this request.}
+user pool, this value must be the \code{sub} of a local user or the username
+of a user from a third-party IdP.}
 }
 \description{
 Invalidates the identity, access, and refresh tokens that Amazon Cognito issued to a user. Call this operation with your administrative credentials when your user signs out of your app. This results in the following behavior.

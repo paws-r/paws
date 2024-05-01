@@ -2,7 +2,7 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_start_build}
 \alias{codebuild_start_build}
-\title{Starts running a build}
+\title{Starts running a build with the settings defined in the project}
 \usage{
 codebuild_start_build(
   projectName,
@@ -35,7 +35,8 @@ codebuild_start_build(
   logsConfigOverride = NULL,
   registryCredentialOverride = NULL,
   imagePullCredentialsTypeOverride = NULL,
-  debugSessionEnabled = NULL
+  debugSessionEnabled = NULL,
+  fleetOverride = NULL
 )
 }
 \arguments{
@@ -107,8 +108,9 @@ the build project.}
 \item{gitSubmodulesConfigOverride}{Information about the Git submodules configuration for this build of an
 CodeBuild build project.}
 
-\item{buildspecOverride}{A buildspec file declaration that overrides, for this build only, the
-latest one already defined in the build project.
+\item{buildspecOverride}{A buildspec file declaration that overrides the latest one defined in
+the build project, for this build only. The buildspec defined on the
+project is not changed.
 
 If this value is set, it can be either an inline buildspec definition,
 the path to an alternate buildspec file relative to the value of the
@@ -118,7 +120,13 @@ build project. Specify the buildspec file using its ARN (for example,
 \code{arn:aws:s3:::my-codebuild-sample2/buildspec.yml}). If this value is not
 provided or is set to an empty string, the source code must contain a
 buildspec file in its root directory. For more information, see
-\href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage}{Buildspec File Name and Storage Location}.}
+\href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage}{Buildspec File Name and Storage Location}.
+
+Since this property allows you to change the build commands that will
+run in the container, you should note that an IAM principal with the
+ability to call this API and set this parameter can override the default
+settings. Moreover, we encourage that you use a trustworthy buildspec
+location like a file in your source repository or a Amazon S3 bucket.}
 
 \item{insecureSslOverride}{Enable this flag to override the insecure SSL setting that is specified
 in the build project. The insecure SSL setting determines whether to
@@ -210,9 +218,12 @@ must use \code{CODEBUILD} credentials.}
 
 \item{debugSessionEnabled}{Specifies if session debugging is enabled for this build. For more
 information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html}{Viewing a running build in Session Manager}.}
+
+\item{fleetOverride}{A ProjectFleet object specified for this build that overrides the one
+defined in the build project.}
 }
 \description{
-Starts running a build.
+Starts running a build with the settings defined in the project. These setting include: how to run a build, where to get the source code, which build environment to use, which build commands to run, and where to store the build output.
 
 See \url{https://www.paws-r-sdk.com/docs/codebuild_start_build/} for full documentation.
 }

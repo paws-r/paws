@@ -9,7 +9,8 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact(
   ProductId,
   ProvisioningArtifactId,
   ServiceActionId,
-  AcceptLanguage = NULL
+  AcceptLanguage = NULL,
+  IdempotencyToken = NULL
 )
 }
 \arguments{
@@ -25,6 +26,11 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact(
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple
+requests from the same Amazon Web Services account use the same
+idempotency token, the same response is returned for each repeated
+request.}
 }
 \description{
 Disassociates the specified self-service action association from the specified provisioning artifact.

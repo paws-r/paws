@@ -216,6 +216,7 @@ NULL
 #'  \link[=redshift_get_reserved_node_exchange_configuration_options]{get_reserved_node_exchange_configuration_options} \tab Gets the configuration options for the reserved-node exchange\cr
 #'  \link[=redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
 #'  \link[=redshift_get_resource_policy]{get_resource_policy} \tab Get the resource policy for a specified resource\cr
+#'  \link[=redshift_list_recommendations]{list_recommendations} \tab List the Amazon Redshift Advisor recommendations for one or multiple Amazon Redshift clusters in an Amazon Web Services account\cr
 #'  \link[=redshift_modify_aqua_configuration]{modify_aqua_configuration} \tab This operation is retired\cr
 #'  \link[=redshift_modify_authentication_profile]{modify_authentication_profile} \tab Modifies an authentication profile\cr
 #'  \link[=redshift_modify_cluster]{modify_cluster} \tab Modifies the settings for a cluster\cr
@@ -280,7 +281,7 @@ redshift <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .redshift$metadata <- list(
   service_name = "redshift",
-  endpoints = list("*" = list(endpoint = "redshift.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "redshift.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "redshift.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "redshift.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "redshift.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "redshift.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Redshift",
   api_version = "2012-12-01",
   signing_name = "redshift",

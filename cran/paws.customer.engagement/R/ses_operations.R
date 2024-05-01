@@ -649,6 +649,8 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ses_describe_active_receipt_rule_set/](https://www.paws-r-sdk.com/docs/ses_describe_active_receipt_rule_set/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname ses_describe_active_receipt_rule_set
@@ -1216,6 +1218,8 @@ ses_list_identity_policies <- function(Identity) {
 #' Lists the IP address filters associated with your Amazon Web Services account in the current Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ses_list_receipt_filters/](https://www.paws-r-sdk.com/docs/ses_list_receipt_filters/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

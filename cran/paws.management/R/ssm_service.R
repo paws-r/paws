@@ -155,13 +155,14 @@ NULL
 #'  \link[=ssm_describe_available_patches]{describe_available_patches} \tab Lists all patches eligible to be included in a patch baseline\cr
 #'  \link[=ssm_describe_document]{describe_document} \tab Describes the specified Amazon Web Services Systems Manager document (SSM document)\cr
 #'  \link[=ssm_describe_document_permission]{describe_document_permission} \tab Describes the permissions for a Amazon Web Services Systems Manager document (SSM document)\cr
-#'  \link[=ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the managed node(s)\cr
+#'  \link[=ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the managed nodes\cr
 #'  \link[=ssm_describe_effective_patches_for_patch_baseline]{describe_effective_patches_for_patch_baseline} \tab Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline\cr
-#'  \link[=ssm_describe_instance_associations_status]{describe_instance_associations_status} \tab The status of the associations for the managed node(s)\cr
+#'  \link[=ssm_describe_instance_associations_status]{describe_instance_associations_status} \tab The status of the associations for the managed nodes\cr
 #'  \link[=ssm_describe_instance_information]{describe_instance_information} \tab Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address\cr
 #'  \link[=ssm_describe_instance_patches]{describe_instance_patches} \tab Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node\cr
 #'  \link[=ssm_describe_instance_patch_states]{describe_instance_patch_states} \tab Retrieves the high-level patch state of one or more managed nodes\cr
 #'  \link[=ssm_describe_instance_patch_states_for_patch_group]{describe_instance_patch_states_for_patch_group} \tab Retrieves the high-level patch state for the managed nodes in the specified patch group\cr
+#'  \link[=ssm_describe_instance_properties]{describe_instance_properties} \tab An API operation used by the Systems Manager console to display information about Systems Manager managed nodes\cr
 #'  \link[=ssm_describe_inventory_deletions]{describe_inventory_deletions} \tab Describes a specific delete inventory operation\cr
 #'  \link[=ssm_describe_maintenance_window_executions]{describe_maintenance_window_executions} \tab Lists the executions of a maintenance window\cr
 #'  \link[=ssm_describe_maintenance_window_execution_task_invocations]{describe_maintenance_window_execution_task_invocations} \tab Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution\cr
@@ -172,7 +173,7 @@ NULL
 #'  \link[=ssm_describe_maintenance_window_targets]{describe_maintenance_window_targets} \tab Lists the targets registered with the maintenance window\cr
 #'  \link[=ssm_describe_maintenance_window_tasks]{describe_maintenance_window_tasks} \tab Lists the tasks in a maintenance window\cr
 #'  \link[=ssm_describe_ops_items]{describe_ops_items} \tab Query a set of OpsItems\cr
-#'  \link[=ssm_describe_parameters]{describe_parameters} \tab Get information about a parameter\cr
+#'  \link[=ssm_describe_parameters]{describe_parameters} \tab Lists the parameters in your Amazon Web Services account or the parameters shared with you when you enable the Shared option\cr
 #'  \link[=ssm_describe_patch_baselines]{describe_patch_baselines} \tab Lists the patch baselines in your Amazon Web Services account\cr
 #'  \link[=ssm_describe_patch_groups]{describe_patch_groups} \tab Lists all patch groups that have been registered with patch baselines\cr
 #'  \link[=ssm_describe_patch_group_state]{describe_patch_group_state} \tab Returns high-level aggregated patch compliance state information for a patch group\cr
@@ -287,7 +288,7 @@ ssm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ssm$metadata <- list(
   service_name = "ssm",
-  endpoints = list("*" = list(endpoint = "ssm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ssm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ssm.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ssm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ssm.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSM",
   api_version = "2014-11-06",
   signing_name = "ssm",

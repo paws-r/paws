@@ -20,8 +20,7 @@ sagemaker_create_image_version(
 }
 \arguments{
 \item{BaseImage}{[required] The registry path of the container image to use as the starting point
-for this version. The path is an Amazon Elastic Container Registry (ECR)
-URI in the following format:
+for this version. The path is an Amazon ECR URI in the following format:
 
 \verb{<acct-id>.dkr.ecr.<region>.amazonaws.com/<repo-name[:tag] or [@digest]>}}
 
@@ -70,7 +69,7 @@ notebook kernels.
 \item{ReleaseNotes}{The maintainer description of the image version.}
 }
 \description{
-Creates a version of the SageMaker image specified by \code{ImageName}. The version represents the Amazon Elastic Container Registry (ECR) container image specified by \code{BaseImage}.
+Creates a version of the SageMaker image specified by \code{ImageName}. The version represents the Amazon ECR container image specified by \code{BaseImage}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/} for full documentation.
 }

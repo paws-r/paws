@@ -2,17 +2,23 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_list_clusters}
 \alias{docdbelastic_list_clusters}
-\title{Returns information about provisioned Elastic DocumentDB clusters}
+\title{Returns information about provisioned Amazon DocumentDB elastic clusters}
 \usage{
 docdbelastic_list_clusters(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of entries to recieve in the response.}
+\item{maxResults}{The maximum number of elastic cluster snapshot results to receive in the
+response.}
 
-\item{nextToken}{The nextToken which is used the get the next page of data.}
+\item{nextToken}{A pagination token provided by a previous request. If this parameter is
+specified, the response includes only records beyond this token, up to
+the value specified by \code{max-results}.
+
+If there is no more data in the responce, the \code{nextToken} will not be
+returned.}
 }
 \description{
-Returns information about provisioned Elastic DocumentDB clusters.
+Returns information about provisioned Amazon DocumentDB elastic clusters.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_list_clusters/} for full documentation.
 }

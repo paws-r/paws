@@ -169,7 +169,7 @@ gluedatabrew <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .gluedatabrew$metadata <- list(
   service_name = "gluedatabrew",
-  endpoints = list("*" = list(endpoint = "databrew.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "databrew.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "databrew.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "databrew.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "databrew.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "databrew.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "databrew.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "databrew.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "databrew.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "databrew.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "DataBrew",
   api_version = "2017-07-25",
   signing_name = "databrew",

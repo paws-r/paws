@@ -22,19 +22,21 @@ bedrock_create_model_customization_job(
 )
 }
 \arguments{
-\item{jobName}{[required] Enter a unique name for the fine-tuning job.}
+\item{jobName}{[required] A name for the fine-tuning job.}
 
-\item{customModelName}{[required] Enter a name for the custom model.}
+\item{customModelName}{[required] A name for the resulting custom model.}
 
-\item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon Bedrock can
-assume to perform tasks on your behalf. For example, during model
-training, Amazon Bedrock needs your permission to read input data from
-an S3 bucket, write model artifacts to an S3 bucket. To pass this role
-to Amazon Bedrock, the caller of this API must have the \code{iam:PassRole}
-permission.}
+\item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM service role that Amazon
+Bedrock can assume to perform tasks on your behalf. For example, during
+model training, Amazon Bedrock needs your permission to read input data
+from an S3 bucket, write model artifacts to an S3 bucket. To pass this
+role to Amazon Bedrock, the caller of this API must have the
+\code{iam:PassRole} permission.}
 
-\item{clientRequestToken}{Unique token value that you can provide. The GetModelCustomizationJob
-response includes the same token value.}
+\item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
+completes no more than one time. If this token matches a previous
+request, Amazon Bedrock ignores the request, but does not return an
+error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{baseModelIdentifier}{[required] Name of the base model.}
 
@@ -42,9 +44,9 @@ response includes the same token value.}
 
 \item{customModelKmsKeyId}{The custom model is encrypted at rest using this key.}
 
-\item{jobTags}{Assign tags to the job.}
+\item{jobTags}{Tags to attach to the job.}
 
-\item{customModelTags}{Assign tags to the custom model.}
+\item{customModelTags}{Tags to attach to the resulting custom model.}
 
 \item{trainingDataConfig}{[required] Information about the training dataset.}
 
@@ -52,7 +54,8 @@ response includes the same token value.}
 
 \item{outputDataConfig}{[required] S3 location for the output data.}
 
-\item{hyperParameters}{[required] Parameters related to tuning the model.}
+\item{hyperParameters}{[required] Parameters related to tuning the model. For details on the format for
+different models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html}{Custom model hyperparameters}.}
 
 \item{vpcConfig}{VPC configuration (optional). Configuration parameters for the private
 Virtual Private Cloud (VPC) that contains the resources you are using

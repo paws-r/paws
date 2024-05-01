@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_describe_application}
 \alias{kinesisanalyticsv2_describe_application}
-\title{Returns information about a specific Kinesis Data Analytics application}
+\title{Returns information about a specific Managed Service for Apache Flink
+application}
 \usage{
 kinesisanalyticsv2_describe_application(
   ApplicationName,
@@ -12,11 +13,11 @@ kinesisanalyticsv2_describe_application(
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
 
-\item{IncludeAdditionalDetails}{Displays verbose information about a Kinesis Data Analytics application,
-including the application's job plan.}
+\item{IncludeAdditionalDetails}{Displays verbose information about a Managed Service for Apache Flink
+application, including the application's job plan.}
 }
 \description{
-Returns information about a specific Kinesis Data Analytics application.
+Returns information about a specific Managed Service for Apache Flink application.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application/} for full documentation.
 }

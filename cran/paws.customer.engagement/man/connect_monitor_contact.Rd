@@ -22,7 +22,7 @@ instanceId in the ARN of the instance.}
 
 \item{AllowedMonitorCapabilities}{Specify which monitoring actions the user is allowed to take. For
 example, whether the user is allowed to escalate from silent monitoring
-to barge.}
+to barge. AllowedMonitorCapabilities is required if barge is enabled.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK

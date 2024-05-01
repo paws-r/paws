@@ -820,7 +820,7 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 #'
 #' @usage
 #' lakeformation_create_lake_formation_identity_center_configuration(
-#'   CatalogId, InstanceArn, ExternalFiltering)
+#'   CatalogId, InstanceArn, ExternalFiltering, ShareRecipients)
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -832,6 +832,15 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 #' Services General Reference.
 #' @param ExternalFiltering A list of the account IDs of Amazon Web Services accounts of third-party
 #' applications that are allowed to access data managed by Lake Formation.
+#' @param ShareRecipients A list of Amazon Web Services account IDs and/or Amazon Web Services
+#' organization/organizational unit ARNs that are allowed to access data
+#' managed by Lake Formation.
+#' 
+#' If the `ShareRecipients` list includes valid values, a resource share is
+#' created with the principals you want to have access to the resources.
+#' 
+#' If the `ShareRecipients` value is null or the list is empty, no resource
+#' share is created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -851,6 +860,11 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 #'     AuthorizedTargets = list(
 #'       "string"
 #'     )
+#'   ),
+#'   ShareRecipients = list(
+#'     list(
+#'       DataLakePrincipalIdentifier = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -860,14 +874,14 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 #' @rdname lakeformation_create_lake_format_identi_center_config
 #'
 #' @aliases lakeformation_create_lake_formation_identity_center_configuration
-lakeformation_create_lake_formation_identity_center_configuration <- function(CatalogId = NULL, InstanceArn = NULL, ExternalFiltering = NULL) {
+lakeformation_create_lake_formation_identity_center_configuration <- function(CatalogId = NULL, InstanceArn = NULL, ExternalFiltering = NULL, ShareRecipients = NULL) {
   op <- new_operation(
     name = "CreateLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
     http_path = "/CreateLakeFormationIdentityCenterConfiguration",
     paginator = list()
   )
-  input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering)
+  input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering, ShareRecipients = ShareRecipients)
   output <- .lakeformation$create_lake_formation_identity_center_configuration_output()
   config <- get_config()
   svc <- .lakeformation$service(config)
@@ -1370,7 +1384,13 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #'     AuthorizedTargets = list(
 #'       "string"
 #'     )
-#'   )
+#'   ),
+#'   ShareRecipients = list(
+#'     list(
+#'       DataLakePrincipalIdentifier = "string"
+#'     )
+#'   ),
+#'   ResourceShare = "string"
 #' )
 #' ```
 #'
@@ -4347,12 +4367,25 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #'
 #' @usage
 #' lakeformation_update_lake_formation_identity_center_configuration(
-#'   CatalogId, ApplicationStatus, ExternalFiltering)
+#'   CatalogId, ShareRecipients, ApplicationStatus, ExternalFiltering)
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
 #' definitions, table definitions, view definitions, and other control
 #' information to manage your Lake Formation environment.
+#' @param ShareRecipients A list of Amazon Web Services account IDs or Amazon Web Services
+#' organization/organizational unit ARNs that are allowed to access to
+#' access data managed by Lake Formation.
+#' 
+#' If the `ShareRecipients` list includes valid values, then the resource
+#' share is updated with the principals you want to have access to the
+#' resources.
+#' 
+#' If the `ShareRecipients` value is null, both the list of share
+#' recipients and the resource share remain unchanged.
+#' 
+#' If the `ShareRecipients` value is an empty list, then the existing share
+#' recipients list will be cleared, and the resource share will be deleted.
 #' @param ApplicationStatus Allows to enable or disable the IAM Identity Center connection.
 #' @param ExternalFiltering A list of the account IDs of Amazon Web Services accounts of third-party
 #' applications that are allowed to access data managed by Lake Formation.
@@ -4364,6 +4397,11 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' ```
 #' svc$update_lake_formation_identity_center_configuration(
 #'   CatalogId = "string",
+#'   ShareRecipients = list(
+#'     list(
+#'       DataLakePrincipalIdentifier = "string"
+#'     )
+#'   ),
 #'   ApplicationStatus = "ENABLED"|"DISABLED",
 #'   ExternalFiltering = list(
 #'     Status = "ENABLED"|"DISABLED",
@@ -4379,14 +4417,14 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' @rdname lakeformation_update_lake_format_identi_center_config
 #'
 #' @aliases lakeformation_update_lake_formation_identity_center_configuration
-lakeformation_update_lake_formation_identity_center_configuration <- function(CatalogId = NULL, ApplicationStatus = NULL, ExternalFiltering = NULL) {
+lakeformation_update_lake_formation_identity_center_configuration <- function(CatalogId = NULL, ShareRecipients = NULL, ApplicationStatus = NULL, ExternalFiltering = NULL) {
   op <- new_operation(
     name = "UpdateLakeFormationIdentityCenterConfiguration",
     http_method = "POST",
     http_path = "/UpdateLakeFormationIdentityCenterConfiguration",
     paginator = list()
   )
-  input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
+  input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ShareRecipients = ShareRecipients, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
   output <- .lakeformation$update_lake_formation_identity_center_configuration_output()
   config <- get_config()
   svc <- .lakeformation$service(config)

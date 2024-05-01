@@ -192,7 +192,7 @@ cloudwatchevents <- function(config = list(), credentials = list(), endpoint = N
 
 .cloudwatchevents$metadata <- list(
   service_name = "events",
-  endpoints = list("*" = list(endpoint = "events.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "events.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "events.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "events.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "events.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "events.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "events.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "events.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "events.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "events.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CloudWatch Events",
   api_version = "2015-10-07",
   signing_name = "events",

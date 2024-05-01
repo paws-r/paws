@@ -246,6 +246,8 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/xray_get_encryption_config/](https://www.paws-r-sdk.com/docs/xray_get_encryption_config/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname xray_get_encryption_config

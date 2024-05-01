@@ -2,8 +2,8 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_describe_tapes}
 \alias{storagegateway_describe_tapes}
-\title{Returns a description of the specified Amazon Resource Name (ARN) of
-virtual tapes}
+\title{Returns a description of virtual tapes that correspond to the specified
+Amazon Resource Names (ARNs)}
 \usage{
 storagegateway_describe_tapes(
   GatewayARN,
@@ -32,7 +32,7 @@ specified number.
 Amazon Web Services may impose its own limit, if this field is not set.}
 }
 \description{
-Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a \code{TapeARN} is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway type.
+Returns a description of virtual tapes that correspond to the specified Amazon Resource Names (ARNs). If \code{TapeARN} is not specified, returns a description of the virtual tapes associated with the specified gateway. This operation is only supported for the tape gateway type.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_tapes/} for full documentation.
 }

@@ -5,12 +5,19 @@
 \title{Starts table data replication to the specified Kinesis data stream at a
 timestamp chosen during the enable workflow}
 \usage{
-dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
+dynamodb_enable_kinesis_streaming_destination(
+  TableName,
+  StreamArn,
+  EnableKinesisStreamingConfiguration = NULL
+)
 }
 \arguments{
-\item{TableName}{[required] The name of the DynamoDB table.}
+\item{TableName}{[required] The name of the DynamoDB table. You can also provide the Amazon Resource
+Name (ARN) of the table in this parameter.}
 
 \item{StreamArn}{[required] The ARN for a Kinesis data stream.}
+
+\item{EnableKinesisStreamingConfiguration}{The source for the Kinesis streaming information that is being enabled.}
 }
 \description{
 Starts table data replication to the specified Kinesis data stream at a timestamp chosen during the enable workflow. If this operation doesn't return results immediately, use DescribeKinesisStreamingDestination to check if streaming to the Kinesis data stream is ACTIVE.

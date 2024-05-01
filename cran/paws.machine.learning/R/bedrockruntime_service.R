@@ -5,7 +5,8 @@ NULL
 #' Amazon Bedrock Runtime
 #'
 #' @description
-#' Describes the API operations for running inference using Bedrock models.
+#' Describes the API operations for running inference using Amazon Bedrock
+#' models.
 #'
 #' @param
 #' config
@@ -90,8 +91,8 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Bedrock model to run inference using the input provided in the request body\cr
-#'  \link[=bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Bedrock model to run inference using the input provided
+#'  \link[=bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body\cr
+#'  \link[=bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body
 #' }
 #'
 #' @return
@@ -123,7 +124,7 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
 
 .bedrockruntime$metadata <- list(
   service_name = "bedrockruntime",
-  endpoints = list("*" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "bedrock-runtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "bedrock-runtime.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "bedrock-runtime.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "bedrock-runtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "bedrock-runtime.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "bedrock-runtime.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Bedrock Runtime",
   api_version = "2023-09-30",
   signing_name = "bedrock",

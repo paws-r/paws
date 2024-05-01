@@ -18,14 +18,14 @@ idempotency of the request.}
 
 \item{experimentTemplateId}{[required] The experiment template ID.}
 
-\item{accountId}{[required] The AWS account ID of the target account.}
+\item{accountId}{[required] The Amazon Web Services account ID of the target account.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM role for the target account.}
 
 \item{description}{The description of the target account.}
 }
 \description{
-Creates a target account configuration for the experiment template. A target account configuration is required when \code{accountTargeting} of \code{experimentOptions} is set to \code{multi-account}. For more information, see \href{https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html}{experiment options} in the \emph{Fault Injection Simulator User Guide}.
+Creates a target account configuration for the experiment template. A target account configuration is required when \code{accountTargeting} of \code{experimentOptions} is set to \code{multi-account}. For more information, see \href{https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html}{experiment options} in the \emph{Fault Injection Service User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/fis_create_target_account_configuration/} for full documentation.
 }

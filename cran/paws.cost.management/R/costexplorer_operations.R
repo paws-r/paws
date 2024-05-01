@@ -406,6 +406,42 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 }
 .costexplorer$operations$get_anomaly_subscriptions <- costexplorer_get_anomaly_subscriptions
 
+#' Retrieves estimated usage records for hourly granularity or
+#' resource-level data at daily granularity
+#'
+#' @description
+#' Retrieves estimated usage records for hourly granularity or resource-level data at daily granularity.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_approximate_usage_records/](https://www.paws-r-sdk.com/docs/costexplorer_get_approximate_usage_records/) for full documentation.
+#'
+#' @param Granularity &#91;required&#93; How granular you want the data to be. You can enable data at hourly or
+#' daily granularity.
+#' @param Services The service metadata for the service or services you want to query. If
+#' not specified, all elements are returned.
+#' @param ApproximationDimension &#91;required&#93; The service to evaluate for the usage records. You can choose
+#' resource-level data at daily granularity, or hourly granularity with or
+#' without resource-level data.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_approximate_usage_records
+costexplorer_get_approximate_usage_records <- function(Granularity, Services = NULL, ApproximationDimension) {
+  op <- new_operation(
+    name = "GetApproximateUsageRecords",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$get_approximate_usage_records_input(Granularity = Granularity, Services = Services, ApproximationDimension = ApproximationDimension)
+  output <- .costexplorer$get_approximate_usage_records_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_approximate_usage_records <- costexplorer_get_approximate_usage_records
+
 #' Retrieves cost and usage metrics for your account
 #'
 #' @description
@@ -490,7 +526,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' Retrieves cost and usage metrics with resources for your account
 #'
 #' @description
-#' Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related metric, such as `BlendedCosts` or `UsageQuantity`, that you want the request to return. You can also filter and group your data by various dimensions, such as `SERVICE` or `AZ`, in a specific time range. For a complete list of valid dimensions, see the [`get_dimension_values`][costexplorer_get_dimension_values] operation. Management account in an organization in Organizations have access to all member accounts. This API is currently available for the Amazon Elastic Compute Cloud – Compute service only.
+#' Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related metric, such as `BlendedCosts` or `UsageQuantity`, that you want the request to return. You can also filter and group your data by various dimensions, such as `SERVICE` or `AZ`, in a specific time range. For a complete list of valid dimensions, see the [`get_dimension_values`][costexplorer_get_dimension_values] operation. Management account in an organization in Organizations have access to all member accounts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage_with_resources/](https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage_with_resources/) for full documentation.
 #'
@@ -1822,6 +1858,39 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 }
 .costexplorer$operations$get_usage_forecast <- costexplorer_get_usage_forecast
 
+#' Retrieves a list of your historical cost allocation tag backfill
+#' requests
+#'
+#' @description
+#' Retrieves a list of your historical cost allocation tag backfill requests.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_list_cost_allocation_tag_backfill_history/](https://www.paws-r-sdk.com/docs/costexplorer_list_cost_allocation_tag_backfill_history/) for full documentation.
+#'
+#' @param NextToken The token to retrieve the next set of results. Amazon Web Services
+#' provides the token when the response from a previous call has more
+#' results than the maximum page size.
+#' @param MaxResults The maximum number of objects that are returned for this request.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_list_cost_allocation_tag_backfill_history
+costexplorer_list_cost_allocation_tag_backfill_history <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCostAllocationTagBackfillHistory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .costexplorer$list_cost_allocation_tag_backfill_history_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .costexplorer$list_cost_allocation_tag_backfill_history_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$list_cost_allocation_tag_backfill_history <- costexplorer_list_cost_allocation_tag_backfill_history
+
 #' Get a list of cost allocation tags
 #'
 #' @description
@@ -1994,12 +2063,45 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 }
 .costexplorer$operations$provide_anomaly_feedback <- costexplorer_provide_anomaly_feedback
 
+#' Request a cost allocation tag backfill
+#'
+#' @description
+#' Request a cost allocation tag backfill. This will backfill the activation status (either `active` or `inactive`) for all tag keys from `para:BackfillFrom` up to the when this request is made.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_start_cost_allocation_tag_backfill/](https://www.paws-r-sdk.com/docs/costexplorer_start_cost_allocation_tag_backfill/) for full documentation.
+#'
+#' @param BackfillFrom &#91;required&#93; The date you want the backfill to start from. The date can only be a
+#' first day of the month (a billing start date). Dates can't precede the
+#' previous twelve months, or in the future.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_start_cost_allocation_tag_backfill
+costexplorer_start_cost_allocation_tag_backfill <- function(BackfillFrom) {
+  op <- new_operation(
+    name = "StartCostAllocationTagBackfill",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$start_cost_allocation_tag_backfill_input(BackfillFrom = BackfillFrom)
+  output <- .costexplorer$start_cost_allocation_tag_backfill_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$start_cost_allocation_tag_backfill <- costexplorer_start_cost_allocation_tag_backfill
+
 #' Requests a Savings Plans recommendation generation
 #'
 #' @description
 #' Requests a Savings Plans recommendation generation. This enables you to calculate a fresh set of Savings Plans recommendations that takes your latest usage data and current Savings Plans inventory into account. You can refresh Savings Plans recommendations up to three times daily for a consolidated billing family.
 #'
 #' See [https://www.paws-r-sdk.com/docs/costexplorer_start_savings_plans_purchase_recommendation_generation/](https://www.paws-r-sdk.com/docs/costexplorer_start_savings_plans_purchase_recommendation_generation/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

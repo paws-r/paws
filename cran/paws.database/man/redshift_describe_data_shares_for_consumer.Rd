@@ -13,8 +13,8 @@ redshift_describe_data_shares_for_consumer(
 )
 }
 \arguments{
-\item{ConsumerArn}{The Amazon Resource Name (ARN) of the consumer that returns in the list
-of datashares.}
+\item{ConsumerArn}{The Amazon Resource Name (ARN) of the consumer namespace that returns in
+the list of datashares.}
 
 \item{Status}{An identifier giving the status of a datashare in the consumer cluster.
 If this field is specified, Amazon Redshift returns the list of

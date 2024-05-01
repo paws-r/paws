@@ -15,7 +15,8 @@ firehose_update_destination(
   AmazonopensearchserviceDestinationUpdate = NULL,
   SplunkDestinationUpdate = NULL,
   HttpEndpointDestinationUpdate = NULL,
-  AmazonOpenSearchServerlessDestinationUpdate = NULL
+  AmazonOpenSearchServerlessDestinationUpdate = NULL,
+  SnowflakeDestinationUpdate = NULL
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ configuration.}
 
 \item{AmazonOpenSearchServerlessDestinationUpdate}{Describes an update for a destination in the Serverless offering for
 Amazon OpenSearch Service.}
+
+\item{SnowflakeDestinationUpdate}{Update to the Snowflake destination condiguration settings}
 }
 \description{
 Updates the specified destination of the specified delivery stream.

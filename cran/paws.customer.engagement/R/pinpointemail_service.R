@@ -201,7 +201,7 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 
 .pinpointemail$metadata <- list(
   service_name = "pinpointemail",
-  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "email.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "email.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Pinpoint Email",
   api_version = "2018-07-26",
   signing_name = "ses",

@@ -15,7 +15,8 @@ dynamodb_list_backups(
 )
 }
 \arguments{
-\item{TableName}{The backups from the table specified by \code{TableName} are listed.}
+\item{TableName}{Lists the backups from the table specified in \code{TableName}. You can also
+provide the Amazon Resource Name (ARN) of the table in this parameter.}
 
 \item{Limit}{Maximum number of backups to return at once.}
 

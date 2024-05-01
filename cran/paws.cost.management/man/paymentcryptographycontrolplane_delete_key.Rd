@@ -6,14 +6,14 @@
 Services Payment Cryptography key}
 \usage{
 paymentcryptographycontrolplane_delete_key(
-  DeleteKeyInDays = NULL,
-  KeyIdentifier
+  KeyIdentifier,
+  DeleteKeyInDays = NULL
 )
 }
 \arguments{
-\item{DeleteKeyInDays}{The waiting period for key deletion. The default value is seven days.}
-
 \item{KeyIdentifier}{[required] The \code{KeyARN} of the key that is scheduled for deletion.}
+
+\item{DeleteKeyInDays}{The waiting period for key deletion. The default value is seven days.}
 }
 \description{
 Deletes the key material and metadata associated with Amazon Web Services Payment Cryptography key.

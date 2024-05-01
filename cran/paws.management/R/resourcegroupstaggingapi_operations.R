@@ -10,6 +10,8 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_describe_report_creation/](https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_describe_report_creation/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_describe_report_creation

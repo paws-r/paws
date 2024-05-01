@@ -21,7 +21,14 @@ connect_create_user(
 \item{Username}{[required] The user name for the account. For instances not using SAML for identity
 management, the user name can include up to 20 characters. If you are
 using SAML for identity management, the user name can include up to 64
-characters from [a-zA-Z0-9_-.\\@]+.}
+characters from [a-zA-Z0-9_-.\\@]+.
+
+Username can include @ only if used in an email format. For example:
+\itemize{
+\item Correct: testuser
+\item Correct: testuser@example.com
+\item Incorrect: testuser@example
+}}
 
 \item{Password}{The password for the user account. A password is required if you are
 using Amazon Connect for identity management. Otherwise, it is an error

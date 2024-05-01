@@ -2,26 +2,29 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_create_cluster}
 \alias{docdbelastic_create_cluster}
-\title{Creates a new Elastic DocumentDB cluster and returns its Cluster
+\title{Creates a new Amazon DocumentDB elastic cluster and returns its cluster
 structure}
 \usage{
 docdbelastic_create_cluster(
   adminUserName,
   adminUserPassword,
   authType,
+  backupRetentionPeriod = NULL,
   clientToken = NULL,
   clusterName,
   kmsKeyId = NULL,
+  preferredBackupWindow = NULL,
   preferredMaintenanceWindow = NULL,
   shardCapacity,
   shardCount,
+  shardInstanceCount = NULL,
   subnetIds = NULL,
   tags = NULL,
   vpcSecurityGroupIds = NULL
 )
 }
 \arguments{
-\item{adminUserName}{[required] The name of the Elastic DocumentDB cluster administrator.
+\item{adminUserName}{[required] The name of the Amazon DocumentDB elastic clusters administrator.
 
 \emph{Constraints}:
 \itemize{
@@ -30,8 +33,8 @@ docdbelastic_create_cluster(
 \item Cannot be a reserved word.
 }}
 
-\item{adminUserPassword}{[required] The password for the Elastic DocumentDB cluster administrator and can
-contain any printable ASCII characters.
+\item{adminUserPassword}{[required] The password for the Amazon DocumentDB elastic clusters administrator.
+The password can contain any printable ASCII characters.
 
 \emph{Constraints}:
 \itemize{
@@ -40,12 +43,16 @@ contain any printable ASCII characters.
 symbol (@).
 }}
 
-\item{authType}{[required] The authentication type for the Elastic DocumentDB cluster.}
+\item{authType}{[required] The authentication type used to determine where to fetch the password
+used for accessing the elastic cluster. Valid types are \code{PLAIN_TEXT} or
+\code{SECRET_ARN}.}
 
-\item{clientToken}{The client token for the Elastic DocumentDB cluster.}
+\item{backupRetentionPeriod}{The number of days for which automatic snapshots are retained.}
 
-\item{clusterName}{[required] The name of the new Elastic DocumentDB cluster. This parameter is stored
-as a lowercase string.
+\item{clientToken}{The client token for the elastic cluster.}
+
+\item{clusterName}{[required] The name of the new elastic cluster. This parameter is stored as a
+lowercase string.
 
 \emph{Constraints}:
 \itemize{
@@ -56,17 +63,20 @@ as a lowercase string.
 
 \emph{Example}: \code{my-cluster}}
 
-\item{kmsKeyId}{The KMS key identifier to use to encrypt the new Elastic DocumentDB
-cluster.
+\item{kmsKeyId}{The KMS key identifier to use to encrypt the new elastic cluster.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are creating a cluster using the same Amazon
 account that owns this KMS encryption key, you can use the KMS key alias
 instead of the ARN as the KMS encryption key.
 
-If an encryption key is not specified, Elastic DocumentDB uses the
+If an encryption key is not specified, Amazon DocumentDB uses the
 default encryption key that KMS creates for your account. Your account
 has a different default encryption key for each Amazon Region.}
+
+\item{preferredBackupWindow}{The daily time range during which automated backups are created if
+automated backups are enabled, as determined by the
+\code{backupRetentionPeriod}.}
 
 \item{preferredMaintenanceWindow}{The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC).
@@ -81,19 +91,25 @@ the week.
 
 \emph{Constraints}: Minimum 30-minute window.}
 
-\item{shardCapacity}{[required] The capacity of each shard in the new Elastic DocumentDB cluster.}
+\item{shardCapacity}{[required] The number of vCPUs assigned to each elastic cluster shard. Maximum is
+64. Allowed values are 2, 4, 8, 16, 32, 64.}
 
-\item{shardCount}{[required] The number of shards to create in the new Elastic DocumentDB cluster.}
+\item{shardCount}{[required] The number of shards assigned to the elastic cluster. Maximum is 32.}
 
-\item{subnetIds}{The Amazon EC2 subnet IDs for the new Elastic DocumentDB cluster.}
+\item{shardInstanceCount}{The number of replica instances applying to all shards in the elastic
+cluster. A \code{shardInstanceCount} value of 1 means there is one writer
+instance, and any additional instances are replicas that can be used for
+reads and to improve availability.}
 
-\item{tags}{The tags to be assigned to the new Elastic DocumentDB cluster.}
+\item{subnetIds}{The Amazon EC2 subnet IDs for the new elastic cluster.}
 
-\item{vpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the new Elastic
-DocumentDB cluster.}
+\item{tags}{The tags to be assigned to the new elastic cluster.}
+
+\item{vpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the new elastic
+cluster.}
 }
 \description{
-Creates a new Elastic DocumentDB cluster and returns its Cluster structure.
+Creates a new Amazon DocumentDB elastic cluster and returns its cluster structure.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_create_cluster/} for full documentation.
 }

@@ -2869,3 +2869,57 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
   return(response)
 }
 .docdb$operations$stop_db_cluster <- docdb_stop_db_cluster
+
+#' Switches over the specified secondary Amazon DocumentDB cluster to be
+#' the new primary Amazon DocumentDB cluster in the global database cluster
+#'
+#' @description
+#' Switches over the specified secondary Amazon DocumentDB cluster to be the new primary Amazon DocumentDB cluster in the global database cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdb_switchover_global_cluster/](https://www.paws-r-sdk.com/docs/docdb_switchover_global_cluster/) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the Amazon DocumentDB global database cluster to
+#' switch over. The identifier is the unique key assigned by the user when
+#' the cluster is created. In other words, it's the name of the global
+#' cluster. This parameter isn’t case-sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing global cluster (Amazon
+#'     DocumentDB global database).
+#' 
+#' -   Minimum length of 1. Maximum length of 255.
+#' 
+#' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
+#' @param TargetDbClusterIdentifier &#91;required&#93; The identifier of the secondary Amazon DocumentDB cluster to promote to
+#' the new primary for the global database cluster. Use the Amazon Resource
+#' Name (ARN) for the identifier so that Amazon DocumentDB can locate the
+#' cluster in its Amazon Web Services region.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing secondary cluster.
+#' 
+#' -   Minimum length of 1. Maximum length of 255.
+#' 
+#' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
+#'
+#' @keywords internal
+#'
+#' @rdname docdb_switchover_global_cluster
+docdb_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+  op <- new_operation(
+    name = "SwitchoverGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .docdb$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  output <- .docdb$switchover_global_cluster_output()
+  config <- get_config()
+  svc <- .docdb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdb$operations$switchover_global_cluster <- docdb_switchover_global_cluster

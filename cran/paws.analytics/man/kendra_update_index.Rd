@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_update_index}
 \alias{kendra_update_index}
-\title{Updates an existing Amazon Kendra index}
+\title{Updates an Amazon Kendra index}
 \usage{
 kendra_update_index(
   Id,
@@ -19,7 +19,7 @@ kendra_update_index(
 \arguments{
 \item{Id}{[required] The identifier of the index you want to update.}
 
-\item{Name}{The name of the index you want to update.}
+\item{Name}{A new name for the index.}
 
 \item{RoleArn}{An Identity and Access Management (IAM) role that gives Amazon Kendra
 permission to access Amazon CloudWatch logs and metrics.}
@@ -43,12 +43,14 @@ index.}
 
 \item{UserContextPolicy}{The user context policy.}
 
-\item{UserGroupResolutionConfiguration}{Enables fetching access levels of groups and users from an IAM Identity
-Center identity source. To configure this, see
-\href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.}
+\item{UserGroupResolutionConfiguration}{Gets users and groups from IAM Identity Center identity source. To
+configure this, see
+\href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.
+This is useful for user context filtering, where search results are
+filtered based on the user or their group access to documents.}
 }
 \description{
-Updates an existing Amazon Kendra index.
+Updates an Amazon Kendra index.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_update_index/} for full documentation.
 }

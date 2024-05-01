@@ -3,32 +3,71 @@
 #' @include bedrockruntime_service.R
 NULL
 
-#' Invokes the specified Bedrock model to run inference using the input
-#' provided in the request body
+#' Invokes the specified Amazon Bedrock model to run inference using the
+#' prompt and inference parameters provided in the request body
 #'
 #' @description
-#' Invokes the specified Bedrock model to run inference using the input
-#' provided in the request body. You use InvokeModel to run inference for
-#' text models, image models, and embedding models.
+#' Invokes the specified Amazon Bedrock model to run inference using the
+#' prompt and inference parameters provided in the request body. You use
+#' model inference to generate text, images, and embeddings.
 #' 
+#' For example code, see *Invoke model code examples* in the *Amazon
+#' Bedrock User Guide*.
+#' 
+#' This operation requires permission for the `bedrock:InvokeModel` action.
+#'
+#' @usage
+#' bedrockruntime_invoke_model(body, contentType, accept, modelId, trace,
+#'   guardrailIdentifier, guardrailVersion)
+#'
+#' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
+#' `contentType` in the header. To see the format and content of the
+#' request and response bodies for different models, refer to [Inference
+#' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' For more information, see [Run
 #' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
-#' 
-#' For example requests, see Examples (after the Errors section).
-#'
-#' @usage
-#' bedrockruntime_invoke_model(body, contentType, accept, modelId)
-#'
-#' @param body &#91;required&#93; Input data in the format specified in the content-type request header.
-#' To see the format and content of this field for different models, refer
-#' to [Inference
-#' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' @param contentType The MIME type of the input data in the request. The default value is
 #' `application/json`.
 #' @param accept The desired MIME type of the inference body in the response. The default
 #' value is `application/json`.
-#' @param modelId &#91;required&#93; Identifier of the model.
+#' @param modelId &#91;required&#93; The unique identifier of the model to invoke to run inference.
+#' 
+#' The `modelId` to provide depends on the type of model that you use:
+#' 
+#' -   If you use a base model, specify the model ID or its ARN. For a list
+#'     of model IDs for base models, see [Amazon Bedrock base model IDs
+#'     (on-demand
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a provisioned model, specify the ARN of the Provisioned
+#'     Throughput. For more information, see [Run inference using a
+#'     Provisioned
+#'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a custom model, first purchase Provisioned Throughput for
+#'     it. Then specify the ARN of the resulting provisioned model. For
+#'     more information, see [Use a custom model in Amazon
+#'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' @param trace Specifies whether to enable or disable the Bedrock trace. If enabled,
+#' you can see the full Bedrock trace.
+#' @param guardrailIdentifier The unique identifier of the guardrail that you want to use. If you
+#' don't provide a value, no guardrail is applied to the invocation.
+#' 
+#' An error will be thrown in the following situations.
+#' 
+#' -   You don't provide a guardrail identifier but you specify the
+#'     `amazon-bedrock-guardrailConfig` field in the request body.
+#' 
+#' -   You enable the guardrail but the `contentType` isn't
+#'     `application/json`.
+#' 
+#' -   You provide a guardrail identifier, but `guardrailVersion` isn't
+#'     specified.
+#' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -45,7 +84,10 @@ NULL
 #'   body = raw,
 #'   contentType = "string",
 #'   accept = "string",
-#'   modelId = "string"
+#'   modelId = "string",
+#'   trace = "ENABLED"|"DISABLED",
+#'   guardrailIdentifier = "string",
+#'   guardrailVersion = "string"
 #' )
 #' ```
 #'
@@ -54,14 +96,14 @@ NULL
 #' @rdname bedrockruntime_invoke_model
 #'
 #' @aliases bedrockruntime_invoke_model
-bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL, modelId) {
+bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL) {
   op <- new_operation(
     name = "InvokeModel",
     http_method = "POST",
     http_path = "/model/{modelId}/invoke",
     paginator = list()
   )
-  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId)
+  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrockruntime$invoke_model_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config)
@@ -71,33 +113,79 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 }
 .bedrockruntime$operations$invoke_model <- bedrockruntime_invoke_model
 
-#' Invoke the specified Bedrock model to run inference using the input
-#' provided
+#' Invoke the specified Amazon Bedrock model to run inference using the
+#' prompt and inference parameters provided in the request body
 #'
 #' @description
-#' Invoke the specified Bedrock model to run inference using the input
-#' provided. Return the response in a stream.
+#' Invoke the specified Amazon Bedrock model to run inference using the
+#' prompt and inference parameters provided in the request body. The
+#' response is returned in a stream.
 #' 
-#' For more information, see [Run
-#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
-#' in the Bedrock User Guide.
+#' To see if a model supports streaming, call
+#' [GetFoundationModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetFoundationModel.html)
+#' and check the `responseStreamingSupported` field in the response.
 #' 
-#' For an example request and response, see Examples (after the Errors
-#' section).
+#' The CLI doesn't support
+#' [`invoke_model_with_response_stream`][bedrockruntime_invoke_model_with_response_stream].
+#' 
+#' For example code, see *Invoke model with streaming code example* in the
+#' *Amazon Bedrock User Guide*.
+#' 
+#' This operation requires permissions to perform the
+#' `bedrock:InvokeModelWithResponseStream` action.
 #'
 #' @usage
 #' bedrockruntime_invoke_model_with_response_stream(body, contentType,
-#'   accept, modelId)
+#'   accept, modelId, trace, guardrailIdentifier, guardrailVersion)
 #'
-#' @param body &#91;required&#93; Inference input in the format specified by the content-type. To see the
-#' format and content of this field for different models, refer to
-#' [Inference
+#' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
+#' `contentType` in the header. To see the format and content of the
+#' request and response bodies for different models, refer to [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+#' For more information, see [Run
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
+#' in the Bedrock User Guide.
 #' @param contentType The MIME type of the input data in the request. The default value is
 #' `application/json`.
 #' @param accept The desired MIME type of the inference body in the response. The default
 #' value is `application/json`.
-#' @param modelId &#91;required&#93; Id of the model to invoke using the streaming request.
+#' @param modelId &#91;required&#93; The unique identifier of the model to invoke to run inference.
+#' 
+#' The `modelId` to provide depends on the type of model that you use:
+#' 
+#' -   If you use a base model, specify the model ID or its ARN. For a list
+#'     of model IDs for base models, see [Amazon Bedrock base model IDs
+#'     (on-demand
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a provisioned model, specify the ARN of the Provisioned
+#'     Throughput. For more information, see [Run inference using a
+#'     Provisioned
+#'     Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use a custom model, first purchase Provisioned Throughput for
+#'     it. Then specify the ARN of the resulting provisioned model. For
+#'     more information, see [Use a custom model in Amazon
+#'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
+#'     in the Amazon Bedrock User Guide.
+#' @param trace Specifies whether to enable or disable the Bedrock trace. If enabled,
+#' you can see the full Bedrock trace.
+#' @param guardrailIdentifier The unique identifier of the guardrail that you want to use. If you
+#' don't provide a value, no guardrail is applied to the invocation.
+#' 
+#' An error is thrown in the following situations.
+#' 
+#' -   You don't provide a guardrail identifier but you specify the
+#'     `amazon-bedrock-guardrailConfig` field in the request body.
+#' 
+#' -   You enable the guardrail but the `contentType` isn't
+#'     `application/json`.
+#' 
+#' -   You provide a guardrail identifier, but `guardrailVersion` isn't
+#'     specified.
+#' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -135,7 +223,10 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #'   body = raw,
 #'   contentType = "string",
 #'   accept = "string",
-#'   modelId = "string"
+#'   modelId = "string",
+#'   trace = "ENABLED"|"DISABLED",
+#'   guardrailIdentifier = "string",
+#'   guardrailVersion = "string"
 #' )
 #' ```
 #'
@@ -144,14 +235,14 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' @rdname bedrockruntime_invoke_model_with_response_stream
 #'
 #' @aliases bedrockruntime_invoke_model_with_response_stream
-bedrockruntime_invoke_model_with_response_stream <- function(body, contentType = NULL, accept = NULL, modelId) {
+bedrockruntime_invoke_model_with_response_stream <- function(body, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL) {
   op <- new_operation(
     name = "InvokeModelWithResponseStream",
     http_method = "POST",
     http_path = "/model/{modelId}/invoke-with-response-stream",
     paginator = list()
   )
-  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId)
+  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config)

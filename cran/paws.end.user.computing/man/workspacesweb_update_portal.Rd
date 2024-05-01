@@ -7,6 +7,8 @@
 workspacesweb_update_portal(
   authenticationType = NULL,
   displayName = NULL,
+  instanceType = NULL,
+  maxConcurrentSessions = NULL,
   portalArn
 )
 }
@@ -20,15 +22,17 @@ provider. You need to call
 integrate your identity provider with your web portal. User and group
 access to your web portal is controlled through your identity provider.
 
-\code{IAM_Identity_Center} web portals are authenticated through AWS IAM
-Identity Center (successor to AWS Single Sign-On). They provide
-additional features, such as IdP-initiated authentication. Identity
-sources (including external identity provider integration), plus user
-and group access to your web portal, can be configured in the IAM
-Identity Center.}
+\verb{IAM Identity Center} web portals are authenticated through IAM Identity
+Center (successor to Single Sign-On). Identity sources (including
+external identity provider integration), plus user and group access to
+your web portal, can be configured in the IAM Identity Center.}
 
 \item{displayName}{The name of the web portal. This is not visible to users who log into
 the web portal.}
+
+\item{instanceType}{The type and resources of the underlying instance.}
+
+\item{maxConcurrentSessions}{The maximum number of concurrent sessions for the portal.}
 
 \item{portalArn}{[required] The ARN of the web portal.}
 }

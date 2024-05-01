@@ -204,7 +204,10 @@ NULL
 #'       ExpirationInDays = 123,
 #'       CustomCname = "string",
 #'       S3BucketName = "string",
-#'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
+#'       CrlDistributionPointExtensionConfiguration = list(
+#'         OmitExtension = TRUE|FALSE
+#'       )
 #'     ),
 #'     OcspConfiguration = list(
 #'       Enabled = TRUE|FALSE,
@@ -812,7 +815,10 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'         ExpirationInDays = 123,
 #'         CustomCname = "string",
 #'         S3BucketName = "string",
-#'         S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'         S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
+#'         CrlDistributionPointExtensionConfiguration = list(
+#'           OmitExtension = TRUE|FALSE
+#'         )
 #'       ),
 #'       OcspConfiguration = list(
 #'         Enabled = TRUE|FALSE,
@@ -1628,6 +1634,9 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #' exist beyond the number you specify, the `NextToken` element is sent in
 #' the response. Use this `NextToken` value in a subsequent request to
 #' retrieve additional items.
+#' 
+#' Although the maximum value is 1000, the action only returns a maximum of
+#' 100 items.
 #' @param ResourceOwner Use this parameter to filter the returned set of certificate authorities
 #' based on their owner. The default is SELF.
 #'
@@ -1745,7 +1754,10 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'           ExpirationInDays = 123,
 #'           CustomCname = "string",
 #'           S3BucketName = "string",
-#'           S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'           S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
+#'           CrlDistributionPointExtensionConfiguration = list(
+#'             OmitExtension = TRUE|FALSE
+#'           )
 #'         ),
 #'         OcspConfiguration = list(
 #'           Enabled = TRUE|FALSE,
@@ -2407,7 +2419,10 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'       ExpirationInDays = 123,
 #'       CustomCname = "string",
 #'       S3BucketName = "string",
-#'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
+#'       CrlDistributionPointExtensionConfiguration = list(
+#'         OmitExtension = TRUE|FALSE
+#'       )
 #'     ),
 #'     OcspConfiguration = list(
 #'       Enabled = TRUE|FALSE,

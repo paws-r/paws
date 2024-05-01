@@ -69,7 +69,8 @@ NULL
 #'         maximumScalingStepSize = 123,
 #'         instanceWarmupPeriod = 123
 #'       ),
-#'       managedTerminationProtection = "ENABLED"|"DISABLED"
+#'       managedTerminationProtection = "ENABLED"|"DISABLED",
+#'       managedDraining = "ENABLED"|"DISABLED"
 #'     ),
 #'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'     updateStatusReason = "string",
@@ -96,7 +97,8 @@ NULL
 #'       maximumScalingStepSize = 123,
 #'       instanceWarmupPeriod = 123
 #'     ),
-#'     managedTerminationProtection = "ENABLED"|"DISABLED"
+#'     managedTerminationProtection = "ENABLED"|"DISABLED",
+#'     managedDraining = "ENABLED"|"DISABLED"
 #'   ),
 #'   tags = list(
 #'     list(
@@ -400,20 +402,23 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' specified cluster. To update an existing service, see the
 #' [`update_service`][ecs_update_service] action.
 #' 
-#' Starting April 15, 2023, Amazon Web Services will not onboard new
-#' customers to Amazon Elastic Inference (EI), and will help current
-#' customers migrate their workloads to options that offer better price and
-#' performance. After April 15, 2023, new customers will not be able to
-#' launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-#' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-#' once during the past 30-day period are considered current customers and
-#' will be able to continue using the service.
+#' On March 21, 2024, a change was made to resolve the task definition
+#' revision before authorization. When a task definition revision is not
+#' specified, authorization will occur using the latest revision of a task
+#' definition.
 #' 
 #' In addition to maintaining the desired count of tasks in your service,
 #' you can optionally run your service behind one or more load balancers.
 #' The load balancers distribute traffic across the tasks that are
 #' associated with the service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+#' volume when creating or updating a service. `volumeConfigurations` is
+#' only supported for REPLICA service and not DAEMON service. For more
+#' infomation, see [Amazon EBS
+#' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' Tasks for services that don't use a load balancer are considered healthy
@@ -502,7 +507,16 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' placement. For information about task placement and task placement
 #' strategies, see [Amazon ECS task
 #' placement](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' in the *Amazon Elastic Container Service Developer Guide*
+#' 
+#' Starting April 15, 2023, Amazon Web Services will not onboard new
+#' customers to Amazon Elastic Inference (EI), and will help current
+#' customers migrate their workloads to options that offer better price and
+#' performance. After April 15, 2023, new customers will not be able to
+#' launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
+#' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
+#' once during the past 30-day period are considered current customers and
+#' will be able to continue using the service.
 #'
 #' @usage
 #' ecs_create_service(cluster, serviceName, taskDefinition, loadBalancers,
@@ -511,7 +525,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'   deploymentConfiguration, placementConstraints, placementStrategy,
 #'   networkConfiguration, healthCheckGracePeriodSeconds, schedulingStrategy,
 #'   deploymentController, tags, enableECSManagedTags, propagateTags,
-#'   enableExecuteCommand, serviceConnectConfiguration)
+#'   enableExecuteCommand, serviceConnectConfiguration, volumeConfigurations)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' you run your service on. If you do not specify a cluster, the default
@@ -603,8 +617,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' Fargate Spot infrastructure is available for use but a capacity provider
 #' strategy must be used. For more information, see [Fargate capacity
-#' providers](https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html)
-#' in the *Amazon ECS User Guide for Fargate*.
+#' providers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-capacity-providers.html)
+#' in the *Amazon ECS Developer Guide*.
 #' 
 #' The `EC2` launch type runs your tasks on Amazon EC2 instances registered
 #' to your cluster.
@@ -755,6 +769,11 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
 #' action.
 #' 
+#' You must set this to a value other than `NONE` when you use Cost
+#' Explorer. For more information, see [Amazon ECS usage
+#' reports](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/usage-reports.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
 #' The default is `NONE`.
 #' @param enableExecuteCommand Determines whether the execute command functionality is turned on for
 #' the service. If `true`, this enables execute command functionality on
@@ -771,6 +790,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' Connect. For more information, see [Service
 #' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param volumeConfigurations The configuration for a volume specified in the task definition as a
+#' volume that is configured at launch time. Currently, the only supported
+#' volume type is an Amazon EBS volume.
 #'
 #' @return
 #' A list with the following syntax:
@@ -949,7 +971,18 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'                   dnsName = "string"
 #'                 )
 #'               ),
-#'               ingressPortOverride = 123
+#'               ingressPortOverride = 123,
+#'               timeout = list(
+#'                 idleTimeoutSeconds = 123,
+#'                 perRequestTimeoutSeconds = 123
+#'               ),
+#'               tls = list(
+#'                 issuerCertificateAuthority = list(
+#'                   awsPcaAuthorityArn = "string"
+#'                 ),
+#'                 kmsKey = "string",
+#'                 roleArn = "string"
+#'               )
 #'             )
 #'           ),
 #'           logConfiguration = list(
@@ -969,6 +1002,34 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'           list(
 #'             discoveryName = "string",
 #'             discoveryArn = "string"
+#'           )
+#'         ),
+#'         volumeConfigurations = list(
+#'           list(
+#'             name = "string",
+#'             managedEBSVolume = list(
+#'               encrypted = TRUE|FALSE,
+#'               kmsKeyId = "string",
+#'               volumeType = "string",
+#'               sizeInGiB = 123,
+#'               snapshotId = "string",
+#'               iops = 123,
+#'               throughput = 123,
+#'               tagSpecifications = list(
+#'                 list(
+#'                   resourceType = "volume",
+#'                   tags = list(
+#'                     list(
+#'                       key = "string",
+#'                       value = "string"
+#'                     )
+#'                   ),
+#'                   propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'                 )
+#'               ),
+#'               roleArn = "string",
+#'               filesystemType = "ext3"|"ext4"|"xfs"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -1127,7 +1188,18 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'             dnsName = "string"
 #'           )
 #'         ),
-#'         ingressPortOverride = 123
+#'         ingressPortOverride = 123,
+#'         timeout = list(
+#'           idleTimeoutSeconds = 123,
+#'           perRequestTimeoutSeconds = 123
+#'         ),
+#'         tls = list(
+#'           issuerCertificateAuthority = list(
+#'             awsPcaAuthorityArn = "string"
+#'           ),
+#'           kmsKey = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     logConfiguration = list(
@@ -1140,6 +1212,34 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'           name = "string",
 #'           valueFrom = "string"
 #'         )
+#'       )
+#'     )
+#'   ),
+#'   volumeConfigurations = list(
+#'     list(
+#'       name = "string",
+#'       managedEBSVolume = list(
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string",
+#'         volumeType = "string",
+#'         sizeInGiB = 123,
+#'         snapshotId = "string",
+#'         iops = 123,
+#'         throughput = 123,
+#'         tagSpecifications = list(
+#'           list(
+#'             resourceType = "volume",
+#'             tags = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'           )
+#'         ),
+#'         roleArn = "string",
+#'         filesystemType = "ext3"|"ext4"|"xfs"
 #'       )
 #'     )
 #'   )
@@ -1181,14 +1281,14 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' @rdname ecs_create_service
 #'
 #' @aliases ecs_create_service
-ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL) {
+ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration)
+  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$create_service_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -1205,6 +1305,16 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' when a service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS deployment
 #' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' On March 21, 2024, a change was made to resolve the task definition
+#' revision before authorization. When a task definition revision is not
+#' specified, authorization will occur using the latest revision of a task
+#' definition.
+#' 
+#' For information about the maximum number of task sets and otther quotas,
+#' see [Amazon ECS service
+#' quotas](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
@@ -1660,7 +1770,8 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #'         maximumScalingStepSize = 123,
 #'         instanceWarmupPeriod = 123
 #'       ),
-#'       managedTerminationProtection = "ENABLED"|"DISABLED"
+#'       managedTerminationProtection = "ENABLED"|"DISABLED",
+#'       managedDraining = "ENABLED"|"DISABLED"
 #'     ),
 #'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'     updateStatusReason = "string",
@@ -2047,7 +2158,18 @@ ecs_delete_cluster <- function(cluster) {
 #'                   dnsName = "string"
 #'                 )
 #'               ),
-#'               ingressPortOverride = 123
+#'               ingressPortOverride = 123,
+#'               timeout = list(
+#'                 idleTimeoutSeconds = 123,
+#'                 perRequestTimeoutSeconds = 123
+#'               ),
+#'               tls = list(
+#'                 issuerCertificateAuthority = list(
+#'                   awsPcaAuthorityArn = "string"
+#'                 ),
+#'                 kmsKey = "string",
+#'                 roleArn = "string"
+#'               )
 #'             )
 #'           ),
 #'           logConfiguration = list(
@@ -2067,6 +2189,34 @@ ecs_delete_cluster <- function(cluster) {
 #'           list(
 #'             discoveryName = "string",
 #'             discoveryArn = "string"
+#'           )
+#'         ),
+#'         volumeConfigurations = list(
+#'           list(
+#'             name = "string",
+#'             managedEBSVolume = list(
+#'               encrypted = TRUE|FALSE,
+#'               kmsKeyId = "string",
+#'               volumeType = "string",
+#'               sizeInGiB = 123,
+#'               snapshotId = "string",
+#'               iops = 123,
+#'               throughput = 123,
+#'               tagSpecifications = list(
+#'                 list(
+#'                   resourceType = "volume",
+#'                   tags = list(
+#'                     list(
+#'                       key = "string",
+#'                       value = "string"
+#'                     )
+#'                   ),
+#'                   propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'                 )
+#'               ),
+#'               roleArn = "string",
+#'               filesystemType = "ext3"|"ext4"|"xfs"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -2430,7 +2580,8 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #'               credentialsParameter = "string",
 #'               domain = "string"
 #'             )
-#'           )
+#'           ),
+#'           configuredAtLaunch = TRUE|FALSE
 #'         )
 #'       ),
 #'       status = "ACTIVE"|"INACTIVE"|"DELETE_IN_PROGRESS",
@@ -3100,7 +3251,8 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #'             credentialsParameter = "string",
 #'             domain = "string"
 #'           )
-#'         )
+#'         ),
+#'         configuredAtLaunch = TRUE|FALSE
 #'       )
 #'     ),
 #'     status = "ACTIVE"|"INACTIVE"|"DELETE_IN_PROGRESS",
@@ -3247,7 +3399,8 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #'           maximumScalingStepSize = 123,
 #'           instanceWarmupPeriod = 123
 #'         ),
-#'         managedTerminationProtection = "ENABLED"|"DISABLED"
+#'         managedTerminationProtection = "ENABLED"|"DISABLED",
+#'         managedDraining = "ENABLED"|"DISABLED"
 #'       ),
 #'       updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'       updateStatusReason = "string",
@@ -3833,7 +3986,18 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'                     dnsName = "string"
 #'                   )
 #'                 ),
-#'                 ingressPortOverride = 123
+#'                 ingressPortOverride = 123,
+#'                 timeout = list(
+#'                   idleTimeoutSeconds = 123,
+#'                   perRequestTimeoutSeconds = 123
+#'                 ),
+#'                 tls = list(
+#'                   issuerCertificateAuthority = list(
+#'                     awsPcaAuthorityArn = "string"
+#'                   ),
+#'                   kmsKey = "string",
+#'                   roleArn = "string"
+#'                 )
 #'               )
 #'             ),
 #'             logConfiguration = list(
@@ -3853,6 +4017,34 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'             list(
 #'               discoveryName = "string",
 #'               discoveryArn = "string"
+#'             )
+#'           ),
+#'           volumeConfigurations = list(
+#'             list(
+#'               name = "string",
+#'               managedEBSVolume = list(
+#'                 encrypted = TRUE|FALSE,
+#'                 kmsKeyId = "string",
+#'                 volumeType = "string",
+#'                 sizeInGiB = 123,
+#'                 snapshotId = "string",
+#'                 iops = 123,
+#'                 throughput = 123,
+#'                 tagSpecifications = list(
+#'                   list(
+#'                     resourceType = "volume",
+#'                     tags = list(
+#'                       list(
+#'                         key = "string",
+#'                         value = "string"
+#'                       )
+#'                     ),
+#'                     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'                   )
+#'                 ),
+#'                 roleArn = "string",
+#'                 filesystemType = "ext3"|"ext4"|"xfs"
+#'               )
 #'             )
 #'           )
 #'         )
@@ -4209,7 +4401,8 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #'             credentialsParameter = "string",
 #'             domain = "string"
 #'           )
-#'         )
+#'         ),
+#'         configuredAtLaunch = TRUE|FALSE
 #'       )
 #'     ),
 #'     status = "ACTIVE"|"INACTIVE"|"DELETE_IN_PROGRESS",
@@ -5907,89 +6100,99 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' settings. For more information, see [Account
 #' Settings](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' When you specify `serviceLongArnFormat`, `taskLongArnFormat`, or
-#' `containerInstanceLongArnFormat`, the Amazon Resource Name (ARN) and
-#' resource ID format of the resource type for a specified user, role, or
-#' the root user for an account is affected. The opt-in and opt-out account
-#' setting must be set for each Amazon ECS resource separately. The ARN and
-#' resource ID format of a resource is defined by the opt-in status of the
-#' user or role that created the resource. You must turn on this setting to
-#' use Amazon ECS features such as resource tagging.
-#' 
-#' When you specify `awsvpcTrunking`, the elastic network interface (ENI)
-#' limit for any new container instances that support the feature is
-#' changed. If `awsvpcTrunking` is turned on, any new container instances
-#' that support the feature are launched have the increased ENI limits
-#' available to them. For more information, see [Elastic Network Interface
-#' Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' When you specify `containerInsights`, the default setting indicating
-#' whether Amazon Web Services CloudWatch Container Insights is turned on
-#' for your clusters is changed. If `containerInsights` is turned on, any
-#' new clusters that are created will have Container Insights turned on
-#' unless you disable it during cluster creation. For more information, see
-#' [CloudWatch Container
-#' Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' Amazon ECS is introducing tagging authorization for resource creation.
-#' Users must have permissions for actions that create the resource, such
-#' as `ecsCreateCluster`. If tags are specified when you create a resource,
-#' Amazon Web Services performs additional authorization to verify if users
-#' or roles have permissions to create tags. Therefore, you must grant
-#' explicit permissions to use the `ecs:TagResource` action. For more
-#' information, see [Grant permission to tag resources on
-#' creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
-#' in the *Amazon ECS Developer Guide*.
-#' 
-#' When Amazon Web Services determines that a security or infrastructure
-#' update is needed for an Amazon ECS task hosted on Fargate, the tasks
-#' need to be stopped and new tasks launched to replace them. Use
-#' `fargateTaskRetirementWaitPeriod` to configure the wait time to retire a
-#' Fargate task. For information about the Fargate tasks maintenance, see
-#' [Amazon Web Services Fargate task
-#' maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
-#' in the *Amazon ECS Developer Guide*.
-#' 
-#' The `guardDutyActivate` parameter is read-only in Amazon ECS and
-#' indicates whether Amazon ECS Runtime Monitoring is enabled or disabled
-#' by your security administrator in your Amazon ECS account. Amazon
-#' GuardDuty controls this account setting on your behalf. For more
-#' information, see [Protecting Amazon ECS workloads with Amazon ECS
-#' Runtime
-#' Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #'
 #' @usage
 #' ecs_put_account_setting(name, value, principalArn)
 #'
-#' @param name &#91;required&#93; The Amazon ECS resource name for which to modify the account setting. If
-#' you specify `serviceLongArnFormat`, the ARN for your Amazon ECS services
-#' is affected. If you specify `taskLongArnFormat`, the ARN and resource ID
-#' for your Amazon ECS tasks is affected. If you specify
-#' `containerInstanceLongArnFormat`, the ARN and resource ID for your
-#' Amazon ECS container instances is affected. If you specify
-#' `awsvpcTrunking`, the elastic network interface (ENI) limit for your
-#' Amazon ECS container instances is affected. If you specify
-#' `containerInsights`, the default setting for Amazon Web Services
-#' CloudWatch Container Insights for your clusters is affected. If you
-#' specify `fargateFIPSMode`, Fargate FIPS 140 compliance is affected. If
-#' you specify `tagResourceAuthorization`, the opt-in option for tagging
-#' resources on creation is affected. For information about the opt-in
-#' timeline, see [Tagging authorization
-#' timeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources)
-#' in the *Amazon ECS Developer Guide*. If you specify
-#' `fargateTaskRetirementWaitPeriod`, the wait time to retire a Fargate
-#' task is affected.
+#' @param name &#91;required&#93; The Amazon ECS account setting name to modify.
 #' 
-#' The `guardDutyActivate` parameter is read-only in Amazon ECS and
-#' indicates whether Amazon ECS Runtime Monitoring is enabled or disabled
-#' by your security administrator in your Amazon ECS account. Amazon
-#' GuardDuty controls this account setting on your behalf. For more
-#' information, see [Protecting Amazon ECS workloads with Amazon ECS
-#' Runtime
-#' Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
+#' The following are the valid values for the account setting name.
+#' 
+#' -   `serviceLongArnFormat` - When modified, the Amazon Resource Name
+#'     (ARN) and resource ID format of the resource type for a specified
+#'     user, role, or the root user for an account is affected. The opt-in
+#'     and opt-out account setting must be set for each Amazon ECS resource
+#'     separately. The ARN and resource ID format of a resource is defined
+#'     by the opt-in status of the user or role that created the resource.
+#'     You must turn on this setting to use Amazon ECS features such as
+#'     resource tagging.
+#' 
+#' -   `taskLongArnFormat` - When modified, the Amazon Resource Name (ARN)
+#'     and resource ID format of the resource type for a specified user,
+#'     role, or the root user for an account is affected. The opt-in and
+#'     opt-out account setting must be set for each Amazon ECS resource
+#'     separately. The ARN and resource ID format of a resource is defined
+#'     by the opt-in status of the user or role that created the resource.
+#'     You must turn on this setting to use Amazon ECS features such as
+#'     resource tagging.
+#' 
+#' -   `containerInstanceLongArnFormat` - When modified, the Amazon
+#'     Resource Name (ARN) and resource ID format of the resource type for
+#'     a specified user, role, or the root user for an account is affected.
+#'     The opt-in and opt-out account setting must be set for each Amazon
+#'     ECS resource separately. The ARN and resource ID format of a
+#'     resource is defined by the opt-in status of the user or role that
+#'     created the resource. You must turn on this setting to use Amazon
+#'     ECS features such as resource tagging.
+#' 
+#' -   `awsvpcTrunking` - When modified, the elastic network interface
+#'     (ENI) limit for any new container instances that support the feature
+#'     is changed. If `awsvpcTrunking` is turned on, any new container
+#'     instances that support the feature are launched have the increased
+#'     ENI limits available to them. For more information, see [Elastic
+#'     Network Interface
+#'     Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
+#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' -   `containerInsights` - When modified, the default setting indicating
+#'     whether Amazon Web Services CloudWatch Container Insights is turned
+#'     on for your clusters is changed. If `containerInsights` is turned
+#'     on, any new clusters that are created will have Container Insights
+#'     turned on unless you disable it during cluster creation. For more
+#'     information, see [CloudWatch Container
+#'     Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' -   `dualStackIPv6` - When turned on, when using a VPC in dual stack
+#'     mode, your tasks using the `awsvpc` network mode can have an IPv6
+#'     address assigned. For more information on using IPv6 with tasks
+#'     launched on Amazon EC2 instances, see [Using a VPC in dual-stack
+#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack).
+#'     For more information on using IPv6 with tasks launched on Fargate,
+#'     see [Using a VPC in dual-stack
+#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
+#' 
+#' -   `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS
+#'     140 compliance is affected.
+#' 
+#' -   `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
+#'     determines that a security or infrastructure update is needed for an
+#'     Amazon ECS task hosted on Fargate, the tasks need to be stopped and
+#'     new tasks launched to replace them. Use
+#'     `fargateTaskRetirementWaitPeriod` to configure the wait time to
+#'     retire a Fargate task. For information about the Fargate tasks
+#'     maintenance, see [Amazon Web Services Fargate task
+#'     maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
+#'     in the *Amazon ECS Developer Guide*.
+#' 
+#' -   `tagResourceAuthorization` - Amazon ECS is introducing tagging
+#'     authorization for resource creation. Users must have permissions for
+#'     actions that create the resource, such as `ecsCreateCluster`. If
+#'     tags are specified when you create a resource, Amazon Web Services
+#'     performs additional authorization to verify if users or roles have
+#'     permissions to create tags. Therefore, you must grant explicit
+#'     permissions to use the `ecs:TagResource` action. For more
+#'     information, see [Grant permission to tag resources on
+#'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
+#'     in the *Amazon ECS Developer Guide*.
+#' 
+#' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
+#'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
+#'     enabled or disabled by your security administrator in your Amazon
+#'     ECS account. Amazon GuardDuty controls this account setting on your
+#'     behalf. For more information, see [Protecting Amazon ECS workloads
+#'     with Amazon ECS Runtime
+#'     Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
 #' 
@@ -6094,47 +6297,95 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @usage
 #' ecs_put_account_setting_default(name, value)
 #'
-#' @param name &#91;required&#93; The resource name for which to modify the account setting. If you
-#' specify `serviceLongArnFormat`, the ARN for your Amazon ECS services is
-#' affected. If you specify `taskLongArnFormat`, the ARN and resource ID
-#' for your Amazon ECS tasks is affected. If you specify
-#' `containerInstanceLongArnFormat`, the ARN and resource ID for your
-#' Amazon ECS container instances is affected. If you specify
-#' `awsvpcTrunking`, the ENI limit for your Amazon ECS container instances
-#' is affected. If you specify `containerInsights`, the default setting for
-#' Amazon Web Services CloudWatch Container Insights for your clusters is
-#' affected. If you specify `tagResourceAuthorization`, the opt-in option
-#' for tagging resources on creation is affected. For information about the
-#' opt-in timeline, see [Tagging authorization
-#' timeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources)
-#' in the *Amazon ECS Developer Guide*. If you specify
-#' `fargateTaskRetirementWaitPeriod`, the default wait time to retire a
-#' Fargate task due to required maintenance is affected.
+#' @param name &#91;required&#93; The resource name for which to modify the account setting.
 #' 
-#' When you specify `fargateFIPSMode` for the `name` and `enabled` for the
-#' `value`, Fargate uses FIPS-140 compliant cryptographic algorithms on
-#' your tasks. For more information about FIPS-140 compliance with Fargate,
-#' see [Amazon Web Services Fargate Federal Information Processing Standard
-#' (FIPS) 140-2
-#' compliance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' The following are the valid values for the account setting name.
 #' 
-#' When Amazon Web Services determines that a security or infrastructure
-#' update is needed for an Amazon ECS task hosted on Fargate, the tasks
-#' need to be stopped and new tasks launched to replace them. Use
-#' `fargateTaskRetirementWaitPeriod` to set the wait time to retire a
-#' Fargate task to the default. For information about the Fargate tasks
-#' maintenance, see [Amazon Web Services Fargate task
-#' maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
-#' in the *Amazon ECS Developer Guide*.
+#' -   `serviceLongArnFormat` - When modified, the Amazon Resource Name
+#'     (ARN) and resource ID format of the resource type for a specified
+#'     user, role, or the root user for an account is affected. The opt-in
+#'     and opt-out account setting must be set for each Amazon ECS resource
+#'     separately. The ARN and resource ID format of a resource is defined
+#'     by the opt-in status of the user or role that created the resource.
+#'     You must turn on this setting to use Amazon ECS features such as
+#'     resource tagging.
 #' 
-#' The `guardDutyActivate` parameter is read-only in Amazon ECS and
-#' indicates whether Amazon ECS Runtime Monitoring is enabled or disabled
-#' by your security administrator in your Amazon ECS account. Amazon
-#' GuardDuty controls this account setting on your behalf. For more
-#' information, see [Protecting Amazon ECS workloads with Amazon ECS
-#' Runtime
-#' Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
+#' -   `taskLongArnFormat` - When modified, the Amazon Resource Name (ARN)
+#'     and resource ID format of the resource type for a specified user,
+#'     role, or the root user for an account is affected. The opt-in and
+#'     opt-out account setting must be set for each Amazon ECS resource
+#'     separately. The ARN and resource ID format of a resource is defined
+#'     by the opt-in status of the user or role that created the resource.
+#'     You must turn on this setting to use Amazon ECS features such as
+#'     resource tagging.
+#' 
+#' -   `containerInstanceLongArnFormat` - When modified, the Amazon
+#'     Resource Name (ARN) and resource ID format of the resource type for
+#'     a specified user, role, or the root user for an account is affected.
+#'     The opt-in and opt-out account setting must be set for each Amazon
+#'     ECS resource separately. The ARN and resource ID format of a
+#'     resource is defined by the opt-in status of the user or role that
+#'     created the resource. You must turn on this setting to use Amazon
+#'     ECS features such as resource tagging.
+#' 
+#' -   `awsvpcTrunking` - When modified, the elastic network interface
+#'     (ENI) limit for any new container instances that support the feature
+#'     is changed. If `awsvpcTrunking` is turned on, any new container
+#'     instances that support the feature are launched have the increased
+#'     ENI limits available to them. For more information, see [Elastic
+#'     Network Interface
+#'     Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
+#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' -   `containerInsights` - When modified, the default setting indicating
+#'     whether Amazon Web Services CloudWatch Container Insights is turned
+#'     on for your clusters is changed. If `containerInsights` is turned
+#'     on, any new clusters that are created will have Container Insights
+#'     turned on unless you disable it during cluster creation. For more
+#'     information, see [CloudWatch Container
+#'     Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' -   `dualStackIPv6` - When turned on, when using a VPC in dual stack
+#'     mode, your tasks using the `awsvpc` network mode can have an IPv6
+#'     address assigned. For more information on using IPv6 with tasks
+#'     launched on Amazon EC2 instances, see [Using a VPC in dual-stack
+#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack).
+#'     For more information on using IPv6 with tasks launched on Fargate,
+#'     see [Using a VPC in dual-stack
+#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
+#' 
+#' -   `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS
+#'     140 compliance is affected.
+#' 
+#' -   `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
+#'     determines that a security or infrastructure update is needed for an
+#'     Amazon ECS task hosted on Fargate, the tasks need to be stopped and
+#'     new tasks launched to replace them. Use
+#'     `fargateTaskRetirementWaitPeriod` to configure the wait time to
+#'     retire a Fargate task. For information about the Fargate tasks
+#'     maintenance, see [Amazon Web Services Fargate task
+#'     maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
+#'     in the *Amazon ECS Developer Guide*.
+#' 
+#' -   `tagResourceAuthorization` - Amazon ECS is introducing tagging
+#'     authorization for resource creation. Users must have permissions for
+#'     actions that create the resource, such as `ecsCreateCluster`. If
+#'     tags are specified when you create a resource, Amazon Web Services
+#'     performs additional authorization to verify if users or roles have
+#'     permissions to create tags. Therefore, you must grant explicit
+#'     permissions to use the `ecs:TagResource` action. For more
+#'     information, see [Grant permission to tag resources on
+#'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
+#'     in the *Amazon ECS Developer Guide*.
+#' 
+#' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
+#'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
+#'     enabled or disabled by your security administrator in your Amazon
+#'     ECS account. Amazon GuardDuty controls this account setting on your
+#'     behalf. For more information, see [Protecting Amazon ECS workloads
+#'     with Amazon ECS Runtime
+#'     Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
 #' 
@@ -6977,9 +7228,9 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @param ephemeralStorage The amount of ephemeral storage to allocate for the task. This parameter
 #' is used to expand the total amount of ephemeral storage available,
 #' beyond the default amount, for tasks hosted on Fargate. For more
-#' information, see [Fargate task
-#' storage](https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html)
-#' in the *Amazon ECS User Guide for Fargate*.
+#' information, see [Using data volumes in
+#' tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html)
+#' in the *Amazon ECS Developer Guide*.
 #' 
 #' For tasks using the Fargate launch type, the task requires the following
 #' platforms:
@@ -7216,7 +7467,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'             credentialsParameter = "string",
 #'             domain = "string"
 #'           )
-#'         )
+#'         ),
+#'         configuredAtLaunch = TRUE|FALSE
 #'       )
 #'     ),
 #'     status = "ACTIVE"|"INACTIVE"|"DELETE_IN_PROGRESS",
@@ -7503,7 +7755,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'           credentialsParameter = "string",
 #'           domain = "string"
 #'         )
-#'       )
+#'       ),
+#'       configuredAtLaunch = TRUE|FALSE
 #'     )
 #'   ),
 #'   placementConstraints = list(
@@ -7601,6 +7854,11 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @description
 #' Starts a new task using the specified task definition.
 #' 
+#' On March 21, 2024, a change was made to resolve the task definition
+#' revision before authorization. When a task definition revision is not
+#' specified, authorization will occur using the latest revision of a task
+#' definition.
+#' 
 #' You can allow Amazon ECS to place tasks for you, or you can customize
 #' how Amazon ECS places tasks using placement constraints and placement
 #' strategies. For more information, see [Scheduling
@@ -7618,6 +7876,12 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
 #' once during the past 30-day period are considered current customers and
 #' will be able to continue using the service.
+#' 
+#' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+#' volume when creating or updating a service. For more infomation, see
+#' [Amazon EBS
+#' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' The Amazon ECS API follows an eventual consistency model. This is
 #' because of the distributed nature of the system supporting the API. This
@@ -7646,7 +7910,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'   enableECSManagedTags, enableExecuteCommand, group, launchType,
 #'   networkConfiguration, overrides, placementConstraints,
 #'   placementStrategy, platformVersion, propagateTags, referenceId,
-#'   startedBy, tags, taskDefinition, clientToken)
+#'   startedBy, tags, taskDefinition, clientToken, volumeConfigurations)
 #'
 #' @param capacityProviderStrategy The capacity provider strategy to use for the task.
 #' 
@@ -7688,8 +7952,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' Fargate Spot infrastructure is available for use but a capacity provider
 #' strategy must be used. For more information, see [Fargate capacity
-#' providers](https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html)
-#' in the *Amazon ECS User Guide for Fargate*.
+#' providers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-capacity-providers.html)
+#' in the *Amazon ECS Developer Guide*.
 #' 
 #' The `EC2` launch type runs your tasks on Amazon EC2 instances registered
 #' to your cluster.
@@ -7781,33 +8045,33 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' definition to run. If a `revision` isn't specified, the latest `ACTIVE`
 #' revision is used.
 #' 
-#' When you create a policy for run-task, you can set the resource to be
-#' the latest task definition revision, or a specific revision.
-#' 
 #' The full ARN value must match the value that you specified as the
 #' `Resource` of the principal's permissions policy.
 #' 
-#' When you specify the policy resource as the latest task definition
-#' version (by setting the `Resource` in the policy to
-#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName`),
-#' then set this value to
-#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName`.
+#' When you specify a task definition, you must either specify a specific
+#' revision, or all revisions in the ARN.
 #' 
-#' When you specify the policy resource as a specific task definition
-#' version (by setting the `Resource` in the policy to
-#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:1` or
-#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:*`),
-#' then set this value to
-#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:1`.
+#' To specify a specific revision, include the revision number in the ARN.
+#' For example, to specify revision 2, use
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:2`.
+#' 
+#' To specify all revisions, use the wildcard (*) in the ARN. For example,
+#' to specify all revisions, use
+#' `arn:aws:ecs:us-east-1:111122223333:task-definition/TaskFamilyName:*`.
 #' 
 #' For more information, see [Policy Resources for Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-resources)
-#' in the Amazon Elastic Container Service developer Guide.
+#' in the Amazon Elastic Container Service Developer Guide.
 #' @param clientToken An identifier that you provide to ensure the idempotency of the request.
 #' It must be unique and is case sensitive. Up to 64 characters are
 #' allowed. The valid characters are characters in the range of 33-126,
 #' inclusive. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html).
+#' @param volumeConfigurations The details of the volume that was `configuredAtLaunch`. You can
+#' configure the size, volumeType, IOPS, throughput, snapshot and
+#' encryption in in
+#' [TaskManagedEBSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html).
+#' The `name` of the volume must match the `name` from the task definition.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8093,7 +8357,38 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'     )
 #'   ),
 #'   taskDefinition = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   volumeConfigurations = list(
+#'     list(
+#'       name = "string",
+#'       managedEBSVolume = list(
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string",
+#'         volumeType = "string",
+#'         sizeInGiB = 123,
+#'         snapshotId = "string",
+#'         iops = 123,
+#'         throughput = 123,
+#'         tagSpecifications = list(
+#'           list(
+#'             resourceType = "volume",
+#'             tags = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'           )
+#'         ),
+#'         roleArn = "string",
+#'         terminationPolicy = list(
+#'           deleteOnTermination = TRUE|FALSE
+#'         ),
+#'         filesystemType = "ext3"|"ext4"|"xfs"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -8111,14 +8406,14 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @rdname ecs_run_task
 #'
 #' @aliases ecs_run_task
-ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition, clientToken = NULL) {
+ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition, clientToken = NULL, volumeConfigurations = NULL) {
   op <- new_operation(
     name = "RunTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, clientToken = clientToken)
+  input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, clientToken = clientToken, volumeConfigurations = volumeConfigurations)
   output <- .ecs$run_task_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -8135,6 +8430,11 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' Starts a new task from the specified task definition on the specified
 #' container instance or instances.
 #' 
+#' On March 21, 2024, a change was made to resolve the task definition
+#' revision before authorization. When a task definition revision is not
+#' specified, authorization will occur using the latest revision of a task
+#' definition.
+#' 
 #' Starting April 15, 2023, Amazon Web Services will not onboard new
 #' customers to Amazon Elastic Inference (EI), and will help current
 #' customers migrate their workloads to options that offer better price and
@@ -8148,11 +8448,18 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' you. For more information, see [Scheduling
 #' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+#' volume when creating or updating a service. For more infomation, see
+#' [Amazon EBS
+#' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_start_task(cluster, containerInstances, enableECSManagedTags,
 #'   enableExecuteCommand, group, networkConfiguration, overrides,
-#'   propagateTags, referenceId, startedBy, tags, taskDefinition)
+#'   propagateTags, referenceId, startedBy, tags, taskDefinition,
+#'   volumeConfigurations)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster where
 #' to start your task. If you do not specify a cluster, the default cluster
@@ -8228,6 +8535,11 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to start. If a `revision` isn't specified, the latest
 #' `ACTIVE` revision is used.
+#' @param volumeConfigurations The details of the volume that was `configuredAtLaunch`. You can
+#' configure the size, volumeType, IOPS, throughput, snapshot and
+#' encryption in
+#' [TaskManagedEBSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html).
+#' The `name` of the volume must match the `name` from the task definition.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8493,7 +8805,38 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'       value = "string"
 #'     )
 #'   ),
-#'   taskDefinition = "string"
+#'   taskDefinition = "string",
+#'   volumeConfigurations = list(
+#'     list(
+#'       name = "string",
+#'       managedEBSVolume = list(
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string",
+#'         volumeType = "string",
+#'         sizeInGiB = 123,
+#'         snapshotId = "string",
+#'         iops = 123,
+#'         throughput = 123,
+#'         tagSpecifications = list(
+#'           list(
+#'             resourceType = "volume",
+#'             tags = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'           )
+#'         ),
+#'         roleArn = "string",
+#'         terminationPolicy = list(
+#'           deleteOnTermination = TRUE|FALSE
+#'         ),
+#'         filesystemType = "ext3"|"ext4"|"xfs"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -8502,14 +8845,14 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' @rdname ecs_start_task
 #'
 #' @aliases ecs_start_task
-ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, networkConfiguration = NULL, overrides = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
+ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, networkConfiguration = NULL, overrides = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition, volumeConfigurations = NULL) {
   op <- new_operation(
     name = "StartTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition)
+  input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, volumeConfigurations = volumeConfigurations)
   output <- .ecs$start_task_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -8548,7 +8891,7 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' you're using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
 #' subsequent [`describe_tasks`][ecs_describe_tasks] API operations on this
-#' task. Up to 255 characters are allowed in this message.
+#' task.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9188,7 +9531,8 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'         maximumScalingStepSize = 123,
 #'         instanceWarmupPeriod = 123
 #'       ),
-#'       managedTerminationProtection = "ENABLED"|"DISABLED"
+#'       managedTerminationProtection = "ENABLED"|"DISABLED",
+#'       managedDraining = "ENABLED"|"DISABLED"
 #'     ),
 #'     updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
 #'     updateStatusReason = "string",
@@ -9214,7 +9558,8 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #'       maximumScalingStepSize = 123,
 #'       instanceWarmupPeriod = 123
 #'     ),
-#'     managedTerminationProtection = "ENABLED"|"DISABLED"
+#'     managedTerminationProtection = "ENABLED"|"DISABLED",
+#'     managedDraining = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -9903,12 +10248,30 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @description
 #' Modifies the parameters of a service.
 #' 
+#' On March 21, 2024, a change was made to resolve the task definition
+#' revision before authorization. When a task definition revision is not
+#' specified, authorization will occur using the latest revision of a task
+#' definition.
+#' 
 #' For services using the rolling update (`ECS`) you can update the desired
 #' count, deployment configuration, network configuration, load balancers,
 #' service registries, enable ECS managed tags option, propagate tags
 #' option, task placement constraints and strategies, and task definition.
 #' When you update any of these parameters, Amazon ECS starts new tasks
 #' with the new configuration.
+#' 
+#' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+#' volume when starting or running a task, or when creating or updating a
+#' service. For more infomation, see [Amazon EBS
+#' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
+#' in the *Amazon Elastic Container Service Developer Guide*. You can
+#' update your volume configurations and trigger a new deployment.
+#' `volumeConfigurations` is only supported for REPLICA service and not
+#' DAEMON service. If you leave `volumeConfigurations` `null`, it doesn't
+#' trigger a new deployment. For more infomation on volumes, see [Amazon
+#' EBS
+#' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' For services using the blue/green (`CODE_DEPLOY`) deployment controller,
 #' only the desired count, deployment configuration, health check grace
@@ -9932,11 +10295,17 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' definition in a service by specifying the cluster that the service is
 #' running in and a new `desiredCount` parameter.
 #' 
-#' If you have updated the Docker image of your application, you can create
-#' a new task definition with that image and deploy it to your service. The
-#' service scheduler uses the minimum healthy percent and maximum percent
-#' parameters (in the service's deployment configuration) to determine the
-#' deployment strategy.
+#' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
+#' volume when starting or running a task, or when creating or updating a
+#' service. For more infomation, see [Amazon EBS
+#' volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' If you have updated the container image of your application, you can
+#' create a new task definition with that image and deploy it to your
+#' service. The service scheduler uses the minimum healthy percent and
+#' maximum percent parameters (in the service's deployment configuration)
+#' to determine the deployment strategy.
 #' 
 #' If your updated Docker image uses the same tag as what is in the
 #' existing task definition for your service (for example,
@@ -10028,7 +10397,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'   placementConstraints, placementStrategy, platformVersion,
 #'   forceNewDeployment, healthCheckGracePeriodSeconds, enableExecuteCommand,
 #'   enableECSManagedTags, loadBalancers, propagateTags, serviceRegistries,
-#'   serviceConnectConfiguration)
+#'   serviceConnectConfiguration, volumeConfigurations)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your service runs on. If you do not specify a cluster, the default
@@ -10189,6 +10558,14 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' Connect. For more information, see [Service
 #' Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param volumeConfigurations The details of the volume that was `configuredAtLaunch`. You can
+#' configure the size, volumeType, IOPS, throughput, snapshot and
+#' encryption in
+#' [ServiceManagedEBSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceManagedEBSVolumeConfiguration.html).
+#' The `name` of the volume must match the `name` from the task definition.
+#' If set to null, no new deployment is triggered. Otherwise, if this
+#' configuration differs from the existing one, it triggers a new
+#' deployment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10367,7 +10744,18 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'                   dnsName = "string"
 #'                 )
 #'               ),
-#'               ingressPortOverride = 123
+#'               ingressPortOverride = 123,
+#'               timeout = list(
+#'                 idleTimeoutSeconds = 123,
+#'                 perRequestTimeoutSeconds = 123
+#'               ),
+#'               tls = list(
+#'                 issuerCertificateAuthority = list(
+#'                   awsPcaAuthorityArn = "string"
+#'                 ),
+#'                 kmsKey = "string",
+#'                 roleArn = "string"
+#'               )
 #'             )
 #'           ),
 #'           logConfiguration = list(
@@ -10387,6 +10775,34 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'           list(
 #'             discoveryName = "string",
 #'             discoveryArn = "string"
+#'           )
+#'         ),
+#'         volumeConfigurations = list(
+#'           list(
+#'             name = "string",
+#'             managedEBSVolume = list(
+#'               encrypted = TRUE|FALSE,
+#'               kmsKeyId = "string",
+#'               volumeType = "string",
+#'               sizeInGiB = 123,
+#'               snapshotId = "string",
+#'               iops = 123,
+#'               throughput = 123,
+#'               tagSpecifications = list(
+#'                 list(
+#'                   resourceType = "volume",
+#'                   tags = list(
+#'                     list(
+#'                       key = "string",
+#'                       value = "string"
+#'                     )
+#'                   ),
+#'                   propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'                 )
+#'               ),
+#'               roleArn = "string",
+#'               filesystemType = "ext3"|"ext4"|"xfs"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -10533,7 +10949,18 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'             dnsName = "string"
 #'           )
 #'         ),
-#'         ingressPortOverride = 123
+#'         ingressPortOverride = 123,
+#'         timeout = list(
+#'           idleTimeoutSeconds = 123,
+#'           perRequestTimeoutSeconds = 123
+#'         ),
+#'         tls = list(
+#'           issuerCertificateAuthority = list(
+#'             awsPcaAuthorityArn = "string"
+#'           ),
+#'           kmsKey = "string",
+#'           roleArn = "string"
+#'         )
 #'       )
 #'     ),
 #'     logConfiguration = list(
@@ -10546,6 +10973,34 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'           name = "string",
 #'           valueFrom = "string"
 #'         )
+#'       )
+#'     )
+#'   ),
+#'   volumeConfigurations = list(
+#'     list(
+#'       name = "string",
+#'       managedEBSVolume = list(
+#'         encrypted = TRUE|FALSE,
+#'         kmsKeyId = "string",
+#'         volumeType = "string",
+#'         sizeInGiB = 123,
+#'         snapshotId = "string",
+#'         iops = 123,
+#'         throughput = 123,
+#'         tagSpecifications = list(
+#'           list(
+#'             resourceType = "volume",
+#'             tags = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'           )
+#'         ),
+#'         roleArn = "string",
+#'         filesystemType = "ext3"|"ext4"|"xfs"
 #'       )
 #'     )
 #'   )
@@ -10574,14 +11029,14 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @rdname ecs_update_service
 #'
 #' @aliases ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config)

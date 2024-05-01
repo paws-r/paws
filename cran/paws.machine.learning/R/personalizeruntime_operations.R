@@ -101,7 +101,7 @@ personalizeruntime_get_action_recommendations <- function(campaignArn = NULL, us
 #' 
 #' For information about enabling metadata for a campaign, see [Enabling
 #' metadata in recommendations for a
-#' campaign](https://docs.aws.amazon.com/personalize/latest/dg/).
+#' campaign](https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-return-metadata).
 #'
 #' @keywords internal
 #'
@@ -178,10 +178,10 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' 
 #' For information about enabling metadata for a campaign, see [Enabling
 #' metadata in recommendations for a
-#' campaign](https://docs.aws.amazon.com/personalize/latest/dg/). For
-#' information about enabling metadata for a recommender, see [Enabling
+#' campaign](https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-return-metadata).
+#' For information about enabling metadata for a recommender, see [Enabling
 #' metadata in recommendations for a
-#' recommender](https://docs.aws.amazon.com/personalize/latest/dg/).
+#' recommender](https://docs.aws.amazon.com/personalize/latest/dg/creating-recommenders.html#create-recommender-return-metadata).
 #'
 #' @keywords internal
 #'

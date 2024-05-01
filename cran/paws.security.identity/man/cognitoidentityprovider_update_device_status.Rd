@@ -19,7 +19,7 @@ status you want to update.}
 \item{DeviceRememberedStatus}{The status of whether a device is remembered.}
 }
 \description{
-Updates the device status.
+Updates the device status. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_device_status/} for full documentation.
 }

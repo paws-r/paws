@@ -5,11 +5,14 @@ NULL
 #' Amazon Kinesis Analytics
 #'
 #' @description
-#' Amazon Kinesis Data Analytics is a fully managed service that you can
-#' use to process and analyze streaming data using Java, SQL, or Scala. The
-#' service enables you to quickly author and run Java, SQL, or Scala code
-#' against streaming sources to perform time series analytics, feed
-#' real-time dashboards, and create real-time metrics.
+#' Amazon Managed Service for Apache Flink was previously known as Amazon
+#' Kinesis Data Analytics for Apache Flink.
+#' 
+#' Amazon Managed Service for Apache Flink is a fully managed service that
+#' you can use to process and analyze streaming data using Java, Python,
+#' SQL, or Scala. The service enables you to quickly author and run Java,
+#' SQL, or Scala code against streaming sources to perform time series
+#' analytics, feed real-time dashboards, and create real-time metrics.
 #'
 #' @param
 #' config
@@ -100,31 +103,31 @@ NULL
 #'  \link[=kinesisanalyticsv2_add_application_output]{add_application_output} \tab Adds an external destination to your SQL-based Kinesis Data Analytics application\cr
 #'  \link[=kinesisanalyticsv2_add_application_reference_data_source]{add_application_reference_data_source} \tab Adds a reference data source to an existing SQL-based Kinesis Data Analytics application\cr
 #'  \link[=kinesisanalyticsv2_add_application_vpc_configuration]{add_application_vpc_configuration} \tab Adds a Virtual Private Cloud (VPC) configuration to the application\cr
-#'  \link[=kinesisanalyticsv2_create_application]{create_application} \tab Creates a Kinesis Data Analytics application\cr
+#'  \link[=kinesisanalyticsv2_create_application]{create_application} \tab Creates a Managed Service for Apache Flink application\cr
 #'  \link[=kinesisanalyticsv2_create_application_presigned_url]{create_application_presigned_url} \tab Creates and returns a URL that you can use to connect to an application's extension\cr
 #'  \link[=kinesisanalyticsv2_create_application_snapshot]{create_application_snapshot} \tab Creates a snapshot of the application's state data\cr
 #'  \link[=kinesisanalyticsv2_delete_application]{delete_application} \tab Deletes the specified application\cr
-#'  \link[=kinesisanalyticsv2_delete_application_cloud_watch_logging_option]{delete_application_cloud_watch_logging_option} \tab Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application\cr
+#'  \link[=kinesisanalyticsv2_delete_application_cloud_watch_logging_option]{delete_application_cloud_watch_logging_option} \tab Deletes an Amazon CloudWatch log stream from an SQL-based Kinesis Data Analytics application\cr
 #'  \link[=kinesisanalyticsv2_delete_application_input_processing_configuration]{delete_application_input_processing_configuration} \tab Deletes an InputProcessingConfiguration from an input\cr
 #'  \link[=kinesisanalyticsv2_delete_application_output]{delete_application_output} \tab Deletes the output destination configuration from your SQL-based Kinesis Data Analytics application's configuration\cr
 #'  \link[=kinesisanalyticsv2_delete_application_reference_data_source]{delete_application_reference_data_source} \tab Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration\cr
 #'  \link[=kinesisanalyticsv2_delete_application_snapshot]{delete_application_snapshot} \tab Deletes a snapshot of application state\cr
-#'  \link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Kinesis Data Analytics application\cr
-#'  \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Kinesis Data Analytics application\cr
+#'  \link[=kinesisanalyticsv2_delete_application_vpc_configuration]{delete_application_vpc_configuration} \tab Removes a VPC configuration from a Managed Service for Apache Flink application\cr
+#'  \link[=kinesisanalyticsv2_describe_application]{describe_application} \tab Returns information about a specific Managed Service for Apache Flink application\cr
 #'  \link[=kinesisanalyticsv2_describe_application_snapshot]{describe_application_snapshot} \tab Returns information about a snapshot of application state data\cr
 #'  \link[=kinesisanalyticsv2_describe_application_version]{describe_application_version} \tab Provides a detailed description of a specified version of the application\cr
 #'  \link[=kinesisanalyticsv2_discover_input_schema]{discover_input_schema} \tab Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object\cr
-#'  \link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Kinesis Data Analytics applications in your account\cr
+#'  \link[=kinesisanalyticsv2_list_applications]{list_applications} \tab Returns a list of Managed Service for Apache Flink applications in your account\cr
 #'  \link[=kinesisanalyticsv2_list_application_snapshots]{list_application_snapshots} \tab Lists information about the current application snapshots\cr
 #'  \link[=kinesisanalyticsv2_list_application_versions]{list_application_versions} \tab Lists all the versions for the specified application, including versions that were rolled back\cr
 #'  \link[=kinesisanalyticsv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application\cr
 #'  \link[=kinesisanalyticsv2_rollback_application]{rollback_application} \tab Reverts the application to the previous running version\cr
-#'  \link[=kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Kinesis Data Analytics application\cr
+#'  \link[=kinesisanalyticsv2_start_application]{start_application} \tab Starts the specified Managed Service for Apache Flink application\cr
 #'  \link[=kinesisanalyticsv2_stop_application]{stop_application} \tab Stops the application from processing data\cr
-#'  \link[=kinesisanalyticsv2_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Data Analytics application\cr
-#'  \link[=kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Data Analytics application\cr
-#'  \link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Kinesis Data Analytics application\cr
-#'  \link[=kinesisanalyticsv2_update_application_maintenance_configuration]{update_application_maintenance_configuration} \tab Updates the maintenance configuration of the Kinesis Data Analytics application
+#'  \link[=kinesisanalyticsv2_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Managed Service for Apache Flink application\cr
+#'  \link[=kinesisanalyticsv2_untag_resource]{untag_resource} \tab Removes one or more tags from a Managed Service for Apache Flink application\cr
+#'  \link[=kinesisanalyticsv2_update_application]{update_application} \tab Updates an existing Managed Service for Apache Flink application\cr
+#'  \link[=kinesisanalyticsv2_update_application_maintenance_configuration]{update_application_maintenance_configuration} \tab Updates the maintenance configuration of the Managed Service for Apache Flink application
 #' }
 #'
 #' @return
@@ -156,7 +159,7 @@ kinesisanalyticsv2 <- function(config = list(), credentials = list(), endpoint =
 
 .kinesisanalyticsv2$metadata <- list(
   service_name = "kinesisanalyticsv2",
-  endpoints = list("*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "kinesisanalytics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "kinesisanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisanalytics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "kinesisanalytics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Kinesis Analytics V2",
   api_version = "2018-05-23",
   signing_name = "kinesisanalytics",

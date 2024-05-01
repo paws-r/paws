@@ -2,30 +2,37 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_create_rule_groups_namespace}
 \alias{prometheusservice_create_rule_groups_namespace}
-\title{Create a rule group namespace}
+\title{The CreateRuleGroupsNamespace operation creates a rule groups namespace
+within a workspace}
 \usage{
 prometheusservice_create_rule_groups_namespace(
-  workspaceId,
-  name,
-  data,
   clientToken = NULL,
-  tags = NULL
+  data,
+  name,
+  tags = NULL,
+  workspaceId
 )
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace in which to create the rule group namespace.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{name}{[required] The rule groups namespace name.}
+\item{data}{[required] The rules file to use in the new namespace.
 
-\item{data}{[required] The namespace data that define the rule groups.}
+Contains the base64-encoded version of the YAML rules file.
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+For details about the rule groups namespace structure, see
+\href{https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html}{RuleGroupsNamespaceData}.}
 
-\item{tags}{Optional, user-provided tags for this rule groups namespace.}
+\item{name}{[required] The name for the new rule groups namespace.}
+
+\item{tags}{The list of tag keys and values to associate with the rule groups
+namespace.}
+
+\item{workspaceId}{[required] The ID of the workspace to add the rule groups namespace.}
 }
 \description{
-Create a rule group namespace.
+The \code{\link[=prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace}} operation creates a rule groups namespace within a workspace. A rule groups namespace is associated with exactly one rules file. A workspace can have multiple rule groups namespaces.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_rule_groups_namespace/} for full documentation.
 }

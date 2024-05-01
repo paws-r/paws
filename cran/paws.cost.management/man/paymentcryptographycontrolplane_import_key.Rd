@@ -6,14 +6,15 @@
 encoded) into Amazon Web Services Payment Cryptography}
 \usage{
 paymentcryptographycontrolplane_import_key(
-  Enabled = NULL,
-  KeyCheckValueAlgorithm = NULL,
   KeyMaterial,
+  KeyCheckValueAlgorithm = NULL,
+  Enabled = NULL,
   Tags = NULL
 )
 }
 \arguments{
-\item{Enabled}{Specifies whether import key is enabled.}
+\item{KeyMaterial}{[required] The key or public key certificate type to use during key material
+import, for example TR-34 or RootCertificatePublicKey.}
 
 \item{KeyCheckValueAlgorithm}{The algorithm that Amazon Web Services Payment Cryptography uses to
 calculate the key check value (KCV). It is used to validate the key
@@ -25,8 +26,7 @@ order bytes of the encrypted result. For AES keys, the KCV is computed
 using a CMAC algorithm where the input data is 16 bytes of zero and
 retaining the 3 highest order bytes of the encrypted result.}
 
-\item{KeyMaterial}{[required] The key or public key certificate type to use during key material
-import, for example TR-34 or RootCertificatePublicKey.}
+\item{Enabled}{Specifies whether import key is enabled.}
 
 \item{Tags}{Assigns one or more tags to the Amazon Web Services Payment Cryptography
 key. Use this parameter to tag a key when it is imported. To tag an

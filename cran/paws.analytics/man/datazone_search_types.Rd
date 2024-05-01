@@ -22,7 +22,7 @@ datazone_search_types(
 
 \item{filters}{The filters for the \code{\link[=datazone_search_types]{search_types}} action.}
 
-\item{managed}{[required]}
+\item{managed}{[required] Specifies whether the search is managed.}
 
 \item{maxResults}{The maximum number of results to return in a single call to
 \code{\link[=datazone_search_types]{search_types}}. When the number of results to
@@ -37,7 +37,7 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{NextToken} value in a subsequent call to
 \code{\link[=datazone_search_types]{search_types}} to list the next set of results.}
 
-\item{searchIn}{}
+\item{searchIn}{The details of the search.}
 
 \item{searchScope}{[required] Specifies the scope of the search for types.}
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_instance_associations_status}
 \alias{ssm_describe_instance_associations_status}
-\title{The status of the associations for the managed node(s)}
+\title{The status of the associations for the managed nodes}
 \usage{
 ssm_describe_instance_associations_status(
   InstanceId,
@@ -21,7 +21,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-The status of the associations for the managed node(s).
+The status of the associations for the managed nodes.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_describe_instance_associations_status/} for full documentation.
 }

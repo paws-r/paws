@@ -119,7 +119,7 @@ service receive an answer that contains up to eight healthy records.
 \link[paws.networking:servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
 \link[paws.networking:servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account\cr
 \link[paws.networking:servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
-\link[paws.networking:servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more specified namespaces\cr
+\link[paws.networking:servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more namespaces\cr
 \link[paws.networking:servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr
 \link[paws.networking:servicediscovery_register_instance]{register_instance} \tab Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service\cr
 \link[paws.networking:servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr

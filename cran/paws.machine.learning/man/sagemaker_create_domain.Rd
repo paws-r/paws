@@ -57,7 +57,7 @@ Amazon SageMaker, which allows direct internet access
 
 \item{HomeEfsFileSystemKmsKeyId}{Use \code{KmsKeyId}.}
 
-\item{KmsKeyId}{SageMaker uses Amazon Web Services KMS to encrypt the EFS volume
+\item{KmsKeyId}{SageMaker uses Amazon Web Services KMS to encrypt EFS and EBS volumes
 attached to the domain with an Amazon Web Services managed key by
 default. For more control, specify a customer managed key.}
 
@@ -71,7 +71,7 @@ must be set to \code{Service}.}
 \item{DefaultSpaceSettings}{The default settings used to create a space.}
 }
 \description{
-Creates a \code{Domain}. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
+Creates a \code{Domain}. A domain consists of an associated Amazon Elastic File System volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_domain/} for full documentation.
 }

@@ -26,7 +26,8 @@ Conditional: You must specify only one of the following parameters:
 template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
 or a Systems Manager document. For more information about templates, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
-in the \emph{CloudFormation User Guide}.
+in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
+must start with \verb{https://}.
 
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}

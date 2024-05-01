@@ -1286,7 +1286,7 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, t
 #' Lists the targets for the target group
 #'
 #' @description
-#' Lists the targets for the target group. By default, all targets are included. You can use this API to check the health status of targets. You can also filter the results by target.
+#' Lists the targets for the target group. By default, all targets are included. You can use this API to check the health status of targets. You can also ﬁlter the results by target.
 #'
 #' See [https://www.paws-r-sdk.com/docs/vpclattice_list_targets/](https://www.paws-r-sdk.com/docs/vpclattice_list_targets/) for full documentation.
 #'

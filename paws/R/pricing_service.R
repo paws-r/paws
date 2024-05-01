@@ -156,7 +156,7 @@ pricing <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .pricing$metadata <- list(
   service_name = "api.pricing",
-  endpoints = list("*" = list(endpoint = "api.pricing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.pricing.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.pricing.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.pricing.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.pricing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.pricing.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "api.pricing.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "api.pricing.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.pricing.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "api.pricing.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Pricing",
   api_version = "2017-10-15",
   signing_name = "pricing",

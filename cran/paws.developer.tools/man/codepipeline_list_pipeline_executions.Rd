@@ -7,6 +7,7 @@
 codepipeline_list_pipeline_executions(
   pipelineName,
   maxResults = NULL,
+  filter = NULL,
   nextToken = NULL
 )
 }
@@ -18,6 +19,8 @@ information.}
 the remaining results, make another call with the returned nextToken
 value. Pipeline history is limited to the most recent 12 months, based
 on pipeline execution start times. Default value is 100.}
+
+\item{filter}{The pipeline execution to filter on.}
 
 \item{nextToken}{The token that was returned from the previous
 \code{\link[=codepipeline_list_pipeline_executions]{list_pipeline_executions}}

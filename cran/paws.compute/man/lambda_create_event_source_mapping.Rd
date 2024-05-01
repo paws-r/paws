@@ -38,12 +38,12 @@ consumer.
 \item \strong{Amazon DynamoDB Streams} – The ARN of the stream.
 \item \strong{Amazon Simple Queue Service} – The ARN of the queue.
 \item \strong{Amazon Managed Streaming for Apache Kafka} – The ARN of the
-cluster.
+cluster or the ARN of the VPC connection (for \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc}{cross-account event source mappings}).
 \item \strong{Amazon MQ} – The ARN of the broker.
 \item \strong{Amazon DocumentDB} – The ARN of the DocumentDB change stream.
 }}
 
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -110,8 +110,9 @@ MSK, and self-managed Apache Kafka.}
 \item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the time from which to
 start reading. \code{StartingPositionTimestamp} cannot be in the future.}
 
-\item{DestinationConfig}{(Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
-standard Amazon SNS topic destination for discarded records.}
+\item{DestinationConfig}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+configuration object that specifies the destination of an event after
+Lambda processes it.}
 
 \item{MaximumRecordAgeInSeconds}{(Kinesis and DynamoDB Streams only) Discard records older than the
 specified age. The default value is infinite (-1).}

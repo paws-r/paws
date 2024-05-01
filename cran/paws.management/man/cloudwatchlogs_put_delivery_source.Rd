@@ -14,15 +14,21 @@ delivery sources in your account.}
 sending logs. For example,
 \verb{arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234}}
 
-\item{logType}{[required] Defines the type of log that the source is sending. For valid values for
-this parameter, see the documentation for the source service.}
+\item{logType}{[required] Defines the type of log that the source is sending.
+\itemize{
+\item For Amazon CodeWhisperer, the valid value is \code{EVENT_LOGS}.
+\item For IAM Identity Centerr, the valid value is \code{ERROR_LOGS}.
+\item For Amazon WorkMail, the valid values are \code{ACCESS_CONTROL_LOGS},
+\code{AUTHENTICATION_LOGS}, \code{WORKMAIL_AVAILABILITY_PROVIDER_LOGS}, and
+\code{WORKMAIL_MAILBOX_ACCESS_LOGS}.
+}}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 
 For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}}
 }
 \description{
-Creates or updates a logical \emph{delivery source}. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Kinesis Data Firehose.
+Creates or updates a logical \emph{delivery source}. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Firehose.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/} for full documentation.
 }

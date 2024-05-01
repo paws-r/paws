@@ -45,7 +45,12 @@ buckets.}
 access point.}
 
 \item{BucketAccountId}{The Amazon Web Services account ID associated with the S3 bucket
-associated with this access point.}
+associated with this access point.
+
+For same account access point when your bucket and access point belong
+to the same account owner, the \code{BucketAccountId} is not required. For
+cross-account access point when your bucket and access point are not in
+the same account, the \code{BucketAccountId} is required.}
 }
 \description{
 This operation is not supported by directory buckets.

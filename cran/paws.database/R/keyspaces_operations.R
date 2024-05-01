@@ -163,18 +163,48 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' 
 #' Once client-side timestamps are enabled for a table, this setting cannot
 #' be disabled.
+#' @param autoScalingSpecification The optional auto scaling settings for a table in provisioned capacity
+#' mode. Specifies if the service can manage throughput capacity
+#' automatically on your behalf.
+#' 
+#' Auto scaling helps you provision throughput capacity for variable
+#' workloads efficiently by increasing and decreasing your table's read and
+#' write capacity automatically in response to application traffic. For
+#' more information, see [Managing throughput capacity automatically with
+#' Amazon Keyspaces auto
+#' scaling](https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html)
+#' in the *Amazon Keyspaces Developer Guide*.
+#' 
+#' By default, auto scaling is disabled for a table.
+#' @param replicaSpecifications The optional Amazon Web Services Region specific settings of a
+#' multi-Region table. These settings overwrite the general settings of the
+#' table for the specified Region.
+#' 
+#' For a multi-Region table in provisioned capacity mode, you can configure
+#' the table's read capacity differently for each Region's replica. The
+#' write capacity, however, remains synchronized between all replicas to
+#' ensure that there's enough capacity to replicate writes across all
+#' Regions. To define the read capacity for a table replica in a specific
+#' Region, you can do so by configuring the following parameters.
+#' 
+#' -   `region`: The Region where these settings are applied. (Required)
+#' 
+#' -   `readCapacityUnits`: The provisioned read capacity units. (Optional)
+#' 
+#' -   `readCapacityAutoScaling`: The read capacity auto scaling settings
+#'     for the table. (Optional)
 #'
 #' @keywords internal
 #'
 #' @rdname keyspaces_create_table
-keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, comment = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, tags = NULL, clientSideTimestamps = NULL) {
+keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, comment = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, tags = NULL, clientSideTimestamps = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps)
+  input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$create_table_output()
   config <- get_config()
   svc <- .keyspaces$service(config)
@@ -304,6 +334,37 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
 }
 .keyspaces$operations$get_table <- keyspaces_get_table
 
+#' Returns auto scaling related settings of the specified table in JSON
+#' format
+#'
+#' @description
+#' Returns auto scaling related settings of the specified table in JSON format. If the table is a multi-Region table, the Amazon Web Services Region specific auto scaling settings of the table are included.
+#'
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_get_table_auto_scaling_settings/](https://www.paws-r-sdk.com/docs/keyspaces_get_table_auto_scaling_settings/) for full documentation.
+#'
+#' @param keyspaceName &#91;required&#93; The name of the keyspace.
+#' @param tableName &#91;required&#93; The name of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname keyspaces_get_table_auto_scaling_settings
+keyspaces_get_table_auto_scaling_settings <- function(keyspaceName, tableName) {
+  op <- new_operation(
+    name = "GetTableAutoScalingSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .keyspaces$get_table_auto_scaling_settings_input(keyspaceName = keyspaceName, tableName = tableName)
+  output <- .keyspaces$get_table_auto_scaling_settings_output()
+  config <- get_config()
+  svc <- .keyspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.keyspaces$operations$get_table_auto_scaling_settings <- keyspaces_get_table_auto_scaling_settings
+
 #' Returns a list of keyspaces
 #'
 #' @description
@@ -409,11 +470,11 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 }
 .keyspaces$operations$list_tags_for_resource <- keyspaces_list_tags_for_resource
 
-#' Restores the specified table to the specified point in time within the
+#' Restores the table to the specified point in time within the
 #' earliest_restorable_timestamp and the current time
 #'
 #' @description
-#' Restores the specified table to the specified point in time within the `earliest_restorable_timestamp` and the current time. For more information about restore points, see [Time window for PITR continuous backups](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window) in the *Amazon Keyspaces Developer Guide*.
+#' Restores the table to the specified point in time within the `earliest_restorable_timestamp` and the current time. For more information about restore points, see [Time window for PITR continuous backups](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window) in the *Amazon Keyspaces Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/keyspaces_restore_table/](https://www.paws-r-sdk.com/docs/keyspaces_restore_table/) for full documentation.
 #'
@@ -467,18 +528,30 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' For more information, see [Adding tags and labels to Amazon Keyspaces
 #' resources](https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html)
 #' in the *Amazon Keyspaces Developer Guide*.
+#' @param autoScalingSpecification The optional auto scaling settings for the restored table in provisioned
+#' capacity mode. Specifies if the service can manage throughput capacity
+#' of a provisioned table automatically on your behalf. Amazon Keyspaces
+#' auto scaling helps you provision throughput capacity for variable
+#' workloads efficiently by increasing and decreasing your table's read and
+#' write capacity automatically in response to application traffic.
+#' 
+#' For more information, see [Managing throughput capacity automatically
+#' with Amazon Keyspaces auto
+#' scaling](https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html)
+#' in the *Amazon Keyspaces Developer Guide*.
+#' @param replicaSpecifications The optional Region specific settings of a multi-Regional table.
 #'
 #' @keywords internal
 #'
 #' @rdname keyspaces_restore_table
-keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetKeyspaceName, targetTableName, restoreTimestamp = NULL, capacitySpecificationOverride = NULL, encryptionSpecificationOverride = NULL, pointInTimeRecoveryOverride = NULL, tagsOverride = NULL) {
+keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetKeyspaceName, targetTableName, restoreTimestamp = NULL, capacitySpecificationOverride = NULL, encryptionSpecificationOverride = NULL, pointInTimeRecoveryOverride = NULL, tagsOverride = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL) {
   op <- new_operation(
     name = "RestoreTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .keyspaces$restore_table_input(sourceKeyspaceName = sourceKeyspaceName, sourceTableName = sourceTableName, targetKeyspaceName = targetKeyspaceName, targetTableName = targetTableName, restoreTimestamp = restoreTimestamp, capacitySpecificationOverride = capacitySpecificationOverride, encryptionSpecificationOverride = encryptionSpecificationOverride, pointInTimeRecoveryOverride = pointInTimeRecoveryOverride, tagsOverride = tagsOverride)
+  input <- .keyspaces$restore_table_input(sourceKeyspaceName = sourceKeyspaceName, sourceTableName = sourceTableName, targetKeyspaceName = targetKeyspaceName, targetTableName = targetTableName, restoreTimestamp = restoreTimestamp, capacitySpecificationOverride = capacitySpecificationOverride, encryptionSpecificationOverride = encryptionSpecificationOverride, pointInTimeRecoveryOverride = pointInTimeRecoveryOverride, tagsOverride = tagsOverride, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$restore_table_output()
   config <- get_config()
   svc <- .keyspaces$service(config)
@@ -552,11 +625,11 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 .keyspaces$operations$untag_resource <- keyspaces_untag_resource
 
 #' Adds new columns to the table or updates one of the table's settings,
-#' for example capacity mode, encryption, point-in-time recovery, or ttl
-#' settings
+#' for example capacity mode, auto scaling, encryption, point-in-time
+#' recovery, or ttl settings
 #'
 #' @description
-#' Adds new columns to the table or updates one of the table's settings, for example capacity mode, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.
+#' Adds new columns to the table or updates one of the table's settings, for example capacity mode, auto scaling, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/keyspaces_update_table/](https://www.paws-r-sdk.com/docs/keyspaces_update_table/) for full documentation.
 #'
@@ -636,18 +709,34 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' 
 #' Once client-side timestamps are enabled for a table, this setting cannot
 #' be disabled.
+#' @param autoScalingSpecification The optional auto scaling settings to update for a table in provisioned
+#' capacity mode. Specifies if the service can manage throughput capacity
+#' of a provisioned table automatically on your behalf. Amazon Keyspaces
+#' auto scaling helps you provision throughput capacity for variable
+#' workloads efficiently by increasing and decreasing your table's read and
+#' write capacity automatically in response to application traffic.
+#' 
+#' If auto scaling is already enabled for the table, you can use
+#' [`update_table`][keyspaces_update_table] to update the minimum and
+#' maximum values or the auto scaling policy settings independently.
+#' 
+#' For more information, see [Managing throughput capacity automatically
+#' with Amazon Keyspaces auto
+#' scaling](https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html)
+#' in the *Amazon Keyspaces Developer Guide*.
+#' @param replicaSpecifications The Region specific settings of a multi-Regional table.
 #'
 #' @keywords internal
 #'
 #' @rdname keyspaces_update_table
-keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, clientSideTimestamps = NULL) {
+keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, clientSideTimestamps = NULL, autoScalingSpecification = NULL, replicaSpecifications = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps)
+  input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$update_table_output()
   config <- get_config()
   svc <- .keyspaces$service(config)

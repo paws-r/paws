@@ -48,7 +48,8 @@ rds_restore_db_instance_to_point_in_time(
   NetworkType = NULL,
   StorageThroughput = NULL,
   AllocatedStorage = NULL,
-  DedicatedLogVolume = NULL
+  DedicatedLogVolume = NULL,
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -230,14 +231,14 @@ snapshots of the DB instance. By default, tags are not copied.}
 
 \item{StorageType}{The storage type to associate with the DB instance.
 
-Valid Values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
 Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.
 
 Constraints:
 \itemize{
-\item If you specify \code{io1} or \code{gp3}, you must also include a value for the
-\code{Iops} parameter.
+\item If you specify \code{io1}, \code{io2}, or \code{gp3}, you must also include a value
+for the \code{Iops} parameter.
 }}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
@@ -451,6 +452,15 @@ for future growth.}
 
 \item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
 instance.}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB instance's server
+certificate.
+
+This setting doesn't apply to RDS Custom DB instances.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
+in the \emph{Amazon Aurora User Guide}.}
 }
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the \code{LatestRestorableTime} property. You can restore to a point up to the number of days specified by the \code{BackupRetentionPeriod} property.

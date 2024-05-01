@@ -19,8 +19,14 @@ rds_create_custom_db_engine_version(
 )
 }
 \arguments{
-\item{Engine}{[required] The database engine to use for your custom engine version (CEV). The
-only supported value is \code{custom-oracle-ee}.}
+\item{Engine}{[required] The database engine. RDS Custom for Oracle supports the following
+values:
+\itemize{
+\item \code{custom-oracle-ee}
+\item \code{custom-oracle-ee-cdb}
+\item \code{custom-oracle-se2}
+\item \code{custom-oracle-se2-cdb}
+}}
 
 \item{EngineVersion}{[required] The name of your CEV. The name format is 19.\emph{customized_string}. For
 example, a valid CEV name is \verb{19.my_cev1}. This setting is required for

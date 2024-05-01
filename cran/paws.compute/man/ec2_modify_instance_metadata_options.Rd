@@ -17,23 +17,33 @@ ec2_modify_instance_metadata_options(
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
 
-\item{HttpTokens}{IMDSv2 uses token-backed sessions. Set the use of HTTP tokens to
-\code{optional} (in other words, set the use of IMDSv2 to \code{optional}) or
-\code{required} (in other words, set the use of IMDSv2 to \code{required}).
+\item{HttpTokens}{Indicates whether IMDSv2 is required.
 \itemize{
-\item \code{optional} - When IMDSv2 is optional, you can choose to retrieve
-instance metadata with or without a session token in your request.
-If you retrieve the IAM role credentials without a token, the IMDSv1
-role credentials are returned. If you retrieve the IAM role
-credentials using a valid session token, the IMDSv2 role credentials
-are returned.
-\item \code{required} - When IMDSv2 is required, you must send a session token
-with any instance metadata retrieval requests. In this state,
+\item \code{optional} - IMDSv2 is optional. You can choose whether to send a
+session token in your instance metadata retrieval requests. If you
+retrieve IAM role credentials without a session token, you receive
+the IMDSv1 role credentials. If you retrieve IAM role credentials
+using a valid session token, you receive the IMDSv2 role
+credentials.
+\item \code{required} - IMDSv2 is required. You must send a session token in
+your instance metadata retrieval requests. With this option,
 retrieving the IAM role credentials always returns IMDSv2
 credentials; IMDSv1 credentials are not available.
 }
 
-Default: \code{optional}}
+Default:
+\itemize{
+\item If the value of \code{ImdsSupport} for the Amazon Machine Image (AMI) for
+your instance is \code{v2.0} and the account level default is set to
+\code{no-preference}, the default is \code{required}.
+\item If the value of \code{ImdsSupport} for the Amazon Machine Image (AMI) for
+your instance is \code{v2.0}, but the account level default is set to
+\verb{V1 or V2}, the default is \code{optional}.
+}
+
+The default value can also be affected by other combinations of
+parameters. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#instance-metadata-options-order-of-precedence}{Order of precedence for instance metadata options}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{HttpPutResponseHopLimit}{The desired HTTP PUT response hop limit for instance metadata requests.
 The larger the number, the further instance metadata requests can
@@ -57,9 +67,7 @@ Applies only if you enabled the HTTP metadata endpoint.}
 
 \item{InstanceMetadataTags}{Set to \code{enabled} to allow access to instance tags from the instance
 metadata. Set to \code{disabled} to turn off access to instance tags from the
-instance metadata. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS}{Work with instance tags using the instance metadata}.
-
-Default: \code{disabled}}
+instance metadata. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS}{Work with instance tags using the instance metadata}.}
 }
 \description{
 Modify the instance metadata parameters on a running or stopped instance. When you modify the parameters on a stopped instance, they are applied when the instance is started. When you modify the parameters on a running instance, the API responds with a state of “pending”. After the parameter modifications are successfully applied to the instance, the state of the modifications changes from “pending” to “applied” in subsequent describe-instances API calls. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data} in the \emph{Amazon EC2 User Guide}.

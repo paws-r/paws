@@ -2,15 +2,15 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_accept_share}
 \alias{omics_accept_share}
-\title{Accepts a share for an analytics store}
+\title{Accept a resource share request}
 \usage{
 omics_accept_share(shareId)
 }
 \arguments{
-\item{shareId}{[required] The ID for a share offer for analytics store data.}
+\item{shareId}{[required] The ID of the resource share.}
 }
 \description{
-Accepts a share for an analytics store.
+Accept a resource share request.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_accept_share/} for full documentation.
 }

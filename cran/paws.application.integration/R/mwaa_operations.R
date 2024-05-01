@@ -51,7 +51,7 @@ mwaa_create_cli_token <- function(Name) {
 #' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
 #' 
 #' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
-#' `2.7.2`
+#' `2.7.2` `2.8.1`
 #' @param DagS3Path &#91;required&#93; The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
 #' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).

@@ -21,7 +21,14 @@ Constraints:
 \item If supplied, must match an existing DBClusterIdentifier.
 }}
 
-\item{Filters}{This parameter isn't currently supported.}
+\item{Filters}{A filter that specifies one or more global database clusters to
+describe. This parameter is case-sensitive.
+
+Currently, the only supported filter is \code{region}.
+
+If used, the request returns information about any global cluster with
+at least one member (primary or secondary) in the specified Amazon Web
+Services Regions.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

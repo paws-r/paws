@@ -209,7 +209,7 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #' 
 #' Use this API or [`update_domain`][customerprofiles_update_domain] to
 #' enable [identity
-#' resolution](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html):
+#' resolution](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetMatches.html):
 #' set `Matching` to true.
 #' 
 #' To prevent cross-service impersonation when you call this API, see
@@ -3413,9 +3413,9 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' An integration can belong to only one domain.
 #' 
 #' To add or remove tags on an existing Integration, see
-#' [TagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html)
+#' [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_TagResource.html)
 #' /
-#' [UntagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html).
+#' [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UntagResource.html).
 #'
 #' @usage
 #' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags,
@@ -3637,7 +3637,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' Defines a ProfileObjectType.
 #' 
 #' To add or remove tags on an existing ObjectType, see
-#' [TagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html)/[`untag_resource`][customerprofiles_untag_resource].
+#' [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_TagResource.html)/[`untag_resource`][customerprofiles_untag_resource].
 #'
 #' @usage
 #' customerprofiles_put_profile_object_type(DomainName, ObjectTypeName,
@@ -4183,7 +4183,7 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #' 
 #' Use this API or [`create_domain`][customerprofiles_create_domain] to
 #' enable [identity
-#' resolution](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html):
+#' resolution](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetMatches.html):
 #' set `Matching` to true.
 #' 
 #' To prevent cross-service impersonation when you call this API, see

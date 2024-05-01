@@ -85,19 +85,23 @@ prefixed subdomains.
 Example JSON:
 \verb{"TokenDomains": \{ "mywebsite.com", "myotherwebsite.com" \}}
 
-Public suffixes aren't allowed. For example, you can't use \code{usa.gov} or
+Public suffixes aren't allowed. For example, you can't use \code{gov.au} or
 \code{co.uk} as token domains.}
 
 \item{AssociationConfig}{Specifies custom configurations for the associations between the web ACL
 and protected resources.
 
 Use this to customize the maximum size of the request body that your
-protected CloudFront distributions forward to WAF for inspection. The
-default is 16 KB (16,384 bytes).
+protected resources forward to WAF for inspection. You can customize
+this setting for CloudFront, API Gateway, Amazon Cognito, App Runner, or
+Verified Access resources. The default setting is 16 KB (16,384 bytes).
 
 You are charged additional fees when your protected resources forward
 body sizes that are larger than the default. For more information, see
-\href{https://aws.amazon.com/waf/pricing/}{WAF Pricing}.}
+\href{https://aws.amazon.com/waf/pricing/}{WAF Pricing}.
+
+For Application Load Balancer and AppSync, the limit is fixed at 8 KB
+(8,192 bytes).}
 }
 \description{
 Creates a WebACL per the specifications provided.

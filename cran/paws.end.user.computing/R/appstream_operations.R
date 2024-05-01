@@ -1039,6 +1039,8 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_create_usage_report_subscription/](https://www.paws-r-sdk.com/docs/appstream_create_usage_report_subscription/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname appstream_create_usage_report_subscription
@@ -1403,6 +1405,8 @@ appstream_delete_stack <- function(Name) {
 #' Disables usage report generation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/appstream_delete_usage_report_subscription/](https://www.paws-r-sdk.com/docs/appstream_delete_usage_report_subscription/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

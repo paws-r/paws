@@ -228,7 +228,7 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .wafregional$metadata <- list(
   service_name = "waf-regional",
-  endpoints = list("*" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "waf-regional.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "waf-regional.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "waf-regional.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "waf-regional.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "waf-regional.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "waf-regional.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "waf-regional.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "waf-regional.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "waf-regional.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WAF Regional",
   api_version = "2016-11-28",
   signing_name = "waf-regional",

@@ -53,7 +53,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Describes the API operations for running inference using Bedrock models.
+Describes the API operations for running inference using Amazon Bedrock
+models.
 }
 \section{Service syntax}{
 
@@ -94,8 +95,8 @@ Describes the API operations for running inference using Bedrock models.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.machine.learning:bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Bedrock model to run inference using the input provided in the request body\cr
-\link[paws.machine.learning:bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Bedrock model to run inference using the input provided
+\link[paws.machine.learning:bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body\cr
+\link[paws.machine.learning:bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body
 }
 }
 

@@ -190,7 +190,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 
 .redshiftserverless$metadata <- list(
   service_name = "redshiftserverless",
-  endpoints = list("*" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift-serverless.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "redshift-serverless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift-serverless.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift-serverless.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "redshift-serverless.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "redshift-serverless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift-serverless.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "redshift-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Redshift Serverless",
   api_version = "2021-04-21",
   signing_name = "redshift-serverless",

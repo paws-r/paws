@@ -8,7 +8,7 @@ notification services, such as APNS and GCM (Firebase Cloud Messaging)}
 sns_delete_platform_application(PlatformApplicationArn)
 }
 \arguments{
-\item{PlatformApplicationArn}{[required] PlatformApplicationArn of platform application object to delete.}
+\item{PlatformApplicationArn}{[required] \code{PlatformApplicationArn} of platform application object to delete.}
 }
 \description{
 Deletes a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.

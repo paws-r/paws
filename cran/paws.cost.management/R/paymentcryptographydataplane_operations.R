@@ -3,11 +3,11 @@
 #' @include paymentcryptographydataplane_service.R
 NULL
 
-#' Decrypts ciphertext data to plaintext using symmetric, asymmetric, or
-#' DUKPT data encryption key
+#' Decrypts ciphertext data to plaintext using a symmetric (TDES, AES),
+#' asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme
 #'
 #' @description
-#' Decrypts ciphertext data to plaintext using symmetric, asymmetric, or DUKPT data encryption key. For more information, see [Decrypt data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html) in the *Amazon Web Services Payment Cryptography User Guide*.
+#' Decrypts ciphertext data to plaintext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme. For more information, see [Decrypt data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html) in the *Amazon Web Services Payment Cryptography User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_decrypt_data/](https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_decrypt_data/) for full documentation.
 #'
@@ -36,11 +36,11 @@ paymentcryptographydataplane_decrypt_data <- function(CipherText, DecryptionAttr
 }
 .paymentcryptographydataplane$operations$decrypt_data <- paymentcryptographydataplane_decrypt_data
 
-#' Encrypts plaintext data to ciphertext using symmetric, asymmetric, or
-#' DUKPT data encryption key
+#' Encrypts plaintext data to ciphertext using a symmetric (TDES, AES),
+#' asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme
 #'
 #' @description
-#' Encrypts plaintext data to ciphertext using symmetric, asymmetric, or DUKPT data encryption key. For more information, see [Encrypt data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html) in the *Amazon Web Services Payment Cryptography User Guide*.
+#' Encrypts plaintext data to ciphertext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme. For more information, see [Encrypt data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html) in the *Amazon Web Services Payment Cryptography User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_encrypt_data/](https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_encrypt_data/) for full documentation.
 #'
@@ -48,6 +48,13 @@ paymentcryptographydataplane_decrypt_data <- function(CipherText, DecryptionAttr
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the encryption key that Amazon Web Services Payment
 #' Cryptography uses for plaintext encryption.
 #' @param PlainText &#91;required&#93; The plaintext to be encrypted.
+#' 
+#' For encryption using asymmetric keys, plaintext data length is
+#' constrained by encryption key strength that you define in `KeyAlgorithm`
+#' and padding type that you define in `AsymmetricEncryptionAttributes`.
+#' For more information, see [Encrypt
+#' data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #'
 #' @keywords internal
 #'
@@ -119,7 +126,8 @@ paymentcryptographydataplane_generate_card_validation_data <- function(Generatio
 #' Web Services Payment Cryptography.
 #' @param KeyIdentifier &#91;required&#93; The `keyARN` of the MAC generation encryption key.
 #' @param MacLength The length of a MAC under generation.
-#' @param MessageData &#91;required&#93; The data for which a MAC is under generation.
+#' @param MessageData &#91;required&#93; The data for which a MAC is under generation. This value must be
+#' hexBinary.
 #'
 #' @keywords internal
 #'
@@ -236,17 +244,17 @@ paymentcryptographydataplane_re_encrypt_data <- function(CipherText, IncomingEnc
 #' @param EncryptedPinBlock &#91;required&#93; The encrypted PIN block data that Amazon Web Services Payment
 #' Cryptography translates.
 #' @param IncomingDukptAttributes The attributes and values to use for incoming DUKPT encryption key for
-#' PIN block tranlation.
+#' PIN block translation.
 #' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which incoming PIN block data
 #' is encrypted. This key type can be PEK or BDK.
-#' @param IncomingTranslationAttributes &#91;required&#93; The format of the incoming PIN block data for tranlation within Amazon
+#' @param IncomingTranslationAttributes &#91;required&#93; The format of the incoming PIN block data for translation within Amazon
 #' Web Services Payment Cryptography.
 #' @param OutgoingDukptAttributes The attributes and values to use for outgoing DUKPT encryption key after
 #' PIN block translation.
 #' @param OutgoingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key for encrypting outgoing PIN block
 #' data. This key type can be PEK or BDK.
-#' @param OutgoingTranslationAttributes &#91;required&#93; The format of the outgoing PIN block data after tranlation by Amazon Web
-#' Services Payment Cryptography.
+#' @param OutgoingTranslationAttributes &#91;required&#93; The format of the outgoing PIN block data after translation by Amazon
+#' Web Services Payment Cryptography.
 #'
 #' @keywords internal
 #'
@@ -366,7 +374,8 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #' Cryptography uses to verify MAC data.
 #' @param Mac &#91;required&#93; The MAC being verified.
 #' @param MacLength The length of the MAC.
-#' @param MessageData &#91;required&#93; The data on for which MAC is under verification.
+#' @param MessageData &#91;required&#93; The data on for which MAC is under verification. This value must be
+#' hexBinary.
 #' @param VerificationAttributes &#91;required&#93; The attributes and data values to use for MAC verification within Amazon
 #' Web Services Payment Cryptography.
 #'

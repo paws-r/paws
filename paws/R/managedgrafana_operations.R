@@ -9,12 +9,19 @@ NULL
 #' Assigns a Grafana Enterprise license to a workspace. Upgrading to
 #' Grafana Enterprise incurs additional fees. For more information, see
 #' [Upgrade a workspace to Grafana
-#' Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html).
+#' Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html).
 #'
 #' @usage
-#' managedgrafana_associate_license(licenseType, workspaceId)
+#' managedgrafana_associate_license(grafanaToken, licenseType, workspaceId)
 #'
+#' @param grafanaToken A token from Grafana Labs that ties your Amazon Web Services account
+#' with a Grafana Labs account. For more information, see [Register with
+#' Grafana
+#' Labs](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html#AMG-workspace-register-enterprise).
 #' @param licenseType &#91;required&#93; The type of license to associate with the workspace.
+#' 
+#' Amazon Managed Grafana workspaces no longer support Grafana Enterprise
+#' free trials.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to associate the license with.
 #'
 #' @return
@@ -41,6 +48,7 @@ NULL
 #'     freeTrialExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     grafanaToken = "string",
 #'     grafanaVersion = "string",
 #'     id = "string",
 #'     licenseExpiration = as.POSIXct(
@@ -88,6 +96,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$associate_license(
+#'   grafanaToken = "string",
 #'   licenseType = "ENTERPRISE"|"ENTERPRISE_FREE_TRIAL",
 #'   workspaceId = "string"
 #' )
@@ -98,14 +107,14 @@ NULL
 #' @rdname managedgrafana_associate_license
 #'
 #' @aliases managedgrafana_associate_license
-managedgrafana_associate_license <- function(licenseType, workspaceId) {
+managedgrafana_associate_license <- function(grafanaToken = NULL, licenseType, workspaceId) {
   op <- new_operation(
     name = "AssociateLicense",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/licenses/{licenseType}",
     paginator = list()
   )
-  input <- .managedgrafana$associate_license_input(licenseType = licenseType, workspaceId = workspaceId)
+  input <- .managedgrafana$associate_license_input(grafanaToken = grafanaToken, licenseType = licenseType, workspaceId = workspaceId)
   output <- .managedgrafana$associate_license_output()
   config <- get_config()
   svc <- .managedgrafana$service(config)
@@ -141,10 +150,10 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' organization. If you specify `ORGANIZATION`, you must specify which
 #' organizational units the workspace can access in the
 #' `workspaceOrganizationalUnits` parameter.
-#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center
-#' (successor to Single Sign-On), or both to authenticate users for using
-#' the Grafana console within a workspace. For more information, see [User
-#' authentication in Amazon Managed
+#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center, or
+#' both to authenticate users for using the Grafana console within a
+#' workspace. For more information, see [User authentication in Amazon
+#' Managed
 #' Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html).
 #' @param clientToken A unique, case-sensitive, user-provided identifier to ensure the
 #' idempotency of the request.
@@ -152,9 +161,10 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' information about the format and configuration options available, see
 #' [Working in your Grafana
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
-#' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
+#' @param grafanaVersion Specifies the version of Grafana to support in the new workspace. If not
+#' specified, defaults to the latest version (for example, 9.4).
 #' 
-#' To get a list of supported version, use the
+#' To get a list of supported versions, use the
 #' [`list_versions`][managedgrafana_list_versions] operation.
 #' @param networkAccessControl Configuration for network access to your workspace.
 #' 
@@ -238,6 +248,7 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #'     freeTrialExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     grafanaToken = "string",
 #'     grafanaVersion = "string",
 #'     id = "string",
 #'     licenseExpiration = as.POSIXct(
@@ -447,6 +458,7 @@ managedgrafana_create_workspace_api_key <- function(keyName, keyRole, secondsToL
 #'     freeTrialExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     grafanaToken = "string",
 #'     grafanaVersion = "string",
 #'     id = "string",
 #'     licenseExpiration = as.POSIXct(
@@ -604,6 +616,7 @@ managedgrafana_delete_workspace_api_key <- function(keyName, workspaceId) {
 #'     freeTrialExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     grafanaToken = "string",
 #'     grafanaVersion = "string",
 #'     id = "string",
 #'     licenseExpiration = as.POSIXct(
@@ -845,6 +858,7 @@ managedgrafana_describe_workspace_configuration <- function(workspaceId) {
 #'     freeTrialExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     grafanaToken = "string",
 #'     grafanaVersion = "string",
 #'     id = "string",
 #'     licenseExpiration = as.POSIXct(
@@ -1146,8 +1160,10 @@ managedgrafana_list_versions <- function(maxResults = NULL, nextToken = NULL, wo
 #'       ),
 #'       description = "string",
 #'       endpoint = "string",
+#'       grafanaToken = "string",
 #'       grafanaVersion = "string",
 #'       id = "string",
+#'       licenseType = "ENTERPRISE"|"ENTERPRISE_FREE_TRIAL",
 #'       modified = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1499,6 +1515,7 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
 #'     freeTrialExpiration = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     grafanaToken = "string",
 #'     grafanaVersion = "string",
 #'     id = "string",
 #'     licenseExpiration = as.POSIXct(
@@ -1623,10 +1640,10 @@ managedgrafana_update_workspace <- function(accountAccessType = NULL, networkAcc
 #' managedgrafana_update_workspace_authentication(authenticationProviders,
 #'   samlConfiguration, workspaceId)
 #'
-#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center
-#' (successor to Single Sign-On), or both to authenticate users for using
-#' the Grafana console within a workspace. For more information, see [User
-#' authentication in Amazon Managed
+#' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center, or
+#' both to authenticate users for using the Grafana console within a
+#' workspace. For more information, see [User authentication in Amazon
+#' Managed
 #' Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html).
 #' @param samlConfiguration If the workspace uses SAML, use this structure to map SAML assertion
 #' attributes to workspace user information and define which groups in the
@@ -1749,7 +1766,8 @@ managedgrafana_update_workspace_authentication <- function(authenticationProvide
 #' about the format and configuration options available, see [Working in
 #' your Grafana
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
-#' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
+#' @param grafanaVersion Specifies the version of Grafana to support in the workspace. If not
+#' specified, keeps the current version of the workspace.
 #' 
 #' Can only be used to upgrade (for example, from 8.4 to 9.4), not
 #' downgrade (for example, from 9.4 to 8.4).

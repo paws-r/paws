@@ -303,7 +303,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = N
 #' app
 #'
 #' @description
-#' Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the kernels in the image.
+#' Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/) for full documentation.
 #'
@@ -316,18 +316,21 @@ sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = N
 #' @param JupyterLabAppImageConfig The `JupyterLabAppImageConfig`. You can only specify one image kernel in
 #' the `AppImageConfig` API. This kernel is shown to users before the image
 #' starts. After the image runs, all kernels are visible in JupyterLab.
+#' @param CodeEditorAppImageConfig The `CodeEditorAppImageConfig`. You can only specify one image kernel in
+#' the AppImageConfig API. This kernel is shown to users before the image
+#' starts. After the image runs, all kernels are visible in Code Editor.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_app_image_config
-sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, KernelGatewayImageConfig = NULL, JupyterLabAppImageConfig = NULL) {
+sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, KernelGatewayImageConfig = NULL, JupyterLabAppImageConfig = NULL, CodeEditorAppImageConfig = NULL) {
   op <- new_operation(
     name = "CreateAppImageConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_app_image_config_input(AppImageConfigName = AppImageConfigName, Tags = Tags, KernelGatewayImageConfig = KernelGatewayImageConfig, JupyterLabAppImageConfig = JupyterLabAppImageConfig)
+  input <- .sagemaker$create_app_image_config_input(AppImageConfigName = AppImageConfigName, Tags = Tags, KernelGatewayImageConfig = KernelGatewayImageConfig, JupyterLabAppImageConfig = JupyterLabAppImageConfig, CodeEditorAppImageConfig = CodeEditorAppImageConfig)
   output <- .sagemaker$create_app_image_config_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -392,8 +395,7 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
 #' needed to store artifacts from an AutoML job. Format(s) supported: CSV.
 #' @param ProblemType Defines the type of supervised learning problem available for the
-#' candidates. For more information, see [Amazon SageMaker Autopilot
-#' problem
+#' candidates. For more information, see [SageMaker Autopilot problem
 #' types](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types).
 #' @param AutoMLJobObjective Specifies a metric to minimize or maximize as the objective of a job. If
 #' not specified, the default objective metric depends on the problem type.
@@ -793,7 +795,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' Creates a Domain
 #'
 #' @description
-#' Creates a `Domain`. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
+#' Creates a `Domain`. A domain consists of an associated Amazon Elastic File System volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_domain/](https://www.paws-r-sdk.com/docs/sagemaker_create_domain/) for full documentation.
 #'
@@ -825,7 +827,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' 
 #' -   `VpcOnly` - All traffic is through the specified VPC and subnets
 #' @param HomeEfsFileSystemKmsKeyId Use `KmsKeyId`.
-#' @param KmsKeyId SageMaker uses Amazon Web Services KMS to encrypt the EFS volume
+#' @param KmsKeyId SageMaker uses Amazon Web Services KMS to encrypt EFS and EBS volumes
 #' attached to the domain with an Amazon Web Services managed key by
 #' default. For more control, specify a customer managed key.
 #' @param AppSecurityGroupManagement The entity that creates and manages the required security groups for
@@ -1147,12 +1149,14 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_feature_group/](https://www.paws-r-sdk.com/docs/sagemaker_create_feature_group/) for full documentation.
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup`. The name must be unique within an Amazon
-#' Web Services Region in an Amazon Web Services account. The name:
+#' Web Services Region in an Amazon Web Services account.
 #' 
-#' -   Must start and end with an alphanumeric character.
+#' The name:
 #' 
-#' -   Can only contain alphanumeric character and hyphens. Spaces are not
-#'     allowed.
+#' -   Must start with an alphanumeric character.
+#' 
+#' -   Can only include alphanumeric characters, underscores, and hyphens.
+#'     Spaces are not allowed.
 #' @param RecordIdentifierFeatureName &#91;required&#93; The name of the `Feature` whose value uniquely identifies a `Record`
 #' defined in the `FeatureStore`. Only the latest record per identifier
 #' value will be stored in the `OnlineStore`. `RecordIdentifierFeatureName`
@@ -1163,7 +1167,7 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' 
 #' This name:
 #' 
-#' -   Must start and end with an alphanumeric character.
+#' -   Must start with an alphanumeric character.
 #' 
 #' -   Can only contains alphanumeric characters, hyphens, underscores.
 #'     Spaces are not allowed.
@@ -1225,6 +1229,7 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' 
 #' To learn more about this parameter, see
 #' [OfflineStoreConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html).
+#' @param ThroughputConfig 
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM execution role used to persist
 #' data into the `OfflineStore` if an `OfflineStoreConfig` is provided.
 #' @param Description A free-form description of a `FeatureGroup`.
@@ -1233,14 +1238,14 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_feature_group
-sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFeatureName, EventTimeFeatureName, FeatureDefinitions, OnlineStoreConfig = NULL, OfflineStoreConfig = NULL, RoleArn = NULL, Description = NULL, Tags = NULL) {
+sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFeatureName, EventTimeFeatureName, FeatureDefinitions, OnlineStoreConfig = NULL, OfflineStoreConfig = NULL, ThroughputConfig = NULL, RoleArn = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFeatureGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_feature_group_input(FeatureGroupName = FeatureGroupName, RecordIdentifierFeatureName = RecordIdentifierFeatureName, EventTimeFeatureName = EventTimeFeatureName, FeatureDefinitions = FeatureDefinitions, OnlineStoreConfig = OnlineStoreConfig, OfflineStoreConfig = OfflineStoreConfig, RoleArn = RoleArn, Description = Description, Tags = Tags)
+  input <- .sagemaker$create_feature_group_input(FeatureGroupName = FeatureGroupName, RecordIdentifierFeatureName = RecordIdentifierFeatureName, EventTimeFeatureName = EventTimeFeatureName, FeatureDefinitions = FeatureDefinitions, OnlineStoreConfig = OnlineStoreConfig, OfflineStoreConfig = OfflineStoreConfig, ThroughputConfig = ThroughputConfig, RoleArn = RoleArn, Description = Description, Tags = Tags)
   output <- .sagemaker$create_feature_group_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -1464,7 +1469,7 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' Creates a custom SageMaker image
 #'
 #' @description
-#' Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon Elastic Container Registry (ECR). For more information, see [Bring your own SageMaker image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html).
+#' Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon ECR. For more information, see [Bring your own SageMaker image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_image/](https://www.paws-r-sdk.com/docs/sagemaker_create_image/) for full documentation.
 #'
@@ -1499,13 +1504,12 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' Creates a version of the SageMaker image specified by ImageName
 #'
 #' @description
-#' Creates a version of the SageMaker image specified by `ImageName`. The version represents the Amazon Elastic Container Registry (ECR) container image specified by `BaseImage`.
+#' Creates a version of the SageMaker image specified by `ImageName`. The version represents the Amazon ECR container image specified by `BaseImage`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/) for full documentation.
 #'
 #' @param BaseImage &#91;required&#93; The registry path of the container image to use as the starting point
-#' for this version. The path is an Amazon Elastic Container Registry (ECR)
-#' URI in the following format:
+#' for this version. The path is an Amazon ECR URI in the following format:
 #' 
 #' `<acct-id>.dkr.ecr.<region>.amazonaws.com/<repo-name[:tag] or [@@digest]>`
 #' @param ClientToken &#91;required&#93; A unique ID. If not specified, the Amazon Web Services CLI and Amazon
@@ -2179,8 +2183,8 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' This parameter is required for versioned models, and does not apply to
 #' unversioned models.
 #' @param ModelPackageDescription A description of the model package.
-#' @param InferenceSpecification Specifies details about inference jobs that can be run with models based
-#' on this model package, including the following:
+#' @param InferenceSpecification Specifies details about inference jobs that you can run with models
+#' based on this model package, including the following information:
 #' 
 #' -   The Amazon ECR paths of containers that contain the inference code
 #'     and model artifacts.
@@ -2245,18 +2249,21 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' that can be used on inference endpoints. Generally used with SageMaker
 #' Neo to store the compiled artifacts.
 #' @param SkipModelValidation Indicates if you want to skip model validation.
+#' @param SourceUri The URI of the source for the model package. If you want to clone a
+#' model package, set it to the model package Amazon Resource Name (ARN).
+#' If you want to register a model, set it to the model ARN.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package
-sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL) {
+sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL, SourceUri = NULL) {
   op <- new_operation(
     name = "CreateModelPackage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation)
+  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation, SourceUri = SourceUri)
   output <- .sagemaker$create_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -2565,7 +2572,7 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' Creates a URL for a specified UserProfile in a Domain
 #'
 #' @description
-#' Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to the domain, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.
+#' Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to the domain, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System volume. This operation can only be called when the authentication mode equals IAM.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_domain_url/](https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_domain_url/) for full documentation.
 #'
@@ -2745,14 +2752,14 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 }
 .sagemaker$operations$create_project <- sagemaker_create_project
 
-#' Creates a space used for real time collaboration in a Domain
+#' Creates a space used for real time collaboration in a domain
 #'
 #' @description
-#' Creates a space used for real time collaboration in a Domain.
+#' Creates a space used for real time collaboration in a domain.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_space/](https://www.paws-r-sdk.com/docs/sagemaker_create_space/) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param DomainId &#91;required&#93; The ID of the associated domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
 #' @param Tags Tags to associated with the space. Each tag consists of a key and an
 #' optional value. Tag keys must be unique for each resource. Tags are
@@ -2955,18 +2962,20 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' debugging](https://docs.aws.amazon.com/sagemaker/latest/dg/train-remote-debugging.html).
 #' @param InfraCheckConfig Contains information about the infrastructure health check configuration
 #' for the training job.
+#' @param SessionChainingConfig Contains information about attribute-based access control (ABAC) for the
+#' training job.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_training_job
-sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, Environment = NULL, RetryStrategy = NULL, RemoteDebugConfig = NULL, InfraCheckConfig = NULL) {
+sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, Environment = NULL, RetryStrategy = NULL, RemoteDebugConfig = NULL, InfraCheckConfig = NULL, SessionChainingConfig = NULL) {
   op <- new_operation(
     name = "CreateTrainingJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, Environment = Environment, RetryStrategy = RetryStrategy, RemoteDebugConfig = RemoteDebugConfig, InfraCheckConfig = InfraCheckConfig)
+  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, Environment = Environment, RetryStrategy = RetryStrategy, RemoteDebugConfig = RemoteDebugConfig, InfraCheckConfig = InfraCheckConfig, SessionChainingConfig = SessionChainingConfig)
   output <- .sagemaker$create_training_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3161,7 +3170,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' Creates a user profile
 #'
 #' @description
-#' Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to a domain. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory.
+#' Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to a domain. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System home directory.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_user_profile/](https://www.paws-r-sdk.com/docs/sagemaker_create_user_profile/) for full documentation.
 #'
@@ -3999,6 +4008,35 @@ sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
 }
 .sagemaker$operations$delete_human_task_ui <- sagemaker_delete_human_task_ui
 
+#' Deletes a hyperparameter tuning job
+#'
+#' @description
+#' Deletes a hyperparameter tuning job. The [`delete_hyper_parameter_tuning_job`][sagemaker_delete_hyper_parameter_tuning_job] API deletes only the tuning job entry that was created in SageMaker when you called the [`create_hyper_parameter_tuning_job`][sagemaker_create_hyper_parameter_tuning_job] API. It does not delete training jobs, artifacts, or the IAM role that you specified when creating the model.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_hyper_parameter_tuning_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_hyper_parameter_tuning_job/) for full documentation.
+#'
+#' @param HyperParameterTuningJobName &#91;required&#93; The name of the hyperparameter tuning job that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_hyper_parameter_tuning_job
+sagemaker_delete_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName) {
+  op <- new_operation(
+    name = "DeleteHyperParameterTuningJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName)
+  output <- .sagemaker$delete_hyper_parameter_tuning_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_hyper_parameter_tuning_job <- sagemaker_delete_hyper_parameter_tuning_job
+
 #' Deletes a SageMaker image and all versions of the image
 #'
 #' @description
@@ -4507,7 +4545,7 @@ sagemaker_delete_project <- function(ProjectName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_space/](https://www.paws-r-sdk.com/docs/sagemaker_delete_space/) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param DomainId &#91;required&#93; The ID of the associated domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
 #'
 #' @keywords internal
@@ -6005,7 +6043,7 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package_group/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package_group/) for full documentation.
 #'
-#' @param ModelPackageGroupName &#91;required&#93; The name of gthe model group to describe.
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group to describe.
 #'
 #' @keywords internal
 #'
@@ -6297,7 +6335,7 @@ sagemaker_describe_project <- function(ProjectName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_space/](https://www.paws-r-sdk.com/docs/sagemaker_describe_space/) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param DomainId &#91;required&#93; The ID of the associated domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
 #'
 #' @keywords internal
@@ -6594,6 +6632,8 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_disable_sagemaker_servicecatalog_portfolio/](https://www.paws-r-sdk.com/docs/sagemaker_disable_sagemaker_servicecatalog_portfolio/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname sagemaker_disable_sagemaker_servicecatalog_portfolio
@@ -6650,6 +6690,8 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 #' Enables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_enable_sagemaker_servicecatalog_portfolio/](https://www.paws-r-sdk.com/docs/sagemaker_enable_sagemaker_servicecatalog_portfolio/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -6764,6 +6806,8 @@ sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
 #' Gets the status of Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_get_sagemaker_servicecatalog_portfolio_status/](https://www.paws-r-sdk.com/docs/sagemaker_get_sagemaker_servicecatalog_portfolio_status/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -9609,7 +9653,7 @@ sagemaker_list_resource_catalogs <- function(NameContains = NULL, CreationTimeAf
 #' @param SortOrder The sort order for the results. The default is `Ascending`.
 #' @param SortBy The parameter by which to sort the results. The default is
 #' `CreationTime`.
-#' @param DomainIdEquals A parameter to search for the Domain ID.
+#' @param DomainIdEquals A parameter to search for the domain ID.
 #' @param SpaceNameContains A parameter by which to filter the results.
 #'
 #' @keywords internal
@@ -11063,18 +11107,19 @@ sagemaker_update_action <- function(ActionName, Description = NULL, Status = NUL
 #' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to update.
 #' @param KernelGatewayImageConfig The new KernelGateway app to run on the image.
 #' @param JupyterLabAppImageConfig The JupyterLab app running on the image.
+#' @param CodeEditorAppImageConfig The Code Editor app running on the image.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_app_image_config
-sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayImageConfig = NULL, JupyterLabAppImageConfig = NULL) {
+sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayImageConfig = NULL, JupyterLabAppImageConfig = NULL, CodeEditorAppImageConfig = NULL) {
   op <- new_operation(
     name = "UpdateAppImageConfig",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_app_image_config_input(AppImageConfigName = AppImageConfigName, KernelGatewayImageConfig = KernelGatewayImageConfig, JupyterLabAppImageConfig = JupyterLabAppImageConfig)
+  input <- .sagemaker$update_app_image_config_input(AppImageConfigName = AppImageConfigName, KernelGatewayImageConfig = KernelGatewayImageConfig, JupyterLabAppImageConfig = JupyterLabAppImageConfig, CodeEditorAppImageConfig = CodeEditorAppImageConfig)
   output <- .sagemaker$update_app_image_config_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -11116,10 +11161,10 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 }
 .sagemaker$operations$update_artifact <- sagemaker_update_artifact
 
-#' Update a SageMaker HyperPod cluster
+#' Updates a SageMaker HyperPod cluster
 #'
 #' @description
-#' Update a SageMaker HyperPod cluster.
+#' Updates a SageMaker HyperPod cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_cluster/](https://www.paws-r-sdk.com/docs/sagemaker_update_cluster/) for full documentation.
 #'
@@ -11145,6 +11190,37 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups) {
   return(response)
 }
 .sagemaker$operations$update_cluster <- sagemaker_update_cluster
+
+#' Updates the platform software of a SageMaker HyperPod cluster for
+#' security patching
+#'
+#' @description
+#' Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see [Update the SageMaker HyperPod platform software of a cluster](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software).
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_software/](https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_software/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; Specify the name or the Amazon Resource Name (ARN) of the SageMaker
+#' HyperPod cluster you want to update for security patching.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_cluster_software
+sagemaker_update_cluster_software <- function(ClusterName) {
+  op <- new_operation(
+    name = "UpdateClusterSoftware",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_cluster_software_input(ClusterName = ClusterName)
+  output <- .sagemaker$update_cluster_software_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_cluster_software <- sagemaker_update_cluster_software
 
 #' Updates the specified Git repository with the specified values
 #'
@@ -11298,7 +11374,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn`
 #' is provided. If setting up the domain for use with RStudio, this value
 #' must be set to `Service`.
-#' @param DefaultSpaceSettings The default settings used to create a space within the Domain.
+#' @param DefaultSpaceSettings The default settings used to create a space within the domain.
 #' @param SubnetIds The VPC subnets that Studio uses for communication.
 #' 
 #' If removing subnets, ensure there are no apps in the `InService`,
@@ -11339,13 +11415,11 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
 }
 .sagemaker$operations$update_domain <- sagemaker_update_domain
 
-#' Deploys the new EndpointConfig specified in the request, switches to
-#' using newly created endpoint, and then deletes resources provisioned for
-#' the endpoint using the previous EndpointConfig (there is no availability
-#' loss)
+#' Deploys the EndpointConfig specified in the request to a new fleet of
+#' instances
 #'
 #' @description
-#' Deploys the new `EndpointConfig` specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous `EndpointConfig` (there is no availability loss).
+#' Deploys the `EndpointConfig` specified in the request to a new fleet of instances. SageMaker shifts endpoint traffic to the new instances with the updated endpoint configuration and then deletes the old instances using the previous `EndpointConfig` (there is no availability loss). For more information about how to control the update and traffic shifting process, see [Update models in production](https://docs.aws.amazon.com/sagemaker/latest/dg/deployment-guardrails.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint/](https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint/) for full documentation.
 #'
@@ -11470,18 +11544,19 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' request. It takes some time after you've made a valid request for
 #' Feature Store to update the feature group.
 #' @param OnlineStoreConfig Updates the feature group online store configuration.
+#' @param ThroughputConfig 
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_feature_group
-sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = NULL, OnlineStoreConfig = NULL) {
+sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = NULL, OnlineStoreConfig = NULL, ThroughputConfig = NULL) {
   op <- new_operation(
     name = "UpdateFeatureGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_feature_group_input(FeatureGroupName = FeatureGroupName, FeatureAdditions = FeatureAdditions, OnlineStoreConfig = OnlineStoreConfig)
+  input <- .sagemaker$update_feature_group_input(FeatureGroupName = FeatureGroupName, FeatureAdditions = FeatureAdditions, OnlineStoreConfig = OnlineStoreConfig, ThroughputConfig = ThroughputConfig)
   output <- .sagemaker$update_feature_group_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -11833,18 +11908,30 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #' Inference Specification specifies artifacts based on this model package
 #' that can be used on inference endpoints. Generally used with SageMaker
 #' Neo to store the compiled artifacts.
+#' @param InferenceSpecification Specifies details about inference jobs that you can run with models
+#' based on this model package, including the following information:
+#' 
+#' -   The Amazon ECR paths of containers that contain the inference code
+#'     and model artifacts.
+#' 
+#' -   The instance types that the model package supports for transform
+#'     jobs and real-time endpoints used for inference.
+#' 
+#' -   The input and output content formats that the model package supports
+#'     for inference.
+#' @param SourceUri The URI of the source for the model package.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_model_package
-sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL) {
+sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL, InferenceSpecification = NULL, SourceUri = NULL) {
   op <- new_operation(
     name = "UpdateModelPackage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd)
+  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd, InferenceSpecification = InferenceSpecification, SourceUri = SourceUri)
   output <- .sagemaker$update_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -12172,7 +12259,7 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_space/](https://www.paws-r-sdk.com/docs/sagemaker_update_space/) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The ID of the associated Domain.
+#' @param DomainId &#91;required&#93; The ID of the associated domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
 #' @param SpaceSettings A collection of space settings.
 #' @param SpaceDisplayName The name of the space that appears in the Amazon SageMaker Studio UI.

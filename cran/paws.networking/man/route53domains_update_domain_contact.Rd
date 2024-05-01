@@ -9,7 +9,8 @@ route53domains_update_domain_contact(
   AdminContact = NULL,
   RegistrantContact = NULL,
   TechContact = NULL,
-  Consent = NULL
+  Consent = NULL,
+  BillingContact = NULL
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ route53domains_update_domain_contact(
 
 \item{Consent}{Customer's consent for the owner change request. Required if the domain
 is not free (consent price is more than $0.00).}
+
+\item{BillingContact}{Provides detailed contact information.}
 }
 \description{
 This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.

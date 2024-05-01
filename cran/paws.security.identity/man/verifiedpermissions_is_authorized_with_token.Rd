@@ -21,13 +21,19 @@ be used to make an authorization decision for the input.}
 
 \item{identityToken}{Specifies an identity token for the principal to be authorized. This
 token is provided to you by the identity provider (IdP) associated with
-the specified identity source. You must specify either an \code{AccessToken}
-or an \code{IdentityToken}, or both.}
+the specified identity source. You must specify either an \code{accessToken},
+an \code{identityToken}, or both.
+
+Must be an ID token. Verified Permissions returns an error if the
+\code{token_use} claim in the submitted token isn't \code{id}.}
 
 \item{accessToken}{Specifies an access token for the principal to be authorized. This token
 is provided to you by the identity provider (IdP) associated with the
-specified identity source. You must specify either an \code{AccessToken}, or
-an \code{IdentityToken}, or both.}
+specified identity source. You must specify either an \code{accessToken}, an
+\code{identityToken}, or both.
+
+Must be an access token. Verified Permissions returns an error if the
+\code{token_use} claim in the submitted token isn't \code{access}.}
 
 \item{action}{Specifies the requested action to be authorized. Is the specified
 principal authorized to perform this action on the specified resource.}
@@ -41,8 +47,10 @@ authorization decisions.}
 \item{entities}{Specifies the list of resources and their associated attributes that
 Verified Permissions can examine when evaluating the policies.
 
-You can include only resource and action entities in this parameter; you
-can't include principals.
+You can't include principals in this parameter, only resource and action
+entities. This parameter can't include any entities of a type that
+matches the user or group entity types that you defined in your identity
+source.
 \itemize{
 \item The
 \code{\link[=verifiedpermissions_is_authorized_with_token]{is_authorized_with_token}}

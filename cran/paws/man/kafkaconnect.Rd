@@ -99,12 +99,16 @@ Managed Streaming for Kafka Connect
 \link[paws.analytics:kafkaconnect_create_worker_configuration]{create_worker_configuration} \tab Creates a worker configuration using the specified properties\cr
 \link[paws.analytics:kafkaconnect_delete_connector]{delete_connector} \tab Deletes the specified connector\cr
 \link[paws.analytics:kafkaconnect_delete_custom_plugin]{delete_custom_plugin} \tab Deletes a custom plugin\cr
+\link[paws.analytics:kafkaconnect_delete_worker_configuration]{delete_worker_configuration} \tab Deletes the specified worker configuration\cr
 \link[paws.analytics:kafkaconnect_describe_connector]{describe_connector} \tab Returns summary information about the connector\cr
 \link[paws.analytics:kafkaconnect_describe_custom_plugin]{describe_custom_plugin} \tab A summary description of the custom plugin\cr
 \link[paws.analytics:kafkaconnect_describe_worker_configuration]{describe_worker_configuration} \tab Returns information about a worker configuration\cr
 \link[paws.analytics:kafkaconnect_list_connectors]{list_connectors} \tab Returns a list of all the connectors in this account and Region\cr
 \link[paws.analytics:kafkaconnect_list_custom_plugins]{list_custom_plugins} \tab Returns a list of all of the custom plugins in this account and Region\cr
+\link[paws.analytics:kafkaconnect_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags attached to the specified resource\cr
 \link[paws.analytics:kafkaconnect_list_worker_configurations]{list_worker_configurations} \tab Returns a list of all of the worker configurations in this account and Region\cr
+\link[paws.analytics:kafkaconnect_tag_resource]{tag_resource} \tab Attaches tags to the specified resource\cr
+\link[paws.analytics:kafkaconnect_untag_resource]{untag_resource} \tab Removes tags from the specified resource\cr
 \link[paws.analytics:kafkaconnect_update_connector]{update_connector} \tab Updates the specified connector
 }
 }

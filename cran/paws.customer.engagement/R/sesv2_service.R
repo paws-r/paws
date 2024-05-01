@@ -223,7 +223,7 @@ sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .sesv2$metadata <- list(
   service_name = "sesv2",
-  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "email.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "email.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SESv2",
   api_version = "2019-09-27",
   signing_name = "ses",

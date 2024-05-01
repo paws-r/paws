@@ -8,7 +8,8 @@ kafkaconnect_create_custom_plugin(
   contentType,
   description = NULL,
   location,
-  name
+  name,
+  tags = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ kafkaconnect_create_custom_plugin(
 \item{location}{[required] Information about the location of a custom plugin.}
 
 \item{name}{[required] The name of the custom plugin.}
+
+\item{tags}{The tags you want to attach to the custom plugin.}
 }
 \description{
 Creates a custom plugin using the specified properties.

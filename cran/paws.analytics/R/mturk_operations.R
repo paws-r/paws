@@ -634,6 +634,8 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 #'
 #' See [https://www.paws-r-sdk.com/docs/mturk_get_account_balance/](https://www.paws-r-sdk.com/docs/mturk_get_account_balance/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname mturk_get_account_balance

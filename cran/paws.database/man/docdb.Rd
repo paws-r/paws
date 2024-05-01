@@ -145,7 +145,8 @@ that you use with MongoDB.
 \link[=docdb_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new cluster from a snapshot or cluster snapshot\cr
 \link[=docdb_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a cluster to an arbitrary point in time\cr
 \link[=docdb_start_db_cluster]{start_db_cluster} \tab Restarts the stopped cluster that is specified by DBClusterIdentifier\cr
-\link[=docdb_stop_db_cluster]{stop_db_cluster} \tab Stops the running cluster that is specified by DBClusterIdentifier
+\link[=docdb_stop_db_cluster]{stop_db_cluster} \tab Stops the running cluster that is specified by DBClusterIdentifier\cr
+\link[=docdb_switchover_global_cluster]{switchover_global_cluster} \tab Switches over the specified secondary Amazon DocumentDB cluster to be the new primary Amazon DocumentDB cluster in the global database cluster
 }
 }
 

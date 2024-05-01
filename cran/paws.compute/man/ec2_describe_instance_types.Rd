@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instance_types}
 \alias{ec2_describe_instance_types}
-\title{Describes the details of the instance types that are offered in a
-location}
+\title{Describes the specified instance types}
 \usage{
 ec2_describe_instance_types(
   DryRun = NULL,
@@ -19,8 +18,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InstanceTypes}{The instance types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
-in the \emph{Amazon EC2 User Guide}.}
+\item{InstanceTypes}{The instance types.}
 
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
@@ -142,7 +140,7 @@ output. For more information, see
 continues from the end of the items returned by the previous request.}
 }
 \description{
-Describes the details of the instance types that are offered in a location. The results can be filtered by the attributes of the instance types.
+Describes the specified instance types. By default, all instance types for the current Region are described. Alternatively, you can filter the results.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_types/} for full documentation.
 }

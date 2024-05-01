@@ -222,7 +222,7 @@ codestarconnections <- function(config = list(), credentials = list(), endpoint 
 
 .codestarconnections$metadata <- list(
   service_name = "codestarconnections",
-  endpoints = list("*" = list(endpoint = "codestar-connections.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestar-connections.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codestar-connections.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codestar-connections.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codestar-connections.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestar-connections.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codestar-connections.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codestar-connections.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codestar-connections.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codestar-connections.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CodeStar connections",
   api_version = "2019-12-01",
   signing_name = "codestar-connections",
