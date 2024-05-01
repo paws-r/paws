@@ -739,6 +739,8 @@ macie2_describe_classification_job <- function(jobId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/macie2_describe_organization_configuration/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname macie2_describe_organization_configuration
@@ -766,6 +768,8 @@ macie2_describe_organization_configuration <- function() {
 #' Disables Amazon Macie and deletes all settings and resources for a Macie account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_disable_macie/](https://www.paws-r-sdk.com/docs/macie2_disable_macie/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -826,6 +830,8 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_disassociate_from_administrator_account/](https://www.paws-r-sdk.com/docs/macie2_disassociate_from_administrator_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname macie2_disassociate_from_administrator_account
@@ -853,6 +859,8 @@ macie2_disassociate_from_administrator_account <- function() {
 #' (Deprecated) Disassociates a member account from its Amazon Macie administrator account. This operation has been replaced by the DisassociateFromAdministratorAccount operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_disassociate_from_master_account/](https://www.paws-r-sdk.com/docs/macie2_disassociate_from_master_account/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -982,6 +990,8 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_administrator_account/](https://www.paws-r-sdk.com/docs/macie2_get_administrator_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname macie2_get_administrator_account
@@ -1040,6 +1050,8 @@ macie2_get_allow_list <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_automated_discovery_configuration/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname macie2_get_automated_discovery_configuration
@@ -1097,6 +1109,8 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #' Retrieves the configuration settings for storing data classification results.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_classification_export_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_classification_export_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1293,6 +1307,8 @@ macie2_get_findings_filter <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_findings_publication_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_findings_publication_configuration/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname macie2_get_findings_publication_configuration
@@ -1320,6 +1336,8 @@ macie2_get_findings_publication_configuration <- function() {
 #' Retrieves the count of Amazon Macie membership invitations that were received by an account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_invitations_count/](https://www.paws-r-sdk.com/docs/macie2_get_invitations_count/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1349,6 +1367,8 @@ macie2_get_invitations_count <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_macie_session/](https://www.paws-r-sdk.com/docs/macie2_get_macie_session/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname macie2_get_macie_session
@@ -1376,6 +1396,8 @@ macie2_get_macie_session <- function() {
 #' (Deprecated) Retrieves information about the Amazon Macie administrator account for an account. This operation has been replaced by the GetAdministratorAccount operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_master_account/](https://www.paws-r-sdk.com/docs/macie2_get_master_account/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1466,6 +1488,8 @@ macie2_get_resource_profile <- function(resourceArn) {
 #' Retrieves the status and configuration settings for retrieving occurrences of sensitive data reported by findings.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_get_reveal_configuration/](https://www.paws-r-sdk.com/docs/macie2_get_reveal_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -2734,7 +2758,8 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
 #'
 #' @param configuration &#91;required&#93; The KMS key to use to encrypt the sensitive data, and the status of the
 #' configuration for the Amazon Macie account.
-#' @param retrievalConfiguration The access method and settings to use to retrieve the sensitive data.
+#' @param retrievalConfiguration The access method and settings to use when retrieving the sensitive
+#' data.
 #'
 #' @keywords internal
 #'

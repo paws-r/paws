@@ -438,6 +438,8 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecrpublic_get_authorization_token/](https://www.paws-r-sdk.com/docs/ecrpublic_get_authorization_token/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname ecrpublic_get_authorization_token
@@ -464,6 +466,8 @@ ecrpublic_get_authorization_token <- function() {
 #' Retrieves catalog metadata for a public registry.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecrpublic_get_registry_catalog_data/](https://www.paws-r-sdk.com/docs/ecrpublic_get_registry_catalog_data/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

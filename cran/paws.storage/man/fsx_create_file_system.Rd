@@ -48,8 +48,8 @@ GiB, and increments of 3600 GiB.
 
 \strong{FSx for ONTAP file systems} - The amount of storage capacity that you
 can configure depends on the value of the \code{HAPairs} property. The
-minimum value is calculated as 1,024 * \code{HAPairs} and the maxium is
-calculated as 524,288 * \code{HAPairs}..
+minimum value is calculated as 1,024 * \code{HAPairs} and the maximum is
+calculated as 524,288 * \code{HAPairs}.
 
 \strong{FSx for OpenZFS file systems} - The amount of storage capacity that
 you can configure is from 64 GiB up to 524,288 GiB (512 TiB).
@@ -92,7 +92,10 @@ that subnet's Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs specifying the security groups to apply to all network
 interfaces created for file system access. This list isn't returned in
-later requests to describe the file system.}
+later requests to describe the file system.
+
+You must specify a security group if you are creating a Multi-AZ FSx for
+ONTAP file system in a VPC subnet that has been shared with you.}
 
 \item{Tags}{The tags to apply to the file system that's being created. The key value
 of the \code{Name} tag appears in the console as the file system name.}

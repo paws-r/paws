@@ -27,7 +27,7 @@ value in the as part of a subsequent call. The default value is 10.}
 \item{SortBy}{The parameter by which to sort the results. The default is
 \code{CreationTime}.}
 
-\item{DomainIdEquals}{A parameter to search for the Domain ID.}
+\item{DomainIdEquals}{A parameter to search for the domain ID.}
 
 \item{SpaceNameContains}{A parameter by which to filter the results.}
 }

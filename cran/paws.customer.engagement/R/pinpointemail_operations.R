@@ -302,6 +302,8 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointemail_get_account/](https://www.paws-r-sdk.com/docs/pinpointemail_get_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_account
@@ -494,6 +496,8 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #' Retrieve information about the status of the Deliverability dashboard for your Amazon Pinpoint account. When the Deliverability dashboard is enabled, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email using Amazon Pinpoint. You also gain the ability to perform predictive inbox placement tests.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpointemail_get_deliverability_dashboard_options/](https://www.paws-r-sdk.com/docs/pinpointemail_get_deliverability_dashboard_options/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

@@ -4,7 +4,7 @@
 \alias{kms_get_key_policy}
 \title{Gets a key policy attached to the specified KMS key}
 \usage{
-kms_get_key_policy(KeyId, PolicyName)
+kms_get_key_policy(KeyId, PolicyName = NULL)
 }
 \arguments{
 \item{KeyId}{[required] Gets the key policy for the specified KMS key.
@@ -21,8 +21,9 @@ For example:
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{PolicyName}{[required] Specifies the name of the key policy. The only valid name is \code{default}.
-To get the names of key policies, use
+\item{PolicyName}{Specifies the name of the key policy. If no policy name is specified,
+the default value is \code{default}. The only valid name is \code{default}. To get
+the names of key policies, use
 \code{\link[=kms_list_key_policies]{list_key_policies}}.}
 }
 \description{

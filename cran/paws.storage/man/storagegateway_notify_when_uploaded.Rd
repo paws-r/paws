@@ -3,7 +3,7 @@
 \name{storagegateway_notify_when_uploaded}
 \alias{storagegateway_notify_when_uploaded}
 \title{Sends you notification through CloudWatch Events when all files written
-to your file share have been uploaded to S3}
+to your file share have been uploaded to Amazon S3}
 \usage{
 storagegateway_notify_when_uploaded(FileShareARN)
 }
@@ -11,7 +11,7 @@ storagegateway_notify_when_uploaded(FileShareARN)
 \item{FileShareARN}{[required]}
 }
 \description{
-Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to S3. Amazon S3.
+Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_notify_when_uploaded/} for full documentation.
 }

@@ -561,6 +561,8 @@ opensearchserviceserverless_get_access_policy <- function(name, type) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_account_settings/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_account_settings/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_get_account_settings
@@ -588,6 +590,8 @@ opensearchserviceserverless_get_account_settings <- function() {
 #' Returns statistical information about your OpenSearch Serverless access policies, security configurations, and security policies.
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_policies_stats/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_policies_stats/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

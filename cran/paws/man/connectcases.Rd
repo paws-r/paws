@@ -101,14 +101,18 @@ in the \emph{Amazon Connect Administrator Guide}.
 \tabular{ll}{
 \link[paws.customer.engagement:connectcases_batch_get_field]{batch_get_field} \tab Returns the description for the list of fields in the request parameters\cr
 \link[paws.customer.engagement:connectcases_batch_put_field_options]{batch_put_field_options} \tab Creates and updates a set of field options for a single select field in a Cases domain\cr
-\link[paws.customer.engagement:connectcases_create_case]{create_case} \tab Creates a case in the specified Cases domain\cr
+\link[paws.customer.engagement:connectcases_create_case]{create_case} \tab If you provide a value for PerformedBy\cr
 \link[paws.customer.engagement:connectcases_create_domain]{create_domain} \tab Creates a domain, which is a container for all case data, such as cases, fields, templates and layouts\cr
 \link[paws.customer.engagement:connectcases_create_field]{create_field} \tab Creates a field in the Cases domain\cr
 \link[paws.customer.engagement:connectcases_create_layout]{create_layout} \tab Creates a layout in the Cases domain\cr
 \link[paws.customer.engagement:connectcases_create_related_item]{create_related_item} \tab Creates a related item (comments, tasks, and contacts) and associates it with a case\cr
 \link[paws.customer.engagement:connectcases_create_template]{create_template} \tab Creates a template in the Cases domain\cr
 \link[paws.customer.engagement:connectcases_delete_domain]{delete_domain} \tab Deletes a Cases domain\cr
+\link[paws.customer.engagement:connectcases_delete_field]{delete_field} \tab Deletes a field from a cases template\cr
+\link[paws.customer.engagement:connectcases_delete_layout]{delete_layout} \tab Deletes a layout from a cases template\cr
+\link[paws.customer.engagement:connectcases_delete_template]{delete_template} \tab Deletes a cases template\cr
 \link[paws.customer.engagement:connectcases_get_case]{get_case} \tab Returns information about a specific case if it exists\cr
+\link[paws.customer.engagement:connectcases_get_case_audit_events]{get_case_audit_events} \tab Returns the audit history about a specific case if it exists\cr
 \link[paws.customer.engagement:connectcases_get_case_event_configuration]{get_case_event_configuration} \tab Returns the case event publishing configuration\cr
 \link[paws.customer.engagement:connectcases_get_domain]{get_domain} \tab Returns information about a specific domain if it exists\cr
 \link[paws.customer.engagement:connectcases_get_layout]{get_layout} \tab Returns the details for the requested layout\cr
@@ -125,7 +129,7 @@ in the \emph{Amazon Connect Administrator Guide}.
 \link[paws.customer.engagement:connectcases_search_related_items]{search_related_items} \tab Searches for related items that are associated with a case\cr
 \link[paws.customer.engagement:connectcases_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 \link[paws.customer.engagement:connectcases_untag_resource]{untag_resource} \tab Untags a resource\cr
-\link[paws.customer.engagement:connectcases_update_case]{update_case} \tab Updates the values of fields on a case\cr
+\link[paws.customer.engagement:connectcases_update_case]{update_case} \tab If you provide a value for PerformedBy\cr
 \link[paws.customer.engagement:connectcases_update_field]{update_field} \tab Updates the properties of an existing field\cr
 \link[paws.customer.engagement:connectcases_update_layout]{update_layout} \tab Updates the attributes of an existing layout\cr
 \link[paws.customer.engagement:connectcases_update_template]{update_template} \tab Updates the attributes of an existing template

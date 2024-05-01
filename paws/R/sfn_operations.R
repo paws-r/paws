@@ -3352,3 +3352,89 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
   return(response)
 }
 .sfn$operations$update_state_machine_alias <- sfn_update_state_machine_alias
+
+#' Validates the syntax of a state machine definition
+#'
+#' @description
+#' Validates the syntax of a state machine definition.
+#' 
+#' You can validate that a state machine definition is correct without
+#' creating a state machine resource. Step Functions will implicitly
+#' perform the same syntax check when you invoke
+#' [`create_state_machine`][sfn_create_state_machine] and
+#' [`update_state_machine`][sfn_update_state_machine]. State machine
+#' definitions are specified using a JSON-based, structured language. For
+#' more information on Amazon States Language see [Amazon States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' (ASL).
+#' 
+#' Suggested uses for
+#' [`validate_state_machine_definition`][sfn_validate_state_machine_definition]:
+#' 
+#' -   Integrate automated checks into your code review or Continuous
+#'     Integration (CI) process to validate state machine definitions
+#'     before starting deployments.
+#' 
+#' -   Run the validation from a Git pre-commit hook to check your state
+#'     machine definitions before committing them to your source
+#'     repository.
+#' 
+#' Errors found in the state machine definition will be returned in the
+#' response as a list of **diagnostic elements**, rather than raise an
+#' exception.
+#'
+#' @usage
+#' sfn_validate_state_machine_definition(definition, type)
+#'
+#' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. For more
+#' information, see [Amazon States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' (ASL).
+#' @param type The target type of state machine for this definition. The default is
+#' `STANDARD`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   result = "OK"|"FAIL",
+#'   diagnostics = list(
+#'     list(
+#'       severity = "ERROR",
+#'       code = "string",
+#'       message = "string",
+#'       location = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$validate_state_machine_definition(
+#'   definition = "string",
+#'   type = "STANDARD"|"EXPRESS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_validate_state_machine_definition
+#'
+#' @aliases sfn_validate_state_machine_definition
+sfn_validate_state_machine_definition <- function(definition, type = NULL) {
+  op <- new_operation(
+    name = "ValidateStateMachineDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$validate_state_machine_definition_input(definition = definition, type = type)
+  output <- .sfn$validate_state_machine_definition_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$validate_state_machine_definition <- sfn_validate_state_machine_definition

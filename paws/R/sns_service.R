@@ -182,7 +182,7 @@ sns <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .sns$metadata <- list(
   service_name = "sns",
-  endpoints = list("*" = list(endpoint = "sns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sns.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sns.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sns.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sns.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "sns.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "sns.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sns.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "sns.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SNS",
   api_version = "2010-03-31",
   signing_name = "sns",

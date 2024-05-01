@@ -17,9 +17,11 @@ update.}
 
 \item{FolderId}{[required] The ID of the folder.}
 
-\item{GrantPermissions}{The permissions that you want to grant on a resource.}
+\item{GrantPermissions}{The permissions that you want to grant on a resource. Namespace ARNs are
+not supported \code{Principal} values for folder permissions.}
 
-\item{RevokePermissions}{The permissions that you want to revoke from a resource.}
+\item{RevokePermissions}{The permissions that you want to revoke from a resource. Namespace ARNs
+are not supported \code{Principal} values for folder permissions.}
 }
 \description{
 Updates permissions of a folder.

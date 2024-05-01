@@ -8,10 +8,10 @@ you have created}
 bedrock_get_custom_model(modelIdentifier)
 }
 \arguments{
-\item{modelIdentifier}{[required] Name or ARN of the custom model.}
+\item{modelIdentifier}{[required] Name or Amazon Resource Name (ARN) of the custom model.}
 }
 \description{
-Get the properties associated with a Amazon Bedrock custom model that you have created.For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Bedrock User Guide.
+Get the properties associated with a Amazon Bedrock custom model that you have created.For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_custom_model/} for full documentation.
 }

@@ -595,6 +595,8 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
 #' @usage
 #' pinpointemail_get_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1009,6 +1011,8 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #'
 #' @usage
 #' pinpointemail_get_deliverability_dashboard_options()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

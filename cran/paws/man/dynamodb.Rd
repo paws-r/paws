@@ -116,6 +116,7 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_create_table]{create_table} \tab The CreateTable operation adds a new table to your account\cr
 \link[paws.database:dynamodb_delete_backup]{delete_backup} \tab Deletes an existing backup of a table\cr
 \link[paws.database:dynamodb_delete_item]{delete_item} \tab Deletes a single item in a table by primary key\cr
+\link[paws.database:dynamodb_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based policy attached to the resource, which can be a table or stream\cr
 \link[paws.database:dynamodb_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its items\cr
 \link[paws.database:dynamodb_describe_backup]{describe_backup} \tab Describes an existing backup of a table\cr
 \link[paws.database:dynamodb_describe_continuous_backups]{describe_continuous_backups} \tab Checks the status of continuous backups and point in time recovery on the specified table\cr
@@ -136,6 +137,7 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_execute_transaction]{execute_transaction} \tab This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL\cr
 \link[paws.database:dynamodb_export_table_to_point_in_time]{export_table_to_point_in_time} \tab Exports table data to an S3 bucket\cr
 \link[paws.database:dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key\cr
+\link[paws.database:dynamodb_get_resource_policy]{get_resource_policy} \tab Returns the resource-based policy document attached to the resource, which can be a table or stream, in JSON format\cr
 \link[paws.database:dynamodb_import_table]{import_table} \tab Imports table data from an S3 bucket\cr
 \link[paws.database:dynamodb_list_backups]{list_backups} \tab List DynamoDB backups that are associated with an Amazon Web Services account and weren't made with Amazon Web Services Backup\cr
 \link[paws.database:dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
@@ -145,6 +147,7 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint\cr
 \link[paws.database:dynamodb_list_tags_of_resource]{list_tags_of_resource} \tab List all tags on an Amazon DynamoDB resource\cr
 \link[paws.database:dynamodb_put_item]{put_item} \tab Creates a new item, or replaces an old item with a new item\cr
+\link[paws.database:dynamodb_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy document to the resource, which can be a table or stream\cr
 \link[paws.database:dynamodb_query]{query} \tab You must provide the name of the partition key attribute and a single value for that attribute\cr
 \link[paws.database:dynamodb_restore_table_from_backup]{restore_table_from_backup} \tab Creates a new table from an existing backup\cr
 \link[paws.database:dynamodb_restore_table_to_point_in_time]{restore_table_to_point_in_time} \tab Restores the specified table to the specified point in time within EarliestRestorableDateTime and LatestRestorableDateTime\cr
@@ -158,6 +161,7 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_update_global_table]{update_global_table} \tab Adds or removes replicas in the specified global table\cr
 \link[paws.database:dynamodb_update_global_table_settings]{update_global_table_settings} \tab Updates settings for a global table\cr
 \link[paws.database:dynamodb_update_item]{update_item} \tab Edits an existing item's attributes, or adds a new item to the table if it does not already exist\cr
+\link[paws.database:dynamodb_update_kinesis_streaming_destination]{update_kinesis_streaming_destination} \tab The command to update the Kinesis stream destination\cr
 \link[paws.database:dynamodb_update_table]{update_table} \tab Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table\cr
 \link[paws.database:dynamodb_update_table_replica_auto_scaling]{update_table_replica_auto_scaling} \tab Updates auto scaling settings on your global tables at once\cr
 \link[paws.database:dynamodb_update_time_to_live]{update_time_to_live} \tab The UpdateTimeToLive method enables or disables Time to Live (TTL) for the specified table

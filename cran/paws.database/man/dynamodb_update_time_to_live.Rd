@@ -8,7 +8,8 @@ the specified table}
 dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 }
 \arguments{
-\item{TableName}{[required] The name of the table to be configured.}
+\item{TableName}{[required] The name of the table to be configured. You can also provide the Amazon
+Resource Name (ARN) of the table in this parameter.}
 
 \item{TimeToLiveSpecification}{[required] Represents the settings used to enable or disable Time to Live for the
 specified table.}

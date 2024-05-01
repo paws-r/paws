@@ -124,7 +124,7 @@ sagemakerruntime <- function(config = list(), credentials = list(), endpoint = N
 
 .sagemakerruntime$metadata <- list(
   service_name = "runtime.sagemaker",
-  endpoints = list("*" = list(endpoint = "runtime.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "runtime.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "runtime.sagemaker.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "runtime.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "runtime.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "runtime.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "runtime.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "runtime.sagemaker.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SageMaker Runtime",
   api_version = "2017-05-13",
   signing_name = "sagemaker",

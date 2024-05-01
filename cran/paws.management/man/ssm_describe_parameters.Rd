@@ -2,13 +2,15 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_parameters}
 \alias{ssm_describe_parameters}
-\title{Get information about a parameter}
+\title{Lists the parameters in your Amazon Web Services account or the
+parameters shared with you when you enable the Shared option}
 \usage{
 ssm_describe_parameters(
   Filters = NULL,
   ParameterFilters = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Shared = NULL
 )
 }
 \arguments{
@@ -22,9 +24,23 @@ next set of results.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
+
+\item{Shared}{Lists parameters that are shared with you.
+
+By default when using this option, the command returns parameters that
+have been shared using a standard Resource Access Manager Resource
+Share. In order for a parameter that was shared using the
+\code{\link[=ssm_put_resource_policy]{put_resource_policy}} command to be returned,
+the associated \verb{RAM Resource Share Created From Policy} must have been
+promoted to a standard Resource Share using the RAM
+\href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy}
+API operation.
+
+For more information about sharing parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html}{Working with shared parameters}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
-Get information about a parameter.
+Lists the parameters in your Amazon Web Services account or the parameters shared with you when you enable the \href{https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribeParameters.html#systemsmanager-DescribeParameters-request-Shared}{Shared} option.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_describe_parameters/} for full documentation.
 }

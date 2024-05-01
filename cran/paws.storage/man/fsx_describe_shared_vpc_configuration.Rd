@@ -9,7 +9,7 @@ shared by a virtual private cloud (VPC) owner}
 fsx_describe_shared_vpc_configuration()
 }
 \description{
-Indicates whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner. For more information, see the \href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/}{Amazon FSx for NetApp ONTAP User Guide}.
+Indicates whether participant accounts in your organization can create Amazon FSx for NetApp ONTAP Multi-AZ file systems in subnets that are shared by a virtual private cloud (VPC) owner. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/creating-file-systems.html#fsxn-vpc-shared-subnets}{Creating FSx for ONTAP file systems in shared subnets}.
 
 See \url{https://www.paws-r-sdk.com/docs/fsx_describe_shared_vpc_configuration/} for full documentation.
 }

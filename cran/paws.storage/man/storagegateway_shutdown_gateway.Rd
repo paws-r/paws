@@ -2,7 +2,7 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_shutdown_gateway}
 \alias{storagegateway_shutdown_gateway}
-\title{Shuts down a gateway}
+\title{Shuts down a Tape Gateway or Volume Gateway}
 \usage{
 storagegateway_shutdown_gateway(GatewayARN)
 }
@@ -10,7 +10,7 @@ storagegateway_shutdown_gateway(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \description{
-Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.
+Shuts down a Tape Gateway or Volume Gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_shutdown_gateway/} for full documentation.
 }

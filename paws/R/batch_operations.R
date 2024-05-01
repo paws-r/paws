@@ -438,7 +438,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #'
 #' @usage
 #' batch_create_job_queue(jobQueueName, state, schedulingPolicyArn,
-#'   priority, computeEnvironmentOrder, tags)
+#'   priority, computeEnvironmentOrder, tags, jobStateTimeLimitActions)
 #'
 #' @param jobQueueName &#91;required&#93; The name of the job queue. It can be up to 128 letters long. It can
 #' contain uppercase and lowercase letters, numbers, hyphens (-), and
@@ -479,6 +479,9 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' value. For more information, see [Tagging your Batch
 #' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
 #' in *Batch User Guide*.
+#' @param jobStateTimeLimitActions The set of actions that Batch performs on jobs that remain at the head
+#' of the job queue in the specified state longer than specified times.
+#' Batch will perform each action after `maxTimeSeconds` has passed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -504,6 +507,14 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #'   ),
 #'   tags = list(
 #'     "string"
+#'   ),
+#'   jobStateTimeLimitActions = list(
+#'     list(
+#'       reason = "string",
+#'       state = "RUNNABLE",
+#'       maxTimeSeconds = 123,
+#'       action = "CANCEL"
+#'     )
 #'   )
 #' )
 #' ```
@@ -549,14 +560,14 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @rdname batch_create_job_queue
 #'
 #' @aliases batch_create_job_queue
-batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyArn = NULL, priority, computeEnvironmentOrder, tags = NULL) {
+batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyArn = NULL, priority, computeEnvironmentOrder, tags = NULL, jobStateTimeLimitActions = NULL) {
   op <- new_operation(
     name = "CreateJobQueue",
     http_method = "POST",
     http_path = "/v1/createjobqueue",
     paginator = list()
   )
-  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags)
+  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$create_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -1018,6 +1029,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' be an ARN in the format
 #' `arn:aws:batch:${Region}:${Account}:job-definition/${JobDefinitionName}:${Revision}`
 #' or a short version using the form `${JobDefinitionName}:${Revision}`.
+#' This parameter can't be used with other parameters.
 #' @param maxResults The maximum number of results returned by
 #' [`describe_job_definitions`][batch_describe_job_definitions] in
 #' paginated output. When this parameter is used,
@@ -1179,6 +1191,9 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'         runtimePlatform = list(
 #'           operatingSystemFamily = "string",
 #'           cpuArchitecture = "string"
+#'         ),
+#'         repositoryCredentials = list(
+#'           credentialsParameter = "string"
 #'         )
 #'       ),
 #'       timeout = list(
@@ -1301,6 +1316,141 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'               runtimePlatform = list(
 #'                 operatingSystemFamily = "string",
 #'                 cpuArchitecture = "string"
+#'               ),
+#'               repositoryCredentials = list(
+#'                 credentialsParameter = "string"
+#'               )
+#'             ),
+#'             instanceTypes = list(
+#'               "string"
+#'             ),
+#'             ecsProperties = list(
+#'               taskProperties = list(
+#'                 list(
+#'                   containers = list(
+#'                     list(
+#'                       command = list(
+#'                         "string"
+#'                       ),
+#'                       dependsOn = list(
+#'                         list(
+#'                           containerName = "string",
+#'                           condition = "string"
+#'                         )
+#'                       ),
+#'                       environment = list(
+#'                         list(
+#'                           name = "string",
+#'                           value = "string"
+#'                         )
+#'                       ),
+#'                       essential = TRUE|FALSE,
+#'                       image = "string",
+#'                       linuxParameters = list(
+#'                         devices = list(
+#'                           list(
+#'                             hostPath = "string",
+#'                             containerPath = "string",
+#'                             permissions = list(
+#'                               "READ"|"WRITE"|"MKNOD"
+#'                             )
+#'                           )
+#'                         ),
+#'                         initProcessEnabled = TRUE|FALSE,
+#'                         sharedMemorySize = 123,
+#'                         tmpfs = list(
+#'                           list(
+#'                             containerPath = "string",
+#'                             size = 123,
+#'                             mountOptions = list(
+#'                               "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         maxSwap = 123,
+#'                         swappiness = 123
+#'                       ),
+#'                       logConfiguration = list(
+#'                         logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                         options = list(
+#'                           "string"
+#'                         ),
+#'                         secretOptions = list(
+#'                           list(
+#'                             name = "string",
+#'                             valueFrom = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       mountPoints = list(
+#'                         list(
+#'                           containerPath = "string",
+#'                           readOnly = TRUE|FALSE,
+#'                           sourceVolume = "string"
+#'                         )
+#'                       ),
+#'                       name = "string",
+#'                       privileged = TRUE|FALSE,
+#'                       readonlyRootFilesystem = TRUE|FALSE,
+#'                       repositoryCredentials = list(
+#'                         credentialsParameter = "string"
+#'                       ),
+#'                       resourceRequirements = list(
+#'                         list(
+#'                           value = "string",
+#'                           type = "GPU"|"VCPU"|"MEMORY"
+#'                         )
+#'                       ),
+#'                       secrets = list(
+#'                         list(
+#'                           name = "string",
+#'                           valueFrom = "string"
+#'                         )
+#'                       ),
+#'                       ulimits = list(
+#'                         list(
+#'                           hardLimit = 123,
+#'                           name = "string",
+#'                           softLimit = 123
+#'                         )
+#'                       ),
+#'                       user = "string"
+#'                     )
+#'                   ),
+#'                   ephemeralStorage = list(
+#'                     sizeInGiB = 123
+#'                   ),
+#'                   executionRoleArn = "string",
+#'                   platformVersion = "string",
+#'                   ipcMode = "string",
+#'                   taskRoleArn = "string",
+#'                   pidMode = "string",
+#'                   networkConfiguration = list(
+#'                     assignPublicIp = "ENABLED"|"DISABLED"
+#'                   ),
+#'                   runtimePlatform = list(
+#'                     operatingSystemFamily = "string",
+#'                     cpuArchitecture = "string"
+#'                   ),
+#'                   volumes = list(
+#'                     list(
+#'                       host = list(
+#'                         sourcePath = "string"
+#'                       ),
+#'                       name = "string",
+#'                       efsVolumeConfiguration = list(
+#'                         fileSystemId = "string",
+#'                         rootDirectory = "string",
+#'                         transitEncryption = "ENABLED"|"DISABLED",
+#'                         transitEncryptionPort = 123,
+#'                         authorizationConfig = list(
+#'                           accessPointId = "string",
+#'                           iam = "ENABLED"|"DISABLED"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -1313,11 +1463,145 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'       platformCapabilities = list(
 #'         "EC2"|"FARGATE"
 #'       ),
+#'       ecsProperties = list(
+#'         taskProperties = list(
+#'           list(
+#'             containers = list(
+#'               list(
+#'                 command = list(
+#'                   "string"
+#'                 ),
+#'                 dependsOn = list(
+#'                   list(
+#'                     containerName = "string",
+#'                     condition = "string"
+#'                   )
+#'                 ),
+#'                 environment = list(
+#'                   list(
+#'                     name = "string",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 essential = TRUE|FALSE,
+#'                 image = "string",
+#'                 linuxParameters = list(
+#'                   devices = list(
+#'                     list(
+#'                       hostPath = "string",
+#'                       containerPath = "string",
+#'                       permissions = list(
+#'                         "READ"|"WRITE"|"MKNOD"
+#'                       )
+#'                     )
+#'                   ),
+#'                   initProcessEnabled = TRUE|FALSE,
+#'                   sharedMemorySize = 123,
+#'                   tmpfs = list(
+#'                     list(
+#'                       containerPath = "string",
+#'                       size = 123,
+#'                       mountOptions = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   maxSwap = 123,
+#'                   swappiness = 123
+#'                 ),
+#'                 logConfiguration = list(
+#'                   logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                   options = list(
+#'                     "string"
+#'                   ),
+#'                   secretOptions = list(
+#'                     list(
+#'                       name = "string",
+#'                       valueFrom = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 mountPoints = list(
+#'                   list(
+#'                     containerPath = "string",
+#'                     readOnly = TRUE|FALSE,
+#'                     sourceVolume = "string"
+#'                   )
+#'                 ),
+#'                 name = "string",
+#'                 privileged = TRUE|FALSE,
+#'                 readonlyRootFilesystem = TRUE|FALSE,
+#'                 repositoryCredentials = list(
+#'                   credentialsParameter = "string"
+#'                 ),
+#'                 resourceRequirements = list(
+#'                   list(
+#'                     value = "string",
+#'                     type = "GPU"|"VCPU"|"MEMORY"
+#'                   )
+#'                 ),
+#'                 secrets = list(
+#'                   list(
+#'                     name = "string",
+#'                     valueFrom = "string"
+#'                   )
+#'                 ),
+#'                 ulimits = list(
+#'                   list(
+#'                     hardLimit = 123,
+#'                     name = "string",
+#'                     softLimit = 123
+#'                   )
+#'                 ),
+#'                 user = "string"
+#'               )
+#'             ),
+#'             ephemeralStorage = list(
+#'               sizeInGiB = 123
+#'             ),
+#'             executionRoleArn = "string",
+#'             platformVersion = "string",
+#'             ipcMode = "string",
+#'             taskRoleArn = "string",
+#'             pidMode = "string",
+#'             networkConfiguration = list(
+#'               assignPublicIp = "ENABLED"|"DISABLED"
+#'             ),
+#'             runtimePlatform = list(
+#'               operatingSystemFamily = "string",
+#'               cpuArchitecture = "string"
+#'             ),
+#'             volumes = list(
+#'               list(
+#'                 host = list(
+#'                   sourcePath = "string"
+#'                 ),
+#'                 name = "string",
+#'                 efsVolumeConfiguration = list(
+#'                   fileSystemId = "string",
+#'                   rootDirectory = "string",
+#'                   transitEncryption = "ENABLED"|"DISABLED",
+#'                   transitEncryptionPort = 123,
+#'                   authorizationConfig = list(
+#'                     accessPointId = "string",
+#'                     iam = "ENABLED"|"DISABLED"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       eksProperties = list(
 #'         podProperties = list(
 #'           serviceAccountName = "string",
 #'           hostNetwork = TRUE|FALSE,
 #'           dnsPolicy = "string",
+#'           imagePullSecrets = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
 #'           containers = list(
 #'             list(
 #'               name = "string",
@@ -1354,6 +1638,49 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                 runAsUser = 123,
 #'                 runAsGroup = 123,
 #'                 privileged = TRUE|FALSE,
+#'                 allowPrivilegeEscalation = TRUE|FALSE,
+#'                 readOnlyRootFilesystem = TRUE|FALSE,
+#'                 runAsNonRoot = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           initContainers = list(
+#'             list(
+#'               name = "string",
+#'               image = "string",
+#'               imagePullPolicy = "string",
+#'               command = list(
+#'                 "string"
+#'               ),
+#'               args = list(
+#'                 "string"
+#'               ),
+#'               env = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               resources = list(
+#'                 limits = list(
+#'                   "string"
+#'                 ),
+#'                 requests = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               volumeMounts = list(
+#'                 list(
+#'                   name = "string",
+#'                   mountPath = "string",
+#'                   readOnly = TRUE|FALSE
+#'                 )
+#'               ),
+#'               securityContext = list(
+#'                 runAsUser = 123,
+#'                 runAsGroup = 123,
+#'                 privileged = TRUE|FALSE,
+#'                 allowPrivilegeEscalation = TRUE|FALSE,
 #'                 readOnlyRootFilesystem = TRUE|FALSE,
 #'                 runAsNonRoot = TRUE|FALSE
 #'               )
@@ -1379,7 +1706,8 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'             labels = list(
 #'               "string"
 #'             )
-#'           )
+#'           ),
+#'           shareProcessNamespace = TRUE|FALSE
 #'         )
 #'       ),
 #'       containerOrchestrationType = "ECS"|"EKS"
@@ -1484,6 +1812,14 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #'       ),
 #'       tags = list(
 #'         "string"
+#'       ),
+#'       jobStateTimeLimitActions = list(
+#'         list(
+#'           reason = "string",
+#'           state = "RUNNABLE",
+#'           maxTimeSeconds = 123,
+#'           action = "CANCEL"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1575,7 +1911,28 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'           ),
 #'           startedAt = 123,
 #'           stoppedAt = 123,
-#'           statusReason = "string"
+#'           statusReason = "string",
+#'           taskProperties = list(
+#'             list(
+#'               containerInstanceArn = "string",
+#'               taskArn = "string",
+#'               containers = list(
+#'                 list(
+#'                   exitCode = 123,
+#'                   name = "string",
+#'                   reason = "string",
+#'                   logStreamName = "string",
+#'                   networkInterfaces = list(
+#'                     list(
+#'                       attachmentId = "string",
+#'                       ipv6Address = "string",
+#'                       privateIpv4Address = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       statusReason = "string",
@@ -1726,6 +2083,9 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'         runtimePlatform = list(
 #'           operatingSystemFamily = "string",
 #'           cpuArchitecture = "string"
+#'         ),
+#'         repositoryCredentials = list(
+#'           credentialsParameter = "string"
 #'         )
 #'       ),
 #'       nodeDetails = list(
@@ -1849,6 +2209,141 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'               runtimePlatform = list(
 #'                 operatingSystemFamily = "string",
 #'                 cpuArchitecture = "string"
+#'               ),
+#'               repositoryCredentials = list(
+#'                 credentialsParameter = "string"
+#'               )
+#'             ),
+#'             instanceTypes = list(
+#'               "string"
+#'             ),
+#'             ecsProperties = list(
+#'               taskProperties = list(
+#'                 list(
+#'                   containers = list(
+#'                     list(
+#'                       command = list(
+#'                         "string"
+#'                       ),
+#'                       dependsOn = list(
+#'                         list(
+#'                           containerName = "string",
+#'                           condition = "string"
+#'                         )
+#'                       ),
+#'                       environment = list(
+#'                         list(
+#'                           name = "string",
+#'                           value = "string"
+#'                         )
+#'                       ),
+#'                       essential = TRUE|FALSE,
+#'                       image = "string",
+#'                       linuxParameters = list(
+#'                         devices = list(
+#'                           list(
+#'                             hostPath = "string",
+#'                             containerPath = "string",
+#'                             permissions = list(
+#'                               "READ"|"WRITE"|"MKNOD"
+#'                             )
+#'                           )
+#'                         ),
+#'                         initProcessEnabled = TRUE|FALSE,
+#'                         sharedMemorySize = 123,
+#'                         tmpfs = list(
+#'                           list(
+#'                             containerPath = "string",
+#'                             size = 123,
+#'                             mountOptions = list(
+#'                               "string"
+#'                             )
+#'                           )
+#'                         ),
+#'                         maxSwap = 123,
+#'                         swappiness = 123
+#'                       ),
+#'                       logConfiguration = list(
+#'                         logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                         options = list(
+#'                           "string"
+#'                         ),
+#'                         secretOptions = list(
+#'                           list(
+#'                             name = "string",
+#'                             valueFrom = "string"
+#'                           )
+#'                         )
+#'                       ),
+#'                       mountPoints = list(
+#'                         list(
+#'                           containerPath = "string",
+#'                           readOnly = TRUE|FALSE,
+#'                           sourceVolume = "string"
+#'                         )
+#'                       ),
+#'                       name = "string",
+#'                       privileged = TRUE|FALSE,
+#'                       readonlyRootFilesystem = TRUE|FALSE,
+#'                       repositoryCredentials = list(
+#'                         credentialsParameter = "string"
+#'                       ),
+#'                       resourceRequirements = list(
+#'                         list(
+#'                           value = "string",
+#'                           type = "GPU"|"VCPU"|"MEMORY"
+#'                         )
+#'                       ),
+#'                       secrets = list(
+#'                         list(
+#'                           name = "string",
+#'                           valueFrom = "string"
+#'                         )
+#'                       ),
+#'                       ulimits = list(
+#'                         list(
+#'                           hardLimit = 123,
+#'                           name = "string",
+#'                           softLimit = 123
+#'                         )
+#'                       ),
+#'                       user = "string"
+#'                     )
+#'                   ),
+#'                   ephemeralStorage = list(
+#'                     sizeInGiB = 123
+#'                   ),
+#'                   executionRoleArn = "string",
+#'                   platformVersion = "string",
+#'                   ipcMode = "string",
+#'                   taskRoleArn = "string",
+#'                   pidMode = "string",
+#'                   networkConfiguration = list(
+#'                     assignPublicIp = "ENABLED"|"DISABLED"
+#'                   ),
+#'                   runtimePlatform = list(
+#'                     operatingSystemFamily = "string",
+#'                     cpuArchitecture = "string"
+#'                   ),
+#'                   volumes = list(
+#'                     list(
+#'                       host = list(
+#'                         sourcePath = "string"
+#'                       ),
+#'                       name = "string",
+#'                       efsVolumeConfiguration = list(
+#'                         fileSystemId = "string",
+#'                         rootDirectory = "string",
+#'                         transitEncryption = "ENABLED"|"DISABLED",
+#'                         transitEncryptionPort = 123,
+#'                         authorizationConfig = list(
+#'                           accessPointId = "string",
+#'                           iam = "ENABLED"|"DISABLED"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -1876,6 +2371,11 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'           serviceAccountName = "string",
 #'           hostNetwork = TRUE|FALSE,
 #'           dnsPolicy = "string",
+#'           imagePullSecrets = list(
+#'             list(
+#'               name = "string"
+#'             )
+#'           ),
 #'           containers = list(
 #'             list(
 #'               name = "string",
@@ -1914,6 +2414,51 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                 runAsUser = 123,
 #'                 runAsGroup = 123,
 #'                 privileged = TRUE|FALSE,
+#'                 allowPrivilegeEscalation = TRUE|FALSE,
+#'                 readOnlyRootFilesystem = TRUE|FALSE,
+#'                 runAsNonRoot = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           initContainers = list(
+#'             list(
+#'               name = "string",
+#'               image = "string",
+#'               imagePullPolicy = "string",
+#'               command = list(
+#'                 "string"
+#'               ),
+#'               args = list(
+#'                 "string"
+#'               ),
+#'               env = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               resources = list(
+#'                 limits = list(
+#'                   "string"
+#'                 ),
+#'                 requests = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               exitCode = 123,
+#'               reason = "string",
+#'               volumeMounts = list(
+#'                 list(
+#'                   name = "string",
+#'                   mountPath = "string",
+#'                   readOnly = TRUE|FALSE
+#'                 )
+#'               ),
+#'               securityContext = list(
+#'                 runAsUser = 123,
+#'                 runAsGroup = 123,
+#'                 privileged = TRUE|FALSE,
+#'                 allowPrivilegeEscalation = TRUE|FALSE,
 #'                 readOnlyRootFilesystem = TRUE|FALSE,
 #'                 runAsNonRoot = TRUE|FALSE
 #'               )
@@ -1941,13 +2486,22 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'             labels = list(
 #'               "string"
 #'             )
-#'           )
+#'           ),
+#'           shareProcessNamespace = TRUE|FALSE
 #'         )
 #'       ),
 #'       eksAttempts = list(
 #'         list(
 #'           containers = list(
 #'             list(
+#'               name = "string",
+#'               exitCode = 123,
+#'               reason = "string"
+#'             )
+#'           ),
+#'           initContainers = list(
+#'             list(
+#'               name = "string",
 #'               exitCode = 123,
 #'               reason = "string"
 #'             )
@@ -1957,6 +2511,147 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'           startedAt = 123,
 #'           stoppedAt = 123,
 #'           statusReason = "string"
+#'         )
+#'       ),
+#'       ecsProperties = list(
+#'         taskProperties = list(
+#'           list(
+#'             containers = list(
+#'               list(
+#'                 command = list(
+#'                   "string"
+#'                 ),
+#'                 dependsOn = list(
+#'                   list(
+#'                     containerName = "string",
+#'                     condition = "string"
+#'                   )
+#'                 ),
+#'                 environment = list(
+#'                   list(
+#'                     name = "string",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 essential = TRUE|FALSE,
+#'                 image = "string",
+#'                 linuxParameters = list(
+#'                   devices = list(
+#'                     list(
+#'                       hostPath = "string",
+#'                       containerPath = "string",
+#'                       permissions = list(
+#'                         "READ"|"WRITE"|"MKNOD"
+#'                       )
+#'                     )
+#'                   ),
+#'                   initProcessEnabled = TRUE|FALSE,
+#'                   sharedMemorySize = 123,
+#'                   tmpfs = list(
+#'                     list(
+#'                       containerPath = "string",
+#'                       size = 123,
+#'                       mountOptions = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   maxSwap = 123,
+#'                   swappiness = 123
+#'                 ),
+#'                 logConfiguration = list(
+#'                   logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                   options = list(
+#'                     "string"
+#'                   ),
+#'                   secretOptions = list(
+#'                     list(
+#'                       name = "string",
+#'                       valueFrom = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 mountPoints = list(
+#'                   list(
+#'                     containerPath = "string",
+#'                     readOnly = TRUE|FALSE,
+#'                     sourceVolume = "string"
+#'                   )
+#'                 ),
+#'                 name = "string",
+#'                 privileged = TRUE|FALSE,
+#'                 readonlyRootFilesystem = TRUE|FALSE,
+#'                 repositoryCredentials = list(
+#'                   credentialsParameter = "string"
+#'                 ),
+#'                 resourceRequirements = list(
+#'                   list(
+#'                     value = "string",
+#'                     type = "GPU"|"VCPU"|"MEMORY"
+#'                   )
+#'                 ),
+#'                 secrets = list(
+#'                   list(
+#'                     name = "string",
+#'                     valueFrom = "string"
+#'                   )
+#'                 ),
+#'                 ulimits = list(
+#'                   list(
+#'                     hardLimit = 123,
+#'                     name = "string",
+#'                     softLimit = 123
+#'                   )
+#'                 ),
+#'                 user = "string",
+#'                 exitCode = 123,
+#'                 reason = "string",
+#'                 logStreamName = "string",
+#'                 networkInterfaces = list(
+#'                   list(
+#'                     attachmentId = "string",
+#'                     ipv6Address = "string",
+#'                     privateIpv4Address = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             containerInstanceArn = "string",
+#'             taskArn = "string",
+#'             ephemeralStorage = list(
+#'               sizeInGiB = 123
+#'             ),
+#'             executionRoleArn = "string",
+#'             platformVersion = "string",
+#'             ipcMode = "string",
+#'             taskRoleArn = "string",
+#'             pidMode = "string",
+#'             networkConfiguration = list(
+#'               assignPublicIp = "ENABLED"|"DISABLED"
+#'             ),
+#'             runtimePlatform = list(
+#'               operatingSystemFamily = "string",
+#'               cpuArchitecture = "string"
+#'             ),
+#'             volumes = list(
+#'               list(
+#'                 host = list(
+#'                   sourcePath = "string"
+#'                 ),
+#'                 name = "string",
+#'                 efsVolumeConfiguration = list(
+#'                   fileSystemId = "string",
+#'                   rootDirectory = "string",
+#'                   transitEncryption = "ENABLED"|"DISABLED",
+#'                   transitEncryptionPort = 123,
+#'                   authorizationConfig = list(
+#'                     accessPointId = "string",
+#'                     iam = "ENABLED"|"DISABLED"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       isCancelled = TRUE|FALSE,
@@ -2404,7 +3099,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' @usage
 #' batch_register_job_definition(jobDefinitionName, type, parameters,
 #'   schedulingPriority, containerProperties, nodeProperties, retryStrategy,
-#'   propagateTags, timeout, tags, platformCapabilities, eksProperties)
+#'   propagateTags, timeout, tags, platformCapabilities, eksProperties,
+#'   ecsProperties)
 #'
 #' @param jobDefinitionName &#91;required&#93; The name of the job definition to register. It can be up to 128 letters
 #' long. It can contain uppercase and lowercase letters, numbers, hyphens
@@ -2413,6 +3109,11 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' parallel jobs, see [Creating a multi-node parallel job
 #' definition](https://docs.aws.amazon.com/batch/latest/userguide/) in the
 #' *Batch User Guide*.
+#' 
+#' -   If the value is `container`, then one of the following is required:
+#'     `containerProperties`, `ecsProperties`, or `eksProperties`.
+#' 
+#' -   If the value is `multinode`, then `nodeProperties` is required.
 #' 
 #' If the job is run on Fargate resources, then `multinode` isn't
 #' supported.
@@ -2427,21 +3128,19 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' The minimum supported value is 0 and the maximum supported value is
 #' 9999.
-#' @param containerProperties An object with various properties specific to Amazon ECS based
-#' single-node container-based jobs. If the job definition's `type`
-#' parameter is `container`, then you must specify either
-#' `containerProperties` or `nodeProperties`. This must not be specified
-#' for Amazon EKS based job definitions.
+#' @param containerProperties An object with properties specific to Amazon ECS-based single-node
+#' container-based jobs. If the job definition's `type` parameter is
+#' `container`, then you must specify either `containerProperties` or
+#' `nodeProperties`. This must not be specified for Amazon EKS-based job
+#' definitions.
 #' 
 #' If the job runs on Fargate resources, then you must not specify
 #' `nodeProperties`; use only `containerProperties`.
-#' @param nodeProperties An object with various properties specific to multi-node parallel jobs.
-#' If you specify node properties for a job, it becomes a multi-node
-#' parallel job. For more information, see [Multi-node Parallel
+#' @param nodeProperties An object with properties specific to multi-node parallel jobs. If you
+#' specify node properties for a job, it becomes a multi-node parallel job.
+#' For more information, see [Multi-node Parallel
 #' Jobs](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
-#' in the *Batch User Guide*. If the job definition's `type` parameter is
-#' `container`, then you must specify either `containerProperties` or
-#' `nodeProperties`.
+#' in the *Batch User Guide*.
 #' 
 #' If the job runs on Fargate resources, then you must not specify
 #' `nodeProperties`; use `containerProperties` instead.
@@ -2481,8 +3180,10 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' If the job runs on Amazon EKS resources, then you must not specify
 #' `platformCapabilities`.
-#' @param eksProperties An object with various properties that are specific to Amazon EKS based
-#' jobs. This must not be specified for Amazon ECS based job definitions.
+#' @param eksProperties An object with properties that are specific to Amazon EKS-based jobs.
+#' This must not be specified for Amazon ECS based job definitions.
+#' @param ecsProperties An object with properties that are specific to Amazon ECS-based jobs.
+#' This must not be specified for Amazon EKS-based job definitions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2614,6 +3315,9 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'     runtimePlatform = list(
 #'       operatingSystemFamily = "string",
 #'       cpuArchitecture = "string"
+#'     ),
+#'     repositoryCredentials = list(
+#'       credentialsParameter = "string"
 #'     )
 #'   ),
 #'   nodeProperties = list(
@@ -2733,6 +3437,141 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'           runtimePlatform = list(
 #'             operatingSystemFamily = "string",
 #'             cpuArchitecture = "string"
+#'           ),
+#'           repositoryCredentials = list(
+#'             credentialsParameter = "string"
+#'           )
+#'         ),
+#'         instanceTypes = list(
+#'           "string"
+#'         ),
+#'         ecsProperties = list(
+#'           taskProperties = list(
+#'             list(
+#'               containers = list(
+#'                 list(
+#'                   command = list(
+#'                     "string"
+#'                   ),
+#'                   dependsOn = list(
+#'                     list(
+#'                       containerName = "string",
+#'                       condition = "string"
+#'                     )
+#'                   ),
+#'                   environment = list(
+#'                     list(
+#'                       name = "string",
+#'                       value = "string"
+#'                     )
+#'                   ),
+#'                   essential = TRUE|FALSE,
+#'                   image = "string",
+#'                   linuxParameters = list(
+#'                     devices = list(
+#'                       list(
+#'                         hostPath = "string",
+#'                         containerPath = "string",
+#'                         permissions = list(
+#'                           "READ"|"WRITE"|"MKNOD"
+#'                         )
+#'                       )
+#'                     ),
+#'                     initProcessEnabled = TRUE|FALSE,
+#'                     sharedMemorySize = 123,
+#'                     tmpfs = list(
+#'                       list(
+#'                         containerPath = "string",
+#'                         size = 123,
+#'                         mountOptions = list(
+#'                           "string"
+#'                         )
+#'                       )
+#'                     ),
+#'                     maxSwap = 123,
+#'                     swappiness = 123
+#'                   ),
+#'                   logConfiguration = list(
+#'                     logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'                     options = list(
+#'                       "string"
+#'                     ),
+#'                     secretOptions = list(
+#'                       list(
+#'                         name = "string",
+#'                         valueFrom = "string"
+#'                       )
+#'                     )
+#'                   ),
+#'                   mountPoints = list(
+#'                     list(
+#'                       containerPath = "string",
+#'                       readOnly = TRUE|FALSE,
+#'                       sourceVolume = "string"
+#'                     )
+#'                   ),
+#'                   name = "string",
+#'                   privileged = TRUE|FALSE,
+#'                   readonlyRootFilesystem = TRUE|FALSE,
+#'                   repositoryCredentials = list(
+#'                     credentialsParameter = "string"
+#'                   ),
+#'                   resourceRequirements = list(
+#'                     list(
+#'                       value = "string",
+#'                       type = "GPU"|"VCPU"|"MEMORY"
+#'                     )
+#'                   ),
+#'                   secrets = list(
+#'                     list(
+#'                       name = "string",
+#'                       valueFrom = "string"
+#'                     )
+#'                   ),
+#'                   ulimits = list(
+#'                     list(
+#'                       hardLimit = 123,
+#'                       name = "string",
+#'                       softLimit = 123
+#'                     )
+#'                   ),
+#'                   user = "string"
+#'                 )
+#'               ),
+#'               ephemeralStorage = list(
+#'                 sizeInGiB = 123
+#'               ),
+#'               executionRoleArn = "string",
+#'               platformVersion = "string",
+#'               ipcMode = "string",
+#'               taskRoleArn = "string",
+#'               pidMode = "string",
+#'               networkConfiguration = list(
+#'                 assignPublicIp = "ENABLED"|"DISABLED"
+#'               ),
+#'               runtimePlatform = list(
+#'                 operatingSystemFamily = "string",
+#'                 cpuArchitecture = "string"
+#'               ),
+#'               volumes = list(
+#'                 list(
+#'                   host = list(
+#'                     sourcePath = "string"
+#'                   ),
+#'                   name = "string",
+#'                   efsVolumeConfiguration = list(
+#'                     fileSystemId = "string",
+#'                     rootDirectory = "string",
+#'                     transitEncryption = "ENABLED"|"DISABLED",
+#'                     transitEncryptionPort = 123,
+#'                     authorizationConfig = list(
+#'                       accessPointId = "string",
+#'                       iam = "ENABLED"|"DISABLED"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         )
 #'       )
@@ -2764,6 +3603,11 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'       serviceAccountName = "string",
 #'       hostNetwork = TRUE|FALSE,
 #'       dnsPolicy = "string",
+#'       imagePullSecrets = list(
+#'         list(
+#'           name = "string"
+#'         )
+#'       ),
 #'       containers = list(
 #'         list(
 #'           name = "string",
@@ -2800,6 +3644,49 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'             runAsUser = 123,
 #'             runAsGroup = 123,
 #'             privileged = TRUE|FALSE,
+#'             allowPrivilegeEscalation = TRUE|FALSE,
+#'             readOnlyRootFilesystem = TRUE|FALSE,
+#'             runAsNonRoot = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       initContainers = list(
+#'         list(
+#'           name = "string",
+#'           image = "string",
+#'           imagePullPolicy = "string",
+#'           command = list(
+#'             "string"
+#'           ),
+#'           args = list(
+#'             "string"
+#'           ),
+#'           env = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           resources = list(
+#'             limits = list(
+#'               "string"
+#'             ),
+#'             requests = list(
+#'               "string"
+#'             )
+#'           ),
+#'           volumeMounts = list(
+#'             list(
+#'               name = "string",
+#'               mountPath = "string",
+#'               readOnly = TRUE|FALSE
+#'             )
+#'           ),
+#'           securityContext = list(
+#'             runAsUser = 123,
+#'             runAsGroup = 123,
+#'             privileged = TRUE|FALSE,
+#'             allowPrivilegeEscalation = TRUE|FALSE,
 #'             readOnlyRootFilesystem = TRUE|FALSE,
 #'             runAsNonRoot = TRUE|FALSE
 #'           )
@@ -2824,6 +3711,136 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'       metadata = list(
 #'         labels = list(
 #'           "string"
+#'         )
+#'       ),
+#'       shareProcessNamespace = TRUE|FALSE
+#'     )
+#'   ),
+#'   ecsProperties = list(
+#'     taskProperties = list(
+#'       list(
+#'         containers = list(
+#'           list(
+#'             command = list(
+#'               "string"
+#'             ),
+#'             dependsOn = list(
+#'               list(
+#'                 containerName = "string",
+#'                 condition = "string"
+#'               )
+#'             ),
+#'             environment = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             essential = TRUE|FALSE,
+#'             image = "string",
+#'             linuxParameters = list(
+#'               devices = list(
+#'                 list(
+#'                   hostPath = "string",
+#'                   containerPath = "string",
+#'                   permissions = list(
+#'                     "READ"|"WRITE"|"MKNOD"
+#'                   )
+#'                 )
+#'               ),
+#'               initProcessEnabled = TRUE|FALSE,
+#'               sharedMemorySize = 123,
+#'               tmpfs = list(
+#'                 list(
+#'                   containerPath = "string",
+#'                   size = 123,
+#'                   mountOptions = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               maxSwap = 123,
+#'               swappiness = 123
+#'             ),
+#'             logConfiguration = list(
+#'               logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'               options = list(
+#'                 "string"
+#'               ),
+#'               secretOptions = list(
+#'                 list(
+#'                   name = "string",
+#'                   valueFrom = "string"
+#'                 )
+#'               )
+#'             ),
+#'             mountPoints = list(
+#'               list(
+#'                 containerPath = "string",
+#'                 readOnly = TRUE|FALSE,
+#'                 sourceVolume = "string"
+#'               )
+#'             ),
+#'             name = "string",
+#'             privileged = TRUE|FALSE,
+#'             readonlyRootFilesystem = TRUE|FALSE,
+#'             repositoryCredentials = list(
+#'               credentialsParameter = "string"
+#'             ),
+#'             resourceRequirements = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "GPU"|"VCPU"|"MEMORY"
+#'               )
+#'             ),
+#'             secrets = list(
+#'               list(
+#'                 name = "string",
+#'                 valueFrom = "string"
+#'               )
+#'             ),
+#'             ulimits = list(
+#'               list(
+#'                 hardLimit = 123,
+#'                 name = "string",
+#'                 softLimit = 123
+#'               )
+#'             ),
+#'             user = "string"
+#'           )
+#'         ),
+#'         ephemeralStorage = list(
+#'           sizeInGiB = 123
+#'         ),
+#'         executionRoleArn = "string",
+#'         platformVersion = "string",
+#'         ipcMode = "string",
+#'         taskRoleArn = "string",
+#'         pidMode = "string",
+#'         networkConfiguration = list(
+#'           assignPublicIp = "ENABLED"|"DISABLED"
+#'         ),
+#'         runtimePlatform = list(
+#'           operatingSystemFamily = "string",
+#'           cpuArchitecture = "string"
+#'         ),
+#'         volumes = list(
+#'           list(
+#'             host = list(
+#'               sourcePath = "string"
+#'             ),
+#'             name = "string",
+#'             efsVolumeConfiguration = list(
+#'               fileSystemId = "string",
+#'               rootDirectory = "string",
+#'               transitEncryption = "ENABLED"|"DISABLED",
+#'               transitEncryptionPort = 123,
+#'               authorizationConfig = list(
+#'                 accessPointId = "string",
+#'                 iam = "ENABLED"|"DISABLED"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2890,14 +3907,14 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' @rdname batch_register_job_definition
 #'
 #' @aliases batch_register_job_definition
-batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, schedulingPriority = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL, eksProperties = NULL) {
+batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, schedulingPriority = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL, eksProperties = NULL, ecsProperties = NULL) {
   op <- new_operation(
     name = "RegisterJobDefinition",
     http_method = "POST",
     http_path = "/v1/registerjobdefinition",
     paginator = list()
   )
-  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities, eksProperties = eksProperties)
+  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities, eksProperties = eksProperties, ecsProperties = ecsProperties)
   output <- .batch$register_job_definition_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -2930,7 +3947,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' batch_submit_job(jobName, jobQueue, shareIdentifier,
 #'   schedulingPriorityOverride, arrayProperties, dependsOn, jobDefinition,
 #'   parameters, containerOverrides, nodeOverrides, retryStrategy,
-#'   propagateTags, timeout, tags, eksPropertiesOverride)
+#'   propagateTags, timeout, tags, eksPropertiesOverride,
+#'   ecsPropertiesOverride)
 #'
 #' @param jobName &#91;required&#93; The name of the job. It can be up to 128 letters long. The first
 #' character must be alphanumeric, can contain uppercase and lowercase
@@ -2946,7 +3964,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @param schedulingPriorityOverride The scheduling priority for the job. This only affects jobs in job
 #' queues with a fair share policy. Jobs with a higher scheduling priority
 #' are scheduled before jobs with a lower scheduling priority. This
-#' overrides any scheduling priority in the job definition.
+#' overrides any scheduling priority in the job definition and works only
+#' within a single share identifier.
 #' 
 #' The minimum supported value is 0 and the maximum supported value is
 #' 9999.
@@ -2976,7 +3995,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' are specified as a key and value pair mapping. Parameters in a
 #' [`submit_job`][batch_submit_job] request override any corresponding
 #' parameter defaults from the job definition.
-#' @param containerOverrides An object with various properties that override the defaults for the job
+#' @param containerOverrides An object with properties that override the defaults for the job
 #' definition that specify the name of a container in the specified job
 #' definition and the overrides it should receive. You can override the
 #' default command for a container, which is specified in the job
@@ -3015,9 +4034,12 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' value. For more information, see [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in *Amazon Web Services General Reference*.
-#' @param eksPropertiesOverride An object that can only be specified for jobs that are run on Amazon EKS
-#' resources with various properties that override defaults for the job
-#' definition.
+#' @param eksPropertiesOverride An object, with properties that override defaults for the job
+#' definition, can only be specified for jobs that are run on Amazon EKS
+#' resources.
+#' @param ecsPropertiesOverride An object, with properties that override defaults for the job
+#' definition, can only be specified for jobs that are run on Amazon ECS
+#' resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3093,6 +4115,35 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'               type = "GPU"|"VCPU"|"MEMORY"
 #'             )
 #'           )
+#'         ),
+#'         ecsPropertiesOverride = list(
+#'           taskProperties = list(
+#'             list(
+#'               containers = list(
+#'                 list(
+#'                   command = list(
+#'                     "string"
+#'                   ),
+#'                   environment = list(
+#'                     list(
+#'                       name = "string",
+#'                       value = "string"
+#'                     )
+#'                   ),
+#'                   name = "string",
+#'                   resourceRequirements = list(
+#'                     list(
+#'                       value = "string",
+#'                       type = "GPU"|"VCPU"|"MEMORY"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         instanceTypes = list(
+#'           "string"
 #'         )
 #'       )
 #'     )
@@ -3119,6 +4170,33 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'     podProperties = list(
 #'       containers = list(
 #'         list(
+#'           name = "string",
+#'           image = "string",
+#'           command = list(
+#'             "string"
+#'           ),
+#'           args = list(
+#'             "string"
+#'           ),
+#'           env = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           resources = list(
+#'             limits = list(
+#'               "string"
+#'             ),
+#'             requests = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       initContainers = list(
+#'         list(
+#'           name = "string",
 #'           image = "string",
 #'           command = list(
 #'             "string"
@@ -3148,6 +4226,32 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   ecsPropertiesOverride = list(
+#'     taskProperties = list(
+#'       list(
+#'         containers = list(
+#'           list(
+#'             command = list(
+#'               "string"
+#'             ),
+#'             environment = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             name = "string",
+#'             resourceRequirements = list(
+#'               list(
+#'                 value = "string",
+#'                 type = "GPU"|"VCPU"|"MEMORY"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3168,14 +4272,14 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @rdname batch_submit_job
 #'
 #' @aliases batch_submit_job
-batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, schedulingPriorityOverride = NULL, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, eksPropertiesOverride = NULL) {
+batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, schedulingPriorityOverride = NULL, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, eksPropertiesOverride = NULL, ecsPropertiesOverride = NULL) {
   op <- new_operation(
     name = "SubmitJob",
     http_method = "POST",
     http_path = "/v1/submitjob",
     paginator = list()
   )
-  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, eksPropertiesOverride = eksPropertiesOverride)
+  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, eksPropertiesOverride = eksPropertiesOverride, ecsPropertiesOverride = ecsPropertiesOverride)
   output <- .batch$submit_job_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -3552,7 +4656,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #'
 #' @usage
 #' batch_update_job_queue(jobQueue, state, schedulingPolicyArn, priority,
-#'   computeEnvironmentOrder)
+#'   computeEnvironmentOrder, jobStateTimeLimitActions)
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
 #' @param state Describes the queue's ability to accept new jobs. If the job queue state
@@ -3584,6 +4688,9 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' All compute environments that are associated with a job queue must share
 #' the same architecture. Batch doesn't support mixing compute environment
 #' architecture types in a single job queue.
+#' @param jobStateTimeLimitActions The set of actions that Batch perform on jobs that remain at the head of
+#' the job queue in the specified state longer than specified times. Batch
+#' will perform each action after `maxTimeSeconds` has passed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3606,6 +4713,14 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #'       order = 123,
 #'       computeEnvironment = "string"
 #'     )
+#'   ),
+#'   jobStateTimeLimitActions = list(
+#'     list(
+#'       reason = "string",
+#'       state = "RUNNABLE",
+#'       maxTimeSeconds = 123,
+#'       action = "CANCEL"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3624,14 +4739,14 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' @rdname batch_update_job_queue
 #'
 #' @aliases batch_update_job_queue
-batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn = NULL, priority = NULL, computeEnvironmentOrder = NULL) {
+batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn = NULL, priority = NULL, computeEnvironmentOrder = NULL, jobStateTimeLimitActions = NULL) {
   op <- new_operation(
     name = "UpdateJobQueue",
     http_method = "POST",
     http_path = "/v1/updatejobqueue",
     paginator = list()
   )
-  input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder)
+  input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$update_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config)

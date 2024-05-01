@@ -185,7 +185,7 @@ NULL
 
 .kms$enable_key_rotation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), RotationPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -285,7 +285,7 @@ NULL
 
 .kms$get_key_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), PolicyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -297,7 +297,7 @@ NULL
 
 .kms$get_key_rotation_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyRotationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyRotationEnabled = structure(logical(0), tags = list(type = "boolean")), KeyId = structure(logical(0), tags = list(type = "string")), RotationPeriodInDays = structure(logical(0), tags = list(type = "integer")), NextRotationDate = structure(logical(0), tags = list(type = "timestamp")), OnDemandRotationStartDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -370,6 +370,18 @@ NULL
 .kms$list_key_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PolicyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$list_key_rotations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$list_key_rotations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Rotations = structure(list(structure(list(KeyId = structure(logical(0), tags = list(type = "string")), RotationDate = structure(logical(0), tags = list(type = "timestamp")), RotationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -461,6 +473,18 @@ NULL
 
 .kms$revoke_grant_output <- function(...) {
   list()
+}
+
+.kms$rotate_key_on_demand_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$rotate_key_on_demand_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .kms$schedule_key_deletion_input <- function(...) {

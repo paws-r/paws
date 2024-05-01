@@ -168,7 +168,7 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .acmpca$metadata <- list(
   service_name = "acm-pca",
-  endpoints = list("*" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "acm-pca.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "acm-pca.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "acm-pca.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "acm-pca.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "acm-pca.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "acm-pca.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "acm-pca.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "acm-pca.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ACM PCA",
   api_version = "2017-08-22",
   signing_name = "acm-pca",

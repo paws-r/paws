@@ -143,7 +143,7 @@ connectcampaignservice <- function(config = list(), credentials = list(), endpoi
 
 .connectcampaignservice$metadata <- list(
   service_name = "connectcampaignservice",
-  endpoints = list("*" = list(endpoint = "connect-campaigns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect-campaigns.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "connect-campaigns.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connect-campaigns.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "connect-campaigns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect-campaigns.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "connect-campaigns.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "connect-campaigns.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connect-campaigns.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "connect-campaigns.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ConnectCampaigns",
   api_version = "2021-01-30",
   signing_name = "connect-campaigns",

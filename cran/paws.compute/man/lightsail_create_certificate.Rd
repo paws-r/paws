@@ -15,16 +15,15 @@ lightsail_create_certificate(
 \arguments{
 \item{certificateName}{[required] The name for the certificate.}
 
-\item{domainName}{[required] The domain name (e.g., \code{example.com}) for the certificate.}
+\item{domainName}{[required] The domain name (\code{example.com}) for the certificate.}
 
-\item{subjectAlternativeNames}{An array of strings that specify the alternate domains (e.g.,
-\code{example2.com}) and subdomains (e.g., \code{blog.example.com}) for the
-certificate.
+\item{subjectAlternativeNames}{An array of strings that specify the alternate domains (\code{example2.com})
+and subdomains (\code{blog.example.com}) for the certificate.
 
 You can specify a maximum of nine alternate domains (in addition to the
 primary domain name).
 
-Wildcard domain entries (e.g., \verb{*.example.com}) are not supported.}
+Wildcard domain entries (\verb{*.example.com}) are not supported.}
 
 \item{tags}{The tag keys and optional values to add to the certificate during
 create.

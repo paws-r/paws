@@ -2,24 +2,27 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_update_workspace_alias}
 \alias{prometheusservice_update_workspace_alias}
-\title{Updates an AMP workspace alias}
+\title{Updates the alias of an existing workspace}
 \usage{
 prometheusservice_update_workspace_alias(
-  workspaceId,
   alias = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  workspaceId
 )
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace being updated.}
+\item{alias}{The new alias for the workspace. It does not need to be unique.
 
-\item{alias}{The new alias of the workspace.}
+Amazon Managed Service for Prometheus will automatically strip any blank
+spaces from the beginning and end of the alias that you specify.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
+
+\item{workspaceId}{[required] The ID of the workspace to update.}
 }
 \description{
-Updates an AMP workspace alias.
+Updates the alias of an existing workspace.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/} for full documentation.
 }

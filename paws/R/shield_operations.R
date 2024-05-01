@@ -475,6 +475,8 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @usage
 #' shield_create_subscription()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -600,6 +602,8 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 #'
 #' @usage
 #' shield_delete_subscription()
+#'
+
 #'
 #' @return
 #' An empty list.
@@ -770,6 +774,8 @@ shield_describe_attack <- function(AttackId) {
 #' @usage
 #' shield_describe_attack_statistics()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -840,6 +846,8 @@ shield_describe_attack_statistics <- function() {
 #' @usage
 #' shield_describe_drt_access()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -891,6 +899,8 @@ shield_describe_drt_access <- function() {
 #'
 #' @usage
 #' shield_describe_emergency_contact_settings()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -1067,6 +1077,8 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #' @usage
 #' shield_describe_subscription()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1195,6 +1207,8 @@ shield_disable_application_layer_automatic_response <- function(ResourceArn) {
 #' @usage
 #' shield_disable_proactive_engagement()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -1278,6 +1292,8 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #'
 #' @usage
 #' shield_disassociate_drt_role()
+#'
+
 #'
 #' @return
 #' An empty list.
@@ -1459,6 +1475,8 @@ shield_enable_application_layer_automatic_response <- function(ResourceArn, Acti
 #' @usage
 #' shield_enable_proactive_engagement()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -1496,6 +1514,8 @@ shield_enable_proactive_engagement <- function() {
 #'
 #' @usage
 #' shield_get_subscription_state()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

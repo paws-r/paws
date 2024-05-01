@@ -7,7 +7,7 @@
 sns_delete_endpoint(EndpointArn)
 }
 \arguments{
-\item{EndpointArn}{[required] EndpointArn of endpoint to delete.}
+\item{EndpointArn}{[required] \code{EndpointArn} of endpoint to delete.}
 }
 \description{
 Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.

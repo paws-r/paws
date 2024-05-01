@@ -22,7 +22,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{How to ensure idempotency}.}
 }
 \description{
 Creates a carrier gateway. For more information about carrier gateways, see \href{https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway}{Carrier gateways} in the \emph{Amazon Web Services Wavelength Developer Guide}.

@@ -141,7 +141,7 @@ translate <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .translate$metadata <- list(
   service_name = "translate",
-  endpoints = list("*" = list(endpoint = "translate.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "translate.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "translate.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "translate.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "translate.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "translate.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "translate.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "translate.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "translate.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "translate.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Translate",
   api_version = "2017-07-01",
   signing_name = "translate",

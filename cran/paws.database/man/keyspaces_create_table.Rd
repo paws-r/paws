@@ -15,7 +15,9 @@ keyspaces_create_table(
   ttl = NULL,
   defaultTimeToLive = NULL,
   tags = NULL,
-  clientSideTimestamps = NULL
+  clientSideTimestamps = NULL,
+  autoScalingSpecification = NULL,
+  replicaSpecifications = NULL
 )
 }
 \arguments{
@@ -126,6 +128,35 @@ option:
 
 Once client-side timestamps are enabled for a table, this setting cannot
 be disabled.}
+
+\item{autoScalingSpecification}{The optional auto scaling settings for a table in provisioned capacity
+mode. Specifies if the service can manage throughput capacity
+automatically on your behalf.
+
+Auto scaling helps you provision throughput capacity for variable
+workloads efficiently by increasing and decreasing your table's read and
+write capacity automatically in response to application traffic. For
+more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html}{Managing throughput capacity automatically with Amazon Keyspaces auto scaling}
+in the \emph{Amazon Keyspaces Developer Guide}.
+
+By default, auto scaling is disabled for a table.}
+
+\item{replicaSpecifications}{The optional Amazon Web Services Region specific settings of a
+multi-Region table. These settings overwrite the general settings of the
+table for the specified Region.
+
+For a multi-Region table in provisioned capacity mode, you can configure
+the table's read capacity differently for each Region's replica. The
+write capacity, however, remains synchronized between all replicas to
+ensure that there's enough capacity to replicate writes across all
+Regions. To define the read capacity for a table replica in a specific
+Region, you can do so by configuring the following parameters.
+\itemize{
+\item \code{region}: The Region where these settings are applied. (Required)
+\item \code{readCapacityUnits}: The provisioned read capacity units. (Optional)
+\item \code{readCapacityAutoScaling}: The read capacity auto scaling settings
+for the table. (Optional)
+}}
 }
 \description{
 The \code{\link[=keyspaces_create_table]{create_table}} operation adds a new table to the specified keyspace. Within a keyspace, table names must be unique.

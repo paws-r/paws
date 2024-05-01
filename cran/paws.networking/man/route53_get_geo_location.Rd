@@ -28,7 +28,7 @@ codes:
 \item{CountryCode}{Amazon Route 53 uses the two-letter country codes that are specified in
 \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}.
 
-Route 53 also supports the contry code \strong{UA} forr Ukraine.}
+Route 53 also supports the country code \strong{UA} for Ukraine.}
 
 \item{SubdivisionCode}{The code for the subdivision, such as a particular state within the
 United States. For a list of US state abbreviations, see Appendix B:

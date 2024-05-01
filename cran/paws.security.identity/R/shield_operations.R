@@ -264,6 +264,8 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_create_subscription/](https://www.paws-r-sdk.com/docs/shield_create_subscription/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname shield_create_subscription
@@ -351,6 +353,8 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_delete_subscription/](https://www.paws-r-sdk.com/docs/shield_delete_subscription/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname shield_delete_subscription
@@ -409,6 +413,8 @@ shield_describe_attack <- function(AttackId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_describe_attack_statistics/](https://www.paws-r-sdk.com/docs/shield_describe_attack_statistics/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname shield_describe_attack_statistics
@@ -437,6 +443,8 @@ shield_describe_attack_statistics <- function() {
 #' Returns the current role and list of Amazon S3 log buckets used by the Shield Response Team (SRT) to access your Amazon Web Services account while assisting with attack mitigation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_describe_drt_access/](https://www.paws-r-sdk.com/docs/shield_describe_drt_access/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -467,6 +475,8 @@ shield_describe_drt_access <- function() {
 #' A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_describe_emergency_contact_settings/](https://www.paws-r-sdk.com/docs/shield_describe_emergency_contact_settings/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -560,6 +570,8 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_describe_subscription/](https://www.paws-r-sdk.com/docs/shield_describe_subscription/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname shield_describe_subscription
@@ -619,6 +631,8 @@ shield_disable_application_layer_automatic_response <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_disable_proactive_engagement/](https://www.paws-r-sdk.com/docs/shield_disable_proactive_engagement/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname shield_disable_proactive_engagement
@@ -676,6 +690,8 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #' Removes the Shield Response Team's (SRT) access to your Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_disassociate_drt_role/](https://www.paws-r-sdk.com/docs/shield_disassociate_drt_role/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -776,6 +792,8 @@ shield_enable_application_layer_automatic_response <- function(ResourceArn, Acti
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_enable_proactive_engagement/](https://www.paws-r-sdk.com/docs/shield_enable_proactive_engagement/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname shield_enable_proactive_engagement
@@ -802,6 +820,8 @@ shield_enable_proactive_engagement <- function() {
 #' Returns the `SubscriptionState`, either `Active` or `Inactive`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/shield_get_subscription_state/](https://www.paws-r-sdk.com/docs/shield_get_subscription_state/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

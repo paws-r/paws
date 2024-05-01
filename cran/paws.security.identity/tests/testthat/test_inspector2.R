@@ -8,6 +8,14 @@ test_that("list_account_permissions", {
   expect_error(svc$list_account_permissions(), NA)
 })
 
+test_that("list_cis_scan_configurations", {
+  expect_error(svc$list_cis_scan_configurations(), NA)
+})
+
+test_that("list_cis_scans", {
+  expect_error(svc$list_cis_scans(), NA)
+})
+
 test_that("list_coverage", {
   expect_error(svc$list_coverage(), NA)
 })

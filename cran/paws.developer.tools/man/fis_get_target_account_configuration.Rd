@@ -10,7 +10,7 @@ fis_get_target_account_configuration(experimentTemplateId, accountId)
 \arguments{
 \item{experimentTemplateId}{[required] The ID of the experiment template.}
 
-\item{accountId}{[required] The AWS account ID of the target account.}
+\item{accountId}{[required] The Amazon Web Services account ID of the target account.}
 }
 \description{
 Gets information about the specified target account configuration of the experiment template.

@@ -26,7 +26,7 @@ lambda_update_event_source_mapping(
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
 
-\item{FunctionName}{The name of the Lambda function.
+\item{FunctionName}{The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -82,8 +82,9 @@ Related setting: For streams and Amazon SQS event sources, when you set
 \code{BatchSize} to a value greater than 10, you must set
 \code{MaximumBatchingWindowInSeconds} to at least 1.}
 
-\item{DestinationConfig}{(Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
-standard Amazon SNS topic destination for discarded records.}
+\item{DestinationConfig}{(Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+configuration object that specifies the destination of an event after
+Lambda processes it.}
 
 \item{MaximumRecordAgeInSeconds}{(Kinesis and DynamoDB Streams only) Discard records older than the
 specified age. The default value is infinite (-1).}

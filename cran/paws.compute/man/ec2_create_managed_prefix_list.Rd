@@ -36,7 +36,7 @@ Constraints: Up to 255 characters in length. The name cannot start with
 Valid Values: \code{IPv4} | \code{IPv6}}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.
+of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.
 
 Constraints: Up to 255 UTF-8 characters in length.}
 }

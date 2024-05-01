@@ -9,7 +9,8 @@ APNS}
 sns_set_endpoint_attributes(EndpointArn, Attributes)
 }
 \arguments{
-\item{EndpointArn}{[required] EndpointArn used for SetEndpointAttributes action.}
+\item{EndpointArn}{[required] EndpointArn used for
+\code{\link[=sns_set_endpoint_attributes]{set_endpoint_attributes}} action.}
 
 \item{Attributes}{[required] A map of the endpoint attributes. Attributes in this map include the
 following:

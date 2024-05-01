@@ -149,7 +149,7 @@ machinelearning <- function(config = list(), credentials = list(), endpoint = NU
 
 .machinelearning$metadata <- list(
   service_name = "machinelearning",
-  endpoints = list("*" = list(endpoint = "machinelearning.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "machinelearning.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "machinelearning.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "machinelearning.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "machinelearning.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "machinelearning.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "machinelearning.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "machinelearning.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "machinelearning.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "machinelearning.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Machine Learning",
   api_version = "2014-12-12",
   signing_name = "machinelearning",

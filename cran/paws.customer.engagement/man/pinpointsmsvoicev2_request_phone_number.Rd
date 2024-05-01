@@ -50,7 +50,7 @@ idempotency of the request. If you don't specify a client token, a
 randomly generated token is used for the request to ensure idempotency.}
 }
 \description{
-Request an origination phone number for use in your account. For more information on phone number request see \href{https://docs.aws.amazon.com/pinpoint/latest/userguide/settings-sms-request-number.html}{Requesting a number} in the \emph{Amazon Pinpoint User Guide}.
+Request an origination phone number for use in your account. For more information on phone number request see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html}{Requesting a number} in the \emph{Amazon Pinpoint User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_request_phone_number/} for full documentation.
 }

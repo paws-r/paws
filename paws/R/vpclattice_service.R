@@ -179,7 +179,7 @@ vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .vpclattice$metadata <- list(
   service_name = "vpclattice",
-  endpoints = list("*" = list(endpoint = "vpc-lattice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "vpc-lattice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "vpc-lattice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "vpc-lattice.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "vpc-lattice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "vpc-lattice.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "vpc-lattice.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "vpc-lattice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "vpc-lattice.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "vpc-lattice.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "VPC Lattice",
   api_version = "2022-11-30",
   signing_name = "vpc-lattice",

@@ -2660,6 +2660,8 @@ proton_delete_template_sync_config <- function(templateName, templateType) {
 #' @usage
 #' proton_get_account_settings()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -3370,6 +3372,8 @@ proton_get_repository_sync_status <- function(branch, repositoryName, repository
 #'
 #' @usage
 #' proton_get_resources_summary()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

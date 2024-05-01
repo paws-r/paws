@@ -953,6 +953,7 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #'     ReleaseLabel = "string",
 #'     AutoTerminate = TRUE|FALSE,
 #'     TerminationProtected = TRUE|FALSE,
+#'     UnhealthyNodeReplacement = TRUE|FALSE,
 #'     VisibleToAllUsers = TRUE|FALSE,
 #'     Applications = list(
 #'       list(
@@ -1149,6 +1150,7 @@ emr_describe_cluster <- function(ClusterId) {
 #'         ),
 #'         KeepJobFlowAliveWhenNoSteps = TRUE|FALSE,
 #'         TerminationProtected = TRUE|FALSE,
+#'         UnhealthyNodeReplacement = TRUE|FALSE,
 #'         HadoopVersion = "string"
 #'       ),
 #'       Steps = list(
@@ -1688,6 +1690,8 @@ emr_get_auto_termination_policy <- function(ClusterId) {
 #'
 #' @usage
 #' emr_get_block_public_access_configuration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -4155,6 +4159,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'     ),
 #'     KeepJobFlowAliveWhenNoSteps = TRUE|FALSE,
 #'     TerminationProtected = TRUE|FALSE,
+#'     UnhealthyNodeReplacement = TRUE|FALSE,
 #'     HadoopVersion = "string",
 #'     Ec2SubnetId = "string",
 #'     Ec2SubnetIds = list(
@@ -4389,7 +4394,7 @@ emr_set_keep_job_flow_alive_when_no_steps <- function(JobFlowIds, KeepJobFlowAli
 #' [`set_termination_protection`][emr_set_termination_protection] in which
 #' you set the value to `false`.
 #' 
-#' For more information, see[Managing Cluster
+#' For more information, see [Managing Cluster
 #' Termination](https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html)
 #' in the *Amazon EMR Management Guide*.
 #'
@@ -4437,6 +4442,73 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
   return(response)
 }
 .emr$operations$set_termination_protection <- emr_set_termination_protection
+
+#' Specify whether to enable unhealthy node replacement, which lets Amazon
+#' EMR gracefully replace core nodes on a cluster if any nodes become
+#' unhealthy
+#'
+#' @description
+#' Specify whether to enable unhealthy node replacement, which lets Amazon
+#' EMR gracefully replace core nodes on a cluster if any nodes become
+#' unhealthy. For example, a node becomes unhealthy if disk usage is above
+#' 90%. If unhealthy node replacement is on and `TerminationProtected` are
+#' off, Amazon EMR immediately terminates the unhealthy core nodes. To use
+#' unhealthy node replacement and retain unhealthy core nodes, use to turn
+#' on termination protection. In such cases, Amazon EMR adds the unhealthy
+#' nodes to a denylist, reducing job interruptions and failures.
+#' 
+#' If unhealthy node replacement is on, Amazon EMR notifies YARN and other
+#' applications on the cluster to stop scheduling tasks with these nodes,
+#' moves the data, and then terminates the nodes.
+#' 
+#' For more information, see [graceful node
+#' replacement](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-node-replacement.html)
+#' in the *Amazon EMR Management Guide*.
+#'
+#' @usage
+#' emr_set_unhealthy_node_replacement(JobFlowIds, UnhealthyNodeReplacement)
+#'
+#' @param JobFlowIds &#91;required&#93; The list of strings that uniquely identify the clusters for which to
+#' turn on unhealthy node replacement. You can get these identifiers by
+#' running the [`run_job_flow`][emr_run_job_flow] or the
+#' [`describe_job_flows`][emr_describe_job_flows] operations.
+#' @param UnhealthyNodeReplacement &#91;required&#93; Indicates whether to turn on or turn off graceful unhealthy node
+#' replacement.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$set_unhealthy_node_replacement(
+#'   JobFlowIds = list(
+#'     "string"
+#'   ),
+#'   UnhealthyNodeReplacement = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_set_unhealthy_node_replacement
+#'
+#' @aliases emr_set_unhealthy_node_replacement
+emr_set_unhealthy_node_replacement <- function(JobFlowIds, UnhealthyNodeReplacement) {
+  op <- new_operation(
+    name = "SetUnhealthyNodeReplacement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$set_unhealthy_node_replacement_input(JobFlowIds = JobFlowIds, UnhealthyNodeReplacement = UnhealthyNodeReplacement)
+  output <- .emr$set_unhealthy_node_replacement_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$set_unhealthy_node_replacement <- emr_set_unhealthy_node_replacement
 
 #' The SetVisibleToAllUsers parameter is no longer supported
 #'

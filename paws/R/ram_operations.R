@@ -1196,6 +1196,8 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 #' @usage
 #' ram_enable_sharing_with_aws_organization()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

@@ -1064,6 +1064,8 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafregional_get_change_token/](https://www.paws-r-sdk.com/docs/wafregional_get_change_token/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname wafregional_get_change_token

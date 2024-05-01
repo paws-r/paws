@@ -7,8 +7,8 @@
 controltower_create_landing_zone(manifest, tags = NULL, version)
 }
 \arguments{
-\item{manifest}{[required] The manifest JSON file is a text file that describes your Amazon Web
-Services resources. For examples, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{Launch your landing zone}.}
+\item{manifest}{[required] The manifest.yaml file is a text file that describes your Amazon Web
+Services resources. For examples, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/the-manifest-file.html}{The manifest file}.}
 
 \item{tags}{Tags to be applied to the landing zone.}
 

@@ -2,18 +2,18 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_get_investigation}
 \alias{detective_get_investigation}
-\title{Returns the investigation results of an investigation for a behavior
-graph}
+\title{Detective investigations lets you investigate IAM users and IAM roles
+using indicators of compromise}
 \usage{
 detective_get_investigation(GraphArn, InvestigationId)
 }
 \arguments{
-\item{GraphArn}{[required] The ARN of the behavior graph.}
+\item{GraphArn}{[required] The Amazon Resource Name (ARN) of the behavior graph.}
 
 \item{InvestigationId}{[required] The investigation ID of the investigation report.}
 }
 \description{
-Returns the investigation results of an investigation for a behavior graph.
+Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise. An indicator of compromise (IOC) is an artifact observed in or on a network, system, or environment that can (with a high level of confidence) identify malicious activity or a security incident. \code{\link[=detective_get_investigation]{get_investigation}} returns the investigation results of an investigation for a behavior graph.
 
 See \url{https://www.paws-r-sdk.com/docs/detective_get_investigation/} for full documentation.
 }

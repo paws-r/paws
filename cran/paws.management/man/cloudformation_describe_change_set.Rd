@@ -8,7 +8,8 @@ CloudFormation will make if you execute the change set}
 cloudformation_describe_change_set(
   ChangeSetName,
   StackName = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  IncludePropertyValues = NULL
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ to describe.}
 \code{\link[=cloudformation_describe_change_set]{describe_change_set}} response
 output) that identifies the next page of information that you want to
 retrieve.}
+
+\item{IncludePropertyValues}{If \code{true}, the returned changes include detailed changes in the property
+values.}
 }
 \description{
 Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html}{Updating Stacks Using Change Sets} in the \emph{CloudFormation User Guide}.

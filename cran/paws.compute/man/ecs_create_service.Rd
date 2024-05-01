@@ -28,7 +28,8 @@ ecs_create_service(
   enableECSManagedTags = NULL,
   propagateTags = NULL,
   enableExecuteCommand = NULL,
-  serviceConnectConfiguration = NULL
+  serviceConnectConfiguration = NULL,
+  volumeConfigurations = NULL
 )
 }
 \arguments{
@@ -123,8 +124,8 @@ The \code{FARGATE} launch type runs your tasks on Fargate On-Demand
 infrastructure.
 
 Fargate Spot infrastructure is available for use but a capacity provider
-strategy must be used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html}{Fargate capacity providers}
-in the \emph{Amazon ECS User Guide for Fargate}.
+strategy must be used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-capacity-providers.html}{Fargate capacity providers}
+in the \emph{Amazon ECS Developer Guide}.
 
 The \code{EC2} launch type runs your tasks on Amazon EC2 instances registered
 to your cluster.
@@ -277,6 +278,10 @@ only be propagated to the task during task creation. To add tags to a
 task after task creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API
 action.
 
+You must set this to a value other than \code{NONE} when you use Cost
+Explorer. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/usage-reports.html}{Amazon ECS usage reports}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+
 The default is \code{NONE}.}
 
 \item{enableExecuteCommand}{Determines whether the execute command functionality is turned on for
@@ -294,6 +299,10 @@ container that collects logs and metrics for increased visibility. Only
 the tasks that Amazon ECS services create are supported with Service
 Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{volumeConfigurations}{The configuration for a volume specified in the task definition as a
+volume that is configured at launch time. Currently, the only supported
+volume type is an Amazon EBS volume.}
 }
 \description{
 Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the \code{desiredCount}, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, see the \code{\link[=ecs_update_service]{update_service}} action.

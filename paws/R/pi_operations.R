@@ -620,7 +620,8 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' @description
 #' Retrieve Performance Insights metrics for a set of data sources over a
 #' time period. You can provide specific dimension groups and dimensions,
-#' and provide aggregation and filtering criteria for each group.
+#' and provide filtering criteria for each group. You must specify an
+#' aggregate function for each metric.
 #' 
 #' Each response element returns a maximum of 500 bytes. For larger
 #' elements, such as SQL statements, only the first 500 bytes are returned.
@@ -645,8 +646,11 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' To use a DB instance as a data source, specify its `DbiResourceId`
 #' value. For example, specify `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
 #' @param MetricQueries &#91;required&#93; An array of one or more queries to perform. Each query must specify a
-#' Performance Insights metric, and can optionally specify aggregation and
-#' filtering criteria.
+#' Performance Insights metric and specify an aggregate function, and you
+#' can provide filtering criteria. You must append the aggregate function
+#' to the metric. For example, to find the average for the metric `db.load`
+#' you must use `db.load.avg`. Valid values for aggregate functions include
+#' `.avg`, `.min`, `.max`, and `.sum`.
 #' @param StartTime &#91;required&#93; The date and time specifying the beginning of the requested time series
 #' query range. You can't specify a `StartTime` that is earlier than 7 days
 #' ago. By default, Performance Insights has 7 days of retention, but you

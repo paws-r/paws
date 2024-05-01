@@ -77,8 +77,10 @@ common errors.
 \item \code{\link[=rekognition_detect_text]{detect_text}}
 \item \code{\link[=rekognition_disassociate_faces]{disassociate_faces}}
 \item \code{\link[=rekognition_get_celebrity_info]{get_celebrity_info}}
+\item \code{\link[=rekognition_get_media_analysis_job]{get_media_analysis_job}}
 \item \code{\link[=rekognition_index_faces]{index_faces}}
 \item \code{\link[=rekognition_list_collections]{list_collections}}
+\item \href{https://docs.aws.amazon.com/rekognition/latest/APIReference/}{ListMediaAnalysisJob}
 \item \code{\link[=rekognition_list_faces]{list_faces}}
 \item \code{\link[=rekognition_list_users]{list_users}}
 \item \code{\link[=rekognition_recognize_celebrities]{recognize_celebrities}}
@@ -86,6 +88,7 @@ common errors.
 \item \code{\link[=rekognition_search_faces_by_image]{search_faces_by_image}}
 \item \code{\link[=rekognition_search_users]{search_users}}
 \item \code{\link[=rekognition_search_users_by_image]{search_users_by_image}}
+\item \code{\link[=rekognition_start_media_analysis_job]{start_media_analysis_job}}
 }
 
 \strong{Amazon Rekognition Custom Labels}

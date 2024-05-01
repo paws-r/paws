@@ -53,7 +53,27 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Managed Service for Prometheus
+Amazon Managed Service for Prometheus is a serverless,
+Prometheus-compatible monitoring service for container metrics that
+makes it easier to securely monitor container environments at scale.
+With Amazon Managed Service for Prometheus, you can use the same
+open-source Prometheus data model and query language that you use today
+to monitor the performance of your containerized workloads, and also
+enjoy improved scalability, availability, and security without having to
+manage the underlying infrastructure.
+
+For more information about Amazon Managed Service for Prometheus, see
+the \href{https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html}{Amazon Managed Service for Prometheus}
+User Guide.
+
+Amazon Managed Service for Prometheus includes two APIs.
+\itemize{
+\item Use the Amazon Web Services API described in this guide to manage
+Amazon Managed Service for Prometheus resources, such as workspaces,
+rule groups, and alert managers.
+\item Use the \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis}{Prometheus-compatible API}
+to work within your Prometheus workspace.
+}
 }
 \section{Service syntax}{
 
@@ -94,32 +114,32 @@ Amazon Managed Service for Prometheus
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.management:prometheusservice_create_alert_manager_definition]{create_alert_manager_definition} \tab Create an alert manager definition\cr
-\link[paws.management:prometheusservice_create_logging_configuration]{create_logging_configuration} \tab Create logging configuration\cr
-\link[paws.management:prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace} \tab Create a rule group namespace\cr
-\link[paws.management:prometheusservice_create_scraper]{create_scraper} \tab Create a scraper\cr
-\link[paws.management:prometheusservice_create_workspace]{create_workspace} \tab Creates a new AMP workspace\cr
-\link[paws.management:prometheusservice_delete_alert_manager_definition]{delete_alert_manager_definition} \tab Deletes an alert manager definition\cr
-\link[paws.management:prometheusservice_delete_logging_configuration]{delete_logging_configuration} \tab Delete logging configuration\cr
-\link[paws.management:prometheusservice_delete_rule_groups_namespace]{delete_rule_groups_namespace} \tab Delete a rule groups namespace\cr
-\link[paws.management:prometheusservice_delete_scraper]{delete_scraper} \tab Deletes a scraper\cr
-\link[paws.management:prometheusservice_delete_workspace]{delete_workspace} \tab Deletes an AMP workspace\cr
-\link[paws.management:prometheusservice_describe_alert_manager_definition]{describe_alert_manager_definition} \tab Describes an alert manager definition\cr
-\link[paws.management:prometheusservice_describe_logging_configuration]{describe_logging_configuration} \tab Describes logging configuration\cr
-\link[paws.management:prometheusservice_describe_rule_groups_namespace]{describe_rule_groups_namespace} \tab Describe a rule groups namespace\cr
-\link[paws.management:prometheusservice_describe_scraper]{describe_scraper} \tab Describe an existing scraper\cr
-\link[paws.management:prometheusservice_describe_workspace]{describe_workspace} \tab Describes an existing AMP workspace\cr
-\link[paws.management:prometheusservice_get_default_scraper_configuration]{get_default_scraper_configuration} \tab Gets a default configuration\cr
-\link[paws.management:prometheusservice_list_rule_groups_namespaces]{list_rule_groups_namespaces} \tab Lists rule groups namespaces\cr
-\link[paws.management:prometheusservice_list_scrapers]{list_scrapers} \tab Lists all scrapers in a customer account, including scrapers being created or deleted\cr
-\link[paws.management:prometheusservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags you have assigned to the resource\cr
-\link[paws.management:prometheusservice_list_workspaces]{list_workspaces} \tab Lists all AMP workspaces, including workspaces being created or deleted\cr
-\link[paws.management:prometheusservice_put_alert_manager_definition]{put_alert_manager_definition} \tab Update an alert manager definition\cr
-\link[paws.management:prometheusservice_put_rule_groups_namespace]{put_rule_groups_namespace} \tab Update a rule groups namespace\cr
-\link[paws.management:prometheusservice_tag_resource]{tag_resource} \tab Creates tags for the specified resource\cr
-\link[paws.management:prometheusservice_untag_resource]{untag_resource} \tab Deletes tags from the specified resource\cr
-\link[paws.management:prometheusservice_update_logging_configuration]{update_logging_configuration} \tab Update logging configuration\cr
-\link[paws.management:prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates an AMP workspace alias
+\link[paws.management:prometheusservice_create_alert_manager_definition]{create_alert_manager_definition} \tab The CreateAlertManagerDefinition operation creates the alert manager definition in a workspace\cr
+\link[paws.management:prometheusservice_create_logging_configuration]{create_logging_configuration} \tab The CreateLoggingConfiguration operation creates a logging configuration for the workspace\cr
+\link[paws.management:prometheusservice_create_rule_groups_namespace]{create_rule_groups_namespace} \tab The CreateRuleGroupsNamespace operation creates a rule groups namespace within a workspace\cr
+\link[paws.management:prometheusservice_create_scraper]{create_scraper} \tab The CreateScraper operation creates a scraper to collect metrics\cr
+\link[paws.management:prometheusservice_create_workspace]{create_workspace} \tab Creates a Prometheus workspace\cr
+\link[paws.management:prometheusservice_delete_alert_manager_definition]{delete_alert_manager_definition} \tab Deletes the alert manager definition from a workspace\cr
+\link[paws.management:prometheusservice_delete_logging_configuration]{delete_logging_configuration} \tab Deletes the logging configuration for a workspace\cr
+\link[paws.management:prometheusservice_delete_rule_groups_namespace]{delete_rule_groups_namespace} \tab Deletes one rule groups namespace and its associated rule groups definition\cr
+\link[paws.management:prometheusservice_delete_scraper]{delete_scraper} \tab The DeleteScraper operation deletes one scraper, and stops any metrics collection that the scraper performs\cr
+\link[paws.management:prometheusservice_delete_workspace]{delete_workspace} \tab Deletes an existing workspace\cr
+\link[paws.management:prometheusservice_describe_alert_manager_definition]{describe_alert_manager_definition} \tab Retrieves the full information about the alert manager definition for a workspace\cr
+\link[paws.management:prometheusservice_describe_logging_configuration]{describe_logging_configuration} \tab Returns complete information about the current logging configuration of the workspace\cr
+\link[paws.management:prometheusservice_describe_rule_groups_namespace]{describe_rule_groups_namespace} \tab Returns complete information about one rule groups namespace\cr
+\link[paws.management:prometheusservice_describe_scraper]{describe_scraper} \tab The DescribeScraper operation displays information about an existing scraper\cr
+\link[paws.management:prometheusservice_describe_workspace]{describe_workspace} \tab Returns information about an existing workspace\cr
+\link[paws.management:prometheusservice_get_default_scraper_configuration]{get_default_scraper_configuration} \tab The GetDefaultScraperConfiguration operation returns the default scraper configuration used when Amazon EKS creates a scraper for you\cr
+\link[paws.management:prometheusservice_list_rule_groups_namespaces]{list_rule_groups_namespaces} \tab Returns a list of rule groups namespaces in a workspace\cr
+\link[paws.management:prometheusservice_list_scrapers]{list_scrapers} \tab The ListScrapers operation lists all of the scrapers in your account\cr
+\link[paws.management:prometheusservice_list_tags_for_resource]{list_tags_for_resource} \tab The ListTagsForResource operation returns the tags that are associated with an Amazon Managed Service for Prometheus resource\cr
+\link[paws.management:prometheusservice_list_workspaces]{list_workspaces} \tab Lists all of the Amazon Managed Service for Prometheus workspaces in your account\cr
+\link[paws.management:prometheusservice_put_alert_manager_definition]{put_alert_manager_definition} \tab Updates an existing alert manager definition in a workspace\cr
+\link[paws.management:prometheusservice_put_rule_groups_namespace]{put_rule_groups_namespace} \tab Updates an existing rule groups namespace within a workspace\cr
+\link[paws.management:prometheusservice_tag_resource]{tag_resource} \tab The TagResource operation associates tags with an Amazon Managed Service for Prometheus resource\cr
+\link[paws.management:prometheusservice_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Managed Service for Prometheus resource\cr
+\link[paws.management:prometheusservice_update_logging_configuration]{update_logging_configuration} \tab Updates the log group ARN or the workspace ID of the current logging configuration\cr
+\link[paws.management:prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates the alias of an existing workspace
 }
 }
 

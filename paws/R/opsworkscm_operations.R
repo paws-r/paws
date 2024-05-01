@@ -645,6 +645,8 @@ opsworkscm_delete_server <- function(ServerName) {
 #' @usage
 #' opsworkscm_describe_account_attributes()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

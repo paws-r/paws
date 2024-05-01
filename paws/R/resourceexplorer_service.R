@@ -174,7 +174,7 @@ resourceexplorer <- function(config = list(), credentials = list(), endpoint = N
 
 .resourceexplorer$metadata <- list(
   service_name = "resourceexplorer",
-  endpoints = list("*" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "resource-explorer-2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resource-explorer-2.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "resource-explorer-2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "resource-explorer-2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resource-explorer-2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "resource-explorer-2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Resource Explorer 2",
   api_version = "2022-07-28",
   signing_name = "resource-explorer-2",

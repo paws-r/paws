@@ -2,7 +2,8 @@
 % Please edit documentation in R/datazone_operations.R
 \name{datazone_search_listings}
 \alias{datazone_search_listings}
-\title{Searches listings in Amazon DataZone}
+\title{Searches listings (records of an asset at a given time) in Amazon
+DataZone}
 \usage{
 datazone_search_listings(
   additionalAttributes = NULL,
@@ -37,14 +38,14 @@ includes a pagination token named \code{NextToken}. You can specify this
 \code{\link[=datazone_search_listings]{search_listings}} to list the next set of
 results.}
 
-\item{searchIn}{}
+\item{searchIn}{The details of the search.}
 
 \item{searchText}{Specifies the text for which to search.}
 
 \item{sort}{Specifies the way for sorting the search results.}
 }
 \description{
-Searches listings in Amazon DataZone.
+Searches listings (records of an asset at a given time) in Amazon DataZone.
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_search_listings/} for full documentation.
 }

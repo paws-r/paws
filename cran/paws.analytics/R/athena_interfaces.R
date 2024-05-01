@@ -425,7 +425,7 @@ NULL
 
 .athena$import_notebook_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Payload = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Payload = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), NotebookS3LocationUri = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

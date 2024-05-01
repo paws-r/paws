@@ -134,7 +134,7 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 
 .licensemanagerusersubscriptions$metadata <- list(
   service_name = "licensemanagerusersubscriptions",
-  endpoints = list("*" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "license-manager-user-subscriptions.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "license-manager-user-subscriptions.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "license-manager-user-subscriptions.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "license-manager-user-subscriptions.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "license-manager-user-subscriptions.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "license-manager-user-subscriptions.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "License Manager User Subscriptions",
   api_version = "2018-05-10",
   signing_name = "license-manager-user-subscriptions",

@@ -2,18 +2,18 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_delete_workspace}
 \alias{prometheusservice_delete_workspace}
-\title{Deletes an AMP workspace}
+\title{Deletes an existing workspace}
 \usage{
-prometheusservice_delete_workspace(workspaceId, clientToken = NULL)
+prometheusservice_delete_workspace(clientToken = NULL, workspaceId)
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace to delete.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{workspaceId}{[required] The ID of the workspace to delete.}
 }
 \description{
-Deletes an AMP workspace.
+Deletes an existing workspace.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/} for full documentation.
 }

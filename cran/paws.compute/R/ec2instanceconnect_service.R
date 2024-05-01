@@ -5,9 +5,18 @@ NULL
 #' AWS EC2 Instance Connect
 #'
 #' @description
-#' Amazon EC2 Instance Connect enables system administrators to publish
-#' one-time use SSH public keys to EC2, providing users a simple and secure
-#' way to connect to their instances.
+#' This is the *Amazon EC2 Instance Connect API Reference*. It provides
+#' descriptions, syntax, and usage examples for each of the actions for
+#' Amazon EC2 Instance Connect. Amazon EC2 Instance Connect enables system
+#' administrators to publish one-time use SSH public keys to EC2, providing
+#' users a simple and secure way to connect to their instances.
+#' 
+#' To view the Amazon EC2 Instance Connect content in the *Amazon EC2 User
+#' Guide*, see [Connect to your Linux instance using EC2 Instance
+#' Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-eic.html).
+#' 
+#' For Amazon EC2 APIs, see the [Amazon EC2 API
+#' Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html).
 #'
 #' @param
 #' config
@@ -130,7 +139,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 
 .ec2instanceconnect$metadata <- list(
   service_name = "ec2instanceconnect",
-  endpoints = list("*" = list(endpoint = "ec2-instance-connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ec2-instance-connect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ec2-instance-connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ec2-instance-connect.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ec2-instance-connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ec2-instance-connect.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ec2-instance-connect.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ec2-instance-connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ec2-instance-connect.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ec2-instance-connect.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EC2 Instance Connect",
   api_version = "2018-04-02",
   signing_name = "ec2-instance-connect",

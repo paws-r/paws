@@ -15,6 +15,8 @@ NULL
 #' @usage
 #' servicequotas_associate_service_quota_template()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -110,6 +112,8 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 #'
 #' @usage
 #' servicequotas_disassociate_service_quota_template()
+#'
+
 #'
 #' @return
 #' An empty list.
@@ -236,6 +240,8 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
 #'
 #' @usage
 #' servicequotas_get_association_for_service_quota_template()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

@@ -28,15 +28,22 @@ NULL
 #'   ),
 #'   fields = list(
 #'     list(
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deleted = TRUE|FALSE,
 #'       description = "string",
 #'       fieldArn = "string",
 #'       fieldId = "string",
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       name = "string",
 #'       namespace = "System"|"Custom",
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"
+#'       type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"|"User"
 #'     )
 #'   )
 #' )
@@ -141,18 +148,18 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 }
 .connectcases$operations$batch_put_field_options <- connectcases_batch_put_field_options
 
-#' Creates a case in the specified Cases domain
+#' If you provide a value for PerformedBy
 #'
 #' @description
-#' Creates a case in the specified Cases domain. Case system and custom
-#' fields are taken as an array id/value pairs with a declared data types.
+#' If you provide a value for `PerformedBy.UserArn` you must also have
+#' [connect:DescribeUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html)
+#' permission on the User ARN resource that you provide
 #' 
-#' The following fields are required when creating a case:
-#' 
-#'      <ul> <li> <p> <code>customer_id</code> - You must provide the full customer profile ARN in this format: <code>arn:aws:profile:your_AWS_Region:your_AWS_account ID:domains/your_profiles_domain_name/profiles/profile_ID</code> </p> </li> <li> <p> <code>title</code> </p> </li> </ul> 
+#'      <p>Creates a case in the specified Cases domain. Case system and custom fields are taken as an array id/value pairs with a declared data types.</p> <p>The following fields are required when creating a case:</p> <ul> <li> <p> <code>customer_id</code> - You must provide the full customer profile ARN in this format: <code>arn:aws:profile:your_AWS_Region:your_AWS_account ID:domains/your_profiles_domain_name/profiles/profile_ID</code> </p> </li> <li> <p> <code>title</code> </p> </li> </ul> 
 #'
 #' @usage
-#' connectcases_create_case(clientToken, domainId, fields, templateId)
+#' connectcases_create_case(clientToken, domainId, fields, performedBy,
+#'   templateId)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -162,6 +169,7 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param fields &#91;required&#93; An array of objects with field ID (matching ListFields/DescribeField)
 #' and value union data.
+#' @param performedBy 
 #' @param templateId &#91;required&#93; A unique identifier of a template.
 #'
 #' @return
@@ -185,9 +193,13 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #'         booleanValue = TRUE|FALSE,
 #'         doubleValue = 123.0,
 #'         emptyValue = list(),
-#'         stringValue = "string"
+#'         stringValue = "string",
+#'         userArnValue = "string"
 #'       )
 #'     )
+#'   ),
+#'   performedBy = list(
+#'     userArn = "string"
 #'   ),
 #'   templateId = "string"
 #' )
@@ -198,14 +210,14 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' @rdname connectcases_create_case
 #'
 #' @aliases connectcases_create_case
-connectcases_create_case <- function(clientToken = NULL, domainId, fields, templateId) {
+connectcases_create_case <- function(clientToken = NULL, domainId, fields, performedBy = NULL, templateId) {
   op <- new_operation(
     name = "CreateCase",
     http_method = "POST",
     http_path = "/domains/{domainId}/cases",
     paginator = list()
   )
-  input <- .connectcases$create_case_input(clientToken = clientToken, domainId = domainId, fields = fields, templateId = templateId)
+  input <- .connectcases$create_case_input(clientToken = clientToken, domainId = domainId, fields = fields, performedBy = performedBy, templateId = templateId)
   output <- .connectcases$create_case_output()
   config <- get_config()
   svc <- .connectcases$service(config)
@@ -308,7 +320,7 @@ connectcases_create_domain <- function(name) {
 #'   description = "string",
 #'   domainId = "string",
 #'   name = "string",
-#'   type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"
+#'   type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"|"User"
 #' )
 #' ```
 #'
@@ -625,6 +637,191 @@ connectcases_delete_domain <- function(domainId) {
 }
 .connectcases$operations$delete_domain <- connectcases_delete_domain
 
+#' Deletes a field from a cases template
+#'
+#' @description
+#' Deletes a field from a cases template. You can delete up to 100 fields
+#' per domain.
+#' 
+#' After a field is deleted:
+#' 
+#' -   You can still retrieve the field by calling
+#'     [`batch_get_field`][connectcases_batch_get_field].
+#' 
+#' -   You cannot update a deleted field by calling
+#'     [`update_field`][connectcases_update_field]; it throws a
+#'     `ValidationException`.
+#' 
+#' -   Deleted fields are not included in the
+#'     [`list_fields`][connectcases_list_fields] response.
+#' 
+#' -   Calling [`create_case`][connectcases_create_case] with a deleted
+#'     field throws a `ValidationException` denoting which field IDs in the
+#'     request have been deleted.
+#' 
+#' -   Calling [`get_case`][connectcases_get_case] with a deleted field ID
+#'     returns the deleted field's value if one exists.
+#' 
+#' -   Calling [`update_case`][connectcases_update_case] with a deleted
+#'     field ID throws a `ValidationException` if the case does not already
+#'     contain a value for the deleted field. Otherwise it succeeds,
+#'     allowing you to update or remove (using `emptyValue: {}`) the
+#'     field's value from the case.
+#' 
+#' -   [`get_template`][connectcases_get_template] does not return field
+#'     IDs for deleted fields.
+#' 
+#' -   [`get_layout`][connectcases_get_layout] does not return field IDs
+#'     for deleted fields.
+#' 
+#' -   Calling [`search_cases`][connectcases_search_cases] with the deleted
+#'     field ID as a filter returns any cases that have a value for the
+#'     deleted field that matches the filter criteria.
+#' 
+#' -   Calling [`search_cases`][connectcases_search_cases] with a
+#'     `searchTerm` value that matches a deleted field's value on a case
+#'     returns the case in the response.
+#' 
+#' -   Calling
+#'     [`batch_put_field_options`][connectcases_batch_put_field_options]
+#'     with a deleted field ID throw a `ValidationException`.
+#' 
+#' -   Calling
+#'     [`get_case_event_configuration`][connectcases_get_case_event_configuration]
+#'     does not return field IDs for deleted fields.
+#'
+#' @usage
+#' connectcases_delete_field(domainId, fieldId)
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param fieldId &#91;required&#93; The unique identifier of a field.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_field(
+#'   domainId = "string",
+#'   fieldId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_field
+#'
+#' @aliases connectcases_delete_field
+connectcases_delete_field <- function(domainId, fieldId) {
+  op <- new_operation(
+    name = "DeleteField",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/fields/{fieldId}",
+    paginator = list()
+  )
+  input <- .connectcases$delete_field_input(domainId = domainId, fieldId = fieldId)
+  output <- .connectcases$delete_field_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_field <- connectcases_delete_field
+
+#' Deletes a layout from a cases template
+#'
+#' @description
+#' Deletes a layout from a cases template. You can delete up to 100 layouts
+#' per domain.
+#' 
+#'      <p>After a layout is deleted:</p> <ul> <li> <p>You can still retrieve the layout by calling <code>GetLayout</code>.</p> </li> <li> <p>You cannot update a deleted layout by calling <code>UpdateLayout</code>; it throws a <code>ValidationException</code>.</p> </li> <li> <p>Deleted layouts are not included in the <code>ListLayouts</code> response.</p> </li> </ul> 
+#'
+#' @usage
+#' connectcases_delete_layout(domainId, layoutId)
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param layoutId &#91;required&#93; The unique identifier of the layout.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_layout(
+#'   domainId = "string",
+#'   layoutId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_layout
+#'
+#' @aliases connectcases_delete_layout
+connectcases_delete_layout <- function(domainId, layoutId) {
+  op <- new_operation(
+    name = "DeleteLayout",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/layouts/{layoutId}",
+    paginator = list()
+  )
+  input <- .connectcases$delete_layout_input(domainId = domainId, layoutId = layoutId)
+  output <- .connectcases$delete_layout_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_layout <- connectcases_delete_layout
+
+#' Deletes a cases template
+#'
+#' @description
+#' Deletes a cases template. You can delete up to 100 templates per domain.
+#' 
+#'      <p>After a cases template is deleted:</p> <ul> <li> <p>You can still retrieve the template by calling <code>GetTemplate</code>.</p> </li> <li> <p>You cannot update the template. </p> </li> <li> <p>You cannot create a case by using the deleted template.</p> </li> <li> <p>Deleted templates are not included in the <code>ListTemplates</code> response.</p> </li> </ul> 
+#'
+#' @usage
+#' connectcases_delete_template(domainId, templateId)
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param templateId &#91;required&#93; A unique identifier of a template.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_template(
+#'   domainId = "string",
+#'   templateId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_template
+#'
+#' @aliases connectcases_delete_template
+connectcases_delete_template <- function(domainId, templateId) {
+  op <- new_operation(
+    name = "DeleteTemplate",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/templates/{templateId}",
+    paginator = list()
+  )
+  input <- .connectcases$delete_template_input(domainId = domainId, templateId = templateId)
+  output <- .connectcases$delete_template_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_template <- connectcases_delete_template
+
 #' Returns information about a specific case if it exists
 #'
 #' @description
@@ -651,7 +848,8 @@ connectcases_delete_domain <- function(domainId) {
 #'         booleanValue = TRUE|FALSE,
 #'         doubleValue = 123.0,
 #'         emptyValue = list(),
-#'         stringValue = "string"
+#'         stringValue = "string",
+#'         userArnValue = "string"
 #'       )
 #'     )
 #'   ),
@@ -698,6 +896,99 @@ connectcases_get_case <- function(caseId, domainId, fields, nextToken = NULL) {
   return(response)
 }
 .connectcases$operations$get_case <- connectcases_get_case
+
+#' Returns the audit history about a specific case if it exists
+#'
+#' @description
+#' Returns the audit history about a specific case if it exists.
+#'
+#' @usage
+#' connectcases_get_case_audit_events(caseId, domainId, maxResults,
+#'   nextToken)
+#'
+#' @param caseId &#91;required&#93; A unique identifier of the case.
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param maxResults The maximum number of audit events to return. The current maximum
+#' supported value is 25. This is also the default when no other value is
+#' provided.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   auditEvents = list(
+#'     list(
+#'       eventId = "string",
+#'       fields = list(
+#'         list(
+#'           eventFieldId = "string",
+#'           newValue = list(
+#'             booleanValue = TRUE|FALSE,
+#'             doubleValue = 123.0,
+#'             emptyValue = list(),
+#'             stringValue = "string",
+#'             userArnValue = "string"
+#'           ),
+#'           oldValue = list(
+#'             booleanValue = TRUE|FALSE,
+#'             doubleValue = 123.0,
+#'             emptyValue = list(),
+#'             stringValue = "string",
+#'             userArnValue = "string"
+#'           )
+#'         )
+#'       ),
+#'       performedBy = list(
+#'         iamPrincipalArn = "string",
+#'         user = list(
+#'           userArn = "string"
+#'         )
+#'       ),
+#'       performedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       relatedItemType = "Contact"|"Comment",
+#'       type = "Case.Created"|"Case.Updated"|"RelatedItem.Created"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_case_audit_events(
+#'   caseId = "string",
+#'   domainId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_get_case_audit_events
+#'
+#' @aliases connectcases_get_case_audit_events
+connectcases_get_case_audit_events <- function(caseId, domainId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetCaseAuditEvents",
+    http_method = "POST",
+    http_path = "/domains/{domainId}/cases/{caseId}/audit-history",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .connectcases$get_case_audit_events_input(caseId = caseId, domainId = domainId, maxResults = maxResults, nextToken = nextToken)
+  output <- .connectcases$get_case_audit_events_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$get_case_audit_events <- connectcases_get_case_audit_events
 
 #' Returns the case event publishing configuration
 #'
@@ -863,6 +1154,13 @@ connectcases_get_domain <- function(domainId) {
 #'       )
 #'     )
 #'   ),
+#'   createdTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   deleted = TRUE|FALSE,
+#'   lastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   layoutArn = "string",
 #'   layoutId = "string",
 #'   name = "string",
@@ -917,7 +1215,14 @@ connectcases_get_layout <- function(domainId, layoutId) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   createdTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   deleted = TRUE|FALSE,
 #'   description = "string",
+#'   lastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   layoutConfiguration = list(
 #'     defaultLayout = "string"
 #'   ),
@@ -1179,7 +1484,7 @@ connectcases_list_field_options <- function(domainId, fieldId, maxResults = NULL
 #'       fieldId = "string",
 #'       name = "string",
 #'       namespace = "System"|"Custom",
-#'       type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"
+#'       type = "Text"|"Number"|"Boolean"|"DateTime"|"SingleSelect"|"Url"|"User"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1496,7 +1801,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'             booleanValue = TRUE|FALSE,
 #'             doubleValue = 123.0,
 #'             emptyValue = list(),
-#'             stringValue = "string"
+#'             stringValue = "string",
+#'             userArnValue = "string"
 #'           )
 #'         )
 #'       ),
@@ -1530,7 +1836,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
 #'           emptyValue = list(),
-#'           stringValue = "string"
+#'           stringValue = "string",
+#'           userArnValue = "string"
 #'         )
 #'       ),
 #'       equalTo = list(
@@ -1539,7 +1846,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
 #'           emptyValue = list(),
-#'           stringValue = "string"
+#'           stringValue = "string",
+#'           userArnValue = "string"
 #'         )
 #'       ),
 #'       greaterThan = list(
@@ -1548,7 +1856,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
 #'           emptyValue = list(),
-#'           stringValue = "string"
+#'           stringValue = "string",
+#'           userArnValue = "string"
 #'         )
 #'       ),
 #'       greaterThanOrEqualTo = list(
@@ -1557,7 +1866,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
 #'           emptyValue = list(),
-#'           stringValue = "string"
+#'           stringValue = "string",
+#'           userArnValue = "string"
 #'         )
 #'       ),
 #'       lessThan = list(
@@ -1566,7 +1876,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
 #'           emptyValue = list(),
-#'           stringValue = "string"
+#'           stringValue = "string",
+#'           userArnValue = "string"
 #'         )
 #'       ),
 #'       lessThanOrEqualTo = list(
@@ -1575,7 +1886,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
 #'           booleanValue = TRUE|FALSE,
 #'           doubleValue = 123.0,
 #'           emptyValue = list(),
-#'           stringValue = "string"
+#'           stringValue = "string",
+#'           userArnValue = "string"
 #'         )
 #'       )
 #'     ),
@@ -1811,24 +2123,24 @@ connectcases_untag_resource <- function(arn, tagKeys) {
 }
 .connectcases$operations$untag_resource <- connectcases_untag_resource
 
-#' Updates the values of fields on a case
+#' If you provide a value for PerformedBy
 #'
 #' @description
-#' Updates the values of fields on a case. Fields to be updated are
-#' received as an array of id/value pairs identical to the
-#' [`create_case`][connectcases_create_case] input .
+#' If you provide a value for `PerformedBy.UserArn` you must also have
+#' [connect:DescribeUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html)
+#' permission on the User ARN resource that you provide
 #' 
-#' If the action is successful, the service sends back an HTTP 200 response
-#' with an empty HTTP body.
+#'      <p>Updates the values of fields on a case. Fields to be updated are received as an array of id/value pairs identical to the <code>CreateCase</code> input .</p> <p>If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.</p> 
 #'
 #' @usage
-#' connectcases_update_case(caseId, domainId, fields)
+#' connectcases_update_case(caseId, domainId, fields, performedBy)
 #'
 #' @param caseId &#91;required&#93; A unique identifier of the case.
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param fields &#91;required&#93; An array of objects with `fieldId` (matching ListFields/DescribeField)
 #' and value union data, structured identical to
 #' [`create_case`][connectcases_create_case].
+#' @param performedBy 
 #'
 #' @return
 #' An empty list.
@@ -1845,9 +2157,13 @@ connectcases_untag_resource <- function(arn, tagKeys) {
 #'         booleanValue = TRUE|FALSE,
 #'         doubleValue = 123.0,
 #'         emptyValue = list(),
-#'         stringValue = "string"
+#'         stringValue = "string",
+#'         userArnValue = "string"
 #'       )
 #'     )
+#'   ),
+#'   performedBy = list(
+#'     userArn = "string"
 #'   )
 #' )
 #' ```
@@ -1857,14 +2173,14 @@ connectcases_untag_resource <- function(arn, tagKeys) {
 #' @rdname connectcases_update_case
 #'
 #' @aliases connectcases_update_case
-connectcases_update_case <- function(caseId, domainId, fields) {
+connectcases_update_case <- function(caseId, domainId, fields, performedBy = NULL) {
   op <- new_operation(
     name = "UpdateCase",
     http_method = "PUT",
     http_path = "/domains/{domainId}/cases/{caseId}",
     paginator = list()
   )
-  input <- .connectcases$update_case_input(caseId = caseId, domainId = domainId, fields = fields)
+  input <- .connectcases$update_case_input(caseId = caseId, domainId = domainId, fields = fields, performedBy = performedBy)
   output <- .connectcases$update_case_output()
   config <- get_config()
   svc <- .connectcases$service(config)

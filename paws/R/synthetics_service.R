@@ -160,7 +160,7 @@ synthetics <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .synthetics$metadata <- list(
   service_name = "synthetics",
-  endpoints = list("*" = list(endpoint = "synthetics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "synthetics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "synthetics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "synthetics.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "synthetics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "synthetics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "synthetics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "synthetics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "synthetics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "synthetics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "synthetics",
   api_version = "2017-10-11",
   signing_name = "synthetics",

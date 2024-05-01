@@ -16,7 +16,7 @@ ec2_purchase_host_reservation(
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
 
 \item{CurrencyCode}{The currency in which the \code{totalUpfrontPrice}, \code{LimitPrice}, and
 \code{totalHourlyPrice} amounts are specified. At this time, the only

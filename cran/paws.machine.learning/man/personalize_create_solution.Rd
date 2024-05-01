@@ -2,12 +2,13 @@
 % Please edit documentation in R/personalize_operations.R
 \name{personalize_create_solution}
 \alias{personalize_create_solution}
-\title{Creates the configuration for training a model}
+\title{After you create a solution, you can’t change its configuration}
 \usage{
 personalize_create_solution(
   name,
   performHPO = NULL,
   performAutoML = NULL,
+  performAutoTraining = NULL,
   recipeArn = NULL,
   datasetGroupArn,
   eventType = NULL,
@@ -26,7 +27,7 @@ not set it to \code{false}.}
 
 \item{performAutoML}{We don't recommend enabling automated machine learning. Instead, match
 your use case to the available Amazon Personalize recipes. For more
-information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html#use-cases}{Determining your use case.}
+information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html}{Choosing a recipe}.
 
 Whether to perform automated machine learning (AutoML). The default is
 \code{false}. For this case, you must specify \code{recipeArn}.
@@ -38,8 +39,26 @@ optimal recipe by running tests with different values for the
 hyperparameters. AutoML lengthens the training process as compared to
 selecting a specific recipe.}
 
-\item{recipeArn}{The ARN of the recipe to use for model training. This is required when
-\code{performAutoML} is false.}
+\item{performAutoTraining}{Whether the solution uses automatic training to create new solution
+versions (trained models). The default is \code{True} and the solution
+automatically creates new solution versions every 7 days. You can change
+the training frequency by specifying a \code{schedulingExpression} in the
+\code{AutoTrainingConfig} as part of solution configuration. For more
+information about automatic training, see \href{https://docs.aws.amazon.com/personalize/latest/dg/solution-config-auto-training.html}{Configuring automatic training}.
+
+Automatic solution version creation starts one hour after the solution
+is ACTIVE. If you manually create a solution version within the hour,
+the solution skips the first automatic training.
+
+After training starts, you can get the solution version's Amazon
+Resource Name (ARN) with the
+\code{\link[=personalize_list_solution_versions]{list_solution_versions}} API
+operation. To get its status, use the
+\code{\link[=personalize_describe_solution_version]{describe_solution_version}}.}
+
+\item{recipeArn}{The Amazon Resource Name (ARN) of the recipe to use for model training.
+This is required when \code{performAutoML} is false. For information about
+different Amazon Personalize recipes and their ARNs, see \href{https://docs.aws.amazon.com/personalize/latest/dg/working-with-predefined-recipes.html}{Choosing a recipe}.}
 
 \item{datasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group that provides the
 training data.}
@@ -63,7 +82,7 @@ this time.}
 to apply to the solution.}
 }
 \description{
-Creates the configuration for training a model. A trained model is known as a solution version. After the configuration is created, you train the model (create a solution version) by calling the \code{\link[=personalize_create_solution_version]{create_solution_version}} operation. Every time you call \code{\link[=personalize_create_solution_version]{create_solution_version}}, a new version of the solution is created.
+After you create a solution, you can’t change its configuration. By default, all new solutions use automatic training. With automatic training, you incur training costs while your solution is active. You can't stop automatic training for a solution. To avoid unnecessary costs, make sure to delete the solution when you are finished. For information about training costs, see \href{https://aws.amazon.com/personalize/pricing/}{Amazon Personalize pricing}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_create_solution/} for full documentation.
 }

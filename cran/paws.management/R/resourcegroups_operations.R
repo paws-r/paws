@@ -13,9 +13,10 @@ NULL
 #' @param Name &#91;required&#93; The name of the group, which is the identifier of the group in other
 #' operations. You can't change the name of a resource group after you
 #' create it. A resource group name can consist of letters, numbers,
-#' hyphens, periods, and underscores. The name cannot start with `AWS` or
-#' `aws`; these are reserved. A resource group name must be unique within
-#' each Amazon Web Services Region in your Amazon Web Services account.
+#' hyphens, periods, and underscores. The name cannot start with `AWS`,
+#' `aws`, or any other possible capitalization; these are reserved. A
+#' resource group name must be unique within each Amazon Web Services
+#' Region in your Amazon Web Services account.
 #' @param Description The description of the resource group. Descriptions can consist of
 #' letters, numbers, hyphens, underscores, periods, and spaces.
 #' @param ResourceQuery The resource query that determines which Amazon Web Services resources
@@ -352,18 +353,27 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a
 #' [`list_groups`][resourcegroups_list_groups] operation.
 #' 
-#' -   `resource-type` - Filter the results to include only those of the
-#'     specified resource types. Specify up to five resource types in the
-#'     format `AWS::ServiceCode::ResourceType `. For example,
-#'     `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
+#' -   `resource-type` - Filter the results to include only those resource
+#'     groups that have the specified resource type in their
+#'     `ResourceTypeFilter`. For example, `AWS::EC2::Instance` would return
+#'     any resource group with a `ResourceTypeFilter` that includes
+#'     `AWS::EC2::Instance`.
 #' 
 #' -   `configuration-type` - Filter the results to include only those
 #'     groups that have the specified configuration types attached. The
 #'     current supported values are:
 #' 
+#'     -   `AWS::AppRegistry::Application`
+#' 
+#'     -   `AWS::AppRegistry::ApplicationResourceGroups`
+#' 
+#'     -   `AWS::CloudFormation::Stack`
+#' 
 #'     -   `AWS::EC2::CapacityReservationPool`
 #' 
 #'     -   `AWS::EC2::HostManagement`
+#' 
+#'     -   `AWS::NetworkFirewall::RuleGroup`
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the

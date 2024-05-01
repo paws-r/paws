@@ -4,7 +4,11 @@
 \alias{fis_list_experiments}
 \title{Lists your experiments}
 \usage{
-fis_list_experiments(maxResults = NULL, nextToken = NULL)
+fis_list_experiments(
+  maxResults = NULL,
+  nextToken = NULL,
+  experimentTemplateId = NULL
+)
 }
 \arguments{
 \item{maxResults}{The maximum number of results to return with a single call. To retrieve
@@ -12,6 +16,8 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 
 \item{nextToken}{The token for the next page of results.}
+
+\item{experimentTemplateId}{The ID of the experiment template.}
 }
 \description{
 Lists your experiments.

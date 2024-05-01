@@ -19,7 +19,7 @@ omics_list_multipart_read_set_uploads(
 ListMultipartReadSetUploads call. Used to get the next page of results.}
 }
 \description{
-Lists multipart read set uploads and for in progress uploads. Once the upload is completed, a read set is created and the upload will no longer be returned in the respone.
+Lists multipart read set uploads and for in progress uploads. Once the upload is completed, a read set is created and the upload will no longer be returned in the response.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_list_multipart_read_set_uploads/} for full documentation.
 }

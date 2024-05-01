@@ -197,7 +197,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ecs$metadata <- list(
   service_name = "ecs",
-  endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ecs.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ecs.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ECS",
   api_version = "2014-11-13",
   signing_name = "ecs",

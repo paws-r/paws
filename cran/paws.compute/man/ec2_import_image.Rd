@@ -45,7 +45,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Encrypted}{Specifies whether the destination AMI of the imported image should be
 encrypted. The default KMS key for EBS is used unless you specify a
-non-default KMS key using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+non-default KMS key using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS Encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{Hypervisor}{The target hypervisor platform.

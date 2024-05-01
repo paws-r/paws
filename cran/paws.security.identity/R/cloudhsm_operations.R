@@ -352,6 +352,8 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsm_list_available_zones/](https://www.paws-r-sdk.com/docs/cloudhsm_list_available_zones/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname cloudhsm_list_available_zones

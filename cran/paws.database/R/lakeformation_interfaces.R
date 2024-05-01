@@ -101,7 +101,7 @@ NULL
 
 .lakeformation$create_lake_formation_identity_center_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ShareRecipients = structure(list(structure(list(DataLakePrincipalIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -203,7 +203,7 @@ NULL
 
 .lakeformation$describe_lake_formation_identity_center_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), InstanceArn = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ShareRecipients = structure(list(structure(list(DataLakePrincipalIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceShare = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -605,7 +605,7 @@ NULL
 
 .lakeformation$update_lake_formation_identity_center_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), ApplicationStatus = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CatalogId = structure(logical(0), tags = list(type = "string")), ShareRecipients = structure(list(structure(list(DataLakePrincipalIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ApplicationStatus = structure(logical(0), tags = list(type = "string")), ExternalFiltering = structure(list(Status = structure(logical(0), tags = list(type = "string")), AuthorizedTargets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

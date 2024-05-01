@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_dhcp_options}
 \alias{ec2_create_dhcp_options}
-\title{Creates a set of DHCP options for your VPC}
+\title{Creates a custom set of DHCP options}
 \usage{
 ec2_create_dhcp_options(
   DhcpConfigurations,
@@ -21,7 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
+Creates a custom set of DHCP options. After you create a DHCP option set, you associate it with a VPC. After you associate a DHCP option set with a VPC, all existing and newly launched instances in the VPC use this set of DHCP options.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_dhcp_options/} for full documentation.
 }

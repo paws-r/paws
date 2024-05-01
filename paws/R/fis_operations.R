@@ -24,7 +24,7 @@ NULL
 #' 
 #' For more information, see [experiment
 #' templates](https://docs.aws.amazon.com/fis/latest/userguide/experiment-templates.html)
-#' in the *Fault Injection Simulator User Guide*.
+#' in the *Fault Injection Service User Guide*.
 #'
 #' @usage
 #' fis_create_experiment_template(clientToken, description, stopConditions,
@@ -48,6 +48,7 @@ NULL
 #' list(
 #'   experimentTemplate = list(
 #'     id = "string",
+#'     arn = "string",
 #'     description = "string",
 #'     targets = list(
 #'       list(
@@ -222,7 +223,7 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
 #' `experimentOptions` is set to `multi-account`. For more information, see
 #' [experiment
 #' options](https://docs.aws.amazon.com/fis/latest/userguide/experiment-options.html)
-#' in the *Fault Injection Simulator User Guide*.
+#' in the *Fault Injection Service User Guide*.
 #'
 #' @usage
 #' fis_create_target_account_configuration(clientToken,
@@ -231,7 +232,7 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param experimentTemplateId &#91;required&#93; The experiment template ID.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role for the target account.
 #' @param description The description of the target account.
 #'
@@ -296,6 +297,7 @@ fis_create_target_account_configuration <- function(clientToken = NULL, experime
 #' list(
 #'   experimentTemplate = list(
 #'     id = "string",
+#'     arn = "string",
 #'     description = "string",
 #'     targets = list(
 #'       list(
@@ -410,7 +412,7 @@ fis_delete_experiment_template <- function(id) {
 #' fis_delete_target_account_configuration(experimentTemplateId, accountId)
 #'
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -470,6 +472,7 @@ fis_delete_target_account_configuration <- function(experimentTemplateId, accoun
 #' list(
 #'   action = list(
 #'     id = "string",
+#'     arn = "string",
 #'     description = "string",
 #'     parameters = list(
 #'       list(
@@ -534,6 +537,7 @@ fis_get_action <- function(id) {
 #' list(
 #'   experiment = list(
 #'     id = "string",
+#'     arn = "string",
 #'     experimentTemplateId = "string",
 #'     roleArn = "string",
 #'     state = list(
@@ -618,7 +622,8 @@ fis_get_action <- function(id) {
 #'     ),
 #'     experimentOptions = list(
 #'       accountTargeting = "single-account"|"multi-account",
-#'       emptyTargetResolutionMode = "fail"|"skip"
+#'       emptyTargetResolutionMode = "fail"|"skip",
+#'       actionsMode = "skip-all"|"run-all"
 #'     ),
 #'     targetAccountConfigurationsCount = 123
 #'   )
@@ -665,7 +670,7 @@ fis_get_experiment <- function(id) {
 #' fis_get_experiment_target_account_configuration(experimentId, accountId)
 #'
 #' @param experimentId &#91;required&#93; The ID of the experiment.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -725,6 +730,7 @@ fis_get_experiment_target_account_configuration <- function(experimentId, accoun
 #' list(
 #'   experimentTemplate = list(
 #'     id = "string",
+#'     arn = "string",
 #'     description = "string",
 #'     targets = list(
 #'       list(
@@ -839,7 +845,7 @@ fis_get_experiment_template <- function(id) {
 #' fis_get_target_account_configuration(experimentTemplateId, accountId)
 #'
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -959,6 +965,7 @@ fis_get_target_resource_type <- function(resourceType) {
 #'   actions = list(
 #'     list(
 #'       id = "string",
+#'       arn = "string",
 #'       description = "string",
 #'       targets = list(
 #'         list(
@@ -1146,6 +1153,7 @@ fis_list_experiment_target_account_configurations <- function(experimentId, next
 #'   experimentTemplates = list(
 #'     list(
 #'       id = "string",
+#'       arn = "string",
 #'       description = "string",
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1198,12 +1206,13 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' Lists your experiments.
 #'
 #' @usage
-#' fis_list_experiments(maxResults, nextToken)
+#' fis_list_experiments(maxResults, nextToken, experimentTemplateId)
 #'
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
 #' @param nextToken The token for the next page of results.
+#' @param experimentTemplateId The ID of the experiment template.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1212,6 +1221,7 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #'   experiments = list(
 #'     list(
 #'       id = "string",
+#'       arn = "string",
 #'       experimentTemplateId = "string",
 #'       state = list(
 #'         status = "pending"|"initiating"|"running"|"completed"|"stopping"|"stopped"|"failed",
@@ -1222,6 +1232,11 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #'       ),
 #'       tags = list(
 #'         "string"
+#'       ),
+#'       experimentOptions = list(
+#'         accountTargeting = "single-account"|"multi-account",
+#'         emptyTargetResolutionMode = "fail"|"skip",
+#'         actionsMode = "skip-all"|"run-all"
 #'       )
 #'     )
 #'   ),
@@ -1233,7 +1248,8 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' ```
 #' svc$list_experiments(
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   experimentTemplateId = "string"
 #' )
 #' ```
 #'
@@ -1242,14 +1258,14 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' @rdname fis_list_experiments
 #'
 #' @aliases fis_list_experiments
-fis_list_experiments <- function(maxResults = NULL, nextToken = NULL) {
+fis_list_experiments <- function(maxResults = NULL, nextToken = NULL, experimentTemplateId = NULL) {
   op <- new_operation(
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/experiments",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
-  input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken, experimentTemplateId = experimentTemplateId)
   output <- .fis$list_experiments_output()
   config <- get_config()
   svc <- .fis$service(config)
@@ -1434,11 +1450,13 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' Starts running an experiment from the specified experiment template.
 #'
 #' @usage
-#' fis_start_experiment(clientToken, experimentTemplateId, tags)
+#' fis_start_experiment(clientToken, experimentTemplateId,
+#'   experimentOptions, tags)
 #'
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
+#' @param experimentOptions The experiment options for running the experiment.
 #' @param tags The tags to apply to the experiment.
 #'
 #' @return
@@ -1447,6 +1465,7 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' list(
 #'   experiment = list(
 #'     id = "string",
+#'     arn = "string",
 #'     experimentTemplateId = "string",
 #'     roleArn = "string",
 #'     state = list(
@@ -1531,7 +1550,8 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #'     ),
 #'     experimentOptions = list(
 #'       accountTargeting = "single-account"|"multi-account",
-#'       emptyTargetResolutionMode = "fail"|"skip"
+#'       emptyTargetResolutionMode = "fail"|"skip",
+#'       actionsMode = "skip-all"|"run-all"
 #'     ),
 #'     targetAccountConfigurationsCount = 123
 #'   )
@@ -1543,6 +1563,9 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' svc$start_experiment(
 #'   clientToken = "string",
 #'   experimentTemplateId = "string",
+#'   experimentOptions = list(
+#'     actionsMode = "skip-all"|"run-all"
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   )
@@ -1554,14 +1577,14 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' @rdname fis_start_experiment
 #'
 #' @aliases fis_start_experiment
-fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL) {
+fis_start_experiment <- function(clientToken, experimentTemplateId, experimentOptions = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartExperiment",
     http_method = "POST",
     http_path = "/experiments",
     paginator = list()
   )
-  input <- .fis$start_experiment_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, tags = tags)
+  input <- .fis$start_experiment_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, experimentOptions = experimentOptions, tags = tags)
   output <- .fis$start_experiment_output()
   config <- get_config()
   svc <- .fis$service(config)
@@ -1587,6 +1610,7 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL)
 #' list(
 #'   experiment = list(
 #'     id = "string",
+#'     arn = "string",
 #'     experimentTemplateId = "string",
 #'     roleArn = "string",
 #'     state = list(
@@ -1671,7 +1695,8 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL)
 #'     ),
 #'     experimentOptions = list(
 #'       accountTargeting = "single-account"|"multi-account",
-#'       emptyTargetResolutionMode = "fail"|"skip"
+#'       emptyTargetResolutionMode = "fail"|"skip",
+#'       actionsMode = "skip-all"|"run-all"
 #'     ),
 #'     targetAccountConfigurationsCount = 123
 #'   )
@@ -1824,6 +1849,7 @@ fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
 #' list(
 #'   experimentTemplate = list(
 #'     id = "string",
+#'     arn = "string",
 #'     description = "string",
 #'     targets = list(
 #'       list(
@@ -1998,7 +2024,7 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
 #'   roleArn, description)
 #'
 #' @param experimentTemplateId &#91;required&#93; The ID of the experiment template.
-#' @param accountId &#91;required&#93; The AWS account ID of the target account.
+#' @param accountId &#91;required&#93; The Amazon Web Services account ID of the target account.
 #' @param roleArn The Amazon Resource Name (ARN) of an IAM role for the target account.
 #' @param description The description of the target account.
 #'

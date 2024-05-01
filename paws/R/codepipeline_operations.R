@@ -330,13 +330,25 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
-#'             namespace = "string"
+#'             namespace = "string",
+#'             timeoutInMinutes = 123
 #'           )
+#'         ),
+#'         onFailure = list(
+#'           result = "ROLLBACK"
 #'         )
 #'       )
 #'     ),
 #'     version = 123,
+#'     executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
 #'     pipelineType = "V1"|"V2",
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     ),
 #'     triggers = list(
 #'       list(
 #'         providerType = "CodeStarSourceConnection",
@@ -351,17 +363,49 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                 excludes = list(
 #'                   "string"
 #'                 )
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           pullRequest = list(
+#'             list(
+#'               events = list(
+#'                 "OPEN"|"UPDATED"|"CLOSED"
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             )
 #'           )
 #'         )
-#'       )
-#'     ),
-#'     variables = list(
-#'       list(
-#'         name = "string",
-#'         defaultValue = "string",
-#'         description = "string"
 #'       )
 #'     )
 #'   ),
@@ -432,13 +476,25 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
-#'             namespace = "string"
+#'             namespace = "string",
+#'             timeoutInMinutes = 123
 #'           )
+#'         ),
+#'         onFailure = list(
+#'           result = "ROLLBACK"
 #'         )
 #'       )
 #'     ),
 #'     version = 123,
+#'     executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
 #'     pipelineType = "V1"|"V2",
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     ),
 #'     triggers = list(
 #'       list(
 #'         providerType = "CodeStarSourceConnection",
@@ -453,17 +509,49 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                 excludes = list(
 #'                   "string"
 #'                 )
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           pullRequest = list(
+#'             list(
+#'               events = list(
+#'                 "OPEN"|"UPDATED"|"CLOSED"
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             )
 #'           )
 #'         )
-#'       )
-#'     ),
-#'     variables = list(
-#'       list(
-#'         name = "string",
-#'         defaultValue = "string",
-#'         description = "string"
 #'       )
 #'     )
 #'   ),
@@ -1118,13 +1206,25 @@ codepipeline_get_job_details <- function(jobId) {
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
-#'             namespace = "string"
+#'             namespace = "string",
+#'             timeoutInMinutes = 123
 #'           )
+#'         ),
+#'         onFailure = list(
+#'           result = "ROLLBACK"
 #'         )
 #'       )
 #'     ),
 #'     version = 123,
+#'     executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
 #'     pipelineType = "V1"|"V2",
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     ),
 #'     triggers = list(
 #'       list(
 #'         providerType = "CodeStarSourceConnection",
@@ -1139,17 +1239,49 @@ codepipeline_get_job_details <- function(jobId) {
 #'                 excludes = list(
 #'                   "string"
 #'                 )
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           pullRequest = list(
+#'             list(
+#'               events = list(
+#'                 "OPEN"|"UPDATED"|"CLOSED"
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             )
 #'           )
 #'         )
-#'       )
-#'     ),
-#'     variables = list(
-#'       list(
-#'         name = "string",
-#'         defaultValue = "string",
-#'         description = "string"
 #'       )
 #'     )
 #'   ),
@@ -1236,15 +1368,20 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #'         revisionUrl = "string"
 #'       )
 #'     ),
-#'     trigger = list(
-#'       triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision"|"WebhookV2",
-#'       triggerDetail = "string"
-#'     ),
 #'     variables = list(
 #'       list(
 #'         name = "string",
 #'         resolvedValue = "string"
 #'       )
+#'     ),
+#'     trigger = list(
+#'       triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision"|"WebhookV2"|"ManualRollback"|"AutomatedRollback",
+#'       triggerDetail = "string"
+#'     ),
+#'     executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
+#'     executionType = "STANDARD"|"ROLLBACK",
+#'     rollbackMetadata = list(
+#'       rollbackTargetPipelineExecutionId = "string"
 #'     )
 #'   )
 #' )
@@ -1307,7 +1444,15 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'       stageName = "string",
 #'       inboundExecution = list(
 #'         pipelineExecutionId = "string",
-#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
+#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
+#'         type = "STANDARD"|"ROLLBACK"
+#'       ),
+#'       inboundExecutions = list(
+#'         list(
+#'           pipelineExecutionId = "string",
+#'           status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
+#'           type = "STANDARD"|"ROLLBACK"
+#'         )
 #'       ),
 #'       inboundTransitionState = list(
 #'         enabled = TRUE|FALSE,
@@ -1350,7 +1495,8 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'       ),
 #'       latestExecution = list(
 #'         pipelineExecutionId = "string",
-#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
+#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
+#'         type = "STANDARD"|"ROLLBACK"
 #'       )
 #'     )
 #'   ),
@@ -1554,6 +1700,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #'       lastUpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       updatedBy = "string",
 #'       status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
 #'       input = list(
 #'         actionTypeId = list(
@@ -1594,7 +1741,11 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #'         executionResult = list(
 #'           externalExecutionId = "string",
 #'           externalExecutionSummary = "string",
-#'           externalExecutionUrl = "string"
+#'           externalExecutionUrl = "string",
+#'           errorDetails = list(
+#'             code = "string",
+#'             message = "string"
+#'           )
 #'         ),
 #'         outputVariables = list(
 #'           "string"
@@ -1611,7 +1762,11 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' svc$list_action_executions(
 #'   pipelineName = "string",
 #'   filter = list(
-#'     pipelineExecutionId = "string"
+#'     pipelineExecutionId = "string",
+#'     latestInPipelineExecution = list(
+#'       pipelineExecutionId = "string",
+#'       startTimeRange = "Latest"|"All"
+#'     )
 #'   ),
 #'   maxResults = 123,
 #'   nextToken = "string"
@@ -1737,7 +1892,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' Gets a summary of the most recent executions for a pipeline.
 #'
 #' @usage
-#' codepipeline_list_pipeline_executions(pipelineName, maxResults,
+#' codepipeline_list_pipeline_executions(pipelineName, maxResults, filter,
 #'   nextToken)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to get execution summary
@@ -1746,6 +1901,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' the remaining results, make another call with the returned nextToken
 #' value. Pipeline history is limited to the most recent 12 months, based
 #' on pipeline execution start times. Default value is 100.
+#' @param filter The pipeline execution to filter on.
 #' @param nextToken The token that was returned from the previous
 #' [`list_pipeline_executions`][codepipeline_list_pipeline_executions]
 #' call, which can be used to return the next set of pipeline executions in
@@ -1759,6 +1915,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #'     list(
 #'       pipelineExecutionId = "string",
 #'       status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
+#'       statusSummary = "string",
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1774,11 +1931,16 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #'         )
 #'       ),
 #'       trigger = list(
-#'         triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision"|"WebhookV2",
+#'         triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision"|"WebhookV2"|"ManualRollback"|"AutomatedRollback",
 #'         triggerDetail = "string"
 #'       ),
 #'       stopTrigger = list(
 #'         reason = "string"
+#'       ),
+#'       executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
+#'       executionType = "STANDARD"|"ROLLBACK",
+#'       rollbackMetadata = list(
+#'         rollbackTargetPipelineExecutionId = "string"
 #'       )
 #'     )
 #'   ),
@@ -1791,6 +1953,11 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' svc$list_pipeline_executions(
 #'   pipelineName = "string",
 #'   maxResults = 123,
+#'   filter = list(
+#'     succeededInStage = list(
+#'       stageName = "string"
+#'     )
+#'   ),
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1800,14 +1967,14 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' @rdname codepipeline_list_pipeline_executions
 #'
 #' @aliases codepipeline_list_pipeline_executions
-codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NULL, nextToken = NULL) {
+codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NULL, filter = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPipelineExecutions",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries")
   )
-  input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, nextToken = nextToken)
+  input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, filter = filter, nextToken = nextToken)
   output <- .codepipeline$list_pipeline_executions_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -1841,6 +2008,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #'       name = "string",
 #'       version = 123,
 #'       pipelineType = "V1"|"V2",
+#'       executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
 #'       created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2843,6 +3011,58 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 }
 .codepipeline$operations$retry_stage_execution <- codepipeline_retry_stage_execution
 
+#' Rolls back a stage execution
+#'
+#' @description
+#' Rolls back a stage execution.
+#'
+#' @usage
+#' codepipeline_rollback_stage(pipelineName, stageName,
+#'   targetPipelineExecutionId)
+#'
+#' @param pipelineName &#91;required&#93; The name of the pipeline for which the stage will be rolled back.
+#' @param stageName &#91;required&#93; The name of the stage in the pipeline to be rolled back.
+#' @param targetPipelineExecutionId &#91;required&#93; The pipeline execution ID for the stage to be rolled back to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   pipelineExecutionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rollback_stage(
+#'   pipelineName = "string",
+#'   stageName = "string",
+#'   targetPipelineExecutionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_rollback_stage
+#'
+#' @aliases codepipeline_rollback_stage
+codepipeline_rollback_stage <- function(pipelineName, stageName, targetPipelineExecutionId) {
+  op <- new_operation(
+    name = "RollbackStage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$rollback_stage_input(pipelineName = pipelineName, stageName = stageName, targetPipelineExecutionId = targetPipelineExecutionId)
+  output <- .codepipeline$rollback_stage_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$rollback_stage <- codepipeline_rollback_stage
+
 #' Starts the specified pipeline
 #'
 #' @description
@@ -3252,13 +3472,25 @@ codepipeline_update_action_type <- function(actionType) {
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
-#'             namespace = "string"
+#'             namespace = "string",
+#'             timeoutInMinutes = 123
 #'           )
+#'         ),
+#'         onFailure = list(
+#'           result = "ROLLBACK"
 #'         )
 #'       )
 #'     ),
 #'     version = 123,
+#'     executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
 #'     pipelineType = "V1"|"V2",
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     ),
 #'     triggers = list(
 #'       list(
 #'         providerType = "CodeStarSourceConnection",
@@ -3273,17 +3505,49 @@ codepipeline_update_action_type <- function(actionType) {
 #'                 excludes = list(
 #'                   "string"
 #'                 )
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           pullRequest = list(
+#'             list(
+#'               events = list(
+#'                 "OPEN"|"UPDATED"|"CLOSED"
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             )
 #'           )
 #'         )
-#'       )
-#'     ),
-#'     variables = list(
-#'       list(
-#'         name = "string",
-#'         defaultValue = "string",
-#'         description = "string"
 #'       )
 #'     )
 #'   )
@@ -3348,13 +3612,25 @@ codepipeline_update_action_type <- function(actionType) {
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
-#'             namespace = "string"
+#'             namespace = "string",
+#'             timeoutInMinutes = 123
 #'           )
+#'         ),
+#'         onFailure = list(
+#'           result = "ROLLBACK"
 #'         )
 #'       )
 #'     ),
 #'     version = 123,
+#'     executionMode = "QUEUED"|"SUPERSEDED"|"PARALLEL",
 #'     pipelineType = "V1"|"V2",
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     ),
 #'     triggers = list(
 #'       list(
 #'         providerType = "CodeStarSourceConnection",
@@ -3369,17 +3645,49 @@ codepipeline_update_action_type <- function(actionType) {
 #'                 excludes = list(
 #'                   "string"
 #'                 )
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           pullRequest = list(
+#'             list(
+#'               events = list(
+#'                 "OPEN"|"UPDATED"|"CLOSED"
+#'               ),
+#'               branches = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               filePaths = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             )
 #'           )
 #'         )
-#'       )
-#'     ),
-#'     variables = list(
-#'       list(
-#'         name = "string",
-#'         defaultValue = "string",
-#'         description = "string"
 #'       )
 #'     )
 #'   )

@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_list_investigations}
 \alias{detective_list_investigations}
-\title{List all Investigations}
+\title{Detective investigations lets you investigate IAM users and IAM roles
+using indicators of compromise}
 \usage{
 detective_list_investigations(
   GraphArn,
@@ -13,9 +14,9 @@ detective_list_investigations(
 )
 }
 \arguments{
-\item{GraphArn}{[required] The ARN of the behavior graph.}
+\item{GraphArn}{[required] The Amazon Resource Name (ARN) of the behavior graph.}
 
-\item{NextToken}{List if there are more results available. The value of nextToken is a
+\item{NextToken}{Lists if there are more results available. The value of nextToken is a
 unique pagination token for each page. Repeat the call using the
 returned token to retrieve the next page. Keep all other arguments
 unchanged.
@@ -23,14 +24,14 @@ unchanged.
 Each pagination token expires after 24 hours. Using an expired
 pagination token will return a Validation Exception error.}
 
-\item{MaxResults}{List the maximum number of investigations in a page.}
+\item{MaxResults}{Lists the maximum number of investigations in a page.}
 
-\item{FilterCriteria}{Filter the investigation results based on a criteria.}
+\item{FilterCriteria}{Filters the investigation results based on a criteria.}
 
 \item{SortCriteria}{Sorts the investigation results based on a criteria.}
 }
 \description{
-List all Investigations.
+Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise. An indicator of compromise (IOC) is an artifact observed in or on a network, system, or environment that can (with a high level of confidence) identify malicious activity or a security incident. \code{\link[=detective_list_investigations]{list_investigations}} lists all active Detective investigations.
 
 See \url{https://www.paws-r-sdk.com/docs/detective_list_investigations/} for full documentation.
 }

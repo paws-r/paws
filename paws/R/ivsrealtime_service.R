@@ -312,7 +312,7 @@ ivsrealtime <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .ivsrealtime$metadata <- list(
   service_name = "ivsrealtime",
-  endpoints = list("*" = list(endpoint = "ivsrealtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivsrealtime.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ivsrealtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivsrealtime.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ivsrealtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivsrealtime.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ivsrealtime.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ivsrealtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivsrealtime.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ivsrealtime.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "IVS RealTime",
   api_version = "2020-07-14",
   signing_name = "ivs",

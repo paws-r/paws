@@ -95,6 +95,7 @@ milliseconds.
 \item service.action.awsApiCallAction.remoteIpDetails.city.cityName
 \item service.action.awsApiCallAction.remoteIpDetails.country.countryName
 \item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV6
 \item service.action.awsApiCallAction.remoteIpDetails.organization.asn
 \item service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
 \item service.action.awsApiCallAction.serviceName
@@ -107,16 +108,19 @@ milliseconds.
 \item service.action.networkConnectionAction.remoteIpDetails.city.cityName
 \item service.action.networkConnectionAction.remoteIpDetails.country.countryName
 \item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV6
 \item service.action.networkConnectionAction.remoteIpDetails.organization.asn
 \item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
 \item service.action.networkConnectionAction.remotePortDetails.port
 \item service.action.awsApiCallAction.remoteAccountDetails.affiliated
 \item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
 \item service.action.kubernetesApiCallAction.namespace
 \item service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
 \item service.action.kubernetesApiCallAction.requestUri
 \item service.action.kubernetesApiCallAction.statusCode
 \item service.action.networkConnectionAction.localIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.localIpDetails.ipAddressV6
 \item service.action.networkConnectionAction.protocol
 \item service.action.awsApiCallAction.serviceName
 \item service.action.awsApiCallAction.remoteAccountDetails.accountId

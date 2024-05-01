@@ -20,14 +20,14 @@ ec2_describe_availability_zones(
 Local Zones, use the name of the group associated with the Local
 Zone (for example, \code{us-west-2-lax-1}) For Wavelength Zones, use the
 name of the group associated with the Wavelength Zone (for example,
-\code{us-east-1-wl1-bos-wlz-1}).
+\code{us-east-1-wl1}).
 \item \code{message} - The Zone message.
 \item \verb{opt-in-status} - The opt-in status (\verb{opted-in} | \verb{not-opted-in} |
 \verb{opt-in-not-required}).
-\item \code{parent-zoneID} - The ID of the zone that handles some of the Local
+\item \code{parent-zone-id} - The ID of the zone that handles some of the Local
 Zone and Wavelength Zone control plane operations, such as API
 calls.
-\item \code{parent-zoneName} - The ID of the zone that handles some of the
+\item \code{parent-zone-name} - The ID of the zone that handles some of the
 Local Zone and Wavelength Zone control plane operations, such as API
 calls.
 \item \code{region-name} - The name of the Region for the Zone (for example,

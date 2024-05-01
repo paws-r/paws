@@ -2,32 +2,43 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_update_cluster}
 \alias{docdbelastic_update_cluster}
-\title{Modifies a Elastic DocumentDB cluster}
+\title{Modifies an elastic cluster}
 \usage{
 docdbelastic_update_cluster(
   adminUserPassword = NULL,
   authType = NULL,
+  backupRetentionPeriod = NULL,
   clientToken = NULL,
   clusterArn,
+  preferredBackupWindow = NULL,
   preferredMaintenanceWindow = NULL,
   shardCapacity = NULL,
   shardCount = NULL,
+  shardInstanceCount = NULL,
   subnetIds = NULL,
   vpcSecurityGroupIds = NULL
 )
 }
 \arguments{
-\item{adminUserPassword}{The password for the Elastic DocumentDB cluster administrator. This
+\item{adminUserPassword}{The password associated with the elastic cluster administrator. This
 password can contain any printable ASCII character except forward slash
 (/), double quote ("), or the "at" symbol (@).
 
 \emph{Constraints}: Must contain from 8 to 100 characters.}
 
-\item{authType}{The authentication type for the Elastic DocumentDB cluster.}
+\item{authType}{The authentication type used to determine where to fetch the password
+used for accessing the elastic cluster. Valid types are \code{PLAIN_TEXT} or
+\code{SECRET_ARN}.}
 
-\item{clientToken}{The client token for the Elastic DocumentDB cluster.}
+\item{backupRetentionPeriod}{The number of days for which automatic snapshots are retained.}
 
-\item{clusterArn}{[required] The arn of the Elastic DocumentDB cluster.}
+\item{clientToken}{The client token for the elastic cluster.}
+
+\item{clusterArn}{[required] The ARN identifier of the elastic cluster.}
+
+\item{preferredBackupWindow}{The daily time range during which automated backups are created if
+automated backups are enabled, as determined by the
+\code{backupRetentionPeriod}.}
 
 \item{preferredMaintenanceWindow}{The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC).
@@ -42,17 +53,22 @@ the week.
 
 \emph{Constraints}: Minimum 30-minute window.}
 
-\item{shardCapacity}{The capacity of each shard in the Elastic DocumentDB cluster.}
+\item{shardCapacity}{The number of vCPUs assigned to each elastic cluster shard. Maximum is
+64. Allowed values are 2, 4, 8, 16, 32, 64.}
 
-\item{shardCount}{The number of shards to create in the Elastic DocumentDB cluster.}
+\item{shardCount}{The number of shards assigned to the elastic cluster. Maximum is 32.}
 
-\item{subnetIds}{The number of shards to create in the Elastic DocumentDB cluster.}
+\item{shardInstanceCount}{The number of replica instances applying to all shards in the elastic
+cluster. A \code{shardInstanceCount} value of 1 means there is one writer
+instance, and any additional instances are replicas that can be used for
+reads and to improve availability.}
 
-\item{vpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the new Elastic
-DocumentDB cluster.}
+\item{subnetIds}{The Amazon EC2 subnet IDs for the elastic cluster.}
+
+\item{vpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the elastic cluster.}
 }
 \description{
-Modifies a Elastic DocumentDB cluster. This includes updating admin-username/password, upgrading API version setting up a backup window and maintenance window
+Modifies an elastic cluster. This includes updating admin-username/password, upgrading the API version, and setting up a backup window and maintenance window
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_update_cluster/} for full documentation.
 }

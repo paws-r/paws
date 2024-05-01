@@ -3,8 +3,8 @@
 \name{keyspaces_update_table}
 \alias{keyspaces_update_table}
 \title{Adds new columns to the table or updates one of the table's settings,
-for example capacity mode, encryption, point-in-time recovery, or ttl
-settings}
+for example capacity mode, auto scaling, encryption, point-in-time
+recovery, or ttl settings}
 \usage{
 keyspaces_update_table(
   keyspaceName,
@@ -15,7 +15,9 @@ keyspaces_update_table(
   pointInTimeRecovery = NULL,
   ttl = NULL,
   defaultTimeToLive = NULL,
-  clientSideTimestamps = NULL
+  clientSideTimestamps = NULL,
+  autoScalingSpecification = NULL,
+  replicaSpecifications = NULL
 )
 }
 \arguments{
@@ -97,9 +99,25 @@ option:
 
 Once client-side timestamps are enabled for a table, this setting cannot
 be disabled.}
+
+\item{autoScalingSpecification}{The optional auto scaling settings to update for a table in provisioned
+capacity mode. Specifies if the service can manage throughput capacity
+of a provisioned table automatically on your behalf. Amazon Keyspaces
+auto scaling helps you provision throughput capacity for variable
+workloads efficiently by increasing and decreasing your table's read and
+write capacity automatically in response to application traffic.
+
+If auto scaling is already enabled for the table, you can use
+\code{\link[=keyspaces_update_table]{update_table}} to update the minimum and
+maximum values or the auto scaling policy settings independently.
+
+For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html}{Managing throughput capacity automatically with Amazon Keyspaces auto scaling}
+in the \emph{Amazon Keyspaces Developer Guide}.}
+
+\item{replicaSpecifications}{The Region specific settings of a multi-Regional table.}
 }
 \description{
-Adds new columns to the table or updates one of the table's settings, for example capacity mode, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.
+Adds new columns to the table or updates one of the table's settings, for example capacity mode, auto scaling, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.
 
 See \url{https://www.paws-r-sdk.com/docs/keyspaces_update_table/} for full documentation.
 }

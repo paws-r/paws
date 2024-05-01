@@ -434,6 +434,8 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
 #' @usage
 #' kinesis_describe_limits()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

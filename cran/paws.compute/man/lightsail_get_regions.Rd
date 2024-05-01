@@ -12,11 +12,11 @@ lightsail_get_regions(
 \arguments{
 \item{includeAvailabilityZones}{A Boolean value indicating whether to also include Availability Zones in
 your get regions request. Availability Zones are indicated with a
-letter: e.g., \verb{us-east-2a}.}
+letter: \verb{us-east-2a}.}
 
 \item{includeRelationalDatabaseAvailabilityZones}{A Boolean value indicating whether to also include Availability Zones
 for databases in your get regions request. Availability Zones are
-indicated with a letter (e.g., \verb{us-east-2a}).}
+indicated with a letter (\verb{us-east-2a}).}
 }
 \description{
 Returns a list of all valid regions for Amazon Lightsail. Use the \verb{include availability zones} parameter to also return the Availability Zones in a region.

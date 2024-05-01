@@ -8,7 +8,10 @@ ssm_unlabel_parameter_version(Name, ParameterVersion, Labels)
 }
 \arguments{
 \item{Name}{[required] The name of the parameter from which you want to delete one or more
-labels.}
+labels.
+
+You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+parameter name itself.}
 
 \item{ParameterVersion}{[required] The specific version of the parameter which you want to delete one or
 more labels from. If it isn't present, the call will fail.}

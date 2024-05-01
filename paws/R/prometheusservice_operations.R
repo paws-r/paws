@@ -3,19 +3,29 @@
 #' @include prometheusservice_service.R
 NULL
 
-#' Create an alert manager definition
+#' The CreateAlertManagerDefinition operation creates the alert manager
+#' definition in a workspace
 #'
 #' @description
-#' Create an alert manager definition.
+#' The
+#' [`create_alert_manager_definition`][prometheusservice_create_alert_manager_definition]
+#' operation creates the alert manager definition in a workspace. If a
+#' workspace already has an alert manager definition, don't use this
+#' operation to update it. Instead, use
+#' [`put_alert_manager_definition`][prometheusservice_put_alert_manager_definition].
 #'
 #' @usage
-#' prometheusservice_create_alert_manager_definition(workspaceId, data,
-#'   clientToken)
+#' prometheusservice_create_alert_manager_definition(clientToken, data,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace in which to create the alert manager definition.
-#' @param data &#91;required&#93; The alert manager definition data.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param data &#91;required&#93; The alert manager definition to add. A base64-encoded version of the
+#' YAML alert manager definition file.
+#' 
+#' For details about the alert manager definition, see
+#' [AlertManagedDefinitionData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html).
+#' @param workspaceId &#91;required&#93; The ID of the workspace to add the alert manager definition to.
 #'
 #' @return
 #' A list with the following syntax:
@@ -31,9 +41,9 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_alert_manager_definition(
-#'   workspaceId = "string",
+#'   clientToken = "string",
 #'   data = raw,
-#'   clientToken = "string"
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -42,14 +52,14 @@ NULL
 #' @rdname prometheusservice_create_alert_manager_definition
 #'
 #' @aliases prometheusservice_create_alert_manager_definition
-prometheusservice_create_alert_manager_definition <- function(workspaceId, data, clientToken = NULL) {
+prometheusservice_create_alert_manager_definition <- function(clientToken = NULL, data, workspaceId) {
   op <- new_operation(
     name = "CreateAlertManagerDefinition",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     paginator = list()
   )
-  input <- .prometheusservice$create_alert_manager_definition_input(workspaceId = workspaceId, data = data, clientToken = clientToken)
+  input <- .prometheusservice$create_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
   output <- .prometheusservice$create_alert_manager_definition_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -59,20 +69,25 @@ prometheusservice_create_alert_manager_definition <- function(workspaceId, data,
 }
 .prometheusservice$operations$create_alert_manager_definition <- prometheusservice_create_alert_manager_definition
 
-#' Create logging configuration
+#' The CreateLoggingConfiguration operation creates a logging configuration
+#' for the workspace
 #'
 #' @description
-#' Create logging configuration.
+#' The
+#' [`create_logging_configuration`][prometheusservice_create_logging_configuration]
+#' operation creates a logging configuration for the workspace. Use this
+#' operation to set the CloudWatch log group to which the logs will be
+#' published to.
 #'
 #' @usage
-#' prometheusservice_create_logging_configuration(workspaceId, logGroupArn,
-#'   clientToken)
+#' prometheusservice_create_logging_configuration(clientToken, logGroupArn,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
-#' @param logGroupArn &#91;required&#93; The ARN of the CW log group to which the vended log data will be
-#' published.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be
+#' published. This log group must exist prior to calling this API.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to create the logging configuration for.
 #'
 #' @return
 #' A list with the following syntax:
@@ -88,9 +103,9 @@ prometheusservice_create_alert_manager_definition <- function(workspaceId, data,
 #' @section Request syntax:
 #' ```
 #' svc$create_logging_configuration(
-#'   workspaceId = "string",
+#'   clientToken = "string",
 #'   logGroupArn = "string",
-#'   clientToken = "string"
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -99,14 +114,14 @@ prometheusservice_create_alert_manager_definition <- function(workspaceId, data,
 #' @rdname prometheusservice_create_logging_configuration
 #'
 #' @aliases prometheusservice_create_logging_configuration
-prometheusservice_create_logging_configuration <- function(workspaceId, logGroupArn, clientToken = NULL) {
+prometheusservice_create_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
   op <- new_operation(
     name = "CreateLoggingConfiguration",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/logging",
     paginator = list()
   )
-  input <- .prometheusservice$create_logging_configuration_input(workspaceId = workspaceId, logGroupArn = logGroupArn, clientToken = clientToken)
+  input <- .prometheusservice$create_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
   output <- .prometheusservice$create_logging_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -116,28 +131,43 @@ prometheusservice_create_logging_configuration <- function(workspaceId, logGroup
 }
 .prometheusservice$operations$create_logging_configuration <- prometheusservice_create_logging_configuration
 
-#' Create a rule group namespace
+#' The CreateRuleGroupsNamespace operation creates a rule groups namespace
+#' within a workspace
 #'
 #' @description
-#' Create a rule group namespace.
+#' The
+#' [`create_rule_groups_namespace`][prometheusservice_create_rule_groups_namespace]
+#' operation creates a rule groups namespace within a workspace. A rule
+#' groups namespace is associated with exactly one rules file. A workspace
+#' can have multiple rule groups namespaces.
+#' 
+#' Use this operation only to create new rule groups namespaces. To update
+#' an existing rule groups namespace, use
+#' [`put_rule_groups_namespace`][prometheusservice_put_rule_groups_namespace].
 #'
 #' @usage
-#' prometheusservice_create_rule_groups_namespace(workspaceId, name, data,
-#'   clientToken, tags)
+#' prometheusservice_create_rule_groups_namespace(clientToken, data, name,
+#'   tags, workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace in which to create the rule group namespace.
-#' @param name &#91;required&#93; The rule groups namespace name.
-#' @param data &#91;required&#93; The namespace data that define the rule groups.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
-#' @param tags Optional, user-provided tags for this rule groups namespace.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param data &#91;required&#93; The rules file to use in the new namespace.
+#' 
+#' Contains the base64-encoded version of the YAML rules file.
+#' 
+#' For details about the rule groups namespace structure, see
+#' [RuleGroupsNamespaceData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html).
+#' @param name &#91;required&#93; The name for the new rule groups namespace.
+#' @param tags The list of tag keys and values to associate with the rule groups
+#' namespace.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to add the rule groups namespace.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   name = "string",
 #'   arn = "string",
+#'   name = "string",
 #'   status = list(
 #'     statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
 #'     statusReason = "string"
@@ -151,13 +181,13 @@ prometheusservice_create_logging_configuration <- function(workspaceId, logGroup
 #' @section Request syntax:
 #' ```
 #' svc$create_rule_groups_namespace(
-#'   workspaceId = "string",
-#'   name = "string",
-#'   data = raw,
 #'   clientToken = "string",
+#'   data = raw,
+#'   name = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -166,14 +196,14 @@ prometheusservice_create_logging_configuration <- function(workspaceId, logGroup
 #' @rdname prometheusservice_create_rule_groups_namespace
 #'
 #' @aliases prometheusservice_create_rule_groups_namespace
-prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, data, clientToken = NULL, tags = NULL) {
+prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, data, name, tags = NULL, workspaceId) {
   op <- new_operation(
     name = "CreateRuleGroupsNamespace",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces",
     paginator = list()
   )
-  input <- .prometheusservice$create_rule_groups_namespace_input(workspaceId = workspaceId, name = name, data = data, clientToken = clientToken, tags = tags)
+  input <- .prometheusservice$create_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, tags = tags, workspaceId = workspaceId)
   output <- .prometheusservice$create_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -183,31 +213,57 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 }
 .prometheusservice$operations$create_rule_groups_namespace <- prometheusservice_create_rule_groups_namespace
 
-#' Create a scraper
+#' The CreateScraper operation creates a scraper to collect metrics
 #'
 #' @description
-#' Create a scraper.
+#' The [`create_scraper`][prometheusservice_create_scraper] operation
+#' creates a scraper to collect metrics. A scraper pulls metrics from
+#' Prometheus-compatible sources within an Amazon EKS cluster, and sends
+#' them to your Amazon Managed Service for Prometheus workspace. You can
+#' configure the scraper to control what metrics are collected, and what
+#' transformations are applied prior to sending them to your workspace.
+#' 
+#' If needed, an IAM role will be created for you that gives Amazon Managed
+#' Service for Prometheus access to the metrics in your cluster. For more
+#' information, see [Using roles for scraping metrics from
+#' EKS](https://docs.aws.amazon.com/prometheus/latest/userguide/using-service-linked-roles.html#using-service-linked-roles-prom-scraper)
+#' in the *Amazon Managed Service for Prometheus User Guide*.
+#' 
+#' You cannot update a scraper. If you want to change the configuration of
+#' the scraper, create a new scraper and delete the old one.
+#' 
+#' The `scrapeConfiguration` parameter contains the base64-encoded version
+#' of the YAML configuration file.
+#' 
+#' For more information about collectors, including what metrics are
+#' collected, and how to configure the scraper, see [Amazon Web Services
+#' managed
+#' collectors](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector.html)
+#' in the *Amazon Managed Service for Prometheus User Guide*.
 #'
 #' @usage
-#' prometheusservice_create_scraper(alias, scrapeConfiguration, source,
-#'   destination, clientToken, tags)
+#' prometheusservice_create_scraper(alias, clientToken, destination,
+#'   scrapeConfiguration, source, tags)
 #'
-#' @param alias An optional user-assigned alias for this scraper. This alias is for user
-#' reference and does not need to be unique.
-#' @param scrapeConfiguration &#91;required&#93; The configuration used to create the scraper.
-#' @param source &#91;required&#93; The source that the scraper will be discovering and collecting metrics
-#' from.
-#' @param destination &#91;required&#93; The destination that the scraper will be producing metrics to.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
-#' @param tags Optional, user-provided tags for this scraper.
+#' @param alias (optional) a name to associate with the scraper. This is for your use,
+#' and does not need to be unique.
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
+#' ensure the idempotency of the request.
+#' @param destination &#91;required&#93; The Amazon Managed Service for Prometheus workspace to send metrics to.
+#' @param scrapeConfiguration &#91;required&#93; The configuration file to use in the new scraper. For more information,
+#' see [Scraper
+#' configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration)
+#' in the *Amazon Managed Service for Prometheus User Guide*.
+#' @param source &#91;required&#93; The Amazon EKS cluster from which the scraper will collect metrics.
+#' @param tags (Optional) The list of tag keys and values to associate with the
+#' scraper.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   scraperId = "string",
 #'   arn = "string",
+#'   scraperId = "string",
 #'   status = list(
 #'     statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
 #'   ),
@@ -221,6 +277,12 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #' ```
 #' svc$create_scraper(
 #'   alias = "string",
+#'   clientToken = "string",
+#'   destination = list(
+#'     ampConfiguration = list(
+#'       workspaceArn = "string"
+#'     )
+#'   ),
 #'   scrapeConfiguration = list(
 #'     configurationBlob = raw
 #'   ),
@@ -235,12 +297,6 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #'       )
 #'     )
 #'   ),
-#'   destination = list(
-#'     ampConfiguration = list(
-#'       workspaceArn = "string"
-#'     )
-#'   ),
-#'   clientToken = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -252,14 +308,14 @@ prometheusservice_create_rule_groups_namespace <- function(workspaceId, name, da
 #' @rdname prometheusservice_create_scraper
 #'
 #' @aliases prometheusservice_create_scraper
-prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, source, destination, clientToken = NULL, tags = NULL) {
+prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, destination, scrapeConfiguration, source, tags = NULL) {
   op <- new_operation(
     name = "CreateScraper",
     http_method = "POST",
     http_path = "/scrapers",
     paginator = list()
   )
-  input <- .prometheusservice$create_scraper_input(alias = alias, scrapeConfiguration = scrapeConfiguration, source = source, destination = destination, clientToken = clientToken, tags = tags)
+  input <- .prometheusservice$create_scraper_input(alias = alias, clientToken = clientToken, destination = destination, scrapeConfiguration = scrapeConfiguration, source = source, tags = tags)
   output <- .prometheusservice$create_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -269,35 +325,43 @@ prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, 
 }
 .prometheusservice$operations$create_scraper <- prometheusservice_create_scraper
 
-#' Creates a new AMP workspace
+#' Creates a Prometheus workspace
 #'
 #' @description
-#' Creates a new AMP workspace.
+#' Creates a Prometheus workspace. A workspace is a logical space dedicated
+#' to the storage and querying of Prometheus metrics. You can have one or
+#' more workspaces in each Region in your account.
 #'
 #' @usage
-#' prometheusservice_create_workspace(alias, clientToken, tags, kmsKeyArn)
+#' prometheusservice_create_workspace(alias, clientToken, kmsKeyArn, tags)
 #'
-#' @param alias An optional user-assigned alias for this workspace. This alias is for
-#' user reference and does not need to be unique.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
-#' @param tags Optional, user-provided tags for this workspace.
-#' @param kmsKeyArn Optional, customer managed KMS key used to encrypt data for this
-#' workspace
+#' @param alias An alias that you assign to this workspace to help you identify it. It
+#' does not need to be unique.
+#' 
+#' Blank spaces at the beginning or end of the alias that you specify will
+#' be trimmed from the value used.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param kmsKeyArn (optional) The ARN for a customer managed KMS key to use for encrypting
+#' data within your workspace. For more information about using your own
+#' key in your workspace, see [Encryption at
+#' rest](https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html)
+#' in the *Amazon Managed Service for Prometheus User Guide*.
+#' @param tags The list of tag keys and values to associate with the workspace.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   workspaceId = "string",
 #'   arn = "string",
+#'   kmsKeyArn = "string",
 #'   status = list(
 #'     statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
 #'   ),
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   kmsKeyArn = "string"
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -306,10 +370,10 @@ prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, 
 #' svc$create_workspace(
 #'   alias = "string",
 #'   clientToken = "string",
+#'   kmsKeyArn = "string",
 #'   tags = list(
 #'     "string"
-#'   ),
-#'   kmsKeyArn = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -318,14 +382,14 @@ prometheusservice_create_scraper <- function(alias = NULL, scrapeConfiguration, 
 #' @rdname prometheusservice_create_workspace
 #'
 #' @aliases prometheusservice_create_workspace
-prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL, kmsKeyArn = NULL) {
+prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, kmsKeyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
     http_method = "POST",
     http_path = "/workspaces",
     paginator = list()
   )
-  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, tags = tags, kmsKeyArn = kmsKeyArn)
+  input <- .prometheusservice$create_workspace_input(alias = alias, clientToken = clientToken, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .prometheusservice$create_workspace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -335,18 +399,18 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
 }
 .prometheusservice$operations$create_workspace <- prometheusservice_create_workspace
 
-#' Deletes an alert manager definition
+#' Deletes the alert manager definition from a workspace
 #'
 #' @description
-#' Deletes an alert manager definition.
+#' Deletes the alert manager definition from a workspace.
 #'
 #' @usage
-#' prometheusservice_delete_alert_manager_definition(workspaceId,
-#'   clientToken)
+#' prometheusservice_delete_alert_manager_definition(clientToken,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace in which to delete the alert manager definition.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to delete the alert manager definition from.
 #'
 #' @return
 #' An empty list.
@@ -354,8 +418,8 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$delete_alert_manager_definition(
-#'   workspaceId = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -364,14 +428,14 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
 #' @rdname prometheusservice_delete_alert_manager_definition
 #'
 #' @aliases prometheusservice_delete_alert_manager_definition
-prometheusservice_delete_alert_manager_definition <- function(workspaceId, clientToken = NULL) {
+prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "DeleteAlertManagerDefinition",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     paginator = list()
   )
-  input <- .prometheusservice$delete_alert_manager_definition_input(workspaceId = workspaceId, clientToken = clientToken)
+  input <- .prometheusservice$delete_alert_manager_definition_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_alert_manager_definition_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -381,17 +445,17 @@ prometheusservice_delete_alert_manager_definition <- function(workspaceId, clien
 }
 .prometheusservice$operations$delete_alert_manager_definition <- prometheusservice_delete_alert_manager_definition
 
-#' Delete logging configuration
+#' Deletes the logging configuration for a workspace
 #'
 #' @description
-#' Delete logging configuration.
+#' Deletes the logging configuration for a workspace.
 #'
 #' @usage
-#' prometheusservice_delete_logging_configuration(workspaceId, clientToken)
+#' prometheusservice_delete_logging_configuration(clientToken, workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param workspaceId &#91;required&#93; The ID of the workspace containing the logging configuration to delete.
 #'
 #' @return
 #' An empty list.
@@ -399,8 +463,8 @@ prometheusservice_delete_alert_manager_definition <- function(workspaceId, clien
 #' @section Request syntax:
 #' ```
 #' svc$delete_logging_configuration(
-#'   workspaceId = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -409,14 +473,14 @@ prometheusservice_delete_alert_manager_definition <- function(workspaceId, clien
 #' @rdname prometheusservice_delete_logging_configuration
 #'
 #' @aliases prometheusservice_delete_logging_configuration
-prometheusservice_delete_logging_configuration <- function(workspaceId, clientToken = NULL) {
+prometheusservice_delete_logging_configuration <- function(clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "DeleteLoggingConfiguration",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/logging",
     paginator = list()
   )
-  input <- .prometheusservice$delete_logging_configuration_input(workspaceId = workspaceId, clientToken = clientToken)
+  input <- .prometheusservice$delete_logging_configuration_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_logging_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -426,19 +490,22 @@ prometheusservice_delete_logging_configuration <- function(workspaceId, clientTo
 }
 .prometheusservice$operations$delete_logging_configuration <- prometheusservice_delete_logging_configuration
 
-#' Delete a rule groups namespace
+#' Deletes one rule groups namespace and its associated rule groups
+#' definition
 #'
 #' @description
-#' Delete a rule groups namespace.
+#' Deletes one rule groups namespace and its associated rule groups
+#' definition.
 #'
 #' @usage
-#' prometheusservice_delete_rule_groups_namespace(workspaceId, name,
-#'   clientToken)
+#' prometheusservice_delete_rule_groups_namespace(clientToken, name,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to delete rule group definition.
-#' @param name &#91;required&#93; The rule groups namespace name.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param name &#91;required&#93; The name of the rule groups namespace to delete.
+#' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespace and
+#' definition to delete.
 #'
 #' @return
 #' An empty list.
@@ -446,9 +513,9 @@ prometheusservice_delete_logging_configuration <- function(workspaceId, clientTo
 #' @section Request syntax:
 #' ```
 #' svc$delete_rule_groups_namespace(
-#'   workspaceId = "string",
+#'   clientToken = "string",
 #'   name = "string",
-#'   clientToken = "string"
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -457,14 +524,14 @@ prometheusservice_delete_logging_configuration <- function(workspaceId, clientTo
 #' @rdname prometheusservice_delete_rule_groups_namespace
 #'
 #' @aliases prometheusservice_delete_rule_groups_namespace
-prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, clientToken = NULL) {
+prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, name, workspaceId) {
   op <- new_operation(
     name = "DeleteRuleGroupsNamespace",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
     paginator = list()
   )
-  input <- .prometheusservice$delete_rule_groups_namespace_input(workspaceId = workspaceId, name = name, clientToken = clientToken)
+  input <- .prometheusservice$delete_rule_groups_namespace_input(clientToken = clientToken, name = name, workspaceId = workspaceId)
   output <- .prometheusservice$delete_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -474,17 +541,20 @@ prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, cl
 }
 .prometheusservice$operations$delete_rule_groups_namespace <- prometheusservice_delete_rule_groups_namespace
 
-#' Deletes a scraper
+#' The DeleteScraper operation deletes one scraper, and stops any metrics
+#' collection that the scraper performs
 #'
 #' @description
-#' Deletes a scraper.
+#' The [`delete_scraper`][prometheusservice_delete_scraper] operation
+#' deletes one scraper, and stops any metrics collection that the scraper
+#' performs.
 #'
 #' @usage
-#' prometheusservice_delete_scraper(scraperId, clientToken)
+#' prometheusservice_delete_scraper(clientToken, scraperId)
 #'
+#' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
+#' ensure the idempotency of the request.
 #' @param scraperId &#91;required&#93; The ID of the scraper to delete.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -500,8 +570,8 @@ prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, cl
 #' @section Request syntax:
 #' ```
 #' svc$delete_scraper(
-#'   scraperId = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   scraperId = "string"
 #' )
 #' ```
 #'
@@ -510,14 +580,14 @@ prometheusservice_delete_rule_groups_namespace <- function(workspaceId, name, cl
 #' @rdname prometheusservice_delete_scraper
 #'
 #' @aliases prometheusservice_delete_scraper
-prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
+prometheusservice_delete_scraper <- function(clientToken = NULL, scraperId) {
   op <- new_operation(
     name = "DeleteScraper",
     http_method = "DELETE",
     http_path = "/scrapers/{scraperId}",
     paginator = list()
   )
-  input <- .prometheusservice$delete_scraper_input(scraperId = scraperId, clientToken = clientToken)
+  input <- .prometheusservice$delete_scraper_input(clientToken = clientToken, scraperId = scraperId)
   output <- .prometheusservice$delete_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -527,17 +597,21 @@ prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
 }
 .prometheusservice$operations$delete_scraper <- prometheusservice_delete_scraper
 
-#' Deletes an AMP workspace
+#' Deletes an existing workspace
 #'
 #' @description
-#' Deletes an AMP workspace.
+#' Deletes an existing workspace.
+#' 
+#' When you delete a workspace, the data that has been ingested into it is
+#' not immediately deleted. It will be permanently deleted within one
+#' month.
 #'
 #' @usage
-#' prometheusservice_delete_workspace(workspaceId, clientToken)
+#' prometheusservice_delete_workspace(clientToken, workspaceId)
 #'
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to delete.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
 #'
 #' @return
 #' An empty list.
@@ -545,8 +619,8 @@ prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_workspace(
-#'   workspaceId = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -555,14 +629,14 @@ prometheusservice_delete_scraper <- function(scraperId, clientToken = NULL) {
 #' @rdname prometheusservice_delete_workspace
 #'
 #' @aliases prometheusservice_delete_workspace
-prometheusservice_delete_workspace <- function(workspaceId, clientToken = NULL) {
+prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "DeleteWorkspace",
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}",
     paginator = list()
   )
-  input <- .prometheusservice$delete_workspace_input(workspaceId = workspaceId, clientToken = clientToken)
+  input <- .prometheusservice$delete_workspace_input(clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$delete_workspace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -572,31 +646,33 @@ prometheusservice_delete_workspace <- function(workspaceId, clientToken = NULL) 
 }
 .prometheusservice$operations$delete_workspace <- prometheusservice_delete_workspace
 
-#' Describes an alert manager definition
+#' Retrieves the full information about the alert manager definition for a
+#' workspace
 #'
 #' @description
-#' Describes an alert manager definition.
+#' Retrieves the full information about the alert manager definition for a
+#' workspace.
 #'
 #' @usage
 #' prometheusservice_describe_alert_manager_definition(workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to describe.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to retrieve the alert manager definition from.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   alertManagerDefinition = list(
-#'     status = list(
-#'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
-#'       statusReason = "string"
-#'     ),
-#'     data = raw,
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     data = raw,
 #'     modifiedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     status = list(
+#'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
+#'       statusReason = "string"
 #'     )
 #'   )
 #' )
@@ -631,33 +707,35 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
 }
 .prometheusservice$operations$describe_alert_manager_definition <- prometheusservice_describe_alert_manager_definition
 
-#' Describes logging configuration
+#' Returns complete information about the current logging configuration of
+#' the workspace
 #'
 #' @description
-#' Describes logging configuration.
+#' Returns complete information about the current logging configuration of
+#' the workspace.
 #'
 #' @usage
 #' prometheusservice_describe_logging_configuration(workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to describe the logging configuration for.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   loggingConfiguration = list(
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     logGroupArn = "string",
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     status = list(
 #'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
 #'       statusReason = "string"
 #'     ),
-#'     workspace = "string",
-#'     logGroupArn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
+#'     workspace = "string"
 #'   )
 #' )
 #' ```
@@ -691,16 +769,18 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
 }
 .prometheusservice$operations$describe_logging_configuration <- prometheusservice_describe_logging_configuration
 
-#' Describe a rule groups namespace
+#' Returns complete information about one rule groups namespace
 #'
 #' @description
-#' Describe a rule groups namespace.
+#' Returns complete information about one rule groups namespace. To
+#' retrieve a list of rule groups namespaces, use
+#' [`list_rule_groups_namespaces`][prometheusservice_list_rule_groups_namespaces].
 #'
 #' @usage
-#' prometheusservice_describe_rule_groups_namespace(workspaceId, name)
+#' prometheusservice_describe_rule_groups_namespace(name, workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to describe.
-#' @param name &#91;required&#93; The rule groups namespace.
+#' @param name &#91;required&#93; The name of the rule groups namespace that you want information for.
+#' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespace.
 #'
 #' @return
 #' A list with the following syntax:
@@ -708,17 +788,17 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
 #' list(
 #'   ruleGroupsNamespace = list(
 #'     arn = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     data = raw,
+#'     modifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
 #'     name = "string",
 #'     status = list(
 #'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
 #'       statusReason = "string"
-#'     ),
-#'     data = raw,
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
 #'     ),
 #'     tags = list(
 #'       "string"
@@ -730,8 +810,8 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_rule_groups_namespace(
-#'   workspaceId = "string",
-#'   name = "string"
+#'   name = "string",
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -740,14 +820,14 @@ prometheusservice_describe_logging_configuration <- function(workspaceId) {
 #' @rdname prometheusservice_describe_rule_groups_namespace
 #'
 #' @aliases prometheusservice_describe_rule_groups_namespace
-prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) {
+prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) {
   op <- new_operation(
     name = "DescribeRuleGroupsNamespace",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
     paginator = list()
   )
-  input <- .prometheusservice$describe_rule_groups_namespace_input(workspaceId = workspaceId, name = name)
+  input <- .prometheusservice$describe_rule_groups_namespace_input(name = name, workspaceId = workspaceId)
   output <- .prometheusservice$describe_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -757,15 +837,17 @@ prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) 
 }
 .prometheusservice$operations$describe_rule_groups_namespace <- prometheusservice_describe_rule_groups_namespace
 
-#' Describe an existing scraper
+#' The DescribeScraper operation displays information about an existing
+#' scraper
 #'
 #' @description
-#' Describe an existing scraper.
+#' The [`describe_scraper`][prometheusservice_describe_scraper] operation
+#' displays information about an existing scraper.
 #'
 #' @usage
 #' prometheusservice_describe_scraper(scraperId)
 #'
-#' @param scraperId &#91;required&#93; The IDs of the scraper to describe.
+#' @param scraperId &#91;required&#93; The ID of the scraper to describe.
 #'
 #' @return
 #' A list with the following syntax:
@@ -773,25 +855,23 @@ prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) 
 #' list(
 #'   scraper = list(
 #'     alias = "string",
-#'     scraperId = "string",
 #'     arn = "string",
-#'     roleArn = "string",
-#'     status = list(
-#'       statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
-#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     destination = list(
+#'       ampConfiguration = list(
+#'         workspaceArn = "string"
+#'       )
 #'     ),
 #'     lastModifiedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     statusReason = "string",
+#'     roleArn = "string",
 #'     scrapeConfiguration = list(
 #'       configurationBlob = raw
 #'     ),
+#'     scraperId = "string",
 #'     source = list(
 #'       eksConfiguration = list(
 #'         clusterArn = "string",
@@ -803,10 +883,12 @@ prometheusservice_describe_rule_groups_namespace <- function(workspaceId, name) 
 #'         )
 #'       )
 #'     ),
-#'     destination = list(
-#'       ampConfiguration = list(
-#'         workspaceArn = "string"
-#'       )
+#'     status = list(
+#'       statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
+#'     ),
+#'     statusReason = "string",
+#'     tags = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -841,10 +923,10 @@ prometheusservice_describe_scraper <- function(scraperId) {
 }
 .prometheusservice$operations$describe_scraper <- prometheusservice_describe_scraper
 
-#' Describes an existing AMP workspace
+#' Returns information about an existing workspace
 #'
 #' @description
-#' Describes an existing AMP workspace.
+#' Returns information about an existing workspace.
 #'
 #' @usage
 #' prometheusservice_describe_workspace(workspaceId)
@@ -856,20 +938,20 @@ prometheusservice_describe_scraper <- function(scraperId) {
 #' ```
 #' list(
 #'   workspace = list(
-#'     workspaceId = "string",
 #'     alias = "string",
 #'     arn = "string",
-#'     status = list(
-#'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
-#'     ),
-#'     prometheusEndpoint = "string",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     kmsKeyArn = "string",
+#'     prometheusEndpoint = "string",
+#'     status = list(
+#'       statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
 #'     ),
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     kmsKeyArn = "string"
+#'     workspaceId = "string"
 #'   )
 #' )
 #' ```
@@ -903,13 +985,19 @@ prometheusservice_describe_workspace <- function(workspaceId) {
 }
 .prometheusservice$operations$describe_workspace <- prometheusservice_describe_workspace
 
-#' Gets a default configuration
+#' The GetDefaultScraperConfiguration operation returns the default scraper
+#' configuration used when Amazon EKS creates a scraper for you
 #'
 #' @description
-#' Gets a default configuration.
+#' The
+#' [`get_default_scraper_configuration`][prometheusservice_get_default_scraper_configuration]
+#' operation returns the default scraper configuration used when Amazon EKS
+#' creates a scraper for you.
 #'
 #' @usage
 #' prometheusservice_get_default_scraper_configuration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -946,57 +1034,63 @@ prometheusservice_get_default_scraper_configuration <- function() {
 }
 .prometheusservice$operations$get_default_scraper_configuration <- prometheusservice_get_default_scraper_configuration
 
-#' Lists rule groups namespaces
+#' Returns a list of rule groups namespaces in a workspace
 #'
 #' @description
-#' Lists rule groups namespaces.
+#' Returns a list of rule groups namespaces in a workspace.
 #'
 #' @usage
-#' prometheusservice_list_rule_groups_namespaces(workspaceId, name,
-#'   nextToken, maxResults)
+#' prometheusservice_list_rule_groups_namespaces(maxResults, name,
+#'   nextToken, workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace.
-#' @param name Optional filter for rule groups namespace name. Only the rule groups
-#' namespace that begin with this value will be returned.
-#' @param nextToken Pagination token to request the next page in a paginated list. This
-#' token is obtained from the output of the previous
-#' ListRuleGroupsNamespaces request.
-#' @param maxResults Maximum results to return in response (default=100, maximum=1000).
+#' @param maxResults The maximum number of results to return. The default is 100.
+#' @param name Use this parameter to filter the rule groups namespaces that are
+#' returned. Only the namespaces with names that begin with the value that
+#' you specify are returned.
+#' @param nextToken The token for the next set of items to return. You receive this token
+#' from a previous call, and use it to get the next page of results. The
+#' other parameters must be the same as the initial call.
+#' 
+#' For example, if your initial request has `maxResults` of 10, and there
+#' are 12 rule groups namespaces to return, then your initial request will
+#' return 10 and a `nextToken`. Using the next token in a subsequent call
+#' will return the remaining 2 namespaces.
+#' @param workspaceId &#91;required&#93; The ID of the workspace containing the rule groups namespaces.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   ruleGroupsNamespaces = list(
 #'     list(
 #'       arn = "string",
-#'       name = "string",
-#'       status = list(
-#'         statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
-#'         statusReason = "string"
-#'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       modifiedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       name = "string",
+#'       status = list(
+#'         statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
+#'         statusReason = "string"
+#'       ),
 #'       tags = list(
 #'         "string"
 #'       )
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_rule_groups_namespaces(
-#'   workspaceId = "string",
+#'   maxResults = 123,
 #'   name = "string",
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -1005,14 +1099,14 @@ prometheusservice_get_default_scraper_configuration <- function() {
 #' @rdname prometheusservice_list_rule_groups_namespaces
 #'
 #' @aliases prometheusservice_list_rule_groups_namespaces
-prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NULL, nextToken = NULL, maxResults = NULL) {
+prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, name = NULL, nextToken = NULL, workspaceId) {
   op <- new_operation(
     name = "ListRuleGroupsNamespaces",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleGroupsNamespaces")
   )
-  input <- .prometheusservice$list_rule_groups_namespaces_input(workspaceId = workspaceId, name = name, nextToken = nextToken, maxResults = maxResults)
+  input <- .prometheusservice$list_rule_groups_namespaces_input(maxResults = maxResults, name = name, nextToken = nextToken, workspaceId = workspaceId)
   output <- .prometheusservice$list_rule_groups_namespaces_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -1022,45 +1116,63 @@ prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NU
 }
 .prometheusservice$operations$list_rule_groups_namespaces <- prometheusservice_list_rule_groups_namespaces
 
-#' Lists all scrapers in a customer account, including scrapers being
-#' created or deleted
+#' The ListScrapers operation lists all of the scrapers in your account
 #'
 #' @description
-#' Lists all scrapers in a customer account, including scrapers being
-#' created or deleted. You may provide filters to return a more specific
-#' list of results.
+#' The [`list_scrapers`][prometheusservice_list_scrapers] operation lists
+#' all of the scrapers in your account. This includes scrapers being
+#' created or deleted. You can optionally filter the returned list.
 #'
 #' @usage
-#' prometheusservice_list_scrapers(filters, nextToken, maxResults)
+#' prometheusservice_list_scrapers(filters, maxResults, nextToken)
 #'
-#' @param filters A list of scraper filters.
-#' @param nextToken Pagination token to request the next page in a paginated list. This
-#' token is obtained from the output of the previous ListScrapers request.
-#' @param maxResults Maximum results to return in response (default=100, maximum=1000).
+#' @param filters (Optional) A list of key-value pairs to filter the list of scrapers
+#' returned. Keys include `status`, `sourceArn`, `destinationArn`, and
+#' `alias`.
+#' 
+#' Filters on the same key are `OR`'d together, and filters on different
+#' keys are `AND`'d together. For example,
+#' `status=ACTIVE&status=CREATING&alias=Test`, will return all scrapers
+#' that have the alias Test, and are either in status ACTIVE or CREATING.
+#' 
+#' To find all active scrapers that are sending metrics to a specific
+#' Amazon Managed Service for Prometheus workspace, you would use the ARN
+#' of the workspace in a query:
+#' 
+#' `status=ACTIVE&destinationArn=arn:aws:aps:us-east-1:123456789012:workspace/ws-example1-1234-abcd-56ef-123456789012`
+#' 
+#' If this is included, it filters the results to only the scrapers that
+#' match the filter.
+#' @param maxResults Optional) The maximum number of scrapers to return in one
+#' [`list_scrapers`][prometheusservice_list_scrapers] operation. The range
+#' is 1-1000.
+#' 
+#' If you omit this parameter, the default of 100 is used.
+#' @param nextToken (Optional) The token for the next set of items to return. (You received
+#' this token from a previous call.)
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   scrapers = list(
 #'     list(
 #'       alias = "string",
-#'       scraperId = "string",
 #'       arn = "string",
-#'       roleArn = "string",
-#'       status = list(
-#'         statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
-#'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       destination = list(
+#'         ampConfiguration = list(
+#'           workspaceArn = "string"
+#'         )
 #'       ),
 #'       lastModifiedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       statusReason = "string",
+#'       roleArn = "string",
+#'       scraperId = "string",
 #'       source = list(
 #'         eksConfiguration = list(
 #'           clusterArn = "string",
@@ -1072,14 +1184,15 @@ prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NU
 #'           )
 #'         )
 #'       ),
-#'       destination = list(
-#'         ampConfiguration = list(
-#'           workspaceArn = "string"
-#'         )
+#'       status = list(
+#'         statusCode = "CREATING"|"ACTIVE"|"DELETING"|"CREATION_FAILED"|"DELETION_FAILED"
+#'       ),
+#'       statusReason = "string",
+#'       tags = list(
+#'         "string"
 #'       )
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1091,8 +1204,8 @@ prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NU
 #'       "string"
 #'     )
 #'   ),
-#'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1101,14 +1214,14 @@ prometheusservice_list_rule_groups_namespaces <- function(workspaceId, name = NU
 #' @rdname prometheusservice_list_scrapers
 #'
 #' @aliases prometheusservice_list_scrapers
-prometheusservice_list_scrapers <- function(filters = NULL, nextToken = NULL, maxResults = NULL) {
+prometheusservice_list_scrapers <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListScrapers",
     http_method = "GET",
     http_path = "/scrapers",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scrapers")
   )
-  input <- .prometheusservice$list_scrapers_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
+  input <- .prometheusservice$list_scrapers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .prometheusservice$list_scrapers_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -1118,15 +1231,20 @@ prometheusservice_list_scrapers <- function(filters = NULL, nextToken = NULL, ma
 }
 .prometheusservice$operations$list_scrapers <- prometheusservice_list_scrapers
 
-#' Lists the tags you have assigned to the resource
+#' The ListTagsForResource operation returns the tags that are associated
+#' with an Amazon Managed Service for Prometheus resource
 #'
 #' @description
-#' Lists the tags you have assigned to the resource.
+#' The [`list_tags_for_resource`][prometheusservice_list_tags_for_resource]
+#' operation returns the tags that are associated with an Amazon Managed
+#' Service for Prometheus resource. Currently, the only resources that can
+#' be tagged are workspaces and rule groups namespaces.
 #'
 #' @usage
 #' prometheusservice_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to list tages for. Must be a workspace or rule
+#' groups namespace resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1167,52 +1285,63 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
 }
 .prometheusservice$operations$list_tags_for_resource <- prometheusservice_list_tags_for_resource
 
-#' Lists all AMP workspaces, including workspaces being created or deleted
+#' Lists all of the Amazon Managed Service for Prometheus workspaces in
+#' your account
 #'
 #' @description
-#' Lists all AMP workspaces, including workspaces being created or deleted.
+#' Lists all of the Amazon Managed Service for Prometheus workspaces in
+#' your account. This includes workspaces being created or deleted.
 #'
 #' @usage
-#' prometheusservice_list_workspaces(nextToken, alias, maxResults)
+#' prometheusservice_list_workspaces(alias, maxResults, nextToken)
 #'
-#' @param nextToken Pagination token to request the next page in a paginated list. This
-#' token is obtained from the output of the previous ListWorkspaces
-#' request.
-#' @param alias Optional filter for workspace alias. Only the workspaces with aliases
-#' that begin with this value will be returned.
-#' @param maxResults Maximum results to return in response (default=100, maximum=1000).
+#' @param alias If this is included, it filters the results to only the workspaces with
+#' names that start with the value that you specify here.
+#' 
+#' Amazon Managed Service for Prometheus will automatically strip any blank
+#' spaces from the beginning and end of the alias that you specify.
+#' @param maxResults The maximum number of workspaces to return per request. The default is
+#' 100.
+#' @param nextToken The token for the next set of items to return. You receive this token
+#' from a previous call, and use it to get the next page of results. The
+#' other parameters must be the same as the initial call.
+#' 
+#' For example, if your initial request has `maxResults` of 10, and there
+#' are 12 workspaces to return, then your initial request will return 10
+#' and a `nextToken`. Using the next token in a subsequent call will return
+#' the remaining 2 workspaces.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   workspaces = list(
 #'     list(
-#'       workspaceId = "string",
 #'       alias = "string",
 #'       arn = "string",
-#'       status = list(
-#'         statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
-#'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       kmsKeyArn = "string",
+#'       status = list(
+#'         statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"
 #'       ),
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       kmsKeyArn = "string"
+#'       workspaceId = "string"
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_workspaces(
-#'   nextToken = "string",
 #'   alias = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1221,14 +1350,14 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
 #' @rdname prometheusservice_list_workspaces
 #'
 #' @aliases prometheusservice_list_workspaces
-prometheusservice_list_workspaces <- function(nextToken = NULL, alias = NULL, maxResults = NULL) {
+prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListWorkspaces",
     http_method = "GET",
     http_path = "/workspaces",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
   )
-  input <- .prometheusservice$list_workspaces_input(nextToken = nextToken, alias = alias, maxResults = maxResults)
+  input <- .prometheusservice$list_workspaces_input(alias = alias, maxResults = maxResults, nextToken = nextToken)
   output <- .prometheusservice$list_workspaces_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -1238,19 +1367,26 @@ prometheusservice_list_workspaces <- function(nextToken = NULL, alias = NULL, ma
 }
 .prometheusservice$operations$list_workspaces <- prometheusservice_list_workspaces
 
-#' Update an alert manager definition
+#' Updates an existing alert manager definition in a workspace
 #'
 #' @description
-#' Update an alert manager definition.
+#' Updates an existing alert manager definition in a workspace. If the
+#' workspace does not already have an alert manager definition, don't use
+#' this operation to create it. Instead, use
+#' [`create_alert_manager_definition`][prometheusservice_create_alert_manager_definition].
 #'
 #' @usage
-#' prometheusservice_put_alert_manager_definition(workspaceId, data,
-#'   clientToken)
+#' prometheusservice_put_alert_manager_definition(clientToken, data,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace in which to update the alert manager definition.
-#' @param data &#91;required&#93; The alert manager definition data.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param data &#91;required&#93; The alert manager definition to use. A base64-encoded version of the
+#' YAML alert manager definition file.
+#' 
+#' For details about the alert manager definition, see
+#' [AlertManagedDefinitionData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html).
+#' @param workspaceId &#91;required&#93; The ID of the workspace to update the alert manager definition in.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1266,9 +1402,9 @@ prometheusservice_list_workspaces <- function(nextToken = NULL, alias = NULL, ma
 #' @section Request syntax:
 #' ```
 #' svc$put_alert_manager_definition(
-#'   workspaceId = "string",
+#'   clientToken = "string",
 #'   data = raw,
-#'   clientToken = "string"
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -1277,14 +1413,14 @@ prometheusservice_list_workspaces <- function(nextToken = NULL, alias = NULL, ma
 #' @rdname prometheusservice_put_alert_manager_definition
 #'
 #' @aliases prometheusservice_put_alert_manager_definition
-prometheusservice_put_alert_manager_definition <- function(workspaceId, data, clientToken = NULL) {
+prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, data, workspaceId) {
   op <- new_operation(
     name = "PutAlertManagerDefinition",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/alertmanager/definition",
     paginator = list()
   )
-  input <- .prometheusservice$put_alert_manager_definition_input(workspaceId = workspaceId, data = data, clientToken = clientToken)
+  input <- .prometheusservice$put_alert_manager_definition_input(clientToken = clientToken, data = data, workspaceId = workspaceId)
   output <- .prometheusservice$put_alert_manager_definition_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -1294,27 +1430,42 @@ prometheusservice_put_alert_manager_definition <- function(workspaceId, data, cl
 }
 .prometheusservice$operations$put_alert_manager_definition <- prometheusservice_put_alert_manager_definition
 
-#' Update a rule groups namespace
+#' Updates an existing rule groups namespace within a workspace
 #'
 #' @description
-#' Update a rule groups namespace.
+#' Updates an existing rule groups namespace within a workspace. A rule
+#' groups namespace is associated with exactly one rules file. A workspace
+#' can have multiple rule groups namespaces.
+#' 
+#' Use this operation only to update existing rule groups namespaces. To
+#' create a new rule groups namespace, use
+#' [`create_rule_groups_namespace`][prometheusservice_create_rule_groups_namespace].
+#' 
+#' You can't use this operation to add tags to an existing rule groups
+#' namespace. Instead, use
+#' [`tag_resource`][prometheusservice_tag_resource].
 #'
 #' @usage
-#' prometheusservice_put_rule_groups_namespace(workspaceId, name, data,
-#'   clientToken)
+#' prometheusservice_put_rule_groups_namespace(clientToken, data, name,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace in which to update the rule group namespace.
-#' @param name &#91;required&#93; The rule groups namespace name.
-#' @param data &#91;required&#93; The namespace data that define the rule groups.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param data &#91;required&#93; The new rules file to use in the namespace. A base64-encoded version of
+#' the YAML rule groups file.
+#' 
+#' For details about the rule groups namespace structure, see
+#' [RuleGroupsNamespaceData](https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html).
+#' @param name &#91;required&#93; The name of the rule groups namespace that you are updating.
+#' @param workspaceId &#91;required&#93; The ID of the workspace where you are updating the rule groups
+#' namespace.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   name = "string",
 #'   arn = "string",
+#'   name = "string",
 #'   status = list(
 #'     statusCode = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATION_FAILED"|"UPDATE_FAILED",
 #'     statusReason = "string"
@@ -1328,10 +1479,10 @@ prometheusservice_put_alert_manager_definition <- function(workspaceId, data, cl
 #' @section Request syntax:
 #' ```
 #' svc$put_rule_groups_namespace(
-#'   workspaceId = "string",
-#'   name = "string",
+#'   clientToken = "string",
 #'   data = raw,
-#'   clientToken = "string"
+#'   name = "string",
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -1340,14 +1491,14 @@ prometheusservice_put_alert_manager_definition <- function(workspaceId, data, cl
 #' @rdname prometheusservice_put_rule_groups_namespace
 #'
 #' @aliases prometheusservice_put_rule_groups_namespace
-prometheusservice_put_rule_groups_namespace <- function(workspaceId, name, data, clientToken = NULL) {
+prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data, name, workspaceId) {
   op <- new_operation(
     name = "PutRuleGroupsNamespace",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/rulegroupsnamespaces/{name}",
     paginator = list()
   )
-  input <- .prometheusservice$put_rule_groups_namespace_input(workspaceId = workspaceId, name = name, data = data, clientToken = clientToken)
+  input <- .prometheusservice$put_rule_groups_namespace_input(clientToken = clientToken, data = data, name = name, workspaceId = workspaceId)
   output <- .prometheusservice$put_rule_groups_namespace_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -1357,16 +1508,27 @@ prometheusservice_put_rule_groups_namespace <- function(workspaceId, name, data,
 }
 .prometheusservice$operations$put_rule_groups_namespace <- prometheusservice_put_rule_groups_namespace
 
-#' Creates tags for the specified resource
+#' The TagResource operation associates tags with an Amazon Managed Service
+#' for Prometheus resource
 #'
 #' @description
-#' Creates tags for the specified resource.
+#' The [`tag_resource`][prometheusservice_tag_resource] operation
+#' associates tags with an Amazon Managed Service for Prometheus resource.
+#' The only resources that can be tagged are workspaces and rule groups
+#' namespaces.
+#' 
+#' If you specify a new tag key for the resource, this tag is appended to
+#' the list of tags associated with the resource. If you specify a tag key
+#' that is already associated with the resource, the new tag value that you
+#' specify replaces the previous value for that tag.
 #'
 #' @usage
 #' prometheusservice_tag_resource(resourceArn, tags)
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource.
-#' @param tags &#91;required&#93; 
+#' @param resourceArn &#91;required&#93; The ARN of the workspace or rule groups namespace to apply tags to.
+#' @param tags &#91;required&#93; The list of tag keys and values to associate with the resource.
+#' 
+#' Keys may not begin with `aws:`.
 #'
 #' @return
 #' An empty list.
@@ -1403,16 +1565,19 @@ prometheusservice_tag_resource <- function(resourceArn, tags) {
 }
 .prometheusservice$operations$tag_resource <- prometheusservice_tag_resource
 
-#' Deletes tags from the specified resource
+#' Removes the specified tags from an Amazon Managed Service for Prometheus
+#' resource
 #'
 #' @description
-#' Deletes tags from the specified resource.
+#' Removes the specified tags from an Amazon Managed Service for Prometheus
+#' resource. The only resources that can be tagged are workspaces and rule
+#' groups namespaces.
 #'
 #' @usage
 #' prometheusservice_untag_resource(resourceArn, tagKeys)
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource.
-#' @param tagKeys &#91;required&#93; One or more tag keys
+#' @param resourceArn &#91;required&#93; The ARN of the workspace or rule groups namespace.
+#' @param tagKeys &#91;required&#93; The keys of the tags to remove.
 #'
 #' @return
 #' An empty list.
@@ -1449,20 +1614,22 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
 }
 .prometheusservice$operations$untag_resource <- prometheusservice_untag_resource
 
-#' Update logging configuration
+#' Updates the log group ARN or the workspace ID of the current logging
+#' configuration
 #'
 #' @description
-#' Update logging configuration.
+#' Updates the log group ARN or the workspace ID of the current logging
+#' configuration.
 #'
 #' @usage
-#' prometheusservice_update_logging_configuration(workspaceId, logGroupArn,
-#'   clientToken)
+#' prometheusservice_update_logging_configuration(clientToken, logGroupArn,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace to vend logs to.
-#' @param logGroupArn &#91;required&#93; The ARN of the CW log group to which the vended log data will be
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param logGroupArn &#91;required&#93; The ARN of the CloudWatch log group to which the vended log data will be
 #' published.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to update the logging configuration for.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1478,9 +1645,9 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
 #' @section Request syntax:
 #' ```
 #' svc$update_logging_configuration(
-#'   workspaceId = "string",
+#'   clientToken = "string",
 #'   logGroupArn = "string",
-#'   clientToken = "string"
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -1489,14 +1656,14 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname prometheusservice_update_logging_configuration
 #'
 #' @aliases prometheusservice_update_logging_configuration
-prometheusservice_update_logging_configuration <- function(workspaceId, logGroupArn, clientToken = NULL) {
+prometheusservice_update_logging_configuration <- function(clientToken = NULL, logGroupArn, workspaceId) {
   op <- new_operation(
     name = "UpdateLoggingConfiguration",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/logging",
     paginator = list()
   )
-  input <- .prometheusservice$update_logging_configuration_input(workspaceId = workspaceId, logGroupArn = logGroupArn, clientToken = clientToken)
+  input <- .prometheusservice$update_logging_configuration_input(clientToken = clientToken, logGroupArn = logGroupArn, workspaceId = workspaceId)
   output <- .prometheusservice$update_logging_configuration_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)
@@ -1506,19 +1673,22 @@ prometheusservice_update_logging_configuration <- function(workspaceId, logGroup
 }
 .prometheusservice$operations$update_logging_configuration <- prometheusservice_update_logging_configuration
 
-#' Updates an AMP workspace alias
+#' Updates the alias of an existing workspace
 #'
 #' @description
-#' Updates an AMP workspace alias.
+#' Updates the alias of an existing workspace.
 #'
 #' @usage
-#' prometheusservice_update_workspace_alias(workspaceId, alias,
-#'   clientToken)
+#' prometheusservice_update_workspace_alias(alias, clientToken,
+#'   workspaceId)
 #'
-#' @param workspaceId &#91;required&#93; The ID of the workspace being updated.
-#' @param alias The new alias of the workspace.
-#' @param clientToken Optional, unique, case-sensitive, user-provided identifier to ensure the
-#' idempotency of the request.
+#' @param alias The new alias for the workspace. It does not need to be unique.
+#' 
+#' Amazon Managed Service for Prometheus will automatically strip any blank
+#' spaces from the beginning and end of the alias that you specify.
+#' @param clientToken A unique identifier that you can provide to ensure the idempotency of
+#' the request. Case-sensitive.
+#' @param workspaceId &#91;required&#93; The ID of the workspace to update.
 #'
 #' @return
 #' An empty list.
@@ -1526,9 +1696,9 @@ prometheusservice_update_logging_configuration <- function(workspaceId, logGroup
 #' @section Request syntax:
 #' ```
 #' svc$update_workspace_alias(
-#'   workspaceId = "string",
 #'   alias = "string",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   workspaceId = "string"
 #' )
 #' ```
 #'
@@ -1537,14 +1707,14 @@ prometheusservice_update_logging_configuration <- function(workspaceId, logGroup
 #' @rdname prometheusservice_update_workspace_alias
 #'
 #' @aliases prometheusservice_update_workspace_alias
-prometheusservice_update_workspace_alias <- function(workspaceId, alias = NULL, clientToken = NULL) {
+prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "UpdateWorkspaceAlias",
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/alias",
     paginator = list()
   )
-  input <- .prometheusservice$update_workspace_alias_input(workspaceId = workspaceId, alias = alias, clientToken = clientToken)
+  input <- .prometheusservice$update_workspace_alias_input(alias = alias, clientToken = clientToken, workspaceId = workspaceId)
   output <- .prometheusservice$update_workspace_alias_output()
   config <- get_config()
   svc <- .prometheusservice$service(config)

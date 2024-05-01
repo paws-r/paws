@@ -7,7 +7,7 @@
 lightsail_delete_disk(diskName, forceDeleteAddOns = NULL)
 }
 \arguments{
-\item{diskName}{[required] The unique name of the disk you want to delete (e.g., \code{my-disk}).}
+\item{diskName}{[required] The unique name of the disk you want to delete (\code{my-disk}).}
 
 \item{forceDeleteAddOns}{A Boolean value to indicate whether to delete all add-ons for the disk.}
 }

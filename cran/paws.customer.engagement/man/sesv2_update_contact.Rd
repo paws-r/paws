@@ -25,7 +25,7 @@ contact list topics.}
 \item{AttributesData}{The attribute data attached to a contact.}
 }
 \description{
-Updates a contact's preferences for a list. It is not necessary to specify all existing topic preferences in the TopicPreferences object, just the ones that need updating.
+Updates a contact's preferences for a list.
 
 See \url{https://www.paws-r-sdk.com/docs/sesv2_update_contact/} for full documentation.
 }

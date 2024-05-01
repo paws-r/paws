@@ -2,24 +2,26 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_delete_rule_groups_namespace}
 \alias{prometheusservice_delete_rule_groups_namespace}
-\title{Delete a rule groups namespace}
+\title{Deletes one rule groups namespace and its associated rule groups
+definition}
 \usage{
 prometheusservice_delete_rule_groups_namespace(
-  workspaceId,
+  clientToken = NULL,
   name,
-  clientToken = NULL
+  workspaceId
 )
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace to delete rule group definition.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{name}{[required] The rule groups namespace name.}
+\item{name}{[required] The name of the rule groups namespace to delete.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{workspaceId}{[required] The ID of the workspace containing the rule groups namespace and
+definition to delete.}
 }
 \description{
-Delete a rule groups namespace.
+Deletes one rule groups namespace and its associated rule groups definition.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_rule_groups_namespace/} for full documentation.
 }

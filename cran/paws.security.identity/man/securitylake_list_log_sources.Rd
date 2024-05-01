@@ -21,7 +21,7 @@ displayed.}
 \item{nextToken}{If nextToken is returned, there are more results available. You can
 repeat the call using the returned token to retrieve the next page.}
 
-\item{regions}{The list of regions for which log sources are displayed.}
+\item{regions}{The list of Regions for which log sources are displayed.}
 
 \item{sources}{The list of sources for which log sources are displayed.}
 }

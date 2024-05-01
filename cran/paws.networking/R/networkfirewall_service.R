@@ -232,7 +232,7 @@ networkfirewall <- function(config = list(), credentials = list(), endpoint = NU
 
 .networkfirewall$metadata <- list(
   service_name = "networkfirewall",
-  endpoints = list("*" = list(endpoint = "network-firewall.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "network-firewall.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "network-firewall.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "network-firewall.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "network-firewall.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "network-firewall.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "network-firewall.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "network-firewall.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "network-firewall.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "network-firewall.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Network Firewall",
   api_version = "2020-11-12",
   signing_name = "network-firewall",

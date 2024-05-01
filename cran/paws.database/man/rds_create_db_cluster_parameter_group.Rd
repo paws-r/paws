@@ -41,7 +41,7 @@ Example: \code{mysql8.0}
 
 \strong{RDS for PostgreSQL}
 
-Example: \code{postgres12}
+Example: \code{postgres13}
 
 To list all of the available parameter group families for a DB engine,
 use the following command:

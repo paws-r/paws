@@ -160,7 +160,7 @@ plane actions.
 \link[paws.storage:s3control_list_access_grants_locations]{list_access_grants_locations} \tab Returns a list of the locations registered in your S3 Access Grants instance\cr
 \link[paws.storage:s3control_list_access_points]{list_access_points} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab This operation is not supported by directory buckets\cr
-\link[paws.storage:s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 30 days for the Amazon Web Services account making the request\cr
+\link[paws.storage:s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 90 days for the Amazon Web Services account making the request\cr
 \link[paws.storage:s3control_list_multi_region_access_points]{list_multi_region_access_points} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_list_regional_buckets]{list_regional_buckets} \tab This operation is not supported by directory buckets\cr
 \link[paws.storage:s3control_list_storage_lens_configurations]{list_storage_lens_configurations} \tab This operation is not supported by directory buckets\cr

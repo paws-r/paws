@@ -17,11 +17,11 @@ NULL
 #' RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-metrics.html).
 #' 
 #' In addition to these default metrics, you can choose to send extended
-#' metrics or custom metrics or both.
+#' metrics, custom metrics, or both.
 #' 
-#' -   Extended metrics enable you to send metrics with additional
-#'     dimensions not included in the default metrics. You can also send
-#'     extended metrics to Evidently as well as CloudWatch. The valid
+#' -   Extended metrics let you send metrics with additional dimensions
+#'     that aren't included in the default metrics. You can also send
+#'     extended metrics to both Evidently and CloudWatch. The valid
 #'     dimension names for the additional dimensions for extended metrics
 #'     are `BrowserName`, `CountryCode`, `DeviceType`, `FileType`,
 #'     `OSName`, and `PageId`. For more information, see [Extended metrics
@@ -29,10 +29,10 @@ NULL
 #'     Evidently](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/).
 #' 
 #' -   Custom metrics are metrics that you define. You can send custom
-#'     metrics to CloudWatch or to CloudWatch Evidently or to both. With
-#'     custom metrics, you can use any metric name and namespace, and to
-#'     derive the metrics you can use any custom events, built-in events,
-#'     custom attributes, or default attributes.
+#'     metrics to CloudWatch. CloudWatch Evidently, or both. With custom
+#'     metrics, you can use any metric name and namespace. To derive the
+#'     metrics, you can use any custom events, built-in events, custom
+#'     attributes, or default attributes.
 #' 
 #'     You can't send custom metrics to the `AWS/RUM` namespace. You must
 #'     send custom metrics to a custom namespace that you define. The
@@ -71,8 +71,9 @@ NULL
 #' @param AppMonitorName &#91;required&#93; The name of the CloudWatch RUM app monitor that is to send the metrics.
 #' @param Destination &#91;required&#93; The destination to send the metrics to. Valid values are `CloudWatch`
 #' and `Evidently`. If you specify `Evidently`, you must also specify the
-#' ARN of the CloudWatchEvidently experiment that will receive the metrics
-#' and an IAM role that has permission to write to the experiment.
+#' Amazon Resource Name (ARN) of the CloudWatchEvidently experiment that
+#' will receive the metrics and an IAM role that has permission to write to
+#' the experiment.
 #' @param DestinationArn This parameter is required if `Destination` is `Evidently`. If
 #' `Destination` is `CloudWatch`, do not use this parameter.
 #' 
@@ -356,8 +357,9 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' include this structure in your request, and it must include the ID of
 #' the Amazon Cognito identity pool to use for authorization. If you don't
 #' include `AppMonitorConfiguration`, you must set up your own
-#' authorization method. For more information, see Authorize your
-#' application to send data to Amazon Web Services.
+#' authorization method. For more information, see [Authorize your
+#' application to send data to Amazon Web
+#' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
 #' 
 #' If you omit this argument, the sample rate used for RUM is set to 10% of
 #' the user sessions.
@@ -998,11 +1000,17 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
 #' specifies the ARN of the Evidently experiment that will receive the
 #' extended metrics.
 #' @param IamRoleArn This parameter is required if `Destination` is `Evidently`. If
-#' `Destination` is `CloudWatch`, do not use this parameter.
+#' `Destination` is `CloudWatch`, don't use this parameter.
 #' 
 #' This parameter specifies the ARN of an IAM role that RUM will assume to
 #' write to the Evidently experiment that you are sending metrics to. This
 #' role must have permission to write to that experiment.
+#' 
+#' If you specify this parameter, you must be signed on to a role that has
+#' [PassRole](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)
+#' permissions attached to it, to allow the role to be passed. The
+#' [CloudWatchAmazonCloudWatchRUMFullAccess](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/auth-and-access-control-cw.html#managed-policies-cloudwatch-RUM)
+#' policy doesn't include `PassRole` permissions.
 #'
 #' @return
 #' An empty list.
@@ -1183,8 +1191,9 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' include this structure in your request, and it must include the ID of
 #' the Amazon Cognito identity pool to use for authorization. If you don't
 #' include `AppMonitorConfiguration`, you must set up your own
-#' authorization method. For more information, see Authorize your
-#' application to send data to Amazon Web Services.
+#' authorization method. For more information, see [Authorize your
+#' application to send data to Amazon Web
+#' Services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-get-started-authorization.html).
 #' @param CustomEvents Specifies whether this app monitor allows the web client to define and
 #' send custom events. The default is for custom events to be `DISABLED`.
 #' 

@@ -131,6 +131,37 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
 }
 .timestreamquery$operations$delete_scheduled_query <- timestreamquery_delete_scheduled_query
 
+#' Describes the settings for your account that include the query pricing
+#' model and the configured maximum TCUs the service can use for your query
+#' workload
+#'
+#' @description
+#' Describes the settings for your account that include the query pricing model and the configured maximum TCUs the service can use for your query workload.
+#'
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_describe_account_settings/](https://www.paws-r-sdk.com/docs/timestreamquery_describe_account_settings/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_describe_account_settings
+timestreamquery_describe_account_settings <- function() {
+  op <- new_operation(
+    name = "DescribeAccountSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$describe_account_settings_input()
+  output <- .timestreamquery$describe_account_settings_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$describe_account_settings <- timestreamquery_describe_account_settings
+
 #' DescribeEndpoints returns a list of available endpoints to make
 #' Timestream API calls against
 #'
@@ -138,6 +169,8 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
 #' DescribeEndpoints returns a list of available endpoints to make Timestream API calls against. This API is available through both Write and Query.
 #'
 #' See [https://www.paws-r-sdk.com/docs/timestreamquery_describe_endpoints/](https://www.paws-r-sdk.com/docs/timestreamquery_describe_endpoints/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -291,7 +324,7 @@ timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NUL
 #' parameters to be stored by Timestream for later running
 #'
 #' @description
-#' A synchronous operation that allows you to submit a query with parameters to be stored by Timestream for later running. Timestream only supports using this operation with the `PrepareQueryRequest$ValidateOnly` set to `true`.
+#' A synchronous operation that allows you to submit a query with parameters to be stored by Timestream for later running. Timestream only supports using this operation with `ValidateOnly` set to `true`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/timestreamquery_prepare_query/](https://www.paws-r-sdk.com/docs/timestreamquery_prepare_query/) for full documentation.
 #'
@@ -488,6 +521,45 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .timestreamquery$operations$untag_resource <- timestreamquery_untag_resource
+
+#' Transitions your account to use TCUs for query pricing and modifies the
+#' maximum query compute units that you've configured
+#'
+#' @description
+#' Transitions your account to use TCUs for query pricing and modifies the maximum query compute units that you've configured. If you reduce the value of `MaxQueryTCU` to a desired configuration, the new value can take up to 24 hours to be effective.
+#'
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_update_account_settings/](https://www.paws-r-sdk.com/docs/timestreamquery_update_account_settings/) for full documentation.
+#'
+#' @param MaxQueryTCU The maximum number of compute units the service will use at any point in
+#' time to serve your queries. To run queries, you must set a minimum
+#' capacity of 4 TCU. You can set the maximum number of TCU in multiples of
+#' 4, for example, 4, 8, 16, 32, and so on.
+#' 
+#' The maximum value supported for `MaxQueryTCU` is 1000. To request an
+#' increase to this soft limit, contact Amazon Web Services Support. For
+#' information about the default quota for maxQueryTCU, see [Default
+#' quotas](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html#limits.default).
+#' @param QueryPricingModel The pricing model for queries in an account.
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamquery_update_account_settings
+timestreamquery_update_account_settings <- function(MaxQueryTCU = NULL, QueryPricingModel = NULL) {
+  op <- new_operation(
+    name = "UpdateAccountSettings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamquery$update_account_settings_input(MaxQueryTCU = MaxQueryTCU, QueryPricingModel = QueryPricingModel)
+  output <- .timestreamquery$update_account_settings_output()
+  config <- get_config()
+  svc <- .timestreamquery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamquery$operations$update_account_settings <- timestreamquery_update_account_settings
 
 #' Update a scheduled query
 #'

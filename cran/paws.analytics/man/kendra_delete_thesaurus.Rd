@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_delete_thesaurus}
 \alias{kendra_delete_thesaurus}
-\title{Deletes an existing Amazon Kendra thesaurus}
+\title{Deletes an Amazon Kendra thesaurus}
 \usage{
 kendra_delete_thesaurus(Id, IndexId)
 }
@@ -12,7 +12,7 @@ kendra_delete_thesaurus(Id, IndexId)
 \item{IndexId}{[required] The identifier of the index for the thesaurus.}
 }
 \description{
-Deletes an existing Amazon Kendra thesaurus.
+Deletes an Amazon Kendra thesaurus.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_delete_thesaurus/} for full documentation.
 }

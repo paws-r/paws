@@ -9,7 +9,7 @@ personalize_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] The resource's Amazon Resource Name (ARN).}
 
-\item{tags}{[required] Tags to apply to the resource. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{Tagging Amazon Personalize recources}.}
+\item{tags}{[required] Tags to apply to the resource. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{Tagging Amazon Personalize resources}.}
 }
 \description{
 Add a list of tags to a resource.

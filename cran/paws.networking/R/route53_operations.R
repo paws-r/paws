@@ -1146,6 +1146,8 @@ route53_get_change <- function(Id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_get_checker_ip_ranges/](https://www.paws-r-sdk.com/docs/route53_get_checker_ip_ranges/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname route53_get_checker_ip_ranges
@@ -1225,7 +1227,7 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' [ISO standard 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 #' 
-#' Route 53 also supports the contry code **UA** forr Ukraine.
+#' Route 53 also supports the country code **UA** for Ukraine.
 #' @param SubdivisionCode The code for the subdivision, such as a particular state within the
 #' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
@@ -1291,6 +1293,8 @@ route53_get_health_check <- function(HealthCheckId) {
 #' Retrieves the number of health checks that are associated with the current Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_get_health_check_count/](https://www.paws-r-sdk.com/docs/route53_get_health_check_count/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1424,6 +1428,8 @@ route53_get_hosted_zone <- function(Id) {
 #' Retrieves the number of hosted zones that are associated with the current Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_count/](https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_count/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1644,6 +1650,8 @@ route53_get_traffic_policy_instance <- function(Id) {
 #' Gets the number of traffic policy instances that are associated with the current Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance_count/](https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance_count/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -2797,6 +2805,11 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' the interval you specify in `RequestInterval`. Using an IPv4 address
 #' that is returned by DNS, Route 53 then checks the health of the
 #' endpoint.
+#' 
+#' If you don't specify a value for `IPAddress`, you can’t update the
+#' health check to remove the `FullyQualifiedDomainName`; if you don’t
+#' specify a value for `IPAddress` on creation, a
+#' `FullyQualifiedDomainName` is required.
 #' 
 #' If you don't specify a value for `IPAddress`, Route 53 uses only IPv4 to
 #' send health checks to the endpoint. If there's no resource record set

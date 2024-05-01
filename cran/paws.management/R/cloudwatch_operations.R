@@ -717,6 +717,9 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' returns the newest data first and paginates when the `MaxDatapoints`
 #' limit is reached. `TimestampAscending` returns the oldest data first and
 #' paginates when the `MaxDatapoints` limit is reached.
+#' 
+#' If you omit this parameter, the default of `TimestampDescending` is
+#' used.
 #' @param MaxDatapoints The maximum number of data points the request should return before
 #' paginating. If you omit this, the default of 100,800 is used.
 #' @param LabelOptions This structure includes the `Timezone` parameter, which you can use to
@@ -1163,6 +1166,9 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' and updating the model. You can specify as many as 10 time ranges.
 #' 
 #' The configuration can also include the time zone to use for the metric.
+#' @param MetricCharacteristics Use this object to include parameters to provide information about your
+#' metric to CloudWatch to help it build more accurate anomaly detection
+#' models. Currently, it includes the `PeriodicSpikes` parameter.
 #' @param SingleMetricAnomalyDetector A single metric anomaly detector to be created.
 #' 
 #' When using `SingleMetricAnomalyDetector`, you cannot include the
@@ -1176,7 +1182,7 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' -   `Stat`
 #' 
-#' -   the `MetricMatchAnomalyDetector` parameters of
+#' -   the `MetricMathAnomalyDetector` parameters of
 #'     `PutAnomalyDetectorInput`
 #' 
 #' Instead, specify the single metric anomaly detector attributes as part
@@ -1203,14 +1209,14 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_anomaly_detector
-cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, Stat = NULL, Configuration = NULL, SingleMetricAnomalyDetector = NULL, MetricMathAnomalyDetector = NULL) {
+cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, Stat = NULL, Configuration = NULL, MetricCharacteristics = NULL, SingleMetricAnomalyDetector = NULL, MetricMathAnomalyDetector = NULL) {
   op <- new_operation(
     name = "PutAnomalyDetector",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$put_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, Configuration = Configuration, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
+  input <- .cloudwatch$put_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, Configuration = Configuration, MetricCharacteristics = MetricCharacteristics, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
   output <- .cloudwatch$put_anomaly_detector_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)
@@ -1233,7 +1239,25 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' from any other state. Each action is specified as an Amazon Resource
 #' Name (ARN).
 #' 
-#' Valid Values: `arn:aws:sns:region:account-id:sns-topic-name ` |
+#' Valid Values: \]
+#' 
+#' **Amazon SNS actions:**
+#' 
+#' `arn:aws:sns:region:account-id:sns-topic-name `
+#' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' 
+#' **Systems Manager actions:**
+#' 
 #' `arn:aws:ssm:region:account-id:opsitem:severity `
 #' @param AlarmDescription The description for the composite alarm.
 #' @param AlarmName &#91;required&#93; The name for the composite alarm. This name must be unique within the
@@ -1298,18 +1322,55 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' `INSUFFICIENT_DATA` state from any other state. Each action is specified
 #' as an Amazon Resource Name (ARN).
 #' 
-#' Valid Values: `arn:aws:sns:region:account-id:sns-topic-name `
+#' Valid Values: \]
+#' 
+#' **Amazon SNS actions:**
+#' 
+#' `arn:aws:sns:region:account-id:sns-topic-name `
+#' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:alias-name `
 #' @param OKActions The actions to execute when this alarm transitions to an `OK` state from
 #' any other state. Each action is specified as an Amazon Resource Name
 #' (ARN).
 #' 
-#' Valid Values: `arn:aws:sns:region:account-id:sns-topic-name `
-#' @param Tags A list of key-value pairs to associate with the composite alarm. You can
-#' associate as many as 50 tags with an alarm.
+#' Valid Values: \]
+#' 
+#' **Amazon SNS actions:**
+#' 
+#' `arn:aws:sns:region:account-id:sns-topic-name `
+#' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' @param Tags A list of key-value pairs to associate with the alarm. You can associate
+#' as many as 50 tags with an alarm. To be able to associate tags with the
+#' alarm when you create the alarm, you must have the
+#' `cloudwatch:TagResource` permission.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
-#' use them to scope user permissions, by granting a user permission to
+#' use them to scope user permissions by granting a user permission to
 #' access or change only resources with certain tag values.
+#' 
+#' If you are using this operation to update an existing alarm, any tags
+#' you specify in this parameter are ignored. To change the tags of an
+#' existing alarm, use [`tag_resource`][cloudwatch_tag_resource] or
+#' [`untag_resource`][cloudwatch_untag_resource].
 #' @param ActionsSuppressor Actions will be suppressed if the suppressor alarm is in the `ALARM`
 #' state. `ActionsSuppressor` can be an AlarmName or an Amazon Resource
 #' Name (ARN) from an existing alarm.
@@ -1505,9 +1566,20 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' 
 #' -   `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' 
 #' **SNS notification action:**
 #' 
-#' -   `arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' -   `arn:aws:sns:region:account-id:sns-topic-name `
 #' 
 #' **SSM integration actions:**
 #' 
@@ -1540,9 +1612,20 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' 
 #' -   `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' 
 #' **SNS notification action:**
 #' 
-#' -   `arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' -   `arn:aws:sns:region:account-id:sns-topic-name `
 #' 
 #' **SSM integration actions:**
 #' 
@@ -1575,9 +1658,20 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' 
 #' -   `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
 #' 
+#' **Lambda actions:**
+#' 
+#' -   Invoke the latest version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name `
+#' 
+#' -   Invoke a specific version of a Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:version-number `
+#' 
+#' -   Invoke a function by using an alias Lambda function:
+#'     `arn:aws:lambda:region:account-id:function:function-name:alias-name `
+#' 
 #' **SNS notification action:**
 #' 
-#' -   `arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' -   `arn:aws:sns:region:account-id:sns-topic-name `
 #' 
 #' **SSM integration actions:**
 #' 

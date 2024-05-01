@@ -155,6 +155,7 @@ the user guide.
 \link[paws.database:rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy\cr
 \link[paws.database:rds_create_db_proxy_endpoint]{create_db_proxy_endpoint} \tab Creates a DBProxyEndpoint\cr
 \link[paws.database:rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group\cr
+\link[paws.database:rds_create_db_shard_group]{create_db_shard_group} \tab Creates a new DB shard group for Aurora Limitless Database\cr
 \link[paws.database:rds_create_db_snapshot]{create_db_snapshot} \tab Creates a snapshot of a DB instance\cr
 \link[paws.database:rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
 \link[paws.database:rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
@@ -175,6 +176,7 @@ the user guide.
 \link[paws.database:rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing DB proxy\cr
 \link[paws.database:rds_delete_db_proxy_endpoint]{delete_db_proxy_endpoint} \tab Deletes a DBProxyEndpoint\cr
 \link[paws.database:rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group\cr
+\link[paws.database:rds_delete_db_shard_group]{delete_db_shard_group} \tab Deletes an Aurora Limitless Database DB shard group\cr
 \link[paws.database:rds_delete_db_snapshot]{delete_db_snapshot} \tab Deletes a DB snapshot\cr
 \link[paws.database:rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
 \link[paws.database:rds_delete_event_subscription]{delete_event_subscription} \tab Deletes an RDS event notification subscription\cr
@@ -206,6 +208,7 @@ the user guide.
 \link[paws.database:rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects\cr
 \link[paws.database:rds_describe_db_recommendations]{describe_db_recommendations} \tab Describes the recommendations to resolve the issues for your DB instances, DB clusters, and DB parameter groups\cr
 \link[paws.database:rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
+\link[paws.database:rds_describe_db_shard_groups]{describe_db_shard_groups} \tab Describes existing Aurora Limitless Database DB shard groups\cr
 \link[paws.database:rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
 \link[paws.database:rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
 \link[paws.database:rds_describe_db_snapshot_tenant_databases]{describe_db_snapshot_tenant_databases} \tab Describes the tenant databases that exist in a DB snapshot\cr
@@ -247,11 +250,13 @@ the user guide.
 \link[paws.database:rds_modify_db_proxy_endpoint]{modify_db_proxy_endpoint} \tab Changes the settings for an existing DB proxy endpoint\cr
 \link[paws.database:rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup\cr
 \link[paws.database:rds_modify_db_recommendation]{modify_db_recommendation} \tab Updates the recommendation status and recommended action status for the specified recommendation\cr
+\link[paws.database:rds_modify_db_shard_group]{modify_db_shard_group} \tab Modifies the settings of an Aurora Limitless Database DB shard group\cr
 \link[paws.database:rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version\cr
 \link[paws.database:rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
 \link[paws.database:rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
 \link[paws.database:rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
 \link[paws.database:rds_modify_global_cluster]{modify_global_cluster} \tab Modifies a setting for an Amazon Aurora global database cluster\cr
+\link[paws.database:rds_modify_integration]{modify_integration} \tab Modifies a zero-ETL integration with Amazon Redshift\cr
 \link[paws.database:rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
 \link[paws.database:rds_modify_tenant_database]{modify_tenant_database} \tab Modifies an existing tenant database in a DB instance\cr
 \link[paws.database:rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
@@ -259,6 +264,7 @@ the user guide.
 \link[paws.database:rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering\cr
 \link[paws.database:rds_reboot_db_cluster]{reboot_db_cluster} \tab You might need to reboot your DB cluster, usually for maintenance reasons\cr
 \link[paws.database:rds_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons\cr
+\link[paws.database:rds_reboot_db_shard_group]{reboot_db_shard_group} \tab You might need to reboot your DB shard group, usually for maintenance reasons\cr
 \link[paws.database:rds_register_db_proxy_targets]{register_db_proxy_targets} \tab Associate one or more DBProxyTarget data structures with a DBProxyTargetGroup\cr
 \link[paws.database:rds_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches an Aurora secondary cluster from an Aurora global database cluster\cr
 \link[paws.database:rds_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Removes the asssociation of an Amazon Web Services Identity and Access Management (IAM) role from a DB cluster\cr

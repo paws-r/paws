@@ -15,7 +15,8 @@ lightsail_update_relational_database(
   disableBackupRetention = NULL,
   publiclyAccessible = NULL,
   applyImmediately = NULL,
-  caCertificateIdentifier = NULL
+  caCertificateIdentifier = NULL,
+  relationalDatabaseBlueprintId = NULL
 )
 }
 \arguments{
@@ -94,6 +95,14 @@ outage.
 Default: \code{false}}
 
 \item{caCertificateIdentifier}{Indicates the certificate that needs to be associated with the database.}
+
+\item{relationalDatabaseBlueprintId}{This parameter is used to update the major version of the database.
+Enter the \code{blueprintId} for the major version that you want to update
+to.
+
+Use the
+\code{\link[=lightsail_get_relational_database_blueprints]{get_relational_database_blueprints}}
+action to get a list of available blueprint IDs.}
 }
 \description{
 Allows the update of one or more attributes of a database in Amazon Lightsail.

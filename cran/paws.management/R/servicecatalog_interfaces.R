@@ -53,7 +53,7 @@ NULL
 
 .servicecatalog$associate_service_action_with_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -281,7 +281,7 @@ NULL
 
 .servicecatalog$delete_service_action_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -545,7 +545,7 @@ NULL
 
 .servicecatalog$disassociate_service_action_from_provisioning_artifact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ProductId = structure(logical(0), tags = list(type = "string")), ProvisioningArtifactId = structure(logical(0), tags = list(type = "string")), ServiceActionId = structure(logical(0), tags = list(type = "string")), AcceptLanguage = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -27,9 +27,9 @@ referencing the file in a command.
 For examples, see the following topics in the \emph{Amazon Web Services
 Systems Manager User Guide}.
 \itemize{
-\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html}{Create an SSM document (Amazon Web Services API)}
-\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html}{Create an SSM document (Amazon Web Services CLI)}
-\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html}{Create an SSM document (API)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-console}{Create an SSM document (console)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-cli}{Create an SSM document (command line)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-api}{Create an SSM document (API)}
 }}
 
 \item{Requires}{A list of SSM documents required by a document. This parameter is used
@@ -51,6 +51,9 @@ reserved by Amazon Web Services for use as document name prefixes:
 \item \code{aws}
 \item \code{amazon}
 \item \code{amzn}
+\item \code{AWSEC2}
+\item \code{AWSConfigRemediation}
+\item \code{AWSSupport}
 }}
 
 \item{DisplayName}{An optional field where you can specify a friendly name for the SSM

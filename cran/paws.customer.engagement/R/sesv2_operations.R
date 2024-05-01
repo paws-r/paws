@@ -794,6 +794,8 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_get_account/](https://www.paws-r-sdk.com/docs/sesv2_get_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname sesv2_get_account
@@ -1104,6 +1106,8 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' Retrieve information about the status of the Deliverability dashboard for your account. When the Deliverability dashboard is enabled, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email. You also gain the ability to perform predictive inbox placement tests.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_get_deliverability_dashboard_options/](https://www.paws-r-sdk.com/docs/sesv2_get_deliverability_dashboard_options/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -2029,9 +2033,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' 
 #' If the value is `false`, then your account is in the *sandbox*. When
 #' your account is in the sandbox, you can only send email to verified
-#' identities. Additionally, the maximum number of emails you can send in a
-#' 24-hour period (your sending quota) is 200, and the maximum number of
-#' emails you can send per second (your maximum sending rate) is 1.
+#' identities.
 #' 
 #' If the value is `true`, then your account has production access. When
 #' your account has production access, you can send email to any address.
@@ -2876,7 +2878,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
-#' Simple message Raw message or a template Message.
+#' Simple message, Raw message, or a Templated message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using the [`send_email`][sesv2_send_email] operation. Tags
 #' correspond to characteristics of the email that you define, so that you
@@ -3045,7 +3047,7 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
 #' Updates a contact's preferences for a list
 #'
 #' @description
-#' Updates a contact's preferences for a list. It is not necessary to specify all existing topic preferences in the TopicPreferences object, just the ones that need updating.
+#' Updates a contact's preferences for a list.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sesv2_update_contact/](https://www.paws-r-sdk.com/docs/sesv2_update_contact/) for full documentation.
 #'

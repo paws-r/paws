@@ -95,7 +95,7 @@ the value \code{TeamA}, specify \code{tag:Owner} for the filter name and \code{T
 for the filter value.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
 
 \item{AwsService}{Limits which service in Amazon Web Services that the pool can be used
 in. "ec2", for example, allows users to use space for Elastic IP

@@ -4,9 +4,11 @@
 \alias{entityresolution_start_id_mapping_job}
 \title{Starts the IdMappingJob of a workflow}
 \usage{
-entityresolution_start_id_mapping_job(workflowName)
+entityresolution_start_id_mapping_job(outputSourceConfig = NULL, workflowName)
 }
 \arguments{
+\item{outputSourceConfig}{A list of \code{OutputSource} objects.}
+
 \item{workflowName}{[required] The name of the ID mapping job to be retrieved.}
 }
 \description{

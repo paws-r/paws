@@ -2,9 +2,15 @@
 % Please edit documentation in R/connectcases_operations.R
 \name{connectcases_create_case}
 \alias{connectcases_create_case}
-\title{Creates a case in the specified Cases domain}
+\title{If you provide a value for PerformedBy}
 \usage{
-connectcases_create_case(clientToken = NULL, domainId, fields, templateId)
+connectcases_create_case(
+  clientToken = NULL,
+  domainId,
+  fields,
+  performedBy = NULL,
+  templateId
+)
 }
 \arguments{
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
@@ -17,10 +23,12 @@ populates this field. For more information about idempotency, see
 \item{fields}{[required] An array of objects with field ID (matching ListFields/DescribeField)
 and value union data.}
 
+\item{performedBy}{}
+
 \item{templateId}{[required] A unique identifier of a template.}
 }
 \description{
-Creates a case in the specified Cases domain. Case system and custom fields are taken as an array id/value pairs with a declared data types.
+If you provide a value for \code{PerformedBy.UserArn} you must also have \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html}{connect:DescribeUser} permission on the User ARN resource that you provide
 
 See \url{https://www.paws-r-sdk.com/docs/connectcases_create_case/} for full documentation.
 }

@@ -11,7 +11,9 @@ connect_update_security_profile(
   InstanceId,
   AllowedAccessControlTags = NULL,
   TagRestrictedResources = NULL,
-  Applications = NULL
+  Applications = NULL,
+  HierarchyRestrictedResources = NULL,
+  AllowedAccessControlHierarchyGroupId = NULL
 )
 }
 \arguments{
@@ -31,10 +33,14 @@ resources in Amazon Connect.}
 \item{TagRestrictedResources}{The list of resources that a security profile applies tag restrictions
 to in Amazon Connect.}
 
-\item{Applications}{This API is in preview release for Amazon Connect and is subject to
-change.
+\item{Applications}{A list of the third-party application's metadata.}
 
-A list of the third-party application's metadata.}
+\item{HierarchyRestrictedResources}{The list of resources that a security profile applies hierarchy
+restrictions to in Amazon Connect. Following are acceptable
+ResourceNames: \code{User}.}
+
+\item{AllowedAccessControlHierarchyGroupId}{The identifier of the hierarchy group that a security profile uses to
+restrict access to resources in Amazon Connect.}
 }
 \description{
 Updates a security profile.

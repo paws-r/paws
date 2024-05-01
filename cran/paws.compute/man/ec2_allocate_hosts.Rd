@@ -30,7 +30,7 @@ Default: \code{on}}
 \item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
 you specify an instance type, the Dedicated Hosts support instances of

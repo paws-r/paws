@@ -8,7 +8,8 @@ specified by a resource Amazon Resource Name (ARN)}
 backup_list_recovery_points_by_resource(
   ResourceArn,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  ManagedByAWSBackupOnly = NULL
 )
 }
 \arguments{
@@ -23,6 +24,16 @@ pointed to by the next token.}
 \item{MaxResults}{The maximum number of items to be returned.
 
 Amazon RDS requires a value of at least 20.}
+
+\item{ManagedByAWSBackupOnly}{This attribute filters recovery points based on ownership.
+
+If this is set to \code{TRUE}, the response will contain recovery points
+associated with the selected resources that are managed by Backup.
+
+If this is set to \code{FALSE}, the response will contain all recovery points
+associated with the selected resource.
+
+Type: Boolean}
 }
 \description{
 Returns detailed information about all the recovery points of the type specified by a resource Amazon Resource Name (ARN).

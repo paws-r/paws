@@ -8,10 +8,18 @@ parameter names}
 ssm_get_parameters(Names, WithDecryption = NULL)
 }
 \arguments{
-\item{Names}{[required] Names of the parameters for which you want to query information.
+\item{Names}{[required] The names or Amazon Resource Names (ARNs) of the parameters that you
+want to query. For parameters shared with you from another account, you
+must use the full ARNs.
 
 To query by parameter label, use \code{"Name": "name:label"}. To query by
-parameter version, use \code{"Name": "name:version"}.}
+parameter version, use \code{"Name": "name:version"}.
+
+The results for \code{\link[=ssm_get_parameters]{get_parameters}} requests are
+listed in alphabetical order in query responses.
+
+For information about shared parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html}{Working with shared parameters}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{WithDecryption}{Return decrypted secure string value. Return decrypted values for secure
 string parameters. This flag is ignored for \code{String} and \code{StringList}

@@ -10,7 +10,11 @@ organizations_create_policy(Content, Description, Name, Type, Tags = NULL)
 \arguments{
 \item{Content}{[required] The policy text content to add to the new policy. The text that you
 supply must adhere to the rules of the policy type you specify in the
-\code{Type} parameter.}
+\code{Type} parameter.
+
+The maximum size of a policy document depends on the policy's type. For
+more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values}{Maximum and minimum values}
+in the \emph{Organizations User Guide}.}
 
 \item{Description}{[required] An optional description to assign to the policy.}
 

@@ -17,8 +17,9 @@ cloudwatchrum_batch_create_rum_metric_definitions(
 
 \item{Destination}{[required] The destination to send the metrics to. Valid values are \code{CloudWatch}
 and \code{Evidently}. If you specify \code{Evidently}, you must also specify the
-ARN of the CloudWatchEvidently experiment that will receive the metrics
-and an IAM role that has permission to write to the experiment.}
+Amazon Resource Name (ARN) of the CloudWatchEvidently experiment that
+will receive the metrics and an IAM role that has permission to write to
+the experiment.}
 
 \item{DestinationArn}{This parameter is required if \code{Destination} is \code{Evidently}. If
 \code{Destination} is \code{CloudWatch}, do not use this parameter.

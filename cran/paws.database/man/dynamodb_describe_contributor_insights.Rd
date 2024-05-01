@@ -8,7 +8,8 @@ global secondary index}
 dynamodb_describe_contributor_insights(TableName, IndexName = NULL)
 }
 \arguments{
-\item{TableName}{[required] The name of the table to describe.}
+\item{TableName}{[required] The name of the table to describe. You can also provide the Amazon
+Resource Name (ARN) of the table in this parameter.}
 
 \item{IndexName}{The name of the global secondary index to describe, if applicable.}
 }

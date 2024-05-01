@@ -521,8 +521,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/commands/auth/) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -972,11 +971,6 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @param PreferredMaintenanceWindow Specifies the weekly time range during which maintenance on the cluster
 #' is performed. It is specified as a range in the format
 #' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-#' is a 60 minute period. Valid values for `ddd` are:
-#' 
-#' Specifies the weekly time range during which maintenance on the cluster
-#' is performed. It is specified as a range in the format
-#' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 #' is a 60 minute period.
 #' 
 #' Valid values for `ddd` are:
@@ -1038,8 +1032,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/commands/auth/) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -3341,8 +3334,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at
-#' [AUTH](https://redis.io/commands/auth/).
+#' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -3614,8 +3606,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
 #'     '%'
 #' 
-#' For more information, see AUTH password at
-#' [AUTH](https://redis.io/commands/auth/).
+#' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 

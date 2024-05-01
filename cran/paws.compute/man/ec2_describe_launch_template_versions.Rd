@@ -26,7 +26,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{LaunchTemplateId}{The ID of the launch template.
 
 To describe one or more versions of a specified launch template, you
-must specify either the \code{LaunchTemplateId} or the \code{LaunchTemplateName},
+must specify either the launch template ID or the launch template name,
 but not both.
 
 To describe all the latest or default launch template versions in your
@@ -35,7 +35,7 @@ account, you must omit this parameter.}
 \item{LaunchTemplateName}{The name of the launch template.
 
 To describe one or more versions of a specified launch template, you
-must specify either the \code{LaunchTemplateName} or the \code{LaunchTemplateId},
+must specify either the launch template name or the launch template ID,
 but not both.
 
 To describe all the latest or default launch template versions in your

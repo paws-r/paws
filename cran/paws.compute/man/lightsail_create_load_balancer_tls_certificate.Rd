@@ -24,12 +24,12 @@ certificates that can be issue in a 365-day period. For more
 information, see
 \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Limits}.}
 
-\item{certificateDomainName}{[required] The domain name (e.g., \code{example.com}) for your SSL/TLS certificate.}
+\item{certificateDomainName}{[required] The domain name (\code{example.com}) for your SSL/TLS certificate.}
 
 \item{certificateAlternativeNames}{An array of strings listing alternative domains and subdomains for your
 SSL/TLS certificate. Lightsail will de-dupe the names for you. You can
 have a maximum of 9 alternative names (in addition to the 1 primary
-domain). We do not support wildcards (e.g., \verb{*.example.com}).}
+domain). We do not support wildcards (\verb{*.example.com}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 

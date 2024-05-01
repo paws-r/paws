@@ -32,7 +32,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of
-your modification request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+your modification request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
 
 \item{SseSpecification}{The options for server side encryption.}
 }

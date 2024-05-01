@@ -13,7 +13,7 @@ lambda_list_layer_versions(
 )
 }
 \arguments{
-\item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.
+\item{CompatibleRuntime}{A runtime identifier. For example, \code{java21}.
 
 The following list includes deprecated runtimes. For more information,
 see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}

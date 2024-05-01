@@ -167,7 +167,7 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
 
 .connectwisdomservice$metadata <- list(
   service_name = "connectwisdomservice",
-  endpoints = list("*" = list(endpoint = "wisdom.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wisdom.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "wisdom.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wisdom.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "wisdom.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wisdom.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "wisdom.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "wisdom.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wisdom.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "wisdom.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Wisdom",
   api_version = "2020-10-19",
   signing_name = "wisdom",

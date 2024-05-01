@@ -24,6 +24,22 @@ test_that("list_exports", {
   expect_error(svc$list_exports(), NA)
 })
 
+test_that("list_generated_templates", {
+  expect_error(svc$list_generated_templates(), NA)
+})
+
+test_that("list_generated_templates", {
+  expect_error(svc$list_generated_templates(MaxResults = 20), NA)
+})
+
+test_that("list_resource_scans", {
+  expect_error(svc$list_resource_scans(), NA)
+})
+
+test_that("list_resource_scans", {
+  expect_error(svc$list_resource_scans(MaxResults = 20), NA)
+})
+
 test_that("list_stack_sets", {
   expect_error(svc$list_stack_sets(), NA)
 })

@@ -2,15 +2,15 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_delete_cluster}
 \alias{docdbelastic_delete_cluster}
-\title{Delete a Elastic DocumentDB cluster}
+\title{Delete an elastic cluster}
 \usage{
 docdbelastic_delete_cluster(clusterArn)
 }
 \arguments{
-\item{clusterArn}{[required] The arn of the Elastic DocumentDB cluster that is to be deleted.}
+\item{clusterArn}{[required] The ARN identifier of the elastic cluster that is to be deleted.}
 }
 \description{
-Delete a Elastic DocumentDB cluster.
+Delete an elastic cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_delete_cluster/} for full documentation.
 }

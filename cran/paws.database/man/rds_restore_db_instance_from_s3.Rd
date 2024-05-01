@@ -54,7 +54,8 @@ rds_restore_db_instance_from_s3(
   StorageThroughput = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  DedicatedLogVolume = NULL
+  DedicatedLogVolume = NULL,
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -240,10 +241,10 @@ in the \emph{Amazon RDS User Guide.}}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid Values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
-If you specify \code{io1} or \code{gp3}, you must also include a value for the
-\code{Iops} parameter.
+If you specify \code{io1}, \code{io2}, or \code{gp3}, you must also include a value for
+the \code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified; otherwise \code{gp2}}
 
@@ -421,6 +422,15 @@ Amazon Web Services Region.}
 
 \item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
 instance.}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB instance's server
+certificate.
+
+This setting doesn't apply to RDS Custom DB instances.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
+in the \emph{Amazon Aurora User Guide}.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}

@@ -23,13 +23,8 @@ quicksight_register_user(
 )
 }
 \arguments{
-\item{IdentityType}{[required] Amazon QuickSight supports several ways of managing the identity of
-users. This parameter accepts two values:
-\itemize{
-\item \code{IAM}: A user whose identity maps to an existing IAM user or role.
-\item \code{QUICKSIGHT}: A user whose identity is owned and managed internally
-by Amazon QuickSight.
-}}
+\item{IdentityType}{[required] The identity type that your Amazon QuickSight account uses to manage the
+identity of users.}
 
 \item{Email}{[required] The email address of the user that you want to register.}
 
@@ -89,7 +84,7 @@ the named set of permissions to a Amazon QuickSight user.
 Amazon QuickSight custom permissions are applied through IAM policies.
 Therefore, they override the permissions typically granted by assigning
 Amazon QuickSight users to one of the default security cohorts in Amazon
-QuickSight (admin, author, reader).
+QuickSight (admin, author, reader, admin pro, author pro, reader pro).
 
 This feature is available only to Amazon QuickSight Enterprise edition
 subscriptions.}

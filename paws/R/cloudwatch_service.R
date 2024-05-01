@@ -175,7 +175,7 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .cloudwatch$metadata <- list(
   service_name = "monitoring",
-  endpoints = list("*" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "monitoring.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "monitoring.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "monitoring.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "monitoring.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "monitoring.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "monitoring.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "monitoring.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "monitoring.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CloudWatch",
   api_version = "2010-08-01",
   signing_name = "monitoring",

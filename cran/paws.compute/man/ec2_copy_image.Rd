@@ -14,12 +14,13 @@ ec2_copy_image(
   SourceRegion,
   DestinationOutpostArn = NULL,
   DryRun = NULL,
-  CopyImageTags = NULL
+  CopyImageTags = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
 in the \emph{Amazon EC2 API Reference}.}
 
 \item{Description}{A description for the new AMI in the destination Region.}
@@ -29,8 +30,8 @@ be encrypted. You can encrypt a copy of an unencrypted snapshot, but you
 cannot create an unencrypted copy of an encrypted snapshot. The default
 KMS key for Amazon EBS is used unless you specify a non-default Key
 Management Service (KMS) KMS key using \code{KmsKeyId}. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon EC2 User Guide}.}
+see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS encryption}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{KmsKeyId}{The identifier of the symmetric Key Management Service (KMS) KMS key to
 use when creating encrypted volumes. If this parameter is not specified,
@@ -67,8 +68,8 @@ Services Region to an Outpost. The AMI must be in the Region of the
 destination Outpost. You cannot copy an AMI from an Outpost to a Region,
 from one Outpost to another, or within the same Outpost.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#copy-amis}{Copy AMIs from an Amazon Web Services Region to an Outpost}
-in the \emph{Amazon EC2 User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#copy-amis}{Copy AMIs from an Amazon Web Services Region to an Outpost}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -86,6 +87,19 @@ other Amazon Web Services accounts
 }
 
 Default: Your user-defined AMI tags are not copied.}
+
+\item{TagSpecifications}{The tags to apply to the new AMI and new snapshots. You can tag the AMI,
+the snapshots, or both.
+\itemize{
+\item To tag the new AMI, the value for \code{ResourceType} must be \code{image}.
+\item To tag the new snapshots, the value for \code{ResourceType} must be
+\code{snapshot}. The same tag is applied to all the new snapshots.
+}
+
+If you specify other values for \code{ResourceType}, the request fails.
+
+To tag an AMI or snapshot after it has been created, see
+\code{\link[=ec2_create_tags]{create_tags}}.}
 }
 \description{
 Initiates the copy of an AMI. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.

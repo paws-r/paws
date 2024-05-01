@@ -3,7 +3,7 @@
 \name{servicediscovery_list_services}
 \alias{servicediscovery_list_services}
 \title{Lists summary information for all the services that are associated with
-one or more specified namespaces}
+one or more namespaces}
 \usage{
 servicediscovery_list_services(
   NextToken = NULL,
@@ -38,7 +38,7 @@ If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_services]{list_services}}.}
 }
 \description{
-Lists summary information for all the services that are associated with one or more specified namespaces.
+Lists summary information for all the services that are associated with one or more namespaces.
 
 See \url{https://www.paws-r-sdk.com/docs/servicediscovery_list_services/} for full documentation.
 }

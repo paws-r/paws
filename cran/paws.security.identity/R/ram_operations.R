@@ -725,6 +725,8 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 #'
 #' See [https://www.paws-r-sdk.com/docs/ram_enable_sharing_with_aws_organization/](https://www.paws-r-sdk.com/docs/ram_enable_sharing_with_aws_organization/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname ram_enable_sharing_with_aws_organization

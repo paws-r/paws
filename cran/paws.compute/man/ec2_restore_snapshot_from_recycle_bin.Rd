@@ -15,7 +15,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Restores a snapshot from the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps}{Restore snapshots from the Recycle Bin} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Restores a snapshot from the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-snaps.html#recycle-bin-restore-snaps}{Restore snapshots from the Recycle Bin} in the \emph{Amazon EBS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_restore_snapshot_from_recycle_bin/} for full documentation.
 }

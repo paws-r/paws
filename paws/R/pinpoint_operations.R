@@ -4202,6 +4202,7 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
 #'     MessagesPerSecond = 123,
 #'     Platform = "string",
 #'     RoleArn = "string",
+#'     OrchestrationSendingRoleArn = "string",
 #'     Version = 123
 #'   )
 #' )
@@ -9074,6 +9075,7 @@ pinpoint_get_channels <- function(ApplicationId) {
 #'     MessagesPerSecond = 123,
 #'     Platform = "string",
 #'     RoleArn = "string",
+#'     OrchestrationSendingRoleArn = "string",
 #'     Version = 123
 #'   )
 #' )
@@ -16448,6 +16450,7 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 #'     MessagesPerSecond = 123,
 #'     Platform = "string",
 #'     RoleArn = "string",
+#'     OrchestrationSendingRoleArn = "string",
 #'     Version = 123
 #'   )
 #' )
@@ -16462,7 +16465,8 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 #'     Enabled = TRUE|FALSE,
 #'     FromAddress = "string",
 #'     Identity = "string",
-#'     RoleArn = "string"
+#'     RoleArn = "string",
+#'     OrchestrationSendingRoleArn = "string"
 #'   )
 #' )
 #' ```

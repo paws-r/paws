@@ -267,7 +267,8 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
 #' 
 #' If you omit this parameter, the default of `STANDARD` is used.
 #' 
-#' After a log group is created, its class can't be changed.
+#' The value of `logGroupClass` can't be changed after a log group is
+#' created.
 #' 
 #' For details about the features supported by each class, see [Log
 #' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
@@ -325,13 +326,12 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' Deletes a CloudWatch Logs account policy
 #'
 #' @description
-#' Deletes a CloudWatch Logs account policy.
+#' Deletes a CloudWatch Logs account policy. This stops the policy from applying to all log groups or a subset of log groups in the account. Log-group level policies will still be in effect.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_account_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_account_policy/) for full documentation.
 #'
 #' @param policyName &#91;required&#93; The name of the policy to delete.
-#' @param policyType &#91;required&#93; The type of policy to delete. Currently, the only valid value is
-#' `DATA_PROTECTION_POLICY`.
+#' @param policyType &#91;required&#93; The type of policy to delete.
 #'
 #' @keywords internal
 #'
@@ -785,8 +785,7 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_account_policies/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_account_policies/) for full documentation.
 #'
 #' @param policyType &#91;required&#93; Use this parameter to limit the returned policies to only the policies
-#' that match the policy type that you specify. Currently, the only valid
-#' value is `DATA_PROTECTION_POLICY`.
+#' that match the policy type that you specify.
 #' @param policyName Use this parameter to limit the returned policies to only the policy
 #' with the name that you specify.
 #' @param accountIdentifiers If you are using an account that is set up as a monitoring account for
@@ -1449,10 +1448,10 @@ cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
 }
 .cloudwatchlogs$operations$get_data_protection_policy <- cloudwatchlogs_get_data_protection_policy
 
-#' Returns complete information about one delivery
+#' Returns complete information about one logical delivery
 #'
 #' @description
-#' Returns complete information about one *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*
+#' Returns complete information about one logical *delivery*. A delivery is a connection between a [*delivery source*](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html) and a [*delivery destination*](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/) for full documentation.
 #'
@@ -1910,18 +1909,21 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 }
 .cloudwatchlogs$operations$list_tags_log_group <- cloudwatchlogs_list_tags_log_group
 
-#' Creates an account-level data protection policy that applies to all log
-#' groups in the account
+#' Creates an account-level data protection policy or subscription filter
+#' policy that applies to all log groups or a subset of log groups in the
+#' account
 #'
 #' @description
-#' Creates an account-level data protection policy that applies to all log groups in the account. A data protection policy can help safeguard sensitive data that's ingested by your log groups by auditing and masking the sensitive log data. Each account can have only one account-level policy.
+#' Creates an account-level data protection policy or subscription filter policy that applies to all log groups or a subset of log groups in the account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_account_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_account_policy/) for full documentation.
 #'
 #' @param policyName &#91;required&#93; A name for the policy. This must be unique within the account.
-#' @param policyDocument &#91;required&#93; Specify the data protection policy, in JSON.
+#' @param policyDocument &#91;required&#93; Specify the policy, in JSON.
 #' 
-#' This policy must include two JSON blocks:
+#' **Data protection policy**
+#' 
+#' A data protection policy must include two JSON blocks:
 #' 
 #' -   The first block must include both a `DataIdentifer` array and an
 #'     `Operation` property with an `Audit` action. The `DataIdentifer`
@@ -1935,8 +1937,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #'     `FindingsDestination` object. You can optionally use that
 #'     `FindingsDestination` object to list one or more destinations to
 #'     send audit findings to. If you specify destinations such as log
-#'     groups, Kinesis Data Firehose streams, and S3 buckets, they must
-#'     already exist.
+#'     groups, Firehose streams, and S3 buckets, they must already exist.
 #' 
 #' -   The second block must include both a `DataIdentifer` array and an
 #'     `Operation` property with an `Deidentify` action. The
@@ -1958,24 +1959,71 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' dimension when CloudWatch Logs reports audit findings metrics to
 #' CloudWatch.
 #' 
-#' The JSON specified in `policyDocument` can be up to 30,720 characters.
-#' @param policyType &#91;required&#93; Currently the only valid value for this parameter is
-#' `DATA_PROTECTION_POLICY`.
+#' The JSON specified in `policyDocument` can be up to 30,720 characters
+#' long.
+#' 
+#' **Subscription filter policy**
+#' 
+#' A subscription filter policy can include the following attributes in a
+#' JSON block:
+#' 
+#' -   **DestinationArn** The ARN of the destination to deliver log events
+#'     to. Supported destinations are:
+#' 
+#'     -   An Kinesis Data Streams data stream in the same account as the
+#'         subscription policy, for same-account delivery.
+#' 
+#'     -   An Firehose data stream in the same account as the subscription
+#'         policy, for same-account delivery.
+#' 
+#'     -   A Lambda function in the same account as the subscription
+#'         policy, for same-account delivery.
+#' 
+#'     -   A logical destination in a different account created with
+#'         [`put_destination`][cloudwatchlogs_put_destination], for
+#'         cross-account delivery. Kinesis Data Streams and Firehose are
+#'         supported as logical destinations.
+#' 
+#' -   **RoleArn** The ARN of an IAM role that grants CloudWatch Logs
+#'     permissions to deliver ingested log events to the destination
+#'     stream. You don't need to provide the ARN when you are working with
+#'     a logical destination for cross-account delivery.
+#' 
+#' -   **FilterPattern** A filter pattern for subscribing to a filtered
+#'     stream of log events.
+#' 
+#' -   **Distribution**The method used to distribute log data to the
+#'     destination. By default, log data is grouped by log stream, but the
+#'     grouping can be set to `Random` for a more even distribution. This
+#'     property is only applicable when the destination is an Kinesis Data
+#'     Streams data stream.
+#' @param policyType &#91;required&#93; The type of policy that you're creating or updating.
 #' @param scope Currently the only valid value for this parameter is `ALL`, which
 #' specifies that the data protection policy applies to all log groups in
 #' the account. If you omit this parameter, the default of `ALL` is used.
+#' @param selectionCriteria Use this parameter to apply the subscription filter policy to a subset
+#' of log groups in the account. Currently, the only supported filter is
+#' `LogGroupName NOT IN []`. The `selectionCriteria` string can be up to
+#' 25KB in length. The length is determined by using its UTF-8 bytes.
+#' 
+#' Using the `selectionCriteria` parameter is useful to help prevent
+#' infinite loops. For more information, see [Log recursion
+#' prevention](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html).
+#' 
+#' Specifing `selectionCriteria` is valid only when you specify
+#' ` SUBSCRIPTION_FILTER_POLICY` for `policyType`.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_account_policy
-cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policyType, scope = NULL) {
+cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policyType, scope = NULL, selectionCriteria = NULL) {
   op <- new_operation(
     name = "PutAccountPolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_account_policy_input(policyName = policyName, policyDocument = policyDocument, policyType = policyType, scope = scope)
+  input <- .cloudwatchlogs$put_account_policy_input(policyName = policyName, policyDocument = policyDocument, policyType = policyType, scope = scope, selectionCriteria = selectionCriteria)
   output <- .cloudwatchlogs$put_account_policy_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -2009,8 +2057,7 @@ cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policy
 #'     `FindingsDestination` object. You can optionally use that
 #'     `FindingsDestination` object to list one or more destinations to
 #'     send audit findings to. If you specify destinations such as log
-#'     groups, Kinesis Data Firehose streams, and S3 buckets, they must
-#'     already exist.
+#'     groups, Firehose streams, and S3 buckets, they must already exist.
 #' 
 #' -   The second block must include both a `DataIdentifer` array and an
 #'     `Operation` property with an `Deidentify` action. The
@@ -2056,7 +2103,7 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
 #' Creates or updates a logical delivery destination
 #'
 #' @description
-#' Creates or updates a logical *delivery destination*. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Kinesis Data Firehose are supported as logs delivery destinations.
+#' Creates or updates a logical *delivery destination*. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Firehose are supported as logs delivery destinations.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/) for full documentation.
 #'
@@ -2125,7 +2172,7 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' Creates or updates a logical delivery source
 #'
 #' @description
-#' Creates or updates a logical *delivery source*. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Kinesis Data Firehose.
+#' Creates or updates a logical *delivery source*. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Firehose.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/) for full documentation.
 #'
@@ -2134,8 +2181,15 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' @param resourceArn &#91;required&#93; The ARN of the Amazon Web Services resource that is generating and
 #' sending logs. For example,
 #' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
-#' @param logType &#91;required&#93; Defines the type of log that the source is sending. For valid values for
-#' this parameter, see the documentation for the source service.
+#' @param logType &#91;required&#93; Defines the type of log that the source is sending.
+#' 
+#' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
+#' 
+#' -   For IAM Identity Centerr, the valid value is `ERROR_LOGS`.
+#' 
+#' -   For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
+#'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
+#'     `WORKMAIL_MAILBOX_ACCESS_LOGS`.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
@@ -2528,11 +2582,17 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' @param logStreamNames If you specify this parameter, then only log events in the log streams
 #' that you specify here are included in the Live Tail session.
 #' 
+#' If you specify this field, you can't also specify the
+#' `logStreamNamePrefixes` field.
+#' 
 #' You can specify this parameter only if you specify only one log group in
 #' `logGroupIdentifiers`.
 #' @param logStreamNamePrefixes If you specify this parameter, then only log events in the log streams
 #' that have names that start with the prefixes that you specify here are
 #' included in the Live Tail session.
+#' 
+#' If you specify this field, you can't also specify the `logStreamNames`
+#' field.
 #' 
 #' You can specify this parameter only if you specify only one log group in
 #' `logGroupIdentifiers`.

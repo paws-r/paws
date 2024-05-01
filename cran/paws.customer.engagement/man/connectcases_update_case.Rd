@@ -2,9 +2,9 @@
 % Please edit documentation in R/connectcases_operations.R
 \name{connectcases_update_case}
 \alias{connectcases_update_case}
-\title{Updates the values of fields on a case}
+\title{If you provide a value for PerformedBy}
 \usage{
-connectcases_update_case(caseId, domainId, fields)
+connectcases_update_case(caseId, domainId, fields, performedBy = NULL)
 }
 \arguments{
 \item{caseId}{[required] A unique identifier of the case.}
@@ -14,9 +14,11 @@ connectcases_update_case(caseId, domainId, fields)
 \item{fields}{[required] An array of objects with \code{fieldId} (matching ListFields/DescribeField)
 and value union data, structured identical to
 \code{\link[=connectcases_create_case]{create_case}}.}
+
+\item{performedBy}{}
 }
 \description{
-Updates the values of fields on a case. Fields to be updated are received as an array of id/value pairs identical to the \code{\link[=connectcases_create_case]{create_case}} input .
+If you provide a value for \code{PerformedBy.UserArn} you must also have \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html}{connect:DescribeUser} permission on the User ARN resource that you provide
 
 See \url{https://www.paws-r-sdk.com/docs/connectcases_update_case/} for full documentation.
 }

@@ -19,7 +19,7 @@ secretsmanager_replicate_secret_to_regions(
 destination Region. By default, secrets aren't overwritten.}
 }
 \description{
-Replicates the secret to a new Regions. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html}{Multi-Region secrets}.
+Replicates the secret to a new Regions. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html}{Multi-Region secrets}.
 
 See \url{https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/} for full documentation.
 }

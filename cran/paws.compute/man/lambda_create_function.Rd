@@ -32,7 +32,7 @@ lambda_create_function(
 )
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{
@@ -68,7 +68,7 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-p
 before stopping it. The default is 3 seconds. The maximum allowed value
 is 900 seconds. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html}{Lambda execution environment}.}
 
-\item{MemorySize}{The amount of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console}{memory available to the function}
+\item{MemorySize}{The amount of \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console}{memory available to the function}
 at runtime. Increasing the function memory also increases its CPU
 allocation. The default value is 128 MB. The value can be any multiple
 of 1 MB.}
@@ -115,7 +115,7 @@ its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
 
-\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#configuration-images-settings}{configuration values}
+\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms}{configuration values}
 that override the values in the container image Dockerfile.}
 
 \item{CodeSigningConfigArn}{To enable code signing for this function, specify the ARN of a
@@ -128,7 +128,8 @@ string array with one of the valid values (arm64 or x86_64). The default
 value is \code{x86_64}.}
 
 \item{EphemeralStorage}{The size of the function's \verb{/tmp} directory in MB. The default value is
-512, but can be any whole number between 512 and 10,240 MB.}
+512, but can be any whole number between 512 and 10,240 MB. For more
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-ephemeral-storage}{Configuring ephemeral storage (console)}.}
 
 \item{SnapStart}{The function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html}{SnapStart}

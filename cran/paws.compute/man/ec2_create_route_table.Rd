@@ -4,7 +4,12 @@
 \alias{ec2_create_route_table}
 \title{Creates a route table for the specified VPC}
 \usage{
-ec2_create_route_table(DryRun = NULL, VpcId, TagSpecifications = NULL)
+ec2_create_route_table(
+  DryRun = NULL,
+  VpcId,
+  TagSpecifications = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,6 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC.}
 
 \item{TagSpecifications}{The tags to assign to the route table.}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }
 \description{
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.

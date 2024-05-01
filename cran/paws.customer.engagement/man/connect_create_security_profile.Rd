@@ -12,7 +12,9 @@ connect_create_security_profile(
   Tags = NULL,
   AllowedAccessControlTags = NULL,
   TagRestrictedResources = NULL,
-  Applications = NULL
+  Applications = NULL,
+  HierarchyRestrictedResources = NULL,
+  AllowedAccessControlHierarchyGroupId = NULL
 )
 }
 \arguments{
@@ -36,11 +38,15 @@ resources in Amazon Connect.}
 to in Amazon Connect. Following are acceptable ResourceNames: \code{User} |
 \code{SecurityProfile} | \code{Queue} | \code{RoutingProfile}}
 
-\item{Applications}{This API is in preview release for Amazon Connect and is subject to
-change.
-
-A list of third-party applications that the security profile will give
+\item{Applications}{A list of third-party applications that the security profile will give
 access to.}
+
+\item{HierarchyRestrictedResources}{The list of resources that a security profile applies hierarchy
+restrictions to in Amazon Connect. Following are acceptable
+ResourceNames: \code{User}.}
+
+\item{AllowedAccessControlHierarchyGroupId}{The identifier of the hierarchy group that a security profile uses to
+restrict access to resources in Amazon Connect.}
 }
 \description{
 Creates a security profile.

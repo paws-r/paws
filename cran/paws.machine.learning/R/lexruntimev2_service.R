@@ -127,7 +127,7 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .lexruntimev2$metadata <- list(
   service_name = "lexruntimev2",
-  endpoints = list("*" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "runtime-v2-lex.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "runtime-v2-lex.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "runtime-v2-lex.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "runtime-v2-lex.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "runtime-v2-lex.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "runtime-v2-lex.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Lex Runtime V2",
   api_version = "2020-08-07",
   signing_name = "lex",

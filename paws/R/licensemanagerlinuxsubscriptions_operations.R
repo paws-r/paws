@@ -11,6 +11,8 @@ NULL
 #' @usage
 #' licensemanagerlinuxsubscriptions_get_service_settings()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

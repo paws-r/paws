@@ -17,8 +17,7 @@ firehose_describe_delivery_stream(
 destination per delivery stream.}
 
 \item{ExclusiveStartDestinationId}{The ID of the destination to start returning the destination
-information. Kinesis Data Firehose supports one destination per delivery
-stream.}
+information. Firehose supports one destination per delivery stream.}
 }
 \description{
 Describes the specified delivery stream and its status. For example, after your delivery stream is created, call \code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}} to see whether the delivery stream is \code{ACTIVE} and therefore ready for data to be sent to it.

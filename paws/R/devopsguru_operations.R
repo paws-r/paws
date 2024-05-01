@@ -137,6 +137,8 @@ devopsguru_delete_insight <- function(Id) {
 #' @usage
 #' devopsguru_describe_account_health()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -578,6 +580,8 @@ devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
 #'
 #' @usage
 #' devopsguru_describe_event_sources_config()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -1146,6 +1150,8 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #'
 #' @usage
 #' devopsguru_describe_service_integration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

@@ -104,8 +104,8 @@ also manage Identity and Access Management (IAM) policies for keys.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.cost.management:paymentcryptographydataplane_decrypt_data]{decrypt_data} \tab Decrypts ciphertext data to plaintext using symmetric, asymmetric, or DUKPT data encryption key\cr
-\link[paws.cost.management:paymentcryptographydataplane_encrypt_data]{encrypt_data} \tab Encrypts plaintext data to ciphertext using symmetric, asymmetric, or DUKPT data encryption key\cr
+\link[paws.cost.management:paymentcryptographydataplane_decrypt_data]{decrypt_data} \tab Decrypts ciphertext data to plaintext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme\cr
+\link[paws.cost.management:paymentcryptographydataplane_encrypt_data]{encrypt_data} \tab Encrypts plaintext data to ciphertext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme\cr
 \link[paws.cost.management:paymentcryptographydataplane_generate_card_validation_data]{generate_card_validation_data} \tab Generates card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2), or Card Security Codes (CSC)\cr
 \link[paws.cost.management:paymentcryptographydataplane_generate_mac]{generate_mac} \tab Generates a Message Authentication Code (MAC) cryptogram within Amazon Web Services Payment Cryptography\cr
 \link[paws.cost.management:paymentcryptographydataplane_generate_pin_data]{generate_pin_data} \tab Generates pin-related data such as PIN, PIN Verification Value (PVV), PIN Block, and PIN Offset during new card issuance or reissuance\cr

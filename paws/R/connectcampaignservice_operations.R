@@ -54,7 +54,8 @@ NULL
 #'     connectSourcePhoneNumber = "string",
 #'     connectQueueId = "string",
 #'     answerMachineDetectionConfig = list(
-#'       enableAnswerMachineDetection = TRUE|FALSE
+#'       enableAnswerMachineDetection = TRUE|FALSE,
+#'       awaitAnswerMachinePrompt = TRUE|FALSE
 #'     )
 #'   ),
 #'   tags = list(
@@ -250,7 +251,8 @@ connectcampaignservice_delete_instance_onboarding_job <- function(connectInstanc
 #'       connectSourcePhoneNumber = "string",
 #'       connectQueueId = "string",
 #'       answerMachineDetectionConfig = list(
-#'         enableAnswerMachineDetection = TRUE|FALSE
+#'         enableAnswerMachineDetection = TRUE|FALSE,
+#'         awaitAnswerMachinePrompt = TRUE|FALSE
 #'       )
 #'     ),
 #'     tags = list(
@@ -1134,7 +1136,8 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #'   connectContactFlowId = "string",
 #'   connectSourcePhoneNumber = "string",
 #'   answerMachineDetectionConfig = list(
-#'     enableAnswerMachineDetection = TRUE|FALSE
+#'     enableAnswerMachineDetection = TRUE|FALSE,
+#'     awaitAnswerMachinePrompt = TRUE|FALSE
 #'   )
 #' )
 #' ```

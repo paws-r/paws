@@ -157,7 +157,7 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .sts$metadata <- list(
   service_name = "sts",
-  endpoints = list("*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "STS",
   api_version = "2011-06-15",
   signing_name = "sts",

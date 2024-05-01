@@ -291,7 +291,7 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' Creates a knowledge base.
 #' 
 #' When using this API, you cannot reuse [Amazon
-#' AppIntegrations](https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html)
+#' AppIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome.html)
 #' DataIntegrations with external knowledge bases such as Salesforce and
 #' ServiceNow. If you do, you'll get an `InvalidRequestException` error.
 #' 
@@ -303,10 +303,10 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #'     [`delete_knowledge_base`][connectwisdomservice_delete_knowledge_base].
 #' 
 #' 2.  Call
-#'     [DeleteDataIntegration](https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html).
+#'     [DeleteDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DeleteDataIntegration.html).
 #' 
 #' 3.  Call
-#'     [CreateDataIntegration](https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html)
+#'     [CreateDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_CreateDataIntegration.html)
 #'     to recreate the DataIntegration or a create different one.
 #' 
 #' 4.  Call CreateKnowledgeBase.
@@ -830,13 +830,13 @@ connectwisdomservice_delete_import_job <- function(importJobId, knowledgeBaseId)
 #' 
 #' When you use this API to delete an external knowledge base such as
 #' Salesforce or ServiceNow, you must also delete the [Amazon
-#' AppIntegrations](https://docs.aws.amazon.com/appintegrations/latest/APIReference/Welcome.html)
+#' AppIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome.html)
 #' DataIntegration. This is because you can't reuse the DataIntegration
 #' after it's been associated with an external knowledge base. However, you
 #' can delete and recreate it. See
-#' [DeleteDataIntegration](https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html)
+#' [DeleteDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DeleteDataIntegration.html)
 #' and
-#' [CreateDataIntegration](https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html)
+#' [CreateDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_CreateDataIntegration.html)
 #' in the *Amazon AppIntegrations API Reference*.
 #'
 #' @usage

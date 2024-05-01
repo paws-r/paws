@@ -20,7 +20,7 @@ NULL
 #' -   Default policy for EBS-backed AMIs
 #' 
 #' For more information, see [Default policies vs custom
-#' policies](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/policy-differences.html).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/policy-differences.html).
 #' 
 #' If you create a default policy, you can specify the request parameters
 #' either in the request body, or in the PolicyDetails request structure,
@@ -341,7 +341,7 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' operations that the policy specified.
 #' 
 #' For more information about deleting a policy, see [Delete lifecycle
-#' policies](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/view-modify-delete.html#delete).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/view-modify-delete.html#delete).
 #'
 #' @usage
 #' dlm_delete_lifecycle_policy(PolicyId)
@@ -855,7 +855,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the specified lifecycle policy.
 #' 
 #' For more information about updating a policy, see [Modify lifecycle
-#' policies](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/view-modify-delete.html#modify).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/view-modify-delete.html#modify).
 #'
 #' @usage
 #' dlm_update_lifecycle_policy(PolicyId, ExecutionRoleArn, State,

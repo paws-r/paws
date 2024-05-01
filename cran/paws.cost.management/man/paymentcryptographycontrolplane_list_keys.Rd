@@ -7,12 +7,16 @@ Web Services Region}
 \usage{
 paymentcryptographycontrolplane_list_keys(
   KeyState = NULL,
-  MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
 \item{KeyState}{The key state of the keys you want to list.}
+
+\item{NextToken}{Use this parameter in a subsequent request after you receive a response
+with truncated results. Set it to the value of \code{NextToken} from the
+truncated response you just received.}
 
 \item{MaxResults}{Use this parameter to specify the maximum number of items to return.
 When this value is present, Amazon Web Services Payment Cryptography
@@ -21,10 +25,6 @@ return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 100, inclusive. If you do not include a value, it defaults to 50.}
-
-\item{NextToken}{Use this parameter in a subsequent request after you receive a response
-with truncated results. Set it to the value of \code{NextToken} from the
-truncated response you just received.}
 }
 \description{
 Lists the keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the list of keys.

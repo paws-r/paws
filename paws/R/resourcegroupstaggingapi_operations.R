@@ -16,6 +16,8 @@ NULL
 #' @usage
 #' resourcegroupstaggingapi_describe_report_creation()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

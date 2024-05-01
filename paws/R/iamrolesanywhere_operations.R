@@ -18,7 +18,11 @@ NULL
 #'   managedPolicyArns, name, requireInstanceProperties, roleArns,
 #'   sessionPolicy, tags)
 #'
-#' @param durationSeconds The number of seconds the vended session credentials are valid for.
+#' @param durationSeconds Used to determine how long sessions vended using this profile are valid
+#' for. See the `Expiration` section of the [CreateSession API
+#' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
+#' page for more details. In requests, if this value is not provided, the
+#' default value will be 3600.
 #' @param enabled Specifies whether the profile is enabled.
 #' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
 #' credentials.
@@ -36,6 +40,16 @@ NULL
 #' ```
 #' list(
 #'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -214,6 +228,94 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
 }
 .iamrolesanywhere$operations$create_trust_anchor <- iamrolesanywhere_create_trust_anchor
 
+#' Delete an entry from the attribute mapping rules enforced by a given
+#' profile
+#'
+#' @description
+#' Delete an entry from the attribute mapping rules enforced by a given
+#' profile.
+#'
+#' @usage
+#' iamrolesanywhere_delete_attribute_mapping(certificateField, profileId,
+#'   specifiers)
+#'
+#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
+#' @param specifiers A list of specifiers of a certificate field; for example, CN, OU, UID
+#' from a Subject.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     durationSeconds = 123,
+#'     enabled = TRUE|FALSE,
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     name = "string",
+#'     profileArn = "string",
+#'     profileId = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     sessionPolicy = "string",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_attribute_mapping(
+#'   certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'   profileId = "string",
+#'   specifiers = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iamrolesanywhere_delete_attribute_mapping
+#'
+#' @aliases iamrolesanywhere_delete_attribute_mapping
+iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileId, specifiers = NULL) {
+  op <- new_operation(
+    name = "DeleteAttributeMapping",
+    http_method = "DELETE",
+    http_path = "/profiles/{profileId}/mappings",
+    paginator = list()
+  )
+  input <- .iamrolesanywhere$delete_attribute_mapping_input(certificateField = certificateField, profileId = profileId, specifiers = specifiers)
+  output <- .iamrolesanywhere$delete_attribute_mapping_output()
+  config <- get_config()
+  svc <- .iamrolesanywhere$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iamrolesanywhere$operations$delete_attribute_mapping <- iamrolesanywhere_delete_attribute_mapping
+
 #' Deletes a certificate revocation list (CRL)
 #'
 #' @description
@@ -293,6 +395,16 @@ iamrolesanywhere_delete_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -502,6 +614,16 @@ iamrolesanywhere_disable_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -712,6 +834,16 @@ iamrolesanywhere_enable_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -921,6 +1053,16 @@ iamrolesanywhere_get_crl <- function(crlId) {
 #' ```
 #' list(
 #'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1146,8 +1288,8 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' @description
 #' Imports the certificate revocation list (CRL). A CRL is a list of
 #' certificates that have been revoked by the issuing certificate Authority
-#' (CA). IAM Roles Anywhere validates against the CRL before issuing
-#' credentials.
+#' (CA).In order to be properly imported, a CRL must be in PEM format. IAM
+#' Roles Anywhere validates against the CRL before issuing credentials.
 #' 
 #' **Required permissions:** `rolesanywhere:ImportCrl`.
 #'
@@ -1316,6 +1458,16 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
 #'   nextToken = "string",
 #'   profiles = list(
 #'     list(
+#'       attributeMappings = list(
+#'         list(
+#'           certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'           mappingRules = list(
+#'             list(
+#'               specifier = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1581,6 +1733,96 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
   return(response)
 }
 .iamrolesanywhere$operations$list_trust_anchors <- iamrolesanywhere_list_trust_anchors
+
+#' Put an entry in the attribute mapping rules that will be enforced by a
+#' given profile
+#'
+#' @description
+#' Put an entry in the attribute mapping rules that will be enforced by a
+#' given profile. A mapping specifies a certificate field and one or more
+#' specifiers that have contextual meanings.
+#'
+#' @usage
+#' iamrolesanywhere_put_attribute_mapping(certificateField, mappingRules,
+#'   profileId)
+#'
+#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
+#' @param mappingRules &#91;required&#93; A list of mapping entries for every supported specifier or sub-field.
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     createdBy = "string",
+#'     durationSeconds = 123,
+#'     enabled = TRUE|FALSE,
+#'     managedPolicyArns = list(
+#'       "string"
+#'     ),
+#'     name = "string",
+#'     profileArn = "string",
+#'     profileId = "string",
+#'     requireInstanceProperties = TRUE|FALSE,
+#'     roleArns = list(
+#'       "string"
+#'     ),
+#'     sessionPolicy = "string",
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_attribute_mapping(
+#'   certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'   mappingRules = list(
+#'     list(
+#'       specifier = "string"
+#'     )
+#'   ),
+#'   profileId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iamrolesanywhere_put_attribute_mapping
+#'
+#' @aliases iamrolesanywhere_put_attribute_mapping
+iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRules, profileId) {
+  op <- new_operation(
+    name = "PutAttributeMapping",
+    http_method = "PUT",
+    http_path = "/profiles/{profileId}/mappings",
+    paginator = list()
+  )
+  input <- .iamrolesanywhere$put_attribute_mapping_input(certificateField = certificateField, mappingRules = mappingRules, profileId = profileId)
+  output <- .iamrolesanywhere$put_attribute_mapping_output()
+  config <- get_config()
+  svc <- .iamrolesanywhere$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iamrolesanywhere$operations$put_attribute_mapping <- iamrolesanywhere_put_attribute_mapping
 
 #' Attaches a list of notification settings to a trust anchor
 #'
@@ -1941,7 +2183,11 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' iamrolesanywhere_update_profile(durationSeconds, managedPolicyArns,
 #'   name, profileId, roleArns, sessionPolicy)
 #'
-#' @param durationSeconds The number of seconds the vended session credentials are valid for.
+#' @param durationSeconds Used to determine how long sessions vended using this profile are valid
+#' for. See the `Expiration` section of the [CreateSession API
+#' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
+#' page for more details. In requests, if this value is not provided, the
+#' default value will be 3600.
 #' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
 #' credentials.
 #' @param name The name of the profile.
@@ -1956,6 +2202,16 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' ```
 #' list(
 #'   profile = list(
+#'     attributeMappings = list(
+#'       list(
+#'         certificateField = "x509Subject"|"x509Issuer"|"x509SAN",
+#'         mappingRules = list(
+#'           list(
+#'             specifier = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),

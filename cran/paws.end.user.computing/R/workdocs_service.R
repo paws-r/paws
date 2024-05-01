@@ -211,7 +211,7 @@ workdocs <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .workdocs$metadata <- list(
   service_name = "workdocs",
-  endpoints = list("*" = list(endpoint = "workdocs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workdocs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workdocs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workdocs.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "workdocs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workdocs.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "workdocs.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "workdocs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workdocs.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "workdocs.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WorkDocs",
   api_version = "2016-05-01",
   signing_name = "workdocs",

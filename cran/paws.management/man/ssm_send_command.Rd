@@ -36,7 +36,7 @@ Using \code{Targets}, which accepts tag key-value pairs to identify the
 managed nodes to send commands to, you can a send command to tens,
 hundreds, or thousands of nodes at once.
 
-For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Using targets and rate controls to send commands to a fleet}
+For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Run commands at scale}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Targets}{An array of search criteria that targets managed nodes using a
@@ -49,14 +49,14 @@ thousands of nodes at once.
 To send a command to a smaller number of managed nodes, you can use the
 \code{InstanceIds} option instead.
 
-For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
+For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Run commands at scale}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{DocumentName}{[required] The name of the Amazon Web Services Systems Manager document (SSM
 document) to run. This can be a public document or a custom document. To
 run a shared document belonging to another account, specify the document
 Amazon Resource Name (ARN). For more information about how to use shared
-documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Using shared SSM documents}
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Sharing SSM documents}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 If you specify a document name or ARN that hasn't been shared with your

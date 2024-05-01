@@ -22,7 +22,10 @@ search.}
 \item{QueryText}{[required] The input query text to retrieve relevant passages for the search.
 Amazon Kendra truncates queries at 30 token words, which excludes
 punctuation and stop words. Truncation still applies if you use Boolean
-or more advanced, complex queries.}
+or more advanced, complex queries. For example,
+\verb{Timeoff AND October AND Category:HR} is counted as 3 tokens: \code{timeoff},
+\code{october}, \code{hr}. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/searching-example.html#searching-index-query-syntax}{Searching with advanced query syntax}
+in the Amazon Kendra Developer Guide.}
 
 \item{AttributeFilter}{Filters search results by document fields/attributes. You can only
 provide one attribute filter; however, the \code{AndAllFilters}, \code{NotFilter},

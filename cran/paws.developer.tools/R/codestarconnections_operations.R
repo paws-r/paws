@@ -138,18 +138,21 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
 #' to use Git sync to update a given Amazon Web Services resource on your
 #' behalf.
 #' @param SyncType &#91;required&#93; The type of sync configuration.
+#' @param PublishDeploymentStatus Whether to enable or disable publishing of deployment status to source
+#' providers.
+#' @param TriggerResourceUpdateOn When to trigger Git sync to begin the stack update.
 #'
 #' @keywords internal
 #'
 #' @rdname codestarconnections_create_sync_configuration
-codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, RepositoryLinkId, ResourceName, RoleArn, SyncType) {
+codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, RepositoryLinkId, ResourceName, RoleArn, SyncType, PublishDeploymentStatus = NULL, TriggerResourceUpdateOn = NULL) {
   op <- new_operation(
     name = "CreateSyncConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType)
+  input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$create_sync_configuration_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)
@@ -878,18 +881,21 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
 #' to be updated.
 #' @param RoleArn The ARN of the IAM role for the sync configuration to be updated.
 #' @param SyncType &#91;required&#93; The sync type for the sync configuration to be updated.
+#' @param PublishDeploymentStatus Whether to enable or disable publishing of deployment status to source
+#' providers.
+#' @param TriggerResourceUpdateOn When to trigger Git sync to begin the stack update.
 #'
 #' @keywords internal
 #'
 #' @rdname codestarconnections_update_sync_configuration
-codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigFile = NULL, RepositoryLinkId = NULL, ResourceName, RoleArn = NULL, SyncType) {
+codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigFile = NULL, RepositoryLinkId = NULL, ResourceName, RoleArn = NULL, SyncType, PublishDeploymentStatus = NULL, TriggerResourceUpdateOn = NULL) {
   op <- new_operation(
     name = "UpdateSyncConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType)
+  input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$update_sync_configuration_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)

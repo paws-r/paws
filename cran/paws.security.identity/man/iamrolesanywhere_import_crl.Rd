@@ -25,7 +25,7 @@ iamrolesanywhere_import_crl(
 provide revocation for.}
 }
 \description{
-Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA). IAM Roles Anywhere validates against the CRL before issuing credentials.
+Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA).In order to be properly imported, a CRL must be in PEM format. IAM Roles Anywhere validates against the CRL before issuing credentials.
 
 See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/} for full documentation.
 }

@@ -65,10 +65,10 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 }
 .connectcases$operations$batch_put_field_options <- connectcases_batch_put_field_options
 
-#' Creates a case in the specified Cases domain
+#' If you provide a value for PerformedBy
 #'
 #' @description
-#' Creates a case in the specified Cases domain. Case system and custom fields are taken as an array id/value pairs with a declared data types.
+#' If you provide a value for `PerformedBy.UserArn` you must also have [connect:DescribeUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html) permission on the User ARN resource that you provide
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcases_create_case/](https://www.paws-r-sdk.com/docs/connectcases_create_case/) for full documentation.
 #'
@@ -80,19 +80,20 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
 #' @param fields &#91;required&#93; An array of objects with field ID (matching ListFields/DescribeField)
 #' and value union data.
+#' @param performedBy 
 #' @param templateId &#91;required&#93; A unique identifier of a template.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_create_case
-connectcases_create_case <- function(clientToken = NULL, domainId, fields, templateId) {
+connectcases_create_case <- function(clientToken = NULL, domainId, fields, performedBy = NULL, templateId) {
   op <- new_operation(
     name = "CreateCase",
     http_method = "POST",
     http_path = "/domains/{domainId}/cases",
     paginator = list()
   )
-  input <- .connectcases$create_case_input(clientToken = clientToken, domainId = domainId, fields = fields, templateId = templateId)
+  input <- .connectcases$create_case_input(clientToken = clientToken, domainId = domainId, fields = fields, performedBy = performedBy, templateId = templateId)
   output <- .connectcases$create_case_output()
   config <- get_config()
   svc <- .connectcases$service(config)
@@ -296,6 +297,96 @@ connectcases_delete_domain <- function(domainId) {
 }
 .connectcases$operations$delete_domain <- connectcases_delete_domain
 
+#' Deletes a field from a cases template
+#'
+#' @description
+#' Deletes a field from a cases template. You can delete up to 100 fields per domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_delete_field/](https://www.paws-r-sdk.com/docs/connectcases_delete_field/) for full documentation.
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param fieldId &#91;required&#93; The unique identifier of a field.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_field
+connectcases_delete_field <- function(domainId, fieldId) {
+  op <- new_operation(
+    name = "DeleteField",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/fields/{fieldId}",
+    paginator = list()
+  )
+  input <- .connectcases$delete_field_input(domainId = domainId, fieldId = fieldId)
+  output <- .connectcases$delete_field_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_field <- connectcases_delete_field
+
+#' Deletes a layout from a cases template
+#'
+#' @description
+#' Deletes a layout from a cases template. You can delete up to 100 layouts per domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_delete_layout/](https://www.paws-r-sdk.com/docs/connectcases_delete_layout/) for full documentation.
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param layoutId &#91;required&#93; The unique identifier of the layout.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_layout
+connectcases_delete_layout <- function(domainId, layoutId) {
+  op <- new_operation(
+    name = "DeleteLayout",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/layouts/{layoutId}",
+    paginator = list()
+  )
+  input <- .connectcases$delete_layout_input(domainId = domainId, layoutId = layoutId)
+  output <- .connectcases$delete_layout_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_layout <- connectcases_delete_layout
+
+#' Deletes a cases template
+#'
+#' @description
+#' Deletes a cases template. You can delete up to 100 templates per domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_delete_template/](https://www.paws-r-sdk.com/docs/connectcases_delete_template/) for full documentation.
+#'
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param templateId &#91;required&#93; A unique identifier of a template.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_template
+connectcases_delete_template <- function(domainId, templateId) {
+  op <- new_operation(
+    name = "DeleteTemplate",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/templates/{templateId}",
+    paginator = list()
+  )
+  input <- .connectcases$delete_template_input(domainId = domainId, templateId = templateId)
+  output <- .connectcases$delete_template_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_template <- connectcases_delete_template
+
 #' Returns information about a specific case if it exists
 #'
 #' @description
@@ -329,6 +420,42 @@ connectcases_get_case <- function(caseId, domainId, fields, nextToken = NULL) {
   return(response)
 }
 .connectcases$operations$get_case <- connectcases_get_case
+
+#' Returns the audit history about a specific case if it exists
+#'
+#' @description
+#' Returns the audit history about a specific case if it exists.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_get_case_audit_events/](https://www.paws-r-sdk.com/docs/connectcases_get_case_audit_events/) for full documentation.
+#'
+#' @param caseId &#91;required&#93; A unique identifier of the case.
+#' @param domainId &#91;required&#93; The unique identifier of the Cases domain.
+#' @param maxResults The maximum number of audit events to return. The current maximum
+#' supported value is 25. This is also the default when no other value is
+#' provided.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_get_case_audit_events
+connectcases_get_case_audit_events <- function(caseId, domainId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetCaseAuditEvents",
+    http_method = "POST",
+    http_path = "/domains/{domainId}/cases/{caseId}/audit-history",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .connectcases$get_case_audit_events_input(caseId = caseId, domainId = domainId, maxResults = maxResults, nextToken = nextToken)
+  output <- .connectcases$get_case_audit_events_output()
+  config <- get_config()
+  svc <- .connectcases$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$get_case_audit_events <- connectcases_get_case_audit_events
 
 #' Returns the case event publishing configuration
 #'
@@ -847,10 +974,10 @@ connectcases_untag_resource <- function(arn, tagKeys) {
 }
 .connectcases$operations$untag_resource <- connectcases_untag_resource
 
-#' Updates the values of fields on a case
+#' If you provide a value for PerformedBy
 #'
 #' @description
-#' Updates the values of fields on a case. Fields to be updated are received as an array of id/value pairs identical to the [`create_case`][connectcases_create_case] input .
+#' If you provide a value for `PerformedBy.UserArn` you must also have [connect:DescribeUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html) permission on the User ARN resource that you provide
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcases_update_case/](https://www.paws-r-sdk.com/docs/connectcases_update_case/) for full documentation.
 #'
@@ -859,18 +986,19 @@ connectcases_untag_resource <- function(arn, tagKeys) {
 #' @param fields &#91;required&#93; An array of objects with `fieldId` (matching ListFields/DescribeField)
 #' and value union data, structured identical to
 #' [`create_case`][connectcases_create_case].
+#' @param performedBy 
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_update_case
-connectcases_update_case <- function(caseId, domainId, fields) {
+connectcases_update_case <- function(caseId, domainId, fields, performedBy = NULL) {
   op <- new_operation(
     name = "UpdateCase",
     http_method = "PUT",
     http_path = "/domains/{domainId}/cases/{caseId}",
     paginator = list()
   )
-  input <- .connectcases$update_case_input(caseId = caseId, domainId = domainId, fields = fields)
+  input <- .connectcases$update_case_input(caseId = caseId, domainId = domainId, fields = fields, performedBy = performedBy)
   output <- .connectcases$update_case_output()
   config <- get_config()
   svc <- .connectcases$service(config)

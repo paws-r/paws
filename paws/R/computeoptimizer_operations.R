@@ -1078,10 +1078,10 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #'         lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
 #'         utilizationPreferences = list(
 #'           list(
-#'             metricName = "CpuUtilization",
+#'             metricName = "CpuUtilization"|"MemoryUtilization",
 #'             metricParameters = list(
 #'               threshold = "P90"|"P95"|"P99_5",
-#'               headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'               headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_10"|"PERCENT_0"
 #'             )
 #'           )
 #'         ),
@@ -1457,10 +1457,10 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'         lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
 #'         utilizationPreferences = list(
 #'           list(
-#'             metricName = "CpuUtilization",
+#'             metricName = "CpuUtilization"|"MemoryUtilization",
 #'             metricParameters = list(
 #'               threshold = "P90"|"P95"|"P99_5",
-#'               headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'               headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_10"|"PERCENT_0"
 #'             )
 #'           )
 #'         ),
@@ -1962,10 +1962,10 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
 #'   lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
 #'   utilizationPreferences = list(
 #'     list(
-#'       metricName = "CpuUtilization",
+#'       metricName = "CpuUtilization"|"MemoryUtilization",
 #'       metricParameters = list(
 #'         threshold = "P90"|"P95"|"P99_5",
-#'         headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'         headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_10"|"PERCENT_0"
 #'       )
 #'     )
 #'   ),
@@ -2031,6 +2031,8 @@ computeoptimizer_get_effective_recommendation_preferences <- function(resourceAr
 #'
 #' @usage
 #' computeoptimizer_get_enrollment_status()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -2525,10 +2527,10 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
 #'       lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
 #'       utilizationPreferences = list(
 #'         list(
-#'           metricName = "CpuUtilization",
+#'           metricName = "CpuUtilization"|"MemoryUtilization",
 #'           metricParameters = list(
 #'             threshold = "P90"|"P95"|"P99_5",
-#'             headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'             headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_10"|"PERCENT_0"
 #'           )
 #'         )
 #'       ),
@@ -2796,16 +2798,25 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' 
 #' You can only set this preference for the Amazon EC2 instance and Auto
 #' Scaling group resource types.
-#' @param utilizationPreferences The preference to control the resource’s CPU utilization thresholds -
-#' threshold and headroom. When this preference isn't specified, we use the
-#' following default values:
+#' @param utilizationPreferences The preference to control the resource’s CPU utilization threshold, CPU
+#' utilization headroom, and memory utilization headroom. When this
+#' preference isn't specified, we use the following default values.
+#' 
+#' CPU utilization:
 #' 
 #' -   `P99_5` for threshold
 #' 
-#' -   `PERCENT_17` for headroom
+#' -   `PERCENT_20` for headroom
 #' 
-#' You can only set this preference for the Amazon EC2 instance resource
-#' type.
+#' Memory utilization:
+#' 
+#' -   `PERCENT_20` for headroom
+#' 
+#' 
+#' -   You can only set CPU and memory utilization preferences for the
+#'     Amazon EC2 instance resource type.
+#' 
+#' -   The threshold setting isn’t available for memory utilization.
 #' @param preferredResources The preference to control which resource type values are considered when
 #' generating rightsizing recommendations. You can specify this preference
 #' as a combination of include and exclude lists. You must specify either
@@ -2846,10 +2857,10 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #'   lookBackPeriod = "DAYS_14"|"DAYS_32"|"DAYS_93",
 #'   utilizationPreferences = list(
 #'     list(
-#'       metricName = "CpuUtilization",
+#'       metricName = "CpuUtilization"|"MemoryUtilization",
 #'       metricParameters = list(
 #'         threshold = "P90"|"P95"|"P99_5",
-#'         headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_0"
+#'         headroom = "PERCENT_30"|"PERCENT_20"|"PERCENT_10"|"PERCENT_0"
 #'       )
 #'     )
 #'   ),

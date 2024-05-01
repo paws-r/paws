@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_list_lens_review_improvements}
 \alias{wellarchitected_list_lens_review_improvements}
-\title{List lens review improvements}
+\title{List the improvements of a particular lens review}
 \usage{
 wellarchitected_list_lens_review_improvements(
   WorkloadId,
@@ -30,7 +30,7 @@ wellarchitected_list_lens_review_improvements(
 \item{QuestionPriority}{The priority of the question.}
 }
 \description{
-List lens review improvements.
+List the improvements of a particular lens review.
 
 See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_review_improvements/} for full documentation.
 }

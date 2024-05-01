@@ -174,7 +174,7 @@ resourcegroups <- function(config = list(), credentials = list(), endpoint = NUL
 
 .resourcegroups$metadata <- list(
   service_name = "resource-groups",
-  endpoints = list("*" = list(endpoint = "resource-groups.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resource-groups.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "resource-groups.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resource-groups.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "resource-groups.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resource-groups.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "resource-groups.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "resource-groups.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resource-groups.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "resource-groups.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Resource Groups",
   api_version = "2017-11-27",
   signing_name = "resource-groups",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_get_delivery}
 \alias{cloudwatchlogs_get_delivery}
-\title{Returns complete information about one delivery}
+\title{Returns complete information about one logical delivery}
 \usage{
 cloudwatchlogs_get_delivery(id)
 }
@@ -10,7 +10,7 @@ cloudwatchlogs_get_delivery(id)
 \item{id}{[required] The ID of the delivery that you want to retrieve.}
 }
 \description{
-Returns complete information about one \emph{delivery}. A delivery is a connection between a logical \emph{delivery source} and a logical \emph{delivery destination}
+Returns complete information about one logical \emph{delivery}. A delivery is a connection between a \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliverySource.html}{\emph{delivery source}} and a \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestination.html}{\emph{delivery destination}} .
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/} for full documentation.
 }

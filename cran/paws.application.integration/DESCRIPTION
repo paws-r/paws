@@ -1,6 +1,6 @@
 Package: paws.application.integration
 Title: 'Amazon Web Services' Application Integration Services
-Version: 0.5.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -20,7 +20,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Collate: 
     'eventbridge_service.R'
     'eventbridge_interfaces.R'

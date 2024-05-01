@@ -20,7 +20,12 @@ ssm_put_parameter(
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the parameter that you want to add to the
-system. The fully qualified name includes the complete hierarchy of the
+system.
+
+You can't enter the Amazon Resource Name (ARN) for a parameter, only the
+parameter name itself.
+
+The fully qualified name includes the complete hierarchy of the
 parameter path and name. For parameters in a hierarchy, you must include
 a leading forward slash character (/) when you create or reference a
 parameter. For example: \verb{/Dev/DBServer/MySQL/db-string13}
@@ -123,7 +128,7 @@ Advanced parameters have a content size limit of 8 KB and can be
 configured to use parameter policies. You can create a maximum of
 100,000 advanced parameters for each Region in an Amazon Web Services
 account. Advanced parameters incur a charge. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{Standard and advanced parameter tiers}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{Managing parameter tiers}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 You can change a standard parameter to an advanced parameter any time.
@@ -176,8 +181,8 @@ Services account in the current Amazon Web Services Region.
 }
 
 For more information about configuring the default tier option, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Specifying a default parameter tier} in
-the \emph{Amazon Web Services Systems Manager User Guide}.}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html#ps-default-tier}{Specifying a default parameter tier}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Policies}{One or more policies to apply to a parameter. This operation takes a
 JSON array. Parameter Store, a capability of Amazon Web Services Systems
@@ -230,7 +235,7 @@ value, the PutParameter operation will return success, but the
 asynchronous validation will fail and the parameter will not be created
 or updated. To monitor whether your \code{aws:ec2:image} parameters are
 created successfully, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-cwe.html}{Setting up notifications or trigger actions based on Parameter Store events}.
-For more information about AMI format validation , see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image (AMI) IDs}.}
+For more information about AMI format validation , see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}.}
 }
 \description{
 Add a parameter to the system.

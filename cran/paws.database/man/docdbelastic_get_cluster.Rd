@@ -2,15 +2,15 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_get_cluster}
 \alias{docdbelastic_get_cluster}
-\title{Returns information about a specific Elastic DocumentDB cluster}
+\title{Returns information about a specific elastic cluster}
 \usage{
 docdbelastic_get_cluster(clusterArn)
 }
 \arguments{
-\item{clusterArn}{[required] The arn of the Elastic DocumentDB cluster.}
+\item{clusterArn}{[required] The ARN identifier of the elastic cluster.}
 }
 \description{
-Returns information about a specific Elastic DocumentDB cluster.
+Returns information about a specific elastic cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_get_cluster/} for full documentation.
 }

@@ -210,7 +210,15 @@ will listen for incoming connections.
 
 Default: \code{5439}
 
-Valid Values: \code{1150-65535}}
+Valid Values:
+\itemize{
+\item For clusters with ra3 nodes - Select a port within the ranges
+\code{5431-5455} or \code{8191-8215}. (If you have an existing cluster with
+ra3 nodes, it isn't required that you change the port to these
+ranges.)
+\item For clusters with ds2 or dc2 nodes - Select a port within the range
+\code{1150-65535}.
+}}
 
 \item{ClusterVersion}{The version of the Amazon Redshift engine software that you want to
 deploy on the cluster.

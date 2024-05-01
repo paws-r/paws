@@ -236,7 +236,7 @@ manage Amazon QuickSight.
 \link[=quicksight_search_groups]{search_groups} \tab Use the SearchGroups operation to search groups in a specified Amazon QuickSight namespace using the supplied filters\cr
 \link[=quicksight_start_asset_bundle_export_job]{start_asset_bundle_export_job} \tab Starts an Asset Bundle export job\cr
 \link[=quicksight_start_asset_bundle_import_job]{start_asset_bundle_import_job} \tab Starts an Asset Bundle import job\cr
-\link[=quicksight_start_dashboard_snapshot_job]{start_dashboard_snapshot_job} \tab Starts an asynchronous job that generates a dashboard snapshot\cr
+\link[=quicksight_start_dashboard_snapshot_job]{start_dashboard_snapshot_job} \tab Starts an asynchronous job that generates a snapshot of a dashboard's output\cr
 \link[=quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource\cr
 \link[=quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource\cr
 \link[=quicksight_update_account_customization]{update_account_customization} \tab Updates Amazon QuickSight customizations for the current Amazon Web Services Region\cr
@@ -260,6 +260,7 @@ manage Amazon QuickSight.
 \link[=quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab Use the UpdatePublicSharingSettings operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard\cr
 \link[=quicksight_update_refresh_schedule]{update_refresh_schedule} \tab Updates a refresh schedule for a dataset\cr
 \link[=quicksight_update_role_custom_permission]{update_role_custom_permission} \tab Updates the custom permissions that are associated with a role\cr
+\link[=quicksight_update_spice_capacity_configuration]{update_spice_capacity_configuration} \tab Updates the SPICE capacity configuration for a Amazon QuickSight account\cr
 \link[=quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon QuickSight analysis or another template\cr
 \link[=quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template\cr
 \link[=quicksight_update_template_permissions]{update_template_permissions} \tab Updates the resource permissions for a template\cr

@@ -22,7 +22,7 @@ bucket, you must use path-style requests in the format
 Virtual-hosted-style requests aren't supported. Directory bucket names
 must be unique in the chosen Availability Zone. Bucket names must also
 follow the format \code{ bucket_base_name--az_id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az2--x-s3}). For information about bucket
+\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}}
 

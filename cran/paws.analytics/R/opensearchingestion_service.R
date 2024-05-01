@@ -139,7 +139,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 
 .opensearchingestion$metadata <- list(
   service_name = "opensearchingestion",
-  endpoints = list("*" = list(endpoint = "osis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "osis.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "osis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "osis.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "osis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "osis.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "osis.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "osis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "osis.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "osis.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "OSIS",
   api_version = "2022-01-01",
   signing_name = "osis",

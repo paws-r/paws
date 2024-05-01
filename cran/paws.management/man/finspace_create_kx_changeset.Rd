@@ -18,7 +18,7 @@ finspace_create_kx_changeset(
 
 \item{changeRequests}{[required] A list of change request objects that are run in order. A change request
 object consists of \code{changeType} , \code{s3Path}, and \code{dbPath}. A changeType
-can has the following values:
+can have the following values:
 \itemize{
 \item PUT – Adds or updates files in a database.
 \item DELETE – Deletes files in a database.

@@ -6,10 +6,18 @@
 \title{Use this operation to change what types of data are shared from a source
 account to its linked monitoring account sink}
 \usage{
-cloudwatchobservabilityaccessmanager_update_link(Identifier, ResourceTypes)
+cloudwatchobservabilityaccessmanager_update_link(
+  Identifier,
+  LinkConfiguration = NULL,
+  ResourceTypes
+)
 }
 \arguments{
 \item{Identifier}{[required] The ARN of the link that you want to update.}
+
+\item{LinkConfiguration}{Use this structure to filter which metric namespaces and which log
+groups are to be shared from the source account to the monitoring
+account.}
 
 \item{ResourceTypes}{[required] An array of strings that define which types of data that the source
 account will send to the monitoring account.

@@ -7,6 +7,7 @@ Amazon Web Services region where the API request is processed}
 \usage{
 ivs_list_channels(
   filterByName = NULL,
+  filterByPlaybackRestrictionPolicyArn = NULL,
   filterByRecordingConfigurationArn = NULL,
   maxResults = NULL,
   nextToken = NULL
@@ -14,6 +15,8 @@ ivs_list_channels(
 }
 \arguments{
 \item{filterByName}{Filters the channel list to match the specified name.}
+
+\item{filterByPlaybackRestrictionPolicyArn}{Filters the channel list to match the specified policy.}
 
 \item{filterByRecordingConfigurationArn}{Filters the channel list to match the specified recording-configuration
 ARN.}

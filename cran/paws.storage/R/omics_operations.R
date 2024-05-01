@@ -33,14 +33,14 @@ omics_abort_multipart_read_set_upload <- function(sequenceStoreId, uploadId) {
 }
 .omics$operations$abort_multipart_read_set_upload <- omics_abort_multipart_read_set_upload
 
-#' Accepts a share for an analytics store
+#' Accept a resource share request
 #'
 #' @description
-#' Accepts a share for an analytics store.
+#' Accept a resource share request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_accept_share/](https://www.paws-r-sdk.com/docs/omics_accept_share/) for full documentation.
 #'
-#' @param shareId &#91;required&#93; The ID for a share offer for analytics store data.
+#' @param shareId &#91;required&#93; The ID of the resource share.
 #'
 #' @keywords internal
 #'
@@ -407,18 +407,19 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #' for each request.
 #' @param fallbackLocation An S3 location that is used to store files that have failed a direct
 #' upload.
+#' @param eTagAlgorithmFamily The ETag algorithm family to use for ingested read sets.
 #'
 #' @keywords internal
 #'
 #' @rdname omics_create_sequence_store
-omics_create_sequence_store <- function(name, description = NULL, sseConfig = NULL, tags = NULL, clientToken = NULL, fallbackLocation = NULL) {
+omics_create_sequence_store <- function(name, description = NULL, sseConfig = NULL, tags = NULL, clientToken = NULL, fallbackLocation = NULL, eTagAlgorithmFamily = NULL) {
   op <- new_operation(
     name = "CreateSequenceStore",
     http_method = "POST",
     http_path = "/sequencestore",
     paginator = list()
   )
-  input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation)
+  input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation, eTagAlgorithmFamily = eTagAlgorithmFamily)
   output <- .omics$create_sequence_store_output()
   config <- get_config()
   svc <- .omics$service(config)
@@ -428,18 +429,17 @@ omics_create_sequence_store <- function(name, description = NULL, sseConfig = NU
 }
 .omics$operations$create_sequence_store <- omics_create_sequence_store
 
-#' Creates a share offer that can be accepted outside the account by a
-#' subscriber
+#' Creates a cross-account shared resource
 #'
 #' @description
-#' Creates a share offer that can be accepted outside the account by a subscriber. The share is created by the owner and accepted by the principal subscriber.
+#' Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner).
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_create_share/](https://www.paws-r-sdk.com/docs/omics_create_share/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The resource ARN for the analytics store to be shared.
-#' @param principalSubscriber &#91;required&#93; The principal subscriber is the account being given access to the
-#' analytics store data through the share offer.
-#' @param shareName A name given to the share.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to be shared.
+#' @param principalSubscriber &#91;required&#93; The principal subscriber is the account being offered shared access to
+#' the resource.
+#' @param shareName A name that the owner defines for the share.
 #'
 #' @keywords internal
 #'
@@ -508,7 +508,7 @@ omics_create_variant_store <- function(reference, name = NULL, description = NUL
 #' @param definitionUri The URI of a definition for the workflow.
 #' @param main The path of the main definition file for the workflow.
 #' @param parameterTemplate A parameter template for the workflow.
-#' @param storageCapacity A storage capacity for the workflow in gibibytes.
+#' @param storageCapacity The storage capacity for the workflow in gibibytes.
 #' @param tags Tags for the workflow.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
@@ -742,14 +742,14 @@ omics_delete_sequence_store <- function(id) {
 }
 .omics$operations$delete_sequence_store <- omics_delete_sequence_store
 
-#' Deletes a share of an analytics store
+#' Deletes a resource share
 #'
 #' @description
-#' Deletes a share of an analytics store.
+#' Deletes a resource share. If you are the resource owner, the subscriber will no longer have access to the shared resource. If you are the subscriber, this operation deletes your access to the share.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_delete_share/](https://www.paws-r-sdk.com/docs/omics_delete_share/) for full documentation.
 #'
-#' @param shareId &#91;required&#93; The ID for the share request to be deleted.
+#' @param shareId &#91;required&#93; The ID for the resource share to be deleted.
 #'
 #' @keywords internal
 #'
@@ -1312,14 +1312,14 @@ omics_get_sequence_store <- function(id) {
 }
 .omics$operations$get_sequence_store <- omics_get_sequence_store
 
-#' Retrieves the metadata for a share
+#' Retrieves the metadata for the specified resource share
 #'
 #' @description
-#' Retrieves the metadata for a share.
+#' Retrieves the metadata for the specified resource share.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_get_share/](https://www.paws-r-sdk.com/docs/omics_get_share/) for full documentation.
 #'
-#' @param shareId &#91;required&#93; The generated ID for a share.
+#' @param shareId &#91;required&#93; The ID of the share.
 #'
 #' @keywords internal
 #'
@@ -1409,18 +1409,19 @@ omics_get_variant_store <- function(name) {
 #' @param id &#91;required&#93; The workflow's ID.
 #' @param type The workflow's type.
 #' @param export The export format for the workflow.
+#' @param workflowOwnerId The ID of the workflow owner.
 #'
 #' @keywords internal
 #'
 #' @rdname omics_get_workflow
-omics_get_workflow <- function(id, type = NULL, export = NULL) {
+omics_get_workflow <- function(id, type = NULL, export = NULL, workflowOwnerId = NULL) {
   op <- new_operation(
     name = "GetWorkflow",
     http_method = "GET",
     http_path = "/workflow/{id}",
     paginator = list()
   )
-  input <- .omics$get_workflow_input(id = id, type = type, export = export)
+  input <- .omics$get_workflow_input(id = id, type = type, export = export, workflowOwnerId = workflowOwnerId)
   output <- .omics$get_workflow_output()
   config <- get_config()
   svc <- .omics$service(config)
@@ -1533,7 +1534,7 @@ omics_list_annotation_stores <- function(ids = NULL, maxResults = NULL, nextToke
 #' Lists multipart read set uploads and for in progress uploads
 #'
 #' @description
-#' Lists multipart read set uploads and for in progress uploads. Once the upload is completed, a read set is created and the upload will no longer be returned in the respone.
+#' Lists multipart read set uploads and for in progress uploads. Once the upload is completed, a read set is created and the upload will no longer be returned in the response.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_list_multipart_read_set_uploads/](https://www.paws-r-sdk.com/docs/omics_list_multipart_read_set_uploads/) for full documentation.
 #'
@@ -1962,15 +1963,16 @@ omics_list_sequence_stores <- function(maxResults = NULL, nextToken = NULL, filt
 }
 .omics$operations$list_sequence_stores <- omics_list_sequence_stores
 
-#' Lists all shares associated with an account
+#' Retrieves the resource shares associated with an account
 #'
 #' @description
-#' Lists all shares associated with an account.
+#' Retrieves the resource shares associated with an account. Use the filter parameter to retrieve a specific subset of the shares.
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_list_shares/](https://www.paws-r-sdk.com/docs/omics_list_shares/) for full documentation.
 #'
-#' @param resourceOwner &#91;required&#93; The account that owns the analytics store shared.
-#' @param filter Attributes used to filter for a specific subset of shares.
+#' @param resourceOwner &#91;required&#93; The account that owns the resource shares.
+#' @param filter Attributes that you use to filter for a specific subset of resource
+#' shares.
 #' @param nextToken Next token returned in the response of a previous
 #' ListReadSetUploadPartsRequest call. Used to get the next page of
 #' results.
@@ -2098,8 +2100,8 @@ omics_list_variant_stores <- function(maxResults = NULL, ids = NULL, nextToken =
 #'
 #' See [https://www.paws-r-sdk.com/docs/omics_list_workflows/](https://www.paws-r-sdk.com/docs/omics_list_workflows/) for full documentation.
 #'
-#' @param type The workflows' type.
-#' @param name The workflows' name.
+#' @param type Filter the list by workflow type.
+#' @param name Filter the list by workflow name.
 #' @param startingToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
 #' @param maxResults The maximum number of workflows to return in one page of results.
@@ -2306,25 +2308,32 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @param runGroupId The run's group ID.
 #' @param priority A priority for the run.
 #' @param parameters Parameters for the run.
-#' @param storageCapacity A storage capacity for the run in gigabytes.
+#' @param storageCapacity A storage capacity for the run in gibibytes. This field is not required
+#' if the storage type is dynamic (the system ignores any value that you
+#' enter).
 #' @param outputUri An output URI for the run.
 #' @param logLevel A log level for the run.
 #' @param tags Tags for the run.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
 #' @param retentionMode The retention mode for the run.
+#' @param storageType The run's storage type. By default, the run uses STATIC storage type,
+#' which allocates a fixed amount of storage. If you set the storage type
+#' to DYNAMIC, HealthOmics dynamically scales the storage up or down, based
+#' on file system utilization.
+#' @param workflowOwnerId The ID of the workflow owner.
 #'
 #' @keywords internal
 #'
 #' @rdname omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
     http_path = "/run",
     paginator = list()
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config)

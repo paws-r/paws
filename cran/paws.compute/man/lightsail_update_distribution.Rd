@@ -11,7 +11,10 @@ lightsail_update_distribution(
   defaultCacheBehavior = NULL,
   cacheBehaviorSettings = NULL,
   cacheBehaviors = NULL,
-  isEnabled = NULL
+  isEnabled = NULL,
+  viewerMinimumTlsProtocolVersion = NULL,
+  certificateName = NULL,
+  useDefaultCertificate = NULL
 )
 }
 \arguments{
@@ -39,6 +42,25 @@ settings.}
 distribution.}
 
 \item{isEnabled}{Indicates whether to enable the distribution.}
+
+\item{viewerMinimumTlsProtocolVersion}{Use this parameter to update the minimum TLS protocol version for the
+SSL/TLS certificate that's attached to the distribution.}
+
+\item{certificateName}{The name of the SSL/TLS certificate that you want to attach to the
+distribution.
+
+Only certificates with a status of \code{ISSUED} can be attached to a
+distribution.
+
+Use the \code{\link[=lightsail_get_certificates]{get_certificates}} action to get a
+list of certificate names that you can specify.}
+
+\item{useDefaultCertificate}{Indicates whether the default SSL/TLS certificate is attached to the
+distribution. The default value is \code{true}. When \code{true}, the distribution
+uses the default domain name such as \code{d111111abcdef8.cloudfront.net}.
+
+Set this value to \code{false} to attach a new certificate to the
+distribution.}
 }
 \description{
 Updates an existing Amazon Lightsail content delivery network (CDN) distribution.

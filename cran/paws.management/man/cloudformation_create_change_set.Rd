@@ -44,7 +44,8 @@ Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
 must point to a template (max size: 460,800 bytes) that's located in an
 Amazon S3 bucket or a Systems Manager document. CloudFormation generates
 the change set by comparing this template with the stack that you
-specified.
+specified. The location for an Amazon S3 bucket must start with
+\verb{https://}.
 
 Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
 

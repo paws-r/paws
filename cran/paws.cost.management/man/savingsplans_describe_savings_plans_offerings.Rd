@@ -2,7 +2,7 @@
 % Please edit documentation in R/savingsplans_operations.R
 \name{savingsplans_describe_savings_plans_offerings}
 \alias{savingsplans_describe_savings_plans_offerings}
-\title{Describes the specified Savings Plans offerings}
+\title{Describes the offerings for the specified Savings Plans}
 \usage{
 savingsplans_describe_savings_plans_offerings(
   offeringIds = NULL,
@@ -27,9 +27,9 @@ savingsplans_describe_savings_plans_offerings(
 
 \item{productType}{The product type.}
 
-\item{planTypes}{The plan type.}
+\item{planTypes}{The plan types.}
 
-\item{durations}{The durations, in seconds.}
+\item{durations}{The duration, in seconds.}
 
 \item{currencies}{The currencies.}
 
@@ -39,7 +39,8 @@ savingsplans_describe_savings_plans_offerings(
 
 \item{usageTypes}{The usage details of the line item in the billing report.}
 
-\item{operations}{The specific AWS operation for the line item in the billing report.}
+\item{operations}{The specific Amazon Web Services operation for the line item in the
+billing report.}
 
 \item{filters}{The filters.}
 
@@ -49,7 +50,7 @@ savingsplans_describe_savings_plans_offerings(
 additional results, make another call with the returned token value.}
 }
 \description{
-Describes the specified Savings Plans offerings.
+Describes the offerings for the specified Savings Plans.
 
 See \url{https://www.paws-r-sdk.com/docs/savingsplans_describe_savings_plans_offerings/} for full documentation.
 }

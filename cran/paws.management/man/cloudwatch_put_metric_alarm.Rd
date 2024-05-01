@@ -63,9 +63,19 @@ any other state. Each action is specified as an Amazon Resource Name
 \item \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
 }
 
+\strong{Lambda actions:}
+\itemize{
+\item Invoke the latest version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+}
+
 \strong{SNS notification action:}
 \itemize{
-\item \code{arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+\item \code{arn:aws:sns:region:account-id:sns-topic-name }
 }
 
 \strong{SSM integration actions:}
@@ -95,9 +105,19 @@ Name (ARN). Valid values:
 \item \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
 }
 
+\strong{Lambda actions:}
+\itemize{
+\item Invoke the latest version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+}
+
 \strong{SNS notification action:}
 \itemize{
-\item \code{arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+\item \code{arn:aws:sns:region:account-id:sns-topic-name }
 }
 
 \strong{SSM integration actions:}
@@ -127,9 +147,19 @@ as an Amazon Resource Name (ARN). Valid values:
 \item \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
 }
 
+\strong{Lambda actions:}
+\itemize{
+\item Invoke the latest version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name }
+\item Invoke a specific version of a Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:version-number }
+\item Invoke a function by using an alias Lambda function:
+\verb{arn:aws:lambda:region:account-id:function:function-name:alias-name }
+}
+
 \strong{SNS notification action:}
 \itemize{
-\item \code{arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+\item \code{arn:aws:sns:region:account-id:sns-topic-name }
 }
 
 \strong{SSM integration actions:}

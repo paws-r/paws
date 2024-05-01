@@ -244,7 +244,7 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"
+#'   Availability = "AVAILABLE"|"AVAILABLE_RESERVED"|"AVAILABLE_PREORDER"|"UNAVAILABLE"|"UNAVAILABLE_PREMIUM"|"UNAVAILABLE_RESTRICTED"|"RESERVED"|"DONT_KNOW"|"INVALID_NAME_FOR_TLD"|"PENDING"
 #' )
 #' ```
 #'
@@ -903,7 +903,29 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #'       KeyTag = 123,
 #'       Id = "string"
 #'     )
-#'   )
+#'   ),
+#'   BillingContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AC"|"AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AX"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BQ"|"BR"|"BS"|"BT"|"BV"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CW"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"EH"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GF"|"GG"|"GH"|"GI"|"GL"|"GM"|"GN"|"GP"|"GQ"|"GR"|"GS"|"GT"|"GU"|"GW"|"GY"|"HK"|"HM"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IO"|"IQ"|"IR"|"IS"|"IT"|"JE"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MQ"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NF"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PS"|"PT"|"PW"|"PY"|"QA"|"RE"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SJ"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"SS"|"ST"|"SV"|"SX"|"SY"|"SZ"|"TC"|"TD"|"TF"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TP"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   BillingPrivacy = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1045,7 +1067,7 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #'   Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
 #'   Message = "string",
 #'   DomainName = "string",
-#'   Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+#'   Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN"|"RELEASE_TO_GANDI"|"TRANSFER_ON_RENEW",
 #'   SubmittedDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1219,7 +1241,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #'     list(
 #'       OperationId = "string",
 #'       Status = "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED",
-#'       Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+#'       Type = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN"|"RELEASE_TO_GANDI"|"TRANSFER_ON_RENEW",
 #'       SubmittedDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1247,7 +1269,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #'     "SUBMITTED"|"IN_PROGRESS"|"ERROR"|"SUCCESSFUL"|"FAILED"
 #'   ),
 #'   Type = list(
-#'     "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN"
+#'     "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN"|"RELEASE_TO_GANDI"|"TRANSFER_ON_RENEW"
 #'   ),
 #'   SortBy = "SubmittedDate",
 #'   SortOrder = "ASC"|"DESC"
@@ -1524,7 +1546,7 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,
 #'   AutoRenew, AdminContact, RegistrantContact, TechContact,
 #'   PrivacyProtectAdminContact, PrivacyProtectRegistrantContact,
-#'   PrivacyProtectTechContact)
+#'   PrivacyProtectTechContact, BillingContact, PrivacyProtectBillingContact)
 #'
 #' @param DomainName &#91;required&#93; The domain name that you want to register. The top-level domain (TLD),
 #' such as .com, must be a TLD that Route 53 supports. For a list of
@@ -1576,37 +1598,45 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' admin contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the admin contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' registrant contact (the domain owner).
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the registrant contact (the domain owner).
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' technical contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the technical contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
+#' @param BillingContact Provides detailed contact information. For information about the values
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' @param PrivacyProtectBillingContact Whether you want to conceal contact information from WHOIS queries. If
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the billing contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' billing, registrant, and technical contacts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1688,7 +1718,29 @@ route53domains_push_domain <- function(DomainName, Target) {
 #'   ),
 #'   PrivacyProtectAdminContact = TRUE|FALSE,
 #'   PrivacyProtectRegistrantContact = TRUE|FALSE,
-#'   PrivacyProtectTechContact = TRUE|FALSE
+#'   PrivacyProtectTechContact = TRUE|FALSE,
+#'   BillingContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AC"|"AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AX"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BQ"|"BR"|"BS"|"BT"|"BV"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CW"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"EH"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GF"|"GG"|"GH"|"GI"|"GL"|"GM"|"GN"|"GP"|"GQ"|"GR"|"GS"|"GT"|"GU"|"GW"|"GY"|"HK"|"HM"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IO"|"IQ"|"IR"|"IS"|"IT"|"JE"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MQ"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NF"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PS"|"PT"|"PW"|"PY"|"QA"|"RE"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SJ"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"SS"|"ST"|"SV"|"SX"|"SY"|"SZ"|"TC"|"TD"|"TF"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TP"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   PrivacyProtectBillingContact = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1697,14 +1749,14 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' @rdname route53domains_register_domain
 #'
 #' @aliases route53domains_register_domain
-route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL) {
+route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL, BillingContact = NULL, PrivacyProtectBillingContact = NULL) {
   op <- new_operation(
     name = "RegisterDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$register_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact)
+  input <- .route53domains$register_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact, BillingContact = BillingContact, PrivacyProtectBillingContact = PrivacyProtectBillingContact)
   output <- .route53domains$register_domain_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -2018,6 +2070,13 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Registrar](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html)
 #'     in the *Amazon Route 53 Developer Guide*.
 #' 
+#' During the transfer of any country code top-level domains (ccTLDs) to
+#' Route 53, except for .cc and .tv, updates to the owner contact are
+#' ignored and the owner contact data from the registry is used. You can
+#' update the owner contact after the transfer is complete. For more
+#' information, see
+#' [`update_domain_contact`][route53domains_update_domain_contact].
+#' 
 #' If the registrar for your domain is also the DNS service provider for
 #' the domain, we highly recommend that you transfer your DNS service to
 #' Route 53 or to another DNS service provider before you transfer your
@@ -2040,7 +2099,8 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' route53domains_transfer_domain(DomainName, IdnLangCode, DurationInYears,
 #'   Nameservers, AuthCode, AutoRenew, AdminContact, RegistrantContact,
 #'   TechContact, PrivacyProtectAdminContact,
-#'   PrivacyProtectRegistrantContact, PrivacyProtectTechContact)
+#'   PrivacyProtectRegistrantContact, PrivacyProtectTechContact,
+#'   BillingContact, PrivacyProtectBillingContact)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
@@ -2087,26 +2147,33 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' registrant contact (domain owner).
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the registrant contact (domain owner).
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' technical contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the technical contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' 
 #' Default: `true`
+#' @param BillingContact Provides detailed contact information.
+#' @param PrivacyProtectBillingContact Whether you want to conceal contact information from WHOIS queries. If
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the billing contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' billing, registrant, and technical contacts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2197,7 +2264,29 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'   ),
 #'   PrivacyProtectAdminContact = TRUE|FALSE,
 #'   PrivacyProtectRegistrantContact = TRUE|FALSE,
-#'   PrivacyProtectTechContact = TRUE|FALSE
+#'   PrivacyProtectTechContact = TRUE|FALSE,
+#'   BillingContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AC"|"AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AX"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BQ"|"BR"|"BS"|"BT"|"BV"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CW"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"EH"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GF"|"GG"|"GH"|"GI"|"GL"|"GM"|"GN"|"GP"|"GQ"|"GR"|"GS"|"GT"|"GU"|"GW"|"GY"|"HK"|"HM"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IO"|"IQ"|"IR"|"IS"|"IT"|"JE"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MQ"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NF"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PS"|"PT"|"PW"|"PY"|"QA"|"RE"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SJ"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"SS"|"ST"|"SV"|"SX"|"SY"|"SZ"|"TC"|"TD"|"TF"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TP"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   PrivacyProtectBillingContact = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2206,14 +2295,14 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @rdname route53domains_transfer_domain
 #'
 #' @aliases route53domains_transfer_domain
-route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL) {
+route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL, BillingContact = NULL, PrivacyProtectBillingContact = NULL) {
   op <- new_operation(
     name = "TransferDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$transfer_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, Nameservers = Nameservers, AuthCode = AuthCode, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact)
+  input <- .route53domains$transfer_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, Nameservers = Nameservers, AuthCode = AuthCode, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact, BillingContact = BillingContact, PrivacyProtectBillingContact = PrivacyProtectBillingContact)
   output <- .route53domains$transfer_domain_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -2320,7 +2409,7 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #'
 #' @usage
 #' route53domains_update_domain_contact(DomainName, AdminContact,
-#'   RegistrantContact, TechContact, Consent)
+#'   RegistrantContact, TechContact, Consent, BillingContact)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update contact information for.
 #' @param AdminContact Provides detailed contact information.
@@ -2328,6 +2417,7 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @param TechContact Provides detailed contact information.
 #' @param Consent Customer's consent for the owner change request. Required if the domain
 #' is not free (consent price is more than $0.00).
+#' @param BillingContact Provides detailed contact information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2407,6 +2497,27 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #'   Consent = list(
 #'     MaxPrice = 123.0,
 #'     Currency = "string"
+#'   ),
+#'   BillingContact = list(
+#'     FirstName = "string",
+#'     LastName = "string",
+#'     ContactType = "PERSON"|"COMPANY"|"ASSOCIATION"|"PUBLIC_BODY"|"RESELLER",
+#'     OrganizationName = "string",
+#'     AddressLine1 = "string",
+#'     AddressLine2 = "string",
+#'     City = "string",
+#'     State = "string",
+#'     CountryCode = "AC"|"AD"|"AE"|"AF"|"AG"|"AI"|"AL"|"AM"|"AN"|"AO"|"AQ"|"AR"|"AS"|"AT"|"AU"|"AW"|"AX"|"AZ"|"BA"|"BB"|"BD"|"BE"|"BF"|"BG"|"BH"|"BI"|"BJ"|"BL"|"BM"|"BN"|"BO"|"BQ"|"BR"|"BS"|"BT"|"BV"|"BW"|"BY"|"BZ"|"CA"|"CC"|"CD"|"CF"|"CG"|"CH"|"CI"|"CK"|"CL"|"CM"|"CN"|"CO"|"CR"|"CU"|"CV"|"CW"|"CX"|"CY"|"CZ"|"DE"|"DJ"|"DK"|"DM"|"DO"|"DZ"|"EC"|"EE"|"EG"|"EH"|"ER"|"ES"|"ET"|"FI"|"FJ"|"FK"|"FM"|"FO"|"FR"|"GA"|"GB"|"GD"|"GE"|"GF"|"GG"|"GH"|"GI"|"GL"|"GM"|"GN"|"GP"|"GQ"|"GR"|"GS"|"GT"|"GU"|"GW"|"GY"|"HK"|"HM"|"HN"|"HR"|"HT"|"HU"|"ID"|"IE"|"IL"|"IM"|"IN"|"IO"|"IQ"|"IR"|"IS"|"IT"|"JE"|"JM"|"JO"|"JP"|"KE"|"KG"|"KH"|"KI"|"KM"|"KN"|"KP"|"KR"|"KW"|"KY"|"KZ"|"LA"|"LB"|"LC"|"LI"|"LK"|"LR"|"LS"|"LT"|"LU"|"LV"|"LY"|"MA"|"MC"|"MD"|"ME"|"MF"|"MG"|"MH"|"MK"|"ML"|"MM"|"MN"|"MO"|"MP"|"MQ"|"MR"|"MS"|"MT"|"MU"|"MV"|"MW"|"MX"|"MY"|"MZ"|"NA"|"NC"|"NE"|"NF"|"NG"|"NI"|"NL"|"NO"|"NP"|"NR"|"NU"|"NZ"|"OM"|"PA"|"PE"|"PF"|"PG"|"PH"|"PK"|"PL"|"PM"|"PN"|"PR"|"PS"|"PT"|"PW"|"PY"|"QA"|"RE"|"RO"|"RS"|"RU"|"RW"|"SA"|"SB"|"SC"|"SD"|"SE"|"SG"|"SH"|"SI"|"SJ"|"SK"|"SL"|"SM"|"SN"|"SO"|"SR"|"SS"|"ST"|"SV"|"SX"|"SY"|"SZ"|"TC"|"TD"|"TF"|"TG"|"TH"|"TJ"|"TK"|"TL"|"TM"|"TN"|"TO"|"TP"|"TR"|"TT"|"TV"|"TW"|"TZ"|"UA"|"UG"|"US"|"UY"|"UZ"|"VA"|"VC"|"VE"|"VG"|"VI"|"VN"|"VU"|"WF"|"WS"|"YE"|"YT"|"ZA"|"ZM"|"ZW",
+#'     ZipCode = "string",
+#'     PhoneNumber = "string",
+#'     Email = "string",
+#'     Fax = "string",
+#'     ExtraParams = list(
+#'       list(
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER"|"EU_COUNTRY_OF_CITIZENSHIP"|"AU_PRIORITY_TOKEN",
+#'         Value = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2416,14 +2527,14 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @rdname route53domains_update_domain_contact
 #'
 #' @aliases route53domains_update_domain_contact
-route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL, Consent = NULL) {
+route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL, Consent = NULL, BillingContact = NULL) {
   op <- new_operation(
     name = "UpdateDomainContact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent)
+  input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent, BillingContact = BillingContact)
   output <- .route53domains$update_domain_contact_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -2464,36 +2575,41 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #'
 #' @usage
 #' route53domains_update_domain_contact_privacy(DomainName, AdminPrivacy,
-#'   RegistrantPrivacy, TechPrivacy)
+#'   RegistrantPrivacy, TechPrivacy, BillingPrivacy)
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update the privacy setting for.
 #' @param AdminPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' admin contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the admin contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' @param RegistrantPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' registrant contact (domain owner).
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the registrant contact (domain owner).
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
 #' @param TechPrivacy Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' technical contact.
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the technical contact.
 #' 
 #' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' billing, registrant, and technical contacts.
+#' @param BillingPrivacy Whether you want to conceal contact information from WHOIS queries. If
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar or for our registrar associate, Gandi. If
+#' you specify `false`, WHOIS queries return the information that you
+#' entered for the billing contact.
+#' 
+#' You must specify the same privacy setting for the administrative,
+#' billing, registrant, and technical contacts.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2509,7 +2625,8 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #'   DomainName = "string",
 #'   AdminPrivacy = TRUE|FALSE,
 #'   RegistrantPrivacy = TRUE|FALSE,
-#'   TechPrivacy = TRUE|FALSE
+#'   TechPrivacy = TRUE|FALSE,
+#'   BillingPrivacy = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2518,14 +2635,14 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' @rdname route53domains_update_domain_contact_privacy
 #'
 #' @aliases route53domains_update_domain_contact_privacy
-route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivacy = NULL, RegistrantPrivacy = NULL, TechPrivacy = NULL) {
+route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivacy = NULL, RegistrantPrivacy = NULL, TechPrivacy = NULL, BillingPrivacy = NULL) {
   op <- new_operation(
     name = "UpdateDomainContactPrivacy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53domains$update_domain_contact_privacy_input(DomainName = DomainName, AdminPrivacy = AdminPrivacy, RegistrantPrivacy = RegistrantPrivacy, TechPrivacy = TechPrivacy)
+  input <- .route53domains$update_domain_contact_privacy_input(DomainName = DomainName, AdminPrivacy = AdminPrivacy, RegistrantPrivacy = RegistrantPrivacy, TechPrivacy = TechPrivacy, BillingPrivacy = BillingPrivacy)
   output <- .route53domains$update_domain_contact_privacy_output()
   config <- get_config()
   svc <- .route53domains$service(config)
@@ -2695,7 +2812,7 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #'   BillingRecords = list(
 #'     list(
 #'       DomainName = "string",
-#'       Operation = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN",
+#'       Operation = "REGISTER_DOMAIN"|"DELETE_DOMAIN"|"TRANSFER_IN_DOMAIN"|"UPDATE_DOMAIN_CONTACT"|"UPDATE_NAMESERVER"|"CHANGE_PRIVACY_PROTECTION"|"DOMAIN_LOCK"|"ENABLE_AUTORENEW"|"DISABLE_AUTORENEW"|"ADD_DNSSEC"|"REMOVE_DNSSEC"|"EXPIRE_DOMAIN"|"TRANSFER_OUT_DOMAIN"|"CHANGE_DOMAIN_OWNER"|"RENEW_DOMAIN"|"PUSH_DOMAIN"|"INTERNAL_TRANSFER_OUT_DOMAIN"|"INTERNAL_TRANSFER_IN_DOMAIN"|"RELEASE_TO_GANDI"|"TRANSFER_ON_RENEW",
 #'       InvoiceId = "string",
 #'       BillDate = as.POSIXct(
 #'         "2015-01-01"

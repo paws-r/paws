@@ -250,10 +250,10 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' @usage
 #' dynamodb_batch_get_item(RequestItems, ReturnConsumedCapacity)
 #'
-#' @param RequestItems &#91;required&#93; A map of one or more table names and, for each table, a map that
-#' describes one or more items to retrieve from that table. Each table name
-#' can be used only once per [`batch_get_item`][dynamodb_batch_get_item]
-#' request.
+#' @param RequestItems &#91;required&#93; A map of one or more table names or table ARNs and, for each table, a
+#' map that describes one or more items to retrieve from that table. Each
+#' table name or ARN can be used only once per
+#' [`batch_get_item`][dynamodb_batch_get_item] request.
 #' 
 #' Each element in the map of items to retrieve consists of the following:
 #' 
@@ -635,9 +635,9 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' dynamodb_batch_write_item(RequestItems, ReturnConsumedCapacity,
 #'   ReturnItemCollectionMetrics)
 #'
-#' @param RequestItems &#91;required&#93; A map of one or more table names and, for each table, a list of
-#' operations to be performed (`DeleteRequest` or `PutRequest`). Each
-#' element in the map consists of the following:
+#' @param RequestItems &#91;required&#93; A map of one or more table names or table ARNs and, for each table, a
+#' list of operations to be performed (`DeleteRequest` or `PutRequest`).
+#' Each element in the map consists of the following:
 #' 
 #' -   `DeleteRequest` - Perform a [`delete_item`][dynamodb_delete_item]
 #'     operation on the specified item. The item to be deleted is
@@ -981,7 +981,8 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #' @usage
 #' dynamodb_create_backup(TableName, BackupName)
 #'
-#' @param TableName &#91;required&#93; The name of the table.
+#' @param TableName &#91;required&#93; The name of the table. You can also provide the Amazon Resource Name
+#' (ARN) of the table in this parameter.
 #' @param BackupName &#91;required&#93; Specified name for the backup.
 #'
 #' @return
@@ -1044,7 +1045,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' This operation only applies to [Version 2017.11.29
 #' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' when creating new global tables, as it provides greater flexibility,
 #' higher efficiency and consumes less write capacity than 2017.11.29
 #' (Legacy). To determine which version you are using, see [Determining the
@@ -1204,11 +1205,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
 #'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags,
-#'   TableClass, DeletionProtectionEnabled)
+#'   TableClass, DeletionProtectionEnabled, ResourcePolicy)
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
 #' indexes.
-#' @param TableName &#91;required&#93; The name of the table to create.
+#' @param TableName &#91;required&#93; The name of the table to create. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #' @param KeySchema &#91;required&#93; Specifies the attributes that make up the primary key for a table or an
 #' index. The attributes in `KeySchema` must also be defined in the
 #' `AttributeDefinitions` array. For more information, see [Data
@@ -1372,6 +1374,18 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' `STANDARD_INFREQUENT_ACCESS`.
 #' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
 #' disabled (false) on the table.
+#' @param ResourcePolicy An Amazon Web Services resource-based policy document in JSON format
+#' that will be attached to the table.
+#' 
+#' When you attach a resource-based policy while creating a table, the
+#' policy creation is *strongly consistent*.
+#' 
+#' The maximum size supported for a resource-based policy document is 20
+#' KB. DynamoDB counts whitespaces when calculating the size of a policy
+#' against this limit. You can’t request an increase for this limit. For a
+#' full list of all considerations that you should keep in mind while
+#' attaching a resource-based policy, see [Resource-based policy
+#' considerations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1614,7 +1628,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     )
 #'   ),
 #'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
-#'   DeletionProtectionEnabled = TRUE|FALSE
+#'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   ResourcePolicy = "string"
 #' )
 #' ```
 #'
@@ -1655,14 +1670,14 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @rdname dynamodb_create_table
 #'
 #' @aliases dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, ResourcePolicy = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, ResourcePolicy = ResourcePolicy)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -1838,7 +1853,8 @@ dynamodb_delete_backup <- function(BackupArn) {
 #'   ConditionExpression, ExpressionAttributeNames,
 #'   ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure)
 #'
-#' @param TableName &#91;required&#93; The name of the table from which to delete the item.
+#' @param TableName &#91;required&#93; The name of the table from which to delete the item. You can also
+#' provide the Amazon Resource Name (ARN) of the table in this parameter.
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
 #' primary key of the item to delete.
 #' 
@@ -2196,6 +2212,87 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 }
 .dynamodb$operations$delete_item <- dynamodb_delete_item
 
+#' Deletes the resource-based policy attached to the resource, which can be
+#' a table or stream
+#'
+#' @description
+#' Deletes the resource-based policy attached to the resource, which can be
+#' a table or stream.
+#' 
+#' [`delete_resource_policy`][dynamodb_delete_resource_policy] is an
+#' idempotent operation; running it multiple times on the same resource
+#' *doesn't* result in an error response, unless you specify an
+#' `ExpectedRevisionId`, which will then return a
+#' `PolicyNotFoundException`.
+#' 
+#' To make sure that you don't inadvertently lock yourself out of your own
+#' resources, the root principal in your Amazon Web Services account can
+#' perform [`delete_resource_policy`][dynamodb_delete_resource_policy]
+#' requests, even if your resource-based policy explicitly denies the root
+#' principal's access.
+#' 
+#' [`delete_resource_policy`][dynamodb_delete_resource_policy] is an
+#' asynchronous operation. If you issue a
+#' [`get_resource_policy`][dynamodb_get_resource_policy] request
+#' immediately after running the
+#' [`delete_resource_policy`][dynamodb_delete_resource_policy] request,
+#' DynamoDB might still return the deleted policy. This is because the
+#' policy for your resource might not have been deleted yet. Wait for a few
+#' seconds, and then try the
+#' [`get_resource_policy`][dynamodb_get_resource_policy] request again.
+#'
+#' @usage
+#' dynamodb_delete_resource_policy(ResourceArn, ExpectedRevisionId)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DynamoDB resource from which the
+#' policy will be removed. The resources you can specify include tables and
+#' streams. If you remove the policy of a table, it will also remove the
+#' permissions for the table's indexes defined in that policy document.
+#' This is because index permissions are defined in the table's policy.
+#' @param ExpectedRevisionId A string value that you can use to conditionally delete your policy.
+#' When you provide an expected revision ID, if the revision ID of the
+#' existing policy on the resource doesn't match or if there's no policy
+#' attached to the resource, the request will fail and return a
+#' `PolicyNotFoundException`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string",
+#'   ExpectedRevisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_delete_resource_policy
+#'
+#' @aliases dynamodb_delete_resource_policy
+dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$delete_resource_policy_input(ResourceArn = ResourceArn, ExpectedRevisionId = ExpectedRevisionId)
+  output <- .dynamodb$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$delete_resource_policy <- dynamodb_delete_resource_policy
+
 #' The DeleteTable operation deletes a table and all of its items
 #'
 #' @description
@@ -2209,7 +2306,7 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' already in the `DELETING` state, no error is returned.
 #' 
 #' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' of global tables.
 #' 
 #' DynamoDB might continue to accept data read and write operations, such
@@ -2228,7 +2325,8 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' @usage
 #' dynamodb_delete_table(TableName)
 #'
-#' @param TableName &#91;required&#93; The name of the table to delete.
+#' @param TableName &#91;required&#93; The name of the table to delete. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2600,6 +2698,9 @@ dynamodb_describe_backup <- function(BackupArn) {
 #'
 #' @param TableName &#91;required&#93; Name of the table for which the customer wants to check the continuous
 #' backups and point in time recovery settings.
+#' 
+#' You can also provide the Amazon Resource Name (ARN) of the table in this
+#' parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2659,7 +2760,8 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #' @usage
 #' dynamodb_describe_contributor_insights(TableName, IndexName)
 #'
-#' @param TableName &#91;required&#93; The name of the table to describe.
+#' @param TableName &#91;required&#93; The name of the table to describe. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #' @param IndexName The name of the global secondary index to describe, if applicable.
 #'
 #' @return
@@ -2721,6 +2823,8 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 #'
 #' @usage
 #' dynamodb_describe_endpoints()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -2853,7 +2957,7 @@ dynamodb_describe_export <- function(ExportArn) {
 #' This operation only applies to [Version 2017.11.29
 #' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' when creating new global tables, as it provides greater flexibility,
 #' higher efficiency and consumes less write capacity than 2017.11.29
 #' (Legacy). To determine which version you are using, see [Determining the
@@ -2948,7 +3052,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' This operation only applies to [Version 2017.11.29
 #' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' when creating new global tables, as it provides greater flexibility,
 #' higher efficiency and consumes less write capacity than 2017.11.29
 #' (Legacy). To determine which version you are using, see [Determining the
@@ -3231,7 +3335,8 @@ dynamodb_describe_import <- function(ImportArn) {
 #' @usage
 #' dynamodb_describe_kinesis_streaming_destination(TableName)
 #'
-#' @param TableName &#91;required&#93; The name of the table being described.
+#' @param TableName &#91;required&#93; The name of the table being described. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3241,8 +3346,9 @@ dynamodb_describe_import <- function(ImportArn) {
 #'   KinesisDataStreamDestinations = list(
 #'     list(
 #'       StreamArn = "string",
-#'       DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED",
-#'       DestinationStatusDescription = "string"
+#'       DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"|"UPDATING",
+#'       DestinationStatusDescription = "string",
+#'       ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
 #'     )
 #'   )
 #' )
@@ -3357,6 +3463,8 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' @usage
 #' dynamodb_describe_limits()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -3412,7 +3520,7 @@ dynamodb_describe_limits <- function() {
 #' the table.
 #' 
 #' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' of global tables.
 #' 
 #' If you issue a [`describe_table`][dynamodb_describe_table] request
@@ -3426,7 +3534,8 @@ dynamodb_describe_limits <- function() {
 #' @usage
 #' dynamodb_describe_table(TableName)
 #'
-#' @param TableName &#91;required&#93; The name of the table to describe.
+#' @param TableName &#91;required&#93; The name of the table to describe. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3639,13 +3748,14 @@ dynamodb_describe_table <- function(TableName) {
 #' once.
 #' 
 #' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' of global tables.
 #'
 #' @usage
 #' dynamodb_describe_table_replica_auto_scaling(TableName)
 #'
-#' @param TableName &#91;required&#93; The name of the table.
+#' @param TableName &#91;required&#93; The name of the table. You can also provide the Amazon Resource Name
+#' (ARN) of the table in this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3777,7 +3887,8 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
 #' @usage
 #' dynamodb_describe_time_to_live(TableName)
 #'
-#' @param TableName &#91;required&#93; The name of the table to be described.
+#' @param TableName &#91;required&#93; The name of the table to be described. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3826,10 +3937,13 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' This is done without deleting either of the resources.
 #'
 #' @usage
-#' dynamodb_disable_kinesis_streaming_destination(TableName, StreamArn)
+#' dynamodb_disable_kinesis_streaming_destination(TableName, StreamArn,
+#'   EnableKinesisStreamingConfiguration)
 #'
-#' @param TableName &#91;required&#93; The name of the DynamoDB table.
+#' @param TableName &#91;required&#93; The name of the DynamoDB table. You can also provide the Amazon Resource
+#' Name (ARN) of the table in this parameter.
 #' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
+#' @param EnableKinesisStreamingConfiguration The source for the Kinesis streaming information that is being enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3837,7 +3951,10 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' list(
 #'   TableName = "string",
 #'   StreamArn = "string",
-#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
+#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"|"UPDATING",
+#'   EnableKinesisStreamingConfiguration = list(
+#'     ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
+#'   )
 #' )
 #' ```
 #'
@@ -3845,7 +3962,10 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' ```
 #' svc$disable_kinesis_streaming_destination(
 #'   TableName = "string",
-#'   StreamArn = "string"
+#'   StreamArn = "string",
+#'   EnableKinesisStreamingConfiguration = list(
+#'     ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
+#'   )
 #' )
 #' ```
 #'
@@ -3854,14 +3974,14 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' @rdname dynamodb_disable_kinesis_streaming_destination
 #'
 #' @aliases dynamodb_disable_kinesis_streaming_destination
-dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn) {
+dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn, EnableKinesisStreamingConfiguration = NULL) {
   op <- new_operation(
     name = "DisableKinesisStreamingDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$disable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn)
+  input <- .dynamodb$disable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$disable_kinesis_streaming_destination_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -3881,10 +4001,13 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' check if streaming to the Kinesis data stream is ACTIVE.
 #'
 #' @usage
-#' dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
+#' dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn,
+#'   EnableKinesisStreamingConfiguration)
 #'
-#' @param TableName &#91;required&#93; The name of the DynamoDB table.
+#' @param TableName &#91;required&#93; The name of the DynamoDB table. You can also provide the Amazon Resource
+#' Name (ARN) of the table in this parameter.
 #' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
+#' @param EnableKinesisStreamingConfiguration The source for the Kinesis streaming information that is being enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3892,7 +4015,10 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' list(
 #'   TableName = "string",
 #'   StreamArn = "string",
-#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"
+#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"|"UPDATING",
+#'   EnableKinesisStreamingConfiguration = list(
+#'     ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
+#'   )
 #' )
 #' ```
 #'
@@ -3900,7 +4026,10 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' ```
 #' svc$enable_kinesis_streaming_destination(
 #'   TableName = "string",
-#'   StreamArn = "string"
+#'   StreamArn = "string",
+#'   EnableKinesisStreamingConfiguration = list(
+#'     ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
+#'   )
 #' )
 #' ```
 #'
@@ -3909,14 +4038,14 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' @rdname dynamodb_enable_kinesis_streaming_destination
 #'
 #' @aliases dynamodb_enable_kinesis_streaming_destination
-dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) {
+dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn, EnableKinesisStreamingConfiguration = NULL) {
   op <- new_operation(
     name = "EnableKinesisStreamingDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$enable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn)
+  input <- .dynamodb$enable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$enable_kinesis_streaming_destination_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -4297,6 +4426,9 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
 #' @param S3BucketOwner The ID of the Amazon Web Services account that owns the bucket the
 #' export will be stored in.
+#' 
+#' S3BucketOwner is a required parameter when exporting to a S3 bucket in
+#' another account.
 #' @param S3Prefix The Amazon S3 bucket prefix to use as the file name and path of the
 #' exported snapshot.
 #' @param S3SseAlgorithm Type of encryption used on the bucket where export data will be stored.
@@ -4428,7 +4560,8 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' dynamodb_get_item(TableName, Key, AttributesToGet, ConsistentRead,
 #'   ReturnConsumedCapacity, ProjectionExpression, ExpressionAttributeNames)
 #'
-#' @param TableName &#91;required&#93; The name of the table containing the requested item.
+#' @param TableName &#91;required&#93; The name of the table containing the requested item. You can also
+#' provide the Amazon Resource Name (ARN) of the table in this parameter.
 #' @param Key &#91;required&#93; A map of attribute names to `AttributeValue` objects, representing the
 #' primary key of the item to retrieve.
 #' 
@@ -4628,6 +4761,97 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
   return(response)
 }
 .dynamodb$operations$get_item <- dynamodb_get_item
+
+#' Returns the resource-based policy document attached to the resource,
+#' which can be a table or stream, in JSON format
+#'
+#' @description
+#' Returns the resource-based policy document attached to the resource,
+#' which can be a table or stream, in JSON format.
+#' 
+#' [`get_resource_policy`][dynamodb_get_resource_policy] follows an
+#' [*eventually
+#' consistent*](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html)
+#' model. The following list describes the outcomes when you issue the
+#' [`get_resource_policy`][dynamodb_get_resource_policy] request
+#' immediately after issuing another request:
+#' 
+#' -   If you issue a [`get_resource_policy`][dynamodb_get_resource_policy]
+#'     request immediately after a
+#'     [`put_resource_policy`][dynamodb_put_resource_policy] request,
+#'     DynamoDB might return a `PolicyNotFoundException`.
+#' 
+#' -   If you issue a
+#'     [`get_resource_policy`][dynamodb_get_resource_policy]request
+#'     immediately after a
+#'     [`delete_resource_policy`][dynamodb_delete_resource_policy] request,
+#'     DynamoDB might return the policy that was present before the
+#'     deletion request.
+#' 
+#' -   If you issue a [`get_resource_policy`][dynamodb_get_resource_policy]
+#'     request immediately after a [`create_table`][dynamodb_create_table]
+#'     request, which includes a resource-based policy, DynamoDB might
+#'     return a `ResourceNotFoundException` or a `PolicyNotFoundException`.
+#' 
+#' Because [`get_resource_policy`][dynamodb_get_resource_policy] uses an
+#' *eventually consistent* query, the metadata for your policy or table
+#' might not be available at that moment. Wait for a few seconds, and then
+#' retry the [`get_resource_policy`][dynamodb_get_resource_policy] request.
+#' 
+#' After a [`get_resource_policy`][dynamodb_get_resource_policy] request
+#' returns a policy created using the
+#' [`put_resource_policy`][dynamodb_put_resource_policy] request, you can
+#' assume the policy will start getting applied in the authorization of
+#' requests to the resource. Because this process is eventually consistent,
+#' it will take some time to apply the policy to all requests to a
+#' resource. Policies that you attach while creating a table using the
+#' [`create_table`][dynamodb_create_table] request will always be applied
+#' to all requests for that table.
+#'
+#' @usage
+#' dynamodb_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DynamoDB resource to which the
+#' policy is attached. The resources you can specify include tables and
+#' streams.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_get_resource_policy
+#'
+#' @aliases dynamodb_get_resource_policy
+dynamodb_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .dynamodb$get_resource_policy_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$get_resource_policy <- dynamodb_get_resource_policy
 
 #' Imports table data from an S3 bucket
 #'
@@ -4863,7 +5087,8 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
 #' dynamodb_list_backups(TableName, Limit, TimeRangeLowerBound,
 #'   TimeRangeUpperBound, ExclusiveStartBackupArn, BackupType)
 #'
-#' @param TableName The backups from the table specified by `TableName` are listed.
+#' @param TableName Lists the backups from the table specified in `TableName`. You can also
+#' provide the Amazon Resource Name (ARN) of the table in this parameter.
 #' @param Limit Maximum number of backups to return at once.
 #' @param TimeRangeLowerBound Only backups created after this time are listed. `TimeRangeLowerBound`
 #' is inclusive.
@@ -4960,7 +5185,8 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #' @usage
 #' dynamodb_list_contributor_insights(TableName, NextToken, MaxResults)
 #'
-#' @param TableName The name of the table.
+#' @param TableName The name of the table. You can also provide the Amazon Resource Name
+#' (ARN) of the table in this parameter.
 #' @param NextToken A token to for the desired page, if there is one.
 #' @param MaxResults Maximum number of results to return per page.
 #'
@@ -5078,7 +5304,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' This operation only applies to [Version 2017.11.29
 #' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' when creating new global tables, as it provides greater flexibility,
 #' higher efficiency and consumes less write capacity than 2017.11.29
 #' (Legacy). To determine which version you are using, see [Determining the
@@ -5393,7 +5619,8 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'   ConditionalOperator, ConditionExpression, ExpressionAttributeNames,
 #'   ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure)
 #'
-#' @param TableName &#91;required&#93; The name of the table to contain the item.
+#' @param TableName &#91;required&#93; The name of the table to contain the item. You can also provide the
+#' Amazon Resource Name (ARN) of the table in this parameter.
 #' @param Item &#91;required&#93; A map of attribute name/value pairs, one for each attribute. Only the
 #' primary key attributes are required; you can optionally provide other
 #' attribute name-value pairs for the item.
@@ -5774,6 +6001,109 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 }
 .dynamodb$operations$put_item <- dynamodb_put_item
 
+#' Attaches a resource-based policy document to the resource, which can be
+#' a table or stream
+#'
+#' @description
+#' Attaches a resource-based policy document to the resource, which can be
+#' a table or stream. When you attach a resource-based policy using this
+#' API, the policy application is [*eventually
+#' consistent*](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html)
+#' .
+#' 
+#' [`put_resource_policy`][dynamodb_put_resource_policy] is an idempotent
+#' operation; running it multiple times on the same resource using the same
+#' policy document will return the same revision ID. If you specify an
+#' `ExpectedRevisionId` which doesn't match the current policy's
+#' `RevisionId`, the `PolicyNotFoundException` will be returned.
+#' 
+#' [`put_resource_policy`][dynamodb_put_resource_policy] is an asynchronous
+#' operation. If you issue a
+#' [`get_resource_policy`][dynamodb_get_resource_policy] request
+#' immediately after a
+#' [`put_resource_policy`][dynamodb_put_resource_policy] request, DynamoDB
+#' might return your previous policy, if there was one, or return the
+#' `PolicyNotFoundException`. This is because
+#' [`get_resource_policy`][dynamodb_get_resource_policy] uses an eventually
+#' consistent query, and the metadata for your policy or table might not be
+#' available at that moment. Wait for a few seconds, and then try the
+#' [`get_resource_policy`][dynamodb_get_resource_policy] request again.
+#'
+#' @usage
+#' dynamodb_put_resource_policy(ResourceArn, Policy, ExpectedRevisionId,
+#'   ConfirmRemoveSelfResourceAccess)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the DynamoDB resource to which the
+#' policy will be attached. The resources you can specify include tables
+#' and streams.
+#' 
+#' You can control index permissions using the base table's policy. To
+#' specify the same permission level for your table and its indexes, you
+#' can provide both the table and index Amazon Resource Name (ARN)s in the
+#' `Resource` field of a given `Statement` in your policy document.
+#' Alternatively, to specify different permissions for your table, indexes,
+#' or both, you can define multiple `Statement` fields in your policy
+#' document.
+#' @param Policy &#91;required&#93; An Amazon Web Services resource-based policy document in JSON format.
+#' 
+#' The maximum size supported for a resource-based policy document is 20
+#' KB. DynamoDB counts whitespaces when calculating the size of a policy
+#' against this limit. For a full list of all considerations that you
+#' should keep in mind while attaching a resource-based policy, see
+#' [Resource-based policy
+#' considerations](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html).
+#' @param ExpectedRevisionId A string value that you can use to conditionally update your policy. You
+#' can provide the revision ID of your existing policy to make mutating
+#' requests against that policy. When you provide an expected revision ID,
+#' if the revision ID of the existing policy on the resource doesn't match
+#' or if there's no policy attached to the resource, your request will be
+#' rejected with a `PolicyNotFoundException`.
+#' 
+#' To conditionally put a policy when no policy exists for the resource,
+#' specify `NO_POLICY` for the revision ID.
+#' @param ConfirmRemoveSelfResourceAccess Set this parameter to `true` to confirm that you want to remove your
+#' permissions to change the policy of this resource in the future.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   Policy = "string",
+#'   ExpectedRevisionId = "string",
+#'   ConfirmRemoveSelfResourceAccess = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_put_resource_policy
+#'
+#' @aliases dynamodb_put_resource_policy
+dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId = NULL, ConfirmRemoveSelfResourceAccess = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, ExpectedRevisionId = ExpectedRevisionId, ConfirmRemoveSelfResourceAccess = ConfirmRemoveSelfResourceAccess)
+  output <- .dynamodb$put_resource_policy_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$put_resource_policy <- dynamodb_put_resource_policy
+
 #' You must provide the name of the partition key attribute and a single
 #' value for that attribute
 #'
@@ -5844,7 +6174,8 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #'   ProjectionExpression, FilterExpression, KeyConditionExpression,
 #'   ExpressionAttributeNames, ExpressionAttributeValues)
 #'
-#' @param TableName &#91;required&#93; The name of the table containing the requested items.
+#' @param TableName &#91;required&#93; The name of the table containing the requested items. You can also
+#' provide the Amazon Resource Name (ARN) of the table in this parameter.
 #' @param IndexName The name of an index to query. This index can be any local secondary
 #' index or global secondary index on the table. Note that if you use the
 #' `IndexName` parameter, you must also provide `TableName.`
@@ -5978,7 +6309,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.FilterExpression.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param KeyConditionExpression The condition that specifies the key values for items to be retrieved by
 #' the [`query`][dynamodb_query] action.
@@ -6660,7 +6991,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' Restores the specified table to the specified point in time within
 #' `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can
 #' restore your table to any point in time during the last 35 days. Any
-#' number of users can execute up to 4 concurrent restores (any type of
+#' number of users can execute up to 50 concurrent restores (any type of
 #' restore) in a given account.
 #' 
 #' When you restore using point in time recovery, DynamoDB restores your
@@ -7032,8 +7363,11 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #'   FilterExpression, ExpressionAttributeNames, ExpressionAttributeValues,
 #'   ConsistentRead)
 #'
-#' @param TableName &#91;required&#93; The name of the table containing the requested items; or, if you provide
+#' @param TableName &#91;required&#93; The name of the table containing the requested items or if you provide
 #' `IndexName`, the name of the table to which that index belongs.
+#' 
+#' You can also provide the Amazon Resource Name (ARN) of the table in this
+#' parameter.
 #' @param IndexName The name of a secondary index to scan. This index can be any local
 #' secondary index or global secondary index. Note that if you use the
 #' `IndexName` parameter, you must also provide `TableName`.
@@ -8210,7 +8544,8 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' dynamodb_update_continuous_backups(TableName,
 #'   PointInTimeRecoverySpecification)
 #'
-#' @param TableName &#91;required&#93; The name of the table.
+#' @param TableName &#91;required&#93; The name of the table. You can also provide the Amazon Resource Name
+#' (ARN) of the table in this parameter.
 #' @param PointInTimeRecoverySpecification &#91;required&#93; Represents the settings used to enable point in time recovery.
 #'
 #' @return
@@ -8281,7 +8616,8 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' dynamodb_update_contributor_insights(TableName, IndexName,
 #'   ContributorInsightsAction)
 #'
-#' @param TableName &#91;required&#93; The name of the table.
+#' @param TableName &#91;required&#93; The name of the table. You can also provide the Amazon Resource Name
+#' (ARN) of the table in this parameter.
 #' @param IndexName The global secondary index name, if applicable.
 #' @param ContributorInsightsAction &#91;required&#93; Represents the contributor insights action.
 #'
@@ -8338,7 +8674,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' This operation only applies to [Version 2017.11.29
 #' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' when creating new global tables, as it provides greater flexibility,
 #' higher efficiency and consumes less write capacity than 2017.11.29
 #' (Legacy). To determine which version you are using, see [Determining the
@@ -8350,8 +8686,8 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' This operation only applies to [Version
 #' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. If you are using global tables [Version
-#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
-#' you can use [`describe_table`][dynamodb_describe_table] instead.
+#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
+#' you can use [`update_table`][dynamodb_update_table] instead.
 #' 
 #' Although you can use
 #' [`update_global_table`][dynamodb_update_global_table] to add replicas
@@ -8466,7 +8802,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' This operation only applies to [Version 2017.11.29
 #' (Legacy)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables. We recommend using [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' when creating new global tables, as it provides greater flexibility,
 #' higher efficiency and consumes less write capacity than 2017.11.29
 #' (Legacy). To determine which version you are using, see [Determining the
@@ -8738,7 +9074,8 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'   ExpressionAttributeNames, ExpressionAttributeValues,
 #'   ReturnValuesOnConditionCheckFailure)
 #'
-#' @param TableName &#91;required&#93; The name of the table containing the item to update.
+#' @param TableName &#91;required&#93; The name of the table containing the item to update. You can also
+#' provide the Amazon Resource Name (ARN) of the table in this parameter.
 #' @param Key &#91;required&#93; The primary key of the item to be updated. Each element consists of an
 #' attribute name and a value for that attribute.
 #' 
@@ -9236,6 +9573,66 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 }
 .dynamodb$operations$update_item <- dynamodb_update_item
 
+#' The command to update the Kinesis stream destination
+#'
+#' @description
+#' The command to update the Kinesis stream destination.
+#'
+#' @usage
+#' dynamodb_update_kinesis_streaming_destination(TableName, StreamArn,
+#'   UpdateKinesisStreamingConfiguration)
+#'
+#' @param TableName &#91;required&#93; The table name for the Kinesis streaming destination input. You can also
+#' provide the ARN of the table in this parameter.
+#' @param StreamArn &#91;required&#93; The Amazon Resource Name (ARN) for the Kinesis stream input.
+#' @param UpdateKinesisStreamingConfiguration The command to update the Kinesis stream configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TableName = "string",
+#'   StreamArn = "string",
+#'   DestinationStatus = "ENABLING"|"ACTIVE"|"DISABLING"|"DISABLED"|"ENABLE_FAILED"|"UPDATING",
+#'   UpdateKinesisStreamingConfiguration = list(
+#'     ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kinesis_streaming_destination(
+#'   TableName = "string",
+#'   StreamArn = "string",
+#'   UpdateKinesisStreamingConfiguration = list(
+#'     ApproximateCreationDateTimePrecision = "MILLISECOND"|"MICROSECOND"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_update_kinesis_streaming_destination
+#'
+#' @aliases dynamodb_update_kinesis_streaming_destination
+dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, UpdateKinesisStreamingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateKinesisStreamingDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$update_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, UpdateKinesisStreamingConfiguration = UpdateKinesisStreamingConfiguration)
+  output <- .dynamodb$update_kinesis_streaming_destination_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$update_kinesis_streaming_destination <- dynamodb_update_kinesis_streaming_destination
+
 #' Modifies the provisioned throughput settings, global secondary indexes,
 #' or DynamoDB Streams settings for a given table
 #'
@@ -9244,7 +9641,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' or DynamoDB Streams settings for a given table.
 #' 
 #' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' of global tables.
 #' 
 #' You can only perform one of the following operations at once:
@@ -9258,8 +9655,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #'     [`update_table`][dynamodb_update_table] to perform other operations.
 #' 
 #' [`update_table`][dynamodb_update_table] is an asynchronous operation;
-#' while it is executing, the table status changes from `ACTIVE` to
-#' `UPDATING`. While it is `UPDATING`, you cannot issue another
+#' while it's executing, the table status changes from `ACTIVE` to
+#' `UPDATING`. While it's `UPDATING`, you can't issue another
 #' [`update_table`][dynamodb_update_table] request. When the table returns
 #' to the `ACTIVE` state, the [`update_table`][dynamodb_update_table]
 #' operation is complete.
@@ -9272,7 +9669,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
 #' `AttributeDefinitions` must include the key element(s) of the new index.
-#' @param TableName &#91;required&#93; The name of the table to be updated.
+#' @param TableName &#91;required&#93; The name of the table to be updated. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #' @param BillingMode Controls how you are charged for read and write throughput and how you
 #' manage capacity. When switching from pay-per-request to provisioned
 #' capacity, initial provisioned capacity values must be set. The initial
@@ -9308,15 +9706,15 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification Represents the DynamoDB Streams configuration for the table.
 #' 
-#' You receive a `ResourceInUseException` if you try to enable a stream on
-#' a table that already has a stream, or if you try to disable a stream on
-#' a table that doesn't have a stream.
+#' You receive a `ValidationException` if you try to enable a stream on a
+#' table that already has a stream, or if you try to disable a stream on a
+#' table that doesn't have a stream.
 #' @param SSESpecification The new server-side encryption settings for the specified table.
 #' @param ReplicaUpdates A list of replica update actions (create, delete, or update) for the
 #' table.
 #' 
 #' This property only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' of global tables.
 #' @param TableClass The table class of the table to be updated. Valid values are `STANDARD`
 #' and `STANDARD_INFREQUENT_ACCESS`.
@@ -9631,7 +10029,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' Updates auto scaling settings on your global tables at once.
 #' 
 #' This operation only applies to [Version 2019.11.21
-#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' (Current)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/)
 #' of global tables.
 #'
 #' @usage
@@ -9640,7 +10038,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #'
 #' @param GlobalSecondaryIndexUpdates Represents the auto scaling settings of the global secondary indexes of
 #' the replica to be updated.
-#' @param TableName &#91;required&#93; The name of the global table to be updated.
+#' @param TableName &#91;required&#93; The name of the global table to be updated. You can also provide the
+#' Amazon Resource Name (ARN) of the table in this parameter.
 #' @param ProvisionedWriteCapacityAutoScalingUpdate 
 #' @param ReplicaUpdates Represents the auto scaling settings of replicas of the table that will
 #' be modified.
@@ -9879,7 +10278,8 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
 #' @usage
 #' dynamodb_update_time_to_live(TableName, TimeToLiveSpecification)
 #'
-#' @param TableName &#91;required&#93; The name of the table to be configured.
+#' @param TableName &#91;required&#93; The name of the table to be configured. You can also provide the Amazon
+#' Resource Name (ARN) of the table in this parameter.
 #' @param TimeToLiveSpecification &#91;required&#93; Represents the settings used to enable or disable Time to Live for the
 #' specified table.
 #'

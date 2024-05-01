@@ -64,6 +64,10 @@ test_that("describe_db_security_groups", {
   expect_error(svc$describe_db_security_groups(), NA)
 })
 
+test_that("describe_db_shard_groups", {
+  expect_error(svc$describe_db_shard_groups(), NA)
+})
+
 test_that("describe_db_snapshot_tenant_databases", {
   expect_error(svc$describe_db_snapshot_tenant_databases(), NA)
 })

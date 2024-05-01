@@ -1975,11 +1975,11 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 }
 .storagegateway$operations$describe_tape_recovery_points <- storagegateway_describe_tape_recovery_points
 
-#' Returns a description of the specified Amazon Resource Name (ARN) of
-#' virtual tapes
+#' Returns a description of virtual tapes that correspond to the specified
+#' Amazon Resource Names (ARNs)
 #'
 #' @description
-#' Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes. If a `TapeARN` is not specified, returns a description of all virtual tapes associated with the specified gateway. This operation is only supported in the tape gateway type.
+#' Returns a description of virtual tapes that correspond to the specified Amazon Resource Names (ARNs). If `TapeARN` is not specified, returns a description of the virtual tapes associated with the specified gateway. This operation is only supported for the tape gateway type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_tapes/](https://www.paws-r-sdk.com/docs/storagegateway_describe_tapes/) for full documentation.
 #'
@@ -2629,10 +2629,10 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 .storagegateway$operations$list_volumes <- storagegateway_list_volumes
 
 #' Sends you notification through CloudWatch Events when all files written
-#' to your file share have been uploaded to S3
+#' to your file share have been uploaded to Amazon S3
 #'
 #' @description
-#' Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to S3. Amazon S3.
+#' Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3.
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_notify_when_uploaded/](https://www.paws-r-sdk.com/docs/storagegateway_notify_when_uploaded/) for full documentation.
 #'
@@ -2892,10 +2892,10 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 }
 .storagegateway$operations$set_smb_guest_password <- storagegateway_set_smb_guest_password
 
-#' Shuts down a gateway
+#' Shuts down a Tape Gateway or Volume Gateway
 #'
 #' @description
-#' Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.
+#' Shuts down a Tape Gateway or Volume Gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of the gateway in the body of your request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_shutdown_gateway/](https://www.paws-r-sdk.com/docs/storagegateway_shutdown_gateway/) for full documentation.
 #'

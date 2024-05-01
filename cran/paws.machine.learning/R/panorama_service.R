@@ -160,7 +160,7 @@ panorama <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .panorama$metadata <- list(
   service_name = "panorama",
-  endpoints = list("*" = list(endpoint = "panorama.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "panorama.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "panorama.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "panorama.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "panorama.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "panorama.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "panorama.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "panorama.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "panorama.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "panorama.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Panorama",
   api_version = "2019-07-24",
   signing_name = "panorama",

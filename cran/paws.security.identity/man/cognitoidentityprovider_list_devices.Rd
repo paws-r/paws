@@ -25,7 +25,7 @@ requests return a new pagination token. By use of this token, you can
 paginate through the full list of items.}
 }
 \description{
-Lists the sign-in devices that Amazon Cognito has registered to the current user.
+Lists the sign-in devices that Amazon Cognito has registered to the current user. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_devices/} for full documentation.
 }

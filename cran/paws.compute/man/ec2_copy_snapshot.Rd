@@ -28,8 +28,8 @@ Region for the destination Outpost. You cannot copy a snapshot from an
 Outpost to a Region, from one Outpost to another, or within the same
 Outpost.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#copy-snapshots}{Copy snapshots from an Amazon Web Services Region to an Outpost}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#copy-snapshots}{Copy snapshots from an Amazon Web Services Region to an Outpost}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{DestinationRegion}{The destination Region to use in the \code{PresignedUrl} parameter of a
 snapshot copy operation. This parameter is only valid for specifying the
@@ -44,8 +44,8 @@ Region in your Amazon Web Services configuration file.}
 not enabled, enable encryption using this parameter. Otherwise, omit
 this parameter. Encrypted snapshots are encrypted, even if you omit this
 parameter and encryption by default is not enabled. You cannot set this
-parameter to false. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+parameter to false. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS encryption}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{KmsKeyId}{The identifier of the Key Management Service (KMS) KMS key to use for
 Amazon EBS encryption. If this parameter is not specified, your KMS key

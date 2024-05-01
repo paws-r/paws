@@ -2,19 +2,19 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_list_key_value_stores}
 \alias{cloudfront_list_key_value_stores}
-\title{Specifies the Key Value Stores to list}
+\title{Specifies the key value stores to list}
 \usage{
 cloudfront_list_key_value_stores(Marker = NULL, MaxItems = NULL, Status = NULL)
 }
 \arguments{
-\item{Marker}{The marker associated with the Key Value Stores list.}
+\item{Marker}{The marker associated with the key value stores list.}
 
-\item{MaxItems}{The maximum number of items in the Key Value Stores list.}
+\item{MaxItems}{The maximum number of items in the key value stores list.}
 
-\item{Status}{The status of the request for the Key Value Stores list.}
+\item{Status}{The status of the request for the key value stores list.}
 }
 \description{
-Specifies the Key Value Stores to list.
+Specifies the key value stores to list.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_key_value_stores/} for full documentation.
 }

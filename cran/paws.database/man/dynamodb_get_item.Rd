@@ -16,7 +16,8 @@ dynamodb_get_item(
 )
 }
 \arguments{
-\item{TableName}{[required] The name of the table containing the requested item.}
+\item{TableName}{[required] The name of the table containing the requested item. You can also
+provide the Amazon Resource Name (ARN) of the table in this parameter.}
 
 \item{Key}{[required] A map of attribute names to \code{AttributeValue} objects, representing the
 primary key of the item to retrieve.

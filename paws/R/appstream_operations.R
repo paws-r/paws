@@ -2077,6 +2077,8 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
 #' @usage
 #' appstream_create_usage_report_subscription()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2745,6 +2747,8 @@ appstream_delete_stack <- function(Name) {
 #'
 #' @usage
 #' appstream_delete_usage_report_subscription()
+#'
+
 #'
 #' @return
 #' An empty list.

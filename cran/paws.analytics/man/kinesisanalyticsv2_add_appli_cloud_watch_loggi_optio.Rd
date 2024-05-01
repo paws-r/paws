@@ -15,9 +15,9 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option(
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Data Analytics application name.}
 
-\item{CurrentApplicationVersionId}{The version ID of the Kinesis Data Analytics application. You must
-provide the \code{CurrentApplicationVersionId} or the \code{ConditionalToken}.You
-can retrieve the application version ID using
+\item{CurrentApplicationVersionId}{The version ID of the SQL-based Kinesis Data Analytics application. You
+must provide the \code{CurrentApplicationVersionId} or the
+\code{ConditionalToken}.You can retrieve the application version ID using
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}. For
 better concurrency support, use the \code{ConditionalToken} parameter instead
 of \code{CurrentApplicationVersionId}.}

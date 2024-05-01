@@ -5,9 +5,14 @@
 \title{Returns the corresponding Match ID of a customer record if the record
 has been processed}
 \usage{
-entityresolution_get_match_id(record, workflowName)
+entityresolution_get_match_id(applyNormalization = NULL, record, workflowName)
 }
 \arguments{
+\item{applyNormalization}{Normalizes the attributes defined in the schema in the input data. For
+example, if an attribute has an \code{AttributeType} of \code{PHONE_NUMBER}, and
+the data in the input table is in a format of 1234567890, Entity
+Resolution will normalize this field in the output to (123)-456-7890.}
+
 \item{record}{[required] The record to fetch the Match ID for.}
 
 \item{workflowName}{[required] The name of the workflow.}

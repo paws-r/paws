@@ -23,7 +23,13 @@ in the response body. The maximum and default values are both 100.}
 
 \item{WebACLId}{[required] The ID of the WAF web ACL that you want to list the associated
 distributions. If you specify "null" for the ID, the request returns a
-list of the distributions that aren't associated with a web ACL.}
+list of the distributions that aren't associated with a web ACL.
+
+For WAFV2, this is the ARN of the web ACL, such as
+\verb{arn:aws:wafv2:us-east-1:123456789012:global/webacl/ExampleWebACL/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111}.
+
+For WAF Classic, this is the ID of the web ACL, such as
+\verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE11111}.}
 }
 \description{
 List the distributions that are associated with a specified WAF web ACL.

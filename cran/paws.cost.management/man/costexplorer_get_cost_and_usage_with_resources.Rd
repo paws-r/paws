@@ -75,7 +75,7 @@ provides the token when the response from a previous call has more
 results than the maximum page size.}
 }
 \description{
-Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related metric, such as \code{BlendedCosts} or \code{UsageQuantity}, that you want the request to return. You can also filter and group your data by various dimensions, such as \code{SERVICE} or \code{AZ}, in a specific time range. For a complete list of valid dimensions, see the \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation. Management account in an organization in Organizations have access to all member accounts. This API is currently available for the Amazon Elastic Compute Cloud – Compute service only.
+Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related metric, such as \code{BlendedCosts} or \code{UsageQuantity}, that you want the request to return. You can also filter and group your data by various dimensions, such as \code{SERVICE} or \code{AZ}, in a specific time range. For a complete list of valid dimensions, see the \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation. Management account in an organization in Organizations have access to all member accounts.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage_with_resources/} for full documentation.
 }

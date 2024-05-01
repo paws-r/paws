@@ -24,7 +24,7 @@ ssm_start_automation_execution(
 \item{DocumentName}{[required] The name of the SSM document to run. This can be a public document or a
 custom document. To run a shared document belonging to another account,
 specify the document ARN. For more information about how to use shared
-documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Using shared SSM documents}
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Sharing SSM documents}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{DocumentVersion}{The version of the Automation runbook to use for this execution.}

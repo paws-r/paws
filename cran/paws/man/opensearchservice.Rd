@@ -54,12 +54,8 @@ Operations section.
 }
 \description{
 Use the Amazon OpenSearch Service configuration API to create,
-configure, and manage OpenSearch Service domains.
-
-For sample code that uses the configuration API, see the \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/}{\emph{Amazon OpenSearch Service Developer Guide}}
-. The guide also contains \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/}{sample code}
-for sending signed HTTP requests to the OpenSearch APIs. The endpoint
-for configuration service requests is Region specific:
+configure, and manage OpenSearch Service domains. The endpoint for
+configuration service requests is Region specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 a current list of supported Regions and endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#service-regions}{Amazon Web Services service endpoints}.
 }
@@ -107,6 +103,7 @@ a current list of supported Regions and endpoints, see \href{https://docs.aws.am
 \link[paws.analytics:opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
+\link[paws.analytics:opensearchservice_cancel_domain_config_change]{cancel_domain_config_change} \tab Cancels a pending configuration change on an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_create_domain]{create_domain} \tab Creates an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain\cr

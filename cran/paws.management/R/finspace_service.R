@@ -102,6 +102,7 @@ NULL
 #'  \link[=finspace_create_kx_volume]{create_kx_volume} \tab Creates a new volume with a specific amount of throughput and storage capacity\cr
 #'  \link[=finspace_delete_environment]{delete_environment} \tab Delete an FinSpace environment\cr
 #'  \link[=finspace_delete_kx_cluster]{delete_kx_cluster} \tab Deletes a kdb cluster\cr
+#'  \link[=finspace_delete_kx_cluster_node]{delete_kx_cluster_node} \tab Deletes the specified nodes from a cluster\cr
 #'  \link[=finspace_delete_kx_database]{delete_kx_database} \tab Deletes the specified database and all of its associated data\cr
 #'  \link[=finspace_delete_kx_dataview]{delete_kx_dataview} \tab Deletes the specified dataview\cr
 #'  \link[=finspace_delete_kx_environment]{delete_kx_environment} \tab Deletes the kdb environment\cr
@@ -171,7 +172,7 @@ finspace <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .finspace$metadata <- list(
   service_name = "finspace",
-  endpoints = list("*" = list(endpoint = "finspace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "finspace.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "finspace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "finspace.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "finspace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "finspace.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "finspace.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "finspace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "finspace.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "finspace.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "finspace",
   api_version = "2021-03-12",
   signing_name = "finspace",

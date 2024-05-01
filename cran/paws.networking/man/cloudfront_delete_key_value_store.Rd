@@ -2,17 +2,17 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_delete_key_value_store}
 \alias{cloudfront_delete_key_value_store}
-\title{Specifies the Key Value Store to delete}
+\title{Specifies the key value store to delete}
 \usage{
 cloudfront_delete_key_value_store(Name, IfMatch)
 }
 \arguments{
-\item{Name}{[required] The name of the Key Value Store.}
+\item{Name}{[required] The name of the key value store.}
 
-\item{IfMatch}{[required] The Key Value Store to delete, if a match occurs.}
+\item{IfMatch}{[required] The key value store to delete, if a match occurs.}
 }
 \description{
-Specifies the Key Value Store to delete.
+Specifies the key value store to delete.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_key_value_store/} for full documentation.
 }

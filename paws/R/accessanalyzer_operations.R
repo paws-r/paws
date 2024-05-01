@@ -390,6 +390,12 @@ accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicy
 #'       ),
 #'       s3ExpressDirectoryBucket = list(
 #'         bucketPolicy = "string"
+#'       ),
+#'       dynamodbStream = list(
+#'         streamPolicy = "string"
+#'       ),
+#'       dynamodbTable = list(
+#'         tablePolicy = "string"
 #'       )
 #'     )
 #'   ),
@@ -430,7 +436,7 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #'
 #' @param analyzerName &#91;required&#93; The name of the analyzer to create.
 #' @param type &#91;required&#93; The type of analyzer to create. Only `ACCOUNT`, `ORGANIZATION`,
-#' `ACCOUNT_UNUSED_ACCESS`, and `ORGANIZTAION_UNUSED_ACCESS` analyzers are
+#' `ACCOUNT_UNUSED_ACCESS`, and `ORGANIZATION_UNUSED_ACCESS` analyzers are
 #' supported. You can create only one analyzer per account per Region. You
 #' can create up to 5 analyzers per organization per Region.
 #' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
@@ -799,6 +805,12 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
 #'         ),
 #'         s3ExpressDirectoryBucket = list(
 #'           bucketPolicy = "string"
+#'         ),
+#'         dynamodbStream = list(
+#'           streamPolicy = "string"
+#'         ),
+#'         dynamodbTable = list(
+#'           tablePolicy = "string"
 #'         )
 #'       )
 #'     ),
@@ -862,7 +874,7 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #' list(
 #'   resource = list(
 #'     resourceArn = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1065,7 +1077,10 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #' Retrieves information about the specified finding
 #'
 #' @description
-#' Retrieves information about the specified finding.
+#' Retrieves information about the specified finding. GetFinding and
+#' GetFindingV2 both use `access-analyzer:GetFinding` in the `Action`
+#' element of an IAM policy statement. You must have permission to perform
+#' the `access-analyzer:GetFinding` action.
 #'
 #' @usage
 #' accessanalyzer_get_finding(analyzerArn, id)
@@ -1089,7 +1104,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'     ),
 #'     resource = "string",
 #'     isPublic = TRUE|FALSE,
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'     condition = list(
 #'       "string"
 #'     ),
@@ -1151,7 +1166,10 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' Retrieves information about the specified finding
 #'
 #' @description
-#' Retrieves information about the specified finding.
+#' Retrieves information about the specified finding. GetFinding and
+#' GetFindingV2 both use `access-analyzer:GetFinding` in the `Action`
+#' element of an IAM policy statement. You must have permission to perform
+#' the `access-analyzer:GetFinding` action.
 #'
 #' @usage
 #' accessanalyzer_get_finding_v2(analyzerArn, id, maxResults, nextToken)
@@ -1177,7 +1195,7 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #'   id = "string",
 #'   nextToken = "string",
 #'   resource = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'   resourceOwnerAccount = "string",
 #'   status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'   updatedAt = as.POSIXct(
@@ -1423,7 +1441,7 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
 #'       ),
 #'       resource = "string",
 #'       isPublic = TRUE|FALSE,
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1559,11 +1577,12 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 .accessanalyzer$operations$list_access_previews <- accessanalyzer_list_access_previews
 
 #' Retrieves a list of resources of the specified type that have been
-#' analyzed by the specified analyzer
+#' analyzed by the specified external access analyzer
 #'
 #' @description
 #' Retrieves a list of resources of the specified type that have been
-#' analyzed by the specified analyzer..
+#' analyzed by the specified external access analyzer. This action is not
+#' supported for unused access analyzers.
 #'
 #' @usage
 #' accessanalyzer_list_analyzed_resources(analyzerArn, resourceType,
@@ -1584,7 +1603,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #'     list(
 #'       resourceArn = "string",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1595,7 +1614,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #' ```
 #' svc$list_analyzed_resources(
 #'   analyzerArn = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1780,6 +1799,9 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'
 #' @description
 #' Retrieves a list of findings generated by the specified analyzer.
+#' ListFindings and ListFindingsV2 both use `access-analyzer:ListFindings`
+#' in the `Action` element of an IAM policy statement. You must have
+#' permission to perform the `access-analyzer:ListFindings` action.
 #' 
 #' To learn about filter keys that you can use to retrieve a list of
 #' findings, see [IAM Access Analyzer filter
@@ -1813,7 +1835,7 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'       ),
 #'       resource = "string",
 #'       isPublic = TRUE|FALSE,
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'       condition = list(
 #'         "string"
 #'       ),
@@ -1897,6 +1919,9 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
 #'
 #' @description
 #' Retrieves a list of findings generated by the specified analyzer.
+#' ListFindings and ListFindingsV2 both use `access-analyzer:ListFindings`
+#' in the `Action` element of an IAM policy statement. You must have
+#' permission to perform the `access-analyzer:ListFindings` action.
 #' 
 #' To learn about filter keys that you can use to retrieve a list of
 #' findings, see [IAM Access Analyzer filter
@@ -1930,7 +1955,7 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
 #'       error = "string",
 #'       id = "string",
 #'       resource = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
 #'       resourceOwnerAccount = "string",
 #'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'       updatedAt = as.POSIXct(
@@ -2546,7 +2571,7 @@ accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, reso
 #'   nextToken = "string",
 #'   policyDocument = "string",
 #'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"|"SERVICE_CONTROL_POLICY",
-#'   validatePolicyResourceType = "AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3::MultiRegionAccessPoint"|"AWS::S3ObjectLambda::AccessPoint"|"AWS::IAM::AssumeRolePolicyDocument"
+#'   validatePolicyResourceType = "AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3::MultiRegionAccessPoint"|"AWS::S3ObjectLambda::AccessPoint"|"AWS::IAM::AssumeRolePolicyDocument"|"AWS::DynamoDB::Table"
 #' )
 #' ```
 #'

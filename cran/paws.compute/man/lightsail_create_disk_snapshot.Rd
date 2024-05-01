@@ -12,17 +12,17 @@ lightsail_create_disk_snapshot(
 )
 }
 \arguments{
-\item{diskName}{The unique name of the source disk (e.g., \code{Disk-Virginia-1}).
+\item{diskName}{The unique name of the source disk (\code{Disk-Virginia-1}).
 
 This parameter cannot be defined together with the \verb{instance name}
 parameter. The \verb{disk name} and \verb{instance name} parameters are mutually
 exclusive.}
 
-\item{diskSnapshotName}{[required] The name of the destination disk snapshot (e.g., \code{my-disk-snapshot})
-based on the source disk.}
+\item{diskSnapshotName}{[required] The name of the destination disk snapshot (\code{my-disk-snapshot}) based on
+the source disk.}
 
-\item{instanceName}{The unique name of the source instance (e.g.,
-\verb{Amazon_Linux-512MB-Virginia-1}). When this is defined, a snapshot of
+\item{instanceName}{The unique name of the source instance
+(\verb{Amazon_Linux-512MB-Virginia-1}). When this is defined, a snapshot of
 the instance's system volume is created.
 
 This parameter cannot be defined together with the \verb{disk name}

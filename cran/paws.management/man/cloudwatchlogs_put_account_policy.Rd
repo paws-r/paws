@@ -2,22 +2,26 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_put_account_policy}
 \alias{cloudwatchlogs_put_account_policy}
-\title{Creates an account-level data protection policy that applies to all log
-groups in the account}
+\title{Creates an account-level data protection policy or subscription filter
+policy that applies to all log groups or a subset of log groups in the
+account}
 \usage{
 cloudwatchlogs_put_account_policy(
   policyName,
   policyDocument,
   policyType,
-  scope = NULL
+  scope = NULL,
+  selectionCriteria = NULL
 )
 }
 \arguments{
 \item{policyName}{[required] A name for the policy. This must be unique within the account.}
 
-\item{policyDocument}{[required] Specify the data protection policy, in JSON.
+\item{policyDocument}{[required] Specify the policy, in JSON.
 
-This policy must include two JSON blocks:
+\strong{Data protection policy}
+
+A data protection policy must include two JSON blocks:
 \itemize{
 \item The first block must include both a \code{DataIdentifer} array and an
 \code{Operation} property with an \code{Audit} action. The \code{DataIdentifer}
@@ -29,8 +33,7 @@ the sensitive data terms. This \code{Audit} action must contain a
 \code{FindingsDestination} object. You can optionally use that
 \code{FindingsDestination} object to list one or more destinations to
 send audit findings to. If you specify destinations such as log
-groups, Kinesis Data Firehose streams, and S3 buckets, they must
-already exist.
+groups, Firehose streams, and S3 buckets, they must already exist.
 \item The second block must include both a \code{DataIdentifer} array and an
 \code{Operation} property with an \code{Deidentify} action. The
 \code{DataIdentifer} array must exactly match the \code{DataIdentifer} array
@@ -52,17 +55,60 @@ different than the operation's \code{policyName} parameter, and is used as a
 dimension when CloudWatch Logs reports audit findings metrics to
 CloudWatch.
 
-The JSON specified in \code{policyDocument} can be up to 30,720 characters.}
+The JSON specified in \code{policyDocument} can be up to 30,720 characters
+long.
 
-\item{policyType}{[required] Currently the only valid value for this parameter is
-\code{DATA_PROTECTION_POLICY}.}
+\strong{Subscription filter policy}
+
+A subscription filter policy can include the following attributes in a
+JSON block:
+\itemize{
+\item \strong{DestinationArn} The ARN of the destination to deliver log events
+to. Supported destinations are:
+\itemize{
+\item An Kinesis Data Streams data stream in the same account as the
+subscription policy, for same-account delivery.
+\item An Firehose data stream in the same account as the subscription
+policy, for same-account delivery.
+\item A Lambda function in the same account as the subscription
+policy, for same-account delivery.
+\item A logical destination in a different account created with
+\code{\link[=cloudwatchlogs_put_destination]{put_destination}}, for
+cross-account delivery. Kinesis Data Streams and Firehose are
+supported as logical destinations.
+}
+\item \strong{RoleArn} The ARN of an IAM role that grants CloudWatch Logs
+permissions to deliver ingested log events to the destination
+stream. You don't need to provide the ARN when you are working with
+a logical destination for cross-account delivery.
+\item \strong{FilterPattern} A filter pattern for subscribing to a filtered
+stream of log events.
+\item \strong{Distribution}The method used to distribute log data to the
+destination. By default, log data is grouped by log stream, but the
+grouping can be set to \code{Random} for a more even distribution. This
+property is only applicable when the destination is an Kinesis Data
+Streams data stream.
+}}
+
+\item{policyType}{[required] The type of policy that you're creating or updating.}
 
 \item{scope}{Currently the only valid value for this parameter is \code{ALL}, which
 specifies that the data protection policy applies to all log groups in
 the account. If you omit this parameter, the default of \code{ALL} is used.}
+
+\item{selectionCriteria}{Use this parameter to apply the subscription filter policy to a subset
+of log groups in the account. Currently, the only supported filter is
+\verb{LogGroupName NOT IN []}. The \code{selectionCriteria} string can be up to
+25KB in length. The length is determined by using its UTF-8 bytes.
+
+Using the \code{selectionCriteria} parameter is useful to help prevent
+infinite loops. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html}{Log recursion prevention}.
+
+Specifing \code{selectionCriteria} is valid only when you specify
+\code{ SUBSCRIPTION_FILTER_POLICY} for \code{policyType}.}
 }
 \description{
-Creates an account-level data protection policy that applies to all log groups in the account. A data protection policy can help safeguard sensitive data that's ingested by your log groups by auditing and masking the sensitive log data. Each account can have only one account-level policy.
+Creates an account-level data protection policy or subscription filter policy that applies to all log groups or a subset of log groups in the account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_account_policy/} for full documentation.
 }

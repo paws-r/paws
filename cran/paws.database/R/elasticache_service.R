@@ -207,7 +207,7 @@ elasticache <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .elasticache$metadata <- list(
   service_name = "elasticache",
-  endpoints = list("*" = list(endpoint = "elasticache.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticache.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticache.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticache.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elasticache.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticache.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "elasticache.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "elasticache.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticache.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "elasticache.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ElastiCache",
   api_version = "2015-02-02",
   signing_name = "elasticache",

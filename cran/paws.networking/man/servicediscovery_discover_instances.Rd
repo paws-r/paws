@@ -15,7 +15,10 @@ servicediscovery_discover_instances(
 }
 \arguments{
 \item{NamespaceName}{[required] The \code{HttpName} name of the namespace. It's found in the \code{HttpProperties}
-member of the \code{Properties} member of the namespace.}
+member of the \code{Properties} member of the namespace. In most cases,
+\code{Name} and \code{HttpName} match. However, if you reuse \code{Name} for namespace
+creation, a generated hash is added to \code{HttpName} to distinguish the
+two.}
 
 \item{ServiceName}{[required] The name of the service that you specified when you registered the
 instance.}

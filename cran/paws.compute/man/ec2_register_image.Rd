@@ -21,7 +21,8 @@ ec2_register_image(
   BootMode = NULL,
   TpmSupport = NULL,
   UefiData = NULL,
-  ImdsSupport = NULL
+  ImdsSupport = NULL,
+  TagSpecifications = NULL
 )
 }
 \arguments{
@@ -44,8 +45,8 @@ snapshot, you can't specify the encryption state of the volume.
 If you create an AMI on an Outpost, then all backing snapshots must be
 on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
 that include local snapshots can be used to launch instances on the same
-Outpost only. For more information, \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
-in the \emph{Amazon EC2 User Guide}.}
+Outpost only. For more information, \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{Description}{A description for your AMI.}
 
@@ -126,9 +127,17 @@ in the \emph{Amazon EC2 User Guide}.
 
 If you set the value to \code{v2.0}, make sure that your AMI software can
 support IMDSv2.}
+
+\item{TagSpecifications}{The tags to apply to the AMI.
+
+To tag the AMI, the value for \code{ResourceType} must be \code{image}. If you
+specify another value for \code{ResourceType}, the request fails.
+
+To tag an AMI after it has been registered, see
+\code{\link[=ec2_create_tags]{create_tags}}.}
 }
 \description{
-Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Create your own AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Create your own AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_register_image/} for full documentation.
 }

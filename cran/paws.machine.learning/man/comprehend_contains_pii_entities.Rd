@@ -11,8 +11,7 @@ comprehend_contains_pii_entities(Text, LanguageCode)
 \arguments{
 \item{Text}{[required] A UTF-8 text string. The maximum string size is 100 KB.}
 
-\item{LanguageCode}{[required] The language of the input documents. Currently, English is the only
-valid language.}
+\item{LanguageCode}{[required] The language of the input documents.}
 }
 \description{
 Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number.

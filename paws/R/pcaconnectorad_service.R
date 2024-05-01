@@ -151,7 +151,7 @@ pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NUL
 
 .pcaconnectorad$metadata <- list(
   service_name = "pcaconnectorad",
-  endpoints = list("*" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "pca-connector-ad.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "pca-connector-ad.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pca-connector-ad.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "pca-connector-ad.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "pca-connector-ad.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "pca-connector-ad.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "pca-connector-ad.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Pca Connector Ad",
   api_version = "2018-05-10",
   signing_name = "pca-connector-ad",

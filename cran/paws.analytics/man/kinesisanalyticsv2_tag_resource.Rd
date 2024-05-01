@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_tag_resource}
 \alias{kinesisanalyticsv2_tag_resource}
-\title{Adds one or more key-value tags to a Kinesis Data Analytics application}
+\title{Adds one or more key-value tags to a Managed Service for Apache Flink
+application}
 \usage{
 kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
 }
@@ -12,7 +13,7 @@ kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
 \item{Tags}{[required] The key-value tags to assign to the application.}
 }
 \description{
-Adds one or more key-value tags to a Kinesis Data Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.
+Adds one or more key-value tags to a Managed Service for Apache Flink application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/} for full documentation.
 }

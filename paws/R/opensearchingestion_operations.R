@@ -440,6 +440,8 @@ opensearchingestion_get_pipeline_change_progress <- function(PipelineName) {
 #' @usage
 #' opensearchingestion_list_pipeline_blueprints()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

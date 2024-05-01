@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_describe_index}
 \alias{kendra_describe_index}
-\title{Gets information about an existing Amazon Kendra index}
+\title{Gets information about an Amazon Kendra index}
 \usage{
 kendra_describe_index(Id)
 }
@@ -10,7 +10,7 @@ kendra_describe_index(Id)
 \item{Id}{[required] The identifier of the index you want to get information on.}
 }
 \description{
-Gets information about an existing Amazon Kendra index.
+Gets information about an Amazon Kendra index.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_describe_index/} for full documentation.
 }

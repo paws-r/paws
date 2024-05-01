@@ -12,8 +12,8 @@ redshift_authorize_data_share(
 )
 }
 \arguments{
-\item{DataShareArn}{[required] The Amazon Resource Name (ARN) of the datashare that producers are to
-authorize sharing for.}
+\item{DataShareArn}{[required] The Amazon Resource Name (ARN) of the datashare namespace that producers
+are to authorize sharing for.}
 
 \item{ConsumerIdentifier}{[required] The identifier of the data consumer that is authorized to access the
 datashare. This identifier is an Amazon Web Services account ID or a

@@ -16,14 +16,16 @@ dynamodb_create_table(
   SSESpecification = NULL,
   Tags = NULL,
   TableClass = NULL,
-  DeletionProtectionEnabled = NULL
+  DeletionProtectionEnabled = NULL,
+  ResourcePolicy = NULL
 )
 }
 \arguments{
 \item{AttributeDefinitions}{[required] An array of attributes that describe the key schema for the table and
 indexes.}
 
-\item{TableName}{[required] The name of the table to create.}
+\item{TableName}{[required] The name of the table to create. You can also provide the Amazon
+Resource Name (ARN) of the table in this parameter.}
 
 \item{KeySchema}{[required] Specifies the attributes that make up the primary key for a table or an
 index. The attributes in \code{KeySchema} must also be defined in the
@@ -184,6 +186,18 @@ the item are written to the stream.
 
 \item{DeletionProtectionEnabled}{Indicates whether deletion protection is to be enabled (true) or
 disabled (false) on the table.}
+
+\item{ResourcePolicy}{An Amazon Web Services resource-based policy document in JSON format
+that will be attached to the table.
+
+When you attach a resource-based policy while creating a table, the
+policy creation is \emph{strongly consistent}.
+
+The maximum size supported for a resource-based policy document is 20
+KB. DynamoDB counts whitespaces when calculating the size of a policy
+against this limit. You can’t request an increase for this limit. For a
+full list of all considerations that you should keep in mind while
+attaching a resource-based policy, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/rbac-considerations.html}{Resource-based policy considerations}.}
 }
 \description{
 The \code{\link[=dynamodb_create_table]{create_table}} operation adds a new table to your account. In an Amazon Web Services account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.

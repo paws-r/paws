@@ -64,8 +64,7 @@ snapshots (backups) - for a low, predictable monthly price.
 
 You can manage your Lightsail resources using the Lightsail console,
 Lightsail API, Command Line Interface (CLI), or SDKs. For more
-information about Lightsail concepts and tasks, see the Amazon Lightsail
-Developer Guide.
+information about Lightsail concepts and tasks, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html}{Amazon Lightsail Developer Guide}.
 
 This API Reference provides detailed information about the actions, data
 types, parameters, and errors of the Lightsail service. For more
@@ -128,11 +127,11 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_create_container_service]{create_container_service} \tab Creates an Amazon Lightsail container service\cr
 \link[paws.compute:lightsail_create_container_service_deployment]{create_container_service_deployment} \tab Creates a deployment for your Amazon Lightsail container service\cr
 \link[paws.compute:lightsail_create_container_service_registry_login]{create_container_service_registry_login} \tab Creates a temporary set of log in credentials that you can use to log in to the Docker process on your local machine\cr
-\link[paws.compute:lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e\cr
+\link[paws.compute:lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (us-east-2a)\cr
 \link[paws.compute:lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a manual or automatic snapshot of a disk\cr
 \link[paws.compute:lightsail_create_disk_snapshot]{create_disk_snapshot} \tab Creates a snapshot of a block storage disk\cr
 \link[paws.compute:lightsail_create_distribution]{create_distribution} \tab Creates an Amazon Lightsail content delivery network (CDN) distribution\cr
-\link[paws.compute:lightsail_create_domain]{create_domain} \tab Creates a domain resource for the specified domain (e\cr
+\link[paws.compute:lightsail_create_domain]{create_domain} \tab Creates a domain resource for the specified domain (example\cr
 \link[paws.compute:lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following domain name system (DNS) records in a domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
 \link[paws.compute:lightsail_create_gui_session_access_details]{create_gui_session_access_details} \tab Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session\cr
 \link[paws.compute:lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail instances\cr
@@ -221,7 +220,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_get_load_balancer_tls_policies]{get_load_balancer_tls_policies} \tab Returns a list of TLS security policies that you can apply to Lightsail load balancers\cr
 \link[paws.compute:lightsail_get_operation]{get_operation} \tab Returns information about a specific operation\cr
 \link[paws.compute:lightsail_get_operations]{get_operations} \tab Returns information about all operations\cr
-\link[paws.compute:lightsail_get_operations_for_resource]{get_operations_for_resource} \tab Gets operations for a specific resource (e\cr
+\link[paws.compute:lightsail_get_operations_for_resource]{get_operations_for_resource} \tab Gets operations for a specific resource (an instance or a static IP)\cr
 \link[paws.compute:lightsail_get_regions]{get_regions} \tab Returns a list of all valid regions for Amazon Lightsail\cr
 \link[paws.compute:lightsail_get_relational_database]{get_relational_database} \tab Returns information about a specific database in Amazon Lightsail\cr
 \link[paws.compute:lightsail_get_relational_database_blueprints]{get_relational_database_blueprints} \tab Returns a list of available database blueprints in Amazon Lightsail\cr
@@ -235,6 +234,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_get_relational_databases]{get_relational_databases} \tab Returns information about all of your databases in Amazon Lightsail\cr
 \link[paws.compute:lightsail_get_relational_database_snapshot]{get_relational_database_snapshot} \tab Returns information about a specific database snapshot in Amazon Lightsail\cr
 \link[paws.compute:lightsail_get_relational_database_snapshots]{get_relational_database_snapshots} \tab Returns information about all of your database snapshots in Amazon Lightsail\cr
+\link[paws.compute:lightsail_get_setup_history]{get_setup_history} \tab Returns detailed information for five of the most recent SetupInstanceHttps requests that were ran on the target instance\cr
 \link[paws.compute:lightsail_get_static_ip]{get_static_ip} \tab Returns information about an Amazon Lightsail static IP\cr
 \link[paws.compute:lightsail_get_static_ips]{get_static_ips} \tab Returns information about all static IPs in the user's account\cr
 \link[paws.compute:lightsail_import_key_pair]{import_key_pair} \tab Imports a public SSH key from a specific key pair\cr
@@ -251,6 +251,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_send_contact_method_verification]{send_contact_method_verification} \tab Sends a verification request to an email contact method to ensure it's owned by the requester\cr
 \link[paws.compute:lightsail_set_ip_address_type]{set_ip_address_type} \tab Sets the IP address type for an Amazon Lightsail resource\cr
 \link[paws.compute:lightsail_set_resource_access_for_bucket]{set_resource_access_for_bucket} \tab Sets the Amazon Lightsail resources that can access the specified Lightsail bucket\cr
+\link[paws.compute:lightsail_setup_instance_https]{setup_instance_https} \tab Creates an SSL/TLS certificate that secures traffic for your website\cr
 \link[paws.compute:lightsail_start_gui_session]{start_gui_session} \tab Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application\cr
 \link[paws.compute:lightsail_start_instance]{start_instance} \tab Starts a specific Amazon Lightsail instance from a stopped state\cr
 \link[paws.compute:lightsail_start_relational_database]{start_relational_database} \tab Starts a specific database from a stopped state in Amazon Lightsail\cr

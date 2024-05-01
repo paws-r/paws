@@ -58,7 +58,7 @@ NULL
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -124,19 +124,28 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' copied.
 #' @param destinationRepository &#91;required&#93; The name of the repository into which package versions are copied.
 #' @param format &#91;required&#93; The format of the package versions to be copied.
-#' @param namespace The namespace of the package versions to be copied. The package version
+#' @param namespace The namespace of the package versions to be copied. The package
 #' component that specifies its namespace depends on its type. For example:
 #' 
-#' -   The namespace of a Maven package version is its `groupId`. The
-#'     namespace is required when copying Maven package versions.
+#' The namespace is required when copying package versions of the following
+#' formats:
 #' 
-#' -   The namespace of an npm package version is its `scope`.
+#' -   Maven
 #' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the versions to be copied.
 #' @param versions The versions of the package to be copied.
 #' 
@@ -185,7 +194,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #'   domainOwner = "string",
 #'   sourceRepository = "string",
 #'   destinationRepository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -318,6 +327,101 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 }
 .codeartifact$operations$create_domain <- codeartifact_create_domain
 
+#' Creates a package group
+#'
+#' @description
+#' Creates a package group. For more information about creating package
+#' groups, including example CLI commands, see [Create a package
+#' group](https://docs.aws.amazon.com/codeartifact/latest/ug/create-package-group.html)
+#' in the *CodeArtifact User Guide*.
+#'
+#' @usage
+#' codeartifact_create_package_group(domain, domainOwner, packageGroup,
+#'   contactInfo, description, tags)
+#'
+#' @param domain &#91;required&#93; The name of the domain in which you want to create a package group.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group to create. The pattern is also the
+#' identifier of the package group.
+#' @param contactInfo The contact information for the created package group.
+#' @param description A description of the package group.
+#' @param tags One or more tag key-value pairs for the package group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroup = list(
+#'     arn = "string",
+#'     pattern = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     contactInfo = "string",
+#'     description = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         list(
+#'           mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           inheritedFrom = list(
+#'             arn = "string",
+#'             pattern = "string"
+#'           ),
+#'           repositoriesCount = 123
+#'         )
+#'       )
+#'     ),
+#'     parent = list(
+#'       arn = "string",
+#'       pattern = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_package_group(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string",
+#'   contactInfo = "string",
+#'   description = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_create_package_group
+#'
+#' @aliases codeartifact_create_package_group
+codeartifact_create_package_group <- function(domain, domainOwner = NULL, packageGroup, contactInfo = NULL, description = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreatePackageGroup",
+    http_method = "POST",
+    http_path = "/v1/package-group",
+    paginator = list()
+  )
+  input <- .codeartifact$create_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, contactInfo = contactInfo, description = description, tags = tags)
+  output <- .codeartifact$create_package_group_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$create_package_group <- codeartifact_create_package_group
+
 #' Creates a repository
 #'
 #' @description
@@ -358,7 +462,7 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -555,15 +659,25 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' @param namespace The namespace of the package to delete. The package component that
 #' specifies its namespace depends on its type. For example:
 #' 
-#' -   The namespace of a Maven package is its `groupId`. The namespace is
-#'     required when deleting Maven package versions.
+#' The namespace is required when deleting packages of the following
+#' formats:
 #' 
-#' -   The namespace of an npm package is its `scope`.
+#' -   Maven
 #' 
-#' -   Python and NuGet packages do not contain corresponding components,
-#'     packages of those formats do not have a namespace.
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package to delete.
 #'
 #' @return
@@ -571,7 +685,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' ```
 #' list(
 #'   deletedPackage = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'     namespace = "string",
 #'     package = "string",
 #'     originConfiguration = list(
@@ -590,7 +704,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -618,6 +732,90 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
 }
 .codeartifact$operations$delete_package <- codeartifact_delete_package
 
+#' Deletes a package group
+#'
+#' @description
+#' Deletes a package group. Deleting a package group does not delete
+#' packages or package versions associated with the package group. When a
+#' package group is deleted, the direct child package groups will become
+#' children of the package group's direct parent package group. Therefore,
+#' if any of the child groups are inheriting any settings from the parent,
+#' those settings could change.
+#'
+#' @usage
+#' codeartifact_delete_package_group(domain, domainOwner, packageGroup)
+#'
+#' @param domain &#91;required&#93; The domain that contains the package group to be deleted.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group to be deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroup = list(
+#'     arn = "string",
+#'     pattern = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     contactInfo = "string",
+#'     description = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         list(
+#'           mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           inheritedFrom = list(
+#'             arn = "string",
+#'             pattern = "string"
+#'           ),
+#'           repositoriesCount = 123
+#'         )
+#'       )
+#'     ),
+#'     parent = list(
+#'       arn = "string",
+#'       pattern = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_package_group(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_delete_package_group
+#'
+#' @aliases codeartifact_delete_package_group
+codeartifact_delete_package_group <- function(domain, domainOwner = NULL, packageGroup) {
+  op <- new_operation(
+    name = "DeletePackageGroup",
+    http_method = "DELETE",
+    http_path = "/v1/package-group",
+    paginator = list()
+  )
+  input <- .codeartifact$delete_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup)
+  output <- .codeartifact$delete_package_group_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$delete_package_group <- codeartifact_delete_package_group
+
 #' Deletes one or more versions of a package
 #'
 #' @description
@@ -639,19 +837,28 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
 #' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the package versions to delete.
 #' @param format &#91;required&#93; The format of the package versions to delete.
-#' @param namespace The namespace of the package versions to be deleted. The package version
+#' @param namespace The namespace of the package versions to be deleted. The package
 #' component that specifies its namespace depends on its type. For example:
 #' 
-#' -   The namespace of a Maven package version is its `groupId`. The
-#'     namespace is required when deleting Maven package versions.
+#' The namespace is required when deleting package versions of the
+#' following formats:
 #' 
-#' -   The namespace of an npm package version is its `scope`.
+#' -   Maven
 #' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package with the versions to delete.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package to delete.
 #' @param expectedStatus The expected status of the package version to delete.
@@ -681,7 +888,7 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -745,7 +952,7 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -946,15 +1153,25 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' @param namespace The namespace of the requested package. The package component that
 #' specifies its namespace depends on its type. For example:
 #' 
-#' -   The namespace of a Maven package is its `groupId`. The namespace is
-#'     required when requesting Maven packages.
+#' The namespace is required when requesting packages of the following
+#' formats:
 #' 
-#' -   The namespace of an npm package is its `scope`.
+#' -   Maven
 #' 
-#' -   Python and NuGet packages do not contain a corresponding component,
-#'     packages of those formats do not have a namespace.
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the requested package.
 #'
 #' @return
@@ -962,7 +1179,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' ```
 #' list(
 #'   package = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'     namespace = "string",
 #'     name = "string",
 #'     originConfiguration = list(
@@ -981,7 +1198,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -1009,6 +1226,88 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 }
 .codeartifact$operations$describe_package <- codeartifact_describe_package
 
+#' Returns a PackageGroupDescription object that contains information about
+#' the requested package group
+#'
+#' @description
+#' Returns a
+#' [PackageGroupDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageGroupDescription.html)
+#' object that contains information about the requested package group.
+#'
+#' @usage
+#' codeartifact_describe_package_group(domain, domainOwner, packageGroup)
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the package group.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the requested package group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroup = list(
+#'     arn = "string",
+#'     pattern = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     contactInfo = "string",
+#'     description = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         list(
+#'           mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           inheritedFrom = list(
+#'             arn = "string",
+#'             pattern = "string"
+#'           ),
+#'           repositoriesCount = 123
+#'         )
+#'       )
+#'     ),
+#'     parent = list(
+#'       arn = "string",
+#'       pattern = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_package_group(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_describe_package_group
+#'
+#' @aliases codeartifact_describe_package_group
+codeartifact_describe_package_group <- function(domain, domainOwner = NULL, packageGroup) {
+  op <- new_operation(
+    name = "DescribePackageGroup",
+    http_method = "GET",
+    http_path = "/v1/package-group",
+    paginator = list()
+  )
+  input <- .codeartifact$describe_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup)
+  output <- .codeartifact$describe_package_group_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$describe_package_group <- codeartifact_describe_package_group
+
 #' Returns a PackageVersionDescription object that contains information
 #' about the requested package version
 #'
@@ -1027,18 +1326,28 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #' the domain. It does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that contains the package version.
 #' @param format &#91;required&#93; A format that specifies the type of the requested package version.
-#' @param namespace The namespace of the requested package version. The package version
-#' component that specifies its namespace depends on its type. For example:
+#' @param namespace The namespace of the requested package version. The package component
+#' that specifies its namespace depends on its type. For example:
+#' 
+#' The namespace is required when requesting package versions of the
+#' following formats:
+#' 
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package version is its `scope`.
-#' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the requested package version.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -1047,7 +1356,7 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #' ```
 #' list(
 #'   packageVersion = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'     namespace = "string",
 #'     packageName = "string",
 #'     displayName = "string",
@@ -1083,7 +1392,7 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -1146,7 +1455,7 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -1224,7 +1533,7 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -1296,18 +1605,27 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' @param format &#91;required&#93; A format that specifies the type of package versions you want to
 #' dispose.
 #' @param namespace The namespace of the package versions to be disposed. The package
-#' version component that specifies its namespace depends on its type. For
-#' example:
+#' component that specifies its namespace depends on its type. For example:
+#' 
+#' The namespace is required when disposing package versions of the
+#' following formats:
+#' 
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package version is its `scope`.
-#' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package with the versions you want to dispose.
 #' @param versions &#91;required&#93; The versions of the package you want to dispose.
 #' @param versionRevisions The revisions of the package versions you want to dispose.
@@ -1338,7 +1656,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -1372,6 +1690,127 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
   return(response)
 }
 .codeartifact$operations$dispose_package_versions <- codeartifact_dispose_package_versions
+
+#' Returns the most closely associated package group to the specified
+#' package
+#'
+#' @description
+#' Returns the most closely associated package group to the specified
+#' package. This API does not require that the package exist in any
+#' repository in the domain. As such,
+#' [`get_associated_package_group`][codeartifact_get_associated_package_group]
+#' can be used to see which package group's origin configuration applies to
+#' a package before that package is in a repository. This can be helpful to
+#' check if public packages are blocked without ingesting them.
+#' 
+#' For information package group association and matching, see [Package
+#' group definition syntax and matching
+#' behavior](https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-definition-syntax-matching-behavior.html)
+#' in the *CodeArtifact User Guide*.
+#'
+#' @usage
+#' codeartifact_get_associated_package_group(domain, domainOwner, format,
+#'   namespace, package)
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the package from which to get the
+#' associated package group.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param format &#91;required&#93; The format of the package from which to get the associated package
+#' group.
+#' @param namespace The namespace of the package from which to get the associated package
+#' group. The package component that specifies its namespace depends on its
+#' type. For example:
+#' 
+#' The namespace is required when getting associated package groups from
+#' packages of the following formats:
+#' 
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
+#' @param package &#91;required&#93; The package from which to get the associated package group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroup = list(
+#'     arn = "string",
+#'     pattern = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     contactInfo = "string",
+#'     description = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         list(
+#'           mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           inheritedFrom = list(
+#'             arn = "string",
+#'             pattern = "string"
+#'           ),
+#'           repositoriesCount = 123
+#'         )
+#'       )
+#'     ),
+#'     parent = list(
+#'       arn = "string",
+#'       pattern = "string"
+#'     )
+#'   ),
+#'   associationType = "STRONG"|"WEAK"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_associated_package_group(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'   namespace = "string",
+#'   package = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_get_associated_package_group
+#'
+#' @aliases codeartifact_get_associated_package_group
+codeartifact_get_associated_package_group <- function(domain, domainOwner = NULL, format, namespace = NULL, package) {
+  op <- new_operation(
+    name = "GetAssociatedPackageGroup",
+    http_method = "GET",
+    http_path = "/v1/get-associated-package-group",
+    paginator = list()
+  )
+  input <- .codeartifact$get_associated_package_group_input(domain = domain, domainOwner = domainOwner, format = format, namespace = namespace, package = package)
+  output <- .codeartifact$get_associated_package_group_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$get_associated_package_group <- codeartifact_get_associated_package_group
 
 #' Generates a temporary authorization token for accessing repositories in
 #' the domain
@@ -1543,18 +1982,28 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @param format &#91;required&#93; A format that specifies the type of the package version with the
 #' requested asset file.
 #' @param namespace The namespace of the package version with the requested asset file. The
-#' package version component that specifies its namespace depends on its
-#' type. For example:
+#' package component that specifies its namespace depends on its type. For
+#' example:
+#' 
+#' The namespace is required when requesting assets from package versions
+#' of the following formats:
+#' 
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package version is its `scope`.
-#' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the requested asset.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param asset &#91;required&#93; The name of the requested asset.
@@ -1578,7 +2027,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -1629,14 +2078,28 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' @param format &#91;required&#93; A format that specifies the type of the package version with the
 #' requested readme file.
 #' @param namespace The namespace of the package version with the requested readme file. The
-#' package version component that specifies its namespace depends on its
-#' type. For example:
+#' package component that specifies its namespace depends on its type. For
+#' example:
 #' 
-#' -   The namespace of an npm package version is its `scope`.
+#' The namespace is required when requesting the readme from package
+#' versions of the following formats:
 #' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
+#' 
+#' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package version that contains the requested readme file.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -1644,7 +2107,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -1659,7 +2122,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -1694,6 +2157,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' Returns the endpoint of a repository for a specific package format. A
 #' repository has one endpoint for each package format:
 #' 
+#' -   `generic`
+#' 
 #' -   `maven`
 #' 
 #' -   `npm`
@@ -1701,6 +2166,10 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' -   `nuget`
 #' 
 #' -   `pypi`
+#' 
+#' -   `ruby`
+#' 
+#' -   `swift`
 #'
 #' @usage
 #' codeartifact_get_repository_endpoint(domain, domainOwner, repository,
@@ -1728,7 +2197,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift"
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"
 #' )
 #' ```
 #'
@@ -1813,6 +2282,155 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 }
 .codeartifact$operations$get_repository_permissions_policy <- codeartifact_get_repository_permissions_policy
 
+#' Lists the repositories in the added repositories list of the specified
+#' restriction type for a package group
+#'
+#' @description
+#' Lists the repositories in the added repositories list of the specified
+#' restriction type for a package group. For more information about
+#' restriction types and added repository lists, see [Package group origin
+#' controls](https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-origin-controls.html)
+#' in the *CodeArtifact User Guide*.
+#'
+#' @usage
+#' codeartifact_list_allowed_repositories_for_group(domain, domainOwner,
+#'   packageGroup, originRestrictionType, maxResults, nextToken)
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the package group from which to
+#' list allowed repositories.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group from which to list allowed
+#' repositories.
+#' @param originRestrictionType &#91;required&#93; The origin configuration restriction type of which to list allowed
+#' repositories.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   allowedRepositories = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_allowed_repositories_for_group(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string",
+#'   originRestrictionType = "EXTERNAL_UPSTREAM"|"INTERNAL_UPSTREAM"|"PUBLISH",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_list_allowed_repositories_for_group
+#'
+#' @aliases codeartifact_list_allowed_repositories_for_group
+codeartifact_list_allowed_repositories_for_group <- function(domain, domainOwner = NULL, packageGroup, originRestrictionType, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListAllowedRepositoriesForGroup",
+    http_method = "GET",
+    http_path = "/v1/package-group-allowed-repositories",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowedRepositories")
+  )
+  input <- .codeartifact$list_allowed_repositories_for_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, originRestrictionType = originRestrictionType, maxResults = maxResults, nextToken = nextToken)
+  output <- .codeartifact$list_allowed_repositories_for_group_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$list_allowed_repositories_for_group <- codeartifact_list_allowed_repositories_for_group
+
+#' Returns a list of packages associated with the requested package group
+#'
+#' @description
+#' Returns a list of packages associated with the requested package group.
+#' For information package group association and matching, see [Package
+#' group definition syntax and matching
+#' behavior](https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-definition-syntax-matching-behavior.html)
+#' in the *CodeArtifact User Guide*.
+#'
+#' @usage
+#' codeartifact_list_associated_packages(domain, domainOwner, packageGroup,
+#'   maxResults, nextToken, preview)
+#'
+#' @param domain &#91;required&#93; The name of the domain that contains the package group from which to
+#' list associated packages.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group from which to list associated packages.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param preview When this flag is included,
+#' [`list_associated_packages`][codeartifact_list_associated_packages] will
+#' return a list of packages that would be associated with a package group,
+#' even if it does not exist.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packages = list(
+#'     list(
+#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
+#'       namespace = "string",
+#'       package = "string",
+#'       associationType = "STRONG"|"WEAK"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_associated_packages(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   preview = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_list_associated_packages
+#'
+#' @aliases codeartifact_list_associated_packages
+codeartifact_list_associated_packages <- function(domain, domainOwner = NULL, packageGroup, maxResults = NULL, nextToken = NULL, preview = NULL) {
+  op <- new_operation(
+    name = "ListAssociatedPackages",
+    http_method = "GET",
+    http_path = "/v1/list-associated-packages",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages")
+  )
+  input <- .codeartifact$list_associated_packages_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, maxResults = maxResults, nextToken = nextToken, preview = preview)
+  output <- .codeartifact$list_associated_packages_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$list_associated_packages <- codeartifact_list_associated_packages
+
 #' Returns a list of DomainSummary objects for all domains owned by the
 #' Amazon Web Services account that makes this call
 #'
@@ -1881,6 +2499,97 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 }
 .codeartifact$operations$list_domains <- codeartifact_list_domains
 
+#' Returns a list of package groups in the requested domain
+#'
+#' @description
+#' Returns a list of package groups in the requested domain.
+#'
+#' @usage
+#' codeartifact_list_package_groups(domain, domainOwner, maxResults,
+#'   nextToken, prefix)
+#'
+#' @param domain &#91;required&#93; The domain for which you want to list package groups.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param prefix A prefix for which to search package groups. When included,
+#' [`list_package_groups`][codeartifact_list_package_groups] will return
+#' only package groups with patterns that match the prefix.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroups = list(
+#'     list(
+#'       arn = "string",
+#'       pattern = "string",
+#'       domainName = "string",
+#'       domainOwner = "string",
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       contactInfo = "string",
+#'       description = "string",
+#'       originConfiguration = list(
+#'         restrictions = list(
+#'           list(
+#'             mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'             effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'             inheritedFrom = list(
+#'               arn = "string",
+#'               pattern = "string"
+#'             ),
+#'             repositoriesCount = 123
+#'           )
+#'         )
+#'       ),
+#'       parent = list(
+#'         arn = "string",
+#'         pattern = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_package_groups(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   prefix = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_list_package_groups
+#'
+#' @aliases codeartifact_list_package_groups
+codeartifact_list_package_groups <- function(domain, domainOwner = NULL, maxResults = NULL, nextToken = NULL, prefix = NULL) {
+  op <- new_operation(
+    name = "ListPackageGroups",
+    http_method = "POST",
+    http_path = "/v1/package-groups",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packageGroups")
+  )
+  input <- .codeartifact$list_package_groups_input(domain = domain, domainOwner = domainOwner, maxResults = maxResults, nextToken = nextToken, prefix = prefix)
+  output <- .codeartifact$list_package_groups_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$list_package_groups <- codeartifact_list_package_groups
+
 #' Returns a list of AssetSummary objects for assets in a package version
 #'
 #' @description
@@ -1902,18 +2611,28 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' @param format &#91;required&#93; The format of the package that contains the requested package version
 #' assets.
 #' @param namespace The namespace of the package version that contains the requested package
-#' version assets. The package version component that specifies its
-#' namespace depends on its type. For example:
+#' version assets. The package component that specifies its namespace
+#' depends on its type. For example:
+#' 
+#' The namespace is required requesting assets from package versions of the
+#' following formats:
+#' 
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package version is its `scope`.
-#' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the requested package version
 #' assets.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
@@ -1926,7 +2645,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -1950,7 +2669,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2004,18 +2723,28 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' @param repository &#91;required&#93; The name of the repository that contains the requested package version.
 #' @param format &#91;required&#93; The format of the package with the requested dependencies.
 #' @param namespace The namespace of the package version with the requested dependencies.
-#' The package version component that specifies its namespace depends on
-#' its type. For example:
+#' The package component that specifies its namespace depends on its type.
+#' For example:
+#' 
+#' The namespace is required when listing dependencies from package
+#' versions of the following formats:
+#' 
+#' -   Maven
+#' 
+#' -   Swift
+#' 
+#' -   generic
+#' 
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package version is its `scope`.
-#' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package versions' package.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -2026,7 +2755,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2049,7 +2778,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2104,14 +2833,25 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' versions. The package component that specifies its namespace depends on
 #' its type. For example:
 #' 
-#' -   The namespace of a Maven package is its `groupId`.
+#' The namespace is required when deleting package versions of the
+#' following formats:
 #' 
-#' -   The namespace of an npm package is its `scope`.
+#' -   Maven
 #' 
-#' -   Python and NuGet packages do not contain a corresponding component,
-#'     packages of those formats do not have a namespace.
+#' -   Swift
+#' 
+#' -   generic
+#' 
+#' 
+#' -   The namespace of a Maven package version is its `groupId`.
+#' 
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package for which you want to request package versions.
 #' @param status A string that filters the requested package versions by status.
 #' @param sortBy How to sort the requested list of package versions.
@@ -2127,7 +2867,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' ```
 #' list(
 #'   defaultDisplayVersion = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -2154,7 +2894,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
@@ -2213,14 +2953,15 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' 
 #' Each package format uses namespace as follows:
 #' 
-#' -   The namespace of a Maven package is its `groupId`.
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   Python and NuGet packages do not contain a corresponding component,
-#'     packages of those formats do not have a namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param packagePrefix A prefix used to filter requested packages. Only packages with names
 #' that start with `packagePrefix` are returned.
 #' @param maxResults The maximum number of results to return per page.
@@ -2242,7 +2983,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' list(
 #'   packages = list(
 #'     list(
-#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'       namespace = "string",
 #'       package = "string",
 #'       originConfiguration = list(
@@ -2263,7 +3004,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   packagePrefix = "string",
 #'   maxResults = 123,
@@ -2446,6 +3187,101 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 }
 .codeartifact$operations$list_repositories_in_domain <- codeartifact_list_repositories_in_domain
 
+#' Returns a list of direct children of the specified package group
+#'
+#' @description
+#' Returns a list of direct children of the specified package group.
+#' 
+#' For information package group hierarchy, see [Package group definition
+#' syntax and matching
+#' behavior](https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-definition-syntax-matching-behavior.html)
+#' in the *CodeArtifact User Guide*.
+#'
+#' @usage
+#' codeartifact_list_sub_package_groups(domain, domainOwner, packageGroup,
+#'   maxResults, nextToken)
+#'
+#' @param domain &#91;required&#93; The name of the domain which contains the package group from which to
+#' list sub package groups.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group from which to list sub package groups.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroups = list(
+#'     list(
+#'       arn = "string",
+#'       pattern = "string",
+#'       domainName = "string",
+#'       domainOwner = "string",
+#'       createdTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       contactInfo = "string",
+#'       description = "string",
+#'       originConfiguration = list(
+#'         restrictions = list(
+#'           list(
+#'             mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'             effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'             inheritedFrom = list(
+#'               arn = "string",
+#'               pattern = "string"
+#'             ),
+#'             repositoriesCount = 123
+#'           )
+#'         )
+#'       ),
+#'       parent = list(
+#'         arn = "string",
+#'         pattern = "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sub_package_groups(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_list_sub_package_groups
+#'
+#' @aliases codeartifact_list_sub_package_groups
+codeartifact_list_sub_package_groups <- function(domain, domainOwner = NULL, packageGroup, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSubPackageGroups",
+    http_method = "POST",
+    http_path = "/v1/package-groups/sub-groups",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packageGroups")
+  )
+  input <- .codeartifact$list_sub_package_groups_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, maxResults = maxResults, nextToken = nextToken)
+  output <- .codeartifact$list_sub_package_groups_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$list_sub_package_groups <- codeartifact_list_sub_package_groups
+
 #' Gets information about Amazon Web Services tags for a specified Amazon
 #' Resource Name (ARN) in CodeArtifact
 #'
@@ -2563,7 +3399,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2585,7 +3421,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2726,14 +3562,15 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @param namespace The namespace of the package to be updated. The package component that
 #' specifies its namespace depends on its type. For example:
 #' 
-#' -   The namespace of a Maven package is its `groupId`.
+#' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package is its `scope`.
-#' 
-#' -   Python and NuGet packages do not contain a corresponding component,
-#'     packages of those formats do not have a namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package to be updated.
 #' @param restrictions &#91;required&#93; A
 #' [PackageOriginRestrictions](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageOriginRestrictions.html)
@@ -2765,7 +3602,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   restrictions = list(
@@ -2969,6 +3806,214 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 }
 .codeartifact$operations$untag_resource <- codeartifact_untag_resource
 
+#' Updates a package group
+#'
+#' @description
+#' Updates a package group. This API cannot be used to update a package
+#' group's origin configuration or pattern. To update a package group's
+#' origin configuration, use
+#' [`update_package_group_origin_configuration`][codeartifact_update_package_group_origin_configuration].
+#'
+#' @usage
+#' codeartifact_update_package_group(domain, domainOwner, packageGroup,
+#'   contactInfo, description)
+#'
+#' @param domain &#91;required&#93; The name of the domain which contains the package group to be updated.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group to be updated.
+#' @param contactInfo Contact information which you want to update the requested package group
+#' with.
+#' @param description The description you want to update the requested package group with.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroup = list(
+#'     arn = "string",
+#'     pattern = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     contactInfo = "string",
+#'     description = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         list(
+#'           mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           inheritedFrom = list(
+#'             arn = "string",
+#'             pattern = "string"
+#'           ),
+#'           repositoriesCount = 123
+#'         )
+#'       )
+#'     ),
+#'     parent = list(
+#'       arn = "string",
+#'       pattern = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_package_group(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string",
+#'   contactInfo = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_update_package_group
+#'
+#' @aliases codeartifact_update_package_group
+codeartifact_update_package_group <- function(domain, domainOwner = NULL, packageGroup, contactInfo = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdatePackageGroup",
+    http_method = "PUT",
+    http_path = "/v1/package-group",
+    paginator = list()
+  )
+  input <- .codeartifact$update_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, contactInfo = contactInfo, description = description)
+  output <- .codeartifact$update_package_group_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$update_package_group <- codeartifact_update_package_group
+
+#' Updates the package origin configuration for a package group
+#'
+#' @description
+#' Updates the package origin configuration for a package group.
+#' 
+#' The package origin configuration determines how new versions of a
+#' package can be added to a repository. You can allow or block direct
+#' publishing of new package versions, or ingestion and retaining of new
+#' package versions from an external connection or upstream source. For
+#' more information about package group origin controls and configuration,
+#' see [Package group origin
+#' controls](https://docs.aws.amazon.com/codeartifact/latest/ug/package-group-origin-controls.html)
+#' in the *CodeArtifact User Guide*.
+#'
+#' @usage
+#' codeartifact_update_package_group_origin_configuration(domain,
+#'   domainOwner, packageGroup, restrictions, addAllowedRepositories,
+#'   removeAllowedRepositories)
+#'
+#' @param domain &#91;required&#93; The name of the domain which contains the package group for which to
+#' update the origin configuration.
+#' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
+#' the domain. It does not include dashes or spaces.
+#' @param packageGroup &#91;required&#93; The pattern of the package group for which to update the origin
+#' configuration.
+#' @param restrictions The origin configuration settings that determine how package versions
+#' can enter repositories.
+#' @param addAllowedRepositories The repository name and restrictions to add to the allowed repository
+#' list of the specified package group.
+#' @param removeAllowedRepositories The repository name and restrictions to remove from the allowed
+#' repository list of the specified package group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   packageGroup = list(
+#'     arn = "string",
+#'     pattern = "string",
+#'     domainName = "string",
+#'     domainOwner = "string",
+#'     createdTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     contactInfo = "string",
+#'     description = "string",
+#'     originConfiguration = list(
+#'       restrictions = list(
+#'         list(
+#'           mode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           effectiveMode = "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT",
+#'           inheritedFrom = list(
+#'             arn = "string",
+#'             pattern = "string"
+#'           ),
+#'           repositoriesCount = 123
+#'         )
+#'       )
+#'     ),
+#'     parent = list(
+#'       arn = "string",
+#'       pattern = "string"
+#'     )
+#'   ),
+#'   allowedRepositoryUpdates = list(
+#'     list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_package_group_origin_configuration(
+#'   domain = "string",
+#'   domainOwner = "string",
+#'   packageGroup = "string",
+#'   restrictions = list(
+#'     "ALLOW"|"ALLOW_SPECIFIC_REPOSITORIES"|"BLOCK"|"INHERIT"
+#'   ),
+#'   addAllowedRepositories = list(
+#'     list(
+#'       repositoryName = "string",
+#'       originRestrictionType = "EXTERNAL_UPSTREAM"|"INTERNAL_UPSTREAM"|"PUBLISH"
+#'     )
+#'   ),
+#'   removeAllowedRepositories = list(
+#'     list(
+#'       repositoryName = "string",
+#'       originRestrictionType = "EXTERNAL_UPSTREAM"|"INTERNAL_UPSTREAM"|"PUBLISH"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_update_package_group_origin_configuration
+#'
+#' @aliases codeartifact_update_package_group_origin_configuration
+codeartifact_update_package_group_origin_configuration <- function(domain, domainOwner = NULL, packageGroup, restrictions = NULL, addAllowedRepositories = NULL, removeAllowedRepositories = NULL) {
+  op <- new_operation(
+    name = "UpdatePackageGroupOriginConfiguration",
+    http_method = "PUT",
+    http_path = "/v1/package-group-origin-configuration",
+    paginator = list()
+  )
+  input <- .codeartifact$update_package_group_origin_configuration_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, restrictions = restrictions, addAllowedRepositories = addAllowedRepositories, removeAllowedRepositories = removeAllowedRepositories)
+  output <- .codeartifact$update_package_group_origin_configuration_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$update_package_group_origin_configuration <- codeartifact_update_package_group_origin_configuration
+
 #' Updates the status of one or more versions of a package
 #'
 #' @description
@@ -2992,18 +4037,18 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' want to update.
 #' @param format &#91;required&#93; A format that specifies the type of the package with the statuses to
 #' update.
-#' @param namespace The namespace of the package version to be updated. The package version
+#' @param namespace The namespace of the package version to be updated. The package
 #' component that specifies its namespace depends on its type. For example:
 #' 
 #' -   The namespace of a Maven package version is its `groupId`.
 #' 
-#' -   The namespace of an npm package version is its `scope`.
-#' 
-#' -   Python and NuGet package versions do not contain a corresponding
-#'     component, package versions of those formats do not have a
-#'     namespace.
+#' -   The namespace of an npm or Swift package version is its `scope`.
 #' 
 #' -   The namespace of a generic package is its `namespace`.
+#' 
+#' -   Python, NuGet, and Ruby package versions do not contain a
+#'     corresponding component, package versions of those formats do not
+#'     have a namespace.
 #' @param package &#91;required&#93; The name of the package with the version statuses to update.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package with the
 #' statuses to update.
@@ -3042,7 +4087,7 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -3117,7 +4162,7 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),

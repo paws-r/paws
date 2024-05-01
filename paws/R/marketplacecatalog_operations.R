@@ -6,7 +6,10 @@ NULL
 #' Returns metadata and content for multiple entities
 #'
 #' @description
-#' Returns metadata and content for multiple entities.
+#' Returns metadata and content for multiple entities. This is the Batch
+#' version of the [`describe_entity`][marketplacecatalog_describe_entity]
+#' API and uses the same IAM permission action as
+#' [`describe_entity`][marketplacecatalog_describe_entity] API.
 #'
 #' @usage
 #' marketplacecatalog_batch_describe_entities(EntityRequestList)
@@ -191,6 +194,7 @@ marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
 #'   ChangeSetId = "string",
 #'   ChangeSetArn = "string",
 #'   ChangeSetName = "string",
+#'   Intent = "VALIDATE"|"APPLY",
 #'   StartTime = "string",
 #'   EndTime = "string",
 #'   Status = "PREPARING"|"APPLYING"|"SUCCEEDED"|"CANCELLED"|"FAILED",
@@ -508,6 +512,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'       OfferSummary = list(
 #'         Name = "string",
 #'         ProductId = "string",
+#'         ResaleAuthorizationId = "string",
 #'         ReleaseDate = "string",
 #'         AvailabilityEndDate = "string",
 #'         BuyerAccounts = list(
@@ -643,6 +648,11 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'         WildCardValue = "string"
 #'       ),
 #'       ProductId = list(
+#'         ValueList = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ResaleAuthorizationId = list(
 #'         ValueList = list(
 #'           "string"
 #'         )
@@ -801,7 +811,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     OfferSort = list(
-#'       SortBy = "EntityId"|"Name"|"ProductId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate",
+#'       SortBy = "EntityId"|"Name"|"ProductId"|"ResaleAuthorizationId"|"ReleaseDate"|"AvailabilityEndDate"|"BuyerAccounts"|"State"|"Targeting"|"LastModifiedDate",
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     ),
 #'     ContainerProductSort = list(
@@ -970,7 +980,7 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #'
 #' @usage
 #' marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,
-#'   ClientRequestToken, ChangeSetTags)
+#'   ClientRequestToken, ChangeSetTags, Intent)
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param ChangeSet &#91;required&#93; Array of `change` object.
@@ -979,6 +989,11 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' @param ClientRequestToken A unique token to identify the request to ensure idempotency.
 #' @param ChangeSetTags A list of objects specifying each key name and value for the
 #' `ChangeSetTags` property.
+#' @param Intent The intent related to the request. The default is `APPLY`. To test your
+#' request before applying changes to your entities, use `VALIDATE`. This
+#' feature is currently available for adding versions to single-AMI
+#' products. For more information, see [Add a new
+#' version](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#ami-add-version).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1018,7 +1033,8 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   Intent = "VALIDATE"|"APPLY"
 #' )
 #' ```
 #'
@@ -1027,14 +1043,14 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' @rdname marketplacecatalog_start_change_set
 #'
 #' @aliases marketplacecatalog_start_change_set
-marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL, ChangeSetTags = NULL) {
+marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL, ChangeSetTags = NULL, Intent = NULL) {
   op <- new_operation(
     name = "StartChangeSet",
     http_method = "POST",
     http_path = "/StartChangeSet",
     paginator = list()
   )
-  input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags)
+  input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags, Intent = Intent)
   output <- .marketplacecatalog$start_change_set_output()
   config <- get_config()
   svc <- .marketplacecatalog$service(config)

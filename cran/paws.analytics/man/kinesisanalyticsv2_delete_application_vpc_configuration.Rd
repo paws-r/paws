@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_delete_application_vpc_configuration}
 \alias{kinesisanalyticsv2_delete_application_vpc_configuration}
-\title{Removes a VPC configuration from a Kinesis Data Analytics application}
+\title{Removes a VPC configuration from a Managed Service for Apache Flink
+application}
 \usage{
 kinesisanalyticsv2_delete_application_vpc_configuration(
   ApplicationName,
@@ -31,7 +32,7 @@ For better concurrency support, use the \code{ConditionalToken} parameter
 instead of \code{CurrentApplicationVersionId}.}
 }
 \description{
-Removes a VPC configuration from a Kinesis Data Analytics application.
+Removes a VPC configuration from a Managed Service for Apache Flink application.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_vpc_configuration/} for full documentation.
 }

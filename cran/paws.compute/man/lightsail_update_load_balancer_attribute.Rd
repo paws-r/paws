@@ -11,8 +11,8 @@ lightsail_update_load_balancer_attribute(
 )
 }
 \arguments{
-\item{loadBalancerName}{[required] The name of the load balancer that you want to modify (e.g.,
-\code{my-load-balancer}.}
+\item{loadBalancerName}{[required] The name of the load balancer that you want to modify
+(\code{my-load-balancer}.}
 
 \item{attributeName}{[required] The name of the attribute you want to update.}
 

@@ -25,7 +25,7 @@ Virginia) as follows:
 
 Example JSON: \verb{"TokenDomains": ["abc.com", "store.abc.com"]}
 
-Public suffixes aren't allowed. For example, you can't use \code{usa.gov} or
+Public suffixes aren't allowed. For example, you can't use \code{gov.au} or
 \code{co.uk} as token domains.}
 }
 \description{

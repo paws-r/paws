@@ -327,6 +327,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$list_insights_metric_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSource = structure(logical(0), tags = list(type = "string")), EventName = structure(logical(0), tags = list(type = "string")), InsightType = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Period = structure(logical(0), tags = list(type = "integer")), DataType = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$list_insights_metric_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventSource = structure(logical(0), tags = list(type = "string")), EventName = structure(logical(0), tags = list(type = "string")), InsightType = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), Timestamps = structure(list(structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "list")), Values = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$list_public_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

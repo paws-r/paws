@@ -15,6 +15,7 @@ can get violation details for the following policy types:
 \item Imported Network Firewall
 \item Network Firewall
 \item Security group content audit
+\item Network ACL
 \item Third-party firewall
 }}
 

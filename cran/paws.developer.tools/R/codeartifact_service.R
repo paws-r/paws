@@ -14,19 +14,17 @@ NULL
 #' which effectively merges their contents from the point of view of a
 #' package manager client.
 #' 
-#' **CodeArtifact Components**
-#' 
-#' Use the information in this guide to help you work with the following
-#' CodeArtifact components:
+#' **CodeArtifact concepts**
 #' 
 #' -   **Repository**: A CodeArtifact repository contains a set of [package
 #'     versions](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html#welcome-concepts-package-version),
 #'     each of which maps to a set of assets, or files. Repositories are
 #'     polyglot, so a single repository can contain packages of any
 #'     supported type. Each repository exposes endpoints for fetching and
-#'     publishing packages using tools like the **`npm`** CLI, the Maven
-#'     CLI ( **`mvn`** ), Python CLIs ( **`pip`** and `twine`), and NuGet
-#'     CLIs (`nuget` and `dotnet`).
+#'     publishing packages using tools such as the **`npm`** CLI or the
+#'     Maven CLI ( **`mvn`** ). For a list of supported package managers,
+#'     see the [CodeArtifact User
+#'     Guide](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html).
 #' 
 #' -   **Domain**: Repositories are aggregated into a higher-level entity
 #'     known as a *domain*. All package assets and metadata are stored in
@@ -50,13 +48,11 @@ NULL
 #' 
 #' -   **Package**: A *package* is a bundle of software and the metadata
 #'     required to resolve dependencies and install the software.
-#'     CodeArtifact supports
-#'     [npm](https://docs.aws.amazon.com/codeartifact/latest/ug/using-npm.html),
-#'     [PyPI](https://docs.aws.amazon.com/codeartifact/latest/ug/using-python.html),
-#'     [Maven](https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven.html),
-#'     and
-#'     [NuGet](https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget.html)
-#'     package formats.
+#'     CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, and
+#'     generic package formats. For more information about the supported
+#'     package formats and how to use CodeArtifact with them, see the
+#'     [CodeArtifact User
+#'     Guide](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html).
 #' 
 #'     In CodeArtifact, a package consists of:
 #' 
@@ -68,6 +64,16 @@ NULL
 #'     -   A set of versions (for example, `1.0.0`, `1.0.1`, `1.0.2`, etc.)
 #' 
 #'     -   Package-level metadata (for example, npm tags)
+#' 
+#' -   **Package group**: A group of packages that match a specified
+#'     definition. Package groups can be used to apply configuration to
+#'     multiple packages that match a defined pattern using package format,
+#'     package namespace, and package name. You can use package groups to
+#'     more conveniently configure package origin controls for multiple
+#'     packages. Package origin controls are used to block or allow
+#'     ingestion or publishing of new package versions, which protects
+#'     users from malicious actions known as dependency substitution
+#'     attacks.
 #' 
 #' -   **Package version**: A version of a package, such as
 #'     `@@types/node 12.6.9`. The version number format and semantics vary
@@ -88,7 +94,7 @@ NULL
 #'     a package version, such as an npm `.tgz` file or Maven POM and JAR
 #'     files.
 #' 
-#' CodeArtifact supports these operations:
+#' **CodeArtifact supported API operations**
 #' 
 #' -   [`associate_external_connection`][codeartifact_associate_external_connection]:
 #'     Adds an existing external connection to a repository.
@@ -97,7 +103,10 @@ NULL
 #'     Copies package versions from one repository to another repository in
 #'     the same domain.
 #' 
-#' -   [`create_domain`][codeartifact_create_domain]: Creates a domain
+#' -   [`create_domain`][codeartifact_create_domain]: Creates a domain.
+#' 
+#' -   [`create_package_group`][codeartifact_create_package_group]: Creates
+#'     a package group.
 #' 
 #' -   [`create_repository`][codeartifact_create_repository]: Creates a
 #'     CodeArtifact repository in a domain.
@@ -110,6 +119,10 @@ NULL
 #' 
 #' -   [`delete_package`][codeartifact_delete_package]: Deletes a package
 #'     and all associated package versions.
+#' 
+#' -   [`delete_package_group`][codeartifact_delete_package_group]: Deletes
+#'     a package group. Does not delete packages or package versions that
+#'     are associated with a package group.
 #' 
 #' -   [`delete_package_versions`][codeartifact_delete_package_versions]:
 #'     Deletes versions of a package. After a package has been deleted, it
@@ -130,6 +143,11 @@ NULL
 #'     [PackageDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html)
 #'     object that contains details about a package.
 #' 
+#' -   [`describe_package_group`][codeartifact_describe_package_group]:
+#'     Returns a
+#'     [PackageGroup](https://docs.aws.amazon.com/codeartifact/latest/APIReference/)
+#'     object that contains details about a package group.
+#' 
 #' -   [`describe_package_version`][codeartifact_describe_package_version]:
 #'     Returns a
 #'     [PackageVersionDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
@@ -146,6 +164,10 @@ NULL
 #' 
 #' -   [`disassociate_external_connection`][codeartifact_disassociate_external_connection]:
 #'     Removes an existing external connection from a repository.
+#' 
+#' -   [`get_associated_package_group`][codeartifact_get_associated_package_group]:
+#'     Returns the most closely associated package group to the specified
+#'     package.
 #' 
 #' -   [`get_authorization_token`][codeartifact_get_authorization_token]:
 #'     Generates a temporary authorization token for accessing repositories
@@ -167,6 +189,8 @@ NULL
 #'     Returns the endpoint of a repository for a specific package format.
 #'     A repository has one endpoint for each package format:
 #' 
+#'     -   `generic`
+#' 
 #'     -   `maven`
 #' 
 #'     -   `npm`
@@ -175,8 +199,20 @@ NULL
 #' 
 #'     -   `pypi`
 #' 
+#'     -   `ruby`
+#' 
+#'     -   `swift`
+#' 
 #' -   [`get_repository_permissions_policy`][codeartifact_get_repository_permissions_policy]:
 #'     Returns the resource policy that is set on a repository.
+#' 
+#' -   [`list_allowed_repositories_for_group`][codeartifact_list_allowed_repositories_for_group]:
+#'     Lists the allowed repositories for a package group that has origin
+#'     configuration set to `ALLOW_SPECIFIC_REPOSITORIES`.
+#' 
+#' -   [`list_associated_packages`][codeartifact_list_associated_packages]:
+#'     Returns a list of packages associated with the requested package
+#'     group.
 #' 
 #' -   [`list_domains`][codeartifact_list_domains]: Returns a list of
 #'     `DomainSummary` objects. Each returned `DomainSummary` object
@@ -184,6 +220,9 @@ NULL
 #' 
 #' -   [`list_packages`][codeartifact_list_packages]: Lists the packages in
 #'     a repository.
+#' 
+#' -   [`list_package_groups`][codeartifact_list_package_groups]: Returns a
+#'     list of package groups in the requested domain.
 #' 
 #' -   [`list_package_version_assets`][codeartifact_list_package_version_assets]:
 #'     Lists the assets for a given package version.
@@ -202,6 +241,9 @@ NULL
 #' -   [`list_repositories_in_domain`][codeartifact_list_repositories_in_domain]:
 #'     Returns a list of the repositories in a domain.
 #' 
+#' -   [`list_sub_package_groups`][codeartifact_list_sub_package_groups]:
+#'     Returns a list of direct children of the specified package group.
+#' 
 #' -   [`publish_package_version`][codeartifact_publish_package_version]:
 #'     Creates a new package version containing one or more assets.
 #' 
@@ -216,6 +258,13 @@ NULL
 #' -   [`put_repository_permissions_policy`][codeartifact_put_repository_permissions_policy]:
 #'     Sets the resource policy on a repository that specifies permissions
 #'     to access it.
+#' 
+#' -   [`update_package_group`][codeartifact_update_package_group]: Updates
+#'     a package group. This API cannot be used to update a package group's
+#'     origin configuration or pattern.
+#' 
+#' -   [`update_package_group_origin_configuration`][codeartifact_update_package_group_origin_configuration]:
+#'     Updates the package origin configuration for a package group.
 #' 
 #' -   [`update_package_versions_status`][codeartifact_update_package_versions_status]:
 #'     Updates the status of one or more versions of a package.
@@ -309,32 +358,40 @@ NULL
 #'  \link[=codeartifact_associate_external_connection]{associate_external_connection} \tab Adds an existing external connection to a repository\cr
 #'  \link[=codeartifact_copy_package_versions]{copy_package_versions} \tab Copies package versions from one repository to another repository in the same domain\cr
 #'  \link[=codeartifact_create_domain]{create_domain} \tab Creates a domain\cr
+#'  \link[=codeartifact_create_package_group]{create_package_group} \tab Creates a package group\cr
 #'  \link[=codeartifact_create_repository]{create_repository} \tab Creates a repository\cr
 #'  \link[=codeartifact_delete_domain]{delete_domain} \tab Deletes a domain\cr
 #'  \link[=codeartifact_delete_domain_permissions_policy]{delete_domain_permissions_policy} \tab Deletes the resource policy set on a domain\cr
 #'  \link[=codeartifact_delete_package]{delete_package} \tab Deletes a package and all associated package versions\cr
+#'  \link[=codeartifact_delete_package_group]{delete_package_group} \tab Deletes a package group\cr
 #'  \link[=codeartifact_delete_package_versions]{delete_package_versions} \tab Deletes one or more versions of a package\cr
 #'  \link[=codeartifact_delete_repository]{delete_repository} \tab Deletes a repository\cr
 #'  \link[=codeartifact_delete_repository_permissions_policy]{delete_repository_permissions_policy} \tab Deletes the resource policy that is set on a repository\cr
 #'  \link[=codeartifact_describe_domain]{describe_domain} \tab Returns a DomainDescription object that contains information about the requested domain\cr
 #'  \link[=codeartifact_describe_package]{describe_package} \tab Returns a PackageDescription object that contains information about the requested package\cr
+#'  \link[=codeartifact_describe_package_group]{describe_package_group} \tab Returns a PackageGroupDescription object that contains information about the requested package group\cr
 #'  \link[=codeartifact_describe_package_version]{describe_package_version} \tab Returns a PackageVersionDescription object that contains information about the requested package version\cr
 #'  \link[=codeartifact_describe_repository]{describe_repository} \tab Returns a RepositoryDescription object that contains detailed information about the requested repository\cr
 #'  \link[=codeartifact_disassociate_external_connection]{disassociate_external_connection} \tab Removes an existing external connection from a repository\cr
 #'  \link[=codeartifact_dispose_package_versions]{dispose_package_versions} \tab Deletes the assets in package versions and sets the package versions' status to Disposed\cr
+#'  \link[=codeartifact_get_associated_package_group]{get_associated_package_group} \tab Returns the most closely associated package group to the specified package\cr
 #'  \link[=codeartifact_get_authorization_token]{get_authorization_token} \tab Generates a temporary authorization token for accessing repositories in the domain\cr
 #'  \link[=codeartifact_get_domain_permissions_policy]{get_domain_permissions_policy} \tab Returns the resource policy attached to the specified domain\cr
 #'  \link[=codeartifact_get_package_version_asset]{get_package_version_asset} \tab Returns an asset (or file) that is in a package\cr
 #'  \link[=codeartifact_get_package_version_readme]{get_package_version_readme} \tab Gets the readme file or descriptive text for a package version\cr
 #'  \link[=codeartifact_get_repository_endpoint]{get_repository_endpoint} \tab Returns the endpoint of a repository for a specific package format\cr
 #'  \link[=codeartifact_get_repository_permissions_policy]{get_repository_permissions_policy} \tab Returns the resource policy that is set on a repository\cr
+#'  \link[=codeartifact_list_allowed_repositories_for_group]{list_allowed_repositories_for_group} \tab Lists the repositories in the added repositories list of the specified restriction type for a package group\cr
+#'  \link[=codeartifact_list_associated_packages]{list_associated_packages} \tab Returns a list of packages associated with the requested package group\cr
 #'  \link[=codeartifact_list_domains]{list_domains} \tab Returns a list of DomainSummary objects for all domains owned by the Amazon Web Services account that makes this call\cr
+#'  \link[=codeartifact_list_package_groups]{list_package_groups} \tab Returns a list of package groups in the requested domain\cr
 #'  \link[=codeartifact_list_packages]{list_packages} \tab Returns a list of PackageSummary objects for packages in a repository that match the request parameters\cr
 #'  \link[=codeartifact_list_package_version_assets]{list_package_version_assets} \tab Returns a list of AssetSummary objects for assets in a package version\cr
 #'  \link[=codeartifact_list_package_version_dependencies]{list_package_version_dependencies} \tab Returns the direct dependencies for a package version\cr
 #'  \link[=codeartifact_list_package_versions]{list_package_versions} \tab Returns a list of PackageVersionSummary objects for package versions in a repository that match the request parameters\cr
 #'  \link[=codeartifact_list_repositories]{list_repositories} \tab Returns a list of RepositorySummary objects\cr
 #'  \link[=codeartifact_list_repositories_in_domain]{list_repositories_in_domain} \tab Returns a list of RepositorySummary objects\cr
+#'  \link[=codeartifact_list_sub_package_groups]{list_sub_package_groups} \tab Returns a list of direct children of the specified package group\cr
 #'  \link[=codeartifact_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in CodeArtifact\cr
 #'  \link[=codeartifact_publish_package_version]{publish_package_version} \tab Creates a new package version containing one or more assets (or files)\cr
 #'  \link[=codeartifact_put_domain_permissions_policy]{put_domain_permissions_policy} \tab Sets a resource policy on a domain that specifies permissions to access it\cr
@@ -342,6 +399,8 @@ NULL
 #'  \link[=codeartifact_put_repository_permissions_policy]{put_repository_permissions_policy} \tab Sets the resource policy on a repository that specifies permissions to access it\cr
 #'  \link[=codeartifact_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in CodeArtifact\cr
 #'  \link[=codeartifact_untag_resource]{untag_resource} \tab Removes tags from a resource in CodeArtifact\cr
+#'  \link[=codeartifact_update_package_group]{update_package_group} \tab Updates a package group\cr
+#'  \link[=codeartifact_update_package_group_origin_configuration]{update_package_group_origin_configuration} \tab Updates the package origin configuration for a package group\cr
 #'  \link[=codeartifact_update_package_versions_status]{update_package_versions_status} \tab Updates the status of one or more versions of a package\cr
 #'  \link[=codeartifact_update_repository]{update_repository} \tab Update the properties of a repository
 #' }
@@ -375,7 +434,7 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .codeartifact$metadata <- list(
   service_name = "codeartifact",
-  endpoints = list("*" = list(endpoint = "codeartifact.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeartifact.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codeartifact.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeartifact.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codeartifact.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeartifact.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codeartifact.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codeartifact.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeartifact.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codeartifact.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "codeartifact",
   api_version = "2018-09-22",
   signing_name = "codeartifact",

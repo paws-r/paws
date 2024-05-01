@@ -15,7 +15,7 @@ NULL
 
 .sns$check_if_phone_number_is_opted_out_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(phoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(phoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,7 +63,7 @@ NULL
 
 .sns$create_sms_sandbox_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,7 +107,7 @@ NULL
 
 .sns$delete_sms_sandbox_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -231,7 +231,7 @@ NULL
 
 .sns$list_origination_numbers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PhoneNumbers = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), PhoneNumber = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Iso2CountryCode = structure(logical(0), tags = list(type = "string")), RouteType = structure(logical(0), tags = list(type = "string")), NumberCapabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListOriginationNumbersResult"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), PhoneNumbers = structure(list(structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), Iso2CountryCode = structure(logical(0), tags = list(type = "string")), RouteType = structure(logical(0), tags = list(type = "string")), NumberCapabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListOriginationNumbersResult"))
   return(populate(args, shape))
 }
 
@@ -243,7 +243,7 @@ NULL
 
 .sns$list_phone_numbers_opted_out_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(phoneNumbers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPhoneNumbersOptedOutResult"))
+  shape <- structure(list(phoneNumbers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPhoneNumbersOptedOutResult"))
   return(populate(args, shape))
 }
 
@@ -267,7 +267,7 @@ NULL
 
 .sns$list_sms_sandbox_phone_numbers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumbers = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSMSSandboxPhoneNumbersResult"))
+  shape <- structure(list(PhoneNumbers = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSMSSandboxPhoneNumbersResult"))
   return(populate(args, shape))
 }
 
@@ -321,7 +321,7 @@ NULL
 
 .sns$opt_in_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(phoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(phoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -333,7 +333,7 @@ NULL
 
 .sns$publish_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), MessageStructure = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(DataType = structure(logical(0), tags = list(type = "string")), StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map")), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Message = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), MessageStructure = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(DataType = structure(logical(0), tags = list(type = "string")), StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map")), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -475,7 +475,7 @@ NULL
 
 .sns$verify_sms_sandbox_phone_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string")), OneTimePassword = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), OneTimePassword = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

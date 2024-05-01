@@ -9,7 +9,9 @@ Messaging)}
 sns_set_platform_application_attributes(PlatformApplicationArn, Attributes)
 }
 \arguments{
-\item{PlatformApplicationArn}{[required] PlatformApplicationArn for SetPlatformApplicationAttributes action.}
+\item{PlatformApplicationArn}{[required] \code{PlatformApplicationArn} for
+\code{\link[=sns_set_platform_application_attributes]{set_platform_application_attributes}}
+action.}
 
 \item{Attributes}{[required] A map of the platform application attributes. Attributes in this map
 include the following:
@@ -22,8 +24,16 @@ service.
 \code{PlatformCredential} is private key.
 \item For Apple Services using token credentials, \code{PlatformCredential}
 is signing key.
-\item For GCM (Firebase Cloud Messaging), \code{PlatformCredential} is API
-key.
+\item For GCM (Firebase Cloud Messaging) using key credentials, there
+is no \code{PlatformPrincipal}. The \code{PlatformCredential} is
+\verb{API key}.
+\item For GCM (Firebase Cloud Messaging) using token credentials,
+there is no \code{PlatformPrincipal}. The \code{PlatformCredential} is a
+JSON formatted private key file. When using the Amazon Web
+Services CLI, the file must be in string format and special
+characters must be ignored. To format the file correctly, Amazon
+SNS recommends using the following command:
+\code{SERVICE_JSON=`jq @json <<< cat service.json`}.
 }
 \item \code{PlatformPrincipal} – The principal received from the notification
 service.

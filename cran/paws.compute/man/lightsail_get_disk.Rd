@@ -7,7 +7,7 @@
 lightsail_get_disk(diskName)
 }
 \arguments{
-\item{diskName}{[required] The name of the disk (e.g., \code{my-disk}).}
+\item{diskName}{[required] The name of the disk (\code{my-disk}).}
 }
 \description{
 Returns information about a specific block storage disk.

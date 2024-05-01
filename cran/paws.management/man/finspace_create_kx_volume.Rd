@@ -35,8 +35,9 @@ provide \code{nas1Configuration}.}
 file system volume. This parameter is required when you choose
 \code{volumeType} as \emph{NAS_1}.}
 
-\item{azMode}{[required] The number of availability zones you want to assign per cluster.
-Currently, FinSpace only support \code{SINGLE} for volumes.}
+\item{azMode}{[required] The number of availability zones you want to assign per volume.
+Currently, FinSpace only supports \code{SINGLE} for volumes. This places
+dataview in a single AZ.}
 
 \item{availabilityZoneIds}{[required] The identifier of the availability zones.}
 

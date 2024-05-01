@@ -355,13 +355,15 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     in the *Organizations User Guide*.
 #' 
 #' 
-#' -   You can close only 10% of member accounts, between 10 and 200,
+#' -   You can close only 10% of member accounts, between 10 and 1000,
 #'     within a rolling 30 day period. This quota is not bound by a
 #'     calendar month, but starts when you close an account. After you
 #'     reach this limit, you can close additional accounts. For more
 #'     information, see [Closing a member account in your
 #'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
-#'     in the *Organizations User Guide*.
+#'     and [Quotas for
+#'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)in
+#'     the *Organizations User Guide*.
 #' 
 #' -   To reinstate a closed account, contact Amazon Web Services Support
 #'     within the 90-day grace period while the account is in SUSPENDED
@@ -1203,6 +1205,11 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' @param Content &#91;required&#93; The policy text content to add to the new policy. The text that you
 #' supply must adhere to the rules of the policy type you specify in the
 #' `Type` parameter.
+#' 
+#' The maximum size of a policy document depends on the policy's type. For
+#' more information, see [Maximum and minimum
+#' values](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values)
+#' in the *Organizations User Guide*.
 #' @param Description &#91;required&#93; An optional description to assign to the policy.
 #' @param Name &#91;required&#93; The friendly name to assign to the policy.
 #' 
@@ -2729,6 +2736,8 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #'
 #' @usage
 #' organizations_enable_all_features()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -5400,6 +5409,11 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' formatted JSON that complies with the syntax for the policy's type. For
 #' more information, see [SCP
 #' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
+#' 
+#' The maximum size of a policy document depends on the policy's type. For
+#' more information, see [Maximum and minimum
+#' values](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values)
 #' in the *Organizations User Guide*.
 #'
 #' @return

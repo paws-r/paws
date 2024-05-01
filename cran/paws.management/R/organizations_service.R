@@ -249,7 +249,7 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 
 .organizations$metadata <- list(
   service_name = "organizations",
-  endpoints = list("*" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "organizations.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "organizations.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "organizations.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "organizations.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "organizations.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "organizations.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "organizations.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "organizations.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Organizations",
   api_version = "2016-11-28",
   signing_name = "organizations",

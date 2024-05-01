@@ -21,7 +21,7 @@ kinesisanalyticsv2_discover_input_schema(
 \item{ServiceExecutionRole}{[required] The ARN of the role that is used to access the streaming source.}
 
 \item{InputStartingPositionConfiguration}{The point at which you want Kinesis Data Analytics to start reading
-records from the specified streaming source discovery purposes.}
+records from the specified streaming source for discovery purposes.}
 
 \item{S3Configuration}{Specify this parameter to discover a schema from data in an Amazon S3
 object.}

@@ -20,7 +20,8 @@ NULL
 #' If there are more results available, in the response, Secrets Manager
 #' includes `NextToken`. To get the next results, call
 #' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
-#' with the value from `NextToken`.
+#' with the value from `NextToken`. To use this parameter, you must also
+#' use the `Filters` parameter.
 #' @param NextToken A token that indicates where the output should continue from, if a
 #' previous call did not show all results. To get the next results, call
 #' [`batch_get_secret_value`][secretsmanager_batch_get_secret_value] again
@@ -344,7 +345,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' Generates a random password
 #'
 #' @description
-#' Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support.
+#' Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support. By default, Secrets Manager uses uppercase and lowercase letters, numbers, and the following characters in passwords: `` !\\"#$%&\'()*+,-./:;<=>?@@[\\]^_\`{|}~ ``
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/](https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/) for full documentation.
 #'
@@ -476,7 +477,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' Lists the versions of a secret
 #'
 #' @description
-#' Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see [Secrets Manager concepts: Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see [Secrets Manager concepts: Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/](https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/) for full documentation.
 #'
@@ -580,6 +581,22 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
 #' principal. By default, public policies aren't blocked.
+#' 
+#' Resource policy validation and the BlockPublicPolicy parameter help
+#' protect your resources by preventing public access from being granted
+#' through the resource policies that are directly attached to your
+#' secrets. In addition to using these features, carefully inspect the
+#' following policies to confirm that they do not grant public access:
+#' 
+#' -   Identity-based policies attached to associated Amazon Web Services
+#'     principals (for example, IAM roles)
+#' 
+#' -   Resource-based policies attached to associated Amazon Web Services
+#'     resources (for example, Key Management Service (KMS) keys)
+#' 
+#' To review permissions to your secrets, see [Determine who has
+#' permissions to your
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/determine-acccess_examine-iam-policies.html).
 #'
 #' @keywords internal
 #'
@@ -730,7 +747,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' Replicates the secret to a new Regions
 #'
 #' @description
-#' Replicates the secret to a new Regions. See [Multi-Region secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html).
+#' Replicates the secret to a new Regions. See [Multi-Region secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/](https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/) for full documentation.
 #'
@@ -1018,7 +1035,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
 #' not re-ecrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #' 
 #' A key alias is always prefixed by `alias/`, for example
 #' `alias/aws/secretsmanager`. For more information, see [About
@@ -1075,7 +1092,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' Modifies the staging labels attached to a version of a secret
 #'
 #' @description
-#' Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see [Concepts: Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see [Concepts: Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/](https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/) for full documentation.
 #'

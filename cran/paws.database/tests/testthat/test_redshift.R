@@ -127,3 +127,7 @@ test_that("describe_tags", {
 test_that("describe_usage_limits", {
   expect_error(svc$describe_usage_limits(), NA)
 })
+
+test_that("list_recommendations", {
+  expect_error(svc$list_recommendations(), NA)
+})

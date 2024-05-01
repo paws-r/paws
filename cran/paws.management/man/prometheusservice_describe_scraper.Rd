@@ -2,15 +2,16 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_describe_scraper}
 \alias{prometheusservice_describe_scraper}
-\title{Describe an existing scraper}
+\title{The DescribeScraper operation displays information about an existing
+scraper}
 \usage{
 prometheusservice_describe_scraper(scraperId)
 }
 \arguments{
-\item{scraperId}{[required] The IDs of the scraper to describe.}
+\item{scraperId}{[required] The ID of the scraper to describe.}
 }
 \description{
-Describe an existing scraper.
+The \code{\link[=prometheusservice_describe_scraper]{describe_scraper}} operation displays information about an existing scraper.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_scraper/} for full documentation.
 }

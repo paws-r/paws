@@ -6,11 +6,9 @@
 \title{Creates or updates the resource policy that grants permissions to source
 accounts to link to the monitoring account sink}
 \usage{
-cloudwatchobservabilityaccessmanager_put_sink_policy(SinkIdentifier, Policy)
+cloudwatchobservabilityaccessmanager_put_sink_policy(Policy, SinkIdentifier)
 }
 \arguments{
-\item{SinkIdentifier}{[required] The ARN of the sink to attach this policy to.}
-
 \item{Policy}{[required] The JSON policy to use. If you are updating an existing policy, the
 entire existing policy is replaced by what you specify here.
 
@@ -19,6 +17,8 @@ and no newlines.
 
 For examples of different types of policies, see the \strong{Examples}
 section on this page.}
+
+\item{SinkIdentifier}{[required] The ARN of the sink to attach this policy to.}
 }
 \description{
 Creates or updates the resource policy that grants permissions to source accounts to link to the monitoring account sink. When you create a sink policy, you can grant permissions to all accounts in an organization or to individual accounts.

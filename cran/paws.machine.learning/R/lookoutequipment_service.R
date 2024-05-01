@@ -177,7 +177,7 @@ lookoutequipment <- function(config = list(), credentials = list(), endpoint = N
 
 .lookoutequipment$metadata <- list(
   service_name = "lookoutequipment",
-  endpoints = list("*" = list(endpoint = "lookoutequipment.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lookoutequipment.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lookoutequipment.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lookoutequipment.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "lookoutequipment.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lookoutequipment.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "lookoutequipment.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "lookoutequipment.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lookoutequipment.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "lookoutequipment.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "LookoutEquipment",
   api_version = "2020-12-15",
   signing_name = "lookoutequipment",

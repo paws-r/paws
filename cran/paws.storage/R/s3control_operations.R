@@ -227,6 +227,11 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
 #' access point.
 #' @param BucketAccountId The Amazon Web Services account ID associated with the S3 bucket
 #' associated with this access point.
+#' 
+#' For same account access point when your bucket and access point belong
+#' to the same account owner, the `BucketAccountId` is not required. For
+#' cross-account access point when your bucket and access point are not in
+#' the same account, the `BucketAccountId` is required.
 #'
 #' @keywords internal
 #'
@@ -1984,7 +1989,7 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
 #' information you want to receive. The name of the Multi-Region Access
 #' Point is different from the alias. For more information about the
 #' distinction between the name and the alias of an Multi-Region Access
-#' Point, see [Managing Multi-Region Access
+#' Point, see [Rules for naming Amazon S3 Multi-Region Access
 #' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html#multi-region-access-point-naming)
 #' in the *Amazon S3 User Guide*.
 #'
@@ -2020,7 +2025,7 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
 #' @param Name &#91;required&#93; Specifies the Multi-Region Access Point. The name of the Multi-Region
 #' Access Point is different from the alias. For more information about the
 #' distinction between the name and the alias of an Multi-Region Access
-#' Point, see [Managing Multi-Region Access
+#' Point, see [Rules for naming Amazon S3 Multi-Region Access
 #' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html#multi-region-access-point-naming)
 #' in the *Amazon S3 User Guide*.
 #'
@@ -2056,7 +2061,7 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
 #' @param Name &#91;required&#93; Specifies the Multi-Region Access Point. The name of the Multi-Region
 #' Access Point is different from the alias. For more information about the
 #' distinction between the name and the alias of an Multi-Region Access
-#' Point, see [Managing Multi-Region Access
+#' Point, see [Rules for naming Amazon S3 Multi-Region Access
 #' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html#multi-region-access-point-naming)
 #' in the *Amazon S3 User Guide*.
 #'
@@ -2476,11 +2481,11 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
 .s3control$operations$list_access_points_for_object_lambda <- s3control_list_access_points_for_object_lambda
 
 #' Lists current S3 Batch Operations jobs as well as the jobs that have
-#' ended within the last 30 days for the Amazon Web Services account making
+#' ended within the last 90 days for the Amazon Web Services account making
 #' the request
 #'
 #' @description
-#' Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
+#' Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 90 days for the Amazon Web Services account making the request. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_jobs/](https://www.paws-r-sdk.com/docs/s3control_list_jobs/) for full documentation.
 #'

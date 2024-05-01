@@ -2,7 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_list_applications}
 \alias{kinesisanalyticsv2_list_applications}
-\title{Returns a list of Kinesis Data Analytics applications in your account}
+\title{Returns a list of Managed Service for Apache Flink applications in your
+account}
 \usage{
 kinesisanalyticsv2_list_applications(Limit = NULL, NextToken = NULL)
 }
@@ -14,7 +15,7 @@ value to retrieve the next set of results. For more information about
 pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html}{Using the Amazon Command Line Interface's Pagination Options}.}
 }
 \description{
-Returns a list of Kinesis Data Analytics applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status.
+Returns a list of Managed Service for Apache Flink applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_applications/} for full documentation.
 }

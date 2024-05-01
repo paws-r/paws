@@ -2,7 +2,7 @@
 % Please edit documentation in R/personalize_operations.R
 \name{personalize_list_solutions}
 \alias{personalize_list_solutions}
-\title{Returns a list of solutions that use the given dataset group}
+\title{Returns a list of solutions in a given dataset group}
 \usage{
 personalize_list_solutions(
   datasetGroupArn = NULL,
@@ -20,7 +20,7 @@ of solutions (if they exist).}
 \item{maxResults}{The maximum number of solutions to return.}
 }
 \description{
-Returns a list of solutions that use the given dataset group. When a dataset group is not specified, all the solutions associated with the account are listed. The response provides the properties for each solution, including the Amazon Resource Name (ARN). For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
+Returns a list of solutions in a given dataset group. When a dataset group is not specified, all the solutions associated with the account are listed. The response provides the properties for each solution, including the Amazon Resource Name (ARN). For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_list_solutions/} for full documentation.
 }

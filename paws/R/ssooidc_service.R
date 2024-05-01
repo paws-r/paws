@@ -174,7 +174,7 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .ssooidc$metadata <- list(
   service_name = "ssooidc",
-  endpoints = list("*" = list(endpoint = "oidc.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "oidc.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "oidc.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "oidc.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "oidc.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "oidc.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "oidc.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "oidc.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "oidc.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "oidc.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSO OIDC",
   api_version = "2019-06-10",
   signing_name = "sso-oauth",

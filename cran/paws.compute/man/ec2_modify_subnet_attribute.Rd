@@ -30,7 +30,12 @@ using version \code{2016-11-15} or later of the Amazon EC2 API.}
 
 \item{MapPublicIpOnLaunch}{Specify \code{true} to indicate that network interfaces attached to instances
 created in the specified subnet should be assigned a public IPv4
-address.}
+address.
+
+Amazon Web Services charges for all public IPv4 addresses, including
+public IPv4 addresses associated with running instances and Elastic IP
+addresses. For more information, see the \emph{Public IPv4 Address} tab on
+the \href{https://aws.amazon.com/vpc/pricing/}{Amazon VPC pricing page}.}
 
 \item{SubnetId}{[required] The ID of the subnet.}
 

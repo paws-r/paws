@@ -43,8 +43,11 @@ one number, and one punctuation. If you don't include this switch, the
 password contains at least one of every character type.}
 }
 \description{
-Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support.
+Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support. By default, Secrets Manager uses uppercase and lowercase letters, numbers, and the following characters in passwords: \verb{!\\\\"#$\%&\\'()*+,-./:;<=>?@[\\\]^_\\`\{|\}~}
 
 See \url{https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/} for full documentation.
+
+[\]: R:\%5C\%5C\%5C
+[https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/]: R:https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/
 }
 \keyword{internal}

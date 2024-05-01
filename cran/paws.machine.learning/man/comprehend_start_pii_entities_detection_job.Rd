@@ -20,7 +20,7 @@ comprehend_start_pii_entities_detection_job(
 \arguments{
 \item{InputDataConfig}{[required] The input properties for a PII entities detection job.}
 
-\item{OutputDataConfig}{[required] Provides configuration parameters for the output of PII entity detection
+\item{OutputDataConfig}{[required] Provides conﬁguration parameters for the output of PII entity detection
 jobs.}
 
 \item{Mode}{[required] Specifies whether the output provides the locations (offsets) of PII
@@ -37,8 +37,8 @@ Comprehend read access to your input data.}
 
 \item{JobName}{The identifier of the job.}
 
-\item{LanguageCode}{[required] The language of the input documents. Currently, English is the only
-valid language.}
+\item{LanguageCode}{[required] The language of the input documents. Enter the language code for English
+(en) or Spanish (es).}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}

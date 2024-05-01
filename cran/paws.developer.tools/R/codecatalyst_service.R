@@ -300,7 +300,7 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .codecatalyst$metadata <- list(
   service_name = "codecatalyst",
-  endpoints = list("*" = list(endpoint = "codecatalyst.global.api.aws", global = FALSE), "cn-*" = list(endpoint = "codecatalyst.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codecatalyst.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codecatalyst.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codecatalyst.global.api.aws", global = FALSE), "cn-*" = list(endpoint = "codecatalyst.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codecatalyst.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codecatalyst.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codecatalyst.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codecatalyst.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CodeCatalyst",
   api_version = "2022-09-28",
   signing_name = "codecatalyst",

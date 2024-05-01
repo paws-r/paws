@@ -9,8 +9,8 @@ controltower_update_landing_zone(landingZoneIdentifier, manifest, version)
 \arguments{
 \item{landingZoneIdentifier}{[required] The unique identifier of the landing zone.}
 
-\item{manifest}{[required] The manifest JSON file is a text file that describes your Amazon Web
-Services resources. For examples, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html}{Launch your landing zone}.}
+\item{manifest}{[required] The \code{manifest.yaml} file is a text file that describes your Amazon Web
+Services resources. For examples, review \href{https://docs.aws.amazon.com/controltower/latest/userguide/the-manifest-file.html}{The manifest file}.}
 
 \item{version}{[required] The landing zone version, for example, 3.2.}
 }

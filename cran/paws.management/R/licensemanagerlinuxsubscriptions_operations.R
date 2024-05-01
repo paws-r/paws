@@ -10,6 +10,8 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_service_settings/](https://www.paws-r-sdk.com/docs/licensemanagerlinuxsubscriptions_get_service_settings/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname licensemanagerlinuxsubscriptions_get_service_settings

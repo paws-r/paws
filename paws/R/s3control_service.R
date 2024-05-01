@@ -156,7 +156,7 @@ NULL
 #'  \link[=s3control_list_access_grants_locations]{list_access_grants_locations} \tab Returns a list of the locations registered in your S3 Access Grants instance\cr
 #'  \link[=s3control_list_access_points]{list_access_points} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab This operation is not supported by directory buckets\cr
-#'  \link[=s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 30 days for the Amazon Web Services account making the request\cr
+#'  \link[=s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 90 days for the Amazon Web Services account making the request\cr
 #'  \link[=s3control_list_multi_region_access_points]{list_multi_region_access_points} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_list_regional_buckets]{list_regional_buckets} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_list_storage_lens_configurations]{list_storage_lens_configurations} \tab This operation is not supported by directory buckets\cr
@@ -214,7 +214,7 @@ s3control <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .s3control$metadata <- list(
   service_name = "s3control",
-  endpoints = list("*" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3-control.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "s3-control.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3-control.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3-control.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "s3-control.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "s3-control.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3-control.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "s3-control.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "S3 Control",
   api_version = "2018-08-20",
   signing_name = "s3",

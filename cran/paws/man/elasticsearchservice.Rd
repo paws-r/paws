@@ -110,6 +110,7 @@ target="_blank">}}Regions and Endpoints\if{html}{\out{</a>}}.
 \link[paws.analytics:elasticsearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Elasticsearch domain\cr
 \link[paws.analytics:elasticsearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon ES domain\cr
 \link[paws.analytics:elasticsearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
+\link[paws.analytics:elasticsearchservice_cancel_domain_config_change]{cancel_domain_config_change} \tab Cancels a pending configuration change on an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:elasticsearchservice_cancel_elasticsearch_service_software_update]{cancel_elasticsearch_service_software_update} \tab Cancels a scheduled service software update for an Amazon ES domain\cr
 \link[paws.analytics:elasticsearchservice_create_elasticsearch_domain]{create_elasticsearch_domain} \tab Creates a new Elasticsearch domain\cr
 \link[paws.analytics:elasticsearchservice_create_outbound_cross_cluster_search_connection]{create_outbound_cross_cluster_search_connection} \tab Creates a new cross-cluster search connection from a source domain to a destination domain\cr

@@ -171,7 +171,7 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
 
 .cloudwatchevidently$metadata <- list(
   service_name = "cloudwatchevidently",
-  endpoints = list("*" = list(endpoint = "evidently.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "evidently.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "evidently.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "evidently.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "evidently.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "evidently.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "evidently.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "evidently.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "evidently.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "evidently.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Evidently",
   api_version = "2021-02-01",
   signing_name = "evidently",

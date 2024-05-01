@@ -2,8 +2,8 @@
 % Please edit documentation in R/paymentcryptographydataplane_operations.R
 \name{paymentcryptographydataplane_encrypt_data}
 \alias{paymentcryptographydataplane_encrypt_data}
-\title{Encrypts plaintext data to ciphertext using symmetric, asymmetric, or
-DUKPT data encryption key}
+\title{Encrypts plaintext data to ciphertext using a symmetric (TDES, AES),
+asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme}
 \usage{
 paymentcryptographydataplane_encrypt_data(
   EncryptionAttributes,
@@ -17,10 +17,16 @@ paymentcryptographydataplane_encrypt_data(
 \item{KeyIdentifier}{[required] The \code{keyARN} of the encryption key that Amazon Web Services Payment
 Cryptography uses for plaintext encryption.}
 
-\item{PlainText}{[required] The plaintext to be encrypted.}
+\item{PlainText}{[required] The plaintext to be encrypted.
+
+For encryption using asymmetric keys, plaintext data length is
+constrained by encryption key strength that you define in \code{KeyAlgorithm}
+and padding type that you define in \code{AsymmetricEncryptionAttributes}.
+For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html}{Encrypt data}
+in the \emph{Amazon Web Services Payment Cryptography User Guide}.}
 }
 \description{
-Encrypts plaintext data to ciphertext using symmetric, asymmetric, or DUKPT data encryption key. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html}{Encrypt data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
+Encrypts plaintext data to ciphertext using a symmetric (TDES, AES), asymmetric (RSA), or derived (DUKPT or EMV) encryption key scheme. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/encrypt-data.html}{Encrypt data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_encrypt_data/} for full documentation.
 }

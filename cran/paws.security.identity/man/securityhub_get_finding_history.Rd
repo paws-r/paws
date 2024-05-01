@@ -15,10 +15,8 @@ securityhub_get_finding_history(
 \arguments{
 \item{FindingIdentifier}{[required]}
 
-\item{StartTime}{An ISO 8601-formatted timestamp that indicates the start time of the
-requested finding history. A correctly formatted example is
-\verb{2020-05-21T20:16:34.724Z}. The value cannot contain spaces, and date
-and time should be separated by \code{T}. For more information, see \href{https://www.rfc-editor.org/rfc/rfc3339#section-5.6}{RFC 3339 section 5.6, Internet Date/Time Format}.
+\item{StartTime}{A timestamp that indicates the start time of the requested finding
+history.
 
 If you provide values for both \code{StartTime} and \code{EndTime}, Security Hub
 returns finding history for the specified time period. If you provide a
@@ -31,12 +29,25 @@ timestamp of the finding to the \code{EndTime}. If you provide neither
 \code{StartTime} nor \code{EndTime}, Security Hub returns finding history from the
 CreatedAt timestamp of the finding to the time at which the API is
 called. In all of these scenarios, the response is limited to 100
-results, and the maximum time period is limited to 90 days.}
+results, and the maximum time period is limited to 90 days.
+
+This field accepts only the specified formats. Timestamps can end with
+\code{Z} or \verb{("+" / "-") time-hour [":" time-minute]}. The time-secfrac after
+seconds is limited to a maximum of 9 digits. The offset is bounded by
++/-18:00. Here are valid timestamp formats with examples:
+\itemize{
+\item \code{YYYY-MM-DDTHH:MM:SSZ} (for example, \verb{2019-01-31T23:00:00Z})
+\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ} (for example,
+\verb{2019-01-31T23:00:00.123456789Z})
+\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example,
+\verb{2024-01-04T15:25:10+17:59})
+\item \code{YYYY-MM-DDTHH:MM:SS-HHMM} (for example, \verb{2024-01-04T15:25:10-1759})
+\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM} (for example,
+\verb{2024-01-04T15:25:10.123456789+17:59})
+}}
 
 \item{EndTime}{An ISO 8601-formatted timestamp that indicates the end time of the
-requested finding history. A correctly formatted example is
-\verb{2020-05-21T20:16:34.724Z}. The value cannot contain spaces, and date
-and time should be separated by \code{T}. For more information, see \href{https://www.rfc-editor.org/rfc/rfc3339#section-5.6}{RFC 3339 section 5.6, Internet Date/Time Format}.
+requested finding history.
 
 If you provide values for both \code{StartTime} and \code{EndTime}, Security Hub
 returns finding history for the specified time period. If you provide a
@@ -49,7 +60,22 @@ timestamp of the finding to the \code{EndTime}. If you provide neither
 \code{StartTime} nor \code{EndTime}, Security Hub returns finding history from the
 CreatedAt timestamp of the finding to the time at which the API is
 called. In all of these scenarios, the response is limited to 100
-results, and the maximum time period is limited to 90 days.}
+results, and the maximum time period is limited to 90 days.
+
+This field accepts only the specified formats. Timestamps can end with
+\code{Z} or \verb{("+" / "-") time-hour [":" time-minute]}. The time-secfrac after
+seconds is limited to a maximum of 9 digits. The offset is bounded by
++/-18:00. Here are valid timestamp formats with examples:
+\itemize{
+\item \code{YYYY-MM-DDTHH:MM:SSZ} (for example, \verb{2019-01-31T23:00:00Z})
+\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ} (for example,
+\verb{2019-01-31T23:00:00.123456789Z})
+\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example,
+\verb{2024-01-04T15:25:10+17:59})
+\item \code{YYYY-MM-DDTHH:MM:SS-HHMM} (for example, \verb{2024-01-04T15:25:10-1759})
+\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM} (for example,
+\verb{2024-01-04T15:25:10.123456789+17:59})
+}}
 
 \item{NextToken}{A token for pagination purposes. Provide \code{NULL} as the initial value. In
 subsequent requests, provide the token included in the response to get

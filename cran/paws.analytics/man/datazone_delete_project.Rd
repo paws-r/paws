@@ -4,12 +4,15 @@
 \alias{datazone_delete_project}
 \title{Deletes a project in Amazon DataZone}
 \usage{
-datazone_delete_project(domainIdentifier, identifier)
+datazone_delete_project(domainIdentifier, identifier, skipDeletionCheck = NULL)
 }
 \arguments{
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which the project is deleted.}
 
 \item{identifier}{[required] The identifier of the project that is to be deleted.}
+
+\item{skipDeletionCheck}{Specifies the optional flag to delete all child entities within the
+project.}
 }
 \description{
 Deletes a project in Amazon DataZone.

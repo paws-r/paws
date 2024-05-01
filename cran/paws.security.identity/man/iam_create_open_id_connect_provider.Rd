@@ -8,7 +8,7 @@ supports OpenID Connect (OIDC)}
 iam_create_open_id_connect_provider(
   Url,
   ClientIDList = NULL,
-  ThumbprintList,
+  ThumbprintList = NULL,
   Tags = NULL
 )
 }
@@ -39,19 +39,22 @@ There is no defined format for a client ID. The
 \code{CreateOpenIDConnectProviderRequest} operation accepts client IDs up to
 255 characters long.}
 
-\item{ThumbprintList}{[required] A list of server certificate thumbprints for the OpenID Connect (OIDC)
+\item{ThumbprintList}{A list of server certificate thumbprints for the OpenID Connect (OIDC)
 identity provider's server certificates. Typically this list includes
 only one entry. However, IAM lets you have up to five thumbprints for an
 OIDC provider. This lets you maintain multiple thumbprints if the
 identity provider is rotating certificates.
 
+This parameter is optional. If it is not included, IAM will retrieve and
+use the top intermediate certificate authority (CA) thumbprint of the
+OpenID Connect identity provider server certificate.
+
 The server certificate thumbprint is the hex-encoded SHA-1 hash value of
 the X.509 certificate used by the domain where the OpenID Connect
 provider makes its keys available. It is always a 40-character string.
 
-You must provide at least one thumbprint when creating an IAM OIDC
-provider. For example, assume that the OIDC provider is
-\code{server.example.com} and the provider stores its keys at
+For example, assume that the OIDC provider is \code{server.example.com} and
+the provider stores its keys at
 https://keys.server.example.com/openid-connect. In that case, the
 thumbprint string would be the hex-encoded SHA-1 hash value of the
 certificate used by \verb{https://keys.server.example.com.}

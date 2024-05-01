@@ -23,8 +23,7 @@ ec2_revoke_security_group_ingress(
 specifying a source security group.}
 
 \item{FromPort}{If the protocol is TCP or UDP, this is the start of the port range. If
-the protocol is ICMP, this is the type number. A value of -1 indicates
-all ICMP types.}
+the protocol is ICMP, this is the ICMP type or -1 (all ICMP types).}
 
 \item{GroupId}{The ID of the security group.}
 
@@ -49,8 +48,7 @@ IP permissions instead.}
 \item{SourceSecurityGroupOwnerId}{Not supported.}
 
 \item{ToPort}{If the protocol is TCP or UDP, this is the end of the port range. If the
-protocol is ICMP, this is the code. A value of -1 indicates all ICMP
-codes.}
+protocol is ICMP, this is the ICMP code or -1 (all ICMP codes).}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

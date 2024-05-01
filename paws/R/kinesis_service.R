@@ -155,7 +155,7 @@ kinesis <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .kinesis$metadata <- list(
   service_name = "kinesis",
-  endpoints = list("*" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesis.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesis.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesis.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "kinesis.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "kinesis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesis.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "kinesis.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Kinesis",
   api_version = "2013-12-02",
   signing_name = "kinesis",

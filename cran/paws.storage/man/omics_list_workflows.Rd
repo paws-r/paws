@@ -12,9 +12,9 @@ omics_list_workflows(
 )
 }
 \arguments{
-\item{type}{The workflows' type.}
+\item{type}{Filter the list by workflow type.}
 
-\item{name}{The workflows' name.}
+\item{name}{Filter the list by workflow name.}
 
 \item{startingToken}{Specify the pagination token from a previous request to retrieve the
 next page of results.}

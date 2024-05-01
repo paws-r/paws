@@ -22,7 +22,23 @@ the scaling group.}
 \item{scalingGroupName}{[required] A unique identifier for the kdb scaling group.}
 
 \item{hostType}{[required] The memory and CPU capabilities of the scaling group host on which
-FinSpace Managed kdb clusters will be placed.}
+FinSpace Managed kdb clusters will be placed.
+
+You can add one of the following values:
+\itemize{
+\item \code{kx.sg.4xlarge} – The host type with a configuration of 108 GiB
+memory and 16 vCPUs.
+\item \code{kx.sg.8xlarge} – The host type with a configuration of 216 GiB
+memory and 32 vCPUs.
+\item \code{kx.sg.16xlarge} – The host type with a configuration of 432 GiB
+memory and 64 vCPUs.
+\item \code{kx.sg.32xlarge} – The host type with a configuration of 864 GiB
+memory and 128 vCPUs.
+\item \code{kx.sg1.16xlarge} – The host type with a configuration of 1949 GiB
+memory and 64 vCPUs.
+\item \code{kx.sg1.24xlarge} – The host type with a configuration of 2948 GiB
+memory and 96 vCPUs.
+}}
 
 \item{availabilityZoneId}{[required] The identifier of the availability zones.}
 

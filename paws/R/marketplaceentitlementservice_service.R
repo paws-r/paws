@@ -133,7 +133,7 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 
 .marketplaceentitlementservice$metadata <- list(
   service_name = "entitlement.marketplace",
-  endpoints = list("*" = list(endpoint = "entitlement.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "entitlement.marketplace.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "entitlement.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "entitlement.marketplace.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "entitlement.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "entitlement.marketplace.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "entitlement.marketplace.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "entitlement.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "entitlement.marketplace.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "entitlement.marketplace.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Marketplace Entitlement Service",
   api_version = "2017-01-11",
   signing_name = "aws-marketplace",

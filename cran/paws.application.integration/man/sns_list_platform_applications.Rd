@@ -8,7 +8,8 @@ notification services, such as APNS and GCM (Firebase Cloud Messaging)}
 sns_list_platform_applications(NextToken = NULL)
 }
 \arguments{
-\item{NextToken}{NextToken string is used when calling ListPlatformApplications action to
+\item{NextToken}{\code{NextToken} string is used when calling
+\code{\link[=sns_list_platform_applications]{list_platform_applications}} action to
 retrieve additional records that are available after the first page
 results.}
 }

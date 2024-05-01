@@ -2,35 +2,37 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_create_scraper}
 \alias{prometheusservice_create_scraper}
-\title{Create a scraper}
+\title{The CreateScraper operation creates a scraper to collect metrics}
 \usage{
 prometheusservice_create_scraper(
   alias = NULL,
+  clientToken = NULL,
+  destination,
   scrapeConfiguration,
   source,
-  destination,
-  clientToken = NULL,
   tags = NULL
 )
 }
 \arguments{
-\item{alias}{An optional user-assigned alias for this scraper. This alias is for user
-reference and does not need to be unique.}
+\item{alias}{(optional) a name to associate with the scraper. This is for your use,
+and does not need to be unique.}
 
-\item{scrapeConfiguration}{[required] The configuration used to create the scraper.}
+\item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to
+ensure the idempotency of the request.}
 
-\item{source}{[required] The source that the scraper will be discovering and collecting metrics
-from.}
+\item{destination}{[required] The Amazon Managed Service for Prometheus workspace to send metrics to.}
 
-\item{destination}{[required] The destination that the scraper will be producing metrics to.}
+\item{scrapeConfiguration}{[required] The configuration file to use in the new scraper. For more information,
+see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration}{Scraper configuration}
+in the \emph{Amazon Managed Service for Prometheus User Guide}.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{source}{[required] The Amazon EKS cluster from which the scraper will collect metrics.}
 
-\item{tags}{Optional, user-provided tags for this scraper.}
+\item{tags}{(Optional) The list of tag keys and values to associate with the
+scraper.}
 }
 \description{
-Create a scraper.
+The \code{\link[=prometheusservice_create_scraper]{create_scraper}} operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. You can configure the scraper to control what metrics are collected, and what transformations are applied prior to sending them to your workspace.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/} for full documentation.
 }

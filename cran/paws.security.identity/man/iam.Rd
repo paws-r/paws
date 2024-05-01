@@ -214,7 +214,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[=iam_put_user_permissions_boundary]{put_user_permissions_boundary} \tab Adds or updates the policy that is specified as the IAM user's permissions boundary\cr
 \link[=iam_put_user_policy]{put_user_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM user\cr
 \link[=iam_remove_client_id_from_open_id_connect_provider]{remove_client_id_from_open_id_connect_provider} \tab Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object\cr
-\link[=iam_remove_role_from_instance_profile]{remove_role_from_instance_profile} \tab Removes the specified IAM role from the specified EC2 instance profile\cr
+\link[=iam_remove_role_from_instance_profile]{remove_role_from_instance_profile} \tab Removes the specified IAM role from the specified Amazon EC2 instance profile\cr
 \link[=iam_remove_user_from_group]{remove_user_from_group} \tab Removes the specified user from the specified group\cr
 \link[=iam_reset_service_specific_credential]{reset_service_specific_credential} \tab Resets the password for a service-specific credential\cr
 \link[=iam_resync_mfa_device]{resync_mfa_device} \tab Synchronizes the specified MFA device with its IAM resource object on the Amazon Web Services servers\cr

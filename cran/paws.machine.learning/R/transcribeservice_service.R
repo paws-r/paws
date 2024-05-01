@@ -178,7 +178,7 @@ transcribeservice <- function(config = list(), credentials = list(), endpoint = 
 
 .transcribeservice$metadata <- list(
   service_name = "transcribe",
-  endpoints = list("*" = list(endpoint = "transcribe.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "transcribe.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "transcribe.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "transcribe.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "transcribe.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "transcribe.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "transcribe.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "transcribe.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "transcribe.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "transcribe.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Transcribe",
   api_version = "2017-10-26",
   signing_name = "transcribe",

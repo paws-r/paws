@@ -8,7 +8,8 @@ wellarchitected_update_lens_review(
   WorkloadId,
   LensAlias,
   LensNotes = NULL,
-  PillarNotes = NULL
+  PillarNotes = NULL,
+  JiraConfiguration = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ wellarchitected_update_lens_review(
 \item{LensNotes}{}
 
 \item{PillarNotes}{}
+
+\item{JiraConfiguration}{Configuration of the Jira integration.}
 }
 \description{
 Update lens review for a particular workload.

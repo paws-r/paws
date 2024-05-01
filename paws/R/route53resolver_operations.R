@@ -414,7 +414,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' route53resolver_create_firewall_rule(CreatorRequestId,
 #'   FirewallRuleGroupId, FirewallDomainListId, Priority, Action,
 #'   BlockResponse, BlockOverrideDomain, BlockOverrideDnsType,
-#'   BlockOverrideTtl, Name)
+#'   BlockOverrideTtl, Name, FirewallDomainRedirectionAction, Qtype)
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows you to retry
 #' failed requests without the risk of running the operation twice.
@@ -470,6 +470,51 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' 
 #' This setting is required if the `BlockResponse` setting is `OVERRIDE`.
 #' @param Name &#91;required&#93; A name that lets you identify the rule in the rule group.
+#' @param FirewallDomainRedirectionAction How you want the the rule to evaluate DNS redirection in the DNS
+#' redirection chain, such as CNAME, DNAME, ot ALIAS.
+#' 
+#' `Inspect_Redirection_Domain `(Default) inspects all domains in the
+#' redirection chain. The individual domains in the redirection chain must
+#' be added to the allow domain list.
+#' 
+#' `Trust_Redirection_Domain ` inspects only the first domain in the
+#' redirection chain. You don't need to add the subsequent domains in the
+#' redirection list to the domain alloww list.
+#' @param Qtype The DNS query type you want the rule to evaluate. Allowed values are;
+#' 
+#' -   A: Returns an IPv4 address.
+#' 
+#' -   AAAA: Returns an Ipv6 address.
+#' 
+#' -   CAA: Restricts CAs that can create SSL/TLS certifications for the
+#'     domain.
+#' 
+#' -   CNAME: Returns another domain name.
+#' 
+#' -   DS: Record that identifies the DNSSEC signing key of a delegated
+#'     zone.
+#' 
+#' -   MX: Specifies mail servers.
+#' 
+#' -   NAPTR: Regular-expression-based rewriting of domain names.
+#' 
+#' -   NS: Authoritative name servers.
+#' 
+#' -   PTR: Maps an IP address to a domain name.
+#' 
+#' -   SOA: Start of authority record for the zone.
+#' 
+#' -   SPF: Lists the servers authorized to send emails from a domain.
+#' 
+#' -   SRV: Application specific values that identify servers.
+#' 
+#' -   TXT: Verifies email senders and application-specific values.
+#' 
+#' -   A query type you define by using the DNS type ID, for example 28 for
+#'     AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
+#'     be 1-65334, for example, TYPE28. For more information, see [List of
+#'     DNS record
+#'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -487,7 +532,9 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'     BlockOverrideTtl = 123,
 #'     CreatorRequestId = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'     Qtype = "string"
 #'   )
 #' )
 #' ```
@@ -504,7 +551,9 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'   BlockOverrideDomain = "string",
 #'   BlockOverrideDnsType = "CNAME",
 #'   BlockOverrideTtl = 123,
-#'   Name = "string"
+#'   Name = "string",
+#'   FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'   Qtype = "string"
 #' )
 #' ```
 #'
@@ -513,14 +562,14 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @rdname route53resolver_create_firewall_rule
 #'
 #' @aliases route53resolver_create_firewall_rule
-route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name) {
+route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name, FirewallDomainRedirectionAction = NULL, Qtype = NULL) {
   op <- new_operation(
     name = "CreateFirewallRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name)
+  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
   output <- .route53resolver$create_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -716,6 +765,14 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' (for outbound Resolver endpoints). Inbound and outbound rules must allow
 #' TCP and UDP access. For inbound access, open port 53. For outbound
 #' access, open the port that you're using for DNS queries on your network.
+#' 
+#' Some security group rules will cause your connection to be tracked. For
+#' outbound resolver endpoint, it can potentially impact the maximum
+#' queries per second from outbound endpoint to your target name server.
+#' For inbound resolver endpoint, it can bring down the overall maximum
+#' queries per second per IP address to as low as 1500. To avoid connection
+#' tracking caused by security group, see [Untracked
+#' connections](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#untracked-connectionsl).
 #' @param Direction &#91;required&#93; Specify the applicable value:
 #' 
 #' -   `INBOUND`: Resolver forwards DNS queries to the DNS service for a
@@ -1148,11 +1205,47 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #'
 #' @usage
 #' route53resolver_delete_firewall_rule(FirewallRuleGroupId,
-#'   FirewallDomainListId)
+#'   FirewallDomainListId, Qtype)
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to delete
 #' the rule from.
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that's used in the rule.
+#' @param Qtype The DNS query type that the rule you are deleting evaluates. Allowed
+#' values are;
+#' 
+#' -   A: Returns an IPv4 address.
+#' 
+#' -   AAAA: Returns an Ipv6 address.
+#' 
+#' -   CAA: Restricts CAs that can create SSL/TLS certifications for the
+#'     domain.
+#' 
+#' -   CNAME: Returns another domain name.
+#' 
+#' -   DS: Record that identifies the DNSSEC signing key of a delegated
+#'     zone.
+#' 
+#' -   MX: Specifies mail servers.
+#' 
+#' -   NAPTR: Regular-expression-based rewriting of domain names.
+#' 
+#' -   NS: Authoritative name servers.
+#' 
+#' -   PTR: Maps an IP address to a domain name.
+#' 
+#' -   SOA: Start of authority record for the zone.
+#' 
+#' -   SPF: Lists the servers authorized to send emails from a domain.
+#' 
+#' -   SRV: Application specific values that identify servers.
+#' 
+#' -   TXT: Verifies email senders and application-specific values.
+#' 
+#' -   A query type you define by using the DNS type ID, for example 28 for
+#'     AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
+#'     be 1-65334, for example, TYPE28. For more information, see [List of
+#'     DNS record
+#'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1170,7 +1263,9 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #'     BlockOverrideTtl = 123,
 #'     CreatorRequestId = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'     Qtype = "string"
 #'   )
 #' )
 #' ```
@@ -1179,7 +1274,8 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' ```
 #' svc$delete_firewall_rule(
 #'   FirewallRuleGroupId = "string",
-#'   FirewallDomainListId = "string"
+#'   FirewallDomainListId = "string",
+#'   Qtype = "string"
 #' )
 #' ```
 #'
@@ -1188,14 +1284,14 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' @rdname route53resolver_delete_firewall_rule
 #'
 #' @aliases route53resolver_delete_firewall_rule
-route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId) {
+route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Qtype = NULL) {
   op <- new_operation(
     name = "DeleteFirewallRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId)
+  input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Qtype = Qtype)
   output <- .route53resolver$delete_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -3251,7 +3347,9 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #'       BlockOverrideTtl = 123,
 #'       CreatorRequestId = "string",
 #'       CreationTime = "string",
-#'       ModificationTime = "string"
+#'       ModificationTime = "string",
+#'       FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'       Qtype = "string"
 #'     )
 #'   )
 #' )
@@ -4745,7 +4843,8 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @usage
 #' route53resolver_update_firewall_rule(FirewallRuleGroupId,
 #'   FirewallDomainListId, Priority, Action, BlockResponse,
-#'   BlockOverrideDomain, BlockOverrideDnsType, BlockOverrideTtl, Name)
+#'   BlockOverrideDomain, BlockOverrideDnsType, BlockOverrideTtl, Name,
+#'   FirewallDomainRedirectionAction, Qtype)
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group for the rule.
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list to use in the rule.
@@ -4788,6 +4887,51 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' browser to cache the provided override record. Used for the rule action
 #' `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
 #' @param Name The name of the rule.
+#' @param FirewallDomainRedirectionAction How you want the the rule to evaluate DNS redirection in the DNS
+#' redirection chain, such as CNAME, DNAME, ot ALIAS.
+#' 
+#' `Inspect_Redirection_Domain `(Default) inspects all domains in the
+#' redirection chain. The individual domains in the redirection chain must
+#' be added to the allow domain list.
+#' 
+#' `Trust_Redirection_Domain ` inspects only the first domain in the
+#' redirection chain. You don't need to add the subsequent domains in the
+#' domain in the redirection list to the domain alloww list.
+#' @param Qtype The DNS query type you want the rule to evaluate. Allowed values are;
+#' 
+#' -   A: Returns an IPv4 address.
+#' 
+#' -   AAAA: Returns an Ipv6 address.
+#' 
+#' -   CAA: Restricts CAs that can create SSL/TLS certifications for the
+#'     domain.
+#' 
+#' -   CNAME: Returns another domain name.
+#' 
+#' -   DS: Record that identifies the DNSSEC signing key of a delegated
+#'     zone.
+#' 
+#' -   MX: Specifies mail servers.
+#' 
+#' -   NAPTR: Regular-expression-based rewriting of domain names.
+#' 
+#' -   NS: Authoritative name servers.
+#' 
+#' -   PTR: Maps an IP address to a domain name.
+#' 
+#' -   SOA: Start of authority record for the zone.
+#' 
+#' -   SPF: Lists the servers authorized to send emails from a domain.
+#' 
+#' -   SRV: Application specific values that identify servers.
+#' 
+#' -   TXT: Verifies email senders and application-specific values.
+#' 
+#' -   A query type you define by using the DNS type ID, for example 28 for
+#'     AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
+#'     be 1-65334, for example, TYPE28. For more information, see [List of
+#'     DNS record
+#'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4805,7 +4949,9 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'     BlockOverrideTtl = 123,
 #'     CreatorRequestId = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'     Qtype = "string"
 #'   )
 #' )
 #' ```
@@ -4821,7 +4967,9 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'   BlockOverrideDomain = "string",
 #'   BlockOverrideDnsType = "CNAME",
 #'   BlockOverrideTtl = 123,
-#'   Name = "string"
+#'   Name = "string",
+#'   FirewallDomainRedirectionAction = "INSPECT_REDIRECTION_DOMAIN"|"TRUST_REDIRECTION_DOMAIN",
+#'   Qtype = "string"
 #' )
 #' ```
 #'
@@ -4830,14 +4978,14 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @rdname route53resolver_update_firewall_rule
 #'
 #' @aliases route53resolver_update_firewall_rule
-route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL) {
+route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL, FirewallDomainRedirectionAction = NULL, Qtype = NULL) {
   op <- new_operation(
     name = "UpdateFirewallRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name)
+  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
   output <- .route53resolver$update_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config)

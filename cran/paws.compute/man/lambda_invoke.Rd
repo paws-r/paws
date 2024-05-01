@@ -14,7 +14,7 @@ lambda_invoke(
 )
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function, version, or alias.
+\item{FunctionName}{[required] The name or ARN of the Lambda function, version, or alias.
 
 \strong{Name formats}
 \itemize{
@@ -46,7 +46,9 @@ role has permission to invoke the function.
 synchronously invoked functions only.}
 
 \item{ClientContext}{Up to 3,583 bytes of base64-encoded data about the invoking client to
-pass to the function in the context object.}
+pass to the function in the context object. Lambda passes the
+\code{ClientContext} object to your function for synchronous invocations
+only.}
 
 \item{Payload}{The JSON that you want to provide to your Lambda function as input.
 

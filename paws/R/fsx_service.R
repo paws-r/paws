@@ -169,7 +169,7 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .fsx$metadata <- list(
   service_name = "fsx",
-  endpoints = list("*" = list(endpoint = "fsx.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fsx.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "fsx.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "fsx.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "fsx.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fsx.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "fsx.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "fsx.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "fsx.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "fsx.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "FSx",
   api_version = "2018-03-01",
   signing_name = "fsx",

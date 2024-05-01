@@ -245,7 +245,7 @@ apigateway <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .apigateway$metadata <- list(
   service_name = "apigateway",
-  endpoints = list("*" = list(endpoint = "apigateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apigateway.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "apigateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apigateway.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "apigateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "apigateway.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "apigateway.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "apigateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "apigateway.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "apigateway.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "API Gateway",
   api_version = "2015-07-09",
   signing_name = "apigateway",

@@ -37,7 +37,7 @@ response contains a \code{NextToken} value that you can use in a subsequent
 call to \code{\link[=datazone_list_environments]{list_environments}} to list the
 next set of environments.}
 
-\item{name}{}
+\item{name}{The name of the environment.}
 
 \item{nextToken}{When the number of environments is greater than the default value for
 the \code{MaxResults} parameter, or if you explicitly specify a value for

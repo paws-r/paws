@@ -44,7 +44,10 @@ OpenSearch Service domain.}
 \item{AccessPolicies}{Identity and Access Management (IAM) policy document specifying the
 access policies for the new domain.}
 
-\item{IPAddressType}{The type of IP addresses supported by the endpoint for the domain.}
+\item{IPAddressType}{Specify either dual stack or IPv4 as your IP address type. Dual stack
+allows you to share domain resources across IPv4 and IPv6 address types,
+and is the recommended option. If you set your IP address type to dual
+stack, you can't change your address type later.}
 
 \item{SnapshotOptions}{DEPRECATED. Container for the parameters required to configure automated
 snapshots of domain indexes.}

@@ -12,7 +12,7 @@ lambda_list_provisioned_concurrency_configs(
 )
 }
 \arguments{
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{

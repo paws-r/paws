@@ -428,6 +428,14 @@ test_that("describe_locked_snapshots", {
   expect_error(svc$describe_locked_snapshots(MaxResults = 20), NA)
 })
 
+test_that("describe_mac_hosts", {
+  expect_error(svc$describe_mac_hosts(), NA)
+})
+
+test_that("describe_mac_hosts", {
+  expect_error(svc$describe_mac_hosts(MaxResults = 20), NA)
+})
+
 test_that("describe_managed_prefix_lists", {
   expect_error(svc$describe_managed_prefix_lists(), NA)
 })

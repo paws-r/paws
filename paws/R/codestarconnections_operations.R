@@ -252,7 +252,8 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
 #'
 #' @usage
 #' codestarconnections_create_sync_configuration(Branch, ConfigFile,
-#'   RepositoryLinkId, ResourceName, RoleArn, SyncType)
+#'   RepositoryLinkId, ResourceName, RoleArn, SyncType,
+#'   PublishDeploymentStatus, TriggerResourceUpdateOn)
 #'
 #' @param Branch &#91;required&#93; The branch in the repository from which changes will be synced.
 #' @param ConfigFile &#91;required&#93; The file name of the configuration file that manages syncing between the
@@ -268,6 +269,9 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
 #' to use Git sync to update a given Amazon Web Services resource on your
 #' behalf.
 #' @param SyncType &#91;required&#93; The type of sync configuration.
+#' @param PublishDeploymentStatus Whether to enable or disable publishing of deployment status to source
+#' providers.
+#' @param TriggerResourceUpdateOn When to trigger Git sync to begin the stack update.
 #'
 #' @return
 #' A list with the following syntax:
@@ -282,7 +286,9 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
 #'     RepositoryName = "string",
 #'     ResourceName = "string",
 #'     RoleArn = "string",
-#'     SyncType = "CFN_STACK_SYNC"
+#'     SyncType = "CFN_STACK_SYNC",
+#'     PublishDeploymentStatus = "ENABLED"|"DISABLED",
+#'     TriggerResourceUpdateOn = "ANY_CHANGE"|"FILE_CHANGE"
 #'   )
 #' )
 #' ```
@@ -295,7 +301,9 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
 #'   RepositoryLinkId = "string",
 #'   ResourceName = "string",
 #'   RoleArn = "string",
-#'   SyncType = "CFN_STACK_SYNC"
+#'   SyncType = "CFN_STACK_SYNC",
+#'   PublishDeploymentStatus = "ENABLED"|"DISABLED",
+#'   TriggerResourceUpdateOn = "ANY_CHANGE"|"FILE_CHANGE"
 #' )
 #' ```
 #'
@@ -304,14 +312,14 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
 #' @rdname codestarconnections_create_sync_configuration
 #'
 #' @aliases codestarconnections_create_sync_configuration
-codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, RepositoryLinkId, ResourceName, RoleArn, SyncType) {
+codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, RepositoryLinkId, ResourceName, RoleArn, SyncType, PublishDeploymentStatus = NULL, TriggerResourceUpdateOn = NULL) {
   op <- new_operation(
     name = "CreateSyncConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType)
+  input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$create_sync_configuration_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)
@@ -974,7 +982,9 @@ codestarconnections_get_sync_blocker_summary <- function(SyncType, ResourceName)
 #'     RepositoryName = "string",
 #'     ResourceName = "string",
 #'     RoleArn = "string",
-#'     SyncType = "CFN_STACK_SYNC"
+#'     SyncType = "CFN_STACK_SYNC",
+#'     PublishDeploymentStatus = "ENABLED"|"DISABLED",
+#'     TriggerResourceUpdateOn = "ANY_CHANGE"|"FILE_CHANGE"
 #'   )
 #' )
 #' ```
@@ -1307,7 +1317,9 @@ codestarconnections_list_repository_sync_definitions <- function(RepositoryLinkI
 #'       RepositoryName = "string",
 #'       ResourceName = "string",
 #'       RoleArn = "string",
-#'       SyncType = "CFN_STACK_SYNC"
+#'       SyncType = "CFN_STACK_SYNC",
+#'       PublishDeploymentStatus = "ENABLED"|"DISABLED",
+#'       TriggerResourceUpdateOn = "ANY_CHANGE"|"FILE_CHANGE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1708,7 +1720,8 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
 #'
 #' @usage
 #' codestarconnections_update_sync_configuration(Branch, ConfigFile,
-#'   RepositoryLinkId, ResourceName, RoleArn, SyncType)
+#'   RepositoryLinkId, ResourceName, RoleArn, SyncType,
+#'   PublishDeploymentStatus, TriggerResourceUpdateOn)
 #'
 #' @param Branch The branch for the sync configuration to be updated.
 #' @param ConfigFile The configuration file for the sync configuration to be updated.
@@ -1717,6 +1730,9 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
 #' to be updated.
 #' @param RoleArn The ARN of the IAM role for the sync configuration to be updated.
 #' @param SyncType &#91;required&#93; The sync type for the sync configuration to be updated.
+#' @param PublishDeploymentStatus Whether to enable or disable publishing of deployment status to source
+#' providers.
+#' @param TriggerResourceUpdateOn When to trigger Git sync to begin the stack update.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1731,7 +1747,9 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
 #'     RepositoryName = "string",
 #'     ResourceName = "string",
 #'     RoleArn = "string",
-#'     SyncType = "CFN_STACK_SYNC"
+#'     SyncType = "CFN_STACK_SYNC",
+#'     PublishDeploymentStatus = "ENABLED"|"DISABLED",
+#'     TriggerResourceUpdateOn = "ANY_CHANGE"|"FILE_CHANGE"
 #'   )
 #' )
 #' ```
@@ -1744,7 +1762,9 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
 #'   RepositoryLinkId = "string",
 #'   ResourceName = "string",
 #'   RoleArn = "string",
-#'   SyncType = "CFN_STACK_SYNC"
+#'   SyncType = "CFN_STACK_SYNC",
+#'   PublishDeploymentStatus = "ENABLED"|"DISABLED",
+#'   TriggerResourceUpdateOn = "ANY_CHANGE"|"FILE_CHANGE"
 #' )
 #' ```
 #'
@@ -1753,14 +1773,14 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
 #' @rdname codestarconnections_update_sync_configuration
 #'
 #' @aliases codestarconnections_update_sync_configuration
-codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigFile = NULL, RepositoryLinkId = NULL, ResourceName, RoleArn = NULL, SyncType) {
+codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigFile = NULL, RepositoryLinkId = NULL, ResourceName, RoleArn = NULL, SyncType, PublishDeploymentStatus = NULL, TriggerResourceUpdateOn = NULL) {
   op <- new_operation(
     name = "UpdateSyncConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType)
+  input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$update_sync_configuration_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)

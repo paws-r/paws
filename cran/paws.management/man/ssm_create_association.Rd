@@ -23,6 +23,7 @@ ssm_create_association(
   CalendarNames = NULL,
   TargetLocations = NULL,
   ScheduleOffset = NULL,
+  Duration = NULL,
   TargetMaps = NULL,
   Tags = NULL,
   AlarmConfiguration = NULL
@@ -50,7 +51,7 @@ For Amazon Web Services-predefined documents and SSM documents you
 created in your account, you only need to specify the document name. For
 example, \code{AWS-ApplyPatchBaseline} or \code{My-Document}.}
 
-\item{DocumentVersion}{The document version you want to associate with the target(s). Can be a
+\item{DocumentVersion}{The document version you want to associate with the targets. Can be a
 specific version or the default version.
 
 State Manager doesn't support running associations that use a new
@@ -79,10 +80,10 @@ tags, Amazon Web Services resource groups, all managed nodes in an
 Amazon Web Services account, or individual managed node IDs. You can
 target all managed nodes in an Amazon Web Services account by specifying
 the \code{InstanceIds} key with a value of \code{*}. For more information about
-choosing targets for an association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{Using targets and rate controls with State Manager associations}
+choosing targets for an association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{About targets and rate controls in State Manager associations}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{ScheduleExpression}{A cron expression when the association will be applied to the target(s).}
+\item{ScheduleExpression}{A cron expression when the association will be applied to the targets.}
 
 \item{OutputLocation}{An Amazon Simple Storage Service (Amazon S3) bucket where you want to
 store the output details of the request.}
@@ -164,6 +165,23 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.
 To use offsets, you must specify the \code{ApplyOnlyAtCronInterval}
 parameter. This option tells the system not to run an association
 immediately after you create it.}
+
+\item{Duration}{The number of hours the association can run before it is canceled.
+Duration applies to associations that are currently running, and any
+pending and in progress commands on all targets. If a target was taken
+offline for the association to run, it is made available again
+immediately, without a reboot.
+
+The \code{Duration} parameter applies only when both these conditions are
+true:
+\itemize{
+\item The association for which you specify a duration is cancelable
+according to the parameters of the SSM command document or
+Automation runbook associated with this execution.
+\item The command specifies the \code{ApplyOnlyAtCronInterval} parameter,
+which means that the association doesn't run immediately after it is
+created, but only according to the specified schedule.
+}}
 
 \item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
 Targets and TargetMaps can't be specified together.}

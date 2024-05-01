@@ -25,7 +25,7 @@ ec2_create_capacity_reservation(
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 
 \item{InstanceType}{[required] The instance type for which to reserve capacity. For more information,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}

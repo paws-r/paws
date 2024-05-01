@@ -4,7 +4,11 @@
 \alias{servicecatalog_delete_service_action}
 \title{Deletes a self-service action}
 \usage{
-servicecatalog_delete_service_action(Id, AcceptLanguage = NULL)
+servicecatalog_delete_service_action(
+  Id,
+  AcceptLanguage = NULL,
+  IdempotencyToken = NULL
+)
 }
 \arguments{
 \item{Id}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
@@ -14,6 +18,11 @@ servicecatalog_delete_service_action(Id, AcceptLanguage = NULL)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{IdempotencyToken}{A unique identifier that you provide to ensure idempotency. If multiple
+requests from the same Amazon Web Services account use the same
+idempotency token, the same response is returned for each repeated
+request.}
 }
 \description{
 Deletes a self-service action.

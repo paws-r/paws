@@ -11,7 +11,7 @@ cloudtrail_disable_federation(EventDataStore)
 want to disable Lake query federation.}
 }
 \description{
-Disables Lake query federation on the specified event data store. When you disable federation, CloudTrail removes the metadata associated with the federated event data store in the Glue Data Catalog and removes registration for the federation role ARN and event data store in Lake Formation. No CloudTrail Lake data is deleted when you disable federation.
+Disables Lake query federation on the specified event data store. When you disable federation, CloudTrail disables the integration with Glue, Lake Formation, and Amazon Athena. After disabling Lake query federation, you can no longer query your event data in Amazon Athena.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_disable_federation/} for full documentation.
 }

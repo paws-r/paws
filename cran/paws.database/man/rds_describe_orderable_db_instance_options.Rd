@@ -17,13 +17,16 @@ rds_describe_orderable_db_instance_options(
 )
 }
 \arguments{
-\item{Engine}{[required] The name of the engine to describe DB instance options for.
+\item{Engine}{[required] The name of the database engine to describe DB instance options for.
 
 Valid Values:
 \itemize{
 \item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{custom-oracle-ee}
+\item \code{custom-oracle-ee-cdb}
+\item \code{custom-oracle-se2}
+\item \code{custom-oracle-se2-cdb}
 \item \code{db2-ae}
 \item \code{db2-se}
 \item \code{mariadb}
@@ -74,7 +77,7 @@ remaining results.
 
 Default: 100
 
-Constraints: Minimum 20, maximum 10000.}
+Constraints: Minimum 20, maximum 1000.}
 
 \item{Marker}{An optional pagination token provided by a previous
 DescribeOrderableDBInstanceOptions request. If this parameter is

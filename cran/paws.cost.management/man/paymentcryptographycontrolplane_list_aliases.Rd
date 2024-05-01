@@ -6,11 +6,15 @@
 account and Amazon Web Services Region}
 \usage{
 paymentcryptographycontrolplane_list_aliases(
-  MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{NextToken}{Use this parameter in a subsequent request after you receive a response
+with truncated results. Set it to the value of \code{NextToken} from the
+truncated response you just received.}
+
 \item{MaxResults}{Use this parameter to specify the maximum number of items to return.
 When this value is present, Amazon Web Services Payment Cryptography
 does not return more than the specified number of items, but it might
@@ -18,10 +22,6 @@ return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 100, inclusive. If you do not include a value, it defaults to 50.}
-
-\item{NextToken}{Use this parameter in a subsequent request after you receive a response
-with truncated results. Set it to the value of \code{NextToken} from the
-truncated response you just received.}
 }
 \description{
 Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the list of aliases. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html}{Using aliases} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_update_application_maintenance_configuration}
 \alias{kinesisanalyticsv2_update_application_maintenance_configuration}
-\title{Updates the maintenance configuration of the Kinesis Data Analytics
-application}
+\title{Updates the maintenance configuration of the Managed Service for Apache
+Flink application}
 \usage{
 kinesisanalyticsv2_update_application_maintenance_configuration(
   ApplicationName,
@@ -17,7 +17,7 @@ configuration.}
 \item{ApplicationMaintenanceConfigurationUpdate}{[required] Describes the application maintenance configuration update.}
 }
 \description{
-Updates the maintenance configuration of the Kinesis Data Analytics application.
+Updates the maintenance configuration of the Managed Service for Apache Flink application.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application_maintenance_configuration/} for full documentation.
 }

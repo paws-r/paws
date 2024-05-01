@@ -13,11 +13,15 @@ ec2_enable_aws_network_performance_metric_subscription(
 )
 }
 \arguments{
-\item{Source}{The source Region or Availability Zone that the metric subscription is
-enabled for. For example, \code{us-east-1}.}
+\item{Source}{The source Region (like \code{us-east-1}) or Availability Zone ID (like
+\code{use1-az1}) that the metric subscription is enabled for. If you use
+Availability Zone IDs, the Source and Destination Availability Zones
+must be in the same Region.}
 
-\item{Destination}{The target Region or Availability Zone that the metric subscription is
-enabled for. For example, \code{eu-west-1}.}
+\item{Destination}{The target Region (like \code{us-east-2}) or Availability Zone ID (like
+\code{use2-az2}) that the metric subscription is enabled for. If you use
+Availability Zone IDs, the Source and Destination Availability Zones
+must be in the same Region.}
 
 \item{Metric}{The metric used for the enabled subscription.}
 

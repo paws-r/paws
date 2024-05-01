@@ -14,7 +14,7 @@ inspector2_update_encryption_key(kmsKeyId, resourceType, scanType)
 \item{scanType}{[required] The scan type for the encryption key.}
 }
 \description{
-Updates an encryption key. A \code{ResourceNotFoundException} means that an AWS owned key is being used for encryption.
+Updates an encryption key. A \code{ResourceNotFoundException} means that an Amazon Web Services owned key is being used for encryption.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/} for full documentation.
 }

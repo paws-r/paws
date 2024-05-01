@@ -18,7 +18,9 @@ omics_start_run(
   logLevel = NULL,
   tags = NULL,
   requestId,
-  retentionMode = NULL
+  retentionMode = NULL,
+  storageType = NULL,
+  workflowOwnerId = NULL
 )
 }
 \arguments{
@@ -38,7 +40,9 @@ omics_start_run(
 
 \item{parameters}{Parameters for the run.}
 
-\item{storageCapacity}{A storage capacity for the run in gigabytes.}
+\item{storageCapacity}{A storage capacity for the run in gibibytes. This field is not required
+if the storage type is dynamic (the system ignores any value that you
+enter).}
 
 \item{outputUri}{An output URI for the run.}
 
@@ -50,6 +54,13 @@ omics_start_run(
 for each request.}
 
 \item{retentionMode}{The retention mode for the run.}
+
+\item{storageType}{The run's storage type. By default, the run uses STATIC storage type,
+which allocates a fixed amount of storage. If you set the storage type
+to DYNAMIC, HealthOmics dynamically scales the storage up or down, based
+on file system utilization.}
+
+\item{workflowOwnerId}{The ID of the workflow owner.}
 }
 \description{
 Starts a workflow run. To duplicate a run, specify the run's ID and a role ARN. The remaining parameters are copied from the previous run.

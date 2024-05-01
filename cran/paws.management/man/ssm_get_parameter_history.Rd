@@ -12,7 +12,9 @@ ssm_get_parameter_history(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the parameter for which you want to review history.}
+\item{Name}{[required] The name or Amazon Resource Name (ARN) of the parameter for which you
+want to review history. For parameters shared with you from another
+account, you must use the full ARN.}
 
 \item{WithDecryption}{Return decrypted values for secure string parameters. This flag is
 ignored for \code{String} and \code{StringList} parameter types.}

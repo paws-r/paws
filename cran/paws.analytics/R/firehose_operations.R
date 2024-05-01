@@ -3,10 +3,10 @@
 #' @include firehose_service.R
 NULL
 
-#' Creates a Kinesis Data Firehose delivery stream
+#' Creates a Firehose delivery stream
 #'
 #' @description
-#' Creates a Kinesis Data Firehose delivery stream.
+#' Creates a Firehose delivery stream.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/) for full documentation.
 #'
@@ -49,21 +49,40 @@ NULL
 #' in the Amazon Web Services Billing and Cost Management User Guide.
 #' 
 #' You can specify up to 50 tags when creating a delivery stream.
+#' 
+#' If you specify tags in the
+#' [`create_delivery_stream`][firehose_create_delivery_stream] action,
+#' Amazon Data Firehose performs an additional authorization on the
+#' `firehose:TagDeliveryStream` action to verify if users have permissions
+#' to create tags. If you do not provide this permission, requests to
+#' create new Firehose delivery streams with IAM resource tags will fail
+#' with an `AccessDeniedException` such as following.
+#' 
+#' **AccessDeniedException**
+#' 
+#' User: arn:aws:sts::x:assumed-role/x/x is not authorized to perform:
+#' firehose:TagDeliveryStream on resource:
+#' arn:aws:firehose:us-east-1:x:deliverystream/x with an explicit deny in
+#' an identity-based policy.
+#' 
+#' For an example IAM policy, see [Tag
+#' example.](https://docs.aws.amazon.com/firehose/latest/APIReference/API_CreateDeliveryStream.html#API_CreateDeliveryStream_Examples)
 #' @param AmazonOpenSearchServerlessDestinationConfiguration The destination in the Serverless offering for Amazon OpenSearch
 #' Service. You can specify only one destination.
 #' @param MSKSourceConfiguration 
+#' @param SnowflakeDestinationConfiguration Configure Snowflake destination
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -82,14 +101,14 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param AllowForceDelete Set this to true if you want to delete the delivery stream even if
-#' Kinesis Data Firehose is unable to retire the grant for the CMK. Kinesis
-#' Data Firehose might be unable to retire the grant due to a customer
-#' error, such as when the CMK or the grant are in an invalid state. If you
-#' force deletion, you can then use the
+#' Firehose is unable to retire the grant for the CMK. Firehose might be
+#' unable to retire the grant due to a customer error, such as when the CMK
+#' or the grant are in an invalid state. If you force deletion, you can
+#' then use the
 #' [RevokeGrant](https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
-#' operation to revoke the grant you gave to Kinesis Data Firehose. If a
-#' failure to retire the grant happens due to an Amazon Web Services KMS
-#' issue, Kinesis Data Firehose keeps retrying the delete operation.
+#' operation to revoke the grant you gave to Firehose. If a failure to
+#' retire the grant happens due to an Amazon Web Services KMS issue,
+#' Firehose keeps retrying the delete operation.
 #' 
 #' The default value is false.
 #'
@@ -124,8 +143,7 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' @param Limit The limit on the number of destinations to return. You can have one
 #' destination per delivery stream.
 #' @param ExclusiveStartDestinationId The ID of the destination to start returning the destination
-#' information. Kinesis Data Firehose supports one destination per delivery
-#' stream.
+#' information. Firehose supports one destination per delivery stream.
 #'
 #' @keywords internal
 #'
@@ -227,11 +245,10 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 }
 .firehose$operations$list_tags_for_delivery_stream <- firehose_list_tags_for_delivery_stream
 
-#' Writes a single data record into an Amazon Kinesis Data Firehose
-#' delivery stream
+#' Writes a single data record into an Amazon Firehose delivery stream
 #'
 #' @description
-#' Writes a single data record into an Amazon Kinesis Data Firehose delivery stream. To write multiple data records into a delivery stream, use [`put_record_batch`][firehose_put_record_batch]. Applications using these operations are referred to as producers.
+#' Writes a single data record into an Amazon Firehose delivery stream. To write multiple data records into a delivery stream, use [`put_record_batch`][firehose_put_record_batch]. Applications using these operations are referred to as producers.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_put_record/](https://www.paws-r-sdk.com/docs/firehose_put_record/) for full documentation.
 #'
@@ -438,18 +455,19 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
 #' @param AmazonOpenSearchServerlessDestinationUpdate Describes an update for a destination in the Serverless offering for
 #' Amazon OpenSearch Service.
+#' @param SnowflakeDestinationUpdate Update to the Snowflake destination condiguration settings
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_update_destination
-firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL, AmazonOpenSearchServerlessDestinationUpdate = NULL) {
+firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL, AmazonOpenSearchServerlessDestinationUpdate = NULL, SnowflakeDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate)
+  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate, SnowflakeDestinationUpdate = SnowflakeDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
   svc <- .firehose$service(config)

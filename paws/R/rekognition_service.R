@@ -48,9 +48,13 @@ NULL
 #' 
 #' -   [`get_celebrity_info`][rekognition_get_celebrity_info]
 #' 
+#' -   [`get_media_analysis_job`][rekognition_get_media_analysis_job]
+#' 
 #' -   [`index_faces`][rekognition_index_faces]
 #' 
 #' -   [`list_collections`][rekognition_list_collections]
+#' 
+#' -   [ListMediaAnalysisJob](https://docs.aws.amazon.com/rekognition/latest/APIReference/)
 #' 
 #' -   [`list_faces`][rekognition_list_faces]
 #' 
@@ -65,6 +69,8 @@ NULL
 #' -   [`search_users`][rekognition_search_users]
 #' 
 #' -   [`search_users_by_image`][rekognition_search_users_by_image]
+#' 
+#' -   [`start_media_analysis_job`][rekognition_start_media_analysis_job]
 #' 
 #' **Amazon Rekognition Custom Labels**
 #' 
@@ -356,7 +362,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .rekognition$metadata <- list(
   service_name = "rekognition",
-  endpoints = list("*" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rekognition.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rekognition.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rekognition.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rekognition.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rekognition.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rekognition.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rekognition.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rekognition.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Rekognition",
   api_version = "2016-06-27",
   signing_name = "rekognition",

@@ -644,6 +644,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' the remaining results, make another call with the returned nextToken
 #' value. Pipeline history is limited to the most recent 12 months, based
 #' on pipeline execution start times. Default value is 100.
+#' @param filter The pipeline execution to filter on.
 #' @param nextToken The token that was returned from the previous
 #' [`list_pipeline_executions`][codepipeline_list_pipeline_executions]
 #' call, which can be used to return the next set of pipeline executions in
@@ -652,14 +653,14 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_pipeline_executions
-codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NULL, nextToken = NULL) {
+codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NULL, filter = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPipelineExecutions",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries")
   )
-  input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, nextToken = nextToken)
+  input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, filter = filter, nextToken = nextToken)
   output <- .codepipeline$list_pipeline_executions_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -1163,6 +1164,37 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
   return(response)
 }
 .codepipeline$operations$retry_stage_execution <- codepipeline_retry_stage_execution
+
+#' Rolls back a stage execution
+#'
+#' @description
+#' Rolls back a stage execution.
+#'
+#' See [https://www.paws-r-sdk.com/docs/codepipeline_rollback_stage/](https://www.paws-r-sdk.com/docs/codepipeline_rollback_stage/) for full documentation.
+#'
+#' @param pipelineName &#91;required&#93; The name of the pipeline for which the stage will be rolled back.
+#' @param stageName &#91;required&#93; The name of the stage in the pipeline to be rolled back.
+#' @param targetPipelineExecutionId &#91;required&#93; The pipeline execution ID for the stage to be rolled back to.
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_rollback_stage
+codepipeline_rollback_stage <- function(pipelineName, stageName, targetPipelineExecutionId) {
+  op <- new_operation(
+    name = "RollbackStage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$rollback_stage_input(pipelineName = pipelineName, stageName = stageName, targetPipelineExecutionId = targetPipelineExecutionId)
+  output <- .codepipeline$rollback_stage_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$rollback_stage <- codepipeline_rollback_stage
 
 #' Starts the specified pipeline
 #'

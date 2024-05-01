@@ -752,6 +752,8 @@ ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId =
 #' @usage
 #' ecr_delete_registry_policy()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1443,6 +1445,8 @@ ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrReposito
 #' @usage
 #' ecr_describe_registry()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1913,6 +1917,8 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #' @usage
 #' ecr_get_registry_policy()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1956,6 +1962,8 @@ ecr_get_registry_policy <- function() {
 #'
 #' @usage
 #' ecr_get_registry_scanning_configuration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:

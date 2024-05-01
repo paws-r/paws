@@ -12,7 +12,7 @@ cloudfront_create_invalidation(DistributionId, InvalidationBatch)
 \item{InvalidationBatch}{[required] The batch information for the invalidation.}
 }
 \description{
-Create a new invalidation.
+Create a new invalidation. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html}{Invalidating files} in the \emph{Amazon CloudFront Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_invalidation/} for full documentation.
 }

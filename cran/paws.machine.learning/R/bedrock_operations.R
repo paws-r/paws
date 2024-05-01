@@ -3,6 +3,141 @@
 #' @include bedrock_service.R
 NULL
 
+#' API operation for creating and managing Amazon Bedrock automatic model
+#' evaluation jobs and model evaluation jobs that use human workers
+#'
+#' @description
+#' API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers. To learn more about the requirements for creating a model evaluation job see, [Model evaluations](https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_create_evaluation_job/](https://www.paws-r-sdk.com/docs/bedrock_create_evaluation_job/) for full documentation.
+#'
+#' @param jobName &#91;required&#93; The name of the model evaluation job. Model evaluation job names must
+#' unique with your AWS account, and your account's AWS region.
+#' @param jobDescription A description of the model evaluation job.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM service role that Amazon
+#' Bedrock can assume to perform tasks on your behalf. The service role
+#' must have Amazon Bedrock as the service principal, and provide access to
+#' any Amazon S3 buckets specified in the `EvaluationConfig` object. To
+#' pass this role to Amazon Bedrock, the caller of this API must have the
+#' `iam:PassRole` permission. To learn more about the required permissions,
+#' see [Required
+#' permissions](https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-security.html).
+#' @param customerEncryptionKeyId Specify your customer managed key ARN that will be used to encrypt your
+#' model evaluation job.
+#' @param jobTags Tags to attach to the model evaluation job.
+#' @param evaluationConfig &#91;required&#93; Specifies whether the model evaluation job is automatic or uses human
+#' worker.
+#' @param inferenceConfig &#91;required&#93; Specify the models you want to use in your model evaluation job.
+#' Automatic model evaluation jobs support a single model, and model
+#' evaluation job that use human workers support two models.
+#' @param outputDataConfig &#91;required&#93; An object that defines where the results of model evaluation job will be
+#' saved in Amazon S3.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_evaluation_job
+bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, clientRequestToken = NULL, roleArn, customerEncryptionKeyId = NULL, jobTags = NULL, evaluationConfig, inferenceConfig, outputDataConfig) {
+  op <- new_operation(
+    name = "CreateEvaluationJob",
+    http_method = "POST",
+    http_path = "/evaluation-jobs",
+    paginator = list()
+  )
+  input <- .bedrock$create_evaluation_job_input(jobName = jobName, jobDescription = jobDescription, clientRequestToken = clientRequestToken, roleArn = roleArn, customerEncryptionKeyId = customerEncryptionKeyId, jobTags = jobTags, evaluationConfig = evaluationConfig, inferenceConfig = inferenceConfig, outputDataConfig = outputDataConfig)
+  output <- .bedrock$create_evaluation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_evaluation_job <- bedrock_create_evaluation_job
+
+#' Creates a guardrail to block topics and to filter out harmful content
+#'
+#' @description
+#' Creates a guardrail to block topics and to filter out harmful content.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_create_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_create_guardrail/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name to give the guardrail.
+#' @param description A description of the guardrail.
+#' @param topicPolicyConfig The topic policies to configure for the guardrail.
+#' @param contentPolicyConfig The content filter policies to configure for the guardrail.
+#' @param wordPolicyConfig The word policy you configure for the guardrail.
+#' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
+#' @param blockedInputMessaging &#91;required&#93; The message to return when the guardrail blocks a prompt.
+#' @param blockedOutputsMessaging &#91;required&#93; The message to return when the guardrail blocks a model response.
+#' @param kmsKeyId The ARN of the KMS key that you use to encrypt the guardrail.
+#' @param tags The tags that you want to attach to the guardrail.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than once. If this token matches a previous request,
+#' Amazon Bedrock ignores the request, but does not return an error. For
+#' more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' in the *Amazon S3 User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_guardrail
+bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL, tags = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateGuardrail",
+    http_method = "POST",
+    http_path = "/guardrails",
+    paginator = list()
+  )
+  input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
+  output <- .bedrock$create_guardrail_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_guardrail <- bedrock_create_guardrail
+
+#' Creates a version of the guardrail
+#'
+#' @description
+#' Creates a version of the guardrail. Use this API to create a snapshot of the guardrail when you are satisfied with a configuration, or to compare the configuration with another version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_create_guardrail_version/](https://www.paws-r-sdk.com/docs/bedrock_create_guardrail_version/) for full documentation.
+#'
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail.
+#' @param description A description of the guardrail version.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than once. If this token matches a previous request,
+#' Amazon Bedrock ignores the request, but does not return an error. For
+#' more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' in the *Amazon S3 User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_guardrail_version
+bedrock_create_guardrail_version <- function(guardrailIdentifier, description = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateGuardrailVersion",
+    http_method = "POST",
+    http_path = "/guardrails/{guardrailIdentifier}",
+    paginator = list()
+  )
+  input <- .bedrock$create_guardrail_version_input(guardrailIdentifier = guardrailIdentifier, description = description, clientRequestToken = clientRequestToken)
+  output <- .bedrock$create_guardrail_version_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_guardrail_version <- bedrock_create_guardrail_version
+
 #' Creates a fine-tuning job to customize a base model
 #'
 #' @description
@@ -10,25 +145,30 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_model_customization_job/](https://www.paws-r-sdk.com/docs/bedrock_create_model_customization_job/) for full documentation.
 #'
-#' @param jobName &#91;required&#93; Enter a unique name for the fine-tuning job.
-#' @param customModelName &#91;required&#93; Enter a name for the custom model.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon Bedrock can
-#' assume to perform tasks on your behalf. For example, during model
-#' training, Amazon Bedrock needs your permission to read input data from
-#' an S3 bucket, write model artifacts to an S3 bucket. To pass this role
-#' to Amazon Bedrock, the caller of this API must have the `iam:PassRole`
-#' permission.
-#' @param clientRequestToken Unique token value that you can provide. The GetModelCustomizationJob
-#' response includes the same token value.
+#' @param jobName &#91;required&#93; A name for the fine-tuning job.
+#' @param customModelName &#91;required&#93; A name for the resulting custom model.
+#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM service role that Amazon
+#' Bedrock can assume to perform tasks on your behalf. For example, during
+#' model training, Amazon Bedrock needs your permission to read input data
+#' from an S3 bucket, write model artifacts to an S3 bucket. To pass this
+#' role to Amazon Bedrock, the caller of this API must have the
+#' `iam:PassRole` permission.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param baseModelIdentifier &#91;required&#93; Name of the base model.
 #' @param customizationType The customization type.
 #' @param customModelKmsKeyId The custom model is encrypted at rest using this key.
-#' @param jobTags Assign tags to the job.
-#' @param customModelTags Assign tags to the custom model.
+#' @param jobTags Tags to attach to the job.
+#' @param customModelTags Tags to attach to the resulting custom model.
 #' @param trainingDataConfig &#91;required&#93; Information about the training dataset.
 #' @param validationDataConfig Information about the validation dataset.
 #' @param outputDataConfig &#91;required&#93; S3 location for the output data.
-#' @param hyperParameters &#91;required&#93; Parameters related to tuning the model.
+#' @param hyperParameters &#91;required&#93; Parameters related to tuning the model. For details on the format for
+#' different models, see [Custom model
+#' hyperparameters](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html).
 #' @param vpcConfig VPC configuration (optional). Configuration parameters for the private
 #' Virtual Private Cloud (VPC) that contains the resources you are using
 #' for this job.
@@ -53,22 +193,50 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 }
 .bedrock$operations$create_model_customization_job <- bedrock_create_model_customization_job
 
-#' Creates a provisioned throughput with dedicated capacity for a
-#' foundation model or a fine-tuned model
+#' Creates dedicated throughput for a base or custom model with the model
+#' units and for the duration that you specify
 #'
 #' @description
-#' Creates a provisioned throughput with dedicated capacity for a foundation model or a fine-tuned model.
+#' Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify. For pricing details, see [Amazon Bedrock Pricing](https://aws.amazon.com/bedrock/pricing/). For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_create_provisioned_model_throughput/](https://www.paws-r-sdk.com/docs/bedrock_create_provisioned_model_throughput/) for full documentation.
 #'
-#' @param clientRequestToken Unique token value that you can provide. If this token matches a
-#' previous request, Amazon Bedrock ignores the request, but does not
-#' return an error.
-#' @param modelUnits &#91;required&#93; Number of model units to allocate.
-#' @param provisionedModelName &#91;required&#93; Unique name for this provisioned throughput.
-#' @param modelId &#91;required&#93; Name or ARN of the model to associate with this provisioned throughput.
-#' @param commitmentDuration Commitment duration requested for the provisioned throughput.
-#' @param tags Tags to associate with this provisioned throughput.
+#' @param clientRequestToken A unique, case-sensitive identifier to ensure that the API request
+#' completes no more than one time. If this token matches a previous
+#' request, Amazon Bedrock ignores the request, but does not return an
+#' error. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' in the Amazon S3 User Guide.
+#' @param modelUnits &#91;required&#93; Number of model units to allocate. A model unit delivers a specific
+#' throughput level for the specified model. The throughput level of a
+#' model unit specifies the total number of input and output tokens that it
+#' can process and generate within a span of one minute. By default, your
+#' account has no model units for purchasing Provisioned Throughputs with
+#' commitment. You must first visit the Amazon Web Services support center
+#' to request MUs.
+#' 
+#' For model unit quotas, see [Provisioned Throughput
+#' quotas](https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html#prov-thru-quotas)
+#' in the Amazon Bedrock User Guide.
+#' 
+#' For more information about what an MU specifies, contact your Amazon Web
+#' Services account manager.
+#' @param provisionedModelName &#91;required&#93; The name for this Provisioned Throughput.
+#' @param modelId &#91;required&#93; The Amazon Resource Name (ARN) or name of the model to associate with
+#' this Provisioned Throughput. For a list of models for which you can
+#' purchase Provisioned Throughput, see [Amazon Bedrock model IDs for
+#' purchasing Provisioned
+#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models)
+#' in the Amazon Bedrock User Guide.
+#' @param commitmentDuration The commitment duration requested for the Provisioned Throughput.
+#' Billing occurs hourly and is discounted for longer commitment terms. To
+#' request a no-commit Provisioned Throughput, omit this field.
+#' 
+#' Custom models support all levels of commitment. To see which base models
+#' support no commitment, see [Supported regions and models for Provisioned
+#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/pt-supported.html)
+#' in the Amazon Bedrock User Guide
+#' @param tags Tags to associate with this Provisioned Throughput.
 #'
 #' @keywords internal
 #'
@@ -93,7 +261,7 @@ bedrock_create_provisioned_model_throughput <- function(clientRequestToken = NUL
 #' Deletes a custom model that you created earlier
 #'
 #' @description
-#' Deletes a custom model that you created earlier. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Bedrock User Guide.
+#' Deletes a custom model that you created earlier. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_delete_custom_model/](https://www.paws-r-sdk.com/docs/bedrock_delete_custom_model/) for full documentation.
 #'
@@ -119,12 +287,44 @@ bedrock_delete_custom_model <- function(modelIdentifier) {
 }
 .bedrock$operations$delete_custom_model <- bedrock_delete_custom_model
 
+#' Deletes a guardrail
+#'
+#' @description
+#' Deletes a guardrail.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_delete_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_delete_guardrail/) for full documentation.
+#'
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail.
+#' @param guardrailVersion The version of the guardrail.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_guardrail
+bedrock_delete_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) {
+  op <- new_operation(
+    name = "DeleteGuardrail",
+    http_method = "DELETE",
+    http_path = "/guardrails/{guardrailIdentifier}",
+    paginator = list()
+  )
+  input <- .bedrock$delete_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
+  output <- .bedrock$delete_guardrail_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_guardrail <- bedrock_delete_guardrail
+
 #' Delete the invocation logging
 #'
 #' @description
 #' Delete the invocation logging.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_delete_model_invocation_logging_configuration/](https://www.paws-r-sdk.com/docs/bedrock_delete_model_invocation_logging_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -146,14 +346,14 @@ bedrock_delete_model_invocation_logging_configuration <- function() {
 }
 .bedrock$operations$delete_model_invocation_logging_configuration <- bedrock_delete_model_invocation_logging_configuration
 
-#' Deletes a provisioned throughput
+#' Deletes a Provisioned Throughput
 #'
 #' @description
-#' Deletes a provisioned throughput. For more information, see [Provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Bedrock User Guide.
+#' Deletes a Provisioned Throughput. You can't delete a Provisioned Throughput before the commitment term is over. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_delete_provisioned_model_throughput/](https://www.paws-r-sdk.com/docs/bedrock_delete_provisioned_model_throughput/) for full documentation.
 #'
-#' @param provisionedModelId &#91;required&#93; The ARN or name of the provisioned throughput.
+#' @param provisionedModelId &#91;required&#93; The Amazon Resource Name (ARN) or name of the Provisioned Throughput.
 #'
 #' @keywords internal
 #'
@@ -179,11 +379,11 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
 #' you have created
 #'
 #' @description
-#' Get the properties associated with a Amazon Bedrock custom model that you have created.For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Bedrock User Guide.
+#' Get the properties associated with a Amazon Bedrock custom model that you have created.For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_custom_model/](https://www.paws-r-sdk.com/docs/bedrock_get_custom_model/) for full documentation.
 #'
-#' @param modelIdentifier &#91;required&#93; Name or ARN of the custom model.
+#' @param modelIdentifier &#91;required&#93; Name or Amazon Resource Name (ARN) of the custom model.
 #'
 #' @keywords internal
 #'
@@ -204,6 +404,36 @@ bedrock_get_custom_model <- function(modelIdentifier) {
   return(response)
 }
 .bedrock$operations$get_custom_model <- bedrock_get_custom_model
+
+#' Retrieves the properties associated with a model evaluation job,
+#' including the status of the job
+#'
+#' @description
+#' Retrieves the properties associated with a model evaluation job, including the status of the job. For more information, see Model evaluations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_get_evaluation_job/](https://www.paws-r-sdk.com/docs/bedrock_get_evaluation_job/) for full documentation.
+#'
+#' @param jobIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the model evaluation job.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_evaluation_job
+bedrock_get_evaluation_job <- function(jobIdentifier) {
+  op <- new_operation(
+    name = "GetEvaluationJob",
+    http_method = "GET",
+    http_path = "/evaluation-jobs/{jobIdentifier}",
+    paginator = list()
+  )
+  input <- .bedrock$get_evaluation_job_input(jobIdentifier = jobIdentifier)
+  output <- .bedrock$get_evaluation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_evaluation_job <- bedrock_get_evaluation_job
 
 #' Get details about a Amazon Bedrock foundation model
 #'
@@ -234,11 +464,42 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 }
 .bedrock$operations$get_foundation_model <- bedrock_get_foundation_model
 
+#' Gets details about a guardrail
+#'
+#' @description
+#' Gets details about a guardrail. If you don't specify a version, the response returns details for the `DRAFT` version.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_get_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_get_guardrail/) for full documentation.
+#'
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail for which to get details.
+#' @param guardrailVersion The version of the guardrail for which to get details. If you don't
+#' specify a version, the response returns details for the `DRAFT` version.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_get_guardrail
+bedrock_get_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) {
+  op <- new_operation(
+    name = "GetGuardrail",
+    http_method = "GET",
+    http_path = "/guardrails/{guardrailIdentifier}",
+    paginator = list()
+  )
+  input <- .bedrock$get_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
+  output <- .bedrock$get_guardrail_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$get_guardrail <- bedrock_get_guardrail
+
 #' Retrieves the properties associated with a model-customization job,
 #' including the status of the job
 #'
 #' @description
-#' Retrieves the properties associated with a model-customization job, including the status of the job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Bedrock User Guide.
+#' Retrieves the properties associated with a model-customization job, including the status of the job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_model_customization_job/](https://www.paws-r-sdk.com/docs/bedrock_get_model_customization_job/) for full documentation.
 #'
@@ -271,6 +532,8 @@ bedrock_get_model_customization_job <- function(jobIdentifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_model_invocation_logging_configuration/](https://www.paws-r-sdk.com/docs/bedrock_get_model_invocation_logging_configuration/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname bedrock_get_model_invocation_logging_configuration
@@ -291,14 +554,14 @@ bedrock_get_model_invocation_logging_configuration <- function() {
 }
 .bedrock$operations$get_model_invocation_logging_configuration <- bedrock_get_model_invocation_logging_configuration
 
-#' Get details for a provisioned throughput
+#' Returns details for a Provisioned Throughput
 #'
 #' @description
-#' Get details for a provisioned throughput. For more information, see [Provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Bedrock User Guide.
+#' Returns details for a Provisioned Throughput. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_provisioned_model_throughput/](https://www.paws-r-sdk.com/docs/bedrock_get_provisioned_model_throughput/) for full documentation.
 #'
-#' @param provisionedModelId &#91;required&#93; The ARN or name of the provisioned throughput.
+#' @param provisionedModelId &#91;required&#93; The Amazon Resource Name (ARN) or name of the Provisioned Throughput.
 #'
 #' @keywords internal
 #'
@@ -331,9 +594,10 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
 #' @param creationTimeBefore Return custom models created before the specified time.
 #' @param creationTimeAfter Return custom models created after the specified time.
 #' @param nameContains Return custom models only if the job name contains these characters.
-#' @param baseModelArnEquals Return custom models only if the base model ARN matches this parameter.
-#' @param foundationModelArnEquals Return custom models only if the foundation model ARN matches this
-#' parameter.
+#' @param baseModelArnEquals Return custom models only if the base model Amazon Resource Name (ARN)
+#' matches this parameter.
+#' @param foundationModelArnEquals Return custom models only if the foundation model Amazon Resource Name
+#' (ARN) matches this parameter.
 #' @param maxResults Maximum number of results to return in the response.
 #' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
 #' list the next set of results.
@@ -360,17 +624,62 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 }
 .bedrock$operations$list_custom_models <- bedrock_list_custom_models
 
-#' List of Amazon Bedrock foundation models that you can use
+#' Lists model evaluation jobs
 #'
 #' @description
-#' List of Amazon Bedrock foundation models that you can use. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the Bedrock User Guide.
+#' Lists model evaluation jobs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_list_evaluation_jobs/](https://www.paws-r-sdk.com/docs/bedrock_list_evaluation_jobs/) for full documentation.
+#'
+#' @param creationTimeAfter A filter that includes model evaluation jobs created after the time
+#' specified.
+#' @param creationTimeBefore A filter that includes model evaluation jobs created prior to the time
+#' specified.
+#' @param statusEquals Only return jobs where the status condition is met.
+#' @param nameContains Query parameter string for model evaluation job names.
+#' @param maxResults The maximum number of results to return.
+#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
+#' list the next set of results.
+#' @param sortBy Allows you to sort model evaluation jobs by when they were created.
+#' @param sortOrder How you want the order of jobs sorted.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_evaluation_jobs
+bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeBefore = NULL, statusEquals = NULL, nameContains = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListEvaluationJobs",
+    http_method = "GET",
+    http_path = "/evaluation-jobs",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaries")
+  )
+  input <- .bedrock$list_evaluation_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .bedrock$list_evaluation_jobs_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_evaluation_jobs <- bedrock_list_evaluation_jobs
+
+#' Lists Amazon Bedrock foundation models that you can use
+#'
+#' @description
+#' Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/](https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/) for full documentation.
 #'
-#' @param byProvider A Amazon Bedrock model provider.
-#' @param byCustomizationType List by customization type.
-#' @param byOutputModality List by output modality type.
-#' @param byInferenceType List by inference type.
+#' @param byProvider Return models belonging to the model provider that you specify.
+#' @param byCustomizationType Return models that support the customization type that you specify. For
+#' more information, see [Custom
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html)
+#' in the Amazon Bedrock User Guide.
+#' @param byOutputModality Return models that support the output modality that you specify.
+#' @param byInferenceType Return models that support the inference type that you specify. For more
+#' information, see [Provisioned
+#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html)
+#' in the Amazon Bedrock User Guide.
 #'
 #' @keywords internal
 #'
@@ -391,6 +700,40 @@ bedrock_list_foundation_models <- function(byProvider = NULL, byCustomizationTyp
   return(response)
 }
 .bedrock$operations$list_foundation_models <- bedrock_list_foundation_models
+
+#' Lists details about all the guardrails in an account
+#'
+#' @description
+#' Lists details about all the guardrails in an account. To list the `DRAFT` version of all your guardrails, don't specify the `guardrailIdentifier` field. To list all versions of a guardrail, specify the ARN of the guardrail in the `guardrailIdentifier` field.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_list_guardrails/](https://www.paws-r-sdk.com/docs/bedrock_list_guardrails/) for full documentation.
+#'
+#' @param guardrailIdentifier The unique identifier of the guardrail.
+#' @param maxResults The maximum number of results to return in the response.
+#' @param nextToken If there are more results than were returned in the response, the
+#' response returns a `nextToken` that you can send in another
+#' [`list_guardrails`][bedrock_list_guardrails] request to see the next
+#' batch of results.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_list_guardrails
+bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListGuardrails",
+    http_method = "GET",
+    http_path = "/guardrails",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "guardrails")
+  )
+  input <- .bedrock$list_guardrails_input(guardrailIdentifier = guardrailIdentifier, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrock$list_guardrails_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$list_guardrails <- bedrock_list_guardrails
 
 #' Returns a list of model customization jobs that you have submitted
 #'
@@ -430,25 +773,31 @@ bedrock_list_model_customization_jobs <- function(creationTimeAfter = NULL, crea
 }
 .bedrock$operations$list_model_customization_jobs <- bedrock_list_model_customization_jobs
 
-#' List the provisioned capacities
+#' Lists the Provisioned Throughputs in the account
 #'
 #' @description
-#' List the provisioned capacities. For more information, see [Provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Bedrock User Guide.
+#' Lists the Provisioned Throughputs in the account. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_provisioned_model_throughputs/](https://www.paws-r-sdk.com/docs/bedrock_list_provisioned_model_throughputs/) for full documentation.
 #'
-#' @param creationTimeAfter Return provisioned capacities created after the specified time.
-#' @param creationTimeBefore Return provisioned capacities created before the specified time.
-#' @param statusEquals Return the list of provisioned capacities that match the specified
-#' status.
-#' @param modelArnEquals Return the list of provisioned capacities where their model ARN is equal
-#' to this parameter.
-#' @param nameContains Return the list of provisioned capacities if their name contains these
-#' characters.
-#' @param maxResults THe maximum number of results to return in the response.
-#' @param nextToken Continuation token from the previous response, for Amazon Bedrock to
-#' list the next set of results.
-#' @param sortBy The field to sort by in the returned list of provisioned capacities.
+#' @param creationTimeAfter A filter that returns Provisioned Throughputs created after the
+#' specified time.
+#' @param creationTimeBefore A filter that returns Provisioned Throughputs created before the
+#' specified time.
+#' @param statusEquals A filter that returns Provisioned Throughputs if their statuses matches
+#' the value that you specify.
+#' @param modelArnEquals A filter that returns Provisioned Throughputs whose model Amazon
+#' Resource Name (ARN) is equal to the value that you specify.
+#' @param nameContains A filter that returns Provisioned Throughputs if their name contains the
+#' expression that you specify.
+#' @param maxResults THe maximum number of results to return in the response. If there are
+#' more results than the number you specified, the response returns a
+#' `nextToken` value. To see the next batch of results, send the
+#' `nextToken` value in another list request.
+#' @param nextToken If there are more results than the number you specified in the
+#' `maxResults` field, the response returns a `nextToken` value. To see the
+#' next batch of results, specify the `nextToken` value in this field.
+#' @param sortBy The field by which to sort the returned list of Provisioned Throughputs.
 #' @param sortOrder The sort order of the results.
 #'
 #' @keywords internal
@@ -478,7 +827,7 @@ bedrock_list_provisioned_model_throughputs <- function(creationTimeAfter = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/bedrock_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceARN &#91;required&#93; The ARN of the resource.
+#' @param resourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
 #' @keywords internal
 #'
@@ -529,10 +878,39 @@ bedrock_put_model_invocation_logging_configuration <- function(loggingConfig) {
 }
 .bedrock$operations$put_model_invocation_logging_configuration <- bedrock_put_model_invocation_logging_configuration
 
+#' Stops an in progress model evaluation job
+#'
+#' @description
+#' Stops an in progress model evaluation job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_stop_evaluation_job/](https://www.paws-r-sdk.com/docs/bedrock_stop_evaluation_job/) for full documentation.
+#'
+#' @param jobIdentifier &#91;required&#93; The ARN of the model evaluation job you want to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_stop_evaluation_job
+bedrock_stop_evaluation_job <- function(jobIdentifier) {
+  op <- new_operation(
+    name = "StopEvaluationJob",
+    http_method = "POST",
+    http_path = "/evaluation-job/{jobIdentifier}/stop",
+    paginator = list()
+  )
+  input <- .bedrock$stop_evaluation_job_input(jobIdentifier = jobIdentifier)
+  output <- .bedrock$stop_evaluation_job_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$stop_evaluation_job <- bedrock_stop_evaluation_job
+
 #' Stops an active model customization job
 #'
 #' @description
-#' Stops an active model customization job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Bedrock User Guide.
+#' Stops an active model customization job. For more information, see [Custom models](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_stop_model_customization_job/](https://www.paws-r-sdk.com/docs/bedrock_stop_model_customization_job/) for full documentation.
 #'
@@ -561,11 +939,11 @@ bedrock_stop_model_customization_job <- function(jobIdentifier) {
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_tag_resource/](https://www.paws-r-sdk.com/docs/bedrock_tag_resource/) for full documentation.
 #'
-#' @param resourceARN &#91;required&#93; The ARN of the resource to tag.
+#' @param resourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource to tag.
 #' @param tags &#91;required&#93; Tags to associate with the resource.
 #'
 #' @keywords internal
@@ -591,11 +969,11 @@ bedrock_tag_resource <- function(resourceARN, tags) {
 #' Remove one or more tags from a resource
 #'
 #' @description
-#' Remove one or more tags from a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Bedrock User Guide.
+#' Remove one or more tags from a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_untag_resource/](https://www.paws-r-sdk.com/docs/bedrock_untag_resource/) for full documentation.
 #'
-#' @param resourceARN &#91;required&#93; The ARN of the resource to untag.
+#' @param resourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource to untag.
 #' @param tagKeys &#91;required&#93; Tag keys of the tags to remove from the resource.
 #'
 #' @keywords internal
@@ -618,16 +996,65 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 }
 .bedrock$operations$untag_resource <- bedrock_untag_resource
 
-#' Update a provisioned throughput
+#' Updates a guardrail with the values you specify
 #'
 #' @description
-#' Update a provisioned throughput. For more information, see [Provisioned throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Bedrock User Guide.
+#' Updates a guardrail with the values you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrock_update_guardrail/](https://www.paws-r-sdk.com/docs/bedrock_update_guardrail/) for full documentation.
+#'
+#' @param guardrailIdentifier &#91;required&#93; The unique identifier of the guardrail
+#' @param name &#91;required&#93; A name for the guardrail.
+#' @param description A description of the guardrail.
+#' @param topicPolicyConfig The topic policy to configure for the guardrail.
+#' @param contentPolicyConfig The content policy to configure for the guardrail.
+#' @param wordPolicyConfig The word policy to configure for the guardrail.
+#' @param sensitiveInformationPolicyConfig The sensitive information policy to configure for the guardrail.
+#' @param blockedInputMessaging &#91;required&#93; The message to return when the guardrail blocks a prompt.
+#' @param blockedOutputsMessaging &#91;required&#93; The message to return when the guardrail blocks a model response.
+#' @param kmsKeyId The ARN of the KMS key with which to encrypt the guardrail.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_update_guardrail
+bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NULL, topicPolicyConfig = NULL, contentPolicyConfig = NULL, wordPolicyConfig = NULL, sensitiveInformationPolicyConfig = NULL, blockedInputMessaging, blockedOutputsMessaging, kmsKeyId = NULL) {
+  op <- new_operation(
+    name = "UpdateGuardrail",
+    http_method = "PUT",
+    http_path = "/guardrails/{guardrailIdentifier}",
+    paginator = list()
+  )
+  input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
+  output <- .bedrock$update_guardrail_output()
+  config <- get_config()
+  svc <- .bedrock$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$update_guardrail <- bedrock_update_guardrail
+
+#' Updates the name or associated model for a Provisioned Throughput
+#'
+#' @description
+#' Updates the name or associated model for a Provisioned Throughput. For more information, see [Provisioned Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html) in the Amazon Bedrock User Guide.
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_update_provisioned_model_throughput/](https://www.paws-r-sdk.com/docs/bedrock_update_provisioned_model_throughput/) for full documentation.
 #'
-#' @param provisionedModelId &#91;required&#93; The ARN or name of the provisioned throughput to update.
-#' @param desiredProvisionedModelName The new name for this provisioned throughput.
-#' @param desiredModelId The ARN of the new model to associate with this provisioned throughput.
+#' @param provisionedModelId &#91;required&#93; The Amazon Resource Name (ARN) or name of the Provisioned Throughput to
+#' update.
+#' @param desiredProvisionedModelName The new name for this Provisioned Throughput.
+#' @param desiredModelId The Amazon Resource Name (ARN) of the new model to associate with this
+#' Provisioned Throughput. You can't specify this field if this Provisioned
+#' Throughput is associated with a base model.
+#' 
+#' If this Provisioned Throughput is associated with a custom model, you
+#' can specify one of the following options:
+#' 
+#' -   The base model from which the custom model was customized.
+#' 
+#' -   Another custom model that was customized from the same base model as
+#'     the custom model.
 #'
 #' @keywords internal
 #'

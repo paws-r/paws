@@ -21,7 +21,7 @@ is created.}
 
 \item{requestReason}{[required] The reason for the subscription request.}
 
-\item{subscribedListings}{[required]}
+\item{subscribedListings}{[required] The published asset for which the subscription grant is to be created.}
 
 \item{subscribedPrincipals}{[required] The Amazon DataZone principals for whom the subscription request is
 created.}

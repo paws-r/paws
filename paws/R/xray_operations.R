@@ -468,6 +468,8 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 #' @usage
 #' xray_get_encryption_config()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

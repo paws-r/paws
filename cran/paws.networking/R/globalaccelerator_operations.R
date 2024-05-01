@@ -77,6 +77,10 @@ globalaccelerator_add_endpoints <- function(EndpointConfigurations, EndpointGrou
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. This must be the exact range that
 #' you provisioned. You can't advertise only a portion of the provisioned
 #' range.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the Global Accelerator Developer Guide.
 #'
 #' @keywords internal
 #'
@@ -226,20 +230,21 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' Create a cross-account attachment in Global Accelerator
 #'
 #' @description
-#' Create a cross-account attachment in Global Accelerator. You create a cross-account attachment to specify the *principals* who have permission to add to accelerators in their own account the resources in your account that you also list in the attachment.
+#' Create a cross-account attachment in Global Accelerator. You create a cross-account attachment to specify the *principals* who have permission to work with *resources* in accelerators in their own account. You specify, in the same attachment, the resources that are shared.
 #'
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_create_cross_account_attachment/](https://www.paws-r-sdk.com/docs/globalaccelerator_create_cross_account_attachment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the cross-account attachment.
-#' @param Principals The principals to list in the cross-account attachment. A principal can
-#' be an Amazon Web Services account number or the Amazon Resource Name
+#' @param Principals The principals to include in the cross-account attachment. A principal
+#' can be an Amazon Web Services account number or the Amazon Resource Name
 #' (ARN) for an accelerator.
-#' @param Resources The Amazon Resource Names (ARNs) for the resources to list in the
+#' @param Resources The Amazon Resource Names (ARNs) for the resources to include in the
 #' cross-account attachment. A resource can be any supported Amazon Web
-#' Services resource type for Global Accelerator.
+#' Services resource type for Global Accelerator or a CIDR range for a
+#' bring your own IP address (BYOIP) address pool.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency—that is, the uniqueness—of the request.
-#' @param Tags Create tags for cross-account attachment.
+#' @param Tags Add tags for a cross-account attachment.
 #' 
 #' For more information, see [Tagging in Global
 #' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
@@ -564,7 +569,7 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' Delete a cross-account attachment
 #'
 #' @description
-#' Delete a cross-account attachment. When you delete an attachment, Global Accelerator revokes the permission to use the resources in the attachment from all principals in the list of principals. Global Accelerator revokes the permission for specific resources by doing the following:
+#' Delete a cross-account attachment. When you delete an attachment, Global Accelerator revokes the permission to use the resources in the attachment from all principals in the list of principals. Global Accelerator revokes the permission for specific resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_delete_cross_account_attachment/](https://www.paws-r-sdk.com/docs/globalaccelerator_delete_cross_account_attachment/) for full documentation.
 #'
@@ -803,6 +808,10 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. The prefix must be the same prefix
 #' that you specified when you provisioned the address range.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the Global Accelerator Developer Guide.
 #'
 #' @keywords internal
 #'
@@ -1187,12 +1196,14 @@ globalaccelerator_list_cross_account_attachments <- function(MaxResults = NULL, 
 }
 .globalaccelerator$operations$list_cross_account_attachments <- globalaccelerator_list_cross_account_attachments
 
-#' List the accounts that have cross-account endpoints
+#' List the accounts that have cross-account resources
 #'
 #' @description
-#' List the accounts that have cross-account endpoints.
+#' List the accounts that have cross-account resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_cross_account_resource_accounts/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_cross_account_resource_accounts/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -1214,17 +1225,17 @@ globalaccelerator_list_cross_account_resource_accounts <- function() {
 }
 .globalaccelerator$operations$list_cross_account_resource_accounts <- globalaccelerator_list_cross_account_resource_accounts
 
-#' List the cross-account endpoints available to add to an accelerator
+#' List the cross-account resources available to work with
 #'
 #' @description
-#' List the cross-account endpoints available to add to an accelerator.
+#' List the cross-account resources available to work with.
 #'
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_list_cross_account_resources/](https://www.paws-r-sdk.com/docs/globalaccelerator_list_cross_account_resources/) for full documentation.
 #'
 #' @param AcceleratorArn The Amazon Resource Name (ARN) of an accelerator in a cross-account
 #' attachment.
 #' @param ResourceOwnerAwsAccountId &#91;required&#93; The account ID of a resource owner in a cross-account attachment.
-#' @param MaxResults The number of cross-account endpoints objects that you want to return
+#' @param MaxResults The number of cross-account resource objects that you want to return
 #' with this call. The default value is 10.
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
@@ -1531,8 +1542,12 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param Cidr &#91;required&#93; The public IPv4 address range, in CIDR notation. The most specific IP
 #' prefix that you can specify is /24. The address range cannot overlap
-#' with another address range that you've brought to this or another
-#' Region.
+#' with another address range that you've brought to this Amazon Web
+#' Services Region or another Region.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the Global Accelerator Developer Guide.
 #' @param CidrAuthorizationContext &#91;required&#93; A signed document that proves that you are authorized to bring the
 #' specified IP address range to Amazon using BYOIP.
 #'
@@ -1772,7 +1787,7 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' resources
 #'
 #' @description
-#' Update a cross-account attachment to add or remove principals or resources. When you update an attachment to remove a principal (account ID or accelerator) or a resource, Global Accelerator revokes the permission for specific resources by doing the following:
+#' Update a cross-account attachment to add or remove principals or resources. When you update an attachment to remove a principal (account ID or accelerator) or a resource, Global Accelerator revokes the permission for specific resources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_cross_account_attachment/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_cross_account_attachment/) for full documentation.
 #'
@@ -1781,26 +1796,26 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' @param Name The name of the cross-account attachment.
 #' @param AddPrincipals The principals to add to the cross-account attachment. A principal is an
 #' account or the Amazon Resource Name (ARN) of an accelerator that the
-#' attachment gives permission to add the resources from another account,
-#' listed in the attachment.
+#' attachment gives permission to work with resources from another account.
+#' The resources are also listed in the attachment.
 #' 
 #' To add more than one principal, separate the account numbers or
 #' accelerator ARNs, or both, with commas.
 #' @param RemovePrincipals The principals to remove from the cross-account attachment. A principal
 #' is an account or the Amazon Resource Name (ARN) of an accelerator that
-#' is given permission to add the resources from another account, listed in
-#' the cross-account attachment.
+#' the attachment gives permission to work with resources from another
+#' account. The resources are also listed in the attachment.
 #' 
 #' To remove more than one principal, separate the account numbers or
 #' accelerator ARNs, or both, with commas.
 #' @param AddResources The resources to add to the cross-account attachment. A resource listed
-#' in a cross-account attachment can be added to an accelerator by the
+#' in a cross-account attachment can be used with an accelerator by the
 #' principals that are listed in the attachment.
 #' 
 #' To add more than one resource, separate the resource ARNs with commas.
 #' @param RemoveResources The resources to remove from the cross-account attachment. A resource
-#' listed in a cross-account attachment can be added to an accelerator fy
-#' principals that are listed in the cross-account attachment.
+#' listed in a cross-account attachment can be used with an accelerator by
+#' the principals that are listed in the attachment.
 #' 
 #' To remove more than one resource, separate the resource ARNs with
 #' commas.
@@ -2076,6 +2091,10 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_withdraw_byoip_cidr/](https://www.paws-r-sdk.com/docs/globalaccelerator_withdraw_byoip_cidr/) for full documentation.
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation.
+#' 
+#' For more information, see [Bring your own IP addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the Global Accelerator Developer Guide.
 #'
 #' @keywords internal
 #'

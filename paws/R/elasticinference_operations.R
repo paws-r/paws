@@ -96,6 +96,8 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 #' @usage
 #' elasticinference_describe_accelerator_types()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

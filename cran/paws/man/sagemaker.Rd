@@ -151,7 +151,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance\cr
 \link[paws.machine.learning:sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
 \link[paws.machine.learning:sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
-\link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a space used for real time collaboration in a Domain\cr
+\link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a space used for real time collaboration in a domain\cr
 \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker Studio Lifecycle Configuration\cr
 \link[paws.machine.learning:sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 \link[paws.machine.learning:sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
@@ -183,6 +183,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_delete_hub]{delete_hub} \tab Delete a hub\cr
 \link[paws.machine.learning:sagemaker_delete_hub_content]{delete_hub_content} \tab Delete the contents of a hub\cr
 \link[paws.machine.learning:sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
+\link[paws.machine.learning:sagemaker_delete_hyper_parameter_tuning_job]{delete_hyper_parameter_tuning_job} \tab Deletes a hyperparameter tuning job\cr
 \link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
 \link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
 \link[paws.machine.learning:sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
@@ -385,13 +386,14 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_update_action]{update_action} \tab Updates an action\cr
 \link[paws.machine.learning:sagemaker_update_app_image_config]{update_app_image_config} \tab Updates the properties of an AppImageConfig\cr
 \link[paws.machine.learning:sagemaker_update_artifact]{update_artifact} \tab Updates an artifact\cr
-\link[paws.machine.learning:sagemaker_update_cluster]{update_cluster} \tab Update a SageMaker HyperPod cluster\cr
+\link[paws.machine.learning:sagemaker_update_cluster]{update_cluster} \tab Updates a SageMaker HyperPod cluster\cr
+\link[paws.machine.learning:sagemaker_update_cluster_software]{update_cluster_software} \tab Updates the platform software of a SageMaker HyperPod cluster for security patching\cr
 \link[paws.machine.learning:sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values\cr
 \link[paws.machine.learning:sagemaker_update_context]{update_context} \tab Updates a context\cr
 \link[paws.machine.learning:sagemaker_update_device_fleet]{update_device_fleet} \tab Updates a fleet of devices\cr
 \link[paws.machine.learning:sagemaker_update_devices]{update_devices} \tab Updates one or more devices in a fleet\cr
 \link[paws.machine.learning:sagemaker_update_domain]{update_domain} \tab Updates the default settings for new user profiles in the domain\cr
-\link[paws.machine.learning:sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
+\link[paws.machine.learning:sagemaker_update_endpoint]{update_endpoint} \tab Deploys the EndpointConfig specified in the request to a new fleet of instances\cr
 \link[paws.machine.learning:sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint\cr
 \link[paws.machine.learning:sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment\cr
 \link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group by either adding features or updating the online store configuration\cr

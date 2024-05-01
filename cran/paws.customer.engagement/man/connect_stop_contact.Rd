@@ -16,7 +16,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 campaigns can provide this field.}
 }
 \description{
-Ends the specified contact. This call does not work for voice contacts that use the following initiation methods:
+Ends the specified contact. Use this API to stop queued callbacks. It does not work for voice contacts that use the following initiation methods:
 
 See \url{https://www.paws-r-sdk.com/docs/connect_stop_contact/} for full documentation.
 }

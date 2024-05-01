@@ -73,6 +73,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$create_generated_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Resources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), GeneratedTemplateName = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), TemplateConfiguration = structure(list(DeletionPolicy = structure(logical(0), tags = list(type = "string")), UpdateReplacePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$create_generated_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GeneratedTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateGeneratedTemplateResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$create_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), TemplateBody = structure(logical(0), tags = list(type = "string")), TemplateURL = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean")), ResolvedValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DisableRollback = structure(logical(0), tags = list(type = "boolean")), RollbackConfiguration = structure(list(RollbackTriggers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MonitoringTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), TimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), NotificationARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoleARN = structure(logical(0), tags = list(type = "string")), OnFailure = structure(logical(0), tags = list(type = "string")), StackPolicyBody = structure(logical(0), tags = list(type = "string")), StackPolicyURL = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), EnableTerminationProtection = structure(logical(0), tags = list(type = "boolean")), RetainExceptOnCreate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -145,6 +157,16 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$delete_generated_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GeneratedTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$delete_generated_template_output <- function(...) {
+  list()
+}
+
 .cloudformation$delete_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), RetainResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RoleARN = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -205,13 +227,13 @@ NULL
 
 .cloudformation$describe_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeSetName = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ChangeSetName = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), IncludePropertyValues = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudformation$describe_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ChangeSetName = structure(logical(0), tags = list(type = "string")), ChangeSetId = structure(logical(0), tags = list(type = "string")), StackId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean")), ResolvedValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ExecutionStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), NotificationARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RollbackConfiguration = structure(list(RollbackTriggers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MonitoringTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Changes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HookInvocationCount = structure(logical(0), tags = list(type = "integer")), ResourceChange = structure(list(Action = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Replacement = structure(logical(0), tags = list(type = "string")), Scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Details = structure(list(structure(list(Target = structure(list(Attribute = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RequiresRecreation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Evaluation = structure(logical(0), tags = list(type = "string")), ChangeSource = structure(logical(0), tags = list(type = "string")), CausingEntity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ChangeSetId = structure(logical(0), tags = list(type = "string")), ModuleInfo = structure(list(TypeHierarchy = structure(logical(0), tags = list(type = "string")), LogicalIdHierarchy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), IncludeNestedStacks = structure(logical(0), tags = list(type = "boolean")), ParentChangeSetId = structure(logical(0), tags = list(type = "string")), RootChangeSetId = structure(logical(0), tags = list(type = "string")), OnStackFailure = structure(logical(0), tags = list(type = "string")), ImportExistingResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "DescribeChangeSetResult"))
+  shape <- structure(list(ChangeSetName = structure(logical(0), tags = list(type = "string")), ChangeSetId = structure(logical(0), tags = list(type = "string")), StackId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean")), ResolvedValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), ExecutionStatus = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), NotificationARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RollbackConfiguration = structure(list(RollbackTriggers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MonitoringTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Changes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), HookInvocationCount = structure(logical(0), tags = list(type = "integer")), ResourceChange = structure(list(PolicyAction = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Replacement = structure(logical(0), tags = list(type = "string")), Scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Details = structure(list(structure(list(Target = structure(list(Attribute = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RequiresRecreation = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), BeforeValue = structure(logical(0), tags = list(type = "string")), AfterValue = structure(logical(0), tags = list(type = "string")), AttributeChangeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Evaluation = structure(logical(0), tags = list(type = "string")), ChangeSource = structure(logical(0), tags = list(type = "string")), CausingEntity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ChangeSetId = structure(logical(0), tags = list(type = "string")), ModuleInfo = structure(list(TypeHierarchy = structure(logical(0), tags = list(type = "string")), LogicalIdHierarchy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BeforeContext = structure(logical(0), tags = list(type = "string")), AfterContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), IncludeNestedStacks = structure(logical(0), tags = list(type = "boolean")), ParentChangeSetId = structure(logical(0), tags = list(type = "string")), RootChangeSetId = structure(logical(0), tags = list(type = "string")), OnStackFailure = structure(logical(0), tags = list(type = "string")), ImportExistingResources = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", resultWrapper = "DescribeChangeSetResult"))
   return(populate(args, shape))
 }
 
@@ -224,6 +246,18 @@ NULL
 .cloudformation$describe_change_set_hooks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetName = structure(logical(0), tags = list(type = "string")), Hooks = structure(list(structure(list(InvocationPoint = structure(logical(0), tags = list(type = "string")), FailureMode = structure(logical(0), tags = list(type = "string")), TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), TypeConfigurationVersionId = structure(logical(0), tags = list(type = "string")), TargetDetails = structure(list(TargetType = structure(logical(0), tags = list(type = "string")), ResourceTargetDetails = structure(list(LogicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), StackId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeChangeSetHooksResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$describe_generated_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GeneratedTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$describe_generated_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GeneratedTemplateId = structure(logical(0), tags = list(type = "string")), GeneratedTemplateName = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ResourceStatus = structure(logical(0), tags = list(type = "string")), ResourceStatusReason = structure(logical(0), tags = list(type = "string")), Warnings = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Properties = structure(list(structure(list(PropertyPath = structure(logical(0), tags = list(type = "string")), Required = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), Progress = structure(list(ResourcesSucceeded = structure(logical(0), tags = list(type = "integer")), ResourcesFailed = structure(logical(0), tags = list(type = "integer")), ResourcesProcessing = structure(logical(0), tags = list(type = "integer")), ResourcesPending = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), StackId = structure(logical(0), tags = list(type = "string")), TemplateConfiguration = structure(list(DeletionPolicy = structure(logical(0), tags = list(type = "string")), UpdateReplacePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TotalWarnings = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "DescribeGeneratedTemplateResult"))
   return(populate(args, shape))
 }
 
@@ -251,6 +285,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$describe_resource_scan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$describe_resource_scan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PercentageCompleted = structure(logical(0), tags = list(type = "double")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourcesScanned = structure(logical(0), tags = list(type = "integer")), ResourcesRead = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "DescribeResourceScanResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$describe_stack_drift_detection_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackDriftDetectionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -271,7 +317,7 @@ NULL
 
 .cloudformation$describe_stack_events_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StackEvents = structure(list(structure(list(StackId = structure(logical(0), tags = list(type = "string")), EventId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceStatus = structure(logical(0), tags = list(type = "string")), ResourceStatusReason = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), HookType = structure(logical(0), tags = list(type = "string")), HookStatus = structure(logical(0), tags = list(type = "string")), HookStatusReason = structure(logical(0), tags = list(type = "string")), HookInvocationPoint = structure(logical(0), tags = list(type = "string")), HookFailureMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeStackEventsResult"))
+  shape <- structure(list(StackEvents = structure(list(structure(list(StackId = structure(logical(0), tags = list(type = "string")), EventId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceStatus = structure(logical(0), tags = list(type = "string")), ResourceStatusReason = structure(logical(0), tags = list(type = "string")), ResourceProperties = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), HookType = structure(logical(0), tags = list(type = "string")), HookStatus = structure(logical(0), tags = list(type = "string")), HookStatusReason = structure(logical(0), tags = list(type = "string")), HookInvocationPoint = structure(logical(0), tags = list(type = "string")), HookFailureMode = structure(logical(0), tags = list(type = "string")), DetailedStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeStackEventsResult"))
   return(populate(args, shape))
 }
 
@@ -355,7 +401,7 @@ NULL
 
 .cloudformation$describe_stacks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Stacks = structure(list(structure(list(StackId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), ChangeSetId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean")), ResolvedValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DeletionTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), RollbackConfiguration = structure(list(RollbackTriggers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MonitoringTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), StackStatus = structure(logical(0), tags = list(type = "string")), StackStatusReason = structure(logical(0), tags = list(type = "string")), DisableRollback = structure(logical(0), tags = list(type = "boolean")), NotificationARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Outputs = structure(list(structure(list(OutputKey = structure(logical(0), tags = list(type = "string")), OutputValue = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ExportName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableTerminationProtection = structure(logical(0), tags = list(type = "boolean")), ParentId = structure(logical(0), tags = list(type = "string")), RootId = structure(logical(0), tags = list(type = "string")), DriftInformation = structure(list(StackDriftStatus = structure(logical(0), tags = list(type = "string")), LastCheckTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), RetainExceptOnCreate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeStacksResult"))
+  shape <- structure(list(Stacks = structure(list(structure(list(StackId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string")), ChangeSetId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean")), ResolvedValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), DeletionTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), RollbackConfiguration = structure(list(RollbackTriggers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MonitoringTimeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), StackStatus = structure(logical(0), tags = list(type = "string")), StackStatusReason = structure(logical(0), tags = list(type = "string")), DisableRollback = structure(logical(0), tags = list(type = "boolean")), NotificationARNs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Outputs = structure(list(structure(list(OutputKey = structure(logical(0), tags = list(type = "string")), OutputValue = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ExportName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EnableTerminationProtection = structure(logical(0), tags = list(type = "boolean")), ParentId = structure(logical(0), tags = list(type = "string")), RootId = structure(logical(0), tags = list(type = "string")), DriftInformation = structure(list(StackDriftStatus = structure(logical(0), tags = list(type = "string")), LastCheckTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), RetainExceptOnCreate = structure(logical(0), tags = list(type = "boolean")), DetailedStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeStacksResult"))
   return(populate(args, shape))
 }
 
@@ -443,6 +489,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$get_generated_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Format = structure(logical(0), tags = list(type = "string")), GeneratedTemplateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$get_generated_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), TemplateBody = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetGeneratedTemplateResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$get_stack_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -515,6 +573,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$list_generated_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_generated_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Summaries = structure(list(structure(list(GeneratedTemplateId = structure(logical(0), tags = list(type = "string")), GeneratedTemplateName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), NumberOfResources = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListGeneratedTemplatesResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$list_imports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ExportName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -524,6 +594,42 @@ NULL
 .cloudformation$list_imports_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Imports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListImportsResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_resource_scan_related_resources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_resource_scan_related_resources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RelatedResources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ManagedByStack = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListResourceScanRelatedResourcesResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_resource_scan_resources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), ResourceTypePrefix = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_resource_scan_resources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Resources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ManagedByStack = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListResourceScanResourcesResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_resource_scans_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_resource_scans_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceScanSummaries = structure(list(structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PercentageCompleted = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListResourceScansResult"))
   return(populate(args, shape))
 }
 
@@ -560,6 +666,18 @@ NULL
 .cloudformation$list_stack_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackResourceSummaries = structure(list(structure(list(LogicalResourceId = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ResourceStatus = structure(logical(0), tags = list(type = "string")), ResourceStatusReason = structure(logical(0), tags = list(type = "string")), DriftInformation = structure(list(StackResourceDriftStatus = structure(logical(0), tags = list(type = "string")), LastCheckTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ModuleInfo = structure(list(TypeHierarchy = structure(logical(0), tags = list(type = "string")), LogicalIdHierarchy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListStackResourcesResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_stack_set_auto_deployment_targets_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackSetName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), CallAs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_stack_set_auto_deployment_targets_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Summaries = structure(list(structure(list(OrganizationalUnitId = structure(logical(0), tags = list(type = "string")), Regions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListStackSetAutoDeploymentTargetsResult"))
   return(populate(args, shape))
 }
 
@@ -751,6 +869,18 @@ NULL
   list()
 }
 
+.cloudformation$start_resource_scan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$start_resource_scan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "StartResourceScanResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$stop_stack_set_operation_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackSetName = structure(logical(0), tags = list(type = "string")), OperationId = structure(logical(0), tags = list(type = "string")), CallAs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -772,6 +902,18 @@ NULL
 .cloudformation$test_type_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TypeVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "TestTypeResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$update_generated_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GeneratedTemplateName = structure(logical(0), tags = list(type = "string")), NewGeneratedTemplateName = structure(logical(0), tags = list(type = "string")), AddResources = structure(list(structure(list(ResourceType = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), RemoveResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RefreshAllResources = structure(logical(0), tags = list(type = "boolean")), TemplateConfiguration = structure(list(DeletionPolicy = structure(logical(0), tags = list(type = "string")), UpdateReplacePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$update_generated_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GeneratedTemplateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "UpdateGeneratedTemplateResult"))
   return(populate(args, shape))
 }
 

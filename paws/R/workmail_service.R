@@ -236,7 +236,7 @@ workmail <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .workmail$metadata <- list(
   service_name = "workmail",
-  endpoints = list("*" = list(endpoint = "workmail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workmail.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workmail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workmail.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "workmail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workmail.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "workmail.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "workmail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workmail.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "workmail.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WorkMail",
   api_version = "2017-10-01",
   signing_name = "workmail",

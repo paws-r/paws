@@ -9,7 +9,10 @@ dynamodb_describe_continuous_backups(TableName)
 }
 \arguments{
 \item{TableName}{[required] Name of the table for which the customer wants to check the continuous
-backups and point in time recovery settings.}
+backups and point in time recovery settings.
+
+You can also provide the Amazon Resource Name (ARN) of the table in this
+parameter.}
 }
 \description{
 Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are \code{ENABLED} on all tables at table creation. If point in time recovery is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.

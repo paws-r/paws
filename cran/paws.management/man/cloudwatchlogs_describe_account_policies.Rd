@@ -12,8 +12,7 @@ cloudwatchlogs_describe_account_policies(
 }
 \arguments{
 \item{policyType}{[required] Use this parameter to limit the returned policies to only the policies
-that match the policy type that you specify. Currently, the only valid
-value is \code{DATA_PROTECTION_POLICY}.}
+that match the policy type that you specify.}
 
 \item{policyName}{Use this parameter to limit the returned policies to only the policy
 with the name that you specify.}

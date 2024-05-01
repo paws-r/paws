@@ -9,7 +9,8 @@ APNS}
 sns_get_endpoint_attributes(EndpointArn)
 }
 \arguments{
-\item{EndpointArn}{[required] EndpointArn for GetEndpointAttributes input.}
+\item{EndpointArn}{[required] \code{EndpointArn} for
+\code{\link[=sns_get_endpoint_attributes]{get_endpoint_attributes}} input.}
 }
 \description{
 Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.

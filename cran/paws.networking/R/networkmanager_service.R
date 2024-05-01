@@ -208,7 +208,7 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 
 .networkmanager$metadata <- list(
   service_name = "networkmanager",
-  endpoints = list("*" = list(endpoint = "networkmanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "networkmanager.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "networkmanager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "networkmanager.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "networkmanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "networkmanager.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "networkmanager.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "networkmanager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "networkmanager.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "networkmanager.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "NetworkManager",
   api_version = "2019-07-05",
   signing_name = "networkmanager",

@@ -19,7 +19,8 @@ dynamodb_put_item(
 )
 }
 \arguments{
-\item{TableName}{[required] The name of the table to contain the item.}
+\item{TableName}{[required] The name of the table to contain the item. You can also provide the
+Amazon Resource Name (ARN) of the table in this parameter.}
 
 \item{Item}{[required] A map of attribute name/value pairs, one for each attribute. Only the
 primary key attributes are required; you can optionally provide other

@@ -984,6 +984,8 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/waf_get_change_token/](https://www.paws-r-sdk.com/docs/waf_get_change_token/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname waf_get_change_token

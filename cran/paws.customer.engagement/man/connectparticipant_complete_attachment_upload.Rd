@@ -22,7 +22,7 @@ populates this field. For more information about idempotency, see
 \item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
-Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API.
+Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API. A conflict exception is thrown when an attachment with that identifier is already being uploaded.
 
 See \url{https://www.paws-r-sdk.com/docs/connectparticipant_complete_attachment_upload/} for full documentation.
 }

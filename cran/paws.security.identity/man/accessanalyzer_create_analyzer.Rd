@@ -17,7 +17,7 @@ accessanalyzer_create_analyzer(
 \item{analyzerName}{[required] The name of the analyzer to create.}
 
 \item{type}{[required] The type of analyzer to create. Only \code{ACCOUNT}, \code{ORGANIZATION},
-\code{ACCOUNT_UNUSED_ACCESS}, and \code{ORGANIZTAION_UNUSED_ACCESS} analyzers are
+\code{ACCOUNT_UNUSED_ACCESS}, and \code{ORGANIZATION_UNUSED_ACCESS} analyzers are
 supported. You can create only one analyzer per account per Region. You
 can create up to 5 analyzers per organization per Region.}
 

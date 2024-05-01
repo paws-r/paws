@@ -381,7 +381,7 @@ connect <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .connect$metadata <- list(
   service_name = "connect",
-  endpoints = list("*" = list(endpoint = "connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connect.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "connect.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connect.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "connect.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Connect",
   api_version = "2017-08-08",
   signing_name = "connect",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_update_detector}
 \alias{guardduty_update_detector}
-\title{Updates the Amazon GuardDuty detector specified by the detectorId}
+\title{Updates the GuardDuty detector specified by the detector ID}
 \usage{
 guardduty_update_detector(
   DetectorId,
@@ -29,7 +29,7 @@ presently supported. For more information, see \href{https://docs.aws.amazon.com
 \item{Features}{Provides the features that will be updated for the detector.}
 }
 \description{
-Updates the Amazon GuardDuty detector specified by the detectorId.
+Updates the GuardDuty detector specified by the detector ID.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_update_detector/} for full documentation.
 }

@@ -36,7 +36,7 @@ the stack set's purpose or other important information.}
 \item{TemplateBody}{The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the CloudFormation User Guide.
+in the \emph{CloudFormation User Guide}.
 
 Conditional: You must specify either the TemplateBody or the TemplateURL
 parameter, but not both.}
@@ -45,7 +45,7 @@ parameter, but not both.}
 point to a template (maximum size: 460,800 bytes) that's located in an
 Amazon S3 bucket or a Systems Manager document. For more information,
 see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the CloudFormation User Guide.
+in the \emph{CloudFormation User Guide}.
 
 Conditional: You must specify either the TemplateBody or the TemplateURL
 parameter, but not both.}

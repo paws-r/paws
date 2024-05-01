@@ -11,7 +11,11 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_create_profile/) for full documentation.
 #'
-#' @param durationSeconds The number of seconds the vended session credentials are valid for.
+#' @param durationSeconds Used to determine how long sessions vended using this profile are valid
+#' for. See the `Expiration` section of the [CreateSession API
+#' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
+#' page for more details. In requests, if this value is not provided, the
+#' default value will be 3600.
 #' @param enabled Specifies whether the profile is enabled.
 #' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
 #' credentials.
@@ -77,6 +81,39 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, notificat
   return(response)
 }
 .iamrolesanywhere$operations$create_trust_anchor <- iamrolesanywhere_create_trust_anchor
+
+#' Delete an entry from the attribute mapping rules enforced by a given
+#' profile
+#'
+#' @description
+#' Delete an entry from the attribute mapping rules enforced by a given profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_attribute_mapping/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_attribute_mapping/) for full documentation.
+#'
+#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
+#' @param specifiers A list of specifiers of a certificate field; for example, CN, OU, UID
+#' from a Subject.
+#'
+#' @keywords internal
+#'
+#' @rdname iamrolesanywhere_delete_attribute_mapping
+iamrolesanywhere_delete_attribute_mapping <- function(certificateField, profileId, specifiers = NULL) {
+  op <- new_operation(
+    name = "DeleteAttributeMapping",
+    http_method = "DELETE",
+    http_path = "/profiles/{profileId}/mappings",
+    paginator = list()
+  )
+  input <- .iamrolesanywhere$delete_attribute_mapping_input(certificateField = certificateField, profileId = profileId, specifiers = specifiers)
+  output <- .iamrolesanywhere$delete_attribute_mapping_output()
+  config <- get_config()
+  svc <- .iamrolesanywhere$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iamrolesanywhere$operations$delete_attribute_mapping <- iamrolesanywhere_delete_attribute_mapping
 
 #' Deletes a certificate revocation list (CRL)
 #'
@@ -459,7 +496,7 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' Imports the certificate revocation list (CRL)
 #'
 #' @description
-#' Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA). IAM Roles Anywhere validates against the CRL before issuing credentials.
+#' Imports the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked by the issuing certificate Authority (CA).In order to be properly imported, a CRL must be in PEM format. IAM Roles Anywhere validates against the CRL before issuing credentials.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_import_crl/) for full documentation.
 #'
@@ -651,6 +688,38 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 }
 .iamrolesanywhere$operations$list_trust_anchors <- iamrolesanywhere_list_trust_anchors
 
+#' Put an entry in the attribute mapping rules that will be enforced by a
+#' given profile
+#'
+#' @description
+#' Put an entry in the attribute mapping rules that will be enforced by a given profile. A mapping specifies a certificate field and one or more specifiers that have contextual meanings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_attribute_mapping/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_put_attribute_mapping/) for full documentation.
+#'
+#' @param certificateField &#91;required&#93; Fields (x509Subject, x509Issuer and x509SAN) within X.509 certificates.
+#' @param mappingRules &#91;required&#93; A list of mapping entries for every supported specifier or sub-field.
+#' @param profileId &#91;required&#93; The unique identifier of the profile.
+#'
+#' @keywords internal
+#'
+#' @rdname iamrolesanywhere_put_attribute_mapping
+iamrolesanywhere_put_attribute_mapping <- function(certificateField, mappingRules, profileId) {
+  op <- new_operation(
+    name = "PutAttributeMapping",
+    http_method = "PUT",
+    http_path = "/profiles/{profileId}/mappings",
+    paginator = list()
+  )
+  input <- .iamrolesanywhere$put_attribute_mapping_input(certificateField = certificateField, mappingRules = mappingRules, profileId = profileId)
+  output <- .iamrolesanywhere$put_attribute_mapping_output()
+  config <- get_config()
+  svc <- .iamrolesanywhere$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iamrolesanywhere$operations$put_attribute_mapping <- iamrolesanywhere_put_attribute_mapping
+
 #' Attaches a list of notification settings to a trust anchor
 #'
 #' @description
@@ -812,7 +881,11 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/](https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/) for full documentation.
 #'
-#' @param durationSeconds The number of seconds the vended session credentials are valid for.
+#' @param durationSeconds Used to determine how long sessions vended using this profile are valid
+#' for. See the `Expiration` section of the [CreateSession API
+#' documentation](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/authentication-create-session.html#credentials-object)
+#' page for more details. In requests, if this value is not provided, the
+#' default value will be 3600.
 #' @param managedPolicyArns A list of managed policy ARNs that apply to the vended session
 #' credentials.
 #' @param name The name of the profile.

@@ -117,7 +117,7 @@ An invited member account can use the Detective API to do the following:
 All API actions are logged as CloudTrail events. See \href{https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html}{Logging Detective API Calls with CloudTrail}.
 
 We replaced the term "master account" with the term "administrator
-account." An administrator account is used to centrally manage multiple
+account". An administrator account is used to centrally manage multiple
 accounts. In the case of Detective, the administrator account manages
 the accounts in their behavior graph.
 }
@@ -171,23 +171,23 @@ the accounts in their behavior graph.
 \link[paws.security.identity:detective_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the Detective administrator account in the current Region\cr
 \link[paws.security.identity:detective_disassociate_membership]{disassociate_membership} \tab Removes the member account from the specified behavior graph\cr
 \link[paws.security.identity:detective_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Detective administrator account for the organization in the current Region\cr
-\link[paws.security.identity:detective_get_investigation]{get_investigation} \tab Returns the investigation results of an investigation for a behavior graph\cr
+\link[paws.security.identity:detective_get_investigation]{get_investigation} \tab Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise\cr
 \link[paws.security.identity:detective_get_members]{get_members} \tab Returns the membership details for specified member accounts for a behavior graph\cr
 \link[paws.security.identity:detective_list_datasource_packages]{list_datasource_packages} \tab Lists data source packages in the behavior graph\cr
 \link[paws.security.identity:detective_list_graphs]{list_graphs} \tab Returns the list of behavior graphs that the calling account is an administrator account of\cr
-\link[paws.security.identity:detective_list_indicators]{list_indicators} \tab Get the indicators from an investigation\cr
-\link[paws.security.identity:detective_list_investigations]{list_investigations} \tab List all Investigations\cr
+\link[paws.security.identity:detective_list_indicators]{list_indicators} \tab Gets the indicators from an investigation\cr
+\link[paws.security.identity:detective_list_investigations]{list_investigations} \tab Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise\cr
 \link[paws.security.identity:detective_list_invitations]{list_invitations} \tab Retrieves the list of open and accepted behavior graph invitations for the member account\cr
 \link[paws.security.identity:detective_list_members]{list_members} \tab Retrieves the list of member accounts for a behavior graph\cr
 \link[paws.security.identity:detective_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Returns information about the Detective administrator account for an organization\cr
 \link[paws.security.identity:detective_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tag values that are assigned to a behavior graph\cr
 \link[paws.security.identity:detective_reject_invitation]{reject_invitation} \tab Rejects an invitation to contribute the account data to a behavior graph\cr
-\link[paws.security.identity:detective_start_investigation]{start_investigation} \tab initiate an investigation on an entity in a graph\cr
+\link[paws.security.identity:detective_start_investigation]{start_investigation} \tab Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise\cr
 \link[paws.security.identity:detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
 \link[paws.security.identity:detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
 \link[paws.security.identity:detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
 \link[paws.security.identity:detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
-\link[paws.security.identity:detective_update_investigation_state]{update_investigation_state} \tab Update the state of an investigation\cr
+\link[paws.security.identity:detective_update_investigation_state]{update_investigation_state} \tab Updates the state of an investigation\cr
 \link[paws.security.identity:detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
 }
 }

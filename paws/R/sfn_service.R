@@ -151,7 +151,8 @@ NULL
 #'  \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 #'  \link[=sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
 #'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr
-#'  \link[=sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration
+#'  \link[=sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration\cr
+#'  \link[=sfn_validate_state_machine_definition]{validate_state_machine_definition} \tab Validates the syntax of a state machine definition
 #' }
 #'
 #' @return
@@ -183,7 +184,7 @@ sfn <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .sfn$metadata <- list(
   service_name = "states",
-  endpoints = list("*" = list(endpoint = "states.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "states.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "states.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "states.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "states.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "states.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "states.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "states.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "states.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "states.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SFN",
   api_version = "2016-11-23",
   signing_name = "states",

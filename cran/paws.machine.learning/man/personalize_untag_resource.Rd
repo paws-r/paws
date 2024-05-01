@@ -2,17 +2,17 @@
 % Please edit documentation in R/personalize_operations.R
 \name{personalize_untag_resource}
 \alias{personalize_untag_resource}
-\title{Remove tags that are attached to a resource}
+\title{Removes the specified tags that are attached to a resource}
 \usage{
 personalize_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
 \item{resourceArn}{[required] The resource's Amazon Resource Name (ARN).}
 
-\item{tagKeys}{[required] Keys to remove from the resource's tags.}
+\item{tagKeys}{[required] The keys of the tags to be removed.}
 }
 \description{
-Remove \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags} that are attached to a resource.
+Removes the specified tags that are attached to a resource. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/tags-remove.html}{Removing tags from Amazon Personalize resources}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_untag_resource/} for full documentation.
 }

@@ -139,7 +139,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .qldbsession$metadata <- list(
   service_name = "qldbsession",
-  endpoints = list("*" = list(endpoint = "session.qldb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "session.qldb.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "session.qldb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "session.qldb.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "session.qldb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "session.qldb.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "session.qldb.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "session.qldb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "session.qldb.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "session.qldb.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "QLDB Session",
   api_version = "2019-07-11",
   signing_name = "qldb",

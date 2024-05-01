@@ -7,7 +7,7 @@ NULL
 #' in a monitoring account
 #'
 #' @description
-#' Creates a link between a source account and a sink that you have created in a monitoring account.
+#' Creates a link between a source account and a sink that you have created in a monitoring account. After the link is created, data is sent from the source account to the monitoring account. When you create a link, you can optionally specify filters that specify which metric namespaces and which log groups are shared from the source account to the monitoring account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_create_link/](https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_create_link/) for full documentation.
 #'
@@ -22,6 +22,9 @@ NULL
 #' 
 #' -   `$AccountEmailNoDomain` is the email address of the account without
 #'     the domain name
+#' @param LinkConfiguration Use this structure to optionally create filters that specify that only
+#' some metric namespaces or log groups are to be shared from the source
+#' account to the monitoring account.
 #' @param ResourceTypes &#91;required&#93; An array of strings that define which types of data that the source
 #' account shares with the monitoring account.
 #' @param SinkIdentifier &#91;required&#93; The ARN of the sink to use to create this link. You can use
@@ -43,14 +46,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchobservabilityaccessmanager_create_link
-cloudwatchobservabilityaccessmanager_create_link <- function(LabelTemplate, ResourceTypes, SinkIdentifier, Tags = NULL) {
+cloudwatchobservabilityaccessmanager_create_link <- function(LabelTemplate, LinkConfiguration = NULL, ResourceTypes, SinkIdentifier, Tags = NULL) {
   op <- new_operation(
     name = "CreateLink",
     http_method = "POST",
     http_path = "/CreateLink",
     paginator = list()
   )
-  input <- .cloudwatchobservabilityaccessmanager$create_link_input(LabelTemplate = LabelTemplate, ResourceTypes = ResourceTypes, SinkIdentifier = SinkIdentifier, Tags = Tags)
+  input <- .cloudwatchobservabilityaccessmanager$create_link_input(LabelTemplate = LabelTemplate, LinkConfiguration = LinkConfiguration, ResourceTypes = ResourceTypes, SinkIdentifier = SinkIdentifier, Tags = Tags)
   output <- .cloudwatchobservabilityaccessmanager$create_link_output()
   config <- get_config()
   svc <- .cloudwatchobservabilityaccessmanager$service(config)
@@ -393,7 +396,6 @@ cloudwatchobservabilityaccessmanager_list_tags_for_resource <- function(Resource
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_put_sink_policy/](https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_put_sink_policy/) for full documentation.
 #'
-#' @param SinkIdentifier &#91;required&#93; The ARN of the sink to attach this policy to.
 #' @param Policy &#91;required&#93; The JSON policy to use. If you are updating an existing policy, the
 #' entire existing policy is replaced by what you specify here.
 #' 
@@ -402,18 +404,19 @@ cloudwatchobservabilityaccessmanager_list_tags_for_resource <- function(Resource
 #' 
 #' For examples of different types of policies, see the **Examples**
 #' section on this page.
+#' @param SinkIdentifier &#91;required&#93; The ARN of the sink to attach this policy to.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchobservabilityaccessmanager_put_sink_policy
-cloudwatchobservabilityaccessmanager_put_sink_policy <- function(SinkIdentifier, Policy) {
+cloudwatchobservabilityaccessmanager_put_sink_policy <- function(Policy, SinkIdentifier) {
   op <- new_operation(
     name = "PutSinkPolicy",
     http_method = "POST",
     http_path = "/PutSinkPolicy",
     paginator = list()
   )
-  input <- .cloudwatchobservabilityaccessmanager$put_sink_policy_input(SinkIdentifier = SinkIdentifier, Policy = Policy)
+  input <- .cloudwatchobservabilityaccessmanager$put_sink_policy_input(Policy = Policy, SinkIdentifier = SinkIdentifier)
   output <- .cloudwatchobservabilityaccessmanager$put_sink_policy_output()
   config <- get_config()
   svc <- .cloudwatchobservabilityaccessmanager$service(config)
@@ -512,6 +515,9 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_update_link/](https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_update_link/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; The ARN of the link that you want to update.
+#' @param LinkConfiguration Use this structure to filter which metric namespaces and which log
+#' groups are to be shared from the source account to the monitoring
+#' account.
 #' @param ResourceTypes &#91;required&#93; An array of strings that define which types of data that the source
 #' account will send to the monitoring account.
 #' 
@@ -520,14 +526,14 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
 #' @keywords internal
 #'
 #' @rdname cloudwatchobservabilityaccessmanager_update_link
-cloudwatchobservabilityaccessmanager_update_link <- function(Identifier, ResourceTypes) {
+cloudwatchobservabilityaccessmanager_update_link <- function(Identifier, LinkConfiguration = NULL, ResourceTypes) {
   op <- new_operation(
     name = "UpdateLink",
     http_method = "POST",
     http_path = "/UpdateLink",
     paginator = list()
   )
-  input <- .cloudwatchobservabilityaccessmanager$update_link_input(Identifier = Identifier, ResourceTypes = ResourceTypes)
+  input <- .cloudwatchobservabilityaccessmanager$update_link_input(Identifier = Identifier, LinkConfiguration = LinkConfiguration, ResourceTypes = ResourceTypes)
   output <- .cloudwatchobservabilityaccessmanager$update_link_output()
   config <- get_config()
   svc <- .cloudwatchobservabilityaccessmanager$service(config)

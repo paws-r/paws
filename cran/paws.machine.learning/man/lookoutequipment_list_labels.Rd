@@ -15,7 +15,7 @@ lookoutequipment_list_labels(
 )
 }
 \arguments{
-\item{LabelGroupName}{[required] Retruns the name of the label group.}
+\item{LabelGroupName}{[required] Returns the name of the label group.}
 
 \item{IntervalStartTime}{Returns all the labels with a end time equal to or later than the start
 time given.}

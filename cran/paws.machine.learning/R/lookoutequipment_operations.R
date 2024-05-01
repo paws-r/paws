@@ -235,18 +235,21 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' @param OffCondition Indicates that the asset associated with this sensor has been shut off.
 #' As long as this condition is met, Lookout for Equipment will not use
 #' data from this asset for training, evaluation, or inference.
+#' @param ModelDiagnosticsOutputConfiguration The Amazon S3 location where you want Amazon Lookout for Equipment to
+#' save the pointwise model diagnostics. You must also specify the
+#' `RoleArn` request parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_create_model
-lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema = NULL, LabelsInputConfiguration = NULL, ClientToken, TrainingDataStartTime = NULL, TrainingDataEndTime = NULL, EvaluationDataStartTime = NULL, EvaluationDataEndTime = NULL, RoleArn = NULL, DataPreProcessingConfiguration = NULL, ServerSideKmsKeyId = NULL, Tags = NULL, OffCondition = NULL) {
+lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema = NULL, LabelsInputConfiguration = NULL, ClientToken, TrainingDataStartTime = NULL, TrainingDataEndTime = NULL, EvaluationDataStartTime = NULL, EvaluationDataEndTime = NULL, RoleArn = NULL, DataPreProcessingConfiguration = NULL, ServerSideKmsKeyId = NULL, Tags = NULL, OffCondition = NULL, ModelDiagnosticsOutputConfiguration = NULL) {
   op <- new_operation(
     name = "CreateModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lookoutequipment$create_model_input(ModelName = ModelName, DatasetName = DatasetName, DatasetSchema = DatasetSchema, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, TrainingDataStartTime = TrainingDataStartTime, TrainingDataEndTime = TrainingDataEndTime, EvaluationDataStartTime = EvaluationDataStartTime, EvaluationDataEndTime = EvaluationDataEndTime, RoleArn = RoleArn, DataPreProcessingConfiguration = DataPreProcessingConfiguration, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, OffCondition = OffCondition)
+  input <- .lookoutequipment$create_model_input(ModelName = ModelName, DatasetName = DatasetName, DatasetSchema = DatasetSchema, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, TrainingDataStartTime = TrainingDataStartTime, TrainingDataEndTime = TrainingDataEndTime, EvaluationDataStartTime = EvaluationDataStartTime, EvaluationDataEndTime = EvaluationDataEndTime, RoleArn = RoleArn, DataPreProcessingConfiguration = DataPreProcessingConfiguration, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, OffCondition = OffCondition, ModelDiagnosticsOutputConfiguration = ModelDiagnosticsOutputConfiguration)
   output <- .lookoutequipment$create_model_output()
   config <- get_config()
   svc <- .lookoutequipment$service(config)
@@ -1094,7 +1097,7 @@ lookoutequipment_list_label_groups <- function(LabelGroupNameBeginsWith = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_labels/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_labels/) for full documentation.
 #'
-#' @param LabelGroupName &#91;required&#93; Retruns the name of the label group.
+#' @param LabelGroupName &#91;required&#93; Returns the name of the label group.
 #' @param IntervalStartTime Returns all the labels with a end time equal to or later than the start
 #' time given.
 #' @param IntervalEndTime Returns all labels with a start time earlier than the end time given.
@@ -1685,18 +1688,21 @@ lookoutequipment_update_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' @param ModelName &#91;required&#93; The name of the model to update.
 #' @param LabelsInputConfiguration 
 #' @param RoleArn The ARN of the model to update.
+#' @param ModelDiagnosticsOutputConfiguration The Amazon S3 location where you want Amazon Lookout for Equipment to
+#' save the pointwise model diagnostics for the model. You must also
+#' specify the `RoleArn` request parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_update_model
-lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = NULL, RoleArn = NULL) {
+lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = NULL, RoleArn = NULL, ModelDiagnosticsOutputConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lookoutequipment$update_model_input(ModelName = ModelName, LabelsInputConfiguration = LabelsInputConfiguration, RoleArn = RoleArn)
+  input <- .lookoutequipment$update_model_input(ModelName = ModelName, LabelsInputConfiguration = LabelsInputConfiguration, RoleArn = RoleArn, ModelDiagnosticsOutputConfiguration = ModelDiagnosticsOutputConfiguration)
   output <- .lookoutequipment$update_model_output()
   config <- get_config()
   svc <- .lookoutequipment$service(config)

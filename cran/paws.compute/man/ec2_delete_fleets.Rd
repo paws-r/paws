@@ -12,7 +12,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{FleetIds}{[required] The IDs of the EC2 Fleets.}
+\item{FleetIds}{[required] The IDs of the EC2 Fleets.
+
+Constraints: In a single request, you can specify up to 25 \code{instant}
+fleet IDs and up to 100 \code{maintain} or \code{request} fleet IDs.}
 
 \item{TerminateInstances}{[required] Indicates whether to terminate the associated instances when the EC2
 Fleet is deleted. The default is to terminate the instances.

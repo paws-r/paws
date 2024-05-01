@@ -171,7 +171,7 @@ mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region 
 
 .mwaa$metadata <- list(
   service_name = "mwaa",
-  endpoints = list("*" = list(endpoint = "airflow.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "airflow.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "airflow.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "airflow.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "airflow.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "airflow.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "airflow.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "airflow.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "airflow.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "airflow.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "MWAA",
   api_version = "2020-07-01",
   signing_name = "airflow",

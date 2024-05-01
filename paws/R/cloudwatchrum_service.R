@@ -150,7 +150,7 @@ cloudwatchrum <- function(config = list(), credentials = list(), endpoint = NULL
 
 .cloudwatchrum$metadata <- list(
   service_name = "cloudwatchrum",
-  endpoints = list("*" = list(endpoint = "rum.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rum.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rum.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rum.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "rum.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rum.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rum.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rum.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rum.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rum.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "RUM",
   api_version = "2018-05-10",
   signing_name = "rum",

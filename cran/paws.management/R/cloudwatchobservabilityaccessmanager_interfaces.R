@@ -5,13 +5,13 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$create_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(LabelTemplate = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkIdentifier = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkIdentifier = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchobservabilityaccessmanager$create_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$get_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,7 +83,7 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$get_sink_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SinkArn = structure(logical(0), tags = list(type = "string")), SinkId = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), SinkArn = structure(logical(0), tags = list(type = "string")), SinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,13 +137,13 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$put_sink_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SinkIdentifier = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), SinkIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchobservabilityaccessmanager$put_sink_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SinkArn = structure(logical(0), tags = list(type = "string")), SinkId = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), SinkArn = structure(logical(0), tags = list(type = "string")), SinkId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,12 +173,12 @@ NULL
 
 .cloudwatchobservabilityaccessmanager$update_link_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchobservabilityaccessmanager$update_link_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Label = structure(logical(0), tags = list(type = "string")), LabelTemplate = structure(logical(0), tags = list(type = "string")), LinkConfiguration = structure(list(LogGroupConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MetricConfiguration = structure(list(Filter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SinkArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

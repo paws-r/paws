@@ -22,8 +22,11 @@ If you don't provide this value, then Amazon Web Services generates a
 random one for you.
 
 If you retry the operation with the same \code{ClientToken}, but with
-different parameters, the retry fails with an
-\code{IdempotentParameterMismatch} error.}
+different parameters, the retry fails with an \code{ConflictException} error.
+
+Verified Permissions recognizes a \code{ClientToken} for eight hours. After
+eight hours, the next request with the same parameters performs the
+operation again regardless of the value of \code{ClientToken}.}
 
 \item{policyStoreId}{[required] Specifies the \code{PolicyStoreId} of the policy store you want to store the
 policy in.}

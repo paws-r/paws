@@ -62,13 +62,13 @@ To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/use
 Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities}{Systems Manager capabilities}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 \item For details about predefined runbooks for Automation, a capability
-of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}} .
+of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{SystemsManager Automation runbook reference}} .
 \item For information about AppConfig, a capability of Systems Manager,
-see the \emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}} and the *
-\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
+see the \emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfigUser Guide}} and the \emph{
+\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfigAPI Reference}} .
 \item For information about Incident Manager, a capability of Systems
-Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}} and the *
-\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
+Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{SystemsManager Incident Manager User Guide}} and the \emph{
+\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{SystemsManager Incident Manager API Reference}} .
 }
 }
 \section{Service syntax}{
@@ -148,13 +148,14 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[paws.management:ssm_describe_available_patches]{describe_available_patches} \tab Lists all patches eligible to be included in a patch baseline\cr
 \link[paws.management:ssm_describe_document]{describe_document} \tab Describes the specified Amazon Web Services Systems Manager document (SSM document)\cr
 \link[paws.management:ssm_describe_document_permission]{describe_document_permission} \tab Describes the permissions for a Amazon Web Services Systems Manager document (SSM document)\cr
-\link[paws.management:ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the managed node(s)\cr
+\link[paws.management:ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the managed nodes\cr
 \link[paws.management:ssm_describe_effective_patches_for_patch_baseline]{describe_effective_patches_for_patch_baseline} \tab Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline\cr
-\link[paws.management:ssm_describe_instance_associations_status]{describe_instance_associations_status} \tab The status of the associations for the managed node(s)\cr
+\link[paws.management:ssm_describe_instance_associations_status]{describe_instance_associations_status} \tab The status of the associations for the managed nodes\cr
 \link[paws.management:ssm_describe_instance_information]{describe_instance_information} \tab Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address\cr
 \link[paws.management:ssm_describe_instance_patches]{describe_instance_patches} \tab Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node\cr
 \link[paws.management:ssm_describe_instance_patch_states]{describe_instance_patch_states} \tab Retrieves the high-level patch state of one or more managed nodes\cr
 \link[paws.management:ssm_describe_instance_patch_states_for_patch_group]{describe_instance_patch_states_for_patch_group} \tab Retrieves the high-level patch state for the managed nodes in the specified patch group\cr
+\link[paws.management:ssm_describe_instance_properties]{describe_instance_properties} \tab An API operation used by the Systems Manager console to display information about Systems Manager managed nodes\cr
 \link[paws.management:ssm_describe_inventory_deletions]{describe_inventory_deletions} \tab Describes a specific delete inventory operation\cr
 \link[paws.management:ssm_describe_maintenance_window_executions]{describe_maintenance_window_executions} \tab Lists the executions of a maintenance window\cr
 \link[paws.management:ssm_describe_maintenance_window_execution_task_invocations]{describe_maintenance_window_execution_task_invocations} \tab Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution\cr
@@ -165,7 +166,7 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[paws.management:ssm_describe_maintenance_window_targets]{describe_maintenance_window_targets} \tab Lists the targets registered with the maintenance window\cr
 \link[paws.management:ssm_describe_maintenance_window_tasks]{describe_maintenance_window_tasks} \tab Lists the tasks in a maintenance window\cr
 \link[paws.management:ssm_describe_ops_items]{describe_ops_items} \tab Query a set of OpsItems\cr
-\link[paws.management:ssm_describe_parameters]{describe_parameters} \tab Get information about a parameter\cr
+\link[paws.management:ssm_describe_parameters]{describe_parameters} \tab Lists the parameters in your Amazon Web Services account or the parameters shared with you when you enable the Shared option\cr
 \link[paws.management:ssm_describe_patch_baselines]{describe_patch_baselines} \tab Lists the patch baselines in your Amazon Web Services account\cr
 \link[paws.management:ssm_describe_patch_groups]{describe_patch_groups} \tab Lists all patch groups that have been registered with patch baselines\cr
 \link[paws.management:ssm_describe_patch_group_state]{describe_patch_group_state} \tab Returns high-level aggregated patch compliance state information for a patch group\cr

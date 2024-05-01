@@ -8,6 +8,7 @@ in a monitoring account}
 \usage{
 cloudwatchobservabilityaccessmanager_create_link(
   LabelTemplate,
+  LinkConfiguration = NULL,
   ResourceTypes,
   SinkIdentifier,
   Tags = NULL
@@ -24,6 +25,10 @@ You can use a custom label or use the following variables:
 \item \verb{$AccountEmailNoDomain} is the email address of the account without
 the domain name
 }}
+
+\item{LinkConfiguration}{Use this structure to optionally create filters that specify that only
+some metric namespaces or log groups are to be shared from the source
+account to the monitoring account.}
 
 \item{ResourceTypes}{[required] An array of strings that define which types of data that the source
 account shares with the monitoring account.}
@@ -45,7 +50,7 @@ For more information about using tags to control access, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 }
 \description{
-Creates a link between a source account and a sink that you have created in a monitoring account.
+Creates a link between a source account and a sink that you have created in a monitoring account. After the link is created, data is sent from the source account to the monitoring account. When you create a link, you can optionally specify filters that specify which metric namespaces and which log groups are shared from the source account to the monitoring account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchobservabilityaccessmanager_create_link/} for full documentation.
 }

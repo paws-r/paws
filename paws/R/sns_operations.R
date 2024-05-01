@@ -211,8 +211,15 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #'     `PlatformPrincipal` is `signing key ID` and `PlatformCredential` is
 #'     `signing key`.
 #' 
-#' -   For `GCM` (Firebase Cloud Messaging), there is no
-#'     `PlatformPrincipal` and the `PlatformCredential` is `API key`.
+#' -   For GCM (Firebase Cloud Messaging) using key credentials, there is
+#'     no `PlatformPrincipal`. The `PlatformCredential` is `API key`.
+#' 
+#' -   For GCM (Firebase Cloud Messaging) using token credentials, there is
+#'     no `PlatformPrincipal`. The `PlatformCredential` is a JSON formatted
+#'     private key file. When using the Amazon Web Services CLI, the file
+#'     must be in string format and special characters must be ignored. To
+#'     format the file correctly, Amazon SNS recommends using the following
+#'     command: `` SERVICE_JSON=`jq @@json <<< cat service.json` ``.
 #' 
 #' -   For `MPNS`, `PlatformPrincipal` is `TLS certificate` and
 #'     `PlatformCredential` is `private key`.
@@ -233,7 +240,8 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Firebase
 #' Cloud Messaging).
 #' @param Attributes &#91;required&#93; For a list of attributes, see
-#' [`set_platform_application_attributes`][sns_set_platform_application_attributes].
+#' [`set_platform_application_attributes`](https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
+#' .
 #'
 #' @return
 #' A list with the following syntax:
@@ -305,7 +313,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' sns_create_platform_endpoint(PlatformApplicationArn, Token,
 #'   CustomUserData, Attributes)
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn returned from CreatePlatformApplication is used
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` returned from CreatePlatformApplication is used
 #' to create a an endpoint.
 #' @param Token &#91;required&#93; Unique identifier created by the notification service for an app on a
 #' device. The specific name for Token will vary, depending on which
@@ -316,7 +324,8 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' @param CustomUserData Arbitrary user data to associate with the endpoint. Amazon SNS does not
 #' use this data. The data must be in UTF-8 format and less than 2KB.
 #' @param Attributes For a list of attributes, see
-#' [`set_endpoint_attributes`][sns_set_endpoint_attributes].
+#' [`set_endpoint_attributes`](https://docs.aws.amazon.com/sns/latest/api/API_SetEndpointAttributes.html)
+#' .
 #'
 #' @return
 #' A list with the following syntax:
@@ -582,7 +591,7 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectio
 #' @usage
 #' sns_delete_endpoint(EndpointArn)
 #'
-#' @param EndpointArn &#91;required&#93; EndpointArn of endpoint to delete.
+#' @param EndpointArn &#91;required&#93; `EndpointArn` of endpoint to delete.
 #'
 #' @return
 #' An empty list.
@@ -628,7 +637,7 @@ sns_delete_endpoint <- function(EndpointArn) {
 #' @usage
 #' sns_delete_platform_application(PlatformApplicationArn)
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn of platform application object to delete.
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` of platform application object to delete.
 #'
 #' @return
 #' An empty list.
@@ -828,7 +837,8 @@ sns_get_data_protection_policy <- function(ResourceArn) {
 #' @usage
 #' sns_get_endpoint_attributes(EndpointArn)
 #'
-#' @param EndpointArn &#91;required&#93; EndpointArn for GetEndpointAttributes input.
+#' @param EndpointArn &#91;required&#93; `EndpointArn` for
+#' [`get_endpoint_attributes`][sns_get_endpoint_attributes] input.
 #'
 #' @return
 #' A list with the following syntax:
@@ -883,7 +893,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #' @usage
 #' sns_get_platform_application_attributes(PlatformApplicationArn)
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for GetPlatformApplicationAttributesInput.
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` for GetPlatformApplicationAttributesInput.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1006,6 +1016,8 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 #'
 #' @usage
 #' sns_get_sms_sandbox_account_status()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -1165,9 +1177,10 @@ sns_get_topic_attributes <- function(TopicArn) {
 #' sns_list_endpoints_by_platform_application(PlatformApplicationArn,
 #'   NextToken)
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` for `ListEndpointsByPlatformApplicationInput`
 #' action.
-#' @param NextToken NextToken string is used when calling ListEndpointsByPlatformApplication
+#' @param NextToken `NextToken` string is used when calling
+#' [`list_endpoints_by_platform_application`][sns_list_endpoints_by_platform_application]
 #' action to retrieve additional records that are available after the first
 #' page results.
 #'
@@ -1373,7 +1386,8 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #' @usage
 #' sns_list_platform_applications(NextToken)
 #'
-#' @param NextToken NextToken string is used when calling ListPlatformApplications action to
+#' @param NextToken `NextToken` string is used when calling
+#' [`list_platform_applications`][sns_list_platform_applications] action to
 #' retrieve additional records that are available after the first page
 #' results.
 #'
@@ -2205,7 +2219,8 @@ sns_remove_permission <- function(TopicArn, Label) {
 #' @usage
 #' sns_set_endpoint_attributes(EndpointArn, Attributes)
 #'
-#' @param EndpointArn &#91;required&#93; EndpointArn used for SetEndpointAttributes action.
+#' @param EndpointArn &#91;required&#93; EndpointArn used for
+#' [`set_endpoint_attributes`][sns_set_endpoint_attributes] action.
 #' @param Attributes &#91;required&#93; A map of the endpoint attributes. Attributes in this map include the
 #' following:
 #' 
@@ -2275,7 +2290,9 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' sns_set_platform_application_attributes(PlatformApplicationArn,
 #'   Attributes)
 #'
-#' @param PlatformApplicationArn &#91;required&#93; PlatformApplicationArn for SetPlatformApplicationAttributes action.
+#' @param PlatformApplicationArn &#91;required&#93; `PlatformApplicationArn` for
+#' [`set_platform_application_attributes`][sns_set_platform_application_attributes]
+#' action.
 #' @param Attributes &#91;required&#93; A map of the platform application attributes. Attributes in this map
 #' include the following:
 #' 
@@ -2290,8 +2307,17 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #'     -   For Apple Services using token credentials, `PlatformCredential`
 #'         is signing key.
 #' 
-#'     -   For GCM (Firebase Cloud Messaging), `PlatformCredential` is API
-#'         key.
+#'     -   For GCM (Firebase Cloud Messaging) using key credentials, there
+#'         is no `PlatformPrincipal`. The `PlatformCredential` is
+#'         `API key`.
+#' 
+#'     -   For GCM (Firebase Cloud Messaging) using token credentials,
+#'         there is no `PlatformPrincipal`. The `PlatformCredential` is a
+#'         JSON formatted private key file. When using the Amazon Web
+#'         Services CLI, the file must be in string format and special
+#'         characters must be ignored. To format the file correctly, Amazon
+#'         SNS recommends using the following command:
+#'         `` SERVICE_JSON=`jq @@json <<< cat service.json` ``.
 #' 
 #' 
 #' -   `PlatformPrincipal` – The principal received from the notification

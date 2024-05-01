@@ -2,18 +2,19 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_untag_resource}
 \alias{kinesisanalyticsv2_untag_resource}
-\title{Removes one or more tags from a Kinesis Data Analytics application}
+\title{Removes one or more tags from a Managed Service for Apache Flink
+application}
 \usage{
 kinesisanalyticsv2_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the Kinesis Data Analytics application from which to remove
-the tags.}
+\item{ResourceARN}{[required] The ARN of the Managed Service for Apache Flink application from which
+to remove the tags.}
 
 \item{TagKeys}{[required] A list of keys of tags to remove from the specified application.}
 }
 \description{
-Removes one or more tags from a Kinesis Data Analytics application. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.
+Removes one or more tags from a Managed Service for Apache Flink application. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/} for full documentation.
 }

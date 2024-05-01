@@ -396,18 +396,18 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' scheduler, see [Using Identity-Based Policies for Amazon
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
 #' in the Amazon Redshift Cluster Management Guide
-#' @param schedule &#91;required&#93; The schedule for a one-time (at format) or recurring (cron format)
-#' scheduled action. Schedule invocations must be separated by at least one
-#' hour.
+#' @param schedule &#91;required&#93; The schedule for a one-time (at timestamp format) or recurring (cron
+#' format) scheduled action. Schedule invocations must be separated by at
+#' least one hour. Times are in UTC.
 #' 
-#' Format of at expressions is "`at(yyyy-mm-ddThh:mm:ss)`". For example,
-#' "`at(2016-03-04T17:27:00)`".
+#' -   Format of at timestamp is `yyyy-mm-ddThh:mm:ss`. For example,
+#'     `2016-03-04T17:27:00`.
 #' 
-#' Format of cron expressions is
-#' "`cron(Minutes Hours Day-of-month Month Day-of-week Year)`". For
-#' example, "`cron(0 10 ? * MON *)`". For more information, see [Cron
-#' Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
-#' in the *Amazon CloudWatch Events User Guide*.
+#' -   Format of cron expression is
+#'     `(Minutes Hours Day-of-month Month Day-of-week Year)`. For example,
+#'     `"(0 10 ? * MON *)"`. For more information, see [Cron
+#'     Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
+#'     in the *Amazon CloudWatch Events User Guide*.
 #' @param scheduledActionDescription The description of the scheduled action.
 #' @param scheduledActionName &#91;required&#93; The name of the scheduled action.
 #' @param startTime The start time in UTC when the schedule is active. Before this time, the
@@ -766,10 +766,11 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' Units (RPUs).
 #' @param configParameters An array of parameters to set for advanced control over a database. The
 #' options are `auto_mv`, `datestyle`, `enable_case_sensitive_identifier`,
-#' `enable_user_activity_logging`, `query_group`, `search_path`, and query
-#' monitoring metrics that let you define performance boundaries. For more
-#' information about query monitoring rules and available metrics, see
-#' [Query monitoring metrics for Amazon Redshift
+#' `enable_user_activity_logging`, `query_group`, `search_path`,
+#' `require_ssl`, and query monitoring metrics that let you define
+#' performance boundaries. For more information about query monitoring
+#' rules and available metrics, see [Query monitoring metrics for Amazon
+#' Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
@@ -3945,18 +3946,18 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' scheduler, see [Using Identity-Based Policies for Amazon
 #' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
 #' in the Amazon Redshift Cluster Management Guide
-#' @param schedule The schedule for a one-time (at format) or recurring (cron format)
-#' scheduled action. Schedule invocations must be separated by at least one
-#' hour.
+#' @param schedule The schedule for a one-time (at timestamp format) or recurring (cron
+#' format) scheduled action. Schedule invocations must be separated by at
+#' least one hour. Times are in UTC.
 #' 
-#' Format of at expressions is "`at(yyyy-mm-ddThh:mm:ss)`". For example,
-#' "`at(2016-03-04T17:27:00)`".
+#' -   Format of at timestamp is `yyyy-mm-ddThh:mm:ss`. For example,
+#'     `2016-03-04T17:27:00`.
 #' 
-#' Format of cron expressions is
-#' "`cron(Minutes Hours Day-of-month Month Day-of-week Year)`". For
-#' example, "`cron(0 10 ? * MON *)`". For more information, see [Cron
-#' Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
-#' in the *Amazon CloudWatch Events User Guide*.
+#' -   Format of cron expression is
+#'     `(Minutes Hours Day-of-month Month Day-of-week Year)`. For example,
+#'     `"(0 10 ? * MON *)"`. For more information, see [Cron
+#'     Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
+#'     in the *Amazon CloudWatch Events User Guide*.
 #' @param scheduledActionDescription The descripion of the scheduled action to update to.
 #' @param scheduledActionName &#91;required&#93; The name of the scheduled action to update to.
 #' @param startTime The start time in UTC of the scheduled action to update to.
@@ -4284,10 +4285,11 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' (RPUs).
 #' @param configParameters An array of parameters to set for advanced control over a database. The
 #' options are `auto_mv`, `datestyle`, `enable_case_sensitive_identifier`,
-#' `enable_user_activity_logging`, `query_group`, `search_path`, and query
-#' monitoring metrics that let you define performance boundaries. For more
-#' information about query monitoring rules and available metrics, see
-#' [Query monitoring metrics for Amazon Redshift
+#' `enable_user_activity_logging`, `query_group`, `search_path`,
+#' `require_ssl`, and query monitoring metrics that let you define
+#' performance boundaries. For more information about query monitoring
+#' rules and available metrics, see [Query monitoring metrics for Amazon
+#' Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless).
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route

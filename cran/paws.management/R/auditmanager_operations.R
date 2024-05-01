@@ -502,6 +502,8 @@ auditmanager_delete_control <- function(controlId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/auditmanager_deregister_account/](https://www.paws-r-sdk.com/docs/auditmanager_deregister_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname auditmanager_deregister_account
@@ -589,6 +591,8 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 #' Gets the registration status of an account in Audit Manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/auditmanager_get_account_status/](https://www.paws-r-sdk.com/docs/auditmanager_get_account_status/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -996,6 +1000,8 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 #'
 #' See [https://www.paws-r-sdk.com/docs/auditmanager_get_insights/](https://www.paws-r-sdk.com/docs/auditmanager_get_insights/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_insights
@@ -1053,6 +1059,8 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/auditmanager_get_organization_admin_account/](https://www.paws-r-sdk.com/docs/auditmanager_get_organization_admin_account/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_organization_admin_account
@@ -1080,6 +1088,8 @@ auditmanager_get_organization_admin_account <- function() {
 #' Gets a list of all of the Amazon Web Services that you can choose to include in your assessment. When you [create an assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html), specify which of these services you want to include to narrow the assessment's [scope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/](https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

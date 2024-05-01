@@ -2,7 +2,7 @@
 % Please edit documentation in R/keyspaces_operations.R
 \name{keyspaces_restore_table}
 \alias{keyspaces_restore_table}
-\title{Restores the specified table to the specified point in time within the
+\title{Restores the table to the specified point in time within the
 earliest_restorable_timestamp and the current time}
 \usage{
 keyspaces_restore_table(
@@ -14,7 +14,9 @@ keyspaces_restore_table(
   capacitySpecificationOverride = NULL,
   encryptionSpecificationOverride = NULL,
   pointInTimeRecoveryOverride = NULL,
-  tagsOverride = NULL
+  tagsOverride = NULL,
+  autoScalingSpecification = NULL,
+  replicaSpecifications = NULL
 )
 }
 \arguments{
@@ -72,9 +74,21 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html}{Adding tags and labels to Amazon Keyspaces resources}
 in the \emph{Amazon Keyspaces Developer Guide}.}
+
+\item{autoScalingSpecification}{The optional auto scaling settings for the restored table in provisioned
+capacity mode. Specifies if the service can manage throughput capacity
+of a provisioned table automatically on your behalf. Amazon Keyspaces
+auto scaling helps you provision throughput capacity for variable
+workloads efficiently by increasing and decreasing your table's read and
+write capacity automatically in response to application traffic.
+
+For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/autoscaling.html}{Managing throughput capacity automatically with Amazon Keyspaces auto scaling}
+in the \emph{Amazon Keyspaces Developer Guide}.}
+
+\item{replicaSpecifications}{The optional Region specific settings of a multi-Regional table.}
 }
 \description{
-Restores the specified table to the specified point in time within the \code{earliest_restorable_timestamp} and the current time. For more information about restore points, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window}{Time window for PITR continuous backups} in the \emph{Amazon Keyspaces Developer Guide}.
+Restores the table to the specified point in time within the \code{earliest_restorable_timestamp} and the current time. For more information about restore points, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window}{Time window for PITR continuous backups} in the \emph{Amazon Keyspaces Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/keyspaces_restore_table/} for full documentation.
 }

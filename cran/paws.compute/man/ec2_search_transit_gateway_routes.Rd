@@ -39,7 +39,8 @@ supernet-of-match as 10.0.1.0/30, then the result returns
 \item \code{type} - The type of route (\code{propagated} | \code{static}).
 }}
 
-\item{MaxResults}{The maximum number of routes to return.}
+\item{MaxResults}{The maximum number of routes to return. If a value is not provided, the
+default is 1000.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

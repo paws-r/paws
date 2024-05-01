@@ -878,6 +878,8 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanager_get_service_settings/](https://www.paws-r-sdk.com/docs/licensemanager_get_service_settings/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_service_settings

@@ -9,7 +9,7 @@ lightsail_set_ip_address_type(resourceType, resourceName, ipAddressType)
 \arguments{
 \item{resourceType}{[required] The resource type.
 
-The possible values are \code{Distribution}, \code{Instance}, and \code{LoadBalancer}.
+The resource values are \code{Distribution}, \code{Instance}, and \code{LoadBalancer}.
 
 Distribution-related APIs are available only in the N. Virginia
 (\code{us-east-1}) Amazon Web Services Region. Set your Amazon Web Services

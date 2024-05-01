@@ -165,7 +165,7 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .memorydb$metadata <- list(
   service_name = "memorydb",
-  endpoints = list("*" = list(endpoint = "memory-db.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "memory-db.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "memory-db.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "memory-db.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "memory-db.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "memory-db.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "memory-db.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "memory-db.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "memory-db.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "memory-db.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "MemoryDB",
   api_version = "2021-01-01",
   signing_name = "memorydb",

@@ -5,10 +5,12 @@
 \title{Turns off automatic enablement of Amazon Security Lake for member
 accounts that are added to an organization in Organizations}
 \usage{
-securitylake_delete_data_lake_organization_configuration(autoEnableNewAccount)
+securitylake_delete_data_lake_organization_configuration(
+  autoEnableNewAccount = NULL
+)
 }
 \arguments{
-\item{autoEnableNewAccount}{[required] Turns off automatic enablement of Security Lake for member accounts that
+\item{autoEnableNewAccount}{Turns off automatic enablement of Security Lake for member accounts that
 are added to an organization.}
 }
 \description{

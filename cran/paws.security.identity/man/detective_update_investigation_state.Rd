@@ -2,12 +2,12 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_update_investigation_state}
 \alias{detective_update_investigation_state}
-\title{Update the state of an investigation}
+\title{Updates the state of an investigation}
 \usage{
 detective_update_investigation_state(GraphArn, InvestigationId, State)
 }
 \arguments{
-\item{GraphArn}{[required] The ARN of the behavior graph.}
+\item{GraphArn}{[required] The Amazon Resource Name (ARN) of the behavior graph.}
 
 \item{InvestigationId}{[required] The investigation ID of the investigation report.}
 
@@ -15,7 +15,7 @@ detective_update_investigation_state(GraphArn, InvestigationId, State)
 indicates you have completed reviewing the investigation.}
 }
 \description{
-Update the state of an investigation.
+Updates the state of an investigation.
 
 See \url{https://www.paws-r-sdk.com/docs/detective_update_investigation_state/} for full documentation.
 }

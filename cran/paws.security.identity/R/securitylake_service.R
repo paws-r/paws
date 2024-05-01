@@ -191,7 +191,7 @@ securitylake <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .securitylake$metadata <- list(
   service_name = "securitylake",
-  endpoints = list("*" = list(endpoint = "securitylake.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "securitylake.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "securitylake.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "securitylake.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "securitylake.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "securitylake.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "securitylake.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "securitylake.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "securitylake.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "securitylake.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SecurityLake",
   api_version = "2018-05-10",
   signing_name = "securitylake",

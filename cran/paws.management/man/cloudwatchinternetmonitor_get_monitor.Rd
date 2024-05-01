@@ -5,10 +5,16 @@
 \title{Gets information about a monitor in Amazon CloudWatch Internet Monitor
 based on a monitor name}
 \usage{
-cloudwatchinternetmonitor_get_monitor(MonitorName)
+cloudwatchinternetmonitor_get_monitor(MonitorName, LinkedAccountId = NULL)
 }
 \arguments{
 \item{MonitorName}{[required] The name of the monitor.}
+
+\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing
+for in Amazon CloudWatch Internet Monitor. You configure cross-account
+sharing by using Amazon CloudWatch Observability Access Manager. For
+more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
+in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{
 Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name. The information returned includes the Amazon Resource Name (ARN), create time, modified time, resources included in the monitor, and status information.

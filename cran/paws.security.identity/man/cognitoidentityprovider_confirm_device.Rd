@@ -22,7 +22,7 @@ you want to confirm.}
 \item{DeviceName}{The device name.}
 }
 \description{
-Confirms tracking of the device. This API call is the call that begins device tracking.
+Confirms tracking of the device. This API call is the call that begins device tracking. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_device/} for full documentation.
 }

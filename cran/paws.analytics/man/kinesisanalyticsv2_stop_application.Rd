@@ -10,17 +10,16 @@ kinesisanalyticsv2_stop_application(ApplicationName, Force = NULL)
 \item{ApplicationName}{[required] The name of the running application to stop.}
 
 \item{Force}{Set to \code{true} to force the application to stop. If you set \code{Force} to
-\code{true}, Kinesis Data Analytics stops the application without taking a
-snapshot.
+\code{true}, Managed Service for Apache Flink stops the application without
+taking a snapshot.
 
 Force-stopping your application may lead to data loss or duplication. To
 prevent data loss or duplicate processing of data during application
 restarts, we recommend you to take frequent snapshots of your
 application.
 
-You can only force stop a Flink-based Kinesis Data Analytics
-application. You can't force stop a SQL-based Kinesis Data Analytics
-application.
+You can only force stop a Managed Service for Apache Flink application.
+You can't force stop a SQL-based Kinesis Data Analytics application.
 
 The application must be in the \code{STARTING}, \code{UPDATING}, \code{STOPPING},
 \code{AUTOSCALING}, or \code{RUNNING} status.}

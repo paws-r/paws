@@ -27,13 +27,21 @@ the domain. It does not include dashes or spaces.}
 requested readme file.}
 
 \item{namespace}{The namespace of the package version with the requested readme file. The
-package version component that specifies its namespace depends on its
-type. For example:
+package component that specifies its namespace depends on its type. For
+example:
+
+The namespace is required when requesting the readme from package
+versions of the following formats:
 \itemize{
-\item The namespace of an npm package version is its \code{scope}.
-\item Python and NuGet package versions do not contain a corresponding
-component, package versions of those formats do not have a
-namespace.
+\item Maven
+\item Swift
+\item generic
+\item The namespace of a Maven package version is its \code{groupId}.
+\item The namespace of an npm or Swift package version is its \code{scope}.
+\item The namespace of a generic package is its \code{namespace}.
+\item Python, NuGet, and Ruby package versions do not contain a
+corresponding component, package versions of those formats do not
+have a namespace.
 }}
 
 \item{package}{[required] The name of the package version that contains the requested readme file.}

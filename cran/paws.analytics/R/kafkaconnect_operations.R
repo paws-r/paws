@@ -22,25 +22,32 @@ NULL
 #' @param kafkaConnectVersion &#91;required&#93; The version of Kafka Connect. It has to be compatible with both the
 #' Apache Kafka cluster's version and the plugins.
 #' @param logDelivery Details about log delivery.
-#' @param plugins &#91;required&#93; Specifies which plugins to use for the connector.
+#' @param plugins &#91;required&#93; Amazon MSK Connect does not currently support specifying multiple
+#' plugins as a list. To use more than one plugin for your connector, you
+#' can create a single custom plugin using a ZIP file that bundles multiple
+#' plugins together.
+#' 
+#' Specifies which plugin to use for the connector. You must specify a
+#' single-element list containing one `customPlugin` object.
 #' @param serviceExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role used by the connector to
 #' access the Amazon Web Services resources that it needs. The types of
 #' resources depends on the logic of the connector. For example, a
 #' connector that has Amazon S3 as a destination must have permissions that
 #' allow it to write to the S3 destination bucket.
+#' @param tags The tags you want to attach to the connector.
 #' @param workerConfiguration Specifies which worker configuration to use with the connector.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_connector
-kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, plugins, serviceExecutionRoleArn, workerConfiguration = NULL) {
+kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, plugins, serviceExecutionRoleArn, tags = NULL, workerConfiguration = NULL) {
   op <- new_operation(
     name = "CreateConnector",
     http_method = "POST",
     http_path = "/v1/connectors",
     paginator = list()
   )
-  input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, workerConfiguration = workerConfiguration)
+  input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, tags = tags, workerConfiguration = workerConfiguration)
   output <- .kafkaconnect$create_connector_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config)
@@ -61,18 +68,19 @@ kafkaconnect_create_connector <- function(capacity, connectorConfiguration, conn
 #' @param description A summary description of the custom plugin.
 #' @param location &#91;required&#93; Information about the location of a custom plugin.
 #' @param name &#91;required&#93; The name of the custom plugin.
+#' @param tags The tags you want to attach to the custom plugin.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_custom_plugin
-kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, location, name) {
+kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, location, name, tags = NULL) {
   op <- new_operation(
     name = "CreateCustomPlugin",
     http_method = "POST",
     http_path = "/v1/custom-plugins",
     paginator = list()
   )
-  input <- .kafkaconnect$create_custom_plugin_input(contentType = contentType, description = description, location = location, name = name)
+  input <- .kafkaconnect$create_custom_plugin_input(contentType = contentType, description = description, location = location, name = name, tags = tags)
   output <- .kafkaconnect$create_custom_plugin_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config)
@@ -92,18 +100,19 @@ kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, l
 #' @param description A summary description of the worker configuration.
 #' @param name &#91;required&#93; The name of the worker configuration.
 #' @param propertiesFileContent &#91;required&#93; Base64 encoded contents of connect-distributed.properties file.
+#' @param tags The tags you want to attach to the worker configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_worker_configuration
-kafkaconnect_create_worker_configuration <- function(description = NULL, name, propertiesFileContent) {
+kafkaconnect_create_worker_configuration <- function(description = NULL, name, propertiesFileContent, tags = NULL) {
   op <- new_operation(
     name = "CreateWorkerConfiguration",
     http_method = "POST",
     http_path = "/v1/worker-configurations",
     paginator = list()
   )
-  input <- .kafkaconnect$create_worker_configuration_input(description = description, name = name, propertiesFileContent = propertiesFileContent)
+  input <- .kafkaconnect$create_worker_configuration_input(description = description, name = name, propertiesFileContent = propertiesFileContent, tags = tags)
   output <- .kafkaconnect$create_worker_configuration_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config)
@@ -172,6 +181,36 @@ kafkaconnect_delete_custom_plugin <- function(customPluginArn) {
   return(response)
 }
 .kafkaconnect$operations$delete_custom_plugin <- kafkaconnect_delete_custom_plugin
+
+#' Deletes the specified worker configuration
+#'
+#' @description
+#' Deletes the specified worker configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_delete_worker_configuration/](https://www.paws-r-sdk.com/docs/kafkaconnect_delete_worker_configuration/) for full documentation.
+#'
+#' @param workerConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the worker configuration that you want
+#' to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_delete_worker_configuration
+kafkaconnect_delete_worker_configuration <- function(workerConfigurationArn) {
+  op <- new_operation(
+    name = "DeleteWorkerConfiguration",
+    http_method = "DELETE",
+    http_path = "/v1/worker-configurations/{workerConfigurationArn}",
+    paginator = list()
+  )
+  input <- .kafkaconnect$delete_worker_configuration_input(workerConfigurationArn = workerConfigurationArn)
+  output <- .kafkaconnect$delete_worker_configuration_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$delete_worker_configuration <- kafkaconnect_delete_worker_configuration
 
 #' Returns summary information about the connector
 #'
@@ -303,6 +342,7 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
 #' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/) for full documentation.
 #'
 #' @param maxResults The maximum number of custom plugins to list in one response.
+#' @param namePrefix Lists custom plugin names that start with the specified text string.
 #' @param nextToken If the response of a ListCustomPlugins operation is truncated, it will
 #' include a NextToken. Send this NextToken in a subsequent request to
 #' continue listing from where the previous operation left off.
@@ -310,14 +350,14 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_custom_plugins
-kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL) {
+kafkaconnect_list_custom_plugins <- function(maxResults = NULL, namePrefix = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListCustomPlugins",
     http_method = "GET",
     http_path = "/v1/custom-plugins",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "customPlugins")
   )
-  input <- .kafkaconnect$list_custom_plugins_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .kafkaconnect$list_custom_plugins_input(maxResults = maxResults, namePrefix = namePrefix, nextToken = nextToken)
   output <- .kafkaconnect$list_custom_plugins_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config)
@@ -326,6 +366,36 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL
   return(response)
 }
 .kafkaconnect$operations$list_custom_plugins <- kafkaconnect_list_custom_plugins
+
+#' Lists all the tags attached to the specified resource
+#'
+#' @description
+#' Lists all the tags attached to the specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to
+#' list all attached tags.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_list_tags_for_resource
+kafkaconnect_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .kafkaconnect$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .kafkaconnect$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$list_tags_for_resource <- kafkaconnect_list_tags_for_resource
 
 #' Returns a list of all of the worker configurations in this account and
 #' Region
@@ -336,6 +406,8 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL
 #' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/) for full documentation.
 #'
 #' @param maxResults The maximum number of worker configurations to list in one response.
+#' @param namePrefix Lists worker configuration names that start with the specified text
+#' string.
 #' @param nextToken If the response of a ListWorkerConfigurations operation is truncated, it
 #' will include a NextToken. Send this NextToken in a subsequent request to
 #' continue listing from where the previous operation left off.
@@ -343,14 +415,14 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_worker_configurations
-kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken = NULL) {
+kafkaconnect_list_worker_configurations <- function(maxResults = NULL, namePrefix = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListWorkerConfigurations",
     http_method = "GET",
     http_path = "/v1/worker-configurations",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workerConfigurations")
   )
-  input <- .kafkaconnect$list_worker_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .kafkaconnect$list_worker_configurations_input(maxResults = maxResults, namePrefix = namePrefix, nextToken = nextToken)
   output <- .kafkaconnect$list_worker_configurations_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config)
@@ -359,6 +431,68 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken
   return(response)
 }
 .kafkaconnect$operations$list_worker_configurations <- kafkaconnect_list_worker_configurations
+
+#' Attaches tags to the specified resource
+#'
+#' @description
+#' Attaches tags to the specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_tag_resource/](https://www.paws-r-sdk.com/docs/kafkaconnect_tag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to
+#' attach tags.
+#' @param tags &#91;required&#93; The tags that you want to attach to the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_tag_resource
+kafkaconnect_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .kafkaconnect$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .kafkaconnect$tag_resource_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$tag_resource <- kafkaconnect_tag_resource
+
+#' Removes tags from the specified resource
+#'
+#' @description
+#' Removes tags from the specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_untag_resource/](https://www.paws-r-sdk.com/docs/kafkaconnect_untag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which you want to
+#' remove tags.
+#' @param tagKeys &#91;required&#93; The keys of the tags that you want to remove from the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_untag_resource
+kafkaconnect_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .kafkaconnect$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .kafkaconnect$untag_resource_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$untag_resource <- kafkaconnect_untag_resource
 
 #' Updates the specified connector
 #'

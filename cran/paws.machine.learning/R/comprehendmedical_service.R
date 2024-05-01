@@ -154,7 +154,7 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
 
 .comprehendmedical$metadata <- list(
   service_name = "comprehendmedical",
-  endpoints = list("*" = list(endpoint = "comprehendmedical.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "comprehendmedical.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "comprehendmedical.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "comprehendmedical.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "comprehendmedical.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "comprehendmedical.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "comprehendmedical.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "comprehendmedical.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "comprehendmedical.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "comprehendmedical.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ComprehendMedical",
   api_version = "2018-10-30",
   signing_name = "comprehendmedical",

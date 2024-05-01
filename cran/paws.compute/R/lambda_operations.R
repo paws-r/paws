@@ -56,7 +56,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_add_permission/](https://www.paws-r-sdk.com/docs/lambda_add_permission/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -131,7 +131,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_create_alias/](https://www.paws-r-sdk.com/docs/lambda_create_alias/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -220,12 +220,14 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' -   **Amazon Simple Queue Service** – The ARN of the queue.
 #' 
 #' -   **Amazon Managed Streaming for Apache Kafka** – The ARN of the
-#'     cluster.
+#'     cluster or the ARN of the VPC connection (for [cross-account event
+#'     source
+#'     mappings](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc)).
 #' 
 #' -   **Amazon MQ** – The ARN of the broker.
 #' 
 #' -   **Amazon DocumentDB** – The ARN of the DocumentDB change stream.
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -292,8 +294,9 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' MSK, and self-managed Apache Kafka.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
 #' start reading. `StartingPositionTimestamp` cannot be in the future.
-#' @param DestinationConfig (Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
-#' standard Amazon SNS topic destination for discarded records.
+#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+#' configuration object that specifies the destination of an event after
+#' Lambda processes it.
 #' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
 #' specified age. The default value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Kinesis and DynamoDB Streams only) If the function returns an error,
@@ -348,7 +351,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_create_function/](https://www.paws-r-sdk.com/docs/lambda_create_function/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -382,7 +385,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' is 900 seconds. For more information, see [Lambda execution
 #' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the
-#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console)
 #' at runtime. Increasing the function memory also increases its CPU
 #' allocation. The default value is 128 MB. The value can be any multiple
 #' of 1 MB.
@@ -425,7 +428,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #' @param ImageConfig Container image [configuration
-#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#configuration-images-settings)
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
 #' that override the values in the container image Dockerfile.
 #' @param CodeSigningConfigArn To enable code signing for this function, specify the ARN of a
 #' code-signing configuration. A code-signing configuration includes a set
@@ -435,7 +438,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' string array with one of the valid values (arm64 or x86_64). The default
 #' value is `x86_64`.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is
-#' 512, but can be any whole number between 512 and 10,240 MB.
+#' 512, but can be any whole number between 512 and 10,240 MB. For more
+#' information, see [Configuring ephemeral storage
+#' (console)](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
@@ -469,7 +474,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_create_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_create_function_url_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -533,7 +538,7 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_alias/](https://www.paws-r-sdk.com/docs/lambda_delete_alias/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -633,7 +638,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_function/](https://www.paws-r-sdk.com/docs/lambda_delete_function/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function or version.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function or version.
 #' 
 #' **Name formats**
 #' 
@@ -678,7 +683,7 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_delete_function_code_signing_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -719,7 +724,7 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_concurrency/](https://www.paws-r-sdk.com/docs/lambda_delete_function_concurrency/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -761,7 +766,7 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_delete_function_event_invoke_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -805,7 +810,7 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_delete_function_url_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -877,7 +882,7 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_delete_provisioned_concurrency_config/](https://www.paws-r-sdk.com/docs/lambda_delete_provisioned_concurrency_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -920,6 +925,8 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_account_settings/](https://www.paws-r-sdk.com/docs/lambda_get_account_settings/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_get_account_settings
@@ -947,7 +954,7 @@ lambda_get_account_settings <- function() {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_alias/](https://www.paws-r-sdk.com/docs/lambda_get_alias/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1048,7 +1055,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_function/](https://www.paws-r-sdk.com/docs/lambda_get_function/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -1093,7 +1100,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_function_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_get_function_code_signing_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1135,7 +1142,7 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_function_concurrency/](https://www.paws-r-sdk.com/docs/lambda_get_function_concurrency/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1176,7 +1183,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_function_configuration/](https://www.paws-r-sdk.com/docs/lambda_get_function_configuration/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -1222,7 +1229,7 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_get_function_event_invoke_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -1266,7 +1273,7 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_get_function_url_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1399,7 +1406,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_policy/](https://www.paws-r-sdk.com/docs/lambda_get_policy/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -1444,7 +1451,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_provisioned_concurrency_config/](https://www.paws-r-sdk.com/docs/lambda_get_provisioned_concurrency_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1486,7 +1493,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_get_runtime_management_config/](https://www.paws-r-sdk.com/docs/lambda_get_runtime_management_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1530,7 +1537,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_invoke/](https://www.paws-r-sdk.com/docs/lambda_invoke/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -1561,7 +1568,9 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' @param LogType Set to `Tail` to include the execution log in the response. Applies to
 #' synchronously invoked functions only.
 #' @param ClientContext Up to 3,583 bytes of base64-encoded data about the invoking client to
-#' pass to the function in the context object.
+#' pass to the function in the context object. Lambda passes the
+#' `ClientContext` object to your function for synchronous invocations
+#' only.
 #' @param Payload The JSON that you want to provide to your Lambda function as input.
 #' 
 #' You can enter the JSON directly. For example,
@@ -1597,7 +1606,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_invoke_async/](https://www.paws-r-sdk.com/docs/lambda_invoke_async/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1640,7 +1649,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_invoke_with_response_stream/](https://www.paws-r-sdk.com/docs/lambda_invoke_with_response_stream/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1700,7 +1709,7 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_aliases/](https://www.paws-r-sdk.com/docs/lambda_list_aliases/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1787,12 +1796,14 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' -   **Amazon Simple Queue Service** – The ARN of the queue.
 #' 
 #' -   **Amazon Managed Streaming for Apache Kafka** – The ARN of the
-#'     cluster.
+#'     cluster or the ARN of the VPC connection (for [cross-account event
+#'     source
+#'     mappings](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc)).
 #' 
 #' -   **Amazon MQ** – The ARN of the broker.
 #' 
 #' -   **Amazon DocumentDB** – The ARN of the DocumentDB change stream.
-#' @param FunctionName The name of the Lambda function.
+#' @param FunctionName The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1841,7 +1852,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_function_event_invoke_configs/](https://www.paws-r-sdk.com/docs/lambda_list_function_event_invoke_configs/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -1885,7 +1896,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_function_url_configs/](https://www.paws-r-sdk.com/docs/lambda_list_function_url_configs/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2005,7 +2016,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_layer_versions/](https://www.paws-r-sdk.com/docs/lambda_list_layer_versions/) for full documentation.
 #'
-#' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
+#' @param CompatibleRuntime A runtime identifier. For example, `java21`.
 #' 
 #' The following list includes deprecated runtimes. For more information,
 #' see [Runtime deprecation
@@ -2044,7 +2055,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_layers/](https://www.paws-r-sdk.com/docs/lambda_list_layers/) for full documentation.
 #'
-#' @param CompatibleRuntime A runtime identifier. For example, `go1.x`.
+#' @param CompatibleRuntime A runtime identifier. For example, `java21`.
 #' 
 #' The following list includes deprecated runtimes. For more information,
 #' see [Runtime deprecation
@@ -2082,7 +2093,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_provisioned_concurrency_configs/](https://www.paws-r-sdk.com/docs/lambda_list_provisioned_concurrency_configs/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2157,7 +2168,7 @@ lambda_list_tags <- function(Resource) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_versions_by_function/](https://www.paws-r-sdk.com/docs/lambda_list_versions_by_function/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2254,7 +2265,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_publish_version/](https://www.paws-r-sdk.com/docs/lambda_publish_version/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2306,7 +2317,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' See [https://www.paws-r-sdk.com/docs/lambda_put_function_code_signing_config/](https://www.paws-r-sdk.com/docs/lambda_put_function_code_signing_config/) for full documentation.
 #'
 #' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2348,7 +2359,7 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_put_function_concurrency/](https://www.paws-r-sdk.com/docs/lambda_put_function_concurrency/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2391,7 +2402,7 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_put_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_put_function_event_invoke_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -2451,7 +2462,7 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_put_provisioned_concurrency_config/](https://www.paws-r-sdk.com/docs/lambda_put_provisioned_concurrency_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2495,7 +2506,7 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_put_runtime_management_config/](https://www.paws-r-sdk.com/docs/lambda_put_runtime_management_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2602,7 +2613,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_remove_permission/](https://www.paws-r-sdk.com/docs/lambda_remove_permission/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -2711,7 +2722,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_update_alias/](https://www.paws-r-sdk.com/docs/lambda_update_alias/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2794,7 +2805,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' See [https://www.paws-r-sdk.com/docs/lambda_update_event_source_mapping/](https://www.paws-r-sdk.com/docs/lambda_update_event_source_mapping/) for full documentation.
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
-#' @param FunctionName The name of the Lambda function.
+#' @param FunctionName The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2853,8 +2864,9 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' Related setting: For streams and Amazon SQS event sources, when you set
 #' `BatchSize` to a value greater than 10, you must set
 #' `MaximumBatchingWindowInSeconds` to at least 1.
-#' @param DestinationConfig (Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
-#' standard Amazon SNS topic destination for discarded records.
+#' @param DestinationConfig (Kinesis, DynamoDB Streams, Amazon MSK, and self-managed Kafka only) A
+#' configuration object that specifies the destination of an event after
+#' Lambda processes it.
 #' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
 #' specified age. The default value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Kinesis and DynamoDB Streams only) If the function returns an error,
@@ -2904,7 +2916,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_update_function_code/](https://www.paws-r-sdk.com/docs/lambda_update_function_code/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2969,7 +2981,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_update_function_configuration/](https://www.paws-r-sdk.com/docs/lambda_update_function_configuration/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 
@@ -2995,7 +3007,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' is 900 seconds. For more information, see [Lambda execution
 #' environment](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html).
 #' @param MemorySize The amount of [memory available to the
-#' function](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+#' function](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console)
 #' at runtime. Increasing the function memory also increases its CPU
 #' allocation. The default value is 128 MB. The value can be any multiple
 #' of 1 MB.
@@ -3041,10 +3053,12 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #' @param ImageConfig [Container image configuration
-#' values](https://docs.aws.amazon.com/lambda/latest/dg/) that override the
-#' values in the container image Docker file.
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms)
+#' that override the values in the container image Docker file.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is
-#' 512, but can be any whole number between 512 and 10,240 MB.
+#' 512, but can be any whole number between 512 and 10,240 MB. For more
+#' information, see [Configuring ephemeral storage
+#' (console)](https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
@@ -3078,7 +3092,7 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_update_function_event_invoke_config/](https://www.paws-r-sdk.com/docs/lambda_update_function_event_invoke_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function, version, or alias.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function, version, or alias.
 #' 
 #' **Name formats**
 #' 
@@ -3137,7 +3151,7 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_update_function_url_config/](https://www.paws-r-sdk.com/docs/lambda_update_function_url_config/) for full documentation.
 #'
-#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
 #' **Name formats**
 #' 

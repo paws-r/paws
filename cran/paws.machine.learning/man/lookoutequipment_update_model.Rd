@@ -7,7 +7,8 @@
 lookoutequipment_update_model(
   ModelName,
   LabelsInputConfiguration = NULL,
-  RoleArn = NULL
+  RoleArn = NULL,
+  ModelDiagnosticsOutputConfiguration = NULL
 )
 }
 \arguments{
@@ -16,6 +17,10 @@ lookoutequipment_update_model(
 \item{LabelsInputConfiguration}{}
 
 \item{RoleArn}{The ARN of the model to update.}
+
+\item{ModelDiagnosticsOutputConfiguration}{The Amazon S3 location where you want Amazon Lookout for Equipment to
+save the pointwise model diagnostics for the model. You must also
+specify the \code{RoleArn} request parameter.}
 }
 \description{
 Updates a model in the account.

@@ -159,6 +159,38 @@ opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account)
 }
 .opensearchservice$operations$authorize_vpc_endpoint_access <- opensearchservice_authorize_vpc_endpoint_access
 
+#' Cancels a pending configuration change on an Amazon OpenSearch Service
+#' domain
+#'
+#' @description
+#' Cancels a pending configuration change on an Amazon OpenSearch Service domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_cancel_domain_config_change/](https://www.paws-r-sdk.com/docs/opensearchservice_cancel_domain_config_change/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; 
+#' @param DryRun When set to `True`, returns the list of change IDs and properties that
+#' will be cancelled without actually cancelling the change.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_cancel_domain_config_change
+opensearchservice_cancel_domain_config_change <- function(DomainName, DryRun = NULL) {
+  op <- new_operation(
+    name = "CancelDomainConfigChange",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/config/cancel",
+    paginator = list()
+  )
+  input <- .opensearchservice$cancel_domain_config_change_input(DomainName = DomainName, DryRun = DryRun)
+  output <- .opensearchservice$cancel_domain_config_change_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$cancel_domain_config_change <- opensearchservice_cancel_domain_config_change
+
 #' Cancels a scheduled service software update for an Amazon OpenSearch
 #' Service domain
 #'
@@ -210,7 +242,10 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' OpenSearch Service domain.
 #' @param AccessPolicies Identity and Access Management (IAM) policy document specifying the
 #' access policies for the new domain.
-#' @param IPAddressType The type of IP addresses supported by the endpoint for the domain.
+#' @param IPAddressType Specify either dual stack or IPv4 as your IP address type. Dual stack
+#' allows you to share domain resources across IPv4 and IPv6 address types,
+#' and is the recommended option. If you set your IP address type to dual
+#' stack, you can't change your address type later.
 #' @param SnapshotOptions DEPRECATED. Container for the parameters required to configure automated
 #' snapshots of domain indexes.
 #' @param VPCOptions Container for the values required to configure VPC access domains. If
@@ -2016,7 +2051,10 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #' parameters](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options).
 #' @param AccessPolicies Identity and Access Management (IAM) access policy as a JSON-formatted
 #' string.
-#' @param IPAddressType The type of IP addresses supported by the endpoint for the domain.
+#' @param IPAddressType Specify either dual stack or IPv4 as your IP address type. Dual stack
+#' allows you to share domain resources across IPv4 and IPv6 address types,
+#' and is the recommended option. If your IP address type is currently set
+#' to dual stack, you can't change it.
 #' @param LogPublishingOptions Options to publish OpenSearch logs to Amazon CloudWatch Logs.
 #' @param EncryptionAtRestOptions Encryption at rest options for the domain.
 #' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require

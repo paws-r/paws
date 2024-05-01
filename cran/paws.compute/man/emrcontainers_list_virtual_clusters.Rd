@@ -11,7 +11,8 @@ emrcontainers_list_virtual_clusters(
   createdBefore = NULL,
   states = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  eksAccessEntryIntegrated = NULL
 )
 }
 \arguments{
@@ -29,6 +30,11 @@ only supported type as of now.}
 \item{maxResults}{The maximum number of virtual clusters that can be listed.}
 
 \item{nextToken}{The token for the next set of virtual clusters to return.}
+
+\item{eksAccessEntryIntegrated}{Optional Boolean that specifies whether the operation should return the
+virtual clusters that have the access entry integration enabled or
+disabled. If not specified, the operation returns all applicable virtual
+clusters.}
 }
 \description{
 Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.

@@ -180,7 +180,7 @@ customerprofiles <- function(config = list(), credentials = list(), endpoint = N
 
 .customerprofiles$metadata <- list(
   service_name = "customerprofiles",
-  endpoints = list("*" = list(endpoint = "profile.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "profile.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "profile.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "profile.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "profile.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "profile.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "profile.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "profile.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "profile.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "profile.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Customer Profiles",
   api_version = "2020-08-15",
   signing_name = "profile",

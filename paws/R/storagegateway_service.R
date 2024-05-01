@@ -204,7 +204,7 @@ NULL
 #'  \link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes} \tab Returns the description of the gateway volumes specified in the request\cr
 #'  \link[=storagegateway_describe_tape_archives]{describe_tape_archives} \tab Returns a description of specified virtual tapes in the virtual tape shelf (VTS)\cr
 #'  \link[=storagegateway_describe_tape_recovery_points]{describe_tape_recovery_points} \tab Returns a list of virtual tape recovery points that are available for the specified tape gateway\cr
-#'  \link[=storagegateway_describe_tapes]{describe_tapes} \tab Returns a description of the specified Amazon Resource Name (ARN) of virtual tapes\cr
+#'  \link[=storagegateway_describe_tapes]{describe_tapes} \tab Returns a description of virtual tapes that correspond to the specified Amazon Resource Names (ARNs)\cr
 #'  \link[=storagegateway_describe_upload_buffer]{describe_upload_buffer} \tab Returns information about the upload buffer of a gateway\cr
 #'  \link[=storagegateway_describe_vtl_devices]{describe_vtl_devices} \tab Returns a description of virtual tape library (VTL) devices for the specified tape gateway\cr
 #'  \link[=storagegateway_describe_working_storage]{describe_working_storage} \tab Returns information about the working storage of a gateway\cr
@@ -223,7 +223,7 @@ NULL
 #'  \link[=storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume\cr
 #'  \link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway\cr
 #'  \link[=storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway\cr
-#'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to S3\cr
+#'  \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3\cr
 #'  \link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cached inventory of objects for the specified file share\cr
 #'  \link[=storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource\cr
 #'  \link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage\cr
@@ -231,7 +231,7 @@ NULL
 #'  \link[=storagegateway_retrieve_tape_recovery_point]{retrieve_tape_recovery_point} \tab Retrieves the recovery point for the specified virtual tape\cr
 #'  \link[=storagegateway_set_local_console_password]{set_local_console_password} \tab Sets the password for your VM local console\cr
 #'  \link[=storagegateway_set_smb_guest_password]{set_smb_guest_password} \tab Sets the password for the guest user smbguest\cr
-#'  \link[=storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a gateway\cr
+#'  \link[=storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a Tape Gateway or Volume Gateway\cr
 #'  \link[=storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment\cr
 #'  \link[=storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway)\cr
 #'  \link[=storagegateway_update_automatic_tape_creation_policy]{update_automatic_tape_creation_policy} \tab Updates the automatic tape creation policy of a gateway\cr
@@ -280,7 +280,7 @@ storagegateway <- function(config = list(), credentials = list(), endpoint = NUL
 
 .storagegateway$metadata <- list(
   service_name = "storagegateway",
-  endpoints = list("*" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "storagegateway.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "storagegateway.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Storage Gateway",
   api_version = "2013-06-30",
   signing_name = "storagegateway",

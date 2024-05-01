@@ -8,7 +8,8 @@ route53domains_update_domain_contact_privacy(
   DomainName,
   AdminPrivacy = NULL,
   RegistrantPrivacy = NULL,
-  TechPrivacy = NULL
+  TechPrivacy = NULL,
+  BillingPrivacy = NULL
 )
 }
 \arguments{
@@ -16,33 +17,39 @@ route53domains_update_domain_contact_privacy(
 
 \item{AdminPrivacy}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
-either for Amazon Registrar (for .com, .net, and .org domains) or for
-our registrar associate, Gandi (for all other TLDs). If you specify
-\code{false}, WHOIS queries return the information that you entered for the
-admin contact.
+either for Amazon Registrar or for our registrar associate, Gandi. If
+you specify \code{false}, WHOIS queries return the information that you
+entered for the admin contact.
 
 You must specify the same privacy setting for the administrative,
-registrant, and technical contacts.}
+billing, registrant, and technical contacts.}
 
 \item{RegistrantPrivacy}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
-either for Amazon Registrar (for .com, .net, and .org domains) or for
-our registrar associate, Gandi (for all other TLDs). If you specify
-\code{false}, WHOIS queries return the information that you entered for the
-registrant contact (domain owner).
+either for Amazon Registrar or for our registrar associate, Gandi. If
+you specify \code{false}, WHOIS queries return the information that you
+entered for the registrant contact (domain owner).
 
 You must specify the same privacy setting for the administrative,
-registrant, and technical contacts.}
+billing, registrant, and technical contacts.}
 
 \item{TechPrivacy}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
-either for Amazon Registrar (for .com, .net, and .org domains) or for
-our registrar associate, Gandi (for all other TLDs). If you specify
-\code{false}, WHOIS queries return the information that you entered for the
-technical contact.
+either for Amazon Registrar or for our registrar associate, Gandi. If
+you specify \code{false}, WHOIS queries return the information that you
+entered for the technical contact.
 
 You must specify the same privacy setting for the administrative,
-registrant, and technical contacts.}
+billing, registrant, and technical contacts.}
+
+\item{BillingPrivacy}{Whether you want to conceal contact information from WHOIS queries. If
+you specify \code{true}, WHOIS ("who is") queries return contact information
+either for Amazon Registrar or for our registrar associate, Gandi. If
+you specify \code{false}, WHOIS queries return the information that you
+entered for the billing contact.
+
+You must specify the same privacy setting for the administrative,
+billing, registrant, and technical contacts.}
 }
 \description{
 This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, your contact information is replaced with contact information for the registrar or with the phrase "REDACTED FOR PRIVACY", or "On behalf of \<domain name\> owner."

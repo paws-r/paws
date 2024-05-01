@@ -4899,11 +4899,11 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 }
 .glue$operations$get_unfiltered_partitions_metadata <- glue_get_unfiltered_partitions_metadata
 
-#' Retrieves table metadata from the Data Catalog that contains unfiltered
-#' metadata
+#' Allows a third-party analytical engine to retrieve unfiltered table
+#' metadata from the Data Catalog
 #'
 #' @description
-#' Retrieves table metadata from the Data Catalog that contains unfiltered metadata.
+#' Allows a third-party analytical engine to retrieve unfiltered table metadata from the Data Catalog.
 #'
 #' See [https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/](https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/) for full documentation.
 #'
@@ -4914,7 +4914,44 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #' @param Name &#91;required&#93; (Required) Specifies the name of a table for which you are requesting
 #' metadata.
 #' @param AuditContext A structure containing Lake Formation audit context information.
-#' @param SupportedPermissionTypes &#91;required&#93; (Required) A list of supported permission types.
+#' @param SupportedPermissionTypes &#91;required&#93; Indicates the level of filtering a third-party analytical engine is
+#' capable of enforcing when calling the
+#' [`get_unfiltered_table_metadata`][glue_get_unfiltered_table_metadata]
+#' API operation. Accepted values are:
+#' 
+#' -   `COLUMN_PERMISSION` - Column permissions ensure that users can
+#'     access only specific columns in the table. If there are particular
+#'     columns contain sensitive data, data lake administrators can define
+#'     column filters that exclude access to specific columns.
+#' 
+#' -   `CELL_FILTER_PERMISSION` - Cell-level filtering combines column
+#'     filtering (include or exclude columns) and row filter expressions to
+#'     restrict access to individual elements in the table.
+#' 
+#' -   `NESTED_PERMISSION` - Nested permissions combines cell-level
+#'     filtering and nested column filtering to restrict access to columns
+#'     and/or nested columns in specific rows based on row filter
+#'     expressions.
+#' 
+#' -   `NESTED_CELL_PERMISSION` - Nested cell permissions combines nested
+#'     permission with nested cell-level filtering. This allows different
+#'     subsets of nested columns to be restricted based on an array of row
+#'     filter expressions.
+#' 
+#' Note: Each of these permission types follows a hierarchical order where
+#' each subsequent permission type includes all permission of the previous
+#' type.
+#' 
+#' Important: If you provide a supported permission type that doesn't match
+#' the user's level of permissions on the table, then Lake Formation raises
+#' an exception. For example, if the third-party engine calling the
+#' [`get_unfiltered_table_metadata`][glue_get_unfiltered_table_metadata]
+#' operation can enforce only column-level filtering, and the user has
+#' nested cell filtering applied on the table, Lake Formation throws an
+#' exception, and will not return unfiltered table metadata and data access
+#' credentials.
+#' @param ParentResourceArn The resource ARN of the view.
+#' @param RootResourceArn The resource ARN of the root view in a chain of nested views.
 #' @param SupportedDialect A structure specifying the dialect and dialect version used by the query
 #' engine.
 #' @param Permissions The Lake Formation data permissions of the caller on the table. Used to
@@ -4926,14 +4963,14 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_table_metadata
-glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes, SupportedDialect = NULL, Permissions = NULL, QuerySessionContext = NULL) {
+glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes, ParentResourceArn = NULL, RootResourceArn = NULL, SupportedDialect = NULL, Permissions = NULL, QuerySessionContext = NULL) {
   op <- new_operation(
     name = "GetUnfilteredTableMetadata",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
+  input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, ParentResourceArn = ParentResourceArn, RootResourceArn = RootResourceArn, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_table_metadata_output()
   config <- get_config()
   svc <- .glue$service(config)

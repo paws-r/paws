@@ -3,7 +3,7 @@
 \name{lightsail_create_disk}
 \alias{lightsail_create_disk}
 \title{Creates a block storage disk that can be attached to an Amazon Lightsail
-instance in the same Availability Zone (e}
+instance in the same Availability Zone (us-east-2a)}
 \usage{
 lightsail_create_disk(
   diskName,
@@ -14,16 +14,16 @@ lightsail_create_disk(
 )
 }
 \arguments{
-\item{diskName}{[required] The unique Lightsail disk name (e.g., \code{my-disk}).}
+\item{diskName}{[required] The unique Lightsail disk name (\code{my-disk}).}
 
-\item{availabilityZone}{[required] The Availability Zone where you want to create the disk (e.g.,
-\verb{us-east-2a}). Use the same Availability Zone as the Lightsail instance
-to which you want to attach the disk.
+\item{availabilityZone}{[required] The Availability Zone where you want to create the disk (\verb{us-east-2a}).
+Use the same Availability Zone as the Lightsail instance to which you
+want to attach the disk.
 
 Use the \verb{get regions} operation to list the Availability Zones where
 Lightsail is currently available.}
 
-\item{sizeInGb}{[required] The size of the disk in GB (e.g., \code{32}).}
+\item{sizeInGb}{[required] The size of the disk in GB (\code{32}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
@@ -34,7 +34,7 @@ resource after it's created.}
 disk.}
 }
 \description{
-Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., \verb{us-east-2a}).
+Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (\verb{us-east-2a}).
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_create_disk/} for full documentation.
 }

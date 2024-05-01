@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_start_investigation}
 \alias{detective_start_investigation}
-\title{initiate an investigation on an entity in a graph}
+\title{Detective investigations lets you investigate IAM users and IAM roles
+using indicators of compromise}
 \usage{
 detective_start_investigation(
   GraphArn,
@@ -12,18 +13,18 @@ detective_start_investigation(
 )
 }
 \arguments{
-\item{GraphArn}{[required] The ARN of the behavior graph.}
+\item{GraphArn}{[required] The Amazon Resource Name (ARN) of the behavior graph.}
 
 \item{EntityArn}{[required] The unique Amazon Resource Name (ARN) of the IAM user and IAM role.}
 
 \item{ScopeStartTime}{[required] The data and time when the investigation began. The value is an UTC
 ISO8601 formatted string. For example, \verb{2021-08-18T16:35:56.284Z}.}
 
-\item{ScopeEndTime}{[required] The data and time when the investigation began. The value is an UTC
+\item{ScopeEndTime}{[required] The data and time when the investigation ended. The value is an UTC
 ISO8601 formatted string. For example, \verb{2021-08-18T16:35:56.284Z}.}
 }
 \description{
-initiate an investigation on an entity in a graph
+Detective investigations lets you investigate IAM users and IAM roles using indicators of compromise. An indicator of compromise (IOC) is an artifact observed in or on a network, system, or environment that can (with a high level of confidence) identify malicious activity or a security incident. \code{\link[=detective_start_investigation]{start_investigation}} initiates an investigation on an entity in a behavior graph.
 
 See \url{https://www.paws-r-sdk.com/docs/detective_start_investigation/} for full documentation.
 }

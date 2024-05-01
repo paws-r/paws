@@ -34,8 +34,8 @@ snapshots on an Outpost, specify the ARN of the destination Outpost.
 The snapshots must be created on the same Outpost as the instance.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot}{Create multi-volume local snapshots from instances on an Outpost}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-multivol-snapshot}{Create multi-volume local snapshots from instances on an Outpost}
+in the \emph{Amazon EBS User Guide}.}
 
 \item{TagSpecifications}{Tags to apply to every snapshot specified by the instance.}
 

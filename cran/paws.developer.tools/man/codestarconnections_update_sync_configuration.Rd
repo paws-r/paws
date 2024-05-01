@@ -11,7 +11,9 @@ codestarconnections_update_sync_configuration(
   RepositoryLinkId = NULL,
   ResourceName,
   RoleArn = NULL,
-  SyncType
+  SyncType,
+  PublishDeploymentStatus = NULL,
+  TriggerResourceUpdateOn = NULL
 )
 }
 \arguments{
@@ -27,6 +29,11 @@ to be updated.}
 \item{RoleArn}{The ARN of the IAM role for the sync configuration to be updated.}
 
 \item{SyncType}{[required] The sync type for the sync configuration to be updated.}
+
+\item{PublishDeploymentStatus}{Whether to enable or disable publishing of deployment status to source
+providers.}
+
+\item{TriggerResourceUpdateOn}{When to trigger Git sync to begin the stack update.}
 }
 \description{
 Updates the sync configuration for your connection and a specified external Git repository.

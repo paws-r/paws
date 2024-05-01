@@ -10,7 +10,7 @@ marketplacecatalog_batch_describe_entities(EntityRequestList)
 \item{EntityRequestList}{[required] List of entity IDs and the catalogs the entities are present in.}
 }
 \description{
-Returns metadata and content for multiple entities.
+Returns metadata and content for multiple entities. This is the Batch version of the \code{\link[=marketplacecatalog_describe_entity]{describe_entity}} API and uses the same IAM permission action as \code{\link[=marketplacecatalog_describe_entity]{describe_entity}} API.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_batch_describe_entities/} for full documentation.
 }

@@ -7,20 +7,14 @@ representation of a cryptographic key, that is unique in your account
 and Amazon Web Services Region}
 \usage{
 paymentcryptographycontrolplane_create_key(
-  Enabled = NULL,
-  Exportable,
   KeyAttributes,
   KeyCheckValueAlgorithm = NULL,
+  Exportable,
+  Enabled = NULL,
   Tags = NULL
 )
 }
 \arguments{
-\item{Enabled}{Specifies whether to enable the key. If the key is enabled, it is
-activated for use within the service. If the key is not enabled, then it
-is created but not activated. The default value is enabled.}
-
-\item{Exportable}{[required] Specifies whether the key is exportable from the service.}
-
 \item{KeyAttributes}{[required] The role of the key, the algorithm it supports, and the cryptographic
 operations allowed with the key. This data is immutable after the key is
 created.}
@@ -34,6 +28,12 @@ value of zero, with the key to be checked and retaining the 3 highest
 order bytes of the encrypted result. For AES keys, the KCV is computed
 using a CMAC algorithm where the input data is 16 bytes of zero and
 retaining the 3 highest order bytes of the encrypted result.}
+
+\item{Exportable}{[required] Specifies whether the key is exportable from the service.}
+
+\item{Enabled}{Specifies whether to enable the key. If the key is enabled, it is
+activated for use within the service. If the key is not enabled, then it
+is created but not activated. The default value is enabled.}
 
 \item{Tags}{Assigns one or more tags to the Amazon Web Services Payment Cryptography
 key. Use this parameter to tag a key when it is created. To tag an

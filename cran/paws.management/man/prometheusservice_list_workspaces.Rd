@@ -2,26 +2,36 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_list_workspaces}
 \alias{prometheusservice_list_workspaces}
-\title{Lists all AMP workspaces, including workspaces being created or deleted}
+\title{Lists all of the Amazon Managed Service for Prometheus workspaces in
+your account}
 \usage{
 prometheusservice_list_workspaces(
-  nextToken = NULL,
   alias = NULL,
-  maxResults = NULL
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
-\item{nextToken}{Pagination token to request the next page in a paginated list. This
-token is obtained from the output of the previous ListWorkspaces
-request.}
+\item{alias}{If this is included, it filters the results to only the workspaces with
+names that start with the value that you specify here.
 
-\item{alias}{Optional filter for workspace alias. Only the workspaces with aliases
-that begin with this value will be returned.}
+Amazon Managed Service for Prometheus will automatically strip any blank
+spaces from the beginning and end of the alias that you specify.}
 
-\item{maxResults}{Maximum results to return in response (default=100, maximum=1000).}
+\item{maxResults}{The maximum number of workspaces to return per request. The default is
+100.}
+
+\item{nextToken}{The token for the next set of items to return. You receive this token
+from a previous call, and use it to get the next page of results. The
+other parameters must be the same as the initial call.
+
+For example, if your initial request has \code{maxResults} of 10, and there
+are 12 workspaces to return, then your initial request will return 10
+and a \code{nextToken}. Using the next token in a subsequent call will return
+the remaining 2 workspaces.}
 }
 \description{
-Lists all AMP workspaces, including workspaces being created or deleted.
+Lists all of the Amazon Managed Service for Prometheus workspaces in your account. This includes workspaces being created or deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/} for full documentation.
 }

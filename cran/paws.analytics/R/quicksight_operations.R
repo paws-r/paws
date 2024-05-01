@@ -84,7 +84,7 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_create_account_subscription/](https://www.paws-r-sdk.com/docs/quicksight_create_account_subscription/) for full documentation.
 #'
-#' @param Edition &#91;required&#93; The edition of Amazon QuickSight that you want your account to have.
+#' @param Edition The edition of Amazon QuickSight that you want your account to have.
 #' Currently, you can choose from `ENTERPRISE` or `ENTERPRISE_AND_Q`.
 #' 
 #' If you choose `ENTERPRISE_AND_Q`, the following parameters are required:
@@ -122,9 +122,9 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' @param DirectoryId The ID of the Active Directory that is associated with your Amazon
 #' QuickSight account.
 #' @param AdminGroup The admin group associated with your Active Directory or IAM Identity
-#' Center account. This field is required if `ACTIVE_DIRECTORY` or
-#' `IAM_IDENTITY_CENTER` is the selected authentication method of the new
-#' Amazon QuickSight account.
+#' Center account. Either this field or the `AdminProGroup` field is
+#' required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected
+#' authentication method of the new Amazon QuickSight account.
 #' 
 #' For more information about using IAM Identity Center in Amazon
 #' QuickSight, see [Using IAM Identity Center with Amazon QuickSight
@@ -159,6 +159,44 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' Amazon QuickSight Enterprise
 #' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
 #' in the Amazon QuickSight User Guide.
+#' @param AdminProGroup The admin pro group associated with your Active Directory or IAM
+#' Identity Center account. Either this field or the `AdminGroup` field is
+#' required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected
+#' authentication method of the new Amazon QuickSight account.
+#' 
+#' For more information about using IAM Identity Center in Amazon
+#' QuickSight, see [Using IAM Identity Center with Amazon QuickSight
+#' Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html)
+#' in the Amazon QuickSight User Guide. For more information about using
+#' Active Directory in Amazon QuickSight, see [Using Active Directory with
+#' Amazon QuickSight Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
+#' in the Amazon QuickSight User Guide.
+#' @param AuthorProGroup The author pro group associated with your Active Directory or IAM
+#' Identity Center account.
+#' 
+#' For more information about using IAM Identity Center in Amazon
+#' QuickSight, see [Using IAM Identity Center with Amazon QuickSight
+#' Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html)
+#' in the Amazon QuickSight User Guide. For more information about using
+#' Active Directory in Amazon QuickSight, see [Using Active Directory with
+#' Amazon QuickSight Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
+#' in the Amazon QuickSight User Guide.
+#' @param ReaderProGroup The reader pro group associated with your Active Directory or IAM
+#' Identity Center account.
+#' 
+#' For more information about using IAM Identity Center in Amazon
+#' QuickSight, see [Using IAM Identity Center with Amazon QuickSight
+#' Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/sec-identity-management-identity-center.html)
+#' in the Amazon QuickSight User Guide. For more information about using
+#' Active Directory in Amazon QuickSight, see [Using Active Directory with
+#' Amazon QuickSight Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
+#' in the Amazon QuickSight User Guide.
 #' @param FirstName The first name of the author of the Amazon QuickSight account to use for
 #' future communications. This field is required if `ENTERPPRISE_AND_Q` is
 #' the selected edition of the new Amazon QuickSight account.
@@ -172,18 +210,19 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' to use for future communications. This field is required if
 #' `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight
 #' account.
+#' @param IAMIdentityCenterInstanceArn The Amazon Resource Name (ARN) for the IAM Identity Center instance.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_account_subscription
-quicksight_create_account_subscription <- function(Edition, AuthenticationMethod, AwsAccountId, AccountName, NotificationEmail, ActiveDirectoryName = NULL, Realm = NULL, DirectoryId = NULL, AdminGroup = NULL, AuthorGroup = NULL, ReaderGroup = NULL, FirstName = NULL, LastName = NULL, EmailAddress = NULL, ContactNumber = NULL) {
+quicksight_create_account_subscription <- function(Edition = NULL, AuthenticationMethod, AwsAccountId, AccountName, NotificationEmail, ActiveDirectoryName = NULL, Realm = NULL, DirectoryId = NULL, AdminGroup = NULL, AuthorGroup = NULL, ReaderGroup = NULL, AdminProGroup = NULL, AuthorProGroup = NULL, ReaderProGroup = NULL, FirstName = NULL, LastName = NULL, EmailAddress = NULL, ContactNumber = NULL, IAMIdentityCenterInstanceArn = NULL) {
   op <- new_operation(
     name = "CreateAccountSubscription",
     http_method = "POST",
     http_path = "/account/{AwsAccountId}",
     paginator = list()
   )
-  input <- .quicksight$create_account_subscription_input(Edition = Edition, AuthenticationMethod = AuthenticationMethod, AwsAccountId = AwsAccountId, AccountName = AccountName, NotificationEmail = NotificationEmail, ActiveDirectoryName = ActiveDirectoryName, Realm = Realm, DirectoryId = DirectoryId, AdminGroup = AdminGroup, AuthorGroup = AuthorGroup, ReaderGroup = ReaderGroup, FirstName = FirstName, LastName = LastName, EmailAddress = EmailAddress, ContactNumber = ContactNumber)
+  input <- .quicksight$create_account_subscription_input(Edition = Edition, AuthenticationMethod = AuthenticationMethod, AwsAccountId = AwsAccountId, AccountName = AccountName, NotificationEmail = NotificationEmail, ActiveDirectoryName = ActiveDirectoryName, Realm = Realm, DirectoryId = DirectoryId, AdminGroup = AdminGroup, AuthorGroup = AuthorGroup, ReaderGroup = ReaderGroup, AdminProGroup = AdminProGroup, AuthorProGroup = AuthorProGroup, ReaderProGroup = ReaderProGroup, FirstName = FirstName, LastName = LastName, EmailAddress = EmailAddress, ContactNumber = ContactNumber, IAMIdentityCenterInstanceArn = IAMIdentityCenterInstanceArn)
   output <- .quicksight$create_account_subscription_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -3353,9 +3392,15 @@ quicksight_describe_vpc_connection <- function(AwsAccountId, VPCConnectionId) {
 #' the *Amazon QuickSight User Guide*.
 #' @param AuthorizedResourceArns &#91;required&#93; The Amazon Resource Names (ARNs) for the Amazon QuickSight resources
 #' that the user is authorized to access during the lifetime of the
-#' session. If you choose `Dashboard` embedding experience, pass the list
-#' of dashboard ARNs in the account that you want the user to be able to
-#' view. Currently, you can pass up to 25 dashboard ARNs in each API call.
+#' session.
+#' 
+#' If you choose `Dashboard` embedding experience, pass the list of
+#' dashboard ARNs in the account that you want the user to be able to view.
+#' 
+#' If you want to make changes to the theme of your embedded content, pass
+#' a list of theme ARNs that the anonymous users need access to.
+#' 
+#' Currently, you can pass up to 25 theme ARNs in each API call.
 #' @param ExperienceConfiguration &#91;required&#93; The configuration of the experience that you are embedding.
 #' @param AllowedDomains The domains that you want to add to the allow list for access to the
 #' generated URL that is then embedded. This optional parameter overrides
@@ -3401,9 +3446,10 @@ quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, Sessi
 #' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be in
 #' \[15-600\] minutes range.
 #' @param UserArn &#91;required&#93; The Amazon Resource Name for the registered user.
-#' @param ExperienceConfiguration &#91;required&#93; The experience you are embedding. For registered users, you can embed
-#' Amazon QuickSight dashboards, Amazon QuickSight visuals, the Amazon
-#' QuickSight Q search bar, or the entire Amazon QuickSight console.
+#' @param ExperienceConfiguration &#91;required&#93; The experience that you want to embed. For registered users, you can
+#' embed Amazon QuickSight dashboards, Amazon QuickSight visuals, the
+#' Amazon QuickSight Q search bar, the Amazon QuickSight Generative Q&A
+#' experience, or the entire Amazon QuickSight console.
 #' @param AllowedDomains The domains that you want to add to the allow list for access to the
 #' generated URL that is then embedded. This optional parameter overrides
 #' the static domains that are configured in the Manage QuickSight menu in
@@ -4640,13 +4686,8 @@ quicksight_put_data_set_refresh_properties <- function(AwsAccountId, DataSetId, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_register_user/](https://www.paws-r-sdk.com/docs/quicksight_register_user/) for full documentation.
 #'
-#' @param IdentityType &#91;required&#93; Amazon QuickSight supports several ways of managing the identity of
-#' users. This parameter accepts two values:
-#' 
-#' -   `IAM`: A user whose identity maps to an existing IAM user or role.
-#' 
-#' -   `QUICKSIGHT`: A user whose identity is owned and managed internally
-#'     by Amazon QuickSight.
+#' @param IdentityType &#91;required&#93; The identity type that your Amazon QuickSight account uses to manage the
+#' identity of users.
 #' @param Email &#91;required&#93; The email address of the user that you want to register.
 #' @param UserRole &#91;required&#93; The Amazon QuickSight role for the user. The user role can be one of the
 #' following:
@@ -4703,7 +4744,7 @@ quicksight_put_data_set_refresh_properties <- function(AwsAccountId, DataSetId, 
 #' Amazon QuickSight custom permissions are applied through IAM policies.
 #' Therefore, they override the permissions typically granted by assigning
 #' Amazon QuickSight users to one of the default security cohorts in Amazon
-#' QuickSight (admin, author, reader).
+#' QuickSight (admin, author, reader, admin pro, author pro, reader pro).
 #' 
 #' This feature is available only to Amazon QuickSight Enterprise edition
 #' subscriptions.
@@ -5109,10 +5150,11 @@ quicksight_start_asset_bundle_import_job <- function(AwsAccountId, AssetBundleIm
 }
 .quicksight$operations$start_asset_bundle_import_job <- quicksight_start_asset_bundle_import_job
 
-#' Starts an asynchronous job that generates a dashboard snapshot
+#' Starts an asynchronous job that generates a snapshot of a dashboard's
+#' output
 #'
 #' @description
-#' Starts an asynchronous job that generates a dashboard snapshot. You can request one of the following format configurations per API call.
+#' Starts an asynchronous job that generates a snapshot of a dashboard's output. You can request one or several of the following format configurations in each API call.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job/](https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job/) for full documentation.
 #'
@@ -5751,8 +5793,10 @@ quicksight_update_folder <- function(AwsAccountId, FolderId, Name) {
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder to
 #' update.
 #' @param FolderId &#91;required&#93; The ID of the folder.
-#' @param GrantPermissions The permissions that you want to grant on a resource.
-#' @param RevokePermissions The permissions that you want to revoke from a resource.
+#' @param GrantPermissions The permissions that you want to grant on a resource. Namespace ARNs are
+#' not supported `Principal` values for folder permissions.
+#' @param RevokePermissions The permissions that you want to revoke from a resource. Namespace ARNs
+#' are not supported `Principal` values for folder permissions.
 #'
 #' @keywords internal
 #'
@@ -5893,26 +5937,31 @@ quicksight_update_identity_propagation_config <- function(AwsAccountId, Service,
 #' Updates the content and status of IP rules
 #'
 #' @description
-#' Updates the content and status of IP rules. To use this operation, you must provide the entire map of rules. You can use the [`describe_ip_restriction`][quicksight_describe_ip_restriction] operation to get the current rule map.
+#' Updates the content and status of IP rules. Traffic from a source is allowed when the source satisfies either the `IpRestrictionRule`, `VpcIdRestrictionRule`, or `VpcEndpointIdRestrictionRule`. To use this operation, you must provide the entire map of rules. You can use the [`describe_ip_restriction`][quicksight_describe_ip_restriction] operation to get the current rule map.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_update_ip_restriction/](https://www.paws-r-sdk.com/docs/quicksight_update_ip_restriction/) for full documentation.
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IP rules.
 #' @param IpRestrictionRuleMap A map that describes the updated IP rules with CIDR ranges and
 #' descriptions.
+#' @param VpcIdRestrictionRuleMap A map of VPC IDs and their corresponding rules. When you configure this
+#' parameter, traffic from all VPC endpoints that are present in the
+#' specified VPC is allowed.
+#' @param VpcEndpointIdRestrictionRuleMap A map of allowed VPC endpoint IDs and their corresponding rule
+#' descriptions.
 #' @param Enabled A value that specifies whether IP rules are turned on.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_ip_restriction
-quicksight_update_ip_restriction <- function(AwsAccountId, IpRestrictionRuleMap = NULL, Enabled = NULL) {
+quicksight_update_ip_restriction <- function(AwsAccountId, IpRestrictionRuleMap = NULL, VpcIdRestrictionRuleMap = NULL, VpcEndpointIdRestrictionRuleMap = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "UpdateIpRestriction",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/ip-restriction",
     paginator = list()
   )
-  input <- .quicksight$update_ip_restriction_input(AwsAccountId = AwsAccountId, IpRestrictionRuleMap = IpRestrictionRuleMap, Enabled = Enabled)
+  input <- .quicksight$update_ip_restriction_input(AwsAccountId = AwsAccountId, IpRestrictionRuleMap = IpRestrictionRuleMap, VpcIdRestrictionRuleMap = VpcIdRestrictionRuleMap, VpcEndpointIdRestrictionRuleMap = VpcEndpointIdRestrictionRuleMap, Enabled = Enabled)
   output <- .quicksight$update_ip_restriction_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -6020,6 +6069,44 @@ quicksight_update_role_custom_permission <- function(CustomPermissionsName, Role
   return(response)
 }
 .quicksight$operations$update_role_custom_permission <- quicksight_update_role_custom_permission
+
+#' Updates the SPICE capacity configuration for a Amazon QuickSight account
+#'
+#' @description
+#' Updates the SPICE capacity configuration for a Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_spice_capacity_configuration/](https://www.paws-r-sdk.com/docs/quicksight_update_spice_capacity_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the SPICE
+#' configuration that you want to update.
+#' @param PurchaseMode &#91;required&#93; Determines how SPICE capacity can be purchased. The following options
+#' are available.
+#' 
+#' -   `MANUAL`: SPICE capacity can only be purchased manually.
+#' 
+#' -   `AUTO_PURCHASE`: Extra SPICE capacity is automatically purchased on
+#'     your behalf as needed. SPICE capacity can also be purchased manually
+#'     with this option.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_spice_capacity_configuration
+quicksight_update_spice_capacity_configuration <- function(AwsAccountId, PurchaseMode) {
+  op <- new_operation(
+    name = "UpdateSPICECapacityConfiguration",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/spice-capacity-configuration",
+    paginator = list()
+  )
+  input <- .quicksight$update_spice_capacity_configuration_input(AwsAccountId = AwsAccountId, PurchaseMode = PurchaseMode)
+  output <- .quicksight$update_spice_capacity_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_spice_capacity_configuration <- quicksight_update_spice_capacity_configuration
 
 #' Updates a template from an existing Amazon QuickSight analysis or
 #' another template
@@ -6376,6 +6463,20 @@ quicksight_update_topic_refresh_schedule <- function(AwsAccountId, TopicId, Data
 #' 
 #' -   `ADMIN`: A user who is an author, who can also manage Amazon
 #'     QuickSight settings.
+#' 
+#' -   `READER_PRO`: Reader Pro adds Generative BI capabilities to the
+#'     Reader role. Reader Pros have access to Amazon Q Business, can build
+#'     stories with Amazon Q, and can generate executive summaries from
+#'     dashboards.
+#' 
+#' -   `AUTHOR_PRO`: Author Pro adds Generative BI capabilities to the
+#'     Author role. Author Pros can author dashboards with natural language
+#'     with Amazon Q, build stories with Amazon Q, create Topics for Q&A,
+#'     and generate executive summaries from dashboards.
+#' 
+#' -   `ADMIN_PRO`: Admin Pros are Author Pros who can also manage Amazon
+#'     QuickSight administrative settings. Admin Pro users are billed at
+#'     Author Pro pricing.
 #' 
 #' The name of the Amazon QuickSight role is invisible to the user except
 #' for the console screens dealing with permissions.

@@ -162,7 +162,7 @@ worklink <- function(config = list(), credentials = list(), endpoint = NULL, reg
 
 .worklink$metadata <- list(
   service_name = "worklink",
-  endpoints = list("*" = list(endpoint = "worklink.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "worklink.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "worklink.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "worklink.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "worklink.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "worklink.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "worklink.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "worklink.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "worklink.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "worklink.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WorkLink",
   api_version = "2018-09-25",
   signing_name = "worklink",

@@ -6,7 +6,7 @@
 \usage{
 kms_put_key_policy(
   KeyId,
-  PolicyName,
+  PolicyName = NULL,
   Policy,
   BypassPolicyLockoutSafetyCheck = NULL
 )
@@ -26,7 +26,8 @@ For example:
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{PolicyName}{[required] The name of the key policy. The only valid value is \code{default}.}
+\item{PolicyName}{The name of the key policy. If no policy name is specified, the default
+value is \code{default}. The only valid value is \code{default}.}
 
 \item{Policy}{[required] The key policy to attach to the KMS key.
 

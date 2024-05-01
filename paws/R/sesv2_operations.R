@@ -617,6 +617,12 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL, ScalingMode = 
 #'           Data = "string",
 #'           Charset = "string"
 #'         )
+#'       ),
+#'       Headers = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
 #'       )
 #'     ),
 #'     Raw = list(
@@ -625,7 +631,13 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL, ScalingMode = 
 #'     Template = list(
 #'       TemplateName = "string",
 #'       TemplateArn = "string",
-#'       TemplateData = "string"
+#'       TemplateData = "string",
+#'       Headers = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -1622,6 +1634,8 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #' @usage
 #' sesv2_get_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2325,6 +2339,8 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #'
 #' @usage
 #' sesv2_get_deliverability_dashboard_options()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -4357,9 +4373,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' 
 #' If the value is `false`, then your account is in the *sandbox*. When
 #' your account is in the sandbox, you can only send email to verified
-#' identities. Additionally, the maximum number of emails you can send in a
-#' 24-hour period (your sending quota) is 200, and the maximum number of
-#' emails you can send per second (your maximum sending rate) is 1.
+#' identities.
 #' 
 #' If the value is `true`, then your account has production access. When
 #' your account has production access, you can send email to any address.
@@ -5547,7 +5561,13 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'     Template = list(
 #'       TemplateName = "string",
 #'       TemplateArn = "string",
-#'       TemplateData = "string"
+#'       TemplateData = "string",
+#'       Headers = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   BulkEmailEntries = list(
@@ -5736,7 +5756,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
-#' Simple message Raw message or a template Message.
+#' Simple message, Raw message, or a Templated message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using the [`send_email`][sesv2_send_email] operation. Tags
 #' correspond to characteristics of the email that you define, so that you
@@ -5789,6 +5809,12 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #'           Data = "string",
 #'           Charset = "string"
 #'         )
+#'       ),
+#'       Headers = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
 #'       )
 #'     ),
 #'     Raw = list(
@@ -5797,7 +5823,13 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #'     Template = list(
 #'       TemplateName = "string",
 #'       TemplateArn = "string",
-#'       TemplateData = "string"
+#'       TemplateData = "string",
+#'       Headers = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   EmailTags = list(
@@ -6090,9 +6122,11 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
 #' Updates a contact's preferences for a list
 #'
 #' @description
-#' Updates a contact's preferences for a list. It is not necessary to
-#' specify all existing topic preferences in the TopicPreferences object,
-#' just the ones that need updating.
+#' Updates a contact's preferences for a list.
+#' 
+#' You must specify all existing topic preferences in the
+#' `TopicPreferences` object, not just the ones that need updating;
+#' otherwise, all your existing preferences will be removed.
 #'
 #' @usage
 #' sesv2_update_contact(ContactListName, EmailAddress, TopicPreferences,

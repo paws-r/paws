@@ -594,6 +594,8 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center identity source. To
 #' configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
+#' This is useful for user context filtering, where search results are
+#' filtered based on the user or their group access to documents.
 #'
 #' @keywords internal
 #'
@@ -834,10 +836,10 @@ kendra_delete_faq <- function(Id, IndexId) {
 }
 .kendra$operations$delete_faq <- kendra_delete_faq
 
-#' Deletes an existing Amazon Kendra index
+#' Deletes an Amazon Kendra index
 #'
 #' @description
-#' Deletes an existing Amazon Kendra index. An exception is not thrown if the index is already being deleted. While the index is being deleted, the `Status` field returned by a call to the [`describe_index`][kendra_describe_index] API is set to `DELETING`.
+#' Deletes an Amazon Kendra index. An exception is not thrown if the index is already being deleted. While the index is being deleted, the `Status` field returned by a call to the [`describe_index`][kendra_describe_index] API is set to `DELETING`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_delete_index/](https://www.paws-r-sdk.com/docs/kendra_delete_index/) for full documentation.
 #'
@@ -950,10 +952,10 @@ kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
 }
 .kendra$operations$delete_query_suggestions_block_list <- kendra_delete_query_suggestions_block_list
 
-#' Deletes an existing Amazon Kendra thesaurus
+#' Deletes an Amazon Kendra thesaurus
 #'
 #' @description
-#' Deletes an existing Amazon Kendra thesaurus.
+#' Deletes an Amazon Kendra thesaurus.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_delete_thesaurus/](https://www.paws-r-sdk.com/docs/kendra_delete_thesaurus/) for full documentation.
 #'
@@ -1135,10 +1137,10 @@ kendra_describe_featured_results_set <- function(IndexId, FeaturedResultsSetId) 
 }
 .kendra$operations$describe_featured_results_set <- kendra_describe_featured_results_set
 
-#' Gets information about an existing Amazon Kendra index
+#' Gets information about an Amazon Kendra index
 #'
 #' @description
-#' Gets information about an existing Amazon Kendra index.
+#' Gets information about an Amazon Kendra index.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_describe_index/](https://www.paws-r-sdk.com/docs/kendra_describe_index/) for full documentation.
 #'
@@ -1260,10 +1262,10 @@ kendra_describe_query_suggestions_config <- function(IndexId) {
 }
 .kendra$operations$describe_query_suggestions_config <- kendra_describe_query_suggestions_config
 
-#' Gets information about an existing Amazon Kendra thesaurus
+#' Gets information about an Amazon Kendra thesaurus
 #'
 #' @description
-#' Gets information about an existing Amazon Kendra thesaurus.
+#' Gets information about an Amazon Kendra thesaurus.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_describe_thesaurus/](https://www.paws-r-sdk.com/docs/kendra_describe_thesaurus/) for full documentation.
 #'
@@ -2006,7 +2008,12 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' @param IndexId &#91;required&#93; The identifier of the index for the search.
 #' @param QueryText The input query text for the search. Amazon Kendra truncates queries at
 #' 30 token words, which excludes punctuation and stop words. Truncation
-#' still applies if you use Boolean or more advanced, complex queries.
+#' still applies if you use Boolean or more advanced, complex queries. For
+#' example, `Timeoff AND October AND Category:HR` is counted as 3 tokens:
+#' `timeoff`, `october`, `hr`. For more information, see [Searching with
+#' advanced query
+#' syntax](https://docs.aws.amazon.com/kendra/latest/dg/searching-example.html#searching-index-query-syntax)
+#' in the Amazon Kendra Developer Guide.
 #' @param AttributeFilter Filters search results by document fields/attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
 #' and `OrAllFilters` parameters contain a list of other filters.
@@ -2096,7 +2103,12 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #' @param QueryText &#91;required&#93; The input query text to retrieve relevant passages for the search.
 #' Amazon Kendra truncates queries at 30 token words, which excludes
 #' punctuation and stop words. Truncation still applies if you use Boolean
-#' or more advanced, complex queries.
+#' or more advanced, complex queries. For example,
+#' `Timeoff AND October AND Category:HR` is counted as 3 tokens: `timeoff`,
+#' `october`, `hr`. For more information, see [Searching with advanced
+#' query
+#' syntax](https://docs.aws.amazon.com/kendra/latest/dg/searching-example.html#searching-index-query-syntax)
+#' in the Amazon Kendra Developer Guide.
 #' @param AttributeFilter Filters search results by document fields/attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
 #' and `OrAllFilters` parameters contain a list of other filters.
@@ -2347,10 +2359,10 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
 }
 .kendra$operations$update_access_control_configuration <- kendra_update_access_control_configuration
 
-#' Updates an existing Amazon Kendra data source connector
+#' Updates an Amazon Kendra data source connector
 #'
 #' @description
-#' Updates an existing Amazon Kendra data source connector.
+#' Updates an Amazon Kendra data source connector.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_update_data_source/](https://www.paws-r-sdk.com/docs/kendra_update_data_source/) for full documentation.
 #'
@@ -2487,15 +2499,15 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
 }
 .kendra$operations$update_featured_results_set <- kendra_update_featured_results_set
 
-#' Updates an existing Amazon Kendra index
+#' Updates an Amazon Kendra index
 #'
 #' @description
-#' Updates an existing Amazon Kendra index.
+#' Updates an Amazon Kendra index.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kendra_update_index/](https://www.paws-r-sdk.com/docs/kendra_update_index/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the index you want to update.
-#' @param Name The name of the index you want to update.
+#' @param Name A new name for the index.
 #' @param RoleArn An Identity and Access Management (IAM) role that gives Amazon Kendra
 #' permission to access Amazon CloudWatch logs and metrics.
 #' @param Description A new description for the index.
@@ -2512,9 +2524,11 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
 #' index.
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
-#' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an IAM Identity
-#' Center identity source. To configure this, see
+#' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center identity source. To
+#' configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
+#' This is useful for user context filtering, where search results are
+#' filtered based on the user or their group access to documents.
 #'
 #' @keywords internal
 #'

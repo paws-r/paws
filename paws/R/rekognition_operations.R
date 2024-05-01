@@ -2413,7 +2413,8 @@ rekognition_describe_stream_processor <- function(Name) {
 #' `CustomLabel` object provides the label name (`Name`), the level of
 #' confidence that the image contains the object (`Confidence`), and object
 #' location information, if it exists, for the label on the image
-#' (`Geometry`).
+#' (`Geometry`). Note that for the `DetectCustomLabelsLabels` operation,
+#' `Polygons` are not returned in the `Geometry` section of the response.
 #' 
 #' To filter labels that are returned, specify a value for `MinConfidence`.
 #' `DetectCustomLabelsLabels` only returns labels with a confidence that's
@@ -3131,7 +3132,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'     list(
 #'       Confidence = 123.0,
 #'       Name = "string",
-#'       ParentName = "string"
+#'       ParentName = "string",
+#'       TaxonomyLevel = 123
 #'     )
 #'   ),
 #'   ModerationModelVersion = "string",
@@ -3142,7 +3144,13 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'     ),
 #'     HumanLoopActivationConditionsEvaluationResults = "string"
 #'   ),
-#'   ProjectVersion = "string"
+#'   ProjectVersion = "string",
+#'   ContentTypes = list(
+#'     list(
+#'       Confidence = 123.0,
+#'       Name = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4070,11 +4078,18 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #'       ModerationLabel = list(
 #'         Confidence = 123.0,
 #'         Name = "string",
-#'         ParentName = "string"
+#'         ParentName = "string",
+#'         TaxonomyLevel = 123
 #'       ),
 #'       StartTimestampMillis = 123,
 #'       EndTimestampMillis = 123,
-#'       DurationMillis = 123
+#'       DurationMillis = 123,
+#'       ContentTypes = list(
+#'         list(
+#'           Confidence = 123.0,
+#'           Name = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -4909,6 +4924,9 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #'       Bucket = "string",
 #'       Name = "string",
 #'       Version = "string"
+#'     ),
+#'     ModelVersions = list(
+#'       Moderation = "string"
 #'     )
 #'   ),
 #'   ManifestSummary = list(
@@ -6306,6 +6324,9 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #'           Bucket = "string",
 #'           Name = "string",
 #'           Version = "string"
+#'         ),
+#'         ModelVersions = list(
+#'           Moderation = "string"
 #'         )
 #'       ),
 #'       ManifestSummary = list(

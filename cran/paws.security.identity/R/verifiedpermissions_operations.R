@@ -42,6 +42,68 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 }
 .verifiedpermissions$operations$batch_is_authorized <- verifiedpermissions_batch_is_authorized
 
+#' Makes a series of decisions about multiple authorization requests for
+#' one token
+#'
+#' @description
+#' Makes a series of decisions about multiple authorization requests for one token. The principal in this request comes from an external identity source in the form of an identity or access token, formatted as a [JSON web token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token). The information in the parameters can also define additional context that Verified Permissions can include in the evaluations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_batch_is_authorized_with_token/](https://www.paws-r-sdk.com/docs/verifiedpermissions_batch_is_authorized_with_token/) for full documentation.
+#'
+#' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store. Policies in this policy store will
+#' be used to make an authorization decision for the input.
+#' @param identityToken Specifies an identity (ID) token for the principal that you want to
+#' authorize in each request. This token is provided to you by the identity
+#' provider (IdP) associated with the specified identity source. You must
+#' specify either an `accessToken`, an `identityToken`, or both.
+#' 
+#' Must be an ID token. Verified Permissions returns an error if the
+#' `token_use` claim in the submitted token isn't `id`.
+#' @param accessToken Specifies an access token for the principal that you want to authorize
+#' in each request. This token is provided to you by the identity provider
+#' (IdP) associated with the specified identity source. You must specify
+#' either an `accessToken`, an `identityToken`, or both.
+#' 
+#' Must be an access token. Verified Permissions returns an error if the
+#' `token_use` claim in the submitted token isn't `access`.
+#' @param entities Specifies the list of resources and their associated attributes that
+#' Verified Permissions can examine when evaluating the policies.
+#' 
+#' You can't include principals in this parameter, only resource and action
+#' entities. This parameter can't include any entities of a type that
+#' matches the user or group entity types that you defined in your identity
+#' source.
+#' 
+#' -   The
+#'     [`batch_is_authorized_with_token`][verifiedpermissions_batch_is_authorized_with_token]
+#'     operation takes principal attributes from ***only*** the
+#'     `identityToken` or `accessToken` passed to the operation.
+#' 
+#' -   For action entities, you can include only their `Identifier` and
+#'     `EntityType`.
+#' @param requests &#91;required&#93; An array of up to 30 requests that you want Verified Permissions to
+#' evaluate.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_batch_is_authorized_with_token
+verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, identityToken = NULL, accessToken = NULL, entities = NULL, requests) {
+  op <- new_operation(
+    name = "BatchIsAuthorizedWithToken",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .verifiedpermissions$batch_is_authorized_with_token_input(policyStoreId = policyStoreId, identityToken = identityToken, accessToken = accessToken, entities = entities, requests = requests)
+  output <- .verifiedpermissions$batch_is_authorized_with_token_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$batch_is_authorized_with_token <- verifiedpermissions_batch_is_authorized_with_token
+
 #' Creates a reference to an Amazon Cognito user pool as an external
 #' identity provider (IdP)
 #'
@@ -62,8 +124,11 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #' random one for you.
 #' 
 #' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
+#' different parameters, the retry fails with an `ConflictException` error.
+#' 
+#' Verified Permissions recognizes a `ClientToken` for eight hours. After
+#' eight hours, the next request with the same parameters performs the
+#' operation again regardless of the value of `ClientToken`.
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store in which you want to store this
 #' identity source. Only policies and requests made using this policy store
 #' can reference identities from the identity provider configured in the
@@ -117,8 +182,11 @@ verifiedpermissions_create_identity_source <- function(clientToken = NULL, polic
 #' random one for you.
 #' 
 #' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
+#' different parameters, the retry fails with an `ConflictException` error.
+#' 
+#' Verified Permissions recognizes a `ClientToken` for eight hours. After
+#' eight hours, the next request with the same parameters performs the
+#' operation again regardless of the value of `ClientToken`.
 #' @param policyStoreId &#91;required&#93; Specifies the `PolicyStoreId` of the policy store you want to store the
 #' policy in.
 #' @param definition &#91;required&#93; A structure that specifies the policy type and content to use for the
@@ -165,8 +233,11 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' random one for you.
 #' 
 #' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
+#' different parameters, the retry fails with an `ConflictException` error.
+#' 
+#' Verified Permissions recognizes a `ClientToken` for eight hours. After
+#' eight hours, the next request with the same parameters performs the
+#' operation again regardless of the value of `ClientToken`.
 #' @param validationSettings &#91;required&#93; Specifies the validation setting for this policy store.
 #' 
 #' Currently, the only valid and required value is `Mode`.
@@ -221,8 +292,11 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
 #' random one for you.
 #' 
 #' If you retry the operation with the same `ClientToken`, but with
-#' different parameters, the retry fails with an
-#' `IdempotentParameterMismatch` error.
+#' different parameters, the retry fails with an `ConflictException` error.
+#' 
+#' Verified Permissions recognizes a `ClientToken` for eight hours. After
+#' eight hours, the next request with the same parameters performs the
+#' operation again regardless of the value of `ClientToken`.
 #' @param policyStoreId &#91;required&#93; The ID of the policy store in which to create the policy template.
 #' @param description Specifies a description for the policy template.
 #' @param statement &#91;required&#93; Specifies the content that you want to use for the new policy template,
@@ -581,12 +655,18 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #' be used to make an authorization decision for the input.
 #' @param identityToken Specifies an identity token for the principal to be authorized. This
 #' token is provided to you by the identity provider (IdP) associated with
-#' the specified identity source. You must specify either an `AccessToken`
-#' or an `IdentityToken`, or both.
+#' the specified identity source. You must specify either an `accessToken`,
+#' an `identityToken`, or both.
+#' 
+#' Must be an ID token. Verified Permissions returns an error if the
+#' `token_use` claim in the submitted token isn't `id`.
 #' @param accessToken Specifies an access token for the principal to be authorized. This token
 #' is provided to you by the identity provider (IdP) associated with the
-#' specified identity source. You must specify either an `AccessToken`, or
-#' an `IdentityToken`, or both.
+#' specified identity source. You must specify either an `accessToken`, an
+#' `identityToken`, or both.
+#' 
+#' Must be an access token. Verified Permissions returns an error if the
+#' `token_use` claim in the submitted token isn't `access`.
 #' @param action Specifies the requested action to be authorized. Is the specified
 #' principal authorized to perform this action on the specified resource.
 #' @param resource Specifies the resource for which the authorization decision is made. For
@@ -596,8 +676,10 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #' @param entities Specifies the list of resources and their associated attributes that
 #' Verified Permissions can examine when evaluating the policies.
 #' 
-#' You can include only resource and action entities in this parameter; you
-#' can't include principals.
+#' You can't include principals in this parameter, only resource and action
+#' entities. This parameter can't include any entities of a type that
+#' matches the user or group entity types that you defined in your identity
+#' source.
 #' 
 #' -   The
 #'     [`is_authorized_with_token`][verifiedpermissions_is_authorized_with_token]

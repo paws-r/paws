@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_effective_instance_associations}
 \alias{ssm_describe_effective_instance_associations}
-\title{All associations for the managed node(s)}
+\title{All associations for the managed nodes}
 \usage{
 ssm_describe_effective_instance_associations(
   InstanceId,
@@ -21,7 +21,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-All associations for the managed node(s).
+All associations for the managed nodes.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_describe_effective_instance_associations/} for full documentation.
 }

@@ -6,7 +6,7 @@ NULL
 #' Returns metadata and content for multiple entities
 #'
 #' @description
-#' Returns metadata and content for multiple entities.
+#' Returns metadata and content for multiple entities. This is the Batch version of the [`describe_entity`][marketplacecatalog_describe_entity] API and uses the same IAM permission action as [`describe_entity`][marketplacecatalog_describe_entity] API.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_batch_describe_entities/](https://www.paws-r-sdk.com/docs/marketplacecatalog_batch_describe_entities/) for full documentation.
 #'
@@ -357,18 +357,23 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' @param ClientRequestToken A unique token to identify the request to ensure idempotency.
 #' @param ChangeSetTags A list of objects specifying each key name and value for the
 #' `ChangeSetTags` property.
+#' @param Intent The intent related to the request. The default is `APPLY`. To test your
+#' request before applying changes to your entities, use `VALIDATE`. This
+#' feature is currently available for adding versions to single-AMI
+#' products. For more information, see [Add a new
+#' version](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#ami-add-version).
 #'
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_start_change_set
-marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL, ChangeSetTags = NULL) {
+marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL, ChangeSetTags = NULL, Intent = NULL) {
   op <- new_operation(
     name = "StartChangeSet",
     http_method = "POST",
     http_path = "/StartChangeSet",
     paginator = list()
   )
-  input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags)
+  input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags, Intent = Intent)
   output <- .marketplacecatalog$start_change_set_output()
   config <- get_config()
   svc <- .marketplacecatalog$service(config)

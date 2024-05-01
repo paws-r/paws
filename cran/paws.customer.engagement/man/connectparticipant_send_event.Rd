@@ -2,7 +2,7 @@
 % Please edit documentation in R/connectparticipant_operations.R
 \name{connectparticipant_send_event}
 \alias{connectparticipant_send_event}
-\title{Sends an event}
+\title{The application/vnd}
 \usage{
 connectparticipant_send_event(
   ContentType,
@@ -16,6 +16,7 @@ connectparticipant_send_event(
 \itemize{
 \item application/vnd.amazonaws.connect.event.typing
 \item application/vnd.amazonaws.connect.event.connection.acknowledged
+(will be deprecated on December 31, 2024)
 \item application/vnd.amazonaws.connect.event.message.delivered
 \item application/vnd.amazonaws.connect.event.message.read
 }}
@@ -35,7 +36,7 @@ populates this field. For more information about idempotency, see
 \item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
-Sends an event.
+The \code{application/vnd.amazonaws.connect.event.connection.acknowledged} ContentType will no longer be supported starting December 31, 2024. This event has been migrated to the \code{\link[=connectparticipant_create_participant_connection]{create_participant_connection}} API using the \code{ConnectParticipant} field.
 
 See \url{https://www.paws-r-sdk.com/docs/connectparticipant_send_event/} for full documentation.
 }

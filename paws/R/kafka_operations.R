@@ -556,6 +556,9 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #'         CopyAccessControlListsForTopics = TRUE|FALSE,
 #'         CopyTopicConfigurations = TRUE|FALSE,
 #'         DetectAndCopyNewTopics = TRUE|FALSE,
+#'         StartingPosition = list(
+#'           Type = "LATEST"|"EARLIEST"
+#'         ),
 #'         TopicsToExclude = list(
 #'           "string"
 #'         ),
@@ -2024,6 +2027,9 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #'         CopyAccessControlListsForTopics = TRUE|FALSE,
 #'         CopyTopicConfigurations = TRUE|FALSE,
 #'         DetectAndCopyNewTopics = TRUE|FALSE,
+#'         StartingPosition = list(
+#'           Type = "LATEST"|"EARLIEST"
+#'         ),
 #'         TopicsToExclude = list(
 #'           "string"
 #'         ),

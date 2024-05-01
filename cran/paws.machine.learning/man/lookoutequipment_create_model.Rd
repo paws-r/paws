@@ -18,7 +18,8 @@ lookoutequipment_create_model(
   DataPreProcessingConfiguration = NULL,
   ServerSideKmsKeyId = NULL,
   Tags = NULL,
-  OffCondition = NULL
+  OffCondition = NULL,
+  ModelDiagnosticsOutputConfiguration = NULL
 )
 }
 \arguments{
@@ -68,6 +69,10 @@ Amazon Lookout for Equipment.}
 \item{OffCondition}{Indicates that the asset associated with this sensor has been shut off.
 As long as this condition is met, Lookout for Equipment will not use
 data from this asset for training, evaluation, or inference.}
+
+\item{ModelDiagnosticsOutputConfiguration}{The Amazon S3 location where you want Amazon Lookout for Equipment to
+save the pointwise model diagnostics. You must also specify the
+\code{RoleArn} request parameter.}
 }
 \description{
 Creates a machine learning model for data inference.

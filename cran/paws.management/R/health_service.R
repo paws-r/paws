@@ -195,7 +195,7 @@ health <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .health$metadata <- list(
   service_name = "health",
-  endpoints = list("*" = list(endpoint = "health.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "health.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "health.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "health.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "health.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "health.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "health.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "health.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "health.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "health.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Health",
   api_version = "2016-08-04",
   signing_name = "health",

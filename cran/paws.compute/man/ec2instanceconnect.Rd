@@ -53,9 +53,16 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon EC2 Instance Connect enables system administrators to publish
-one-time use SSH public keys to EC2, providing users a simple and secure
-way to connect to their instances.
+This is the \emph{Amazon EC2 Instance Connect API Reference}. It provides
+descriptions, syntax, and usage examples for each of the actions for
+Amazon EC2 Instance Connect. Amazon EC2 Instance Connect enables system
+administrators to publish one-time use SSH public keys to EC2, providing
+users a simple and secure way to connect to their instances.
+
+To view the Amazon EC2 Instance Connect content in the \emph{Amazon EC2 User
+Guide}, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-eic.html}{Connect to your Linux instance using EC2 Instance Connect}.
+
+For Amazon EC2 APIs, see the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html}{Amazon EC2 API Reference}.
 }
 \section{Service syntax}{
 

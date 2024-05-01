@@ -24,12 +24,18 @@ You can include up to 10 log groups.}
 \item{logStreamNames}{If you specify this parameter, then only log events in the log streams
 that you specify here are included in the Live Tail session.
 
+If you specify this field, you can't also specify the
+\code{logStreamNamePrefixes} field.
+
 You can specify this parameter only if you specify only one log group in
 \code{logGroupIdentifiers}.}
 
 \item{logStreamNamePrefixes}{If you specify this parameter, then only log events in the log streams
 that have names that start with the prefixes that you specify here are
 included in the Live Tail session.
+
+If you specify this field, you can't also specify the \code{logStreamNames}
+field.
 
 You can specify this parameter only if you specify only one log group in
 \code{logGroupIdentifiers}.}

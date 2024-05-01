@@ -19,13 +19,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{LaunchTemplateId}{The ID of the launch template.
 
-You must specify either the \code{LaunchTemplateId} or the
-\code{LaunchTemplateName}, but not both.}
+You must specify either the launch template ID or the launch template
+name, but not both.}
 
 \item{LaunchTemplateName}{The name of the launch template.
 
-You must specify either the \code{LaunchTemplateName} or the
-\code{LaunchTemplateId}, but not both.}
+You must specify either the launch template ID or the launch template
+name, but not both.}
 
 \item{Versions}{[required] The version numbers of one or more launch template versions to delete.
 You can specify up to 200 launch template version numbers.}

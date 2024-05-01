@@ -2,10 +2,14 @@
 % Please edit documentation in R/cloudwatchinternetmonitor_operations.R
 \name{cloudwatchinternetmonitor_get_health_event}
 \alias{cloudwatchinternetmonitor_get_health_event}
-\title{Gets information the Amazon CloudWatch Internet Monitor has created and
+\title{Gets information that Amazon CloudWatch Internet Monitor has created and
 stored about a health event for a specified monitor}
 \usage{
-cloudwatchinternetmonitor_get_health_event(MonitorName, EventId)
+cloudwatchinternetmonitor_get_health_event(
+  MonitorName,
+  EventId,
+  LinkedAccountId = NULL
+)
 }
 \arguments{
 \item{MonitorName}{[required] The name of the monitor.}
@@ -13,9 +17,15 @@ cloudwatchinternetmonitor_get_health_event(MonitorName, EventId)
 \item{EventId}{[required] The internally-generated identifier of a health event. Because \code{EventID}
 contains the forward slash (“/”) character, you must URL-encode the
 \code{EventID} field in the request URL.}
+
+\item{LinkedAccountId}{The account ID for an account that you've set up cross-account sharing
+for in Amazon CloudWatch Internet Monitor. You configure cross-account
+sharing by using Amazon CloudWatch Observability Access Manager. For
+more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html}{Internet Monitor cross-account observability}
+in the Amazon CloudWatch Internet Monitor User Guide.}
 }
 \description{
-Gets information the Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor. This information includes the impacted locations, and all the information related to the event, by location.
+Gets information that Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor. This information includes the impacted locations, and all the information related to the event, by location.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchinternetmonitor_get_health_event/} for full documentation.
 }

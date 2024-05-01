@@ -38,8 +38,8 @@ The following are the supported volumes sizes for each volume type:
 Default: The existing size is retained.}
 
 \item{VolumeType}{The target EBS volume type of the volume. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html}{Amazon EBS volume types}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html}{Amazon EBS volume types}
+in the \emph{Amazon EBS User Guide}.
 
 Default: The existing type is retained.}
 
@@ -71,11 +71,11 @@ Valid Range: Minimum value of 125. Maximum value of 1000.}
 \item{MultiAttachEnabled}{Specifies whether to enable Amazon EBS Multi-Attach. If you enable
 Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}
 in the same Availability Zone. This parameter is supported with \code{io1}
-and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
+in the \emph{Amazon EBS User Guide}.}
 }
 \description{
-You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you might be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} (Linux instances) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} (Windows instances).
+You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you might be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying EBS volumes, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} in the \emph{Amazon EBS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_modify_volume/} for full documentation.
 }

@@ -44,7 +44,8 @@ Conditional: You must specify either the \code{TemplateBody} or the
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
 or a Systems Manager document. For more information, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
-in the \emph{CloudFormation User Guide}.
+in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
+must start with \verb{https://}.
 
 Conditional: You must specify either the \code{TemplateBody} or the
 \code{TemplateURL} parameter, but not both.}
@@ -64,8 +65,8 @@ creation and updating operations, and for the specified monitoring
 period afterwards.}
 
 \item{TimeoutInMinutes}{The amount of time that can pass before the stack status becomes
-CREATE_FAILED; if \code{DisableRollback} is not set or is set to \code{false}, the
-stack will be rolled back.}
+\code{CREATE_FAILED}; if \code{DisableRollback} is not set or is set to \code{false},
+the stack will be rolled back.}
 
 \item{NotificationARNs}{The Amazon Simple Notification Service (Amazon SNS) topic ARNs to
 publish stack related events. You can find your Amazon SNS topic ARNs
@@ -187,7 +188,8 @@ in the \emph{CloudFormation User Guide}. You can specify either the
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
 policy (maximum size: 16 KB) located in an S3 bucket in the same Region
-as the stack. You can specify either the \code{StackPolicyBody} or the
+as the stack. The location for an Amazon S3 bucket must start with
+\verb{https://}. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.}
 
 \item{Tags}{Key-value pairs to associate with this stack. CloudFormation also

@@ -20,7 +20,8 @@ in the \emph{CloudFormation User Guide}. You can specify either the
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
 policy (maximum size: 16 KB) located in an Amazon S3 bucket in the same
-Amazon Web Services Region as the stack. You can specify either the
+Amazon Web Services Region as the stack. The location for an Amazon S3
+bucket must start with \verb{https://}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 }
 \description{

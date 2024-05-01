@@ -593,7 +593,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' 
 #' -   An external key store with `PUBLIC_ENDPOINT` connectivity cannot use
 #'     the same `XksProxyUriEndpoint` value as an external key store with
-#'     `VPC_ENDPOINT_SERVICE` connectivity in the same Amazon Web Services
+#'     `VPC_ENDPOINT_SERVICE` connectivity in this Amazon Web Services
 #'     Region.
 #' 
 #' -   Each external key store with `VPC_ENDPOINT_SERVICE` connectivity
@@ -2477,7 +2477,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     name = "DescribeCustomKeyStores",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "CustomKeyStores")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "CustomKeyStores")
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
@@ -2883,6 +2883,10 @@ kms_disable_key <- function(KeyId) {
 #' 
 #' -   [`get_key_rotation_status`][kms_get_key_rotation_status]
 #' 
+#' -   [`list_key_rotations`][kms_list_key_rotations]
+#' 
+#' -   [`rotate_key_on_demand`][kms_rotate_key_on_demand]
+#' 
 #' **Eventual consistency**: The KMS API follows an eventual consistency
 #' model. For more information, see [KMS eventual
 #' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
@@ -3152,17 +3156,27 @@ kms_enable_key <- function(KeyId) {
 #'
 #' @description
 #' Enables [automatic rotation of the key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable)
 #' of the specified symmetric encryption KMS key.
 #' 
-#' When you enable automatic rotation of a [customer managed KMS
+#' By default, when you enable automatic rotation of a [customer managed
+#' KMS
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk),
 #' KMS rotates the key material of the KMS key one year (approximately 365
-#' days) from the enable date and every year thereafter. You can monitor
-#' rotation of the key material for your KMS keys in CloudTrail and Amazon
-#' CloudWatch. To disable rotation of the key material in a customer
-#' managed KMS key, use the
-#' [`disable_key_rotation`][kms_disable_key_rotation] operation.
+#' days) from the enable date and every year thereafter. You can use the
+#' optional `RotationPeriodInDays` parameter to specify a custom rotation
+#' period when you enable key rotation, or you can use
+#' `RotationPeriodInDays` to modify the rotation period of a key that you
+#' previously enabled automatic key rotation on.
+#' 
+#' You can monitor rotation of the key material for your KMS keys in
+#' CloudTrail and Amazon CloudWatch. To disable rotation of the key
+#' material in a customer managed KMS key, use the
+#' [`disable_key_rotation`][kms_disable_key_rotation] operation. You can
+#' use the [`get_key_rotation_status`][kms_get_key_rotation_status]
+#' operation to identify any in progress rotations. You can use the
+#' [`list_key_rotations`][kms_list_key_rotations] operation to view the
+#' details of completed rotations.
 #' 
 #' Automatic key rotation is supported only on [symmetric encryption KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks).
@@ -3179,13 +3193,13 @@ kms_enable_key <- function(KeyId) {
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
 #' set the property on the primary key.
 #' 
-#' You cannot enable or disable automatic rotation [Amazon Web Services
+#' You cannot enable or disable automatic rotation of [Amazon Web Services
 #' managed KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' KMS always rotates the key material of Amazon Web Services managed keys
 #' every year. Rotation of [Amazon Web Services owned KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk)
-#' varies.
+#' is managed by the Amazon Web Services service that owns the key.
 #' 
 #' In May 2022, KMS changed the rotation schedule for Amazon Web Services
 #' managed keys from every three years (approximately 1,095 days) to every
@@ -3215,12 +3229,21 @@ kms_enable_key <- function(KeyId) {
 #' 
 #' -   [`get_key_rotation_status`][kms_get_key_rotation_status]
 #' 
+#' -   [`list_key_rotations`][kms_list_key_rotations]
+#' 
+#' -   [`rotate_key_on_demand`][kms_rotate_key_on_demand]
+#' 
+#'     You can perform on-demand
+#'     ([`rotate_key_on_demand`][kms_rotate_key_on_demand]) rotation of the
+#'     key material in customer managed KMS keys, regardless of whether or
+#'     not automatic key rotation is enabled.
+#' 
 #' **Eventual consistency**: The KMS API follows an eventual consistency
 #' model. For more information, see [KMS eventual
 #' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
 #'
 #' @usage
-#' kms_enable_key_rotation(KeyId)
+#' kms_enable_key_rotation(KeyId, RotationPeriodInDays)
 #'
 #' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot enable automatic
 #' rotation of [asymmetric KMS
@@ -3247,6 +3270,17 @@ kms_enable_key <- function(KeyId) {
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param RotationPeriodInDays Use this parameter to specify a custom period of time between each
+#' rotation date. If no value is specified, the default value is 365 days.
+#' 
+#' The rotation period defines the number of days after you enable
+#' automatic key rotation that KMS will rotate your key material, and the
+#' number of days between each automatic rotation thereafter.
+#' 
+#' You can use the
+#' [`kms:RotationPeriodInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-rotation-period-in-days)
+#' condition key to further constrain the values that principals can
+#' specify in the `RotationPeriodInDays` parameter.
 #'
 #' @return
 #' An empty list.
@@ -3254,16 +3288,18 @@ kms_enable_key <- function(KeyId) {
 #' @section Request syntax:
 #' ```
 #' svc$enable_key_rotation(
-#'   KeyId = "string"
+#'   KeyId = "string",
+#'   RotationPeriodInDays = 123
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
-#' # The following example enables automatic annual rotation of the key
-#' # material for the specified KMS key.
+#' # The following example enables automatic rotation with a rotation period
+#' # of 365 days for the specified KMS key.
 #' svc$enable_key_rotation(
-#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   RotationPeriodInDays = 365L
 #' )
 #' }
 #'
@@ -3272,14 +3308,14 @@ kms_enable_key <- function(KeyId) {
 #' @rdname kms_enable_key_rotation
 #'
 #' @aliases kms_enable_key_rotation
-kms_enable_key_rotation <- function(KeyId) {
+kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
   op <- new_operation(
     name = "EnableKeyRotation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$enable_key_rotation_input(KeyId = KeyId)
+  input <- .kms$enable_key_rotation_input(KeyId = KeyId, RotationPeriodInDays = RotationPeriodInDays)
   output <- .kms$enable_key_rotation_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4850,15 +4886,17 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PolicyName &#91;required&#93; Specifies the name of the key policy. The only valid name is `default`.
-#' To get the names of key policies, use
+#' @param PolicyName Specifies the name of the key policy. If no policy name is specified,
+#' the default value is `default`. The only valid name is `default`. To get
+#' the names of key policies, use
 #' [`list_key_policies`][kms_list_key_policies].
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Policy = "string"
+#'   Policy = "string",
+#'   PolicyName = "string"
 #' )
 #' ```
 #'
@@ -4885,7 +4923,7 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
 #' @rdname kms_get_key_policy
 #'
 #' @aliases kms_get_key_policy
-kms_get_key_policy <- function(KeyId, PolicyName) {
+kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
   op <- new_operation(
     name = "GetKeyPolicy",
     http_method = "POST",
@@ -4902,21 +4940,18 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 }
 .kms$operations$get_key_policy <- kms_get_key_policy
 
-#' Gets a Boolean value that indicates whether automatic rotation of the
-#' key material is enabled for the specified KMS key
+#' Provides detailed information about the rotation status for a KMS key,
+#' including whether automatic rotation of the key material is enabled for
+#' the specified KMS key, the rotation period, and the next scheduled
+#' rotation date
 #'
 #' @description
-#' Gets a Boolean value that indicates whether [automatic rotation of the
-#' key
+#' Provides detailed information about the rotation status for a KMS key,
+#' including whether [automatic rotation of the key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
-#' is enabled for the specified KMS key.
-#' 
-#' When you enable automatic rotation for [customer managed KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk),
-#' KMS rotates the key material of the KMS key one year (approximately 365
-#' days) from the enable date and every year thereafter. You can monitor
-#' rotation of the key material for your KMS keys in CloudTrail and Amazon
-#' CloudWatch.
+#' is enabled for the specified KMS key, the [rotation
+#' period](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotation-period),
+#' and the next scheduled rotation date.
 #' 
 #' Automatic key rotation is supported only on [symmetric encryption KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks).
@@ -4942,6 +4977,14 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' is not configurable. KMS always rotates the key material in Amazon Web
 #' Services managed KMS keys every year. The key rotation status for Amazon
 #' Web Services managed KMS keys is always `true`.
+#' 
+#' You can perform on-demand
+#' ([`rotate_key_on_demand`][kms_rotate_key_on_demand]) rotation of the key
+#' material in customer managed KMS keys, regardless of whether or not
+#' automatic key rotation is enabled. You can use GetKeyRotationStatus to
+#' identify the date and time that an in progress on-demand rotation was
+#' initiated. You can use [`list_key_rotations`][kms_list_key_rotations] to
+#' view the details of completed rotations.
 #' 
 #' In May 2022, KMS changed the rotation schedule for Amazon Web Services
 #' managed keys from every three years to every year. For details, see
@@ -4980,6 +5023,10 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' 
 #' -   [`enable_key_rotation`][kms_enable_key_rotation]
 #' 
+#' -   [`list_key_rotations`][kms_list_key_rotations]
+#' 
+#' -   [`rotate_key_on_demand`][kms_rotate_key_on_demand]
+#' 
 #' **Eventual consistency**: The KMS API follows an eventual consistency
 #' model. For more information, see [KMS eventual
 #' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
@@ -5006,7 +5053,15 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   KeyRotationEnabled = TRUE|FALSE
+#'   KeyRotationEnabled = TRUE|FALSE,
+#'   KeyId = "string",
+#'   RotationPeriodInDays = 123,
+#'   NextRotationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   OnDemandRotationStartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -5019,8 +5074,10 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example retrieves the status of automatic annual rotation
-#' # of the key material for the specified KMS key.
+#' # The following example retrieves detailed information about the rotation
+#' # status for a KMS key, including whether automatic key rotation is
+#' # enabled for the specified KMS key, the rotation period, and the next
+#' # scheduled rotation date.
 #' svc$get_key_rotation_status(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
@@ -5483,9 +5540,6 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' might reimport key material to replace key material that expired or key
 #' material that you deleted. You might also reimport key material to
 #' change the expiration model or expiration date of the key material.
-#' Before reimporting key material, if necessary, call
-#' [`delete_imported_key_material`][kms_delete_imported_key_material] to
-#' delete the current imported key material.
 #' 
 #' Each time you import key material into KMS, you can determine whether
 #' (`ExpirationModel`) and when (`ValidTo`) the key material expires. To
@@ -5856,7 +5910,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Aliases")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
@@ -6007,7 +6061,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     name = "ListGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
   output <- .kms$list_grants_output()
@@ -6111,7 +6165,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListKeyPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "PolicyNames")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "PolicyNames")
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
@@ -6122,6 +6176,126 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
   return(response)
 }
 .kms$operations$list_key_policies <- kms_list_key_policies
+
+#' Returns information about all completed key material rotations for the
+#' specified KMS key
+#'
+#' @description
+#' Returns information about all completed key material rotations for the
+#' specified KMS key.
+#' 
+#' You must specify the KMS key in all requests. You can refine the key
+#' rotations list by limiting the number of rotations returned.
+#' 
+#' For detailed information about automatic and on-demand key rotations,
+#' see [Rotating KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a KMS
+#' key in a different Amazon Web Services account.
+#' 
+#' **Required permissions**:
+#' [kms:ListKeyRotations](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   [`enable_key_rotation`][kms_enable_key_rotation]
+#' 
+#' -   [`disable_key_rotation`][kms_disable_key_rotation]
+#' 
+#' -   [`get_key_rotation_status`][kms_get_key_rotation_status]
+#' 
+#' -   [`rotate_key_on_demand`][kms_rotate_key_on_demand]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
+#'
+#' @usage
+#' kms_list_key_rotations(KeyId, Limit, Marker)
+#'
+#' @param KeyId &#91;required&#93; Gets the key rotations for the specified KMS key.
+#' 
+#' Specify the key ID or key ARN of the KMS key.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a KMS key, use
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#' @param Limit Use this parameter to specify the maximum number of items to return.
+#' When this value is present, KMS does not return more than the specified
+#' number of items, but it might return fewer.
+#' 
+#' This value is optional. If you include a value, it must be between 1 and
+#' 1000, inclusive. If you do not include a value, it defaults to 100.
+#' @param Marker Use this parameter in a subsequent request after you receive a response
+#' with truncated results. Set it to the value of `NextMarker` from the
+#' truncated response you just received.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Rotations = list(
+#'     list(
+#'       KeyId = "string",
+#'       RotationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RotationType = "AUTOMATIC"|"ON_DEMAND"
+#'     )
+#'   ),
+#'   NextMarker = "string",
+#'   Truncated = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_key_rotations(
+#'   KeyId = "string",
+#'   Limit = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns information about all completed key
+#' # material rotations for the specified KMS key.
+#' svc$list_key_rotations(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname kms_list_key_rotations
+#'
+#' @aliases kms_list_key_rotations
+kms_list_key_rotations <- function(KeyId, Limit = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListKeyRotations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations")
+  )
+  input <- .kms$list_key_rotations_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
+  output <- .kms$list_key_rotations_output()
+  config <- get_config()
+  svc <- .kms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$list_key_rotations <- kms_list_key_rotations
 
 #' Gets a list of all KMS keys in the caller's Amazon Web Services account
 #' and Region
@@ -6203,7 +6377,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Keys")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Keys")
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
@@ -6319,7 +6493,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListResourceTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Tags")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Tags")
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
@@ -6471,7 +6645,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     name = "ListRetirableGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
+    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal)
   output <- .kms$list_retirable_grants_output()
@@ -6529,7 +6703,8 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param PolicyName &#91;required&#93; The name of the key policy. The only valid value is `default`.
+#' @param PolicyName The name of the key policy. If no policy name is specified, the default
+#' value is `default`. The only valid value is `default`.
 #' @param Policy &#91;required&#93; The key policy to attach to the KMS key.
 #' 
 #' The key policy must meet the following criteria:
@@ -6612,7 +6787,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' @rdname kms_put_key_policy
 #'
 #' @aliases kms_put_key_policy
-kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
+kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
   op <- new_operation(
     name = "PutKeyPolicy",
     http_method = "POST",
@@ -7439,7 +7614,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
 #' Deletes the specified grant. You revoke a grant to terminate the
 #' permissions that the grant allows. For more information, see [Retiring
 #' and revoking
-#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/#grant-delete)
+#' grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete)
 #' in the *Key Management Service Developer Guide* .
 #' 
 #' When you create, retire, or revoke a grant, there might be a brief
@@ -7548,6 +7723,158 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
   return(response)
 }
 .kms$operations$revoke_grant <- kms_revoke_grant
+
+#' Immediately initiates rotation of the key material of the specified
+#' symmetric encryption KMS key
+#'
+#' @description
+#' Immediately initiates rotation of the key material of the specified
+#' symmetric encryption KMS key.
+#' 
+#' You can perform [on-demand
+#' rotation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-on-demand)
+#' of the key material in customer managed KMS keys, regardless of whether
+#' or not [automatic key
+#' rotation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotating-keys-enable-disable)
+#' is enabled. On-demand rotations do not change existing automatic
+#' rotation schedules. For example, consider a KMS key that has automatic
+#' key rotation enabled with a rotation period of 730 days. If the key is
+#' scheduled to automatically rotate on April 14, 2024, and you perform an
+#' on-demand rotation on April 10, 2024, the key will automatically rotate,
+#' as scheduled, on April 14, 2024 and every 730 days thereafter.
+#' 
+#' You can perform on-demand key rotation a **maximum of 10 times** per KMS
+#' key. You can use the KMS console to view the number of remaining
+#' on-demand rotations available for a KMS key.
+#' 
+#' You can use [`get_key_rotation_status`][kms_get_key_rotation_status] to
+#' identify any in progress on-demand rotations. You can use
+#' [`list_key_rotations`][kms_list_key_rotations] to identify the date that
+#' completed on-demand rotations were performed. You can monitor rotation
+#' of the key material for your KMS keys in CloudTrail and Amazon
+#' CloudWatch.
+#' 
+#' On-demand key rotation is supported only on [symmetric encryption KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks).
+#' You cannot perform on-demand rotation of [asymmetric KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html),
+#' [HMAC KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
+#' KMS keys with [imported key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+#' or KMS keys in a [custom key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#' To perform on-demand rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' invoke the on-demand rotation on the primary key.
+#' 
+#' You cannot initiate on-demand rotation of [Amazon Web Services managed
+#' KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' KMS always rotates the key material of Amazon Web Services managed keys
+#' every year. Rotation of [Amazon Web Services owned KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk)
+#' is managed by the Amazon Web Services service that owns the key.
+#' 
+#' The KMS key that you use for this operation must be in a compatible key
+#' state. For details, see [Key states of KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' **Cross-account use**: No. You cannot perform this operation on a KMS
+#' key in a different Amazon Web Services account.
+#' 
+#' **Required permissions**:
+#' [kms:RotateKeyOnDemand](https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html)
+#' (key policy)
+#' 
+#' **Related operations:**
+#' 
+#' -   [`enable_key_rotation`][kms_enable_key_rotation]
+#' 
+#' -   [`disable_key_rotation`][kms_disable_key_rotation]
+#' 
+#' -   [`get_key_rotation_status`][kms_get_key_rotation_status]
+#' 
+#' -   [`list_key_rotations`][kms_list_key_rotations]
+#' 
+#' **Eventual consistency**: The KMS API follows an eventual consistency
+#' model. For more information, see [KMS eventual
+#' consistency](https://docs.aws.amazon.com/kms/latest/developerguide/programming-eventual-consistency.html).
+#'
+#' @usage
+#' kms_rotate_key_on_demand(KeyId)
+#'
+#' @param KeyId &#91;required&#93; Identifies a symmetric encryption KMS key. You cannot perform on-demand
+#' rotation of [asymmetric KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html),
+#' [HMAC KMS
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html),
+#' KMS keys with [imported key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+#' or KMS keys in a [custom key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#' To perform on-demand rotation of a set of related [multi-Region
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate),
+#' invoke the on-demand rotation on the primary key.
+#' 
+#' Specify the key ID or key ARN of the KMS key.
+#' 
+#' For example:
+#' 
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' -   Key ARN:
+#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' 
+#' To get the key ID and key ARN for a KMS key, use
+#' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   KeyId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rotate_key_on_demand(
+#'   KeyId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example immediately initiates rotation of the key material
+#' # for the specified KMS key.
+#' svc$rotate_key_on_demand(
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname kms_rotate_key_on_demand
+#'
+#' @aliases kms_rotate_key_on_demand
+kms_rotate_key_on_demand <- function(KeyId) {
+  op <- new_operation(
+    name = "RotateKeyOnDemand",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kms$rotate_key_on_demand_input(KeyId = KeyId)
+  output <- .kms$rotate_key_on_demand_output()
+  config <- get_config()
+  svc <- .kms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kms$operations$rotate_key_on_demand <- kms_rotate_key_on_demand
 
 #' Schedules the deletion of a KMS key
 #'

@@ -2,18 +2,18 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_start_application}
 \alias{kinesisanalyticsv2_start_application}
-\title{Starts the specified Kinesis Data Analytics application}
+\title{Starts the specified Managed Service for Apache Flink application}
 \usage{
 kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
 
-\item{RunConfiguration}{Identifies the run configuration (start parameters) of a Kinesis Data
-Analytics application.}
+\item{RunConfiguration}{Identifies the run configuration (start parameters) of a Managed Service
+for Apache Flink application.}
 }
 \description{
-Starts the specified Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
+Starts the specified Managed Service for Apache Flink application. After creating an application, you must exclusively call this operation to start your application.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_start_application/} for full documentation.
 }

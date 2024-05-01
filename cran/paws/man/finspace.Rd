@@ -101,6 +101,7 @@ environments.
 \link[paws.management:finspace_create_kx_volume]{create_kx_volume} \tab Creates a new volume with a specific amount of throughput and storage capacity\cr
 \link[paws.management:finspace_delete_environment]{delete_environment} \tab Delete an FinSpace environment\cr
 \link[paws.management:finspace_delete_kx_cluster]{delete_kx_cluster} \tab Deletes a kdb cluster\cr
+\link[paws.management:finspace_delete_kx_cluster_node]{delete_kx_cluster_node} \tab Deletes the specified nodes from a cluster\cr
 \link[paws.management:finspace_delete_kx_database]{delete_kx_database} \tab Deletes the specified database and all of its associated data\cr
 \link[paws.management:finspace_delete_kx_dataview]{delete_kx_dataview} \tab Deletes the specified dataview\cr
 \link[paws.management:finspace_delete_kx_environment]{delete_kx_environment} \tab Deletes the kdb environment\cr

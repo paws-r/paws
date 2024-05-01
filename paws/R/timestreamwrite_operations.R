@@ -688,6 +688,8 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' @usage
 #' timestreamwrite_describe_endpoints()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```

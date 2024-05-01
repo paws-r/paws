@@ -130,19 +130,19 @@ in the \emph{Amazon EC2 User Guide}.}
 \code{\link[=ec2_create_security_group]{create_security_group}}.
 
 If you specify a network interface, you must specify any security groups
-as part of the network interface.}
+as part of the network interface instead of using this parameter.}
 
 \item{SecurityGroups}{[Default VPC] The names of the security groups.
 
 If you specify a network interface, you must specify any security groups
-as part of the network interface.
+as part of the network interface instead of using this parameter.
 
 Default: Amazon EC2 uses the default security group.}
 
 \item{SubnetId}{The ID of the subnet to launch the instance into.
 
 If you specify a network interface, you must specify any subnets as part
-of the network interface.}
+of the network interface instead of using this parameter.}
 
 \item{UserData}{The user data script to make available to the instance. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html}{Run commands on your Linux instance at launch}
@@ -157,7 +157,7 @@ base64-encoded text. User data is limited to 16 KB.}
 of the request. If you do not specify a client token, a randomly
 generated token is used for the request to ensure idempotency.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.
 
 Constraints: Maximum 64 ASCII characters}
 
@@ -192,9 +192,7 @@ system shutdown).
 
 Default: \code{stop}}
 
-\item{NetworkInterfaces}{The network interfaces to associate with the instance. If you specify a
-network interface, you must specify any security groups and subnets as
-part of the network interface.}
+\item{NetworkInterfaces}{The network interfaces to associate with the instance.}
 
 \item{PrivateIpAddress}{The primary IPv4 address. You must specify a value from the IPv4 address
 range of the subnet.
@@ -208,27 +206,14 @@ than one instance in the request.
 You cannot specify this option and the network interfaces option in the
 same request.}
 
-\item{ElasticGpuSpecification}{An elastic GPU to associate with the instance. An Elastic GPU is a GPU
-resource that you can attach to your Windows instance to accelerate the
-graphics performance of your applications. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon EC2 Elastic GPUs}
-in the \emph{Amazon EC2 User Guide}.}
+\item{ElasticGpuSpecification}{An elastic GPU to associate with the instance.
 
-\item{ElasticInferenceAccelerators}{An elastic inference accelerator to associate with the instance. Elastic
-inference accelerators are a resource you can attach to your Amazon EC2
-instances to accelerate your Deep Learning (DL) inference workloads.
+Amazon Elastic Graphics reached end of life on January 8, 2024.}
 
-You cannot specify accelerators from different generations in the same
-request.
+\item{ElasticInferenceAccelerators}{An elastic inference accelerator to associate with the instance.
 
-Starting April 15, 2023, Amazon Web Services will not onboard new
-customers to Amazon Elastic Inference (EI), and will help current
-customers migrate their workloads to options that offer better price and
-performance. After April 15, 2023, new customers will not be able to
-launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-once during the past 30-day period are considered current customers and
-will be able to continue using the service.}
+Amazon Elastic Inference (EI) is no longer available to new customers.
+For more information, see \href{https://aws.amazon.com/machine-learning/elastic-inference/faqs/}{Amazon Elastic Inference FAQs}.}
 
 \item{TagSpecifications}{The tags to apply to the resources that are created during instance
 launch.
@@ -237,7 +222,6 @@ You can specify tags for the following resources only:
 \itemize{
 \item Instances
 \item Volumes
-\item Elastic graphics
 \item Spot Instance requests
 \item Network interfaces
 }
@@ -245,10 +229,9 @@ You can specify tags for the following resources only:
 To tag a resource after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
 
-\item{LaunchTemplate}{The launch template to use to launch the instances. Any parameters that
-you specify in \code{\link[=ec2_run_instances]{run_instances}} override the same
-parameters in the launch template. You can specify either the name or ID
-of a launch template, but not both.}
+\item{LaunchTemplate}{The launch template. Any additional parameters that you specify for the
+new instance overwrite the corresponding parameters included in the
+launch template.}
 
 \item{InstanceMarketOptions}{The market (purchasing) option for the instances.
 

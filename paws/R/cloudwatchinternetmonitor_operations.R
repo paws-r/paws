@@ -194,11 +194,11 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
 }
 .cloudwatchinternetmonitor$operations$delete_monitor <- cloudwatchinternetmonitor_delete_monitor
 
-#' Gets information the Amazon CloudWatch Internet Monitor has created and
+#' Gets information that Amazon CloudWatch Internet Monitor has created and
 #' stored about a health event for a specified monitor
 #'
 #' @description
-#' Gets information the Amazon CloudWatch Internet Monitor has created and
+#' Gets information that Amazon CloudWatch Internet Monitor has created and
 #' stored about a health event for a specified monitor. This information
 #' includes the impacted locations, and all the information related to the
 #' event, by location.
@@ -211,12 +211,19 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
 #' including the impact type and total traffic impact.
 #'
 #' @usage
-#' cloudwatchinternetmonitor_get_health_event(MonitorName, EventId)
+#' cloudwatchinternetmonitor_get_health_event(MonitorName, EventId,
+#'   LinkedAccountId)
 #'
 #' @param MonitorName &#91;required&#93; The name of the monitor.
 #' @param EventId &#91;required&#93; The internally-generated identifier of a health event. Because `EventID`
 #' contains the forward slash (“/”) character, you must URL-encode the
 #' `EventID` field in the request URL.
+#' @param LinkedAccountId The account ID for an account that you've set up cross-account sharing
+#' for in Amazon CloudWatch Internet Monitor. You configure cross-account
+#' sharing by using Amazon CloudWatch Observability Access Manager. For
+#' more information, see [Internet Monitor cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -281,6 +288,9 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
 #'             P95 = 123.0
 #'           )
 #'         )
+#'       ),
+#'       Ipv4Prefixes = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
@@ -295,7 +305,8 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
 #' ```
 #' svc$get_health_event(
 #'   MonitorName = "string",
-#'   EventId = "string"
+#'   EventId = "string",
+#'   LinkedAccountId = "string"
 #' )
 #' ```
 #'
@@ -304,14 +315,14 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
 #' @rdname cloudwatchinternetmonitor_get_health_event
 #'
 #' @aliases cloudwatchinternetmonitor_get_health_event
-cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId) {
+cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId, LinkedAccountId = NULL) {
   op <- new_operation(
     name = "GetHealthEvent",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/HealthEvents/{EventId}",
     paginator = list()
   )
-  input <- .cloudwatchinternetmonitor$get_health_event_input(MonitorName = MonitorName, EventId = EventId)
+  input <- .cloudwatchinternetmonitor$get_health_event_input(MonitorName = MonitorName, EventId = EventId, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$get_health_event_output()
   config <- get_config()
   svc <- .cloudwatchinternetmonitor$service(config)
@@ -320,6 +331,81 @@ cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId) {
   return(response)
 }
 .cloudwatchinternetmonitor$operations$get_health_event <- cloudwatchinternetmonitor_get_health_event
+
+#' Gets information that Amazon CloudWatch Internet Monitor has generated
+#' about an internet event
+#'
+#' @description
+#' Gets information that Amazon CloudWatch Internet Monitor has generated
+#' about an internet event. Internet Monitor displays information about
+#' recent global health events, called internet events, on a global outages
+#' map that is available to all Amazon Web Services customers.
+#' 
+#' The information returned here includes the impacted location, when the
+#' event started and (if the event is over) ended, the type of event
+#' (`PERFORMANCE` or `AVAILABILITY`), and the status (`ACTIVE` or
+#' `RESOLVED`).
+#'
+#' @usage
+#' cloudwatchinternetmonitor_get_internet_event(EventId)
+#'
+#' @param EventId &#91;required&#93; The `EventId` of the internet event to return information for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventId = "string",
+#'   EventArn = "string",
+#'   StartedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClientLocation = list(
+#'     ASName = "string",
+#'     ASNumber = 123,
+#'     Country = "string",
+#'     Subdivision = "string",
+#'     Metro = "string",
+#'     City = "string",
+#'     Latitude = 123.0,
+#'     Longitude = 123.0
+#'   ),
+#'   EventType = "AVAILABILITY"|"PERFORMANCE",
+#'   EventStatus = "ACTIVE"|"RESOLVED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_internet_event(
+#'   EventId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchinternetmonitor_get_internet_event
+#'
+#' @aliases cloudwatchinternetmonitor_get_internet_event
+cloudwatchinternetmonitor_get_internet_event <- function(EventId) {
+  op <- new_operation(
+    name = "GetInternetEvent",
+    http_method = "GET",
+    http_path = "/v20210603/InternetEvents/{EventId}",
+    paginator = list()
+  )
+  input <- .cloudwatchinternetmonitor$get_internet_event_input(EventId = EventId)
+  output <- .cloudwatchinternetmonitor$get_internet_event_output()
+  config <- get_config()
+  svc <- .cloudwatchinternetmonitor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchinternetmonitor$operations$get_internet_event <- cloudwatchinternetmonitor_get_internet_event
 
 #' Gets information about a monitor in Amazon CloudWatch Internet Monitor
 #' based on a monitor name
@@ -331,9 +417,15 @@ cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId) {
 #' the monitor, and status information.
 #'
 #' @usage
-#' cloudwatchinternetmonitor_get_monitor(MonitorName)
+#' cloudwatchinternetmonitor_get_monitor(MonitorName, LinkedAccountId)
 #'
 #' @param MonitorName &#91;required&#93; The name of the monitor.
+#' @param LinkedAccountId The account ID for an account that you've set up cross-account sharing
+#' for in Amazon CloudWatch Internet Monitor. You configure cross-account
+#' sharing by using Amazon CloudWatch Observability Access Manager. For
+#' more information, see [Internet Monitor cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -385,7 +477,8 @@ cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId) {
 #' @section Request syntax:
 #' ```
 #' svc$get_monitor(
-#'   MonitorName = "string"
+#'   MonitorName = "string",
+#'   LinkedAccountId = "string"
 #' )
 #' ```
 #'
@@ -394,14 +487,14 @@ cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId) {
 #' @rdname cloudwatchinternetmonitor_get_monitor
 #'
 #' @aliases cloudwatchinternetmonitor_get_monitor
-cloudwatchinternetmonitor_get_monitor <- function(MonitorName) {
+cloudwatchinternetmonitor_get_monitor <- function(MonitorName, LinkedAccountId = NULL) {
   op <- new_operation(
     name = "GetMonitor",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}",
     paginator = list()
   )
-  input <- .cloudwatchinternetmonitor$get_monitor_input(MonitorName = MonitorName)
+  input <- .cloudwatchinternetmonitor$get_monitor_input(MonitorName = MonitorName, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$get_monitor_output()
   config <- get_config()
   svc <- .cloudwatchinternetmonitor$service(config)
@@ -556,14 +649,14 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
 #' @description
 #' Lists all health events for a monitor in Amazon CloudWatch Internet
 #' Monitor. Returns information for health events including the event start
-#' and end time and the status.
+#' and end times, and the status.
 #' 
 #' Health events that have start times during the time frame that is
 #' requested are not included in the list of health events.
 #'
 #' @usage
 #' cloudwatchinternetmonitor_list_health_events(MonitorName, StartTime,
-#'   EndTime, NextToken, MaxResults, EventStatus)
+#'   EndTime, NextToken, MaxResults, EventStatus, LinkedAccountId)
 #'
 #' @param MonitorName &#91;required&#93; The name of the monitor.
 #' @param StartTime The time when a health event started.
@@ -574,6 +667,12 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
 #' @param MaxResults The number of health event objects that you want to return with this
 #' call.
 #' @param EventStatus The status of a health event.
+#' @param LinkedAccountId The account ID for an account that you've set up cross-account sharing
+#' for in Amazon CloudWatch Internet Monitor. You configure cross-account
+#' sharing by using Amazon CloudWatch Observability Access Manager. For
+#' more information, see [Internet Monitor cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -640,6 +739,9 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
 #'                 P95 = 123.0
 #'               )
 #'             )
+#'           ),
+#'           Ipv4Prefixes = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
@@ -665,7 +767,8 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
 #'   ),
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   EventStatus = "ACTIVE"|"RESOLVED"
+#'   EventStatus = "ACTIVE"|"RESOLVED",
+#'   LinkedAccountId = "string"
 #' )
 #' ```
 #'
@@ -674,14 +777,14 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
 #' @rdname cloudwatchinternetmonitor_list_health_events
 #'
 #' @aliases cloudwatchinternetmonitor_list_health_events
-cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxResults = NULL, EventStatus = NULL) {
+cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxResults = NULL, EventStatus = NULL, LinkedAccountId = NULL) {
   op <- new_operation(
     name = "ListHealthEvents",
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/HealthEvents",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HealthEvents")
   )
-  input <- .cloudwatchinternetmonitor$list_health_events_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults, EventStatus = EventStatus)
+  input <- .cloudwatchinternetmonitor$list_health_events_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults, EventStatus = EventStatus, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$list_health_events_output()
   config <- get_config()
   svc <- .cloudwatchinternetmonitor$service(config)
@@ -690,6 +793,109 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
   return(response)
 }
 .cloudwatchinternetmonitor$operations$list_health_events <- cloudwatchinternetmonitor_list_health_events
+
+#' Lists internet events that cause performance or availability issues for
+#' client locations
+#'
+#' @description
+#' Lists internet events that cause performance or availability issues for
+#' client locations. Amazon CloudWatch Internet Monitor displays
+#' information about recent global health events, called internet events,
+#' on a global outages map that is available to all Amazon Web Services
+#' customers.
+#' 
+#' You can constrain the list of internet events returned by providing a
+#' start time and end time to define a total time frame for events you want
+#' to list. Both start time and end time specify the time when an event
+#' started. End time is optional. If you don't include it, the default end
+#' time is the current time.
+#' 
+#' You can also limit the events returned to a specific status (`ACTIVE` or
+#' `RESOLVED`) or type (`PERFORMANCE` or `AVAILABILITY`).
+#'
+#' @usage
+#' cloudwatchinternetmonitor_list_internet_events(NextToken, MaxResults,
+#'   StartTime, EndTime, EventStatus, EventType)
+#'
+#' @param NextToken The token for the next set of results. You receive this token from a
+#' previous call.
+#' @param MaxResults The number of query results that you want to return with this call.
+#' @param StartTime The start time of the time window that you want to get a list of
+#' internet events for.
+#' @param EndTime The end time of the time window that you want to get a list of internet
+#' events for.
+#' @param EventStatus The status of an internet event.
+#' @param EventType The type of network impairment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InternetEvents = list(
+#'     list(
+#'       EventId = "string",
+#'       EventArn = "string",
+#'       StartedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EndedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ClientLocation = list(
+#'         ASName = "string",
+#'         ASNumber = 123,
+#'         Country = "string",
+#'         Subdivision = "string",
+#'         Metro = "string",
+#'         City = "string",
+#'         Latitude = 123.0,
+#'         Longitude = 123.0
+#'       ),
+#'       EventType = "AVAILABILITY"|"PERFORMANCE",
+#'       EventStatus = "ACTIVE"|"RESOLVED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_internet_events(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EventStatus = "string",
+#'   EventType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchinternetmonitor_list_internet_events
+#'
+#' @aliases cloudwatchinternetmonitor_list_internet_events
+cloudwatchinternetmonitor_list_internet_events <- function(NextToken = NULL, MaxResults = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, EventType = NULL) {
+  op <- new_operation(
+    name = "ListInternetEvents",
+    http_method = "GET",
+    http_path = "/v20210603/InternetEvents",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InternetEvents")
+  )
+  input <- .cloudwatchinternetmonitor$list_internet_events_input(NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, EventType = EventType)
+  output <- .cloudwatchinternetmonitor$list_internet_events_output()
+  config <- get_config()
+  svc <- .cloudwatchinternetmonitor$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchinternetmonitor$operations$list_internet_events <- cloudwatchinternetmonitor_list_internet_events
 
 #' Lists all of your monitors for Amazon CloudWatch Internet Monitor and
 #' their statuses, along with the Amazon Resource Name (ARN) and name of
@@ -702,7 +908,7 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
 #'
 #' @usage
 #' cloudwatchinternetmonitor_list_monitors(NextToken, MaxResults,
-#'   MonitorStatus)
+#'   MonitorStatus, IncludeLinkedAccounts)
 #'
 #' @param NextToken The token for the next set of results. You receive this token from a
 #' previous call.
@@ -712,6 +918,13 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
 #' 
 #' For information about the statuses for a monitor, see
 #' [Monitor](https://docs.aws.amazon.com/internet-monitor/latest/api/API_Monitor.html).
+#' @param IncludeLinkedAccounts A boolean option that you can set to `TRUE` to include monitors for
+#' linked accounts in a list of monitors, when you've set up cross-account
+#' sharing in Amazon CloudWatch Internet Monitor. You configure
+#' cross-account sharing by using Amazon CloudWatch Observability Access
+#' Manager. For more information, see [Internet Monitor cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
 #'
 #' @return
 #' A list with the following syntax:
@@ -734,7 +947,8 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
 #' svc$list_monitors(
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   MonitorStatus = "string"
+#'   MonitorStatus = "string",
+#'   IncludeLinkedAccounts = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -743,14 +957,14 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
 #' @rdname cloudwatchinternetmonitor_list_monitors
 #'
 #' @aliases cloudwatchinternetmonitor_list_monitors
-cloudwatchinternetmonitor_list_monitors <- function(NextToken = NULL, MaxResults = NULL, MonitorStatus = NULL) {
+cloudwatchinternetmonitor_list_monitors <- function(NextToken = NULL, MaxResults = NULL, MonitorStatus = NULL, IncludeLinkedAccounts = NULL) {
   op <- new_operation(
     name = "ListMonitors",
     http_method = "GET",
     http_path = "/v20210603/Monitors",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Monitors")
   )
-  input <- .cloudwatchinternetmonitor$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, MonitorStatus = MonitorStatus)
+  input <- .cloudwatchinternetmonitor$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, MonitorStatus = MonitorStatus, IncludeLinkedAccounts = IncludeLinkedAccounts)
   output <- .cloudwatchinternetmonitor$list_monitors_output()
   config <- get_config()
   svc <- .cloudwatchinternetmonitor$service(config)
@@ -827,7 +1041,7 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @usage
 #' cloudwatchinternetmonitor_start_query(MonitorName, StartTime, EndTime,
-#'   QueryType, FilterParameters)
+#'   QueryType, FilterParameters, LinkedAccountId)
 #'
 #' @param MonitorName &#91;required&#93; The name of the monitor to query.
 #' @param StartTime &#91;required&#93; The timestamp that is the beginning of the period that you want to
@@ -837,11 +1051,17 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #' @param QueryType &#91;required&#93; The type of query to run. The following are the three types of queries
 #' that you can run using the Internet Monitor query interface:
 #' 
-#' -   `MEASUREMENTS`: TBD definition
+#' -   `MEASUREMENTS`: Provides availability score, performance score,
+#'     total traffic, and round-trip times, at 5 minute intervals.
 #' 
-#' -   `TOP_LOCATIONS`: TBD definition
+#' -   `TOP_LOCATIONS`: Provides availability score, performance score,
+#'     total traffic, and time to first byte (TTFB) information, for the
+#'     top location and ASN combinations that you're monitoring, by traffic
+#'     volume.
 #' 
-#' -   `TOP_LOCATION_DETAILS`: TBD definition
+#' -   `TOP_LOCATION_DETAILS`: Provides TTFB for Amazon CloudFront, your
+#'     current configuration, and the best performing EC2 configuration, at
+#'     1 hour intervals.
 #' 
 #' For lists of the fields returned with each query type and more
 #' information about how each type of query is performed, see [Using the
@@ -857,6 +1077,12 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #' For more information about specifying filter parameters, see [Using the
 #' Amazon CloudWatch Internet Monitor query
 #' interface](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html)
+#' in the Amazon CloudWatch Internet Monitor User Guide.
+#' @param LinkedAccountId The account ID for an account that you've set up cross-account sharing
+#' for in Amazon CloudWatch Internet Monitor. You configure cross-account
+#' sharing by using Amazon CloudWatch Observability Access Manager. For
+#' more information, see [Internet Monitor cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cwim-cross-account.html)
 #' in the Amazon CloudWatch Internet Monitor User Guide.
 #'
 #' @return
@@ -886,7 +1112,8 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   LinkedAccountId = "string"
 #' )
 #' ```
 #'
@@ -895,14 +1122,14 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #' @rdname cloudwatchinternetmonitor_start_query
 #'
 #' @aliases cloudwatchinternetmonitor_start_query
-cloudwatchinternetmonitor_start_query <- function(MonitorName, StartTime, EndTime, QueryType, FilterParameters = NULL) {
+cloudwatchinternetmonitor_start_query <- function(MonitorName, StartTime, EndTime, QueryType, FilterParameters = NULL, LinkedAccountId = NULL) {
   op <- new_operation(
     name = "StartQuery",
     http_method = "POST",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries",
     paginator = list()
   )
-  input <- .cloudwatchinternetmonitor$start_query_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, QueryType = QueryType, FilterParameters = FilterParameters)
+  input <- .cloudwatchinternetmonitor$start_query_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, QueryType = QueryType, FilterParameters = FilterParameters, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$start_query_output()
   config <- get_config()
   svc <- .cloudwatchinternetmonitor$service(config)

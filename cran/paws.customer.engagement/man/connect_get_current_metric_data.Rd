@@ -25,12 +25,18 @@ following limits:
 \item Queues: 100
 \item Routing profiles: 100
 \item Channels: 3 (VOICE, CHAT, and TASK channels are supported.)
+\item RoutingStepExpressions: 50
 }
 
 Metric data is retrieved only for the resources associated with the
 queues or routing profiles, and by any channels included in the filter.
 (You cannot filter by both queue AND routing profile.) You can include
 both resource IDs and resource ARNs in the same request.
+
+When using the \code{RoutingStepExpression} filter, you need to pass exactly
+one \code{QueueId}. The filter is also case sensitive so when using the
+\code{RoutingStepExpression} filter, grouping by \code{ROUTING_STEP_EXPRESSION} is
+required.
 
 Currently tagging is only supported on the resources that are passed in
 the filter.}
@@ -47,6 +53,8 @@ required for metrics \code{CONTACTS_SCHEDULED}, \code{CONTACTS_IN_QUEUE}, and
 \code{ OLDEST_CONTACT_AGE}.
 \item If no \code{Grouping} is included in the request, a summary of metrics is
 returned.
+\item When using the \code{RoutingStepExpression} filter, group by
+\code{ROUTING_STEP_EXPRESSION} is required.
 }}
 
 \item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
@@ -133,6 +141,12 @@ returned in MILLISECONDS. For example, if you get a response like this:
 \verb{\\\{ "Metric": \\\{ "Name": "OLDEST_CONTACT_AGE", "Unit": "SECONDS" \\\}, "Value": 24113.0 }\}
 
 The actual OLDEST_CONTACT_AGE is 24 seconds.
+
+When the filter \code{RoutingStepExpression} is used, this metric is still
+calculated from enqueue time. For example, if a contact that has been
+queued under \verb{<Expression 1>} for 10 seconds has expired and
+\verb{<Expression 2>} becomes active, then \code{OLDEST_CONTACT_AGE} for this
+queue will be counted starting from 10, not 0.
 
 Name in real-time metrics report:
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html#oldest-real-time}{Oldest}

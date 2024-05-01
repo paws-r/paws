@@ -114,6 +114,7 @@ programmatically. For more information about IAM Roles Anywhere, see the
 \tabular{ll}{
 \link[=iamrolesanywhere_create_profile]{create_profile} \tab Creates a profile, a list of the roles that Roles Anywhere service is trusted to assume\cr
 \link[=iamrolesanywhere_create_trust_anchor]{create_trust_anchor} \tab Creates a trust anchor to establish trust between IAM Roles Anywhere and your certificate authority (CA)\cr
+\link[=iamrolesanywhere_delete_attribute_mapping]{delete_attribute_mapping} \tab Delete an entry from the attribute mapping rules enforced by a given profile\cr
 \link[=iamrolesanywhere_delete_crl]{delete_crl} \tab Deletes a certificate revocation list (CRL)\cr
 \link[=iamrolesanywhere_delete_profile]{delete_profile} \tab Deletes a profile\cr
 \link[=iamrolesanywhere_delete_trust_anchor]{delete_trust_anchor} \tab Deletes a trust anchor\cr
@@ -133,6 +134,7 @@ programmatically. For more information about IAM Roles Anywhere, see the
 \link[=iamrolesanywhere_list_subjects]{list_subjects} \tab Lists the subjects in the authenticated account and Amazon Web Services Region\cr
 \link[=iamrolesanywhere_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags attached to the resource\cr
 \link[=iamrolesanywhere_list_trust_anchors]{list_trust_anchors} \tab Lists the trust anchors in the authenticated account and Amazon Web Services Region\cr
+\link[=iamrolesanywhere_put_attribute_mapping]{put_attribute_mapping} \tab Put an entry in the attribute mapping rules that will be enforced by a given profile\cr
 \link[=iamrolesanywhere_put_notification_settings]{put_notification_settings} \tab Attaches a list of notification settings to a trust anchor\cr
 \link[=iamrolesanywhere_reset_notification_settings]{reset_notification_settings} \tab Resets the custom notification setting to IAM Roles Anywhere default setting\cr
 \link[=iamrolesanywhere_tag_resource]{tag_resource} \tab Attaches tags to a resource\cr

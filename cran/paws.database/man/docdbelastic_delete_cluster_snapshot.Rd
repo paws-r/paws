@@ -2,15 +2,16 @@
 % Please edit documentation in R/docdbelastic_operations.R
 \name{docdbelastic_delete_cluster_snapshot}
 \alias{docdbelastic_delete_cluster_snapshot}
-\title{Delete a Elastic DocumentDB snapshot}
+\title{Delete an elastic cluster snapshot}
 \usage{
 docdbelastic_delete_cluster_snapshot(snapshotArn)
 }
 \arguments{
-\item{snapshotArn}{[required] The arn of the Elastic DocumentDB snapshot that is to be deleted.}
+\item{snapshotArn}{[required] The ARN identifier of the elastic cluster snapshot that is to be
+deleted.}
 }
 \description{
-Delete a Elastic DocumentDB snapshot.
+Delete an elastic cluster snapshot.
 
 See \url{https://www.paws-r-sdk.com/docs/docdbelastic_delete_cluster_snapshot/} for full documentation.
 }

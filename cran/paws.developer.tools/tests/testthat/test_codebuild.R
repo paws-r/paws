@@ -16,6 +16,10 @@ test_that("list_curated_environment_images", {
   expect_error(svc$list_curated_environment_images(), NA)
 })
 
+test_that("list_fleets", {
+  expect_error(svc$list_fleets(), NA)
+})
+
 test_that("list_projects", {
   expect_error(svc$list_projects(), NA)
 })

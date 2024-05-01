@@ -33,7 +33,7 @@ NULL
 #' To learn more about AWS Auto Scaling, including information about
 #' granting IAM users required permissions for AWS Auto Scaling actions,
 #' see the [AWS Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html).
+#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html).
 #'
 #' @param
 #' config
@@ -155,7 +155,7 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 
 .autoscalingplans$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling-plans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling-plans.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling-plans.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "autoscaling-plans.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling-plans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling-plans.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "autoscaling-plans.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Auto Scaling Plans",
   api_version = "2018-01-06",
   signing_name = "autoscaling-plans",

@@ -32,7 +32,7 @@ AMI, omit this parameter.}
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. If you do not specify a client token, a randomly
 generated token is used for the request to ensure idempotency. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.}
+information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

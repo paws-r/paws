@@ -2,27 +2,32 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_put_rule_groups_namespace}
 \alias{prometheusservice_put_rule_groups_namespace}
-\title{Update a rule groups namespace}
+\title{Updates an existing rule groups namespace within a workspace}
 \usage{
 prometheusservice_put_rule_groups_namespace(
-  workspaceId,
-  name,
+  clientToken = NULL,
   data,
-  clientToken = NULL
+  name,
+  workspaceId
 )
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace in which to update the rule group namespace.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{name}{[required] The rule groups namespace name.}
+\item{data}{[required] The new rules file to use in the namespace. A base64-encoded version of
+the YAML rule groups file.
 
-\item{data}{[required] The namespace data that define the rule groups.}
+For details about the rule groups namespace structure, see
+\href{https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-RuleGroupsNamespaceData.html}{RuleGroupsNamespaceData}.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{name}{[required] The name of the rule groups namespace that you are updating.}
+
+\item{workspaceId}{[required] The ID of the workspace where you are updating the rule groups
+namespace.}
 }
 \description{
-Update a rule groups namespace.
+Updates an existing rule groups namespace within a workspace. A rule groups namespace is associated with exactly one rules file. A workspace can have multiple rule groups namespaces.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_put_rule_groups_namespace/} for full documentation.
 }

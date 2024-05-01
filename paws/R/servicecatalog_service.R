@@ -218,7 +218,7 @@ servicecatalog <- function(config = list(), credentials = list(), endpoint = NUL
 
 .servicecatalog$metadata <- list(
   service_name = "servicecatalog",
-  endpoints = list("*" = list(endpoint = "servicecatalog.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicecatalog.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicecatalog.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicecatalog.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "servicecatalog.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicecatalog.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "servicecatalog.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "servicecatalog.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicecatalog.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "servicecatalog.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Service Catalog",
   api_version = "2015-12-10",
   signing_name = "servicecatalog",

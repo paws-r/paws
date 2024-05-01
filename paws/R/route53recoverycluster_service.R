@@ -46,7 +46,7 @@ NULL
 #'     routing controls, and control panels, and how to work with Route 53
 #'     ARC in the Amazon Web Services console. For more information, see
 #'     [Recovery control
-#'     components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components.html#introduction-components-routing)
+#'     components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components-zonal.html#introduction-components-routing)
 #'     in the Amazon Route 53 Application Recovery Controller Developer
 #'     Guide.
 #' 
@@ -180,7 +180,7 @@ route53recoverycluster <- function(config = list(), credentials = list(), endpoi
 
 .route53recoverycluster$metadata <- list(
   service_name = "route53recoverycluster",
-  endpoints = list("*" = list(endpoint = "route53-recovery-cluster.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53-recovery-cluster.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "route53-recovery-cluster.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53-recovery-cluster.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "route53-recovery-cluster.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53-recovery-cluster.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "route53-recovery-cluster.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "route53-recovery-cluster.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53-recovery-cluster.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "route53-recovery-cluster.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route53 Recovery Cluster",
   api_version = "2019-12-02",
   signing_name = "route53-recovery-cluster",

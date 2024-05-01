@@ -200,7 +200,7 @@ macie2 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .macie2$metadata <- list(
   service_name = "macie2",
-  endpoints = list("*" = list(endpoint = "macie2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "macie2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "macie2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "macie2.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "macie2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "macie2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "macie2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "macie2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "macie2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "macie2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Macie2",
   api_version = "2020-01-01",
   signing_name = "macie2",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_update_provisioned_model_throughput}
 \alias{bedrock_update_provisioned_model_throughput}
-\title{Update a provisioned throughput}
+\title{Updates the name or associated model for a Provisioned Throughput}
 \usage{
 bedrock_update_provisioned_model_throughput(
   provisionedModelId,
@@ -11,14 +11,25 @@ bedrock_update_provisioned_model_throughput(
 )
 }
 \arguments{
-\item{provisionedModelId}{[required] The ARN or name of the provisioned throughput to update.}
+\item{provisionedModelId}{[required] The Amazon Resource Name (ARN) or name of the Provisioned Throughput to
+update.}
 
-\item{desiredProvisionedModelName}{The new name for this provisioned throughput.}
+\item{desiredProvisionedModelName}{The new name for this Provisioned Throughput.}
 
-\item{desiredModelId}{The ARN of the new model to associate with this provisioned throughput.}
+\item{desiredModelId}{The Amazon Resource Name (ARN) of the new model to associate with this
+Provisioned Throughput. You can't specify this field if this Provisioned
+Throughput is associated with a base model.
+
+If this Provisioned Throughput is associated with a custom model, you
+can specify one of the following options:
+\itemize{
+\item The base model from which the custom model was customized.
+\item Another custom model that was customized from the same base model as
+the custom model.
+}}
 }
 \description{
-Update a provisioned throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Provisioned throughput} in the Bedrock User Guide.
+Updates the name or associated model for a Provisioned Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-throughput.html}{Provisioned Throughput} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_update_provisioned_model_throughput/} for full documentation.
 }

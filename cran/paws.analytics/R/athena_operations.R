@@ -1148,14 +1148,17 @@ athena_get_work_group <- function(WorkGroup) {
 #' Imports a single ipynb file to a Spark enabled workgroup
 #'
 #' @description
-#' Imports a single `ipynb` file to a Spark enabled workgroup. The maximum file size that can be imported is 10 megabytes. If an `ipynb` file with the same name already exists in the workgroup, throws an error.
+#' Imports a single `ipynb` file to a Spark enabled workgroup. To import the notebook, the request must specify a value for either `Payload` or `NoteBookS3LocationUri`. If neither is specified or both are specified, an `InvalidRequestException` occurs. The maximum file size that can be imported is 10 megabytes. If an `ipynb` file with the same name already exists in the workgroup, throws an error.
 #'
 #' See [https://www.paws-r-sdk.com/docs/athena_import_notebook/](https://www.paws-r-sdk.com/docs/athena_import_notebook/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The name of the Spark enabled workgroup to import the notebook to.
 #' @param Name &#91;required&#93; The name of the notebook to import.
-#' @param Payload &#91;required&#93; The notebook content to be imported.
+#' @param Payload The notebook content to be imported. The payload must be in `ipynb`
+#' format.
 #' @param Type &#91;required&#93; The notebook content type. Currently, the only valid type is `IPYNB`.
+#' @param NotebookS3LocationUri A URI that specifies the Amazon S3 location of a notebook file in
+#' `ipynb` format.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to import the
 #' notebook is idempotent (executes only once).
 #' 
@@ -1168,14 +1171,14 @@ athena_get_work_group <- function(WorkGroup) {
 #' @keywords internal
 #'
 #' @rdname athena_import_notebook
-athena_import_notebook <- function(WorkGroup, Name, Payload, Type, ClientRequestToken = NULL) {
+athena_import_notebook <- function(WorkGroup, Name, Payload = NULL, Type, NotebookS3LocationUri = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "ImportNotebook",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .athena$import_notebook_input(WorkGroup = WorkGroup, Name = Name, Payload = Payload, Type = Type, ClientRequestToken = ClientRequestToken)
+  input <- .athena$import_notebook_input(WorkGroup = WorkGroup, Name = Name, Payload = Payload, Type = Type, NotebookS3LocationUri = NotebookS3LocationUri, ClientRequestToken = ClientRequestToken)
   output <- .athena$import_notebook_output()
   config <- get_config()
   svc <- .athena$service(config)

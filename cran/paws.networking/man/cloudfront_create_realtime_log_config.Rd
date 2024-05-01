@@ -17,10 +17,9 @@ in the \emph{Amazon CloudFront Developer Guide}.}
 
 \item{Name}{[required] A unique name to identify this real-time log configuration.}
 
-\item{SamplingRate}{[required] The sampling rate for this real-time log configuration. The sampling
-rate determines the percentage of viewer requests that are represented
-in the real-time log data. You must provide an integer between 1 and
-100, inclusive.}
+\item{SamplingRate}{[required] The sampling rate for this real-time log configuration. You can specify
+a whole number between 1 and 100 (inclusive) to determine the percentage
+of viewer requests that are represented in the real-time log data.}
 }
 \description{
 Creates a real-time log configuration.

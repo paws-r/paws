@@ -6,15 +6,8 @@ NULL
 #'
 #' @description
 #' Use the Amazon OpenSearch Service configuration API to create,
-#' configure, and manage OpenSearch Service domains.
-#' 
-#' For sample code that uses the configuration API, see the [*Amazon
-#' OpenSearch Service Developer
-#' Guide*](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/)
-#' . The guide also contains [sample
-#' code](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/)
-#' for sending signed HTTP requests to the OpenSearch APIs. The endpoint
-#' for configuration service requests is Region specific:
+#' configure, and manage OpenSearch Service domains. The endpoint for
+#' configuration service requests is Region specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 #' a current list of supported Regions and endpoints, see [Amazon Web
 #' Services service
@@ -108,6 +101,7 @@ NULL
 #'  \link[=opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
+#'  \link[=opensearchservice_cancel_domain_config_change]{cancel_domain_config_change} \tab Cancels a pending configuration change on an Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_create_domain]{create_domain} \tab Creates an Amazon OpenSearch Service domain\cr
 #'  \link[=opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain\cr
@@ -196,7 +190,7 @@ opensearchservice <- function(config = list(), credentials = list(), endpoint = 
 
 .opensearchservice$metadata <- list(
   service_name = "opensearchservice",
-  endpoints = list("*" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "es.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "es.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "es.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "es.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "es.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "es.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "es.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "es.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "OpenSearch",
   api_version = "2021-01-01",
   signing_name = "es",

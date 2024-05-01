@@ -23,7 +23,7 @@ savingsplans_describe_savings_plans(
 \item{maxResults}{The maximum number of results to return with a single call. To retrieve
 additional results, make another call with the returned token value.}
 
-\item{states}{The states.}
+\item{states}{The current states of the Savings Plans.}
 
 \item{filters}{The filters.}
 }

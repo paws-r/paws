@@ -23,8 +23,7 @@ the sensitive data terms. This \code{Audit} action must contain a
 \code{FindingsDestination} object. You can optionally use that
 \code{FindingsDestination} object to list one or more destinations to
 send audit findings to. If you specify destinations such as log
-groups, Kinesis Data Firehose streams, and S3 buckets, they must
-already exist.
+groups, Firehose streams, and S3 buckets, they must already exist.
 \item The second block must include both a \code{DataIdentifer} array and an
 \code{Operation} property with an \code{Deidentify} action. The
 \code{DataIdentifer} array must exactly match the \code{DataIdentifer} array

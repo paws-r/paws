@@ -17,10 +17,16 @@ redshift_authorize_snapshot_access(
 
 \item{SnapshotArn}{The Amazon Resource Name (ARN) of the snapshot to authorize access to.}
 
-\item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This
-parameter is required if your IAM user has a policy containing a
-snapshot resource element that specifies anything other than * for the
-cluster name.}
+\item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from.
+\itemize{
+\item \emph{If the snapshot to access doesn't exist and the associated IAM
+policy doesn't allow access to all (}) snapshots* - This parameter
+is required. Otherwise, permissions aren't available to check if the
+snapshot exists.
+\item \emph{If the snapshot to access exists} - This parameter isn't required.
+Redshift can retrieve the cluster identifier and use it to validate
+snapshot authorization.
+}}
 
 \item{AccountWithRestoreAccess}{[required] The identifier of the Amazon Web Services account authorized to restore
 the specified snapshot.

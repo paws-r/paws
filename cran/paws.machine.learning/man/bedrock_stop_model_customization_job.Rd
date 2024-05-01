@@ -10,7 +10,7 @@ bedrock_stop_model_customization_job(jobIdentifier)
 \item{jobIdentifier}{[required] Job identifier of the job to stop.}
 }
 \description{
-Stops an active model customization job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Bedrock User Guide.
+Stops an active model customization job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models.html}{Custom models} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_stop_model_customization_job/} for full documentation.
 }

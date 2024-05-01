@@ -162,7 +162,7 @@ ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .ssmincidents$metadata <- list(
   service_name = "ssmincidents",
-  endpoints = list("*" = list(endpoint = "ssm-incidents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-incidents.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssm-incidents.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-incidents.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ssm-incidents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-incidents.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ssm-incidents.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ssm-incidents.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-incidents.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ssm-incidents.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSM Incidents",
   api_version = "2018-05-10",
   signing_name = "ssm-incidents",

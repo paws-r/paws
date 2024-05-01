@@ -262,7 +262,7 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .lambda$metadata <- list(
   service_name = "lambda",
-  endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lambda.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lambda.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "lambda.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "lambda.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lambda.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "lambda.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Lambda",
   api_version = "2015-03-31",
   signing_name = "lambda",

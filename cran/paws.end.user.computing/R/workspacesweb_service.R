@@ -186,7 +186,7 @@ workspacesweb <- function(config = list(), credentials = list(), endpoint = NULL
 
 .workspacesweb$metadata <- list(
   service_name = "workspacesweb",
-  endpoints = list("*" = list(endpoint = "workspaces-web.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces-web.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workspaces-web.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workspaces-web.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "workspaces-web.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces-web.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "workspaces-web.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "workspaces-web.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workspaces-web.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "workspaces-web.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WorkSpaces Web",
   api_version = "2020-07-08",
   signing_name = "workspaces-web",

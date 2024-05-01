@@ -92,7 +92,7 @@ HealthOmics User Guide}.
 
 \tabular{ll}{
 \link[paws.storage:omics_abort_multipart_read_set_upload]{abort_multipart_read_set_upload} \tab Stops a multipart upload\cr
-\link[paws.storage:omics_accept_share]{accept_share} \tab Accepts a share for an analytics store\cr
+\link[paws.storage:omics_accept_share]{accept_share} \tab Accept a resource share request\cr
 \link[paws.storage:omics_batch_delete_read_set]{batch_delete_read_set} \tab Deletes one or more read sets\cr
 \link[paws.storage:omics_cancel_annotation_import_job]{cancel_annotation_import_job} \tab Cancels an annotation import job\cr
 \link[paws.storage:omics_cancel_run]{cancel_run} \tab Cancels a run\cr
@@ -104,7 +104,7 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_create_reference_store]{create_reference_store} \tab Creates a reference store\cr
 \link[paws.storage:omics_create_run_group]{create_run_group} \tab Creates a run group\cr
 \link[paws.storage:omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
-\link[paws.storage:omics_create_share]{create_share} \tab Creates a share offer that can be accepted outside the account by a subscriber\cr
+\link[paws.storage:omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
 \link[paws.storage:omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
 \link[paws.storage:omics_create_workflow]{create_workflow} \tab Creates a workflow\cr
 \link[paws.storage:omics_delete_annotation_store]{delete_annotation_store} \tab Deletes an annotation store\cr
@@ -114,7 +114,7 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_delete_run]{delete_run} \tab Deletes a workflow run\cr
 \link[paws.storage:omics_delete_run_group]{delete_run_group} \tab Deletes a workflow run group\cr
 \link[paws.storage:omics_delete_sequence_store]{delete_sequence_store} \tab Deletes a sequence store\cr
-\link[paws.storage:omics_delete_share]{delete_share} \tab Deletes a share of an analytics store\cr
+\link[paws.storage:omics_delete_share]{delete_share} \tab Deletes a resource share\cr
 \link[paws.storage:omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
 \link[paws.storage:omics_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
 \link[paws.storage:omics_get_annotation_import_job]{get_annotation_import_job} \tab Gets information about an annotation import job\cr
@@ -133,7 +133,7 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_get_run_group]{get_run_group} \tab Gets information about a workflow run group\cr
 \link[paws.storage:omics_get_run_task]{get_run_task} \tab Gets information about a workflow run task\cr
 \link[paws.storage:omics_get_sequence_store]{get_sequence_store} \tab Gets information about a sequence store\cr
-\link[paws.storage:omics_get_share]{get_share} \tab Retrieves the metadata for a share\cr
+\link[paws.storage:omics_get_share]{get_share} \tab Retrieves the metadata for the specified resource share\cr
 \link[paws.storage:omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
 \link[paws.storage:omics_get_variant_store]{get_variant_store} \tab Gets information about a variant store\cr
 \link[paws.storage:omics_get_workflow]{get_workflow} \tab Gets information about a workflow\cr
@@ -153,7 +153,7 @@ HealthOmics User Guide}.
 \link[paws.storage:omics_list_runs]{list_runs} \tab Retrieves a list of runs\cr
 \link[paws.storage:omics_list_run_tasks]{list_run_tasks} \tab Retrieves a list of tasks for a run\cr
 \link[paws.storage:omics_list_sequence_stores]{list_sequence_stores} \tab Retrieves a list of sequence stores\cr
-\link[paws.storage:omics_list_shares]{list_shares} \tab Lists all shares associated with an account\cr
+\link[paws.storage:omics_list_shares]{list_shares} \tab Retrieves the resource shares associated with an account\cr
 \link[paws.storage:omics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
 \link[paws.storage:omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
 \link[paws.storage:omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr

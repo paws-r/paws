@@ -22,25 +22,31 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.
+of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.
 
 Constraint: Maximum 128 ASCII characters.}
 
 \item{LaunchTemplateId}{The ID of the launch template.
 
-You must specify either the \code{LaunchTemplateId} or the
-\code{LaunchTemplateName}, but not both.}
+You must specify either the launch template ID or the launch template
+name, but not both.}
 
 \item{LaunchTemplateName}{The name of the launch template.
 
-You must specify the \code{LaunchTemplateName} or the \code{LaunchTemplateId}, but
-not both.}
+You must specify either the launch template ID or the launch template
+name, but not both.}
 
-\item{SourceVersion}{The version number of the launch template version on which to base the
-new version. The new version inherits the same launch parameters as the
-source version, except for parameters that you specify in
-\code{LaunchTemplateData}. Snapshots applied to the block device mapping are
-ignored when creating a new version unless they are explicitly included.}
+\item{SourceVersion}{The version of the launch template on which to base the new version.
+Snapshots applied to the block device mapping are ignored when creating
+a new version unless they are explicitly included.
+
+If you specify this parameter, the new version inherits the launch
+parameters from the source version. If you specify additional launch
+parameters for the new version, they overwrite any corresponding launch
+parameters inherited from the source version.
+
+If you omit this parameter, the new version contains only the launch
+parameters that you specify for the new version.}
 
 \item{VersionDescription}{A description for the version of the launch template.}
 
@@ -54,7 +60,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 Default: \code{false}}
 }
 \description{
-Creates a new version of a launch template. You can specify an existing version of launch template from which to base the new version.
+Creates a new version of a launch template. You must specify an existing launch template, either by name or ID. You can determine whether the new version inherits parameters from a source version, and add or overwrite parameters as needed.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_launch_template_version/} for full documentation.
 }

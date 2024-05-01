@@ -1262,7 +1262,7 @@ macie2_delete_member <- function(id) {
 #'       sensitivityScore = 123,
 #'       serverSideEncryption = list(
 #'         kmsMasterKeyId = "string",
-#'         type = "NONE"|"AES256"|"aws:kms"
+#'         type = "NONE"|"AES256"|"aws:kms"|"aws:kms:dsse"
 #'       ),
 #'       sharedAccess = "EXTERNAL"|"INTERNAL"|"NOT_SHARED"|"UNKNOWN",
 #'       sizeInBytes = 123,
@@ -1554,6 +1554,8 @@ macie2_describe_classification_job <- function(jobId) {
 #' @usage
 #' macie2_describe_organization_configuration()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -1599,6 +1601,8 @@ macie2_describe_organization_configuration <- function() {
 #'
 #' @usage
 #' macie2_disable_macie()
+#'
+
 #'
 #' @return
 #' An empty list.
@@ -1685,6 +1689,8 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 #' @usage
 #' macie2_disassociate_from_administrator_account()
 #'
+
+#'
 #' @return
 #' An empty list.
 #'
@@ -1725,6 +1731,8 @@ macie2_disassociate_from_administrator_account <- function() {
 #'
 #' @usage
 #' macie2_disassociate_from_master_account()
+#'
+
 #'
 #' @return
 #' An empty list.
@@ -1911,6 +1919,8 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #' @usage
 #' macie2_get_administrator_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2033,6 +2043,8 @@ macie2_get_allow_list <- function(id) {
 #'
 #' @usage
 #' macie2_get_automated_discovery_configuration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -2205,6 +2217,8 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #'
 #' @usage
 #' macie2_get_classification_export_configuration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -2736,7 +2750,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #'             "2015-01-01"
 #'           ),
 #'           defaultServerSideEncryption = list(
-#'             encryptionType = "NONE"|"AES256"|"aws:kms"|"UNKNOWN",
+#'             encryptionType = "NONE"|"AES256"|"aws:kms"|"UNKNOWN"|"aws:kms:dsse",
 #'             kmsMasterKeyId = "string"
 #'           ),
 #'           name = "string",
@@ -2791,7 +2805,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #'           path = "string",
 #'           publicAccess = TRUE|FALSE,
 #'           serverSideEncryption = list(
-#'             encryptionType = "NONE"|"AES256"|"aws:kms"|"UNKNOWN",
+#'             encryptionType = "NONE"|"AES256"|"aws:kms"|"UNKNOWN"|"aws:kms:dsse",
 #'             kmsMasterKeyId = "string"
 #'           ),
 #'           size = 123,
@@ -2941,6 +2955,8 @@ macie2_get_findings_filter <- function(id) {
 #' @usage
 #' macie2_get_findings_publication_configuration()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -2989,6 +3005,8 @@ macie2_get_findings_publication_configuration <- function() {
 #' @usage
 #' macie2_get_invitations_count()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
@@ -3033,6 +3051,8 @@ macie2_get_invitations_count <- function() {
 #'
 #' @usage
 #' macie2_get_macie_session()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -3087,6 +3107,8 @@ macie2_get_macie_session <- function() {
 #'
 #' @usage
 #' macie2_get_master_account()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -3268,6 +3290,8 @@ macie2_get_resource_profile <- function(resourceArn) {
 #'
 #' @usage
 #' macie2_get_reveal_configuration()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -5671,7 +5695,8 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
 #'
 #' @param configuration &#91;required&#93; The KMS key to use to encrypt the sensitive data, and the status of the
 #' configuration for the Amazon Macie account.
-#' @param retrievalConfiguration The access method and settings to use to retrieve the sensitive data.
+#' @param retrievalConfiguration The access method and settings to use when retrieving the sensitive
+#' data.
 #'
 #' @return
 #' A list with the following syntax:

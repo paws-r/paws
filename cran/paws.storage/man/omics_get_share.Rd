@@ -2,15 +2,15 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_get_share}
 \alias{omics_get_share}
-\title{Retrieves the metadata for a share}
+\title{Retrieves the metadata for the specified resource share}
 \usage{
 omics_get_share(shareId)
 }
 \arguments{
-\item{shareId}{[required] The generated ID for a share.}
+\item{shareId}{[required] The ID of the share.}
 }
 \description{
-Retrieves the metadata for a share.
+Retrieves the metadata for the specified resource share.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_get_share/} for full documentation.
 }

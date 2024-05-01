@@ -15,24 +15,25 @@ globalaccelerator_create_cross_account_attachment(
 \arguments{
 \item{Name}{[required] The name of the cross-account attachment.}
 
-\item{Principals}{The principals to list in the cross-account attachment. A principal can
-be an Amazon Web Services account number or the Amazon Resource Name
+\item{Principals}{The principals to include in the cross-account attachment. A principal
+can be an Amazon Web Services account number or the Amazon Resource Name
 (ARN) for an accelerator.}
 
-\item{Resources}{The Amazon Resource Names (ARNs) for the resources to list in the
+\item{Resources}{The Amazon Resource Names (ARNs) for the resources to include in the
 cross-account attachment. A resource can be any supported Amazon Web
-Services resource type for Global Accelerator.}
+Services resource type for Global Accelerator or a CIDR range for a
+bring your own IP address (BYOIP) address pool.}
 
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 
-\item{Tags}{Create tags for cross-account attachment.
+\item{Tags}{Add tags for a cross-account attachment.
 
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in Global Accelerator}
 in the \emph{Global Accelerator Developer Guide}.}
 }
 \description{
-Create a cross-account attachment in Global Accelerator. You create a cross-account attachment to specify the \emph{principals} who have permission to add to accelerators in their own account the resources in your account that you also list in the attachment.
+Create a cross-account attachment in Global Accelerator. You create a cross-account attachment to specify the \emph{principals} who have permission to work with \emph{resources} in accelerators in their own account. You specify, in the same attachment, the resources that are shared.
 
 See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_create_cross_account_attachment/} for full documentation.
 }

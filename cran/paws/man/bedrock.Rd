@@ -48,8 +48,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Describes the API operations for creating and managing Amazon Bedrock
-models.
+Describes the API operations for creating, managing, fine-turning, and
+evaluating Amazon Bedrock models.
 }
 \section{Service syntax}{
 
@@ -90,33 +90,43 @@ models.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.machine.learning:bedrock_create_evaluation_job]{create_evaluation_job} \tab API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers\cr
+\link[paws.machine.learning:bedrock_create_guardrail]{create_guardrail} \tab Creates a guardrail to block topics and to filter out harmful content\cr
+\link[paws.machine.learning:bedrock_create_guardrail_version]{create_guardrail_version} \tab Creates a version of the guardrail\cr
 \link[paws.machine.learning:bedrock_create_model_customization_job]{create_model_customization_job} \tab Creates a fine-tuning job to customize a base model\cr
-\link[paws.machine.learning:bedrock_create_provisioned_model_throughput]{create_provisioned_model_throughput} \tab Creates a provisioned throughput with dedicated capacity for a foundation model or a fine-tuned model\cr
+\link[paws.machine.learning:bedrock_create_provisioned_model_throughput]{create_provisioned_model_throughput} \tab Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify\cr
 \link[paws.machine.learning:bedrock_delete_custom_model]{delete_custom_model} \tab Deletes a custom model that you created earlier\cr
+\link[paws.machine.learning:bedrock_delete_guardrail]{delete_guardrail} \tab Deletes a guardrail\cr
 \link[paws.machine.learning:bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
-\link[paws.machine.learning:bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a provisioned throughput\cr
+\link[paws.machine.learning:bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a Provisioned Throughput\cr
 \link[paws.machine.learning:bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Amazon Bedrock custom model that you have created\cr
+\link[paws.machine.learning:bedrock_get_evaluation_job]{get_evaluation_job} \tab Retrieves the properties associated with a model evaluation job, including the status of the job\cr
 \link[paws.machine.learning:bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Amazon Bedrock foundation model\cr
+\link[paws.machine.learning:bedrock_get_guardrail]{get_guardrail} \tab Gets details about a guardrail\cr
 \link[paws.machine.learning:bedrock_get_model_customization_job]{get_model_customization_job} \tab Retrieves the properties associated with a model-customization job, including the status of the job\cr
 \link[paws.machine.learning:bedrock_get_model_invocation_logging_configuration]{get_model_invocation_logging_configuration} \tab Get the current configuration values for model invocation logging\cr
-\link[paws.machine.learning:bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Get details for a provisioned throughput\cr
+\link[paws.machine.learning:bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Returns details for a Provisioned Throughput\cr
 \link[paws.machine.learning:bedrock_list_custom_models]{list_custom_models} \tab Returns a list of the custom models that you have created with the CreateModelCustomizationJob operation\cr
-\link[paws.machine.learning:bedrock_list_foundation_models]{list_foundation_models} \tab List of Amazon Bedrock foundation models that you can use\cr
+\link[paws.machine.learning:bedrock_list_evaluation_jobs]{list_evaluation_jobs} \tab Lists model evaluation jobs\cr
+\link[paws.machine.learning:bedrock_list_foundation_models]{list_foundation_models} \tab Lists Amazon Bedrock foundation models that you can use\cr
+\link[paws.machine.learning:bedrock_list_guardrails]{list_guardrails} \tab Lists details about all the guardrails in an account\cr
 \link[paws.machine.learning:bedrock_list_model_customization_jobs]{list_model_customization_jobs} \tab Returns a list of model customization jobs that you have submitted\cr
-\link[paws.machine.learning:bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab List the provisioned capacities\cr
+\link[paws.machine.learning:bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab Lists the Provisioned Throughputs in the account\cr
 \link[paws.machine.learning:bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr
 \link[paws.machine.learning:bedrock_put_model_invocation_logging_configuration]{put_model_invocation_logging_configuration} \tab Set the configuration values for model invocation logging\cr
+\link[paws.machine.learning:bedrock_stop_evaluation_job]{stop_evaluation_job} \tab Stops an in progress model evaluation job\cr
 \link[paws.machine.learning:bedrock_stop_model_customization_job]{stop_model_customization_job} \tab Stops an active model customization job\cr
 \link[paws.machine.learning:bedrock_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
 \link[paws.machine.learning:bedrock_untag_resource]{untag_resource} \tab Remove one or more tags from a resource\cr
-\link[paws.machine.learning:bedrock_update_provisioned_model_throughput]{update_provisioned_model_throughput} \tab Update a provisioned throughput
+\link[paws.machine.learning:bedrock_update_guardrail]{update_guardrail} \tab Updates a guardrail with the values you specify\cr
+\link[paws.machine.learning:bedrock_update_provisioned_model_throughput]{update_provisioned_model_throughput} \tab Updates the name or associated model for a Provisioned Throughput
 }
 }
 
 \examples{
 \dontrun{
 svc <- bedrock()
-svc$create_model_customization_job(
+svc$create_evaluation_job(
   Foo = 123
 )
 }

@@ -3,15 +3,82 @@
 #' @include docdbelastic_service.R
 NULL
 
-#' Creates a new Elastic DocumentDB cluster and returns its Cluster
+#' Copies a snapshot of an elastic cluster
+#'
+#' @description
+#' Copies a snapshot of an elastic cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdbelastic_copy_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdbelastic_copy_cluster_snapshot/) for full documentation.
+#'
+#' @param copyTags Set to `true` to copy all tags from the source cluster snapshot to the
+#' target elastic cluster snapshot. The default is `false`.
+#' @param kmsKeyId The Amazon Web Services KMS key ID for an encrypted elastic cluster
+#' snapshot. The Amazon Web Services KMS key ID is the Amazon Resource Name
+#' (ARN), Amazon Web Services KMS key identifier, or the Amazon Web
+#' Services KMS key alias for the Amazon Web Services KMS encryption key.
+#' 
+#' If you copy an encrypted elastic cluster snapshot from your Amazon Web
+#' Services account, you can specify a value for `KmsKeyId` to encrypt the
+#' copy with a new Amazon Web ServicesS KMS encryption key. If you don't
+#' specify a value for `KmsKeyId`, then the copy of the elastic cluster
+#' snapshot is encrypted with the same `AWS` KMS key as the source elastic
+#' cluster snapshot.
+#' 
+#' To copy an encrypted elastic cluster snapshot to another Amazon Web
+#' Services region, set `KmsKeyId` to the Amazon Web Services KMS key ID
+#' that you want to use to encrypt the copy of the elastic cluster snapshot
+#' in the destination region. Amazon Web Services KMS encryption keys are
+#' specific to the Amazon Web Services region that they are created in, and
+#' you can't use encryption keys from one Amazon Web Services region in
+#' another Amazon Web Services region.
+#' 
+#' If you copy an unencrypted elastic cluster snapshot and specify a value
+#' for the `KmsKeyId` parameter, an error is returned.
+#' @param snapshotArn &#91;required&#93; The Amazon Resource Name (ARN) identifier of the elastic cluster
+#' snapshot.
+#' @param tags The tags to be assigned to the elastic cluster snapshot.
+#' @param targetSnapshotName &#91;required&#93; The identifier of the new elastic cluster snapshot to create from the
+#' source cluster snapshot. This parameter is not case sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' 
+#' -   The first character must be a letter.
+#' 
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' 
+#' Example: `elastic-cluster-snapshot-5`
+#'
+#' @keywords internal
+#'
+#' @rdname docdbelastic_copy_cluster_snapshot
+docdbelastic_copy_cluster_snapshot <- function(copyTags = NULL, kmsKeyId = NULL, snapshotArn, tags = NULL, targetSnapshotName) {
+  op <- new_operation(
+    name = "CopyClusterSnapshot",
+    http_method = "POST",
+    http_path = "/cluster-snapshot/{snapshotArn}/copy",
+    paginator = list()
+  )
+  input <- .docdbelastic$copy_cluster_snapshot_input(copyTags = copyTags, kmsKeyId = kmsKeyId, snapshotArn = snapshotArn, tags = tags, targetSnapshotName = targetSnapshotName)
+  output <- .docdbelastic$copy_cluster_snapshot_output()
+  config <- get_config()
+  svc <- .docdbelastic$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdbelastic$operations$copy_cluster_snapshot <- docdbelastic_copy_cluster_snapshot
+
+#' Creates a new Amazon DocumentDB elastic cluster and returns its cluster
 #' structure
 #'
 #' @description
-#' Creates a new Elastic DocumentDB cluster and returns its Cluster structure.
+#' Creates a new Amazon DocumentDB elastic cluster and returns its cluster structure.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_create_cluster/](https://www.paws-r-sdk.com/docs/docdbelastic_create_cluster/) for full documentation.
 #'
-#' @param adminUserName &#91;required&#93; The name of the Elastic DocumentDB cluster administrator.
+#' @param adminUserName &#91;required&#93; The name of the Amazon DocumentDB elastic clusters administrator.
 #' 
 #' *Constraints*:
 #' 
@@ -20,8 +87,8 @@ NULL
 #' -   The first character must be a letter.
 #' 
 #' -   Cannot be a reserved word.
-#' @param adminUserPassword &#91;required&#93; The password for the Elastic DocumentDB cluster administrator and can
-#' contain any printable ASCII characters.
+#' @param adminUserPassword &#91;required&#93; The password for the Amazon DocumentDB elastic clusters administrator.
+#' The password can contain any printable ASCII characters.
 #' 
 #' *Constraints*:
 #' 
@@ -29,10 +96,13 @@ NULL
 #' 
 #' -   Cannot contain a forward slash (/), double quote ("), or the "at"
 #'     symbol (@@).
-#' @param authType &#91;required&#93; The authentication type for the Elastic DocumentDB cluster.
-#' @param clientToken The client token for the Elastic DocumentDB cluster.
-#' @param clusterName &#91;required&#93; The name of the new Elastic DocumentDB cluster. This parameter is stored
-#' as a lowercase string.
+#' @param authType &#91;required&#93; The authentication type used to determine where to fetch the password
+#' used for accessing the elastic cluster. Valid types are `PLAIN_TEXT` or
+#' `SECRET_ARN`.
+#' @param backupRetentionPeriod The number of days for which automatic snapshots are retained.
+#' @param clientToken The client token for the elastic cluster.
+#' @param clusterName &#91;required&#93; The name of the new elastic cluster. This parameter is stored as a
+#' lowercase string.
 #' 
 #' *Constraints*:
 #' 
@@ -43,17 +113,19 @@ NULL
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' *Example*: `my-cluster`
-#' @param kmsKeyId The KMS key identifier to use to encrypt the new Elastic DocumentDB
-#' cluster.
+#' @param kmsKeyId The KMS key identifier to use to encrypt the new elastic cluster.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 #' encryption key. If you are creating a cluster using the same Amazon
 #' account that owns this KMS encryption key, you can use the KMS key alias
 #' instead of the ARN as the KMS encryption key.
 #' 
-#' If an encryption key is not specified, Elastic DocumentDB uses the
+#' If an encryption key is not specified, Amazon DocumentDB uses the
 #' default encryption key that KMS creates for your account. Your account
 #' has a different default encryption key for each Amazon Region.
+#' @param preferredBackupWindow The daily time range during which automated backups are created if
+#' automated backups are enabled, as determined by the
+#' `backupRetentionPeriod`.
 #' @param preferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -66,24 +138,29 @@ NULL
 #' *Valid days*: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' *Constraints*: Minimum 30-minute window.
-#' @param shardCapacity &#91;required&#93; The capacity of each shard in the new Elastic DocumentDB cluster.
-#' @param shardCount &#91;required&#93; The number of shards to create in the new Elastic DocumentDB cluster.
-#' @param subnetIds The Amazon EC2 subnet IDs for the new Elastic DocumentDB cluster.
-#' @param tags The tags to be assigned to the new Elastic DocumentDB cluster.
-#' @param vpcSecurityGroupIds A list of EC2 VPC security groups to associate with the new Elastic
-#' DocumentDB cluster.
+#' @param shardCapacity &#91;required&#93; The number of vCPUs assigned to each elastic cluster shard. Maximum is
+#' 64. Allowed values are 2, 4, 8, 16, 32, 64.
+#' @param shardCount &#91;required&#93; The number of shards assigned to the elastic cluster. Maximum is 32.
+#' @param shardInstanceCount The number of replica instances applying to all shards in the elastic
+#' cluster. A `shardInstanceCount` value of 1 means there is one writer
+#' instance, and any additional instances are replicas that can be used for
+#' reads and to improve availability.
+#' @param subnetIds The Amazon EC2 subnet IDs for the new elastic cluster.
+#' @param tags The tags to be assigned to the new elastic cluster.
+#' @param vpcSecurityGroupIds A list of EC2 VPC security groups to associate with the new elastic
+#' cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname docdbelastic_create_cluster
-docdbelastic_create_cluster <- function(adminUserName, adminUserPassword, authType, clientToken = NULL, clusterName, kmsKeyId = NULL, preferredMaintenanceWindow = NULL, shardCapacity, shardCount, subnetIds = NULL, tags = NULL, vpcSecurityGroupIds = NULL) {
+docdbelastic_create_cluster <- function(adminUserName, adminUserPassword, authType, backupRetentionPeriod = NULL, clientToken = NULL, clusterName, kmsKeyId = NULL, preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, shardCapacity, shardCount, shardInstanceCount = NULL, subnetIds = NULL, tags = NULL, vpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/cluster",
     paginator = list()
   )
-  input <- .docdbelastic$create_cluster_input(adminUserName = adminUserName, adminUserPassword = adminUserPassword, authType = authType, clientToken = clientToken, clusterName = clusterName, kmsKeyId = kmsKeyId, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
+  input <- .docdbelastic$create_cluster_input(adminUserName = adminUserName, adminUserPassword = adminUserPassword, authType = authType, backupRetentionPeriod = backupRetentionPeriod, clientToken = clientToken, clusterName = clusterName, kmsKeyId = kmsKeyId, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, shardInstanceCount = shardInstanceCount, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$create_cluster_output()
   config <- get_config()
   svc <- .docdbelastic$service(config)
@@ -93,17 +170,17 @@ docdbelastic_create_cluster <- function(adminUserName, adminUserPassword, authTy
 }
 .docdbelastic$operations$create_cluster <- docdbelastic_create_cluster
 
-#' Creates a snapshot of a cluster
+#' Creates a snapshot of an elastic cluster
 #'
 #' @description
-#' Creates a snapshot of a cluster.
+#' Creates a snapshot of an elastic cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_create_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdbelastic_create_cluster_snapshot/) for full documentation.
 #'
-#' @param clusterArn &#91;required&#93; The arn of the Elastic DocumentDB cluster that the snapshot will be
-#' taken from.
-#' @param snapshotName &#91;required&#93; The name of the Elastic DocumentDB snapshot.
-#' @param tags The tags to be assigned to the new Elastic DocumentDB snapshot.
+#' @param clusterArn &#91;required&#93; The ARN identifier of the elastic cluster of which you want to create a
+#' snapshot.
+#' @param snapshotName &#91;required&#93; The name of the new elastic cluster snapshot.
+#' @param tags The tags to be assigned to the new elastic cluster snapshot.
 #'
 #' @keywords internal
 #'
@@ -125,14 +202,14 @@ docdbelastic_create_cluster_snapshot <- function(clusterArn, snapshotName, tags 
 }
 .docdbelastic$operations$create_cluster_snapshot <- docdbelastic_create_cluster_snapshot
 
-#' Delete a Elastic DocumentDB cluster
+#' Delete an elastic cluster
 #'
 #' @description
-#' Delete a Elastic DocumentDB cluster.
+#' Delete an elastic cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_delete_cluster/](https://www.paws-r-sdk.com/docs/docdbelastic_delete_cluster/) for full documentation.
 #'
-#' @param clusterArn &#91;required&#93; The arn of the Elastic DocumentDB cluster that is to be deleted.
+#' @param clusterArn &#91;required&#93; The ARN identifier of the elastic cluster that is to be deleted.
 #'
 #' @keywords internal
 #'
@@ -154,14 +231,15 @@ docdbelastic_delete_cluster <- function(clusterArn) {
 }
 .docdbelastic$operations$delete_cluster <- docdbelastic_delete_cluster
 
-#' Delete a Elastic DocumentDB snapshot
+#' Delete an elastic cluster snapshot
 #'
 #' @description
-#' Delete a Elastic DocumentDB snapshot.
+#' Delete an elastic cluster snapshot.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_delete_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdbelastic_delete_cluster_snapshot/) for full documentation.
 #'
-#' @param snapshotArn &#91;required&#93; The arn of the Elastic DocumentDB snapshot that is to be deleted.
+#' @param snapshotArn &#91;required&#93; The ARN identifier of the elastic cluster snapshot that is to be
+#' deleted.
 #'
 #' @keywords internal
 #'
@@ -183,14 +261,14 @@ docdbelastic_delete_cluster_snapshot <- function(snapshotArn) {
 }
 .docdbelastic$operations$delete_cluster_snapshot <- docdbelastic_delete_cluster_snapshot
 
-#' Returns information about a specific Elastic DocumentDB cluster
+#' Returns information about a specific elastic cluster
 #'
 #' @description
-#' Returns information about a specific Elastic DocumentDB cluster.
+#' Returns information about a specific elastic cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_get_cluster/](https://www.paws-r-sdk.com/docs/docdbelastic_get_cluster/) for full documentation.
 #'
-#' @param clusterArn &#91;required&#93; The arn of the Elastic DocumentDB cluster.
+#' @param clusterArn &#91;required&#93; The ARN identifier of the elastic cluster.
 #'
 #' @keywords internal
 #'
@@ -212,14 +290,14 @@ docdbelastic_get_cluster <- function(clusterArn) {
 }
 .docdbelastic$operations$get_cluster <- docdbelastic_get_cluster
 
-#' Returns information about a specific Elastic DocumentDB snapshot
+#' Returns information about a specific elastic cluster snapshot
 #'
 #' @description
-#' Returns information about a specific Elastic DocumentDB snapshot
+#' Returns information about a specific elastic cluster snapshot
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_get_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdbelastic_get_cluster_snapshot/) for full documentation.
 #'
-#' @param snapshotArn &#91;required&#93; The arn of the Elastic DocumentDB snapshot.
+#' @param snapshotArn &#91;required&#93; The ARN identifier of the elastic cluster snapshot.
 #'
 #' @keywords internal
 #'
@@ -241,29 +319,42 @@ docdbelastic_get_cluster_snapshot <- function(snapshotArn) {
 }
 .docdbelastic$operations$get_cluster_snapshot <- docdbelastic_get_cluster_snapshot
 
-#' Returns information about Elastic DocumentDB snapshots for a specified
-#' cluster
+#' Returns information about snapshots for a specified elastic cluster
 #'
 #' @description
-#' Returns information about Elastic DocumentDB snapshots for a specified cluster.
+#' Returns information about snapshots for a specified elastic cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_list_cluster_snapshots/](https://www.paws-r-sdk.com/docs/docdbelastic_list_cluster_snapshots/) for full documentation.
 #'
-#' @param clusterArn The arn of the Elastic DocumentDB cluster.
-#' @param maxResults The maximum number of entries to recieve in the response.
-#' @param nextToken The nextToken which is used the get the next page of data.
+#' @param clusterArn The ARN identifier of the elastic cluster.
+#' @param maxResults The maximum number of elastic cluster snapshot results to receive in the
+#' response.
+#' @param nextToken A pagination token provided by a previous request. If this parameter is
+#' specified, the response includes only records beyond this token, up to
+#' the value specified by `max-results`.
+#' 
+#' If there is no more data in the responce, the `nextToken` will not be
+#' returned.
+#' @param snapshotType The type of cluster snapshots to be returned. You can specify one of the
+#' following values:
+#' 
+#' -   `automated` - Return all cluster snapshots that Amazon DocumentDB
+#'     has automatically created for your Amazon Web Services account.
+#' 
+#' -   `manual` - Return all cluster snapshots that you have manually
+#'     created for your Amazon Web Services account.
 #'
 #' @keywords internal
 #'
 #' @rdname docdbelastic_list_cluster_snapshots
-docdbelastic_list_cluster_snapshots <- function(clusterArn = NULL, maxResults = NULL, nextToken = NULL) {
+docdbelastic_list_cluster_snapshots <- function(clusterArn = NULL, maxResults = NULL, nextToken = NULL, snapshotType = NULL) {
   op <- new_operation(
     name = "ListClusterSnapshots",
     http_method = "GET",
     http_path = "/cluster-snapshots",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots")
   )
-  input <- .docdbelastic$list_cluster_snapshots_input(clusterArn = clusterArn, maxResults = maxResults, nextToken = nextToken)
+  input <- .docdbelastic$list_cluster_snapshots_input(clusterArn = clusterArn, maxResults = maxResults, nextToken = nextToken, snapshotType = snapshotType)
   output <- .docdbelastic$list_cluster_snapshots_output()
   config <- get_config()
   svc <- .docdbelastic$service(config)
@@ -273,15 +364,21 @@ docdbelastic_list_cluster_snapshots <- function(clusterArn = NULL, maxResults = 
 }
 .docdbelastic$operations$list_cluster_snapshots <- docdbelastic_list_cluster_snapshots
 
-#' Returns information about provisioned Elastic DocumentDB clusters
+#' Returns information about provisioned Amazon DocumentDB elastic clusters
 #'
 #' @description
-#' Returns information about provisioned Elastic DocumentDB clusters.
+#' Returns information about provisioned Amazon DocumentDB elastic clusters.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_list_clusters/](https://www.paws-r-sdk.com/docs/docdbelastic_list_clusters/) for full documentation.
 #'
-#' @param maxResults The maximum number of entries to recieve in the response.
-#' @param nextToken The nextToken which is used the get the next page of data.
+#' @param maxResults The maximum number of elastic cluster snapshot results to receive in the
+#' response.
+#' @param nextToken A pagination token provided by a previous request. If this parameter is
+#' specified, the response includes only records beyond this token, up to
+#' the value specified by `max-results`.
+#' 
+#' If there is no more data in the responce, the `nextToken` will not be
+#' returned.
 #'
 #' @keywords internal
 #'
@@ -303,14 +400,14 @@ docdbelastic_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 }
 .docdbelastic$operations$list_clusters <- docdbelastic_list_clusters
 
-#' Lists all tags on a Elastic DocumentDB resource
+#' Lists all tags on a elastic cluster resource
 #'
 #' @description
-#' Lists all tags on a Elastic DocumentDB resource
+#' Lists all tags on a elastic cluster resource
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/docdbelastic_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The arn of the Elastic DocumentDB resource.
+#' @param resourceArn &#91;required&#93; The ARN identifier of the elastic cluster resource.
 #'
 #' @keywords internal
 #'
@@ -332,44 +429,48 @@ docdbelastic_list_tags_for_resource <- function(resourceArn) {
 }
 .docdbelastic$operations$list_tags_for_resource <- docdbelastic_list_tags_for_resource
 
-#' Restores a Elastic DocumentDB cluster from a snapshot
+#' Restores an elastic cluster from a snapshot
 #'
 #' @description
-#' Restores a Elastic DocumentDB cluster from a snapshot.
+#' Restores an elastic cluster from a snapshot.
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_restore_cluster_from_snapshot/](https://www.paws-r-sdk.com/docs/docdbelastic_restore_cluster_from_snapshot/) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Elastic DocumentDB cluster.
-#' @param kmsKeyId The KMS key identifier to use to encrypt the new Elastic DocumentDB
-#' cluster.
+#' @param clusterName &#91;required&#93; The name of the elastic cluster.
+#' @param kmsKeyId The KMS key identifier to use to encrypt the new Amazon DocumentDB
+#' elastic clusters cluster.
 #' 
 #' The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 #' encryption key. If you are creating a cluster using the same Amazon
 #' account that owns this KMS encryption key, you can use the KMS key alias
 #' instead of the ARN as the KMS encryption key.
 #' 
-#' If an encryption key is not specified here, Elastic DocumentDB uses the
+#' If an encryption key is not specified here, Amazon DocumentDB uses the
 #' default encryption key that KMS creates for your account. Your account
 #' has a different default encryption key for each Amazon Region.
-#' @param snapshotArn &#91;required&#93; The arn of the Elastic DocumentDB snapshot.
-#' @param subnetIds The Amazon EC2 subnet IDs for the Elastic DocumentDB cluster.
-#' @param tags A list of the tag names to be assigned to the restored DB cluster, in
-#' the form of an array of key-value pairs in which the key is the tag name
-#' and the value is the key value.
-#' @param vpcSecurityGroupIds A list of EC2 VPC security groups to associate with the Elastic
-#' DocumentDB cluster.
+#' @param shardCapacity The capacity of each shard in the new restored elastic cluster.
+#' @param shardInstanceCount The number of replica instances applying to all shards in the elastic
+#' cluster. A `shardInstanceCount` value of 1 means there is one writer
+#' instance, and any additional instances are replicas that can be used for
+#' reads and to improve availability.
+#' @param snapshotArn &#91;required&#93; The ARN identifier of the elastic cluster snapshot.
+#' @param subnetIds The Amazon EC2 subnet IDs for the elastic cluster.
+#' @param tags A list of the tag names to be assigned to the restored elastic cluster,
+#' in the form of an array of key-value pairs in which the key is the tag
+#' name and the value is the key value.
+#' @param vpcSecurityGroupIds A list of EC2 VPC security groups to associate with the elastic cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname docdbelastic_restore_cluster_from_snapshot
-docdbelastic_restore_cluster_from_snapshot <- function(clusterName, kmsKeyId = NULL, snapshotArn, subnetIds = NULL, tags = NULL, vpcSecurityGroupIds = NULL) {
+docdbelastic_restore_cluster_from_snapshot <- function(clusterName, kmsKeyId = NULL, shardCapacity = NULL, shardInstanceCount = NULL, snapshotArn, subnetIds = NULL, tags = NULL, vpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "RestoreClusterFromSnapshot",
     http_method = "POST",
     http_path = "/cluster-snapshot/{snapshotArn}/restore",
     paginator = list()
   )
-  input <- .docdbelastic$restore_cluster_from_snapshot_input(clusterName = clusterName, kmsKeyId = kmsKeyId, snapshotArn = snapshotArn, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
+  input <- .docdbelastic$restore_cluster_from_snapshot_input(clusterName = clusterName, kmsKeyId = kmsKeyId, shardCapacity = shardCapacity, shardInstanceCount = shardInstanceCount, snapshotArn = snapshotArn, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$restore_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .docdbelastic$service(config)
@@ -379,15 +480,73 @@ docdbelastic_restore_cluster_from_snapshot <- function(clusterName, kmsKeyId = N
 }
 .docdbelastic$operations$restore_cluster_from_snapshot <- docdbelastic_restore_cluster_from_snapshot
 
-#' Adds metadata tags to a Elastic DocumentDB resource
+#' Restarts the stopped elastic cluster that is specified by clusterARN
 #'
 #' @description
-#' Adds metadata tags to a Elastic DocumentDB resource
+#' Restarts the stopped elastic cluster that is specified by `clusterARN`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdbelastic_start_cluster/](https://www.paws-r-sdk.com/docs/docdbelastic_start_cluster/) for full documentation.
+#'
+#' @param clusterArn &#91;required&#93; The ARN identifier of the elastic cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname docdbelastic_start_cluster
+docdbelastic_start_cluster <- function(clusterArn) {
+  op <- new_operation(
+    name = "StartCluster",
+    http_method = "POST",
+    http_path = "/cluster/{clusterArn}/start",
+    paginator = list()
+  )
+  input <- .docdbelastic$start_cluster_input(clusterArn = clusterArn)
+  output <- .docdbelastic$start_cluster_output()
+  config <- get_config()
+  svc <- .docdbelastic$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdbelastic$operations$start_cluster <- docdbelastic_start_cluster
+
+#' Stops the running elastic cluster that is specified by clusterArn
+#'
+#' @description
+#' Stops the running elastic cluster that is specified by `clusterArn`. The elastic cluster must be in the *available* state.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdbelastic_stop_cluster/](https://www.paws-r-sdk.com/docs/docdbelastic_stop_cluster/) for full documentation.
+#'
+#' @param clusterArn &#91;required&#93; The ARN identifier of the elastic cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname docdbelastic_stop_cluster
+docdbelastic_stop_cluster <- function(clusterArn) {
+  op <- new_operation(
+    name = "StopCluster",
+    http_method = "POST",
+    http_path = "/cluster/{clusterArn}/stop",
+    paginator = list()
+  )
+  input <- .docdbelastic$stop_cluster_input(clusterArn = clusterArn)
+  output <- .docdbelastic$stop_cluster_output()
+  config <- get_config()
+  svc <- .docdbelastic$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdbelastic$operations$stop_cluster <- docdbelastic_stop_cluster
+
+#' Adds metadata tags to an elastic cluster resource
+#'
+#' @description
+#' Adds metadata tags to an elastic cluster resource
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_tag_resource/](https://www.paws-r-sdk.com/docs/docdbelastic_tag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The arn of the Elastic DocumentDB resource.
-#' @param tags &#91;required&#93; The tags to be assigned to the Elastic DocumentDB resource.
+#' @param resourceArn &#91;required&#93; The ARN identifier of the elastic cluster resource.
+#' @param tags &#91;required&#93; The tags that are assigned to the elastic cluster resource.
 #'
 #' @keywords internal
 #'
@@ -409,15 +568,15 @@ docdbelastic_tag_resource <- function(resourceArn, tags) {
 }
 .docdbelastic$operations$tag_resource <- docdbelastic_tag_resource
 
-#' Removes metadata tags to a Elastic DocumentDB resource
+#' Removes metadata tags from an elastic cluster resource
 #'
 #' @description
-#' Removes metadata tags to a Elastic DocumentDB resource
+#' Removes metadata tags from an elastic cluster resource
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_untag_resource/](https://www.paws-r-sdk.com/docs/docdbelastic_untag_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The arn of the Elastic DocumentDB resource.
-#' @param tagKeys &#91;required&#93; The tag keys to be removed from the Elastic DocumentDB resource.
+#' @param resourceArn &#91;required&#93; The ARN identifier of the elastic cluster resource.
+#' @param tagKeys &#91;required&#93; The tag keys to be removed from the elastic cluster resource.
 #'
 #' @keywords internal
 #'
@@ -439,21 +598,27 @@ docdbelastic_untag_resource <- function(resourceArn, tagKeys) {
 }
 .docdbelastic$operations$untag_resource <- docdbelastic_untag_resource
 
-#' Modifies a Elastic DocumentDB cluster
+#' Modifies an elastic cluster
 #'
 #' @description
-#' Modifies a Elastic DocumentDB cluster. This includes updating admin-username/password, upgrading API version setting up a backup window and maintenance window
+#' Modifies an elastic cluster. This includes updating admin-username/password, upgrading the API version, and setting up a backup window and maintenance window
 #'
 #' See [https://www.paws-r-sdk.com/docs/docdbelastic_update_cluster/](https://www.paws-r-sdk.com/docs/docdbelastic_update_cluster/) for full documentation.
 #'
-#' @param adminUserPassword The password for the Elastic DocumentDB cluster administrator. This
+#' @param adminUserPassword The password associated with the elastic cluster administrator. This
 #' password can contain any printable ASCII character except forward slash
 #' (/), double quote ("), or the "at" symbol (@@).
 #' 
 #' *Constraints*: Must contain from 8 to 100 characters.
-#' @param authType The authentication type for the Elastic DocumentDB cluster.
-#' @param clientToken The client token for the Elastic DocumentDB cluster.
-#' @param clusterArn &#91;required&#93; The arn of the Elastic DocumentDB cluster.
+#' @param authType The authentication type used to determine where to fetch the password
+#' used for accessing the elastic cluster. Valid types are `PLAIN_TEXT` or
+#' `SECRET_ARN`.
+#' @param backupRetentionPeriod The number of days for which automatic snapshots are retained.
+#' @param clientToken The client token for the elastic cluster.
+#' @param clusterArn &#91;required&#93; The ARN identifier of the elastic cluster.
+#' @param preferredBackupWindow The daily time range during which automated backups are created if
+#' automated backups are enabled, as determined by the
+#' `backupRetentionPeriod`.
 #' @param preferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -466,23 +631,27 @@ docdbelastic_untag_resource <- function(resourceArn, tagKeys) {
 #' *Valid days*: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' *Constraints*: Minimum 30-minute window.
-#' @param shardCapacity The capacity of each shard in the Elastic DocumentDB cluster.
-#' @param shardCount The number of shards to create in the Elastic DocumentDB cluster.
-#' @param subnetIds The number of shards to create in the Elastic DocumentDB cluster.
-#' @param vpcSecurityGroupIds A list of EC2 VPC security groups to associate with the new Elastic
-#' DocumentDB cluster.
+#' @param shardCapacity The number of vCPUs assigned to each elastic cluster shard. Maximum is
+#' 64. Allowed values are 2, 4, 8, 16, 32, 64.
+#' @param shardCount The number of shards assigned to the elastic cluster. Maximum is 32.
+#' @param shardInstanceCount The number of replica instances applying to all shards in the elastic
+#' cluster. A `shardInstanceCount` value of 1 means there is one writer
+#' instance, and any additional instances are replicas that can be used for
+#' reads and to improve availability.
+#' @param subnetIds The Amazon EC2 subnet IDs for the elastic cluster.
+#' @param vpcSecurityGroupIds A list of EC2 VPC security groups to associate with the elastic cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname docdbelastic_update_cluster
-docdbelastic_update_cluster <- function(adminUserPassword = NULL, authType = NULL, clientToken = NULL, clusterArn, preferredMaintenanceWindow = NULL, shardCapacity = NULL, shardCount = NULL, subnetIds = NULL, vpcSecurityGroupIds = NULL) {
+docdbelastic_update_cluster <- function(adminUserPassword = NULL, authType = NULL, backupRetentionPeriod = NULL, clientToken = NULL, clusterArn, preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, shardCapacity = NULL, shardCount = NULL, shardInstanceCount = NULL, subnetIds = NULL, vpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "PUT",
     http_path = "/cluster/{clusterArn}",
     paginator = list()
   )
-  input <- .docdbelastic$update_cluster_input(adminUserPassword = adminUserPassword, authType = authType, clientToken = clientToken, clusterArn = clusterArn, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds)
+  input <- .docdbelastic$update_cluster_input(adminUserPassword = adminUserPassword, authType = authType, backupRetentionPeriod = backupRetentionPeriod, clientToken = clientToken, clusterArn = clusterArn, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, shardInstanceCount = shardInstanceCount, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$update_cluster_output()
   config <- get_config()
   svc <- .docdbelastic$service(config)

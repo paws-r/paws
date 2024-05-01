@@ -15,7 +15,7 @@ fis_update_target_account_configuration(
 \arguments{
 \item{experimentTemplateId}{[required] The ID of the experiment template.}
 
-\item{accountId}{[required] The AWS account ID of the target account.}
+\item{accountId}{[required] The Amazon Web Services account ID of the target account.}
 
 \item{roleArn}{The Amazon Resource Name (ARN) of an IAM role for the target account.}
 

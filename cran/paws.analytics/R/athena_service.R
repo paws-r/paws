@@ -204,7 +204,7 @@ athena <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .athena$metadata <- list(
   service_name = "athena",
-  endpoints = list("*" = list(endpoint = "athena.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "athena.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "athena.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "athena.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "athena.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "athena.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "athena.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "athena.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "athena.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "athena.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Athena",
   api_version = "2017-05-18",
   signing_name = "athena",

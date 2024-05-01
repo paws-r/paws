@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_create_delivery_stream}
 \alias{firehose_create_delivery_stream}
-\title{Creates a Kinesis Data Firehose delivery stream}
+\title{Creates a Firehose delivery stream}
 \usage{
 firehose_create_delivery_stream(
   DeliveryStreamName,
@@ -18,7 +18,8 @@ firehose_create_delivery_stream(
   HttpEndpointDestinationConfiguration = NULL,
   Tags = NULL,
   AmazonOpenSearchServerlessDestinationConfiguration = NULL,
-  MSKSourceConfiguration = NULL
+  MSKSourceConfiguration = NULL,
+  SnowflakeDestinationConfiguration = NULL
 )
 }
 \arguments{
@@ -69,15 +70,34 @@ descriptions or other types of information that can help you distinguish
 the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
 in the Amazon Web Services Billing and Cost Management User Guide.
 
-You can specify up to 50 tags when creating a delivery stream.}
+You can specify up to 50 tags when creating a delivery stream.
+
+If you specify tags in the
+\code{\link[=firehose_create_delivery_stream]{create_delivery_stream}} action,
+Amazon Data Firehose performs an additional authorization on the
+\code{firehose:TagDeliveryStream} action to verify if users have permissions
+to create tags. If you do not provide this permission, requests to
+create new Firehose delivery streams with IAM resource tags will fail
+with an \code{AccessDeniedException} such as following.
+
+\strong{AccessDeniedException}
+
+User: arn:aws:sts::x:assumed-role/x/x is not authorized to perform:
+firehose:TagDeliveryStream on resource:
+arn:aws:firehose:us-east-1:x:deliverystream/x with an explicit deny in
+an identity-based policy.
+
+For an example IAM policy, see \href{https://docs.aws.amazon.com/firehose/latest/APIReference/API_CreateDeliveryStream.html#API_CreateDeliveryStream_Examples}{Tag example.}}
 
 \item{AmazonOpenSearchServerlessDestinationConfiguration}{The destination in the Serverless offering for Amazon OpenSearch
 Service. You can specify only one destination.}
 
 \item{MSKSourceConfiguration}{}
+
+\item{SnowflakeDestinationConfiguration}{Configure Snowflake destination}
 }
 \description{
-Creates a Kinesis Data Firehose delivery stream.
+Creates a Firehose delivery stream.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/} for full documentation.
 }

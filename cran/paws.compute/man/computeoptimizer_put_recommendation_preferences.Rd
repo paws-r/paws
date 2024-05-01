@@ -87,16 +87,23 @@ isn't specified, we use the default value \code{DAYS_14}.
 You can only set this preference for the Amazon EC2 instance and Auto
 Scaling group resource types.}
 
-\item{utilizationPreferences}{The preference to control the resource’s CPU utilization thresholds -
-threshold and headroom. When this preference isn't specified, we use the
-following default values:
+\item{utilizationPreferences}{The preference to control the resource’s CPU utilization threshold, CPU
+utilization headroom, and memory utilization headroom. When this
+preference isn't specified, we use the following default values.
+
+CPU utilization:
 \itemize{
 \item \code{P99_5} for threshold
-\item \code{PERCENT_17} for headroom
+\item \code{PERCENT_20} for headroom
 }
 
-You can only set this preference for the Amazon EC2 instance resource
-type.}
+Memory utilization:
+\itemize{
+\item \code{PERCENT_20} for headroom
+\item You can only set CPU and memory utilization preferences for the
+Amazon EC2 instance resource type.
+\item The threshold setting isn’t available for memory utilization.
+}}
 
 \item{preferredResources}{The preference to control which resource type values are considered when
 generating rightsizing recommendations. You can specify this preference

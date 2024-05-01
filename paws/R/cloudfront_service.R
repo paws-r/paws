@@ -8,7 +8,8 @@ NULL
 #' This is the *Amazon CloudFront API Reference*. This guide is for
 #' developers who need detailed information about CloudFront API actions,
 #' data types, and errors. For detailed information about CloudFront
-#' features, see the *Amazon CloudFront Developer Guide*.
+#' features, see the [Amazon CloudFront Developer
+#' Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html).
 #'
 #' @param
 #' config
@@ -119,7 +120,7 @@ NULL
 #'  \link[=cloudfront_create_function]{create_function} \tab Creates a CloudFront function\cr
 #'  \link[=cloudfront_create_invalidation]{create_invalidation} \tab Create a new invalidation\cr
 #'  \link[=cloudfront_create_key_group]{create_key_group} \tab Creates a key group that you can use with CloudFront signed URLs and signed cookies\cr
-#'  \link[=cloudfront_create_key_value_store]{create_key_value_store} \tab Specifies the Key Value Store resource to add to your account\cr
+#'  \link[=cloudfront_create_key_value_store]{create_key_value_store} \tab Specifies the key value store resource to add to your account\cr
 #'  \link[=cloudfront_create_monitoring_subscription]{create_monitoring_subscription} \tab Enables additional CloudWatch metrics for the specified CloudFront distribution\cr
 #'  \link[=cloudfront_create_origin_access_control]{create_origin_access_control} \tab Creates a new origin access control in CloudFront\cr
 #'  \link[=cloudfront_create_origin_request_policy]{create_origin_request_policy} \tab Creates an origin request policy\cr
@@ -136,7 +137,7 @@ NULL
 #'  \link[=cloudfront_delete_field_level_encryption_profile]{delete_field_level_encryption_profile} \tab Remove a field-level encryption profile\cr
 #'  \link[=cloudfront_delete_function]{delete_function} \tab Deletes a CloudFront function\cr
 #'  \link[=cloudfront_delete_key_group]{delete_key_group} \tab Deletes a key group\cr
-#'  \link[=cloudfront_delete_key_value_store]{delete_key_value_store} \tab Specifies the Key Value Store to delete\cr
+#'  \link[=cloudfront_delete_key_value_store]{delete_key_value_store} \tab Specifies the key value store to delete\cr
 #'  \link[=cloudfront_delete_monitoring_subscription]{delete_monitoring_subscription} \tab Disables additional CloudWatch metrics for the specified CloudFront distribution\cr
 #'  \link[=cloudfront_delete_origin_access_control]{delete_origin_access_control} \tab Deletes a CloudFront origin access control\cr
 #'  \link[=cloudfront_delete_origin_request_policy]{delete_origin_request_policy} \tab Deletes an origin request policy\cr
@@ -145,7 +146,7 @@ NULL
 #'  \link[=cloudfront_delete_response_headers_policy]{delete_response_headers_policy} \tab Deletes a response headers policy\cr
 #'  \link[=cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
 #'  \link[=cloudfront_describe_function]{describe_function} \tab Gets configuration information and metadata about a CloudFront function, but not the function's code\cr
-#'  \link[=cloudfront_describe_key_value_store]{describe_key_value_store} \tab Specifies the Key Value Store and its configuration\cr
+#'  \link[=cloudfront_describe_key_value_store]{describe_key_value_store} \tab Specifies the key value store and its configuration\cr
 #'  \link[=cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 #'  \link[=cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 #'  \link[=cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
@@ -190,7 +191,7 @@ NULL
 #'  \link[=cloudfront_list_functions]{list_functions} \tab Gets a list of all CloudFront functions in your Amazon Web Services account\cr
 #'  \link[=cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
 #'  \link[=cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
-#'  \link[=cloudfront_list_key_value_stores]{list_key_value_stores} \tab Specifies the Key Value Stores to list\cr
+#'  \link[=cloudfront_list_key_value_stores]{list_key_value_stores} \tab Specifies the key value stores to list\cr
 #'  \link[=cloudfront_list_origin_access_controls]{list_origin_access_controls} \tab Gets the list of CloudFront origin access controls in this Amazon Web Services account\cr
 #'  \link[=cloudfront_list_origin_request_policies]{list_origin_request_policies} \tab Gets a list of origin request policies\cr
 #'  \link[=cloudfront_list_public_keys]{list_public_keys} \tab List all public keys that have been added to CloudFront for this account\cr
@@ -211,7 +212,7 @@ NULL
 #'  \link[=cloudfront_update_field_level_encryption_profile]{update_field_level_encryption_profile} \tab Update a field-level encryption profile\cr
 #'  \link[=cloudfront_update_function]{update_function} \tab Updates a CloudFront function\cr
 #'  \link[=cloudfront_update_key_group]{update_key_group} \tab Updates a key group\cr
-#'  \link[=cloudfront_update_key_value_store]{update_key_value_store} \tab Specifies the Key Value Store to update\cr
+#'  \link[=cloudfront_update_key_value_store]{update_key_value_store} \tab Specifies the key value store to update\cr
 #'  \link[=cloudfront_update_origin_access_control]{update_origin_access_control} \tab Updates a CloudFront origin access control\cr
 #'  \link[=cloudfront_update_origin_request_policy]{update_origin_request_policy} \tab Updates an origin request policy configuration\cr
 #'  \link[=cloudfront_update_public_key]{update_public_key} \tab Update public key information\cr
@@ -249,7 +250,7 @@ cloudfront <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .cloudfront$metadata <- list(
   service_name = "cloudfront",
-  endpoints = list("*" = list(endpoint = "https://cloudfront.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "cloudfront.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudfront.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudfront.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://cloudfront.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "cloudfront.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "cloudfront.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "cloudfront.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudfront.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "cloudfront.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CloudFront",
   api_version = "2020-05-31",
   signing_name = "cloudfront",

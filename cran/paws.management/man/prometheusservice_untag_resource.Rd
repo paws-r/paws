@@ -2,17 +2,18 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_untag_resource}
 \alias{prometheusservice_untag_resource}
-\title{Deletes tags from the specified resource}
+\title{Removes the specified tags from an Amazon Managed Service for Prometheus
+resource}
 \usage{
 prometheusservice_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the resource.}
+\item{resourceArn}{[required] The ARN of the workspace or rule groups namespace.}
 
-\item{tagKeys}{[required] One or more tag keys}
+\item{tagKeys}{[required] The keys of the tags to remove.}
 }
 \description{
-Deletes tags from the specified resource.
+Removes the specified tags from an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are workspaces and rule groups namespaces.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_untag_resource/} for full documentation.
 }

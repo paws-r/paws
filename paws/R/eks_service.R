@@ -202,7 +202,7 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .eks$metadata <- list(
   service_name = "eks",
-  endpoints = list("*" = list(endpoint = "eks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "eks.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "eks.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "eks.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "eks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "eks.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "eks.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "eks.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "eks.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "eks.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EKS",
   api_version = "2017-11-01",
   signing_name = "eks",

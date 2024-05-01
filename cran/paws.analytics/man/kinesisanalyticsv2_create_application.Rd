@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_create_application}
 \alias{kinesisanalyticsv2_create_application}
-\title{Creates a Kinesis Data Analytics application}
+\title{Creates a Managed Service for Apache Flink application}
 \usage{
 kinesisanalyticsv2_create_application(
   ApplicationName,
@@ -36,12 +36,12 @@ key-value pair that identifies an application. Note that the maximum
 number of application tags includes system tags. The maximum number of
 user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.}
 
-\item{ApplicationMode}{Use the \code{STREAMING} mode to create a Kinesis Data Analytics For Flink
-application. To create a Kinesis Data Analytics Studio notebook, use the
-\code{INTERACTIVE} mode.}
+\item{ApplicationMode}{Use the \code{STREAMING} mode to create a Managed Service for Apache Flink
+application. To create a Managed Service for Apache Flink Studio
+notebook, use the \code{INTERACTIVE} mode.}
 }
 \description{
-Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html}{Creating an Application}.
+Creates a Managed Service for Apache Flink application. For information about creating a Managed Service for Apache Flink application, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html}{Creating an Application}.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/} for full documentation.
 }

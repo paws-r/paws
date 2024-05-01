@@ -217,6 +217,8 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesis_describe_limits/](https://www.paws-r-sdk.com/docs/kinesis_describe_limits/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname kinesis_describe_limits

@@ -2,24 +2,28 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_put_alert_manager_definition}
 \alias{prometheusservice_put_alert_manager_definition}
-\title{Update an alert manager definition}
+\title{Updates an existing alert manager definition in a workspace}
 \usage{
 prometheusservice_put_alert_manager_definition(
-  workspaceId,
+  clientToken = NULL,
   data,
-  clientToken = NULL
+  workspaceId
 )
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace in which to update the alert manager definition.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{data}{[required] The alert manager definition data.}
+\item{data}{[required] The alert manager definition to use. A base64-encoded version of the
+YAML alert manager definition file.
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+For details about the alert manager definition, see
+\href{https://docs.aws.amazon.com/prometheus/latest/APIReference/yaml-AlertManagerDefinitionData.html}{AlertManagedDefinitionData}.}
+
+\item{workspaceId}{[required] The ID of the workspace to update the alert manager definition in.}
 }
 \description{
-Update an alert manager definition.
+Updates an existing alert manager definition in a workspace. If the workspace does not already have an alert manager definition, don't use this operation to create it. Instead, use \code{\link[=prometheusservice_create_alert_manager_definition]{create_alert_manager_definition}}.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_put_alert_manager_definition/} for full documentation.
 }

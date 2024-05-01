@@ -40,7 +40,8 @@ Conditional: You must specify only one of the following parameters:
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template that's located in an Amazon S3 bucket or a Systems Manager
 document. For more information, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}.
+in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
+must start with \verb{https://}.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
@@ -64,7 +65,8 @@ used.}
 
 \item{StackPolicyDuringUpdateURL}{Location of a file containing the temporary overriding stack policy. The
 URL must point to a policy (max size: 16KB) located in an S3 bucket in
-the same Region as the stack. You can specify either the
+the same Region as the stack. The location for an Amazon S3 bucket must
+start with \verb{https://}. You can specify either the
 \code{StackPolicyDuringUpdateBody} or the \code{StackPolicyDuringUpdateURL}
 parameter, but not both.
 
@@ -189,7 +191,8 @@ stack is unchanged.}
 
 \item{StackPolicyURL}{Location of a file containing the updated stack policy. The URL must
 point to a policy (max size: 16KB) located in an S3 bucket in the same
-Region as the stack. You can specify either the \code{StackPolicyBody} or the
+Region as the stack. The location for an Amazon S3 bucket must start
+with \verb{https://}. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a

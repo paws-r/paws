@@ -41,6 +41,9 @@ with the queues or channels included in the filter. You can include both
 queue IDs and queue ARNs in the same request. VOICE, CHAT, and TASK
 channels are supported.
 
+RoutingStepExpression is not a valid filter for GetMetricData and we
+recommend switching to GetMetricDataV2 for more up-to-date features.
+
 To filter by \code{Queues}, enter the queue ID/ARN, not the name of the
 queue.}
 
@@ -50,7 +53,10 @@ values returned apply to the metrics for each queue rather than
 aggregated for all queues.
 
 If no grouping is specified, a summary of metrics for all queues is
-returned.}
+returned.
+
+RoutingStepExpression is not a valid filter for GetMetricData and we
+recommend switching to GetMetricDataV2 for more up-to-date features.}
 
 \item{HistoricalMetrics}{[required] The metrics to retrieve. Specify the name, unit, and statistic for each
 metric. The following historical metrics are available. For a

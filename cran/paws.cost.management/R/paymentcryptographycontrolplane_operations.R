@@ -50,10 +50,6 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_create_key/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_create_key/) for full documentation.
 #'
-#' @param Enabled Specifies whether to enable the key. If the key is enabled, it is
-#' activated for use within the service. If the key is not enabled, then it
-#' is created but not activated. The default value is enabled.
-#' @param Exportable &#91;required&#93; Specifies whether the key is exportable from the service.
 #' @param KeyAttributes &#91;required&#93; The role of the key, the algorithm it supports, and the cryptographic
 #' operations allowed with the key. This data is immutable after the key is
 #' created.
@@ -66,6 +62,10 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' order bytes of the encrypted result. For AES keys, the KCV is computed
 #' using a CMAC algorithm where the input data is 16 bytes of zero and
 #' retaining the 3 highest order bytes of the encrypted result.
+#' @param Exportable &#91;required&#93; Specifies whether the key is exportable from the service.
+#' @param Enabled Specifies whether to enable the key. If the key is enabled, it is
+#' activated for use within the service. If the key is not enabled, then it
+#' is created but not activated. The default value is enabled.
 #' @param Tags Assigns one or more tags to the Amazon Web Services Payment Cryptography
 #' key. Use this parameter to tag a key when it is created. To tag an
 #' existing Amazon Web Services Payment Cryptography key, use the
@@ -87,14 +87,14 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_create_key
-paymentcryptographycontrolplane_create_key <- function(Enabled = NULL, Exportable, KeyAttributes, KeyCheckValueAlgorithm = NULL, Tags = NULL) {
+paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckValueAlgorithm = NULL, Exportable, Enabled = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .paymentcryptographycontrolplane$create_key_input(Enabled = Enabled, Exportable = Exportable, KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Tags = Tags)
+  input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags)
   output <- .paymentcryptographycontrolplane$create_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)
@@ -143,20 +143,20 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_delete_key/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_delete_key/) for full documentation.
 #'
-#' @param DeleteKeyInDays The waiting period for key deletion. The default value is seven days.
 #' @param KeyIdentifier &#91;required&#93; The `KeyARN` of the key that is scheduled for deletion.
+#' @param DeleteKeyInDays The waiting period for key deletion. The default value is seven days.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_delete_key
-paymentcryptographycontrolplane_delete_key <- function(DeleteKeyInDays = NULL, KeyIdentifier) {
+paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyInDays = NULL) {
   op <- new_operation(
     name = "DeleteKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .paymentcryptographycontrolplane$delete_key_input(DeleteKeyInDays = DeleteKeyInDays, KeyIdentifier = KeyIdentifier)
+  input <- .paymentcryptographycontrolplane$delete_key_input(KeyIdentifier = KeyIdentifier, DeleteKeyInDays = DeleteKeyInDays)
   output <- .paymentcryptographycontrolplane$delete_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)
@@ -173,23 +173,23 @@ paymentcryptographycontrolplane_delete_key <- function(DeleteKeyInDays = NULL, K
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_export_key/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_export_key/) for full documentation.
 #'
-#' @param ExportAttributes The attributes for IPEK generation during export.
-#' @param ExportKeyIdentifier &#91;required&#93; The `KeyARN` of the key under export from Amazon Web Services Payment
-#' Cryptography.
 #' @param KeyMaterial &#91;required&#93; The key block format type, for example, TR-34 or TR-31, to use during
 #' key material export.
+#' @param ExportKeyIdentifier &#91;required&#93; The `KeyARN` of the key under export from Amazon Web Services Payment
+#' Cryptography.
+#' @param ExportAttributes The attributes for IPEK generation during export.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_export_key
-paymentcryptographycontrolplane_export_key <- function(ExportAttributes = NULL, ExportKeyIdentifier, KeyMaterial) {
+paymentcryptographycontrolplane_export_key <- function(KeyMaterial, ExportKeyIdentifier, ExportAttributes = NULL) {
   op <- new_operation(
     name = "ExportKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .paymentcryptographycontrolplane$export_key_input(ExportAttributes = ExportAttributes, ExportKeyIdentifier = ExportKeyIdentifier, KeyMaterial = KeyMaterial)
+  input <- .paymentcryptographycontrolplane$export_key_input(KeyMaterial = KeyMaterial, ExportKeyIdentifier = ExportKeyIdentifier, ExportAttributes = ExportAttributes)
   output <- .paymentcryptographycontrolplane$export_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)
@@ -297,23 +297,27 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 .paymentcryptographycontrolplane$operations$get_parameters_for_export <- paymentcryptographycontrolplane_get_parameters_for_export
 
 #' Gets the import token and the wrapping key certificate in PEM format
-#' (base64 encoded) to initiate a TR-34 WrappedKeyBlock
+#' (base64 encoded) to initiate a TR-34 WrappedKeyBlock or a RSA
+#' WrappedKeyCryptogram import into Amazon Web Services Payment
+#' Cryptography
 #'
 #' @description
-#' Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock.
+#' Gets the import token and the wrapping key certificate in PEM format (base64 encoded) to initiate a TR-34 WrappedKeyBlock or a RSA WrappedKeyCryptogram import into Amazon Web Services Payment Cryptography.
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_parameters_for_import/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_get_parameters_for_import/) for full documentation.
 #'
 #' @param KeyMaterialType &#91;required&#93; The method to use for key material import. Import token is only required
-#' for TR-34 WrappedKeyBlock (`TR34_KEY_BLOCK`).
+#' for TR-34 WrappedKeyBlock (`TR34_KEY_BLOCK`) and RSA
+#' WrappedKeyCryptogram (`KEY_CRYPTOGRAM`).
 #' 
 #' Import token is not required for TR-31, root public key cerificate or
 #' trusted public key certificate.
 #' @param WrappingKeyAlgorithm &#91;required&#93; The wrapping key algorithm to generate a wrapping key certificate. This
 #' certificate wraps the key under import.
 #' 
-#' At this time, `RSA_2048`, `RSA_3072`, `RSA_4096` are the only allowed
-#' algorithms for TR-34 WrappedKeyBlock import.
+#' At this time, `RSA_2048` is the allowed algorithm for TR-34
+#' WrappedKeyBlock import. Additionally, `RSA_2048`, `RSA_3072`, `RSA_4096`
+#' are the allowed algorithms for RSA WrappedKeyCryptogram import.
 #'
 #' @keywords internal
 #'
@@ -373,7 +377,8 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_import_key/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_import_key/) for full documentation.
 #'
-#' @param Enabled Specifies whether import key is enabled.
+#' @param KeyMaterial &#91;required&#93; The key or public key certificate type to use during key material
+#' import, for example TR-34 or RootCertificatePublicKey.
 #' @param KeyCheckValueAlgorithm The algorithm that Amazon Web Services Payment Cryptography uses to
 #' calculate the key check value (KCV). It is used to validate the key
 #' integrity.
@@ -383,8 +388,7 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' order bytes of the encrypted result. For AES keys, the KCV is computed
 #' using a CMAC algorithm where the input data is 16 bytes of zero and
 #' retaining the 3 highest order bytes of the encrypted result.
-#' @param KeyMaterial &#91;required&#93; The key or public key certificate type to use during key material
-#' import, for example TR-34 or RootCertificatePublicKey.
+#' @param Enabled Specifies whether import key is enabled.
 #' @param Tags Assigns one or more tags to the Amazon Web Services Payment Cryptography
 #' key. Use this parameter to tag a key when it is imported. To tag an
 #' existing Amazon Web Services Payment Cryptography key, use the
@@ -408,14 +412,14 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_import_key
-paymentcryptographycontrolplane_import_key <- function(Enabled = NULL, KeyCheckValueAlgorithm = NULL, KeyMaterial, Tags = NULL) {
+paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValueAlgorithm = NULL, Enabled = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .paymentcryptographycontrolplane$import_key_input(Enabled = Enabled, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, KeyMaterial = KeyMaterial, Tags = Tags)
+  input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags)
   output <- .paymentcryptographycontrolplane$import_key_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)
@@ -433,6 +437,9 @@ paymentcryptographycontrolplane_import_key <- function(Enabled = NULL, KeyCheckV
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_aliases/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_aliases/) for full documentation.
 #'
+#' @param NextToken Use this parameter in a subsequent request after you receive a response
+#' with truncated results. Set it to the value of `NextToken` from the
+#' truncated response you just received.
 #' @param MaxResults Use this parameter to specify the maximum number of items to return.
 #' When this value is present, Amazon Web Services Payment Cryptography
 #' does not return more than the specified number of items, but it might
@@ -440,21 +447,18 @@ paymentcryptographycontrolplane_import_key <- function(Enabled = NULL, KeyCheckV
 #' 
 #' This value is optional. If you include a value, it must be between 1 and
 #' 100, inclusive. If you do not include a value, it defaults to 50.
-#' @param NextToken Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextToken` from the
-#' truncated response you just received.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_list_aliases
-paymentcryptographycontrolplane_list_aliases <- function(MaxResults = NULL, NextToken = NULL) {
+paymentcryptographycontrolplane_list_aliases <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Aliases")
   )
-  input <- .paymentcryptographycontrolplane$list_aliases_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .paymentcryptographycontrolplane$list_aliases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_aliases_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)
@@ -473,6 +477,9 @@ paymentcryptographycontrolplane_list_aliases <- function(MaxResults = NULL, Next
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_keys/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_keys/) for full documentation.
 #'
 #' @param KeyState The key state of the keys you want to list.
+#' @param NextToken Use this parameter in a subsequent request after you receive a response
+#' with truncated results. Set it to the value of `NextToken` from the
+#' truncated response you just received.
 #' @param MaxResults Use this parameter to specify the maximum number of items to return.
 #' When this value is present, Amazon Web Services Payment Cryptography
 #' does not return more than the specified number of items, but it might
@@ -480,21 +487,18 @@ paymentcryptographycontrolplane_list_aliases <- function(MaxResults = NULL, Next
 #' 
 #' This value is optional. If you include a value, it must be between 1 and
 #' 100, inclusive. If you do not include a value, it defaults to 50.
-#' @param NextToken Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextToken` from the
-#' truncated response you just received.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_list_keys
-paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, MaxResults = NULL, NextToken = NULL) {
+paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keys")
   )
-  input <- .paymentcryptographycontrolplane$list_keys_input(KeyState = KeyState, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .paymentcryptographycontrolplane$list_keys_input(KeyState = KeyState, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_keys_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)
@@ -511,6 +515,10 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, MaxResult
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_tags_for_resource/) for full documentation.
 #'
+#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key whose tags you are getting.
+#' @param NextToken Use this parameter in a subsequent request after you receive a response
+#' with truncated results. Set it to the value of `NextToken` from the
+#' truncated response you just received.
 #' @param MaxResults Use this parameter to specify the maximum number of items to return.
 #' When this value is present, Amazon Web Services Payment Cryptography
 #' does not return more than the specified number of items, but it might
@@ -518,22 +526,18 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, MaxResult
 #' 
 #' This value is optional. If you include a value, it must be between 1 and
 #' 100, inclusive. If you do not include a value, it defaults to 50.
-#' @param NextToken Use this parameter in a subsequent request after you receive a response
-#' with truncated results. Set it to the value of `NextToken` from the
-#' truncated response you just received.
-#' @param ResourceArn &#91;required&#93; The `KeyARN` of the key whose tags you are getting.
 #'
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_list_tags_for_resource
-paymentcryptographycontrolplane_list_tags_for_resource <- function(MaxResults = NULL, NextToken = NULL, ResourceArn) {
+paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
-  input <- .paymentcryptographycontrolplane$list_tags_for_resource_input(MaxResults = MaxResults, NextToken = NextToken, ResourceArn = ResourceArn)
+  input <- .paymentcryptographycontrolplane$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_tags_for_resource_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config)

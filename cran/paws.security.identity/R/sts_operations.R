@@ -73,8 +73,8 @@ NULL
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -314,8 +314,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -451,8 +451,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -573,6 +573,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sts_get_caller_identity/](https://www.paws-r-sdk.com/docs/sts_get_caller_identity/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname sts_get_caller_identity
@@ -641,8 +643,8 @@ sts_get_caller_identity <- function() {
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary

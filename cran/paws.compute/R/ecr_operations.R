@@ -355,6 +355,8 @@ ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId =
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_delete_registry_policy/](https://www.paws-r-sdk.com/docs/ecr_delete_registry_policy/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname ecr_delete_registry_policy
@@ -635,6 +637,8 @@ ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrReposito
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_describe_registry/](https://www.paws-r-sdk.com/docs/ecr_describe_registry/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname ecr_describe_registry
@@ -869,6 +873,8 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_get_registry_policy/](https://www.paws-r-sdk.com/docs/ecr_get_registry_policy/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname ecr_get_registry_policy
@@ -895,6 +901,8 @@ ecr_get_registry_policy <- function() {
 #' Retrieves the scanning configuration for a registry.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_get_registry_scanning_configuration/](https://www.paws-r-sdk.com/docs/ecr_get_registry_scanning_configuration/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'

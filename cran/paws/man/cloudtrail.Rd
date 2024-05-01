@@ -144,6 +144,7 @@ Services API call listed in the log files.
 \link[paws.management:cloudtrail_list_event_data_stores]{list_event_data_stores} \tab Returns information about all event data stores in the account, in the current Region\cr
 \link[paws.management:cloudtrail_list_import_failures]{list_import_failures} \tab Returns a list of failures for the specified import\cr
 \link[paws.management:cloudtrail_list_imports]{list_imports} \tab Returns information on all imports, or a select set of imports by ImportStatus or Destination\cr
+\link[paws.management:cloudtrail_list_insights_metric_data]{list_insights_metric_data} \tab Returns Insights metrics data for trails that have enabled Insights\cr
 \link[paws.management:cloudtrail_list_public_keys]{list_public_keys} \tab Returns all public keys whose private keys were used to sign the digest files within the specified time range\cr
 \link[paws.management:cloudtrail_list_queries]{list_queries} \tab Returns a list of queries and query statuses for the past seven days\cr
 \link[paws.management:cloudtrail_list_tags]{list_tags} \tab Lists the tags for the specified trails, event data stores, or channels in the current Region\cr

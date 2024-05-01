@@ -2,18 +2,18 @@
 % Please edit documentation in R/prometheusservice_operations.R
 \name{prometheusservice_delete_logging_configuration}
 \alias{prometheusservice_delete_logging_configuration}
-\title{Delete logging configuration}
+\title{Deletes the logging configuration for a workspace}
 \usage{
-prometheusservice_delete_logging_configuration(workspaceId, clientToken = NULL)
+prometheusservice_delete_logging_configuration(clientToken = NULL, workspaceId)
 }
 \arguments{
-\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
+\item{clientToken}{A unique identifier that you can provide to ensure the idempotency of
+the request. Case-sensitive.}
 
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{workspaceId}{[required] The ID of the workspace containing the logging configuration to delete.}
 }
 \description{
-Delete logging configuration.
+Deletes the logging configuration for a workspace.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_logging_configuration/} for full documentation.
 }

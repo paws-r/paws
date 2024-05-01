@@ -24,10 +24,11 @@ bedrock_list_custom_models(
 
 \item{nameContains}{Return custom models only if the job name contains these characters.}
 
-\item{baseModelArnEquals}{Return custom models only if the base model ARN matches this parameter.}
+\item{baseModelArnEquals}{Return custom models only if the base model Amazon Resource Name (ARN)
+matches this parameter.}
 
-\item{foundationModelArnEquals}{Return custom models only if the foundation model ARN matches this
-parameter.}
+\item{foundationModelArnEquals}{Return custom models only if the foundation model Amazon Resource Name
+(ARN) matches this parameter.}
 
 \item{maxResults}{Maximum number of results to return in the response.}
 

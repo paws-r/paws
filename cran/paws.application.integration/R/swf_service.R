@@ -171,7 +171,7 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .swf$metadata <- list(
   service_name = "swf",
-  endpoints = list("*" = list(endpoint = "swf.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "swf.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "swf.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "swf.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "swf.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "swf.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "swf.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "swf.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "swf.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "swf.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SWF",
   api_version = "2012-01-25",
   signing_name = "swf",

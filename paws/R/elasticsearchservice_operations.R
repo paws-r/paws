@@ -243,6 +243,68 @@ elasticsearchservice_authorize_vpc_endpoint_access <- function(DomainName, Accou
 }
 .elasticsearchservice$operations$authorize_vpc_endpoint_access <- elasticsearchservice_authorize_vpc_endpoint_access
 
+#' Cancels a pending configuration change on an Amazon OpenSearch Service
+#' domain
+#'
+#' @description
+#' Cancels a pending configuration change on an Amazon OpenSearch Service
+#' domain.
+#'
+#' @usage
+#' elasticsearchservice_cancel_domain_config_change(DomainName, DryRun)
+#'
+#' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain configuration request to cancel.
+#' @param DryRun When set to **True**, returns the list of change IDs and properties that
+#' will be cancelled without actually cancelling the change.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DryRun = TRUE|FALSE,
+#'   CancelledChangeIds = list(
+#'     "string"
+#'   ),
+#'   CancelledChangeProperties = list(
+#'     list(
+#'       PropertyName = "string",
+#'       CancelledValue = "string",
+#'       ActiveValue = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_domain_config_change(
+#'   DomainName = "string",
+#'   DryRun = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_cancel_domain_config_change
+#'
+#' @aliases elasticsearchservice_cancel_domain_config_change
+elasticsearchservice_cancel_domain_config_change <- function(DomainName, DryRun = NULL) {
+  op <- new_operation(
+    name = "CancelDomainConfigChange",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/domain/{DomainName}/config/cancel",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$cancel_domain_config_change_input(DomainName = DomainName, DryRun = DryRun)
+  output <- .elasticsearchservice$cancel_domain_config_change_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$cancel_domain_config_change <- elasticsearchservice_cancel_domain_config_change
+
 #' Cancels a scheduled service software update for an Amazon ES domain
 #'
 #' @description
@@ -454,7 +516,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -483,7 +545,24 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'     ),
 #'     ChangeProgressDetails = list(
 #'       ChangeId = "string",
-#'       Message = "string"
+#'       Message = "string",
+#'       ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InitiatedBy = "CUSTOMER"|"SERVICE"
+#'     ),
+#'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
+#'     ModifyingProperties = list(
+#'       list(
+#'         Name = "string",
+#'         ActiveValue = "string",
+#'         PendingValue = "string",
+#'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'       )
 #'     )
 #'   )
 #' )
@@ -554,7 +633,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   ),
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'     CustomEndpointEnabled = TRUE|FALSE,
 #'     CustomEndpoint = "string",
 #'     CustomEndpointCertificateArn = "string"
@@ -963,7 +1042,7 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -992,7 +1071,24 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
 #'     ),
 #'     ChangeProgressDetails = list(
 #'       ChangeId = "string",
-#'       Message = "string"
+#'       Message = "string",
+#'       ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InitiatedBy = "CUSTOMER"|"SERVICE"
+#'     ),
+#'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
+#'     ModifyingProperties = list(
+#'       list(
+#'         Name = "string",
+#'         ActiveValue = "string",
+#'         PendingValue = "string",
+#'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1437,7 +1533,12 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
 #'           "2015-01-01"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InitiatedBy = "CUSTOMER"|"SERVICE"
 #'   )
 #' )
 #' ```
@@ -1579,7 +1680,7 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #'     ),
 #'     DomainEndpointOptions = list(
 #'       EnforceHTTPS = TRUE|FALSE,
-#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'       TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'       CustomEndpointEnabled = TRUE|FALSE,
 #'       CustomEndpoint = "string",
 #'       CustomEndpointCertificateArn = "string"
@@ -1608,7 +1709,24 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #'     ),
 #'     ChangeProgressDetails = list(
 #'       ChangeId = "string",
-#'       Message = "string"
+#'       Message = "string",
+#'       ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InitiatedBy = "CUSTOMER"|"SERVICE"
+#'     ),
+#'     DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
+#'     ModifyingProperties = list(
+#'       list(
+#'         Name = "string",
+#'         ActiveValue = "string",
+#'         PendingValue = "string",
+#'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1871,7 +1989,7 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'     DomainEndpointOptions = list(
 #'       Options = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -1951,7 +2069,23 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #'     ),
 #'     ChangeProgressDetails = list(
 #'       ChangeId = "string",
-#'       Message = "string"
+#'       Message = "string",
+#'       ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InitiatedBy = "CUSTOMER"|"SERVICE"
+#'     ),
+#'     ModifyingProperties = list(
+#'       list(
+#'         Name = "string",
+#'         ActiveValue = "string",
+#'         PendingValue = "string",
+#'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2094,7 +2228,7 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'       ),
 #'       DomainEndpointOptions = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -2123,7 +2257,24 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #'       ),
 #'       ChangeProgressDetails = list(
 #'         ChangeId = "string",
-#'         Message = "string"
+#'         Message = "string",
+#'         ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         InitiatedBy = "CUSTOMER"|"SERVICE"
+#'       ),
+#'       DomainProcessingStatus = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting",
+#'       ModifyingProperties = list(
+#'         list(
+#'           Name = "string",
+#'           ActiveValue = "string",
+#'           PendingValue = "string",
+#'           ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -4140,7 +4291,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'     DomainEndpointOptions = list(
 #'       Options = list(
 #'         EnforceHTTPS = TRUE|FALSE,
-#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'         TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'         CustomEndpointEnabled = TRUE|FALSE,
 #'         CustomEndpoint = "string",
 #'         CustomEndpointCertificateArn = "string"
@@ -4220,7 +4371,23 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'     ),
 #'     ChangeProgressDetails = list(
 #'       ChangeId = "string",
-#'       Message = "string"
+#'       Message = "string",
+#'       ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InitiatedBy = "CUSTOMER"|"SERVICE"
+#'     ),
+#'     ModifyingProperties = list(
+#'       list(
+#'         Name = "string",
+#'         ActiveValue = "string",
+#'         PendingValue = "string",
+#'         ValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"
+#'       )
 #'     )
 #'   ),
 #'   DryRunResults = list(
@@ -4287,7 +4454,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'   ),
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
-#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+#'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10",
 #'     CustomEndpointEnabled = TRUE|FALSE,
 #'     CustomEndpoint = "string",
 #'     CustomEndpointCertificateArn = "string"
@@ -4537,7 +4704,15 @@ elasticsearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) 
 #'   PerformCheckOnly = TRUE|FALSE,
 #'   ChangeProgressDetails = list(
 #'     ChangeId = "string",
-#'     Message = "string"
+#'     Message = "string",
+#'     ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InitiatedBy = "CUSTOMER"|"SERVICE"
 #'   )
 #' )
 #' ```

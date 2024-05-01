@@ -4,10 +4,16 @@
 \alias{inspector2_update_configuration}
 \title{Updates setting configurations for your Amazon Inspector account}
 \usage{
-inspector2_update_configuration(ecrConfiguration)
+inspector2_update_configuration(
+  ec2Configuration = NULL,
+  ecrConfiguration = NULL
+)
 }
 \arguments{
-\item{ecrConfiguration}{[required] Specifies how the ECR automated re-scan will be updated for your
+\item{ec2Configuration}{Specifies how the Amazon EC2 automated scan will be updated for your
+environment.}
+
+\item{ecrConfiguration}{Specifies how the ECR automated re-scan will be updated for your
 environment.}
 }
 \description{

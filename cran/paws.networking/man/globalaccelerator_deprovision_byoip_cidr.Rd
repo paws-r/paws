@@ -10,7 +10,10 @@ globalaccelerator_deprovision_byoip_cidr(Cidr)
 }
 \arguments{
 \item{Cidr}{[required] The address range, in CIDR notation. The prefix must be the same prefix
-that you specified when you provisioned the address range.}
+that you specified when you provisioned the address range.
+
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring your own IP addresses (BYOIP)}
+in the Global Accelerator Developer Guide.}
 }
 \description{
 Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.

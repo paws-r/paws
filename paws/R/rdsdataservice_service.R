@@ -141,7 +141,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 
 .rdsdataservice$metadata <- list(
   service_name = "rdsdataservice",
-  endpoints = list("*" = list(endpoint = "rds-data.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds-data.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "rds-data.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds-data.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "rds-data.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds-data.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rds-data.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rds-data.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds-data.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rds-data.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "RDS Data",
   api_version = "2018-08-01",
   signing_name = "rds-data",

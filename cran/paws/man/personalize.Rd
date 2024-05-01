@@ -97,7 +97,7 @@ add individualized recommendations to customers.
 \tabular{ll}{
 \link[paws.machine.learning:personalize_create_batch_inference_job]{create_batch_inference_job} \tab Generates batch recommendations based on a list of items or users stored in Amazon S3 and exports the recommendations to an Amazon S3 bucket\cr
 \link[paws.machine.learning:personalize_create_batch_segment_job]{create_batch_segment_job} \tab Creates a batch segment job\cr
-\link[paws.machine.learning:personalize_create_campaign]{create_campaign} \tab Creates a campaign that deploys a solution version\cr
+\link[paws.machine.learning:personalize_create_campaign]{create_campaign} \tab You incur campaign costs while it is active\cr
 \link[paws.machine.learning:personalize_create_dataset]{create_dataset} \tab Creates an empty dataset and adds it to the specified dataset group\cr
 \link[paws.machine.learning:personalize_create_dataset_export_job]{create_dataset_export_job} \tab Creates a job that exports data from your dataset to an Amazon S3 bucket\cr
 \link[paws.machine.learning:personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group\cr
@@ -107,7 +107,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_create_metric_attribution]{create_metric_attribution} \tab Creates a metric attribution\cr
 \link[paws.machine.learning:personalize_create_recommender]{create_recommender} \tab Creates a recommender with the recipe (a Domain dataset group use case) you specify\cr
 \link[paws.machine.learning:personalize_create_schema]{create_schema} \tab Creates an Amazon Personalize schema from the specified schema string\cr
-\link[paws.machine.learning:personalize_create_solution]{create_solution} \tab Creates the configuration for training a model\cr
+\link[paws.machine.learning:personalize_create_solution]{create_solution} \tab After you create a solution, you can’t change its configuration\cr
 \link[paws.machine.learning:personalize_create_solution_version]{create_solution_version} \tab Trains or retrains an active solution in a Custom dataset group\cr
 \link[paws.machine.learning:personalize_delete_campaign]{delete_campaign} \tab Removes a campaign by deleting the solution deployment\cr
 \link[paws.machine.learning:personalize_delete_dataset]{delete_dataset} \tab Deletes a dataset\cr
@@ -150,15 +150,15 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_list_recipes]{list_recipes} \tab Returns a list of available recipes\cr
 \link[paws.machine.learning:personalize_list_recommenders]{list_recommenders} \tab Returns a list of recommenders in a given Domain dataset group\cr
 \link[paws.machine.learning:personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account\cr
-\link[paws.machine.learning:personalize_list_solutions]{list_solutions} \tab Returns a list of solutions that use the given dataset group\cr
+\link[paws.machine.learning:personalize_list_solutions]{list_solutions} \tab Returns a list of solutions in a given dataset group\cr
 \link[paws.machine.learning:personalize_list_solution_versions]{list_solution_versions} \tab Returns a list of solution versions for the given solution\cr
 \link[paws.machine.learning:personalize_list_tags_for_resource]{list_tags_for_resource} \tab Get a list of tags attached to a resource\cr
 \link[paws.machine.learning:personalize_start_recommender]{start_recommender} \tab Starts a recommender that is INACTIVE\cr
 \link[paws.machine.learning:personalize_stop_recommender]{stop_recommender} \tab Stops a recommender that is ACTIVE\cr
 \link[paws.machine.learning:personalize_stop_solution_version_creation]{stop_solution_version_creation} \tab Stops creating a solution version that is in a state of CREATE_PENDING or CREATE IN_PROGRESS\cr
 \link[paws.machine.learning:personalize_tag_resource]{tag_resource} \tab Add a list of tags to a resource\cr
-\link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Remove tags that are attached to a resource\cr
-\link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's minProvisionedTPS, or modify your campaign's configuration, such as the exploration configuration\cr
+\link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Removes the specified tags that are attached to a resource\cr
+\link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's minProvisionedTPS, or modify your campaign's configuration\cr
 \link[paws.machine.learning:personalize_update_dataset]{update_dataset} \tab Update a dataset to replace its schema with a new or existing one\cr
 \link[paws.machine.learning:personalize_update_metric_attribution]{update_metric_attribution} \tab Updates a metric attribution\cr
 \link[paws.machine.learning:personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration

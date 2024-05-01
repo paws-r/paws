@@ -3,6 +3,64 @@
 #' @include workspaces_service.R
 NULL
 
+#' Accepts the account link invitation
+#'
+#' @description
+#' Accepts the account link invitation.
+#' 
+#' There's currently no unlinking capability after you accept the account
+#' linking invitation.
+#'
+#' @usage
+#' workspaces_accept_account_link_invitation(LinkId, ClientToken)
+#'
+#' @param LinkId &#91;required&#93; The identifier of the account link.
+#' @param ClientToken A string of up to 64 ASCII characters that Amazon EFS uses to ensure
+#' idempotent creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountLink = list(
+#'     AccountLinkId = "string",
+#'     AccountLinkStatus = "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED",
+#'     SourceAccountId = "string",
+#'     TargetAccountId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_account_link_invitation(
+#'   LinkId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_accept_account_link_invitation
+#'
+#' @aliases workspaces_accept_account_link_invitation
+workspaces_accept_account_link_invitation <- function(LinkId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "AcceptAccountLinkInvitation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$accept_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
+  output <- .workspaces$accept_account_link_invitation_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$accept_account_link_invitation <- workspaces_accept_account_link_invitation
+
 #' Associates the specified connection alias with the specified directory
 #' to enable cross-Region redirection
 #'
@@ -304,6 +362,61 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
   return(response)
 }
 .workspaces$operations$copy_workspace_image <- workspaces_copy_workspace_image
+
+#' Creates the account link invitation
+#'
+#' @description
+#' Creates the account link invitation.
+#'
+#' @usage
+#' workspaces_create_account_link_invitation(TargetAccountId, ClientToken)
+#'
+#' @param TargetAccountId &#91;required&#93; The identifier of the target account.
+#' @param ClientToken A string of up to 64 ASCII characters that Amazon EFS uses to ensure
+#' idempotent creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountLink = list(
+#'     AccountLinkId = "string",
+#'     AccountLinkStatus = "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED",
+#'     SourceAccountId = "string",
+#'     TargetAccountId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_account_link_invitation(
+#'   TargetAccountId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_account_link_invitation
+#'
+#' @aliases workspaces_create_account_link_invitation
+workspaces_create_account_link_invitation <- function(TargetAccountId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateAccountLinkInvitation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_account_link_invitation_input(TargetAccountId = TargetAccountId, ClientToken = ClientToken)
+  output <- .workspaces$create_account_link_invitation_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_account_link_invitation <- workspaces_create_account_link_invitation
 
 #' Creates a client-add-in for Amazon Connect within a directory
 #'
@@ -907,11 +1020,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' -   You don't need to specify the `PCOIP` protocol for Linux bundles
 #'     because `WSP` is the default protocol for those bundles.
 #' 
-#' -   Ensure you review your running mode to ensure you are using a
-#'     running mode that is optimal for your needs and budget. For more
-#'     information on switching running modes, see [Can I switch between
-#'     hourly and monthly
-#'     billing?](https://aws.amazon.com/workspaces/faqs/#:~:text=Q%3A%20Can%20I%20switch%20between%20hourly%20and%20monthly%20billing?)
+#' -   User-decoupled WorkSpaces are only supported by Amazon WorkSpaces
+#'     Core.
 #'
 #' @usage
 #' workspaces_create_workspaces(Workspaces)
@@ -947,7 +1057,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'             Key = "string",
 #'             Value = "string"
 #'           )
-#'         )
+#'         ),
+#'         WorkspaceName = "string"
 #'       ),
 #'       ErrorCode = "string",
 #'       ErrorMessage = "string"
@@ -968,6 +1079,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'       VolumeEncryptionKey = "string",
 #'       UserVolumeEncryptionEnabled = TRUE|FALSE,
 #'       RootVolumeEncryptionEnabled = TRUE|FALSE,
+#'       WorkspaceName = "string",
 #'       WorkspaceProperties = list(
 #'         RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
@@ -1040,7 +1152,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           Key = "string",
 #'           Value = "string"
 #'         )
-#'       )
+#'       ),
+#'       WorkspaceName = "string"
 #'     )
 #'   )
 #' )
@@ -1067,6 +1180,61 @@ workspaces_create_workspaces <- function(Workspaces) {
   return(response)
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
+
+#' Deletes the account link invitation
+#'
+#' @description
+#' Deletes the account link invitation.
+#'
+#' @usage
+#' workspaces_delete_account_link_invitation(LinkId, ClientToken)
+#'
+#' @param LinkId &#91;required&#93; The identifier of the account link.
+#' @param ClientToken A string of up to 64 ASCII characters that Amazon EFS uses to ensure
+#' idempotent creation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountLink = list(
+#'     AccountLinkId = "string",
+#'     AccountLinkStatus = "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED",
+#'     SourceAccountId = "string",
+#'     TargetAccountId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_account_link_invitation(
+#'   LinkId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_account_link_invitation
+#'
+#' @aliases workspaces_delete_account_link_invitation
+workspaces_delete_account_link_invitation <- function(LinkId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteAccountLinkInvitation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
+  output <- .workspaces$delete_account_link_invitation_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_account_link_invitation <- workspaces_delete_account_link_invitation
 
 #' Deletes customized client branding
 #'
@@ -1545,12 +1713,15 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
 #' @usage
 #' workspaces_describe_account()
 #'
+
+#'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   DedicatedTenancySupport = "ENABLED"|"DISABLED",
-#'   DedicatedTenancyManagementCidrRange = "string"
+#'   DedicatedTenancyManagementCidrRange = "string",
+#'   DedicatedTenancyAccountType = "SOURCE_ACCOUNT"|"TARGET_ACCOUNT"
 #' )
 #' ```
 #'
@@ -2937,7 +3108,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'
 #' @usage
 #' workspaces_describe_workspaces(WorkspaceIds, DirectoryId, UserName,
-#'   BundleId, Limit, NextToken)
+#'   BundleId, Limit, NextToken, WorkspaceName)
 #'
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You cannot combine this parameter
 #' with any other filter.
@@ -2958,6 +3129,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @param Limit The maximum number of items to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
+#' @param WorkspaceName The name of the user-decoupled WorkSpace.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2978,6 +3150,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'       VolumeEncryptionKey = "string",
 #'       UserVolumeEncryptionEnabled = TRUE|FALSE,
 #'       RootVolumeEncryptionEnabled = TRUE|FALSE,
+#'       WorkspaceName = "string",
 #'       WorkspaceProperties = list(
 #'         RunningMode = "AUTO_STOP"|"ALWAYS_ON"|"MANUAL",
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
@@ -3034,7 +3207,8 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'   UserName = "string",
 #'   BundleId = "string",
 #'   Limit = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   WorkspaceName = "string"
 #' )
 #' ```
 #'
@@ -3043,14 +3217,14 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @rdname workspaces_describe_workspaces
 #'
 #' @aliases workspaces_describe_workspaces
-workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NULL, UserName = NULL, BundleId = NULL, Limit = NULL, NextToken = NULL) {
+workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NULL, UserName = NULL, BundleId = NULL, Limit = NULL, NextToken = NULL, WorkspaceName = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaces",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces")
   )
-  input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken)
+  input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken, WorkspaceName = WorkspaceName)
   output <- .workspaces$describe_workspaces_output()
   config <- get_config()
   svc <- .workspaces$service(config)
@@ -3288,6 +3462,60 @@ workspaces_disassociate_workspace_application <- function(WorkspaceId, Applicati
   return(response)
 }
 .workspaces$operations$disassociate_workspace_application <- workspaces_disassociate_workspace_application
+
+#' Retrieves account link information
+#'
+#' @description
+#' Retrieves account link information.
+#'
+#' @usage
+#' workspaces_get_account_link(LinkId, LinkedAccountId)
+#'
+#' @param LinkId The identifier of the account to link.
+#' @param LinkedAccountId The identifier of the account link
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountLink = list(
+#'     AccountLinkId = "string",
+#'     AccountLinkStatus = "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED",
+#'     SourceAccountId = "string",
+#'     TargetAccountId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_account_link(
+#'   LinkId = "string",
+#'   LinkedAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_get_account_link
+#'
+#' @aliases workspaces_get_account_link
+workspaces_get_account_link <- function(LinkId = NULL, LinkedAccountId = NULL) {
+  op <- new_operation(
+    name = "GetAccountLink",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$get_account_link_input(LinkId = LinkId, LinkedAccountId = LinkedAccountId)
+  output <- .workspaces$get_account_link_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$get_account_link <- workspaces_get_account_link
 
 #' Imports client branding
 #'
@@ -3569,6 +3797,68 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
   return(response)
 }
 .workspaces$operations$import_workspace_image <- workspaces_import_workspace_image
+
+#' Lists all account links
+#'
+#' @description
+#' Lists all account links.
+#'
+#' @usage
+#' workspaces_list_account_links(LinkStatusFilter, NextToken, MaxResults)
+#'
+#' @param LinkStatusFilter Filters the account based on their link status.
+#' @param NextToken The token to use to retrieve the next page of results. This value is
+#' null when there are no more results to return.
+#' @param MaxResults The maximum number of accounts to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountLinks = list(
+#'     list(
+#'       AccountLinkId = "string",
+#'       AccountLinkStatus = "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED",
+#'       SourceAccountId = "string",
+#'       TargetAccountId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_account_links(
+#'   LinkStatusFilter = list(
+#'     "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_list_account_links
+#'
+#' @aliases workspaces_list_account_links
+workspaces_list_account_links <- function(LinkStatusFilter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAccountLinks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountLinks")
+  )
+  input <- .workspaces$list_account_links_input(LinkStatusFilter = LinkStatusFilter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workspaces$list_account_links_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$list_account_links <- workspaces_list_account_links
 
 #' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 #' that you can use for the network management interface when you enable
@@ -4207,8 +4497,10 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 #' @description
 #' Reboots the specified WorkSpaces.
 #' 
-#' You cannot reboot a WorkSpace unless its state is `AVAILABLE` or
-#' `UNHEALTHY`.
+#' You cannot reboot a WorkSpace unless its state is `AVAILABLE`,
+#' `UNHEALTHY`, or `REBOOTING`. Reboot a WorkSpace in the `REBOOTING` state
+#' only if your WorkSpace has been stuck in the `REBOOTING` state for over
+#' 20 minutes.
 #' 
 #' This operation is asynchronous and returns before the WorkSpaces have
 #' rebooted.
@@ -4414,6 +4706,60 @@ workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NUL
   return(response)
 }
 .workspaces$operations$register_workspace_directory <- workspaces_register_workspace_directory
+
+#' Rejects the account link invitation
+#'
+#' @description
+#' Rejects the account link invitation.
+#'
+#' @usage
+#' workspaces_reject_account_link_invitation(LinkId, ClientToken)
+#'
+#' @param LinkId &#91;required&#93; The identifier of the account link
+#' @param ClientToken The client token of the account link invitation to reject.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountLink = list(
+#'     AccountLinkId = "string",
+#'     AccountLinkStatus = "LINKED"|"LINKING_FAILED"|"LINK_NOT_FOUND"|"PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"|"REJECTED",
+#'     SourceAccountId = "string",
+#'     TargetAccountId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_account_link_invitation(
+#'   LinkId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_reject_account_link_invitation
+#'
+#' @aliases workspaces_reject_account_link_invitation
+workspaces_reject_account_link_invitation <- function(LinkId, ClientToken = NULL) {
+  op <- new_operation(
+    name = "RejectAccountLinkInvitation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$reject_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
+  output <- .workspaces$reject_account_link_invitation_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$reject_account_link_invitation <- workspaces_reject_account_link_invitation
 
 #' Restores the specified WorkSpace to its last known healthy state
 #'

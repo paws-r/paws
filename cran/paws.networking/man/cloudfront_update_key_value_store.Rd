@@ -2,19 +2,19 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_update_key_value_store}
 \alias{cloudfront_update_key_value_store}
-\title{Specifies the Key Value Store to update}
+\title{Specifies the key value store to update}
 \usage{
 cloudfront_update_key_value_store(Name, Comment, IfMatch)
 }
 \arguments{
-\item{Name}{[required] The name of the Key Value Store to update.}
+\item{Name}{[required] The name of the key value store to update.}
 
-\item{Comment}{[required] The comment of the Key Value Store to update.}
+\item{Comment}{[required] The comment of the key value store to update.}
 
-\item{IfMatch}{[required] The Key Value Store to update, if a match occurs.}
+\item{IfMatch}{[required] The key value store to update, if a match occurs.}
 }
 \description{
-Specifies the Key Value Store to update.
+Specifies the key value store to update.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_key_value_store/} for full documentation.
 }

@@ -125,7 +125,7 @@ For more information, see the \href{https://docs.aws.amazon.com/autoscaling/ec2/
 \link[paws.management:autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups} \tab Gets information about the Auto Scaling groups in the account and Region\cr
 \link[paws.management:autoscaling_describe_auto_scaling_instances]{describe_auto_scaling_instances} \tab Gets information about the Auto Scaling instances in the account and Region\cr
 \link[paws.management:autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types} \tab Describes the notification types that are supported by Amazon EC2 Auto Scaling\cr
-\link[paws.management:autoscaling_describe_instance_refreshes]{describe_instance_refreshes} \tab Gets information about the instance refreshes for the specified Auto Scaling group\cr
+\link[paws.management:autoscaling_describe_instance_refreshes]{describe_instance_refreshes} \tab Gets information about the instance refreshes for the specified Auto Scaling group from the previous six weeks\cr
 \link[paws.management:autoscaling_describe_launch_configurations]{describe_launch_configurations} \tab Gets information about the launch configurations in the account and Region\cr
 \link[paws.management:autoscaling_describe_lifecycle_hooks]{describe_lifecycle_hooks} \tab Gets information about the lifecycle hooks for the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_describe_lifecycle_hook_types]{describe_lifecycle_hook_types} \tab Describes the available types of lifecycle hooks\cr

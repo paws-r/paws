@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_delete_application_cloud_watch_logging_option}
 \alias{kinesisanalyticsv2_delete_application_cloud_watch_logging_option}
-\title{Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
-application}
+\title{Deletes an Amazon CloudWatch log stream from an SQL-based Kinesis Data
+Analytics application}
 \usage{
 kinesisanalyticsv2_delete_application_cloud_watch_logging_option(
   ApplicationName,
@@ -35,7 +35,7 @@ For better concurrency support, use the \code{ConditionalToken} parameter
 instead of \code{CurrentApplicationVersionId}.}
 }
 \description{
-Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application.
+Deletes an Amazon CloudWatch log stream from an SQL-based Kinesis Data Analytics application.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_cloud_watch_logging_option/} for full documentation.
 }

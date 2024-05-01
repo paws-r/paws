@@ -535,7 +535,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' any other instance attributes, specify them as part of the same request.
 #' 
 #' For more information, see [Creating a launch configuration using an EC2
-#' instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
+#' instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceType Specifies the instance type of the EC2 instance. For information about
 #' available instance types, see [Available instance
@@ -625,7 +625,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' tenancy attribute set to `default`), you must set the value of this
 #' property to `dedicated`. For more information, see [Configuring instance
 #' tenancy with Amazon EC2 Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html)
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/advanced-settings-for-your-launch-template.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' If you specify `PlacementTenancy`, you must specify at least one subnet
@@ -1097,10 +1097,10 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 .autoscaling$operations$describe_auto_scaling_notification_types <- autoscaling_describe_auto_scaling_notification_types
 
 #' Gets information about the instance refreshes for the specified Auto
-#' Scaling group
+#' Scaling group from the previous six weeks
 #'
 #' @description
-#' Gets information about the instance refreshes for the specified Auto Scaling group.
+#' Gets information about the instance refreshes for the specified Auto Scaling group from the previous six weeks.
 #'
 #' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_instance_refreshes/](https://www.paws-r-sdk.com/docs/autoscaling_describe_instance_refreshes/) for full documentation.
 #'

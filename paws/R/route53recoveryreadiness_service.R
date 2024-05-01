@@ -153,7 +153,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 
 .route53recoveryreadiness$metadata <- list(
   service_name = "route53recoveryreadiness",
-  endpoints = list("*" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "route53-recovery-readiness.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53-recovery-readiness.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "route53-recovery-readiness.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "route53-recovery-readiness.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53-recovery-readiness.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "route53-recovery-readiness.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route53 Recovery Readiness",
   api_version = "2019-12-02",
   signing_name = "route53-recovery-readiness",

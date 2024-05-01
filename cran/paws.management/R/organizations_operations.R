@@ -495,6 +495,11 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' @param Content &#91;required&#93; The policy text content to add to the new policy. The text that you
 #' supply must adhere to the rules of the policy type you specify in the
 #' `Type` parameter.
+#' 
+#' The maximum size of a policy document depends on the policy's type. For
+#' more information, see [Maximum and minimum
+#' values](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values)
+#' in the *Organizations User Guide*.
 #' @param Description &#91;required&#93; An optional description to assign to the policy.
 #' @param Name &#91;required&#93; The friendly name to assign to the policy.
 #' 
@@ -1208,6 +1213,8 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that Organizations supports. For more information, see [Enabling all features in your organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *Organizations User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_enable_all_features/](https://www.paws-r-sdk.com/docs/organizations_enable_all_features/) for full documentation.
+#'
+
 #'
 #' @keywords internal
 #'
@@ -2506,6 +2513,11 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' formatted JSON that complies with the syntax for the policy's type. For
 #' more information, see [SCP
 #' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
+#' 
+#' The maximum size of a policy document depends on the policy's type. For
+#' more information, see [Maximum and minimum
+#' values](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#min-max-values)
 #' in the *Organizations User Guide*.
 #'
 #' @keywords internal

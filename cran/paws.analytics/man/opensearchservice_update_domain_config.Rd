@@ -69,7 +69,10 @@ For more information, see \href{https://docs.aws.amazon.com/opensearch-service/l
 \item{AccessPolicies}{Identity and Access Management (IAM) access policy as a JSON-formatted
 string.}
 
-\item{IPAddressType}{The type of IP addresses supported by the endpoint for the domain.}
+\item{IPAddressType}{Specify either dual stack or IPv4 as your IP address type. Dual stack
+allows you to share domain resources across IPv4 and IPv6 address types,
+and is the recommended option. If your IP address type is currently set
+to dual stack, you can't change it.}
 
 \item{LogPublishingOptions}{Options to publish OpenSearch logs to Amazon CloudWatch Logs.}
 

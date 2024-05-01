@@ -24,7 +24,7 @@ The account IDs can either be a group of account IDs or \emph{All}.}
 
 \item{AccountIdsToRemove}{The Amazon Web Services users that should no longer have access to the
 document. The Amazon Web Services user can either be a group of account
-IDs or \emph{All}. This action has a higher priority than \emph{AccountIdsToAdd}.
+IDs or \emph{All}. This action has a higher priority than \code{AccountIdsToAdd}.
 If you specify an ID to add and the same ID to remove, the system
 removes access to the document.}
 

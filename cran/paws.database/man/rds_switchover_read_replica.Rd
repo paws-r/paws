@@ -13,7 +13,7 @@ is stored as a lowercase string.
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing Oracle read replica DB
+\item Must match the identiﬁer of an existing Oracle read replica DB
 instance.
 }}
 }

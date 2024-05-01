@@ -154,10 +154,10 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #'   AssociateEntireAccount, ConsumerArn, ConsumerRegion, AllowWrites)
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that the consumer is to
-#' use with the account or the namespace.
+#' use.
 #' @param AssociateEntireAccount A value that specifies whether the datashare is associated with the
 #' entire account.
-#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that is associated with
+#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer namespace associated with
 #' the datashare.
 #' @param ConsumerRegion From a datashare consumer account, associates a datashare with all
 #' existing and future namespaces in the specified Amazon Web Services
@@ -351,8 +351,8 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' redshift_authorize_data_share(DataShareArn, ConsumerIdentifier,
 #'   AllowWrites)
 #'
-#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that producers are to
-#' authorize sharing for.
+#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare namespace that producers
+#' are to authorize sharing for.
 #' @param ConsumerIdentifier &#91;required&#93; The identifier of the data consumer that is authorized to access the
 #' datashare. This identifier is an Amazon Web Services account ID or a
 #' keyword, such as ADX.
@@ -498,10 +498,16 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
 #'
 #' @param SnapshotIdentifier The identifier of the snapshot the account is authorized to restore.
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot to authorize access to.
-#' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user has a policy containing a
-#' snapshot resource element that specifies anything other than * for the
-#' cluster name.
+#' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from.
+#' 
+#' -   *If the snapshot to access doesn't exist and the associated IAM
+#'     policy doesn't allow access to all (*) snapshots* - This parameter
+#'     is required. Otherwise, permissions aren't available to check if the
+#'     snapshot exists.
+#' 
+#' -   *If the snapshot to access exists* - This parameter isn't required.
+#'     Redshift can retrieve the cluster identifier and use it to validate
+#'     snapshot authorization.
 #' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account authorized to restore
 #' the specified snapshot.
 #' 
@@ -566,7 +572,8 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
 #'       "2015-01-01"
 #'     ),
 #'     MasterPasswordSecretArn = "string",
-#'     MasterPasswordSecretKmsKeyId = "string"
+#'     MasterPasswordSecretKmsKeyId = "string",
+#'     SnapshotArn = "string"
 #'   )
 #' )
 #' ```
@@ -925,7 +932,8 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #'       "2015-01-01"
 #'     ),
 #'     MasterPasswordSecretArn = "string",
-#'     MasterPasswordSecretKmsKeyId = "string"
+#'     MasterPasswordSecretKmsKeyId = "string",
+#'     SnapshotArn = "string"
 #'   )
 #' )
 #' ```
@@ -1207,7 +1215,15 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' 
 #' Default: `5439`
 #' 
-#' Valid Values: `1150-65535`
+#' Valid Values:
+#' 
+#' -   For clusters with ra3 nodes - Select a port within the ranges
+#'     `5431-5455` or `8191-8215`. (If you have an existing cluster with
+#'     ra3 nodes, it isn't required that you change the port to these
+#'     ranges.)
+#' 
+#' -   For clusters with ds2 or dc2 nodes - Select a port within the range
+#'     `1150-65535`.
 #' @param ClusterVersion The version of the Amazon Redshift engine software that you want to
 #' deploy on the cluster.
 #' 
@@ -1904,7 +1920,8 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
 #'       "2015-01-01"
 #'     ),
 #'     MasterPasswordSecretArn = "string",
-#'     MasterPasswordSecretKmsKeyId = "string"
+#'     MasterPasswordSecretKmsKeyId = "string",
+#'     SnapshotArn = "string"
 #'   )
 #' )
 #' ```
@@ -3113,8 +3130,8 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #' @usage
 #' redshift_deauthorize_data_share(DataShareArn, ConsumerIdentifier)
 #'
-#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to remove authorization
-#' from.
+#' @param DataShareArn &#91;required&#93; The namespace Amazon Resource Name (ARN) of the datashare to remove
+#' authorization from.
 #' @param ConsumerIdentifier &#91;required&#93; The identifier of the data consumer that is to have authorization
 #' removed from the datashare. This identifier is an Amazon Web Services
 #' account ID or a keyword, such as ADX.
@@ -3719,7 +3736,8 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
 #'       "2015-01-01"
 #'     ),
 #'     MasterPasswordSecretArn = "string",
-#'     MasterPasswordSecretKmsKeyId = "string"
+#'     MasterPasswordSecretKmsKeyId = "string",
+#'     SnapshotArn = "string"
 #'   )
 #' )
 #' ```
@@ -5133,7 +5151,8 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #'         "2015-01-01"
 #'       ),
 #'       MasterPasswordSecretArn = "string",
-#'       MasterPasswordSecretKmsKeyId = "string"
+#'       MasterPasswordSecretKmsKeyId = "string",
+#'       SnapshotArn = "string"
 #'     )
 #'   )
 #' )
@@ -5881,7 +5900,7 @@ redshift_describe_custom_domain_associations <- function(CustomDomainName = NULL
 #' @usage
 #' redshift_describe_data_shares(DataShareArn, MaxRecords, Marker)
 #'
-#' @param DataShareArn The identifier of the datashare to describe details of.
+#' @param DataShareArn The Amazon resource name (ARN) of the datashare to describe details of.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
 #' value, a value is returned in a `marker` field of the response. You can
@@ -5968,8 +5987,8 @@ redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL
 #' redshift_describe_data_shares_for_consumer(ConsumerArn, Status,
 #'   MaxRecords, Marker)
 #'
-#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that returns in the list
-#' of datashares.
+#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer namespace that returns in
+#' the list of datashares.
 #' @param Status An identifier giving the status of a datashare in the consumer cluster.
 #' If this field is specified, Amazon Redshift returns the list of
 #' datashares that have the specified status.
@@ -6060,8 +6079,8 @@ redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Statu
 #' redshift_describe_data_shares_for_producer(ProducerArn, Status,
 #'   MaxRecords, Marker)
 #'
-#' @param ProducerArn The Amazon Resource Name (ARN) of the producer that returns in the list
-#' of datashares.
+#' @param ProducerArn The Amazon Resource Name (ARN) of the producer namespace that returns in
+#' the list of datashares.
 #' @param Status An identifier giving the status of a datashare in the producer. If this
 #' field is specified, Amazon Redshift returns the list of datashares that
 #' have the specified status.
@@ -8928,8 +8947,8 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #' for.
 #' @param DisassociateEntireAccount A value that specifies whether association for the datashare is removed
 #' from the entire account.
-#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that association for the
-#' datashare is removed from.
+#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer namespace that
+#' association for the datashare is removed from.
 #' @param ConsumerRegion From a datashare consumer account, removes association of a datashare
 #' from all the existing and future namespaces in the specified Amazon Web
 #' Services Region.
@@ -10110,6 +10129,108 @@ redshift_get_resource_policy <- function(ResourceArn) {
 }
 .redshift$operations$get_resource_policy <- redshift_get_resource_policy
 
+#' List the Amazon Redshift Advisor recommendations for one or multiple
+#' Amazon Redshift clusters in an Amazon Web Services account
+#'
+#' @description
+#' List the Amazon Redshift Advisor recommendations for one or multiple
+#' Amazon Redshift clusters in an Amazon Web Services account.
+#'
+#' @usage
+#' redshift_list_recommendations(ClusterIdentifier, NamespaceArn,
+#'   MaxRecords, Marker)
+#'
+#' @param ClusterIdentifier The unique identifier of the Amazon Redshift cluster for which the list
+#' of Advisor recommendations is returned. If the neither the cluster
+#' identifier and the cluster namespace ARN parameters are specified, then
+#' recommendations for all clusters in the account are returned.
+#' @param NamespaceArn The Amazon Redshift cluster namespace Amazon Resource Name (ARN) for
+#' which the list of Advisor recommendations is returned. If the neither
+#' the cluster identifier and the cluster namespace ARN parameters are
+#' specified, then recommendations for all clusters in the account are
+#' returned.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified MaxRecords
+#' value, a value is returned in a marker field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker A value that indicates the starting point for the next set of response
+#' records in a subsequent request. If a value is returned in a response,
+#' you can retrieve the next set of records by providing this returned
+#' marker value in the Marker parameter and retrying the command. If the
+#' Marker field is empty, all response records have been retrieved for the
+#' request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Recommendations = list(
+#'     list(
+#'       Id = "string",
+#'       ClusterIdentifier = "string",
+#'       NamespaceArn = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RecommendationType = "string",
+#'       Title = "string",
+#'       Description = "string",
+#'       Observation = "string",
+#'       ImpactRanking = "HIGH"|"MEDIUM"|"LOW",
+#'       RecommendationText = "string",
+#'       RecommendedActions = list(
+#'         list(
+#'           Text = "string",
+#'           Database = "string",
+#'           Command = "string",
+#'           Type = "SQL"|"CLI"
+#'         )
+#'       ),
+#'       ReferenceLinks = list(
+#'         list(
+#'           Text = "string",
+#'           Link = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommendations(
+#'   ClusterIdentifier = "string",
+#'   NamespaceArn = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_list_recommendations
+#'
+#' @aliases redshift_list_recommendations
+redshift_list_recommendations <- function(ClusterIdentifier = NULL, NamespaceArn = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Recommendations")
+  )
+  input <- .redshift$list_recommendations_input(ClusterIdentifier = ClusterIdentifier, NamespaceArn = NamespaceArn, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$list_recommendations_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$list_recommendations <- redshift_list_recommendations
+
 #' This operation is retired
 #'
 #' @description
@@ -10268,7 +10389,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters
 #' in Amazon
-#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html)
+#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`
@@ -10279,7 +10400,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters
 #' in Amazon
-#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html)
+#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: Integer greater than `0`.
@@ -10447,6 +10568,16 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' @param AvailabilityZone The option to initiate relocation for an Amazon Redshift cluster to the
 #' target Availability Zone.
 #' @param Port The option to change the port of an Amazon Redshift cluster.
+#' 
+#' Valid Values:
+#' 
+#' -   For clusters with ra3 nodes - Select a port within the ranges
+#'     `5431-5455` or `8191-8215`. (If you have an existing cluster with
+#'     ra3 nodes, it isn't required that you change the port to these
+#'     ranges.)
+#' 
+#' -   For clusters with ds2 or dc2 nodes - Select a port within the range
+#'     `1150-65535`.
 #' @param ManageMasterPassword If `true`, Amazon Redshift uses Secrets Manager to manage this cluster's
 #' admin credentials. You can't use `MasterUserPassword` if
 #' `ManageMasterPassword` is true. If `ManageMasterPassword` is false or
@@ -11686,7 +11817,8 @@ redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #'       "2015-01-01"
 #'     ),
 #'     MasterPasswordSecretArn = "string",
-#'     MasterPasswordSecretKmsKeyId = "string"
+#'     MasterPasswordSecretKmsKeyId = "string",
+#'     SnapshotArn = "string"
 #'   )
 #' )
 #' ```
@@ -13921,7 +14053,9 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' Default: The same port as the original cluster.
 #' 
-#' Constraints: Must be between `1115` and `65535`.
+#' Valid values: For clusters with ds2 or dc2 nodes, must be within the
+#' range `1150`-`65535`. For clusters with ra3 nodes, must be within the
+#' ranges `5431`-`5455` or `8191`-`8215`.
 #' @param AvailabilityZone The Amazon EC2 Availability Zone in which to restore the cluster.
 #' 
 #' Default: A random, system-chosen Availability Zone.
@@ -14977,7 +15111,8 @@ redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = 
 #'       "2015-01-01"
 #'     ),
 #'     MasterPasswordSecretArn = "string",
-#'     MasterPasswordSecretKmsKeyId = "string"
+#'     MasterPasswordSecretKmsKeyId = "string",
+#'     SnapshotArn = "string"
 #'   )
 #' )
 #' ```

@@ -23,7 +23,8 @@ wellarchitected_create_workload(
   DiscoveryConfig = NULL,
   Applications = NULL,
   ProfileArns = NULL,
-  ReviewTemplateArns = NULL
+  ReviewTemplateArns = NULL,
+  JiraConfiguration = NULL
 )
 }
 \arguments{
@@ -65,6 +66,8 @@ workload.}
 \item{ProfileArns}{The list of profile ARNs associated with the workload.}
 
 \item{ReviewTemplateArns}{The list of review template ARNs to associate with the workload.}
+
+\item{JiraConfiguration}{Jira configuration settings when creating a workload.}
 }
 \description{
 Create a new workload.

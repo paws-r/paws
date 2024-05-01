@@ -58,7 +58,7 @@ allows you to run open-source big data frameworks on Amazon Elastic
 Kubernetes Service (Amazon EKS). With this deployment option, you can
 focus on running analytics workloads while Amazon EMR on EKS builds,
 configures, and manages containers for open-source applications. For
-more information about Amazon EMR on EKS concepts and tasks, see \href{https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html}{What is shared id="EMR-EKS"/\>}.
+more information about Amazon EMR on EKS concepts and tasks, see \href{https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html}{What is Amazon EMR on EKS}.
 
 \emph{Amazon EMR containers} is the API name for Amazon EMR on EKS. The
 \code{emr-containers} prefix is used in the following scenarios:
@@ -115,6 +115,7 @@ information, see \href{https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-Develop
 \link[paws.compute:emrcontainers_cancel_job_run]{cancel_job_run} \tab Cancels a job run\cr
 \link[paws.compute:emrcontainers_create_job_template]{create_job_template} \tab Creates a job template\cr
 \link[paws.compute:emrcontainers_create_managed_endpoint]{create_managed_endpoint} \tab Creates a managed endpoint\cr
+\link[paws.compute:emrcontainers_create_security_configuration]{create_security_configuration} \tab Creates a security configuration\cr
 \link[paws.compute:emrcontainers_create_virtual_cluster]{create_virtual_cluster} \tab Creates a virtual cluster\cr
 \link[paws.compute:emrcontainers_delete_job_template]{delete_job_template} \tab Deletes a job template\cr
 \link[paws.compute:emrcontainers_delete_managed_endpoint]{delete_managed_endpoint} \tab Deletes a managed endpoint\cr
@@ -122,11 +123,13 @@ information, see \href{https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-Develop
 \link[paws.compute:emrcontainers_describe_job_run]{describe_job_run} \tab Displays detailed information about a job run\cr
 \link[paws.compute:emrcontainers_describe_job_template]{describe_job_template} \tab Displays detailed information about a specified job template\cr
 \link[paws.compute:emrcontainers_describe_managed_endpoint]{describe_managed_endpoint} \tab Displays detailed information about a managed endpoint\cr
+\link[paws.compute:emrcontainers_describe_security_configuration]{describe_security_configuration} \tab Displays detailed information about a specified security configuration\cr
 \link[paws.compute:emrcontainers_describe_virtual_cluster]{describe_virtual_cluster} \tab Displays detailed information about a specified virtual cluster\cr
 \link[paws.compute:emrcontainers_get_managed_endpoint_session_credentials]{get_managed_endpoint_session_credentials} \tab Generate a session token to connect to a managed endpoint\cr
 \link[paws.compute:emrcontainers_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
 \link[paws.compute:emrcontainers_list_job_templates]{list_job_templates} \tab Lists job templates based on a set of parameters\cr
 \link[paws.compute:emrcontainers_list_managed_endpoints]{list_managed_endpoints} \tab Lists managed endpoints based on a set of parameters\cr
+\link[paws.compute:emrcontainers_list_security_configurations]{list_security_configurations} \tab Lists security configurations based on a set of parameters\cr
 \link[paws.compute:emrcontainers_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
 \link[paws.compute:emrcontainers_list_virtual_clusters]{list_virtual_clusters} \tab Lists information about the specified virtual cluster\cr
 \link[paws.compute:emrcontainers_start_job_run]{start_job_run} \tab Starts a job run\cr

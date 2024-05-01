@@ -103,10 +103,10 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 }
 .guardduty$operations$archive_findings <- guardduty_archive_findings
 
-#' Creates a single Amazon GuardDuty detector
+#' Creates a single GuardDuty detector
 #'
 #' @description
-#' Creates a single Amazon GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
+#' Creates a single GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_create_detector/](https://www.paws-r-sdk.com/docs/guardduty_create_detector/) for full documentation.
 #'
@@ -260,6 +260,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.awsApiCallAction.remoteIpDetails.ipAddressV6
+#' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.organization.asn
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
@@ -284,6 +286,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV6
+#' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.organization.asn
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
@@ -294,6 +298,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV6
+#' 
 #' -   service.action.kubernetesApiCallAction.namespace
 #' 
 #' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
@@ -303,6 +309,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.action.kubernetesApiCallAction.statusCode
 #' 
 #' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
+#' 
+#' -   service.action.networkConnectionAction.localIpDetails.ipAddressV6
 #' 
 #' -   service.action.networkConnectionAction.protocol
 #' 
@@ -1307,6 +1315,8 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_get_invitations_count/](https://www.paws-r-sdk.com/docs/guardduty_get_invitations_count/) for full documentation.
 #'
+
+#'
 #' @keywords internal
 #'
 #' @rdname guardduty_get_invitations_count
@@ -1450,11 +1460,11 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$get_members <- guardduty_get_members
 
-#' Retrieves how many active member accounts in your Amazon Web Services
-#' organization have each feature enabled within GuardDuty
+#' Retrieves how many active member accounts have each feature enabled
+#' within GuardDuty
 #'
 #' @description
-#' Retrieves how many active member accounts in your Amazon Web Services organization have each feature enabled within GuardDuty. Only a delegated GuardDuty administrator of an organization can run this API.
+#' Retrieves how many active member accounts have each feature enabled within GuardDuty. Only a delegated GuardDuty administrator of an organization can run this API.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_get_organization_statistics/](https://www.paws-r-sdk.com/docs/guardduty_get_organization_statistics/) for full documentation.
 #'
@@ -1730,10 +1740,10 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_filters <- guardduty_list_filters
 
-#' Lists Amazon GuardDuty findings for the specified detector ID
+#' Lists GuardDuty findings for the specified detector ID
 #'
 #' @description
-#' Lists Amazon GuardDuty findings for the specified detector ID.
+#' Lists GuardDuty findings for the specified detector ID.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_list_findings/](https://www.paws-r-sdk.com/docs/guardduty_list_findings/) for full documentation.
 #'
@@ -2307,10 +2317,10 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .guardduty$operations$untag_resource <- guardduty_untag_resource
 
-#' Updates the Amazon GuardDuty detector specified by the detectorId
+#' Updates the GuardDuty detector specified by the detector ID
 #'
 #' @description
-#' Updates the Amazon GuardDuty detector specified by the detectorId.
+#' Updates the GuardDuty detector specified by the detector ID.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_update_detector/](https://www.paws-r-sdk.com/docs/guardduty_update_detector/) for full documentation.
 #'
@@ -2560,6 +2570,13 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' -   `NONE`: Indicates that GuardDuty will not be automatically enabled
 #'     for any account in the organization. The administrator must manage
 #'     GuardDuty for each account in the organization individually.
+#' 
+#'     When you update the auto-enable setting from `ALL` or `NEW` to
+#'     `NONE`, this action doesn't disable the corresponding option for
+#'     your existing accounts. This configuration will apply to the new
+#'     accounts that join the organization. After you update the
+#'     auto-enable settings, no new account will have the corresponding
+#'     option as enabled.
 #'
 #' @keywords internal
 #'

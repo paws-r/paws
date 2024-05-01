@@ -1473,3 +1473,37 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
   return(response)
 }
 .sfn$operations$update_state_machine_alias <- sfn_update_state_machine_alias
+
+#' Validates the syntax of a state machine definition
+#'
+#' @description
+#' Validates the syntax of a state machine definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sfn_validate_state_machine_definition/](https://www.paws-r-sdk.com/docs/sfn_validate_state_machine_definition/) for full documentation.
+#'
+#' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. For more
+#' information, see [Amazon States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' (ASL).
+#' @param type The target type of state machine for this definition. The default is
+#' `STANDARD`.
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_validate_state_machine_definition
+sfn_validate_state_machine_definition <- function(definition, type = NULL) {
+  op <- new_operation(
+    name = "ValidateStateMachineDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$validate_state_machine_definition_input(definition = definition, type = type)
+  output <- .sfn$validate_state_machine_definition_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$validate_state_machine_definition <- sfn_validate_state_machine_definition

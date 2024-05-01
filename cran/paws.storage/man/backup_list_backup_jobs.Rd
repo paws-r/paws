@@ -32,7 +32,19 @@ pointed to by the next token.}
 \item{ByResourceArn}{Returns only backup jobs that match the specified resource Amazon
 Resource Name (ARN).}
 
-\item{ByState}{Returns only backup jobs that are in the specified state.}
+\item{ByState}{Returns only backup jobs that are in the specified state.
+
+\verb{Completed with issues} is a status found only in the Backup console.
+For API, this status refers to jobs with a state of \code{COMPLETED} and a
+\code{MessageCategory} with a value other than \code{SUCCESS}; that is, the status
+is completed but comes with a status message.
+
+To obtain the job count for \verb{Completed with issues}, run two GET
+requests, and subtract the second, smaller number:
+
+GET /backup-jobs/?state=COMPLETED
+
+GET /backup-jobs/?messageCategory=SUCCESS&state=COMPLETED}
 
 \item{ByBackupVaultName}{Returns only backup jobs that will be stored in the specified backup
 vault. Backup vaults are identified by names that are unique to the

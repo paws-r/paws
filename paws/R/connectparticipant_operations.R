@@ -8,7 +8,9 @@ NULL
 #'
 #' @description
 #' Allows you to confirm that the attachment has been uploaded using the
-#' pre-signed URL provided in StartAttachmentUpload API.
+#' pre-signed URL provided in StartAttachmentUpload API. A conflict
+#' exception is thrown when an attachment with that identifier is already
+#' being uploaded.
 #' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
@@ -356,6 +358,20 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' transcripts for a persistent chat, see [Enable persistent
 #' chat](https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html).
 #' 
+#' If you have a process that consumes events in the transcript of an chat
+#' that has ended, note that chat transcripts contain the following event
+#' content types if the event has occurred during the chat session:
+#' 
+#' -   `application/vnd.amazonaws.connect.event.participant.left`
+#' 
+#' -   `application/vnd.amazonaws.connect.event.participant.joined`
+#' 
+#' -   `application/vnd.amazonaws.connect.event.chat.ended`
+#' 
+#' -   `application/vnd.amazonaws.connect.event.transfer.succeeded`
+#' 
+#' -   `application/vnd.amazonaws.connect.event.transfer.failed`
+#' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
 #' 
@@ -393,7 +409,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #'       Type = "TYPING"|"PARTICIPANT_JOINED"|"PARTICIPANT_LEFT"|"CHAT_ENDED"|"TRANSFER_SUCCEEDED"|"TRANSFER_FAILED"|"MESSAGE"|"EVENT"|"ATTACHMENT"|"CONNECTION_ACK"|"MESSAGE_DELIVERED"|"MESSAGE_READ",
 #'       ParticipantId = "string",
 #'       DisplayName = "string",
-#'       ParticipantRole = "AGENT"|"CUSTOMER"|"SYSTEM"|"CUSTOM_BOT",
+#'       ParticipantRole = "AGENT"|"CUSTOMER"|"SYSTEM"|"CUSTOM_BOT"|"SUPERVISOR",
 #'       Attachments = list(
 #'         list(
 #'           ContentType = "string",
@@ -459,10 +475,19 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 }
 .connectparticipant$operations$get_transcript <- connectparticipant_get_transcript
 
-#' Sends an event
+#' The application/vnd
 #'
 #' @description
-#' Sends an event.
+#' The `application/vnd.amazonaws.connect.event.connection.acknowledged`
+#' ContentType will no longer be supported starting December 31, 2024. This
+#' event has been migrated to the
+#' [`create_participant_connection`][connectparticipant_create_participant_connection]
+#' API using the `ConnectParticipant` field.
+#' 
+#' Sends an event. Message receipts are not supported when there are more
+#' than two active participants in the chat. Using the SendEvent API for
+#' message receipts when a supervisor is barged-in will result in a
+#' conflict exception.
 #' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
@@ -480,6 +505,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' -   application/vnd.amazonaws.connect.event.typing
 #' 
 #' -   application/vnd.amazonaws.connect.event.connection.acknowledged
+#'     (will be deprecated on December 31, 2024)
 #' 
 #' -   application/vnd.amazonaws.connect.event.message.delivered
 #' 

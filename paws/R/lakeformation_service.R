@@ -177,7 +177,7 @@ lakeformation <- function(config = list(), credentials = list(), endpoint = NULL
 
 .lakeformation$metadata <- list(
   service_name = "lakeformation",
-  endpoints = list("*" = list(endpoint = "lakeformation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lakeformation.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lakeformation.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lakeformation.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "lakeformation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lakeformation.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "lakeformation.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "lakeformation.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lakeformation.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "lakeformation.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "LakeFormation",
   api_version = "2017-03-31",
   signing_name = "lakeformation",

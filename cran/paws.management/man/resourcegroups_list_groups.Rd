@@ -10,16 +10,21 @@ resourcegroups_list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 \item{Filters}{Filters, formatted as GroupFilter objects, that you want to apply to a
 \code{\link[=resourcegroups_list_groups]{list_groups}} operation.
 \itemize{
-\item \code{resource-type} - Filter the results to include only those of the
-specified resource types. Specify up to five resource types in the
-format \verb{AWS::ServiceCode::ResourceType }. For example,
-\verb{AWS::EC2::Instance}, or \verb{AWS::S3::Bucket}.
+\item \code{resource-type} - Filter the results to include only those resource
+groups that have the specified resource type in their
+\code{ResourceTypeFilter}. For example, \verb{AWS::EC2::Instance} would return
+any resource group with a \code{ResourceTypeFilter} that includes
+\verb{AWS::EC2::Instance}.
 \item \code{configuration-type} - Filter the results to include only those
 groups that have the specified configuration types attached. The
 current supported values are:
 \itemize{
+\item \verb{AWS::AppRegistry::Application}
+\item \verb{AWS::AppRegistry::ApplicationResourceGroups}
+\item \verb{AWS::CloudFormation::Stack}
 \item \verb{AWS::EC2::CapacityReservationPool}
 \item \verb{AWS::EC2::HostManagement}
+\item \verb{AWS::NetworkFirewall::RuleGroup}
 }
 }}
 

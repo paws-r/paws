@@ -2,7 +2,8 @@
 % Please edit documentation in R/datazone_operations.R
 \name{datazone_create_listing_change_set}
 \alias{datazone_create_listing_change_set}
-\title{Create listing change set}
+\title{Publishes a listing (a record of an asset at a given time) or removes a
+listing from the catalog}
 \usage{
 datazone_create_listing_change_set(
   action,
@@ -14,20 +15,21 @@ datazone_create_listing_change_set(
 )
 }
 \arguments{
-\item{action}{[required]}
+\item{action}{[required] Specifies whether to publish or unpublish a listing.}
 
-\item{clientToken}{}
+\item{clientToken}{A unique, case-sensitive identifier that is provided to ensure the
+idempotency of the request.}
 
-\item{domainIdentifier}{[required]}
+\item{domainIdentifier}{[required] The ID of the Amazon DataZone domain.}
 
-\item{entityIdentifier}{[required]}
+\item{entityIdentifier}{[required] The ID of the asset.}
 
-\item{entityRevision}{}
+\item{entityRevision}{The revision of an asset.}
 
-\item{entityType}{[required]}
+\item{entityType}{[required] The type of an entity.}
 }
 \description{
-Create listing change set
+Publishes a listing (a record of an asset at a given time) or removes a listing from the catalog.
 
 See \url{https://www.paws-r-sdk.com/docs/datazone_create_listing_change_set/} for full documentation.
 }

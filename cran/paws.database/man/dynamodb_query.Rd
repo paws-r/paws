@@ -26,7 +26,8 @@ dynamodb_query(
 )
 }
 \arguments{
-\item{TableName}{[required] The name of the table containing the requested items.}
+\item{TableName}{[required] The name of the table containing the requested items. You can also
+provide the Amazon Resource Name (ARN) of the table in this parameter.}
 
 \item{IndexName}{The name of an index to query. This index can be any local secondary
 index or global secondary index on the table. Note that if you use the
@@ -168,7 +169,7 @@ A \code{FilterExpression} is applied after the items have already been read;
 the process of filtering does not consume any additional read capacity
 units.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression}{Filter Expressions}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.FilterExpression.html}{Filter Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{KeyConditionExpression}{The condition that specifies the key values for items to be retrieved by

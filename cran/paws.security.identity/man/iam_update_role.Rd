@@ -25,7 +25,10 @@ parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those
 operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM roles}
-in the \emph{IAM User Guide}.}
+in the \emph{IAM User Guide}.
+
+IAM role credentials provided by Amazon EC2 instances assigned to the
+role are not subject to the specified maximum session duration.}
 }
 \description{
 Updates the description or maximum session duration setting of a role.

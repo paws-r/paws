@@ -12,7 +12,7 @@ NULL
 #' Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 #' For information about using Amazon Data Lifecycle Manager with Amazon
 #' EBS, see [Amazon Data Lifecycle
-#' Manager](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
+#' Manager](https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-lifecycle.html)
 #' in the *Amazon EC2 User Guide*.
 #'
 #' @param
@@ -137,7 +137,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .dlm$metadata <- list(
   service_name = "dlm",
-  endpoints = list("*" = list(endpoint = "dlm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dlm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dlm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dlm.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "dlm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dlm.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "dlm.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "dlm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dlm.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "dlm.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "DLM",
   api_version = "2018-01-12",
   signing_name = "dlm",

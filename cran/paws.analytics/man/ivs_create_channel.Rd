@@ -9,6 +9,7 @@ ivs_create_channel(
   insecureIngest = NULL,
   latencyMode = NULL,
   name = NULL,
+  playbackRestrictionPolicyArn = NULL,
   preset = NULL,
   recordingConfigurationArn = NULL,
   tags = NULL,
@@ -19,21 +20,26 @@ ivs_create_channel(
 \item{authorized}{Whether the channel is private (enabled for playback authorization).
 Default: \code{false}.}
 
-\item{insecureIngest}{Whether the channel allows insecure RTMP ingest. Default: \code{false}.}
+\item{insecureIngest}{Whether the channel allows insecure RTMP and SRT ingest. Default:
+\code{false}.}
 
 \item{latencyMode}{Channel latency mode. Use \code{NORMAL} to broadcast and deliver live video
 up to Full HD. Use \code{LOW} for near-real-time interaction with viewers.
-(Note: In the Amazon IVS console, \code{LOW} and \code{NORMAL} correspond to
-Ultra-low and Standard, respectively.) Default: \code{LOW}.}
+Default: \code{LOW}.}
 
 \item{name}{Channel name.}
+
+\item{playbackRestrictionPolicyArn}{Playback-restriction-policy ARN. A valid ARN value here both specifies
+the ARN and enables playback restriction. Default: "" (empty string, no
+playback restriction policy is applied).}
 
 \item{preset}{Optional transcode preset for the channel. This is selectable only for
 \code{ADVANCED_HD} and \code{ADVANCED_SD} channel types. For those channel types,
 the default \code{preset} is \code{HIGHER_BANDWIDTH_DELIVERY}. For other channel
 types (\code{BASIC} and \code{STANDARD}), \code{preset} is the empty string (\code{""}).}
 
-\item{recordingConfigurationArn}{Recording-configuration ARN. Default: "" (empty string, recording is
+\item{recordingConfigurationArn}{Recording-configuration ARN. A valid ARN value here both specifies the
+ARN and enables recording. Default: "" (empty string, recording is
 disabled).}
 
 \item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See

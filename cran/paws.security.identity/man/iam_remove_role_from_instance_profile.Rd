@@ -2,7 +2,8 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_remove_role_from_instance_profile}
 \alias{iam_remove_role_from_instance_profile}
-\title{Removes the specified IAM role from the specified EC2 instance profile}
+\title{Removes the specified IAM role from the specified Amazon EC2 instance
+profile}
 \usage{
 iam_remove_role_from_instance_profile(InstanceProfileName, RoleName)
 }
@@ -20,7 +21,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
-Removes the specified IAM role from the specified EC2 instance profile.
+Removes the specified IAM role from the specified Amazon EC2 instance profile.
 
 See \url{https://www.paws-r-sdk.com/docs/iam_remove_role_from_instance_profile/} for full documentation.
 }

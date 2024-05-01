@@ -211,6 +211,7 @@ make up your data warehouse.
 \link[paws.database:redshift_get_reserved_node_exchange_configuration_options]{get_reserved_node_exchange_configuration_options} \tab Gets the configuration options for the reserved-node exchange\cr
 \link[paws.database:redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
 \link[paws.database:redshift_get_resource_policy]{get_resource_policy} \tab Get the resource policy for a specified resource\cr
+\link[paws.database:redshift_list_recommendations]{list_recommendations} \tab List the Amazon Redshift Advisor recommendations for one or multiple Amazon Redshift clusters in an Amazon Web Services account\cr
 \link[paws.database:redshift_modify_aqua_configuration]{modify_aqua_configuration} \tab This operation is retired\cr
 \link[paws.database:redshift_modify_authentication_profile]{modify_authentication_profile} \tab Modifies an authentication profile\cr
 \link[paws.database:redshift_modify_cluster]{modify_cluster} \tab Modifies the settings for a cluster\cr

@@ -660,7 +660,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @param name &#91;required&#93; The name of the model. Must be alphanumeric.
 #' @param description The description of the model.
 #' @param schema The schema for the model. For `application/json` models, this should be
-#' JSON schema draft 4 model.
+#' JSON schema draft 4 model. The maximum size of the model is 400 KB.
 #' @param contentType &#91;required&#93; The content-type for the model.
 #'
 #' @return
@@ -2484,6 +2484,8 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
 #'
 #' @usage
 #' apigateway_get_account()
+#'
+
 #'
 #' @return
 #' A list with the following syntax:
@@ -7997,7 +7999,8 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 #' Changes information about a model
 #'
 #' @description
-#' Changes information about a model.
+#' Changes information about a model. The maximum size of the model is 400
+#' KB.
 #'
 #' @usage
 #' apigateway_update_model(restApiId, modelName, patchOperations)

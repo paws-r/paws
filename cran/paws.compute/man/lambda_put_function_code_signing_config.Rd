@@ -9,7 +9,7 @@ lambda_put_function_code_signing_config(CodeSigningConfigArn, FunctionName)
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
 
-\item{FunctionName}{[required] The name of the Lambda function.
+\item{FunctionName}{[required] The name or ARN of the Lambda function.
 
 \strong{Name formats}
 \itemize{

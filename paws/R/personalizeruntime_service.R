@@ -123,7 +123,7 @@ personalizeruntime <- function(config = list(), credentials = list(), endpoint =
 
 .personalizeruntime$metadata <- list(
   service_name = "personalizeruntime",
-  endpoints = list("*" = list(endpoint = "personalize-runtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalize-runtime.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "personalize-runtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "personalize-runtime.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "personalize-runtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalize-runtime.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "personalize-runtime.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "personalize-runtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "personalize-runtime.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "personalize-runtime.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Personalize Runtime",
   api_version = "2018-05-22",
   signing_name = "personalize",

@@ -19,7 +19,7 @@ NULL
 #' also registered with the target groups.
 #' 
 #' For more information, see [Attach EC2 instances to your Auto Scaling
-#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -672,14 +672,9 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-quotas.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
-#' For introductory exercises for creating an Auto Scaling group, see
-#' [Getting started with Amazon EC2 Auto
+#' If you're new to Amazon EC2 Auto Scaling, see the introductory tutorials
+#' in [Get started with Amazon EC2 Auto
 #' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/get-started-with-ec2-auto-scaling.html)
-#' and [Tutorial: Set up a scaled and load-balanced
-#' application](https://docs.aws.amazon.com/autoscaling/ec2/userguide/tutorial-ec2-auto-scaling-load-balancer.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*. For more information, see
-#' [Auto Scaling
-#' groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Every Auto Scaling group has three size properties (`DesiredCapacity`,
@@ -955,6 +950,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'               "current"|"previous"
 #'             ),
 #'             SpotMaxPricePercentageOverLowestPrice = 123,
+#'             MaxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123,
 #'             OnDemandMaxPricePercentageOverLowestPrice = 123,
 #'             BareMetal = "included"|"excluded"|"required",
 #'             BurstablePerformance = "included"|"excluded"|"required",
@@ -1279,7 +1275,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' any other instance attributes, specify them as part of the same request.
 #' 
 #' For more information, see [Creating a launch configuration using an EC2
-#' instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
+#' instance](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceType Specifies the instance type of the EC2 instance. For information about
 #' available instance types, see [Available instance
@@ -1369,7 +1365,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' tenancy attribute set to `default`), you must set the value of this
 #' property to `dedicated`. For more information, see [Configuring instance
 #' tenancy with Amazon EC2 Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html)
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/advanced-settings-for-your-launch-template.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' If you specify `PlacementTenancy`, you must specify at least one subnet
@@ -2246,6 +2242,7 @@ autoscaling_describe_adjustment_types <- function() {
 #'                   "current"|"previous"
 #'                 ),
 #'                 SpotMaxPricePercentageOverLowestPrice = 123,
+#'                 MaxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123,
 #'                 OnDemandMaxPricePercentageOverLowestPrice = 123,
 #'                 BareMetal = "included"|"excluded"|"required",
 #'                 BurstablePerformance = "included"|"excluded"|"required",
@@ -2593,11 +2590,11 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 .autoscaling$operations$describe_auto_scaling_notification_types <- autoscaling_describe_auto_scaling_notification_types
 
 #' Gets information about the instance refreshes for the specified Auto
-#' Scaling group
+#' Scaling group from the previous six weeks
 #'
 #' @description
 #' Gets information about the instance refreshes for the specified Auto
-#' Scaling group.
+#' Scaling group from the previous six weeks.
 #' 
 #' This operation is part of the [instance refresh
 #' feature](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
@@ -2715,6 +2712,7 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'                     "current"|"previous"
 #'                   ),
 #'                   SpotMaxPricePercentageOverLowestPrice = 123,
+#'                   MaxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123,
 #'                   OnDemandMaxPricePercentageOverLowestPrice = 123,
 #'                   BareMetal = "included"|"excluded"|"required",
 #'                   BurstablePerformance = "included"|"excluded"|"required",
@@ -4323,7 +4321,7 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
 #' deregistered from the target groups.
 #' 
 #' For more information, see [Detach EC2 instances from your Auto Scaling
-#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-detach-attach-instances.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -6431,7 +6429,7 @@ autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName) {
 #' terminate.
 #' 
 #' For more information, see [Manual
-#' scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html)
+#' scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-manually.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
@@ -6775,6 +6773,7 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'                 "current"|"previous"
 #'               ),
 #'               SpotMaxPricePercentageOverLowestPrice = 123,
+#'               MaxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123,
 #'               OnDemandMaxPricePercentageOverLowestPrice = 123,
 #'               BareMetal = "included"|"excluded"|"required",
 #'               BurstablePerformance = "included"|"excluded"|"required",
@@ -7335,6 +7334,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'               "current"|"previous"
 #'             ),
 #'             SpotMaxPricePercentageOverLowestPrice = 123,
+#'             MaxSpotPriceAsPercentageOfOptimalOnDemandPrice = 123,
 #'             OnDemandMaxPricePercentageOverLowestPrice = 123,
 #'             BareMetal = "included"|"excluded"|"required",
 #'             BurstablePerformance = "included"|"excluded"|"required",

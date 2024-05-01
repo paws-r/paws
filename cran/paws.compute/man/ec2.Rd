@@ -48,27 +48,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
-computing capacity in the Amazon Web Services Cloud. Using Amazon EC2
-eliminates the need to invest in hardware up front, so you can develop
-and deploy applications faster. Amazon Virtual Private Cloud (Amazon
-VPC) enables you to provision a logically isolated section of the Amazon
-Web Services Cloud where you can launch Amazon Web Services resources in
-a virtual network that you've defined. Amazon Elastic Block Store
-(Amazon EBS) provides block level storage volumes for use with EC2
-instances. EBS volumes are highly available and reliable storage volumes
-that can be attached to any running instance and used like a hard drive.
-
-To learn more, see the following resources:
-\itemize{
-\item Amazon EC2: \href{https://aws.amazon.com/ec2/}{Amazon EC2 product page},
-\href{https://docs.aws.amazon.com/ec2/}{Amazon EC2 documentation}
-\item Amazon EBS: \href{https://aws.amazon.com/ebs/}{Amazon EBS product page},
-\href{https://docs.aws.amazon.com/ebs/}{Amazon EBS documentation}
-\item Amazon VPC: \href{https://aws.amazon.com/vpc/}{Amazon VPC product page},
-\href{https://docs.aws.amazon.com/vpc/}{Amazon VPC documentation}
-\item VPN: \href{https://aws.amazon.com/vpn/}{VPN product page}, \href{https://docs.aws.amazon.com/vpn/}{VPN documentation}
-}
+You can access the features of Amazon Elastic Compute Cloud (Amazon EC2)
+programmatically. For more information, see the \href{https://docs.aws.amazon.com/ec2/latest/devguide/}{Amazon EC2 Developer Guide}.
 }
 \section{Service syntax}{
 
@@ -147,7 +128,7 @@ To learn more, see the following resources:
 \link[=ec2_attach_volume]{attach_volume} \tab Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name\cr
 \link[=ec2_attach_vpn_gateway]{attach_vpn_gateway} \tab Attaches a virtual private gateway to a VPC\cr
 \link[=ec2_authorize_client_vpn_ingress]{authorize_client_vpn_ingress} \tab Adds an ingress authorization rule to a Client VPN endpoint\cr
-\link[=ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab Adds the specified outbound (egress) rules to a security group for use with a VPC\cr
+\link[=ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab Adds the specified outbound (egress) rules to a security group\cr
 \link[=ec2_authorize_security_group_ingress]{authorize_security_group_ingress} \tab Adds the specified inbound (ingress) rules to a security group\cr
 \link[=ec2_bundle_instance]{bundle_instance} \tab Bundles an Amazon instance store-backed Windows instance\cr
 \link[=ec2_cancel_bundle_task]{cancel_bundle_task} \tab Cancels a bundling operation for an instance store-backed Windows instance\cr
@@ -174,7 +155,7 @@ To learn more, see the following resources:
 \link[=ec2_create_customer_gateway]{create_customer_gateway} \tab Provides information to Amazon Web Services about your customer gateway device\cr
 \link[=ec2_create_default_subnet]{create_default_subnet} \tab Creates a default subnet with a size /20 IPv4 CIDR block in the specified Availability Zone in your default VPC\cr
 \link[=ec2_create_default_vpc]{create_default_vpc} \tab Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone\cr
-\link[=ec2_create_dhcp_options]{create_dhcp_options} \tab Creates a set of DHCP options for your VPC\cr
+\link[=ec2_create_dhcp_options]{create_dhcp_options} \tab Creates a custom set of DHCP options\cr
 \link[=ec2_create_egress_only_internet_gateway]{create_egress_only_internet_gateway} \tab [IPv6 only] Creates an egress-only internet gateway for your VPC\cr
 \link[=ec2_create_fleet]{create_fleet} \tab Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances\cr
 \link[=ec2_create_flow_logs]{create_flow_logs} \tab Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC\cr
@@ -337,7 +318,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_aws_network_performance_metric_subscriptions]{describe_aws_network_performance_metric_subscriptions} \tab Describes the current Infrastructure Performance metric subscriptions\cr
 \link[=ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks\cr
 \link[=ec2_describe_byoip_cidrs]{describe_byoip_cidrs} \tab Describes the IP address ranges that were specified in calls to ProvisionByoipCidr\cr
-\link[=ec2_describe_capacity_block_offerings]{describe_capacity_block_offerings} \tab Describes Capacity Block offerings available for purchase\cr
+\link[=ec2_describe_capacity_block_offerings]{describe_capacity_block_offerings} \tab Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using\cr
 \link[=ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 \link[=ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 \link[=ec2_describe_carrier_gateways]{describe_carrier_gateways} \tab Describes one or more of your carrier gateways\cr
@@ -352,14 +333,14 @@ To learn more, see the following resources:
 \link[=ec2_describe_customer_gateways]{describe_customer_gateways} \tab Describes one or more of your VPN customer gateways\cr
 \link[=ec2_describe_dhcp_options]{describe_dhcp_options} \tab Describes one or more of your DHCP options sets\cr
 \link[=ec2_describe_egress_only_internet_gateways]{describe_egress_only_internet_gateways} \tab Describes one or more of your egress-only internet gateways\cr
-\link[=ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Describes the Elastic Graphics accelerator associated with your instances\cr
+\link[=ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Amazon Elastic Graphics reached end of life on January 8, 2024\cr
 \link[=ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all of your export image tasks\cr
 \link[=ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all of your export instance tasks\cr
 \link[=ec2_describe_fast_launch_images]{describe_fast_launch_images} \tab Describe details for Windows AMIs that are configured for Windows fast launch\cr
 \link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots\cr
 \link[=ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time\cr
 \link[=ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet\cr
-\link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleets or all of your EC2 Fleets\cr
+\link[=ec2_describe_fleets]{describe_fleets} \tab Describes the specified EC2 Fleet or all of your EC2 Fleets\cr
 \link[=ec2_describe_flow_logs]{describe_flow_logs} \tab Describes one or more flow logs\cr
 \link[=ec2_describe_fpga_image_attribute]{describe_fpga_image_attribute} \tab Describes the specified attribute of the specified Amazon FPGA Image (AFI)\cr
 \link[=ec2_describe_fpga_images]{describe_fpga_images} \tab Describes the Amazon FPGA Images (AFIs) available to you\cr
@@ -381,8 +362,8 @@ To learn more, see the following resources:
 \link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all instances\cr
 \link[=ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances\cr
 \link[=ec2_describe_instance_topology]{describe_instance_topology} \tab Describes a tree-based hierarchy that represents the physical host placement of your EC2 instances within an Availability Zone or Local Zone\cr
-\link[=ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Returns a list of all instance types offered\cr
-\link[=ec2_describe_instance_types]{describe_instance_types} \tab Describes the details of the instance types that are offered in a location\cr
+\link[=ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Lists the instance types that are offered for the specified location\cr
+\link[=ec2_describe_instance_types]{describe_instance_types} \tab Describes the specified instance types\cr
 \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways\cr
 \link[=ec2_describe_ipam_byoasn]{describe_ipam_byoasn} \tab Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated\cr
 \link[=ec2_describe_ipam_pools]{describe_ipam_pools} \tab Get information about your IPAM pools\cr
@@ -401,6 +382,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_local_gateway_virtual_interface_groups]{describe_local_gateway_virtual_interface_groups} \tab Describes the specified local gateway virtual interface groups\cr
 \link[=ec2_describe_local_gateway_virtual_interfaces]{describe_local_gateway_virtual_interfaces} \tab Describes the specified local gateway virtual interfaces\cr
 \link[=ec2_describe_locked_snapshots]{describe_locked_snapshots} \tab Describes the lock status for a snapshot\cr
+\link[=ec2_describe_mac_hosts]{describe_mac_hosts} \tab Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated Hosts\cr
 \link[=ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists} \tab Describes your managed prefix lists and any Amazon Web Services-managed prefix lists\cr
 \link[=ec2_describe_moving_addresses]{describe_moving_addresses} \tab This action is deprecated\cr
 \link[=ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways\cr
@@ -425,7 +407,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_route_tables]{describe_route_tables} \tab Describes one or more of your route tables\cr
 \link[=ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 \link[=ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
-\link[=ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection or the VPCs attached to a transit gateway that are referencing the security groups you've specified in this request\cr
+\link[=ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
 \link[=ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 \link[=ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
 \link[=ec2_describe_snapshot_attribute]{describe_snapshot_attribute} \tab Describes the specified attribute of the specified snapshot\cr
@@ -491,6 +473,7 @@ To learn more, see the following resources:
 \link[=ec2_disable_image]{disable_image} \tab Sets the AMI state to disabled and removes all launch permissions from the AMI\cr
 \link[=ec2_disable_image_block_public_access]{disable_image_block_public_access} \tab Disables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 \link[=ec2_disable_image_deprecation]{disable_image_deprecation} \tab Cancels the deprecation of the specified AMI\cr
+\link[=ec2_disable_image_deregistration_protection]{disable_image_deregistration_protection} \tab Disables deregistration protection for an AMI\cr
 \link[=ec2_disable_ipam_organization_admin_account]{disable_ipam_organization_admin_account} \tab Disable the IPAM account\cr
 \link[=ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
 \link[=ec2_disable_snapshot_block_public_access]{disable_snapshot_block_public_access} \tab Disables the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
@@ -521,6 +504,7 @@ To learn more, see the following resources:
 \link[=ec2_enable_image]{enable_image} \tab Re-enables a disabled AMI\cr
 \link[=ec2_enable_image_block_public_access]{enable_image_block_public_access} \tab Enables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 \link[=ec2_enable_image_deprecation]{enable_image_deprecation} \tab Enables deprecation of the specified AMI at the specified date and time\cr
+\link[=ec2_enable_image_deregistration_protection]{enable_image_deregistration_protection} \tab Enables deregistration protection for an AMI\cr
 \link[=ec2_enable_ipam_organization_admin_account]{enable_ipam_organization_admin_account} \tab Enable an Organizations member account as the IPAM admin account\cr
 \link[=ec2_enable_reachability_analyzer_organization_sharing]{enable_reachability_analyzer_organization_sharing} \tab Establishes a trust relationship between Reachability Analyzer and Organizations\cr
 \link[=ec2_enable_serial_console_access]{enable_serial_console_access} \tab Enables access to the EC2 serial console of all instances for your account\cr
@@ -548,6 +532,7 @@ To learn more, see the following resources:
 \link[=ec2_get_groups_for_capacity_reservation]{get_groups_for_capacity_reservation} \tab Lists the resource groups to which a Capacity Reservation has been added\cr
 \link[=ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host\cr
 \link[=ec2_get_image_block_public_access_state]{get_image_block_public_access_state} \tab Gets the current state of block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
+\link[=ec2_get_instance_metadata_defaults]{get_instance_metadata_defaults} \tab Gets the default instance metadata service (IMDS) settings that are set at the account level in the specified Amazon Web Services  Region\cr
 \link[=ec2_get_instance_types_from_instance_requirements]{get_instance_types_from_instance_requirements} \tab Returns a list of instance types with the specified instance attributes\cr
 \link[=ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 \link[=ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
@@ -609,6 +594,7 @@ To learn more, see the following resources:
 \link[=ec2_modify_instance_event_start_time]{modify_instance_event_start_time} \tab Modifies the start time for a scheduled Amazon EC2 instance event\cr
 \link[=ec2_modify_instance_event_window]{modify_instance_event_window} \tab Modifies the specified event window\cr
 \link[=ec2_modify_instance_maintenance_options]{modify_instance_maintenance_options} \tab Modifies the recovery behavior of your instance to disable simplified automatic recovery or set the recovery behavior to default\cr
+\link[=ec2_modify_instance_metadata_defaults]{modify_instance_metadata_defaults} \tab Modifies the default instance metadata service (IMDS) settings at the account level in the specified Amazon Web Services  Region\cr
 \link[=ec2_modify_instance_metadata_options]{modify_instance_metadata_options} \tab Modify the instance metadata parameters on a running or stopped instance\cr
 \link[=ec2_modify_instance_placement]{modify_instance_placement} \tab Modifies the placement attributes for a specified instance\cr
 \link[=ec2_modify_ipam]{modify_ipam} \tab Modify the configurations of an IPAM\cr

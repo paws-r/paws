@@ -4,7 +4,7 @@
 \alias{personalize_update_campaign}
 \title{Updates a campaign to deploy a retrained solution version with an
 existing campaign, change your campaign's minProvisionedTPS, or modify
-your campaign's configuration, such as the exploration configuration}
+your campaign's configuration}
 \usage{
 personalize_update_campaign(
   campaignArn,
@@ -16,7 +16,16 @@ personalize_update_campaign(
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign.}
 
-\item{solutionVersionArn}{The ARN of a new solution version to deploy.}
+\item{solutionVersionArn}{The Amazon Resource Name (ARN) of a new model to deploy. To specify the
+latest solution version of your solution, specify the ARN of your
+\emph{solution} in \verb{SolutionArn/$LATEST} format. You must use this format if
+you set \code{syncWithLatestSolutionVersion} to \code{True} in the
+\href{https://docs.aws.amazon.com/personalize/latest/dg/API_CampaignConfig.html}{CampaignConfig}.
+
+To deploy a model that isn't the latest solution version of your
+solution, specify the ARN of the solution version.
+
+For more information about automatic campaign updates, see \href{https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html#create-campaign-automatic-latest-sv-update}{Enabling automatic campaign updates}.}
 
 \item{minProvisionedTPS}{Specifies the requested minimum provisioned transactions
 (recommendations) per second that Amazon Personalize will support. A
@@ -28,7 +37,7 @@ necessary.}
 \item{campaignConfig}{The configuration details of a campaign.}
 }
 \description{
-Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's \code{minProvisionedTPS}, or modify your campaign's configuration, such as the exploration configuration.
+Updates a campaign to deploy a retrained solution version with an existing campaign, change your campaign's \code{minProvisionedTPS}, or modify your campaign's configuration. For example, you can set \code{enableMetadataWithRecommendations} to true for an existing campaign.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_update_campaign/} for full documentation.
 }
