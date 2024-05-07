@@ -47,7 +47,7 @@ specify \code{NO_POLICY} for the revision ID.}
 permissions to change the policy of this resource in the future.}
 }
 \description{
-Attaches a resource-based policy document to the resource, which can be a table or stream. When you attach a resource-based policy using this API, the policy application is \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html}{\emph{eventually consistent}} .
+Attaches a resource-based policy document to the resource, which can be a table or stream. When you attach a resource-based policy using this API, the policy application is \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html}{\emph{eventually consistent}} .
 
 See \url{https://www.paws-r-sdk.com/docs/dynamodb_put_resource_policy/} for full documentation.
 }
