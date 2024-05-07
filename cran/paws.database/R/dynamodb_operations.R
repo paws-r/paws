@@ -1935,7 +1935,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' a table or stream
 #'
 #' @description
-#' Attaches a resource-based policy document to the resource, which can be a table or stream. When you attach a resource-based policy using this API, the policy application is [*eventually consistent*](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html) .
+#' Attaches a resource-based policy document to the resource, which can be a table or stream. When you attach a resource-based policy using this API, the policy application is [*eventually consistent*](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html) .
 #'
 #' See [https://www.paws-r-sdk.com/docs/dynamodb_put_resource_policy/](https://www.paws-r-sdk.com/docs/dynamodb_put_resource_policy/) for full documentation.
 #'
