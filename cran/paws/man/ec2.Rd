@@ -532,7 +532,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_get_groups_for_capacity_reservation]{get_groups_for_capacity_reservation} \tab Lists the resource groups to which a Capacity Reservation has been added\cr
 \link[paws.compute:ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host\cr
 \link[paws.compute:ec2_get_image_block_public_access_state]{get_image_block_public_access_state} \tab Gets the current state of block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
-\link[paws.compute:ec2_get_instance_metadata_defaults]{get_instance_metadata_defaults} \tab Gets the default instance metadata service (IMDS) settings that are set at the account level in the specified Amazon Web Services  Region\cr
+\link[paws.compute:ec2_get_instance_metadata_defaults]{get_instance_metadata_defaults} \tab Gets the default instance metadata service (IMDS) settings that are set at the account level in the specified Amazon Web Services Region\cr
 \link[paws.compute:ec2_get_instance_types_from_instance_requirements]{get_instance_types_from_instance_requirements} \tab Returns a list of instance types with the specified instance attributes\cr
 \link[paws.compute:ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 \link[paws.compute:ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
@@ -594,7 +594,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_modify_instance_event_start_time]{modify_instance_event_start_time} \tab Modifies the start time for a scheduled Amazon EC2 instance event\cr
 \link[paws.compute:ec2_modify_instance_event_window]{modify_instance_event_window} \tab Modifies the specified event window\cr
 \link[paws.compute:ec2_modify_instance_maintenance_options]{modify_instance_maintenance_options} \tab Modifies the recovery behavior of your instance to disable simplified automatic recovery or set the recovery behavior to default\cr
-\link[paws.compute:ec2_modify_instance_metadata_defaults]{modify_instance_metadata_defaults} \tab Modifies the default instance metadata service (IMDS) settings at the account level in the specified Amazon Web Services  Region\cr
+\link[paws.compute:ec2_modify_instance_metadata_defaults]{modify_instance_metadata_defaults} \tab Modifies the default instance metadata service (IMDS) settings at the account level in the specified Amazon Web Services Region\cr
 \link[paws.compute:ec2_modify_instance_metadata_options]{modify_instance_metadata_options} \tab Modify the instance metadata parameters on a running or stopped instance\cr
 \link[paws.compute:ec2_modify_instance_placement]{modify_instance_placement} \tab Modifies the placement attributes for a specified instance\cr
 \link[paws.compute:ec2_modify_ipam]{modify_ipam} \tab Modify the configurations of an IPAM\cr

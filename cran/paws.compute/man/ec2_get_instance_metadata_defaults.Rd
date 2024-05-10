@@ -3,7 +3,7 @@
 \name{ec2_get_instance_metadata_defaults}
 \alias{ec2_get_instance_metadata_defaults}
 \title{Gets the default instance metadata service (IMDS) settings that are set
-at the account level in the specified Amazon Web Services  Region}
+at the account level in the specified Amazon Web Services Region}
 \usage{
 ec2_get_instance_metadata_defaults(DryRun = NULL)
 }

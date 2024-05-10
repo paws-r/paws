@@ -17,7 +17,7 @@ codebuild_create_fleet(
 \arguments{
 \item{name}{[required] The name of the compute fleet.}
 
-\item{baseCapacity}{[required] The initial number of machines allocated to the ﬂeet, which deﬁnes the
+\item{baseCapacity}{[required] The initial number of machines allocated to the ﬂeet, which defines the
 number of builds that can run in parallel.}
 
 \item{environmentType}{[required] The environment type of the compute fleet.

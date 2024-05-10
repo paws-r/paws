@@ -216,7 +216,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' See [https://www.paws-r-sdk.com/docs/codebuild_create_fleet/](https://www.paws-r-sdk.com/docs/codebuild_create_fleet/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the compute fleet.
-#' @param baseCapacity &#91;required&#93; The initial number of machines allocated to the ﬂeet, which deﬁnes the
+#' @param baseCapacity &#91;required&#93; The initial number of machines allocated to the ﬂeet, which defines the
 #' number of builds that can run in parallel.
 #' @param environmentType &#91;required&#93; The environment type of the compute fleet.
 #' 
@@ -2129,7 +2129,7 @@ codebuild_stop_build_batch <- function(id) {
 #'
 #' @param arn &#91;required&#93; The ARN of the compute fleet.
 #' @param baseCapacity The initial number of machines allocated to the compute ﬂeet, which
-#' deﬁnes the number of builds that can run in parallel.
+#' defines the number of builds that can run in parallel.
 #' @param environmentType The environment type of the compute fleet.
 #' 
 #' -   The environment type `ARM_CONTAINER` is available only in regions US

@@ -5799,7 +5799,7 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 #' Adds a route to a network to a Client VPN endpoint. Each Client VPN
 #' endpoint has a route table that describes the available destination
 #' network routes. Each route in the route table specifies the path for
-#' traﬃc to speciﬁc resources or networks.
+#' traﬃc to specific resources or networks.
 #'
 #' @usage
 #' ec2_create_client_vpn_route(ClientVpnEndpointId, DestinationCidrBlock,
@@ -48889,7 +48889,7 @@ ec2_get_image_block_public_access_state <- function(DryRun = NULL) {
 .ec2$operations$get_image_block_public_access_state <- ec2_get_image_block_public_access_state
 
 #' Gets the default instance metadata service (IMDS) settings that are set
-#' at the account level in the specified Amazon Web Services  Region
+#' at the account level in the specified Amazon Web Services Region
 #'
 #' @description
 #' Gets the default instance metadata service (IMDS) settings that are set
@@ -55897,7 +55897,7 @@ ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = N
 .ec2$operations$modify_instance_maintenance_options <- ec2_modify_instance_maintenance_options
 
 #' Modifies the default instance metadata service (IMDS) settings at the
-#' account level in the specified Amazon Web Services  Region
+#' account level in the specified Amazon Web Services Region
 #'
 #' @description
 #' Modifies the default instance metadata service (IMDS) settings at the

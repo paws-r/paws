@@ -2879,7 +2879,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
-#' @param MapName &#91;required&#93; The map resource associated with the glyph ﬁle.
+#' @param MapName &#91;required&#93; The map resource associated with the glyph file.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2933,14 +2933,14 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NU
 #' @usage
 #' locationservice_get_map_sprites(FileName, Key, MapName)
 #'
-#' @param FileName &#91;required&#93; The name of the sprite ﬁle. Use the following ﬁle names for the sprite
+#' @param FileName &#91;required&#93; The name of the sprite file. Use the following file names for the sprite
 #' sheet:
 #' 
 #' -   `sprites.png`
 #' 
 #' -   `sprites@@2x.png` for high pixel density displays
 #' 
-#' For the JSON document containing image offsets. Use the following ﬁle
+#' For the JSON document containing image offsets. Use the following file
 #' names:
 #' 
 #' -   `sprites.json`
@@ -2949,7 +2949,7 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NU
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
-#' @param MapName &#91;required&#93; The map resource associated with the sprite ﬁle.
+#' @param MapName &#91;required&#93; The map resource associated with the sprite file.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2997,7 +2997,7 @@ locationservice_get_map_sprites <- function(FileName, Key = NULL, MapName) {
 #' @description
 #' Retrieves the map style descriptor from a map resource.
 #' 
-#' The style descriptor contains speciﬁcations on how features render on a
+#' The style descriptor contains specifications on how features render on a
 #' map. For example, what data to display, what order to display the data
 #' in, and the style for the data. Style descriptors follow the Mapbox
 #' Style Specification.

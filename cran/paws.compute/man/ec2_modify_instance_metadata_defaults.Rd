@@ -3,7 +3,7 @@
 \name{ec2_modify_instance_metadata_defaults}
 \alias{ec2_modify_instance_metadata_defaults}
 \title{Modifies the default instance metadata service (IMDS) settings at the
-account level in the specified Amazon Web Services  Region}
+account level in the specified Amazon Web Services Region}
 \usage{
 ec2_modify_instance_metadata_defaults(
   HttpTokens = NULL,

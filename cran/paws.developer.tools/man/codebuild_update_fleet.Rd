@@ -18,7 +18,7 @@ codebuild_update_fleet(
 \item{arn}{[required] The ARN of the compute fleet.}
 
 \item{baseCapacity}{The initial number of machines allocated to the compute ﬂeet, which
-deﬁnes the number of builds that can run in parallel.}
+defines the number of builds that can run in parallel.}
 
 \item{environmentType}{The environment type of the compute fleet.
 \itemize{

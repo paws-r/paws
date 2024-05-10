@@ -1591,7 +1591,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
-#' @param MapName &#91;required&#93; The map resource associated with the glyph ﬁle.
+#' @param MapName &#91;required&#93; The map resource associated with the glyph file.
 #'
 #' @keywords internal
 #'
@@ -1620,14 +1620,14 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/](https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/) for full documentation.
 #'
-#' @param FileName &#91;required&#93; The name of the sprite ﬁle. Use the following ﬁle names for the sprite
+#' @param FileName &#91;required&#93; The name of the sprite file. Use the following file names for the sprite
 #' sheet:
 #' 
 #' -   `sprites.png`
 #' 
 #' -   `sprites@@2x.png` for high pixel density displays
 #' 
-#' For the JSON document containing image offsets. Use the following ﬁle
+#' For the JSON document containing image offsets. Use the following file
 #' names:
 #' 
 #' -   `sprites.json`
@@ -1636,7 +1636,7 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, Key = NU
 #' @param Key The optional [API
 #' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
 #' to authorize the request.
-#' @param MapName &#91;required&#93; The map resource associated with the sprite ﬁle.
+#' @param MapName &#91;required&#93; The map resource associated with the sprite file.
 #'
 #' @keywords internal
 #'
