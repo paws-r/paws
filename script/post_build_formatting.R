@@ -16,7 +16,8 @@ before <- c(
   "#' formed \\*within\\*",
   "#' \\*arn:aws:iam:::role/\\*/ResourceName_\\?\\*",
   "#' \\*arn:aws:iam:::role/pathA/pathB/ResourceName_1\\*",
-  "#' \\*arn:aws:iam:::role/pathA/ResourceName_1\\*"
+  "#' \\*arn:aws:iam:::role/pathA/ResourceName_1\\*",
+  "\u2028"
 )
 
 after <- c(
@@ -30,7 +31,8 @@ after <- c(
   "#' formed \\\\emph\\{within\\}",
   "#' \\\\emph\\{arn:aws:iam:::role/&#42;/ResourceName_\\?\\}",
   "#' \\\\emph\\{arn:aws:iam:::role/pathA/pathB/ResourceName_1\\}",
-  "#' \\\\emph\\{arn:aws:iam:::role/pathA/ResourceName_1\\}"
+  "#' \\\\emph\\{arn:aws:iam:::role/pathA/ResourceName_1\\}",
+  ""
 )
 
 for (i in seq_along(before)) {

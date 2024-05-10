@@ -426,7 +426,7 @@ resiliencehub_delete_app_assessment <- function(assessmentArn, clientToken = NUL
 #' ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param terraformSource The imported Terraform s3 state ﬁle you want to remove from the
+#' @param terraformSource The imported Terraform s3 state file you want to remove from the
 #' Resilience Hub application.
 #'
 #' @keywords internal

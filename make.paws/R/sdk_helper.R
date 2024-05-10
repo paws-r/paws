@@ -422,7 +422,7 @@ paws_gsub <- function(
   cran_file_gsub <- function(before, after, files) {
     for (file in files) {
       result <- readLines(file)
-      found <- grep(before, after, result)
+      found <- grep(before, result)
       if (length(found) > 0) {
         result[found] <- gsub(before, after, result[found])
         writeLines(result, file)

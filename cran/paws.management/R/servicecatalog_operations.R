@@ -142,11 +142,11 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' resource-id segment. You can use special characters anywhere within the
 #' resource-id.
 #' 
-#' The "*" character also matches the "/" character, allowing paths to be
-#' formed *within* the resource-id. For example,
-#' *arn:aws:iam:::role/*/ResourceName_?* matches both
-#' *arn:aws:iam:::role/pathA/pathB/ResourceName_1* and
-#' *arn:aws:iam:::role/pathA/ResourceName_1*.
+#' The "&#42;" character also matches the "/" character, allowing paths to be
+#' formed \emph{within} the resource-id. For example,
+#' \emph{arn:aws:iam:::role/&#42;/ResourceName_?} matches both
+#' \emph{arn:aws:iam:::role/pathA/pathB/ResourceName_1} and
+#' \emph{arn:aws:iam:::role/pathA/ResourceName_1}.
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
 #' defined Amazon Resource Name (ARN), or `IAM_PATTERN` if you use an ARN
 #' with no `accountID`, with or without wildcard characters.
