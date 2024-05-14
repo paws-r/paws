@@ -1,3 +1,5 @@
+Fix R documentation, correctly escape "*"
+
 ## Test environments
 
 * local macOS install, R 4.2.1

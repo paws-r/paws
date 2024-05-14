@@ -1,3 +1,5 @@
+Fixed R documentation
+
 ## Test environments
 
 * local macOS install, R 4.2.1
