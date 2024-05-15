@@ -29,7 +29,7 @@ paws_check_rhub_sub_cat(
 )
 
 paws_rhub_action_check(
-  packages = "paws.storage",
+  packages = "paws",
   platforms = c("linux", "macos", "macos-arm64", "windows")
 )
 
@@ -50,11 +50,9 @@ paws_check_win_devel_sub_cat(
 
 \item{platforms}{Platforms to use, a character vector. Use NULL to select from a list in interactive sessions. See \code{rhub::rhub_platforms()}.}
 
-\item{email}{address to notify, defaults to the maintainer address in the package.}
+\item{packages}{list of packages check through rhub, default (paws).}
 
-\item{interactive}{whether to show the status of the build interactively. R-hub
-will send an email to the package maintainer's email address, regardless of
-whether the check is interactive or not.}
+\item{email}{address to notify, defaults to the maintainer address in the package.}
 }
 \description{
 Check paws using rhub

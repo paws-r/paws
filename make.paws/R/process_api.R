@@ -5,7 +5,6 @@ TEST_DIR <- "tests/testthat"
 #'
 #' @param api_name Name of the API to make a package for.
 #' @param in_dir Directory containing API files.
-#' @param out_dir Directory of the R package.
 #'
 #' @keywords internal
 make_sdk_for_api <- function(api_name, in_dir) {

@@ -88,11 +88,9 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
 #' @title Check paws using rhub
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages check through rhub, check all packages by default
+#' @param packages list of packages check through rhub, default (paws).
 #' @param platforms Platforms to use, a character vector. Use NULL to select from a list in interactive sessions. See `rhub::rhub_platforms()`.
 #' @param email address to notify, defaults to the maintainer address in the package.
-#' @param interactive whether to show the status of the build interactively. R-hub
-#' will send an email to the package maintainer's email address, regardless of
-#' whether the check is interactive or not.
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub <- function(in_dir = "../cran",
@@ -130,7 +128,7 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_rhub_action_check <- function (packages = "paws.storage", platforms = c("linux", "macos", "macos-arm64", "windows")) {
+paws_rhub_action_check <- function (packages = "paws", platforms = c("linux", "macos", "macos-arm64", "windows")) {
   url <- "https://api.github.com/repos/paws-r/paws-rhub/actions/workflows/rhub.yaml/dispatches"
   pat <- gitcreds::gitcreds_get(url = "https://github.com/paws-r/paws-rhub")$password
   config <- list(platforms = platforms)
