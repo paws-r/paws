@@ -94,8 +94,8 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
 paws_check_rhub <- function(in_dir = "../cran",
                             pkg_list = list(),
                             platforms = c("linux", "macos", "macos-arm64", "windows")) {
-  paws_check_rhub_sub_cat(in_dir, pkg_list, email, interactive)
-  paws_check_rhub_cat(in_dir, pkg_list, email, interactive)
+  paws_check_rhub_sub_cat(in_dir, pkg_list, platforms)
+  paws_check_rhub_cat(in_dir, pkg_list, platforms)
   pkg <- file.path(in_dir, "paws")
   paws_rhub_action_check(pkgs, platforms)
 }

@@ -4,6 +4,7 @@
 \alias{paws_check_rhub}
 \alias{paws_check_rhub_cat}
 \alias{paws_check_rhub_sub_cat}
+\alias{paws_rhub_action_check}
 \alias{paws_check_win_devel}
 \alias{paws_check_win_devel_cat}
 \alias{paws_check_win_devel_sub_cat}
@@ -12,22 +13,24 @@
 paws_check_rhub(
   in_dir = "../cran",
   pkg_list = list(),
-  email = NULL,
-  interactive = TRUE
+  platforms = c("linux", "macos", "macos-arm64", "windows")
 )
 
 paws_check_rhub_cat(
   in_dir = "../cran",
   pkg_list = list(),
-  email = NULL,
-  interactive = TRUE
+  platforms = c("linux", "macos", "macos-arm64", "windows")
 )
 
 paws_check_rhub_sub_cat(
   in_dir = "../cran",
   pkg_list = list(),
-  email = NULL,
-  interactive = TRUE
+  platforms = c("linux", "macos", "macos-arm64", "windows")
+)
+
+paws_rhub_action_check(
+  packages = "paws.storage",
+  platforms = c("linux", "macos", "macos-arm64", "windows")
 )
 
 paws_check_win_devel(in_dir = "../cran", pkg_list = list(), email = NULL)
@@ -45,11 +48,7 @@ paws_check_win_devel_sub_cat(
 
 \item{pkg_list}{list of packages check through rhub, check all packages by default}
 
-\item{email}{address to notify, defaults to the maintainer address in the package.}
-
-\item{interactive}{whether to show the status of the build interactively. R-hub
-will send an email to the package maintainer's email address, regardless of
-whether the check is interactive or not.}
+\item{platforms}{Platforms to use, a character vector. Use NULL to select from a list in interactive sessions. See \code{rhub::rhub_platforms()}.}
 }
 \description{
 Check paws using rhub
