@@ -70,3 +70,20 @@ test_that("check nested xml build with nested default parameters", {
   actual <- xml_build(params_nested)
   expect_equal(actual, list(nested = list(cho = list(""))))
 })
+
+test_that("check if list is transposed correctly", {
+  obj <- list(
+    var1 = c(1, 2, 3),
+    var2 = letters[1:3],
+    var3 = list(),
+    var4 = list()
+  )
+  expected <- list(
+    list(var1 = 1, var2 = "a", var3 = NULL, var4 = NULL),
+    list(var1 = 2, var2 = "b", var3 = NULL, var4 = NULL),
+    list(var1 = 3, var2 = "c", var3 = NULL, var4 = NULL)
+  )
+  actual <- transpose(obj)
+
+  expect_equal(actual, expected)
+})
