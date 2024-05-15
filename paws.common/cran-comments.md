@@ -1,5 +1,5 @@
 ## Submission
-This release contains bug fixes and minor performance enhancements
+This release contains a hotfix.
 
 ## Test environments
 

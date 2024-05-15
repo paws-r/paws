@@ -1,3 +1,6 @@
+# paws.common 0.7.3
+* fix `xml_parse` to correctly parse empty elements (#783) thanks to @stevepowell99 for raising issue
+
 # paws.common 0.7.2
 * improve performance of `restxml_unmarshal` by x3
 * fix `rest_unmarshal_location_elements` only skip header if location is not found (#761)
