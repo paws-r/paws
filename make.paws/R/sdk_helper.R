@@ -89,6 +89,10 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages check through rhub, check all packages by default
 #' @param platforms Platforms to use, a character vector. Use NULL to select from a list in interactive sessions. See `rhub::rhub_platforms()`.
+#' @param email address to notify, defaults to the maintainer address in the package.
+#' @param interactive whether to show the status of the build interactively. R-hub
+#' will send an email to the package maintainer's email address, regardless of
+#' whether the check is interactive or not.
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub <- function(in_dir = "../cran",
