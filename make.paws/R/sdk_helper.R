@@ -88,51 +88,69 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
 #' @title Check paws using rhub
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages check through rhub, check all packages by default
+#' @param packages list of packages check through rhub, default (paws).
+#' @param platforms Platforms to use, a character vector. Use NULL to select from a list in interactive sessions. See `rhub::rhub_platforms()`.
 #' @param email address to notify, defaults to the maintainer address in the package.
-#' @param interactive whether to show the status of the build interactively. R-hub
-#' will send an email to the package maintainer's email address, regardless of
-#' whether the check is interactive or not.
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub <- function(in_dir = "../cran",
                             pkg_list = list(),
-                            email = NULL,
-                            interactive = TRUE) {
-  paws_check_rhub_sub_cat(in_dir, pkg_list, email, interactive)
-  paws_check_rhub_cat(in_dir, pkg_list, email, interactive)
+                            platforms = c("linux", "macos", "macos-arm64", "windows")) {
+  paws_check_rhub_sub_cat(in_dir, pkg_list, platforms)
+  paws_check_rhub_cat(in_dir, pkg_list, platforms)
   pkg <- file.path(in_dir, "paws")
-  devtools::check_rhub(pkg, email = email, interactive = interactive)
+  paws_rhub_action_check(pkgs, platforms)
 }
 
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub_cat <- function(in_dir = "../cran",
                                 pkg_list = list(),
-                                email = NULL,
-                                interactive = TRUE) {
+                                platforms = c("linux", "macos", "macos-arm64", "windows")) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
-  for (pkg in pkgs) {
-    devtools::check_rhub(pkg, email = email, interactive = interactive)
-  }
+  paws_rhub_action_check(pkgs, platforms)
 }
 
 #' @rdname paws_check_rhub
 #' @export
 paws_check_rhub_sub_cat <- function(in_dir = "../cran",
                                     pkg_list = list(),
-                                    email = NULL,
-                                    interactive = TRUE) {
+                                    platforms = c("linux", "macos", "macos-arm64", "windows")) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
-    for (pkg in pkgs) {
-      devtools::check_rhub(pkg, email = email, interactive = interactive)
-    }
+    paws_rhub_action_check(pkgs, platforms)
   } else {
     warning("No sub-categories released.")
   }
 }
+
+#' @rdname paws_check_rhub
+#' @export
+paws_rhub_action_check <- function (packages = "paws", platforms = c("linux", "macos", "macos-arm64", "windows")) {
+  url <- "https://api.github.com/repos/paws-r/paws-rhub/actions/workflows/rhub.yaml/dispatches"
+  pat <- gitcreds::gitcreds_get(url = "https://github.com/paws-r/paws-rhub")$password
+  config <- list(platforms = platforms)
+  name <- paste(platforms, collapse = ", ")
+  to_json <- \(x) jsonlite::toJSON(x, auto_unbox = T)
+  resps <- lapply(packages, \(pkg) {
+    id <- sprintf("%s-%s", pkg, paste0(sample(c(letters, LETTERS, 0:9), 10, replace = TRUE), collapse = ""))
+    data <- list(ref = "main", inputs = list(config = to_json(config), name = name, id = id, pkg = pkg))
+    httr2::request(url) |>
+      httr2::req_headers("Accept" = "application/vnd.github+json", "Authorization" = sprintf("Bearer %s", pat)) |>
+      httr2::req_body_raw(to_json(data)) |>
+      httr2::req_method("POST")
+  }) |> httr2::req_perform_parallel()
+  names(resps) <- unlist(packages)
+  
+  for (pkg in names(resps)) {
+    if (resps[[pkg]]$status_code != 204) 
+      stop(sprintf("Failed to start rhub action for package: %s", pkg))
+  }
+  invisible(NULL)
+}
+
 
 #' @rdname paws_check_rhub
 #' @export

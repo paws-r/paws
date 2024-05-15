@@ -137,13 +137,13 @@ test_that("check paws_check_url", {
 test_that("check paws_check_rhub_sub_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
   mock_check_rhub <- mock2()
-  mockery::stub(paws_check_rhub_sub_cat, "devtools::check_rhub", mock_check_rhub)
+  mockery::stub(paws_check_rhub_sub_cat, "paws_rhub_action_check", mock_check_rhub)
   mockery::stub(paws_check_rhub_sub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_rhub_sub_cat()
 
   expect_equal(
-    sapply(mockery::mock_args(mock_check_rhub), function(x) x[[1]]),
+    mock_arg(mock_check_rhub)[[1]],
     c("paws.cat1.p1", "paws.cat1.p2")
   )
 })
@@ -151,7 +151,7 @@ test_that("check paws_check_rhub_sub_cat", {
 test_that("check paws_check_rhub_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
   mock_check_rhub <- mock2()
-  mockery::stub(paws_check_rhub_cat, "devtools::check_rhub", mock_check_rhub)
+  mockery::stub(paws_check_rhub_cat, "paws_rhub_action_check", mock_check_rhub)
   mockery::stub(paws_check_rhub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_rhub_cat()

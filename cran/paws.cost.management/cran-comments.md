@@ -1,3 +1,5 @@
+Fixed R documentation (removed unicode character)
+
 ## Test environments
 
 * local macOS install, R 4.2.1
