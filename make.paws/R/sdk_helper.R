@@ -148,6 +148,7 @@ paws_rhub_action_check <- function (packages = "paws", platforms = c("linux", "m
     if (resps[[pkg]]$status_code != 204) 
       stop(sprintf("Failed to start rhub action for package: %s", pkg))
   }
+  writeLines("Please check results: https://github.com/paws-r/paws-rhub/actions")
   invisible(NULL)
 }
 
