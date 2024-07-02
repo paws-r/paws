@@ -125,7 +125,7 @@ test_that("config_file_provider", {
   })
 })
 
-test_that("check if refreshed credentails need refreshing", {
+test_that("check if refreshed credentials need refreshing", {
   rm(list = names(cred_refresh_cache), envir = cred_refresh_cache)
   # if profile not found: true
   expect_true(check_if_cred_needs_refresh("profile"))
