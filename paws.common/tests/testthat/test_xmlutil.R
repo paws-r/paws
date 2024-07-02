@@ -72,18 +72,31 @@ test_that("check nested xml build with nested default parameters", {
 })
 
 test_that("check if list is transposed correctly", {
-  obj <- list(
+  obj1 <- list(
     var1 = c(1, 2, 3),
     var2 = letters[1:3],
     var3 = list(),
     var4 = list()
   )
-  expected <- list(
+  expected1 <- list(
     list(var1 = 1, var2 = "a", var3 = NULL, var4 = NULL),
     list(var1 = 2, var2 = "b", var3 = NULL, var4 = NULL),
     list(var1 = 3, var2 = "c", var3 = NULL, var4 = NULL)
   )
-  actual <- transpose(obj)
+  obj2 <- list(
+    var1 = list(),
+    var2 = letters[1:3],
+    var3 = list(),
+    var4 = c(1, 2, 3)
+  )
+  expected2 <- list(
+    list(var1 = NULL, var2 = "a", var3 = NULL, var4 = 1),
+    list(var1 = NULL, var2 = "b", var3 = NULL, var4 = 2),
+    list(var1 = NULL, var2 = "c", var3 = NULL, var4 = 3)
+  )
+  actual1 <- transpose(obj1)
+  actual2 <- transpose(obj2)
 
-  expect_equal(actual, expected)
+  expect_equal(actual1, expected1)
+  expect_equal(actual2, expected2)
 })

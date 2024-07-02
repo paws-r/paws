@@ -462,8 +462,9 @@ default_parse_scalar <- function(interface_i, tag_type = NULL) {
 }
 
 transpose <- function(x) {
-  if (any(found <- lengths(x) == 0)) {
-    x[found] <- list(rep(list(), length.out = length(x[[1]])))
+  lens <- lengths(x)
+  if (any(found <- lens == 0)) {
+    x[found] <- list(rep(list(), length.out = max(lens)))
   }
   .mapply(list, x, NULL)
 }

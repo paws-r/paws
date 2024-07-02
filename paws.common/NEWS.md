@@ -1,3 +1,6 @@
+# paws.common 0.7.3.9000
+* fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.
+
 # paws.common 0.7.3
 * fix `xml_parse` to correctly parse empty elements (#783) thanks to @stevepowell99 for raising issue
 
