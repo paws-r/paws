@@ -2,7 +2,27 @@
 * fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.
 * support refreshable credentials for `sso` (#793)
 * fix region redirect for aws s3 buckets (#788) thanks to @payam-delfi for identifying issue
-* Enrich error messages
+* enrich error messages to align with boto3 error message template:
+```r
+# previous error message format
+svc <- paws.storage::s3()
+response <- svc$get_object(
+  Bucket = "<bucket>",
+  Key = "<key>",
+  IfNoneMatch = "<etag>"
+)
+#> Error: SerializationError (HTTP 304). failed to read from query HTTP response body
+```
+```r
+# new error message format
+client <- paws.storage::s3()
+resp <- client$get_object(
+  Bucket = "<bucket>",
+  Key = "<key>",
+  IfNoneMatch = "<etag>"
+)
+#> Error: SerializationError (HTTP 304). An error occurred (304) when calling the GetObject operation: Not Modified
+```
 
 # paws.common 0.7.3
 * fix `xml_parse` to correctly parse empty elements (#783) thanks to @stevepowell99 for raising issue
