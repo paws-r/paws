@@ -39,7 +39,7 @@ Suggests:
     testthat (>= 3.0.0)
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Collate:
     'RcppExports.R'
     'util.R'
@@ -61,6 +61,7 @@ Collate:
     'service.R'
     'custom_dynamodb.R'
     'custom_rds.R'
+    'http_status.R'
     'tags.R'
     'xmlutil.R'
     'stream.R'

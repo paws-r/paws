@@ -1,6 +1,7 @@
 #' @include service.R
 #' @include stream.R
 #' @include util.R
+#' @include http_status.R
 NULL
 
 ################################################################################
@@ -279,11 +280,12 @@ s3_unmarshal_error <- function(request) {
     )
     return(request)
   }
-
   if (is.null(data)) {
+    msg <- "An error occurred (%s) when calling the %s operation: %s"
+    error_message <- http_statuses[as.character(request$http_response$status_code)]
     request$error <- Error(
       "SerializationError",
-      "failed to read from query HTTP response body",
+      sprintf(msg, request$http_response$status_code, request$operation$name, error_message),
       request$http_response$status_code
     )
     return(request)

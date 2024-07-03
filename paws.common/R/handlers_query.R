@@ -1,3 +1,5 @@
+#' @include http_status.R
+
 # Build the request for the Query protocol.
 query_build <- function(request) {
   body <- list(
@@ -45,9 +47,11 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(data)) {
+    msg <- "An error occurred (%s) when calling the %s operation: %s"
+    error_message <- http_statuses[as.character(request$http_response$status_code)]
     request$error <- Error(
       "SerializationError",
-      "failed to read from query HTTP response body",
+      sprintf(msg, request$http_response$status_code, request$operation$name, error_message),
       request$http_response$status_code
     )
     return(request)
