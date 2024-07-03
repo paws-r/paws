@@ -296,7 +296,8 @@ sso_credential_process <- function(sso_session,
 
 check_if_cred_needs_refresh <- function(sso_role_name){
   if (!is.null(cred <- cred_refresh_cache[[sso_role_name]])) {
-    if (!length(expire <- cred$expiration)) expire <- 0
+    expire <- cred$expiration
+    if (is.infinite(expire) | !length(expire)) expire <- 0
     expiration <- expire / 1000
     now <- as.numeric(Sys.time())
     return(now > expiration)
