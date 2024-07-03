@@ -1,6 +1,8 @@
 #' @include service.R
 #' @include stream.R
 #' @include util.R
+#' @include error.R
+#' @include head_bucket.R
 NULL
 
 ################################################################################
@@ -279,13 +281,8 @@ s3_unmarshal_error <- function(request) {
     )
     return(request)
   }
-
   if (is.null(data)) {
-    request$error <- Error(
-      "SerializationError",
-      "failed to read from query HTTP response body",
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 
@@ -294,11 +291,7 @@ s3_unmarshal_error <- function(request) {
   message <- error_response$Message
 
   if (is.null(message) && is.null(code)) {
-    request$error <- Error(
-      "SerializationError",
-      "failed to decode query XML error response",
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 
@@ -356,7 +349,7 @@ s3_redirect_from_error <- function(request) {
     return(request)
   }
   bucket_name <- request$params[["Bucket"]]
-  new_region <- s3_get_bucket_region(request$http_response, error)
+  new_region <- s3_get_bucket_region(request, error, bucket_name)
   if (is.null(new_region)) {
     log_debug(
       paste(
@@ -437,14 +430,19 @@ can_be_redirected <- function(request, error_code, error) {
 # HEAD on the bucket if all else fails.
 # param response: HttpResponse
 # param error: Error
-s3_get_bucket_region <- function(response, error) {
+s3_get_bucket_region <- function(request, error, bucket) {
   # First try to source the region from the headers.
-  response_headers <- response$header
+  response_headers <- request$http_response$header
   if (!is.null(region <- response_headers[["x-amz-bucket-region"]])) {
     return(unlist(region))
   }
-  # Next, check the error body
-  return(unlist(error$Region))
+  if (!is.null(region <- unlist(error$Region))) {
+    return(region)
+  }
+
+  # Finally, HEAD the bucket. No other choice sadly.
+  resp <- s3(request$config)$head_bucket(Bucket = bucket)
+  return(resp$BucketRegion)
 }
 
 # Splice a new endpoint into an existing URL. Note that some endpoints

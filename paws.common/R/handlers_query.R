@@ -1,3 +1,5 @@
+#' @include error.R
+
 # Build the request for the Query protocol.
 query_build <- function(request) {
   body <- list(
@@ -45,11 +47,7 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(data)) {
-    request$error <- Error(
-      "SerializationError",
-      "failed to read from query HTTP response body",
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 
@@ -59,11 +57,7 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(error)) {
-    request$error <- Error(
-      "SerializationError",
-      "failed to decode query XML error response",
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 

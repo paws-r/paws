@@ -1,3 +1,5 @@
+#' @include http_status.R
+
 # Returns an Error object.
 Error <- struct(
   code = "",
@@ -5,6 +7,24 @@ Error <- struct(
   status_code = NA_integer_,
   error_response = list()
 )
+
+ERROR_MSG_TEMPLATE <- "An error occurred (%s) when calling the %s operation: %s"
+
+serialization_error <- function(request) {
+  error_message <- http_statuses[
+    as.character(request$http_response$status_code)
+  ]
+  Error(
+    "SerializationError",
+    sprintf(
+      ERROR_MSG_TEMPLATE,
+      request$http_response$status_code,
+      request$operation$name,
+      error_message
+    ),
+    request$http_response$status_code
+  )
+}
 
 #' Generate a classed http error
 #'
