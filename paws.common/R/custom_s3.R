@@ -440,12 +440,11 @@ can_be_redirected <- function(request, error_code, error) {
 s3_get_bucket_region <- function(response, error) {
   # First try to source the region from the headers.
   response_headers <- response$header
-  if ("x-amz-bucket-region" %in% names(response_headers)) {
-    return(response_headers[["x-amz-bucket-region"]])
+  if (!is.null(region <- response_headers[["x-amz-bucket-region"]])) {
+    return(unlist(region))
   }
   # Next, check the error body
-  region <- error$Region
-  return(region)
+  return(unlist(error$Region))
 }
 
 # Splice a new endpoint into an existing URL. Note that some endpoints

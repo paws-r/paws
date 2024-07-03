@@ -1,9 +1,10 @@
 # paws.common 0.7.3.9000
 * fix `transpose` to correctly parse lists with empty first elements (#791), thanks to @FMKerckhof for raising issue.
+* support refreshable credentials for `sso` (#793)
+* fix region redirect for aws s3 buckets (#788) thanks to @payam-delfi for identifying issue
 
 # paws.common 0.7.3
 * fix `xml_parse` to correctly parse empty elements (#783) thanks to @stevepowell99 for raising issue
-* support refreshable credentials for `sso` (#793)
 
 # paws.common 0.7.2
 * improve performance of `restxml_unmarshal` by x3
