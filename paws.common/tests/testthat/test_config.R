@@ -341,7 +341,7 @@ test_that("sso_credential_process legacy", {
       expiration = "foo_world"
     )
   ))
-  mock_Creds <- mock2(TRUE)
+  mock_Creds <- mock2(Creds())
   mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
   mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
   mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
@@ -386,7 +386,7 @@ test_that("sso_credential_process", {
       expiration = "foo_world"
     )
   ))
-  mock_Creds <- mock2(TRUE)
+  mock_Creds <- mock2(Creds())
   mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
   mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
   mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
