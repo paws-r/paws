@@ -1,7 +1,7 @@
 #' @include service.R
 #' @include stream.R
 #' @include util.R
-#' @include http_status.R
+#' @include error.R
 NULL
 
 ################################################################################
@@ -281,13 +281,7 @@ s3_unmarshal_error <- function(request) {
     return(request)
   }
   if (is.null(data)) {
-    msg <- "An error occurred (%s) when calling the %s operation: %s"
-    error_message <- http_statuses[as.character(request$http_response$status_code)]
-    request$error <- Error(
-      "SerializationError",
-      sprintf(msg, request$http_response$status_code, request$operation$name, error_message),
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 
@@ -296,11 +290,7 @@ s3_unmarshal_error <- function(request) {
   message <- error_response$Message
 
   if (is.null(message) && is.null(code)) {
-    request$error <- Error(
-      "SerializationError",
-      "failed to decode query XML error response",
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 

@@ -1,4 +1,4 @@
-#' @include http_status.R
+#' @include error.R
 
 # Build the request for the Query protocol.
 query_build <- function(request) {
@@ -47,13 +47,7 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(data)) {
-    msg <- "An error occurred (%s) when calling the %s operation: %s"
-    error_message <- http_statuses[as.character(request$http_response$status_code)]
-    request$error <- Error(
-      "SerializationError",
-      sprintf(msg, request$http_response$status_code, request$operation$name, error_message),
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 
@@ -63,11 +57,7 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(error)) {
-    request$error <- Error(
-      "SerializationError",
-      "failed to decode query XML error response",
-      request$http_response$status_code
-    )
+    request$error <- serialization_error(request)
     return(request)
   }
 
