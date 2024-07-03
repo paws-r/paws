@@ -336,24 +336,6 @@ test_that("default to head_bucket for final region check", {
   expect_equal(actual, "bar")
 })
 
-s3_get_bucket_region <- function(request, error, bucket) {
-  # First try to source the region from the headers.
-  response_headers <- request$http_response$header
-  if (!is.null(region <- response_headers[["x-amz-bucket-region"]])) {
-    return(unlist(region))
-  }
-  if (!is.null(region <- unlist(error$Region))) {
-    return(region)
-  }
-
-  # Finally, HEAD the bucket. No other choice sadly.
-  resp <- s3(request$config)$head_bucket(Bucket = bucket)
-  region <- resp$BucketRegion
-
-  return(region)
-}
-
-
 test_that("redirect request from http response error", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
@@ -369,7 +351,7 @@ test_that("redirect request from http response error", {
   )
 
   pass <- mock2(side_effect = function(...) as.list(...))
-  mockery::stub(s3_redirect_from_error , "sign", pass)
+  mockery::stub(s3_redirect_from_error, "sign", pass)
   mockery::stub(s3_redirect_from_error, "send", pass)
 
   actual <- s3_redirect_from_error(req)
