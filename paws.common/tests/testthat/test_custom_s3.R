@@ -312,7 +312,7 @@ test_that("ignore redirect if already redirected", {
   expect_equal(actual, req)
 })
 
-test_that("ignore redirect if unable to find S3 region", {
+test_that("default to head_bucket for final region check", {
   raw_error <- charToRaw(paste0(
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
     "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
@@ -323,10 +323,35 @@ test_that("ignore redirect if unable to find S3 region", {
     status_code = 301,
     body = raw_error
   )
-  actual <- s3_redirect_from_error(req)
-  expect_equal(actual, req)
-  expect_equal(actual$http_response$body, raw_error)
+  mock_head_bucket <- mock2(list(BucketRegion = "bar"))
+  mock_s3 <- mock2(list(head_bucket = mock_head_bucket))
+  mockery::stub(s3_get_bucket_region, "s3", mock_s3)
+
+  error <- decode_xml(raw_error)$Error
+
+  actual <- s3_get_bucket_region(req, error, "foo")
+
+  head_bucket_args <- mockery::mock_args(mock_head_bucket)[[1]]
+  expect_equal(head_bucket_args, list(Bucket = "foo"))
+  expect_equal(actual, "bar")
 })
+
+s3_get_bucket_region <- function(request, error, bucket) {
+  # First try to source the region from the headers.
+  response_headers <- request$http_response$header
+  if (!is.null(region <- response_headers[["x-amz-bucket-region"]])) {
+    return(unlist(region))
+  }
+  if (!is.null(region <- unlist(error$Region))) {
+    return(region)
+  }
+
+  # Finally, HEAD the bucket. No other choice sadly.
+  resp <- s3(request$config)$head_bucket(Bucket = bucket)
+  region <- resp$BucketRegion
+
+  return(region)
+}
 
 
 test_that("redirect request from http response error", {
@@ -344,7 +369,7 @@ test_that("redirect request from http response error", {
   )
 
   pass <- mock2(side_effect = function(...) as.list(...))
-  mockery::stub(s3_redirect_from_error, "sign", pass)
+  mockery::stub(s3_redirect_from_error , "sign", pass)
   mockery::stub(s3_redirect_from_error, "send", pass)
 
   actual <- s3_redirect_from_error(req)

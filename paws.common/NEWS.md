@@ -23,6 +23,7 @@ resp <- client$get_object(
 )
 #> Error: SerializationError (HTTP 304). An error occurred (304) when calling the GetObject operation: Not Modified
 ```
+* head bucket as final resort when redirecting aws s3 call.
 
 # paws.common 0.7.3
 * fix `xml_parse` to correctly parse empty elements (#783) thanks to @stevepowell99 for raising issue

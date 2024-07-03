@@ -441,13 +441,8 @@ s3_get_bucket_region <- function(request, error, bucket) {
   }
 
   # Finally, HEAD the bucket. No other choice sadly.
-  tryCatch({
-    client <- s3(request$config)
-    resp <- client$head_bucket(Bucket = bucket)
-  })
-  region <- resp$BucketRegion
-
-  return(region)
+  resp <- s3(request$config)$head_bucket(Bucket = bucket)
+  return(resp$BucketRegion)
 }
 
 # Splice a new endpoint into an existing URL. Note that some endpoints
