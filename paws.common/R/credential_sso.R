@@ -1,18 +1,3 @@
-# Get SSO temporary credentials for a role using the sso get_role_credentials
-# operation.
-#
-# We need to re-implement the SSO GetRoleCredentials operation to avoid
-# circular dependency: paws depends on paws.common, therefore we can't
-# make paws.common also depend on paws.
-
-# SSO service client.
-sso <- function(config = list()) {
-  svc <- .sso$operations
-  svc <- set_config(svc, config)
-  return(svc)
-}
-
-# Private API objects: metadata, handlers, interfaces, etc.
 .sso <- list()
 
 .sso$operations <- list()
@@ -44,12 +29,6 @@ sso <- function(config = list()) {
   return(populate(args, shape))
 }
 
-# Returns a set of temporary security credentials that you can use to
-# access AWS resources that you might not normally have access to. These
-# temporary credentials consist of an access key ID, a secret access key,
-# and a security token. You use `GetRoleCredentials` after you have signed
-# in via SSO, cf. `aws sso login`.
-
 sso_get_role_credentials <- function(roleName, accountId, accessToken) {
   op <- new_operation(
     name = "GetRoleCredentials",
@@ -66,3 +45,9 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
   return(response)
 }
 .sso$operations$get_role_credentials <- sso_get_role_credentials
+
+sso <- function(config = list()) {
+  svc <- .sso$operations
+  svc <- set_config(svc, config)
+  return(svc)
+}

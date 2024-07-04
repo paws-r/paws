@@ -1,9 +1,3 @@
-s3 <- function(config = list()) {
-  svc <- .s3$operations
-  svc <- set_config(svc, config)
-  return(svc)
-}
-
 .s3 <- list()
 
 .s3$operations <- list()
@@ -51,3 +45,9 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
   return(response)
 }
 .s3$operations$head_bucket <- s3_head_bucket
+
+s3 <- function(config = list()) {
+  svc <- .s3$operations
+  svc <- set_config(svc, config)
+  return(svc)
+}

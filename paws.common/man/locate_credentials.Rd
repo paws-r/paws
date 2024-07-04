@@ -13,6 +13,14 @@ locate_credentials(profile = "", anonymous = FALSE)
 }
 \value{
 list containing AWS credentials
+\itemize{
+\item access_key_id - (character) AWS access key ID
+\item secret_access_key - (character) AWS secret access key
+\item session_token - (character) AWS temporary session token
+\item access_token - (character) A token that gives a user permission to access certain resources
+\item expiration - (numeric) Indicates the Unix time when an access token will expire.
+\item region - (character) The AWS Region used in instantiating the client.
+}
 }
 \description{
 Locate AWS credentials
