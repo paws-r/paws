@@ -8,7 +8,7 @@ Error <- struct(
   error_response = list()
 )
 
-ERROR_MSG_TEMPLATE <- "An error occurred (%s) when calling the %s operation: %s"
+ERROR_MSG_TEMPLATE <- "An error occurred when calling the %s operation%s: %s"
 
 serialization_error <- function(request) {
   error_message <- http_statuses[[
@@ -18,12 +18,21 @@ serialization_error <- function(request) {
     "SerializationError",
     sprintf(
       ERROR_MSG_TEMPLATE,
-      request$http_response$status_code,
       request$operation$name,
+      get_retry_info(request$retry_count),
       error_message
     ),
     request$http_response$status_code
   )
+}
+
+get_retry_info <- function(retry_count){
+  if (retry_count) {
+    retry_msg <- sprintf(" (reached max retries: %d)", retry_count)
+  } else {
+    retry_msg <- ""
+  }
+  return(retry_msg)
 }
 
 #' Generate a classed http error

@@ -21,7 +21,7 @@ resp <- client$get_object(
   Key = "<key>",
   IfNoneMatch = "<etag>"
 )
-#> Error: SerializationError (HTTP 304). An error occurred (304) when calling the GetObject operation: Not Modified
+#> Error: SerializationError (HTTP 304). An error occurred when calling the GetObject operation: Not Modified
 ```
 * use s3 head_bucket operation as final resort when redirecting aws s3 call.
 

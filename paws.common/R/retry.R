@@ -50,6 +50,7 @@ standard_retry_handler <- function(request) {
   for (i in seq.int(2, exit_retries)) {
     tryCatch(
       {
+        request$retry_count <- i - 1
         request <- sign(request)
         if (!is.null(request[["error"]])) {
           stop(aws_error(request[["error"]]))
@@ -57,7 +58,6 @@ standard_retry_handler <- function(request) {
         request <- send(request)
         request <- unmarshal_meta(request)
         request <- validate_response(request)
-
         if (!is.null(request[["error"]])) {
           request <- unmarshal_error(request)
           stop(aws_error(request[["error"]]))
