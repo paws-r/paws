@@ -738,7 +738,7 @@ test_that("unmarshal nested structures", {
 
 # Unmarshal Error Tests
 
-request <- list()
+request <- list(retry_count = 0)
 
 test_that("unmarshal error", {
   data <- "<ErrorResponse><Error><Code>FooError</Code><Message>Foo</Message><RequestId>123</RequestId><HostId>ABC</HostId></Error></ErrorResponse>"
