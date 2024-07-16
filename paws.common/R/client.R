@@ -78,6 +78,10 @@ new_session <- function() {
   return(s)
 }
 
+# only add host_prefix that match HOST_PREFIX_RE
+# https://github.com/boto/botocore/blob/786396c9b236671cc57f6404d84c381ad1499cc5/botocore/serialize.py#L173-L203
+HOST_PREFIX_RE <- "^[A-Za-z0-9\\.\\-]+$"
+
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
 resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https", host_prefix = "") {
@@ -108,7 +112,8 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   }
   signing_region <- if (e[["global"]]) "us-east-1" else region
   endpoint <- endpoint_unescape(e[["endpoint"]], service, signing_region)
-  endpoint <- sprintf("%s%s", host_prefix, endpoint)
+  if (grepl(HOST_PREFIX_RE, host_prefix))
+    endpoint <- sprintf("%s%s", host_prefix, endpoint)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
   return(list(
