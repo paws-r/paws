@@ -133,7 +133,7 @@ set_sts_region <- function(sts_regional_endpoint, region) {
 }
 
 # client_config returns a ClientConfig configured for the service.
-client_config <- function(service_name, endpoints, cfgs, service_id, operation = "") {
+client_config <- function(service_name, endpoints, cfgs, service_id, operation = list(host_prefix = "")) {
   s <- new_session()
   if (!is.null(cfgs)) {
     s$config <- cfgs
