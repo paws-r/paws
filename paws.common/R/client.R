@@ -80,7 +80,7 @@ new_session <- function() {
 
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
-resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https") {
+resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https", host_prefix = "") {
   # Set default region for s3:
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
   if (service == "s3" & (region == "aws-global")) {
@@ -108,6 +108,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   }
   signing_region <- if (e[["global"]]) "us-east-1" else region
   endpoint <- endpoint_unescape(e[["endpoint"]], service, signing_region)
+  endpoint <- sprintf("%s%s", host_prefix, endpoint)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
   return(list(
@@ -132,7 +133,7 @@ set_sts_region <- function(sts_regional_endpoint, region) {
 }
 
 # client_config returns a ClientConfig configured for the service.
-client_config <- function(service_name, endpoints, cfgs, service_id) {
+client_config <- function(service_name, endpoints, cfgs, service_id, operation = "") {
   s <- new_session()
   if (!is.null(cfgs)) {
     s$config <- cfgs
@@ -153,7 +154,12 @@ client_config <- function(service_name, endpoints, cfgs, service_id) {
       custom_endpoint <- TRUE
     } else {
       sts_regional_endpoint <- s$config$sts_regional_endpoint
-      e <- resolver_endpoint(service_name, region, endpoints, sts_regional_endpoint)
+      e <- resolver_endpoint(
+        service_name,
+        region, endpoints,
+        sts_regional_endpoint,
+        host_prefix = operation$host_prefix
+      )
       endpoint <- e$endpoint
       signing_region <- e$signing_region
     }

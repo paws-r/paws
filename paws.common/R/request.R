@@ -7,6 +7,7 @@ Operation <- struct(
   name = "",
   http_method = "",
   http_path = "",
+  host_prefix = "",
   paginator = list(),
   before_presign_fn = function() {}
 )
@@ -35,7 +36,7 @@ Operation <- struct(
 #' )
 #'
 #' @export
-new_operation <- function(name, http_method, http_path, paginator, before_presign_fn = NULL) {
+new_operation <- function(name, http_method, http_path, host_prefix, paginator, before_presign_fn = NULL) {
   args <- as.list(environment())
   args[lengths(args) == 0] <- NULL
   return(do.call(Operation, args))
